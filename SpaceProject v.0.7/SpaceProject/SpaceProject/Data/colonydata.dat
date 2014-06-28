@@ -1,0 +1,35 @@
+[SX_BluePlanet_Colony1]
+Name = Colony1
+Inhabitants = 600
+
+[SY_GreenPlanet_Colony1]
+Name = Colony1
+Inhabitants = 400000
+
+[SX_Highfence_Colony1]
+Name = Highfence
+Inhabitants = 600
+
+[SX_Fotrun_Colony1]
+Name = Fotrun
+Inhabitants = 180
+
+[SX_New_Norrland_Colony1]
+Name = New Ume
+Inhabitants = 1200
+
+[SX_Peye_Colony1]
+Name = Peye
+Inhabitants = 180
+
+[SX_Telmun_Colony1]
+Name = Telmun Federation Outpost
+Inhabitants = 800
+
+[SY_GreyPlanet_Colony1]
+Name = Colony1
+Inhabitants = 250
+
+[SZ_TempPlanet3_Colony1]
+Name = Mysterious Colony
+Inhabitants = 1

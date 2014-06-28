@@ -1,0 +1,5 @@
+small star = (0, 3, 3, 3)
+grey planet = (0, 22, 703, 703)
+green planet = (702, 22, 403, 403)
+fed planet = (705, 427, 511, 512)
+fed station = (0, 727, 291, 291)

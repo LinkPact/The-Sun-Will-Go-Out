@@ -1,0 +1,194 @@
+[SX_Soelara]
+Name = Soelara
+PositionX = 15000
+PositionY = 27000
+Surface = Gas
+Mass = 5.5
+Temp = 1460
+Gravity = 2.45
+Orbit = 0.24
+Rotation = 134
+Info = A big gas giant. A space station orbits the planet.
+HasColony = false
+
+[SX_Lavis]
+Name = Lavis
+PositionX = 28000
+PositionY = 1000
+Mass = 1.5
+Temp = -200
+Gravity = 0.9
+Orbit = 4
+Rotation = 22
+Surface = Gas
+Info = A smaller gasplanet. Not habitable.
+HasColony = false
+
+[SX_Fotrun]
+Name = Fotrun
+PositionX = 7000
+PositionY = 10000
+Surface = Ice
+Mass = 1.1
+Temp = -93
+Gravity = 0.83
+Orbit = 3.8
+Rotation = 7.2
+Info = The surface is completly covered in ice. A few colonies exists on the surface. The main source of income is water harvesting.
+HasColony = false
+
+[SX_New_Norrland]
+Name = New Norrland
+PositionX = 2000
+PositionY = 24000
+Surface = Dust
+Mass = 0.8
+Temp = 84
+Gravity = 0.8
+Orbit = 0.84
+Rotation = 1.2
+Info = Small planet covered mostly by deserts. Origin of the name is still a mystery. 
+HasColony = true
+
+[SX_Highfence]
+Name = Highfence
+PositionX = 28000
+PositionY = 17000
+Surface = Dust
+Mass = 0.75
+Temp = 345
+Gravity = 0.7
+Orbit = 3.5
+Rotation = 2.4
+Info = A barren and deserted planet. The landscape compose mostly of mountains and deserts. A few mining colonies exists on the surface. 
+HasColony = true
+
+[SX_Peye]
+Name = Peye
+PositionX = 3000
+PositionY = 2000
+Surface = Gas
+Mass = 0.5
+Temp = 100
+Gravity = 0.2
+Orbit = 65
+Rotation = 130
+Info = A planet with a green, poisonous atmosphere.
+HasColony = true
+
+[SX_GreyMoon]
+Name = Grey Moon
+PositionX = 8580
+PositionY = 17610
+Surface = Rock
+Mass = 0.5
+Temp = 100
+Gravity = 0.2
+Orbit = 65
+Rotation = 130
+Info = A small grey moon.
+HasColony = false
+
+[OX_Telmun]
+Name = Telmun
+PositionX = 1200
+PositionY = 2300
+Surface = Rock
+Mass = 10
+Temp = 83
+Gravity = 3.6
+Orbit = 34
+Rotation = 425
+Info = A big planet rich with valuable resources. Heavy exploitation over many years has made the planet's atmosphere extremely hazardous. The Federation outpost on the planet surface has long since been abandoned.
+HasColony = false
+
+[SY_GreyPlanet]
+Name = Grey Planet
+PositionX = 19000
+PositionY = 2000
+Surface = Gas
+Mass = 0.7
+Temp = -136
+Gravity = 0.4
+Orbit = 5.7
+Rotation = 15
+Info = One of the bigger planets in the system. The planet consists mostly of gas. 
+HasColony = true
+
+[SY_GreenPlanet]
+Name = Green Planet
+PositionX = 12500
+PositionY = 9000
+Surface = Diverse
+Mass = 2.3
+Temp = 48
+Gravity = 1.5 
+Orbit = 3.4
+Rotation = 0.8
+Info = One of the few truly terraformed planets in the system. It is home to the teknokrats 
+HasColony = true
+
+[SY_TempPlanet1]
+Name = Temp1 Planet
+PositionX = 3000
+PositionY = 18000
+Surface = Mysterious
+Mass = -1
+Temp = -1
+Gravity = -1
+Orbit = -1
+Rotation = -1
+Info = Uncharted planet
+HasColony = false
+
+[SZ_TempPlanet2]
+Name = Temp2 Planet
+PositionX = 2000
+PositionY = 1000
+Surface = Mysterious
+Mass = -1
+Temp = -1
+Gravity = -1
+Orbit = -1
+Rotation = -1
+Info = Uncharted planet
+HasColony = false
+
+[SZ_TempPlanet3]
+Name = Temp3 Planet
+PositionX = 4050
+PositionY = 4700
+Surface = Mysterious
+Mass = -1
+Temp = -1
+Gravity = -1
+Orbit = -1
+Rotation = -1
+Info = Uncharted planet
+HasColony = false
+
+[SZ_TempPlanet4]
+Name = Temp4 Planet
+PositionX = 8100
+PositionY = 8500
+Surface = Mysterious
+Mass = -1
+Temp = -1
+Gravity = -1
+Orbit = -1
+Rotation = -1
+Info = Uncharted planet
+HasColony = false
+
+[OX_TempPlanet5]
+Name = Temp5 Planet
+PositionX = 800
+PositionY = 900
+Surface = Mysterious
+Mass = -1
+Temp = -1
+Gravity = -1
+Orbit = -1
+Rotation = -1
+Info = Uncharted planet
+HasColony = false

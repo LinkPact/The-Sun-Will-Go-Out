@@ -1,0 +1,47 @@
+[SX_Station1_Soelara]
+Name = Soelara Station
+PositionX = 600
+PositionY = 300
+Inhabitants = 1200
+
+[SX_Station1_Lavis]
+Name = Lavis Station
+PositionX = -200
+PositionY = 200
+Inhabitants = 5000
+
+[SX_Fotrun_1]
+Name = Fotrun Station I
+PositionX = 300
+PositionY = -100
+Inhabitants = 20000
+
+[SX_Fotrun_2]
+Name = Fotrun Station II
+PositionX = 26300
+PositionY = 27000
+Inhabitants = 1000
+
+[OX_OutpostX_Station]
+Name = Outpost X
+PositionX = 600
+PositionY = 600
+Inhabitants = 120
+
+[BO_Border_Station]
+Name = Border Station
+PositionX = 1400
+PositionY = 1700
+Inhabitants = 800
+
+[OW_Abandoned_Station]
+Name = Abandoned Station
+PositionX = 3800
+PositionY = 47900
+Inhabitants = 150
+
+[SY_BigStation]
+Name = Federation Station
+PositionX = 1000
+PositionY = 750
+Inhabitants = 80000

@@ -1,0 +1,12 @@
+﻿BACK
+0.1
+0.2 - Stars
+0.3
+0.4
+0.5 - Enemies (default for GameObjectVertical)
+0.6 - Player
+0.7 - Borders
+0.8 - Ship info
+0.9
+1.0 - EndMessage
+FRONT

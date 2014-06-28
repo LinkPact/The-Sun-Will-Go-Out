@@ -1,0 +1,66 @@
+#Busken!
+
+#Relativa positioner i systemet
+
+#Ändra namnen på variabler i GameObjectOverworld så att de inte innehåller Objekt.. i namnet
+	2013-11-18 Fixat //Johan
+
+#Kommentera viktiga funktioner och variabler som inte är uppenbara 
+
+#Story till planeter
+
+#Uppdatera minimapen
+	2013-12-15 Ändrade spelarens färg på kartan //Johan
+
+#Missions
+
+#Gör färdig sparsystemet så allt sparas korrekt. 
+	2013-12-18 Fick sparningen att funka igen //Johan
+	2013-12-21 Uppdaterade sparsystemet så att vilka vapen som är equipade sparas //Johan
+
+#Månar
+	2013-11-22 La till en första måne utanför GreyPlanet //Johan
+
+#Explosioner
+	2013-12-05 Fixat! //Danne
+	Snygga till explosionerna
+
+#Återskapa spelprojektet och strukturera om projektet
+	2013-12-03 Återskapade projektet i en ny mapp och städade bland mapparna // Johan
+
+#Intro
+	(Vi se till att introt till spelet är en sammanhängande upplevelse)
+	*Ändra introtexten så den stämer bättre överens med hur vi tänkt oss spelet
+	*Ge en förklaring till första uppdraget
+
+#Ending
+	(Spelet borde ha något form av slut)
+	*Slutbana
+	*Slutskärm
+
+#Levels
+	(vi behöver fler banor till spelet)
+
+#Ljudeffekter
+
+#AccessViolationException
+	Felet har blivit stadigt återkommande för mig.
+	Uppstår generellt då man stänger ned programmet.
+	Läs på kring ämnet, och försök ta reda på vad det handlar om egentligen.
+
+	*Verkar ha försvunnit nu när jag tillfälligt tagit bort ljudeffekterna,
+	så nu vet vi att det beror på dessa. Jag ska kolla på hur jag kan lösa det. // Danne
+
+#StackOverFlowException
+	Uppstår om man startar banan på "P" eter att ha kört banan på "O" tills det står OUTSIDE i titteln.
+
+#Message Box
+	Lägga till wordwrap.
+
+#Boost-funktion
+
+#Nytt rörelsemönster för overworldstate
+
+#Muskontroll menyer
+
+#Gå-tillbaka-till-huvudmeny-funktion
