@@ -1,0 +1,110 @@
+Player
+X: 0,18
+Y: 0,0
+dx: 18
+dy: 23
+
+BigGreen (90,130,40,40)
+BigRed (130,130,40,40)
+BigYellow (170,130,40,40)
+BigBlue (210,130,40,40)
+
+GreenEnemy
+X: 0,18
+Y: 34,34
+dx: 18
+dy: 18
+
+RedEnemy
+X: 36,54
+Y: 34,34
+dx: 18
+dy: 18
+
+New RedEnemy (484, 0, 23, 34)
+
+YellowEnemy
+X: 72,90 
+(shot: 108,126,144,162)
+Y: 16
+dx: 18
+dy: 18
+
+BlueEnemy
+X: 72,90
+(shot: 108,126,144,162)
+Y: 34
+dx: 18
+dy: 18
+
+MineLayer (320,80,54,38)
+
+RedLaser (23,25,5,9)
+BlueLaser (29,25,5,9)
+PurpleLaser (35,25,5,9)
+
+Star (6,24,2,2)
+
+HealthBit (0,54,1,5)
+ManaBit (1,54,1,5)
+
+BarEdges (4,53,139,6)
+
+YellowBullet (6,27,4,4)
+GreenBullet (11,24,5,5)
+
+Missile1 (42,0,7,22)(49,0,7,22)
+
+Bomb1 (61,0,10,10)
+
+Asteroid 15x15 (45,65,15,15)
+Asteroid 20x20 (60,65,20,20)
+Asteroid 25x25 (80,65,25,25)
+Asteroid 30x30 (105,65,30,30)
+
+Beam blue (18,26,4,1)
+Beam orange (18,27,4,1)
+
+Flame shot(42,24,5,9)
+
+Danne's Player (182,0,29,27)
+
+Big ship (238,0,77,96) 
+
+Rebel Medium Ship (317, 0, 38, 53)
+
+Turret_Base (360, 0, 43, 43)
+
+Turret_Gun (360, 45, 39, 21)
+
+Turret_Laser (360, 68, 40, 1)
+
+Missile ship (410, 0, 28, 35)
+
+Large missle ship (440, 0, 42, 42)
+
+Explosion anim1 (258, 135, 32, 25)
+Explosion anim2 (308, 135, 32, 25)
+Explosion anim3 (358, 135, 32, 25)
+Explosion anim4 (408, 135, 32, 25)
+Explosion anim5 (458, 135, 32, 25)
+
+Bosslv1 (106, 272, 98, 98)
+
+Fragment missile anim1 	(149, 60, 9, 26)
+Fragment missile anim1 	(158, 60, 9, 26)
+Fragment missile anim1 	(167, 60, 9, 26)
+Fragment		(176, 60, 5, 5)
+
+Ballistic Laser		(140, 60, 5, 20)
+Wave Beam		(70, 0, 21, 5)
+
+Rebel small		(384, 80, 41, 34)
+
+AllianceBigFighterMk2   (92, 180, 69, 83)
+
+Alliance Stealth	(171, 180, 38, 63)
+
+Alliance Small		(435, 80, 25, 26)
+
+Shield		(220,180,100,100)

@@ -1,0 +1,37 @@
+Green square 	(0,0,10,10)
+Red square 	(10,0,10,10)
+Yellow square 	(20,0,10,10)
+White square 	(0,10,10,10)
+Blue square 	(10,10,10,10)
+Black square 	(20,10,10,10)
+
+Vertical line 	(30,0,1,12)
+Horizontal line (30,12,12,1)
+
+Quit button 	(0,20,60,31)
+Save button 	(0,51,60,31)
+Load button 	(0,82,60,31)
+Edit button 	(0,113,60,31)
+Clear button 	(0,144,60,31)
+Run button	(0,175,60,31)
+
+Big plus	(60,20,19,19)
+Small plus	(79,20,19,19)
+Small minus	(60,39,19,19)
+Big minus	(79,39,19,19)
+
+Edit button	(99,20,14,14)
+
+Blue up arrow	(61,59,18,20)
+Blue down arrow	(61,80,18,20)
+Gray up arrow	(80,59,18,20)
+Gray down arrow	(80,80,18,20)
+
+Line event	(104,0,13,13)
+Square event	(117,0,13,13)
+Triangle event	(130,0,13,13)
+
+Even swarm	(157,0,13,6)
+Gradient swarm	(164,0,13,6)
+
+Cross		(171,0,13,13)

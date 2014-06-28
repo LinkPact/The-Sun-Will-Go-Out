@@ -1,0 +1,59 @@
+Main weapon
+X: 185,265
+Y: 15,15
+dx: 40
+dy: 40
+
+Special skills
+X: 225,305
+Y: 15,15
+dx: 40
+dy: 40
+
+Secondary weapon
+X: 185,265
+Y: 55,55
+dx: 40
+dy: 40
+
+Defensive skills
+X: 225,305
+Y: 55,55
+dx: 40
+dy: 40
+
+Ships
+X: 185,265
+Y: 95,95
+dx: 40
+dy: 40
+
+Batteries
+X: 225,305
+Y: 95,95
+dx: 40
+dy: 40
+
+Shields
+X: 185,265
+Y: 135,135
+dx: 40
+dy: 40
+
+Horizontal line
+X: 0
+Y: 189
+dx: 800
+dy: 1
+
+Vertical line
+X: 365
+Y: 0
+dx: 1
+dy: 600
+
+Cursor (371,10,10,10)
+X: 371
+Y: 10,20
+dx: 10
+dy: 10
