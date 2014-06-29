@@ -580,10 +580,19 @@ namespace SpaceProject
                 }
             }
 
+            if (messageState == MessageState.Map)
+            {
+                if ((ControlManager.CheckKeypress(Keys.LeftShift)
+                    || ControlManager.CheckKeypress(Keys.RightShift)
+                    || ControlManager.CheckKeypress(Keys.N))
+                    && tempTimer <= 0)
+                {
+                    HideMap();
+                }
+            }
+
             if (((ControlManager.CheckPress(RebindableKeys.Action1) 
-                || ControlManager.CheckKeypress(Keys.Enter) 
-                || ControlManager.CheckKeypress(Keys.N)
-                || ControlManager.CheckKeypress(Keys.LeftShift))
+                || ControlManager.CheckKeypress(Keys.Enter))
                 || (GameStateManager.currentState == "MainMenuState" && ControlManager.IsLeftMouseButtonClicked() && messageState == MessageState.Message) 
                 && tempTimer <= 0))
                 ButtonActions();
@@ -642,7 +651,8 @@ namespace SpaceProject
                 }
             }
         }
-        private void ButtonActions()
+        //Called when atempting to go back
+        private void HideMessage()
         {
             //Makes the messagebox invisible when pressing the actionkey if it's displaying a message
             if (messageState == MessageState.Message && tempTimer < 0)
@@ -655,12 +665,22 @@ namespace SpaceProject
                     messageState = MessageState.Invisible;
                 }
             }
-
+        }
+        private void HideMap()
+        {
             //Makes the messagebox invisible when pressing the actionkey if it's displaying a message
-            if ( messageState == MessageState.Map && tempTimer < 0)
+            if (messageState == MessageState.Map && tempTimer < 0)
             {
                 Game1.Paused = false;
                 messageState = MessageState.Invisible;
+            }
+        }
+        private void ButtonActions()
+        {
+            //Makes the messagebox invisible when pressing the actionkey if it's displaying a message
+            if (messageState == MessageState.Message && tempTimer < 0)
+            {
+                HideMessage();
             }
 
             //checks which option the user selects and executes it.  
