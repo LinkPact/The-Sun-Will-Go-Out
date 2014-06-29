@@ -30,6 +30,8 @@ namespace SpaceProject
 
     public class SoundEffectsManager
     {
+        public static bool LoadSoundEffects;
+
         private Game1 game;
 
         private List<CustomSoundEffect> soundEffects;
@@ -59,48 +61,47 @@ namespace SpaceProject
             this.game = game;
         }
 
-        ~SoundEffectsManager()
-        {
-            DisposeSoundEffect();
-        }
-
         public void Initialize()
         {
             // Load settings
             muted = game.settingsFile.GetPropertyAsBool("sound", "mutesound", true);
             volume = game.settingsFile.GetPropertyAsFloat("sound", "soundvolume", 1);
+            LoadSoundEffects = game.settingsFile.GetPropertyAsBool("sound", "loadsound", true);
 
             soundEffects = new List<CustomSoundEffect>();
             soundEffectBuffer = new List<SoundEffectInstance>();
             stoppedSoundEffects = new List<SoundEffectInstance>();
-            
-            test1 = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/laser3"), 10);
-            test2 = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/laser4_0"), 10);
-            test3 = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/laser6"), 10);
-            test4 = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/laser7"), 10);
-            test5 = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/laser8"), 10);
-            
-            soundEffects.Add(test1);
-            soundEffects.Add(test2);
-            soundEffects.Add(test3);
-            soundEffects.Add(test4);
-            soundEffects.Add(test5);
-            
-            basicLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/laser1"), 10);
-            muffledExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom6"), 10);
-            smallExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom9"), 10);
-            
-            soundEffects.Add(basicLaser);
-            soundEffects.Add(muffledExplosion);
-            soundEffects.Add(smallExplosion);
 
-            overworldEngine = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/engine1"), 1);
+            if (LoadSoundEffects)
+            {
+                test1 = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/laser3"), 10);
+                test2 = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/laser4_0"), 10);
+                test3 = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/laser6"), 10);
+                test4 = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/laser7"), 10);
+                test5 = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/laser8"), 10);
 
-            soundEffects.Add(overworldEngine);
+                soundEffects.Add(test1);
+                soundEffects.Add(test2);
+                soundEffects.Add(test3);
+                soundEffects.Add(test4);
+                soundEffects.Add(test5);
 
-            crowd = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/crowd1"), 1);
+                basicLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/laser1"), 10);
+                muffledExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom6"), 10);
+                smallExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom9"), 10);
 
-            soundEffects.Add(crowd);
+                soundEffects.Add(basicLaser);
+                soundEffects.Add(muffledExplosion);
+                soundEffects.Add(smallExplosion);
+
+                overworldEngine = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/engine1"), 1);
+
+                soundEffects.Add(overworldEngine);
+
+                crowd = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/crowd1"), 1);
+
+                soundEffects.Add(crowd);
+            }
         }
 
         // Plays specified sound effect with random pitch
@@ -234,6 +235,16 @@ namespace SpaceProject
                 if (!stoppedSoundEffects[i].IsDisposed)
                 {
                     stoppedSoundEffects[i].Dispose();
+                }
+            }
+
+            for (int i = 0; i < soundEffectBuffer.Count; i++)
+            {
+                SoundEffectInstance instance = soundEffectBuffer[i];
+                if (!instance.IsDisposed)
+                {
+                    instance.Stop();
+                    instance.Dispose();
                 }
             }
 

@@ -55,7 +55,7 @@ namespace SpaceProject
             directionalButtons.Add(soundLeftButton);
             directionalButtons.Add(soundRightButton);
 
-            menuOptions = new String[5, 2];
+            menuOptions = new String[6, 2];
         }
 
         public override void OnDisplay()
@@ -78,8 +78,18 @@ namespace SpaceProject
             menuOptions[3, 0] = "Sound Volume";
             menuOptions[3, 1] = Math.Round(game.soundEffectsManager.GetSoundVolume() * 10).ToString();
 
-            menuOptions[4, 0] = "Back";
-            menuOptions[4, 1] = "";
+            menuOptions[4, 0] = "Load Sound Effects";
+            if (SoundEffectsManager.LoadSoundEffects)
+            {
+                menuOptions[4, 1] = "On";
+            }
+            else
+            {
+                menuOptions[4, 1] = "Off";
+            }
+
+            menuOptions[5, 0] = "Back";
+            menuOptions[5, 1] = "";
             base.OnDisplay();
         }
 
@@ -107,6 +117,12 @@ namespace SpaceProject
 
             else if (ControlManager.CheckPress(RebindableKeys.Left))
                 VolumeControl("left");
+
+            if (!SoundEffectsManager.LoadSoundEffects)
+            {
+                game.soundEffectsManager.SetSoundMuted(true);
+                menuOptions[2, 1] = "Off";
+            }
         }
 
         public override void ButtonActions()
@@ -120,6 +136,11 @@ namespace SpaceProject
             
                 case "sound effects":
                     game.soundEffectsManager.SwitchSoundMuted();
+                    optionsMenuState.SaveSettings();
+                    break;
+
+                case "load sound effects":
+                    SoundEffectsManager.LoadSoundEffects = !SoundEffectsManager.LoadSoundEffects;
                     optionsMenuState.SaveSettings();
                     break;
             
@@ -197,13 +218,22 @@ namespace SpaceProject
                 menuOptions[0, 1] = "On";
             
             menuOptions[1, 1] = Math.Round(game.musicManager.GetMusicVolume() * 10 ).ToString();
-            
+
             if (game.soundEffectsManager.isSoundMuted())
                 menuOptions[2, 1] = "Off";
             else
                 menuOptions[2, 1] = "On";
             
             menuOptions[3, 1] = Math.Round(game.soundEffectsManager.GetSoundVolume() * 10).ToString();
+
+            if (SoundEffectsManager.LoadSoundEffects)
+            {
+                menuOptions[4, 1] = "On";
+            }
+            else
+            {
+                menuOptions[4, 1] = "Off";
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
