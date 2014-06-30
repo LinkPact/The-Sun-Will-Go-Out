@@ -107,7 +107,7 @@ namespace SpaceProject
         // Plays specified sound effect with random pitch
         public void PlaySoundEffect(SoundEffects identifier, float pan)
         {
-            if (!muted && soundEffectBuffer.Count < 32)
+            if (!muted && LoadSoundEffects && soundEffectBuffer.Count < 32)
             {
                 int i = (int)identifier;
             
@@ -147,7 +147,7 @@ namespace SpaceProject
 
         public void LoopSoundEffect(SoundEffects identifier, float pan, float pitch)
         {
-            if (!muted && soundEffectBuffer.Count < 32)
+            if (!muted && LoadSoundEffects && soundEffectBuffer.Count < 32)
             {
                 int i = (int)identifier;
 
@@ -169,9 +169,12 @@ namespace SpaceProject
         // Stops all instances of the specified sound effect
         public void StopSoundEffect(SoundEffects identifier)
         {
-            int i = (int)identifier;
+            if (!muted && LoadSoundEffects)
+            {
+                int i = (int)identifier;
 
-            soundEffects[i].DisposeInstances();
+                soundEffects[i].DisposeInstances();
+            }
         }
 
         public void Update(GameTime gameTime)

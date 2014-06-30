@@ -57,15 +57,11 @@ namespace SpaceProject
             base.MissionLogic();
 
             if (progress == 0 &&
-                Game.stateManager.currentGameState.Name == "StationState" &&
-                Game.stateManager.stationState.Station.name == "Fotrun Station I")
+                missionHelper.IsPlayerOnStation("Fotrun Station I"))
             {
-                Game.stateManager.stationState.SubStateManager.MissionMenuState.ActiveMission = this;
-
-                ShowEventAndUpdateProgress(0, 1);
-                ShowEvent(1);
-
-                ShowResponse(1, new List<int>() { 1, 2, 3, 4 });
+                progress = 1;
+                missionHelper.ShowEvent(new List<int> { 0, 1});
+                missionHelper.ShowResponse(1, new List<int>() { 1, 2, 3, 4 });
             }
 
             if (MissionResponse != 0)
@@ -76,15 +72,15 @@ namespace SpaceProject
                         {
                             if (StatsManager.Rupees > 1000)
                             {
-                                ShowEvent(2);
+                                missionHelper.ShowEvent(2);
                                 ObjectiveIndex = 1;
                                 StatsManager.Rupees -= 1000;
-                                ResponseBuffer.Clear();
+                                missionHelper.ClearResponseText();
                             }
 
                             else
                             {
-                                EventBuffer.Add(EventArray[6, 0]);
+                                missionHelper.ShowEvent(6);
                                 MissionResponse = 0;
                             }
                             break;
@@ -92,27 +88,27 @@ namespace SpaceProject
 
                     case 2:
                         {
-                            ShowEventAndUpdateProgress(3, 2);
+                            missionHelper.ShowEvent(3);
+                            progress = 2;
                             ObjectiveIndex = 2;
-                            ResponseBuffer.Clear();
+                            missionHelper.ClearResponseText();
                             break;
                         }
 
                     case 3:
                     case 4:
                         {
-                            ShowEvent(4);
-                            ShowEvent(5);
+                            missionHelper.ShowEvent(4);
+                            missionHelper.ShowEvent(5);
                             ObjectiveIndex = 1;
-                            ResponseBuffer.Clear();
+                            missionHelper.ClearResponseText();
                             break;
                         }
                 }
 
             }
 
-            if (Game.stateManager.currentGameState.Name == "PlanetState" &&
-                Game.stateManager.planetState.Planet.name == "Highfence")
+            if (missionHelper.IsPlayerOnPlanet("Highfence"))
             {
                 if (progress == 1)
                     MissionManager.MarkMissionAsCompleted(this.MissionName);

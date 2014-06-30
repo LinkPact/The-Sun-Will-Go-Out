@@ -76,112 +76,61 @@ namespace SpaceProject
             String thirdMission = "flightTraining_3";
 
             //First part
-            if (EventBuffer.Count <= 0
-                && flightTrainingState == FlightTrainingState.uninitialized 
+            if (flightTrainingState == FlightTrainingState.uninitialized 
                 && GameStateManager.currentState == "StationState"
-                && Game.stateManager.stationState.Station.name.ToLower().Equals("border station")
-                && Game.stateManager.stationState.SubStateManager.ButtonControl != ButtonControl.Confirm)
+                && Game.stateManager.stationState.Station.name.ToLower().Equals("border station"))
             {
-                flightTrainingState = FlightTrainingState.A_ready;
+                missionHelper.StartLevelAfterCondition(firstMission, LevelStartCondition.EnteringOverworld);
             }
 
-            if (flightTrainingState == FlightTrainingState.A_ready
-                && GameStateManager.currentState == "OverworldState")
-            {
-                Game.stateManager.shooterState.BeginLevel(firstMission);
-                flightTrainingState = FlightTrainingState.A_running;
-            }
-
-            if (flightTrainingState == FlightTrainingState.A_running 
-                && Game.stateManager.shooterState.GetLevel(firstMission).IsObjectiveCompleted)
+            if (missionHelper.IsLevelCompleted(firstMission))
             {
                 updateLogic = true;
-                //ShowEventAndUpdateProgress(0, 0);
-
-                //Game.stateManager.ChangeState("OverworldState");
                 flightTrainingState = FlightTrainingState.A_completed;
             }
 
             //Second part
             if (flightTrainingState == FlightTrainingState.A_completed
-                && GameStateManager.currentState == "StationState" 
-                && Game.stateManager.stationState.Station.name.ToLower().Equals("border station")
-                && Game.stateManager.stationState.SubStateManager.ButtonControl != ButtonControl.Confirm)
+                && missionHelper.IsPlayerOnStation("Border Station"))
             {
-                ShowEvent(new List<int> { 0, 1, 2 });
-                flightTrainingState = FlightTrainingState.B_ready;
+                missionHelper.ShowEvent(new List<int> { 0, 1, 2 });
+                missionHelper.StartLevelAfterCondition(secondMission, LevelStartCondition.EnteringOverworld);
             }
 
-            if (flightTrainingState == FlightTrainingState.B_ready
-                && GameStateManager.currentState == "OverworldState")
-            {
-                Game.stateManager.shooterState.BeginLevel(secondMission);
-                flightTrainingState = FlightTrainingState.B_running;
-            }
-
-            if (flightTrainingState == FlightTrainingState.B_running
-                && Game.stateManager.shooterState.GetLevel(secondMission).IsObjectiveCompleted)
+            if (missionHelper.IsLevelCompleted(secondMission))
             {
                 updateLogic = true;
-                //ShowEventAndUpdateProgress(1, 0);
-
-                //Game.stateManager.ChangeState("OverworldState");
                 flightTrainingState = FlightTrainingState.B_completed;
             }
 
             //Third part
             if (flightTrainingState == FlightTrainingState.B_completed
-                && GameStateManager.currentState == "StationState"
-                && Game.stateManager.stationState.Station.name.ToLower().Equals("border station")
-                && Game.stateManager.planetState.SubStateManager.ButtonControl != ButtonControl.Confirm)
+                && missionHelper.IsPlayerOnStation("Border Station"))
             {
-                ShowEvent(new List<int> { 3, 4, 5 });
-                flightTrainingState = FlightTrainingState.C_ready;
+                missionHelper.ShowEvent(new List<int> { 3, 4, 5 });
+                missionHelper.StartLevelAfterCondition(thirdMission, LevelStartCondition.EnteringOverworld);
             }
 
-            if (flightTrainingState == FlightTrainingState.C_ready
-                && GameStateManager.currentState == "OverworldState")
+            if (missionHelper.IsLevelCompleted(thirdMission))
             {
-                Game.stateManager.shooterState.BeginLevel(thirdMission);
-                flightTrainingState = FlightTrainingState.C_running;
-            }
-
-            if (flightTrainingState == FlightTrainingState.C_running
-                && Game.stateManager.shooterState.GetLevel(thirdMission).IsObjectiveCompleted)
-            {
-                //updateLogic = true;
-                //ShowEvent(2, 0);
-
-                //Game.stateManager.ChangeState("OverworldState");
                 flightTrainingState = FlightTrainingState.C_completed;
             }
 
             //
 
             //Fail mission
-            if ((flightTrainingState == FlightTrainingState.A_running
-                || flightTrainingState == FlightTrainingState.B_running
-                || flightTrainingState == FlightTrainingState.C_running)
-                && GameStateManager.currentState == "OverworldState")
+            if (missionHelper.IsLevelFailed(firstMission)
+                || missionHelper.IsLevelFailed(secondMission)
+                || missionHelper.IsLevelFailed(thirdMission))
             {
-                //flightTrainingState = FlightTrainingState.failed;
-                //updateLogic = true;
-                //ShowEvent(2, 0);
-
                 MissionManager.MarkMissionAsFailed("Flight Training");
             }
 
             //Win mission
-            if (flightTrainingState == FlightTrainingState.C_completed
-                && Game.stateManager.shooterState.GetLevel(firstMission).IsObjectiveCompleted)
+            if (flightTrainingState == FlightTrainingState.C_completed)
             {
                 updateLogic = true;
-
-                //ShowEventAndUpdateProgress(3, 0);
-                //ShowEvent(new List<int> { 6 });
-                
                 MissionManager.MarkMissionAsCompleted(this.MissionName);
-                //Game.stateManager.ChangeState("OverworldState");
             }
             
         }

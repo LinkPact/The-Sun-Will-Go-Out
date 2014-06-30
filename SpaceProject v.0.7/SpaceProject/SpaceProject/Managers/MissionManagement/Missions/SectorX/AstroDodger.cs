@@ -72,8 +72,7 @@ namespace SpaceProject
             }
 
             if (progress == 0 &&
-                //Game.stateManager.shooterState.GetLevel("MeteorLevel").IsObjectiveCompleted)
-                Game.stateManager.shooterState.GetLevel("AstroDodger").IsObjectiveCompleted)
+                missionHelper.IsLevelCompleted("AstroDodger"))
             {
                 progress = 1;
                 ObjectiveIndex = 1;
@@ -84,8 +83,7 @@ namespace SpaceProject
             }
 
             if (progress == 1 &&
-                GameStateManager.currentState == "StationState" &&
-                Game.stateManager.stationState.Station.name == "Soelara Station")
+                missionHelper.IsPlayerOnStation("Soelara Station"))
             {
                 MissionManager.MarkMissionAsCompleted(this.MissionName);
 

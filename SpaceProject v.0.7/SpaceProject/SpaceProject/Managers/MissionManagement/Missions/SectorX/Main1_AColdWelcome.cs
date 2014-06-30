@@ -46,7 +46,7 @@ namespace SpaceProject
             ObjectiveIndex = 0;
             progress = 0;
 
-            ShowEvent(new List<int>{0, 1, 2});
+            missionHelper.ShowEvent(new List<int>{0, 1, 2});
             Game.stateManager.GotoStationSubScreen("Border Station", "Overview");
 
             Game.stateManager.overworldState.AddOverworldObject(battlefield);
@@ -72,7 +72,7 @@ namespace SpaceProject
             base.MissionLogic();
 
             if (progress == 0 && GameStateManager.currentState.Equals("StationState") &&
-                Game.stateManager.stationState.SubStateManager.ButtonControl != ButtonControl.Confirm)
+                missionHelper.IsTextCleared())
             {
                 ObjectiveIndex = 1;
                 progress = 1;
@@ -119,11 +119,9 @@ namespace SpaceProject
             }
 
             if (progress == 2 &&
-                Game.stateManager.shooterState.GetLevel("FirstMissionLevel").IsObjectiveCompleted)
+                missionHelper.IsLevelCompleted("FirstMissionLevel"))
             {
                 died = false;
-
-                Game.stateManager.ChangeState("OverworldState");
 
                 ObjectiveIndex = 3;
                 progress = 3;
@@ -131,15 +129,15 @@ namespace SpaceProject
                 objectiveDestination = Game.stateManager.overworldState.getStation("Border Station");
             }
 
-            if (progress == 3 && GameStateManager.currentState == "StationState" &&
-                Game.stateManager.stationState.Station.name.Equals("Border Station"))
+            if (progress == 3 
+                && missionHelper.IsPlayerOnStation("Border Station"))
             {
                 if (((FirstMissionLevel)Game.stateManager.shooterState.GetLevel("FirstMissionLevel")).SuppliesCount >= 6)
                 {
                     TitaniumResource titanium = new TitaniumResource(Game, 100);
                     RewardItems.Add(titanium);
 
-                    ShowEvent(4);
+                    missionHelper.ShowEvent(4);
                 }
 
                 MissionManager.MarkMissionAsCompleted(this.MissionName);

@@ -47,13 +47,12 @@ namespace SpaceProject
 
             String missionLevel = "DeathByMeteor";
 
-            if (EventBuffer.Count <= 0 && progress == 0 &&
-                GameStateManager.currentState == "PlanetState" &&
-                Game.stateManager.planetState.SubStateManager.ButtonControl != ButtonControl.Confirm)
+            if (progress == 0
+                && missionHelper.IsPlayerOnPlanet("Peye"))
             {
                 ObjectiveIndex = 1;
                 progress = 1;
-                Game.stateManager.shooterState.BeginLevel(missionLevel);
+                missionHelper.StartLevelAfterCondition(missionLevel, LevelStartCondition.TextCleared);
             }
 
             if (progress == 1 && GameStateManager.currentState == "OverworldState")
@@ -65,8 +64,7 @@ namespace SpaceProject
                 Game.stateManager.shooterState.GetLevel(missionLevel).IsObjectiveCompleted)
             {
                 updateLogic = true;
-                //ShowEventAndUpdateProgress(0, 1);
-                ShowEvent(new List<int> { 0, 1 });
+                missionHelper.ShowEvent(new List<int> { 0, 1 });
                 MissionManager.MarkMissionAsCompleted(this.MissionName);
                     
                 Game.stateManager.ChangeState("OverwordState");

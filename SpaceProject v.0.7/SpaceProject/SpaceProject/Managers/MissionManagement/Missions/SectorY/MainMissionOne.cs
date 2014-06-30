@@ -64,8 +64,8 @@ namespace SpaceProject
                 {
                     MissionMenuState.ActiveMission = this;
 
-                    ShowEvent(new List<int>() { 0, 1 } );
-                    ShowResponse(1, new List<int>() { 1, 2 });
+                    missionHelper.ShowEvent(new List<int>() { 0, 1 });
+                    missionHelper.ShowResponse(1, new List<int>() { 1, 2 });
                 }
 
                 if (MissionResponse != 0)
@@ -73,11 +73,11 @@ namespace SpaceProject
                     switch (MissionResponse)
                     {
                         case 1:
-                            ShowEvent(3);
+                            missionHelper.ShowEvent(3);
                             break;
 
                         case 2:
-                            ShowEvent(2);
+                            missionHelper.ShowEvent(2);
                             break;
                     }
 
@@ -93,7 +93,8 @@ namespace SpaceProject
 
                 if (Game.stateManager.shooterState.GetLevel("EscortLevel").IsObjectiveCompleted)
                 {
-                    ShowEventAndUpdateProgress(4, 1);
+                    missionHelper.ShowEvent(4);
+                    progress = 1;
 
                     MissionManager.MarkMissionAsCompleted(this.MissionName);
                 }
@@ -105,8 +106,8 @@ namespace SpaceProject
 
                     CurrentObjective = Objectives[0];
 
-                    ShowEvent(new List<int>() { 0, 1 });
-                    ShowResponse(1, new List<int>() { 1, 2 });
+                    missionHelper.ShowEvent(new List<int>() { 0, 1 });
+                    missionHelper.ShowResponse(1, new List<int>() { 1, 2 });
                 }
             }
         }

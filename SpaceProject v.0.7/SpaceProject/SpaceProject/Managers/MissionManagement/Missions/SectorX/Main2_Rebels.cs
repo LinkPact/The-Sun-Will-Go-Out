@@ -97,10 +97,9 @@ namespace SpaceProject
             base.MissionLogic();
 
             // Player arrives at Highfence
-            if (progress == 0 && GameStateManager.currentState.Equals("PlanetState") &&
-                Game.stateManager.planetState.Planet.name.Equals("Highfence"))
+            if (progress == 0 && missionHelper.IsPlayerOnPlanet("Highfence"))
             {
-                ShowEvent(new List<int> { 0, 1, 2, 3 });
+                missionHelper.ShowEvent(new List<int> { 0, 1, 2, 3 });
                 ObjectiveIndex = 1;
                 progress = 1;
             }
@@ -248,7 +247,8 @@ namespace SpaceProject
             // Player arrives at Soelara with freighter
             if (progress == 3 && freighter.HasArrived)
             {
-                ShowEventAndUpdateProgress(6, 4); 
+                missionHelper.ShowEvent(6);
+                progress = 4;
                 Game.stateManager.GotoStationSubScreen("Soelara Station", "Overview");
             }
 
@@ -260,8 +260,7 @@ namespace SpaceProject
             }
 
             // Player returns to colony on Highfence
-            if (progress == 5 && GameStateManager.currentState.Equals("PlanetState") &&
-                Game.stateManager.planetState.Planet.name.Equals("Highfence"))
+            if (progress == 5 && missionHelper.IsPlayerOnPlanet("Highfence"))
             {
                 MissionManager.MarkMissionAsCompleted(this.MissionName);
             }

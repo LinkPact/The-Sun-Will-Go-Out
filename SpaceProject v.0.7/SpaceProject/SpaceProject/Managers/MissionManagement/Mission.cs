@@ -79,6 +79,8 @@ namespace SpaceProject
         // Change this to true if your mission requires an available slot to accept.
         protected bool requiresAvailableSlot;
 
+        protected MissionHelper missionHelper;
+
         #region Properties
 
         public bool UpdateLogic { get { return updateLogic; } set { updateLogic = value;} }
@@ -278,6 +280,9 @@ namespace SpaceProject
 
         public virtual void Initialize()
         {
+            missionHelper = new MissionHelper(Game, this);
+            missionHelper.Initialize();
+
             planetName = configFile.GetPropertyAsString(configSection, "Planet", "");
             missionName = configFile.GetPropertyAsString(configSection, "Name", "");
             missionText = configFile.GetPropertyAsString(configSection, "Text", "");
@@ -317,6 +322,7 @@ namespace SpaceProject
         public virtual void MissionLogic()
         {
             currentObjective = objectives[objectiveIndex];
+            missionHelper.Update();
         }
 
         public virtual void DisplayMissionInfo(SpriteBatch spriteBatch, SpriteFont font)
@@ -353,76 +359,7 @@ namespace SpaceProject
                                    0.5f);
         }
 
-        public void ShowEvent(int eventArrayIndex1)
-        {
-            if (!EventBuffer.Contains(EventArray[eventArrayIndex1, 0]))
-            {
-                if (EventArray[eventArrayIndex1, 0] != "")
-                    MissionManager.MissionEventBuffer.Add(EventArray[eventArrayIndex1, 0]);
-
-                EventArray[eventArrayIndex1, 0] = "";
-            }
-        }
-
-        public void ShowEvent(List<int> eventArrayIndexes)
-        {
-            for (int i = 0; i < eventArrayIndexes.Count; i++)
-            {
-                if (!EventBuffer.Contains(EventArray[eventArrayIndexes[i], 0]))
-                {
-                    if (EventArray[eventArrayIndexes[i], 0] != "")
-                        MissionManager.MissionEventBuffer.Add(EventArray[eventArrayIndexes[i], 0]);
-
-                    EventArray[eventArrayIndexes[i], 0] = "";
-                }
-            }
-        }
-
-        public void ShowEventAndUpdateProgress(int eventArrayIndex1, int newProgressIndex)
-        {
-            if (!EventBuffer.Contains(EventArray[eventArrayIndex1, 0]))
-            {
-                if (EventArray[eventArrayIndex1, 0] != "")
-                {
-                    MissionManager.MissionEventBuffer.Add(EventArray[eventArrayIndex1, 0]);
-                    progress = newProgressIndex;
-                }
-
-                EventArray[eventArrayIndex1, 0] = "";
-            }
-        }
-
-        public void ShowResponse(int eventIndex, int responseIndex)
-        {
-            if (!ResponseBuffer.Contains(EventArray[eventIndex, responseIndex]))
-            {
-                if (EventArray[eventIndex, responseIndex] != "")
-                {
-                    ResponseBuffer.Add(EventArray[eventIndex, responseIndex]);
-                }
-
-                EventArray[eventIndex, responseIndex] = "";
-            }
-        }
-
-        public void ShowResponse(int eventIndex, List<int> responseIndexes)
-        {
-            for (int i = 0; i < responseIndexes.Count; i++)
-            {
-                if (!ResponseBuffer.Contains(EventArray[eventIndex, responseIndexes[i]]))
-                {
-                    if (EventArray[eventIndex, responseIndexes[i]] != "")
-                        ResponseBuffer.Add(EventArray[eventIndex, responseIndexes[i]]);
-
-                    EventArray[eventIndex, responseIndexes[i]] = "";
-                }
-            }
-        }
-
-        public virtual void Draw(SpriteBatch spriteBatch)
-        {
-
-        }
+        public virtual void Draw(SpriteBatch spriteBatch) { }
 
         public abstract int GetProgress();
         public abstract void SetProgress(int progress);

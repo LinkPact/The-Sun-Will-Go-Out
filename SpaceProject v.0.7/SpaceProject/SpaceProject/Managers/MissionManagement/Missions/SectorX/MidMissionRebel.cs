@@ -54,21 +54,24 @@ namespace SpaceProject
                 Game.stateManager.currentGameState.Name == "StationState" &&
                 Game.stateManager.stationState.Station.name == "Abandoned Station")
             {
-                ShowEventAndUpdateProgress(0, 1);
+                missionHelper.ShowEvent(0);
+                progress = 1;
             }
 
             else if (ObjectiveIndex == 1 &&
                 Game.stateManager.currentGameState.Name == "StationState" &&
                 Game.stateManager.stationState.Station.name == "Blue Planet Station")
             {
-                ShowEventAndUpdateProgress(1, 2);
+                missionHelper.ShowEvent(1);
+                progress = 2;
             }
 
             else if (ObjectiveIndex == 2 &&
                 Game.stateManager.currentGameState.Name == "StationState" &&
                 Game.stateManager.stationState.Station.name == "Abandoned Station")
             {
-                ShowEventAndUpdateProgress(2, 3);
+                missionHelper.ShowEvent(2);
+                progress = 3;
             }
 
             else if (ObjectiveIndex == 3 &&
@@ -82,7 +85,8 @@ namespace SpaceProject
                 Game.stateManager.stationState.Station != null &&
                 Game.stateManager.stationState.Station.name == "Abandoned Station")
             {
-                ShowEventAndUpdateProgress(3, 5);
+                missionHelper.ShowEvent(3);
+                progress = 5;
             }
 
             else if (ObjectiveIndex == 5 &&
@@ -96,7 +100,7 @@ namespace SpaceProject
                 Game.stateManager.currentGameState.Name == "ShooterState" &&
                 Game.stateManager.shooterState.GetLevel("mapCreator2").IsObjectiveCompleted)
             {
-                ShowEvent(4);
+                missionHelper.ShowEvent(4);
                 Game.stateManager.GotoStationSubScreen("Abandoned Station", "Overview");
             }
 

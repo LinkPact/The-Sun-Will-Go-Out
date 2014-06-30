@@ -55,32 +55,29 @@ namespace SpaceProject
         {
             base.MissionLogic();
 
-            if (progress == 0 &&
-                Game.stateManager.currentGameState.Name == "StationState" &&
-                Game.stateManager.stationState.Station.name == "Lavis Station")
+            if (progress == 0 
+                && missionHelper.IsPlayerOnStation("Lavis Station"))
             {
-                if (Game.stateManager.stationState.SubStateManager.ActiveMenuState.Name.Equals("Overview"))
+                if (ShipInventoryManager.ShipItems.Contains(medicalSupplies))
                 {
-                    if (ShipInventoryManager.ShipItems.Contains(medicalSupplies))
-                    {
-                        ShowEventAndUpdateProgress(0, 1);
-                        ObjectiveIndex = 1;
-                        ShipInventoryManager.RemoveItem(medicalSupplies);
-                    }
-
-                    else
-                    {
-                        ShowEvent(1);
-                        MissionManager.MarkMissionAsFailed(this.MissionName);
-                    }
+                    missionHelper.ShowEvent(0);
+                    progress = 1;
+                    ObjectiveIndex = 1;
+                    ShipInventoryManager.RemoveItem(medicalSupplies);
                 }
 
+                else
+                {
+                    missionHelper.ShowEvent(1);
+                    MissionManager.MarkMissionAsFailed(this.MissionName);
+                }
             }
 
-            if (Game.stateManager.currentGameState.Name == "StationState" &&
-                Game.stateManager.stationState.Station.name == "Fotrun Station I" &&
-                progress == 1)
-                    MissionManager.MarkMissionAsCompleted(this.MissionName);
+            if (progress == 1
+                && missionHelper.IsPlayerOnStation("Fotrun Station I"))
+            {
+                MissionManager.MarkMissionAsCompleted(this.MissionName);
+            }
         }
 
         public override int GetProgress()

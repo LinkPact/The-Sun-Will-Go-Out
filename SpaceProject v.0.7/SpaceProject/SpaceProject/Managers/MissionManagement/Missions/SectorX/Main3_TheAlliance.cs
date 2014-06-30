@@ -77,15 +77,9 @@ namespace SpaceProject
 
             tempTimer--;
 
-            //DEBUG
-            if (ControlManager.CheckKeypress(Keys.PageUp))
-            {
-                ObjectiveIndex = 7;
-                progress = 7;
-            }
-
-            if (progress == 0 && GameStateManager.currentState.Equals("PlanetState") &&
-                    Game.stateManager.stationState.SubStateManager.ButtonControl != ButtonControl.Confirm)
+            if (progress == 0 
+                && GameStateManager.currentState.Equals("PlanetState") 
+                && missionHelper.IsTextCleared())
             {
                 ObjectiveIndex = 1;
                 progress = 1;
@@ -112,20 +106,21 @@ namespace SpaceProject
                     300))
                 {
                     Game.messageBox.DisplayMessage(EventArray[0, 0]);
-                    Game.stateManager.shooterState.BeginLevel("Main_TheAlliancelvl");
+                    missionHelper.StartLevel("Main_TheAlliancelvl");
                     ObjectiveIndex = 2;
                     progress = 2;
                 }
             }
 
-            if (progress == 2 && Game.stateManager.shooterState.GetLevel("Main_TheAlliancelvl").IsObjectiveCompleted)
+            if (progress == 2 && missionHelper.IsLevelCompleted("Main_TheAlliancelvl"))
             {
                 ObjectiveIndex = 3;
                 progress = 3;
             }
 
-            else if (GameStateManager.currentState == "OverworldState" &&
-                !died && progress == 2 && Game.stateManager.shooterState.GetLevel("Main_TheAlliancelvl").IsGameOver)
+            else if (progress == 2  
+                && !died 
+                && missionHelper.IsLevelFailed("Main_TheAlliancelvl"))
             {
                 died = true;
                 tempTimer2 = 5;
@@ -162,19 +157,18 @@ namespace SpaceProject
             }
 
             // Player enters Fotrun station II
-            if (progress == 4 && GameStateManager.currentState == "StationState" &&
-                Game.stateManager.stationState.Station.name.Equals("Fotrun Station II"))
+            if (progress == 4 && missionHelper.IsPlayerOnStation("Fotrun Station II"))
             {
-                ShowEvent(new List<int> { 1, 2, 3 });
+                missionHelper.ShowEvent(new List<int> { 1, 2, 3 });
                 progress = 5;
                 Game.stateManager.overworldState.getStation("Fotrun Station II").Abandoned = true;
             }
 
             // Player drops of man at Fotrun Station I
-            if (progress == 5 && GameStateManager.currentState == "StationState" &&
-                Game.stateManager.stationState.Station.name.Equals("Fotrun Station I"))
+            if (progress == 5 && missionHelper.IsPlayerOnStation("Fotrun Station I"))
             {
-                ShowEventAndUpdateProgress(4, 6);
+                missionHelper.ShowEvent(4);
+                progress = 6;
             }
 
             if (progress == 6 && GameStateManager.currentState == "OverworldState")
@@ -189,13 +183,10 @@ namespace SpaceProject
                 Game.messageBox.DisplayMessage(EventArray[5, 0]);
             }
 
-            if (progress == 7 && GameStateManager.currentState == "PlanetState" &&
-                Game.stateManager.planetState.Planet.name.Equals("Highfence"))
+            if (progress == 7 && missionHelper.IsPlayerOnPlanet("Highfence"))
             {
-                Game.stateManager.planetState.SubStateManager.MissionMenuState.ActiveMission = this;
-
-                ShowEvent(new List<int>{6, 7, 8});
-                ShowResponse(8, new List<int> { 1, 2 });
+                missionHelper.ShowEvent(new List<int> { 6, 7, 8 });
+                missionHelper.ShowResponse(8, new List<int> { 1, 2 });
             }
 
             if (MissionResponse != 0)
@@ -206,17 +197,17 @@ namespace SpaceProject
                 {
                     case 1:
                         {
-                            ShowEvent(new List<int> { 9, 10 });
+                            missionHelper.ShowEvent(new List<int> { 9, 10 });
                             MissionManager.MarkMissionAsCompleted(this.MissionName);
-                            ResponseBuffer.Clear();
+                            missionHelper.ClearResponseText();
                             break;
                         }
 
                     case 2:
                         {
-                            ShowEvent(11);
+                            missionHelper.ShowEvent(11);
                             MissionManager.MarkMissionAsCompleted(this.MissionName);
-                            ResponseBuffer.Clear();
+                            missionHelper.ClearResponseText();
                             break;
                         }
                 }

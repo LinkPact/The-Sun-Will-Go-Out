@@ -60,7 +60,8 @@ namespace SpaceProject
             else if (ObjectiveIndex == 1 && (GameStateManager.currentState == "StationState" &&
                 Game.stateManager.stationState.Station.name.Equals("Federation Station")))
             {
-                ShowEventAndUpdateProgress(1, 2);
+                missionHelper.ShowEvent(1);
+                progress = 2;
                 Game.stateManager.overworldState.AddOverworldObject(allianceFleet);
             }
 

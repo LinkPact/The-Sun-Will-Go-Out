@@ -41,9 +41,9 @@ namespace SpaceProject
         {
             base.MissionLogic();
 
-            if (EventBuffer.Count <= 0 && progress == 0 &&
-                GameStateManager.currentState == "PlanetState" &&
-                Game.stateManager.planetState.SubStateManager.ButtonControl != ButtonControl.Confirm)
+            if (progress == 0 
+                && missionHelper.IsTextCleared()
+                && GameStateManager.currentState == "PlanetState")
             {
                 progress = 1;
                 Game.stateManager.shooterState.BeginLevel("AstroScan");
@@ -55,7 +55,7 @@ namespace SpaceProject
             }
 
             if (progress == 1 &&
-                Game.stateManager.shooterState.GetLevel("AstroScan").IsObjectiveCompleted)
+                missionHelper.IsLevelCompleted("AstroScan"))
             {
                 updateLogic = true;
                 Game.messageBox.DisplayMessage(EventArray[0, 0]);

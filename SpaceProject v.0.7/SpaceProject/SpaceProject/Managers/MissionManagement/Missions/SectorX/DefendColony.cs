@@ -39,18 +39,18 @@ namespace SpaceProject
         {
             base.MissionLogic();
 
-            if (EventBuffer.Count <= 0 && progress == 0 &&
-                GameStateManager.currentState == "PlanetState" &&
-                Game.stateManager.planetState.SubStateManager.ButtonControl != ButtonControl.Confirm)
+            if (progress == 0 
+                && GameStateManager.currentState == "PlanetState")
             {
-                Game.stateManager.shooterState.BeginLevel("DefendColony");
+                missionHelper.StartLevelAfterCondition("DefendColony", LevelStartCondition.TextCleared);
             }
 
             if (progress == 0 &&
-                Game.stateManager.shooterState.GetLevel("DefendColony").IsObjectiveCompleted)
+                missionHelper.IsLevelCompleted("DefendColony"))
             {
                 updateLogic = true;
-                ShowEventAndUpdateProgress(0, 1);
+                missionHelper.ShowEvent(0);
+                progress = 1;
                 MissionManager.MarkMissionAsCompleted(this.MissionName);
 
                 Game.stateManager.GotoPlanetSubScreen("New Norrland", "Colony");
