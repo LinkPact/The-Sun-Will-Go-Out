@@ -111,8 +111,9 @@ namespace SpaceProject
             gameObjects.Clear();
             backgroundObjects.Clear();
 
-            if (!gameObjects.Contains(player))
-                gameObjects.Add(player);
+            // Removed by Jakob 140701, kill after two weeks
+            //if (!gameObjects.Contains(player))
+            //    gameObjects.Add(player);
 
             foreach (GameObjectVertical obj in gameObjects)
                 obj.Initialize();
@@ -123,8 +124,6 @@ namespace SpaceProject
 
         public override void OnEnter()
         {
-            //Gameobjects  
-
             if (!gameObjects.Contains(player))
                 gameObjects.Add(player);
             

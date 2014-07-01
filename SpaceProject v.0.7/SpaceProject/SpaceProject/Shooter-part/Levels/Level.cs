@@ -181,6 +181,10 @@ namespace SpaceProject
 
         public virtual void Initialize()
         {
+            player.Initialize();
+            Game.stateManager.shooterState.gameObjects.Clear();
+            Game.stateManager.shooterState.gameObjects.Add(player);
+
             WindowWidth = Game.Window.ClientBounds.Width;
             WindowHeight = Game.Window.ClientBounds.Height;
 
@@ -347,8 +351,8 @@ namespace SpaceProject
             }
             if (ControlManager.CheckKeypress(Keys.R))
             {
-                this.ResetLevel();
-                Game.stateManager.shooterState.Initialize();
+                //this.ResetLevel();
+                //Game.stateManager.shooterState.Initialize();
                 this.Initialize();
             }
 
