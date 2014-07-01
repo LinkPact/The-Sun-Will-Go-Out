@@ -51,8 +51,8 @@ namespace SpaceProject
         {
             base.Reset();
 
-            game.stateManager.shooterState.Initialize();
-            game.stateManager.shooterState.GetLevel(level).ResetLevel();
+            //game.stateManager.shooterState.Initialize();
+            //game.stateManager.shooterState.GetLevel(level).ResetLevel();
             game.stateManager.shooterState.GetLevel(level).Initialize();
         }
 
