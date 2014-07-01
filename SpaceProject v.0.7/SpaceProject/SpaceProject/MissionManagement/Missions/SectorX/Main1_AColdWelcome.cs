@@ -46,7 +46,7 @@ namespace SpaceProject
             ObjectiveIndex = 0;
             progress = 0;
 
-            missionHelper.ShowEvent(new List<int>{0, 1, 2});
+            //missionHelper.ShowEvent(new List<int>{0, 1, 2});
             Game.stateManager.GotoStationSubScreen("Border Station", "Overview");
 
             Game.stateManager.overworldState.AddOverworldObject(battlefield);
@@ -77,15 +77,15 @@ namespace SpaceProject
                 ObjectiveIndex = 1;
                 progress = 1;
             }
-
+            
             if (progress == 1 && GameStateManager.currentState.Equals("OverworldState"))
             {
                 ObjectiveIndex = 2;
                 progress = 2;
                 objectiveDestination = battlefield;
             }
-
-
+            
+            
             if (progress == 2 && GameStateManager.currentState.Equals("OverworldState") &&
                 CollisionDetection.IsPointInsideRectangle(Game.player.position, battlefield.Bounds) &&
                 ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))))
@@ -93,7 +93,7 @@ namespace SpaceProject
                 Game.stateManager.shooterState.BeginLevel("FirstMissionLevel");
                 Game.messageBox.DisplayMessage("Avoid the astroids and collect resources.");
             }
-
+            
             if (GameStateManager.currentState.Equals("ShooterState") &&
                 Game.stateManager.shooterState.CurrentLevel.Name.Equals("FirstMissionLevel"))
             {
@@ -104,11 +104,11 @@ namespace SpaceProject
                     ((FirstMissionLevel)Game.stateManager.shooterState.GetLevel("FirstMissionLevel")).SuppliesCount = 0;
                 }
             }
-
+            
             if (died && GameStateManager.currentState.Equals("OverworldState"))
             {
                 tempTimer--;
-
+            
                 if (tempTimer < 0)
                 {
                     Game.messageBox.DisplayMessage("Fei Yan: Too bad. Try again! Return to Border Station if you need to repair your ship.");
@@ -117,18 +117,18 @@ namespace SpaceProject
                     progress = 2;
                 }
             }
-
+            
             if (progress == 2 &&
                 missionHelper.IsLevelCompleted("FirstMissionLevel"))
             {
                 died = false;
-
+            
                 ObjectiveIndex = 3;
                 progress = 3;
                 Game.messageBox.DisplayMessage(EventArray[3, 0]);
                 objectiveDestination = Game.stateManager.overworldState.getStation("Border Station");
             }
-
+            
             if (progress == 3 
                 && missionHelper.IsPlayerOnStation("Border Station"))
             {
@@ -136,10 +136,10 @@ namespace SpaceProject
                 {
                     TitaniumResource titanium = new TitaniumResource(Game, 100);
                     RewardItems.Add(titanium);
-
-                    missionHelper.ShowEvent(4);
+            
+                    missionHelper.ShowEvent(EventArray[4, 0]);
                 }
-
+            
                 MissionManager.MarkMissionAsCompleted(this.MissionName);
             }
         }

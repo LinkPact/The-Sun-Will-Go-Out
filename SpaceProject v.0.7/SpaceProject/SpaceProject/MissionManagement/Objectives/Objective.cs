@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public enum EventTextFormat
+    public enum EventTextCanvas
     {
         BaseState,
         MessageBox
@@ -23,8 +23,9 @@ namespace SpaceProject
         private GameObjectOverworld destination;
         public GameObjectOverworld Destination { get { return destination; } set {destination = value; } }
 
-        protected EventTextFormat eventTextFormat;
-        protected List<int> endEventIndices = new List<int>();
+        protected EventTextCanvas eventTextCanvas;
+        protected List<String> objectiveCompletedEventText = new List<String>();
+        protected List<String> objectiveFailedEventText = new List<String>();
 
         protected bool isOnCompletedCalled;
 
@@ -53,12 +54,7 @@ namespace SpaceProject
 
         public virtual void Update()
         {
-            if (Failed())
-            {
-                OnFailed();
-            }
-
-            else if (isOnCompletedCalled)
+            if (isOnCompletedCalled)
             {
                 if (mission.MissionHelper.IsTextCleared())
                 {
@@ -67,6 +63,11 @@ namespace SpaceProject
                         mission.ObjectiveIndex++;
                     }
                 }
+            }
+
+            else if (Failed())
+            {
+                OnFailed();
             }
 
             else if (Completed())
@@ -85,18 +86,16 @@ namespace SpaceProject
         {
             isOnCompletedCalled = true;
 
-            if (endEventIndices.Count > 0)
+            if (objectiveCompletedEventText.Count > 0
+                && objectiveCompletedEventText[0] != "")
             {
-                if (eventTextFormat.Equals(EventTextFormat.BaseState))
+                if (eventTextCanvas.Equals(EventTextCanvas.BaseState))
                 {
-                    mission.MissionHelper.ShowEvent(endEventIndices);
+                    mission.MissionHelper.ShowEvent(objectiveCompletedEventText);
                 }
-                else if (eventTextFormat.Equals(EventTextFormat.MessageBox))
+                else if (eventTextCanvas.Equals(EventTextCanvas.MessageBox))
                 {
-                    for (int i = 0; i < endEventIndices.Count; i++)
-                    {
-                        game.messageBox.DisplayMessage(mission.EventArray[i, 0]);
-                    }
+                    game.messageBox.DisplayMessage(objectiveCompletedEventText);
                 }
             }
         }
@@ -104,6 +103,19 @@ namespace SpaceProject
         public abstract bool Failed();
         public virtual void OnFailed()
         {
+            if (objectiveFailedEventText.Count > 0
+                && objectiveFailedEventText[0] != "")
+            {
+                if (eventTextCanvas.Equals(EventTextCanvas.BaseState))
+                {
+                    mission.MissionHelper.ShowEvent(objectiveFailedEventText);
+                }
+                else if (eventTextCanvas.Equals(EventTextCanvas.MessageBox))
+                {
+                    game.messageBox.DisplayMessage(objectiveFailedEventText);
+                }
+            }
+
             MissionManager.MarkMissionAsFailed(mission.MissionName);
             mission.CurrentObjective = null;
         }

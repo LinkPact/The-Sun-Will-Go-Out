@@ -7,7 +7,6 @@ namespace SpaceProject
 {
     class AstroScan : Mission
     {
-
         public AstroScan(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
@@ -29,9 +28,10 @@ namespace SpaceProject
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.getPlanet("Lavis")));
+
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.getPlanet("Lavis"), "AstroScan", LevelStartCondition.Immediately,
-                new List<int> { 0 }, EventTextFormat.MessageBox));
+                new EventTextCapsule(new List<String>{EventArray[0, 0]}, null, EventTextCanvas.MessageBox)));
         }
 
         public override void StartMission()

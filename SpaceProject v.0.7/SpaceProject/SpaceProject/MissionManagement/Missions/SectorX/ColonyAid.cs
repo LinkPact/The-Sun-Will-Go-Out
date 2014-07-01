@@ -40,8 +40,11 @@ namespace SpaceProject
 
             requiresAvailableSlot = true;
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.getStation("Lavis Station")));
+            objectives.Add(new ItemTransportObjective(Game, this, ObjectiveDescriptions[0],
+                Game.stateManager.overworldState.getStation("Lavis Station"), medicalSupplies,
+                new EventTextCapsule(new List<String> { EventArray[0, 0] }, new List<String> { EventArray[1, 0] },
+                    EventTextCanvas.BaseState)));
+
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
                 Game.stateManager.overworldState.getStation("Fotrun Station I")));
         }
@@ -59,24 +62,6 @@ namespace SpaceProject
         public override void MissionLogic()
         {
             base.MissionLogic();
-
-            if (progress == 0 
-                && objectives[0].Completed())
-            {
-                if (ShipInventoryManager.ShipItems.Contains(medicalSupplies))
-                {
-                    missionHelper.ShowEvent(0);
-                    progress = 1;
-                    ObjectiveIndex = 1;
-                    ShipInventoryManager.RemoveItem(medicalSupplies);
-                }
-
-                else
-                {
-                    missionHelper.ShowEvent(1);
-                    MissionManager.MarkMissionAsFailed(this.MissionName);
-                }
-            }
         }
 
         public override int GetProgress()

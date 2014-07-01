@@ -116,27 +116,27 @@ namespace SpaceProject
                 && IsTextCleared());
         }
 
-        public void ShowEvent(int eventArrayIndex)
+        public void ShowEvent(String eventText)
         {
-            if (!mission.EventBuffer.Contains(mission.EventArray[eventArrayIndex, 0]))
+            if (!mission.EventBuffer.Contains(eventText))
             {
-                if (mission.EventArray[eventArrayIndex, 0] != "")
-                    MissionManager.MissionEventBuffer.Add(mission.EventArray[eventArrayIndex, 0]);
+                if (eventText != "")
+                    MissionManager.MissionEventBuffer.Add(eventText);
 
-                mission.EventArray[eventArrayIndex, 0] = "";
+                eventText = "";
             }
         }
 
-        public void ShowEvent(List<int> eventArrayIndices)
+        public void ShowEvent(List<String> eventText)
         {
-            for (int i = 0; i < eventArrayIndices.Count; i++)
+            for (int i = 0; i < eventText.Count; i++)
             {
-                if (!mission.EventBuffer.Contains(mission.EventArray[eventArrayIndices[i], 0]))
+                if (!mission.EventBuffer.Contains(eventText[i]))
                 {
-                    if (mission.EventArray[eventArrayIndices[i], 0] != "")
-                        MissionManager.MissionEventBuffer.Add(mission.EventArray[eventArrayIndices[i], 0]);
+                    if (eventText[i] != "")
+                        MissionManager.MissionEventBuffer.Add(eventText[i]);
 
-                    mission.EventArray[eventArrayIndices[i], 0] = "";
+                    eventText[i] = "";
                 }
             }
         }

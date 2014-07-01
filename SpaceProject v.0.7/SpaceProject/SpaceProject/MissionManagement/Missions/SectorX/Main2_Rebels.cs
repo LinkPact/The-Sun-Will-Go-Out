@@ -99,35 +99,36 @@ namespace SpaceProject
             // Player arrives at Highfence
             if (progress == 0 && missionHelper.IsPlayerOnPlanet("Highfence"))
             {
-                missionHelper.ShowEvent(new List<int> { 0, 1, 2, 3 });
+                missionHelper.ShowEvent(new List<String> { EventArray[0, 0], EventArray[1, 0],
+                    EventArray[2, 0], EventArray[3, 0] });
                 ObjectiveIndex = 1;
                 progress = 1;
             }
-
+            
             // Player returns to overworld after speaking to Kamali
             if (progress == 1 && GameStateManager.currentState.Equals("OverworldState"))
             {
                 Game.stateManager.overworldState.GetSectorX.shipSpawner.AddFreighterToSector(
                     freighter, Game.stateManager.overworldState.getPlanet("Highfence").position);
-
+            
                 freighter.position = Game.stateManager.overworldState.getPlanet("Highfence").position - new Vector2(200, 0);
                 
                 freighter.Wait();
-
+            
                 progress = 2;
             }
-
+            
             // Turn on/off pirates following player during escort
             if (progress == 3 && PirateShip.FollowPlayer)
             {
                 PirateShip.FollowPlayer = false;
             }
-
+            
             else if (progress != 3 && !PirateShip.FollowPlayer)
             {
                 PirateShip.FollowPlayer = true;
             }
-
+            
             // Player talks to freighter to begin escort
             if (progress == 2 && GameStateManager.currentState.Equals("OverworldState") &&
                 CollisionDetection.IsPointInsideRectangle(Game.player.position, freighter.Bounds) &&
@@ -135,19 +136,19 @@ namespace SpaceProject
             {
                 Game.messageBox.DisplayMessage(EventArray[4, 0]);
                 rebelShipSpawnerDelay = 1000;
-
+            
                 freighter.Start();
-
+            
                 ObjectiveIndex = 2;
                 progress = 3;
             }
-
+            
             // Escort mission begins
             if (progress == 3 && GameStateManager.currentState.Equals("OverworldState") &&
                 numberOfRebelShips > 0)
             {
                 rebelShipSpawnerDelay--;
-
+            
                 // Ready to spawn a new rebel ship
                 if (rebelShipSpawnerDelay < 0)
                 {
@@ -156,37 +157,37 @@ namespace SpaceProject
                         Game.messageBox.DisplayMessage(EventArray[5, 0]);
                         ObjectiveIndex = 3;
                     }
-
+            
                     if (numberOfRebelShips == 3)
                     {
                         Game.stateManager.overworldState.GetSectorX.shipSpawner.AddRebelShip(
                             new Vector2(freighter.position.X - 650,
                                 freighter.position.Y + 650), "SecondMissionlvl1", freighter);
                     }
-
+            
                     else if (numberOfRebelShips == 2)
                     {
                         Game.stateManager.overworldState.GetSectorX.shipSpawner.AddRebelShip(
                             new Vector2(freighter.position.X - 650,
                                 freighter.position.Y + 650), "SecondMissionlvl2", freighter);
                     }
-
+            
                     else if (numberOfRebelShips == 1)
                     {
                         Game.stateManager.overworldState.GetSectorX.shipSpawner.AddRebelShip(
                             new Vector2(freighter.position.X - 650,
                                 freighter.position.Y + 650), "SecondMissionlvl3", freighter);
                     }
-
+            
                     numberOfRebelShips--;
-
+            
                     if (numberOfRebelShips > 0)
                     {
                         rebelShipSpawnerDelay = 500;
                     }
                 }
             }
-
+            
             // Transfers freigter hp between levels
             if (progress == 3 && levelProgression == 0 &&
                 GameStateManager.currentState.Equals("ShooterState") &&
@@ -195,13 +196,13 @@ namespace SpaceProject
                 ((SecondMissionLevel)Game.stateManager.shooterState.CurrentLevel).SetFreighterHP(freighterHP);
                 levelProgression = 1;
             }
-
+            
             if (progress == 3 && GameStateManager.currentState == "ShooterState" &&
                 Game.stateManager.shooterState.GetLevel("SecondMissionlvl1").IsObjectiveCompleted)
             {
                 freighterHP = ((SecondMissionLevel)Game.stateManager.shooterState.GetLevel("SecondMissionlvl1")).GetFreighterHP();
             }
-
+            
             if (progress == 3 && levelProgression == 1 &&
                 GameStateManager.currentState.Equals("ShooterState") &&
                 Game.stateManager.shooterState.CurrentLevel.Name == "SecondMissionlvl2")
@@ -209,13 +210,13 @@ namespace SpaceProject
                 ((SecondMissionLevel)Game.stateManager.shooterState.CurrentLevel).SetFreighterHP(freighterHP);
                 levelProgression = 2;
             }
-
+            
             if (progress == 3 && GameStateManager.currentState == "ShooterState" &&
                 Game.stateManager.shooterState.GetLevel("SecondMissionlvl2").IsObjectiveCompleted)
             {
                 freighterHP = ((SecondMissionLevel)Game.stateManager.shooterState.GetLevel("SecondMissionlvl2")).GetFreighterHP();
             }
-
+            
             if (progress == 3 && levelProgression == 2 &&
                 GameStateManager.currentState.Equals("ShooterState") &&
                 Game.stateManager.shooterState.CurrentLevel.Name == "SecondMissionlvl3")
@@ -223,13 +224,13 @@ namespace SpaceProject
                 ((SecondMissionLevel)Game.stateManager.shooterState.CurrentLevel).SetFreighterHP(freighterHP);
                 levelProgression = 3;
             }
-
+            
             if (progress == 3 && GameStateManager.currentState == "ShooterState" &&
                 Game.stateManager.shooterState.GetLevel("SecondMissionlvl3").IsObjectiveCompleted)
             {
                 freighterHP = ((SecondMissionLevel)Game.stateManager.shooterState.GetLevel("SecondMissionlvl3")).GetFreighterHP();
             }
-
+            
             // Freighter is destroyed
             if (GameStateManager.currentState.Equals("ShooterState") && 
                 ((Game.stateManager.shooterState.CurrentLevel.Name.Equals("SecondMissionlvl1") &&
@@ -243,28 +244,28 @@ namespace SpaceProject
                 Game.messageBox.DisplayMessage("Noooo! The freighter was destroyed. We failed.");
                 Game.stateManager.ChangeState("OverworldState");
             }
-
+            
             // Player arrives at Soelara with freighter
             if (progress == 3 && freighter.HasArrived)
             {
-                missionHelper.ShowEvent(6);
+                missionHelper.ShowEvent(EventArray[6, 0]);
                 progress = 4;
                 Game.stateManager.GotoStationSubScreen("Soelara Station", "Overview");
             }
-
+            
             // Player returns to overworld after visiting Soelara Station
             if (progress == 4 && GameStateManager.currentState.Equals("OverworldState"))
             {
                 ObjectiveIndex = 4;
                 progress = 5;
             }
-
+            
             // Player returns to colony on Highfence
             if (progress == 5 && missionHelper.IsPlayerOnPlanet("Highfence"))
             {
                 MissionManager.MarkMissionAsCompleted(this.MissionName);
             }
-
+            
             if (GameStateManager.currentState == "OverworldState")
             {
                 Collision();

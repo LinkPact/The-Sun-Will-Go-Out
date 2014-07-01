@@ -76,7 +76,7 @@ namespace SpaceProject
             base.MissionLogic();
 
             tempTimer--;
-
+            
             if (progress == 0 
                 && GameStateManager.currentState.Equals("PlanetState") 
                 && missionHelper.IsTextCleared())
@@ -84,7 +84,7 @@ namespace SpaceProject
                 ObjectiveIndex = 1;
                 progress = 1;
             }
-
+            
             if (progress == 1)
             {
                 if (CollisionDetection.IsPointInsideCircle(Game.player.position,
@@ -93,14 +93,14 @@ namespace SpaceProject
                 {
                     savedPos = Game.player.position;
                 }
-
+            
                 else if (!CollisionDetection.IsPointInsideCircle(Game.player.position,
                     Game.stateManager.overworldState.getStation("Fotrun Station II").position,
                     400))
                 {
                     savedPos = Vector2.Zero;
                 }
-
+            
                 if (CollisionDetection.IsPointInsideCircle(Game.player.position,
                     Game.stateManager.overworldState.getStation("Fotrun Station II").position,
                     300))
@@ -111,101 +111,101 @@ namespace SpaceProject
                     progress = 2;
                 }
             }
-
+            
             if (progress == 2 && missionHelper.IsLevelCompleted("Main_TheAlliancelvl"))
             {
                 ObjectiveIndex = 3;
                 progress = 3;
             }
-
+            
             else if (progress == 2  
                 && !died 
                 && missionHelper.IsLevelFailed("Main_TheAlliancelvl"))
             {
                 died = true;
                 tempTimer2 = 5;
-
+            
                 if (savedPos != Vector2.Zero)
                 {
                     Game.player.position = savedPos;
                 }
-
+            
                 savedPos = Vector2.Zero;
                 Game.player.speed = 0;
             }
-
+            
             if (died && GameStateManager.currentState.Equals("OverworldState"))
             {
                 tempTimer2--;
-
+            
                 if (tempTimer2 < 0)
                 {
                     died = false;
-
+            
                     Game.player.Direction.SetDirection(Game.player.Direction.GetDirectionAsVector() * -1);
                     Game.messageBox.DisplayMessage(EventArray[12, 0]);
                     ObjectiveIndex = 1;
                     progress = 1;
                 }
             }
-
+            
             if (progress == 3 && GameStateManager.currentState == "OverworldState")
             {
                 Game.messageBox.DisplayMessage("You fight off the last pirates. You better enter the station and see what damage they caused.");
                 ObjectiveIndex = 4;
                 progress = 4;
             }
-
+            
             // Player enters Fotrun station II
             if (progress == 4 && missionHelper.IsPlayerOnStation("Fotrun Station II"))
             {
-                missionHelper.ShowEvent(new List<int> { 1, 2, 3 });
+                missionHelper.ShowEvent(new List<String> { EventArray[1, 0], EventArray[2, 0], EventArray[3, 0] });
                 progress = 5;
                 Game.stateManager.overworldState.getStation("Fotrun Station II").Abandoned = true;
             }
-
+            
             // Player drops of man at Fotrun Station I
             if (progress == 5 && missionHelper.IsPlayerOnStation("Fotrun Station I"))
             {
-                missionHelper.ShowEvent(4);
+                missionHelper.ShowEvent(EventArray[4, 0]);
                 progress = 6;
             }
-
+            
             if (progress == 6 && GameStateManager.currentState == "OverworldState")
             {
                 tempTimer = 100;
                 ObjectiveIndex = 7;
                 progress = 7;
             }
-
+            
             if (tempTimer == 1)
             {
                 Game.messageBox.DisplayMessage(EventArray[5, 0]);
             }
-
+            
             if (progress == 7 && missionHelper.IsPlayerOnPlanet("Highfence"))
             {
-                missionHelper.ShowEvent(new List<int> { 6, 7, 8 });
+                missionHelper.ShowEvent(new List<String> { EventArray[6, 0], EventArray[7, 0], EventArray[8, 0] });
                 missionHelper.ShowResponse(8, new List<int> { 1, 2 });
             }
-
+            
             if (MissionResponse != 0)
             {
                 Game.stateManager.planetState.SubStateManager.MissionMenuState.ActiveMission = this;
-
+            
                 switch (MissionResponse)
                 {
                     case 1:
                         {
-                            missionHelper.ShowEvent(new List<int> { 9, 10 });
+                            missionHelper.ShowEvent(new List<String> { EventArray[9, 0], EventArray[10, 0] });
                             MissionManager.MarkMissionAsCompleted(this.MissionName);
                             missionHelper.ClearResponseText();
                             break;
                         }
-
+            
                     case 2:
                         {
-                            missionHelper.ShowEvent(11);
+                            missionHelper.ShowEvent(EventArray[11, 0]);
                             MissionManager.MarkMissionAsCompleted(this.MissionName);
                             missionHelper.ClearResponseText();
                             break;

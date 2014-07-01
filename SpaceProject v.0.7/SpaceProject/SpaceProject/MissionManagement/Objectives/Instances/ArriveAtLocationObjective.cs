@@ -14,26 +14,19 @@ namespace SpaceProject
         { }
 
         public ArriveAtLocationObjective(Game1 game, Mission mission, String description,
-            GameObjectOverworld destination, List<int> endEventIndices) :
+            GameObjectOverworld destination, EventTextCapsule textCapsule) :
             base(game, mission, description, destination)
         {
-            foreach (Int32 i in endEventIndices)
+            foreach (String s in textCapsule.CompletedText)
             {
-                this.endEventIndices.Add(i);
-            }
-        }
-
-        public ArriveAtLocationObjective(Game1 game, Mission mission, String description,
-            GameObjectOverworld destination, List<int> endEventIndices, EventTextFormat eventTextFormat) :
-            base(game, mission, description, destination)
-        {
-            foreach (Int32 i in endEventIndices)
-            {
-                this.endEventIndices.Add(i);
+                this.objectiveCompletedEventText.Add(s);
             }
 
-            this.eventTextFormat = eventTextFormat;
+            this.eventTextCanvas = textCapsule.EventTextCanvas;
         }
+
+        private void Setup()
+        { }
 
         public override void OnActivate()
         {
