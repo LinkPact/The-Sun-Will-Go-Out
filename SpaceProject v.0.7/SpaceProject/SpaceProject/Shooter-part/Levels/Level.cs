@@ -98,7 +98,7 @@ namespace SpaceProject
             this.Game = Game;
             border = new Sprite(Game.Content.Load<Texture2D>("Vertical-Sprites/BorderSprite"), new Rectangle(5, 5, 1, 1));
             this.spriteSheet = spriteSheet;
-            this.player = player;
+            //this.player = player;
             random = new Random();
             customStartTime = -1;
             this.missionType = missionType;
@@ -181,9 +181,8 @@ namespace SpaceProject
 
         public virtual void Initialize()
         {
-            player.Initialize();
             Game.stateManager.shooterState.gameObjects.Clear();
-            Game.stateManager.shooterState.gameObjects.Add(player);
+            CreatePlayer();
 
             WindowWidth = Game.Window.ClientBounds.Width;
             WindowHeight = Game.Window.ClientBounds.Height;
@@ -224,6 +223,13 @@ namespace SpaceProject
             if (levelSong != null) Game.musicManager.PlayMusic(Music.Asteroids);
 
             CalculateLevelEnemyCount();
+        }
+
+        private void CreatePlayer()
+        {
+            player = new PlayerVerticalShooter(Game, spriteSheet);
+            player.Initialize();
+            Game.stateManager.shooterState.gameObjects.Add(player);
         }
 
         protected void CustomStartSetup()
