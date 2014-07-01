@@ -10,8 +10,10 @@ namespace SpaceProject
 {
     public enum LevelStartCondition
     {
+        Immediately,
         TextCleared,
-        EnteringOverworld
+        EnteringOverworld,
+        OnStartMission
     }
 
     public class MissionHelper
@@ -39,6 +41,11 @@ namespace SpaceProject
             {
                 switch (levelStartCondition)
                 {
+                    case LevelStartCondition.Immediately:
+                        game.stateManager.shooterState.BeginLevel(levelToStart);
+                        levelToStart = "";
+                        break;
+
                     case LevelStartCondition.TextCleared:
                         if (IsTextCleared())
                         {
@@ -52,6 +59,16 @@ namespace SpaceProject
                         {
                             game.stateManager.shooterState.BeginLevel(levelToStart);
                             levelToStart = "";
+                        }
+                        break;
+
+                    case LevelStartCondition.OnStartMission:
+                        {
+                            if (mission.MissionHelper.HasStartMissionTextBeenDisplayed())
+                            {
+                                mission.MissionHelper.StartLevel(levelToStart);
+                                levelToStart = "";
+                            }
                         }
                         break;
                 }
@@ -85,6 +102,18 @@ namespace SpaceProject
         public bool IsTextCleared()
         {
             return (mission.EventBuffer.Count <= 0 && game.stateManager.planetState.SubStateManager.ButtonControl != ButtonControl.Confirm);
+        }
+
+        public bool HasTextBeenDisplayed(int eventIndex)
+        {
+            return (mission.EventArray[eventIndex, 0] == ""
+                && IsTextCleared());
+        }
+
+        public bool HasStartMissionTextBeenDisplayed()
+        {
+            return (mission.MissionText.EndsWith("/ok")
+                && IsTextCleared());
         }
 
         public void ShowEvent(int eventArrayIndex)
@@ -157,6 +186,19 @@ namespace SpaceProject
         public void ClearResponseText()
         {
             mission.ResponseBuffer.Clear();
+        }
+
+        public bool AllObjectivesCompleted()
+        {
+            for (int i = 0; i < mission.Objectives.Count; i++)
+            {
+                if (!mission.Objectives[i].Completed())
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

@@ -18,9 +18,9 @@ namespace SpaceProject
             EventArray = new string[7, 5];
             AcceptText = new string[3];
 
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
-            Objectives.Add("Return to big station");
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
+            ObjectiveDescriptions.Add("Return to big station");
 
             EventArray[0, 0] = configFile.GetPropertyAsString(section, "EventText1", "");            //index 0,0 
 
@@ -104,7 +104,7 @@ namespace SpaceProject
                     EventBuffer.Clear();
                     ResponseBuffer.Clear();
 
-                    CurrentObjective = Objectives[0];
+                    CurrentObjectiveDescription = ObjectiveDescriptions[0];
 
                     missionHelper.ShowEvent(new List<int>() { 0, 1 });
                     missionHelper.ShowResponse(1, new List<int>() { 1, 2 });

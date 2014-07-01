@@ -60,9 +60,12 @@ namespace SpaceProject
         private int reputationReward;
 
         private List<Item> rewardItems;
+
+        protected List<Objective> objectives;
+        private Objective currentObjective;
         private int objectiveIndex;
-        private List<string> objectives;
-        private string currentObjective;
+        private List<string> objectiveDescriptions;
+        private string currentObjectiveDescription;
 
         protected string tempString = "";
 
@@ -74,12 +77,13 @@ namespace SpaceProject
         protected ShopMenuState ShopMenuState;
 
         protected GameObjectOverworld objectiveDestination;
-        public GameObjectOverworld ObjectiveDestination { get { return objectiveDestination; } }
+        public GameObjectOverworld ObjectiveDestination { get { return objectiveDestination; } set { objectiveDestination = value; } }
 
         // Change this to true if your mission requires an available slot to accept.
         protected bool requiresAvailableSlot;
 
         protected MissionHelper missionHelper;
+        public MissionHelper MissionHelper { get { return missionHelper; } private set { ;} }
 
         #region Properties
 
@@ -121,12 +125,18 @@ namespace SpaceProject
         public string MissionText
         {
             get { return missionText; }
+            set { missionText = value; }
         }
 
-        public List<string> Objectives
+        public List<Objective> Objectives
         {
             get { return objectives; }
-            set { objectives = value; }
+        }
+
+        public List<string> ObjectiveDescriptions
+        {
+            get { return objectiveDescriptions; }
+            set { objectiveDescriptions = value; }
         }
 
         public int ObjectiveIndex
@@ -135,10 +145,12 @@ namespace SpaceProject
             set { objectiveIndex = value; }
         }
 
-        public string CurrentObjective
+        public Objective CurrentObjective { get { return currentObjective; } set { currentObjective = value; } }
+
+        public string CurrentObjectiveDescription
         {
-            get { return currentObjective; } 
-            set { currentObjective = value; }
+            get { return currentObjectiveDescription; } 
+            set { currentObjectiveDescription = value; }
         }
 
         public string PosResponse
@@ -223,7 +235,7 @@ namespace SpaceProject
             restartAfterFail = true;
         }
 
-        public Boolean IsRestartAfterFailSet()
+        public Boolean IsRestartAfterFail()
         {
             return restartAfterFail;
         }
@@ -265,9 +277,10 @@ namespace SpaceProject
             moneyReward = 0;
             progressReward = 0;
             reputationReward = 0;
-
             rewardItems = new List<Item>();
-            objectives = new List<string>();
+
+            objectives = new List<Objective>();
+            objectiveDescriptions = new List<string>();
 
             OverviewMenuState = Game.stateManager.planetState.SubStateManager.OverviewMenuState;
             MiningMenuState = Game.stateManager.planetState.SubStateManager.MiningMenuState;
@@ -282,6 +295,8 @@ namespace SpaceProject
         {
             missionHelper = new MissionHelper(Game, this);
             missionHelper.Initialize();
+
+            objectives = new List<Objective>();
 
             planetName = configFile.GetPropertyAsString(configSection, "Planet", "");
             missionName = configFile.GetPropertyAsString(configSection, "Name", "");
@@ -317,11 +332,16 @@ namespace SpaceProject
                     EventArray[i, j] = configFile.GetPropertyAsString(section, "EventText" + (i + 1), "");
                 }
             }
+
+            foreach (Objective obj in objectives)
+            {
+                obj.Reset();
+            }
         }
 
         public virtual void MissionLogic()
         {
-            currentObjective = objectives[objectiveIndex];
+            RefreshCurrentObjective();
             missionHelper.Update();
         }
 
@@ -349,7 +369,7 @@ namespace SpaceProject
                 tempString = "[Failed] ";
 
             spriteBatch.DrawString(font,
-                                   TextUtils.WordWrap(font, (tempString + CurrentObjective), (Game.Window.ClientBounds.Width / 2) - 10),
+                                   TextUtils.WordWrap(font, (tempString + CurrentObjectiveDescription), (Game.Window.ClientBounds.Width / 2) - 10),
                                    new Vector2(10, (Game.Window.ClientBounds.Height * 1 / 3) + 40) + Game.fontManager.FontOffset,
                                    Game.fontManager.FontColor,
                                    0,
@@ -360,6 +380,28 @@ namespace SpaceProject
         }
 
         public virtual void Draw(SpriteBatch spriteBatch) { }
+
+        private void RefreshCurrentObjective()
+        {
+            if (objectives.Count > 0)
+            {
+                int previousObjectiveIndex = objectives.IndexOf(currentObjective);
+                currentObjective = objectives[objectiveIndex];
+
+                if (previousObjectiveIndex != objectives.IndexOf(currentObjective))
+                {
+                    currentObjective.OnActivate();
+                    currentObjectiveDescription = currentObjective.Description;
+                }
+
+                currentObjective.Update();
+
+                if (missionHelper.AllObjectivesCompleted())
+                {
+                    MissionManager.MarkMissionAsCompleted(this.MissionName);
+                }
+            }
+        }
 
         public abstract int GetProgress();
         public abstract void SetProgress(int progress);

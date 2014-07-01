@@ -171,12 +171,14 @@ namespace SpaceProject
             {
                 removedActiveMissions.Add(tempMission);
                 tempMission.MissionState = StateOfMission.Available;
+                tempMission.OnReset();
             }
             else if (tempMission.MissionState.Equals(StateOfMission.Failed) 
-                && tempMission.IsRestartAfterFailSet())
+                && tempMission.IsRestartAfterFail())
             {
                 removedActiveMissions.Add(tempMission);
                 tempMission.MissionState = StateOfMission.Available;
+                tempMission.OnReset();
             }
 
             else
@@ -216,7 +218,7 @@ namespace SpaceProject
             {
                 tempMission.MissionState = StateOfMission.Completed;
                 removedActiveMissions.Add(tempMission);
-                tempMission.CurrentObjective = tempMission.ObjectiveCompleted;
+                tempMission.CurrentObjectiveDescription = tempMission.ObjectiveCompleted;
             }
 
             RefreshLists();
@@ -225,7 +227,7 @@ namespace SpaceProject
         public static void MarkCompletedMissionAsDead(string missionName)
         {
             Mission tempMission = ReturnSpecifiedMission(missionName);
-            tempMission.CurrentObjective = tempMission.ObjectiveCompleted;
+            tempMission.CurrentObjectiveDescription = tempMission.ObjectiveCompleted;
 
             if (tempMission.MissionState.Equals(StateOfMission.CompletedDead))
                 return;
@@ -251,7 +253,7 @@ namespace SpaceProject
         public static void MarkMissionAsFailed(string missionName)
         {
             Mission tempMission = ReturnSpecifiedMission(missionName);
-            tempMission.CurrentObjective = tempMission.ObjectiveFailed;
+            tempMission.CurrentObjectiveDescription = tempMission.ObjectiveFailed;
 
             if (tempMission.MissionState.Equals(StateOfMission.Failed))
                 return;
@@ -260,7 +262,7 @@ namespace SpaceProject
             {
                     tempMission.MissionState = StateOfMission.Failed;
                     removedActiveMissions.Add(tempMission);
-                    tempMission.CurrentObjective = tempMission.ObjectiveFailed;
+                    tempMission.CurrentObjectiveDescription = tempMission.ObjectiveFailed;
             }
 
             RefreshLists();
@@ -275,7 +277,7 @@ namespace SpaceProject
 
             else if (tempMission.MissionState.Equals(StateOfMission.Failed))
             {
-                if (!tempMission.IsRestartAfterFailSet())
+                if (!tempMission.IsRestartAfterFail())
                     tempMission.MissionState = StateOfMission.FailedDead;
                 else
                 {
@@ -305,7 +307,7 @@ namespace SpaceProject
             for (int i = 0; i < activeMissions.Count; i++)
             {
                 if (activeMissions[i].ObjectiveDestination != null &&
-                    activeMissions[i].ObjectiveDestination.Equals(obj))
+                    activeMissions[i].ObjectiveDestination.name.ToLower().Equals(obj.name.ToLower()))
                 {
                     return true;
                 }
@@ -588,10 +590,10 @@ namespace SpaceProject
                 missions[i].MissionState = (StateOfMission)game.saveFile.GetPropertyAsInt("missions", missions[i].MissionName, 0);
 
                 if (missions[i].MissionState == StateOfMission.CompletedDead)
-                    missions[i].CurrentObjective = missions[i].ObjectiveCompleted;
+                    missions[i].CurrentObjectiveDescription = missions[i].ObjectiveCompleted;
 
                 else if (missions[i].MissionState == StateOfMission.FailedDead)
-                    missions[i].CurrentObjective = missions[i].ObjectiveFailed;
+                    missions[i].CurrentObjectiveDescription = missions[i].ObjectiveFailed;
 
                 else
                     missions[i].ObjectiveIndex = game.saveFile.GetPropertyAsInt("missionobjs", missions[i].MissionName + " obj", 0);

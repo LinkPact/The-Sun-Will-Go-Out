@@ -468,6 +468,8 @@ namespace SpaceProject
                     missionCursorIndex = 0;
 
                     BaseStateManager.ButtonControl = ButtonControl.Confirm;
+
+                    selectedMission.MissionText += "/ok";
                 }
 
                 else
@@ -488,6 +490,8 @@ namespace SpaceProject
                 missionCursorIndex = 0;
 
                 BaseStateManager.ButtonControl = ButtonControl.Confirm;
+
+                selectedMission.MissionText += "/ok";
             }
         }
 

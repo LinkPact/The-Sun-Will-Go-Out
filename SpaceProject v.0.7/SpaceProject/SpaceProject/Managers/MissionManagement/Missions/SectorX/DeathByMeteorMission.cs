@@ -18,8 +18,8 @@ namespace SpaceProject
             EventArray[0, 0] = configFile.GetPropertyAsString(section, "EventText1", "");
             EventArray[1, 0] = configFile.GetPropertyAsString(section, "EventText1", "");
 
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
 
             FlameShotWeapon flameShot = new FlameShotWeapon(Game, ItemVariety.high);
             RewardItems.Add(flameShot);

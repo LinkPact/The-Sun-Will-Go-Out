@@ -12,7 +12,7 @@ namespace SpaceProject
         public FinalMission(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
         }
 
         public override void Initialize()

@@ -22,15 +22,15 @@ namespace SpaceProject
         {
             EventArray = new string[13, 3];
 
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText3", ""));
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText4", ""));
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText5", ""));
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText6", ""));
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText7", ""));
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText8", ""));
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText9", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText3", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText4", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText5", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText6", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText7", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText8", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText9", ""));
 
             EventArray[0, 0] = configFile.GetPropertyAsString(section, "EventText1", "");
             EventArray[1, 0] = configFile.GetPropertyAsString(section, "EventText2", "");

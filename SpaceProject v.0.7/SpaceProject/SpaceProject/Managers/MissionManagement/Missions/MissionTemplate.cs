@@ -32,8 +32,8 @@ namespace SpaceProject
             RewardItems.Add(veryFatcell);                                               //
 
             //Add text to be displayed as objectives here
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
 
             //If you want text to be displayed during the mission (currently only when entering a Colony), add it here
             EventArray[0,0] = configFile.GetPropertyAsString(section, "EventText1", "");   //index 0,0   //Example
@@ -64,7 +64,7 @@ namespace SpaceProject
                     if (EventArray[0,0] != "")
                     {
                         EventBuffer.Add(EventArray[0,0]);
-                        CurrentObjective = Objectives[1];       // <-- This changes the text that is displayed in the mission screen         
+                        CurrentObjectiveDescription = ObjectiveDescriptions[1];       // <-- This changes the text that is displayed in the mission screen         
                     }
 
                     EventArray[0,0] = "";
@@ -80,10 +80,10 @@ namespace SpaceProject
             if (Game.stateManager.currentGameState.Name == "PlanetOverviewState" &&
                 Game.stateManager.planetState.Planet.name == "Grey Planet")
             {
-                if (CurrentObjective.Equals(Objectives[1]))
+                if (CurrentObjectiveDescription.Equals(ObjectiveDescriptions[1]))
                 {
                     MissionManager.MarkMissionAsCompleted(this.MissionName);
-                    CurrentObjective = ObjectiveCompleted;
+                    CurrentObjectiveDescription = ObjectiveCompleted;
                 }
             }                                                                                   //
 

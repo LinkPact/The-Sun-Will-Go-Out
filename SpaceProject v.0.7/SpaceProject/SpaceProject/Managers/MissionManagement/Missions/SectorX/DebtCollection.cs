@@ -16,9 +16,9 @@ namespace SpaceProject
         {
             EventArray = new string[7, 5];
 
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText3", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText3", ""));
 
             EventArray[0, 0] = configFile.GetPropertyAsString(section, "EventText1", "");            //index 0,0 
 

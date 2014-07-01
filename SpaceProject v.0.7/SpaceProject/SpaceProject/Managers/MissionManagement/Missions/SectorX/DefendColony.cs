@@ -17,13 +17,17 @@ namespace SpaceProject
 
             EventArray[0, 0] = configFile.GetPropertyAsString(section, "EventText1", "");   //index 0,0
 
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
         }
 
         public override void Initialize()
         {
             base.Initialize();
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
+                Game.stateManager.overworldState.getPlanet("New Norrland"), "DefendColony", LevelStartCondition.OnStartMission,
+                new List<int> {0}));
         }
 
         public override void StartMission()
@@ -38,23 +42,6 @@ namespace SpaceProject
         public override void MissionLogic()
         {
             base.MissionLogic();
-
-            if (progress == 0 
-                && GameStateManager.currentState == "PlanetState")
-            {
-                missionHelper.StartLevelAfterCondition("DefendColony", LevelStartCondition.TextCleared);
-            }
-
-            if (progress == 0 &&
-                missionHelper.IsLevelCompleted("DefendColony"))
-            {
-                updateLogic = true;
-                missionHelper.ShowEvent(0);
-                progress = 1;
-                MissionManager.MarkMissionAsCompleted(this.MissionName);
-
-                Game.stateManager.GotoPlanetSubScreen("New Norrland", "Colony");
-            }
         }
 
         public override int GetProgress()

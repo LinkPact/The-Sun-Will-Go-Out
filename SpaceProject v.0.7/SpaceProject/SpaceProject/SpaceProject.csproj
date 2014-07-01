@@ -209,6 +209,9 @@
     <Compile Include="Managers\MissionManagement\Missions\SectorY\MainMissionOne.cs" />
     <Compile Include="Managers\MissionManagement\Missions\MissionTemplate.cs" />
     <Compile Include="Managers\MissionManagement\Missions\SectorX\AstroDodger.cs" />
+    <Compile Include="Managers\MissionManagement\Objectives\Instances\ArriveAtLocationObjective.cs" />
+    <Compile Include="Managers\MissionManagement\Objectives\Instances\ShootingLevelObjective.cs" />
+    <Compile Include="Managers\MissionManagement\Objectives\Objective.cs" />
     <Compile Include="Managers\MusicManager.cs" />
     <Compile Include="Managers\ShipInventoryManager.cs" />
     <Compile Include="Managers\ShopManager.cs" />

@@ -30,8 +30,8 @@ namespace SpaceProject
             regularCell = new RegularEnergyCell(Game, ItemVariety.high);
             RewardItems.Add(regularCell);
 
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
-            Objectives.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
+            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
         }
 
         public override void Initialize()
@@ -39,6 +39,11 @@ namespace SpaceProject
             base.Initialize();
 
             requiresAvailableSlot = true;
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
+                Game.stateManager.overworldState.getStation("Lavis Station")));
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
+                Game.stateManager.overworldState.getStation("Fotrun Station I")));
         }
 
         public override void StartMission()
@@ -56,7 +61,7 @@ namespace SpaceProject
             base.MissionLogic();
 
             if (progress == 0 
-                && missionHelper.IsPlayerOnStation("Lavis Station"))
+                && objectives[0].Completed())
             {
                 if (ShipInventoryManager.ShipItems.Contains(medicalSupplies))
                 {
@@ -71,12 +76,6 @@ namespace SpaceProject
                     missionHelper.ShowEvent(1);
                     MissionManager.MarkMissionAsFailed(this.MissionName);
                 }
-            }
-
-            if (progress == 1
-                && missionHelper.IsPlayerOnStation("Fotrun Station I"))
-            {
-                MissionManager.MarkMissionAsCompleted(this.MissionName);
             }
         }
 
