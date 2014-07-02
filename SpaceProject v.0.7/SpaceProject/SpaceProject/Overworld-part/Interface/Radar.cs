@@ -23,7 +23,11 @@ namespace SpaceProject
 
         private Vector2 playerpos;
 
-        public Sprite ObjectSprite;
+        private Sprite ObjectSprite;
+        private Sprite BlinkingSprite;
+
+        private Sprite ActiveSprite; 
+        
         protected Sprite spriteSheet;
         protected Sprite background;
 
@@ -53,13 +57,13 @@ namespace SpaceProject
             scaleX = View.Width / radarWidth;
             scaleY = View.Height / radarHeight;
             
-            ObjectSprite = spriteSheet.GetSubSprite(new Rectangle(0, 3, 3, 3));
+            ObjectSprite = spriteSheet.GetSubSprite(new Rectangle(42, 24, 6, 6));
+            BlinkingSprite = spriteSheet.GetSubSprite(new Rectangle(49, 24, 6, 6));
             background = new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/radar"), new Rectangle(0, 0, 198, 198));
         }
 
         public void Update(GameTime gameTime, List<GameObjectOverworld> objectsInOverworld, Vector2 cameraPos)
         {
-           
             objectsVisibleOnRadar.Clear();
             foreach (GameObjectOverworld obj in objectsInOverworld)
             {
@@ -89,14 +93,14 @@ namespace SpaceProject
             foreach (GameObjectOverworld obj in objectsVisibleOnRadar)
             {
                 Color tempColor = Color.Gray;
-                float tempScale = 1.7f;
+                ActiveSprite = ObjectSprite;
 
                 if (MissionManager.IsCurrentObjective(obj))
                 {
                     if (colorSwapCounter <= 25)
                     {
                         tempColor = Color.DarkOrange;
-                        tempScale = 2.5f;
+                        ActiveSprite = BlinkingSprite;
                     }
 
                     else
@@ -123,13 +127,13 @@ namespace SpaceProject
                     tempColor = Color.Yellow;
                 }
 
-                spriteBatch.Draw(ObjectSprite.Texture,
+                spriteBatch.Draw(ActiveSprite.Texture,
                         new Vector2(Origin.X + ((obj.position.X - View.X) / scaleX), Origin.Y + ((obj.position.Y - View.Y) / scaleY)),
-                        ObjectSprite.SourceRectangle,
+                        ActiveSprite.SourceRectangle,
                         tempColor,
                         0.0f,
-                        new Vector2(ObjectSprite.SourceRectangle.Value.Width / 2, ObjectSprite.SourceRectangle.Value.Height / 2),
-                        tempScale,
+                        new Vector2(ActiveSprite.SourceRectangle.Value.Width / 2, ActiveSprite.SourceRectangle.Value.Height / 2),
+                        1f,
                         SpriteEffects.None,
                         0.91f
                         ); 
@@ -141,7 +145,7 @@ namespace SpaceProject
                 Color.White,
                 0.0f,
                 new Vector2(ObjectSprite.SourceRectangle.Value.Width / 2, ObjectSprite.SourceRectangle.Value.Height / 2),
-                1.7f,
+                1f,
                 SpriteEffects.None,
                 0.911f
                 );
