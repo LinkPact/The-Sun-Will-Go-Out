@@ -15,31 +15,15 @@ namespace SpaceProject
         public MainMissionOne(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
-            EventArray = new string[7, 5];
             AcceptText = new string[3];
-
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
-            ObjectiveDescriptions.Add("Return to big station");
-
-            EventArray[0, 0] = configFile.GetPropertyAsString(section, "EventText1", "");            //index 0,0 
-
-            EventArray[1, 0] = configFile.GetPropertyAsString(section, "EventText2", "");
-            EventArray[1, 1] = configFile.GetPropertyAsString(section, "EventText2Response1", "");
-            EventArray[1, 2] = configFile.GetPropertyAsString(section, "EventText2Response2", "");
-
-            EventArray[2, 0] = configFile.GetPropertyAsString(section, "EventText3", "");
-            EventArray[3, 0] = configFile.GetPropertyAsString(section, "EventText4", "");
-
-            EventArray[4, 0] = configFile.GetPropertyAsString(section, "EventText5", "");           
         }
 
         public override void Initialize()
         {
             base.Initialize();
 
-            AcceptText[1] = configFile.GetPropertyAsString(ConfigSection, "Accept2", "");
-            AcceptText[2] = configFile.GetPropertyAsString(ConfigSection, "Accept3", "");
+            //AcceptText[1] = configFile.GetPropertyAsString(ConfigSection, "Accept2", "");
+            //AcceptText[2] = configFile.GetPropertyAsString(ConfigSection, "Accept3", "");
         }
 
         //If you want anything specific to happen when you start the mission, 

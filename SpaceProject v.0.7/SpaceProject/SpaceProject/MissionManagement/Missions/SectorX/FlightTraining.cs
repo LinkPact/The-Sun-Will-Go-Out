@@ -31,31 +31,14 @@ namespace SpaceProject
         public FlightTraining(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
-            EventArray = new string[6, 1];
-
-            EventArray[0, 0] = configFile.GetPropertyAsString(section, "EventText1", "");
-            EventArray[1, 0] = configFile.GetPropertyAsString(section, "EventText2", "");
-            EventArray[2, 0] = configFile.GetPropertyAsString(section, "EventText3", "");
-            EventArray[3, 0] = configFile.GetPropertyAsString(section, "EventText4", "");
-            EventArray[4, 0] = configFile.GetPropertyAsString(section, "EventText5", "");
-            EventArray[5, 0] = configFile.GetPropertyAsString(section, "EventText6", "");
-            //EventArray[6, 0] = configFile.GetPropertyAsString(section, "EventText7", "");
-
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText3", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText4", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText5", ""));
-
-            SideMissilesWeapon sideMissiles = new SideMissilesWeapon(Game, ItemVariety.regular);
-            RewardItems.Add(sideMissiles);
-
-            RestartAfterFail();
         }
 
         public override void Initialize()
         {
             base.Initialize();
+
+            SideMissilesWeapon sideMissiles = new SideMissilesWeapon(Game, ItemVariety.regular);
+            RewardItems.Add(sideMissiles);
 
             Station borderStation = Game.stateManager.overworldState.getStation("Border Station");
 
@@ -75,6 +58,8 @@ namespace SpaceProject
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], borderStation,
                 "flightTraining_3", LevelStartCondition.EnteringOverworld));
+
+            RestartAfterFail();
         }
 
         public override void StartMission()

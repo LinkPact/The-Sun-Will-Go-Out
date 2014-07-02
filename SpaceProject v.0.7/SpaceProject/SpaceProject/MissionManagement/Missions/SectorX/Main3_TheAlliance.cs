@@ -20,35 +20,6 @@ namespace SpaceProject
         public Main3_TheAlliance(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
-            EventArray = new string[13, 3];
-
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText3", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText4", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText5", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText6", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText7", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText8", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText9", ""));
-
-            EventArray[0, 0] = configFile.GetPropertyAsString(section, "EventText1", "");
-            EventArray[1, 0] = configFile.GetPropertyAsString(section, "EventText2", "");
-            EventArray[2, 0] = configFile.GetPropertyAsString(section, "EventText3", "");
-            EventArray[3, 0] = configFile.GetPropertyAsString(section, "EventText4", "");
-            EventArray[4, 0] = configFile.GetPropertyAsString(section, "EventText5", "");
-            EventArray[5, 0] = configFile.GetPropertyAsString(section, "EventText6", "");
-            EventArray[6, 0] = configFile.GetPropertyAsString(section, "EventText7", "");
-            EventArray[7, 0] = configFile.GetPropertyAsString(section, "EventText8", "");
-            
-            EventArray[8, 0] = configFile.GetPropertyAsString(section, "EventText9", "");
-            EventArray[8, 1] = configFile.GetPropertyAsString(section, "EventText9Response1", "");
-            EventArray[8, 2] = configFile.GetPropertyAsString(section, "EventText9Response2", "");
-
-            EventArray[9, 0] = configFile.GetPropertyAsString(section, "EventText10", "");
-            EventArray[10, 0] = configFile.GetPropertyAsString(section, "EventText11", "");
-            EventArray[11, 0] = configFile.GetPropertyAsString(section, "EventText12", "");
-            EventArray[12, 0] = configFile.GetPropertyAsString(section, "EventText13", "");
         }
 
         public override void Initialize()

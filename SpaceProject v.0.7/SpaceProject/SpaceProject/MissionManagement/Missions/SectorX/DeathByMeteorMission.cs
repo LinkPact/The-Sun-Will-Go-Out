@@ -13,28 +13,21 @@ namespace SpaceProject
         public DeathByMeteorMission(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
-            EventArray = new string[2, 1];
-
-            EventArray[0, 0] = configFile.GetPropertyAsString(section, "EventText1", "");
-            EventArray[1, 0] = configFile.GetPropertyAsString(section, "EventText2", "");
-
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
-
-            FlameShotWeapon flameShot = new FlameShotWeapon(Game, ItemVariety.high);
-            RewardItems.Add(flameShot);
-
-            RestartAfterFail();
         }
 
         public override void Initialize()
         {
             base.Initialize();
 
+            FlameShotWeapon flameShot = new FlameShotWeapon(Game, ItemVariety.high);
+            RewardItems.Add(flameShot);
+
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.getPlanet("Peye"), "DeathByMeteor", LevelStartCondition.TextCleared,
                 new EventTextCapsule(new List<String>{EventArray[0, 0], EventArray[1, 0]}, 
                     null, EventTextCanvas.BaseState)));
+
+            RestartAfterFail();
         }
 
         public override void StartMission()

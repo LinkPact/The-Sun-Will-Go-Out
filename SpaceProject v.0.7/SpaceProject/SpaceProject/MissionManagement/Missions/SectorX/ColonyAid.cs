@@ -17,28 +17,19 @@ namespace SpaceProject
         public ColonyAid(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
-            EventArray = new string[2, 1];
-
-            medicalSupplies = new MedicalSupplies(this.Game);
-
-            EventArray[0, 0] = configFile.GetPropertyAsString(section, "EventText1", "");
-            EventArray[1, 0] = configFile.GetPropertyAsString(section, "EventText2", "");  
-
-            regularPoweredWeapon = new MultipleShotWeapon(Game, ItemVariety.high);
-            RewardItems.Add(regularPoweredWeapon);
-
-            regularCell = new RegularEnergyCell(Game, ItemVariety.high);
-            RewardItems.Add(regularCell);
-
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
         }
 
         public override void Initialize()
         {
             base.Initialize();
 
-            requiresAvailableSlot = true;
+            medicalSupplies = new MedicalSupplies(this.Game);
+
+            regularPoweredWeapon = new MultipleShotWeapon(Game, ItemVariety.high);
+            RewardItems.Add(regularPoweredWeapon);
+
+            regularCell = new RegularEnergyCell(Game, ItemVariety.high);
+            RewardItems.Add(regularCell);
 
             objectives.Add(new ItemTransportObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.getStation("Lavis Station"), medicalSupplies,
@@ -47,6 +38,8 @@ namespace SpaceProject
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
                 Game.stateManager.overworldState.getStation("Fotrun Station I")));
+
+            requiresAvailableSlot = true;
         }
 
         public override void StartMission()

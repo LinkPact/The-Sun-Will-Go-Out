@@ -124,6 +124,101 @@ namespace SpaceProject
                 return defaultValue;
         }
 
+        public List<String> GetAllLinesInSection(String section)
+        {
+            section = section.ToLower();
+
+            List<String> l = new List<String>();
+
+            if (configData.ContainsKey(section) == false)
+            {
+                return l;
+            }
+
+            if (!section[0].Equals("["))
+            {
+                StringBuilder s = new StringBuilder(section);
+                s.Insert(0, "[");
+                s.Append("]");
+                section = s.ToString();
+            }
+
+            TextReader reader;
+
+            int count = 0;
+            int start = 0;
+            int stop = 0;
+
+            try
+            {
+                reader = new StreamReader("Data/missiondata.dat");
+
+                String currentLine;
+
+                while ((currentLine = reader.ReadLine()) != null)
+                {
+                    if (currentLine.ToLower().Contains(section))
+                    {
+                        start = count + 1;
+                    }
+
+                    else if (currentLine.ToLower().Equals("") && start != 0)
+                    {
+                        stop = count - 1;
+                        break;
+                    }
+
+                    count++;
+                }
+
+                reader.Close();
+
+            }
+            catch (FileNotFoundException ex)
+            {
+                String errMsg = ex.Message;
+                return new List<String>();
+            }
+
+            count = 0;
+
+            try
+            {
+                reader = new StreamReader("Data/missiondata.dat");
+
+                String currentLine;
+
+                while ((currentLine = reader.ReadLine()) != null)
+                {
+                    if (count < start)
+                    {
+                        count++;
+                        continue;
+                    }
+
+                    else if (count > stop)
+                    {
+                        break;
+                    }
+
+                    l.Add(currentLine);
+
+                    count++;
+                }
+
+                reader.Close();
+
+            }
+            catch (FileNotFoundException ex)
+            {
+                String errMsg = ex.Message;
+
+                return new List<String>();
+            }
+
+            return l;
+        }
+
         private bool Parse(String line)
         {
             line = line.TrimStart(new char[] { ' ', '\t' });

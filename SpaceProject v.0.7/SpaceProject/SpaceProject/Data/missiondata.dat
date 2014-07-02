@@ -1,7 +1,7 @@
 [SX_JakobTest1]
-Planet = Peye
+Location = Peye
 Name = Death by Meteor
-Text = "Welcome soon-to-be-dead pilot! Our insane map-engineer has engineered a killer-fleet meant to be able to bring down the most skilled of pilots. Many brave pilots have tried, few have survived, even fewer are fit enough to tell the tale. Are you ready to take on the challenge?"
+Introduction = "Welcome soon-to-be-dead pilot! Our insane map-engineer has engineered a killer-fleet meant to be able to bring down the most skilled of pilots. Many brave pilots have tried, few have survived, even fewer are fit enough to tell the tale. Are you ready to take on the challenge?"
 ObjectiveText1 = 1
 ObjectiveText2 = 2
 PosResponse = Let's drop meteors on our heads!
@@ -16,9 +16,9 @@ Reputation = 5
 State = 1
 
 [SX_FlightTraining]
-Planet = Border Station
+Location = Border Station
 Name = Flight Training
-Text = "What do we have here, a rookie! You are my favourites. So soft and brave. You know so little about the world, and still you are brimming with visions. You just want to do some honest work, you say? I don't believe you. But I like that. I will give you a head start to those other rookies. I have a three-mission-program which will make you a full fledged slightly-less-rookie. What do you say? If you bear with me the whole way through, I might even give you something useful!"
+Introduction = "What do we have here, a rookie! You are my favourites. So soft and brave. You know so little about the world, and still you are brimming with visions. You just want to do some honest work, you say? I don't believe you. But I like that. I will give you a head start to those other rookies. I have a three-mission-program which will make you a full fledged slightly-less-rookie. What do you say? If you bear with me the whole way through, I might even give you something useful!"
 ObjectiveText1 = Return to the Border Station at coordinates (1840, 130) for further information.
 ObjectiveText2 = Return to the Border Station at coordinates (1840, 130) for further information.
 ObjectiveText3 = Return to the Border Station at coordinates (1840, 130) for further information.
@@ -41,9 +41,9 @@ Reputation = 0
 State = 0
 
 [SX_AColdWelcome]
-Planet = Border Station
+Location = Border Station
 Name = Main - A Cold Welcome
-Text = text
+Introduction = text
 ObjectiveText1 = 1
 ObjectiveText2 = Go to the battlefield at coordinates (2635, 940) and search for resources.
 ObjectiveText3 = Go to the battlefield at coordinates (2635, 940) and search for resources.
@@ -66,9 +66,9 @@ Reputation = 3
 State = 1
 
 [SX_Rebels]
-Planet = Highfence
+Location = Highfence
 Name = Main - Rebels
-Text = "Let's try this again. Are you ready?"
+Introduction = "Let's try this again. Are you ready?"
 ObjectiveText1 = Go to the colony on Highfence at coordinates (1300, -200) and talk to Michel Kamali.
 ObjectiveText2 = Report to the freighter waiting for you near Highfence at coordinates (1300, -200).
 ObjectiveText3 = Escort the freighter traveling from Highfence to Soelara Station.
@@ -94,9 +94,9 @@ Reputation = 5
 State = 0
 
 [SX_TheAlliance]
-Planet = Highfence
+Location = Highfence
 Name = Main - The Alliance
-Text = "Hello! I just recieved some distressing news - A station south of Fotrun, Fotrun Station II, has been attacked by pirates! I want you to go there and see if you can drive them off and, if you can, look for any survivors."
+Introduction = "Hello! I just recieved some distressing news - A station south of Fotrun, Fotrun Station II, has been attacked by pirates! I want you to go there and see if you can drive them off and, if you can, look for any survivors."
 ObjectiveText1 = 1 
 ObjectiveText2 = Go to the station near Fotrun, located at (-370, 300), and drive off the pirates.
 ObjectiveText3 = 3 
@@ -134,9 +134,9 @@ Reputation = 10
 State = 0
 
 [SX_AstroDodger]
-Planet = Soelara Station
+Location = Soelara Station
 Name = Astro Dodger
-Text = "I've got an important job for you: We recently lost a shuttle transporting some of our company goods. As we have a great interest in our employees well-being, we need you to go and check if there were any survivors. If so, bring them back here and I will personally make sure you get a fat pay-check."
+Introduction = "I've got an important job for you: We recently lost a shuttle transporting some of our company goods. As we have a great interest in our employees well-being, we need you to go and check if there were any survivors. If so, bring them back here and I will personally make sure you get a fat pay-check."
 ObjectiveText1 = Find the damaged shuttle in the overworld, last known coordinates were (-1750, -1800).
 ObjectiveText2 = You found the shuttle. Unfortunatly there were no survivors. Return to Soelara Station at coordinates (60, -1230) and tell the coorporate man.
 PosResponse = Tell him you'll find them.
@@ -155,9 +155,9 @@ Reputation = -1
 State = 1
 
 [SX_DebtCollection]
-Planet = Highfence
+Location = Highfence
 Name = Debt collection
-Text = "We have a client who has failed to make his payments on time. We want you to go to the station orbiting Fotrun, coordinates (-370, 300), find him, and make sure he pays. You'll get a nice cut for your efforts of course."
+Introduction = "We have a client who has failed to make his payments on time. We want you to go to the station orbiting Fotrun, coordinates (-370, 300), find him, and make sure he pays. You'll get a nice cut for your efforts of course."
 ObjectiveText1 = Go to the station orbiting Fotrun at coordinates (-370, 300) and make sure the man who is behind on his debts pays up.
 ObjectiveText2 = Go back to the colony on Highfence at coordinates (1300, -200) and return the money to the loaners.
 ObjectiveText3 = Go back to the colony on Highfence at coordinates (1300, -200) and tell the loaners you didn't find the man.
@@ -185,9 +185,9 @@ Reputation = 3
 State = 1
 
 [SX_DefendColony]
-Planet = New Norrland
+Location = New Norrland
 Name = Defend Colony
-Text = "You have the looks about you of someone who could be for hire. We have had a continuing problem with pirates attacking us and we are currently looking for mercenaries to help us fight of these aggressors. Are you interested?"
+Introduction = "You have the looks about you of someone who could be for hire. We have had a continuing problem with pirates attacking us and we are currently looking for mercenaries to help us fight of these aggressors. Are you interested?"
 ObjectiveText1 = Fight of the attacking pirates
 ObjectiveText2 = Go back to the colony on Blue Planet and return the money to the loaners.
 ObjectiveText3 = Go back to the colony on Blue Planet and tell the loaners you didn't find the man.
@@ -205,9 +205,9 @@ Reputation = 2
 State = 1
 
 [SX_AstroScan]
-Planet = Lavis Station
+Location = Lavis Station
 Name = Astroid Scan
-Text = "We are in need of some assistance. We are investegating the possibility of conducting new mining opperations in an nearby asteroid field in Lavis orbit. But we are low on pilots and need someone to scan the asteroid field for us."
+Introduction = "We are in need of some assistance. We are investegating the possibility of conducting new mining opperations in an nearby asteroid field in Lavis orbit. But we are low on pilots and need someone to scan the asteroid field for us."
 ObjectiveText1 = Fly down to Lavis at coordinates (1300, 1400) and do the scanning.  
 ObjectiveText2 = Go back to Lavis Station at coordinates (1280, 1380) and claim your reward.
 PosResponse = Tell him you'll help.
@@ -224,9 +224,9 @@ Reputation = -1
 State = 1
 
 [SX_MidMission_Rebel]
-Planet = Red Planet Station
+Location = Red Planet Station
 Name = MidMission_Rebel
-Text = "One of our spies has reported that the Alliance has gotten word about one of our top secret stations close to Outpost X. We need to prepare for a possible attack. Will you help us?"
+Introduction = "One of our spies has reported that the Alliance has gotten word about one of our top secret stations close to Outpost X. We need to prepare for a possible attack. Will you help us?"
 ObjectiveText1 = Go to the rebel station close to Outpost X.
 ObjectiveText2 = Go to Outpost near Ice Planet and tell the rebels there about the coming Alliance attack.
 ObjectiveText3 = Go back to the rebel station.
@@ -249,9 +249,9 @@ Reward = 200
 State = 1
 
 [SY_MidMission_Alliance]
-Planet = Federation Station
+Location = Federation Station
 Name = MidMission_Alliance
-Text = "Find station and alert our fleet to it's position! Should be somewhere around outpost X."
+Introduction = "Find station and alert our fleet to it's position! Should be somewhere around outpost X."
 ObjectiveText1 = Find the station in the vicinity of outpost X.
 ObjectiveText2 = Return to Alliance station and report.
 ObjectiveText3 = Find the alliance fleet close to outpost X.
@@ -272,9 +272,9 @@ Reward = 500
 State = 1
 
 [SY_ColonyAid]
-Planet = Fotrun Station I
+Location = Fotrun Station I
 Name = Colony Aid
-Text = "I'm looking for someone to transport som medical supplies to my home colony orbiting Lavis. I can't pay you very much for your effort, but you would be helping out a lot of people in dire need."
+Introduction = "I'm looking for someone to transport som medical supplies to my home colony orbiting Lavis. I can't pay you very much for your effort, but you would be helping out a lot of people in dire need."
 ObjectiveText1 = Get medical supplies to station at coordinates (3780, 1120) orbiting Lavis.
 ObjectiveText2 = Return to the station orbiting Fotrun at coordinates (2400, 2500) to get your reward.
 PosResponse = Tell him you'll go right away.
@@ -293,9 +293,9 @@ Reputation = -3
 State = 1
 
 [SY_Main1]
-Planet = Federation Station
+Location = Federation Station
 Name = Main1
-Text = As you exit through the hangar's airlock, you are hailed by two Federation guards. "You are excpeted in the debriefing room. Are you ready to go? 
+Introduction = As you exit through the hangar's airlock, you are hailed by two Federation guards. "You are excpeted in the debriefing room. Are you ready to go? 
 ObjectiveText1 = Report to outpost on [planetname] in system3.
 ObjectiveText2 = Return to base at System3.
 PosResponse = -I am ready.
@@ -318,8 +318,8 @@ Reward = 0
 State = 1
 
 [SZ_FinalMission]
-Planet = Temp3 Planet
-Name = Final Mission
+Location = Temp3 Planet
+Introduction = Final Mission
 Text = "This is the final battle!!"
 ObjectiveText1 = Defeat the rebel/teknocratic army.
 PosResponse = -Okay!

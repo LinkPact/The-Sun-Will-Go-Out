@@ -15,14 +15,6 @@ namespace SpaceProject
         public AstroDodger(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
-            EventArray = new string[3, 1];
-
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
-
-            EventArray[0, 0] = configFile.GetPropertyAsString(section, "EventText1", "");
-            EventArray[1, 0] = configFile.GetPropertyAsString(section, "EventText2", "");
-            EventArray[2, 0] = configFile.GetPropertyAsString(section, "EventText3", "");
         }
 
         public override void Initialize()

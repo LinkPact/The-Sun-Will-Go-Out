@@ -38,8 +38,7 @@ namespace SpaceProject
         protected int progress;
 
         private string missionName;
-        private string planetName;
-        //private string stationName;
+        private string locationName;
         private string missionText;
         private string posResponse;
         private string negResponse;
@@ -119,7 +118,7 @@ namespace SpaceProject
 
         public string PlanetName
         {
-            get { return planetName; }
+            get { return locationName; }
         }
 
         public string MissionText
@@ -250,45 +249,18 @@ namespace SpaceProject
             if (spriteSheet != null)
                 this.spriteSheet = spriteSheet;
 
+            this.Game = Game;
             this.section = section;
+            configFile = new ConfigFile();
+            configFile.Load("Data/missiondata.dat");
         }
 
         protected Mission(Game1 Game, string section)
         {
             this.Game = Game;
-
+            this.section = section;
             configFile = new ConfigFile();
             configFile.Load("Data/missiondata.dat");
-            this.configSection = section;
-
-            eventBuffer = MissionManager.MissionEventBuffer;
-            responseBuffer = MissionManager.MissionResponseBuffer;
-            acceptText = new string[1];
-
-            missionName = "";
-            missionText = "";
-            posResponse = "";
-            negResponse = "";
-            completedText = "";
-            failedText = "";
-
-            missionState = StateOfMission.Available;
-
-            moneyReward = 0;
-            progressReward = 0;
-            reputationReward = 0;
-            rewardItems = new List<Item>();
-
-            objectives = new List<Objective>();
-            objectiveDescriptions = new List<string>();
-
-            OverviewMenuState = Game.stateManager.planetState.SubStateManager.OverviewMenuState;
-            MiningMenuState = Game.stateManager.planetState.SubStateManager.MiningMenuState;
-            MissionMenuState = Game.stateManager.planetState.SubStateManager.MissionMenuState;
-            PlanetInfoMenuState = Game.stateManager.planetState.SubStateManager.InfoMenuState;
-            RumorsMenuState = Game.stateManager.planetState.SubStateManager.RumorsMenuState;
-            ShopMenuState = Game.stateManager.planetState.SubStateManager.ShopMenuState;
-
         }
 
         public virtual void Initialize()
@@ -297,24 +269,22 @@ namespace SpaceProject
             missionHelper.Initialize();
 
             objectives = new List<Objective>();
+            objectiveDescriptions = new List<string>();
 
-            planetName = configFile.GetPropertyAsString(configSection, "Planet", "");
-            missionName = configFile.GetPropertyAsString(configSection, "Name", "");
-            missionText = configFile.GetPropertyAsString(configSection, "Text", "");
-            posResponse = configFile.GetPropertyAsString(configSection, "PosResponse", "");
-            negResponse = configFile.GetPropertyAsString(configSection, "NegResponse", "");
-            acceptText[0] = configFile.GetPropertyAsString(configSection, "Accept", "");
-            acceptFailedText = configFile.GetPropertyAsString(configSection, "FailAccept", ""); 
-            completedText = configFile.GetPropertyAsString(configSection, "Success", "");
-            objectiveCompleted = configFile.GetPropertyAsString(configSection, "ObjectiveCompleted", "");
-            failedText = configFile.GetPropertyAsString(configSection, "Fail", "");
-            objectiveFailed = configFile.GetPropertyAsString(configSection, "ObjectiveFailed", "");
-            
-            moneyReward = configFile.GetPropertyAsInt(configSection, "Reward", 0);
-            progressReward = configFile.GetPropertyAsInt(configSection, "Progress", 0);
-            reputationReward = configFile.GetPropertyAsInt(configSection, "Reputation", 0);
+            rewardItems = new List<Item>();
 
-            missionState = (StateOfMission)configFile.GetPropertyAsInt(configSection, "State", 0);
+            OverviewMenuState = Game.stateManager.planetState.SubStateManager.OverviewMenuState;
+            MiningMenuState = Game.stateManager.planetState.SubStateManager.MiningMenuState;
+            MissionMenuState = Game.stateManager.planetState.SubStateManager.MissionMenuState;
+            PlanetInfoMenuState = Game.stateManager.planetState.SubStateManager.InfoMenuState;
+            RumorsMenuState = Game.stateManager.planetState.SubStateManager.RumorsMenuState;
+            ShopMenuState = Game.stateManager.planetState.SubStateManager.ShopMenuState;
+
+            eventBuffer = MissionManager.MissionEventBuffer;
+            responseBuffer = MissionManager.MissionResponseBuffer;
+            acceptText = new string[1];
+
+            LoadMissionData();
         }
 
         public virtual void StartMission()
@@ -325,13 +295,7 @@ namespace SpaceProject
 
         public virtual void OnReset()
         {
-            for (int i = 0; i < EventArray.GetLength(0); i++)
-            {
-                for (int j = 0; j < EventArray.GetLength(1); j++)
-                {
-                    EventArray[i, j] = configFile.GetPropertyAsString(section, "EventText" + (i + 1), "");
-                }
-            }
+            ResetEventText();
 
             foreach (Objective obj in objectives)
             {
@@ -405,5 +369,199 @@ namespace SpaceProject
 
         public abstract int GetProgress();
         public abstract void SetProgress(int progress);
+
+        private void LoadMissionData()
+        {
+            List<String> lines = configFile.GetAllLinesInSection(section);
+
+            int eventCounter = 0;
+            int responseCounter = 1;
+
+            for (int i = 0; i < lines.Count; i++)
+            {
+                String[] split = lines[i].Split('=');
+                split[0] = split[0].Trim();
+                split[0] = split[0] + "=";
+
+                if (split[0].Contains("EventText"))
+                {
+                    if (!split[0].Contains("Response"))
+                    {
+                        if (!lines[i + 1].Contains("Response"))
+                        {
+                            eventCounter++;
+                        }
+                        continue;
+                    }
+
+                    else
+                    {
+                        responseCounter++;
+
+                        if (!lines[i + 1].Contains("Response"))
+                        {
+                            eventCounter++;
+                        }
+                    }
+                }
+            }
+
+            eventArray = new String[eventCounter, responseCounter];
+
+            eventCounter = 0;
+            responseCounter = 1;
+
+            for (int i = 0; i < lines.Count; i++)
+            {
+                String[] split = lines[i].Split('=');
+                split[0] = split[0].Trim();
+                split[1] = split[1].Trim();
+                split[0] = split[0] + "=";
+
+                if (split[0].Contains("Location="))
+                {
+                    locationName = split[1];
+                }
+
+                else if (split[0].Contains("Name="))
+                {
+                    missionName = split[1];
+                }
+
+                else if (split[0].Contains("Introduction="))
+                {
+                     missionText = split[1];
+                }
+
+                else if (split[0].Contains("PosResponse="))
+                {
+                    posResponse = split[1];
+                }
+
+                else if (split[0].Contains("NegResponse="))
+                {
+                    negResponse = split[1];
+                }
+
+                else if (split[0].Contains("Accept="))
+                {
+                    acceptText[0] = split[1];
+                }
+
+                else if (split[0].Contains("FailAccept="))
+                {
+                    acceptFailedText = split[1];
+                }
+
+                else if (split[0].Contains("Success="))
+                {
+                    completedText = split[1];
+                }
+
+                else if (split[0].Contains("ObjectiveText"))
+                {
+                    ObjectiveDescriptions.Add(split[1]);
+                }
+
+                else if (split[0].Contains("ObjectiveCompleted="))
+                {
+                    objectiveCompleted = split[1];
+                }
+
+                else if (split[0].Contains("ObjectiveFailed="))
+                {
+                    objectiveFailed = split[1];
+                }
+
+                else if (split[0].Contains("Reward="))
+                {
+                    moneyReward = Int32.Parse(split[1]);
+                }
+
+                else if (split[0].Contains("Progress="))
+                {
+                    progressReward = Int32.Parse(split[1]);
+                }
+
+                else if (split[0].Contains("Reputation="))
+                {
+                    reputationReward = Int32.Parse(split[1]);
+                }
+
+                else if (split[0].Contains("State="))
+                {
+                    missionState = (StateOfMission)Int32.Parse(split[1]);
+                }
+
+                else if (split[0].Contains("Fail="))
+                {
+                    failedText = split[1];
+                }
+
+                else if (split[0].Contains("EventText"))
+                {
+                    if (!split[0].Contains("Response"))
+                    {
+                        EventArray[eventCounter, 0] = split[1];
+                        if (!lines[i + 1].Contains("Response"))
+                        {
+                            eventCounter++;
+                        }
+                        continue;
+                    }
+
+                    else
+                    {
+                        EventArray[eventCounter, responseCounter] = split[1];
+                        responseCounter++;
+
+                        if (!lines[i + 1].Contains("Response"))
+                        {
+                            eventCounter++;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void ResetEventText()
+        {
+            List<String> lines = configFile.GetAllLinesInSection(section);
+
+            int eventCounter = 0;
+            int responseCounter = 1;
+
+            for (int i = 0; i < lines.Count; i++)
+            {
+                String[] split = lines[i].Split('=');
+                split[0] = split[0].Trim();
+                split[1] = split[1].Trim();
+                split[0] = split[0] + "=";
+
+                if (split[0].Contains("EventText"))
+                {
+                    if (!split[0].Contains("Response"))
+                    {
+                        EventArray[eventCounter, 0] = split[1];
+                        if (!lines[i + 1].Contains("Response"))
+                        {
+                            eventCounter++;
+                        }
+                        continue;
+                    }
+
+                    else
+                    {
+                        EventArray[eventCounter, responseCounter] = split[1];
+                        responseCounter++;
+
+                        if (!lines[i + 1].Contains("Response"))
+                        {
+                            eventCounter++;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -17,18 +17,6 @@ namespace SpaceProject
         public Main1_AColdWelcome(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
-            EventArray = new string[5, 1];
-
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText3", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText4", ""));
-
-            EventArray[0, 0] = configFile.GetPropertyAsString(section, "EventText1", "");
-            EventArray[1, 0] = configFile.GetPropertyAsString(section, "EventText2", "");
-            EventArray[2, 0] = configFile.GetPropertyAsString(section, "EventText3", "");
-            EventArray[3, 0] = configFile.GetPropertyAsString(section, "EventText4", "");
-            EventArray[4, 0] = configFile.GetPropertyAsString(section, "EventText5", "");
         }
 
         public override void Initialize()
@@ -74,13 +62,12 @@ namespace SpaceProject
             if (progress == 0 && GameStateManager.currentState.Equals("StationState") &&
                 missionHelper.IsTextCleared())
             {
-                ObjectiveIndex = 1;
                 progress = 1;
             }
             
             if (progress == 1 && GameStateManager.currentState.Equals("OverworldState"))
             {
-                ObjectiveIndex = 2;
+                CurrentObjectiveDescription = ObjectiveDescriptions[1];
                 progress = 2;
                 objectiveDestination = battlefield;
             }

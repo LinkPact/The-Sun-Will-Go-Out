@@ -207,7 +207,6 @@
     <Compile Include="MissionManagement\Missions\SectorX\Main1_AColdWelcome.cs" />
     <Compile Include="MissionManagement\Missions\SectorX\ColonyAid.cs" />
     <Compile Include="MissionManagement\Missions\SectorY\MainMissionOne.cs" />
-    <Compile Include="MissionManagement\Missions\MissionTemplate.cs" />
     <Compile Include="MissionManagement\Missions\SectorX\AstroDodger.cs" />
     <Compile Include="MissionManagement\Objectives\Instances\ArriveAtLocationObjective.cs" />
     <Compile Include="MissionManagement\Objectives\Instances\ItemTransportObjective.cs" />

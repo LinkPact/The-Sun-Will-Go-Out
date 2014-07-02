@@ -13,12 +13,6 @@ namespace SpaceProject
         public DefendColony(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
-            EventArray = new string[1, 1];
-
-            EventArray[0, 0] = configFile.GetPropertyAsString(section, "EventText1", "");   //index 0,0
-
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
         }
 
         public override void Initialize()

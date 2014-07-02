@@ -26,17 +26,15 @@ namespace SpaceProject
         private static Main2_Rebels rebels;
         private static Main3_TheAlliance theAlliance;
         private static AstroScan astroScan;
-        private static MidMissionRebel midMissionRebel;
         private static DeathByMeteorMission deathByMeteor;
         private static FlightTraining flightTraining;
-
-        // Sector Y
         private static ColonyAid colonyAid;
-        private static MainMissionOne mainMission1;
-        private static MidMissionAlliance midMissionAlliance;
 
-        // Sector Z
-        private static FinalMission finalMission;
+        //Old Missions
+        //private static MidMissionRebel midMissionRebel;
+        //private static FinalMission finalMission;
+        //private static MainMissionOne mainMission1;
+        //private static MidMissionAlliance midMissionAlliance;
 
         private static List<string> missionEventBuffer = new List<string>();
         private static List<string> missionResponseBuffer = new List<string>();
@@ -102,11 +100,6 @@ namespace SpaceProject
             astroScan.Initialize();
             missions.Add(astroScan);
 
-            // Mid Mission Rebel
-            midMissionRebel = new MidMissionRebel(game, "SX_MidMission_Rebel", null);
-            midMissionRebel.Initialize();
-            missions.Add(midMissionRebel);
-
             // Jakobs first test mission
             deathByMeteor = new DeathByMeteorMission(game, "SX_JakobTest1", null);
             deathByMeteor.Initialize();
@@ -124,27 +117,26 @@ namespace SpaceProject
 
             #endregion
 
-            #region Sector Y
+            #region Old Missions
+            // Final Mission
+            //finalMission = new FinalMission(game, "SZ_FinalMission", null);
+            //finalMission.Initialize();
+            //missions.Add(finalMission);
 
             //Main1
-            mainMission1 = new MainMissionOne(game, "SY_Main1", null);
-            mainMission1.Initialize();
-            missions.Add(mainMission1);
+            //mainMission1 = new MainMissionOne(game, "SY_Main1", null);
+            //mainMission1.Initialize();
+            //missions.Add(mainMission1);
 
             // MidMission Alliance
-            midMissionAlliance = new MidMissionAlliance(game, "SY_MidMission_Alliance", missionObjectSpriteSheet);
-            midMissionAlliance.Initialize();
-            missions.Add(midMissionAlliance);
-            
-            #endregion
+            //midMissionAlliance = new MidMissionAlliance(game, "SY_MidMission_Alliance", missionObjectSpriteSheet);
+            //midMissionAlliance.Initialize();
+            //missions.Add(midMissionAlliance);
 
-            #region Sector Z
-
-            // Final Mission
-            finalMission = new FinalMission(game, "SZ_FinalMission", null);
-            finalMission.Initialize();
-            missions.Add(finalMission);
-
+            // Mid Mission Rebel
+            //midMissionRebel = new MidMissionRebel(game, "SX_MidMission_Rebel", null);
+            //midMissionRebel.Initialize();
+            //missions.Add(midMissionRebel);
             #endregion
 
             RefreshLists();

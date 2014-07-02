@@ -10,21 +10,14 @@ namespace SpaceProject
         public AstroScan(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
-            EventArray = new string[1, 1];
-
-            EventArray[0, 0] = configFile.GetPropertyAsString(section, "EventText1", "");   //index 0,0
-
-            RewardItems.Add(new DrillBeamWeapon(Game));
-
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText1", ""));
-            ObjectiveDescriptions.Add(configFile.GetPropertyAsString(section, "ObjectiveText2", ""));
-
             RestartAfterFail();
         }
 
         public override void Initialize()
         {
             base.Initialize();
+
+            RewardItems.Add(new DrillBeamWeapon(Game));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.getPlanet("Lavis")));
