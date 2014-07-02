@@ -89,8 +89,8 @@ namespace SpaceProject
                 new Vector2(xOrigin + xSpacing * 2, yOrigin + ySpacing), inventoryCoord));
 
             Coordinate back2Coord = new Coordinate(3, 1);
-            displayList.Add(back = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(225, 15, 40, 40)),
-                spriteSheet.GetSubSprite(new Rectangle(305, 15, 40, 40)),
+            displayList.Add(back = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(145, 95, 40, 40)),
+                spriteSheet.GetSubSprite(new Rectangle(145, 135, 40, 40)),
                 new Vector2(xOrigin + xSpacing * 3, yOrigin + ySpacing), back2Coord));
 
             CursorLevel2 = new Cursor(Game, spriteSheet);
@@ -252,6 +252,12 @@ namespace SpaceProject
                 if (layer >= 2)
                     InventoryInformation.DisplayInventoryInfo(spriteBatch);
             }
+
+            if (back.isActive)
+            {
+                ShipManagerText.DisplayBackInfo(spriteBatch);
+            }
+
             #endregion
 
             CursorLevel2.Draw(spriteBatch);

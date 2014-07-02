@@ -60,16 +60,6 @@ namespace SpaceProject
 
         public void DisplayGeneralInfo(SpriteBatch spriteBatch)
         {
-            //if (ShipInventoryManager.InventoryWeight < ShipInventoryManager.MaxWeight)
-            //    spriteBatch.DrawString(FontManager.GetFontStatic(16), "Cargo weight: " + ShipInventoryManager.InventoryWeight.ToString() + " / " + ShipInventoryManager.MaxWeight.ToString()
-            //        + " kg", new Vector2(Game.Resolution.X / 2 + 20, Game.Resolution.Y * 3 / 4 + 30) + FontManager.FontOffsetStatic, FontManager.FontColorStatic);
-            //else if (ShipInventoryManager.InventoryWeight < ShipInventoryManager.MaxWeight * 1.5)
-            //    spriteBatch.DrawString(FontManager.GetFontStatic(16), "Cargo weight: " + ShipInventoryManager.InventoryWeight.ToString() + " / " + ShipInventoryManager.MaxWeight.ToString()
-            //        + " kg", new Vector2(Game.Resolution.X / 2 + 20, Game.Resolution.Y * 3 / 4 + 30) + FontManager.FontOffsetStatic, Color.Orange);
-            //else
-            //    spriteBatch.DrawString(FontManager.GetFontStatic(16), "Cargo weight: " + ShipInventoryManager.InventoryWeight.ToString() + " / " + ShipInventoryManager.MaxWeight.ToString()
-            //        + " kg", new Vector2(Game.Resolution.X / 2 + 20, Game.Resolution.Y * 3 / 4 + 30) + FontManager.FontOffsetStatic, Color.Red);
-
             //Fuel
             string tempString = "Fuel: " + Math.Round(StatsManager.Fuel, 0) + " / " + StatsManager.MaxFuel + " l";
             Color tempColor;
@@ -192,6 +182,12 @@ namespace SpaceProject
                 }
             }
 
+        }
+
+        public static void DisplayBackInfo(SpriteBatch spriteBatch)
+        {
+            String titleString = "Leave inventory";
+            spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), titleString, topDisplayPos + FontManager.FontOffsetStatic, FontManager.FontColorStatic, 0, FontManager.GetFontStatic(16).MeasureString(titleString) / 2, 1.0f, SpriteEffects.None, 0.5f);
         }
 
         private void DisplayHelpText(SpriteBatch spriteBatch)
