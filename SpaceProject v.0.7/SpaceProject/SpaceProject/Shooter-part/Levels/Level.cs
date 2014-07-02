@@ -98,13 +98,22 @@ namespace SpaceProject
             this.Game = Game;
             border = new Sprite(Game.Content.Load<Texture2D>("Vertical-Sprites/BorderSprite"), new Rectangle(5, 5, 1, 1));
             this.spriteSheet = spriteSheet;
-            //this.player = player;
+            this.player = player;
             random = new Random();
             customStartTime = -1;
             this.missionType = missionType;
 
             levelObjective = LevelObjective.Finish;
             winOnFinish = true;
+        }
+
+        public void finishLevel_DEVELOPONLY()
+        {
+            if (StatsManager.gameMode != GameMode.develop)
+                throw new ArgumentException("This function should ONLY be called for debug purposes // Jakob");
+
+            levelObjective = LevelObjective.KillNumber;
+            killCountForVictory = 0;
         }
 
         public bool IsMapCompleted
@@ -200,7 +209,7 @@ namespace SpaceProject
                 playTime = customStartTime;
                 isCustomStartSet = true;
             }
-            //spawnController = new SpawnController(Game, spriteSheet, player);
+
             backgroundManager = new BackgroundManager(Game, player, this);
             backgroundManager.Initialize(BackgroundType.deadSpace);
 
@@ -229,6 +238,7 @@ namespace SpaceProject
         {
             player = new PlayerVerticalShooter(Game, spriteSheet);
             player.Initialize();
+            player.SetLevelWidth(LevelWidth);
             Game.stateManager.shooterState.gameObjects.Add(player);
         }
 

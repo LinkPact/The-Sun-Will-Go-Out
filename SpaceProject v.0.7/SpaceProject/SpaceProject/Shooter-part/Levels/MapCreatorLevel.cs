@@ -50,6 +50,7 @@ namespace SpaceProject
                 CustomStartSetup();
 
             CalculateLevelEnemyCount();
+            player.SetLevelWidth(LevelWidth);
         }
 
         //Creates level from information contained in the LevelData file,

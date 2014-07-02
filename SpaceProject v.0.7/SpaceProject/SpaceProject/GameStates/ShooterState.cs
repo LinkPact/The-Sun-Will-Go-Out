@@ -128,10 +128,7 @@ namespace SpaceProject
                 gameObjects.Add(player);
             
             currentLevel.Initialize();
-            player.SetLevelWidth(currentLevel.LevelWidth);
-
             MusicSelection();
-
             base.OnEnter();
         }
 
@@ -256,8 +253,16 @@ namespace SpaceProject
             //if (ControlManager.CheckKeypress(Keys.F1))
             //    AlliedShip.ShowSightRange = !AlliedShip.ShowSightRange;
 
-            //if (ControlManager.CheckKeyHold(Keys.Space) && ControlManager.CheckKeyHold(Keys.M))
-            //    Game.stateManager.ChangeState("MapCreatorState");
+            if (StatsManager.gameMode == GameMode.develop)
+                DevelopCommands();
+        }
+
+        private void DevelopCommands()
+        { 
+            if (ControlManager.CheckKeypress(Keys.F))
+            {
+                currentLevel.finishLevel_DEVELOPONLY();
+            }
         }
 
         private void HandleGameObjects(GameTime gameTime)
