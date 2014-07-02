@@ -27,16 +27,14 @@ namespace SpaceProject
 
         private void ShopSetup()
         {
-            shopFilling = ShopFilling.filled;
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.DurableShield, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.HomingMissile, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.MultipleShot, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.RegularShield, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.PlasmaShield, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.FragmentMissile, ShipPartAvailability.common, ItemVariety.random));
 
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.DurableShield, ShipPartAvailability.common, ItemVariety.random));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.HomingMissile, ShipPartAvailability.common, ItemVariety.random));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.MultipleShot, ShipPartAvailability.common, ItemVariety.random));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.RegularShield, ShipPartAvailability.common, ItemVariety.random));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.PlasmaShield, ShipPartAvailability.common, ItemVariety.random));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.FragmentMissile, ShipPartAvailability.common, ItemVariety.random));
-
-            InventoryItemSetup(shopFilling);
+            SetShopFilling(ShopFilling.filled);
         }
 
         public override void Update(GameTime gameTime)

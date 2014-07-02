@@ -35,15 +35,12 @@ namespace SpaceProject
 
         private void ShopSetup()
         {
-            shopFilling = ShopFilling.regular;
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.PlasmaEnergyCell, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.RegularBomb, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.WaveBeam, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.MultipleShot, ShipPartAvailability.common, ItemVariety.random));
 
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.PlasmaEnergyCell, ShipPartAvailability.common, ItemVariety.random));
-            //shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.RegularPlating, ShipPartAvailability.common, ItemVariety.random));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.RegularBomb, ShipPartAvailability.common, ItemVariety.random));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.WaveBeam, ShipPartAvailability.common, ItemVariety.random));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.MultipleShot, ShipPartAvailability.common, ItemVariety.random));
-
-            InventoryItemSetup(shopFilling);
+            SetShopFilling(ShopFilling.regular);
         }
 
         public override void Update(GameTime gameTime)

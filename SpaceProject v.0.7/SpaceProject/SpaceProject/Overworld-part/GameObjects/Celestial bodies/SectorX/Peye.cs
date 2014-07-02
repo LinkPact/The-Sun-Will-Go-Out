@@ -30,15 +30,13 @@ namespace SpaceProject
 
         private void ShopSetup()
         {
-            shopFilling = ShopFilling.filled;
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.AdvancedLaser, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.ProximityLaser, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.FragmentMissile, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.Turret, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.MineLayer, ShipPartAvailability.common, ItemVariety.high));
 
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.AdvancedLaser, ShipPartAvailability.common, ItemVariety.random));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.ProximityLaser, ShipPartAvailability.common, ItemVariety.random));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.FragmentMissile, ShipPartAvailability.common, ItemVariety.random));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.Turret, ShipPartAvailability.common, ItemVariety.random));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.MineLayer, ShipPartAvailability.common, ItemVariety.high));
-
-            InventoryItemSetup(shopFilling);
+            SetShopFilling(ShopFilling.filled);
         }
 
         public override void Update(GameTime gameTime)

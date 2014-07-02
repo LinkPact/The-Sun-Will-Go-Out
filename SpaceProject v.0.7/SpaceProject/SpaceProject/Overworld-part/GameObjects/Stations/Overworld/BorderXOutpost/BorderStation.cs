@@ -28,17 +28,14 @@ namespace SpaceProject
 
         private void ShopSetup()
         {
-            //shopFilling = ShopFilling.sparse;
-            shopFilling = ShopFilling.filled;
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.BasicLaser, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.DualLaser, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.PunyTurret, ShipPartAvailability.common, ItemVariety.random));
 
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.BasicLaser, ShipPartAvailability.common, ItemVariety.random));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.DualLaser, ShipPartAvailability.common, ItemVariety.random));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.PunyTurret, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.LightPlating, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.HeavyPlating, ShipPartAvailability.common, ItemVariety.random));
 
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.LightPlating, ShipPartAvailability.common, ItemVariety.random));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.HeavyPlating, ShipPartAvailability.common, ItemVariety.random));
-
-            InventoryItemSetup(shopFilling);
+            SetShopFilling(ShopFilling.sparse);
         }
 
         public override void Update(GameTime gameTime)

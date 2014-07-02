@@ -66,9 +66,9 @@ namespace SpaceProject
             scale = 1.0f;
             color = Color.White;
 
-            shopInventory = new List<Item>();
-            onEnterShopInventory = new List<Item>();
-            itemPool = new List<Item>();
+            //shopInventory = new List<Item>();
+            //onEnterShopInventory = new List<Item>();
+            //itemPool = new List<Item>();
 
             base.Initialize();
         }

@@ -313,6 +313,8 @@
     <Compile Include="Overworld-part\GameObjects\Ships\OverworldShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\RebelShip.cs" />
     <Compile Include="Overworld-part\GameObjects\ImmobileSpaceObject.cs" />
+    <Compile Include="Overworld-part\GameObjects\Shop.cs" />
+    <Compile Include="Overworld-part\GameObjects\ShopInventoryEntry.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\AbandonedStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\BorderXOutpost\BorderStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\SectorX\FotrunStation2.cs" />

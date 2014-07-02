@@ -28,15 +28,13 @@ namespace SpaceProject
 
         private void ShopSetup()
         {
-            shopFilling = ShopFilling.filled;
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.DualLaser, ShipPartAvailability.ubiquitous, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.SpreadBullet, ShipPartAvailability.common, ItemVariety.random));
 
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.DualLaser, ShipPartAvailability.ubiquitous, ItemVariety.random));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.SpreadBullet, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.RegularEnergyCell, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.RegularShield, ShipPartAvailability.common, ItemVariety.random));
 
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.RegularEnergyCell, ShipPartAvailability.common, ItemVariety.random));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.RegularShield, ShipPartAvailability.common, ItemVariety.random));
-
-            InventoryItemSetup(shopFilling);
+            SetShopFilling(ShopFilling.filled);
         }
     }
 }

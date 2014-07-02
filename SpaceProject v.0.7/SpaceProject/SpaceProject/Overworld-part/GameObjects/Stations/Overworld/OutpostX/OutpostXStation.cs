@@ -29,15 +29,13 @@ namespace SpaceProject
 
         private void ShopSetup()
         {
-            shopFilling = ShopFilling.filled;
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.ShieldBoostEnergyCell, ShipPartAvailability.common, ItemVariety.regular));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.WeaponBoostEnergyCell, ShipPartAvailability.common, ItemVariety.regular));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.CollisionShield, ShipPartAvailability.common, ItemVariety.regular));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.BulletShield, ShipPartAvailability.common, ItemVariety.regular));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.Beam, ShipPartAvailability.common, ItemVariety.regular));
 
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.ShieldBoostEnergyCell, ShipPartAvailability.common, ItemVariety.regular));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.WeaponBoostEnergyCell, ShipPartAvailability.common, ItemVariety.regular));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.CollisionShield, ShipPartAvailability.common, ItemVariety.regular));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.BulletShield, ShipPartAvailability.common, ItemVariety.regular));
-            shopInventoryEntries.Add(new ShopInventoryEntry(ShipPartType.Beam, ShipPartAvailability.common, ItemVariety.regular));
-
-            InventoryItemSetup(shopFilling);
+            SetShopFilling(ShopFilling.filled);
         }
 
         public override void Update(GameTime gameTime)

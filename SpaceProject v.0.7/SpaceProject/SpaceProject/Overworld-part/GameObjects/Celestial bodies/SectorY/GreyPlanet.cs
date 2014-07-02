@@ -25,10 +25,10 @@ namespace SpaceProject
 
             LoadPlanetData(PlanetCodeName);
             
-            shopInventory.Add(new CopperResource(this.Game, 500));
-            shopInventory.Add(new GoldResource(this.Game, 300));
-            shopInventory.Add(new TitaniumResource(this.Game, 100));
-            shopInventory.Add(new FineWhiskey(this.Game, 10));
+            //shopInventory.Add(new CopperResource(this.Game, 500));
+            //shopInventory.Add(new GoldResource(this.Game, 300));
+            //shopInventory.Add(new TitaniumResource(this.Game, 100));
+            //shopInventory.Add(new FineWhiskey(this.Game, 10));
         }
 
         public override void Update(GameTime gameTime)

@@ -32,20 +32,12 @@ namespace SpaceProject
                 {
                     foreach (GameObjectOverworld obj in objects)
                     {
-                        if (obj is Station)
+                        if (obj is ImmobileSpaceObject)
                         {
-                            Station station = (Station)obj;
-                            
-                            if (station.ShopFilling != ShopFilling.none)
-                                station.UpdateShopInventory();
-                        }
-
-                        else if (obj is Planet)
-                        {
-                            Planet planet = (Planet)obj;
-
-                            if (planet.ShopFilling != ShopFilling.none)
-                                planet.UpdateShopInventory();
+                            ImmobileSpaceObject iso = (ImmobileSpaceObject)obj;
+                        
+                            if (iso.ShopFilling != ShopFilling.none)
+                                iso.UpdateShopInventory();
                         }
                     }
                 }

@@ -152,7 +152,7 @@ namespace SpaceProject
             if (gameObjects.Contains(gameObject))
                 garbageGameObjects.Add(gameObject);
         }
-        public ICollection<GameObjectOverworld> GetGameObjects()
+        public List<GameObjectOverworld> GetGameObjects()
         {
             return gameObjects;
         }

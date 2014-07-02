@@ -329,6 +329,11 @@ namespace SpaceProject
                 Game.stateManager.ChangeState("HelpScreenState");
 
             }
+
+            if (StatsManager.gameMode == GameMode.develop && ControlManager.CheckKeypress(Keys.U))
+            {
+                DevelopCommands();
+            }
         }
 
         private void InputhandlingDebug()
@@ -373,11 +378,12 @@ namespace SpaceProject
                 Game.stateManager.shooterState.BeginLevel("EscortLevel");
             }
 
-            //if (ControlManager.CheckKeypress(Keys.B))
-            //{
-            //    Game.stateManager.ChangeState("BaseManagerState");
-            //    Game.stateManager.shooterState.Initialize();
-            //}
+        }
+
+        private void DevelopCommands()
+        {
+            Game.messageBox.DisplayMessage("Gameshops updated");
+            ShopManager.ShopUpdateTime = 0;
         }
 
         private void DetermineCurrentRegion()

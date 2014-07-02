@@ -109,8 +109,6 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            random = new Random();
-
             resourceTypes = new List<string>();
             resourceCount = new List<float>();
 
@@ -119,10 +117,6 @@ namespace SpaceProject
             speed = 0;
             scale = 1.0f;
             color = Color.White;
-
-            shopInventory = new List<Item>();
-            onEnterShopInventory = new List<Item>();
-            itemPool = new List<Item>();
 
             base.Initialize();
         }
