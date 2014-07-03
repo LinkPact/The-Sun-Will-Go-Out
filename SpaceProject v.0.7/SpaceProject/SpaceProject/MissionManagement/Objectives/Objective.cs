@@ -95,7 +95,7 @@ namespace SpaceProject
                 }
                 else if (eventTextCanvas.Equals(EventTextCanvas.MessageBox))
                 {
-                    game.messageBox.DisplayMessage(objectiveCompletedEventText);
+                    game.messageBox.DisplayMessage(objectiveCompletedEventText, 200);
                 }
             }
         }

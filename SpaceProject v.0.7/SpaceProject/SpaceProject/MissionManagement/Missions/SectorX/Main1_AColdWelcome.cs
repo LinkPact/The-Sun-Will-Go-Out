@@ -27,6 +27,49 @@ namespace SpaceProject
 
             battlefield = new Battlefield(Game, spriteSheet);
             battlefield.Initialize();
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], battlefield,
+                new EventTextCapsule(new List<String> { "Avoid the astroids and collect resources." },
+                null, EventTextCanvas.MessageBox)));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1], battlefield,
+                new EventTextCapsule(new List<String> { EventArray[3, 0] }, null, EventTextCanvas.MessageBox),
+                delegate
+                {
+                    missionHelper.StartLevel("FirstMissionLevel");
+                },
+                delegate
+                {
+                    if (GameStateManager.currentState.Equals("ShooterState") &&
+                        Game.stateManager.shooterState.CurrentLevel.Name.Equals("FirstMissionLevel"))
+                    {
+                        if (Game.stateManager.shooterState.CurrentLevel.IsGameOver)
+                        {
+                            died = true;
+                            ((FirstMissionLevel)Game.stateManager.shooterState.GetLevel("FirstMissionLevel")).SuppliesCount = 0;
+                        }
+                    }
+
+                    if (died && GameStateManager.currentState.Equals("OverworldState"))
+                    {
+                        Game.messageBox.DisplayMessage("Fei Yan: Too bad. Try again! Return to Border Station if you need to repair your ship.");
+                        died = false;
+                        ObjectiveIndex = 0;
+                    }
+                },
+                new Func<Boolean>(delegate()
+                {
+                    return (missionHelper.IsLevelCompleted("FirstMissionLevel")
+                        && GameStateManager.currentState.Equals("OverworldState"));
+                }),
+                new Func<Boolean>(delegate()
+                {
+                    return false;
+                })));
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2],
+                Game.stateManager.overworldState.getStation("Border Station"), new EventTextCapsule(
+                null, null, EventTextCanvas.BaseState)));
         }
 
         public override void StartMission()
@@ -59,76 +102,19 @@ namespace SpaceProject
         {
             base.MissionLogic();
 
-            if (progress == 0 && GameStateManager.currentState.Equals("StationState") &&
-                missionHelper.IsTextCleared())
-            {
-                progress = 1;
-            }
-            
-            if (progress == 1 && GameStateManager.currentState.Equals("OverworldState"))
-            {
-                CurrentObjectiveDescription = ObjectiveDescriptions[1];
-                progress = 2;
-                objectiveDestination = battlefield;
-            }
-            
-            
-            if (progress == 2 && GameStateManager.currentState.Equals("OverworldState") &&
-                CollisionDetection.IsPointInsideRectangle(Game.player.position, battlefield.Bounds) &&
-                ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))))
-            {
-                Game.stateManager.shooterState.BeginLevel("FirstMissionLevel");
-                Game.messageBox.DisplayMessage("Avoid the astroids and collect resources.");
-            }
-            
-            if (GameStateManager.currentState.Equals("ShooterState") &&
-                Game.stateManager.shooterState.CurrentLevel.Name.Equals("FirstMissionLevel"))
-            {
-                if (Game.stateManager.shooterState.CurrentLevel.IsGameOver)
-                {
-                    died = true;
-                    tempTimer = 5;
-                    ((FirstMissionLevel)Game.stateManager.shooterState.GetLevel("FirstMissionLevel")).SuppliesCount = 0;
-                }
-            }
-            
-            if (died && GameStateManager.currentState.Equals("OverworldState"))
-            {
-                tempTimer--;
-            
-                if (tempTimer < 0)
-                {
-                    Game.messageBox.DisplayMessage("Fei Yan: Too bad. Try again! Return to Border Station if you need to repair your ship.");
-                    died = false;
-                    ObjectiveIndex = 2;
-                    progress = 2;
-                }
-            }
-            
-            if (progress == 2 &&
-                missionHelper.IsLevelCompleted("FirstMissionLevel"))
-            {
-                died = false;
-            
-                ObjectiveIndex = 3;
-                progress = 3;
-                Game.messageBox.DisplayMessage(EventArray[3, 0]);
-                objectiveDestination = Game.stateManager.overworldState.getStation("Border Station");
-            }
-            
-            if (progress == 3 
-                && missionHelper.IsPlayerOnStation("Border Station"))
-            {
-                if (((FirstMissionLevel)Game.stateManager.shooterState.GetLevel("FirstMissionLevel")).SuppliesCount >= 6)
-                {
-                    TitaniumResource titanium = new TitaniumResource(Game, 100);
-                    RewardItems.Add(titanium);
-            
-                    missionHelper.ShowEvent(EventArray[4, 0]);
-                }
-            
-                MissionManager.MarkMissionAsCompleted(this.MissionName);
-            }
+            //if (progress == 3 
+            //    && missionHelper.IsPlayerOnStation("Border Station"))
+            //{
+            //    if (((FirstMissionLevel)Game.stateManager.shooterState.GetLevel("FirstMissionLevel")).SuppliesCount >= 6)
+            //    {
+            //        TitaniumResource titanium = new TitaniumResource(Game, 100);
+            //        RewardItems.Add(titanium);
+            //
+            //        missionHelper.ShowEvent(EventArray[4, 0]);
+            //    }
+            //
+            //    MissionManager.MarkMissionAsCompleted(this.MissionName);
+            //}
         }
 
         public override int GetProgress()

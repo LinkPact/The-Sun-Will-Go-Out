@@ -149,7 +149,7 @@ namespace SpaceProject
         
         public virtual void Update(GameTime gameTime)
         {
-            soundPan = (_position.X - Game.stateManager.shooterState.PlayerPosition.X) 
+            soundPan = (_position.X - Game.stateManager.shooterState.CurrentLevel.PlayerPosition.X) 
                 / Game.stateManager.shooterState.CurrentLevel.LevelWidth;
 
             if (Enable)

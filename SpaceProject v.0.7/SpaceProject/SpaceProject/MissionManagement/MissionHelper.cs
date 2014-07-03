@@ -190,7 +190,7 @@ namespace SpaceProject
 
         public bool AllObjectivesCompleted()
         {
-            for (int i = 0; i < mission.Objectives.Count; i++)
+            for (int i = mission.ObjectiveIndex; i < mission.Objectives.Count; i++)
             {
                 if (!mission.Objectives[i].Completed())
                 {

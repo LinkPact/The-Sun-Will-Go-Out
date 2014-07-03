@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
@@ -14,15 +15,12 @@ namespace SpaceProject
         { }
 
         public ArriveAtLocationObjective(Game1 game, Mission mission, String description,
-            GameObjectOverworld destination, EventTextCapsule textCapsule) :
+            GameObjectOverworld destination, EventTextCapsule eventTextCapsule) :
             base(game, mission, description, destination)
         {
-            foreach (String s in textCapsule.CompletedText)
-            {
-                this.objectiveCompletedEventText.Add(s);
-            }
-
-            this.eventTextCanvas = textCapsule.EventTextCanvas;
+            objectiveCompletedEventText = eventTextCapsule.CompletedText;
+            eventTextCanvas = eventTextCapsule.EventTextCanvas;
+            objectiveFailedEventText = eventTextCapsule.FailedText;
         }
 
         private void Setup()
@@ -62,6 +60,11 @@ namespace SpaceProject
             else if (Destination is Station)
             {
                 return mission.MissionHelper.IsPlayerOnStation(Destination.name);
+            }
+            else if (Destination is Battlefield)
+            {
+                return (CollisionDetection.IsRectInRect(game.player.Bounds, Destination.Bounds) &&
+                    (ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)));
             }
             else
             {

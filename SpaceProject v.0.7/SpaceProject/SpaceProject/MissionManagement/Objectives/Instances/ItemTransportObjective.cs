@@ -23,8 +23,9 @@ namespace SpaceProject
         {
             Setup(item);
 
-            this.objectiveCompletedEventText = eventTextCapsule.CompletedText;
-            this.eventTextCanvas = eventTextCapsule.EventTextCanvas;
+            objectiveCompletedEventText = eventTextCapsule.CompletedText;
+            eventTextCanvas = eventTextCapsule.EventTextCanvas;
+            objectiveFailedEventText = eventTextCapsule.FailedText;
         }
 
         private void Setup(Item item)

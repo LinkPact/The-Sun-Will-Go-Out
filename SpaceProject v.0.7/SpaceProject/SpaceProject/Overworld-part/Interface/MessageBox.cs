@@ -21,6 +21,8 @@ namespace SpaceProject
 
     public class MessageBox
     {
+        private List<String> textStorage;
+        private int popupDelay;
         #region variables
 
         private Game1 Game;
@@ -112,6 +114,12 @@ namespace SpaceProject
                 textBuffer.Add(str);
 
             tempTimer = 5;
+        }
+
+        public void DisplayMessage(List<string> txtList, int delay)
+        {
+            textStorage = txtList;
+            popupDelay = delay;
         }
         //Display a map of the system in a pop-up
         public void DisplayMap(List<GameObjectOverworld> objectsInOverworld)
@@ -205,6 +213,23 @@ namespace SpaceProject
         public void Update(GameTime gameTime)
         {
             confirmString = "Press 'Enter' to continue...";
+
+            if (popupDelay > 0)
+            {
+                popupDelay -= gameTime.ElapsedGameTime.Milliseconds;
+
+                if (popupDelay <= 1)
+                {
+                    messageState = MessageState.Message;
+
+                    Game1.Paused = true;
+
+                    foreach (string str in textStorage)
+                        textBuffer.Add(str);
+
+                    tempTimer = 5;
+                }
+            }
 
             if (messageState == MessageState.Inventory)
                 InventoryCursorControls(gameTime);

@@ -116,6 +116,16 @@ namespace SpaceProject
                 if (instance != null)
                 {
                     instance.Volume = volume;
+
+                    if (pan > 1)
+                    {
+                        pan = 1;
+                    }
+                    else if (pan < -1)
+                    {
+                        pan = -1;
+                    }
+
                     instance.Pan = pan;
                     instance.Pitch = (float)StaticFunctions.GetRandomValue() * 0.5f;
                     instance.Play();
@@ -136,6 +146,16 @@ namespace SpaceProject
                 if (instance != null)
                 {
                     instance.Volume = volume;
+
+                    if (pan > 1)
+                    {
+                        pan = 1;
+                    }
+                    else if (pan < -1)
+                    {
+                        pan = -1;
+                    }
+
                     instance.Pan = pan;
                     instance.Pitch = pitch;
                     instance.Play();

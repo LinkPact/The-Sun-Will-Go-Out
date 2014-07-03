@@ -37,8 +37,6 @@ namespace SpaceProject
         private float windowHeightOffset = 0;
         public float WindowHeightOffset { get { return windowHeightOffset; } private set { ;} }
 
-        public Vector2 PlayerPosition { get { return player.Position; } private set { ;} }
-
         #endregion
 
         public ShooterState(Game1 Game, String name):

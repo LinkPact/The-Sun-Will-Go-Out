@@ -83,6 +83,8 @@ namespace SpaceProject
 
         bool eventsOver;
 
+        public Vector2 PlayerPosition { get { return player.Position; } }
+
         #region runtimeVariables
         public int enemiesKilled;
         public int enemiesLetThrough;

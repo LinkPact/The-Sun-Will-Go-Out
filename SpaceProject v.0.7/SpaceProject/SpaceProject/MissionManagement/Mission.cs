@@ -350,19 +350,24 @@ namespace SpaceProject
             if (objectives.Count > 0)
             {
                 int previousObjectiveIndex = objectives.IndexOf(currentObjective);
-                currentObjective = objectives[objectiveIndex];
-
-                if (previousObjectiveIndex != objectives.IndexOf(currentObjective))
-                {
-                    currentObjective.OnActivate();
-                    currentObjectiveDescription = currentObjective.Description;
-                }
-
-                currentObjective.Update();
 
                 if (missionHelper.AllObjectivesCompleted())
                 {
                     MissionManager.MarkMissionAsCompleted(this.MissionName);
+                }
+
+                else
+                {
+                    currentObjective = objectives[objectiveIndex];
+                    currentObjectiveDescription = currentObjective.Description;
+
+                    if (previousObjectiveIndex != objectives.IndexOf(currentObjective))
+                    {
+                        currentObjective.OnActivate();
+                        currentObjectiveDescription = currentObjective.Description;
+                    }
+
+                    currentObjective.Update();
                 }
             }
         }

@@ -21,17 +21,14 @@ namespace SpaceProject
 
         public ShootingLevelObjective(Game1 game, Mission mission, String description,
             GameObjectOverworld destination, String level, LevelStartCondition levelStartCondition,
-            EventTextCapsule textCapsule) :
+            EventTextCapsule eventTextCapsule) :
             base(game, mission, description, destination)
         {
             Setup(level, levelStartCondition);
 
-            this.eventTextCanvas = textCapsule.EventTextCanvas;
-
-            foreach (String s in textCapsule.CompletedText)
-            {
-                this.objectiveCompletedEventText.Add(s);
-            }
+            eventTextCanvas = eventTextCapsule.EventTextCanvas;
+            objectiveCompletedEventText = eventTextCapsule.CompletedText;
+            objectiveFailedEventText = eventTextCapsule.FailedText;
         }
 
         private void Setup(String level, LevelStartCondition levelStartCondition)
