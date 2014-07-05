@@ -14,18 +14,18 @@ namespace SpaceProject
         private Func<Boolean> failedAction;
 
         public CustomObjective(Game1 game, Mission mission, String description,
-            GameObjectOverworld destination, EventTextCapsule eventTextCapsule, System.Action onActivate,
-            System.Action update, Func<Boolean> completed, Func<Boolean> failed) :
+            GameObjectOverworld destination, EventTextCapsule eventTextCapsule, System.Action activateLogic,
+            System.Action updateLogic, Func<Boolean> completedConditions, Func<Boolean> failedCondition) :
             base(game, mission, description, destination)
         {
             objectiveCompletedEventText = eventTextCapsule.CompletedText;
             eventTextCanvas = eventTextCapsule.EventTextCanvas;
             objectiveFailedEventText = eventTextCapsule.FailedText;
 
-            this.activateAction = onActivate;
-            this.updateAction = update;
-            this.completedAction = completed;
-            this.failedAction = failed;
+            this.activateAction = activateLogic;
+            this.updateAction = updateLogic;
+            this.completedAction = completedConditions;
+            this.failedAction = failedCondition;
         }
 
         private void Setup()

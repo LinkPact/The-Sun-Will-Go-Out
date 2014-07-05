@@ -511,47 +511,50 @@ namespace SpaceProject
 
         public void DisplayMissionCompletedText()
         {
-            Game.SaveOnEnterOverworld = true;
-
-            BaseStateManager.TextBoxes.Clear();
-
-            List<Mission> completedMissions = MissionManager.ReturnCompletedMissions(BaseState.GetBase().name);
-
-            List<Item> rewardItems = completedMissions[0].RewardItems;
-
-            if (rewardItems.Count > 0)
+            if (MissionManager.MissionEventBuffer.Count <= 0)
             {
-                string rewardText = "";
+                Game.SaveOnEnterOverworld = true;
 
-                foreach (Item reward in rewardItems)
+                BaseStateManager.TextBoxes.Clear();
+
+                List<Mission> completedMissions = MissionManager.ReturnCompletedMissions(BaseState.GetBase().name);
+
+                List<Item> rewardItems = completedMissions[0].RewardItems;
+
+                if (rewardItems.Count > 0)
                 {
-                    rewardText += "\n" + reward.Name;
+                    string rewardText = "";
+
+                    foreach (Item reward in rewardItems)
+                    {
+                        rewardText += "\n" + reward.Name;
+                    }
+
+                    BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                                                                      BaseStateManager.LowerScreenRectangle,
+                                                                      false,
+                                                                      completedMissions[0].CompletedText +
+                                                                      "\n\n" +
+                                                                      "You reward is: \n" +
+                                                                      completedMissions[0].MoneyReward + " Rupees" +
+                                                                      rewardText));
                 }
 
-                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                  BaseStateManager.LowerScreenRectangle,
-                                                                  false,
-                                                                  completedMissions[0].CompletedText +
-                                                                  "\n\n" +
-                                                                  "You reward is: \n" +
-                                                                  completedMissions[0].MoneyReward + " Rupees" +
-                                                                  rewardText));
+                else
+                {
+                    BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                                                                      BaseStateManager.LowerScreenRectangle,
+                                                                      false,
+                                                                      completedMissions[0].CompletedText +
+                                                                      "\n\n" +
+                                                                      "You reward is: \n" +
+                                                                      completedMissions[0].MoneyReward + " Rupees"));
+                }
+
+                MissionManager.MarkCompletedMissionAsDead(completedMissions[0].MissionName);
+
+                BaseStateManager.ButtonControl = ButtonControl.Confirm;
             }
-
-            else
-            {
-                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                  BaseStateManager.LowerScreenRectangle,
-                                                                  false,
-                                                                  completedMissions[0].CompletedText +
-                                                                  "\n\n" +
-                                                                  "You reward is: \n" +
-                                                                  completedMissions[0].MoneyReward + " Rupees"));
-            }
-
-            MissionManager.MarkCompletedMissionAsDead(completedMissions[0].MissionName);
-
-            BaseStateManager.ButtonControl = ButtonControl.Confirm;
         }
 
         public void DisplayMissionFailedText()
