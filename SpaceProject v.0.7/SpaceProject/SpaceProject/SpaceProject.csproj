@@ -208,7 +208,9 @@
     <Compile Include="MissionManagement\Missions\SectorX\ColonyAid.cs" />
     <Compile Include="MissionManagement\Missions\SectorY\MainMissionOne.cs" />
     <Compile Include="MissionManagement\Missions\SectorX\AstroDodger.cs" />
+    <Compile Include="MissionManagement\Objectives\DataCapsules\EscortDataCapsule.cs" />
     <Compile Include="MissionManagement\Objectives\Instances\ArriveAtLocationObjective.cs" />
+    <Compile Include="MissionManagement\Objectives\Instances\EscortObjective.cs" />
     <Compile Include="MissionManagement\Objectives\Instances\CustomObjective.cs" />
     <Compile Include="MissionManagement\Objectives\Instances\ItemTransportObjective.cs" />
     <Compile Include="MissionManagement\Objectives\Instances\ShootingLevelObjective.cs" />
@@ -306,7 +308,7 @@
     <Compile Include="MapCreator\Mechanics\LevelMechanicsHelpClasses\SquareGrid.cs" />
     <Compile Include="MapCreator\Mechanics\DataClasses\SquareData.cs" />
     <Compile Include="MapCreator\System\WriteSave.cs" />
-    <Compile Include="MissionManagement\Objectives\EventTextCapsule.cs" />
+    <Compile Include="MissionManagement\Objectives\DataCapsules\EventTextCapsule.cs" />
     <Compile Include="Overworld-part\GameObjects\Direction.cs" />
     <Compile Include="Overworld-part\GameObjects\Other\Beacon.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\FreighterShip.cs" />

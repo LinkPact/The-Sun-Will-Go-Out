@@ -109,21 +109,6 @@ namespace SpaceProject
             //{
             //    PirateShip.FollowPlayer = true;
             //}
-            //
-            //// Player talks to freighter to begin escort
-            //if (progress == 2 && GameStateManager.currentState.Equals("OverworldState") &&
-            //    CollisionDetection.IsPointInsideRectangle(Game.player.position, freighter.Bounds) &&
-            //    ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))))
-            //{
-            //    Game.messageBox.DisplayMessage(EventArray[4, 0]);
-            //    rebelShipSpawnerDelay = 1000;
-            //
-            //    freighter.Start();
-            //
-            //    ObjectiveIndex = 2;
-            //    progress = 3;
-            //}
-            //
             //// Escort mission begins
             //if (progress == 3 && GameStateManager.currentState.Equals("OverworldState") &&
             //    numberOfRebelShips > 0)
