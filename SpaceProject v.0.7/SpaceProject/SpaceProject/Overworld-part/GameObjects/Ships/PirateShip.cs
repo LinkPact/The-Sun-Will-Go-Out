@@ -51,7 +51,6 @@ namespace SpaceProject
             destination = new Vector2(position.X + 100, position.Y + 100);
         }
 
-        public void SetPosition(Vector2 pos) { position = pos; }
         public void SetPositionInSector()
         {
             Random r = new Random(DateTime.Now.Millisecond);

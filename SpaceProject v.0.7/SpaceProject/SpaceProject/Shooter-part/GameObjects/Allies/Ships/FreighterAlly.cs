@@ -10,13 +10,15 @@ namespace SpaceProject
     public class FreighterAlly : AlliedShip
     {
         #region Standard values
-        private const float STANDARD_HP = 2000;
-        private const float STANDARD_SIGHTRANGE = 200;
-        private const float STANDARD_SHOOTINGDELAY = 0;
-        private const float STANDARD_MAXSPEED = 0.36f;
-        private const string STANDARD_WEAPON = "none";
-        private const float STANDARD_AVOID_RADIUS = 200;
+        private readonly float STANDARD_HP = 2000;
+        private readonly float STANDARD_SIGHTRANGE = 200;
+        private readonly float STANDARD_SHOOTINGDELAY = 0;
+        private readonly float STANDARD_MAXSPEED = 0.36f;
+        private readonly string STANDARD_WEAPON = "none";
+        private readonly float STANDARD_AVOID_RADIUS = 200;
         #endregion
+
+        private int overworldFreighterHP;
 
         public FreighterAlly(Game1 Game, Sprite SpriteSheet, PlayerVerticalShooter player):
             base(Game,SpriteSheet, player)

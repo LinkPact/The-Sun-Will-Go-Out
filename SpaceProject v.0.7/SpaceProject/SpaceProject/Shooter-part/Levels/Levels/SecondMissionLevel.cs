@@ -52,26 +52,6 @@ namespace SpaceProject
             base.Update(gameTime);
 
             freighterHpBar.Update(gameTime, freighter.HP, freighter.HPmax, new Vector2(10, 30));
-
-            if (player.HP <= 0 || IsGameOver)
-            {
-                freighter.HP = 0;
-            }
-
-            if (ControlManager.CheckKeypress(Microsoft.Xna.Framework.Input.Keys.PageDown))
-            {
-                freighter.HP = 0;
-            }
-        }
-
-        public void SetFreighterHP(float hp)
-        {
-            freighter.HP = hp;
-        }
-
-        public float GetFreighterHP()
-        {
-            return freighter.HP;
         }
 
         public override void Draw(SpriteBatch spriteBatch)

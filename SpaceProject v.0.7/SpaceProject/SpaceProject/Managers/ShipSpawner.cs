@@ -66,7 +66,7 @@ namespace SpaceProject
             RebelShip tmpShip = new RebelShip(game, spriteSheet);
             tmpShip.Initialize();
             tmpShip.SetPosition(pos);
-            tmpShip.SetLevel(levelToStart);
+            tmpShip.Level = levelToStart;
             overworld.AddOverworldObject(tmpShip);
             rebelsInOverworld++;
         }
@@ -76,10 +76,50 @@ namespace SpaceProject
             RebelShip tmpShip = new RebelShip(game, spriteSheet);
             tmpShip.Initialize();
             tmpShip.SetPosition(pos);
-            tmpShip.SetLevel(levelToStart);
+            tmpShip.Level = levelToStart;
             tmpShip.SetTarget(target);
             overworld.AddOverworldObject(tmpShip);
             rebelsInOverworld++;
+        }
+
+        public void AddOverworldShip(OverworldShip ship, Vector2 pos, string levelToStart, GameObjectOverworld target)
+        {
+            ship.SetPosition(pos);
+            ship.Level = levelToStart;
+            ship.SetTarget(target);
+            overworld.AddOverworldObject(ship);
+
+            if (ship is RebelShip)
+            {
+                rebelsInOverworld++;
+            }
+            else if (ship is PirateShip)
+            {
+                piratesInOverworld++;
+            }
+            else if (ship is FreighterShip)
+            {
+                freightersInOverworld++;
+            }
+        }
+
+        public List<OverworldShip> GetOverworldShips(int number, String type)
+        {
+            List<OverworldShip> shipList = new List<OverworldShip>();
+
+            switch (type.ToLower())
+            {
+                case "rebel":
+                    for (int i = 0; i < number; i++)
+                    {
+                        RebelShip tmpShip = new RebelShip(game, spriteSheet);
+                        tmpShip.Initialize();
+                        shipList.Add(tmpShip);
+                    }
+                    break;
+            }
+
+            return shipList;
         }
 
         public void AddPirateToSector()

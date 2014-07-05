@@ -624,7 +624,7 @@ namespace SpaceProject
                     saveData.Add("posy", Convert.ToString(deepSpaceGameObjects[i].position.Y, CultureInfo.InvariantCulture));
                     if (deepSpaceGameObjects[i] is RebelShip)
                     {
-                        saveData.Add("level", ((RebelShip)deepSpaceGameObjects[i]).GetLevel);
+                        saveData.Add("level", ((RebelShip)deepSpaceGameObjects[i]).Level);
                     }
                     if (deepSpaceGameObjects[i] is FreighterShip)
                     {

@@ -9,18 +9,12 @@ namespace SpaceProject
     /// <summary>
     /// 
     /// </summary>
-    class RebelShip : OverworldShip
+    public class RebelShip : OverworldShip
     {
         private Rectangle view;
         private int viewRadius;
         private bool roam;
         public Vector2 destination;
-
-        private GameObjectOverworld target;
-
-        // Used to determine which level starts when player runs into this ship.
-        private string level;
-        public string GetLevel { get { return level; } }
 
         private Sector sector = null;
 
@@ -38,7 +32,7 @@ namespace SpaceProject
             position = new Vector2(0, 0);
             speed = 0.42f;
             roam = true;
-            target = Game.player;
+            //target = Game.player;
 
             centerPoint = new Vector2(sprite.SourceRectangle.Value.Width / 2, sprite.SourceRectangle.Value.Height / 2);
             color = Color.White;
@@ -57,7 +51,6 @@ namespace SpaceProject
             destination = new Vector2(position.X + 100, position.Y + 100);
         }
 
-        public void SetPosition(Vector2 pos) { position = pos; }
         public void SetPositionInSector()
         {
             Random r = new Random(DateTime.Now.Millisecond);
@@ -69,8 +62,6 @@ namespace SpaceProject
         }
         public void SetSector(Sector sec) { sector = sec; }
         public void SetRoamBehaviour(bool newValue) { roam = newValue; }
-        public void SetLevel(string level) { this.level = level; }
-        public void SetTarget(GameObjectOverworld target) { this.target = target; }
         public override void FinalGoodbye()
         {
             IsDead = true;

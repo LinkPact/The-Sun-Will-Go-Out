@@ -56,8 +56,6 @@ namespace SpaceProject
             destinationPlanet = endDestination;
             destination = destinationPlanet.position;
         }
-
-        public void SetPosition(Vector2 pos) { position = pos; }
         public void SetSector(Sector sec) { sector = sec; }
         public void SetEndPlanet(GameObjectOverworld des) 
         { 

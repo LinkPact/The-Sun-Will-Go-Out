@@ -43,6 +43,14 @@ namespace SpaceProject
                 Game.stateManager.overworldState.getPlanet("Highfence"),
                 new EventTextCapsule( new List<String> { EventArray[0, 0], EventArray[1, 0], EventArray[2, 0], EventArray[3, 0] },
                     null, EventTextCanvas.BaseState)));
+
+            objectives.Add(new EscortObjective(Game, this, ObjectiveDescriptions[1], 
+                Game.stateManager.overworldState.getPlanet("Soelara"),
+                new EscortDataCapsule(freighter, new List<String> { EventArray[4, 0] }, 
+                    Game.stateManager.overworldState.GetSectorX.shipSpawner.GetOverworldShips(3, "rebel"), 
+                    new List<String> { "Death to the Alliance!" }, null,
+                    Game.stateManager.overworldState.getPlanet("Highfence").position + new Vector2(-200, 0),
+                    200, 100, 2000, new List<String> { "SecondMissionlvl1", "SecondMissionlvl2", "SecondMissionlvl3" })));
         }
 
         public override void StartMission()
@@ -85,72 +93,7 @@ namespace SpaceProject
         public override void MissionLogic()
         {
             base.MissionLogic();
-
-            // Transfers freigter hp between levels
-            if (progress == 3 && levelProgression == 0 &&
-                GameStateManager.currentState.Equals("ShooterState") &&
-                Game.stateManager.shooterState.CurrentLevel.Name == "SecondMissionlvl1")
-            {
-                ((SecondMissionLevel)Game.stateManager.shooterState.CurrentLevel).SetFreighterHP(freighterHP);
-                levelProgression = 1;
-            }
             
-            if (progress == 3 && GameStateManager.currentState == "ShooterState" &&
-                Game.stateManager.shooterState.GetLevel("SecondMissionlvl1").IsObjectiveCompleted)
-            {
-                freighterHP = ((SecondMissionLevel)Game.stateManager.shooterState.GetLevel("SecondMissionlvl1")).GetFreighterHP();
-            }
-            
-            if (progress == 3 && levelProgression == 1 &&
-                GameStateManager.currentState.Equals("ShooterState") &&
-                Game.stateManager.shooterState.CurrentLevel.Name == "SecondMissionlvl2")
-            {
-                ((SecondMissionLevel)Game.stateManager.shooterState.CurrentLevel).SetFreighterHP(freighterHP);
-                levelProgression = 2;
-            }
-            
-            if (progress == 3 && GameStateManager.currentState == "ShooterState" &&
-                Game.stateManager.shooterState.GetLevel("SecondMissionlvl2").IsObjectiveCompleted)
-            {
-                freighterHP = ((SecondMissionLevel)Game.stateManager.shooterState.GetLevel("SecondMissionlvl2")).GetFreighterHP();
-            }
-            
-            if (progress == 3 && levelProgression == 2 &&
-                GameStateManager.currentState.Equals("ShooterState") &&
-                Game.stateManager.shooterState.CurrentLevel.Name == "SecondMissionlvl3")
-            {
-                ((SecondMissionLevel)Game.stateManager.shooterState.CurrentLevel).SetFreighterHP(freighterHP);
-                levelProgression = 3;
-            }
-            
-            if (progress == 3 && GameStateManager.currentState == "ShooterState" &&
-                Game.stateManager.shooterState.GetLevel("SecondMissionlvl3").IsObjectiveCompleted)
-            {
-                freighterHP = ((SecondMissionLevel)Game.stateManager.shooterState.GetLevel("SecondMissionlvl3")).GetFreighterHP();
-            }
-            
-            //// Freighter is destroyed
-            //if (GameStateManager.currentState.Equals("ShooterState") && 
-            //    ((Game.stateManager.shooterState.CurrentLevel.Name.Equals("SecondMissionlvl1") &&
-            //    ((SecondMissionLevel)Game.stateManager.shooterState.GetLevel("SecondMissionlvl1")).GetFreighterHP() <= 0) || 
-            //    (Game.stateManager.shooterState.CurrentLevel.Name.Equals("SecondMissionlvl2") &&
-            //    ((SecondMissionLevel)Game.stateManager.shooterState.GetLevel("SecondMissionlvl2")).GetFreighterHP() <= 0) ||
-            //    (Game.stateManager.shooterState.CurrentLevel.Name.Equals("SecondMissionlvl3") &&
-            //    ((SecondMissionLevel)Game.stateManager.shooterState.GetLevel("SecondMissionlvl3")).GetFreighterHP() <= 0)))
-            //{
-            //    OnReset();
-            //    Game.messageBox.DisplayMessage("Noooo! The freighter was destroyed. We failed.");
-            //    Game.stateManager.ChangeState("OverworldState");
-            //}
-            //
-            //// Player arrives at Soelara with freighter
-            //if (progress == 3 && freighter.HasArrived)
-            //{
-            //    missionHelper.ShowEvent(EventArray[6, 0]);
-            //    progress = 4;
-            //    Game.stateManager.GotoStationSubScreen("Soelara Station", "Overview");
-            //}
-            //
             //// Player returns to overworld after visiting Soelara Station
             //if (progress == 4 && GameStateManager.currentState.Equals("OverworldState"))
             //{
@@ -172,45 +115,6 @@ namespace SpaceProject
 
         private void Collision()
         {
-            messageTimer--;
-
-            List<GameObjectOverworld> gameObjs = Game.stateManager.overworldState.GetDeepSpaceGameObjects;
-
-            for (int i = 0; i < gameObjs.Count; i++)
-            {
-                if (CollisionDetection.IsRectInRect(freighter.Bounds, gameObjs[i].Bounds))
-                {
-                    if (gameObjs[i] is RebelShip)
-                    {
-                        Game.stateManager.overworldState.RemoveOverworldObject(gameObjs[i]);
-                        Game.messageBox.DisplayMessage("Death to the Alliance!");
-                        Game.stateManager.shooterState.BeginLevel(((RebelShip)gameObjs[i]).GetLevel);
-                    }
-                }
-            }
-
-            if (progress == 3)
-            {
-                if (!CollisionDetection.IsPointInsideCircle(Game.player.position, freighter.position, 600) &&
-                    messageTimer <= 0)
-                {
-                    Game.messageBox.DisplayMessage("\"Don't stray too far from the freighter, get back here!\"");
-                    messageTimer = 200;
-                }
-
-                if (CollisionDetection.IsPointInsideCircle(Game.player.position, freighter.position, 600) &&
-                    messageTimer > 0)
-                {
-                    Game.messageBox.DisplayMessage("\"Good! Now keep the freighter in sight at all times!\"");
-                    messageTimer = 0;
-                }
-            }
-
-            if (messageTimer == 1)
-            {
-                OnReset();
-                Game.messageBox.DisplayMessage("\"What are you doing?! You compromised our entire mission. Get out of my sight, you moron!\"");
-            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)

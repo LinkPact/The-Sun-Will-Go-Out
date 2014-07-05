@@ -16,6 +16,12 @@ namespace SpaceProject
 
         #endregion
 
+        protected GameObjectOverworld target;
+
+        // Used to determine which level starts when player runs into this ship.
+        private string level;
+        public string Level { get { return level; } set { level = value; } }
+
         public OverworldShip(Game1 game, Sprite SpriteSheet) :
             base(game, SpriteSheet)
         { }
@@ -63,6 +69,9 @@ namespace SpaceProject
 
             base.Draw(spriteBatch);
         }
+
+        public void SetPosition(Vector2 pos) { position = pos; }
+        public void SetTarget(GameObjectOverworld target) { this.target = target; }
 
         #region ParticleMethods
 

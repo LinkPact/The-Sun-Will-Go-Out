@@ -704,5 +704,40 @@ namespace SpaceProject
         {
             levelGivenUp = true;
         }
+
+        public void SetFreighterMaxHP(float MaxHP)
+        {
+            foreach (GameObjectVertical obj in Game.stateManager.shooterState.gameObjects)
+            {
+                if (obj is FreighterAlly)
+                {
+                    ((FreighterAlly)obj).HPmax = MaxHP;
+                }
+            }
+        }
+
+        public void SetFreighterHP(float HP)
+        {
+            foreach (GameObjectVertical obj in Game.stateManager.shooterState.gameObjects)
+            {
+                if (obj is FreighterAlly)
+                {
+                    ((FreighterAlly)obj).HP = HP;
+                }
+            }
+        }
+
+        public float GetFreighterHP()
+        {
+            foreach (GameObjectVertical obj in Game.stateManager.shooterState.gameObjects)
+            {
+                if (obj is FreighterAlly)
+                {
+                    return ((FreighterAlly)obj).HP;
+                }
+            }
+
+            return -1;
+        }
     }
 }

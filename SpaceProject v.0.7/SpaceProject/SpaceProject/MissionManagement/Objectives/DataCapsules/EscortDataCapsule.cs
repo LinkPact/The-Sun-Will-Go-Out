@@ -14,6 +14,9 @@ namespace SpaceProject
         private List<String> shipToDefendText;
         public List<String> ShipToDefendText { get { return shipToDefendText; } set { shipToDefendText = value; } }
 
+        private int shipToDefendHP;
+        public int ShipToDefendHP { get { return shipToDefendHP; } set { shipToDefendHP = value; } }
+
         private List<OverworldShip> enemyShips;
         public List<OverworldShip> EnemyShips { get { return enemyShips; } set { enemyShips = value; } }
 
@@ -32,9 +35,12 @@ namespace SpaceProject
         private int enemyAttackFrequency;
         public int EnemyAttackFrequency { get { return enemyAttackFrequency; } set { enemyAttackFrequency = value; } }
 
+        private List<String> levels;
+        public List<String> Levels { get { return levels; } set { levels = value; } }
+
         public EscortDataCapsule(OverworldShip shipToDefend, List<String> shipToDefendText, List<OverworldShip> enemyShips,
             List<String> enemyMessages, List<OverworldShip> allyShips, Vector2 startingPoint,
-            int enemyAttackStartTime, int enemyAttackFrequency)
+            int enemyAttackStartTime, int enemyAttackFrequency, int shipToDefendHP, List<String> levels)
         {
             this.shipToDefend = shipToDefend;
             this.shipToDefendText = shipToDefendText;
@@ -44,6 +50,8 @@ namespace SpaceProject
             this.startingPoint = startingPoint;
             this.enemyAttackStartTime = enemyAttackStartTime;
             this.enemyAttackFrequency = enemyAttackFrequency;
+            this.shipToDefendHP = shipToDefendHP;
+            this.levels = levels;
 
             if (this.enemyShips == null)
             {
@@ -58,6 +66,11 @@ namespace SpaceProject
             if (this.enemyMessages == null)
             {
                 this.enemyMessages = new List<String>();
+            }
+
+            if (this.levels == null)
+            {
+                this.levels = new List<String>();
             }
         }
     }
