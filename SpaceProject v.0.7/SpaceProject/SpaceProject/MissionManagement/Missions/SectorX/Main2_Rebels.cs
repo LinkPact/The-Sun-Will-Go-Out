@@ -85,118 +85,50 @@ namespace SpaceProject
         public override void MissionLogic()
         {
             base.MissionLogic();
-      
-            //// Player returns to overworld after speaking to Kamali
-            //if (progress == 1 && GameStateManager.currentState.Equals("OverworldState"))
-            //{
-            //    Game.stateManager.overworldState.GetSectorX.shipSpawner.AddFreighterToSector(
-            //        freighter, Game.stateManager.overworldState.getPlanet("Highfence").position);
-            //
-            //    freighter.position = Game.stateManager.overworldState.getPlanet("Highfence").position - new Vector2(200, 0);
-            //    
-            //    freighter.Wait();
-            //
-            //    progress = 2;
-            //}
-            //
-            //// Turn on/off pirates following player during escort
-            //if (progress == 3 && PirateShip.FollowPlayer)
-            //{
-            //    PirateShip.FollowPlayer = false;
-            //}
-            //
-            //else if (progress != 3 && !PirateShip.FollowPlayer)
-            //{
-            //    PirateShip.FollowPlayer = true;
-            //}
-            //// Escort mission begins
-            //if (progress == 3 && GameStateManager.currentState.Equals("OverworldState") &&
-            //    numberOfRebelShips > 0)
-            //{
-            //    rebelShipSpawnerDelay--;
-            //
-            //    // Ready to spawn a new rebel ship
-            //    if (rebelShipSpawnerDelay < 0)
-            //    {
-            //        if (numberOfRebelShips == 3)
-            //        {
-            //            Game.messageBox.DisplayMessage(EventArray[5, 0]);
-            //            ObjectiveIndex = 3;
-            //        }
-            //
-            //        if (numberOfRebelShips == 3)
-            //        {
-            //            Game.stateManager.overworldState.GetSectorX.shipSpawner.AddRebelShip(
-            //                new Vector2(freighter.position.X - 650,
-            //                    freighter.position.Y + 650), "SecondMissionlvl1", freighter);
-            //        }
-            //
-            //        else if (numberOfRebelShips == 2)
-            //        {
-            //            Game.stateManager.overworldState.GetSectorX.shipSpawner.AddRebelShip(
-            //                new Vector2(freighter.position.X - 650,
-            //                    freighter.position.Y + 650), "SecondMissionlvl2", freighter);
-            //        }
-            //
-            //        else if (numberOfRebelShips == 1)
-            //        {
-            //            Game.stateManager.overworldState.GetSectorX.shipSpawner.AddRebelShip(
-            //                new Vector2(freighter.position.X - 650,
-            //                    freighter.position.Y + 650), "SecondMissionlvl3", freighter);
-            //        }
-            //
-            //        numberOfRebelShips--;
-            //
-            //        if (numberOfRebelShips > 0)
-            //        {
-            //            rebelShipSpawnerDelay = 500;
-            //        }
-            //    }
-            //}
-            //
-            //// Transfers freigter hp between levels
-            //if (progress == 3 && levelProgression == 0 &&
-            //    GameStateManager.currentState.Equals("ShooterState") &&
-            //    Game.stateManager.shooterState.CurrentLevel.Name == "SecondMissionlvl1")
-            //{
-            //    ((SecondMissionLevel)Game.stateManager.shooterState.CurrentLevel).SetFreighterHP(freighterHP);
-            //    levelProgression = 1;
-            //}
-            //
-            //if (progress == 3 && GameStateManager.currentState == "ShooterState" &&
-            //    Game.stateManager.shooterState.GetLevel("SecondMissionlvl1").IsObjectiveCompleted)
-            //{
-            //    freighterHP = ((SecondMissionLevel)Game.stateManager.shooterState.GetLevel("SecondMissionlvl1")).GetFreighterHP();
-            //}
-            //
-            //if (progress == 3 && levelProgression == 1 &&
-            //    GameStateManager.currentState.Equals("ShooterState") &&
-            //    Game.stateManager.shooterState.CurrentLevel.Name == "SecondMissionlvl2")
-            //{
-            //    ((SecondMissionLevel)Game.stateManager.shooterState.CurrentLevel).SetFreighterHP(freighterHP);
-            //    levelProgression = 2;
-            //}
-            //
-            //if (progress == 3 && GameStateManager.currentState == "ShooterState" &&
-            //    Game.stateManager.shooterState.GetLevel("SecondMissionlvl2").IsObjectiveCompleted)
-            //{
-            //    freighterHP = ((SecondMissionLevel)Game.stateManager.shooterState.GetLevel("SecondMissionlvl2")).GetFreighterHP();
-            //}
-            //
-            //if (progress == 3 && levelProgression == 2 &&
-            //    GameStateManager.currentState.Equals("ShooterState") &&
-            //    Game.stateManager.shooterState.CurrentLevel.Name == "SecondMissionlvl3")
-            //{
-            //    ((SecondMissionLevel)Game.stateManager.shooterState.CurrentLevel).SetFreighterHP(freighterHP);
-            //    levelProgression = 3;
-            //}
-            //
-            //if (progress == 3 && GameStateManager.currentState == "ShooterState" &&
-            //    Game.stateManager.shooterState.GetLevel("SecondMissionlvl3").IsObjectiveCompleted)
-            //{
-            //    freighterHP = ((SecondMissionLevel)Game.stateManager.shooterState.GetLevel("SecondMissionlvl3")).GetFreighterHP();
-            //}
-            //
+
+            // Transfers freigter hp between levels
+            if (progress == 3 && levelProgression == 0 &&
+                GameStateManager.currentState.Equals("ShooterState") &&
+                Game.stateManager.shooterState.CurrentLevel.Name == "SecondMissionlvl1")
+            {
+                ((SecondMissionLevel)Game.stateManager.shooterState.CurrentLevel).SetFreighterHP(freighterHP);
+                levelProgression = 1;
+            }
+            
+            if (progress == 3 && GameStateManager.currentState == "ShooterState" &&
+                Game.stateManager.shooterState.GetLevel("SecondMissionlvl1").IsObjectiveCompleted)
+            {
+                freighterHP = ((SecondMissionLevel)Game.stateManager.shooterState.GetLevel("SecondMissionlvl1")).GetFreighterHP();
+            }
+            
+            if (progress == 3 && levelProgression == 1 &&
+                GameStateManager.currentState.Equals("ShooterState") &&
+                Game.stateManager.shooterState.CurrentLevel.Name == "SecondMissionlvl2")
+            {
+                ((SecondMissionLevel)Game.stateManager.shooterState.CurrentLevel).SetFreighterHP(freighterHP);
+                levelProgression = 2;
+            }
+            
+            if (progress == 3 && GameStateManager.currentState == "ShooterState" &&
+                Game.stateManager.shooterState.GetLevel("SecondMissionlvl2").IsObjectiveCompleted)
+            {
+                freighterHP = ((SecondMissionLevel)Game.stateManager.shooterState.GetLevel("SecondMissionlvl2")).GetFreighterHP();
+            }
+            
+            if (progress == 3 && levelProgression == 2 &&
+                GameStateManager.currentState.Equals("ShooterState") &&
+                Game.stateManager.shooterState.CurrentLevel.Name == "SecondMissionlvl3")
+            {
+                ((SecondMissionLevel)Game.stateManager.shooterState.CurrentLevel).SetFreighterHP(freighterHP);
+                levelProgression = 3;
+            }
+            
+            if (progress == 3 && GameStateManager.currentState == "ShooterState" &&
+                Game.stateManager.shooterState.GetLevel("SecondMissionlvl3").IsObjectiveCompleted)
+            {
+                freighterHP = ((SecondMissionLevel)Game.stateManager.shooterState.GetLevel("SecondMissionlvl3")).GetFreighterHP();
+            }
+            
             //// Freighter is destroyed
             //if (GameStateManager.currentState.Equals("ShooterState") && 
             //    ((Game.stateManager.shooterState.CurrentLevel.Name.Equals("SecondMissionlvl1") &&

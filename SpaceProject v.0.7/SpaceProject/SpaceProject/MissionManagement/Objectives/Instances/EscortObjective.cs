@@ -12,6 +12,11 @@ namespace SpaceProject
     {
         private EscortDataCapsule escortDataCapsule;
 
+        private int numberOfEnemyShips;
+        private int enemyShipSpawnDelay;
+
+        private List<String> levels;
+
         public EscortObjective(Game1 game, Mission mission, String description,
             GameObjectOverworld destination, EscortDataCapsule escortDataCapsule) :
             base(game, mission, description, destination)
@@ -34,6 +39,7 @@ namespace SpaceProject
         private void Setup(EscortDataCapsule escortDataCapsule)
         {
             this.escortDataCapsule = escortDataCapsule;
+            enemyShipSpawnDelay = escortDataCapsule.EnemyAttackFrequency;
         }
 
         public override void OnActivate()
@@ -56,6 +62,8 @@ namespace SpaceProject
 
         public override void Update()
         {
+            escortDataCapsule.EnemyAttackStartTime--;
+
             // Player talks to freighter to begin escort
             if (GameStateManager.currentState.Equals("OverworldState") &&
                 CollisionDetection.IsPointInsideRectangle(game.player.position, escortDataCapsule.ShipToDefend.Bounds) &&
@@ -64,6 +72,37 @@ namespace SpaceProject
                 game.messageBox.DisplayMessage(escortDataCapsule.ShipToDefendText);
 
                 ((FreighterShip)escortDataCapsule.ShipToDefend).Start();
+
+                PirateShip.FollowPlayer = false;
+            }
+
+            // Escort mission begins
+            if (GameStateManager.currentState.Equals("OverworldState") &&
+                numberOfEnemyShips > 0 &&
+                escortDataCapsule.EnemyAttackStartTime < 0)
+            {
+                enemyShipSpawnDelay--;
+
+                // Ready to spawn a new enemy ship
+                if (enemyShipSpawnDelay < 0)
+                {
+                    game.messageBox.DisplayMessage(escortDataCapsule.EnemyMessages[0]);
+                    escortDataCapsule.EnemyMessages.RemoveAt(0);
+
+                    game.stateManager.overworldState.GetSectorX.shipSpawner.AddRebelShip(
+                        escortDataCapsule.ShipToDefend.position +
+                        (650 * escortDataCapsule.ShipToDefend.Direction.GetDirectionAsVector()),
+                        levels[0], escortDataCapsule.ShipToDefend);
+
+                    levels.RemoveAt(0);
+
+                    numberOfEnemyShips--;
+
+                    if (numberOfEnemyShips > 0)
+                    {
+                        enemyShipSpawnDelay = escortDataCapsule.EnemyAttackFrequency;
+                    }
+                }
             }
 
             base.Update();
@@ -81,6 +120,8 @@ namespace SpaceProject
 
         public override void OnCompleted()
         {
+            PirateShip.FollowPlayer = true;
+
             base.OnCompleted();
         }
 
