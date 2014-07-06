@@ -17,6 +17,7 @@ namespace SpaceProject
         private int enemyShipSpawnDelay;
 
         private List<String> levels;
+        private List<String> enemyMessages;
 
         private float shipToDefendHP;
         private float shipToDefendMaxHP;
@@ -53,6 +54,15 @@ namespace SpaceProject
             levels = escortDataCapsule.Levels;
             shipToDefendMaxHP = escortDataCapsule.ShipToDefendHP;
             shipToDefendHP = escortDataCapsule.ShipToDefendHP;
+            enemyMessages = escortDataCapsule.EnemyMessages;
+
+            if (enemyMessages.Count < escortDataCapsule.EnemyShips.Count)
+            {
+                for (int i = enemyMessages.Count; i < escortDataCapsule.EnemyShips.Count; i++)
+                {
+                    enemyMessages.Add(enemyMessages[0]);
+                }
+            }
         }
 
         public override void OnActivate()
@@ -105,8 +115,11 @@ namespace SpaceProject
                 // Ready to spawn a new enemy ship
                 if (enemyShipSpawnDelay < 0)
                 {
-                    //game.messageBox.DisplayMessage(escortDataCapsule.EnemyMessages[0]);
-                    //escortDataCapsule.EnemyMessages.RemoveAt(0);
+                    // First time enemies spawn
+                    if (startingNumberOfEnemyShips == numberOfEnemyShips)
+                    {
+                        game.messageBox.DisplayMessage(escortDataCapsule.AttackStartText);
+                    }
 
                     game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
                         escortDataCapsule.EnemyShips[0],
@@ -200,7 +213,7 @@ namespace SpaceProject
                     if (CollisionDetection.IsRectInRect(escortDataCapsule.ShipToDefend.Bounds, escortDataCapsule.EnemyShips[i].Bounds))
                     {
                         game.stateManager.overworldState.RemoveOverworldObject(escortDataCapsule.EnemyShips[i]);
-                        game.messageBox.DisplayMessage("Death to the Alliance!");
+                        game.messageBox.DisplayMessage(enemyMessages[i]);
                         game.stateManager.shooterState.BeginLevel(escortDataCapsule.EnemyShips[i].Level);
                         game.stateManager.shooterState.CurrentLevel.SetFreighterMaxHP(shipToDefendMaxHP);
                         game.stateManager.shooterState.CurrentLevel.SetFreighterHP(shipToDefendHP);

@@ -44,14 +44,24 @@ namespace SpaceProject
                 new EventTextCapsule( new List<String> { EventArray[0, 0], EventArray[1, 0], EventArray[2, 0], EventArray[3, 0] },
                     null, EventTextCanvas.BaseState)));
 
-            objectives.Add(new EscortObjective(Game, this, ObjectiveDescriptions[1], 
+            objectives.Add(new EscortObjective(Game,
+                this,
+                ObjectiveDescriptions[1], 
                 Game.stateManager.overworldState.getStation("Soelara Station"),
-                new EscortDataCapsule(freighter, new List<String> { EventArray[4, 0] }, 
+                new EscortDataCapsule(freighter,
+                    new List<String> { EventArray[4, 0] }, 
                     Game.stateManager.overworldState.GetSectorX.shipSpawner.GetOverworldShips(3, "rebel"), 
-                    new List<String> { "Death to the Alliance!" }, null,
+                    new List<String> { "Death to the Alliance!" },
+                    null,
                     Game.stateManager.overworldState.getPlanet("Highfence").position + new Vector2(-200, 0),
-                    200, 100, 2000, new List<String> { "SecondMissionlvl1", "SecondMissionlvl2", "SecondMissionlvl3" }),
-                new EventTextCapsule(new List<String> { EventArray[6, 0] }, null, EventTextCanvas.BaseState)));
+                    new List<String> { EventArray[5, 0] },
+                    200,
+                    100,
+                    2000,
+                    new List<String> { "SecondMissionlvl1", "SecondMissionlvl2", "SecondMissionlvl3" }),
+                new EventTextCapsule(new List<String> { EventArray[6, 0] },
+                    null,
+                    EventTextCanvas.BaseState)));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2],
                 Game.stateManager.overworldState.getPlanet("Highfence")));
@@ -65,19 +75,19 @@ namespace SpaceProject
 
         public override void OnLoad()
         {
-            // Player returns to overworld after speaking to Kamali
-            if (progress == 2 || progress == 3)
-            {
-                Game.stateManager.overworldState.GetSectorX.shipSpawner.AddFreighterToSector(
-                    freighter, Game.stateManager.overworldState.getPlanet("Highfence").position);
-
-                freighter.position = Game.stateManager.overworldState.getPlanet("Highfence").position - new Vector2(200, 0);
-
-                freighter.Wait();
-
-                ObjectiveIndex = 2;
-                progress = 2;
-            }
+            //// Player returns to overworld after speaking to Kamali
+            //if (progress == 2 || progress == 3)
+            //{
+            //    Game.stateManager.overworldState.GetSectorX.shipSpawner.AddFreighterToSector(
+            //        freighter, Game.stateManager.overworldState.getPlanet("Highfence").position);
+            //
+            //    freighter.position = Game.stateManager.overworldState.getPlanet("Highfence").position - new Vector2(200, 0);
+            //
+            //    freighter.Wait();
+            //
+            //    ObjectiveIndex = 2;
+            //    progress = 2;
+            //}
         }
 
         public override void OnReset()
