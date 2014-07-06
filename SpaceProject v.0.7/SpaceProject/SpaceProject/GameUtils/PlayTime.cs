@@ -8,32 +8,58 @@ namespace SpaceProject
 {
     public class PlayTime
     {
-        private float playTime;
-        public float PlayTime { get { return playTime; } set { playTime = value; } }
+        private float overallPlayTime;
+        public float OverallPlayTime { get { return overallPlayTime; } set { overallPlayTime = value; } }
+
+        private float overworldTime;
+        public float OverworldTime { get { return overworldTime; } set { overworldTime = value; } }
+
+        private float shooterPartTime;
+        public float ShooterPartTime { get { return shooterPartTime; } set { shooterPartTime = value; } } 
 
         public void Update(GameTime gameTime)
         {
-            playTime += gameTime.ElapsedGameTime.Milliseconds;
+            overallPlayTime += gameTime.ElapsedGameTime.Milliseconds;
+
+            if (GameStateManager.currentState.Equals("OverworldState"))
+            {
+                overworldTime += gameTime.ElapsedGameTime.Milliseconds;
+            }
+
+            else if (GameStateManager.currentState.Equals("ShooterState"))
+            {
+                shooterPartTime += gameTime.ElapsedGameTime.Milliseconds;
+            }
         }
 
-        public float GetPlayTime()
+        public float GetFuturePlayTime(float milliseconds)
         {
-            return playTime;
+            return overallPlayTime + milliseconds;
         }
 
-        public void SetPlayTime(float playTime)
+        public float GetFutureOverworldTime(float milliseconds)
         {
-            this.playTime = playTime;
+            return overworldTime + milliseconds;
         }
 
-        public float GetFutureTime(float milliSeconds)
+        public float GetFutureShooterPartTime(float milliseconds)
         {
-            return playTime + milliSeconds;
+            return shooterPartTime + milliseconds;
         }
 
-        public bool HasTimePassed(float time)
+        public bool HasPlayTimePassed(float time)
         {
-            return playTime >= time;
+            return overallPlayTime >= time;
+        }
+
+        public bool HasShooterPartTimePassed(float time)
+        {
+            return shooterPartTime >= time;
+        }
+
+        public bool HasOverworldTimePassed(float time)
+        {
+            return overworldTime >= time;
         }
     }
 }

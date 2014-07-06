@@ -11,8 +11,8 @@ namespace SpaceProject
     {
 
         #region ParticleVariables
-        private List<Particle> particles = new List<Particle>();
-        private List<Particle> deadParticles = new List<Particle>();
+        private List<Particle> particles;
+        private List<Particle> deadParticles;
 
         #endregion
 
@@ -31,6 +31,9 @@ namespace SpaceProject
             base.Initialize();
 
             layerDepth = 0.55f;
+
+            particles = new List<Particle>();
+            deadParticles = new List<Particle>();
         }
 
         public override void FinalGoodbye()

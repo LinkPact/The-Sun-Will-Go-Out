@@ -12,18 +12,19 @@ namespace SpaceProject
     {
         private EscortDataCapsule escortDataCapsule;
 
+        private List<OverworldShip> enemies;
+
         private int startingNumberOfEnemyShips;
         private int numberOfEnemyShips;
         private int enemyShipSpawnDelay;
+        private float enemyAttackStartTime;
+        private float enemyNextWaveTime;
 
         private List<String> levels;
         private List<String> enemyMessages;
 
         private float shipToDefendHP;
         private float shipToDefendMaxHP;
-
-        private float enemyAttackStartTime;
-        private float enemyNextWaveTime;
 
         private int messageTimer;
 
@@ -58,6 +59,12 @@ namespace SpaceProject
             shipToDefendMaxHP = escortDataCapsule.ShipToDefendHP;
             shipToDefendHP = escortDataCapsule.ShipToDefendHP;
             enemyMessages = escortDataCapsule.EnemyMessages;
+            enemies = new List<OverworldShip>();
+
+            for (int i = 0; i < escortDataCapsule.EnemyShips.Count; i++)
+            {
+                enemies.Add(escortDataCapsule.EnemyShips[i]);
+            }
 
             if (enemyMessages.Count < escortDataCapsule.EnemyShips.Count)
             {
@@ -79,6 +86,27 @@ namespace SpaceProject
             }
 
             base.OnActivate();
+        }
+
+        public override void Reset()
+        {
+            base.Reset();
+
+            started = false;
+            startingNumberOfEnemyShips = escortDataCapsule.EnemyShips.Count;
+            numberOfEnemyShips = escortDataCapsule.EnemyShips.Count;
+            enemies = new List<OverworldShip>();
+
+            for (int i = 0; i < levels.Count; i++)
+            {
+                game.stateManager.shooterState.GetLevel(levels[i]).Initialize();
+            }
+
+            for (int i = 0; i < escortDataCapsule.EnemyShips.Count; i++)
+            {
+                escortDataCapsule.EnemyShips[i].Initialize();
+                enemies.Add(escortDataCapsule.EnemyShips[i]);
+            }
         }
 
         public override void Initialize()
@@ -104,17 +132,17 @@ namespace SpaceProject
 
                 started = true;
 
-                enemyAttackStartTime = StatsManager.PlayTime.GetFutureTime(escortDataCapsule.EnemyAttackStartTime);
+                enemyAttackStartTime = StatsManager.PlayTime.GetFutureOverworldTime(escortDataCapsule.EnemyAttackStartTime);
             }
 
             // Escort mission begins
             if (started 
                 && GameStateManager.currentState.Equals("OverworldState") &&
                 numberOfEnemyShips > 0 &&
-                StatsManager.PlayTime.HasTimePassed(enemyAttackStartTime))
+                StatsManager.PlayTime.HasOverworldTimePassed(enemyAttackStartTime))
             {
                 // Ready to spawn a new enemy ship
-                if (StatsManager.PlayTime.HasTimePassed(enemyNextWaveTime))
+                if (StatsManager.PlayTime.HasOverworldTimePassed(enemyNextWaveTime))
                 {
                     // First time enemies spawn
                     if (startingNumberOfEnemyShips == numberOfEnemyShips)
@@ -123,7 +151,7 @@ namespace SpaceProject
                     }
 
                     game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
-                        escortDataCapsule.EnemyShips[0],
+                        enemies[0],
                         escortDataCapsule.ShipToDefend.position +
                         (650 * escortDataCapsule.ShipToDefend.Direction.GetDirectionAsVector()),
                         levels[startingNumberOfEnemyShips - numberOfEnemyShips], escortDataCapsule.ShipToDefend);
@@ -132,7 +160,7 @@ namespace SpaceProject
 
                     if (numberOfEnemyShips > 0)
                     {
-                        enemyNextWaveTime = StatsManager.PlayTime.GetFutureTime(escortDataCapsule.EnemyAttackFrequency);
+                        enemyNextWaveTime = StatsManager.PlayTime.GetFutureOverworldTime(escortDataCapsule.EnemyAttackFrequency);
                     }
                 }
             }
@@ -187,6 +215,14 @@ namespace SpaceProject
                 {
                     return true;
                 }
+
+                else if (GameStateManager.currentState.Equals("OverworldState")
+                    && game.stateManager.shooterState.CurrentLevel != null 
+                    && game.stateManager.shooterState.CurrentLevel.Name.Equals(levels[i])
+                    && game.stateManager.shooterState.CurrentLevel.IsGameOver)
+                {
+                    return true;
+                }
             }
 
             return false;
@@ -207,16 +243,16 @@ namespace SpaceProject
 
             if (numberOfEnemyShips < startingNumberOfEnemyShips)
             {
-                for (int i = 0; i < escortDataCapsule.EnemyShips.Count; i++)
+                for (int i = 0; i < enemies.Count; i++)
                 {
-                    if (CollisionDetection.IsRectInRect(escortDataCapsule.ShipToDefend.Bounds, escortDataCapsule.EnemyShips[i].Bounds))
+                    if (CollisionDetection.IsRectInRect(escortDataCapsule.ShipToDefend.Bounds, enemies[i].Bounds))
                     {
-                        game.stateManager.overworldState.RemoveOverworldObject(escortDataCapsule.EnemyShips[i]);
+                        game.stateManager.overworldState.RemoveOverworldObject(enemies[i]);
                         game.messageBox.DisplayMessage(enemyMessages[i]);
-                        game.stateManager.shooterState.BeginLevel(escortDataCapsule.EnemyShips[i].Level);
+                        game.stateManager.shooterState.BeginLevel(enemies[i].Level);
                         game.stateManager.shooterState.CurrentLevel.SetFreighterMaxHP(shipToDefendMaxHP);
                         game.stateManager.shooterState.CurrentLevel.SetFreighterHP(shipToDefendHP);
-                        escortDataCapsule.EnemyShips.RemoveAt(i);
+                        enemies.RemoveAt(i);
                     }
                 }
             }

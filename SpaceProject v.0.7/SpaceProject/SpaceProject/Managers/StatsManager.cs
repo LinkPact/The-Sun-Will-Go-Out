@@ -226,7 +226,9 @@ namespace SpaceProject
         public void Save()
         {
             SortedDictionary<String, String> saveData = new SortedDictionary<string, string>();
-            saveData.Add("playtime", Convert.ToString(PlayTime.GetPlayTime(), CultureInfo.InvariantCulture));
+            saveData.Add("playtime", Convert.ToString(PlayTime.OverallPlayTime, CultureInfo.InvariantCulture));
+            saveData.Add("overworldtime", Convert.ToString(PlayTime.OverworldTime, CultureInfo.InvariantCulture));
+            saveData.Add("shooterparttime", Convert.ToString(PlayTime.ShooterPartTime, CultureInfo.InvariantCulture));
             saveData.Add("rupees", Convert.ToString(Rupees, CultureInfo.InvariantCulture));
             saveData.Add("progress", Convert.ToString(progress, CultureInfo.InvariantCulture));
             saveData.Add("reputation", Convert.ToString(reputation, CultureInfo.InvariantCulture));
@@ -270,7 +272,9 @@ namespace SpaceProject
 
         public void Load()
         {
-            PlayTime.SetPlayTime(Game.saveFile.GetPropertyAsFloat("statsmanager", "playtime", 0));
+            PlayTime.OverallPlayTime = Game.saveFile.GetPropertyAsFloat("statsmanager", "playtime", 0);
+            PlayTime.OverworldTime = Game.saveFile.GetPropertyAsFloat("statsmanager", "overworldtime", 0);
+            PlayTime.ShooterPartTime = Game.saveFile.GetPropertyAsFloat("statsmanager", "shooterparttime", 0);
             Rupees = Game.saveFile.GetPropertyAsInt("statsmanager", "rupees", 0);
             progress = Game.saveFile.GetPropertyAsInt("statsmanager", "progress", 0);
             reputation = Game.saveFile.GetPropertyAsInt("statsmanager", "reputation", 0);
