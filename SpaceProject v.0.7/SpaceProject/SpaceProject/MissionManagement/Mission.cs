@@ -366,7 +366,7 @@ namespace SpaceProject
                     currentObjectiveDescription = currentObjective.Description;
                 }
 
-                currentObjective.Update();
+                currentObjective.Update(StatsManager.PlayTime);
 
                 if (missionHelper.AllObjectivesCompleted())
                 {

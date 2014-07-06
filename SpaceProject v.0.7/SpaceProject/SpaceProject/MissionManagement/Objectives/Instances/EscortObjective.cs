@@ -22,6 +22,9 @@ namespace SpaceProject
         private float shipToDefendHP;
         private float shipToDefendMaxHP;
 
+        private float enemyAttackStartTime;
+        private float enemyNextWaveTime;
+
         private int messageTimer;
 
         private bool started;
@@ -83,12 +86,9 @@ namespace SpaceProject
             base.Initialize();
         }
 
-        public override void Update()
+        public override void Update(PlayTime playTime)
         {
-            if (started)
-            {
-                escortDataCapsule.EnemyAttackStartTime--;
-            }
+            base.Update(playTime);
 
             // Player talks to freighter to begin escort
             if (!started
@@ -103,17 +103,18 @@ namespace SpaceProject
                 PirateShip.FollowPlayer = false;
 
                 started = true;
+
+                enemyAttackStartTime = StatsManager.PlayTime.GetFutureTime(escortDataCapsule.EnemyAttackStartTime);
             }
 
             // Escort mission begins
-            if (GameStateManager.currentState.Equals("OverworldState") &&
+            if (started 
+                && GameStateManager.currentState.Equals("OverworldState") &&
                 numberOfEnemyShips > 0 &&
-                escortDataCapsule.EnemyAttackStartTime < 0)
+                StatsManager.PlayTime.HasTimePassed(enemyAttackStartTime))
             {
-                enemyShipSpawnDelay--;
-
                 // Ready to spawn a new enemy ship
-                if (enemyShipSpawnDelay < 0)
+                if (StatsManager.PlayTime.HasTimePassed(enemyNextWaveTime))
                 {
                     // First time enemies spawn
                     if (startingNumberOfEnemyShips == numberOfEnemyShips)
@@ -131,7 +132,7 @@ namespace SpaceProject
 
                     if (numberOfEnemyShips > 0)
                     {
-                        enemyShipSpawnDelay = escortDataCapsule.EnemyAttackFrequency;
+                        enemyNextWaveTime = StatsManager.PlayTime.GetFutureTime(escortDataCapsule.EnemyAttackFrequency);
                     }
                 }
             }
@@ -148,8 +149,6 @@ namespace SpaceProject
             }
 
             Collision();
-
-            base.Update();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -222,21 +221,24 @@ namespace SpaceProject
                 }
             }
 
-            if (!CollisionDetection.IsPointInsideCircle(game.player.position, escortDataCapsule.ShipToDefend.position, 600) &&
+            if (started 
+                && !CollisionDetection.IsPointInsideCircle(game.player.position, escortDataCapsule.ShipToDefend.position, 600) &&
                 messageTimer <= 0)
             {
                 game.messageBox.DisplayMessage("\"Don't stray too far from the freighter, get back here!\"");
                 messageTimer = 200;
             }
 
-            if (CollisionDetection.IsPointInsideCircle(game.player.position, escortDataCapsule.ShipToDefend.position, 600) &&
+            if (started
+                && CollisionDetection.IsPointInsideCircle(game.player.position, escortDataCapsule.ShipToDefend.position, 600) &&
                 messageTimer > 0)
             {
                 game.messageBox.DisplayMessage("\"Good! Now keep the freighter in sight at all times!\"");
                 messageTimer = 0;
             }
 
-            if (messageTimer == 1)
+            if (started
+                && messageTimer == 1)
             {
                 mission.OnReset();
                 game.messageBox.DisplayMessage("\"What are you doing?! You compromised our entire mission. Get out of my sight, you moron!\"");

@@ -43,9 +43,9 @@ namespace SpaceProject
             base.Initialize();
         }
 
-        public override void Update()
+        public override void Update(PlayTime playTime)
         {
-            base.Update();
+            base.Update(playTime);
 
             updateAction.Invoke();
         }

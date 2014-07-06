@@ -52,7 +52,7 @@ namespace SpaceProject
             isOnCompletedCalled = false;
         }
 
-        public virtual void Update()
+        public virtual void Update(PlayTime playTime)
         {
             if (isOnCompletedCalled)
             {

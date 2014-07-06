@@ -10,13 +10,6 @@ namespace SpaceProject
 {
     public class Main2_Rebels : Mission
     {
-        int messageTimer = 0;
-
-        private int rebelShipSpawnerDelay;
-        private int numberOfRebelShips = 3;
-
-        int levelProgression = 0;
-
         FreighterShip freighter;
         private float freighterHP;
         public float GetFreighterHP { get { return freighterHP; } }
@@ -55,8 +48,8 @@ namespace SpaceProject
                     null,
                     Game.stateManager.overworldState.getPlanet("Highfence").position + new Vector2(-200, 0),
                     new List<String> { EventArray[5, 0] },
-                    200,
-                    100,
+                    20000,
+                    5000,
                     2000,
                     new List<String> { "SecondMissionlvl1", "SecondMissionlvl2", "SecondMissionlvl3" }),
                 new EventTextCapsule(new List<String> { EventArray[6, 0] },
@@ -97,9 +90,7 @@ namespace SpaceProject
             MissionManager.MarkMissionAsFailed(this.MissionName);
             ObjectiveIndex = 0;
             Game.stateManager.overworldState.RemoveOverworldObject(freighter);
-            levelProgression = 0;
             progress = 0;
-            numberOfRebelShips = 3;
             freighterHP = 1000;
             PirateShip.FollowPlayer = true;
 

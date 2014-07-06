@@ -24,7 +24,7 @@ namespace SpaceProject
         private Game1 Game;
         private Sprite spriteSheet;
 
-        public static float PlayTime;
+        public static PlayTime PlayTime;
 
         //Statsvariabler relaterade till spelaren
         private static PlayerPlating plating;
@@ -87,7 +87,7 @@ namespace SpaceProject
             progress = 0;
             reputation = 0;
 
-            PlayTime = 0.0f;
+            PlayTime = new PlayTime();
 
             MaxFusionCells = 3;
             FusionCells = new int[MaxFusionCells];
@@ -226,7 +226,7 @@ namespace SpaceProject
         public void Save()
         {
             SortedDictionary<String, String> saveData = new SortedDictionary<string, string>();
-            saveData.Add("playtime", Convert.ToString(PlayTime, CultureInfo.InvariantCulture));
+            saveData.Add("playtime", Convert.ToString(PlayTime.GetPlayTime(), CultureInfo.InvariantCulture));
             saveData.Add("rupees", Convert.ToString(Rupees, CultureInfo.InvariantCulture));
             saveData.Add("progress", Convert.ToString(progress, CultureInfo.InvariantCulture));
             saveData.Add("reputation", Convert.ToString(reputation, CultureInfo.InvariantCulture));
@@ -270,7 +270,7 @@ namespace SpaceProject
 
         public void Load()
         {
-            PlayTime = Game.saveFile.GetPropertyAsFloat("statsmanager", "playtime", 0);
+            PlayTime.SetPlayTime(Game.saveFile.GetPropertyAsFloat("statsmanager", "playtime", 0));
             Rupees = Game.saveFile.GetPropertyAsInt("statsmanager", "rupees", 0);
             progress = Game.saveFile.GetPropertyAsInt("statsmanager", "progress", 0);
             reputation = Game.saveFile.GetPropertyAsInt("statsmanager", "reputation", 0);

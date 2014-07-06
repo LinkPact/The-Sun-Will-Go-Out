@@ -47,7 +47,7 @@ namespace SpaceProject
         {
             if (Class.Equals("play"))
             {
-                StatsManager.PlayTime += gameTime.ElapsedGameTime.Milliseconds;
+                StatsManager.PlayTime.Update(gameTime);
             }
         }
 
