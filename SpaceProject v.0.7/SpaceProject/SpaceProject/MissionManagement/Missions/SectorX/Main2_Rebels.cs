@@ -10,7 +10,8 @@ namespace SpaceProject
 {
     public class Main2_Rebels : Mission
     {
-        FreighterShip freighter;
+        FreighterShip freighter1;
+        FreighterShip freighter2;
         private float freighterHP;
         public float GetFreighterHP { get { return freighterHP; } }
 
@@ -27,24 +28,31 @@ namespace SpaceProject
 
             freighterHP = 2000;
 
-            freighter = new FreighterShip(Game, Game.stateManager.shooterState.spriteSheet);
-            freighter.Initialize(Game.stateManager.overworldState.GetSectorX,
+            freighter1 = new FreighterShip(Game, Game.stateManager.shooterState.spriteSheet);
+            freighter1.Initialize(Game.stateManager.overworldState.GetSectorX,
                 Game.stateManager.overworldState.getPlanet("Highfence"),
                 Game.stateManager.overworldState.getStation("Soelara Station"));
 
+            freighter2 = new FreighterShip(Game, Game.stateManager.shooterState.spriteSheet);
+            freighter2.Initialize(Game.stateManager.overworldState.GetSectorX,
+                Game.stateManager.overworldState.getStation("Soelara Station"),
+                Game.stateManager.overworldState.getPlanet("Highfence"));
+
+            //OBJECTIVES
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.getPlanet("Highfence"),
                 new EventTextCapsule( new List<String> { EventArray[0, 0], EventArray[1, 0], EventArray[2, 0], EventArray[3, 0] },
                     null, EventTextCanvas.BaseState)));
 
+            // Lots-of-paramaters-version of EscortObjective
             objectives.Add(new EscortObjective(Game,
                 this,
                 ObjectiveDescriptions[1], 
                 Game.stateManager.overworldState.getStation("Soelara Station"),
-                new EscortDataCapsule(freighter,
+                new EscortDataCapsule(freighter1,
                     new List<String> { EventArray[4, 0] }, 
-                    Game.stateManager.overworldState.GetSectorX.shipSpawner.GetOverworldShips(3, "rebel"), 
-                    new List<String> { "Death to the Alliance!" },
+                    Game.stateManager.overworldState.GetSectorX.shipSpawner.GetOverworldShips(3, "rebel"),
+                    new List<String> { "Death to the Alliance 1!", "Death to the Alliance 2!", "Death to the Alliance 3!" },
                     null,
                     Game.stateManager.overworldState.getPlanet("Highfence").position + new Vector2(-200, 0),
                     new List<String> { EventArray[5, 0] },
@@ -56,8 +64,23 @@ namespace SpaceProject
                     null,
                     EventTextCanvas.BaseState)));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2],
-                Game.stateManager.overworldState.getPlanet("Highfence")));
+            // A-few-less-parameters-version of Escort Objective (just an example, will not be used in finished version of mission)
+            objectives.Add(new EscortObjective(Game,
+                this,
+                ObjectiveDescriptions[2],
+                Game.stateManager.overworldState.getPlanet("Highfence"),
+                new EscortDataCapsule(freighter2,
+                    new List<String>{ "Hello! Let's go back!" },
+                    Game.stateManager.overworldState.GetSectorX.shipSpawner.GetOverworldShips(5, "rebel"),
+                    Game.stateManager.overworldState.getStation("Soelara Station").position + new Vector2(200, -200),
+                    new List<String> { "EscortTest1", "SecondMissionlvl2", "SecondMissionlvl1",
+                        "SecondMissionlvl2", "SecondMissionlvl3" },
+                    17500,
+                    7500)));
+
+            // Temporarily commented out - don't delete!
+            //objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2],
+            //    Game.stateManager.overworldState.getPlanet("Highfence")));
         }
 
         public override void StartMission()
@@ -68,31 +91,14 @@ namespace SpaceProject
 
         public override void OnLoad()
         {
-            //// Player returns to overworld after speaking to Kamali
-            //if (progress == 2 || progress == 3)
-            //{
-            //    Game.stateManager.overworldState.GetSectorX.shipSpawner.AddFreighterToSector(
-            //        freighter, Game.stateManager.overworldState.getPlanet("Highfence").position);
-            //
-            //    freighter.position = Game.stateManager.overworldState.getPlanet("Highfence").position - new Vector2(200, 0);
-            //
-            //    freighter.Wait();
-            //
-            //    ObjectiveIndex = 2;
-            //    progress = 2;
-            //}
+         
         }
 
         public override void OnReset()
         {
             base.OnReset();
 
-            MissionManager.MarkMissionAsFailed(this.MissionName);
             ObjectiveIndex = 0;
-            Game.stateManager.overworldState.RemoveOverworldObject(freighter);
-            progress = 0;
-            freighterHP = 1000;
-            PirateShip.FollowPlayer = true;
 
             for (int i = 0; i < objectives.Count; i++)
             {

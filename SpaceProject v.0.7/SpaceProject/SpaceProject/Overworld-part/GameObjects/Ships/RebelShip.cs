@@ -32,7 +32,7 @@ namespace SpaceProject
             position = new Vector2(0, 0);
             speed = 0.42f;
             roam = true;
-            //target = Game.player;
+            target = Game.player;
 
             centerPoint = new Vector2(sprite.SourceRectangle.Value.Width / 2, sprite.SourceRectangle.Value.Height / 2);
             color = Color.White;

@@ -11,8 +11,8 @@ namespace SpaceProject
         private OverworldShip shipToDefend;
         public OverworldShip ShipToDefend { get { return shipToDefend; } set { shipToDefend = value; } }
 
-        private List<String> shipToDefendText;
-        public List<String> ShipToDefendText { get { return shipToDefendText; } set { shipToDefendText = value; } }
+        private List<String> shipIntroductionText;
+        public List<String> ShipIntroductionText { get { return shipIntroductionText; } set { shipIntroductionText = value; } }
 
         private List<String> attackStartText;
         public List<String> AttackStartText { get { return attackStartText; } set { attackStartText = value; } }
@@ -41,35 +41,65 @@ namespace SpaceProject
         private List<String> levels;
         public List<String> Levels { get { return levels; } set { levels = value; } }
 
-        public EscortDataCapsule(OverworldShip shipToDefend, List<String> shipToDefendText, List<OverworldShip> enemyShips,
+        public EscortDataCapsule(OverworldShip shipToDefend, List<String> shipIntroductionText, List<OverworldShip> enemyShips,
+            Vector2 startingPoint, List<String> levels, int enemyAttackStartTime, int enemyAttackFrequency)
+        {
+            Setup(shipToDefend, shipIntroductionText, enemyShips, startingPoint, levels, enemyAttackStartTime, enemyAttackFrequency);
+
+            allyShips = new List<OverworldShip>();
+            attackStartText = new List<String>();
+            enemyMessages = new List<String>();
+            shipToDefendHP = 2000;
+        }
+
+        public EscortDataCapsule(OverworldShip shipToDefend, List<String> shipIntroductionText, List<OverworldShip> enemyShips,
             List<String> enemyMessages, List<OverworldShip> allyShips, Vector2 startingPoint, List<String> attackStartText,
             int enemyAttackStartTime, int enemyAttackFrequency, int shipToDefendHP, List<String> levels)
         {
-            this.shipToDefend = shipToDefend;
-            this.shipToDefendText = shipToDefendText;
-            this.enemyShips = enemyShips;
-            this.enemyMessages = enemyMessages;
+            Setup(shipToDefend, shipIntroductionText, enemyShips, startingPoint, levels, enemyAttackStartTime, enemyAttackFrequency);
+
             this.allyShips = allyShips;
-            this.startingPoint = startingPoint;
             this.attackStartText = attackStartText;
             this.enemyAttackStartTime = enemyAttackStartTime;
             this.enemyAttackFrequency = enemyAttackFrequency;
             this.shipToDefendHP = shipToDefendHP;
-            this.levels = levels;
-
-            if (this.enemyShips == null)
-            {
-                this.enemyShips = new List<OverworldShip>();
-            }
+            this.enemyMessages = enemyMessages;
 
             if (this.allyShips == null)
             {
                 this.allyShips = new List<OverworldShip>();
             }
 
+            if (this.attackStartText == null)
+            {
+                this.attackStartText = new List<String>();
+            }
+
             if (this.enemyMessages == null)
             {
                 this.enemyMessages = new List<String>();
+            }
+        }
+
+        private void Setup(OverworldShip shipToDefend, List<String> shipToDefendText, List<OverworldShip> enemyShips,
+            Vector2 startingPoint, List<String> levels, int enemyAttackStartTime, int enemyAttackFrequency)
+        {
+            this.shipToDefend = shipToDefend;
+            this.shipIntroductionText = shipToDefendText;
+            this.enemyShips = enemyShips;
+            this.startingPoint = startingPoint;
+            this.levels = levels;
+            this.enemyAttackStartTime = enemyAttackStartTime;
+            this.enemyAttackFrequency = enemyAttackFrequency;
+
+            if (this.shipIntroductionText == null)
+            {
+                this.shipIntroductionText = new List<String>();
+            }
+
+            if (this.enemyShips == null)
+            {
+                this.enemyShips = new List<OverworldShip>();
             }
 
             if (this.levels == null)

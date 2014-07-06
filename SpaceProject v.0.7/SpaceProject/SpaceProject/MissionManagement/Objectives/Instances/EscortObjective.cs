@@ -70,7 +70,10 @@ namespace SpaceProject
             {
                 for (int i = enemyMessages.Count; i < escortDataCapsule.EnemyShips.Count; i++)
                 {
-                    enemyMessages.Add(enemyMessages[0]);
+                    if (enemyMessages.Count > 0)
+                    {
+                        enemyMessages.Add(enemyMessages[0]);
+                    }
                 }
             }
         }
@@ -124,7 +127,7 @@ namespace SpaceProject
                 && CollisionDetection.IsPointInsideRectangle(game.player.position, escortDataCapsule.ShipToDefend.Bounds)
                 && ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))))
             {
-                game.messageBox.DisplayMessage(escortDataCapsule.ShipToDefendText);
+                game.messageBox.DisplayMessage(escortDataCapsule.ShipIntroductionText);
 
                 ((FreighterShip)escortDataCapsule.ShipToDefend).Start();
 
@@ -145,7 +148,8 @@ namespace SpaceProject
                 if (StatsManager.PlayTime.HasOverworldTimePassed(enemyNextWaveTime))
                 {
                     // First time enemies spawn
-                    if (startingNumberOfEnemyShips == numberOfEnemyShips)
+                    if (startingNumberOfEnemyShips == numberOfEnemyShips &&
+                        escortDataCapsule.AttackStartText.Count > 0)
                     {
                         game.messageBox.DisplayMessage(escortDataCapsule.AttackStartText);
                     }
@@ -202,7 +206,14 @@ namespace SpaceProject
             base.OnCompleted();
             PirateShip.FollowPlayer = true;
 
-            game.stateManager.GotoStationSubScreen(Destination.name, "Overview");
+            if (Destination is Station)
+            {
+                game.stateManager.GotoStationSubScreen(Destination.name, "Overview");
+            }
+            else if (Destination is Planet)
+            {
+                game.stateManager.GotoPlanetSubScreen(Destination.name, "Overview");
+            }
         }
 
         public override bool Failed()
@@ -233,6 +244,7 @@ namespace SpaceProject
             base.OnFailed();
 
             mission.OnReset();
+            game.stateManager.overworldState.RemoveOverworldObject(escortDataCapsule.ShipToDefend);
             game.messageBox.DisplayMessage("Noooo! The freighter was destroyed. We failed.");
             game.stateManager.ChangeState("OverworldState");
         }
@@ -247,8 +259,11 @@ namespace SpaceProject
                 {
                     if (CollisionDetection.IsRectInRect(escortDataCapsule.ShipToDefend.Bounds, enemies[i].Bounds))
                     {
+                        if (enemyMessages.Count > 0)
+                        {
+                            game.messageBox.DisplayMessage(enemyMessages[i]);
+                        }
                         game.stateManager.overworldState.RemoveOverworldObject(enemies[i]);
-                        game.messageBox.DisplayMessage(enemyMessages[i]);
                         game.stateManager.shooterState.BeginLevel(enemies[i].Level);
                         game.stateManager.shooterState.CurrentLevel.SetFreighterMaxHP(shipToDefendMaxHP);
                         game.stateManager.shooterState.CurrentLevel.SetFreighterHP(shipToDefendHP);

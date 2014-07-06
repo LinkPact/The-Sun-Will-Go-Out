@@ -85,6 +85,9 @@ namespace SpaceProject
             levels.Add(new SecondMissionLevel(Game, spriteSheet, player, "SecondMissionlvl3", "XSecondMissionlvl1", MissionType.rebel));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Main_TheAlliancelvl", "XMain_TheAlliance", MissionType.power)); 
 
+            //TEST
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "EscortTest1", "escortTest1", MissionType.rebel));
+
             //Pirate Levels
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "PirateLevel1", "PirateLevel1", MissionType.pirate));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "PirateLevel2", "PirateLevel2", MissionType.pirate));
