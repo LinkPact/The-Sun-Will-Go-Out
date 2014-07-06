@@ -81,7 +81,10 @@ namespace SpaceProject
 
         public void GotoPlanetSubScreen(String planetName, String planetSubState)
         {
-            Game.stateManager.planetState.LoadPlanetData(Game.stateManager.overworldState.getPlanet(planetName));
+            Planet planet = Game.stateManager.overworldState.getPlanet(planetName);
+            Game.player.position = planet.position;
+
+            Game.stateManager.planetState.LoadPlanetData(planet);
             ChangeState("PlanetState");
 
             if (!planetSubState.Equals("Overview"))
@@ -90,7 +93,10 @@ namespace SpaceProject
 
         public void GotoStationSubScreen(String stationName, String stationSubScreen)
         {
-            Game.stateManager.stationState.LoadStationData(Game.stateManager.overworldState.getStation(stationName));
+            Station station = Game.stateManager.overworldState.getStation(stationName);
+            Game.player.position = station.position;
+
+            Game.stateManager.stationState.LoadStationData(station);
             Game.stateManager.ChangeState("StationState");
 
             if (!stationSubScreen.Equals("Overview"))

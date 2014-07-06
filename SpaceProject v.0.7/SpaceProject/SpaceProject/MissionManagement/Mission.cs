@@ -343,7 +343,13 @@ namespace SpaceProject
                                    0.5f);
         }
 
-        public virtual void Draw(SpriteBatch spriteBatch) { }
+        public virtual void Draw(SpriteBatch spriteBatch) 
+        {
+            if (currentObjective != null)
+            {
+                currentObjective.Draw(spriteBatch);
+            }
+        }
 
         private void RefreshCurrentObjective()
         {

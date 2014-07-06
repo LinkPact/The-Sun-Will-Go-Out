@@ -12,6 +12,7 @@ namespace SpaceProject
     {
         private EscortDataCapsule escortDataCapsule;
 
+        private int startingNumberOfEnemyShips;
         private int numberOfEnemyShips;
         private int enemyShipSpawnDelay;
 
@@ -46,6 +47,7 @@ namespace SpaceProject
         private void Setup(EscortDataCapsule escortDataCapsule)
         {
             this.escortDataCapsule = escortDataCapsule;
+            startingNumberOfEnemyShips = escortDataCapsule.EnemyShips.Count;
             numberOfEnemyShips = escortDataCapsule.EnemyShips.Count;
             enemyShipSpawnDelay = escortDataCapsule.EnemyAttackFrequency;
             levels = escortDataCapsule.Levels;
@@ -79,7 +81,8 @@ namespace SpaceProject
             }
 
             // Player talks to freighter to begin escort
-            if (GameStateManager.currentState.Equals("OverworldState")
+            if (!started
+                && GameStateManager.currentState.Equals("OverworldState")
                 && CollisionDetection.IsPointInsideRectangle(game.player.position, escortDataCapsule.ShipToDefend.Bounds)
                 && ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))))
             {
@@ -106,10 +109,10 @@ namespace SpaceProject
                     //escortDataCapsule.EnemyMessages.RemoveAt(0);
 
                     game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
-                        escortDataCapsule.EnemyShips[escortDataCapsule.EnemyShips.Count - numberOfEnemyShips],
+                        escortDataCapsule.EnemyShips[0],
                         escortDataCapsule.ShipToDefend.position +
                         (650 * escortDataCapsule.ShipToDefend.Direction.GetDirectionAsVector()),
-                        levels[escortDataCapsule.EnemyShips.Count - numberOfEnemyShips], escortDataCapsule.ShipToDefend);
+                        levels[startingNumberOfEnemyShips - numberOfEnemyShips], escortDataCapsule.ShipToDefend);
 
                     numberOfEnemyShips--;
 
@@ -131,10 +134,7 @@ namespace SpaceProject
                 }
             }
 
-            if (numberOfEnemyShips < escortDataCapsule.EnemyShips.Count)
-            {
-                Collision();
-            }
+            Collision();
 
             base.Update();
         }
@@ -142,18 +142,27 @@ namespace SpaceProject
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
+
+            if (!started 
+                && GameStateManager.currentState.Equals("OverworldState") 
+                && CollisionDetection.IsRectInRect(game.player.Bounds, escortDataCapsule.ShipToDefend.Bounds))
+            {
+                CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, escortDataCapsule.ShipToDefend, new Rectangle(2, 374, 0, 0));
+                game.helper.DisplayText("Press 'Enter' to talk to freighter captain..");
+            }
         }
 
         public override bool Completed()
         {
-            return ((FreighterShip)escortDataCapsule.ShipToDefend).HasArrived;
+            return (((FreighterShip)escortDataCapsule.ShipToDefend).HasArrived || ControlManager.CheckKeypress(Keys.V));
         }
 
         public override void OnCompleted()
         {
+            base.OnCompleted();
             PirateShip.FollowPlayer = true;
 
-            base.OnCompleted();
+            game.stateManager.GotoStationSubScreen(Destination.name, "Overview");
         }
 
         public override bool Failed()
@@ -184,16 +193,19 @@ namespace SpaceProject
         {
             messageTimer--;
 
-            for (int i = 0; i < escortDataCapsule.EnemyShips.Count; i++)
+            if (numberOfEnemyShips < startingNumberOfEnemyShips)
             {
-                if (CollisionDetection.IsRectInRect(escortDataCapsule.ShipToDefend.Bounds, escortDataCapsule.EnemyShips[i].Bounds))
+                for (int i = 0; i < escortDataCapsule.EnemyShips.Count; i++)
                 {
-                    game.stateManager.overworldState.RemoveOverworldObject(escortDataCapsule.EnemyShips[i]);
-                    game.messageBox.DisplayMessage("Death to the Alliance!");
-                    game.stateManager.shooterState.BeginLevel(escortDataCapsule.EnemyShips[i].Level);
-                    game.stateManager.shooterState.CurrentLevel.SetFreighterMaxHP(shipToDefendMaxHP);
-                    game.stateManager.shooterState.CurrentLevel.SetFreighterHP(shipToDefendHP);
-                    escortDataCapsule.EnemyShips.RemoveAt(i);
+                    if (CollisionDetection.IsRectInRect(escortDataCapsule.ShipToDefend.Bounds, escortDataCapsule.EnemyShips[i].Bounds))
+                    {
+                        game.stateManager.overworldState.RemoveOverworldObject(escortDataCapsule.EnemyShips[i]);
+                        game.messageBox.DisplayMessage("Death to the Alliance!");
+                        game.stateManager.shooterState.BeginLevel(escortDataCapsule.EnemyShips[i].Level);
+                        game.stateManager.shooterState.CurrentLevel.SetFreighterMaxHP(shipToDefendMaxHP);
+                        game.stateManager.shooterState.CurrentLevel.SetFreighterHP(shipToDefendHP);
+                        escortDataCapsule.EnemyShips.RemoveAt(i);
+                    }
                 }
             }
 

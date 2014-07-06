@@ -71,7 +71,7 @@ namespace SpaceProject
             }
 
             else if (Completed())
-            {
+            {             
                 OnCompleted();
             }
         }

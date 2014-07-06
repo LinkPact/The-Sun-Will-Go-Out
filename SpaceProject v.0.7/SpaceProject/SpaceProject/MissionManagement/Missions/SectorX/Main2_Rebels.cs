@@ -45,12 +45,16 @@ namespace SpaceProject
                     null, EventTextCanvas.BaseState)));
 
             objectives.Add(new EscortObjective(Game, this, ObjectiveDescriptions[1], 
-                Game.stateManager.overworldState.getPlanet("Soelara"),
+                Game.stateManager.overworldState.getStation("Soelara Station"),
                 new EscortDataCapsule(freighter, new List<String> { EventArray[4, 0] }, 
                     Game.stateManager.overworldState.GetSectorX.shipSpawner.GetOverworldShips(3, "rebel"), 
                     new List<String> { "Death to the Alliance!" }, null,
                     Game.stateManager.overworldState.getPlanet("Highfence").position + new Vector2(-200, 0),
-                    200, 100, 2000, new List<String> { "SecondMissionlvl1", "SecondMissionlvl2", "SecondMissionlvl3" })));
+                    200, 100, 2000, new List<String> { "SecondMissionlvl1", "SecondMissionlvl2", "SecondMissionlvl3" }),
+                new EventTextCapsule(new List<String> { EventArray[6, 0] }, null, EventTextCanvas.BaseState)));
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2],
+                Game.stateManager.overworldState.getPlanet("Highfence")));
         }
 
         public override void StartMission()
@@ -88,45 +92,21 @@ namespace SpaceProject
             numberOfRebelShips = 3;
             freighterHP = 1000;
             PirateShip.FollowPlayer = true;
+
+            for (int i = 0; i < objectives.Count; i++)
+            {
+                objectives[i].Reset();
+            }
         }
 
         public override void MissionLogic()
         {
             base.MissionLogic();
-            
-            //// Player returns to overworld after visiting Soelara Station
-            //if (progress == 4 && GameStateManager.currentState.Equals("OverworldState"))
-            //{
-            //    ObjectiveIndex = 4;
-            //    progress = 5;
-            //}
-            //
-            //// Player returns to colony on Highfence
-            //if (progress == 5 && missionHelper.IsPlayerOnPlanet("Highfence"))
-            //{
-            //    MissionManager.MarkMissionAsCompleted(this.MissionName);
-            //}
-            //
-            //if (GameStateManager.currentState == "OverworldState")
-            //{
-            //    Collision();
-            //}
-        }
-
-        private void Collision()
-        {
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-
-            if (progress == 2 && GameStateManager.currentState.Equals("OverworldState") &&
-                CollisionDetection.IsRectInRect(Game.player.Bounds, freighter.Bounds))
-            {
-                CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, freighter, new Rectangle(2, 374, 0, 0));
-                Game.helper.DisplayText("Press 'Enter' to talk to freighter captain..");
-            }
         }
 
         public override int GetProgress()
