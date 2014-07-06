@@ -10,7 +10,8 @@ namespace SpaceProject
     {
         private Shop shop;
 
-        public List<Item> ShopInventory { 
+        public List<Item> ShopInventory 
+        { 
             get 
             { 
                 return shop.ShopInventory; 
@@ -29,7 +30,8 @@ namespace SpaceProject
             } 
         }
 
-        public List<Item> OnEnterShopInventory { 
+        public List<Item> OnEnterShopInventory 
+        { 
             get 
             { 
                 return shop.OnEnterShopInventory; 
@@ -55,7 +57,7 @@ namespace SpaceProject
         public ImmobileSpaceObject(Game1 Game, Sprite SpriteSheet)
             : base(Game, SpriteSheet)
         {
-            shop = new Shop(Game);
+            shop = new Shop(Game, this.ToString());
         }
 
         public void AddShopEntry(ShopInventoryEntry entry)

@@ -5,9 +5,20 @@ using System.Text;
 
 namespace SpaceProject
 {
+    /*
+     * Contains logic related to shops which are found in planets and stations.
+     * Contains list describing their content.
+     * 
+     * Key parts
+     * shopInventoryEntries - A list of entries which acts as "blue print" for the shop. 
+     *      The entries describes which parts that are present in the shop, and how common they are.
+     * 
+     * shopInventory - A list with the currently present items in the shop inventory.
+     */
     class Shop
     {
         private Game1 Game;
+        private String identifyer;
         protected Random random;
 
         protected List<Item> shopInventory;
@@ -33,9 +44,10 @@ namespace SpaceProject
             } 
         }
 
-        public Shop(Game1 Game)
+        public Shop(Game1 Game, String identifyer)
         {
             this.Game = Game;
+            this.identifyer = identifyer;
 
             shopInventoryEntries = new List<ShopInventoryEntry>();
             shopInventory = new List<Item>();
@@ -460,7 +472,7 @@ namespace SpaceProject
             SortedDictionary<String, String> saveData = new SortedDictionary<string, string>();
 
             saveData.Add("count", shopInventory.Count.ToString());
-            Game.saveFile.Save("save.ini", "shop" + this.ToString(), saveData);
+            Game.saveFile.Save("save.ini", "shop" + identifyer, saveData);
 
             for (int i = 0; i < shopInventory.Count; i++)
             {
@@ -477,23 +489,20 @@ namespace SpaceProject
                     QuantityItem foo = (QuantityItem)shopInventory[i];
                     saveData.Add("quantity", foo.Quantity.ToString());
                 }
-                Game.saveFile.Save("save.ini", "shop" + this.ToString() + i, saveData);
+                Game.saveFile.Save("save.ini", "shop" + identifyer + i, saveData);
             }
         }
 
         public void LoadShop()
         {
-            int count = Game.saveFile.GetPropertyAsInt("shop" + this.ToString(), "count", 0);
+            int count = Game.saveFile.GetPropertyAsInt("shop" + identifyer, "count", 0);
             shopInventory.Clear();
 
             for (int i = 0; i < count; i++)
             {
                 //shopInventory.Add(Game.saveFile.GetItemFromSavefile("shop" + this.ToString() + i));
-                shopInventory.Add(Game.saveFile.CreateItemFromSector("shop" + this.ToString() + i));
+                shopInventory.Add(Game.saveFile.CreateItemFromSector("shop" + identifyer + i));
             }
         }
-
-   
-
     }
 }
