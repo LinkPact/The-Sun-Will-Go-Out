@@ -12,8 +12,8 @@ namespace SpaceProject
 {
     public class OverworldState : GameState
     {
-        public static int OVERWORLD_WIDTH = 60000;
-        public static int OVERWORLD_HEIGHT = 60000;
+        public static readonly int OVERWORLD_WIDTH = 200000;
+        public static readonly int OVERWORLD_HEIGHT = 200000;
 
         private List<GameObjectOverworld> GetVisibleGameObjects
         {
@@ -126,12 +126,11 @@ namespace SpaceProject
             currentSpaceRegion = sectorX;
 
             // Misic objects
-            deepSpaceGameObjects.Add(new MediumAsteroid(Game, shooterSheet, new Vector2(12550, 47980)));
-            deepSpaceGameObjects.Add(new MediumAsteroid(Game, shooterSheet, new Vector2(12520, 48000)));
-            deepSpaceGameObjects.Add(new MediumAsteroid(Game, shooterSheet, new Vector2(12490, 48021)));
-            deepSpaceGameObjects.Add(new MediumAsteroid(Game, shooterSheet, new Vector2(12552, 48050)));
-            deepSpaceGameObjects.Add(new MediumAsteroid(Game, shooterSheet, new Vector2(12575, 48075)));
-            deepSpaceGameObjects.Add(new AbandonedStation(Game, outpostSpriteSheet, Vector2.Zero));
+            deepSpaceGameObjects.Add(new MediumAsteroid(Game, shooterSheet, new Vector2(82550, 117980)));
+            deepSpaceGameObjects.Add(new MediumAsteroid(Game, shooterSheet, new Vector2(82520, 118000)));
+            deepSpaceGameObjects.Add(new MediumAsteroid(Game, shooterSheet, new Vector2(82490, 118021)));
+            deepSpaceGameObjects.Add(new MediumAsteroid(Game, shooterSheet, new Vector2(82552, 118050)));
+            deepSpaceGameObjects.Add(new MediumAsteroid(Game, shooterSheet, new Vector2(82575, 118075)));
 
             ActiveSong = Music.none;
 

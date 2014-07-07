@@ -44,7 +44,7 @@ namespace SpaceProject
 
             spriteSheet = new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/SectorXSpriteSheet"), null);
 
-            spaceRegionArea = new Rectangle(15000, 15000, 30000, 30000);
+            spaceRegionArea = new Rectangle(85000, 85000, 30000, 30000);
             Vector2 offset = new Vector2(spaceRegionArea.X, spaceRegionArea.Y);
 
             sectorXStar = new System1Star(game, spriteSheet);

@@ -11,6 +11,7 @@ namespace SpaceProject
     {
         private Telmun planet;
         private OutpostXStation station;
+        private AbandonedStation abandonedStation;
 
         public OutpostX(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
@@ -23,7 +24,7 @@ namespace SpaceProject
 
             name = "Outpost X";
 
-            spaceRegionArea = new Rectangle(1000, 43000, 5000, 5000);
+            spaceRegionArea = new Rectangle(71000, 113000, 5000, 5000);
 
             planet = new Telmun(game, spriteSheet, new Vector2(spaceRegionArea.X, spaceRegionArea.Y));
             planet.Initialize();
@@ -32,6 +33,10 @@ namespace SpaceProject
             station = new OutpostXStation(game, spriteSheet, planet.position);
             station.Initialize();
             AddGameObject(station);
+
+            abandonedStation = new AbandonedStation(game, spriteSheet, new Vector2(spaceRegionArea.X, spaceRegionArea.Y));
+            abandonedStation.Initialize();
+            AddGameObject(abandonedStation);
         }
 
         public override void Update(GameTime gameTime)

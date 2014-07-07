@@ -22,7 +22,7 @@ namespace SpaceProject
 
             name = "Sector X Border Outpost";
 
-            spaceRegionArea = new Rectangle(47000, 27000, 3000, 3000);
+            spaceRegionArea = new Rectangle(117000, 97000, 3000, 3000);
 
             station = new BorderStation(game, spriteSheet, new Vector2(spaceRegionArea.X, spaceRegionArea.Y));
             station.Initialize();
