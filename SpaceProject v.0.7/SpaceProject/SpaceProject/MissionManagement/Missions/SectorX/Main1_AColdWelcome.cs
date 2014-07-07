@@ -55,6 +55,7 @@ namespace SpaceProject
                         Game.messageBox.DisplayMessage("Fei Yan: Too bad. Try again! Return to Border Station if you need to repair your ship.");
                         died = false;
                         ObjectiveIndex = 0;
+                        objectives[0].Reset();
                     }
                 },
                 new Func<Boolean>(delegate()
@@ -115,6 +116,18 @@ namespace SpaceProject
             //
             //    MissionManager.MarkMissionAsCompleted(this.MissionName);
             //}
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+
+            if (ObjectiveIndex == 0
+                && CollisionDetection.IsRectInRect(Game.player.Bounds, battlefield.Bounds))
+            {
+                CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, battlefield);
+                Game.helper.DisplayText("Press 'Enter' to investigate battlefield..");
+            }
         }
 
         public override int GetProgress()
