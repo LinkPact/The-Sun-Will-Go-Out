@@ -261,8 +261,10 @@ namespace SpaceProject
                     {
                         if (enemyMessages.Count > 0)
                         {
-                            game.messageBox.DisplayMessage(enemyMessages[i]);
+                            game.messageBox.DisplayMessage(enemyMessages[0]);
+                            enemyMessages.RemoveAt(0);
                         }
+
                         game.stateManager.overworldState.RemoveOverworldObject(enemies[i]);
                         game.stateManager.shooterState.BeginLevel(enemies[i].Level);
                         game.stateManager.shooterState.CurrentLevel.SetFreighterMaxHP(shipToDefendMaxHP);

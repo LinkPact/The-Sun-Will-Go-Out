@@ -32,7 +32,7 @@ namespace SpaceProject
                 new EventTextCapsule(new List<String> { "Avoid the astroids and collect resources." },
                 null, EventTextCanvas.MessageBox)));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1], battlefield,
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], battlefield,
                 new EventTextCapsule(new List<String> { EventArray[3, 0] }, null, EventTextCanvas.MessageBox),
                 delegate
                 {
@@ -68,7 +68,7 @@ namespace SpaceProject
                     return false;
                 })));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2],
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
                 Game.stateManager.overworldState.getStation("Border Station"), new EventTextCapsule(
                 null, null, EventTextCanvas.BaseState)));
         }

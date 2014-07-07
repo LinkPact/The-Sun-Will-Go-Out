@@ -22,7 +22,7 @@ namespace SpaceProject
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.getPlanet("Lavis")));
 
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
                 Game.stateManager.overworldState.getPlanet("Lavis"), "AstroScan", LevelStartCondition.Immediately,
                 new EventTextCapsule(new List<String>{EventArray[0, 0]}, null, EventTextCanvas.MessageBox)));
         }

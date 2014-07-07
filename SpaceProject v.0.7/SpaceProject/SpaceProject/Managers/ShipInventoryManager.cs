@@ -103,9 +103,6 @@ namespace SpaceProject
             RegularShield regularShield = new RegularShield(Game);
             RegularPlating regularPlating = new RegularPlating(Game);
 
-            //Test 
-            gold = new GoldResource(Game, 50);
-
             shipItems.Clear();
 
             List<PlayerWeapon> tempPrimary = new List<PlayerWeapon>();
@@ -115,9 +112,6 @@ namespace SpaceProject
             shipItems.Add(regularCell);
             shipItems.Add(regularShield);
             shipItems.Add(regularPlating);
-
-            //Test
-            shipItems.Add(gold);
 
             //Equipped from the beginning
             primarySlots = 2;

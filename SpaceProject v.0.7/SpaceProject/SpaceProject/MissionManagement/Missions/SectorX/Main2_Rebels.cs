@@ -73,7 +73,7 @@ namespace SpaceProject
                     new List<String>{ "Hello! Let's go back!" },
                     Game.stateManager.overworldState.GetSectorX.shipSpawner.GetOverworldShips(5, "rebel"),
                     Game.stateManager.overworldState.getStation("Soelara Station").position + new Vector2(200, -200),
-                    new List<String> { "EscortTest1", "SecondMissionlvl2", "SecondMissionlvl1",
+                    new List<String> { "SecondMissionlvl3", "SecondMissionlvl2", "SecondMissionlvl1",
                         "SecondMissionlvl2", "SecondMissionlvl3" },
                     17500,
                     7500)));

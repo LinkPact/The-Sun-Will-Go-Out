@@ -22,7 +22,7 @@ namespace SpaceProject
         public void Initialize(GameObjectOverworld obj)
         {
             sprite = spriteSheet.GetSubSprite(new Rectangle(0, 38, 18,18));
-            layerDepth = 0.5f;
+            layerDepth = obj.layerDepth - 0.01f;
             
             position.X = obj.position.X - 6 + (float)(rand.Next(12));
             position.Y = obj.position.Y - 6 + (float)(rand.Next(12));
