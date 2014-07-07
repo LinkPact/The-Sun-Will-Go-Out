@@ -79,7 +79,7 @@ namespace SpaceProject
                 return true;
             }
 
-            return (game.stateManager.shooterState.GetLevel(level).IsObjectiveCompleted);
+            return (game.stateManager.shooterState.GetLevel(level).IsObjectiveCompleted && !GameStateManager.currentState.Equals("ShooterState"));
         }
 
         public override void OnCompleted()
@@ -89,14 +89,8 @@ namespace SpaceProject
 
         public override bool Failed()
         {
-            if (game.stateManager.shooterState.GetLevel(level).IsGameOver
-                && GameStateManager.currentState != "ShooterState")
-            {
-                OnFailed();
-                return true;
-            }
-
-            return false;
+            return (game.stateManager.shooterState.GetLevel(level).IsGameOver
+                && GameStateManager.currentState != "ShooterState");
         }
     }
 }

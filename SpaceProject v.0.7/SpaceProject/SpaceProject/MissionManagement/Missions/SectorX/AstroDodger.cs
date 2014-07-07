@@ -23,6 +23,34 @@ namespace SpaceProject
 
             destroyedShip = new DestroyedShip(this.Game, spriteSheet);
             destroyedShip.Initialize();
+
+            objectives.Add(new ArriveAtLocationObjective(
+                Game,
+                this,
+                ObjectiveDescriptions[0],
+                destroyedShip,
+                new EventTextCapsule(
+                    new List<String> { EventArray[0, 0], EventArray[1, 0] },
+                    null,
+                    EventTextCanvas.MessageBox)));
+
+            objectives.Add(new ShootingLevelObjective(
+                Game,
+                this,
+                ObjectiveDescriptions[0],
+                destroyedShip,
+                "AstroDodger",
+                LevelStartCondition.Immediately,
+                new EventTextCapsule(
+                    new List<String> { EventArray[2, 0] },
+                    new List<String> { "You decide it's best to abandon the ship and return to Soelara Station. No reward is worth getting crushed by asteroids." },
+                    EventTextCanvas.MessageBox)));
+
+            objectives.Add(new ArriveAtLocationObjective(
+                Game,
+                this,
+                ObjectiveDescriptions[1],
+                Game.stateManager.overworldState.getStation("Soelara Station")));
         }
 
         public override void StartMission()
@@ -48,53 +76,11 @@ namespace SpaceProject
         public override void MissionLogic()
         {
             base.MissionLogic();
-
-            if (progress == 0 && 
-                Game.player.Bounds.Intersects(destroyedShip.Bounds) &&
-                ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)) &&
-                GameStateManager.currentState == "OverworldState"))
-            {
-                Game.stateManager.shipStationState.TextBuffer.Add(EventArray[0, 0]);
-                Game.stateManager.shipStationState.TextBuffer.Add(EventArray[1, 0]);
-                Game.stateManager.shipStationState.StateBuffer.Add("ShooterState");
-                //Game.stateManager.shipStationState.LevelToStart = "MeteorLevel";
-                Game.stateManager.shipStationState.LevelToStart = "AstroDodger";
-                Game.stateManager.ChangeState("ShipStationState");
-                Game.stateManager.shipStationState.LoadShipData(destroyedShip);                
-            }
-
-            if (progress == 0 &&
-                missionHelper.IsLevelCompleted("AstroDodger"))
-            {
-                progress = 1;
-                ObjectiveIndex = 1;
-                Game.stateManager.shipStationState.TextBuffer.Add(EventArray[2, 0]);
-                Game.stateManager.shipStationState.LoadShipData(destroyedShip);
-                Game.stateManager.shipStationState.ReturnState = "OverworldState";
-                Game.stateManager.ChangeState("ShipStationState");
-            }
-
-            if (progress == 1 &&
-                missionHelper.IsPlayerOnStation("Soelara Station"))
-            {
-                MissionManager.MarkMissionAsCompleted(this.MissionName);
-
-                destroyedShip.IsUsed = false;
-                Game.stateManager.overworldState.RemoveOverworldObject(destroyedShip);
-            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-
-            if (progress == 0 &&
-                Game.player.Bounds.Intersects(destroyedShip.Bounds) &&
-                GameStateManager.currentState.Equals("OverworldState"))
-            {
-                CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, destroyedShip);
-                Game.helper.DisplayText("Press 'Enter' to investigate ship.");
-            }
         }
 
         public override int GetProgress()

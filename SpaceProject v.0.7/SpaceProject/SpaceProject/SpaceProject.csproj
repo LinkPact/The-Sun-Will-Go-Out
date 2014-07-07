@@ -175,7 +175,6 @@
     <Compile Include="GameStates\PlanetAndStationStates\MenuSubStates\ShopMenuState.cs" />
     <Compile Include="GameStates\PlanetAndStationStates\PlanetState.cs" />
     <Compile Include="GameStates\PlanetAndStationStates\PlanetStateManager.cs" />
-    <Compile Include="GameStates\ShipStationState\ShipStationState.cs" />
     <Compile Include="GameStates\ShooterState.cs" />
     <Compile Include="GameStates\PlanetAndStationStates\StationState.cs" />
     <Compile Include="GameStates\PlanetAndStationStates\StationStateManager.cs" />

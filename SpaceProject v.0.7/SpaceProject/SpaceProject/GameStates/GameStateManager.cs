@@ -32,7 +32,6 @@ namespace SpaceProject
         public ShipManagerState shipManagerState;
         public PlanetState planetState;
         public StationState stationState;
-        public ShipStationState shipStationState;
         public MissionScreenState missionScreenState;
         public MapCreatorState mapCreatorState;
         public CreditState creditState;
@@ -73,7 +72,6 @@ namespace SpaceProject
             shipManagerState.Initialize();
             planetState.Initialize();
             stationState.Initialize();
-            shipStationState.Initialize();
             missionScreenState.Initialize();
 
             ChangeState(name);
@@ -128,7 +126,6 @@ namespace SpaceProject
             shipManagerState = new ShipManagerState(Game, "ShipManagerState");
             planetState = new PlanetState(Game, "PlanetState");
             stationState = new StationState(Game, "StationState");
-            shipStationState = new ShipStationState(Game, "ShipStationState");
             missionScreenState = new MissionScreenState(Game, "MissionScreenState");
             creditState = new CreditState(Game, "CreditState");
             
@@ -145,7 +142,6 @@ namespace SpaceProject
             gameStates.Add(shipManagerState);
             gameStates.Add(planetState);
             gameStates.Add(stationState);
-            gameStates.Add(shipStationState);
             gameStates.Add(missionScreenState);
             gameStates.Add(mapCreatorState);
             gameStates.Add(creditState);
@@ -165,7 +161,6 @@ namespace SpaceProject
             shipManagerState.Initialize();
             planetState.Initialize();
             stationState.Initialize();
-            shipStationState.Initialize();
             missionScreenState.Initialize();
 
             creditState.Initialize();
