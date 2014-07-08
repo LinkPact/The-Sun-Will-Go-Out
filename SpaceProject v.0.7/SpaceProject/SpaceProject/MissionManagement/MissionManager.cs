@@ -432,7 +432,7 @@ namespace SpaceProject
                     return mission;
             }
 
-            return null;
+            throw new ArgumentException("Mission not found");
         }
 
         public void Update(GameTime gameTime)

@@ -518,7 +518,7 @@ namespace SpaceProject
                     }
                 case "Fail":
                     {
-                        locationName = value;
+                        failedText = value;
                         break;
                     }
                 //default:
