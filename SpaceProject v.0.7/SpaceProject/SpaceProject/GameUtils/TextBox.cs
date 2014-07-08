@@ -49,7 +49,7 @@ namespace SpaceProject
         #endregion
 
         //Creates a textbox with no predefined text
-        public TextBox(SpriteFont font ,Rectangle rect, bool origin)
+        public TextBox(SpriteFont font, Rectangle rect, bool origin)
         {
             configFile = new ConfigFile();
             //readConfigFile = true;

@@ -84,9 +84,10 @@ namespace SpaceProject
         public abstract bool Completed();
         public virtual void OnCompleted() 
         {
+            
             isOnCompletedCalled = true;
 
-            if (objectiveCompletedEventText != "")
+            if (objectiveCompletedEventText != "" && objectiveCompletedEventText != null)
             {
                 if (eventTextCanvas.Equals(EventTextCanvas.BaseState))
                 {

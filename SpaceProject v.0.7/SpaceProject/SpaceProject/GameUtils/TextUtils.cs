@@ -59,8 +59,28 @@ namespace SpaceProject
                                                                   text,
                                                                   origin);
             tempTextBox.Initialize();
-
+        
             return tempTextBox;
+        }
+
+        //Method for creating a TextBox with predefined text
+        public static List<TextBox> CreateFormattedTextBoxes(SpriteFont font,
+                                    Rectangle textRect, bool origin, string text)
+        {
+            String[] substrings = text.Split('#');
+
+            List<TextBox> subBoxes = new List<TextBox>();
+
+            foreach (String subStr in substrings)
+            {
+                TextBox tempTextBox = new TextBox(font, new Rectangle(textRect.X,
+                    textRect.Y, textRect.Width, textRect.Height), subStr, origin);
+                tempTextBox.Initialize();
+
+                subBoxes.Add(tempTextBox);
+            }
+
+            return subBoxes;
         }
 
         //Method for creating a TextBox that reads data from a config file and read from it instantly 

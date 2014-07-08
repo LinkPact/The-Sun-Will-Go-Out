@@ -394,20 +394,35 @@ namespace SpaceProject
 
             if (SelectedMission != null)
             {
-                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                BaseStateManager.TextBoxes.AddRange(TextUtils.CreateFormattedTextBoxes(BaseState.Game.fontManager.GetFont(14),
                                                                   BaseStateManager.LowerScreenRectangle,
                                                                   false,
                                                                   SelectedMission.MissionText));
 
-                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                BaseStateManager.TextBoxes.AddRange(TextUtils.CreateFormattedTextBoxes(BaseState.Game.fontManager.GetFont(14),
                                                       BaseStateManager.ResponseRectangle1,
                                                       true,
                                                       SelectedMission.PosResponse));
 
-                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                BaseStateManager.TextBoxes.AddRange(TextUtils.CreateFormattedTextBoxes(BaseState.Game.fontManager.GetFont(14),
                                                       BaseStateManager.ResponseRectangle2,
                                                       true,
                                                       SelectedMission.NegResponse));
+
+                //BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                //                                                  BaseStateManager.LowerScreenRectangle,
+                //                                                  false,
+                //                                                  SelectedMission.MissionText));
+                //
+                //BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                //                                      BaseStateManager.ResponseRectangle1,
+                //                                      true,
+                //                                      SelectedMission.PosResponse));
+                //
+                //BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                //                                      BaseStateManager.ResponseRectangle2,
+                //                                      true,
+                //                                      SelectedMission.NegResponse));
             }
 
             BaseStateManager.ButtonControl = ButtonControl.Response;
@@ -460,10 +475,11 @@ namespace SpaceProject
 
                     MissionManager.MarkMissionAsActive(selectedMission.MissionName);
 
-                    BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                          BaseStateManager.LowerScreenRectangle,
-                                                                          false,
-                                                                          selectedMission.AcceptText[selectedMission.AcceptIndex]));
+                    BaseStateManager.TextBoxes.AddRange(TextUtils.CreateFormattedTextBoxes(BaseState.Game.fontManager.GetFont(14),
+                        BaseStateManager.LowerScreenRectangle, false, selectedMission.AcceptText[selectedMission.AcceptIndex]));
+
+                    //BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                    //    BaseStateManager.LowerScreenRectangle, false, selectedMission.AcceptText[selectedMission.AcceptIndex]));
 
                     missionCursorIndex = 0;
 
@@ -482,10 +498,11 @@ namespace SpaceProject
 
                 MissionManager.MarkMissionAsActive(selectedMission.MissionName);
 
-                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                      BaseStateManager.LowerScreenRectangle,
-                                                                      false,
-                                                                      selectedMission.AcceptText[selectedMission.AcceptIndex]));
+                BaseStateManager.TextBoxes.AddRange(TextUtils.CreateFormattedTextBoxes(BaseState.Game.fontManager.GetFont(14),
+                    BaseStateManager.LowerScreenRectangle, false, selectedMission.AcceptText[selectedMission.AcceptIndex]));
+
+                //BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                //    BaseStateManager.LowerScreenRectangle, false, selectedMission.AcceptText[selectedMission.AcceptIndex]));
 
                 missionCursorIndex = 0;
 

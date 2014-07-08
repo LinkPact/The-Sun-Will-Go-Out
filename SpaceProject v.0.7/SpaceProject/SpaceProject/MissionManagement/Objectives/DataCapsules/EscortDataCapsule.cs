@@ -11,11 +11,11 @@ namespace SpaceProject
         private OverworldShip shipToDefend;
         public OverworldShip ShipToDefend { get { return shipToDefend; } set { shipToDefend = value; } }
 
-        private List<String> shipIntroductionText;
-        public List<String> ShipIntroductionText { get { return shipIntroductionText; } set { shipIntroductionText = value; } }
+        private String shipIntroductionText;
+        public String ShipIntroductionText { get { return shipIntroductionText; } set { shipIntroductionText = value; } }
 
-        private List<String> attackStartText;
-        public List<String> AttackStartText { get { return attackStartText; } set { attackStartText = value; } }
+        private String attackStartText;
+        public String AttackStartText { get { return attackStartText; } set { attackStartText = value; } }
 
         private int shipToDefendHP;
         public int ShipToDefendHP { get { return shipToDefendHP; } set { shipToDefendHP = value; } }
@@ -41,19 +41,19 @@ namespace SpaceProject
         private List<String> levels;
         public List<String> Levels { get { return levels; } set { levels = value; } }
 
-        public EscortDataCapsule(OverworldShip shipToDefend, List<String> shipIntroductionText, List<OverworldShip> enemyShips,
+        public EscortDataCapsule(OverworldShip shipToDefend, String shipIntroductionText, List<OverworldShip> enemyShips,
             Vector2 startingPoint, List<String> levels, int enemyAttackStartTime, int enemyAttackFrequency)
         {
             Setup(shipToDefend, shipIntroductionText, enemyShips, startingPoint, levels, enemyAttackStartTime, enemyAttackFrequency);
 
             allyShips = new List<OverworldShip>();
-            attackStartText = new List<String>();
+            attackStartText = "";
             enemyMessages = new List<String>();
             shipToDefendHP = 2000;
         }
 
-        public EscortDataCapsule(OverworldShip shipToDefend, List<String> shipIntroductionText, List<OverworldShip> enemyShips,
-            List<String> enemyMessages, List<OverworldShip> allyShips, Vector2 startingPoint, List<String> attackStartText,
+        public EscortDataCapsule(OverworldShip shipToDefend, String shipIntroductionText, List<OverworldShip> enemyShips,
+            List<String> enemyMessages, List<OverworldShip> allyShips, Vector2 startingPoint, String attackStartText,
             int enemyAttackStartTime, int enemyAttackFrequency, int shipToDefendHP, List<String> levels)
         {
             Setup(shipToDefend, shipIntroductionText, enemyShips, startingPoint, levels, enemyAttackStartTime, enemyAttackFrequency);
@@ -72,7 +72,7 @@ namespace SpaceProject
 
             if (this.attackStartText == null)
             {
-                this.attackStartText = new List<String>();
+                this.attackStartText = "";
             }
 
             if (this.enemyMessages == null)
@@ -81,7 +81,7 @@ namespace SpaceProject
             }
         }
 
-        private void Setup(OverworldShip shipToDefend, List<String> shipToDefendText, List<OverworldShip> enemyShips,
+        private void Setup(OverworldShip shipToDefend, String shipToDefendText, List<OverworldShip> enemyShips,
             Vector2 startingPoint, List<String> levels, int enemyAttackStartTime, int enemyAttackFrequency)
         {
             this.shipToDefend = shipToDefend;
@@ -94,7 +94,7 @@ namespace SpaceProject
 
             if (this.shipIntroductionText == null)
             {
-                this.shipIntroductionText = new List<String>();
+                this.shipIntroductionText = "";
             }
 
             if (this.enemyShips == null)
@@ -109,7 +109,7 @@ namespace SpaceProject
 
             if (this.attackStartText == null)
             {
-                this.attackStartText = new List<String>();
+                this.attackStartText = "";
             }
         }
     }

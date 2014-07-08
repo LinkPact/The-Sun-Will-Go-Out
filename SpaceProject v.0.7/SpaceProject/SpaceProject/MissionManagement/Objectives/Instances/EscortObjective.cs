@@ -149,7 +149,7 @@ namespace SpaceProject
                 {
                     // First time enemies spawn
                     if (startingNumberOfEnemyShips == numberOfEnemyShips &&
-                        escortDataCapsule.AttackStartText.Count > 0)
+                        escortDataCapsule.AttackStartText != "" )
                     {
                         game.messageBox.DisplayMessage(escortDataCapsule.AttackStartText);
                     }
