@@ -66,7 +66,7 @@ namespace SpaceProject
             lavisStation = new LavisStation(game, spriteSheet, lavis.position);
             soelaraStation = new SoelaraStation(game, spriteSheet, soelara.position);
             fotrunStation1 = new FotrunStation1(game, spriteSheet, fotrun.position);
-            fotrunStation2 = new FotrunStation2(game, spriteSheet, Vector2.Zero);
+            fotrunStation2 = new FotrunStation2(game, spriteSheet, fotrun.position);
             lavisStation.Initialize();
             soelaraStation.Initialize();
             fotrunStation1.Initialize();
@@ -75,7 +75,7 @@ namespace SpaceProject
             beacons = new List<Beacon>();
 
             highfenceBeacon = new Beacon(game, spriteSheet, new Rectangle(588, 844, 100, 100), new Rectangle(487, 844, 100, 100),
-                "Highfence Beacon", highfence.position + new Vector2(-400, 300));
+                "Highfence Beacon", highfence.position + new Vector2(300, 250));
             highfenceBeacon.Initialize();
 
             fotrunBeacon = new Beacon(game, spriteSheet, new Rectangle(588, 844, 100, 100), new Rectangle(487, 844, 100, 100),

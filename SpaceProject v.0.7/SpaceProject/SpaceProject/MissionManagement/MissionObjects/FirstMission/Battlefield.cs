@@ -20,7 +20,7 @@ namespace SpaceProject
 
             sprite = spriteSheet.GetSubSprite(new Rectangle(0, 42, 301, 198));
             scale = 1f;
-            position = new Vector2(126350, 90600);
+            position = new Vector2(124850, 91600);
             color = Color.White;
             layerDepth = 0.5f;
 

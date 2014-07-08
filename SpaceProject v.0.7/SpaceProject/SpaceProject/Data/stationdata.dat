@@ -18,8 +18,8 @@ Inhabitants = 20000
 
 [SX_Fotrun_2]
 Name = Fotrun Station II
-PositionX = 26300
-PositionY = 27000
+PositionX = 3300
+PositionY = 2000
 Inhabitants = 1000
 
 [OX_OutpostX_Station]

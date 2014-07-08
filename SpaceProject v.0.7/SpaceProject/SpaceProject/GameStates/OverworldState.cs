@@ -125,7 +125,7 @@ namespace SpaceProject
 
             currentSpaceRegion = sectorX;
 
-            // Misic objects
+            // Misc objects
             deepSpaceGameObjects.Add(new MediumAsteroid(Game, shooterSheet, new Vector2(82550, 117980)));
             deepSpaceGameObjects.Add(new MediumAsteroid(Game, shooterSheet, new Vector2(82520, 118000)));
             deepSpaceGameObjects.Add(new MediumAsteroid(Game, shooterSheet, new Vector2(82490, 118021)));
