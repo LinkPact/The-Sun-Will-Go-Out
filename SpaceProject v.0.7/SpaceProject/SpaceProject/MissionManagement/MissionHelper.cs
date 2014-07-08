@@ -124,7 +124,14 @@ namespace SpaceProject
             if (!mission.EventBuffer.Contains(eventText))
             {
                 if (eventText != "")
-                    MissionManager.MissionEventBuffer.Add(eventText);
+                {
+                    String[] substrings = eventText.Split('#');
+
+                    foreach (String subStr in substrings)
+                    {
+                        MissionManager.MissionEventBuffer.Add(subStr);
+                    }
+                }
 
                 eventText = "";
             }
