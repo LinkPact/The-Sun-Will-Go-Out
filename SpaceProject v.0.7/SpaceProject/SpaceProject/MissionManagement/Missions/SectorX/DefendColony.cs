@@ -9,6 +9,10 @@ namespace SpaceProject
 {
     public class DefendColony : Mission
     {
+        private enum EventID
+        {
+            LevelCleared = 0,
+        }
 
         public DefendColony(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
@@ -21,8 +25,7 @@ namespace SpaceProject
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.getPlanet("New Norrland"), "DefendColony", LevelStartCondition.OnStartMission,
-                //new EventTextCapsule(EventList[0].Value, null, EventTextCanvas.BaseState)));
-                new EventTextCapsule(EventList[0].Key, "", EventTextCanvas.BaseState)));
+                new EventTextCapsule(GetEvent((int)EventID.LevelCleared), "", EventTextCanvas.BaseState)));
         }
 
         public override void StartMission()

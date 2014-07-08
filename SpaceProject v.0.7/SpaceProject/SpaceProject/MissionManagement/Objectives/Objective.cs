@@ -83,8 +83,7 @@ namespace SpaceProject
 
         public abstract bool Completed();
         public virtual void OnCompleted() 
-        {
-            
+        {  
             isOnCompletedCalled = true;
 
             if (objectiveCompletedEventText != "" && objectiveCompletedEventText != null)

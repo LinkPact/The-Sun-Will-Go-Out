@@ -9,24 +9,11 @@ namespace SpaceProject
 {
     public class FlightTraining : Mission
     {
-        //private enum FlightTrainingState
-        //{ 
-        //    uninitialized = 0,
-        //    A_ready = 1,
-        //    A_running = 2,
-        //    A_completed = 3,
-        //    B_ready = 4,
-        //    B_running = 5,
-        //    B_completed = 6,
-        //    C_ready = 7,
-        //    C_running = 8,
-        //    C_completed = 9,
-        //    failed = 10
-        //}
-
-        //public int getProgress { get { return (int)flightTrainingState; } set { flightTrainingState = (FlightTrainingState)value; } }
-
-        //private FlightTrainingState flightTrainingState;
+        private enum EventID
+        {
+            FirstCleared = 0,
+            SecondCleared = 1
+        }
 
         public FlightTraining(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
@@ -46,17 +33,13 @@ namespace SpaceProject
                 "flightTraining_1", LevelStartCondition.EnteringOverworld));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], borderStation,
-                new EventTextCapsule(EventList[0].Key, "", EventTextCanvas.BaseState)));
-
-            //objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], borderStation,
-            //    new EventTextCapsule("hello", "", EventTextCanvas.BaseState)));
-
+                new EventTextCapsule(GetEvent((int)EventID.FirstCleared), "", EventTextCanvas.BaseState)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], borderStation,
                 "flightTraining_2", LevelStartCondition.EnteringOverworld));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], borderStation,
-                new EventTextCapsule(EventList[1].Key, "", EventTextCanvas.BaseState)));
+                new EventTextCapsule(GetEvent((int)EventID.SecondCleared), "", EventTextCanvas.BaseState)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], borderStation,
                 "flightTraining_3", LevelStartCondition.EnteringOverworld));
@@ -75,69 +58,6 @@ namespace SpaceProject
         public override void MissionLogic()
         {
             base.MissionLogic();
-
-            //String firstMission = "flightTraining_1";
-            //String secondMission = "flightTraining_2";
-            //String thirdMission = "flightTraining_3";
-            //
-            ////First part
-            //if (flightTrainingState == FlightTrainingState.uninitialized 
-            //    && GameStateManager.currentState == "StationState"
-            //    && Game.stateManager.stationState.Station.name.ToLower().Equals("border station"))
-            //{
-            //    missionHelper.StartLevelAfterCondition(firstMission, LevelStartCondition.EnteringOverworld);
-            //}
-            //
-            //if (missionHelper.IsLevelCompleted(firstMission))
-            //{
-            //    updateLogic = true;
-            //    flightTrainingState = FlightTrainingState.A_completed;
-            //}
-            //
-            ////Second part
-            //if (flightTrainingState == FlightTrainingState.A_completed
-            //    && missionHelper.IsPlayerOnStation("Border Station"))
-            //{
-            //    missionHelper.ShowEvent(new List<int> { 0, 1, 2 });
-            //    missionHelper.StartLevelAfterCondition(secondMission, LevelStartCondition.EnteringOverworld);
-            //}
-            //
-            //if (missionHelper.IsLevelCompleted(secondMission))
-            //{
-            //    updateLogic = true;
-            //    flightTrainingState = FlightTrainingState.B_completed;
-            //}
-            //
-            ////Third part
-            //if (flightTrainingState == FlightTrainingState.B_completed
-            //    && missionHelper.IsPlayerOnStation("Border Station"))
-            //{
-            //    missionHelper.ShowEvent(new List<int> { 3, 4, 5 });
-            //    missionHelper.StartLevelAfterCondition(thirdMission, LevelStartCondition.EnteringOverworld);
-            //}
-            //
-            //if (missionHelper.IsLevelCompleted(thirdMission))
-            //{
-            //    flightTrainingState = FlightTrainingState.C_completed;
-            //}
-            //
-            ////
-            //
-            ////Fail mission
-            //if (missionHelper.IsLevelFailed(firstMission)
-            //    || missionHelper.IsLevelFailed(secondMission)
-            //    || missionHelper.IsLevelFailed(thirdMission))
-            //{
-            //    MissionManager.MarkMissionAsFailed("Flight Training");
-            //}
-            //
-            ////Win mission
-            //if (flightTrainingState == FlightTrainingState.C_completed)
-            //{
-            //    updateLogic = true;
-            //    MissionManager.MarkMissionAsCompleted(this.MissionName);
-            //}
-            
         }
 
         public override int GetProgress()

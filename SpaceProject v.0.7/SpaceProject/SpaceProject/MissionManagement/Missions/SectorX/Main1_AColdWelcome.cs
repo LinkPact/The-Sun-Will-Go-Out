@@ -10,6 +10,13 @@ namespace SpaceProject
 {
     public class Main1_AColdWelcome: Mission
     {
+        private enum EventID
+        {
+            Introduction,
+            LevelCleared,
+            Bonus
+        }
+
         private Battlefield battlefield;
         private bool died;
         private int tempTimer;
@@ -33,7 +40,7 @@ namespace SpaceProject
                 "", EventTextCanvas.MessageBox)));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], battlefield,
-                new EventTextCapsule(EventList[1].Key, "", EventTextCanvas.MessageBox),
+                new EventTextCapsule(GetEvent((int)EventID.LevelCleared), "", EventTextCanvas.MessageBox),
                 delegate
                 {
                     missionHelper.StartLevel("FirstMissionLevel");

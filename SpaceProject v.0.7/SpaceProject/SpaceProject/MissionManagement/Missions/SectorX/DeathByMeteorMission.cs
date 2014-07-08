@@ -9,6 +9,10 @@ namespace SpaceProject
 {
     public class DeathByMeteorMission : Mission
     {
+        private enum EventID
+        {
+            LevelCleared = 0,
+        }
 
         public DeathByMeteorMission(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
@@ -24,7 +28,7 @@ namespace SpaceProject
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.getPlanet("Peye"), "DeathByMeteor", LevelStartCondition.TextCleared,
-                new EventTextCapsule(EventList[0].Key, "", EventTextCanvas.BaseState)));
+                new EventTextCapsule(GetEvent((int)EventID.LevelCleared), "", EventTextCanvas.BaseState)));
 
             RestartAfterFail();
         }

@@ -10,6 +10,12 @@ namespace SpaceProject
 {
     public class AstroDodger: Mission
     {
+        private enum EventID
+        {
+            ShipFound = 0,
+            Return = 1
+        }
+
         private DestroyedShip destroyedShip;
 
         public AstroDodger(Game1 Game, string section, Sprite spriteSheet) :
@@ -30,7 +36,7 @@ namespace SpaceProject
                 ObjectiveDescriptions[0],
                 destroyedShip,
                 new EventTextCapsule(
-                    EventList[0].Key,
+                    GetEvent((int)EventID.ShipFound),
                     "", EventTextCanvas.MessageBox)));
 
             objectives.Add(new ShootingLevelObjective(
@@ -41,7 +47,7 @@ namespace SpaceProject
                 "AstroDodger",
                 LevelStartCondition.Immediately,
                 new EventTextCapsule(
-                    EventList[1].Key,
+                    GetEvent((int)EventID.Return),
                     "You decide it's best to abandon the ship and return to Soelara Station. No reward is worth getting crushed by asteroids.",
                     EventTextCanvas.MessageBox)));
 

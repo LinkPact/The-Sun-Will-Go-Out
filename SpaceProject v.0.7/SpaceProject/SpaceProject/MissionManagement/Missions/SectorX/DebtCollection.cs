@@ -10,7 +10,6 @@ namespace SpaceProject
     //Change class-name to the name of the mission 
     class DebtCollection : Mission
     {
-
         public DebtCollection(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {

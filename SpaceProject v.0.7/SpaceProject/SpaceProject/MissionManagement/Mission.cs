@@ -724,5 +724,10 @@ namespace SpaceProject
                 }
             }
         }
+
+        protected String GetEvent(int eventID)
+        {
+            return EventList[eventID].Key;
+        }
     }
 }

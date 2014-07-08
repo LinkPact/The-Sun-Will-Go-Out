@@ -7,6 +7,11 @@ namespace SpaceProject
 {
     class AstroScan : Mission
     {
+        private enum EventID
+        {
+            FlyBack = 0
+        }
+
         public AstroScan(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
@@ -22,13 +27,9 @@ namespace SpaceProject
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.getPlanet("Lavis")));
 
-            //objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
-            //    Game.stateManager.overworldState.getPlanet("Lavis"), "AstroScan", LevelStartCondition.Immediately,
-            //    new EventTextCapsule(new List<String>{EventArray[0, 0]}, null, EventTextCanvas.MessageBox)));
-
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
                 Game.stateManager.overworldState.getPlanet("Lavis"), "AstroScan", LevelStartCondition.Immediately,
-                new EventTextCapsule(EventList[0].Key, "", EventTextCanvas.MessageBox)));
+                new EventTextCapsule(GetEvent((int)EventID.FlyBack), "", EventTextCanvas.MessageBox)));
         }
 
         public override void StartMission()

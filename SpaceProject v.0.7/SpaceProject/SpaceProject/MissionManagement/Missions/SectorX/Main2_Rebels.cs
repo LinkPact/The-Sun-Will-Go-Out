@@ -10,6 +10,14 @@ namespace SpaceProject
 {
     public class Main2_Rebels : Mission
     {
+        private enum EventID
+        {
+            Introduction,
+            FreighterStart,
+            AllianceAttack,
+            ArrivalAtSoelara
+        }
+
         FreighterShip freighter1;
         FreighterShip freighter2;
         private float freighterHP;
@@ -41,7 +49,7 @@ namespace SpaceProject
             //OBJECTIVES
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.getPlanet("Highfence"),
-                new EventTextCapsule(EventList[0].Key, "", EventTextCanvas.BaseState)));
+                new EventTextCapsule(GetEvent((int)EventID.Introduction), "", EventTextCanvas.BaseState)));
 
             // Lots-of-paramaters-version of EscortObjective
             objectives.Add(new EscortObjective(Game,
@@ -49,17 +57,17 @@ namespace SpaceProject
                 ObjectiveDescriptions[1], 
                 Game.stateManager.overworldState.getStation("Soelara Station"),
                 new EscortDataCapsule(freighter1,
-                    EventList[1].Key, 
+                    GetEvent((int)EventID.FreighterStart), 
                     Game.stateManager.overworldState.GetSectorX.shipSpawner.GetOverworldShips(3, "rebel"),
                     new List<String> { "Death to the Alliance 1!", "Death to the Alliance 2!", "Death to the Alliance 3!" },
                     null,
                     Game.stateManager.overworldState.getPlanet("Highfence").position + new Vector2(-200, 0),
-                    EventList[2].Key,
+                    GetEvent((int)EventID.AllianceAttack),
                     22500,
                     7500,
                     2000,
                     new List<String> { "SecondMissionlvl1", "SecondMissionlvl2", "SecondMissionlvl3" }),
-                new EventTextCapsule(EventList[3].Key,
+                new EventTextCapsule(GetEvent((int)EventID.ArrivalAtSoelara),
                     "",
                     EventTextCanvas.BaseState)));
 

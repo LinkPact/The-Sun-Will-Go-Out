@@ -237,6 +237,8 @@ namespace SpaceProject
                         textBuffer.Add(str);
 
                     tempTimer = 5;
+
+                    popupDelay = -1000;
                 }
             }
 
