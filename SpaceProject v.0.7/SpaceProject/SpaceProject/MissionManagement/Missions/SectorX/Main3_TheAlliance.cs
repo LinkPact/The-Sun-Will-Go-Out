@@ -76,7 +76,7 @@ namespace SpaceProject
                     Game.stateManager.overworldState.getStation("Fotrun Station II").position,
                     300))
                 {
-                    Game.messageBox.DisplayMessage(EventArray[0, 0]);
+                    Game.messageBox.DisplayMessage(EventList[0].Value);
                     missionHelper.StartLevel("Main_TheAlliancelvl");
                     ObjectiveIndex = 2;
                     progress = 2;
@@ -114,7 +114,7 @@ namespace SpaceProject
                     died = false;
             
                     Game.player.Direction.SetDirection(Game.player.Direction.GetDirectionAsVector() * -1);
-                    Game.messageBox.DisplayMessage(EventArray[12, 0]);
+                    Game.messageBox.DisplayMessage(EventList[6].Value);
                     ObjectiveIndex = 1;
                     progress = 1;
                 }
@@ -130,7 +130,7 @@ namespace SpaceProject
             // Player enters Fotrun station II
             if (progress == 4 && missionHelper.IsPlayerOnStation("Fotrun Station II"))
             {
-                missionHelper.ShowEvent(new List<String> { EventArray[1, 0], EventArray[2, 0], EventArray[3, 0] });
+                missionHelper.ShowEvent(EventList[0].Value);
                 progress = 5;
                 Game.stateManager.overworldState.getStation("Fotrun Station II").Abandoned = true;
             }
@@ -138,7 +138,7 @@ namespace SpaceProject
             // Player drops of man at Fotrun Station I
             if (progress == 5 && missionHelper.IsPlayerOnStation("Fotrun Station I"))
             {
-                missionHelper.ShowEvent(EventArray[4, 0]);
+                missionHelper.ShowEvent(EventList[1].Value);
                 progress = 6;
             }
             
@@ -151,12 +151,12 @@ namespace SpaceProject
             
             if (tempTimer == 1)
             {
-                Game.messageBox.DisplayMessage(EventArray[5, 0]);
+                Game.messageBox.DisplayMessage(EventList[2].Value);
             }
             
             if (progress == 7 && missionHelper.IsPlayerOnPlanet("Highfence"))
             {
-                missionHelper.ShowEvent(new List<String> { EventArray[6, 0], EventArray[7, 0], EventArray[8, 0] });
+                missionHelper.ShowEvent(EventList[3].Value);
                 missionHelper.ShowResponse(8, new List<int> { 1, 2 });
             }
             
@@ -168,7 +168,7 @@ namespace SpaceProject
                 {
                     case 1:
                         {
-                            missionHelper.ShowEvent(new List<String> { EventArray[9, 0], EventArray[10, 0] });
+                            missionHelper.ShowEvent(EventList[4].Value);
                             MissionManager.MarkMissionAsCompleted(this.MissionName);
                             missionHelper.ClearResponseText();
                             break;
@@ -176,7 +176,7 @@ namespace SpaceProject
             
                     case 2:
                         {
-                            missionHelper.ShowEvent(EventArray[11, 0]);
+                            missionHelper.ShowEvent(EventList[5].Value);
                             MissionManager.MarkMissionAsCompleted(this.MissionName);
                             missionHelper.ClearResponseText();
                             break;

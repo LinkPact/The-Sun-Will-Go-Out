@@ -102,6 +102,15 @@ namespace SpaceProject
 
             tempTimer = 5;
         }
+
+        public void DisplayMessage(string txt, int delay)
+        {
+            textStorage = new List<String>();
+            textStorage.Add(txt);
+            
+            popupDelay = delay;
+        }
+
         //Same as above, but with more than one message. The messages will be displayed one by one, proceeding
         //when pressing the actionkey
         public void DisplayMessage(List<string> txtList)

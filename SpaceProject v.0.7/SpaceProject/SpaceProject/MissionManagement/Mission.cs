@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System.Text.RegularExpressions;
 
 namespace SpaceProject
 {
@@ -29,7 +30,10 @@ namespace SpaceProject
         protected ConfigFile configFile;
         private string configSection;
 
-        private string[,] eventArray;
+        //private string[,] eventArray;
+        private List<KeyValuePair<String, List<String>>> eventList;
+        //private SortedDictionary<String, List<String>> eventDictionary;
+
         private List<string> eventBuffer;
         private List<string> responseBuffer;
 
@@ -93,10 +97,17 @@ namespace SpaceProject
             get { return configSection; }
         }
 
-        public string[,] EventArray
+        // Will be removed, changing to EventDictionary // Jakob
+        //public string[,] EventArray
+        //{
+        //    get { return eventArray; }
+        //    set { eventArray = value; }
+        //}
+
+        public List<KeyValuePair<String, List<String>>> EventList
         {
-            get { return eventArray; }
-            set { eventArray = value; }
+            get { return eventList; }
+            set { eventList = value; }
         }
 
         public List<string> EventBuffer
@@ -382,42 +393,145 @@ namespace SpaceProject
         {
             List<String> lines = configFile.GetAllLinesInSection(section);
 
-            int eventCounter = 0;
-            int responseCounter = 1;
+            //eventArray = GetEmptyEventArray(lines);
 
-            for (int i = 0; i < lines.Count; i++)
+            //GetEventArrayContent(lines);
+
+            SetMissionDataFromFile(lines);
+        }
+
+        private void SetMissionDataFromFile(List<String> lines)
+        {
+            eventList = new List<KeyValuePair<String, List<String>>>();
+
+            for (int linePos = 0; linePos < lines.Count; linePos++)
             {
-                String[] split = lines[i].Split('=');
-                split[0] = split[0].Trim();
-                split[0] = split[0] + "=";
+                String line = lines[linePos];
 
-                if (split[0].Contains("EventText"))
+                Match match = Regex.Match(line, @"([a-zA-Z]+).*=\s+(.+)");
+                String key = match.Groups[1].Value;
+                String value = match.Groups[2].Value;
+
+                if (key == "EventText")
                 {
-                    if (!split[0].Contains("Response"))
+                    if (!value.Contains("Response"))
                     {
-                        if (!lines[i + 1].Contains("Response"))
-                        {
-                            eventCounter++;
-                        }
-                        continue;
-                    }
+                        KeyValuePair<String, List<String>> newEventEntry 
+                            = new KeyValuePair<String, List<String>>(value, new List<String>());
 
-                    else
-                    {
-                        responseCounter++;
-
-                        if (!lines[i + 1].Contains("Response"))
+                        while (lines[linePos + 1].Contains("Response"))
                         {
-                            eventCounter++;
+                            linePos++;
+
+                            Match responseMatch = Regex.Match(lines[linePos], @"(\w+)\s*=\s*(.+)");
+                            String responseValue = responseMatch.Groups[2].Value;
+                            newEventEntry.Value.Add(responseValue);
                         }
-                    }
+                        EventList.Add(newEventEntry);
+                    }                    
+                }
+                else
+                {
+                    SetMissionValues(key, value);
                 }
             }
+        }
 
-            eventArray = new String[eventCounter, responseCounter];
+        private void SetMissionValues(String key, String value)
+        {
+            switch (key)
+            {
+                case "Location":
+                    {
+                        locationName = value;
+                        break;
+                    }
+                case "Name":
+                    {
+                        missionName = value;
+                        break;
+                    }
+                case "Introduction":
+                    {
+                        missionText = value;
+                        break;
+                    }
+                case "PosResponse":
+                    {
+                        posResponse = value;
+                        break;
+                    }
+                case "NegResponse":
+                    {
+                        negResponse = value;
+                        break;
+                    }
+                case "Accept":
+                    {
+                        acceptText[0] = value;
+                        break;
+                    }
+                case "FailAccept":
+                    {
+                        acceptFailedText = value;
+                        break;
+                    }
+                case "Success":
+                    {
+                        completedText = value;
+                        break;
+                    }
+                case "ObjectiveText":
+                    {
+                        ObjectiveDescriptions.Add(value);
+                        break;
+                    }
+                case "ObjectiveCompleted":
+                    {
+                        objectiveCompleted = value;
+                        break;
+                    }
+                case "ObjectiveFailed":
+                    {
+                        objectiveFailed = value;
+                        break;
+                    }
+                case "Reward":
+                    {
+                        moneyReward = Int32.Parse(value);
+                        break;
+                    }
+                case "Progress":
+                    {
+                        progressReward = Int32.Parse(value);
+                        break;
+                    }
+                case "Reputation":
+                    {
+                        reputationReward = Int32.Parse(value);
+                        break;
+                    }
+                case "State":
+                    {
+                        missionState = (StateOfMission)Int32.Parse(value);
+                        break;
+                    }
+                case "Fail":
+                    {
+                        locationName = value;
+                        break;
+                    }
+                //default:
+                //    {
+                //        //throw new ArgumentException("Unhandled information loaded");
+                //    }
+            }
+        }
 
-            eventCounter = 0;
-            responseCounter = 1;
+        private void GetEventArrayContent(List<String> lines)
+        {
+            int eventCounter = 0;
+            int responseCounter = 1;
 
             for (int i = 0; i < lines.Count; i++)
             {
@@ -438,7 +552,7 @@ namespace SpaceProject
 
                 else if (split[0].Contains("Introduction="))
                 {
-                     missionText = split[1];
+                    missionText = split[1];
                 }
 
                 else if (split[0].Contains("PosResponse="))
@@ -510,7 +624,7 @@ namespace SpaceProject
                 {
                     if (!split[0].Contains("Response"))
                     {
-                        EventArray[eventCounter, 0] = split[1];
+                        //EventArray[eventCounter, 0] = split[1];
                         if (!lines[i + 1].Contains("Response"))
                         {
                             eventCounter++;
@@ -520,7 +634,7 @@ namespace SpaceProject
 
                     else
                     {
-                        EventArray[eventCounter, responseCounter] = split[1];
+                        //EventArray[eventCounter, responseCounter] = split[1];
                         responseCounter++;
 
                         if (!lines[i + 1].Contains("Response"))
@@ -530,6 +644,45 @@ namespace SpaceProject
                     }
                 }
             }
+        }
+
+        private String[,] GetEmptyEventArray(List<String> lines)
+        {
+            int eventCounter = 0;
+            int responseCounter = 1;
+
+            for (int i = 0; i < lines.Count; i++)
+            {
+                String[] split = lines[i].Split('=');
+                split[0] = split[0].Trim();
+                split[0] = split[0] + "=";
+
+                if (split[0].Contains("EventText"))
+                {
+                    if (!split[0].Contains("Response"))
+                    {
+                        if (!lines[i + 1].Contains("Response"))
+                        {
+                            eventCounter++;
+                        }
+                        continue;
+                    }
+
+                    else
+                    {
+                        responseCounter++;
+
+                        if (!lines[i + 1].Contains("Response"))
+                        {
+                            eventCounter++;
+                        }
+                    }
+                }
+            }
+
+            String[,] tempArray = new String[eventCounter, responseCounter];
+
+            return tempArray;
         }
 
         private void ResetEventText()
@@ -550,7 +703,7 @@ namespace SpaceProject
                 {
                     if (!split[0].Contains("Response"))
                     {
-                        EventArray[eventCounter, 0] = split[1];
+                        //EventArray[eventCounter, 0] = split[1];
                         if (!lines[i + 1].Contains("Response"))
                         {
                             eventCounter++;
@@ -560,7 +713,7 @@ namespace SpaceProject
 
                     else
                     {
-                        EventArray[eventCounter, responseCounter] = split[1];
+                        //EventArray[eventCounter, responseCounter] = split[1];
                         responseCounter++;
 
                         if (!lines[i + 1].Contains("Response"))

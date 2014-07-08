@@ -41,8 +41,7 @@ namespace SpaceProject
             //OBJECTIVES
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.getPlanet("Highfence"),
-                new EventTextCapsule( new List<String> { EventArray[0, 0], EventArray[1, 0], EventArray[2, 0], EventArray[3, 0] },
-                    null, EventTextCanvas.BaseState)));
+                new EventTextCapsule(EventList[0].Key, "", EventTextCanvas.BaseState)));
 
             // Lots-of-paramaters-version of EscortObjective
             objectives.Add(new EscortObjective(Game,
@@ -50,18 +49,18 @@ namespace SpaceProject
                 ObjectiveDescriptions[1], 
                 Game.stateManager.overworldState.getStation("Soelara Station"),
                 new EscortDataCapsule(freighter1,
-                    new List<String> { EventArray[4, 0] }, 
+                    EventList[1].Value, 
                     Game.stateManager.overworldState.GetSectorX.shipSpawner.GetOverworldShips(3, "rebel"),
                     new List<String> { "Death to the Alliance 1!", "Death to the Alliance 2!", "Death to the Alliance 3!" },
                     null,
                     Game.stateManager.overworldState.getPlanet("Highfence").position + new Vector2(-200, 0),
-                    new List<String> { EventArray[5, 0] },
+                    EventList[2].Value,
                     22500,
                     7500,
                     2000,
                     new List<String> { "SecondMissionlvl1", "SecondMissionlvl2", "SecondMissionlvl3" }),
-                new EventTextCapsule(new List<String> { EventArray[6, 0] },
-                    null,
+                new EventTextCapsule(EventList[3].Key,
+                    "",
                     EventTextCanvas.BaseState)));
 
             // A-few-less-parameters-version of Escort Objective (just an example, will not be used in finished version of mission)

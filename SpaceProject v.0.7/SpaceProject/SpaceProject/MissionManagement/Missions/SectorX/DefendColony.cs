@@ -21,7 +21,8 @@ namespace SpaceProject
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.getPlanet("New Norrland"), "DefendColony", LevelStartCondition.OnStartMission,
-                new EventTextCapsule(new List<String>{EventArray[0, 0]}, null, EventTextCanvas.BaseState)));
+                //new EventTextCapsule(EventList[0].Value, null, EventTextCanvas.BaseState)));
+                new EventTextCapsule(EventList[0].Key, "", EventTextCanvas.BaseState)));
         }
 
         public override void StartMission()

@@ -24,8 +24,7 @@ namespace SpaceProject
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.getPlanet("Peye"), "DeathByMeteor", LevelStartCondition.TextCleared,
-                new EventTextCapsule(new List<String>{EventArray[0, 0], EventArray[1, 0]}, 
-                    null, EventTextCanvas.BaseState)));
+                new EventTextCapsule(EventList[0].Key, "", EventTextCanvas.BaseState)));
 
             RestartAfterFail();
         }

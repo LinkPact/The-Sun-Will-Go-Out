@@ -24,8 +24,8 @@ namespace SpaceProject
         public GameObjectOverworld Destination { get { return destination; } set {destination = value; } }
 
         protected EventTextCanvas eventTextCanvas;
-        protected List<String> objectiveCompletedEventText = new List<String>();
-        protected List<String> objectiveFailedEventText = new List<String>();
+        protected String objectiveCompletedEventText;
+        protected String objectiveFailedEventText;
 
         protected bool isOnCompletedCalled;
 
@@ -86,8 +86,7 @@ namespace SpaceProject
         {
             isOnCompletedCalled = true;
 
-            if (objectiveCompletedEventText.Count > 0
-                && objectiveCompletedEventText[0] != "")
+            if (objectiveCompletedEventText != "")
             {
                 if (eventTextCanvas.Equals(EventTextCanvas.BaseState))
                 {
@@ -103,8 +102,7 @@ namespace SpaceProject
         public abstract bool Failed();
         public virtual void OnFailed()
         {
-            if (objectiveFailedEventText.Count > 0
-                && objectiveFailedEventText[0] != "")
+            if (objectiveFailedEventText != "")
             {
                 if (eventTextCanvas.Equals(EventTextCanvas.BaseState))
                 {

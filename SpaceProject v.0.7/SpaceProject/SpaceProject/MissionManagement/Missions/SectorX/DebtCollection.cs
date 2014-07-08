@@ -41,7 +41,7 @@ namespace SpaceProject
                 missionHelper.IsPlayerOnStation("Fotrun Station I"))
             {
                 progress = 1;
-                missionHelper.ShowEvent(new List<String> { EventArray[0, 0], EventArray[1, 0]});
+                missionHelper.ShowEvent(EventList[0].Value);
                 missionHelper.ShowResponse(1, new List<int>() { 1, 2, 3, 4 });
             }
             
@@ -53,7 +53,7 @@ namespace SpaceProject
                         {
                             if (StatsManager.Rupees > 1000)
                             {
-                                missionHelper.ShowEvent(EventArray[2, 0]);
+                                missionHelper.ShowEvent(EventList[1].Value);
                                 ObjectiveIndex = 1;
                                 StatsManager.Rupees -= 1000;
                                 missionHelper.ClearResponseText();
@@ -61,7 +61,7 @@ namespace SpaceProject
             
                             else
                             {
-                                missionHelper.ShowEvent(EventArray[6, 0]);
+                                missionHelper.ShowEvent(EventList[5].Value);
                                 MissionResponse = 0;
                             }
                             break;
@@ -69,7 +69,7 @@ namespace SpaceProject
             
                     case 2:
                         {
-                            missionHelper.ShowEvent(EventArray[3, 0]);
+                            missionHelper.ShowEvent(EventList[2].Value);
                             progress = 2;
                             ObjectiveIndex = 2;
                             missionHelper.ClearResponseText();
@@ -79,8 +79,8 @@ namespace SpaceProject
                     case 3:
                     case 4:
                         {
-                            missionHelper.ShowEvent(EventArray[4, 0]);
-                            missionHelper.ShowEvent(EventArray[5, 0]);
+                            missionHelper.ShowEvent(EventList[3].Value);
+                            missionHelper.ShowEvent(EventList[4].Value);
                             ObjectiveIndex = 1;
                             missionHelper.ClearResponseText();
                             break;

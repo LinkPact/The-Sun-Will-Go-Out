@@ -33,7 +33,7 @@ namespace SpaceProject
 
             objectives.Add(new ItemTransportObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.getStation("Lavis Station"), medicalSupplies,
-                new EventTextCapsule(new List<String> { EventArray[0, 0] }, new List<String> { EventArray[1, 0] },
+                new EventTextCapsule(EventList[0].Key, EventList[1].Key,
                     EventTextCanvas.BaseState)));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],

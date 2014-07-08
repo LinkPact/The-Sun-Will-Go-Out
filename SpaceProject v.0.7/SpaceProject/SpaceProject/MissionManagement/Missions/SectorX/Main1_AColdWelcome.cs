@@ -29,11 +29,11 @@ namespace SpaceProject
             battlefield.Initialize();
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], battlefield,
-                new EventTextCapsule(new List<String> { "Avoid the astroids and collect resources." },
-                null, EventTextCanvas.MessageBox)));
+                new EventTextCapsule("Avoid the astroids and collect resources.",
+                "", EventTextCanvas.MessageBox)));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], battlefield,
-                new EventTextCapsule(new List<String> { EventArray[3, 0] }, null, EventTextCanvas.MessageBox),
+                new EventTextCapsule(EventList[1].Key, "", EventTextCanvas.MessageBox),
                 delegate
                 {
                     missionHelper.StartLevel("FirstMissionLevel");
@@ -78,7 +78,7 @@ namespace SpaceProject
             ObjectiveIndex = 0;
             progress = 0;
 
-            missionHelper.ShowEvent(new List<String>{ EventArray[0, 0], EventArray[1, 0], EventArray[2, 0] });
+            missionHelper.ShowEvent(EventList[0].Key);
             Game.stateManager.GotoStationSubScreen("Border Station", "Overview");
 
             Game.stateManager.overworldState.AddOverworldObject(battlefield);

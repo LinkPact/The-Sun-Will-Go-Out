@@ -30,9 +30,8 @@ namespace SpaceProject
                 ObjectiveDescriptions[0],
                 destroyedShip,
                 new EventTextCapsule(
-                    new List<String> { EventArray[0, 0], EventArray[1, 0] },
-                    null,
-                    EventTextCanvas.MessageBox)));
+                    EventList[0].Key,
+                    "", EventTextCanvas.MessageBox)));
 
             objectives.Add(new ShootingLevelObjective(
                 Game,
@@ -42,8 +41,8 @@ namespace SpaceProject
                 "AstroDodger",
                 LevelStartCondition.Immediately,
                 new EventTextCapsule(
-                    new List<String> { EventArray[2, 0] },
-                    new List<String> { "You decide it's best to abandon the ship and return to Soelara Station. No reward is worth getting crushed by asteroids." },
+                    EventList[1].Key,
+                    "You decide it's best to abandon the ship and return to Soelara Station. No reward is worth getting crushed by asteroids.",
                     EventTextCanvas.MessageBox)));
 
             objectives.Add(new ArriveAtLocationObjective(
