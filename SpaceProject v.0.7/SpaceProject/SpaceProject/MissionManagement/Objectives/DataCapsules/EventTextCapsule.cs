@@ -7,16 +7,16 @@ namespace SpaceProject
 {
     public class EventTextCapsule
     {
-        private String completedText;
-        public String CompletedText { get { return completedText; } set { completedText = value; } }
+        private EventText completedText;
+        public EventText CompletedText { get { return completedText; } set { completedText = value; } }
 
-        private String failedText;
-        public String FailedText { get { return failedText; } set { failedText = value; } }
+        private EventText failedText;
+        public EventText FailedText { get { return failedText; } set { failedText = value; } }
 
         private EventTextCanvas eventTextCanvas;
         public EventTextCanvas EventTextCanvas { get { return eventTextCanvas; } set { eventTextCanvas = value; } }
 
-        public EventTextCapsule(String completedText, String failedText, EventTextCanvas eventTextCanvas)
+        public EventTextCapsule(EventText completedText, EventText failedText, EventTextCanvas eventTextCanvas)
         {
             this.completedText = completedText;
             this.FailedText = failedText;
@@ -24,11 +24,11 @@ namespace SpaceProject
 
             if (completedText == null)
             {
-                this.completedText = "";
+                this.completedText = new EventText("");
             }
             if (failedText == null)
             {
-                this.failedText = "";
+                this.failedText = new EventText("");
             }
         }
     }

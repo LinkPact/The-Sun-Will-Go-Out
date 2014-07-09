@@ -31,7 +31,7 @@ namespace SpaceProject
         private string configSection;
 
         //private string[,] eventArray;
-        private List<KeyValuePair<String, List<String>>> eventList;
+        private List<KeyValuePair<EventText, List<EventText>>> eventList;
         //private SortedDictionary<String, List<String>> eventDictionary;
 
         private List<string> eventBuffer;
@@ -104,7 +104,7 @@ namespace SpaceProject
         //    set { eventArray = value; }
         //}
 
-        public List<KeyValuePair<String, List<String>>> EventList
+        public List<KeyValuePair<EventText, List<EventText>>> EventList
         {
             get { return eventList; }
             set { eventList = value; }
@@ -402,7 +402,7 @@ namespace SpaceProject
 
         private void SetMissionDataFromFile(List<String> lines)
         {
-            eventList = new List<KeyValuePair<String, List<String>>>();
+            eventList = new List<KeyValuePair<EventText, List<EventText>>>();
 
             for (int linePos = 0; linePos < lines.Count; linePos++)
             {
@@ -416,8 +416,8 @@ namespace SpaceProject
                 {
                     if (!value.Contains("Response"))
                     {
-                        KeyValuePair<String, List<String>> newEventEntry 
-                            = new KeyValuePair<String, List<String>>(value, new List<String>());
+                        KeyValuePair<EventText, List<EventText>> newEventEntry
+                            = new KeyValuePair<EventText, List<EventText>>(new EventText(value), new List<EventText>());
 
                         while (lines[linePos + 1].Contains("Response"))
                         {
@@ -425,7 +425,7 @@ namespace SpaceProject
 
                             Match responseMatch = Regex.Match(lines[linePos], @"(\w+)\s*=\s*(.+)");
                             String responseValue = responseMatch.Groups[2].Value;
-                            newEventEntry.Value.Add(responseValue);
+                            newEventEntry.Value.Add(new EventText(responseValue));
                         }
                         EventList.Add(newEventEntry);
                     }                    
@@ -725,7 +725,7 @@ namespace SpaceProject
             }
         }
 
-        protected String GetEvent(int eventID)
+        protected EventText GetEvent(int eventID)
         {
             return EventList[eventID].Key;
         }

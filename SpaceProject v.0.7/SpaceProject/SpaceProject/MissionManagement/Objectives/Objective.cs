@@ -24,8 +24,8 @@ namespace SpaceProject
         public GameObjectOverworld Destination { get { return destination; } set {destination = value; } }
 
         protected EventTextCanvas eventTextCanvas;
-        protected String objectiveCompletedEventText;
-        protected String objectiveFailedEventText;
+        protected EventText objectiveCompletedEventText;
+        protected EventText objectiveFailedEventText;
 
         protected bool isOnCompletedCalled;
 
@@ -86,7 +86,7 @@ namespace SpaceProject
         {  
             isOnCompletedCalled = true;
 
-            if (objectiveCompletedEventText != "" && objectiveCompletedEventText != null)
+            if (objectiveCompletedEventText.Text != "" && objectiveCompletedEventText != null)
             {
                 if (eventTextCanvas.Equals(EventTextCanvas.BaseState))
                 {
@@ -94,7 +94,7 @@ namespace SpaceProject
                 }
                 else if (eventTextCanvas.Equals(EventTextCanvas.MessageBox))
                 {
-                    game.messageBox.DisplayMessage(objectiveCompletedEventText, 200);
+                    game.messageBox.DisplayMessage(objectiveCompletedEventText.Text, 200);
                 }
             }
         }
@@ -102,7 +102,7 @@ namespace SpaceProject
         public abstract bool Failed();
         public virtual void OnFailed()
         {
-            if (objectiveFailedEventText != "")
+            if (objectiveFailedEventText.Text != "")
             {
                 if (eventTextCanvas.Equals(EventTextCanvas.BaseState))
                 {
@@ -110,7 +110,7 @@ namespace SpaceProject
                 }
                 else if (eventTextCanvas.Equals(EventTextCanvas.MessageBox))
                 {
-                    game.messageBox.DisplayMessage(objectiveFailedEventText);
+                    game.messageBox.DisplayMessage(objectiveFailedEventText.Text);
                 }
             }
 

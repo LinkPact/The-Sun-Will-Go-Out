@@ -183,6 +183,7 @@
     <Compile Include="Managers\BaseInventoryManager.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MissionManagement\EventText.cs" />
     <Compile Include="MissionManagement\Mission.cs" />
     <Compile Include="MissionManagement\MissionHelper.cs" />
     <Compile Include="MissionManagement\MissionManager.cs" />

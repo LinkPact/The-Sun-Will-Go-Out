@@ -37,7 +37,7 @@ namespace SpaceProject
                 destroyedShip,
                 new EventTextCapsule(
                     GetEvent((int)EventID.ShipFound),
-                    "", EventTextCanvas.MessageBox)));
+                    null, EventTextCanvas.MessageBox)));
 
             objectives.Add(new ShootingLevelObjective(
                 Game,
@@ -48,7 +48,7 @@ namespace SpaceProject
                 LevelStartCondition.Immediately,
                 new EventTextCapsule(
                     GetEvent((int)EventID.Return),
-                    "You decide it's best to abandon the ship and return to Soelara Station. No reward is worth getting crushed by asteroids.",
+                    new EventText("You decide it's best to abandon the ship and return to Soelara Station. No reward is worth getting crushed by asteroids."),
                     EventTextCanvas.MessageBox)));
 
             objectives.Add(new ArriveAtLocationObjective(

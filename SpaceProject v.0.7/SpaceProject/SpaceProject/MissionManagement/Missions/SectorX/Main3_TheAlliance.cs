@@ -76,7 +76,7 @@ namespace SpaceProject
                     Game.stateManager.overworldState.getStation("Fotrun Station II").position,
                     300))
                 {
-                    Game.messageBox.DisplayMessage(EventList[0].Value);
+                    //Game.messageBox.DisplayMessage(EventList[0].Value);
                     missionHelper.StartLevel("Main_TheAlliancelvl");
                     ObjectiveIndex = 2;
                     progress = 2;
@@ -114,7 +114,7 @@ namespace SpaceProject
                     died = false;
             
                     Game.player.Direction.SetDirection(Game.player.Direction.GetDirectionAsVector() * -1);
-                    Game.messageBox.DisplayMessage(EventList[6].Value);
+                    //Game.messageBox.DisplayMessage(EventList[6].Value);
                     ObjectiveIndex = 1;
                     progress = 1;
                 }
@@ -151,13 +151,13 @@ namespace SpaceProject
             
             if (tempTimer == 1)
             {
-                Game.messageBox.DisplayMessage(EventList[2].Value);
+                //Game.messageBox.DisplayMessage(EventList[2].Value);
             }
             
             if (progress == 7 && missionHelper.IsPlayerOnPlanet("Highfence"))
             {
                 missionHelper.ShowEvent(EventList[3].Value);
-                missionHelper.ShowResponse(8, new List<int> { 1, 2 });
+                //missionHelper.ShowResponse(8, new List<int> { 1, 2 });
             }
             
             if (MissionResponse != 0)

@@ -40,8 +40,16 @@ namespace SpaceProject
                 missionHelper.IsPlayerOnStation("Fotrun Station I"))
             {
                 progress = 1;
-                missionHelper.ShowEvent(EventList[0].Value);
-                missionHelper.ShowResponse(1, new List<int>() { 1, 2, 3, 4 });
+                missionHelper.ShowEvent(EventList[0].Key);
+            }
+
+            if (progress == 1
+                && missionHelper.HasTextBeenDisplayed(EventList[0].Key))
+            {
+                progress = 2;
+                missionHelper.ShowEvent(EventList[1].Key);
+                missionHelper.ShowResponse(1, new List<EventText>{ EventList[1].Value[0], EventList[1].Value[1],
+                    EventList[1].Value[2], EventList[1].Value[3] });
             }
             
             if (MissionResponse != 0)
@@ -52,15 +60,15 @@ namespace SpaceProject
                         {
                             if (StatsManager.Rupees > 1000)
                             {
-                                missionHelper.ShowEvent(EventList[1].Value);
-                                ObjectiveIndex = 1;
+                                missionHelper.ShowEvent(EventList[2].Key);
                                 StatsManager.Rupees -= 1000;
                                 missionHelper.ClearResponseText();
+                                progress = 3;
                             }
             
                             else
                             {
-                                missionHelper.ShowEvent(EventList[5].Value);
+                                missionHelper.ShowEvent(EventList[6].Key);
                                 MissionResponse = 0;
                             }
                             break;
@@ -68,9 +76,7 @@ namespace SpaceProject
             
                     case 2:
                         {
-                            missionHelper.ShowEvent(EventList[2].Value);
-                            progress = 2;
-                            ObjectiveIndex = 2;
+                            missionHelper.ShowEvent(EventList[3].Key);
                             missionHelper.ClearResponseText();
                             break;
                         }
@@ -78,10 +84,10 @@ namespace SpaceProject
                     case 3:
                     case 4:
                         {
-                            missionHelper.ShowEvent(EventList[3].Value);
-                            missionHelper.ShowEvent(EventList[4].Value);
-                            ObjectiveIndex = 1;
+                            missionHelper.ShowEvent(EventList[4].Key);
+                            missionHelper.ShowEvent(EventList[5].Key);
                             missionHelper.ClearResponseText();
+                            progress = 3;
                             break;
                         }
                 }
@@ -90,7 +96,7 @@ namespace SpaceProject
             
             if (missionHelper.IsPlayerOnPlanet("Highfence"))
             {
-                if (progress == 1)
+                if (progress == 3)
                     MissionManager.MarkMissionAsCompleted(this.MissionName);
             
                 else if (progress == 2)

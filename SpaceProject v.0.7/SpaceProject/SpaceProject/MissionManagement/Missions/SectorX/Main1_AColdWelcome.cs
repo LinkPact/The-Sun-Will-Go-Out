@@ -36,11 +36,11 @@ namespace SpaceProject
             battlefield.Initialize();
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], battlefield,
-                new EventTextCapsule("Avoid the astroids and collect resources.",
-                "", EventTextCanvas.MessageBox)));
+                new EventTextCapsule(new EventText("Avoid the astroids and collect resources."),
+                null, EventTextCanvas.MessageBox)));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], battlefield,
-                new EventTextCapsule(GetEvent((int)EventID.LevelCleared), "", EventTextCanvas.MessageBox),
+                new EventTextCapsule(GetEvent((int)EventID.LevelCleared), null, EventTextCanvas.MessageBox),
                 delegate
                 {
                     missionHelper.StartLevel("FirstMissionLevel");

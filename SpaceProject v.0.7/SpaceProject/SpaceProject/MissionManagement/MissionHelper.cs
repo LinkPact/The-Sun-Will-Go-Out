@@ -104,13 +104,9 @@ namespace SpaceProject
             return (mission.EventBuffer.Count <= 0 && game.stateManager.planetState.SubStateManager.ButtonControl != ButtonControl.Confirm);
         }
 
-        public bool HasTextBeenDisplayed(int eventIndex)
+        public bool HasTextBeenDisplayed(EventText eventText)
         {
-            //return (mission.EventArray[eventIndex, 0] == ""
-            //    && IsTextCleared());
-
-            return (mission.EventList[eventIndex].Key == ""
-                && IsTextCleared());
+            return eventText.Displayed;
         }
 
         public bool HasStartMissionTextBeenDisplayed()
@@ -119,91 +115,39 @@ namespace SpaceProject
                 && IsTextCleared());
         }
 
-        public void ShowEvent(String eventText)
+        public void ShowEvent(EventText eventText)
         {
-            if (!mission.EventBuffer.Contains(eventText))
+            String[] substrings = eventText.Text.Split('#');
+
+            foreach (String subStr in substrings)
             {
-                if (eventText != "")
-                {
-                    String[] substrings = eventText.Split('#');
-
-                    foreach (String subStr in substrings)
-                    {
-                        MissionManager.MissionEventBuffer.Add(subStr);
-                    }
-                }
-
-                eventText = "";
+                MissionManager.MissionEventBuffer.Add(subStr);
             }
+
+            eventText.Displayed = true;
         }
 
-        public void ShowEvent(List<String> eventText)
+        public void ShowEvent(List<EventText> eventText)
         {
             for (int i = 0; i < eventText.Count; i++)
             {
-                if (!mission.EventBuffer.Contains(eventText[i]))
-                {
-                    if (eventText[i] != "")
-                        MissionManager.MissionEventBuffer.Add(eventText[i]);
-
-                    eventText[i] = "";
-                }
+                ShowEvent(eventText[i]);
             }
         }
 
-        public void ShowResponse(int eventIndex, int responseIndex)
+        public void ShowResponse(int eventIndex, EventText responseText)
         {
-            //if (!mission.ResponseBuffer.Contains(mission.EventArray[eventIndex, responseIndex]))
-            //{
-            //    if (mission.EventArray[eventIndex, responseIndex] != "")
-            //    {
-            //        game.stateManager.stationState.SubStateManager.MissionMenuState.ActiveMission = mission;
-            //        mission.ResponseBuffer.Add(mission.EventArray[eventIndex, responseIndex]);
-            //    }
-            //
-            //    mission.EventArray[eventIndex, responseIndex] = "";
-            //}
+            game.stateManager.stationState.SubStateManager.MissionMenuState.ActiveMission = mission;
+            mission.ResponseBuffer.Add(responseText.Text);
 
-            if (!mission.ResponseBuffer.Contains(mission.EventList[eventIndex].Value[responseIndex]))
-            {
-                if (mission.EventList[eventIndex].Value[responseIndex] != "")
-                {
-                    game.stateManager.stationState.SubStateManager.MissionMenuState.ActiveMission = mission;
-                    mission.ResponseBuffer.Add(mission.EventList[eventIndex].Value[responseIndex]);
-                }
-
-                mission.EventList[eventIndex].Value[responseIndex] = "";
-            }
+            responseText.Displayed = true;
         }
 
-        public void ShowResponse(int eventIndex, List<int> responseIndices)
+        public void ShowResponse(int eventIndex, List<EventText> responseText)
         {
-            //for (int i = 0; i < responseIndices.Count; i++)
-            //{
-            //    if (!mission.ResponseBuffer.Contains(mission.EventArray[eventIndex, responseIndices[i]]))
-            //    {
-            //        if (mission.EventArray[eventIndex, responseIndices[i]] != "")
-            //        {
-            //            mission.ResponseBuffer.Add(mission.EventArray[eventIndex, responseIndices[i]]);
-            //            game.stateManager.stationState.SubStateManager.MissionMenuState.ActiveMission = mission;
-            //        }
-            //
-            //        mission.EventArray[eventIndex, responseIndices[i]] = "";
-            //    }
-            //}
-
-            for (int i = 0; i < responseIndices.Count; i++)
+            for (int i = 0; i < responseText.Count; i++)
             {
-                if (!mission.ResponseBuffer.Contains(mission.EventList[eventIndex].Value[responseIndices[i]]))
-                {
-                    if (mission.EventList[eventIndex].Value[responseIndices[i]] != "")
-                    {
-                        mission.ResponseBuffer.Add(mission.EventList[eventIndex].Value[responseIndices[i]]);
-                        game.stateManager.stationState.SubStateManager.MissionMenuState.ActiveMission = mission;
-                    }
-
-                    mission.EventList[eventIndex].Value[responseIndices[i]] = "";
-                }
+                ShowResponse(eventIndex, responseText[i]);
             }
         }
 

@@ -29,7 +29,7 @@ namespace SpaceProject
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
                 Game.stateManager.overworldState.getPlanet("Lavis"), "AstroScan", LevelStartCondition.Immediately,
-                new EventTextCapsule(GetEvent((int)EventID.FlyBack), "", EventTextCanvas.MessageBox)));
+                new EventTextCapsule(GetEvent((int)EventID.FlyBack), null, EventTextCanvas.MessageBox)));
         }
 
         public override void StartMission()
