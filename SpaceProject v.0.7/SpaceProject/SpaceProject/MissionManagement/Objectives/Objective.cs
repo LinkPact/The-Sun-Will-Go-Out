@@ -86,7 +86,7 @@ namespace SpaceProject
         {  
             isOnCompletedCalled = true;
 
-            if (objectiveCompletedEventText.Text != "" && objectiveCompletedEventText != null)
+            if (objectiveCompletedEventText != null && objectiveCompletedEventText.Text != "") 
             {
                 if (eventTextCanvas.Equals(EventTextCanvas.BaseState))
                 {
@@ -102,7 +102,7 @@ namespace SpaceProject
         public abstract bool Failed();
         public virtual void OnFailed()
         {
-            if (objectiveFailedEventText.Text != "")
+            if (objectiveFailedEventText != null && objectiveFailedEventText.Text != "")
             {
                 if (eventTextCanvas.Equals(EventTextCanvas.BaseState))
                 {

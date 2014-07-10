@@ -125,6 +125,26 @@ namespace SpaceProject
             }
 
             eventText.Displayed = true;
+
+            ClearResponseText();
+        }
+
+        public void ShowEvent(EventText eventText, bool clearResponse)
+        {
+            String[] substrings = eventText.Text.Split('#');
+
+            foreach (String subStr in substrings)
+            {
+                MissionManager.MissionEventBuffer.Add(subStr);
+            }
+
+            eventText.Displayed = true;
+
+            if (clearResponse)
+            {
+                ClearResponseText();
+                mission.MissionResponse = 0;
+            }
         }
 
         public void ShowEvent(List<EventText> eventText)
@@ -135,7 +155,7 @@ namespace SpaceProject
             }
         }
 
-        public void ShowResponse(int eventIndex, EventText responseText)
+        public void ShowResponse(EventText responseText)
         {
             game.stateManager.stationState.SubStateManager.MissionMenuState.ActiveMission = mission;
             mission.ResponseBuffer.Add(responseText.Text);
@@ -143,11 +163,11 @@ namespace SpaceProject
             responseText.Displayed = true;
         }
 
-        public void ShowResponse(int eventIndex, List<EventText> responseText)
+        public void ShowResponse(List<EventText> responseText)
         {
             for (int i = 0; i < responseText.Count; i++)
             {
-                ShowResponse(eventIndex, responseText[i]);
+                ShowResponse(responseText[i]);
             }
         }
 
@@ -165,6 +185,11 @@ namespace SpaceProject
         public void ClearResponseText()
         {
             mission.ResponseBuffer.Clear();
+        }
+
+        public bool IsResponseTextCleared()
+        {
+            return mission.ResponseBuffer.Count == 0;
         }
 
         public bool AllObjectivesCompleted()

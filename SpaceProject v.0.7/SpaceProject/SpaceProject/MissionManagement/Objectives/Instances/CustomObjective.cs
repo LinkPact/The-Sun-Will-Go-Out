@@ -10,32 +10,46 @@ namespace SpaceProject
     {
         private System.Action activateAction;
         private System.Action updateAction;
-        private Func<Boolean> completedAction;
-        private Func<Boolean> failedAction;
+        private Func<Boolean> completedCondition;
+        private Func<Boolean> failedCondition;
+
+        public CustomObjective(Game1 game, Mission mission, String description,
+            GameObjectOverworld destination, System.Action activateLogic,
+            System.Action updateLogic, Func<Boolean> completedCondition, Func<Boolean> failedCondition) :
+            base(game, mission, description, destination)
+        {
+            Setup(activateLogic, updateLogic, completedCondition, failedCondition);
+        }
 
         public CustomObjective(Game1 game, Mission mission, String description,
             GameObjectOverworld destination, EventTextCapsule eventTextCapsule, System.Action activateLogic,
-            System.Action updateLogic, Func<Boolean> completedConditions, Func<Boolean> failedCondition) :
+            System.Action updateLogic, Func<Boolean> completedCondition, Func<Boolean> failedCondition) :
             base(game, mission, description, destination)
         {
             objectiveCompletedEventText = eventTextCapsule.CompletedText;
             eventTextCanvas = eventTextCapsule.EventTextCanvas;
             objectiveFailedEventText = eventTextCapsule.FailedText;
 
-            this.activateAction = activateLogic;
-            this.updateAction = updateLogic;
-            this.completedAction = completedConditions;
-            this.failedAction = failedCondition;
+            Setup(activateLogic, updateLogic, completedCondition, failedCondition);
         }
 
-        private void Setup()
-        { }
+        private void Setup(System.Action activateLogic, System.Action updateLogic,
+            Func<Boolean> completedConditions, Func<Boolean> failedCondition)
+        {
+            this.activateAction = activateLogic;
+            this.updateAction = updateLogic;
+            this.completedCondition = completedConditions;
+            this.failedCondition = failedCondition;
+        }
 
         public override void OnActivate()
         {
             base.OnActivate();
 
-            activateAction.Invoke();
+            if (activateAction != null)
+            {
+                activateAction.Invoke();
+            }
         }
 
         public override void Initialize()
@@ -47,7 +61,10 @@ namespace SpaceProject
         {
             base.Update(playTime);
 
-            updateAction.Invoke();
+            if (updateAction != null)
+            {
+                updateAction.Invoke();
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -57,7 +74,12 @@ namespace SpaceProject
 
         public override bool Completed()
         {
-            return completedAction.Invoke();
+            if (completedCondition != null)
+            {
+                return completedCondition.Invoke();
+            }
+
+            return false;
         }
 
         public override void OnCompleted()
@@ -67,7 +89,12 @@ namespace SpaceProject
 
         public override bool Failed()
         {
-            return failedAction.Invoke();
+            if (failedCondition != null)
+            {
+                return failedCondition.Invoke();
+            }
+
+            return false;
         }
 
         public override void OnFailed()

@@ -10,6 +10,9 @@ namespace SpaceProject
     //Change class-name to the name of the mission 
     class DebtCollection : Mission
     {
+        private bool failed;
+        private bool success;
+
         public DebtCollection(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
@@ -18,10 +21,56 @@ namespace SpaceProject
         public override void Initialize()
         {
             base.Initialize();
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
+                Game.stateManager.overworldState.getStation("Fotrun Station I"),
+                new EventTextCapsule(GetEvent(0), null, EventTextCanvas.BaseState)));
+
+            objectives.Add(new ResponseObjective(Game, this, ObjectiveDescriptions[1],
+                Game.stateManager.overworldState.getStation("Fotrun Station I"),
+                new ResponseTextCapsule(GetEvent(1), GetAllResponses(1),
+                    new List<System.Action>()
+                    {
+                        delegate 
+                        {
+                            if (StatsManager.Rupees >= 1000)
+                            {
+                                missionHelper.ShowEvent(GetEvent(2));
+                                StatsManager.Rupees -= 1000;
+                                success = true;
+                            }
+
+                            else
+                            {
+                                missionHelper.ShowEvent(GetEvent(6), false);
+                            }
+                        },
+
+                        delegate
+                        {
+                            missionHelper.ShowEvent(GetEvent(3));
+                            failed = true;
+                        },
+
+                        delegate
+                        {
+                            missionHelper.ShowEvent(new List<EventText> { GetEvent(4), GetEvent(5) } );
+                            success = true;
+                        },
+
+                        delegate
+                        {
+                            missionHelper.ShowEvent(new List<EventText> { GetEvent(4), GetEvent(5) } );
+                            success = true;
+                        }
+                    })));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                Game.stateManager.overworldState.getPlanet("Highfence"), null, null,
+                delegate { return (missionHelper.IsPlayerOnPlanet("Highfence") && success); },
+                delegate { return (missionHelper.IsPlayerOnPlanet("Highfence") && failed); }));
         }
 
-        //If you want anything specific to happen when you start the mission, 
-        //for example add an item to the ship inventory, add it here
         public override void StartMission()
         {
             ObjectiveIndex = 0;
@@ -31,77 +80,9 @@ namespace SpaceProject
         public override void OnLoad()
         { }
 
-        //Add logic for the mission here
         public override void MissionLogic()
         {
-            base.MissionLogic();
-
-            if (progress == 0 &&
-                missionHelper.IsPlayerOnStation("Fotrun Station I"))
-            {
-                progress = 1;
-                missionHelper.ShowEvent(EventList[0].Key);
-            }
-
-            if (progress == 1
-                && missionHelper.HasTextBeenDisplayed(EventList[0].Key))
-            {
-                progress = 2;
-                missionHelper.ShowEvent(EventList[1].Key);
-                missionHelper.ShowResponse(1, new List<EventText>{ EventList[1].Value[0], EventList[1].Value[1],
-                    EventList[1].Value[2], EventList[1].Value[3] });
-            }
-            
-            if (MissionResponse != 0)
-            {
-                switch (MissionResponse)
-                {
-                    case 1:
-                        {
-                            if (StatsManager.Rupees > 1000)
-                            {
-                                missionHelper.ShowEvent(EventList[2].Key);
-                                StatsManager.Rupees -= 1000;
-                                missionHelper.ClearResponseText();
-                                progress = 3;
-                            }
-            
-                            else
-                            {
-                                missionHelper.ShowEvent(EventList[6].Key);
-                                MissionResponse = 0;
-                            }
-                            break;
-                        }
-            
-                    case 2:
-                        {
-                            missionHelper.ShowEvent(EventList[3].Key);
-                            missionHelper.ClearResponseText();
-                            break;
-                        }
-            
-                    case 3:
-                    case 4:
-                        {
-                            missionHelper.ShowEvent(EventList[4].Key);
-                            missionHelper.ShowEvent(EventList[5].Key);
-                            missionHelper.ClearResponseText();
-                            progress = 3;
-                            break;
-                        }
-                }
-            
-            }
-            
-            if (missionHelper.IsPlayerOnPlanet("Highfence"))
-            {
-                if (progress == 3)
-                    MissionManager.MarkMissionAsCompleted(this.MissionName);
-            
-                else if (progress == 2)
-                    MissionManager.MarkMissionAsFailed(this.MissionName);
-            }                                                                                   
+            base.MissionLogic();                                                                          
         }
 
         public override int GetProgress()

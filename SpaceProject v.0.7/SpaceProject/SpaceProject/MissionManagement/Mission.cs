@@ -729,5 +729,15 @@ namespace SpaceProject
         {
             return EventList[eventID].Key;
         }
+
+        protected EventText GetResponse(int eventID, int responseIndex)
+        {
+            return EventList[eventID].Value[responseIndex];
+        }
+
+        protected List<EventText> GetAllResponses(int eventID)
+        {
+            return EventList[eventID].Value;
+        }
     }
 }

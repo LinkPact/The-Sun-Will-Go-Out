@@ -255,7 +255,7 @@ namespace SpaceProject
                 if (MissionManager.MissionResponseBuffer.Count > 0)
                 {
                     activeMission.MissionResponse = responseCursorIndex + 1;
-                    activeMission.MissionLogic();
+                    activeMission.CurrentObjective.Update(StatsManager.PlayTime);
                     activeMission.MissionResponse = 0;
                     MissionEvent();
                 }
