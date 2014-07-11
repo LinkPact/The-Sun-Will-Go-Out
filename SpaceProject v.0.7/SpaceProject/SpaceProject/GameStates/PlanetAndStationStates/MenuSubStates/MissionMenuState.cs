@@ -286,8 +286,9 @@ namespace SpaceProject
                               "Back"));
 
                         if (selectedMission == MissionManager.GetMission("Tutorial Mission")
-                            && MissionManager.GetMission("Main - A Cold Welcome").MissionState == StateOfMission.Available)
+                            && MissionManager.GetMission("Main - A Cold Welcome").MissionState == StateOfMission.Unavailable)
                         {
+                            MissionManager.UnlockMission("Main - A Cold Welcome");
                             MissionManager.MarkMissionAsActive("Main - A Cold Welcome");
                             MissionEvent();
                         }
@@ -636,9 +637,9 @@ namespace SpaceProject
                                                                           false,
                                                                           temp[0]));
 
-                    for (int i = temp.Length - 1; i > 0; i--)
+                    for (int i = 1; i < temp.Length; i++)
                     {
-                        MissionManager.MissionEventBuffer.Insert(0, temp[i]);
+                        MissionManager.MissionEventBuffer.Add(temp[i]);
                     }
 
                     MissionManager.MarkCompletedMissionAsDead(completedMissions[0].MissionName);

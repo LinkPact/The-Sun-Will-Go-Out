@@ -468,6 +468,13 @@ namespace SpaceProject
             //    MarkMissionAsCompleted("Main - A Cold Welcome");
             //}
 
+            if (tutorialMission.MissionState == StateOfMission.CompletedDead
+                && aColdWelcome.MissionState == StateOfMission.Unavailable)
+            {
+                UnlockMission("Main - A Cold Welcome");
+                MarkMissionAsActive("Main - A Cold Welcome");
+            }
+
             // Unlock hyperspeed
             if (ControlManager.CurrentKeyboardState.IsKeyDown(Keys.LeftAlt) &&
                 ControlManager.CheckKeypress(Keys.Y) && !game.player.IsHyperSpeedUnlocked)

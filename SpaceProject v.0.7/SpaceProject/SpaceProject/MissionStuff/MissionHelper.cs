@@ -119,9 +119,9 @@ namespace SpaceProject
         {
             String[] substrings = eventText.Text.Split('#');
 
-            for (int i = substrings.Length - 1; i >= 0; i--)
+            for (int i = 0; i < substrings.Length; i++)
             {
-                MissionManager.MissionEventBuffer.Insert(0, substrings[i]);
+                MissionManager.MissionEventBuffer.Add(substrings[i]);
             }
 
             eventText.Displayed = true;
@@ -133,9 +133,9 @@ namespace SpaceProject
         {
             String[] substrings = eventText.Text.Split('#');
 
-            for (int i = substrings.Length - 1; i >= 0; i--)
+            for (int i = 0; i < substrings.Length; i++)
             {
-                MissionManager.MissionEventBuffer.Insert(0, substrings[i]);
+                MissionManager.MissionEventBuffer.Add(substrings[i]);
             }
 
             eventText.Displayed = true;
@@ -149,7 +149,7 @@ namespace SpaceProject
 
         public void ShowEvent(List<EventText> eventText)
         {
-            for (int i = eventText.Count - 1; i >= 0; i--)
+            for (int i = 0; i < eventText.Count; i++)
             {
                 ShowEvent(eventText[i]);
             }

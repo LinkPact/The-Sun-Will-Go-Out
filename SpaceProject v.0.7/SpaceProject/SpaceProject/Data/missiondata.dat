@@ -52,7 +52,7 @@ Fail = ""
 Reward = 100
 Progress = 2
 Reputation = 3
-State = 1
+State = 0
 
 [SX_Rebels]
 Location = Highfence
