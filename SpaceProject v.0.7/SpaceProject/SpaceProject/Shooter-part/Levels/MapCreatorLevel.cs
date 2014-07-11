@@ -15,16 +15,22 @@ namespace SpaceProject
         private LevelData data;
 
         public MapCreatorLevel(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player1, 
-            String identifier, String filePath, MissionType missionType)
+            String identifier, String filePath, MissionType missionType, Boolean isTestRun = false)
             : base(Game, spriteSheet, player1, missionType)
         {
-            Setup(identifier, filePath);
+            Setup(identifier, filePath, isTestRun);
         }
 
-        private void Setup(String identifier, String filePath)
+        private void Setup(String identifier, String filePath, Boolean isTestRun)
         {
             this.Name = identifier;
-            LevelLoader.ReadFile(filePath);
+
+            if (isTestRun)
+                LevelLoader.ReadMapCreatorLevelFile(filePath);
+            else
+                LevelLoader.ReadLevelFile(filePath);
+            
+            
             String[] textData;
             if (LevelLoader.HasNewOutput())
             {

@@ -182,7 +182,8 @@ namespace SpaceProject
             }
             removeList.Clear();
 
-            Level lv = new MapCreatorLevel(Game, spriteSheet, player, "testRun", fileName, MissionType.none);
+            Boolean isTestRun = true;
+            Level lv = new MapCreatorLevel(Game, spriteSheet, player, "testRun", fileName, MissionType.none, isTestRun);
             lv.SetCustomStartTime(startTime);
             levels.Add(lv);
         }

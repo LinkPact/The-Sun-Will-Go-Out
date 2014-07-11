@@ -98,7 +98,7 @@ namespace SpaceProject
         public void LoadFile(String path)
         {
             String[] lines;
-            LevelLoader.ReadFile(path);
+            LevelLoader.ReadMapCreatorLevelFile(path);
             if (LevelLoader.HasNewOutput())
             {
                 lines = LevelLoader.GetNewOutput();
