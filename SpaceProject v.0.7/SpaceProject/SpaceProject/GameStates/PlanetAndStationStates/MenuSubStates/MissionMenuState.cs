@@ -394,6 +394,8 @@ namespace SpaceProject
 
             if (SelectedMission != null)
             {
+                //String[] temp = SelectedMission.MissionText.Split('#');
+
                 BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                                   BaseStateManager.LowerScreenRectangle,
                                                                   false,
@@ -456,15 +458,25 @@ namespace SpaceProject
             {
                 if (ShipInventoryManager.HasAvailableSlot())
                 {
+                    String[] temp = SelectedMission.AcceptText[selectedMission.AcceptIndex].Split('#');
+
                     BaseStateManager.TextBoxes.Clear();
 
                     MissionManager.MarkMissionAsActive(selectedMission.MissionName);
 
-                    BaseStateManager.TextBoxes.AddRange(TextUtils.CreateFormattedTextBoxes(BaseState.Game.fontManager.GetFont(14),
-                        BaseStateManager.LowerScreenRectangle, false, selectedMission.AcceptText[selectedMission.AcceptIndex]));
-
-                    //BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                    //BaseStateManager.TextBoxes.AddRange(TextUtils.CreateFormattedTextBoxes(BaseState.Game.fontManager.GetFont(14),
                     //    BaseStateManager.LowerScreenRectangle, false, selectedMission.AcceptText[selectedMission.AcceptIndex]));
+
+                    BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                        BaseStateManager.LowerScreenRectangle, false, temp[0]));
+
+                    if (temp.Length > 1)
+                    {
+                        for (int i = temp.Length - 1; i > 0; i--)
+                        {
+                            MissionManager.MissionEventBuffer.Insert(0, temp[i]);
+                        }
+                    }
 
                     missionCursorIndex = 0;
 
@@ -474,20 +486,32 @@ namespace SpaceProject
                 }
 
                 else
+                {
                     DisplayMissionAcceptFailedText();
+                }
             }
 
             else
             {
+                String[] temp = SelectedMission.AcceptText[selectedMission.AcceptIndex].Split('#');
+
                 BaseStateManager.TextBoxes.Clear();
 
                 MissionManager.MarkMissionAsActive(selectedMission.MissionName);
 
-                BaseStateManager.TextBoxes.AddRange(TextUtils.CreateFormattedTextBoxes(BaseState.Game.fontManager.GetFont(14),
-                    BaseStateManager.LowerScreenRectangle, false, selectedMission.AcceptText[selectedMission.AcceptIndex]));
-
-                //BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                //BaseStateManager.TextBoxes.AddRange(TextUtils.CreateFormattedTextBoxes(BaseState.Game.fontManager.GetFont(14),
                 //    BaseStateManager.LowerScreenRectangle, false, selectedMission.AcceptText[selectedMission.AcceptIndex]));
+
+                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                        BaseStateManager.LowerScreenRectangle, false, temp[0]));
+
+                if (temp.Length > 1)
+                {
+                    for (int i = temp.Length - 1; i > 0; i--)
+                    {
+                        MissionManager.MissionEventBuffer.Insert(0, temp[i]);
+                    }
+                }
 
                 missionCursorIndex = 0;
 
@@ -521,41 +545,85 @@ namespace SpaceProject
 
                 List<Mission> completedMissions = MissionManager.ReturnCompletedMissions(BaseState.GetBase().name);
 
-                List<Item> rewardItems = completedMissions[0].RewardItems;
+                String[] temp = completedMissions[0].CompletedText.Split('#');
 
-                if (rewardItems.Count > 0)
+                if (temp.Length > 1)
                 {
-                    string rewardText = "";
+                    List<Item> rewardItems = completedMissions[0].RewardItems;
 
-                    foreach (Item reward in rewardItems)
+                    if (rewardItems.Count > 0)
                     {
-                        rewardText += "\n" + reward.Name;
+                        string rewardText = "";
+
+                        foreach (Item reward in rewardItems)
+                        {
+                            rewardText += "\n" + reward.Name;
+                        }
+
+                        temp[temp.Length - 1] += "\n\n" + "You reward is: \n" + completedMissions[0].MoneyReward +
+                            " Rupees" + rewardText;
+                    }
+
+                    else
+                    {
+                        temp[temp.Length - 1] += "\n\n" + "You reward is: \n" + completedMissions[0].MoneyReward +
+                            " Rupees";
                     }
 
                     BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                      BaseStateManager.LowerScreenRectangle,
-                                                                      false,
-                                                                      completedMissions[0].CompletedText +
-                                                                      "\n\n" +
-                                                                      "You reward is: \n" +
-                                                                      completedMissions[0].MoneyReward + " Rupees" +
-                                                                      rewardText));
+                                                                          BaseStateManager.LowerScreenRectangle,
+                                                                          false,
+                                                                          temp[0]));
+
+                    for (int i = temp.Length - 1; i > 0; i--)
+                    {
+                        MissionManager.MissionEventBuffer.Insert(0, temp[i]);
+                    }
+
+                    MissionManager.MarkCompletedMissionAsDead(completedMissions[0].MissionName);
+
+                    BaseStateManager.ButtonControl = ButtonControl.Confirm;
                 }
 
                 else
                 {
-                    BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                      BaseStateManager.LowerScreenRectangle,
-                                                                      false,
-                                                                      completedMissions[0].CompletedText +
-                                                                      "\n\n" +
-                                                                      "You reward is: \n" +
-                                                                      completedMissions[0].MoneyReward + " Rupees"));
+
+                    List<Item> rewardItems = completedMissions[0].RewardItems;
+
+                    if (rewardItems.Count > 0)
+                    {
+                        string rewardText = "";
+
+                        foreach (Item reward in rewardItems)
+                        {
+                            rewardText += "\n" + reward.Name;
+                        }
+
+                        BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                                                                          BaseStateManager.LowerScreenRectangle,
+                                                                          false,
+                                                                          temp[0] +
+                                                                          "\n\n" +
+                                                                          "You reward is: \n" +
+                                                                          completedMissions[0].MoneyReward + " Rupees" +
+                                                                          rewardText));
+                    }
+
+                    else
+                    {
+                        BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                                                                          BaseStateManager.LowerScreenRectangle,
+                                                                          false,
+                                                                          temp[0] +
+                                                                          "\n\n" +
+                                                                          "You reward is: \n" +
+                                                                          completedMissions[0].MoneyReward + " Rupees"));
+                    }
+
+                    MissionManager.MarkCompletedMissionAsDead(completedMissions[0].MissionName);
+
+                    BaseStateManager.ButtonControl = ButtonControl.Confirm;
                 }
-
-                MissionManager.MarkCompletedMissionAsDead(completedMissions[0].MissionName);
-
-                BaseStateManager.ButtonControl = ButtonControl.Confirm;
             }
         }
 
@@ -565,11 +633,20 @@ namespace SpaceProject
 
             List<Mission> failedMissions = MissionManager.ReturnFailedMissions(BaseState.GetBase().name);
 
+            String[] temp = failedMissions[0].FailedText.Split('#');
+
             BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                               BaseStateManager.LowerScreenRectangle,
                                                               false,
-                                                              failedMissions[0].FailedText));
+                                                              temp[0]));
 
+            if (temp.Length > 1)
+            {
+                for (int i = temp.Length - 1; i > 0; i--)
+                {
+                    MissionManager.MissionEventBuffer.Insert(0, temp[i]);
+                }
+            }
 
             MissionManager.MarkFailedMissionAsDead(failedMissions[0].MissionName);
 
