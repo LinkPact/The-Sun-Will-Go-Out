@@ -178,19 +178,19 @@ namespace SpaceProject
 
             switch (identifier)
             {
-                case EnemyType.green:
+                case EnemyType.R_mosquito:
                     {
                         creature = new GreenEnemy(Game, spriteSheet, player);
                         break;
                     }
-                case EnemyType.R_red:
+                case EnemyType.R_thickShooter:
                     {
-                        creature = new RebelRedEnemy(Game, spriteSheet, player);
+                        creature = new RebelThickShooter(Game, spriteSheet, player);
                         break;
                     }
-                case EnemyType.R_yellow:
+                case EnemyType.R_smallSniper:
                     {
-                        creature = new RebelYellowEnemy(Game, spriteSheet, player);
+                        creature = new RebelSmallSniper(Game, spriteSheet, player);
                         break;
                     }
                 case EnemyType.blue:
@@ -276,9 +276,9 @@ namespace SpaceProject
                         creature = new FreighterAlly(Game, spriteSheet, player);
                         break;
                     }
-                case EnemyType.A_smallAttack:
+                case EnemyType.R_smallAttack:
                     {
-                        creature = new AllianceSmallAttackShip(Game, spriteSheet, player);
+                        creature = new RebelSmallAttackShip(Game, spriteSheet, player);
                         break;
                     }
                 case EnemyType.A_smallShooter:

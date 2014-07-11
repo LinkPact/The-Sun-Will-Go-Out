@@ -21,10 +21,10 @@ namespace SpaceProject
             base.Initialize();
             LevelWidth = 500;
 
-            LevelEvent swarm = new EvenSwarm(Game, player, spriteSheet, this, EnemyType.green, 0, 3500, 10);
+            LevelEvent swarm = new EvenSwarm(Game, player, spriteSheet, this, EnemyType.R_mosquito, 0, 3500, 10);
             untriggeredEvents.Add(swarm);
 
-            LevelEvent point = new SingleEnemy(Game, player, spriteSheet, this, EnemyType.R_red, 200);
+            LevelEvent point = new SingleEnemy(Game, player, spriteSheet, this, EnemyType.R_thickShooter, 200);
             untriggeredEvents.Add(point);
 
             SetCustomVictoryCondition(LevelObjective.Time, 3);

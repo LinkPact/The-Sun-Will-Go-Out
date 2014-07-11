@@ -30,9 +30,7 @@ namespace SpaceProject
         protected ConfigFile configFile;
         private string configSection;
 
-        //private string[,] eventArray;
         private List<KeyValuePair<EventText, List<EventText>>> eventList;
-        //private SortedDictionary<String, List<String>> eventDictionary;
 
         private List<string> eventBuffer;
         private List<string> responseBuffer;
@@ -393,10 +391,6 @@ namespace SpaceProject
         {
             List<String> lines = configFile.GetAllLinesInSection(section);
 
-            //eventArray = GetEmptyEventArray(lines);
-
-            //GetEventArrayContent(lines);
-
             SetMissionDataFromFile(lines);
         }
 
@@ -528,163 +522,6 @@ namespace SpaceProject
             }
         }
 
-        private void GetEventArrayContent(List<String> lines)
-        {
-            int eventCounter = 0;
-            int responseCounter = 1;
-
-            for (int i = 0; i < lines.Count; i++)
-            {
-                String[] split = lines[i].Split('=');
-                split[0] = split[0].Trim();
-                split[1] = split[1].Trim();
-                split[0] = split[0] + "=";
-
-                if (split[0].Contains("Location="))
-                {
-                    locationName = split[1];
-                }
-
-                else if (split[0].Contains("Name="))
-                {
-                    missionName = split[1];
-                }
-
-                else if (split[0].Contains("Introduction="))
-                {
-                    missionText = split[1];
-                }
-
-                else if (split[0].Contains("PosResponse="))
-                {
-                    posResponse = split[1];
-                }
-
-                else if (split[0].Contains("NegResponse="))
-                {
-                    negResponse = split[1];
-                }
-
-                else if (split[0].Contains("Accept="))
-                {
-                    acceptText[0] = split[1];
-                }
-
-                else if (split[0].Contains("FailAccept="))
-                {
-                    acceptFailedText = split[1];
-                }
-
-                else if (split[0].Contains("Success="))
-                {
-                    completedText = split[1];
-                }
-
-                else if (split[0].Contains("ObjectiveText"))
-                {
-                    ObjectiveDescriptions.Add(split[1]);
-                }
-
-                else if (split[0].Contains("ObjectiveCompleted="))
-                {
-                    objectiveCompleted = split[1];
-                }
-
-                else if (split[0].Contains("ObjectiveFailed="))
-                {
-                    objectiveFailed = split[1];
-                }
-
-                else if (split[0].Contains("Reward="))
-                {
-                    moneyReward = Int32.Parse(split[1]);
-                }
-
-                else if (split[0].Contains("Progress="))
-                {
-                    progressReward = Int32.Parse(split[1]);
-                }
-
-                else if (split[0].Contains("Reputation="))
-                {
-                    reputationReward = Int32.Parse(split[1]);
-                }
-
-                else if (split[0].Contains("State="))
-                {
-                    missionState = (StateOfMission)Int32.Parse(split[1]);
-                }
-
-                else if (split[0].Contains("Fail="))
-                {
-                    failedText = split[1];
-                }
-
-                else if (split[0].Contains("EventText"))
-                {
-                    if (!split[0].Contains("Response"))
-                    {
-                        //EventArray[eventCounter, 0] = split[1];
-                        if (!lines[i + 1].Contains("Response"))
-                        {
-                            eventCounter++;
-                        }
-                        continue;
-                    }
-
-                    else
-                    {
-                        //EventArray[eventCounter, responseCounter] = split[1];
-                        responseCounter++;
-
-                        if (!lines[i + 1].Contains("Response"))
-                        {
-                            eventCounter++;
-                        }
-                    }
-                }
-            }
-        }
-
-        private String[,] GetEmptyEventArray(List<String> lines)
-        {
-            int eventCounter = 0;
-            int responseCounter = 1;
-
-            for (int i = 0; i < lines.Count; i++)
-            {
-                String[] split = lines[i].Split('=');
-                split[0] = split[0].Trim();
-                split[0] = split[0] + "=";
-
-                if (split[0].Contains("EventText"))
-                {
-                    if (!split[0].Contains("Response"))
-                    {
-                        if (!lines[i + 1].Contains("Response"))
-                        {
-                            eventCounter++;
-                        }
-                        continue;
-                    }
-
-                    else
-                    {
-                        responseCounter++;
-
-                        if (!lines[i + 1].Contains("Response"))
-                        {
-                            eventCounter++;
-                        }
-                    }
-                }
-            }
-
-            String[,] tempArray = new String[eventCounter, responseCounter];
-
-            return tempArray;
-        }
-
         private void ResetEventText()
         {
             List<String> lines = configFile.GetAllLinesInSection(section);
@@ -703,7 +540,6 @@ namespace SpaceProject
                 {
                     if (!split[0].Contains("Response"))
                     {
-                        //EventArray[eventCounter, 0] = split[1];
                         if (!lines[i + 1].Contains("Response"))
                         {
                             eventCounter++;
@@ -713,7 +549,6 @@ namespace SpaceProject
 
                     else
                     {
-                        //EventArray[eventCounter, responseCounter] = split[1];
                         responseCounter++;
 
                         if (!lines[i + 1].Contains("Response"))

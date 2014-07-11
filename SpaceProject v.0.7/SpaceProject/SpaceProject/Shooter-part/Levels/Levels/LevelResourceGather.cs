@@ -137,7 +137,7 @@ namespace SpaceProject
             base.Initialize();
             LevelWidth = 800;
 
-            LevelEvent swarm = new EvenSwarm(Game, player, spriteSheet, this, EnemyType.green, 0, 15000, 5);
+            LevelEvent swarm = new EvenSwarm(Game, player, spriteSheet, this, EnemyType.R_mosquito, 0, 15000, 5);
             untriggeredEvents.Add(swarm);
 
 

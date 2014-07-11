@@ -7,7 +7,7 @@ namespace SpaceProject
 {
     public static class ActiveData
     {
-        public static EnemyType enemyState = EnemyType.green;
+        public static EnemyType enemyState = EnemyType.R_mosquito;
         public static PointEventType pointEventState = PointEventType.point;
         public static DurationEventType durationEventState = DurationEventType.even;
         public static Movement movementState = Movement.None;

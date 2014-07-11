@@ -12,7 +12,7 @@ namespace SpaceProject
         {
             int height = saveData.Count;
 
-            String path = "Levels\\";
+            String path = "MapCreatorLevels\\";
             path += levelName; 
             path += ".lvl";
 

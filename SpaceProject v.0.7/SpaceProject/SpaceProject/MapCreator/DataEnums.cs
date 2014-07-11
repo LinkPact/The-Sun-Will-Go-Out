@@ -34,17 +34,18 @@ public enum Movement
 public enum EnemyType
 {
     none                = 0,
-    green               = 1,
-    blue                = 2,
-    turret              = 3,
-    meteor              = 4,
-    fighterAlly         = 5,
-    freighterAlly       = 6,
+    blue                = 1,
+    turret              = 2,
+    meteor              = 3,
+    fighterAlly         = 4,
+    freighterAlly       = 5,
     
-    R_red               = 100,
-    R_yellow            = 101,
-    R_medium            = 102,
-    R_minelayer         = 103,
+    R_mosquito          = 100,
+    R_smallAttack       = 101,
+    R_thickShooter      = 102,
+    R_smallSniper       = 103,
+    R_medium            = 104,
+    R_minelayer         = 105,
     
     
     A_big_I             = 200,
@@ -52,8 +53,7 @@ public enum EnemyType
     A_homingMissile     = 202,
     A_bigMissile        = 203,
     A_stealthShip       = 204,
-    A_smallShooter      = 205,
-    A_smallAttack       = 206
+    A_smallShooter      = 205
 }
 
 //The different base states for squares.

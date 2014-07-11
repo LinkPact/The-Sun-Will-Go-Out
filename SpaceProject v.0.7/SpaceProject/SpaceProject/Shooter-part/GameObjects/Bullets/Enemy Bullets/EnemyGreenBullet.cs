@@ -25,7 +25,7 @@ namespace SpaceProject
             //Egenskaper
             Speed = 0.4f;
             IsKilled = false;
-            Damage = 20;
+            Damage = 50;
             ObjectClass = "enemyBullet";
             duration = 1000;
 

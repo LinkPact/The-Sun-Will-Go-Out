@@ -15,7 +15,7 @@ namespace SpaceProject
         public static void ReadFile(String input)
         {
 
-            String path = "Levels\\" + input + ".lvl";
+            String path = "MapCreatorLevels\\" + input + ".lvl";
 
             try
             {

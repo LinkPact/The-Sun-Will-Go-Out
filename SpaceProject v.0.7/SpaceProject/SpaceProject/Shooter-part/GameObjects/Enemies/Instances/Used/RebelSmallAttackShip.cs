@@ -7,15 +7,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    class AllianceSmallAttackShip : ShootingEnemyShip
+    class RebelSmallAttackShip : ShootingEnemyShip
     {
-        public AllianceSmallAttackShip(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
+        public RebelSmallAttackShip(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
         {
             Setup();
         }
 
-        public AllianceSmallAttackShip(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player, Movement movement) :
+        public RebelSmallAttackShip(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player, Movement movement) :
             base(Game, spriteSheet, player)
         {
             Setup();
@@ -38,10 +38,11 @@ namespace SpaceProject
             ShootsOnce(1500);
 
             //Egenskaper
-            SightRange = 400;
+            SightRange = 600;
             HP = 100.0f;
             Damage = 60;
             Speed = 0.25f;
+            TurningSpeed *= 10f;
 
             movement = Movement.Following;
 
@@ -68,7 +69,7 @@ namespace SpaceProject
             laser1.Direction = new Vector2(0, 1.0f);
             laser1.Initialize();
             laser1.Duration = 500;
-            laser1.Speed *= 2;
+            laser1.Speed *= 1.5f;
 
             Game.stateManager.shooterState.gameObjects.Add(laser1);
         }

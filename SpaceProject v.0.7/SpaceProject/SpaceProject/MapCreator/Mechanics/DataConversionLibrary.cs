@@ -27,9 +27,9 @@ namespace SpaceProject
             
             //Enemy
             enemyLibrary.Add(EnemyType.none, "0");
-            enemyLibrary.Add(EnemyType.green, "G");
-            enemyLibrary.Add(EnemyType.R_red, "R");
-            enemyLibrary.Add(EnemyType.R_yellow, "Y");
+            enemyLibrary.Add(EnemyType.R_mosquito, "G");
+            enemyLibrary.Add(EnemyType.R_thickShooter, "R");
+            enemyLibrary.Add(EnemyType.R_smallSniper, "Y");
             enemyLibrary.Add(EnemyType.blue, "B");
             enemyLibrary.Add(EnemyType.turret, "T");
             enemyLibrary.Add(EnemyType.R_medium, "M");
@@ -39,7 +39,7 @@ namespace SpaceProject
             enemyLibrary.Add(EnemyType.A_homingMissile, "O");
             enemyLibrary.Add(EnemyType.A_bigMissile, "I");
             enemyLibrary.Add(EnemyType.R_minelayer, "N");
-            enemyLibrary.Add(EnemyType.A_smallAttack, "a");
+            enemyLibrary.Add(EnemyType.R_smallAttack, "a");
             enemyLibrary.Add(EnemyType.A_smallShooter, "s");
             enemyLibrary.Add(EnemyType.A_stealthShip, "t");
 
@@ -158,16 +158,16 @@ namespace SpaceProject
                 case EnemyType.none:
                     return Color.White;
 
-                case EnemyType.green:
+                case EnemyType.R_mosquito:
                     return Color.Green;
 
-                case EnemyType.R_red:
+                case EnemyType.R_thickShooter:
                     return Color.Red;
 
                 case EnemyType.blue:
                     return Color.Blue;
 
-                case EnemyType.R_yellow:
+                case EnemyType.R_smallSniper:
                     return Color.Yellow;
 
                 case EnemyType.turret:
@@ -206,7 +206,7 @@ namespace SpaceProject
                 case EnemyType.A_smallShooter:
                     return new Color(0, 0, 0);
 
-                case EnemyType.A_smallAttack:
+                case EnemyType.R_smallAttack:
                     return new Color(0, 0, 0);
 
                 default:

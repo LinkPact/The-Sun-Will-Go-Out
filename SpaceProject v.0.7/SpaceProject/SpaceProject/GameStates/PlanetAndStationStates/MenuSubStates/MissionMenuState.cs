@@ -394,35 +394,20 @@ namespace SpaceProject
 
             if (SelectedMission != null)
             {
-                BaseStateManager.TextBoxes.AddRange(TextUtils.CreateFormattedTextBoxes(BaseState.Game.fontManager.GetFont(14),
+                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                                   BaseStateManager.LowerScreenRectangle,
                                                                   false,
                                                                   SelectedMission.MissionText));
-
-                BaseStateManager.TextBoxes.AddRange(TextUtils.CreateFormattedTextBoxes(BaseState.Game.fontManager.GetFont(14),
+                
+                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                       BaseStateManager.ResponseRectangle1,
                                                       true,
                                                       SelectedMission.PosResponse));
-
-                BaseStateManager.TextBoxes.AddRange(TextUtils.CreateFormattedTextBoxes(BaseState.Game.fontManager.GetFont(14),
+                
+                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                       BaseStateManager.ResponseRectangle2,
                                                       true,
                                                       SelectedMission.NegResponse));
-
-                //BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                //                                                  BaseStateManager.LowerScreenRectangle,
-                //                                                  false,
-                //                                                  SelectedMission.MissionText));
-                //
-                //BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                //                                      BaseStateManager.ResponseRectangle1,
-                //                                      true,
-                //                                      SelectedMission.PosResponse));
-                //
-                //BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                //                                      BaseStateManager.ResponseRectangle2,
-                //                                      true,
-                //                                      SelectedMission.NegResponse));
             }
 
             BaseStateManager.ButtonControl = ButtonControl.Response;

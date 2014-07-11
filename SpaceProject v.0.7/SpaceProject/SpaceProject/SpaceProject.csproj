@@ -427,7 +427,7 @@
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceBigMissileEnemy.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\NonUsed\BigRedEnemy.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\NonUsed\BigYellowEnemy.cs" />
-    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceSmallAttackShip.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\RebelSmallAttackShip.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceSmallShooter.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceStealthShip.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\BlueEnemy.cs" />
@@ -444,7 +444,7 @@
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Meteorites\Meteorite25.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Meteorites\Meteorite30.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\RebelSmallEnemy.cs" />
-    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\RebelRedEnemy.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\RebelThickShooter.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\ResourceMeteorites\ResourceMeteorite.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\ResourceMeteorites\ResourceMeteoriteCopperBig.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\ResourceMeteorites\ResourceMeteoriteCopperMedium.cs" />
@@ -462,7 +462,7 @@
     <Compile Include="Shooter-part\GameObjects\Enemies\Super classes\EnemyShip.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Super classes\ShootingEnemyShip.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Turret.cs" />
-    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\RebelYellowEnemy.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\RebelSmallSniper.cs" />
     <Compile Include="MapCreator\Palethera\StructuralSuperClasses\ActiveSquare.cs" />
     <Compile Include="Shooter-part\Events\CreaturePackage.cs" />
     <Compile Include="Shooter-part\Events\Instances\DurationInstances\EvenSwarm.cs" />

@@ -7,13 +7,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    class RebelRedEnemy : ShootingEnemyShip
+    class RebelThickShooter : ShootingEnemyShip
     {
      
-        public RebelRedEnemy(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
+        public RebelThickShooter(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
         {
-            ObjectName = "RebelRedEnemy";
+            ObjectName = "RebelThickShooter";
         }
 
         private void Setup()
@@ -32,8 +32,8 @@ namespace SpaceProject
             lastTimeShot = shootingDelay * random.NextDouble();
 
             Damage = 100;
-            Speed = 0.05f;
-            HP = 175;
+            Speed = 0.08f;
+            HP = 200;
             TurningSpeed = 2;
 
             movement = Movement.Following;

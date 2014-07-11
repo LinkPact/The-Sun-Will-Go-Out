@@ -7,11 +7,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    class RebelYellowEnemy : ShootingEnemyShip
+    class RebelSmallSniper : ShootingEnemyShip
     {
         private Animation shooting;
 
-        public RebelYellowEnemy(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
+        public RebelSmallSniper(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
         {
             Setup();
@@ -36,9 +36,11 @@ namespace SpaceProject
 
             //Egenskaper
             SightRange = 500;
-            HP = 150;
+            HP = 200;
             Damage = 50;
-            Speed = 0.07f;
+            Speed = 0.1f;
+
+            movement = Movement.Stopping;
            
             //Animationer
             anim.LoopTime = 500;

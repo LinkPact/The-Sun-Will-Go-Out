@@ -58,6 +58,8 @@ namespace SpaceProject
             String currentName = levelMechanics.GetName();
             levelMechanics.LoadFile(currentName);            
             squarePalethera.Initialize();
+
+            StatsManager.gameMode = GameMode.develop;
         }
 
         public override void OnLeave()
