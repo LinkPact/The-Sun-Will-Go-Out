@@ -430,11 +430,11 @@
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\RebelSmallAttackShip.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceSmallShooter.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceStealthShip.cs" />
-    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\BlueEnemy.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\RebelBurster.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\RebelMinelayer.cs" />
     <Compile Include="Shooter-part\GameObjects\Creature.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\DanneEnemy.cs" />
-    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\GreenEnemy.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\RebelMosquito.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\NonUsed\HomingMissileCamperEnemy.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceHomingMissileEnemy.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceHomingShotEnemy.cs" />

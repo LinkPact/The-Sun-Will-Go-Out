@@ -7,15 +7,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    class GreenEnemy : EnemyShip
+    class RebelMosquito : EnemyShip
     {
-        public GreenEnemy(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
+        public RebelMosquito(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
         {
             Setup();
         }
 
-        public GreenEnemy(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player,
+        public RebelMosquito(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player,
             Movement movement) :
             base(Game, spriteSheet, player)
         {

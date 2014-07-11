@@ -20,10 +20,11 @@ namespace SpaceProject
         {
             Game.stateManager.shooterState.backgroundObjects.Add(
                ExplosionGenerator.GenerateBulletExplosion(Game, spriteSheet, this));
-
-            //Game.stateManager.shooterState.backgroundObjects.Add(
-              //   ExplosionGenerator.GenerateBombExplosion(Game, spriteSheet, this));
         }
 
+        public void SetSpreadSpeed(Random random)
+        {
+            Speed += ((float)random.NextDouble()) * 1.0f * Speed - 0.5f * Speed;
+        }
     }
 }

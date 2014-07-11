@@ -180,7 +180,7 @@ namespace SpaceProject
             {
                 case EnemyType.R_mosquito:
                     {
-                        creature = new GreenEnemy(Game, spriteSheet, player);
+                        creature = new RebelMosquito(Game, spriteSheet, player);
                         break;
                     }
                 case EnemyType.R_thickShooter:
@@ -195,7 +195,7 @@ namespace SpaceProject
                     }
                 case EnemyType.blue:
                     {
-                        creature = new BlueEnemy(Game, spriteSheet, player);
+                        creature = new RebelBurster(Game, spriteSheet, player);
                         break;
                     }
                 case EnemyType.R_medium:
