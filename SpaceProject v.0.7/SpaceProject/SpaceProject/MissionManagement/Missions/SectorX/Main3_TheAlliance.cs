@@ -10,7 +10,7 @@ namespace SpaceProject
 {
     public class Main3_TheAlliance : Mission
     {
-        private int tempTimer = 0;
+        private int tempTimer = -1;
 
         private bool died;
         private int tempTimer2;
@@ -29,7 +29,7 @@ namespace SpaceProject
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.GetStation("Fotrun Station II"),
                 new EventTextCapsule(
-                    new EventText("You fight off the last pirates. You better enter the station and see what damage they caused."),
+                    GetEvent(1),
                     null,
                     EventTextCanvas.MessageBox),
                 null,
@@ -49,12 +49,13 @@ namespace SpaceProject
                         savedPos = Vector2.Zero;
                     }
 
-                    if (GameStateManager.currentState == "OverworldState" 
+                    if (GameStateManager.currentState == "OverworldState"
+                        && !missionHelper.IsLevelFailed("Main_TheAlliancelvl")
                         && CollisionDetection.IsPointInsideCircle(Game.player.position,
                         Game.stateManager.overworldState.GetStation("Fotrun Station II").position,
                         300))
                     {
-                        Game.messageBox.DisplayMessage(EventList[0].Key.Text);
+                        Game.messageBox.DisplayMessage(GetEvent(0).Text);
                         missionHelper.StartLevel("Main_TheAlliancelvl");
                     }
 
@@ -71,6 +72,7 @@ namespace SpaceProject
 
                         savedPos = Vector2.Zero;
                         Game.player.speed = 0;
+                        Game.player.Direction.SetDirection(Game.player.Direction.GetDirectionAsVector() * -1);
                     }
 
                     if (died && GameStateManager.currentState.Equals("OverworldState"))
@@ -81,10 +83,9 @@ namespace SpaceProject
                         {
                             died = false;
 
-                            Game.player.Direction.SetDirection(Game.player.Direction.GetDirectionAsVector() * -1);
-                            Game.messageBox.DisplayMessage(EventList[6].Key.Text);
-                            ObjectiveIndex = 1;
-                            progress = 1;
+                            Game.messageBox.DisplayMessage(GetEvent(9).Text);
+                            Game.stateManager.shooterState.GetLevel("Main_TheAlliancelvl").Initialize();
+                            CurrentObjective.Reset();
                         }
                     }
                 },
@@ -99,26 +100,31 @@ namespace SpaceProject
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
                 Game.stateManager.overworldState.GetStation("Fotrun Station II"),
-                new EventTextCapsule(GetEvent(0), null, EventTextCanvas.BaseState)));
+                new EventTextCapsule(GetEvent(2), null, EventTextCanvas.BaseState)));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2],
                 Game.stateManager.overworldState.GetStation("Fotrun Station I"),
-                new EventTextCapsule(GetEvent(1), null, EventTextCanvas.BaseState)));
+                new EventTextCapsule(GetEvent(3), null, EventTextCanvas.BaseState)));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[3],
                 Game.stateManager.overworldState.GetPlanet("Highfence"),
-                new EventTextCapsule(GetEvent(6), null, EventTextCanvas.BaseState),
+                new EventTextCapsule(GetEvent(5), null, EventTextCanvas.BaseState),
                 null,
                 delegate
                 {
-                    if (GameStateManager.currentState == "OverworldState")
+                    if (tempTimer > 0)
+                    {
+                        tempTimer--;
+                    }
+
+                    if (GameStateManager.currentState == "OverworldState" && tempTimer < 0)
                     {
                         tempTimer = 100;
                     }
 
                     if (tempTimer == 1)
                     {
-                        Game.messageBox.DisplayMessage(EventList[2].Key.Text);
+                        Game.messageBox.DisplayMessage(GetEvent(4).Text);
                     }
                 },
                 delegate
@@ -132,16 +138,16 @@ namespace SpaceProject
 
             objectives.Add(new ResponseObjective(Game, this, ObjectiveDescriptions[4],
                 Game.stateManager.overworldState.GetPlanet("Highfence"),
-                new ResponseTextCapsule(GetEvent(7), GetAllResponses(7),
+                new ResponseTextCapsule(GetEvent(6), GetAllResponses(6),
                     new List<System.Action> 
                     {
                         delegate 
                         {
-                            missionHelper.ShowEvent(EventList[8].Key);
+                            missionHelper.ShowEvent(GetEvent(7));
                         },
                         delegate 
                         {
-                            missionHelper.ShowEvent(EventList[9].Key);
+                            missionHelper.ShowEvent(GetEvent(8));
                         }
                     })));
         }

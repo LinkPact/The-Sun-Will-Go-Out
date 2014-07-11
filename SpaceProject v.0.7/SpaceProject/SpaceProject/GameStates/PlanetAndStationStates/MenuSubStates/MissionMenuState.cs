@@ -252,12 +252,17 @@ namespace SpaceProject
             //Actions for pressing Ok-key in "MISSION STATE" 
             else if (BaseStateManager.ButtonControl.Equals(ButtonControl.Response))
             {
+                activeMission = MissionManager.GetActiveMission(BaseState.GetBase().name);
+
                 if (MissionManager.MissionResponseBuffer.Count > 0)
                 {
-                    activeMission.MissionResponse = responseCursorIndex + 1;
-                    activeMission.CurrentObjective.Update(StatsManager.PlayTime);
-                    activeMission.MissionResponse = 0;
-                    MissionEvent();
+                    if (activeMission != null)
+                    {
+                        activeMission.MissionResponse = responseCursorIndex + 1;
+                        activeMission.CurrentObjective.Update(StatsManager.PlayTime);
+                        activeMission.MissionResponse = 0;
+                        MissionEvent();
+                    }
                 }
 
                 else
@@ -442,6 +447,22 @@ namespace SpaceProject
                         MissionManager.MissionStartBuffer.Insert(0, temp[i]);
                         BaseStateManager.ButtonControl = ButtonControl.Confirm;
                     }
+                }
+
+                else
+                {
+                    BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                                                      BaseStateManager.ResponseRectangle1,
+                                                      true,
+                                                      SelectedMission.PosResponse));
+
+                    BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                                                          BaseStateManager.ResponseRectangle2,
+                                                          true,
+                                                          SelectedMission.NegResponse));
+
+                    BaseStateManager.ButtonControl = ButtonControl.Response;
+                    ResponseCursorIndex = 0;
                 }
             }
 

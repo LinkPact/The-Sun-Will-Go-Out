@@ -611,5 +611,25 @@ namespace SpaceProject
 
             RefreshLists();
         }
+
+        public static Mission GetActiveMission(string stationOrPlanetName)
+        {
+            List<Mission> m = new List<Mission>();
+
+            foreach (Mission ms in ReturnActiveMissions())
+            {
+                if (ms.CurrentObjective.Destination.name.ToLower().Equals(stationOrPlanetName.ToLower()))
+                {
+                    m.Add(ms);
+                }
+            }
+
+            if (m.Count > 0)
+            {
+                return m[0];
+            }
+
+            return null;
+        }
     }
 }
