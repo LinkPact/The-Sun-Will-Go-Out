@@ -508,7 +508,7 @@ namespace SpaceProject
             }
         }
 
-        public Planet getPlanet(String planetName)
+        public Planet GetPlanet(String planetName)
         {
             foreach (GameObjectOverworld obj in GetVisibleGameObjects)
             {
@@ -523,7 +523,7 @@ namespace SpaceProject
 
             throw new ArgumentException(String.Format("No planet by the name of '%s'", planetName));
         }
-        public Station getStation(String stationName)
+        public Station GetStation(String stationName)
         {
             foreach (GameObjectOverworld obj in GetVisibleGameObjects)
             {

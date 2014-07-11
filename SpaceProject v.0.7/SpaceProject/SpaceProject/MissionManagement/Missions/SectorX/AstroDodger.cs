@@ -55,7 +55,7 @@ namespace SpaceProject
                 Game,
                 this,
                 ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.getStation("Soelara Station")));
+                Game.stateManager.overworldState.GetStation("Soelara Station")));
         }
 
         public override void StartMission()

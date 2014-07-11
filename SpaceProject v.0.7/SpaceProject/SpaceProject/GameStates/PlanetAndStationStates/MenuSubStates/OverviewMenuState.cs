@@ -236,6 +236,13 @@ namespace SpaceProject
 
             MissionManager.CheckMissionLogic(Game);
 
+            if (MissionManager.MissionStartBuffer.Count > 0)
+            {
+                BaseStateManager.ChangeMenuSubState("Mission");
+                BaseStateManager.MissionMenuState.DisplayMissionStartBufferText();
+                return;
+            }
+
             if (MissionManager.MissionEventBuffer.Count > 0)
             {
                 BaseStateManager.ChangeMenuSubState("Mission");

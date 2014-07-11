@@ -38,30 +38,30 @@ namespace SpaceProject
 
             freighter1 = new FreighterShip(Game, Game.stateManager.shooterState.spriteSheet);
             freighter1.Initialize(Game.stateManager.overworldState.GetSectorX,
-                Game.stateManager.overworldState.getPlanet("Highfence"),
-                Game.stateManager.overworldState.getStation("Soelara Station"));
+                Game.stateManager.overworldState.GetPlanet("Highfence"),
+                Game.stateManager.overworldState.GetStation("Soelara Station"));
 
             freighter2 = new FreighterShip(Game, Game.stateManager.shooterState.spriteSheet);
             freighter2.Initialize(Game.stateManager.overworldState.GetSectorX,
-                Game.stateManager.overworldState.getStation("Soelara Station"),
-                Game.stateManager.overworldState.getPlanet("Highfence"));
+                Game.stateManager.overworldState.GetStation("Soelara Station"),
+                Game.stateManager.overworldState.GetPlanet("Highfence"));
 
             //OBJECTIVES
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.getPlanet("Highfence"),
+                Game.stateManager.overworldState.GetPlanet("Highfence"),
                 new EventTextCapsule(GetEvent((int)EventID.Introduction), null, EventTextCanvas.BaseState)));
 
             // Lots-of-paramaters-version of EscortObjective
             objectives.Add(new EscortObjective(Game,
                 this,
                 ObjectiveDescriptions[1], 
-                Game.stateManager.overworldState.getStation("Soelara Station"),
+                Game.stateManager.overworldState.GetStation("Soelara Station"),
                 new EscortDataCapsule(freighter1,
                     GetEvent((int)EventID.FreighterStart).Text, 
                     Game.stateManager.overworldState.GetSectorX.shipSpawner.GetOverworldShips(3, "rebel"),
                     new List<String> { "Death to the Alliance 1!", "Death to the Alliance 2!", "Death to the Alliance 3!" },
                     null,
-                    Game.stateManager.overworldState.getPlanet("Highfence").position + new Vector2(-200, 0),
+                    Game.stateManager.overworldState.GetPlanet("Highfence").position + new Vector2(-200, 0),
                     GetEvent((int)EventID.AllianceAttack).Text,
                     22500,
                     7500,
@@ -75,11 +75,11 @@ namespace SpaceProject
             objectives.Add(new EscortObjective(Game,
                 this,
                 ObjectiveDescriptions[2],
-                Game.stateManager.overworldState.getPlanet("Highfence"),
+                Game.stateManager.overworldState.GetPlanet("Highfence"),
                 new EscortDataCapsule(freighter2,
                     "Hello! Let's go back!",
                     Game.stateManager.overworldState.GetSectorX.shipSpawner.GetOverworldShips(5, "rebel"),
-                    Game.stateManager.overworldState.getStation("Soelara Station").position + new Vector2(200, -200),
+                    Game.stateManager.overworldState.GetStation("Soelara Station").position + new Vector2(200, -200),
                     new List<String> { "SecondMissionlvl3", "SecondMissionlvl2", "SecondMissionlvl1",
                         "SecondMissionlvl2", "SecondMissionlvl3" },
                     17500,

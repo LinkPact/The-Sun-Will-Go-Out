@@ -24,7 +24,7 @@ namespace SpaceProject
         public override void StartMission()
         {
             ObjectiveIndex = 0;
-            Game.stateManager.overworldState.getStation("Abandoned Station").Abandoned = false;
+            Game.stateManager.overworldState.GetStation("Abandoned Station").Abandoned = false;
         }
 
         public override void OnLoad()

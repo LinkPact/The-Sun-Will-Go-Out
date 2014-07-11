@@ -41,7 +41,7 @@ namespace SpaceProject
 
         private string missionName;
         private string locationName;
-        private string missionText;
+        private string introductionText;
         private string posResponse;
         private string negResponse;
         private string[] acceptText;
@@ -95,13 +95,6 @@ namespace SpaceProject
             get { return configSection; }
         }
 
-        // Will be removed, changing to EventDictionary // Jakob
-        //public string[,] EventArray
-        //{
-        //    get { return eventArray; }
-        //    set { eventArray = value; }
-        //}
-
         public List<KeyValuePair<EventText, List<EventText>>> EventList
         {
             get { return eventList; }
@@ -125,15 +118,15 @@ namespace SpaceProject
             get { return missionName; }
         }
 
-        public string PlanetName
+        public string LocationName
         {
             get { return locationName; }
         }
 
-        public string MissionText
+        public string IntroductionText
         {
-            get { return missionText; }
-            set { missionText = value; }
+            get { return introductionText; }
+            set { introductionText = value; }
         }
 
         public List<Objective> Objectives
@@ -447,7 +440,7 @@ namespace SpaceProject
                     }
                 case "Introduction":
                     {
-                        missionText = value;
+                        introductionText = value;
                         break;
                     }
                 case "PosResponse":

@@ -245,7 +245,7 @@ namespace SpaceProject
 
                 else
                 {
-                    DisplayMissionText();
+                    DisplayMissionIntroduction();
                 }
             }
 
@@ -367,6 +367,37 @@ namespace SpaceProject
             }
         }
 
+        public void DisplayMissionStartBufferText()
+        {
+            BaseStateManager.TextBoxes.Clear();
+
+            BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                                                              BaseStateManager.LowerScreenRectangle,
+                                                              false,
+                                                              MissionManager.MissionStartBuffer[0]));
+
+            MissionManager.MissionStartBuffer.Remove(MissionManager.MissionStartBuffer[0]);
+
+            if (MissionManager.MissionStartBuffer.Count > 0)
+                BaseStateManager.ButtonControl = ButtonControl.Confirm;
+
+            if (MissionManager.MissionStartBuffer.Count == 0)
+            {
+                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                                                      BaseStateManager.ResponseRectangle1,
+                                                      true,
+                                                      SelectedMission.PosResponse));
+
+                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                                                      BaseStateManager.ResponseRectangle2,
+                                                      true,
+                                                      SelectedMission.NegResponse));
+
+                BaseStateManager.ButtonControl = ButtonControl.Response;
+                ResponseCursorIndex = 0;
+            }
+        }
+
         public void SelectMission()
         {
             MissionCursorIndex = 0;
@@ -388,32 +419,31 @@ namespace SpaceProject
             BaseStateManager.ActiveMenuState.CursorActions();
         }
 
-        public void DisplayMissionText()
+        public void DisplayMissionIntroduction()
         {
             BaseStateManager.TextBoxes.Clear();
 
             if (SelectedMission != null)
             {
-                //String[] temp = SelectedMission.MissionText.Split('#');
+                String[] temp = SelectedMission.IntroductionText.Split('#');
 
                 BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                                   BaseStateManager.LowerScreenRectangle,
                                                                   false,
-                                                                  SelectedMission.MissionText));
-                
-                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                      BaseStateManager.ResponseRectangle1,
-                                                      true,
-                                                      SelectedMission.PosResponse));
-                
-                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                      BaseStateManager.ResponseRectangle2,
-                                                      true,
-                                                      SelectedMission.NegResponse));
-            }
+                                                                  temp[0]));
 
-            BaseStateManager.ButtonControl = ButtonControl.Response;
-            ResponseCursorIndex = 0;
+                BaseStateManager.ButtonControl = ButtonControl.Response;
+                ResponseCursorIndex = 0;
+
+                if (temp.Length > 1)
+                {
+                    for (int i = temp.Length - 1; i > 0; i--)
+                    {
+                        MissionManager.MissionStartBuffer.Insert(0, temp[i]);
+                        BaseStateManager.ButtonControl = ButtonControl.Confirm;
+                    }
+                }
+            }
 
         }
 
@@ -482,7 +512,7 @@ namespace SpaceProject
 
                     BaseStateManager.ButtonControl = ButtonControl.Confirm;
 
-                    selectedMission.MissionText += "/ok";
+                    selectedMission.IntroductionText += "/ok";
                 }
 
                 else
@@ -517,7 +547,7 @@ namespace SpaceProject
 
                 BaseStateManager.ButtonControl = ButtonControl.Confirm;
 
-                selectedMission.MissionText += "/ok";
+                selectedMission.IntroductionText += "/ok";
             }
         }
 

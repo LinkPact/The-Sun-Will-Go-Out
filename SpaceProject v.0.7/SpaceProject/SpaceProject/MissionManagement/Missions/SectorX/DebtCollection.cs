@@ -23,11 +23,11 @@ namespace SpaceProject
             base.Initialize();
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.getStation("Fotrun Station I"),
+                Game.stateManager.overworldState.GetStation("Fotrun Station I"),
                 new EventTextCapsule(GetEvent(0), null, EventTextCanvas.BaseState)));
 
             objectives.Add(new ResponseObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.getStation("Fotrun Station I"),
+                Game.stateManager.overworldState.GetStation("Fotrun Station I"),
                 new ResponseTextCapsule(GetEvent(1), GetAllResponses(1),
                     new List<System.Action>()
                     {
@@ -66,7 +66,7 @@ namespace SpaceProject
                     })));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.getPlanet("Highfence"), null, null,
+                Game.stateManager.overworldState.GetPlanet("Highfence"), null, null,
                 delegate { return (missionHelper.IsPlayerOnPlanet("Highfence") && success); },
                 delegate { return (missionHelper.IsPlayerOnPlanet("Highfence") && failed); }));
         }

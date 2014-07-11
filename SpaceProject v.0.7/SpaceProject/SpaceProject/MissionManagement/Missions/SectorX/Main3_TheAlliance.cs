@@ -27,7 +27,7 @@ namespace SpaceProject
             base.Initialize();
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.getStation("Fotrun Station II"),
+                Game.stateManager.overworldState.GetStation("Fotrun Station II"),
                 new EventTextCapsule(
                     new EventText("You fight off the last pirates. You better enter the station and see what damage they caused."),
                     null,
@@ -36,14 +36,14 @@ namespace SpaceProject
                 delegate
                 {
                     if (CollisionDetection.IsPointInsideCircle(Game.player.position,
-                    Game.stateManager.overworldState.getStation("Fotrun Station II").position,
+                    Game.stateManager.overworldState.GetStation("Fotrun Station II").position,
                     400) && savedPos == Vector2.Zero)
                     {
                         savedPos = Game.player.position;
                     }
 
                     else if (!CollisionDetection.IsPointInsideCircle(Game.player.position,
-                        Game.stateManager.overworldState.getStation("Fotrun Station II").position,
+                        Game.stateManager.overworldState.GetStation("Fotrun Station II").position,
                         400))
                     {
                         savedPos = Vector2.Zero;
@@ -51,7 +51,7 @@ namespace SpaceProject
 
                     if (GameStateManager.currentState == "OverworldState" 
                         && CollisionDetection.IsPointInsideCircle(Game.player.position,
-                        Game.stateManager.overworldState.getStation("Fotrun Station II").position,
+                        Game.stateManager.overworldState.GetStation("Fotrun Station II").position,
                         300))
                     {
                         Game.messageBox.DisplayMessage(EventList[0].Key.Text);
@@ -98,15 +98,15 @@ namespace SpaceProject
                 }));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.getStation("Fotrun Station II"),
+                Game.stateManager.overworldState.GetStation("Fotrun Station II"),
                 new EventTextCapsule(GetEvent(0), null, EventTextCanvas.BaseState)));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2],
-                Game.stateManager.overworldState.getStation("Fotrun Station I"),
+                Game.stateManager.overworldState.GetStation("Fotrun Station I"),
                 new EventTextCapsule(GetEvent(1), null, EventTextCanvas.BaseState)));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[3],
-                Game.stateManager.overworldState.getPlanet("Highfence"),
+                Game.stateManager.overworldState.GetPlanet("Highfence"),
                 new EventTextCapsule(GetEvent(6), null, EventTextCanvas.BaseState),
                 null,
                 delegate
@@ -131,7 +131,7 @@ namespace SpaceProject
                 }));
 
             objectives.Add(new ResponseObjective(Game, this, ObjectiveDescriptions[4],
-                Game.stateManager.overworldState.getPlanet("Highfence"),
+                Game.stateManager.overworldState.GetPlanet("Highfence"),
                 new ResponseTextCapsule(GetEvent(7), GetAllResponses(7),
                     new List<System.Action> 
                     {

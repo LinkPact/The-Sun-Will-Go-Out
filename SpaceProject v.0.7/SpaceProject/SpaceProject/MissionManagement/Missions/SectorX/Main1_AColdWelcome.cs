@@ -76,7 +76,7 @@ namespace SpaceProject
                 })));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.getStation("Border Station"), new EventTextCapsule(
+                Game.stateManager.overworldState.GetStation("Border Station"), new EventTextCapsule(
                 null, null, EventTextCanvas.BaseState)));
         }
 
@@ -102,7 +102,7 @@ namespace SpaceProject
 
             else if (progress == 3)
             {
-                objectiveDestination = Game.stateManager.overworldState.getStation("Border Station");
+                objectiveDestination = Game.stateManager.overworldState.GetStation("Border Station");
             }
         }
 

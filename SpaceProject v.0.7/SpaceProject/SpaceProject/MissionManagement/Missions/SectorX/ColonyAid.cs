@@ -38,12 +38,12 @@ namespace SpaceProject
             RewardItems.Add(regularCell);
 
             objectives.Add(new ItemTransportObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.getStation("Lavis Station"), medicalSupplies,
+                Game.stateManager.overworldState.GetStation("Lavis Station"), medicalSupplies,
                 new EventTextCapsule(GetEvent((int)EventID.LeaveSupplies), GetEvent((int)EventID.SoldSupplies),
                     EventTextCanvas.BaseState)));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.getStation("Fotrun Station I")));
+                Game.stateManager.overworldState.GetStation("Fotrun Station I")));
 
             requiresAvailableSlot = true;
         }

@@ -25,10 +25,10 @@ namespace SpaceProject
             RewardItems.Add(new DrillBeamWeapon(Game));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.getPlanet("Lavis")));
+                Game.stateManager.overworldState.GetPlanet("Lavis")));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.getPlanet("Lavis"), "AstroScan", LevelStartCondition.Immediately,
+                Game.stateManager.overworldState.GetPlanet("Lavis"), "AstroScan", LevelStartCondition.Immediately,
                 new EventTextCapsule(GetEvent((int)EventID.FlyBack), null, EventTextCanvas.MessageBox)));
         }
 

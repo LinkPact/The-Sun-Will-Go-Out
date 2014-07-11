@@ -27,7 +27,7 @@ namespace SpaceProject
             SideMissilesWeapon sideMissiles = new SideMissilesWeapon(Game, ItemVariety.regular);
             RewardItems.Add(sideMissiles);
 
-            Station borderStation = Game.stateManager.overworldState.getStation("Border Station");
+            Station borderStation = Game.stateManager.overworldState.GetStation("Border Station");
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], borderStation,
                 "flightTraining_1", LevelStartCondition.EnteringOverworld));

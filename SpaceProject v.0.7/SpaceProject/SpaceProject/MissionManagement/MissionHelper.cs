@@ -111,7 +111,7 @@ namespace SpaceProject
 
         public bool HasStartMissionTextBeenDisplayed()
         {
-            return (mission.MissionText.EndsWith("/ok")
+            return (mission.IntroductionText.EndsWith("/ok")
                 && IsTextCleared());
         }
 

@@ -27,7 +27,7 @@ namespace SpaceProject
             RewardItems.Add(flameShot);
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.getPlanet("Peye"), "DeathByMeteor", LevelStartCondition.TextCleared,
+                Game.stateManager.overworldState.GetPlanet("Peye"), "DeathByMeteor", LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.LevelCleared), null, EventTextCanvas.BaseState)));
 
             RestartAfterFail();

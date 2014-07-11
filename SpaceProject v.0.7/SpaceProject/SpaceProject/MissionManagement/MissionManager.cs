@@ -38,9 +38,11 @@ namespace SpaceProject
 
         private static List<string> missionEventBuffer = new List<string>();
         private static List<string> missionResponseBuffer = new List<string>();
+        private static List<string> missionStartBuffer = new List<string>();
 
         public static List<string> MissionEventBuffer { get { return missionEventBuffer; } set { missionEventBuffer = value; } }
         public static List<string> MissionResponseBuffer { get { return missionResponseBuffer; } set { missionResponseBuffer = value; } }
+        public static List<string> MissionStartBuffer { get { return missionStartBuffer; } set { missionStartBuffer = value; } }
 
         // Mission spritesheet
         private Sprite missionObjectSpriteSheet;
@@ -315,7 +317,7 @@ namespace SpaceProject
 
             foreach (Mission mission in missions)
             {
-                if (mission.PlanetName == planetOrStationName &&
+                if (mission.LocationName == planetOrStationName &&
                     mission.MissionState.Equals(StateOfMission.Completed))
                     tempList.Add(mission);
             }
@@ -343,7 +345,7 @@ namespace SpaceProject
 
             foreach (Mission mission in missions)
             {
-                if (mission.PlanetName == planetOrStationName &&
+                if (mission.LocationName == planetOrStationName &&
                     mission.MissionState.Equals(StateOfMission.Failed))
                         tempList.Add(mission);
             }
@@ -386,7 +388,7 @@ namespace SpaceProject
 
             foreach (Mission mission in missions)
             {
-                if (planetOrStationName == mission.PlanetName &&
+                if (planetOrStationName == mission.LocationName &&
                     mission.MissionState.Equals(StateOfMission.Available))
                     tempList.Add(mission);
             }
