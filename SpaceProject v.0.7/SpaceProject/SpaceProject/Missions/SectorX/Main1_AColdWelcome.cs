@@ -86,7 +86,7 @@ namespace SpaceProject
             progress = 0;
 
             missionHelper.ShowEvent(EventList[0].Key);
-            Game.stateManager.GotoStationSubScreen("Border Station", "Overview");
+            //Game.stateManager.GotoStationSubScreen("Border Station", "Overview");
 
             Game.stateManager.overworldState.AddOverworldObject(battlefield);
         }

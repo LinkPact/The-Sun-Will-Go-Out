@@ -285,7 +285,17 @@ namespace SpaceProject
                               true,
                               "Back"));
 
-                        SelectMission();
+                        if (selectedMission == MissionManager.GetMission("Tutorial Mission")
+                            && MissionManager.GetMission("Main - A Cold Welcome").MissionState == StateOfMission.Available)
+                        {
+                            MissionManager.MarkMissionAsActive("Main - A Cold Welcome");
+                            MissionEvent();
+                        }
+
+                        else
+                        {
+                            SelectMission();
+                        }
                     }
                 }
             }

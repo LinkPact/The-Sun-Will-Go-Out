@@ -19,6 +19,7 @@ namespace SpaceProject
 
         //Missions
         // Sector X
+        private static TutorialMission tutorialMission;
         private static DebtCollection debtCollection;
         private static AstroDodger astroDodger;
         private static DefendColony defendColony;
@@ -66,6 +67,11 @@ namespace SpaceProject
             //Initialize Missions
 
             #region Sector X
+
+            // Tutorial Mission
+            tutorialMission = new TutorialMission(game, "SX_TutorialMission", null);
+            tutorialMission.Initialize();
+            missions.Add(tutorialMission);
 
             //DebtCollection
             debtCollection = new DebtCollection(game, "SX_DebtCollection", null);

@@ -168,6 +168,11 @@ namespace SpaceProject
                         break;
                     }
 
+                    else if (start != 0 && reader.Peek() == -1)
+                    {
+                        stop = count;
+                    }
+
                     count++;
                 }
 

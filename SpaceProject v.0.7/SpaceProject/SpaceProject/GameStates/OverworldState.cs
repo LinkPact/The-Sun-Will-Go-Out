@@ -162,7 +162,11 @@ namespace SpaceProject
 
             if (GameStateManager.previousState.Equals("IntroSecondState") || GameStateManager.previousState.Equals("StartGameState"))
             {
-                MissionManager.MarkMissionAsActive("Main - A Cold Welcome");
+                //MissionManager.MarkMissionAsActive("Main - A Cold Welcome");
+                Game.stateManager.GotoStationSubScreen("Border Station", "Mission");
+
+                Game.stateManager.stationState.SubStateManager.MissionMenuState.SelectedMission = MissionManager.GetMission("Tutorial Mission");
+                Game.stateManager.stationState.SubStateManager.MissionMenuState.DisplayMissionIntroduction();
             }
 
             else

@@ -203,6 +203,7 @@
     <Compile Include="Missions\SectorX\DeathByMeteorMission.cs" />
     <Compile Include="Missions\SectorX\MidMissionRebel.cs" />
     <Compile Include="Missions\SectorX\Main2_Rebels.cs" />
+    <Compile Include="Missions\SectorX\TutorialMission.cs" />
     <Compile Include="Missions\SectorY\MidMissionAlliance.cs" />
     <Compile Include="Missions\SectorZ\FinalMission.cs" />
     <Compile Include="Missions\SectorX\Main1_AColdWelcome.cs" />
