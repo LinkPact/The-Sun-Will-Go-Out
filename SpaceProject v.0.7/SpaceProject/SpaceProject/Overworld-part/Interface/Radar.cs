@@ -90,13 +90,16 @@ namespace SpaceProject
                 0.9f
                 );
 
+            float drawDistance = 0.91f;
             foreach (GameObjectOverworld obj in objectsVisibleOnRadar)
             {
                 Color tempColor = Color.Gray;
                 ActiveSprite = ObjectSprite;
+                drawDistance = 0.91f;
 
                 if (MissionManager.IsCurrentObjective(obj))
                 {
+                    drawDistance += 0.01f;
                     if (colorSwapCounter <= 25)
                     {
                         tempColor = Color.DarkOrange;
@@ -135,10 +138,11 @@ namespace SpaceProject
                         new Vector2(ActiveSprite.SourceRectangle.Value.Width / 2, ActiveSprite.SourceRectangle.Value.Height / 2),
                         1f,
                         SpriteEffects.None,
-                        0.91f
+                        drawDistance
                         ); 
             }
 
+            // Draw background sprite
             spriteBatch.Draw(ObjectSprite.Texture,
                 new Vector2(Origin.X + ((playerpos.X - View.X) / scaleX), Origin.Y + ((playerpos.Y - View.Y) / scaleY)),
                 ObjectSprite.SourceRectangle,
