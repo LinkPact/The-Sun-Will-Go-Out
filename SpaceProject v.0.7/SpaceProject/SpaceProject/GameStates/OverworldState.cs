@@ -24,6 +24,7 @@ namespace SpaceProject
                 tempList.AddRange(sectorX.GetGameObjects());
                 tempList.AddRange(outpostX.GetGameObjects());
                 tempList.AddRange(borderXOutpost.GetGameObjects());
+                tempList.AddRange(miningOutpost.GetGameObjects());
                 return tempList;
             }
         }
@@ -76,6 +77,9 @@ namespace SpaceProject
         private BorderXOutpost borderXOutpost;
         public BorderXOutpost GetBorderXOutpost { get { return borderXOutpost; } private set { ; } }
 
+        private MiningOutpost miningOutpost;
+        public MiningOutpost GetMiningOutpost { get { return miningOutpost; } private set { ; } }
+
         #endregion
 
         #region Other Objects
@@ -122,6 +126,9 @@ namespace SpaceProject
 
             borderXOutpost = new BorderXOutpost(Game, outpostSpriteSheet);
             borderXOutpost.Initialize();
+
+            miningOutpost = new MiningOutpost(Game, outpostSpriteSheet);
+            miningOutpost.Initialize();
 
             currentSpaceRegion = sectorX;
 
@@ -417,6 +424,16 @@ namespace SpaceProject
                 {
                     previousSpaceRegion = currentSpaceRegion;
                     currentSpaceRegion = borderXOutpost;
+                    currentSpaceRegion.OnEnter();
+                }
+            }
+
+            else if (CollisionDetection.IsRectInRect(Game.player.Bounds, miningOutpost.SpaceRegionArea))
+            {
+                if (currentSpaceRegion != miningOutpost)
+                {
+                    previousSpaceRegion = currentSpaceRegion;
+                    currentSpaceRegion = miningOutpost;
                     currentSpaceRegion.OnEnter();
                 }
             }
