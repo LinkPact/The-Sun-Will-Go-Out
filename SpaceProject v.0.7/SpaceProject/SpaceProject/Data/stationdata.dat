@@ -34,6 +34,12 @@ PositionX = 1400
 PositionY = 1700
 Inhabitants = 800
 
+[MO_Mining_Station]
+Name = Mining Station
+PositionX = 1050
+PositionY = 1200
+Inhabitants = 120
+
 [OW_Abandoned_Station]
 Name = Abandoned Station
 PositionX = 3800

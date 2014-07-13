@@ -20,6 +20,7 @@ namespace SpaceProject
         //Missions
         // Sector X
         private static TutorialMission tutorialMission;
+        private static NewFirstMission newFirstMission;
         private static DebtCollection debtCollection;
         private static AstroDodger astroDodger;
         private static DefendColony defendColony;
@@ -72,6 +73,11 @@ namespace SpaceProject
             tutorialMission = new TutorialMission(game, "SX_TutorialMission", null);
             tutorialMission.Initialize();
             missions.Add(tutorialMission);
+
+            // New First Mission
+            newFirstMission = new NewFirstMission(game, "SX_NewFirstMission", null);
+            newFirstMission.Initialize();
+            missions.Add(newFirstMission);
 
             //DebtCollection
             debtCollection = new DebtCollection(game, "SX_DebtCollection", null);
@@ -469,10 +475,10 @@ namespace SpaceProject
             //}
 
             if (tutorialMission.MissionState == StateOfMission.CompletedDead
-                && aColdWelcome.MissionState == StateOfMission.Unavailable)
+                && newFirstMission.MissionState == StateOfMission.Unavailable)
             {
-                UnlockMission("Main - A Cold Welcome");
-                MarkMissionAsActive("Main - A Cold Welcome");
+                UnlockMission("Main - New First Mission");
+                MarkMissionAsActive("Main - New First Mission");
             }
 
             // Unlock hyperspeed

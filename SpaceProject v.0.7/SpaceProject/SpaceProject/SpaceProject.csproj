@@ -196,6 +196,7 @@
     <Compile Include="GameStates\MissionScreenState\MissionScreenState.cs" />
     <Compile Include="GameStates\MissionScreenState\MissionScreenText.cs" />
     <Compile Include="Missions\SectorX\AstroScan.cs" />
+    <Compile Include="Missions\SectorX\Main1_NewFirstMission.cs" />
     <Compile Include="Missions\SectorX\DebtCollection.cs" />
     <Compile Include="Missions\SectorX\Main3_TheAlliance.cs" />
     <Compile Include="Missions\SectorX\DefendColony.cs" />
@@ -313,6 +314,7 @@
     <Compile Include="MapCreator\Mechanics\DataClasses\SquareData.cs" />
     <Compile Include="MapCreator\System\WriteSave.cs" />
     <Compile Include="MissionStuff\Objectives\DataCapsules\EventTextCapsule.cs" />
+    <Compile Include="Overworld-part\GameObjects\Celestial bodies\Overworld\MiningAsteroids.cs" />
     <Compile Include="Overworld-part\GameObjects\Direction.cs" />
     <Compile Include="Overworld-part\GameObjects\Other\Beacon.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\FreighterShip.cs" />
@@ -323,6 +325,7 @@
     <Compile Include="Overworld-part\GameObjects\ShopInventoryEntry.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\AbandonedStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\BorderXOutpost\BorderStation.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\MiningOutpost\MiningStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\SectorX\FotrunStation2.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\SectorX\FotrunStation1.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\ShopInventoryEntry.cs" />
@@ -330,6 +333,7 @@
     <Compile Include="Overworld-part\Interface\HeadsUpDisplay.cs" />
     <Compile Include="Overworld-part\Interface\Radar.cs" />
     <Compile Include="Overworld-part\SpaceRegions\Outposts\BorderXOutpost.cs" />
+    <Compile Include="Overworld-part\SpaceRegions\Outposts\MiningOutpost.cs" />
     <Compile Include="Overworld-part\SpaceRegions\Outposts\Outpost.cs" />
     <Compile Include="Overworld-part\SpaceRegions\Outposts\OutpostX.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\SectorY\TempPlanet1.cs" />
