@@ -52,6 +52,10 @@ namespace SpaceProject
         private float sightRange;
         public float SightRange { get { return sightRange; } set { sightRange = value; } }
 
+        protected AreaCollision areaCollision;
+        public AreaCollision AreaCollision { get { return areaCollision; } }
+        public Boolean HasAreaCollision() { return areaCollision != null; }
+
         //Follow variables
         private bool follows;
         protected bool Follows { get { return follows; } set { follows = value; } }

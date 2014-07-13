@@ -13,7 +13,7 @@ namespace SpaceProject
         other
     }
 
-    public class EnemyShip : Creature
+    public class EnemyShip : VerticalShooterShip
     {
         protected Fraction fraction;
         public Fraction GetFraction { get { return fraction; } }

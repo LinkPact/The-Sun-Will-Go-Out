@@ -23,7 +23,7 @@ namespace SpaceProject
         extreme     = 30
     }
 
-    public abstract class Creature : CombatGameObject
+    public abstract class VerticalShooterShip : CombatGameObject
     {
         #region declaration
         protected PlayerVerticalShooter player;
@@ -44,7 +44,10 @@ namespace SpaceProject
         public Boolean HasShield { get { return hasShield; } }
 
         private float shieldCapacity;
+
         private float currentShield;
+        public Boolean ShieldCanTakeHit(double hitDamage) { return hitDamage >= currentShield; }
+
         private float shieldRegeneration;
         #endregion
 
@@ -84,14 +87,14 @@ namespace SpaceProject
 
         #endregion
 
-        protected Creature(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
+        protected VerticalShooterShip(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet)
         {
             this.player = player;
             movement = Movement.Line;
         }
         
-        protected Creature(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player, Movement movement) :
+        protected VerticalShooterShip(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player, Movement movement) :
             base(Game, spriteSheet)
         {
             this.player = player;

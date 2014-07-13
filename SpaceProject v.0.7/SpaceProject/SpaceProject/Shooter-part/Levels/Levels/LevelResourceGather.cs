@@ -315,7 +315,7 @@ namespace SpaceProject
                 {
                     int meteoriteVal = random.Next(32);
 
-                    Creature meteorite;
+                    VerticalShooterShip meteorite;
 
                     switch (meteoriteVal)
                     {
@@ -462,7 +462,7 @@ namespace SpaceProject
             {
                 int val = random.Next(stoneCount) + 1;
 
-                Creature resource;
+                VerticalShooterShip resource;
 
                 if (val <= copperStones.Count)
                 {

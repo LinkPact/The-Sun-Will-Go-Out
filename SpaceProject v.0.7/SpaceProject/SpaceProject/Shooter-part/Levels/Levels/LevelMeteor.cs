@@ -75,7 +75,7 @@ namespace SpaceProject
             {
                 int val = random.Next(4);
 
-                Creature meteorite;
+                VerticalShooterShip meteorite;
 
                 if (val == 0) meteorite = new Meteorite15(Game, spriteSheet, player);
                 else if (val == 1) meteorite = new Meteorite20(Game, spriteSheet, player);

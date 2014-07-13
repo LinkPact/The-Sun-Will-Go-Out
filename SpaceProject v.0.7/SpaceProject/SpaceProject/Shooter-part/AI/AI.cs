@@ -34,7 +34,7 @@ namespace SpaceProject
         private bool deccelerate;
 
         //target and shooting stuff
-        private Creature target;
+        private VerticalShooterShip target;
         private GameObjectVertical closestObject;
 
         private string weapon;
@@ -64,7 +64,7 @@ namespace SpaceProject
         public bool Accelerate { get { return accelerate; } set { accelerate = value; } }
         public bool Deccelerate { get { return deccelerate; } set { deccelerate = value; } }
 
-        public Creature Target { get { return target; } set { target = value; } }
+        public VerticalShooterShip Target { get { return target; } set { target = value; } }
         public GameObjectVertical ClosestObject { get { return closestObject; } }
 
         public float TargetXDistance { get { return targetXDistance; } set { targetXDistance = value; } }

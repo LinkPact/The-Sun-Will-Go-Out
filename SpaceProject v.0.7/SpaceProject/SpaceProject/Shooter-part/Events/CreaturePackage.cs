@@ -13,8 +13,8 @@ namespace SpaceProject
         private Game1 Game;
         private Sprite spriteSheet;
 
-        private Creature creature;
-        public Creature Creature { get { return creature; } }
+        private VerticalShooterShip creature;
+        public VerticalShooterShip Creature { get { return creature; } }
 
         private float initHP;
         private Vector2 initPos;
@@ -22,7 +22,7 @@ namespace SpaceProject
         private float timing;
 
         public CreaturePackage(Game1 Game, Sprite spriteSheet, 
-            Creature creature, float timing)
+            VerticalShooterShip creature, float timing)
         {
             this.Game = Game;
             this.spriteSheet = spriteSheet;
@@ -34,7 +34,7 @@ namespace SpaceProject
             this.initHP = creature.HP;
         }
         
-        public Creature RetrieveCreature()
+        public VerticalShooterShip RetrieveCreature()
         {
             return creature;
         }

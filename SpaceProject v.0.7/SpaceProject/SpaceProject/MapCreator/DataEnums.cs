@@ -51,6 +51,7 @@ public enum EnemyType
     A_drone             = 200,
     A_smallLaserShip    = 201,
     A_stealthShip       = 202,
+    A_shielder          = 203,
 
     A_big_I             = 10,
     A_homingBullet      = 11,

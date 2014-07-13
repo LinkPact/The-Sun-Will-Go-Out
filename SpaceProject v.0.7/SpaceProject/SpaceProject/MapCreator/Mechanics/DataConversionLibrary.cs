@@ -42,6 +42,7 @@ namespace SpaceProject
             enemyLibrary.Add(EnemyType.A_stealthShip, "t");
             enemyLibrary.Add(EnemyType.A_drone, "d");
             enemyLibrary.Add(EnemyType.A_smallLaserShip, "n");
+            enemyLibrary.Add(EnemyType.A_shielder, "h");
             
             enemyLibrary.Add(EnemyType.A_big_I, "L");
             enemyLibrary.Add(EnemyType.A_homingBullet, "H");
@@ -223,6 +224,9 @@ namespace SpaceProject
 
                 case EnemyType.A_smallLaserShip:
                     return new Color(0, 80, 80);
+
+                case EnemyType.A_shielder:
+                    return new Color(160, 80, 80);
 
                 default:
                     throw new ArgumentException("Not-yet-implemented enemytype entered");

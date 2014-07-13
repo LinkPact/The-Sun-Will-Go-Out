@@ -11,7 +11,7 @@ namespace SpaceProject
     public class EnemyGreenBullet : EnemyBullet
     {
 
-        public int duration;
+        //public int duration;
 
         public EnemyGreenBullet(Game1 Game, Sprite spriteSheet) :
             base(Game, spriteSheet)

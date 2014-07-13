@@ -20,7 +20,7 @@ namespace SpaceProject
         {
             fraction = Fraction.alliance;
 
-            ShieldSetup(CreatureShieldCapacity.medium, CreatureShieldRegeneration.medium);
+            ShieldSetup(CreatureShieldCapacity.high, CreatureShieldRegeneration.medium);
         }
 
         public override void Initialize()
@@ -43,8 +43,10 @@ namespace SpaceProject
 
             //Animationer
             anim.LoopTime = 500;
-            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(380, 180, 26, 33)));
+            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(460, 180, 53, 37)));
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
+
+            areaCollision = new AreaCollision(Game, this, 300);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

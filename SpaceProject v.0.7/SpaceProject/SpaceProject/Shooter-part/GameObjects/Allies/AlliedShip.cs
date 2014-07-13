@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class AlliedShip : Creature
+    public class AlliedShip : VerticalShooterShip
     {
         protected AI aI;
         public AI AI { get { return aI; } set { aI = value; } }

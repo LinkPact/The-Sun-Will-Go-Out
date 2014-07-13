@@ -12,18 +12,15 @@ namespace SpaceProject
         enemy
     }
 
-    public abstract class AreaDamage : GameObjectVertical
+    public abstract class AreaDamage : AreaObject
     {
         private AreaDamageType type;
         public AreaDamageType Type { get { return type; } private set { } }
 
-        protected Vector2 position;
-
         public AreaDamage(Game1 game, AreaDamageType type, Vector2 position)
-            : base(game)
+            : base(game, position)
         {
             this.type = type;
-            this.position = position;
 
             ObjectClass = "areadamage";
             ObjectName = "areadamage";
@@ -32,10 +29,7 @@ namespace SpaceProject
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-
             IsKilled = true;
         }
-
-        public abstract Boolean IsOverlapping(AnimatedGameObject obj);
     }
 }

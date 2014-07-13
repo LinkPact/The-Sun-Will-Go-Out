@@ -36,7 +36,7 @@ namespace SpaceProject
 
             for (float t = 0; t < Duration; t += SpawnDelay)
             {
-                Creature crit = ReturnCreature();
+                VerticalShooterShip crit = ReturnCreature();
                 creatures.Add(new CreaturePackage(Game, spriteSheet, crit, (int)t));
             }
 

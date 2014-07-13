@@ -11,7 +11,7 @@ namespace SpaceProject
     public class EnemyHomingBullet : EnemyBullet
     {
 
-        public int duration;
+        //public int duration;
         private PlayerVerticalShooter player;
         private float turningSpeed;
 

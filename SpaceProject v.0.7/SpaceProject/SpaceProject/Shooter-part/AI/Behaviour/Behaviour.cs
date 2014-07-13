@@ -62,12 +62,12 @@ namespace SpaceProject
         //Sets the target to closest enemy by default, can be changed by overriding
         public virtual void SetTarget(GameObjectVertical closestEnemy)
         {
-            if (closestEnemy != null && closestEnemy is Creature)
+            if (closestEnemy != null && closestEnemy is VerticalShooterShip)
             {
                 if (!IgnoreList.Contains(closestEnemy))
                 {
                     if(Ship.BoundingY - closestEnemy.BoundingY + closestEnemy.BoundingWidth > -100)
-                    AI.Target = (Creature)closestEnemy;
+                    AI.Target = (VerticalShooterShip)closestEnemy;
                     IgnoreList.Add(closestEnemy);
                 }
             }

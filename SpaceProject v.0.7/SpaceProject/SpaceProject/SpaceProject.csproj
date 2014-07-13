@@ -392,8 +392,10 @@
     <Compile Include="Shooter-part\AI\Behaviour\Behaviour.cs" />
     <Compile Include="Shooter-part\AI\Behaviour\NoWeapon.cs" />
     <Compile Include="Shooter-part\AI\Behaviour\StandardBehaviour.cs" />
-    <Compile Include="Shooter-part\AreaDamage\AreaDamage.cs" />
-    <Compile Include="Shooter-part\AreaDamage\CircularAreaDamage.cs" />
+    <Compile Include="Shooter-part\Area\AreaObject.cs" />
+    <Compile Include="Shooter-part\Area\AreaCollision.cs" />
+    <Compile Include="Shooter-part\Area\AreaDamage.cs" />
+    <Compile Include="Shooter-part\Area\CircularAreaDamage.cs" />
     <Compile Include="Shooter-part\GameObjects\Allies\AlliedShip.cs" />
     <Compile Include="Shooter-part\GameObjects\Allies\Ships\FighterAlly.cs" />
     <Compile Include="Shooter-part\GameObjects\Allies\Ships\FreighterAlly.cs" />
@@ -442,7 +444,7 @@
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceStealthShip.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelBurster.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelMinelayer.cs" />
-    <Compile Include="Shooter-part\GameObjects\Creature.cs" />
+    <Compile Include="Shooter-part\GameObjects\VerticalShooterShip.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\DanneEnemy.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelMosquito.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\NonUsed\HomingMissileCamperEnemy.cs" />

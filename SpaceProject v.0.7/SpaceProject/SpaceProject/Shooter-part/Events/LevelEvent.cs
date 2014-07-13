@@ -69,7 +69,7 @@ namespace SpaceProject
         protected EnemyType enemyType;
         public EnemyType EnemyType { get { return enemyType; } }
 
-        protected List<Creature> creatureList;
+        protected List<VerticalShooterShip> creatureList;
 
         #endregion
 
@@ -94,7 +94,7 @@ namespace SpaceProject
         
         //This constructor is called if the event is timetriggered.
         //Takes a list of creatures as input instead of identifier, when wanting to use non-standard characteristics.
-        protected LevelEvent(Game1 Game, PlayerVerticalShooter player, Sprite spriteSheet, Level level, List<Creature> creatureList, float startTime)
+        protected LevelEvent(Game1 Game, PlayerVerticalShooter player, Sprite spriteSheet, Level level, List<VerticalShooterShip> creatureList, float startTime)
         {
             this.Game = Game;
             this.spriteSheet = spriteSheet;
@@ -172,9 +172,9 @@ namespace SpaceProject
             this.setupCreature = setupCreature;
         }
         
-        protected Creature RetrieveCreatureFromEnum(EnemyType identifier)
+        protected VerticalShooterShip RetrieveCreatureFromEnum(EnemyType identifier)
         {
-            Creature creature = null;
+            VerticalShooterShip creature = null;
 
             switch (identifier)
             {
@@ -306,6 +306,11 @@ namespace SpaceProject
                         creature = new AllianceSmallLaserShip(Game, spriteSheet, player);
                         break;
                     }
+                case EnemyType.A_shielder:
+                    {
+                        creature = new AllianceShielder(Game, spriteSheet, player);
+                        break;
+                    }
                 default:
                     {
                         throw new ArgumentException("Argument not implemented!");
@@ -368,7 +373,7 @@ namespace SpaceProject
                     }
             }
 
-            Creature creature = RetrieveCreatureFromEnum(enemyType);
+            VerticalShooterShip creature = RetrieveCreatureFromEnum(enemyType);
 
             creature.PositionX = xPos;
 
@@ -386,10 +391,10 @@ namespace SpaceProject
         #endregion
 
         #region ReturnCreature(...)
-        protected Creature ReturnCreature()
+        protected VerticalShooterShip ReturnCreature()
         {
             xPos = (float)(random.NextDouble() * 800);
-            Creature creature = RetrieveCreatureFromEnum(enemyType);
+            VerticalShooterShip creature = RetrieveCreatureFromEnum(enemyType);
             creature = StandardCreatureSetup(creature);
             creature.Position = new Vector2(xPos, 0);
             creature.MovementSetup();
@@ -397,11 +402,11 @@ namespace SpaceProject
             return creature;
         }
         
-        protected Creature ReturnCreature(float xPos)
+        protected VerticalShooterShip ReturnCreature(float xPos)
         {
             if (xPos == -1f) xPos = (float)(random.NextDouble() * 800);
 
-            Creature creature = RetrieveCreatureFromEnum(enemyType);
+            VerticalShooterShip creature = RetrieveCreatureFromEnum(enemyType);
             creature = StandardCreatureSetup(creature);
             creature.Position = new Vector2(xPos, 0);
             creature.MovementSetup();
@@ -409,11 +414,11 @@ namespace SpaceProject
             return creature;
         }
         
-        protected Creature ReturnCreature(Vector2 position)
+        protected VerticalShooterShip ReturnCreature(Vector2 position)
         {
             if (position.X == -1f) position = new Vector2((float)(random.NextDouble() * 800), 0);
 
-            Creature creature = RetrieveCreatureFromEnum(enemyType);
+            VerticalShooterShip creature = RetrieveCreatureFromEnum(enemyType);
             creature = StandardCreatureSetup(creature);
             creature.Position = position;
             creature.MovementSetup();
@@ -422,7 +427,7 @@ namespace SpaceProject
         }
         #endregion
 
-        private Creature StandardCreatureSetup(Creature creature)
+        private VerticalShooterShip StandardCreatureSetup(VerticalShooterShip creature)
         {
             creature.Initialize();
             creature.Direction = new Vector2(0, 1.0f);

@@ -284,26 +284,77 @@ namespace SpaceProject
             {
                 for (int m = n + 1; m < objectCount; m++)
                 {
+                    GameObjectVertical obj1 = gameObjects[n];
+                    GameObjectVertical obj2 = gameObjects[m];
 
-                    if (GlobalMathFunctions.IsOneOfType<AreaDamage>(gameObjects[n], gameObjects[m]))
+                    if (GlobalMathFunctions.IsOneOfType<AreaDamage>(obj1, obj2))
                     {
-                        PerformAreaDamage(gameObjects[n], gameObjects[m]);
+                        PerformAreaDamage(obj1, obj2);
                     }
                     else
                     {
-                        if (CollisionDetection.VisiblePixelsColliding(gameObjects[n].Bounding, gameObjects[m].Bounding,
-                            ((AnimatedGameObject)(gameObjects[n])).CurrentAnim.CurrentFrame,
-                            ((AnimatedGameObject)gameObjects[m]).CurrentAnim.CurrentFrame, gameObjects[n].CenterPoint,
-                            gameObjects[m].CenterPoint))
+                        if (GlobalMathFunctions.IsOneOfType<AreaCollision>(obj1.AreaCollision, obj2.AreaCollision)
+                            && GlobalMathFunctions.IsOneOfType<PlayerBullet>(obj1, obj2))
                         {
-                            CollisionHandlingVerticalShooter.GameObjectsCollision(gameObjects[n], gameObjects[m]);
+                            PerformAreaCollision(obj1, obj2);
+                        }
+
+                        if (CollisionDetection.VisiblePixelsColliding(obj1.Bounding, obj2.Bounding,
+                            ((AnimatedGameObject)(obj1)).CurrentAnim.CurrentFrame,
+                            ((AnimatedGameObject)obj2).CurrentAnim.CurrentFrame, 
+                            obj1.CenterPoint, obj2.CenterPoint))
+                        {
+                            CollisionHandlingVerticalShooter.GameObjectsCollision(obj1, obj2);
                         }
                     }
-
                 }
             }
-
         }
+
+        private void PerformAreaDamage(GameObjectVertical obj1, GameObjectVertical obj2)
+        {
+            if (obj1 is AreaDamage && obj2 is AreaDamage)
+            {
+                return;
+            }
+
+            if (obj1 is AreaDamage)
+            {
+                if (((AreaDamage)(obj1)).IsOverlapping((AnimatedGameObject)obj2))
+                {
+                    CollisionHandlingVerticalShooter.GameObjectsCollision(obj1, obj2);
+                }
+            }
+            else
+            {
+                if (((AreaDamage)(obj2)).IsOverlapping((AnimatedGameObject)obj1))
+                {
+                    CollisionHandlingVerticalShooter.GameObjectsCollision(obj2, obj1);
+                }
+            }
+        }
+
+        private void PerformAreaCollision(GameObjectVertical obj1, GameObjectVertical obj2)
+        {
+            if (obj1.HasAreaCollision() && obj2.HasAreaCollision())
+                return;
+
+            if (obj1.HasAreaCollision())
+            {
+                if (((AreaCollision)(obj1.AreaCollision)).IsOverlapping((AnimatedGameObject)obj2))
+                {
+                    CollisionHandlingVerticalShooter.GameObjectsCollision(obj1, obj2);
+                }
+            }
+            else
+            {
+                if (((AreaCollision)(obj2.AreaCollision)).IsOverlapping((AnimatedGameObject)obj1))
+                {
+                    CollisionHandlingVerticalShooter.GameObjectsCollision(obj2, obj1);
+                }
+            }
+        }
+
         private void UpdateObjects(GameTime gameTime, int objectCount)
         {
             for (int n = 0; n < objectCount; n++)
@@ -311,6 +362,7 @@ namespace SpaceProject
                 gameObjects[n].Update(gameTime);
             }        
         }
+        
         private void ClearDeadObjects(int objectCount)
         {
             for (int n = 0; n < objectCount; n++)
@@ -339,30 +391,6 @@ namespace SpaceProject
                 gameObjects.Remove(deadGameObjects[n]);
             }
             deadGameObjects.Clear();
-        }
-
-        private void PerformAreaDamage(GameObjectVertical obj1, GameObjectVertical obj2)
-        {
-            if (obj1 is AreaDamage && obj2 is AreaDamage)
-            {
-                return;
-            }
-
-            if (obj1 is AreaDamage)
-            {
-                if (((AreaDamage)(obj1)).IsOverlapping((AnimatedGameObject)obj2))
-                {
-                    CollisionHandlingVerticalShooter.GameObjectsCollision(obj1, obj2);
-                }
-            }
-            else
-            {
-                if (((AreaDamage)(obj2)).IsOverlapping((AnimatedGameObject)obj1))
-                {
-                    CollisionHandlingVerticalShooter.GameObjectsCollision(obj2, obj1);
-                }
-            }
-                
         }
 
         private void HandleBackgroundObjects(GameTime gameTime)

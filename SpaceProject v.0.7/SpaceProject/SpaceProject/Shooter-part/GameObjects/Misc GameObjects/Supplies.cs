@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    class Supplies : Creature
+    class Supplies : VerticalShooterShip
     {
         private Rectangle healthRect = new Rectangle(544, 0, 13, 13);
         private Rectangle fusionCellRect = new Rectangle(558, 0, 13, 13);
