@@ -31,9 +31,9 @@ namespace SpaceProject
         public ShopInventoryEntry(String id)
         {
             MatchCollection matches = Regex.Matches(id, @"\w+");
-            shipPartType = GlobalFunctions.ParseEnum<ShipPartType>(matches[0].ToString());
-            availability = GlobalFunctions.ParseEnum<ShipPartAvailability>(matches[1].ToString());
-            itemVariety = GlobalFunctions.ParseEnum<ItemVariety>(matches[2].ToString());
+            shipPartType = GlobalMathFunctions.ParseEnum<ShipPartType>(matches[0].ToString());
+            availability = GlobalMathFunctions.ParseEnum<ShipPartAvailability>(matches[1].ToString());
+            itemVariety = GlobalMathFunctions.ParseEnum<ItemVariety>(matches[2].ToString());
             this.id = id;
         }
 

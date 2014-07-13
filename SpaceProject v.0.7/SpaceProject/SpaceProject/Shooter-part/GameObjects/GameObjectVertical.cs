@@ -213,7 +213,7 @@ namespace SpaceProject
             if (TurningSpeed == 0) TurningSpeed = 1;
 
             Direction = ChangeDirection(Direction, Position, FollowObject.Position, TurningSpeed);
-            Direction = GlobalFunctions.ScaleDirection(Direction);
+            Direction = GlobalMathFunctions.ScaleDirection(Direction);
         }
         
         protected GameObjectVertical FindFollowObject()
@@ -272,7 +272,7 @@ namespace SpaceProject
                     shootObject = tempList[0];
                     foreach (GameObjectVertical obj in tempList)
                     {
-                        if (GlobalFunctions.ObjectDistance(this, obj) < GlobalFunctions.ObjectDistance(this, shootObject))
+                        if (GlobalMathFunctions.ObjectDistance(this, obj) < GlobalMathFunctions.ObjectDistance(this, shootObject))
                         {
                             shootObject = obj;
                         }
@@ -291,10 +291,10 @@ namespace SpaceProject
         
         protected Vector2 ChangeDirection(Vector2 dir, Vector2 pos, Vector2 followedPos, double degreeChange)
         {
-            Radians = GlobalFunctions.RadiansFromDir(dir);
+            Radians = GlobalMathFunctions.RadiansFromDir(dir);
 
             Vector2 dirToFollowed = new Vector2(followedPos.X - pos.X, followedPos.Y - pos.Y);
-            dirToFollowed = GlobalFunctions.ScaleDirection(dirToFollowed);
+            dirToFollowed = GlobalMathFunctions.ScaleDirection(dirToFollowed);
 
             double dirFolRadians;
 
@@ -306,11 +306,11 @@ namespace SpaceProject
             if (dirFolRadians > 2 * Math.PI)
                 dirFolRadians -= 2 * Math.PI;
 
-            if (GlobalFunctions.DeltaRadians(Radians, dirFolRadians) > 0 && GlobalFunctions.DeltaRadians(Radians, dirFolRadians) <= 180)
+            if (GlobalMathFunctions.DeltaRadians(Radians, dirFolRadians) > 0 && GlobalMathFunctions.DeltaRadians(Radians, dirFolRadians) <= 180)
                 Radians += degreeChange * (Math.PI / 180);
-            else if (GlobalFunctions.DeltaRadians(Radians, dirFolRadians) < 0 && GlobalFunctions.DeltaRadians(Radians, dirFolRadians) <= 180)
+            else if (GlobalMathFunctions.DeltaRadians(Radians, dirFolRadians) < 0 && GlobalMathFunctions.DeltaRadians(Radians, dirFolRadians) <= 180)
                 Radians -= degreeChange * (Math.PI / 180);
-            else if (GlobalFunctions.DeltaRadians(Radians, dirFolRadians) > 0 && GlobalFunctions.DeltaRadians(Radians, dirFolRadians) > 180)
+            else if (GlobalMathFunctions.DeltaRadians(Radians, dirFolRadians) > 0 && GlobalMathFunctions.DeltaRadians(Radians, dirFolRadians) > 180)
                 Radians -= degreeChange * (Math.PI / 180);
             else //(dirFolRadians < Radians && (dirFolRadians - Radians) > 180)
                 Radians += degreeChange * (Math.PI / 180);

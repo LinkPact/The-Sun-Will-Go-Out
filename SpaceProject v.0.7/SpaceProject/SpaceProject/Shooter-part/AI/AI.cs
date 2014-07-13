@@ -131,7 +131,7 @@ namespace SpaceProject
         public void Process(GameTime gameTime)
         {
             //Always updates the closest enemy, used for setting target
-            closestObject = GlobalFunctions.ReturnClosestObject(ship, ship.SightRange,
+            closestObject = GlobalMathFunctions.ReturnClosestObject(ship, ship.SightRange,
                 Game.stateManager.shooterState.gameObjects, new List<string>(){ "enemy", "enemyBullet"});
 
             if (target == null)
@@ -215,7 +215,7 @@ namespace SpaceProject
             }
 
             if (AvoidList.Count > 0)
-                objToAvoid = GlobalFunctions.ReturnClosestObject(ship, AvoidRadius, AvoidList);
+                objToAvoid = GlobalMathFunctions.ReturnClosestObject(ship, AvoidRadius, AvoidList);
 
             if (objToAvoid == target)
             {

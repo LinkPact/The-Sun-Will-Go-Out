@@ -51,7 +51,7 @@ namespace SpaceProject
             if (target == null) return false;
 
             Vector2 dir = new Vector2(target.PositionX - player.PositionX, target.PositionY - player.PositionY);
-            Vector2 scaledDir = GlobalFunctions.ScaleDirection(dir);
+            Vector2 scaledDir = GlobalMathFunctions.ScaleDirection(dir);
 
             BallisticLaser bullet = new BallisticLaser(Game, spriteSheet);
             bullet.PositionX = player.PositionX;

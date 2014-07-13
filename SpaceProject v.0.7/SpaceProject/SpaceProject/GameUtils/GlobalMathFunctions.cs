@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace SpaceProject
 {
     //Klass dar jag placerat matematik som senare kunde komma tankas att behovas av ett flertal klasser
-    public class GlobalFunctions
+    public class GlobalMathFunctions
     {
         private static Random rand = new Random();
 
@@ -103,7 +103,7 @@ namespace SpaceProject
         //Skapar riktning inom spridningsintervall angivet kring initialriktning.
         public static Vector2 SpreadDir(Vector2 dir, double spread)
         {
-            double dirRadians = GlobalFunctions.RadiansFromDir(dir);
+            double dirRadians = GlobalMathFunctions.RadiansFromDir(dir);
             dirRadians += ((rand.NextDouble() * spread) - spread / 2);
 
             Vector2 newDir = DirFromRadians(dirRadians);
@@ -129,11 +129,11 @@ namespace SpaceProject
 
             foreach (GameObjectVertical obj in objects)
             {
-                if (GlobalFunctions.ObjectDistance(object1, obj) < tempDistance
-                     && GlobalFunctions.ObjectDistance(object1, obj) < range)
+                if (GlobalMathFunctions.ObjectDistance(object1, obj) < tempDistance
+                     && GlobalMathFunctions.ObjectDistance(object1, obj) < range)
                 {
                     tempTarget = obj;
-                    tempDistance = GlobalFunctions.ObjectDistance(object1, tempTarget);
+                    tempDistance = GlobalMathFunctions.ObjectDistance(object1, tempTarget);
                 }
             }
 
@@ -147,11 +147,11 @@ namespace SpaceProject
 
             foreach (GameObjectVertical obj in objects)
             {
-                if (obj.ObjectClass.ToLower() == kind.ToLower() && GlobalFunctions.ObjectDistance(object1, obj) < tempDistance
-                     && GlobalFunctions.ObjectDistance(object1, obj) < range)
+                if (obj.ObjectClass.ToLower() == kind.ToLower() && GlobalMathFunctions.ObjectDistance(object1, obj) < tempDistance
+                     && GlobalMathFunctions.ObjectDistance(object1, obj) < range)
                 {
                     tempTarget = obj;
-                    tempDistance = GlobalFunctions.ObjectDistance(object1, tempTarget);
+                    tempDistance = GlobalMathFunctions.ObjectDistance(object1, tempTarget);
                 }
             }
 
@@ -167,11 +167,11 @@ namespace SpaceProject
             {
                 for (int i = 0; i < kinds.Count; i++)
                 {
-                    if (obj.ObjectClass.ToLower() == kinds[i].ToLower() && GlobalFunctions.ObjectDistance(object1, obj) < tempDistance
-                         && GlobalFunctions.ObjectDistance(object1, obj) < range)
+                    if (obj.ObjectClass.ToLower() == kinds[i].ToLower() && GlobalMathFunctions.ObjectDistance(object1, obj) < tempDistance
+                         && GlobalMathFunctions.ObjectDistance(object1, obj) < range)
                     {
                         tempTarget = obj;
-                        tempDistance = GlobalFunctions.ObjectDistance(object1, tempTarget);
+                        tempDistance = GlobalMathFunctions.ObjectDistance(object1, tempTarget);
                     }
                 }
             }
@@ -244,6 +244,20 @@ namespace SpaceProject
         public static T ParseEnum<T>(string value)
         {
             return (T)Enum.Parse(typeof(T), value, true);
+        }
+
+        public static List<double> GetSpreadDirList(double spreadRadians, double numberOfShots)
+        {
+            List<double> directions = new List<double>();
+            double center = Math.PI / 2;
+
+            //double degreesSpread = spreadRadians * (360 / (2 * Math.PI));
+
+            for (double dir = center - (spreadRadians / 2); dir <= center + (spreadRadians / 2); dir += (spreadRadians / (numberOfShots - 1)))
+            {
+                directions.Add(dir);
+            }
+            return directions;
         }
     }
 }

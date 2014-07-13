@@ -107,7 +107,7 @@ Alliance Stealth	(171, 180, 38, 63)
 
 Alliance Small		(435, 80, 25, 26)
 
-Shield		(220,180,100,100)
+Shield			(220,180,100,100)
 
 Temp_Ally_Drone		(340, 180, 34, 40)
 Temp_Ally_SmallLaser	(380, 180, 26, 33)

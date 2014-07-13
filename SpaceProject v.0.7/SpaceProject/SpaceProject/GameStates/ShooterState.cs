@@ -285,7 +285,7 @@ namespace SpaceProject
                 for (int m = n + 1; m < objectCount; m++)
                 {
 
-                    if (GlobalFunctions.IsOneOfType<AreaDamage>(gameObjects[n], gameObjects[m]))
+                    if (GlobalMathFunctions.IsOneOfType<AreaDamage>(gameObjects[n], gameObjects[m]))
                     {
                         PerformAreaDamage(gameObjects[n], gameObjects[m]);
                     }

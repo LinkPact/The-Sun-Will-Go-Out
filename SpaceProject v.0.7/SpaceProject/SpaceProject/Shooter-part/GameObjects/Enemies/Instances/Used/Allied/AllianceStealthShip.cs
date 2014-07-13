@@ -45,7 +45,7 @@ namespace SpaceProject
             shootingDelay = 250;
 
             //Egenskaper
-            SightRange = 400;
+            SightRange = 4000;
             HP = 400.0f;
             Damage = 150;
             Speed = 0.03f;
@@ -117,7 +117,7 @@ namespace SpaceProject
             {
                 EnemyWeakBlueLaser laser1 = new EnemyWeakBlueLaser(Game, spriteSheet);
                 laser1.Position = Position;
-                laser1.Direction = GlobalFunctions.DirFromRadians(dir);
+                laser1.Direction = GlobalMathFunctions.DirFromRadians(dir);
                 laser1.Initialize();
                 laser1.Duration *= 3;
                 laser1.DrawLayer = this.DrawLayer - 0.01f;

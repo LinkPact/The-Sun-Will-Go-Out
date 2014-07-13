@@ -194,7 +194,7 @@ namespace SpaceProject
         private void LoadLevelObjective(String loadPattern)
         {
             Match objectiveModeMatch = Regex.Match(loadPattern, @"^(\w+)|");
-            objective = GlobalFunctions.ParseEnum<LevelObjective>(objectiveModeMatch.Value);
+            objective = GlobalMathFunctions.ParseEnum<LevelObjective>(objectiveModeMatch.Value);
             Match objectiveValMatch = Regex.Match(loadPattern, @"([A-Z])(\d+)");
             objectiveValue = Convert.ToInt32(objectiveValMatch.Groups[2].Value);
         }

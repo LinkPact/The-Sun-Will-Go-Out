@@ -52,7 +52,7 @@ namespace SpaceProject
             {
                 GreenBullet bullet = new GreenBullet(Game, spriteSheet);
                 bullet.Position = player.Position;
-                bullet.Direction = GlobalFunctions.DirFromRadians(dir);
+                bullet.Direction = GlobalMathFunctions.DirFromRadians(dir);
                 bullet.Initialize();
 
                 Game.stateManager.shooterState.gameObjects.Add(bullet);

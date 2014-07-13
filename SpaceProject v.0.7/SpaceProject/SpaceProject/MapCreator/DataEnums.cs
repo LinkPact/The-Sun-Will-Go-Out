@@ -48,13 +48,15 @@ public enum EnemyType
     R_minelayer         = 106,
     R_missileAttackShip = 107,
     
-    
-    A_big_I             = 200,
-    A_homingBullet      = 201,
-    A_homingMissile     = 202,
-    A_bigMissile        = 203,
-    A_stealthShip       = 204,
-    A_smallShooter      = 205
+    A_drone             = 200,
+    A_smallLaserShip    = 201,
+    A_stealthShip       = 202,
+
+    A_big_I             = 10,
+    A_homingBullet      = 11,
+    A_homingMissile     = 12,
+    A_bigMissile        = 13,
+    A_smallShooter      = 14
 }
 
 //The different base states for squares.

@@ -46,12 +46,12 @@ namespace SpaceProject
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
             Vector2 centerDir = new Vector2(0, -1.0f);
-            double dirRadians = GlobalFunctions.RadiansFromDir(centerDir);
+            double dirRadians = GlobalMathFunctions.RadiansFromDir(centerDir);
             dirRadians += random.NextDouble() * Math.PI / 8 - Math.PI / 16;
 
             Mine mine = new Mine(Game, spriteSheet);
             mine.Position = player.Position;
-            mine.Direction = GlobalFunctions.DirFromRadians(dirRadians);
+            mine.Direction = GlobalMathFunctions.DirFromRadians(dirRadians);
             mine.Initialize();
             mine.Speed = 0.03f;
             mine.Duration = 6000;

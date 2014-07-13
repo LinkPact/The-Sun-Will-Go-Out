@@ -282,7 +282,7 @@ namespace SpaceProject
             //shipLife = Game.saveFile.GetPropertyAsFloat("statsmanager", "shiplife", 0);
             Fuel = Game.saveFile.GetPropertyAsFloat("statsmanager", "shipfuel", 0);
 
-            gameMode = GlobalFunctions.ParseEnum<GameMode>(Game.saveFile.GetPropertyAsString("statsmanager", "gamemode", ""));
+            gameMode = GlobalMathFunctions.ParseEnum<GameMode>(Game.saveFile.GetPropertyAsString("statsmanager", "gamemode", ""));
 
             String beaconLine = Game.saveFile.GetPropertyAsString("statsmanager", "beacons", "");
 

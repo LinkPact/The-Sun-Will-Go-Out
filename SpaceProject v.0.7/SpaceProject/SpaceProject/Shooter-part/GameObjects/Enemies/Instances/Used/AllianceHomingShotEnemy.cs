@@ -87,7 +87,7 @@ namespace SpaceProject
                 {
                     EnemyHomingBullet bullet = new EnemyHomingBullet(Game, spriteSheet, player);
                     bullet.Position = Position;
-                    bullet.Direction = GlobalFunctions.DirFromRadians(dir);
+                    bullet.Direction = GlobalMathFunctions.DirFromRadians(dir);
                     bullet.Initialize();
 
                     Game.stateManager.shooterState.gameObjects.Add(bullet);

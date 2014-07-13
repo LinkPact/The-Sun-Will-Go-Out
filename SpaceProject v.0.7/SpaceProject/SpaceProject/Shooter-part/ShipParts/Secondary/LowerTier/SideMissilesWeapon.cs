@@ -51,30 +51,30 @@ namespace SpaceProject
             missile1.PositionX = player.PositionX - 2;
             missile1.PositionY = player.PositionY;
             //Direction
-            missile1.Direction = GlobalFunctions.DirFromRadians(-Math.PI / 2 - (2 * Math.PI / 16));
-            missile1.Radians = GlobalFunctions.RadiansFromDir(missile1.Direction);
+            missile1.Direction = GlobalMathFunctions.DirFromRadians(-Math.PI / 2 - (2 * Math.PI / 16));
+            missile1.Radians = GlobalMathFunctions.RadiansFromDir(missile1.Direction);
             //Initialize
             missile1.Initialize();
 
             RegularMissile missile2 = new RegularMissile(Game, spriteSheet);
             missile2.PositionX = player.PositionX - 4;
             missile2.PositionY = player.PositionY;
-            missile2.Direction = GlobalFunctions.DirFromRadians(-Math.PI / 2 - (3 * Math.PI / 16));
-            missile2.Radians = GlobalFunctions.RadiansFromDir(missile2.Direction);
+            missile2.Direction = GlobalMathFunctions.DirFromRadians(-Math.PI / 2 - (3 * Math.PI / 16));
+            missile2.Radians = GlobalMathFunctions.RadiansFromDir(missile2.Direction);
             missile2.Initialize();
 
             RegularMissile missile3 = new RegularMissile(Game, spriteSheet);
             missile3.PositionX = player.PositionX + 2;
             missile3.PositionY = player.PositionY;
-            missile3.Direction = GlobalFunctions.DirFromRadians(-Math.PI / 2 + (2 * Math.PI / 16));
-            missile3.Radians = GlobalFunctions.RadiansFromDir(missile3.Direction);
+            missile3.Direction = GlobalMathFunctions.DirFromRadians(-Math.PI / 2 + (2 * Math.PI / 16));
+            missile3.Radians = GlobalMathFunctions.RadiansFromDir(missile3.Direction);
             missile3.Initialize();
 
             RegularMissile missile4 = new RegularMissile(Game, spriteSheet);
             missile4.PositionX = player.PositionX + 4;
             missile4.PositionY = player.PositionY;
-            missile4.Direction = GlobalFunctions.DirFromRadians(-Math.PI / 2 + (3 * Math.PI / 16));
-            missile4.Radians = GlobalFunctions.RadiansFromDir(missile4.Direction);
+            missile4.Direction = GlobalMathFunctions.DirFromRadians(-Math.PI / 2 + (3 * Math.PI / 16));
+            missile4.Radians = GlobalMathFunctions.RadiansFromDir(missile4.Direction);
             missile4.Initialize();
 
             //Adds created bullets to list with active objects.

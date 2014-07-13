@@ -57,29 +57,27 @@ namespace SpaceProject
             EnemyMissileBullet missile = new EnemyMissileBullet(Game, spriteSheet);
             missile.Position = Position;
             missile.Direction = new Vector2(0, 1.0f);
-            missile.Direction = GlobalFunctions.SpreadDir(missile.Direction, Math.PI / 8);
+            missile.Direction = GlobalMathFunctions.SpreadDir(missile.Direction, Math.PI / 8);
             missile.Initialize();
             missile.Duration = 500;
 
-            double width = 70;
-            double numberOfShots = 4;
+            double width = Math.PI / 3;
+            double numberOfShots = 5;
+
+            List<double> spreadDirections = GlobalMathFunctions.GetSpreadDirList(width, numberOfShots);
 
             int shotNbr = 0;
-            for (double dir = 90 - (width / 2); dir <= 90 + (width / 2); dir += (width / (numberOfShots)))
+            foreach (double dir in spreadDirections)
             {
                 shotNbr++;
                 if (shotNbr == 3)
                     continue;
 
-                double radians = dir * (2 * Math.PI / 360);
-
                 EnemyWeakRedLaser laser = new EnemyWeakRedLaser(Game, spriteSheet);
                 laser.Position = Position;
-                laser.Direction = GlobalFunctions.DirFromRadians(radians);
+                laser.Direction = GlobalMathFunctions.DirFromRadians(dir);
                 laser.Initialize();
-                //laser.Duration *= 0.6f;
 
-                // TO DEBUG
                 laser.Duration = 1000;
                 laser.Speed *= 0.3f;
 

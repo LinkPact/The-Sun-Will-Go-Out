@@ -88,7 +88,7 @@ namespace SpaceProject
             EnemyGreenBullet bullet = new EnemyGreenBullet(Game, spriteSheet);
             bullet.PositionX = PositionX;
             bullet.PositionY = PositionY;
-            bullet.Direction = GlobalFunctions.ScaleDirection(ShootObject.Position - Position);
+            bullet.Direction = GlobalMathFunctions.ScaleDirection(ShootObject.Position - Position);
             bullet.Initialize();
             bullet.duration = 500;
             bullet.Speed *= 1.5f;

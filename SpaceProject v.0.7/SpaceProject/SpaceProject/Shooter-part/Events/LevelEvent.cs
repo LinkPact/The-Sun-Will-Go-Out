@@ -296,6 +296,16 @@ namespace SpaceProject
                         creature = new RebelMissileAttack(Game, spriteSheet, player);
                         break;
                     }
+                case EnemyType.A_drone:
+                    {
+                        creature = new AllianceDrone(Game, spriteSheet, player);
+                        break;
+                    }
+                case EnemyType.A_smallLaserShip:
+                    {
+                        creature = new AllianceSmallLaserShip(Game, spriteSheet, player);
+                        break;
+                    }
                 default:
                     {
                         throw new ArgumentException("Argument not implemented!");

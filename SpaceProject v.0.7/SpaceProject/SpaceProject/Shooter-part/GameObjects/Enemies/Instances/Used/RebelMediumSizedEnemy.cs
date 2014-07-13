@@ -109,13 +109,13 @@ namespace SpaceProject
 
                 bullet1.PositionX = PositionX - 10;
                 bullet1.PositionY = PositionY + 16;
-                bullet1.Direction = GlobalFunctions.ScaleDirection(ShootObject.Position - Position);
+                bullet1.Direction = GlobalMathFunctions.ScaleDirection(ShootObject.Position - Position);
                 bullet1.Initialize();
                 bullet1.Duration = 500;
 
                 bullet2.PositionX = PositionX + 10;
                 bullet2.PositionY = PositionY + 16;
-                bullet2.Direction = GlobalFunctions.ScaleDirection(ShootObject.Position - Position);
+                bullet2.Direction = GlobalMathFunctions.ScaleDirection(ShootObject.Position - Position);
                 bullet2.Initialize();
                 bullet2.Duration = 500;
 

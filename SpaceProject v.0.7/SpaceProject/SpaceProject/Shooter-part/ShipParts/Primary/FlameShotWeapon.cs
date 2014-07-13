@@ -69,48 +69,48 @@ namespace SpaceProject
             shot2_1.PositionX = player.PositionX;
             shot2_1.PositionY = player.PositionY;
             BasicBulletSetup(shot2_1);
-            shot2_1.Radians = GlobalFunctions.RadiansFromDir(shot2_1.Direction) - 3 * Math.PI / 16;
-            shot2_1.Direction = GlobalFunctions.DirFromRadians(shot2_1.Radians);
+            shot2_1.Radians = GlobalMathFunctions.RadiansFromDir(shot2_1.Direction) - 3 * Math.PI / 16;
+            shot2_1.Direction = GlobalMathFunctions.DirFromRadians(shot2_1.Radians);
             shot2_1.Speed = Speed * 0.3f;
 
             FlameShot shot2_2 = new FlameShot(Game, spriteSheet);
             shot2_2.PositionX = player.PositionX;
             shot2_2.PositionY = player.PositionY;
             BasicBulletSetup(shot2_2);
-            shot2_2.Radians = GlobalFunctions.RadiansFromDir(shot2_2.Direction) - 2 * Math.PI / 16;
-            shot2_2.Direction = GlobalFunctions.DirFromRadians(shot2_2.Radians);
+            shot2_2.Radians = GlobalMathFunctions.RadiansFromDir(shot2_2.Direction) - 2 * Math.PI / 16;
+            shot2_2.Direction = GlobalMathFunctions.DirFromRadians(shot2_2.Radians);
             shot2_2.Speed = Speed * 0.3f;
 
             FlameShot shot2_3 = new FlameShot(Game, spriteSheet);
             shot2_3.PositionX = player.PositionX;
             shot2_3.PositionY = player.PositionY;
             BasicBulletSetup(shot2_3);
-            shot2_3.Radians = GlobalFunctions.RadiansFromDir(shot2_3.Direction) - 1 * Math.PI / 16;
-            shot2_3.Direction = GlobalFunctions.DirFromRadians(shot2_3.Radians);
+            shot2_3.Radians = GlobalMathFunctions.RadiansFromDir(shot2_3.Direction) - 1 * Math.PI / 16;
+            shot2_3.Direction = GlobalMathFunctions.DirFromRadians(shot2_3.Radians);
             shot2_3.Speed = Speed * 0.3f;
 
             FlameShot shot2_4 = new FlameShot(Game, spriteSheet);
             shot2_4.PositionX = player.PositionX;
             shot2_4.PositionY = player.PositionY;
             BasicBulletSetup(shot2_4);
-            shot2_4.Radians = GlobalFunctions.RadiansFromDir(shot2_4.Direction) + 1 * Math.PI / 16;
-            shot2_4.Direction = GlobalFunctions.DirFromRadians(shot2_4.Radians);
+            shot2_4.Radians = GlobalMathFunctions.RadiansFromDir(shot2_4.Direction) + 1 * Math.PI / 16;
+            shot2_4.Direction = GlobalMathFunctions.DirFromRadians(shot2_4.Radians);
             shot2_4.Speed = Speed * 0.3f;
 
             FlameShot shot2_5 = new FlameShot(Game, spriteSheet);
             shot2_5.PositionX = player.PositionX;
             shot2_5.PositionY = player.PositionY;
             BasicBulletSetup(shot2_5);
-            shot2_5.Radians = GlobalFunctions.RadiansFromDir(shot2_5.Direction) + 2 * Math.PI / 16;
-            shot2_5.Direction = GlobalFunctions.DirFromRadians(shot2_5.Radians);
+            shot2_5.Radians = GlobalMathFunctions.RadiansFromDir(shot2_5.Direction) + 2 * Math.PI / 16;
+            shot2_5.Direction = GlobalMathFunctions.DirFromRadians(shot2_5.Radians);
             shot2_5.Speed = Speed * 0.3f;
 
             FlameShot shot2_6 = new FlameShot(Game, spriteSheet);
             shot2_6.PositionX = player.PositionX;
             shot2_6.PositionY = player.PositionY;
             BasicBulletSetup(shot2_6);
-            shot2_6.Radians = GlobalFunctions.RadiansFromDir(shot2_6.Direction) + 3 * Math.PI / 16;
-            shot2_6.Direction = GlobalFunctions.DirFromRadians(shot2_6.Radians);
+            shot2_6.Radians = GlobalMathFunctions.RadiansFromDir(shot2_6.Direction) + 3 * Math.PI / 16;
+            shot2_6.Direction = GlobalMathFunctions.DirFromRadians(shot2_6.Radians);
             shot2_6.Speed = Speed * 0.3f;
 
             Game.stateManager.shooterState.gameObjects.Add(shot1_1);

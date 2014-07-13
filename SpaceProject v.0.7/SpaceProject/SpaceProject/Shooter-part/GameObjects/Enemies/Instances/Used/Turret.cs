@@ -192,7 +192,7 @@ namespace SpaceProject
                 EnemyGreenBullet laser1 = new EnemyGreenBullet(Game, spriteSheet);
                 laser1.PositionX = PositionX - 2;
                 laser1.PositionY = PositionY - 2;
-                laser1.Direction = GlobalFunctions.ScaleDirection(ShootObject.Position - Position);
+                laser1.Direction = GlobalMathFunctions.ScaleDirection(ShootObject.Position - Position);
                 laser1.Initialize();
                 laser1.Duration = 500;
                 laser1.DrawLayer = .5f;
@@ -200,7 +200,7 @@ namespace SpaceProject
                 EnemyGreenBullet laser2 = new EnemyGreenBullet(Game, spriteSheet);
                 laser2.PositionX = PositionX + 2;
                 laser2.PositionY = PositionY + 2;
-                laser2.Direction = GlobalFunctions.ScaleDirection(ShootObject.Position - Position);
+                laser2.Direction = GlobalMathFunctions.ScaleDirection(ShootObject.Position - Position);
                 laser2.Initialize();
                 laser2.Duration = 500;
                 laser2.DrawLayer = .5f;
@@ -219,7 +219,7 @@ namespace SpaceProject
                 EnemyGreenBullet laser1 = new EnemyGreenBullet(Game, spriteSheet);
                 laser1.PositionX = PositionX - 2;
                 laser1.PositionY = PositionY - 2;
-                laser1.Direction = GlobalFunctions.ScaleDirection(ShootObject.Position - Position);
+                laser1.Direction = GlobalMathFunctions.ScaleDirection(ShootObject.Position - Position);
                 laser1.Initialize();
                 laser1.Duration = 500;
                 laser1.DrawLayer = .5f;
@@ -227,7 +227,7 @@ namespace SpaceProject
                 EnemyGreenBullet laser2 = new EnemyGreenBullet(Game, spriteSheet);
                 laser2.PositionX = PositionX + 2;
                 laser2.PositionY = PositionY + 2;
-                laser2.Direction = GlobalFunctions.ScaleDirection(ShootObject.Position - Position);
+                laser2.Direction = GlobalMathFunctions.ScaleDirection(ShootObject.Position - Position);
                 laser2.Initialize();
                 laser2.Duration = 500;
                 laser2.DrawLayer = .5f;

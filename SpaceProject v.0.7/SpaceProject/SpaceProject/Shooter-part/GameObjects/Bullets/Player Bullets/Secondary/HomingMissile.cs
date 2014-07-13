@@ -81,11 +81,11 @@ namespace SpaceProject
             {
                 foreach (GameObjectVertical obj in Game.stateManager.shooterState.gameObjects)
                 {
-                    if (obj.ObjectClass == "enemy" && GlobalFunctions.ObjectDistance(this, obj) < tempDistance
-                         && GlobalFunctions.ObjectDistance(this, obj) < SightRange)
+                    if (obj.ObjectClass == "enemy" && GlobalMathFunctions.ObjectDistance(this, obj) < tempDistance
+                         && GlobalMathFunctions.ObjectDistance(this, obj) < SightRange)
                     {
                         tempTarget = obj;
-                        tempDistance = GlobalFunctions.ObjectDistance(this, tempTarget);
+                        tempDistance = GlobalMathFunctions.ObjectDistance(this, tempTarget);
                     }
                 }
             }
@@ -104,7 +104,7 @@ namespace SpaceProject
                 //    FollowObject.PositionY - this.PositionY));
                 
                 Direction = ChangeDirection(Direction, Position, FollowObject.Position, DegreeChange);
-                Direction = GlobalFunctions.ScaleDirection(Direction);
+                Direction = GlobalMathFunctions.ScaleDirection(Direction);
             
             }
         }

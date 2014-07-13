@@ -171,7 +171,7 @@ namespace SpaceProject
             {
                 HyperSpeedMovement(gameTime);
                 base.Update(gameTime);
-                angle = (float)(GlobalFunctions.RadiansFromDir(
+                angle = (float)(GlobalMathFunctions.RadiansFromDir(
                     new Vector2(Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI * 90) / 180);
 
                 if (currentHyperspeedDistance <= 20 || speed <= 0)
@@ -360,7 +360,7 @@ namespace SpaceProject
                 }
             }
 
-            angle = (float)(GlobalFunctions.RadiansFromDir(new Vector2(
+            angle = (float)(GlobalMathFunctions.RadiansFromDir(new Vector2(
                 Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI * 90) / 180);
         }
 

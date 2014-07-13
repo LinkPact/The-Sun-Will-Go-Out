@@ -145,7 +145,7 @@ namespace SpaceProject
                         0f, centerPoint, scale, SpriteEffects.None, layerDepth);
                 else
                 {
-                    starAngle = (float)((Math.PI * 90) / 180) + (float)(GlobalFunctions.RadiansFromDir(direction.GetDirectionAsVector()));
+                    starAngle = (float)((Math.PI * 90) / 180) + (float)(GlobalMathFunctions.RadiansFromDir(direction.GetDirectionAsVector()));
 
                     yScale = scale + speed * STRETCH;
 

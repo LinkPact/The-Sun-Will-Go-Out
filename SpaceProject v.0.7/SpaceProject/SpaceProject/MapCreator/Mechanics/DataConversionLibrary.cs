@@ -39,12 +39,15 @@ namespace SpaceProject
             enemyLibrary.Add(EnemyType.R_burster, "B");
             enemyLibrary.Add(EnemyType.R_missileAttackShip, "m");
 
+            enemyLibrary.Add(EnemyType.A_stealthShip, "t");
+            enemyLibrary.Add(EnemyType.A_drone, "d");
+            enemyLibrary.Add(EnemyType.A_smallLaserShip, "n");
+            
             enemyLibrary.Add(EnemyType.A_big_I, "L");
             enemyLibrary.Add(EnemyType.A_homingBullet, "H");
             enemyLibrary.Add(EnemyType.A_homingMissile, "O");
             enemyLibrary.Add(EnemyType.A_bigMissile, "I");
             enemyLibrary.Add(EnemyType.A_smallShooter, "s");
-            enemyLibrary.Add(EnemyType.A_stealthShip, "t");
 
             enemyLibrary.Add(EnemyType.fighterAlly, "A");
             enemyLibrary.Add(EnemyType.freighterAlly, "F");
@@ -201,10 +204,10 @@ namespace SpaceProject
                     return new Color(100, 100, 255);
 
                 case EnemyType.R_minelayer:
-                    return new Color(50, 50, 50);
+                    return new Color(80, 80, 80);
 
                 case EnemyType.A_stealthShip:
-                    return new Color(0, 0, 0);
+                    return new Color(80, 0, 0);
 
                 case EnemyType.A_smallShooter:
                     return new Color(0, 0, 0);
@@ -213,7 +216,13 @@ namespace SpaceProject
                     return new Color(0, 0, 0);
 
                 case EnemyType.R_missileAttackShip:
-                    return new Color(0, 30, 0);
+                    return new Color(0, 80, 0);
+
+                case EnemyType.A_drone:
+                    return new Color(0, 0, 80);
+
+                case EnemyType.A_smallLaserShip:
+                    return new Color(0, 80, 80);
 
                 default:
                     throw new ArgumentException("Not-yet-implemented enemytype entered");

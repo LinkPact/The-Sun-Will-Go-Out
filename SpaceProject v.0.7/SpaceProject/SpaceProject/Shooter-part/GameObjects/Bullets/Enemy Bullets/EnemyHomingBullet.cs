@@ -65,7 +65,7 @@ namespace SpaceProject
         private void UpdateFollowObject()
         {
             Direction = ChangeDirection(Direction, Position, player.Position, turningSpeed);
-            Direction = GlobalFunctions.ScaleDirection(Direction);
+            Direction = GlobalMathFunctions.ScaleDirection(Direction);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

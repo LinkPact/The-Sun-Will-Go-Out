@@ -108,7 +108,7 @@ namespace SpaceProject
             else
                 Direction = Direction.Zero;
 
-            angle = (float)(GlobalFunctions.RadiansFromDir(new Vector2(
+            angle = (float)(GlobalMathFunctions.RadiansFromDir(new Vector2(
                 Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI) / 2 + Math.PI);
 
             if (IsUsed)

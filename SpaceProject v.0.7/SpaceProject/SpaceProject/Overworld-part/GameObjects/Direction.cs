@@ -25,7 +25,7 @@ namespace SpaceProject
         // Set direction from vector
         public void SetDirection(Vector2 direction)
         {
-            scaledDirection = GlobalFunctions.ScaleDirection(direction);
+            scaledDirection = GlobalMathFunctions.ScaleDirection(direction);
         }
 
         // Set direction from radians

@@ -7,24 +7,26 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    class RebelThickShooter : ShootingEnemyShip
+    class AllianceShielder : ShootingEnemyShip
     {
-     
-        public RebelThickShooter(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
+        public AllianceShielder(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
         {
-            ObjectName = "RebelThickShooter";
+            ObjectName = "AllianceShielder";
+            Setup();
         }
 
         private void Setup()
         {
-            fraction = Fraction.rebel;
+            fraction = Fraction.alliance;
+
+            ShieldSetup(CreatureShieldCapacity.medium, CreatureShieldRegeneration.medium);
         }
 
         public override void Initialize()
         {
             base.Initialize();
-            
+
             lootRangeMin = 1;
             lootRangeMax = 3;
 
@@ -32,7 +34,7 @@ namespace SpaceProject
             lastTimeShot = shootingDelay * random.NextDouble();
 
             Damage = 100;
-            Speed = 0.08f;
+            Speed = 0.06f;
             HP = 200;
             TurningSpeed = 2;
 
@@ -41,7 +43,7 @@ namespace SpaceProject
 
             //Animationer
             anim.LoopTime = 500;
-            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(484, 0, 23, 34)));
+            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(380, 180, 26, 33)));
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
         }
 
@@ -55,22 +57,21 @@ namespace SpaceProject
 
         protected override void ShootingPattern(GameTime gameTime)
         {
-            EnemyWeakRedLaser laser1 = new EnemyWeakRedLaser(Game, spriteSheet);
-            laser1.PositionX = PositionX - 4;
-            laser1.PositionY = PositionY;
-            laser1.Direction = new Vector2(0, 1.0f);
-            laser1.Initialize();
-            laser1.Duration = 500;
+            double width = Math.PI / 12;
+            double numberOfShots = 3;
 
-            EnemyWeakRedLaser laser2 = new EnemyWeakRedLaser(Game, spriteSheet);
-            laser2.PositionX = PositionX + 4;
-            laser2.PositionY = PositionY;
-            laser2.Direction = new Vector2(0, 1.0f);
-            laser2.Initialize();
-            laser2.Duration = 500;
+            foreach (double dir in GlobalMathFunctions.GetSpreadDirList(width, numberOfShots))
+            {
+                EnemyWeakBlueLaser laser1 = new EnemyWeakBlueLaser(Game, spriteSheet);
+                laser1.PositionX = PositionX;
+                laser1.PositionY = PositionY;
+                laser1.Direction = GlobalMathFunctions.DirFromRadians(dir);
+                laser1.Initialize();
+                laser1.Speed *= 1.5f;
 
-            Game.stateManager.shooterState.gameObjects.Add(laser1);
-            Game.stateManager.shooterState.gameObjects.Add(laser2);
+                Game.stateManager.shooterState.gameObjects.Add(laser1);
+            }
+
 
             Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
         }

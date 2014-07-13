@@ -110,7 +110,7 @@ namespace SpaceProject
 
             //Startriktning
             Direction = new Vector2((float)random.NextDouble()*2-1, (float)random.NextDouble()*2-1);
-            Direction = GlobalFunctions.ScaleDirection(Direction);
+            Direction = GlobalMathFunctions.ScaleDirection(Direction);
 
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
             Rotation = 0;
@@ -151,10 +151,10 @@ namespace SpaceProject
                     {
                         Vector2 centerDir = new Vector2(0, 1.0f);
 
-                        double dirRadians = GlobalFunctions.RadiansFromDir(centerDir);
+                        double dirRadians = GlobalMathFunctions.RadiansFromDir(centerDir);
                         dirRadians += random.NextDouble() * 3 * Math.PI / 24 - Math.PI / 24;
 
-                        Direction = GlobalFunctions.DirFromRadians(dirRadians);
+                        Direction = GlobalMathFunctions.DirFromRadians(dirRadians);
 
                         break;
                     }
@@ -286,7 +286,7 @@ namespace SpaceProject
                         {
                             Direction = ChangeDirection(Direction, Position, FollowObject.Position, TurningSpeed);
                             DirectionY = 1.0f;
-                            Direction = GlobalFunctions.ScaleDirection(Direction);
+                            Direction = GlobalMathFunctions.ScaleDirection(Direction);
                         }
                         else
                         {

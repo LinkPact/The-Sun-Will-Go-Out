@@ -59,8 +59,8 @@ namespace SpaceProject
                 shot1.PositionX = player.PositionX;
                 shot1.PositionY = player.PositionY;
                 BasicBulletSetup(shot1);
-                shot1.Radians = GlobalFunctions.RadiansFromDir(shot1.Direction) - dir * Math.PI / 30;
-                shot1.Direction = GlobalFunctions.DirFromRadians(shot1.Radians);
+                shot1.Radians = GlobalMathFunctions.RadiansFromDir(shot1.Direction) - dir * Math.PI / 30;
+                shot1.Direction = GlobalMathFunctions.DirFromRadians(shot1.Radians);
                 shot1.Speed *= speedFactor;
                 shot1.Duration *= durationFactor;
                 shot1.Damage *= damageFactor;
