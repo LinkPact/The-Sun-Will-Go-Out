@@ -31,7 +31,7 @@ namespace SpaceProject
         {
             sprite = spriteSheet.GetSubSprite(new Rectangle(580, 9, 239, 224));
 
-            name = "Mining Astroids";
+            name = "Mining Asteroids";
 
             scale = 1f;
             color = Color.White;

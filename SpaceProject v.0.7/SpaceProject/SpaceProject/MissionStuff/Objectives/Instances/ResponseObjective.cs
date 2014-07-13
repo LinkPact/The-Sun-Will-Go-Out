@@ -27,9 +27,15 @@ namespace SpaceProject
 
             mission.MissionHelper.ShowEvent(responseEventText);
             mission.MissionHelper.ShowResponse(responseEvents.Value);
+
             if (GameStateManager.currentState.Equals("PlanetState"))
             {
                 game.stateManager.planetState.OnEnter();
+            }
+
+            else if (GameStateManager.currentState.Equals("StationState"))
+            {
+                game.stateManager.stationState.OnEnter();
             }
         }
 

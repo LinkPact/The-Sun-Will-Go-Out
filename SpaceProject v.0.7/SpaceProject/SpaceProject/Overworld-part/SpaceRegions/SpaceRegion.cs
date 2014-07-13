@@ -156,6 +156,18 @@ namespace SpaceProject
         {
             return gameObjects;
         }
+        public GameObjectOverworld GetGameObject(String name)
+        {
+            foreach (GameObjectOverworld obj in gameObjects)
+            {
+                if (obj.name.ToLower().Equals(name.ToLower()))
+                {
+                    return obj;
+                }
+            }
+
+            throw new ArgumentException(String.Format("No game object in this space region has the name '%s'.", name));
+        }
         public Boolean ContainsGameObject(GameObjectOverworld obj)
         {
             return gameObjects.Contains(obj);

@@ -489,7 +489,7 @@ namespace SpaceProject
                 game.messageBox.DisplayMessage("Hyper speed unlocked! Hold down '" + ControlManager.GetKeyName(RebindableKeys.Action3) + "' to use.");
             }
 
-            if (aColdWelcome.MissionState != StateOfMission.CompletedDead)
+            if (newFirstMission.MissionState != StateOfMission.CompletedDead)
             {
                 if (StatsManager.gameMode != GameMode.develop)
                 {
@@ -515,7 +515,7 @@ namespace SpaceProject
             }
 
             // Unlock missions
-            if (MissionManager.aColdWelcome.MissionState == StateOfMission.CompletedDead &&
+            if (MissionManager.newFirstMission.MissionState == StateOfMission.CompletedDead &&
                 MissionManager.rebels.MissionState == StateOfMission.Unavailable)
             {
                 UnlockMission("Main - Rebels");
@@ -529,7 +529,7 @@ namespace SpaceProject
             }
 
             // Start second mission after first is completed
-            if (MissionManager.aColdWelcome.MissionState == StateOfMission.CompletedDead &&
+            if (MissionManager.newFirstMission.MissionState == StateOfMission.CompletedDead &&
                 MissionManager.rebels.MissionState == StateOfMission.Available &&
                 GameStateManager.currentState == "OverworldState")
             {
@@ -637,9 +637,12 @@ namespace SpaceProject
 
             foreach (Mission ms in ReturnActiveMissions())
             {
-                if (ms.CurrentObjective.Destination.name.ToLower().Equals(stationOrPlanetName.ToLower()))
+                if (ms.CurrentObjective != null)
                 {
-                    m.Add(ms);
+                    if (ms.CurrentObjective.Destination.name.ToLower().Equals(stationOrPlanetName.ToLower()))
+                    {
+                        m.Add(ms);
+                    }
                 }
             }
 
