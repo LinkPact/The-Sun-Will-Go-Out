@@ -34,7 +34,7 @@ namespace SpaceProject
             Armor = 250.0f;
             CurrentOverworldHealth = Armor;
 
-            Speed = 0.35f;
+            Speed = 0.25f;
             Acceleration = 0.04f;
             PrimarySlots = 1;
 

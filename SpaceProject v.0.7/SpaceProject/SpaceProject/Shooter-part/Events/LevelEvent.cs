@@ -193,7 +193,7 @@ namespace SpaceProject
                         creature = new RebelSmallSniper(Game, spriteSheet, player);
                         break;
                     }
-                case EnemyType.blue:
+                case EnemyType.R_burster:
                     {
                         creature = new RebelBurster(Game, spriteSheet, player);
                         break;
@@ -289,6 +289,11 @@ namespace SpaceProject
                 case EnemyType.A_stealthShip:
                     {
                         creature = new AllianceStealthShip(Game, spriteSheet, player);
+                        break;
+                    }
+                case EnemyType.R_missileAttackShip:
+                    {
+                        creature = new RebelMissileAttack(Game, spriteSheet, player);
                         break;
                     }
                 default:

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
@@ -10,11 +11,24 @@ namespace SpaceProject
         protected Boolean collidesOtherBullets;
         public Boolean CollidesOtherBullets { get { return collidesOtherBullets; } private set { } }
 
+        protected float duration;
+        
         protected Bullet(Game1 Game, Sprite spriteSheet)
             : base (Game, spriteSheet)
         { 
             
         }
+
+        //public override void Update(GameTime gameTime)
+        //{
+        //    base.Update(gameTime);
+        //
+        //    duration -= gameTime.ElapsedGameTime.Milliseconds;
+        //
+        //    if (duration <= 0)
+        //        IsKilled = true;
+        //
+        //}
 
         public override void InflictDamage(GameObjectVertical obj)
         {

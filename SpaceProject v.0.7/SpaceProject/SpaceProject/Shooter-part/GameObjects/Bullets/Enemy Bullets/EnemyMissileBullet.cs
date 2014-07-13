@@ -8,18 +8,11 @@ using Microsoft.Xna.Framework.Graphics;
 namespace SpaceProject
 {
     //Represent homing enemy bullet
-    public class EnemyHomingMissileBullet : EnemyBullet
+    public class EnemyMissileBullet : EnemyBullet
     {
-
-        //public int duration;
-        private PlayerVerticalShooter player;
-
-        //private float turningSpeed;
-
-        public EnemyHomingMissileBullet(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
+        public EnemyMissileBullet(Game1 Game, Sprite spriteSheet) :
             base(Game, spriteSheet)
         {
-            this.player = player;
         }
 
         public override void Initialize()
@@ -32,11 +25,7 @@ namespace SpaceProject
             Damage = 60;
             ObjectClass = "enemyBullet";
             duration = 3000;
-            TurningSpeed = 2f;
-
-            Follows = true;
-            FollowObjectTypes.Add("player");
-            FollowObjectTypes.Add("ally");
+            //TurningSpeed = 2f;
 
             anim.LoopTime = 300;
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(42, 0, 7, 22)));
@@ -49,25 +38,7 @@ namespace SpaceProject
 
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
 
-            SightRange = 200;
-            //FollowObject = player;
         }
-
-        //public override void Update(GameTime gameTime)
-        //{
-        //    base.Update(gameTime);
-        //
-        //    duration -= gameTime.ElapsedGameTime.Milliseconds;
-        //
-        //    if (duration <= 0)
-        //        IsKilled = true;
-        //}
-
-        //private void UpdateFollowObject()
-        //{
-        //    Direction = ChangeDirection(Direction, Position, player.Position, turningSpeed);
-        //    Direction = GlobalFunctions.ScaleDirection(Direction);
-        //}
 
         public override void Draw(SpriteBatch spriteBatch)
         {

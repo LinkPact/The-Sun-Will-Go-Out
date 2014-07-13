@@ -398,6 +398,7 @@
     <Compile Include="Shooter-part\GameObjects\Allies\Ships\FighterAlly.cs" />
     <Compile Include="Shooter-part\GameObjects\Allies\Ships\FreighterAlly.cs" />
     <Compile Include="Shooter-part\GameObjects\Bullets\Bullet.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\EnemyMissileBullet.cs" />
     <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\EnemyStrongBlueLaser.cs" />
     <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\EnemyWeakBlueLaser.cs" />
     <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\MineEnemy.cs" />
@@ -432,6 +433,7 @@
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceBigMissileEnemy.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\NonUsed\BigRedEnemy.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\NonUsed\BigYellowEnemy.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\RebelMissileAttack.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\RebelSmallAttackShip.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceSmallShooter.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceStealthShip.cs" />

@@ -34,7 +34,6 @@ public enum Movement
 public enum EnemyType
 {
     none                = 0,
-    blue                = 1,
     turret              = 2,
     meteor              = 3,
     fighterAlly         = 4,
@@ -44,8 +43,10 @@ public enum EnemyType
     R_smallAttack       = 101,
     R_thickShooter      = 102,
     R_smallSniper       = 103,
-    R_medium            = 104,
-    R_minelayer         = 105,
+    R_burster           = 104,
+    R_medium            = 105,
+    R_minelayer         = 106,
+    R_missileAttackShip = 107,
     
     
     A_big_I             = 200,

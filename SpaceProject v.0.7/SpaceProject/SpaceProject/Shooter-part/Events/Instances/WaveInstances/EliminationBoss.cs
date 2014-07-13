@@ -19,19 +19,19 @@ namespace SpaceProject
             PointLevelEvent square1 = new SquareFormation(Game, player, spriteSheet, level, EnemyType.R_thickShooter, 1000, 5, 1, 30, 20, 200);
             square1.SetMovement(Movement.Following, 400);
             waveEvents.Add(square1);
-            waveEvents.Add(new LineFormation(Game, player, spriteSheet, level, EnemyType.blue, 1500, 2, 20, 200));
+            waveEvents.Add(new LineFormation(Game, player, spriteSheet, level, EnemyType.R_burster, 1500, 2, 20, 200));
 
             waveEvents.Add(new SquareFormation(Game, player, spriteSheet, level, EnemyType.R_mosquito, 1000, 8, 2, 20, 20, 400));
             PointLevelEvent square2 = new SquareFormation(Game, player, spriteSheet, level, EnemyType.R_thickShooter, 1000, 5, 1, 30, 20, 400);
             square2.SetMovement(Movement.Following, 400);
             waveEvents.Add(square2);
-            waveEvents.Add(new LineFormation(Game, player, spriteSheet, level, EnemyType.blue, 1500, 2, 20, 400));
+            waveEvents.Add(new LineFormation(Game, player, spriteSheet, level, EnemyType.R_burster, 1500, 2, 20, 400));
 
             waveEvents.Add(new SquareFormation(Game, player, spriteSheet, level, EnemyType.R_mosquito, 1000, 8, 2, 20, 20, 600));
             PointLevelEvent square3 = new SquareFormation(Game, player, spriteSheet, level, EnemyType.R_thickShooter, 1000, 5, 1, 30, 20, 600);
             square3.SetMovement(Movement.Following, 400);
             waveEvents.Add(square3);
-            waveEvents.Add(new LineFormation(Game, player, spriteSheet, level, EnemyType.blue, 1500, 2, 20, 600));
+            waveEvents.Add(new LineFormation(Game, player, spriteSheet, level, EnemyType.R_burster, 1500, 2, 20, 600));
             
             
             //waveEvents.Add(new SquareFormation(Game, player, spriteSheet, "blue", 2000, 1, 1, 1, 1, 400));

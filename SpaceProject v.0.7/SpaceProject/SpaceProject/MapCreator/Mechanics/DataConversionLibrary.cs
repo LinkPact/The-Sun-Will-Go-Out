@@ -27,19 +27,22 @@ namespace SpaceProject
             
             //Enemy
             enemyLibrary.Add(EnemyType.none, "0");
+            enemyLibrary.Add(EnemyType.turret, "T");
+            enemyLibrary.Add(EnemyType.meteor, "S");
+            
             enemyLibrary.Add(EnemyType.R_mosquito, "G");
             enemyLibrary.Add(EnemyType.R_thickShooter, "R");
             enemyLibrary.Add(EnemyType.R_smallSniper, "Y");
-            enemyLibrary.Add(EnemyType.blue, "B");
-            enemyLibrary.Add(EnemyType.turret, "T");
             enemyLibrary.Add(EnemyType.R_medium, "M");
+            enemyLibrary.Add(EnemyType.R_minelayer, "N");
+            enemyLibrary.Add(EnemyType.R_smallAttack, "a");
+            enemyLibrary.Add(EnemyType.R_burster, "B");
+            enemyLibrary.Add(EnemyType.R_missileAttackShip, "m");
+
             enemyLibrary.Add(EnemyType.A_big_I, "L");
-            enemyLibrary.Add(EnemyType.meteor, "S");
             enemyLibrary.Add(EnemyType.A_homingBullet, "H");
             enemyLibrary.Add(EnemyType.A_homingMissile, "O");
             enemyLibrary.Add(EnemyType.A_bigMissile, "I");
-            enemyLibrary.Add(EnemyType.R_minelayer, "N");
-            enemyLibrary.Add(EnemyType.R_smallAttack, "a");
             enemyLibrary.Add(EnemyType.A_smallShooter, "s");
             enemyLibrary.Add(EnemyType.A_stealthShip, "t");
 
@@ -164,7 +167,7 @@ namespace SpaceProject
                 case EnemyType.R_thickShooter:
                     return Color.Red;
 
-                case EnemyType.blue:
+                case EnemyType.R_burster:
                     return Color.Blue;
 
                 case EnemyType.R_smallSniper:
@@ -208,6 +211,9 @@ namespace SpaceProject
 
                 case EnemyType.R_smallAttack:
                     return new Color(0, 0, 0);
+
+                case EnemyType.R_missileAttackShip:
+                    return new Color(0, 30, 0);
 
                 default:
                     throw new ArgumentException("Not-yet-implemented enemytype entered");
