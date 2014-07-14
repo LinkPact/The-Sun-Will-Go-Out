@@ -76,12 +76,12 @@ namespace SpaceProject
                     CollideAreaDamage((AreaDamage)gameObject2, (EnemyShip)gameObject1);
             }
 
-            else if (GlobalMathFunctions.AreObjectsOfTypes<AreaCollision, PlayerBullet>(gameObject1, gameObject2))
+            else if (GlobalMathFunctions.AreObjectsOfTypes<AreaShieldCollision, PlayerBullet>(gameObject1, gameObject2))
             {
-                if (gameObject1 is AreaCollision)
-                    CollideAreaDamage((AreaDamage)gameObject1, (PlayerBullet)gameObject2);
+                if (gameObject1 is AreaShieldCollision)
+                    CollideAreaCollision((AreaShieldCollision)gameObject1, (PlayerBullet)gameObject2);
                 else
-                    CollideAreaDamage((AreaDamage)gameObject2, (PlayerBullet)gameObject1);
+                    CollideAreaCollision((AreaShieldCollision)gameObject2, (PlayerBullet)gameObject1);
             }
 
             else if (GlobalMathFunctions.AreObjectsOfTypes<Bullet, Bullet>(gameObject1, gameObject2))
@@ -184,10 +184,13 @@ namespace SpaceProject
             }
         }
 
-        private static void CollideAreaCollision(AreaCollision area, PlayerBullet obj)
+        private static void CollideAreaCollision(AreaShieldCollision area, PlayerBullet obj)
         {
-            area.InflictDamage(obj);
-            obj.InflictDamage(area);
+            if (area.SourceObject.ShieldCanTakeHit(obj.Damage))
+            {
+                area.InflictDamage(obj);
+                obj.InflictDamage(area);
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ namespace SpaceProject
         {
             fraction = Fraction.alliance;
 
-            ShieldSetup(CreatureShieldCapacity.high, CreatureShieldRegeneration.medium);
+            ShieldSetup(CreatureShieldCapacity.high, CreatureShieldRegeneration.high);
         }
 
         public override void Initialize()
@@ -30,12 +30,12 @@ namespace SpaceProject
             lootRangeMin = 1;
             lootRangeMax = 3;
 
-            shootingDelay = 2000;
+            shootingDelay = 3000;
             lastTimeShot = shootingDelay * random.NextDouble();
 
             Damage = 100;
             Speed = 0.06f;
-            HP = 200;
+            HP = 400;
             TurningSpeed = 2;
 
             movement = Movement.Following;
@@ -46,7 +46,7 @@ namespace SpaceProject
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(460, 180, 53, 37)));
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
 
-            areaCollision = new AreaCollision(Game, this, 300);
+            areaCollision = new AreaShieldCollision(Game, this, 150);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -59,21 +59,14 @@ namespace SpaceProject
 
         protected override void ShootingPattern(GameTime gameTime)
         {
-            double width = Math.PI / 12;
-            double numberOfShots = 3;
+            EnemyWeakBlueLaser laser1 = new EnemyWeakBlueLaser(Game, spriteSheet);
+            laser1.PositionX = PositionX;
+            laser1.PositionY = PositionY;
+            laser1.Direction = GlobalMathFunctions.ScaleDirection(ShootObject.Position - Position);
+            laser1.Initialize();
+            laser1.Duration *= 1.5f;
 
-            foreach (double dir in GlobalMathFunctions.GetSpreadDirList(width, numberOfShots))
-            {
-                EnemyWeakBlueLaser laser1 = new EnemyWeakBlueLaser(Game, spriteSheet);
-                laser1.PositionX = PositionX;
-                laser1.PositionY = PositionY;
-                laser1.Direction = GlobalMathFunctions.DirFromRadians(dir);
-                laser1.Initialize();
-                laser1.Speed *= 1.5f;
-
-                Game.stateManager.shooterState.gameObjects.Add(laser1);
-            }
-
+            Game.stateManager.shooterState.gameObjects.Add(laser1);
 
             Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
         }

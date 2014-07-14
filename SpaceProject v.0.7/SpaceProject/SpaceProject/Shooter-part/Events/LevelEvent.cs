@@ -311,6 +311,11 @@ namespace SpaceProject
                         creature = new AllianceShielder(Game, spriteSheet, player);
                         break;
                     }
+                case EnemyType.A_attackStealth:
+                    {
+                        creature = new AllianceStealthAttackShip(Game, spriteSheet, player);
+                        break;
+                    }
                 default:
                     {
                         throw new ArgumentException("Argument not implemented!");

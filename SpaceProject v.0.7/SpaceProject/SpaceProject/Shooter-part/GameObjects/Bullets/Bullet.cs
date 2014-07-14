@@ -19,17 +19,6 @@ namespace SpaceProject
             
         }
 
-        //public override void Update(GameTime gameTime)
-        //{
-        //    base.Update(gameTime);
-        //
-        //    duration -= gameTime.ElapsedGameTime.Milliseconds;
-        //
-        //    if (duration <= 0)
-        //        IsKilled = true;
-        //
-        //}
-
         public override void InflictDamage(GameObjectVertical obj)
         {
             Game.stateManager.shooterState.backgroundObjects.Add(

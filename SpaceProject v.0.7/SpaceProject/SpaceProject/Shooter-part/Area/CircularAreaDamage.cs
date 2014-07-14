@@ -20,7 +20,7 @@ namespace SpaceProject
         {
             Rectangle rect = new Rectangle((int)obj.PositionX, (int)obj.PositionY, obj.BoundingWidth, obj.BoundingHeight);
 
-            if (CollisionDetection.IsCircleInRectangle(position, radius, rect))
+            if (CollisionDetection.IsCircleInRectangle(Position, radius, rect))
             {
                 return true;
             }

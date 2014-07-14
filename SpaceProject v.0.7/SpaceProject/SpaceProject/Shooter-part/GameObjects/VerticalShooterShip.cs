@@ -46,7 +46,7 @@ namespace SpaceProject
         private float shieldCapacity;
 
         private float currentShield;
-        public Boolean ShieldCanTakeHit(double hitDamage) { return hitDamage >= currentShield; }
+        public Boolean ShieldCanTakeHit(double hitDamage) { return hitDamage <= currentShield; }
 
         private float shieldRegeneration;
         #endregion
@@ -382,6 +382,7 @@ namespace SpaceProject
                 if (currentShield > enemyDamage)
                 {
                     currentShield -= enemyDamage;
+
                     Game.AddGameObjToShooter(ShieldEffectGenerator.GenerateStandardShieldEffect(Game, spriteSheet, this));
                 }
                 else

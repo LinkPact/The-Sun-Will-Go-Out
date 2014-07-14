@@ -438,6 +438,7 @@
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceDrone.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceShielder.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceSmallLaserShip.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceStealthAttackShip.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelMissileAttack.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelSmallAttackShip.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceSmallShooter.cs" />

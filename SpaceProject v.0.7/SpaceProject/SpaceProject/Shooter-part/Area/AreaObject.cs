@@ -8,12 +8,12 @@ namespace SpaceProject
 {
     public abstract class AreaObject : GameObjectVertical
     {
-        protected Vector2 position;
+        protected Vector2 sourcePosition;
 
         protected AreaObject(Game1 game, Vector2 position)
             : base(game)
         {
-            this.position = position;
+            this.sourcePosition = position;
         }
 
         public abstract Boolean IsOverlapping(AnimatedGameObject obj);

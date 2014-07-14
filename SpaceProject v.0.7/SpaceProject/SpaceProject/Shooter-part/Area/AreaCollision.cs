@@ -6,12 +6,14 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
-    public class AreaCollision : AreaObject
+    public class AreaShieldCollision : AreaObject
     {
         private float radius;
+        
         private VerticalShooterShip sourceObject;
+        public VerticalShooterShip SourceObject { get { return sourceObject; } }
 
-        public AreaCollision(Game1 game, VerticalShooterShip sourceObject, float radius)
+        public AreaShieldCollision(Game1 game, VerticalShooterShip sourceObject, float radius)
             : base(game, sourceObject.Position)
         {
             this.sourceObject = sourceObject;
@@ -20,9 +22,10 @@ namespace SpaceProject
 
         public override Boolean IsOverlapping(AnimatedGameObject obj)
         {
-            Rectangle rect = new Rectangle((int)obj.PositionX, (int)obj.PositionY, obj.BoundingWidth, obj.BoundingHeight);
+            Rectangle rect = new Rectangle((int)obj.PositionX, (int)obj.PositionY, 
+                obj.BoundingWidth, obj.BoundingHeight);
 
-            if (CollisionDetection.IsCircleInRectangle(position, radius, rect))
+            if (CollisionDetection.IsCircleInRectangle(sourceObject.Position, radius, rect))
             {
                 return true;
             }
@@ -32,11 +35,8 @@ namespace SpaceProject
 
         public void InflictDamage(Bullet bullet)
         {
-            if (sourceObject.ShieldCanTakeHit(bullet.Damage))
-            {
-                sourceObject.InflictDamage(bullet);
-                bullet.InflictDamage(sourceObject);
-            }
+            sourceObject.InflictDamage(bullet);
+            //bullet.InflictDamage(sourceObject);
         }
     }
 }

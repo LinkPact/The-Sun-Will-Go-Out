@@ -287,18 +287,21 @@ namespace SpaceProject
                     GameObjectVertical obj1 = gameObjects[n];
                     GameObjectVertical obj2 = gameObjects[m];
 
+                    Boolean pixelCollisionNeedsEvaluation = true;
+
                     if (GlobalMathFunctions.IsOneOfType<AreaDamage>(obj1, obj2))
                     {
                         PerformAreaDamage(obj1, obj2);
+                        pixelCollisionNeedsEvaluation = false;
                     }
-                    else
-                    {
-                        if (GlobalMathFunctions.IsOneOfType<AreaCollision>(obj1.AreaCollision, obj2.AreaCollision)
+                    else if(GlobalMathFunctions.IsOneOfType<AreaShieldCollision>(obj1.AreaCollision, obj2.AreaCollision)
                             && GlobalMathFunctions.IsOneOfType<PlayerBullet>(obj1, obj2))
-                        {
-                            PerformAreaCollision(obj1, obj2);
-                        }
-
+                    {
+                        pixelCollisionNeedsEvaluation = PerformAreaCollision(obj1, obj2);
+                    }
+                    
+                    if (pixelCollisionNeedsEvaluation)
+                    {
                         if (CollisionDetection.VisiblePixelsColliding(obj1.Bounding, obj2.Bounding,
                             ((AnimatedGameObject)(obj1)).CurrentAnim.CurrentFrame,
                             ((AnimatedGameObject)obj2).CurrentAnim.CurrentFrame, 
@@ -334,25 +337,41 @@ namespace SpaceProject
             }
         }
 
-        private void PerformAreaCollision(GameObjectVertical obj1, GameObjectVertical obj2)
+        private Boolean PerformAreaCollision(GameObjectVertical obj1, GameObjectVertical obj2)
         {
             if (obj1.HasAreaCollision() && obj2.HasAreaCollision())
-                return;
+                return false;
 
             if (obj1.HasAreaCollision())
             {
-                if (((AreaCollision)(obj1.AreaCollision)).IsOverlapping((AnimatedGameObject)obj2))
+                if (((EnemyShip)obj1).ShieldCanTakeHit(obj2.Damage))
                 {
-                    CollisionHandlingVerticalShooter.GameObjectsCollision(obj1, obj2);
+                    if (((AreaShieldCollision)(obj1.AreaCollision)).IsOverlapping((PlayerBullet)obj2))
+                    {
+                        CollisionHandlingVerticalShooter.GameObjectsCollision(obj1.AreaCollision, obj2);
+                    }
+                }
+                else
+                {
+                    return true;
                 }
             }
             else
             {
-                if (((AreaCollision)(obj2.AreaCollision)).IsOverlapping((AnimatedGameObject)obj1))
+                if (((EnemyShip)obj2).ShieldCanTakeHit(obj1.Damage))
                 {
-                    CollisionHandlingVerticalShooter.GameObjectsCollision(obj2, obj1);
+                    if (((AreaShieldCollision)(obj2.AreaCollision)).IsOverlapping((PlayerBullet)obj1))
+                    {
+                        CollisionHandlingVerticalShooter.GameObjectsCollision(obj2.AreaCollision, obj1);
+                    }
+                }
+                else
+                {
+                    return true;
                 }
             }
+
+            return false;
         }
 
         private void UpdateObjects(GameTime gameTime, int objectCount)
