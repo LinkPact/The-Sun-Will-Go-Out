@@ -24,7 +24,6 @@ namespace SpaceProject
         private FotrunStation1 fotrunStation1;
         private FotrunStation2 fotrunStation2;
 
-        private List<Beacon> beacons;
         private Beacon highfenceBeacon;
         private Beacon peyeBeacon;
         private Beacon lavisBeacon;
@@ -72,8 +71,6 @@ namespace SpaceProject
             fotrunStation1.Initialize();
             fotrunStation2.Initialize();
 
-            beacons = new List<Beacon>();
-
             highfenceBeacon = new Beacon(game, spriteSheet, new Rectangle(588, 844, 100, 100), new Rectangle(487, 844, 100, 100),
                 "Highfence Beacon", highfence.position + new Vector2(300, 250));
             highfenceBeacon.Initialize();
@@ -98,12 +95,12 @@ namespace SpaceProject
                 "New Norrland Beacon", newNorrland.position + new Vector2(-300, 100));
             newNorrlandBeacon.Initialize();
 
-            beacons.Add(highfenceBeacon);
-            beacons.Add(fotrunBeacon);
-            beacons.Add(peyeBeacon);
-            beacons.Add(lavisBeacon);
-            beacons.Add(soelaraBeacon);
-            beacons.Add(newNorrlandBeacon);
+            game.stateManager.overworldState.AddBeacon(highfenceBeacon);
+            game.stateManager.overworldState.AddBeacon(fotrunBeacon);
+            game.stateManager.overworldState.AddBeacon(peyeBeacon);
+            game.stateManager.overworldState.AddBeacon(lavisBeacon);
+            game.stateManager.overworldState.AddBeacon(soelaraBeacon);
+            game.stateManager.overworldState.AddBeacon(newNorrlandBeacon);
 
             AddGameObject(sectorXStar);
 
@@ -125,15 +122,6 @@ namespace SpaceProject
             AddGameObject(lavisBeacon);
             AddGameObject(soelaraBeacon);
             AddGameObject(newNorrlandBeacon);
-
-            highfenceBeacon.AddKnownBeacons(gameObjects);
-            fotrunBeacon.AddKnownBeacons(gameObjects);
-            peyeBeacon.AddKnownBeacons(gameObjects);
-            lavisBeacon.AddKnownBeacons(gameObjects);
-            soelaraBeacon.AddKnownBeacons(gameObjects);
-            newNorrlandBeacon.AddKnownBeacons(gameObjects);
-
-            //AddGameObject(new PirateShip(game, system1SpriteSheet));
         }
 
         public override void OnEnter()
@@ -161,19 +149,6 @@ namespace SpaceProject
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-        }
-
-        public Beacon GetBeacon(String beacon)
-        {
-            for (int i = 0; i < beacons.Count; i++)
-            {
-                if (beacon.ToLower().Equals(beacons[i].name.ToLower()))
-                {
-                    return beacons[i];
-                }
-            }
-
-            return null;
         }
     }
 }

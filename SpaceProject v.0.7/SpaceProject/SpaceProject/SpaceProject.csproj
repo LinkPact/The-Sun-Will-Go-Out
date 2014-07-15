@@ -326,6 +326,9 @@
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\AbandonedStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\BorderXOutpost\BorderStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\MiningOutpost\MiningStation.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation3.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation2.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation1.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\SectorX\FotrunStation2.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\SectorX\FotrunStation1.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\ShopInventoryEntry.cs" />
@@ -333,6 +336,7 @@
     <Compile Include="Overworld-part\Interface\HeadsUpDisplay.cs" />
     <Compile Include="Overworld-part\Interface\Radar.cs" />
     <Compile Include="Overworld-part\SpaceRegions\Outposts\BorderXOutpost.cs" />
+    <Compile Include="Overworld-part\SpaceRegions\Outposts\RebelOutpost.cs" />
     <Compile Include="Overworld-part\SpaceRegions\Outposts\MiningOutpost.cs" />
     <Compile Include="Overworld-part\SpaceRegions\Outposts\Outpost.cs" />
     <Compile Include="Overworld-part\SpaceRegions\Outposts\OutpostX.cs" />

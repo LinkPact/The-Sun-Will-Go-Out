@@ -15,7 +15,7 @@ namespace SpaceProject
         public static readonly int OVERWORLD_WIDTH = 200000;
         public static readonly int OVERWORLD_HEIGHT = 200000;
 
-        private List<GameObjectOverworld> GetVisibleGameObjects
+        public List<GameObjectOverworld> GetAllOverworldGameObjects
         {
             get
             {
@@ -25,6 +25,7 @@ namespace SpaceProject
                 tempList.AddRange(outpostX.GetGameObjects());
                 tempList.AddRange(borderXOutpost.GetGameObjects());
                 tempList.AddRange(miningOutpost.GetGameObjects());
+                tempList.AddRange(rebelOutpost.GetGameObjects());
                 return tempList;
             }
         }
@@ -80,6 +81,9 @@ namespace SpaceProject
         private MiningOutpost miningOutpost;
         public MiningOutpost GetMiningOutpost { get { return miningOutpost; } private set { ; } }
 
+        private RebelOutpost rebelOutpost;
+        public RebelOutpost GetRebelOutpost { get { return rebelOutpost; } private set { ;} }
+
         #endregion
 
         #region Other Objects
@@ -93,6 +97,12 @@ namespace SpaceProject
 
         public Sprite shooterSheet;
         private Sprite outpostSpriteSheet;
+
+        private List<Beacon> beacons;
+        public void AddBeacon(Beacon beacon)
+        {
+            beacons.Add(beacon);
+        }
 
         public OverworldState(Game1 Game, string name) :
             base(Game, name)
@@ -117,6 +127,8 @@ namespace SpaceProject
             HUD = new HeadsUpDisplay(this.Game);
             HUD.Initialize(spriteSheet, new Vector2(OVERWORLD_WIDTH / 2, OVERWORLD_HEIGHT / 2), new Vector2(OVERWORLD_WIDTH, OVERWORLD_HEIGHT));
 
+            beacons = new List<Beacon>();
+
             // Sectors
             sectorX = new SectorX(Game);
             sectorX.Initialize();
@@ -129,6 +141,9 @@ namespace SpaceProject
 
             miningOutpost = new MiningOutpost(Game, outpostSpriteSheet);
             miningOutpost.Initialize();
+
+            rebelOutpost = new RebelOutpost(Game, outpostSpriteSheet);
+            rebelOutpost.Initialize();
 
             currentSpaceRegion = sectorX;
 
@@ -143,6 +158,11 @@ namespace SpaceProject
 
             foreach (GameObjectOverworld obj in deepSpaceGameObjects)
                 obj.Initialize();
+
+            foreach (Beacon beacon in beacons)
+            {
+                beacon.AddKnownBeacons(Game.stateManager.overworldState.GetAllOverworldGameObjects);
+            }
 
             base.Initialize();
         }
@@ -205,7 +225,7 @@ namespace SpaceProject
 
             Game.bGManagerOverworld.Update(gameTime);
 
-            HUD.Update(gameTime, GetVisibleGameObjects);
+            HUD.Update(gameTime, GetAllOverworldGameObjects);
 
             Inputhandling();
             //InputhandlingDebug();
@@ -438,6 +458,16 @@ namespace SpaceProject
                 }
             }
 
+            else if (CollisionDetection.IsRectInRect(Game.player.Bounds, rebelOutpost.SpaceRegionArea))
+            {
+                if (currentSpaceRegion != rebelOutpost)
+                {
+                    previousSpaceRegion = currentSpaceRegion;
+                    currentSpaceRegion = rebelOutpost;
+                    currentSpaceRegion.OnEnter();
+                }
+            }
+
             else
             {
                 if (currentSpaceRegion != null)
@@ -531,7 +561,7 @@ namespace SpaceProject
 
         public Planet GetPlanet(String planetName)
         {
-            foreach (GameObjectOverworld obj in GetVisibleGameObjects)
+            foreach (GameObjectOverworld obj in GetAllOverworldGameObjects)
             {
                 if (obj is Planet)
                 {
@@ -546,7 +576,7 @@ namespace SpaceProject
         }
         public Station GetStation(String stationName)
         {
-            foreach (GameObjectOverworld obj in GetVisibleGameObjects)
+            foreach (GameObjectOverworld obj in GetAllOverworldGameObjects)
             {
                 if (obj is Station)
                 {
@@ -623,6 +653,19 @@ namespace SpaceProject
                 if (obj.GetType().Equals(type))
                     return obj;
             }
+            return null;
+        }
+
+        public Beacon GetBeacon(String beacon)
+        {
+            for (int i = 0; i < beacons.Count; i++)
+            {
+                if (beacon.ToLower().Equals(beacons[i].name.ToLower()))
+                {
+                    return beacons[i];
+                }
+            }
+
             return null;
         }
 

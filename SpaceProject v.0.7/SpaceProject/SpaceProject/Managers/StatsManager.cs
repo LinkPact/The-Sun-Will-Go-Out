@@ -293,7 +293,7 @@ namespace SpaceProject
                 for (int i = 0; i < beaconNames.Length - 1; i++)
                 {
                     beaconNames[i] = beaconNames[i].Trim();
-                    Beacon beacon = Game.stateManager.overworldState.GetSectorX.GetBeacon(beaconNames[i]);
+                    Beacon beacon = Game.stateManager.overworldState.GetBeacon(beaconNames[i]);
                     AddDiscoveredBeacon(beacon);
                     beacon.OnLoad();
                 }

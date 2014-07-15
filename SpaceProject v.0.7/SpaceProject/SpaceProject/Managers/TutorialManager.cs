@@ -100,7 +100,7 @@ namespace SpaceProject
                 }
             }
 
-            Vector2 highfenceBeaconPosition = game.stateManager.overworldState.GetSectorX.GetBeacon("Highfence Beacon").position; 
+            Vector2 highfenceBeaconPosition = game.stateManager.overworldState.GetBeacon("Highfence Beacon").position; 
 
             if (!hasEnteredHighfenceBeaconArea &&
                 CollisionDetection.IsRectInRect(game.player.Bounds, new Rectangle((int)highfenceBeaconPosition.X - 200, (int)highfenceBeaconPosition.Y - 200, 400, 400)))
@@ -110,7 +110,7 @@ namespace SpaceProject
             }
 
             if (!hasActivatedHighfenceBeacon &&
-                game.stateManager.overworldState.GetSectorX.GetBeacon("Highfence Beacon").IsActivated)
+                game.stateManager.overworldState.GetBeacon("Highfence Beacon").IsActivated)
             {
                 hasActivatedHighfenceBeacon = true;
                 DisplayTutorialMessage("Good! This beacon is now activated and you can press 'Enter' above it to open the beacon menu. However, you won't be able to use it until you activate more beacons. All planets in the sector have a beacon orbiting it. Don't forget to activate them when you see them!");

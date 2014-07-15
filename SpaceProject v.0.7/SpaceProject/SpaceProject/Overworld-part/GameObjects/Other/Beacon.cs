@@ -70,7 +70,6 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-
             if (GameStateManager.currentState == "OverworldState")
                 IsUsed = true;
             else
