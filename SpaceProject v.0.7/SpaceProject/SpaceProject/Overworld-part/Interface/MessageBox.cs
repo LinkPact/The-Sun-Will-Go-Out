@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 namespace SpaceProject
 {
     public enum MessageState
-    { 
+    {
         Invisible,
         Message,
         Menu,
@@ -23,6 +23,7 @@ namespace SpaceProject
     {
         private List<String> textStorage;
         private int popupDelay;
+
         #region variables
 
         private Game1 Game;
@@ -53,12 +54,12 @@ namespace SpaceProject
 
         //Variables only related to the inventory popup
         #region inventoryVariables
-        
+
         private int cursorColumn;
         private int pickedColumn;
         private int pickedIndex;
         private bool isPicked;
-        
+
         #endregion
 
         int tempTimer;
@@ -91,6 +92,7 @@ namespace SpaceProject
 
             displayOnReturn = false;
         }
+
         //Call this method, feed in a string and the message will appear on screen 
         public void DisplayMessage(string txt)
         {
@@ -98,7 +100,18 @@ namespace SpaceProject
 
             Game1.Paused = true;
 
-            textBuffer.Add(txt);
+            if (!txt.Contains('#'))
+            {
+                textBuffer.Add(txt);
+            }
+            else
+            {
+                List<String> tempList = SplitHashTagText(txt);
+                foreach (String str in tempList)
+                {
+                    textBuffer.Add(str);
+                }
+            }
 
             tempTimer = 5;
         }
@@ -107,7 +120,7 @@ namespace SpaceProject
         {
             textStorage = new List<String>();
             textStorage.Add(txt);
-            
+
             popupDelay = delay;
         }
 
@@ -115,14 +128,10 @@ namespace SpaceProject
         //when pressing the actionkey
         public void DisplayMessage(List<string> txtList)
         {
-            messageState = MessageState.Message;
-
-            Game1.Paused = true;
-
             foreach (string str in txtList)
-                textBuffer.Add(str);
-
-            tempTimer = 5;
+            {
+                DisplayMessage(str);
+            }
         }
 
         public void DisplayMessage(List<string> txtList, int delay)
@@ -130,6 +139,7 @@ namespace SpaceProject
             textStorage = txtList;
             popupDelay = delay;
         }
+
         //Display a map of the system in a pop-up
         public void DisplayMap(List<GameObjectOverworld> objectsInOverworld)
         {
@@ -148,6 +158,7 @@ namespace SpaceProject
 
             tempTimer = 5;
         }
+
         //Displays the "Which-item-to-trash"-menu
         public void DisplayTrashMenu(List<Item> trash)
         {
@@ -169,7 +180,8 @@ namespace SpaceProject
             currentIndexMax = menuOptions.Count;
 
             tempTimer = 5;
-        } 
+        }
+
         //Displays the "overmenu"
         public void DisplayMenu()
         {
@@ -205,6 +217,7 @@ namespace SpaceProject
 
             tempTimer = 5;
         }
+
         public void DisplaySelectionMenu(string message, List<String> options)
         {
             messageState = MessageState.SelectionMenu;
@@ -219,6 +232,7 @@ namespace SpaceProject
                 menuOptions.Add(options[i]);
             }
         }
+
         public void Update(GameTime gameTime)
         {
             confirmString = "Press 'Enter' to continue...";
@@ -229,15 +243,7 @@ namespace SpaceProject
 
                 if (popupDelay <= 1)
                 {
-                    messageState = MessageState.Message;
-
-                    Game1.Paused = true;
-
-                    foreach (string str in textStorage)
-                        textBuffer.Add(str);
-
-                    tempTimer = 5;
-
+                    DisplayMessage(textStorage);
                     popupDelay = -1000;
                 }
             }
@@ -287,6 +293,7 @@ namespace SpaceProject
 
             tempTimer--;
         }
+
         //The different actions that happens when you move items in different ways.
         //(In the inventory popup)
         private void InventoryAction()
@@ -295,7 +302,7 @@ namespace SpaceProject
             {
                 int pos1 = pickedIndex;
                 int pos2 = cursorIndex;
-                
+
                 Item tempItem1 = throwList[pos1];
                 Item tempItem2 = throwList[pos2];
 
@@ -309,7 +316,7 @@ namespace SpaceProject
                 foreach (Item item in throwList)
                     menuOptions.Add(item.Name);
 
-                menuOptions.Add("Finish");                
+                menuOptions.Add("Finish");
             }
             else if (pickedColumn == 0 && cursorColumn != 0)
             {
@@ -326,13 +333,13 @@ namespace SpaceProject
                 throwList.Insert(pos1, tempItem2);
                 ShipInventoryManager.RemoveItemAt(pos2);
                 ShipInventoryManager.InsertItem(pos2, tempItem1);
-                
+
                 menuOptions.Clear();
 
                 foreach (Item item in throwList)
                     menuOptions.Add(item.Name);
 
-                menuOptions.Add("Finish");                
+                menuOptions.Add("Finish");
             }
             else if (pickedColumn != 0 && cursorColumn == 0)
             {
@@ -355,22 +362,23 @@ namespace SpaceProject
                 foreach (Item item in throwList)
                     menuOptions.Add(item.Name);
 
-                menuOptions.Add("Finish");      
+                menuOptions.Add("Finish");
             }
             else if (cursorColumn != 0 && pickedColumn != 0)
-            { 
+            {
                 int position1;
                 int position2;
-                
+
                 if (pickedColumn == 1) position1 = pickedIndex;
                 else position1 = pickedIndex + 14;
 
                 if (cursorColumn == 1) position2 = cursorIndex;
                 else position2 = cursorIndex + 14;
-                
+
                 ShipInventoryManager.SwitchItems(position1, position2);
             }
         }
+
         //Control over the inventory.
         private void InventoryCursorControls(GameTime gameTime)
         {
@@ -389,7 +397,7 @@ namespace SpaceProject
                         pickedIndex = cursorIndex;
                         pickedColumn = cursorColumn;
                     }
-                    else if(cursorColumn == 0 && cursorIndex == throwList.Count)
+                    else if (cursorColumn == 0 && cursorIndex == throwList.Count)
                     {
                         Game1.Paused = false;
                         messageState = MessageState.Invisible;
@@ -398,7 +406,7 @@ namespace SpaceProject
                 else
                 {
                     isPicked = false;
-                    
+
                     //Prevents InventoryAction from attempting to move the finish-slot.
                     if (!(cursorColumn == 0 && cursorIndex == throwList.Count))
                         //LOGIC - THIS IS WHERE THE MAGIC HAPPENS
@@ -489,7 +497,7 @@ namespace SpaceProject
 
                 if (cursorColumn == 0)
                     currentIndexMax = menuOptions.Count;
-                    else if (cursorColumn == 1)
+                else if (cursorColumn == 1)
                 {
                     if (inventoryRef.Count <= 14)
                         currentIndexMax = inventoryRef.Count - 1;
@@ -539,6 +547,7 @@ namespace SpaceProject
                     cursorIndex = 0;
             }
         }
+
         private void ButtonControls(GameTime gameTime)
         {
             if (messageState == MessageState.Menu)
@@ -612,7 +621,7 @@ namespace SpaceProject
 
                 else if (cursorIndex < 0)
                 {
-                    cursorIndex = menuOptions.Count -1;
+                    cursorIndex = menuOptions.Count - 1;
                 }
             }
 
@@ -627,12 +636,13 @@ namespace SpaceProject
                 }
             }
 
-            if (((ControlManager.CheckPress(RebindableKeys.Action1) 
+            if (((ControlManager.CheckPress(RebindableKeys.Action1)
                 || ControlManager.CheckKeypress(Keys.Enter))
-                || (GameStateManager.currentState == "MainMenuState" && ControlManager.IsLeftMouseButtonClicked() && messageState == MessageState.Message) 
+                || (GameStateManager.currentState == "MainMenuState" && ControlManager.IsLeftMouseButtonClicked() && messageState == MessageState.Message)
                 && tempTimer <= 0))
                 ButtonActions();
         }
+
         private void MouseControls()
         {
             Vector2 pos;
@@ -687,6 +697,7 @@ namespace SpaceProject
                 }
             }
         }
+
         //Called when atempting to go back
         private void HideMessage()
         {
@@ -702,6 +713,7 @@ namespace SpaceProject
                 }
             }
         }
+
         private void HideMap()
         {
             //Makes the messagebox invisible when pressing the actionkey if it's displaying a message
@@ -711,6 +723,7 @@ namespace SpaceProject
                 messageState = MessageState.Invisible;
             }
         }
+
         private void ButtonActions()
         {
             //Makes the messagebox invisible when pressing the actionkey if it's displaying a message
@@ -749,7 +762,7 @@ namespace SpaceProject
                         else if (GameStateManager.currentState.Equals("ShooterState"))
                         {
                             DisplaySelectionMenu("What do you want to do? You cannot save during combat.",
-                                new List<string> { "Exit to menu without saving", "Exit to desktop without saving", "Cancel"});
+                                new List<string> { "Exit to menu without saving", "Exit to desktop without saving", "Cancel" });
                         }
                         break;
 
@@ -842,14 +855,13 @@ namespace SpaceProject
                             cursorIndex = 5;
                         }
                         break;
-                        
+
                 }
             }
         }
+
         public void Draw(SpriteBatch spriteBatch)
         {
-            #region not-inventory
-
             if (GameStateManager.currentState == "OverworldState")
             {
                 textBoxPos = new Vector2(Game.camera.cameraPos.X, Game.camera.cameraPos.Y);
@@ -985,7 +997,7 @@ namespace SpaceProject
 
                         }
                     }
-                    break;    
+                    break;
 
                 case MessageState.Menu:
                     {
@@ -1023,7 +1035,7 @@ namespace SpaceProject
                                                      Vector2.Zero,
                                                      1f,
                                                      SpriteEffects.None,
-                                                     1f);  
+                                                     1f);
 
                             else
                                 spriteBatch.DrawString(Game.fontManager.GetFont(14),
@@ -1067,7 +1079,7 @@ namespace SpaceProject
                     foreach (GameObjectOverworld obj in objectsOnMap)
                     {
                         spriteBatch.Draw(obj.sprite.Texture,
-                            new Vector2(Game.camera.cameraPos.X - Game.Window.ClientBounds.Width / 2 + (obj.position.X / scaleX), Game.camera.cameraPos.Y - Game.Window.ClientBounds.Height / 2 + (obj.position.Y / scaleY)), 
+                            new Vector2(Game.camera.cameraPos.X - Game.Window.ClientBounds.Width / 2 + (obj.position.X / scaleX), Game.camera.cameraPos.Y - Game.Window.ClientBounds.Height / 2 + (obj.position.Y / scaleY)),
                             obj.sprite.SourceRectangle,
                             Color.White,
                             0.0f,
@@ -1086,23 +1098,20 @@ namespace SpaceProject
                                 Vector2.Zero,
                                 1f,
                                 SpriteEffects.None,
-                                0.98f); 
+                                0.98f);
                         }
                     }
-                break;
-            #endregion
-
-                #region DrawingTheInventory
+                    break;
 
                 case MessageState.Inventory:
-                    { 
+                    {
                         //Displays information about the active weapon
                         if (cursorColumn == 0 && cursorIndex < throwList.Count)
                         {
                             throwList[cursorIndex].DisplayInfo(spriteBatch, Game.fontManager.GetFont(14), new Vector2(textPos.X - 200, textPos.Y - 280), Game.fontManager.FontColor);
                         }
                         else
-                        { 
+                        {
                             int invPos;
                             if (cursorColumn == 1) invPos = cursorIndex;
                             else invPos = cursorIndex + 14;
@@ -1150,7 +1159,7 @@ namespace SpaceProject
                                             0f, Game.fontManager.GetFont(14).MeasureString(inventoryRef[n].Name) / 2, 1f, SpriteEffects.None, 1f);
                             }
                         }
-                            //Draws the inventory if it has more slots than 14.
+                        //Draws the inventory if it has more slots than 14.
                         else
                         {
                             for (int n = 0; n < 14; n++)
@@ -1180,10 +1189,23 @@ namespace SpaceProject
                             }
                         }
                     }
-                    #endregion
-                    break;             
+                    break;
             }
 
+        }
+
+        private List<String> SplitHashTagText(String text)
+        {
+            List<String> tempList = new List<String>();
+
+            String[] split = text.Split('#');
+            for (int i = 0; i < split.Length; i++)
+            {
+                split[i] = split[i].Trim();
+                tempList.Add(split[i]);
             }
+
+            return tempList;
         }
     }
+}
