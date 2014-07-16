@@ -48,6 +48,8 @@ namespace SpaceProject
                                         missionHelper.ShowEvent(GetEvent(4));
                                     }
                                 })));
+
+            RestartAfterFail();
         }
 
         public override void StartMission()

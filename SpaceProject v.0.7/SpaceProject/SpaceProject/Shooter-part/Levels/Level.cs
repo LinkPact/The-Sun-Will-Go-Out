@@ -212,6 +212,7 @@ namespace SpaceProject
                 isCustomStartSet = true;
             }
 
+            Game.stateManager.shooterState.backgroundObjects.Clear();
             backgroundManager = new BackgroundManager(Game, player, this);
             backgroundManager.Initialize(BackgroundType.deadSpace);
 

@@ -132,7 +132,7 @@ Reputation = -1
 State = 1
 
 [SX_DebtCollection]
-Location = Highfence
+Location = Lavis Station
 Name = Debt collection
 Introduction = "We have a client who has failed to make his payments on time. We want you to go to the station orbiting Fotrun, coordinates (-370, 300), find him, and make sure he pays. You'll get a nice cut for your efforts of course."
 ObjectiveText1 = Go to the station orbiting Fotrun at coordinates (-370, 300) and make sure the man who is behind on his debts pays up.
@@ -189,7 +189,7 @@ Reputation = 2
 State = 1
 
 [SX_AstroScan]
-Location = Lavis Station
+Location = Not used
 Name = Astroid Scan
 Introduction = "We are in need of some assistance. We are investegating the possibility of conducting new mining opperations in an nearby asteroid field in Lavis orbit. But we are low on pilots and need someone to scan the asteroid field for us."
 ObjectiveText1 = Fly down to Lavis at coordinates (1300, 1400) and do the scanning.  
@@ -256,7 +256,7 @@ Reward = 500
 State = 1
 
 [SY_ColonyAid]
-Location = Fotrun Station I
+Location = Highfence
 Name = Colony Aid
 Introduction = "I'm looking for someone to transport som medical supplies to my home colony orbiting Lavis. I can't pay you very much for your effort, but you would be helping out a lot of people in dire need."
 ObjectiveText1 = Get medical supplies to station at coordinates (3780, 1120) orbiting Lavis.
