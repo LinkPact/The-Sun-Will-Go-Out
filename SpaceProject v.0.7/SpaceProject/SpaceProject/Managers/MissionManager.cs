@@ -75,7 +75,7 @@ namespace SpaceProject
             missions.Add(tutorialMission);
 
             // New First Mission
-            newFirstMission = new NewFirstMission(game, "SX_NewFirstMission", null);
+            newFirstMission = new NewFirstMission(game, "SX_NewFirstMission", missionObjectSpriteSheet);
             newFirstMission.Initialize();
             missions.Add(newFirstMission);
 

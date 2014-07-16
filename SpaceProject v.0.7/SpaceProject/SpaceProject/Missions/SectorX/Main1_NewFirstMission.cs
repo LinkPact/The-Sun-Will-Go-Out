@@ -21,6 +21,13 @@ namespace SpaceProject
             ReturnToBorderAgain
         }
 
+        private AllyShip ally1;
+        private AllyShip ally2;
+        private AllyShip ally3;
+
+        private bool followUsDisplayed;
+        private int outOfRangeTimer;
+
         public NewFirstMission(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
@@ -29,6 +36,21 @@ namespace SpaceProject
         public override void Initialize()
         {
             base.Initialize();
+
+            ally1 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet);
+            ally1.Initialize(Game.stateManager.overworldState.GetSectorX,
+                Game.stateManager.overworldState.GetStation("Border Station"),
+                Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
+
+            ally2 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet);
+            ally2.Initialize(Game.stateManager.overworldState.GetSectorX,
+                Game.stateManager.overworldState.GetStation("Border Station"),
+                Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
+
+            ally3 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet);
+            ally3.Initialize(Game.stateManager.overworldState.GetSectorX,
+                Game.stateManager.overworldState.GetStation("Border Station"),
+                Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
 
             Objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
@@ -58,12 +80,68 @@ namespace SpaceProject
                     null,
                     EventTextCanvas.BaseState)));
 
-            Objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
-                new EventTextCapsule(
-                    GetEvent((int)EventID.EngagePirates),
-                    null,
-                    EventTextCanvas.MessageBox)));
+                new EventTextCapsule(GetEvent((int)EventID.EngagePirates), null, EventTextCanvas.MessageBox),
+                delegate
+                {
+                    Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(ally1,
+                        Game.stateManager.overworldState.GetStation("Border Station").position +
+                        new Vector2(25, -50), "", null);
+
+                    Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(ally2,
+                        Game.stateManager.overworldState.GetStation("Border Station").position +
+                        new Vector2(-75, -75), "", null);
+
+                    Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(ally3,
+                        Game.stateManager.overworldState.GetStation("Border Station").position +
+                        new Vector2(50, 50), "", null);
+                },
+                delegate
+                {
+                    if (GameStateManager.currentState == "OverworldState"
+                        && !followUsDisplayed)
+                    {
+                        followUsDisplayed = true;
+                        Game.messageBox.DisplayMessage("Follow us!", 100);
+                    }
+
+                    if (!CollisionDetection.IsPointInsideCircle(Game.player.position, ally1.position, 600) &&
+                        outOfRangeTimer <= 0)
+                    {
+                        outOfRangeTimer = 150;
+                        Game.messageBox.DisplayMessage("Keep close to us!");
+                        ally1.Wait();
+                        ally2.Wait();
+                        ally3.Wait();
+                    }
+
+                    if (outOfRangeTimer > 0)
+                    {
+                        outOfRangeTimer--;
+
+                        if (outOfRangeTimer == 149)
+                        {
+                            Game.player.InitializeHyperSpeedJump(ally1.position, false);
+                        }
+
+                        if (outOfRangeTimer < 1)
+                        {
+                            outOfRangeTimer = -100;
+                            ally1.Start();
+                            ally2.Start();
+                            ally3.Start();
+                        }
+                    }
+                },
+                delegate
+                {
+                    return ally1.HasArrived;
+                },
+                delegate
+                {
+                    return false;
+                }));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
