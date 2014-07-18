@@ -31,8 +31,7 @@ namespace SpaceProject.Shooter_part.GameObjects.Enemies.Instances.Used
         {
             base.Initialize();
 
-            lootRangeMin = 4;
-            lootRangeMax = 7;
+            lootValue = LootValue.high;
 
             //Shooting
             shootingDelay = 3000;

@@ -40,8 +40,7 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            lootRangeMin = 3;
-            lootRangeMax = 7;
+            lootValue = LootValue.high;
 
             shootingDelay = 3000;
             shootingDelay2 = -1;

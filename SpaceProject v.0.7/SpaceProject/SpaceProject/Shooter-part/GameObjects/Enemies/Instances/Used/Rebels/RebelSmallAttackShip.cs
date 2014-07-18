@@ -31,8 +31,7 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            lootRangeMin = 4;
-            lootRangeMax = 7;
+            lootValue = LootValue.low;
 
             //Shooting
             ShootsOnce(1500);

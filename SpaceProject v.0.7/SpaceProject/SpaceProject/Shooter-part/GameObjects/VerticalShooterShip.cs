@@ -23,6 +23,15 @@ namespace SpaceProject
         extreme     = 30
     }
 
+    public enum LootValue
+    { 
+        veryLow     = 1,
+        low         = 2,
+        medium      = 3,
+        high        = 5,
+        veryHigh    = 7
+    }
+
     public abstract class VerticalShooterShip : CombatGameObject
     {
         #region declaration
@@ -36,8 +45,10 @@ namespace SpaceProject
         protected Random random = new Random();
         protected float Rotation;
 
-        protected int lootRangeMin = 0;
-        protected int lootRangeMax = 0;
+        //protected int lootRangeMin = 0;
+        //protected int lootRangeMax = 0;
+
+        protected LootValue lootValue = LootValue.low;
 
         #region shield
         private Boolean hasShield;
@@ -132,7 +143,10 @@ namespace SpaceProject
         public int GetLoot()
         {
             Random r = new Random(DateTime.Now.Millisecond);
-            return r.Next(lootRangeMin, lootRangeMax);
+
+            return r.Next((int)lootValue, 2*(int)lootValue);
+
+            //return r.Next(lootRangeMin, lootRangeMax);
         }
         
         public void SetMovement(Movement movement)

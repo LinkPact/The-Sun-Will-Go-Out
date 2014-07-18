@@ -32,8 +32,7 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            lootRangeMin = 1;
-            lootRangeMax = 3;
+            lootValue = LootValue.veryLow;
 
             //Egenskaper
             SightRange = 400;

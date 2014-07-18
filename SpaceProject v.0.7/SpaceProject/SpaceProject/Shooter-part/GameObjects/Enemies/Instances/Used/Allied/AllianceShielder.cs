@@ -27,8 +27,7 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            lootRangeMin = 1;
-            lootRangeMax = 3;
+            lootValue = LootValue.high;
 
             shootingDelay = 3000;
             lastTimeShot = shootingDelay * random.NextDouble();
