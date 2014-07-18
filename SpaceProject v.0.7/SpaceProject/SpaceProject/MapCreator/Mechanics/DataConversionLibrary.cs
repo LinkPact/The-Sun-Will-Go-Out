@@ -183,10 +183,10 @@ namespace SpaceProject
             switch (squareState)
             {
                 // Neutral (Shades of Gray?)
-                case EnemyType.none:                return Color.White;
-                case EnemyType.turret:              return Color.Black;
-                case EnemyType.meteor:              return Color.Gray;
-                case EnemyType.medium:              return Color.Orange;
+                case EnemyType.none:                return new Color(255, 255, 255);
+                case EnemyType.turret:              return new Color(150, 150, 150);
+                case EnemyType.meteor:              return new Color(0, 0, 0);
+                case EnemyType.medium:              return new Color(75, 75, 75);
 
                 case EnemyType.big_R:               return Color.Black;
                 case EnemyType.homingBullet_R:      return Color.Black;
@@ -199,34 +199,34 @@ namespace SpaceProject
                 case EnemyType.freighterAlly:       return new Color(100, 100, 255);
 
                 // Rebels
-                case EnemyType.R_mosquito:          return Color.Green;
-                case EnemyType.R_thickShooter:      return Color.Red;
-                case EnemyType.R_smallAttack:       return new Color(0, 0, 0);
-                case EnemyType.R_smallSniper:       return Color.Yellow;
+                case EnemyType.R_mosquito:          return new Color(255, 255, 102);
+                case EnemyType.R_thickShooter:      return new Color(204, 204, 0);
+                case EnemyType.R_smallAttack:       return new Color(102, 102, 0);
+                case EnemyType.R_smallSniper:       return new Color(51, 51, 0);
 
-                case EnemyType.R_burster:           return Color.Blue;                
-                case EnemyType.R_minelayer:         return new Color(80, 80, 80);
-                case EnemyType.R_lightMinelayer:    return Color.White;
-                case EnemyType.R_homingMissile:     return Color.White;
-                case EnemyType.R_bomber:            return Color.White;
+                case EnemyType.R_burster:           return new Color(255, 229, 204);                
+                case EnemyType.R_minelayer:         return new Color(255, 178, 102);
+                case EnemyType.R_lightMinelayer:    return new Color(204, 102, 0);
+                case EnemyType.R_homingMissile:     return new Color(102, 51, 0);
+                case EnemyType.R_bomber:            return new Color(255, 153, 153);
 
-                case EnemyType.R_fatzo:             return Color.White;
-                case EnemyType.R_missileAttackShip: return new Color(0, 80, 0);
+                case EnemyType.R_fatzo:             return new Color(255, 0, 0);
+                case EnemyType.R_missileAttackShip: return new Color(153, 0, 0);
 
                 // Alliance
-                case EnemyType.A_drone:             return new Color(0, 0, 80);
-                case EnemyType.A_smallLaserShip:    return new Color(0, 0, 80);
-                case EnemyType.A_singleHoming:      return Color.White;
+                case EnemyType.A_drone:             return new Color(204, 255, 153);
+                case EnemyType.A_smallLaserShip:    return new Color(128, 255, 0);
+                case EnemyType.A_singleHoming:      return new Color(51, 102, 0);
 
-                case EnemyType.A_shielder:          return new Color(160, 80, 80);
-                case EnemyType.A_attackStealth:     return new Color(160, 160, 80);
-                case EnemyType.A_lightBeamer:       return Color.White;
-                case EnemyType.A_homingBullets:     return Color.White;
-                case EnemyType.A_ballistic:         return Color.White;
+                case EnemyType.A_shielder:          return new Color(102, 255, 102);
+                case EnemyType.A_attackStealth:     return new Color(0, 255, 0);
+                case EnemyType.A_lightBeamer:       return new Color(0, 153, 0);
+                case EnemyType.A_homingBullets:     return new Color(0, 51, 0);
+                case EnemyType.A_ballistic:         return new Color(102, 255, 255);
 
-                case EnemyType.A_stealthShip:       return new Color(80, 0, 0);
-                case EnemyType.A_heavyBeamer:       return Color.White;
-                case EnemyType.A_hangar:            return Color.White;
+                case EnemyType.A_stealthShip:       return new Color(0, 204, 204);
+                case EnemyType.A_heavyBeamer:       return new Color(102, 102, 255);
+                case EnemyType.A_hangar:            return new Color(0, 0, 153);
 
                 default:
                     throw new ArgumentException("Not-yet-implemented enemytype entered");

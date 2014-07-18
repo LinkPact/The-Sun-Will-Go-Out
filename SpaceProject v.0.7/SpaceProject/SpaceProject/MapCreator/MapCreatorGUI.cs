@@ -81,7 +81,7 @@ namespace SpaceProject
             Vector2 runpos = new Vector2(screenW - 90, screenH - 180);
             buttons.Add(new RunLevelButton(spriteSheet, runpos));
 
-            levelObjectivePos = new Vector2(550, screenH - 250);
+            levelObjectivePos = new Vector2(550, screenH - 75);
             buttons.Add(new SetLevelObjectiveButton(spriteSheet, levelObjectivePos));
 
             gridWidthPos = new Vector2(screenW - 250, screenH - 175);
