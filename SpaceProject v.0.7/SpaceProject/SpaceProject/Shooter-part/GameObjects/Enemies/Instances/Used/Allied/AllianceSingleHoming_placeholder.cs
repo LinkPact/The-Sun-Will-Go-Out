@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    class AllianceDrone : EnemyShip
+    class AllianceSingleHoming_placeholder : EnemyShip
     {
-        public AllianceDrone(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
+        public AllianceSingleHoming_placeholder(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
         {
             Setup();
         }
 
-        public AllianceDrone(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player,
+        public AllianceSingleHoming_placeholder(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player,
             Movement movement) :
             base(Game, spriteSheet, player)
         {
@@ -37,16 +36,15 @@ namespace SpaceProject
 
             //Egenskaper
             SightRange = 400;
-            HP = 400.0f;
-            Damage = 80;
+            HP = 1.0f;
+            Damage = 0;
             Speed = 0.1f;
-            TurningSpeed = 0.4f;
 
-            movement = Movement.Following;
+            movement = Movement.Line;
 
             //Animationer
             anim.LoopTime = 500;
-            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(340, 180, 34, 40)));
+            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(340, 340, 32, 38)));
 
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
         }

@@ -178,37 +178,26 @@ namespace SpaceProject
 
             switch (identifier)
             {
-                case EnemyType.R_mosquito:
+                // Allies
+                case EnemyType.fighterAlly:
                     {
-                        creature = new RebelMosquito(Game, spriteSheet, player);
+                        creature = new FighterAlly(Game, spriteSheet, player);
                         break;
                     }
-                case EnemyType.R_thickShooter:
+                case EnemyType.freighterAlly:
                     {
-                        creature = new RebelThickShooter(Game, spriteSheet, player);
+                        creature = new FreighterAlly(Game, spriteSheet, player);
                         break;
                     }
-                case EnemyType.R_smallSniper:
-                    {
-                        creature = new RebelSmallSniper(Game, spriteSheet, player);
-                        break;
-                    }
-                case EnemyType.R_burster:
-                    {
-                        creature = new RebelBurster(Game, spriteSheet, player);
-                        break;
-                    }
-                case EnemyType.R_medium:
-                    {
-                        creature = new RebelMediumSizedEnemy(Game, spriteSheet, player);
-                        break;
-                    }
-                case EnemyType.A_big_I:
+
+                // Neutral
+                #region neutral
+                case EnemyType.big_R:
                     {
                         creature = new AllianceBigFighterMkI(Game, spriteSheet, player);
                         break;
                     }
-                case EnemyType.A_bigMissile:
+                case EnemyType.bigMissile_R:
                     {
                         creature = new AllianceBigMissileEnemy(Game, spriteSheet, player);
                         break;
@@ -247,18 +236,68 @@ namespace SpaceProject
                             default:
                                 {
                                     throw new ArgumentException("Check the randomized range");
-                                }  
+                                }
                         }
                         break;
                     }
-                case EnemyType.A_homingBullet:
+                case EnemyType.homingBullet_R:
                     {
                         creature = new AllianceHomingShotEnemy(Game, spriteSheet, player);
                         break;
                     }
-                case EnemyType.A_homingMissile:
+                case EnemyType.homingMissile_R:
                     {
                         creature = new AllianceHomingMissileEnemy(Game, spriteSheet, player);
+                        break;
+                    }
+                case EnemyType.medium:
+                    {
+                        creature = new RebelMediumSizedEnemy(Game, spriteSheet, player);
+                        break;
+                    }
+                case EnemyType.smallShooter_R:
+                    {
+                        creature = new AllianceSmallShooter(Game, spriteSheet, player);
+                        break;
+                    }
+                #endregion
+
+                // Rebel
+                #region rebel
+                case EnemyType.R_mosquito:
+                    {
+                        creature = new RebelMosquito(Game, spriteSheet, player);
+                        break;
+                    }
+                case EnemyType.R_thickShooter:
+                    {
+                        creature = new RebelThickShooter(Game, spriteSheet, player);
+                        break;
+                    }
+                case EnemyType.R_smallSniper:
+                    {
+                        creature = new RebelSmallSniper(Game, spriteSheet, player);
+                        break;
+                    }
+
+                case EnemyType.R_lightMinelayer:
+                    {
+                        creature = new RebelLightMinelayer_placeholder(Game, spriteSheet, player);
+                        break;
+                    }
+                case EnemyType.R_homingMissile:
+                    {
+                        creature = new RebelHomingMissile_placeholder(Game, spriteSheet, player);
+                        break;
+                    }
+                case EnemyType.R_bomber:
+                    {
+                        creature = new RebelBomber_placeholder(Game, spriteSheet, player);
+                        break;
+                    }
+                case EnemyType.R_burster:
+                    {
+                        creature = new RebelBurster(Game, spriteSheet, player);
                         break;
                     }
                 case EnemyType.R_minelayer:
@@ -266,36 +305,26 @@ namespace SpaceProject
                         creature = new RebelMinelayer(Game, spriteSheet, player);
                         break;
                     }
-                case EnemyType.fighterAlly:
-                    {
-                        creature = new FighterAlly(Game, spriteSheet, player);
-                        break;
-                    }
-                case EnemyType.freighterAlly:
-                    {
-                        creature = new FreighterAlly(Game, spriteSheet, player);
-                        break;
-                    }
                 case EnemyType.R_smallAttack:
                     {
                         creature = new RebelSmallAttackShip(Game, spriteSheet, player);
                         break;
                     }
-                case EnemyType.A_smallShooter:
-                    {
-                        creature = new AllianceSmallShooter(Game, spriteSheet, player);
-                        break;
-                    }
-                case EnemyType.A_stealthShip:
-                    {
-                        creature = new AllianceStealthShip(Game, spriteSheet, player);
-                        break;
-                    }
+
                 case EnemyType.R_missileAttackShip:
                     {
                         creature = new RebelMissileAttack(Game, spriteSheet, player);
                         break;
                     }
+                case EnemyType.R_fatzo:
+                    {
+                        creature = new RebelFatzo_placeholder(Game, spriteSheet, player);
+                        break;
+                    }
+                #endregion
+
+                // Alliance
+                #region alliance
                 case EnemyType.A_drone:
                     {
                         creature = new AllianceDrone(Game, spriteSheet, player);
@@ -306,6 +335,12 @@ namespace SpaceProject
                         creature = new AllianceSmallLaserShip(Game, spriteSheet, player);
                         break;
                     }
+                case EnemyType.A_singleHoming:
+                    {
+                        creature = new AllianceSingleHoming_placeholder(Game, spriteSheet, player);
+                        break;
+                    }
+
                 case EnemyType.A_shielder:
                     {
                         creature = new AllianceShielder(Game, spriteSheet, player);
@@ -316,6 +351,34 @@ namespace SpaceProject
                         creature = new AllianceStealthAttackShip(Game, spriteSheet, player);
                         break;
                     }
+                case EnemyType.A_lightBeamer:
+                    {
+                        creature = new AllianceLightBeamer_placeholder(Game, spriteSheet, player);
+                        break;
+                    }
+                case EnemyType.A_homingBullets:
+                    {
+                        creature = new AllianceHomingBullets_placeholder(Game, spriteSheet, player);
+                        break;
+                    }
+
+                case EnemyType.A_stealthShip:
+                    {
+                        creature = new AllianceStealthShip(Game, spriteSheet, player);
+                        break;
+                    }
+                case EnemyType.A_heavyBeamer:
+                    {
+                        creature = new AllianceHeavyBeamer_placeholder(Game, spriteSheet, player);
+                        break;
+                    }
+                case EnemyType.A_ballistic:
+                    {
+                        creature = new AllianceBallistic_placeholder(Game, spriteSheet, player);
+                        break;
+                    }
+                #endregion
+
                 default:
                     {
                         throw new ArgumentException("Argument not implemented!");

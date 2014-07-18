@@ -116,3 +116,15 @@ Temp_Ally_Shielder	(460, 180, 53, 37)
 
 Temp_Ally_Burster	(340, 220, 30, 30)
 Temp_Ally_MissileAttack	(380, 220, 42, 43)
+
+Gray small dummy	(340, 280, 32, 38)
+Gray mid dummy		(380, 280, 38, 58)
+Gray big dummy		(420, 280, 58, 58)
+
+Blue small dummy	(340, 340, 32, 38)
+Blue mid dummy		(380, 340, 38, 58)
+Blue big dummy		(420, 340, 58, 58)
+
+Orange small dummy	(340, 400, 32, 38)
+Orange mid dummy	(380, 400, 38, 58)
+Orange big dummy	(420, 400, 58, 58)

@@ -39,22 +39,24 @@ namespace SpaceProject
 
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
         }
+
         public void Update_(GameTime gameTime, float posX, float startY, float endY)
         {
             this.posX = posX;
             this.startY = startY;
             this.endY = endY;
         }
+        
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
 
-            if (ControlManager.CurrentKeyboardState.IsKeyUp(ControlManager.KeyboardAction))
+            if (!ControlManager.CheckKeypress(ControlManager.KeyboardAction))
             {
                 IsKilled = true;
             }
-
         }
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             for (int m = (int)startY; m > endY; m--)

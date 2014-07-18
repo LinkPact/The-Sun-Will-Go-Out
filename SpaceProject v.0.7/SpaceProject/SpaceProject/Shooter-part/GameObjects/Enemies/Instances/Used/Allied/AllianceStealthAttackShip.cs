@@ -11,6 +11,9 @@ namespace SpaceProject
     class AllianceStealthAttackShip : ShootingEnemyShip
     {
         private int tempCounter;
+        private int stealthDelay;
+
+        private Boolean stealthToggled;
 
         public AllianceStealthAttackShip(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
@@ -31,7 +34,7 @@ namespace SpaceProject
             stealthOn = true;
             transparency = stealthLevel;
 
-            ShieldSetup(CreatureShieldCapacity.high, CreatureShieldRegeneration.high);
+            //ShieldSetup(CreatureShieldCapacity.high, CreatureShieldRegeneration.high);
         }
 
         public override void Initialize()
@@ -42,14 +45,18 @@ namespace SpaceProject
             lootRangeMax = 6;
 
             //Shooting
-            shootingDelay = 250;
+            shootingDelay = 1500;
+            lastTimeShot = shootingDelay;
 
             //Egenskaper
-            SightRange = 4000;
-            HP = 400.0f;
-            Damage = 150;
-            Speed = 0.09f;
+            SightRange = 300;
+            HP = 200.0f;
+            Damage = 50;
+            Speed = 0.14f;
+            TurningSpeed *= 3;
             movement = Movement.Following;
+
+            stealthDelay = 1500;
 
             //Animationer
             anim.LoopTime = 500;
@@ -57,16 +64,17 @@ namespace SpaceProject
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
 
             tempCounter = 0;
+            stealthToggled = false;
         }
 
         public override void Update(GameTime gameTime)
         {
             tempCounter += gameTime.ElapsedGameTime.Milliseconds;
 
-            if (tempCounter > 2000)
+            if (FollowObject != null && !stealthToggled)
             {
                 ToggleStealth();
-                tempCounter = -100000;
+                stealthToggled = true;
             }
 
             UpdateStealth();
@@ -110,17 +118,18 @@ namespace SpaceProject
 
         protected override void ShootingPattern(GameTime gameTime)
         {
-            double width = Math.PI / 6;
-            int numberOfShots = 3;
+            int numberOfShots = 10;
 
-            for (double dir = Math.PI / 2 - width / 2; dir <= Math.PI / 2 + width / 2; dir += (width / (numberOfShots - 1)))
+            for (int n = 0; n < numberOfShots; n++)
             {
                 EnemyWeakBlueLaser laser1 = new EnemyWeakBlueLaser(Game, spriteSheet);
                 laser1.Position = Position;
-                laser1.Direction = GlobalMathFunctions.DirFromRadians(dir);
+                laser1.Direction = new Vector2(0, 1);
+                laser1.Direction = GlobalMathFunctions.SpreadDir(laser1.Direction, Math.PI / 8);
                 laser1.Initialize();
-                laser1.Duration *= 3;
                 laser1.DrawLayer = this.DrawLayer - 0.01f;
+                laser1.SetSpreadSpeed(random);
+                laser1.Duration *= 2;
 
                 Game.AddGameObjToShooter(laser1);
             }

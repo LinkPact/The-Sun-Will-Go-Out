@@ -36,29 +36,45 @@ public enum EnemyType
     none                = 0,
     turret              = 2,
     meteor              = 3,
-    fighterAlly         = 4,
-    freighterAlly       = 5,
+    medium              = 4,
+    big_R               = 5,
+    homingBullet_R      = 6,
+    homingMissile_R     = 7,
+    bigMissile_R        = 8,
+    smallShooter_R      = 9,
+
+    
+    fighterAlly         = 10,
+    freighterAlly       = 11,
     
     R_mosquito          = 100,
     R_smallAttack       = 101,
     R_thickShooter      = 102,
     R_smallSniper       = 103,
     R_burster           = 104,
-    R_medium            = 105,
     R_minelayer         = 106,
     R_missileAttackShip = 107,
     
+    // To be implemented
+    R_lightMinelayer    = 108,
+    R_homingMissile     = 109,
+    R_bomber            = 110,
+    R_fatzo             = 111,
+
     A_drone             = 200,
     A_smallLaserShip    = 201,
     A_stealthShip       = 202,
     A_shielder          = 203,
     A_attackStealth     = 204,
 
-    A_big_I             = 10,
-    A_homingBullet      = 11,
-    A_homingMissile     = 12,
-    A_bigMissile        = 13,
-    A_smallShooter      = 14
+    // To be implemented
+    A_singleHoming      = 205,
+    A_lightBeamer       = 206,
+    A_homingBullets     = 207,
+    A_heavyBeamer       = 208,
+    A_ballistic         = 209,
+    A_hangar            = 210,
+
 }
 
 //The different base states for squares.

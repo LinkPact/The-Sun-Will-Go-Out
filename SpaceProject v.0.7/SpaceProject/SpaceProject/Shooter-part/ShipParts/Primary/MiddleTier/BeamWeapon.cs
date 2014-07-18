@@ -14,6 +14,7 @@ namespace SpaceProject
         Boolean beamOn;
         Beam beam;
         #endregion
+
         public BeamWeapon(Game1 Game) :
             base(Game)
         {
@@ -51,19 +52,29 @@ namespace SpaceProject
         
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
-            if (ControlManager.PreviousKeyboardState.IsKeyUp(ControlManager.KeyboardAction))
+            if (StatsManager.gameMode == GameMode.develop)
+                Game.Window.Title = "Beam On: " + beamOn.ToString();
+
+            if (!ControlManager.CheckKeypress(ControlManager.KeyboardAction))
             {
                 beamOn = false;
             }
 
             GameObjectVertical beamTarget = LocateTarget(player.Position);
 
-            if (!beamOn) InitBeam(player.Position);
-            
-            if (!player.IsKilled) BeamUpdate(player.Position, beamTarget, gameTime);
+            if (!beamOn)
+            {
+                InitBeam(player.Position);
+            }
+
+            if (!player.IsKilled)
+            {
+                BeamUpdate(player.Position, beamTarget, gameTime);
+            }
 
             return true;
         }
+
         private GameObjectVertical LocateTarget(Vector2 playerPosition)
         {   
             GameObjectVertical target = null;
@@ -98,6 +109,7 @@ namespace SpaceProject
             if (target != null) return target;
             else return null;
         }
+
         private void BeamUpdate(Vector2 playerPosition, GameObjectVertical beamTarget, GameTime gameTime)
         {
             if (beamTarget != null)
@@ -108,6 +120,7 @@ namespace SpaceProject
             else
                 beam.Update_(gameTime, playerPosition.X, playerPosition.Y, 0);
         }
+        
         private void InitBeam(Vector2 playerPosition)
         {
             beamOn = true;
@@ -119,6 +132,7 @@ namespace SpaceProject
 
             Game.stateManager.shooterState.gameObjects.Add(beam);
         }
+        
         private bool IntervalInsideInterval(float start1, float end1, float start2, float end2)
         {
             if (end1 < start2 || end2 < start1) return false;

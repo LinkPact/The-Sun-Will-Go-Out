@@ -25,34 +25,53 @@ namespace SpaceProject
             durationLibrary = new Dictionary<DurationEventType, string>();
             movementLibrary = new Dictionary<Movement, string>();
             
-            //Enemy
+            // Used letters for enemies:
+            // 0
+            // ABCFGHILMNORSTY
+            // abcdefhijklmnopst
+
+            // Neutral
             enemyLibrary.Add(EnemyType.none, "0");
             enemyLibrary.Add(EnemyType.turret, "T");
             enemyLibrary.Add(EnemyType.meteor, "S");
-            
-            enemyLibrary.Add(EnemyType.R_mosquito, "G");
-            enemyLibrary.Add(EnemyType.R_thickShooter, "R");
-            enemyLibrary.Add(EnemyType.R_smallSniper, "Y");
-            enemyLibrary.Add(EnemyType.R_medium, "M");
-            enemyLibrary.Add(EnemyType.R_minelayer, "N");
-            enemyLibrary.Add(EnemyType.R_smallAttack, "a");
-            enemyLibrary.Add(EnemyType.R_burster, "B");
-            enemyLibrary.Add(EnemyType.R_missileAttackShip, "m");
+            enemyLibrary.Add(EnemyType.big_R, "L");
+            enemyLibrary.Add(EnemyType.homingBullet_R, "H");
+            enemyLibrary.Add(EnemyType.homingMissile_R, "O");
+            enemyLibrary.Add(EnemyType.bigMissile_R, "I");
+            enemyLibrary.Add(EnemyType.smallShooter_R, "s");
+            enemyLibrary.Add(EnemyType.medium, "M");
 
-            enemyLibrary.Add(EnemyType.A_stealthShip, "t");
-            enemyLibrary.Add(EnemyType.A_drone, "d");
-            enemyLibrary.Add(EnemyType.A_smallLaserShip, "n");
-            enemyLibrary.Add(EnemyType.A_shielder, "h");
-            enemyLibrary.Add(EnemyType.A_attackStealth, "A");
-            
-            enemyLibrary.Add(EnemyType.A_big_I, "L");
-            enemyLibrary.Add(EnemyType.A_homingBullet, "H");
-            enemyLibrary.Add(EnemyType.A_homingMissile, "O");
-            enemyLibrary.Add(EnemyType.A_bigMissile, "I");
-            enemyLibrary.Add(EnemyType.A_smallShooter, "s");
-
+            // Allies
             enemyLibrary.Add(EnemyType.fighterAlly, "A");
             enemyLibrary.Add(EnemyType.freighterAlly, "F");
+
+            // Rebels
+            enemyLibrary.Add(EnemyType.R_mosquito, "G");
+            enemyLibrary.Add(EnemyType.R_smallAttack, "a");
+            enemyLibrary.Add(EnemyType.R_thickShooter, "R");
+            enemyLibrary.Add(EnemyType.R_smallSniper, "Y");
+            enemyLibrary.Add(EnemyType.R_burster, "B");
+            enemyLibrary.Add(EnemyType.R_minelayer, "N");
+            enemyLibrary.Add(EnemyType.R_missileAttackShip, "m");
+
+            enemyLibrary.Add(EnemyType.R_lightMinelayer, "b");
+            enemyLibrary.Add(EnemyType.R_homingMissile, "c");
+            enemyLibrary.Add(EnemyType.R_bomber, "e");
+            enemyLibrary.Add(EnemyType.R_fatzo, "f");
+
+            // Alliance
+            enemyLibrary.Add(EnemyType.A_drone, "d");
+            enemyLibrary.Add(EnemyType.A_smallLaserShip, "n");
+            enemyLibrary.Add(EnemyType.A_stealthShip, "t");
+            enemyLibrary.Add(EnemyType.A_shielder, "h");
+            enemyLibrary.Add(EnemyType.A_attackStealth, "C");
+
+            enemyLibrary.Add(EnemyType.A_singleHoming, "i");
+            enemyLibrary.Add(EnemyType.A_lightBeamer, "j");
+            enemyLibrary.Add(EnemyType.A_homingBullets, "k");
+            enemyLibrary.Add(EnemyType.A_heavyBeamer, "l");
+            enemyLibrary.Add(EnemyType.A_ballistic, "o");
+            enemyLibrary.Add(EnemyType.A_hangar, "p");
 
             //Point event
             pointLibrary.Add(PointEventType.point, "0");
@@ -163,74 +182,51 @@ namespace SpaceProject
         {
             switch (squareState)
             {
-                case EnemyType.none:
-                    return Color.White;
+                // Neutral (Shades of Gray?)
+                case EnemyType.none:                return Color.White;
+                case EnemyType.turret:              return Color.Black;
+                case EnemyType.meteor:              return Color.Gray;
+                case EnemyType.medium:              return Color.Orange;
 
-                case EnemyType.R_mosquito:
-                    return Color.Green;
+                case EnemyType.big_R:               return Color.Black;
+                case EnemyType.homingBullet_R:      return Color.Black;
+                case EnemyType.homingMissile_R:     return Color.Black;
+                case EnemyType.bigMissile_R:        return Color.Black;
+                case EnemyType.smallShooter_R:      return Color.Black;
 
-                case EnemyType.R_thickShooter:
-                    return Color.Red;
+                // Allies
+                case EnemyType.fighterAlly:         return new Color(200, 200, 255);
+                case EnemyType.freighterAlly:       return new Color(100, 100, 255);
 
-                case EnemyType.R_burster:
-                    return Color.Blue;
+                // Rebels
+                case EnemyType.R_mosquito:          return Color.Green;
+                case EnemyType.R_thickShooter:      return Color.Red;
+                case EnemyType.R_smallAttack:       return new Color(0, 0, 0);
+                case EnemyType.R_smallSniper:       return Color.Yellow;
 
-                case EnemyType.R_smallSniper:
-                    return Color.Yellow;
+                case EnemyType.R_burster:           return Color.Blue;                
+                case EnemyType.R_minelayer:         return new Color(80, 80, 80);
+                case EnemyType.R_lightMinelayer:    return Color.White;
+                case EnemyType.R_homingMissile:     return Color.White;
+                case EnemyType.R_bomber:            return Color.White;
 
-                case EnemyType.turret:
-                    return Color.Black;
+                case EnemyType.R_fatzo:             return Color.White;
+                case EnemyType.R_missileAttackShip: return new Color(0, 80, 0);
 
-                case EnemyType.R_medium:
-                    return Color.Orange;
+                // Alliance
+                case EnemyType.A_drone:             return new Color(0, 0, 80);
+                case EnemyType.A_smallLaserShip:    return new Color(0, 0, 80);
+                case EnemyType.A_singleHoming:      return Color.White;
 
-                case EnemyType.A_big_I:
-                    return Color.Purple;
+                case EnemyType.A_shielder:          return new Color(160, 80, 80);
+                case EnemyType.A_attackStealth:     return new Color(160, 160, 80);
+                case EnemyType.A_lightBeamer:       return Color.White;
+                case EnemyType.A_homingBullets:     return Color.White;
+                case EnemyType.A_ballistic:         return Color.White;
 
-                case EnemyType.meteor:
-                    return Color.Gray;
-
-                case EnemyType.A_homingBullet:
-                    return new Color(80, 10, 30);
-
-                case EnemyType.A_homingMissile:
-                    return new Color(10, 200, 150);
-
-                case EnemyType.A_bigMissile:
-                    return new Color(0, 0, 100);
-
-                case EnemyType.fighterAlly:
-                    return new Color(200, 200, 255);
-
-                case EnemyType.freighterAlly:
-                    return new Color(100, 100, 255);
-
-                case EnemyType.R_minelayer:
-                    return new Color(80, 80, 80);
-
-                case EnemyType.A_stealthShip:
-                    return new Color(80, 0, 0);
-
-                case EnemyType.A_smallShooter:
-                    return new Color(0, 0, 0);
-
-                case EnemyType.R_smallAttack:
-                    return new Color(0, 0, 0);
-
-                case EnemyType.R_missileAttackShip:
-                    return new Color(0, 80, 0);
-
-                case EnemyType.A_drone:
-                    return new Color(0, 0, 80);
-
-                case EnemyType.A_smallLaserShip:
-                    return new Color(0, 80, 80);
-
-                case EnemyType.A_shielder:
-                    return new Color(160, 80, 80);
-
-                case EnemyType.A_attackStealth:
-                    return new Color(160, 160, 80);
+                case EnemyType.A_stealthShip:       return new Color(80, 0, 0);
+                case EnemyType.A_heavyBeamer:       return Color.White;
+                case EnemyType.A_hangar:            return Color.White;
 
                 default:
                     throw new ArgumentException("Not-yet-implemented enemytype entered");
