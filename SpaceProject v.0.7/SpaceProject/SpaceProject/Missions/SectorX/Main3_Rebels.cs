@@ -13,6 +13,8 @@ namespace SpaceProject
         private enum EventID
         {
             Introduction,
+            Briefing,
+            Answer,
             FreighterStart,
             AllianceAttack,
             ArrivalAtSoelara
@@ -47,14 +49,26 @@ namespace SpaceProject
                 Game.stateManager.overworldState.GetPlanet("Highfence"));
 
             //OBJECTIVES
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
+            objectives.Add(new ResponseObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.GetPlanet("Highfence"),
-                new EventTextCapsule(GetEvent((int)EventID.Introduction), null, EventTextCanvas.BaseState)));
+                new ResponseTextCapsule(GetEvent((int)EventID.Introduction), GetAllResponses((int)EventID.Introduction),
+                    new List<System.Action>() 
+                    {
+                        delegate 
+                        {
+                            missionHelper.ShowEvent(GetEvent((int)EventID.Briefing));
+                        },
+                        delegate
+                        {
+                            missionHelper.ShowEvent(
+                                new List<EventText>() { GetEvent((int)EventID.Answer), GetEvent((int)EventID.Briefing) });
+                        }
+                    })));
 
             // Lots-of-paramaters-version of EscortObjective
             objectives.Add(new EscortObjective(Game,
                 this,
-                ObjectiveDescriptions[1], 
+                ObjectiveDescriptions[0], 
                 Game.stateManager.overworldState.GetStation("Soelara Station"),
                 new EscortDataCapsule(freighter1,
                     GetEvent((int)EventID.FreighterStart).Text, 
@@ -71,21 +85,7 @@ namespace SpaceProject
                     null,
                     EventTextCanvas.BaseState)));
 
-            // A-few-less-parameters-version of Escort Objective (just an example, will not be used in finished version of mission)
-            //objectives.Add(new EscortObjective(Game,
-            //    this,
-            //    ObjectiveDescriptions[2],
-            //    Game.stateManager.overworldState.GetPlanet("Highfence"),
-            //    new EscortDataCapsule(freighter2,
-            //        "Hello! Let's go back!",
-            //        Game.stateManager.overworldState.GetSectorX.shipSpawner.GetOverworldShips(5, "rebel"),
-            //        Game.stateManager.overworldState.GetStation("Soelara Station").position + new Vector2(200, -200),
-            //        new List<String> { "SecondMissionlvl3", "SecondMissionlvl2", "SecondMissionlvl1",
-            //            "SecondMissionlvl2", "SecondMissionlvl3" },
-            //        17500,
-            //        7500)));
-
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2],
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
                 Game.stateManager.overworldState.GetPlanet("Highfence")));
         }
 

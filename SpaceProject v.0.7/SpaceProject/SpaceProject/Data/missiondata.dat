@@ -52,7 +52,7 @@ NegResponse = ""
 Accept = ""
 FailText = ""
 EventText1 = "It's important that pirate attacks like this is reported to Highfence so the nearby stations better can protect themselves from future attacks. Go to Highfence and speak to the Alliance base there.
-Success = You report the pirate attack at the Alliance base and take the opportunity to ask them if there's any work to be had around Highfence.#"We do have a transport that requires another battle-able ship. Return here later if your interested in helping out." 
+Success = You report the pirate attack at the Alliance base and take the opportunity to ask the Alliance representative if there's any work to be had around Highfence.#"We do have a transport that requires another battle-able ship. Return here later if your interested in helping out." 
 ObjectiveCompleted = ""
 Fail = ""
 Reward = 100
@@ -61,6 +61,32 @@ Reputation = 3
 State = 0
 
 [SX_Main3_Rebels]
+Location = Highfence
+Name = Main - Rebels
+Introduction = "Welcome back! Are you interested in escorting our freighter?"
+ObjectiveText1 = Escort the freighter to Soelara Station
+ObjectiveText2 = Return to Highfence
+PosResponse = Yes
+NegResponse = Not right now
+Accept = "Good! Then you will recieve some further information: The freighter is traveling to Soelara Station and needs to be escorted the whole way there."
+FailText = ""
+EventText1 = "We recently recieved intel that leads us to believe the freighter has a high probability of being attacked by Rebels, which is why we need an extra pilot.
+EventText1Response1 = Let her continue
+EventText1Response2 = Ask what cargo the freighter is carrying
+EventText2 = "The freighter will be waiting for you in orbit of Highfence. Talk to the captain to begin the transit."
+EventText4 = "That information is classified." Her firm and shorthanded answer makes it clear this is not debatable.
+EventText3 = "Freighter captain: Let's go!"
+EventText5 = The transport seems to be going smoothly when suddenly a group of rebel ships appear on your radar. Better prepare for battle!
+EventText6 = When you arrive at Soelara Station a group of Alliance soldiers quickly unload the cargo. One of the soldiers, probably an officier, takes up word.#"Thank you for you help! We have it covered from here, return to our base at Highfence and you will get your payment there!"
+ObjectiveCompleted = You safely escorted the freighter from Highfence to Soelara Station.
+Success = "Good job!"
+Fail = ""
+Reward = 300
+Progress = 2
+Reputation = 5
+State = 0
+
+[Old second mission]
 Location = Highfence
 Name = Main - Rebels
 Introduction = "Let's try this again. Are you ready?"
