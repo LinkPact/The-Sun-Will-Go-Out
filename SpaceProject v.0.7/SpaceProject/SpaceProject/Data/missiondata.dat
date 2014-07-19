@@ -1,7 +1,7 @@
 [SX_JakobTest1]
 Location = Peye
 Name = Death by Meteor
-Introduction = "Welcome soon-to-be-dead pilot! Our insane map-engineer has engineered a killer-fleet meant to be able to bring down the most skilled of pilots. Many brave pilots have tried, few have survived, even fewer are fit enough to tell the tale. Are you ready to take on the challenge?"
+Introduction = "Welcome soon-to-be-dead pilot! Our insane map-engineer has engineered a killer-fleet simulation meant to be able to bring down the most skilled of pilots. Many brave pilots have tried, few have survived, even fewer are fit enough to tell the tale. Are you ready to take on the challenge?"
 ObjectiveText1 = 1
 ObjectiveText2 = 2
 PosResponse = Let's drop meteors on our heads!

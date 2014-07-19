@@ -758,9 +758,14 @@ namespace SpaceProject
         
         public void Load()
         {
+            shipItems.Clear();
+            equippedPrimaryWeapons.Clear();
+            equippedEnergyCell = null;
+            equippedShield = emptyShield;
+            equippedPlating = null;
+            
             // Load inventory
             int count = Game.saveFile.GetPropertyAsInt("shipitems", "count", 0);
-            shipItems.Clear();
 
             for (int i = 0; i < count; i++)
             {

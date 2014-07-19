@@ -79,7 +79,9 @@ namespace SpaceProject
 
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AstroDodger", "XAstroDodger", MissionType.dark));
 
-            levels.Add(new FirstMissionLevel(Game, spriteSheet, player, "FirstMissionLevel", "XFirstMission", MissionType.none));
+            //levels.Add(new FirstMissionLevel(Game, spriteSheet, player, "FirstMissionLevel", "XFirstMission", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "ScoutingLevel", "XScoutingLevel", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "PirateAmbush", "XPirateAmbush", MissionType.pirate));
             levels.Add(new SecondMissionLevel(Game, spriteSheet, player, "SecondMissionlvl1", "XSecondMissionlvl3", MissionType.rebel));
             levels.Add(new SecondMissionLevel(Game, spriteSheet, player, "SecondMissionlvl2", "XSecondMissionlvl2", MissionType.rebel));
             levels.Add(new SecondMissionLevel(Game, spriteSheet, player, "SecondMissionlvl3", "XSecondMissionlvl1", MissionType.rebel));
