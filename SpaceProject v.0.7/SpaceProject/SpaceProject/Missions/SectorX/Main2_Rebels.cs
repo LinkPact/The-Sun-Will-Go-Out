@@ -72,22 +72,21 @@ namespace SpaceProject
                     EventTextCanvas.BaseState)));
 
             // A-few-less-parameters-version of Escort Objective (just an example, will not be used in finished version of mission)
-            objectives.Add(new EscortObjective(Game,
-                this,
-                ObjectiveDescriptions[2],
-                Game.stateManager.overworldState.GetPlanet("Highfence"),
-                new EscortDataCapsule(freighter2,
-                    "Hello! Let's go back!",
-                    Game.stateManager.overworldState.GetSectorX.shipSpawner.GetOverworldShips(5, "rebel"),
-                    Game.stateManager.overworldState.GetStation("Soelara Station").position + new Vector2(200, -200),
-                    new List<String> { "SecondMissionlvl3", "SecondMissionlvl2", "SecondMissionlvl1",
-                        "SecondMissionlvl2", "SecondMissionlvl3" },
-                    17500,
-                    7500)));
+            //objectives.Add(new EscortObjective(Game,
+            //    this,
+            //    ObjectiveDescriptions[2],
+            //    Game.stateManager.overworldState.GetPlanet("Highfence"),
+            //    new EscortDataCapsule(freighter2,
+            //        "Hello! Let's go back!",
+            //        Game.stateManager.overworldState.GetSectorX.shipSpawner.GetOverworldShips(5, "rebel"),
+            //        Game.stateManager.overworldState.GetStation("Soelara Station").position + new Vector2(200, -200),
+            //        new List<String> { "SecondMissionlvl3", "SecondMissionlvl2", "SecondMissionlvl1",
+            //            "SecondMissionlvl2", "SecondMissionlvl3" },
+            //        17500,
+            //        7500)));
 
-            // Temporarily commented out - don't delete!
-            //objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2],
-            //    Game.stateManager.overworldState.getPlanet("Highfence")));
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2],
+                Game.stateManager.overworldState.GetPlanet("Highfence")));
         }
 
         public override void StartMission()

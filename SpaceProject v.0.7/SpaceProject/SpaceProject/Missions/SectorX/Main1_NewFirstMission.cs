@@ -60,14 +60,14 @@ namespace SpaceProject
 
             Objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
-                "FirstMissionLevel", LevelStartCondition.Immediately,
+                "ScoutingLevel", LevelStartCondition.Immediately,
                 new EventTextCapsule(GetEvent((int)EventID.PirateAttack),
                     null,
                     EventTextCanvas.MessageBox)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
-                "PirateLevel7", LevelStartCondition.Immediately,
+                "PirateAmbush", LevelStartCondition.Immediately,
                 new EventTextCapsule(
                     GetEvent((int)EventID.ReturnToBorder),
                     null,
@@ -103,14 +103,14 @@ namespace SpaceProject
                         && !followUsDisplayed)
                     {
                         followUsDisplayed = true;
-                        Game.messageBox.DisplayMessage("Follow us!", 100);
+                        Game.messageBox.DisplayMessage("Mercenary ships: Follow us!", 100);
                     }
 
                     if (!CollisionDetection.IsPointInsideCircle(Game.player.position, ally1.position, 600) &&
                         outOfRangeTimer <= 0)
                     {
                         outOfRangeTimer = 150;
-                        Game.messageBox.DisplayMessage("Keep close to us!");
+                        Game.messageBox.DisplayMessage("Mercenary ships: Keep close to us!");
                         ally1.Wait();
                         ally2.Wait();
                         ally3.Wait();
