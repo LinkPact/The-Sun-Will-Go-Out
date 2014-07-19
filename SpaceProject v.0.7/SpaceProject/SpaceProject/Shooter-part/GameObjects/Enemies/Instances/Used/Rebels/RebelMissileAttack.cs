@@ -26,8 +26,8 @@ namespace SpaceProject
 
             lootValue = LootValue.veryHigh;
 
-            shootingDelay = 500;
-            lastTimeShot = shootingDelay * random.NextDouble();
+            SetShootingDelay(500);
+            ChargeWeapon(ChargeMode.randomCharge);
 
             Damage = 100;
             Speed = 0.04f;

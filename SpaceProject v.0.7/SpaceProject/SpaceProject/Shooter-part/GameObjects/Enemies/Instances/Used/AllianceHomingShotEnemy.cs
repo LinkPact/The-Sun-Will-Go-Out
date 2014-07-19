@@ -70,7 +70,6 @@ namespace SpaceProject
             }
         }
 
-        //Hanterar "shooting"
         private void HandleShooting(GameTime gameTime)
         {
             lastTimeShot += gameTime.ElapsedGameTime.Milliseconds;

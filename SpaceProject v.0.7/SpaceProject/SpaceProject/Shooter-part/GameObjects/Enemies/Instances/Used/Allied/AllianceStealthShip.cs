@@ -41,7 +41,8 @@ namespace SpaceProject
             lootValue = LootValue.veryHigh;
 
             //Shooting
-            shootingDelay = 250;
+            SetShootingDelay(3000);
+            ChargeWeapon(ChargeMode.noCharge);
 
             //Egenskaper
             SightRange = 4000;

@@ -29,9 +29,8 @@ namespace SpaceProject
 
             lootValue = LootValue.veryLow;
 
-            //Shooting
-            shootingDelay = 3000;
-            lastTimeShot = shootingDelay * random.NextDouble();
+            SetShootingDelay(3000);
+            ChargeWeapon(ChargeMode.randomCharge);
 
             //Egenskaper
             SightRange = 500;
@@ -66,7 +65,7 @@ namespace SpaceProject
         {
             if (!IsKilled)
             {
-                if (lastTimeShot >= shootingDelay - 1000 && ShootObject != null)
+                if (lastTimeShot >= ShootingDelay - 1000 && ShootObject != null)
                     spriteBatch.Draw(shooting.CurrentFrame.Texture, Position, shooting.CurrentFrame.SourceRectangle, Color.White, 0.0f, CenterPoint, 1.0f, SpriteEffects.None, DrawLayer);
                 else
                 {
@@ -77,7 +76,7 @@ namespace SpaceProject
 
         private void UpdateAnimation(GameTime gameTime)
         {
-            if (lastTimeShot >= shootingDelay - 1000)
+            if (lastTimeShot >= ShootingDelay - 1000)
                 shooting.Update(gameTime);
             
         }

@@ -27,11 +27,8 @@ namespace SpaceProject
 
                 String currentLine;
 
-
                 while ((currentLine = reader.ReadLine()) != null)
                 {
-                    
-                    
                     parsedCorrectly = Parse(currentLine);
 
                     if (parsedCorrectly == false)

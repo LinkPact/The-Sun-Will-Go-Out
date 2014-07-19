@@ -33,9 +33,8 @@ namespace SpaceProject
 
             lootValue = LootValue.high;
 
-            //Shooting
-            shootingDelay = 1500;
-            lastTimeShot = shootingDelay * random.NextDouble();
+            SetShootingDelay(1500);
+            ChargeWeapon(ChargeMode.randomCharge);
 
             //Egenskaper
             SightRange = 1000;

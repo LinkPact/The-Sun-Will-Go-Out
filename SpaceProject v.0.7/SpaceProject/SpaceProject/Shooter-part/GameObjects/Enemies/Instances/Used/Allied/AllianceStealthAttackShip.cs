@@ -33,8 +33,6 @@ namespace SpaceProject
             fraction = Fraction.alliance;
             stealthOn = true;
             transparency = stealthLevel;
-
-            //ShieldSetup(CreatureShieldCapacity.high, CreatureShieldRegeneration.high);
         }
 
         public override void Initialize()
@@ -44,8 +42,8 @@ namespace SpaceProject
             lootValue = LootValue.medium;
 
             //Shooting
-            shootingDelay = 1500;
-            lastTimeShot = shootingDelay;
+            SetShootingDelay(1500);
+            ChargeWeapon(ChargeMode.fullCharge);
 
             //Egenskaper
             SightRange = 300;

@@ -9,10 +9,6 @@ namespace SpaceProject
 {
     class BigYellowEnemy : ShootingEnemyShip
     {
-        //private double lastBatch;
-        //private double batchDelay;
-        //private int shotsInBatch;
-
         private Animation shooting;
 
         public BigYellowEnemy(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
@@ -26,10 +22,8 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            //Shooting
-            shootingDelay = 70;
-            lastTimeShot = shootingDelay * random.NextDouble();
-
+            SetShootingDelay(70);
+            ChargeWeapon(ChargeMode.randomCharge);
             ShootsInBatches(5, 2000);
 
             //Egenskaper
@@ -60,7 +54,7 @@ namespace SpaceProject
         {
             if (!IsKilled)
             {
-                if (lastTimeShot >= shootingDelay - 1000 && ShootObject != null)
+                if (lastTimeShot >= ShootingDelay - 1000 && ShootObject != null)
                     spriteBatch.Draw(shooting.CurrentFrame.Texture, Position, shooting.CurrentFrame.SourceRectangle, Color.White, 0.0f, CenterPoint, 1.0f, SpriteEffects.None, DrawLayer);
                 else
                 {
@@ -71,7 +65,7 @@ namespace SpaceProject
 
         private void UpdateAnimation(GameTime gameTime)
         {
-            if (lastTimeShot >= shootingDelay - 1000)
+            if (lastTimeShot >= ShootingDelay - 1000)
                 shooting.Update(gameTime);
         }
 

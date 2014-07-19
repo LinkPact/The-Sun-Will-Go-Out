@@ -17,12 +17,19 @@ namespace SpaceProject
             Single
         }
 
+        public enum ChargeMode
+        { 
+            noCharge,
+            fullCharge,
+            randomCharge
+        }
+
         protected ShootingMode shootingMode = ShootingMode.Regular;
         
         protected double lastTimeShot;
 
-        protected double shootingDelay;
-        public double ShootingDelay { get { return shootingDelay; } set { shootingDelay = value; } }
+        private double shootingDelay;
+        public double ShootingDelay { get { return shootingDelay; } }
         
         private int shotsInBatch;
         private int batchSize;
@@ -48,9 +55,17 @@ namespace SpaceProject
             ObjectSubClass = "shooting";
         }
 
-        public void setShootingDelay(int newDelay)
+        public void SetShootingDelay(int newDelay)
         {
             shootingDelay = newDelay;
+        }
+
+        public void ChargeWeapon(ChargeMode chargeMode)
+        {
+            if (chargeMode == ChargeMode.fullCharge)
+                lastTimeShot = shootingDelay;
+            else if (chargeMode == ChargeMode.randomCharge)
+                lastTimeShot = shootingDelay * random.NextDouble();
         }
 
         public override void Update(GameTime gameTime)

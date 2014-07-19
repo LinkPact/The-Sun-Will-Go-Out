@@ -35,9 +35,9 @@ namespace SpaceProject
             lootValue = LootValue.medium;
 
             //Shooting
-            shootingDelay = 1000;
-            lastTimeShot = shootingDelay * random.NextDouble();
-
+            SetShootingDelay(1000);
+            ChargeWeapon(ChargeMode.randomCharge);
+            
             //Egenskaper
             SightRange = 400;
             HP = 200.0f;
@@ -52,19 +52,6 @@ namespace SpaceProject
             
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
 
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            if (!IsKilled)
-            {
-                base.Draw(spriteBatch);
-            }
         }
 
         protected override void ShootingPattern(GameTime gameTime)

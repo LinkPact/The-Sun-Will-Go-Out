@@ -31,9 +31,8 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            //Shooting
-            shootingDelay = 2000;
-            lastTimeShot = shootingDelay * random.NextDouble();
+            SetShootingDelay(2000);
+            ChargeWeapon(ChargeMode.randomCharge);
 
             //Egenskaper
             SightRange = 400;

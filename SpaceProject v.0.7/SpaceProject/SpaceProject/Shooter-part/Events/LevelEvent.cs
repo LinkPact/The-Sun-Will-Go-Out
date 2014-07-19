@@ -337,7 +337,7 @@ namespace SpaceProject
                     }
                 case EnemyType.A_singleHoming:
                     {
-                        creature = new AllianceSingleHoming_placeholder(Game, spriteSheet, player);
+                        creature = new AllianceSingleHoming(Game, spriteSheet, player);
                         break;
                     }
 
@@ -358,7 +358,7 @@ namespace SpaceProject
                     }
                 case EnemyType.A_homingBullets:
                     {
-                        creature = new AllianceHomingBullets_placeholder(Game, spriteSheet, player);
+                        creature = new AllianceHomingBullets(Game, spriteSheet, player);
                         break;
                     }
 
@@ -510,11 +510,11 @@ namespace SpaceProject
                     creature.SetMovement(setupCreature.newMovement);
                 }
 
-                if (creature.ObjectSubClass != null)
-                {
-                    if (creature.ObjectSubClass.Equals("shooting"))
-                        ((ShootingEnemyShip)creature).ShootingDelay *= setupCreature.shootDelayFactor;
-                }
+                //if (creature.ObjectSubClass != null)
+                //{
+                //    if (creature.ObjectSubClass.Equals("shooting"))
+                //        ((ShootingEnemyShip)creature).ShootingDelay *= setupCreature.shootDelayFactor;
+                //}
             }
 
             //Extra logic for allys
