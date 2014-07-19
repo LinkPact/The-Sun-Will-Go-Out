@@ -78,7 +78,6 @@ namespace SpaceProject
         {
             if (lastTimeShot >= ShootingDelay - 1000)
                 shooting.Update(gameTime);
-            
         }
 
         protected override void ShootingPattern(GameTime gameTime)

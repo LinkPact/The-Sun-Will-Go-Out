@@ -282,12 +282,12 @@ namespace SpaceProject
 
                 case EnemyType.R_lightMinelayer:
                     {
-                        creature = new RebelLightMinelayer_placeholder(Game, spriteSheet, player);
+                        creature = new RebelLightMinelayer(Game, spriteSheet, player);
                         break;
                     }
                 case EnemyType.R_homingMissile:
                     {
-                        creature = new RebelHomingMissile_placeholder(Game, spriteSheet, player);
+                        creature = new RebelHomingMissile(Game, spriteSheet, player);
                         break;
                     }
                 case EnemyType.R_bomber:

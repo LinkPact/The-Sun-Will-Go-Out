@@ -114,10 +114,6 @@ namespace SpaceProject
             gameObjects.Clear();
             backgroundObjects.Clear();
 
-            // Removed by Jakob 140701, kill after two weeks
-            //if (!gameObjects.Contains(player))
-            //    gameObjects.Add(player);
-
             foreach (GameObjectVertical obj in gameObjects)
                 obj.Initialize();
             //-------------
@@ -299,7 +295,7 @@ namespace SpaceProject
                     else if(GlobalMathFunctions.IsOneOfType<AreaShieldCollision>(obj1.AreaCollision, obj2.AreaCollision)
                             && GlobalMathFunctions.IsOneOfType<PlayerBullet>(obj1, obj2))
                     {
-                        pixelCollisionNeedsEvaluation = PerformAreaCollision(obj1, obj2);
+                        pixelCollisionNeedsEvaluation = PerformShieldAreaCollision(obj1, obj2);
                     }
                     
                     if (pixelCollisionNeedsEvaluation)
@@ -339,7 +335,7 @@ namespace SpaceProject
             }
         }
 
-        private Boolean PerformAreaCollision(GameObjectVertical obj1, GameObjectVertical obj2)
+        private Boolean PerformShieldAreaCollision(GameObjectVertical obj1, GameObjectVertical obj2)
         {
             if (obj1.HasAreaCollision() && obj2.HasAreaCollision())
                 return false;

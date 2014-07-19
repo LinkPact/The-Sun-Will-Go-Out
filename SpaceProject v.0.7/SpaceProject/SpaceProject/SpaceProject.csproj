@@ -450,10 +450,10 @@
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceBallistic_placeholder.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceHangar_placeholder.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceLightBeamer_placeholder.cs" />
-    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelLightMinelayer_placeholder.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelLightMinelayer.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelFatzo_placeholder.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelBomber_placeholder.cs" />
-    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelHomingMissile_placeholder.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelHomingMissile.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelMissileAttack.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelSmallAttackShip.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceSmallShooter.cs" />

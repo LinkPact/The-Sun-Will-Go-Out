@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    class RebelMinelayer : ShootingEnemyShip
+    class RebelLightMinelayer : ShootingEnemyShip
     {
-        public RebelMinelayer(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
+        public RebelLightMinelayer(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
         {
             Setup();
         }
 
-        public RebelMinelayer(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player, Movement movement) :
+        public RebelLightMinelayer(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player,
+            Movement movement) :
             base(Game, spriteSheet, player)
         {
             Setup();
@@ -31,25 +31,24 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            lootValue = LootValue.high;
+            lootValue = LootValue.medium;
 
-            SetShootingDelay(1500);
+            SetShootingDelay(900);
             ChargeWeapon(ChargeMode.randomCharge);
 
             //Egenskaper
-            SightRange = 1000;
-            HP = 400.0f;
-            Damage = 130;
-            Speed = 0.05f;
+            SightRange = 4000;
+            HP = 200;
+            Damage = 40;
+            Speed = 0.15f;
 
-            movement = Movement.Zigzag;
+            movement = Movement.SlantingLine;
 
             //Animationer
             anim.LoopTime = 500;
-            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(320, 80, 54, 38)));
+            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(340, 400, 32, 38)));
 
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
-
         }
 
         protected override void ShootingPattern(GameTime gameTime)

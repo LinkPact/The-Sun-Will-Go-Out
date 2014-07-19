@@ -10,11 +10,7 @@ namespace SpaceProject
     //Represent homing enemy bullet
     public class EnemyHomingMissileBullet : EnemyBullet
     {
-
-        //public int duration;
         private PlayerVerticalShooter player;
-
-        //private float turningSpeed;
 
         public EnemyHomingMissileBullet(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet)
@@ -42,7 +38,6 @@ namespace SpaceProject
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(42, 0, 7, 22)));
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(49, 0, 7, 22)));
 
-            //Bounding = new Rectangle(0, 24, 2, 8);
             Bounding = new Rectangle((int)PositionX, (int)PositionY, anim.CurrentFrame.Width, anim.CurrentFrame.Height);
 
             BoundingSpace = 0;
@@ -50,24 +45,7 @@ namespace SpaceProject
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
 
             SightRange = 200;
-            //FollowObject = player;
         }
-
-        //public override void Update(GameTime gameTime)
-        //{
-        //    base.Update(gameTime);
-        //
-        //    duration -= gameTime.ElapsedGameTime.Milliseconds;
-        //
-        //    if (duration <= 0)
-        //        IsKilled = true;
-        //}
-
-        //private void UpdateFollowObject()
-        //{
-        //    Direction = ChangeDirection(Direction, Position, player.Position, turningSpeed);
-        //    Direction = GlobalFunctions.ScaleDirection(Direction);
-        //}
 
         public override void Draw(SpriteBatch spriteBatch)
         {

@@ -29,5 +29,10 @@ namespace SpaceProject
         {
             Speed += ((float)random.NextDouble()) * 1.0f * Speed - 0.5f * Speed;
         }
+
+        public void SetDirectionAgainstTarget(GameObjectVertical shooter, GameObjectVertical target)
+        {
+            Direction = GlobalMathFunctions.ScaleDirection(target.Position - shooter.Position);
+        }
     }
 }
