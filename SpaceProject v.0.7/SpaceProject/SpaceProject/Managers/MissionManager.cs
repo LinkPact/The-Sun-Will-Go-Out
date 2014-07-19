@@ -19,13 +19,13 @@ namespace SpaceProject
 
         //Missions
         // Sector X
-        private static TutorialMission tutorialMission;
-        private static NewFirstMission newFirstMission;
+        private static TutorialMission mainTutorialMission;
+        private static NewFirstMission mainNewFirstMission;
+        private static Main2_Highfence mainHighfence;
+        private static Main3_Rebels mainRebels;
         private static DebtCollection debtCollection;
         private static AstroDodger astroDodger;
         private static DefendColony defendColony;
-        private static Main1_AColdWelcome aColdWelcome;
-        private static Main2_Rebels rebels;
         private static Main3_TheAlliance theAlliance;
         private static AstroScan astroScan;
         private static DeathByMeteorMission deathByMeteor;
@@ -37,6 +37,7 @@ namespace SpaceProject
         //private static FinalMission finalMission;
         //private static MainMissionOne mainMission1;
         //private static MidMissionAlliance midMissionAlliance;
+        //private static Main1_AColdWelcome aColdWelcome;
 
         private static List<string> missionEventBuffer = new List<string>();
         private static List<string> missionResponseBuffer = new List<string>();
@@ -69,15 +70,25 @@ namespace SpaceProject
 
             #region Sector X
 
-            // Tutorial Mission
-            tutorialMission = new TutorialMission(game, "SX_TutorialMission", null);
-            tutorialMission.Initialize();
-            missions.Add(tutorialMission);
+            // Main 0 - Tutorial Mission
+            mainTutorialMission = new TutorialMission(game, "SX_Main0_TutorialMission", null);
+            mainTutorialMission.Initialize();
+            missions.Add(mainTutorialMission);
 
-            // New First Mission
-            newFirstMission = new NewFirstMission(game, "SX_NewFirstMission", missionObjectSpriteSheet);
-            newFirstMission.Initialize();
-            missions.Add(newFirstMission);
+            // Main 1 - New First Mission
+            mainNewFirstMission = new NewFirstMission(game, "SX_Main1_NewFirstMission", missionObjectSpriteSheet);
+            mainNewFirstMission.Initialize();
+            missions.Add(mainNewFirstMission);
+
+            // Main 2 - Highfence
+            mainHighfence = new Main2_Highfence(game, "SX_Main2_Highfence", null);
+            mainHighfence.Initialize();
+            missions.Add(mainHighfence);
+
+            // Main 3 - Rebels
+            mainRebels = new Main3_Rebels(game, "SX_Main3_Rebels", null);
+            mainRebels.Initialize();
+            missions.Add(mainRebels);
 
             //DebtCollection
             debtCollection = new DebtCollection(game, "SX_DebtCollection", null);
@@ -93,16 +104,6 @@ namespace SpaceProject
             defendColony = new DefendColony(game, "SX_DefendColony", null);
             defendColony.Initialize();
             missions.Add(defendColony);
-
-            // First Mission
-            aColdWelcome = new Main1_AColdWelcome(game, "SX_AColdWelcome", missionObjectSpriteSheet);
-            aColdWelcome.Initialize();
-            missions.Add(aColdWelcome);
-
-            // Second Mission
-            rebels = new Main2_Rebels(game, "SX_Rebels", null);
-            rebels.Initialize();
-            missions.Add(rebels);
 
             // Third Mission
             theAlliance = new Main3_TheAlliance(game, "SX_TheAlliance", null);
@@ -151,6 +152,11 @@ namespace SpaceProject
             //midMissionRebel = new MidMissionRebel(game, "SX_MidMission_Rebel", null);
             //midMissionRebel.Initialize();
             //missions.Add(midMissionRebel);
+
+            // First Mission
+            //aColdWelcome = new Main1_AColdWelcome(game, "SX_AColdWelcome", missionObjectSpriteSheet);
+            //aColdWelcome.Initialize();
+            //missions.Add(aColdWelcome);
             #endregion
 
             RefreshLists();
@@ -474,8 +480,8 @@ namespace SpaceProject
             //    MarkMissionAsCompleted("Main - A Cold Welcome");
             //}
 
-            if (tutorialMission.MissionState == StateOfMission.CompletedDead
-                && newFirstMission.MissionState == StateOfMission.Unavailable)
+            if (mainTutorialMission.MissionState == StateOfMission.CompletedDead
+                && mainNewFirstMission.MissionState == StateOfMission.Unavailable)
             {
                 UnlockMission("Main - New First Mission");
                 MarkMissionAsActive("Main - New First Mission");
@@ -489,7 +495,7 @@ namespace SpaceProject
                 game.messageBox.DisplayMessage("Hyper speed unlocked! Hold down '" + ControlManager.GetKeyName(RebindableKeys.Action3) + "' to use.");
             }
 
-            if (newFirstMission.MissionState != StateOfMission.CompletedDead)
+            if (mainNewFirstMission.MissionState != StateOfMission.CompletedDead)
             {
                 if (StatsManager.gameMode != GameMode.develop)
                 {
@@ -515,25 +521,25 @@ namespace SpaceProject
             }
 
             // Unlock missions
-            if (MissionManager.newFirstMission.MissionState == StateOfMission.CompletedDead &&
-                MissionManager.rebels.MissionState == StateOfMission.Unavailable)
+            if (MissionManager.mainNewFirstMission.MissionState == StateOfMission.CompletedDead &&
+                MissionManager.mainHighfence.MissionState == StateOfMission.Unavailable)
             {
-                UnlockMission("Main - Rebels");
+                UnlockMission("Main - Highfence");
                 UnlockMission("Flight Training");
             }
 
-            if (MissionManager.rebels.MissionState == StateOfMission.CompletedDead &&
-                MissionManager.theAlliance.MissionState == StateOfMission.Unavailable)
+            if (MissionManager.mainHighfence.MissionState == StateOfMission.CompletedDead &&
+                MissionManager.mainRebels.MissionState == StateOfMission.Unavailable)
             {
-                UnlockMission("Main - The Alliance");
+                UnlockMission("Main - Rebels");
             }
 
             // Start second mission after first is completed
-            if (MissionManager.newFirstMission.MissionState == StateOfMission.CompletedDead &&
-                MissionManager.rebels.MissionState == StateOfMission.Available &&
-                GameStateManager.currentState == "OverworldState")
+            if (MissionManager.mainNewFirstMission.MissionState == StateOfMission.CompletedDead &&
+                MissionManager.mainHighfence.MissionState == StateOfMission.Available &&
+                mainHighfence.MissionHelper.IsPlayerOnStation("Border Station"))
             {
-                MissionManager.MarkMissionAsActive("Main - Rebels");
+                MissionManager.MarkMissionAsActive("Main - Highfence");
             }
 
         }

@@ -28,7 +28,7 @@ namespace SpaceProject
             sprite = spriteSheet.GetSubSprite(new Rectangle(48, 200, 23, 28));
             viewRadius = 300;
             position = new Vector2(0,0);
-            speed = 0.35f;
+            speed = 0.5f;
 
             centerPoint = new Vector2(sprite.SourceRectangle.Value.Width / 2, sprite.SourceRectangle.Value.Height / 2);
             color = Color.White;
@@ -103,7 +103,7 @@ namespace SpaceProject
 
         public void Start()
         {
-            speed = 0.35f;
+            speed = 0.5f;
             destination = tempDestination;
         }
 

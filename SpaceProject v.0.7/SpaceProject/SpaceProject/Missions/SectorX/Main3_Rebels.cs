@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
-    public class Main2_Rebels : Mission
+    public class Main3_Rebels : Mission
     {
         private enum EventID
         {
@@ -23,7 +23,7 @@ namespace SpaceProject
         private float freighterHP;
         public float GetFreighterHP { get { return freighterHP; } }
 
-        public Main2_Rebels(Game1 Game, string section, Sprite spriteSheet) :
+        public Main3_Rebels(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
         }
