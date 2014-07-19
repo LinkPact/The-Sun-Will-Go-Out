@@ -285,7 +285,7 @@ namespace SpaceProject
                               true,
                               "Back"));
 
-                        if (selectedMission == MissionManager.GetMission("Tutorial Mission")
+                        if (selectedMission == MissionManager.GetMission("Main - Tutorial Mission")
                             && MissionManager.GetMission("Main - New First Mission").MissionState == StateOfMission.Unavailable)
                         {
                             MissionManager.UnlockMission("Main - New First Mission");

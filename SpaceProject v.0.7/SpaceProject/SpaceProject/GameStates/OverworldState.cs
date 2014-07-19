@@ -192,7 +192,7 @@ namespace SpaceProject
                 //MissionManager.MarkMissionAsActive("Main - A Cold Welcome");
                 Game.stateManager.GotoStationSubScreen("Border Station", "Mission");
 
-                Game.stateManager.stationState.SubStateManager.MissionMenuState.SelectedMission = MissionManager.GetMission("Tutorial Mission");
+                Game.stateManager.stationState.SubStateManager.MissionMenuState.SelectedMission = MissionManager.GetMission("Main - Tutorial Mission");
                 Game.stateManager.stationState.SubStateManager.MissionMenuState.DisplayMissionIntroduction();
             }
 
@@ -549,12 +549,12 @@ namespace SpaceProject
                         Game.helper.DisplayText("Press 'Enter' to dock with mothership.");
                     }
 
-                    else if (deepSpaceGameObjects[i] is Battlefield &&
-                        MissionManager.GetMission("Main - A Cold Welcome").GetProgress().Equals(2))
-                    {
-                        CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, deepSpaceGameObjects[i]);
-                        Game.helper.DisplayText("Press 'Enter' to investigate battlefield.");
-                    }
+                    //else if (deepSpaceGameObjects[i] is Battlefield &&
+                    //    MissionManager.GetMission("Main - A Cold Welcome").GetProgress().Equals(2))
+                    //{
+                    //    CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, deepSpaceGameObjects[i]);
+                    //    Game.helper.DisplayText("Press 'Enter' to investigate battlefield.");
+                    //}
                 }
             }
         }

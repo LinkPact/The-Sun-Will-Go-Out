@@ -87,7 +87,7 @@ namespace SpaceProject
             }
 
             if (!hasEnteredSectorX &&
-                    MissionManager.GetMission("Main - A Cold Welcome").MissionState == StateOfMission.CompletedDead)
+                    MissionManager.GetMission("Main - New First Mission").MissionState == StateOfMission.CompletedDead)
             {
                 if (CollisionDetection.IsRectInRect(game.player.Bounds,
                     game.stateManager.overworldState.GetSectorX.SpaceRegionArea) &&

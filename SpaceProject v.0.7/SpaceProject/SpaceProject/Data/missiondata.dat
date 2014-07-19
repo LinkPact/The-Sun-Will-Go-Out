@@ -1,3 +1,88 @@
+[SX_Main0_TutorialMission]
+Location = Border Station
+Name = Main - Tutorial Mission
+Introduction = "Hello and welcome to MineCorp! We strongly recommend that you run a few training sessions in our simulator before continuing with your assignment. What do you say?
+ObjectiveText1 = Return to the Border Station at coordinates (1840, 130) for further information.
+PosResponse = You decide it couldn't hurt to refresh your memory.
+NegResponse = Boring! Give me some action!
+Accept = "Good choice. Maybe you will have a chance in this world."#"The first part is simple. There will be a few enemies, but it should me manageble. Avoid them, shoot them down, just don't run into them. If you take some hits, try to avoid them for a while until your shields are up again."#"Leave this station to start the mission. Come back here when you have finished it."
+FailText = "FAIL"
+EventText1 = "Good job! Quick and easy was it, eh? But that was just the warmup. The next one should be a bit more challenging.#Here, you get a chance to train your agility. Sometimes there just are too many enemies to handle. What do you do then, you think? Fight even harder?#No, stupid. You avoid the danger. Circle around the enemies, occationally shooting down some of them. Your business is to survive, not to be some kind of killer-maniac. Most of the time, that is. Let's go!"
+EventText2 = "Good job! A few scratches there, or is it just my old eyes? I couldn't resist, adding those last meteors. An old geezer like me has to have some fun.. Sorry, where where we? Right. The last mission.#I'm sure your trigger finger is itching after that last mission. In this last mission there is actually some point in shooting down the enemies as quick as possible. If you don't they'll shoot you down.#Not so cocky now, are you? I'll tell you, it is your lucky day! Two of my other promising students are preparing to run the mission right now. After all, you need to be able cooperate to survive in this harsh world. Enough talking, fire away!"
+Success = "I must say, I am quite proud of you. You remind me of my son Ben. He also was a brave and proud young pilot ready to take on the world. He is very dead now. Don't end up like him. Be careful."#"Here, take this weapon. Used right, it might give you an edge against those rebel-pests."
+Fail = "Was that the best you got? I must say, I am a bit disappointed. You will not survive long in this world of you don't take it more seriously. But, generous as I am, I welcome you to come back later and try again."
+Reward = 200
+Progress = 1
+Reputation = 0
+State = 1
+
+[SX_Main1_NewFirstMission]
+Location = Border Station
+Name = Main - New First Mission
+Introduction = text
+ObjectiveText1 = Go to asteroids at Mining Outpost
+ObjectiveText2 = Return to Border Station at coordinates (1840, 130).
+ObjectiveText3 = Return to Border Station at coordinates (1840, 130).
+PosResponse = ""
+NegResponse = ""
+Accept = ""
+FailText = ""
+EventText1 = "Hello! We recently lost contact with a nearby mining station at Mining Outpost. I fear pirates have tried to take over the station! Search the asteroids nearby the mining station for any pirate activity."
+EventText2 = You arrive at the asteroids and begin scouting for pirates
+EventText3 = Suddenly a group of pirates attack!
+EventText4 = Barely escaping the pirate ambush, you decide to return to Border Station and request backup.
+EventText5 = "So it WAS pirates! Don't worry, I will dispatch a squad of my more experienced pilots to follow you back. With their help, we should be able to get rid of the pirates easily."
+EventText6 = You quickly find the pirates. You and your allies engage them.
+EventText7 = The pirates were no match for your superior ships. You decide to return to Border Station and report your success.
+Success = "Good job! Now, about those potatoes.."
+ObjectiveCompleted = You investigated the battlefield for resources. 
+Fail = ""
+Reward = 100
+Progress = 2
+Reputation = 3
+State = 0
+
+[SX_Main2_Highfence]
+Location = Highfence
+Name = Main - Highfence
+Introduction = text
+ObjectiveText1 = Go to Highfence at coordinates (0,0) and report the pirate attack. 
+PosResponse = ""
+NegResponse = ""
+Accept = ""
+FailText = ""
+EventText1 = "It's important that pirate attacks like this is reported to Highfence so the nearby stations better can protect themselves from future attacks. Go to Highfence and speak to the Alliance base there.
+Success = You report the pirate attack at the Alliance base and take the opportunity to ask them if there's any work to be had around Highfence.#"We do have a transport that requires another battle-able ship. Return here later if your interested in helping out." 
+ObjectiveCompleted = ""
+Fail = ""
+Reward = 100
+Progress = 2
+Reputation = 3
+State = 0
+
+[SX_Main3_Rebels]
+Location = Highfence
+Name = Main - Rebels
+Introduction = "Let's try this again. Are you ready?"
+ObjectiveText1 = Go to the colony on Highfence at coordinates (1300, -200) and talk to Michel Kamali.
+ObjectiveText2 = Report to the freighter waiting for you near Highfence and escort it to Soelara Station.
+ObjectiveText3 = Return to Highfence at coordinates (1300, -200) and wait for Kamali.
+PosResponse = Tell him your ready.
+NegResponse = Tell him you'll return soon.
+Accept = "Good!"
+FailText = ""
+EventText1 = "Welcome to the Crimson Cross! I'm Michel Kamali, and I will help you get accustomed to our organisation, to our goals and our work. You will also join me on certain, low risk missions. In fact, we have one such mission ready for you.#We are supposed to escort a freighter carrying supplies to Soelara Station. The area was recently occupied by the Alliance but they have allowed us access.#When we arrive, we are to unload the freighter's cargo and return here as soon as possible. We have to be careful on our way to the station: I've heard reports of Rebels scouting around the occupied zone and they might think we are aiding the Alliance.#The freighter is waiting for you in orbit of Highfence, just talk to the captain when you are ready!"
+EventText2 = Freighter Captain: "Ready to go? Alright, just follow me!"
+EventText3 = Suddenly an unidentified aircraft appears on your radar. "Shit!" Kamali proclaims. "It's the Rebels, they must be thinking we're transporting goods to the Alliance. Defend yourselves!"
+EventText4 = You enter the station. It looks run down and very poor. The freighter's crew quickly unloads it's goods and when they're done Kamali speaks up. "Alright! We got it from here. Go back to Highfence and I'll meet you there later!"
+Success = After a while Kamali shows up. "You did okay out there!" He says. "Too bad about those rebels, but they really should try asking some questions before shooting. Anyway, return here when your ready for your next mission!"
+ObjectiveCompleted = You safely escorted the freighter from Highfence to Soelara Station.
+Fail = "That didn't go so well, now did it? Alright, let's try again, just be more careful this time!"
+Reward = 300
+Progress = 2
+Reputation = 5
+State = 0
+
 [SX_JakobTest1]
 Location = Peye
 Name = Death by Meteor
@@ -52,29 +137,6 @@ Fail = ""
 Reward = 100
 Progress = 2
 Reputation = 3
-State = 0
-
-[SX_Rebels]
-Location = Highfence
-Name = Main - Rebels
-Introduction = "Let's try this again. Are you ready?"
-ObjectiveText1 = Go to the colony on Highfence at coordinates (1300, -200) and talk to Michel Kamali.
-ObjectiveText2 = Report to the freighter waiting for you near Highfence and escort it to Soelara Station.
-ObjectiveText3 = Return to Highfence at coordinates (1300, -200) and wait for Kamali.
-PosResponse = Tell him your ready.
-NegResponse = Tell him you'll return soon.
-Accept = "Good!"
-FailText = ""
-EventText1 = "Welcome to the Crimson Cross! I'm Michel Kamali, and I will help you get accustomed to our organisation, to our goals and our work. You will also join me on certain, low risk missions. In fact, we have one such mission ready for you.#We are supposed to escort a freighter carrying supplies to Soelara Station. The area was recently occupied by the Alliance but they have allowed us access.#When we arrive, we are to unload the freighter's cargo and return here as soon as possible. We have to be careful on our way to the station: I've heard reports of Rebels scouting around the occupied zone and they might think we are aiding the Alliance.#The freighter is waiting for you in orbit of Highfence, just talk to the captain when you are ready!"
-EventText2 = Freighter Captain: "Ready to go? Alright, just follow me!"
-EventText3 = Suddenly an unidentified aircraft appears on your radar. "Shit!" Kamali proclaims. "It's the Rebels, they must be thinking we're transporting goods to the Alliance. Defend yourselves!"
-EventText4 = You enter the station. It looks run down and very poor. The freighter's crew quickly unloads it's goods and when they're done Kamali speaks up. "Alright! We got it from here. Go back to Highfence and I'll meet you there later!"
-Success = After a while Kamali shows up. "You did okay out there!" He says. "Too bad about those rebels, but they really should try asking some questions before shooting. Anyway, return here when your ready for your next mission!"
-ObjectiveCompleted = You safely escorted the freighter from Highfence to Soelara Station.
-Fail = "That didn't go so well, now did it? Alright, let's try again, just be more careful this time!"
-Reward = 300
-Progress = 2
-Reputation = 5
 State = 0
 
 [SX_TheAlliance]
@@ -315,47 +377,3 @@ Fail = Try again.
 ObjectiveFailed = CANNOT FAIL FINAL MISSION
 Reward = 500
 State = 1
-
-[SX_TutorialMission]
-Location = Border Station
-Name = Tutorial Mission
-Introduction = "Hello and welcome to MineCorp! We strongly recommend that you run a few training sessions in our simulator before continuing with your assignment. What do you say?
-ObjectiveText1 = Return to the Border Station at coordinates (1840, 130) for further information.
-PosResponse = You decide it couldn't hurt to refresh your memory.
-NegResponse = Boring! Give me some action!
-Accept = "Good choice. Maybe you will have a chance in this world."#"The first part is simple. There will be a few enemies, but it should me manageble. Avoid them, shoot them down, just don't run into them. If you take some hits, try to avoid them for a while until your shields are up again."#"Leave this station to start the mission. Come back here when you have finished it."
-FailText = "FAIL"
-EventText1 = "Good job! Quick and easy was it, eh? But that was just the warmup. The next one should be a bit more challenging.#Here, you get a chance to train your agility. Sometimes there just are too many enemies to handle. What do you do then, you think? Fight even harder?#No, stupid. You avoid the danger. Circle around the enemies, occationally shooting down some of them. Your business is to survive, not to be some kind of killer-maniac. Most of the time, that is. Let's go!"
-EventText2 = "Good job! A few scratches there, or is it just my old eyes? I couldn't resist, adding those last meteors. An old geezer like me has to have some fun.. Sorry, where where we? Right. The last mission.#I'm sure your trigger finger is itching after that last mission. In this last mission there is actually some point in shooting down the enemies as quick as possible. If you don't they'll shoot you down.#Not so cocky now, are you? I'll tell you, it is your lucky day! Two of my other promising students are preparing to run the mission right now. After all, you need to be able cooperate to survive in this harsh world. Enough talking, fire away!"
-Success = "I must say, I am quite proud of you. You remind me of my son Ben. He also was a brave and proud young pilot ready to take on the world. He is very dead now. Don't end up like him. Be careful."#"Here, take this weapon. Used right, it might give you an edge against those rebel-pests."
-Fail = "Was that the best you got? I must say, I am a bit disappointed. You will not survive long in this world of you don't take it more seriously. But, generous as I am, I welcome you to come back later and try again."
-Reward = 200
-Progress = 1
-Reputation = 0
-State = 1
-
-[SX_NewFirstMission]
-Location = Border Station
-Name = Main - New First Mission
-Introduction = text
-ObjectiveText1 = Go to asteroids at Mining Outpost
-ObjectiveText2 = Return to Border Station at coordinates (1840, 130).
-ObjectiveText3 = Return to Border Station at coordinates (1840, 130).
-PosResponse = ""
-NegResponse = ""
-Accept = ""
-FailText = ""
-EventText1 = "Hello! We recently lost contact with a nearby mining station at Mining Outpost. I fear pirates have tried to take over the station! Search the asteroids nearby the mining station for any pirate activity."
-EventText2 = You arrive at the asteroids and begin scouting for pirates
-EventText3 = Suddenly a group of pirates attack!
-EventText4 = Barely escaping the pirate ambush, you decide to return to Border Station and request backup.
-EventText5 = "So it WAS pirates! Don't worry, I will dispatch a squad of my more experienced pilots to follow you back. With their help, we should be able to get rid of the pirates easily."
-EventText6 = You quickly find the pirates. You and your allies engage them.
-EventText7 = The pirates were no match for your superior ships. You decide to return to Border Station and report your success.
-Success = "Good job! Now, about those potatoes.."
-ObjectiveCompleted = You investigated the battlefield for resources. 
-Fail = ""
-Reward = 100
-Progress = 2
-Reputation = 3
-State = 0
