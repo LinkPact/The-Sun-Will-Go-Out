@@ -145,7 +145,7 @@ namespace SpaceProject
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
-                "PirateLevel8", LevelStartCondition.Immediately,
+                "PirateAnnihilation", LevelStartCondition.Immediately,
                 new EventTextCapsule(
                     GetEvent((int)EventID.ReturnToBorderAgain),
                     null,

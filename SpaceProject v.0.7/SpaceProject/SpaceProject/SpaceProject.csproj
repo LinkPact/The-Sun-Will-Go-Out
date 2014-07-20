@@ -747,6 +747,9 @@
     <Content Include="Levels\XScoutingLevel.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Levels\XPirateAnnihilation.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="SpaceProject_TemporaryKey.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
