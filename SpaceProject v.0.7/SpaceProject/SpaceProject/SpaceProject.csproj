@@ -184,6 +184,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MissionStuff\EventText.cs" />
+    <Compile Include="MissionStuff\Objectives\Instances\FollowObjective.cs" />
     <Compile Include="Missions\Mission.cs" />
     <Compile Include="MissionStuff\MissionHelper.cs" />
     <Compile Include="Managers\MissionManager.cs" />

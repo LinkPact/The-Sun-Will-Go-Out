@@ -14,8 +14,6 @@ namespace SpaceProject
         public Vector2 destination;
         public Vector2 tempDestination;
         private Sector sector = null;
-        private bool hasArrived;
-        public bool HasArrived { get { return hasArrived; } private set { ;} }
 
         public AllyShip(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet) { }
@@ -94,14 +92,14 @@ namespace SpaceProject
             }
         }
 
-        public void Wait()
+        public override void Wait()
         {
             speed = 0;
             tempDestination = destination;
             destination = Vector2.Zero;
         }
 
-        public void Start()
+        public override void Start()
         {
             speed = 0.5f;
             destination = tempDestination;

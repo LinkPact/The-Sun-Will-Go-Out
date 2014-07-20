@@ -16,6 +16,9 @@ namespace SpaceProject
 
         #endregion
 
+        protected bool hasArrived;
+        public bool HasArrived { get { return hasArrived; } private set { ; } }
+
         protected GameObjectOverworld target;
 
         // Used to determine which level starts when player runs into this ship.
@@ -96,5 +99,14 @@ namespace SpaceProject
         }
 
         #endregion
+
+        public virtual void Wait()
+        {
+        }
+
+        public virtual void Start()
+        {
+        }
+
     }
 }
