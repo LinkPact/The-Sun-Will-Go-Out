@@ -50,27 +50,25 @@ namespace SpaceProject
             beamOn = false;
         }
         
+        // Activated repeatedly when the weapon is in use
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
             if (StatsManager.gameMode == GameMode.develop)
                 Game.Window.Title = "Beam On: " + beamOn.ToString();
 
-            if (!ControlManager.CheckKeypress(ControlManager.KeyboardAction))
+            if (beam == null)
             {
-                beamOn = false;
+                InitBeam(player.CenterPoint);
+            }
+            else if (beam.IsKilled)
+            {
+                InitBeam(player.CenterPoint);
             }
 
+            // Tries to find a target
             GameObjectVertical beamTarget = LocateTarget(player.Position);
 
-            if (!beamOn)
-            {
-                InitBeam(player.Position);
-            }
-
-            if (!player.IsKilled)
-            {
-                BeamUpdate(player.Position, beamTarget, gameTime);
-            }
+            BeamUpdate(player.Position, beamTarget, gameTime);
 
             return true;
         }
@@ -115,15 +113,15 @@ namespace SpaceProject
             if (beamTarget != null)
             {
                 beamTarget.HP -= Damage;
-                beam.Update_(gameTime, playerPosition.X, playerPosition.Y, beamTarget.PositionY);
+                beam.UpdateLocation(gameTime, playerPosition.X, playerPosition.Y, beamTarget.PositionY);
             }
             else
-                beam.Update_(gameTime, playerPosition.X, playerPosition.Y, 0);
+                beam.UpdateLocation(gameTime, playerPosition.X, playerPosition.Y, 0);
         }
         
         private void InitBeam(Vector2 playerPosition)
         {
-            beamOn = true;
+            //beamOn = true;
 
             beam = new Beam(Game, spriteSheet);
             beam.PositionX = playerPosition.X;

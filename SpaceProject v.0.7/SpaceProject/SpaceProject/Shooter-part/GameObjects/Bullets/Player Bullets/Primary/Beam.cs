@@ -14,9 +14,11 @@ namespace SpaceProject
         float posX;
         float startY;
         float endY;
+        int maxDur = 20;
         #endregion
-        public Beam(Game1 Game, Sprite spriteSheet) :
-            base(Game, spriteSheet)
+
+        public Beam(Game1 Game, Sprite spriteSheet)
+            : base(Game, spriteSheet)
         {
         }
         public override void Initialize()
@@ -24,11 +26,10 @@ namespace SpaceProject
             base.Initialize();
 
             //Egenskaper
-            Speed = 1.0f;
             IsKilled = false;
             Damage = 0;
             ObjectClass = "beam";
-            Duration = 10;
+            Duration = maxDur;
 
             anim.LoopTime = 300;
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(18, 26, 4, 1)));
@@ -40,22 +41,24 @@ namespace SpaceProject
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
         }
 
-        public void Update_(GameTime gameTime, float posX, float startY, float endY)
+        public void UpdateLocation(GameTime gameTime, float posX, float startY, float endY)
         {
             this.posX = posX;
             this.startY = startY;
             this.endY = endY;
+
+            Duration = maxDur;
         }
         
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-
-            if (!ControlManager.CheckKeypress(ControlManager.KeyboardAction))
-            {
-                IsKilled = true;
-            }
-        }
+        //public override void Update(GameTime gameTime)
+        //{
+        //    base.Update(gameTime);
+        //
+        //    if (Duration <= 0)
+        //    {
+        //        IsKilled = true;
+        //    }
+        //}
 
         public override void Draw(SpriteBatch spriteBatch)
         {

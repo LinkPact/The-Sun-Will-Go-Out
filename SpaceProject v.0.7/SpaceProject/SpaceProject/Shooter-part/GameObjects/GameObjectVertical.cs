@@ -198,7 +198,7 @@ namespace SpaceProject
             }
 
             //Bullet-duration
-            if (ObjectClass == "bullet")
+            if (this is Bullet)
             {
                 if (duration > 0) { duration -= gameTime.ElapsedGameTime.Milliseconds; }
                 else { IsKilled = true;}
