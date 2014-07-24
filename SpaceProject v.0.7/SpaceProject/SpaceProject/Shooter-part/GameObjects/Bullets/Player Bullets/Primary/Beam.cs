@@ -10,24 +10,25 @@ namespace SpaceProject
 {
     public class Beam : PlayerBullet
     {
-        #region decl
-        float posX;
-        float startY;
-        float endY;
-        int maxDur = 20;
-        #endregion
+        private float posX;
+        private float startY;
+        private float endY;
+        private int maxDur = 20;
+        private Boolean shootingUpwards;
 
-        public Beam(Game1 Game, Sprite spriteSheet)
+        public Beam(Game1 Game, Sprite spriteSheet, Boolean shootingUpwards)
             : base(Game, spriteSheet)
         {
+            this.shootingUpwards = shootingUpwards;
         }
+
         public override void Initialize()
         {
             base.Initialize();
 
             //Egenskaper
             IsKilled = false;
-            Damage = 0;
+            Damage = 0f;
             ObjectClass = "beam";
             Duration = maxDur;
 
@@ -52,9 +53,19 @@ namespace SpaceProject
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            for (int m = (int)startY; m > endY; m--)
+            if (shootingUpwards)
             {
-                spriteBatch.Draw(anim.CurrentFrame.Texture, new Vector2(posX, m), anim.CurrentFrame.SourceRectangle, Color.White, 0, CenterPoint, 1.0f, SpriteEffects.None, DrawLayer);
+                for (int m = (int)startY; m > endY; m--)
+                {
+                    spriteBatch.Draw(anim.CurrentFrame.Texture, new Vector2(posX, m), anim.CurrentFrame.SourceRectangle, Color.White, 0, CenterPoint, 1.0f, SpriteEffects.None, DrawLayer);
+                }
+            }
+            else
+            {
+                for (int m = (int)startY; m < endY; m++)
+                {
+                    spriteBatch.Draw(anim.CurrentFrame.Texture, new Vector2(posX, m), anim.CurrentFrame.SourceRectangle, Color.White, 0, CenterPoint, 1.0f, SpriteEffects.None, DrawLayer);
+                }
             }
         }
     }

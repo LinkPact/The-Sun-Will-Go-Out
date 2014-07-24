@@ -56,12 +56,7 @@ namespace SpaceProject
             acceleration = StatsManager.Acceleration();
             deAcceleration = StatsManager.Acceleration();
 
-            //if (ShipInventoryManager.InventoryWeight <= ShipInventoryManager.MaxWeight)
-                maxSpeed = ShipInventoryManager.equippedPlating.Speed;
-            //else if (ShipInventoryManager.InventoryWeight < ShipInventoryManager.MaxWeight * 1.5)
-            //    maxSpeed = ShipInventoryManager.equippedPlating.Speed / 4;
-            //else
-            //    maxSpeed = ShipInventoryManager.equippedPlating.Speed / 8;
+            maxSpeed = ShipInventoryManager.equippedPlating.Speed;
 
             playerShotHandler = new PlayerShotHandler(this, Game, spriteSheet);
             playerShotHandler.Initialize();
@@ -85,8 +80,6 @@ namespace SpaceProject
             MP = MPmax;
             MPtimer = 0;
             MPgainedSec = StatsManager.GetEnergyRegeneration();
-
-            //MPgainedSec = ShipInventoryManager.MPgainedPerSecond;
 
             ObjectClass = "player";
             ObjectName = "Player";
@@ -139,16 +132,10 @@ namespace SpaceProject
             
             if (MP < MPmax - MPgain)
                 MP += MPgain;
-            else //if (Shield < ShieldMax - MPgain)
+            else
             {
                 MP = MPmax;
-                //Shield += MPgain / conversionFactor;
             } 
-            //else
-            //{
-            //    MP = MPmax;
-            //    Shield = ShieldMax;
-            //}
 
             if (Shield < ShieldMax - shieldRegeneration)
             {
@@ -256,19 +243,18 @@ namespace SpaceProject
 
         private void CheckCollisionsEdges()
         {
-        //Kollision mot kanterna
-        if (PositionX - anim.Width/2 <= relativeOrigin)
-            PositionX = relativeOrigin + anim.Width / 2;
+            //Kollision mot kanterna
+            if (PositionX - anim.Width/2 <= relativeOrigin)
+                PositionX = relativeOrigin + anim.Width / 2;
 
-        if (PositionX + anim.Width/2 > relativeOrigin + LevelWidth)
-            PositionX = relativeOrigin + LevelWidth - anim.Width / 2;
+            if (PositionX + anim.Width/2 > relativeOrigin + LevelWidth)
+                PositionX = relativeOrigin + LevelWidth - anim.Width / 2;
 
-        if (PositionY - anim.Height/2 <= 0 + Game.stateManager.shooterState.WindowHeightOffset)
-            PositionY = (anim.Height / 2) + Game.stateManager.shooterState.WindowHeightOffset;
+            if (PositionY - anim.Height/2 <= 0 + Game.stateManager.shooterState.WindowHeightOffset)
+                PositionY = (anim.Height / 2) + Game.stateManager.shooterState.WindowHeightOffset;
 
-        if (PositionY + anim.Height / 2 > windowHeight - Game.stateManager.shooterState.WindowHeightOffset)
-            PositionY = windowHeight - Game.stateManager.shooterState.WindowHeightOffset - anim.Height / 2;
-            
+            if (PositionY + anim.Height / 2 > windowHeight - Game.stateManager.shooterState.WindowHeightOffset)
+                PositionY = windowHeight - Game.stateManager.shooterState.WindowHeightOffset - anim.Height / 2;
         }
 
         public override bool CheckOutside()

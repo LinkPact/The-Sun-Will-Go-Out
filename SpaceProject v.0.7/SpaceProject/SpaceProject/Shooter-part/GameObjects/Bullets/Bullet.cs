@@ -15,8 +15,8 @@ namespace SpaceProject
         
         protected Bullet(Game1 Game, Sprite spriteSheet)
             : base (Game, spriteSheet)
-        { 
-            
+        {
+            DrawLayer = 0.4f;
         }
 
         public override void InflictDamage(GameObjectVertical obj)

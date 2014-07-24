@@ -451,7 +451,8 @@
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceHeavyBeamer_placeholder.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceBallistic_placeholder.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceHangar_placeholder.cs" />
-    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceLightBeamer_placeholder.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceLightBeamer.cs" />
+    <Compile Include="Shooter-part\GameObjects\BeamModule.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelLightMinelayer.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelFatzo_placeholder.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelBomber_placeholder.cs" />

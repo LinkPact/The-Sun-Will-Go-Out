@@ -18,7 +18,7 @@ namespace SpaceProject
 
         private void Setup()
         {
-            fraction = Fraction.rebel;
+            fraction = Fraction.alliance;
 
             ShieldSetup(CreatureShieldCapacity.low, CreatureShieldRegeneration.medium);
         }
@@ -46,19 +46,11 @@ namespace SpaceProject
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            if (!IsKilled)
-            {
-                base.Draw(spriteBatch);
-            }
-        }
-
         protected override void ShootingPattern(GameTime gameTime)
         {
             double width = Math.PI / 12;
             double numberOfShots = 3;
-
+            
             foreach (double dir in GlobalMathFunctions.GetSpreadDirList(width, numberOfShots))
             {
                 EnemyWeakBlueLaser laser1 = new EnemyWeakBlueLaser(Game, spriteSheet);
@@ -67,10 +59,9 @@ namespace SpaceProject
                 laser1.Direction = GlobalMathFunctions.DirFromRadians(dir);
                 laser1.Initialize();
                 laser1.Speed *= 1.5f;
-
+            
                 Game.stateManager.shooterState.gameObjects.Add(laser1);
             }
-
 
             Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
         }

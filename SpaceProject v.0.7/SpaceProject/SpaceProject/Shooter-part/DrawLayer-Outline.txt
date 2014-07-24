@@ -2,7 +2,7 @@
 0.1
 0.2 - Stars
 0.3
-0.4
+0.4 - Bullets (default for Bullet)
 0.5 - Enemies (default for GameObjectVertical)
 0.6 - Player
 0.7 - Borders

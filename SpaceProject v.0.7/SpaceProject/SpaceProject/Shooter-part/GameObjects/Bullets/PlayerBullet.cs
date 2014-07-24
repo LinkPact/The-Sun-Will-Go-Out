@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public abstract class PlayerBullet : Bullet
+    public class PlayerBullet : Bullet
     {
         protected Random random;
 

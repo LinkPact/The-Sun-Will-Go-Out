@@ -353,7 +353,7 @@ namespace SpaceProject
                     }
                 case EnemyType.A_lightBeamer:
                     {
-                        creature = new AllianceLightBeamer_placeholder(Game, spriteSheet, player);
+                        creature = new AllianceLightBeamer(Game, spriteSheet, player);
                         break;
                     }
                 case EnemyType.A_homingBullets:
