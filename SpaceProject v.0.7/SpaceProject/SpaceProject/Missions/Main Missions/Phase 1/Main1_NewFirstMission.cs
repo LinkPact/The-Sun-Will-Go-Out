@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
-    public class NewFirstMission: Mission
+    public class Main1_NewFirstMission: Mission
     {
         private enum EventID
         {
@@ -25,7 +25,7 @@ namespace SpaceProject
         private AllyShip ally2;
         private AllyShip ally3;
 
-        public NewFirstMission(Game1 Game, string section, Sprite spriteSheet) :
+        public Main1_NewFirstMission(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
         }
@@ -34,17 +34,17 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            ally1 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet);
+            ally1 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet, ShipType.Alliance);
             ally1.Initialize(Game.stateManager.overworldState.GetSectorX,
                 Game.stateManager.overworldState.GetStation("Border Station"),
                 Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
 
-            ally2 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet);
+            ally2 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet, ShipType.Alliance);
             ally2.Initialize(Game.stateManager.overworldState.GetSectorX,
                 Game.stateManager.overworldState.GetStation("Border Station"),
                 Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
 
-            ally3 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet);
+            ally3 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet, ShipType.Alliance);
             ally3.Initialize(Game.stateManager.overworldState.GetSectorX,
                 Game.stateManager.overworldState.GetStation("Border Station"),
                 Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));

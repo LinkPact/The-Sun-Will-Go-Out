@@ -6,6 +6,12 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
+    public enum ShipType
+    {
+        Alliance,
+        Rebel
+    }
+
     public class AllyShip : OverworldShip
     {
         private Rectangle view;
@@ -14,16 +20,27 @@ namespace SpaceProject
         public Vector2 destination;
         public Vector2 tempDestination;
         private Sector sector = null;
+        private ShipType type;
 
-        public AllyShip(Game1 game, Sprite spriteSheet) :
-            base(game, spriteSheet) { }
+        public AllyShip(Game1 game, Sprite spriteSheet, ShipType type) :
+            base(game, spriteSheet) 
+        {
+            this.type = type;
+        }
 
         public override void Initialize()
         {
             Class = "AllyShip";
             name = "Ally Ship";
 
-            sprite = spriteSheet.GetSubSprite(new Rectangle(48, 200, 23, 28));
+            if (type == ShipType.Alliance)
+            {
+                sprite = spriteSheet.GetSubSprite(new Rectangle(48, 200, 23, 28));
+            }
+            else if (type == ShipType.Rebel)
+            {
+                sprite = spriteSheet.GetSubSprite(new Rectangle(484, 0, 23, 34));
+            }
             viewRadius = 300;
             position = new Vector2(0,0);
             speed = 0.5f;

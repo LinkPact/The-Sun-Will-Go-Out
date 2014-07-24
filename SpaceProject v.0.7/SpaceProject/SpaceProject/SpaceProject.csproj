@@ -184,7 +184,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MissionStuff\EventText.cs" />
+    <Compile Include="MissionStuff\MissionObjects\Main8_Retaliation\AmbushSpot.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\FollowObjective.cs" />
+    <Compile Include="Missions\Main Missions\Phase 3\Main8_Retaliation.cs" />
     <Compile Include="Missions\Mission.cs" />
     <Compile Include="MissionStuff\MissionHelper.cs" />
     <Compile Include="Managers\MissionManager.cs" />
@@ -196,23 +198,23 @@
     <Compile Include="GameStates\MissionScreenState\MissionScreenCursor.cs" />
     <Compile Include="GameStates\MissionScreenState\MissionScreenState.cs" />
     <Compile Include="GameStates\MissionScreenState\MissionScreenText.cs" />
-    <Compile Include="Missions\SectorX\AstroScan.cs" />
-    <Compile Include="Missions\SectorX\Main2_Highfence.cs" />
-    <Compile Include="Missions\SectorX\Main1_NewFirstMission.cs" />
-    <Compile Include="Missions\SectorX\DebtCollection.cs" />
-    <Compile Include="Missions\SectorX\oldmissions\Main3_TheAlliance.cs" />
-    <Compile Include="Missions\SectorX\DefendColony.cs" />
-    <Compile Include="Missions\SectorX\FlightTraining.cs" />
-    <Compile Include="Missions\SectorX\DeathByMeteorMission.cs" />
-    <Compile Include="Missions\SectorX\oldmissions\MidMissionRebel.cs" />
-    <Compile Include="Missions\SectorX\Main3_Rebels.cs" />
-    <Compile Include="Missions\SectorX\TutorialMission.cs" />
-    <Compile Include="Missions\SectorY\MidMissionAlliance.cs" />
-    <Compile Include="Missions\SectorZ\FinalMission.cs" />
-    <Compile Include="Missions\SectorX\oldmissions\Main1_AColdWelcome.cs" />
-    <Compile Include="Missions\SectorX\ColonyAid.cs" />
-    <Compile Include="Missions\SectorY\MainMissionOne.cs" />
-    <Compile Include="Missions\SectorX\AstroDodger.cs" />
+    <Compile Include="Missions\Side Missions\AstroScan.cs" />
+    <Compile Include="Missions\Main Missions\Phase 1\Main2_Highfence.cs" />
+    <Compile Include="Missions\Main Missions\Phase 1\Main1_NewFirstMission.cs" />
+    <Compile Include="Missions\Side Missions\DebtCollection.cs" />
+    <Compile Include="Missions\Old Missions\Main3_TheAlliance.cs" />
+    <Compile Include="Missions\Main Missions\Phase 2\DefendColony.cs" />
+    <Compile Include="Missions\Side Missions\FlightTraining.cs" />
+    <Compile Include="Missions\Side Missions\DeathByMeteorMission.cs" />
+    <Compile Include="Missions\Old Missions\MidMissionRebel.cs" />
+    <Compile Include="Missions\Main Missions\Phase 1\Main3_Rebels.cs" />
+    <Compile Include="Missions\Main Missions\Phase 1\Main0_Tutorial.cs" />
+    <Compile Include="Missions\Old Missions\MidMissionAlliance.cs" />
+    <Compile Include="Missions\Old Missions\FinalMission.cs" />
+    <Compile Include="Missions\Old Missions\Main1_AColdWelcome.cs" />
+    <Compile Include="Missions\Side Missions\ColonyAid.cs" />
+    <Compile Include="Missions\Old Missions\MainMissionOne.cs" />
+    <Compile Include="Missions\Side Missions\AstroDodger.cs" />
     <Compile Include="MissionStuff\Objectives\DataCapsules\EscortDataCapsule.cs" />
     <Compile Include="MissionStuff\Objectives\DataCapsules\ResponseTextCapsule.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\ArriveAtLocationObjective.cs" />
@@ -647,6 +649,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Missions\Main Missions\Phase 4\" />
     <Folder Include="Overworld-part\GameObjects\Stations\SectorZ\" />
     <Folder Include="Shooter-part\ShipParts\Secondary\UpperTier\" />
   </ItemGroup>

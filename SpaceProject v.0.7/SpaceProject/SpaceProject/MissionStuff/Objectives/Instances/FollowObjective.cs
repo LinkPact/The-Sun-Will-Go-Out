@@ -20,7 +20,7 @@ namespace SpaceProject
         private Vector2 startingPosition;
         private Vector2 spacing;
         private String startMessage;
-        private bool deviationAllowed;
+        private bool deviationAllowed = true;
         private int deviationRadius;
         private String deviationMessage;
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SpaceProject
 {
-    public class TutorialMission : Mission
+    public class Main0_Tutorial : Mission
     {
         private enum EventID
         {
@@ -13,7 +13,7 @@ namespace SpaceProject
             SecondCleared = 1
         }
 
-        public TutorialMission(Game1 Game, string section, Sprite spriteSheet) :
+        public Main0_Tutorial(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
         }

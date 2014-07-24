@@ -17,16 +17,19 @@ namespace SpaceProject
         private static List<Mission> activeMissions;
         private static List<Mission> removedActiveMissions;
 
-        //Missions
-        // Sector X
-        private static TutorialMission mainTutorialMission;
-        private static NewFirstMission mainNewFirstMission;
+        // Missions
+
+        // Main Missions
+        private static Main0_Tutorial mainTutorialMission;
+        private static Main1_NewFirstMission mainNewFirstMission;
         private static Main2_Highfence mainHighfence;
         private static Main3_Rebels mainRebels;
+        private static DefendColony defendColony;
+        private static Main8_Retaliation mainRetaliation;
+
+        // Side Missions
         private static DebtCollection debtCollection;
         private static AstroDodger astroDodger;
-        private static DefendColony defendColony;
-        private static Main3_TheAlliance theAlliance;
         private static AstroScan astroScan;
         private static DeathByMeteorMission deathByMeteor;
         private static FlightTraining flightTraining;
@@ -38,6 +41,7 @@ namespace SpaceProject
         //private static MainMissionOne mainMission1;
         //private static MidMissionAlliance midMissionAlliance;
         //private static Main1_AColdWelcome aColdWelcome;
+        //private static Main3_TheAlliance theAlliance;
 
         private static List<string> missionEventBuffer = new List<string>();
         private static List<string> missionResponseBuffer = new List<string>();
@@ -47,10 +51,7 @@ namespace SpaceProject
         public static List<string> MissionResponseBuffer { get { return missionResponseBuffer; } set { missionResponseBuffer = value; } }
         public static List<string> MissionStartBuffer { get { return missionStartBuffer; } set { missionStartBuffer = value; } }
 
-        // Mission spritesheet
         private Sprite missionObjectSpriteSheet;
-
-        // Bools used to determine if text has been displayed.
         private bool gameCompleted = false;
         
         public MissionManager(Game1 Game)
@@ -66,17 +67,15 @@ namespace SpaceProject
             removedActiveMissions = new List<Mission>();
             missions = new List<Mission>();
 
-            //Initialize Missions
-
-            #region Sector X
+            // Main Missions
 
             // Main 0 - Tutorial Mission
-            mainTutorialMission = new TutorialMission(game, "SX_Main0_TutorialMission", null);
+            mainTutorialMission = new Main0_Tutorial(game, "SX_Main0_TutorialMission", null);
             mainTutorialMission.Initialize();
             missions.Add(mainTutorialMission);
 
             // Main 1 - New First Mission
-            mainNewFirstMission = new NewFirstMission(game, "SX_Main1_NewFirstMission", missionObjectSpriteSheet);
+            mainNewFirstMission = new Main1_NewFirstMission(game, "SX_Main1_NewFirstMission", missionObjectSpriteSheet);
             mainNewFirstMission.Initialize();
             missions.Add(mainNewFirstMission);
 
@@ -90,6 +89,18 @@ namespace SpaceProject
             mainRebels.Initialize();
             missions.Add(mainRebels);
 
+            //Defend Colony
+            defendColony = new DefendColony(game, "SX_DefendColony", null);
+            defendColony.Initialize();
+            missions.Add(defendColony);
+
+            // Main 8 - Retaliation
+            mainRetaliation = new Main8_Retaliation(game, "RO_Main8_Retaliation", missionObjectSpriteSheet);
+            mainRetaliation.Initialize();
+            missions.Add(mainRetaliation);
+
+            // Side Missions
+
             //DebtCollection
             debtCollection = new DebtCollection(game, "SX_DebtCollection", null);
             debtCollection.Initialize();
@@ -99,16 +110,6 @@ namespace SpaceProject
             astroDodger = new AstroDodger(game, "SX_AstroDodger", missionObjectSpriteSheet);
             astroDodger.Initialize();
             missions.Add(astroDodger);
-
-            //Defend Colony
-            defendColony = new DefendColony(game, "SX_DefendColony", null);
-            defendColony.Initialize();
-            missions.Add(defendColony);
-
-            // Third Mission
-            theAlliance = new Main3_TheAlliance(game, "SX_TheAlliance", null);
-            theAlliance.Initialize();
-            missions.Add(theAlliance);
 
             // Astro Scan
             astroScan = new AstroScan(game, "SX_AstroScan", null);
@@ -130,9 +131,8 @@ namespace SpaceProject
             colonyAid.Initialize();
             missions.Add(colonyAid);
 
-            #endregion
+            // Old missions
 
-            #region Old Missions
             // Final Mission
             //finalMission = new FinalMission(game, "SZ_FinalMission", null);
             //finalMission.Initialize();
@@ -157,7 +157,11 @@ namespace SpaceProject
             //aColdWelcome = new Main1_AColdWelcome(game, "SX_AColdWelcome", missionObjectSpriteSheet);
             //aColdWelcome.Initialize();
             //missions.Add(aColdWelcome);
-            #endregion
+
+            // Third Mission
+            //theAlliance = new Main3_TheAlliance(game, "SX_TheAlliance", null);
+            //theAlliance.Initialize();
+            //missions.Add(theAlliance);
 
             RefreshLists();
         }
@@ -510,15 +514,15 @@ namespace SpaceProject
                 }
             }
 
-            if (MissionManager.theAlliance.MissionState == StateOfMission.CompletedDead &&
-                GameStateManager.currentState.Equals("OverworldState") &&
-                !gameCompleted)
-            {
-                game.messageBox.DisplayMessage(new List<string> { "Congratulations! You have completed all the story missions we have managed to make so far! You are now free to explore the star system however you like! Look for side-missions you might have missed or just see if you can find any secrets! ;)",
-                    "You can now use the hyper speed button! Hold down 'Space' when moving your ship around in the overworld to go much faster! If you restart the game, you can unlock it by holding down 'Alt' and pressing 'Y'."});
-                gameCompleted = true;
-                game.player.UnlockHyperSpeed();
-            }
+            //if (MissionManager.theAlliance.MissionState == StateOfMission.CompletedDead &&
+            //    GameStateManager.currentState.Equals("OverworldState") &&
+            //    !gameCompleted)
+            //{
+            //    game.messageBox.DisplayMessage(new List<string> { "Congratulations! You have completed all the story missions we have managed to make so far! You are now free to explore the star system however you like! Look for side-missions you might have missed or just see if you can find any secrets! ;)",
+            //        "You can now use the hyper speed button! Hold down 'Space' when moving your ship around in the overworld to go much faster! If you restart the game, you can unlock it by holding down 'Alt' and pressing 'Y'."});
+            //    gameCompleted = true;
+            //    game.player.UnlockHyperSpeed();
+            //}
 
             // Unlock missions
             if (MissionManager.mainNewFirstMission.MissionState == StateOfMission.CompletedDead &&

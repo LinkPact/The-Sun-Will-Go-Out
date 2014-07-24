@@ -86,6 +86,25 @@ Progress = 2
 Reputation = 5
 State = 0
 
+
+[RO_Main8_Retaliation]
+Location = Rebel Station 1
+Name = Main - Retaliation
+Introduction = "The Alliance will not get away with this - Time for some payback! Are you with us?"
+ObjectiveText1 = ""
+PosResponse = YES
+NegResponse = NO
+Accept = Good! We want you to attack a freighter transporting raw materials from Soelara to Fotrun. The materials seem to be highly valued to the Alliance and we suspect it might be used in their weapon technology somehow."#"Follow the other rebel ships to the coordinate (0,0) and wait for the freighter to arrive. When it arrives, take out the Alliance ships guarding it and sieze the freighters cargo." 
+FailText = ""
+EventText1 = ""
+ObjectiveCompleted = ""
+Success = ""
+Fail = ""
+Reward = -1
+Progress = -1
+Reputation = -1
+State = 1
+
 [Old second mission]
 Location = Highfence
 Name = Main - Rebels
