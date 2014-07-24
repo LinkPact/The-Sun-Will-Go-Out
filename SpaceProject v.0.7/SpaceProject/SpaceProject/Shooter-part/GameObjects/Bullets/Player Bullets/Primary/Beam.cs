@@ -49,16 +49,6 @@ namespace SpaceProject
 
             Duration = maxDur;
         }
-        
-        //public override void Update(GameTime gameTime)
-        //{
-        //    base.Update(gameTime);
-        //
-        //    if (Duration <= 0)
-        //    {
-        //        IsKilled = true;
-        //    }
-        //}
 
         public override void Draw(SpriteBatch spriteBatch)
         {
