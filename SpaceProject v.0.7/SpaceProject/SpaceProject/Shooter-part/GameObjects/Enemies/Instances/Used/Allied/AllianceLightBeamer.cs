@@ -8,7 +8,7 @@ namespace SpaceProject
 {
     class AllianceLightBeamer : ShootingEnemyShip
     {
-        private BeamModule beamModule;
+        private HostileBeamModule beamModule;
 
         public AllianceLightBeamer(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
@@ -27,8 +27,6 @@ namespace SpaceProject
         private void Setup()
         {
             fraction = Fraction.alliance;
-
-            beamModule = new BeamModule(Game, spriteSheet, false, false);
         }
 
         public override void Initialize()
@@ -40,7 +38,7 @@ namespace SpaceProject
             //Egenskaper
             SightRange = 400;
             HP = 200f;
-            Damage = 2.0f;
+            Damage = 60.0f;
             Speed = 0.05f;
 
             movement = Movement.Following;
@@ -50,20 +48,14 @@ namespace SpaceProject
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(380, 340, 38, 58)));
 
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
+
+            float beamDamage = 6.0f;
+            beamModule = new HostileBeamModule(Game, spriteSheet, beamDamage);
         }
 
         protected override void ShootingPattern(GameTime gameTime)
         {
             beamModule.Activate(this, gameTime);
-
-            if (beamModule.HasTarget())
-            {
-                GameObjectVertical target = beamModule.GetTarget();
-
-                // CHANGE THIS BIT!!!
-                target.HP -= Damage;
-            }
-
             Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
         }
     }

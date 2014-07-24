@@ -6,66 +6,79 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
-    public class BeamModule
+    /**
+     * The purpose with beam modules is to provide an easy way to access full beam functionality
+     * in both playerweapons and in enemies.
+     * 
+     * It is extended by HostileBeamModule and FriendlyBeamModule which adds different targets to the
+     * list "viableTargetTypes" found in this class. They also specify the "targetingUpwards"-boolean
+     * which is used to decide if the beam is targeting, drawn and damaging upwards or downwards.
+     * 
+     * "Activate" is the main function, and the only function reached from outside. 
+     * This is called either from a weapons activation logic (called when it is time for the PlayerWeapon to fire)
+     * or from a ships ShootingPattern (which is called when the ship is to fire).
+     * 
+     * When this is called following happens:
+     * (1) It checks if there is a beam drawing present. If not, create a new one through calling "InitBeam".
+     * (2) Seach for a target using "LocateTarget".
+     * (3) If target is present, inflict damage.
+     * (4) Update the size and position of the BeamDrawing-object.
+     */
+    public abstract class BeamModule
     {
+        #region variables
         private Game1 game;
         private Sprite spriteSheet;
 
-        private Boolean belongsToAlly;
         private Boolean targetingUpwards;
 
-        private Beam beam;
-        public PlayerBullet GetBullet() 
-        {
-            PlayerBullet dummyBullet = new PlayerBullet(game, spriteSheet);
-            dummyBullet.Damage = 3.0f;
+        private float damage;
 
-            return dummyBullet; 
-        }
+        private BeamDrawing beamDrawing;
         
         private GameObjectVertical target;
 
-        List<String> viableTargetTypes = new List<String>();
+        protected List<String> viableTargetTypes = new List<String>();
 
         public Boolean HasTarget() { return target != null; }
         public GameObjectVertical GetTarget() { return target; }
 
-        public BeamModule(Game1 game, Sprite spriteSheet, Boolean belongsToAlly, Boolean targetingUpwards)
+        protected Color color;
+        #endregion
+
+        public BeamModule(Game1 game, Sprite spriteSheet, Boolean targetingUpwards, float damage)
         {
             this.game = game;
             this.spriteSheet = spriteSheet;
 
-            this.belongsToAlly = belongsToAlly;
             this.targetingUpwards = targetingUpwards;
-
-            if (belongsToAlly)
-            {
-                viableTargetTypes.Add("enemy");
-            }
-            else
-            {
-                viableTargetTypes.Add("player");
-                viableTargetTypes.Add("ally");
-            }
+            this.damage = damage;
         }
 
         public void Activate(GameObjectVertical shooter, GameTime gameTime)
         {
-            if (beam == null)
+            if (beamDrawing == null)
             {
                 InitBeam(shooter.CenterPoint);
             }
-            else if (beam.IsKilled)
+            else if (beamDrawing.IsKilled)
             {
                 InitBeam(shooter.CenterPoint);
             }
 
             target = LocateTarget(shooter.Position);
 
-            BeamUpdate(shooter.Position, target, gameTime);
+            if (target != null)
+                InflictDamage(target);
+
+            UpdateBeamDrawing(shooter.Position, target, gameTime);
         }
 
-        //
+        /**
+         * The functions in this section checks if there is a suitable target present.
+         * A suitable target has the same x-position as the shooting object, and a y-position
+         * that either is higher or lower depending on the variable "targetingUpwards"
+         */
         private GameObjectVertical LocateTarget(Vector2 shooterPos)
         {
             GameObjectVertical newTarget = null;
@@ -117,36 +130,48 @@ namespace SpaceProject
                 return shooterPos.Y < otherPos.Y;
             }
         }
-        //
+        //---------------------
 
-        private void BeamUpdate(Vector2 shooterPosition, GameObjectVertical beamTarget, GameTime gameTime)
+        private void UpdateBeamDrawing(Vector2 shooterPosition, GameObjectVertical beamTarget, GameTime gameTime)
         {
             if (beamTarget != null)
             {
-                //beamTarget.HP -= Damage;
-                beam.UpdateLocation(gameTime, shooterPosition.X, shooterPosition.Y, beamTarget.PositionY);
+                beamDrawing.UpdateLocation(gameTime, shooterPosition.X, shooterPosition.Y, beamTarget.PositionY);
             }
             else
             {
                 if (targetingUpwards)
                 {
-                    beam.UpdateLocation(gameTime, shooterPosition.X, shooterPosition.Y, 0);
+                    beamDrawing.UpdateLocation(gameTime, shooterPosition.X, shooterPosition.Y, 0);
                 }
                 else
                 {
-                    beam.UpdateLocation(gameTime, shooterPosition.X, shooterPosition.Y, game.Window.ClientBounds.Height);
+                    beamDrawing.UpdateLocation(gameTime, shooterPosition.X, shooterPosition.Y, game.Window.ClientBounds.Height);
                 }
             }
         }
 
+        private void InflictDamage(GameObjectVertical obj)
+        {
+            Bullet dummyBullet = new Bullet(game, spriteSheet);
+            dummyBullet.Damage = damage;
+            ((CombatGameObject)obj).InflictDamage(dummyBullet);
+        }
+
+        /**
+         * Creates a new beam object and adds it to background objects.
+         */
         private void InitBeam(Vector2 shooterPosition)
         {
-            beam = new Beam(game, spriteSheet, targetingUpwards);
-            beam.PositionX = shooterPosition.X;
-            beam.PositionY = shooterPosition.Y;
-            beam.Initialize();
+            beamDrawing = new BeamDrawing(game, spriteSheet, targetingUpwards);
+            beamDrawing.PositionX = shooterPosition.X;
+            beamDrawing.PositionY = shooterPosition.Y;
+            beamDrawing.Initialize();
 
-            game.stateManager.shooterState.gameObjects.Add(beam);
+            if (color != null)
+                beamDrawing.Color = color;
+
+            game.stateManager.shooterState.backgroundObjects.Add(beamDrawing);
         }
 
         private bool IntervalInsideInterval(float start1, float end1, float start2, float end2)

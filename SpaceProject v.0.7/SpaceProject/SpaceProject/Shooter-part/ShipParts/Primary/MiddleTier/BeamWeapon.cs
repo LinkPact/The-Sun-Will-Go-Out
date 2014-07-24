@@ -8,11 +8,6 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
-    /**
-     * Advanced weapon class containing all logic for beam weapons.
-     * 
-     * TODO: Generalize through moving out the beam logic to a separate class.
-     */
     public class BeamWeapon : PlayerWeapon
     {
         private BeamModule beamModule;
@@ -41,24 +36,15 @@ namespace SpaceProject
             energyCostPerSecond = 0.15f;
             delay = 10;
             Weight = 200;
-
             damage = 6.0f;
 
             Value = 700;
-
-            beamModule = new BeamModule(Game, spriteSheet, true, true);
+            beamModule = new FriendlyBeamModule(Game, spriteSheet, damage);
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
             beamModule.Activate(player, gameTime);
-
-            if (beamModule.HasTarget())
-            {
-                EnemyShip target = (EnemyShip)beamModule.GetTarget();
-                target.InflictDamage(beamModule.GetBullet());
-            }
-
             return true;
         }
 

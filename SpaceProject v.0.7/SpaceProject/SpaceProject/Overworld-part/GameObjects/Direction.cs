@@ -28,6 +28,18 @@ namespace SpaceProject
             scaledDirection = GlobalMathFunctions.ScaleDirection(direction);
         }
 
+        public void SetDirectionX(float xFactor)
+        {
+            Vector2 newDir = new Vector2(xFactor, scaledDirection.Y);
+            scaledDirection = GlobalMathFunctions.ScaleDirection(newDir);
+        }
+
+        public void SetDirectionY(float yFactor)
+        {
+            Vector2 newDir = new Vector2(scaledDirection.X, yFactor);
+            scaledDirection = GlobalMathFunctions.ScaleDirection(newDir);
+        }
+
         // Set direction from radians
         public void SetDirection(double radians)
         {

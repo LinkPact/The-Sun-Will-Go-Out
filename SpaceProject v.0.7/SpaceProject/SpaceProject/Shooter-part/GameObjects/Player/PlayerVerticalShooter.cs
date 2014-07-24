@@ -32,6 +32,15 @@ namespace SpaceProject
         private float deAcceleration;
         private float maxSpeed;
 
+        ///////////////
+        //Testing area
+        //private float accelerationX;
+        //private float accelerationY;
+
+        //private Direction direction;
+        //private Vector2 testSpeed;
+        //////////////
+
         public float AmassedCopper;
         public float AmassedGold;
         public float AmassedTitanium;
@@ -176,6 +185,44 @@ namespace SpaceProject
         
         private void PlayerMovement()
         {
+            //Boolean isAccelerating = false;
+            //
+            //if (ControlManager.CheckHold(RebindableKeys.Left))
+            //{
+            //    //direction.SetDirectionX(-1);
+            //    testSpeed.X -= acceleration;
+            //}
+            //
+            //if (ControlManager.CheckHold(RebindableKeys.Right))
+            //{
+            //    //direction.SetDirectionX(1);
+            //    testSpeed.X += acceleration;
+            //}
+            //
+            //if (ControlManager.CheckHold(RebindableKeys.Up))
+            //{
+            //    //direction.SetDirectionY(-1);
+            //    testSpeed.Y -= acceleration;
+            //}
+            //
+            //if (ControlManager.CheckHold(RebindableKeys.Down))
+            //{
+            //    //direction.SetDirectionX(1);
+            //    testSpeed.Y += acceleration;
+            //}
+
+
+
+            //DirectionX = direction.GetDirectionAsVector().X;
+            //DirectionY = direction.GetDirectionAsVector().Y;
+
+            //Direction = new Vector2(1, 0);
+
+            //if (isAccelerating)
+            //    Speed += acceleration;
+            //else
+            //    Speed -= deAcceleration;
+
             if (ControlManager.CheckHold(RebindableKeys.Left) && !ControlManager.CheckHold(RebindableKeys.Up) &&
                 !ControlManager.CheckHold(RebindableKeys.Right) && !ControlManager.CheckHold(RebindableKeys.Down))
             {
@@ -183,7 +230,7 @@ namespace SpaceProject
                 DirectionY = 0;
                 Speed += acceleration;
             }
-
+            
             if (!ControlManager.CheckHold(RebindableKeys.Left) && ControlManager.CheckHold(RebindableKeys.Up) &&
                 !ControlManager.CheckHold(RebindableKeys.Right) && !ControlManager.CheckHold(RebindableKeys.Down))
             {
@@ -191,7 +238,7 @@ namespace SpaceProject
                 DirectionY = -1.0f;
                 Speed += acceleration;
             }
-
+            
             if (!ControlManager.CheckHold(RebindableKeys.Left) && !ControlManager.CheckHold(RebindableKeys.Up) &&
                 ControlManager.CheckHold(RebindableKeys.Right) && !ControlManager.CheckHold(RebindableKeys.Down))
             {
@@ -199,7 +246,7 @@ namespace SpaceProject
                 DirectionY = 0;
                 Speed += acceleration;
             }
-
+            
             if (!ControlManager.CheckHold(RebindableKeys.Left) && !ControlManager.CheckHold(RebindableKeys.Up) &&
                 !ControlManager.CheckHold(RebindableKeys.Right) && ControlManager.CheckHold(RebindableKeys.Down))
             {
@@ -207,7 +254,7 @@ namespace SpaceProject
                 DirectionY = 1.0f;
                 Speed += acceleration;
             }
-
+            
             if (ControlManager.CheckHold(RebindableKeys.Left) && ControlManager.CheckHold(RebindableKeys.Up) &&
                 !ControlManager.CheckHold(RebindableKeys.Right) && !ControlManager.CheckHold(RebindableKeys.Down))
             {
@@ -215,7 +262,7 @@ namespace SpaceProject
                 DirectionY = -1.0f;
                 Speed += acceleration;
             }
-
+            
             if (ControlManager.CheckHold(RebindableKeys.Left) && !ControlManager.CheckHold(RebindableKeys.Up) &&
                 !ControlManager.CheckHold(RebindableKeys.Right) && ControlManager.CheckHold(RebindableKeys.Down))
             {
@@ -223,7 +270,7 @@ namespace SpaceProject
                 DirectionY = 1.0f;
                 Speed += acceleration;
             }
-
+            
             if (!ControlManager.CheckHold(RebindableKeys.Left) && ControlManager.CheckHold(RebindableKeys.Up) &&
                 ControlManager.CheckHold(RebindableKeys.Right) && !ControlManager.CheckHold(RebindableKeys.Down))
             {
@@ -231,7 +278,7 @@ namespace SpaceProject
                 DirectionY = -1.0f;
                 Speed += acceleration;
             }
-
+            
             if (!ControlManager.CheckHold(RebindableKeys.Left) && !ControlManager.CheckHold(RebindableKeys.Up) &&
                 ControlManager.CheckHold(RebindableKeys.Right) && ControlManager.CheckHold(RebindableKeys.Down))
             {
