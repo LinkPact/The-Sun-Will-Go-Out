@@ -30,7 +30,7 @@ namespace SpaceProject
             IsKilled = false;
             Damage = 20;
             ObjectClass = "enemyBullet";
-            duration = 3000;
+            Duration = 3000;
             turningSpeed = 1f;
             
             anim.LoopTime = 300;
@@ -55,11 +55,6 @@ namespace SpaceProject
             {
                 UpdateFollowObject();
             }
-
-            duration -= gameTime.ElapsedGameTime.Milliseconds;
-
-            if (duration <= 0)
-                IsKilled = true;
         }
 
         private void UpdateFollowObject()

@@ -33,11 +33,9 @@ namespace SpaceProject
 
             lootValue = LootValue.low;
 
-            //Shooting
-            ShootsInBatches(2, 800);
-
-            SetShootingDelay(100);
-            ChargeWeapon(ChargeMode.randomCharge);
+            AddPrimaryModule(70, ShootingMode.Batches);
+            primaryModule.ShootsInBatchesSetup(2, 800);
+            primaryModule.SetRandomCharge(random);
 
             //Egenskaper
             SightRange = 400;
@@ -75,5 +73,8 @@ namespace SpaceProject
 
             Game.stateManager.shooterState.gameObjects.Add(laser1);
         }
+
+        protected override void SecondaryShootingPattern(GameTime gameTime)
+        { }
     }
 }

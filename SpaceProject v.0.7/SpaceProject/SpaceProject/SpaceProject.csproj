@@ -405,8 +405,8 @@
     <Compile Include="Shooter-part\Area\AreaCollision.cs" />
     <Compile Include="Shooter-part\Area\AreaDamage.cs" />
     <Compile Include="Shooter-part\Area\CircularAreaDamage.cs" />
-    <Compile Include="Shooter-part\BeamModule\FriendlyBeamModule.cs" />
-    <Compile Include="Shooter-part\BeamModule\HostileBeamModule.cs" />
+    <Compile Include="Shooter-part\Modules\BeamModule\FriendlyBeamModule.cs" />
+    <Compile Include="Shooter-part\Modules\BeamModule\HostileBeamModule.cs" />
     <Compile Include="Shooter-part\GameObjects\Allies\AlliedShip.cs" />
     <Compile Include="Shooter-part\GameObjects\Allies\Ships\FighterAlly.cs" />
     <Compile Include="Shooter-part\GameObjects\Allies\Ships\FreighterAlly.cs" />
@@ -433,7 +433,7 @@
     <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\YellowBulletEnemy.cs" />
     <Compile Include="Shooter-part\GameObjects\Bullets\PlayerBullet.cs" />
     <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Primary\BasicLaser.cs" />
-    <Compile Include="Shooter-part\BeamModule\BeamDrawing.cs" />
+    <Compile Include="Shooter-part\Modules\BeamModule\BeamDrawing.cs" />
     <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Primary\DrillBeam.cs" />
     <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Primary\FlameShot.cs" />
     <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Primary\GreenBullet.cs" />
@@ -452,11 +452,11 @@
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceSmallLaserShip.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceStealthAttackShip.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceHomingBullets.cs" />
-    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceHeavyBeamer_placeholder.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceHeavyBeamer.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceBallistic_placeholder.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceHangar_placeholder.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceLightBeamer.cs" />
-    <Compile Include="Shooter-part\BeamModule\BeamModule.cs" />
+    <Compile Include="Shooter-part\Modules\BeamModule\BeamModule.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelLightMinelayer.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelFatzo_placeholder.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelBomber_placeholder.cs" />
@@ -517,6 +517,7 @@
     <Compile Include="Shooter-part\Events\PointLevelEvent.cs" />
     <Compile Include="Shooter-part\Events\WavesLevelEvent.cs" />
     <Compile Include="Shooter-part\Levels\Levels\JakobsDevelopLevel.cs" />
+    <Compile Include="Shooter-part\Modules\ShipShootingModule\ShootingModule.cs" />
     <Compile Include="Shooter-part\ShipParts\EnergyCells\WeaponBoostEnergyCell.cs" />
     <Compile Include="Shooter-part\ShipParts\EnergyCells\ShieldBoostEnergyCell.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\MiddleTier\WaveBeamWeapon.cs" />

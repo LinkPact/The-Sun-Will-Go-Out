@@ -34,7 +34,8 @@ namespace SpaceProject
             lootValue = LootValue.low;
 
             //Shooting
-            ShootsOnce(1500);
+            //ShootsOnce(1500);
+            AddPrimaryModule(1500, ShootingMode.Single);
 
             //Egenskaper
             SightRange = 600;
@@ -72,5 +73,8 @@ namespace SpaceProject
 
             Game.stateManager.shooterState.gameObjects.Add(laser1);
         }
+
+        protected override void SecondaryShootingPattern(GameTime gameTime)
+        { }
     }
 }

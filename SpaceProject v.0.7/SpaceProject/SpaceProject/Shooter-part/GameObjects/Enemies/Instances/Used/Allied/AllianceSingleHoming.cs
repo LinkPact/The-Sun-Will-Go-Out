@@ -39,8 +39,8 @@ namespace SpaceProject
             Damage = 40;
             Speed = 0.04f;
 
-            SetShootingDelay(1000);
-            ChargeWeapon(ChargeMode.fullCharge);
+            AddPrimaryModule(1000, ShootingMode.Regular);
+            primaryModule.SetFullCharge();
 
             movement = Movement.SlantingLine;
 
@@ -60,5 +60,8 @@ namespace SpaceProject
 
             Game.stateManager.shooterState.gameObjects.Add(bullet);
         }
+
+        protected override void SecondaryShootingPattern(GameTime gameTime)
+        { }
     }
 }

@@ -27,7 +27,7 @@ namespace SpaceProject
             IsKilled = false;
             Damage = 50;
             ObjectClass = "enemyBullet";
-            duration = 1000;
+            Duration = 1000;
 
             anim.LoopTime = 300;
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(11, 24, 5, 5)));
@@ -38,16 +38,6 @@ namespace SpaceProject
             BoundingSpace = 0;
 
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-
-            duration -= gameTime.ElapsedGameTime.Milliseconds;
-
-            if (duration <= 0)
-                IsKilled = true;
         }
 
         public override void Draw(SpriteBatch spriteBatch)

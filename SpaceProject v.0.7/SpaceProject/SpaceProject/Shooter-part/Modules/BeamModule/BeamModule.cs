@@ -40,9 +40,6 @@ namespace SpaceProject
 
         protected List<String> viableTargetTypes = new List<String>();
 
-        public Boolean HasTarget() { return target != null; }
-        public GameObjectVertical GetTarget() { return target; }
-
         protected Color color;
         #endregion
 
@@ -55,28 +52,35 @@ namespace SpaceProject
             this.damage = damage;
         }
 
-        public void Activate(GameObjectVertical shooter, GameTime gameTime)
+        public void Activate(Vector2 shooterPosition, GameTime gameTime)
         {
             if (beamDrawing == null)
             {
-                InitBeam(shooter.CenterPoint);
+                InitBeam(shooterPosition);
             }
             else if (beamDrawing.IsKilled)
             {
-                InitBeam(shooter.CenterPoint);
+                InitBeam(shooterPosition);
             }
 
-            target = LocateTarget(shooter.Position);
+            target = LocateTarget(shooterPosition);
 
             if (target != null)
                 InflictDamage(target);
 
-            UpdateBeamDrawing(shooter.Position, target, gameTime);
+            UpdateBeamDrawing(shooterPosition, target, gameTime);
         }
 
+        public Boolean HasTargetInLineOfSight(Vector2 shooterPosition)
+        {
+            return (LocateTarget(shooterPosition) != null);
+        }
+
+        //------------------------
+
         /**
-         * The functions in this section checks if there is a suitable target present.
-         * A suitable target has the same x-position as the shooting object, and a y-position
+         * The functions LocateTarget, FindTargetsWithSameX and CheckYRelation checks if there is a 
+         * suitable target present. A suitable target has the same x-position as the shooting object, and a y-position
          * that either is higher or lower depending on the variable "targetingUpwards"
          */
         private GameObjectVertical LocateTarget(Vector2 shooterPos)
@@ -130,7 +134,6 @@ namespace SpaceProject
                 return shooterPos.Y < otherPos.Y;
             }
         }
-        //---------------------
 
         private void UpdateBeamDrawing(Vector2 shooterPosition, GameObjectVertical beamTarget, GameTime gameTime)
         {

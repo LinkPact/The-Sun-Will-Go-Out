@@ -34,8 +34,8 @@ namespace SpaceProject
 
             lootValue = LootValue.medium;
 
-            SetShootingDelay(2000);
-            ChargeWeapon(ChargeMode.fullCharge);
+            AddPrimaryModule(2000, ShootingMode.Regular);
+            primaryModule.SetFullCharge();
 
             //Egenskaper
             SightRange = 400;
@@ -71,5 +71,8 @@ namespace SpaceProject
                 Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
             }
         }
+
+        protected override void SecondaryShootingPattern(GameTime gameTime)
+        { }
     }
 }

@@ -33,8 +33,8 @@ namespace SpaceProject.Shooter_part.GameObjects.Enemies.Instances.Used
 
             lootValue = LootValue.high;
 
-            SetShootingDelay(3000);
-            ChargeWeapon(ChargeMode.randomCharge);
+            AddPrimaryModule(3000, ShootingMode.Regular);
+            primaryModule.SetRandomCharge(random);
 
             //Egenskaper
             SightRange = 400;
@@ -66,8 +66,9 @@ namespace SpaceProject.Shooter_part.GameObjects.Enemies.Instances.Used
         }
 
         protected override void ShootingPattern(GameTime gameTime)
-        {
+        { }
 
-        }
+        protected override void SecondaryShootingPattern(GameTime gameTime)
+        { }
     }
 }

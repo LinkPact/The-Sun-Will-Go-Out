@@ -19,12 +19,12 @@ namespace SpaceProject
 
             lootValue = LootValue.medium;
 
-            SetShootingDelay(3000);
-            ChargeWeapon(ChargeMode.randomCharge);
+            AddPrimaryModule(3000, ShootingMode.Regular);
+            primaryModule.SetRandomCharge(random);
 
             //Egenskaper
             SightRange = 300;
-            HP = 175; //80;
+            HP = 175;
             Damage = 60;
             Speed = 0.07f;
 
@@ -64,7 +64,8 @@ namespace SpaceProject
             
                 bullet.Direction = GlobalMathFunctions.SpreadDir(initDir, spread);
                 bullet.Initialize();
-                bullet.Duration = 300;
+                bullet.Duration = 800;
+                bullet.Speed *= 0.7f;
 
                 bullet.SetSpreadSpeed(random);
 
@@ -72,5 +73,7 @@ namespace SpaceProject
             }
         }
 
+        protected override void SecondaryShootingPattern(GameTime gameTime)
+        { }
     }
 }

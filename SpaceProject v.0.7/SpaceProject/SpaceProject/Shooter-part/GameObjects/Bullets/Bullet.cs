@@ -11,8 +11,6 @@ namespace SpaceProject
         protected Boolean collidesOtherBullets;
         public Boolean CollidesOtherBullets { get { return collidesOtherBullets; } private set { } }
 
-        public float duration;
-        
         public Bullet(Game1 Game, Sprite spriteSheet)
             : base (Game, spriteSheet)
         {

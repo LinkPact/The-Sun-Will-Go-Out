@@ -41,11 +41,13 @@ namespace SpaceProject
             Damage = 60.0f;
             Speed = 0.05f;
 
+            AddPrimaryModule(10, ShootingMode.Regular);
+
             movement = Movement.Following;
 
             //Animationer
             anim.LoopTime = 500;
-            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(380, 340, 38, 58)));
+            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(340, 340, 32, 38)));
 
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
 
@@ -55,8 +57,14 @@ namespace SpaceProject
 
         protected override void ShootingPattern(GameTime gameTime)
         {
-            beamModule.Activate(this, gameTime);
-            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
+            if (beamModule.HasTargetInLineOfSight(Position))
+            {
+                beamModule.Activate(Position, gameTime);
+                Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
+            }
         }
+
+        protected override void SecondaryShootingPattern(GameTime gameTime)
+        { }
     }
 }

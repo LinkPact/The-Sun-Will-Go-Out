@@ -41,9 +41,11 @@ namespace SpaceProject
             lootValue = LootValue.veryHigh;
 
             //Shooting
-            SetShootingDelay(3000);
-            ChargeWeapon(ChargeMode.noCharge);
+            //SetShootingDelay(3000);
+            //ChargeWeapon(ChargeMode.noCharge);
 
+            AddPrimaryModule(300, ShootingMode.Regular);
+            
             //Egenskaper
             SightRange = 4000;
             HP = 400.0f;
@@ -119,7 +121,7 @@ namespace SpaceProject
                 laser1.Position = Position;
                 laser1.Direction = GlobalMathFunctions.DirFromRadians(dir);
                 laser1.Initialize();
-                laser1.Duration *= 3;
+                laser1.Duration *= 10;
                 laser1.DrawLayer = this.DrawLayer - 0.01f;
 
                 Game.AddGameObjToShooter(laser1);
@@ -127,5 +129,8 @@ namespace SpaceProject
 
             Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);   
         }
+
+        protected override void SecondaryShootingPattern(GameTime gameTime)
+        { }
     }
 }

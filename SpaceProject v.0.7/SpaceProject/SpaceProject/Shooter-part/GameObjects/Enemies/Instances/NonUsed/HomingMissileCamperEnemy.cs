@@ -31,8 +31,8 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            SetShootingDelay(2000);
-            ChargeWeapon(ChargeMode.randomCharge);
+            AddPrimaryModule(2000, ShootingMode.Regular);
+            primaryModule.SetRandomCharge(random);
 
             //Egenskaper
             SightRange = 400;
@@ -71,5 +71,8 @@ namespace SpaceProject
             
             Game.stateManager.shooterState.gameObjects.Add(bullet);
         }
+
+        protected override void SecondaryShootingPattern(GameTime gameTime)
+        { }
     }
 }

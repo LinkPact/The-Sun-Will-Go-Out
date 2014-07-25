@@ -33,8 +33,8 @@ namespace SpaceProject
 
             lootValue = LootValue.low;
 
-            SetShootingDelay(3000);
-            ChargeWeapon(ChargeMode.randomCharge);
+            AddPrimaryModule(3000, ShootingMode.Regular);
+            primaryModule.SetRandomCharge(random);
 
             //Egenskaper
             SightRange = 400;
@@ -69,5 +69,8 @@ namespace SpaceProject
         {
 
         }
+
+        protected override void SecondaryShootingPattern(GameTime gameTime)
+        { }
     }
 }

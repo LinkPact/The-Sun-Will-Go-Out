@@ -44,7 +44,7 @@ namespace SpaceProject
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
-            beamModule.Activate(player, gameTime);
+            beamModule.Activate(player.Position, gameTime);
             return true;
         }
 

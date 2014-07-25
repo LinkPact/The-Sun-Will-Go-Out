@@ -29,8 +29,8 @@ namespace SpaceProject
 
             lootValue = LootValue.veryLow;
 
-            SetShootingDelay(3000);
-            ChargeWeapon(ChargeMode.randomCharge);
+            AddPrimaryModule(3000, ShootingMode.Regular);
+            primaryModule.SetRandomCharge(random);
 
             //Egenskaper
             SightRange = 500;
@@ -58,27 +58,27 @@ namespace SpaceProject
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            UpdateAnimation(gameTime);
+            //UpdateAnimation(gameTime);
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            if (!IsKilled)
-            {
-                if (lastTimeShot >= ShootingDelay - 1000 && ShootObject != null)
-                    spriteBatch.Draw(shooting.CurrentFrame.Texture, Position, shooting.CurrentFrame.SourceRectangle, Color.White, 0.0f, CenterPoint, 1.0f, SpriteEffects.None, DrawLayer);
-                else
-                {
-                    base.Draw(spriteBatch);
-                }
-            }
-        }
+        //public override void Draw(SpriteBatch spriteBatch)
+        //{
+        //    if (!IsKilled)
+        //    {
+        //        if (lastTimeShot >= ShootingDelay - 1000 && ShootObject != null)
+        //            spriteBatch.Draw(shooting.CurrentFrame.Texture, Position, shooting.CurrentFrame.SourceRectangle, Color.White, 0.0f, CenterPoint, 1.0f, SpriteEffects.None, DrawLayer);
+        //        else
+        //        {
+        //            base.Draw(spriteBatch);
+        //        }
+        //    }
+        //}
 
-        private void UpdateAnimation(GameTime gameTime)
-        {
-            if (lastTimeShot >= ShootingDelay - 1000)
-                shooting.Update(gameTime);
-        }
+        //private void UpdateAnimation(GameTime gameTime)
+        //{
+        //    if (lastTimeShot >= ShootingDelay - 1000)
+        //        shooting.Update(gameTime);
+        //}
 
         protected override void ShootingPattern(GameTime gameTime)
         {
@@ -87,11 +87,13 @@ namespace SpaceProject
             bullet.PositionY = PositionY;
             bullet.Direction = GlobalMathFunctions.ScaleDirection(ShootObject.Position - Position);
             bullet.Initialize();
-            bullet.duration = 500;
+            bullet.Duration = 500;
             bullet.Speed *= 1.5f;
 
             Game.stateManager.shooterState.gameObjects.Add(bullet);
         }
 
+        protected override void SecondaryShootingPattern(GameTime gameTime)
+        { }
     }
 }

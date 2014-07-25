@@ -6,37 +6,32 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
+    public enum ShootingMode
+    {
+        Regular,
+        Batches,
+        Single
+    }
+
     abstract class ShootingEnemyShip : EnemyShip
     {
         #region declaration
 
-        public enum ShootingMode
+        protected ShootingModule primaryModule;
+        public void AddPrimaryModule(float delay, ShootingMode shootingMode)
         {
-            Regular,
-            Batches,
-            Single
+            primaryModule = new ShootingModule(delay, shootingMode);
+            shootingModules.Add(primaryModule);
+        }
+        
+        protected ShootingModule secondaryModule;
+        public void AddSecondaryModule(float delay, ShootingMode shootingMode)
+        {
+            secondaryModule = new ShootingModule(delay, shootingMode);
+            shootingModules.Add(secondaryModule);
         }
 
-        public enum ChargeMode
-        { 
-            noCharge,
-            fullCharge,
-            randomCharge
-        }
-
-        protected ShootingMode shootingMode = ShootingMode.Regular;
-        
-        protected double lastTimeShot;
-
-        private double shootingDelay;
-        public double ShootingDelay { get { return shootingDelay; } }
-        
-        private int shotsInBatch;
-        private int batchSize;
-        private double lastBatch;
-        private double batchDelay;
-
-        private bool hasShot;
+        private List<ShootingModule> shootingModules = new List<ShootingModule>();
 
         private List<String> targetTypes = new List<String>();
 
@@ -55,19 +50,6 @@ namespace SpaceProject
             ObjectSubClass = "shooting";
         }
 
-        public void SetShootingDelay(int newDelay)
-        {
-            shootingDelay = newDelay;
-        }
-
-        public void ChargeWeapon(ChargeMode chargeMode)
-        {
-            if (chargeMode == ChargeMode.fullCharge)
-                lastTimeShot = shootingDelay;
-            else if (chargeMode == ChargeMode.randomCharge)
-                lastTimeShot = shootingDelay * random.NextDouble();
-        }
-
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -76,74 +58,29 @@ namespace SpaceProject
                 UpdateShooting(gameTime);
         }
 
-        protected void ShootsInBatches(int batchSize, double batchDelay)
-        {
-            shootingMode = ShootingMode.Batches;
-            this.batchSize = batchSize;
-            this.batchDelay = batchDelay;
-        }
-
-        protected void ShootsOnce(int delay)
-        {
-            shootingDelay = delay;
-            shootingMode = ShootingMode.Single;        
-        }
-
         //'Shooting engine'
         private void UpdateShooting(GameTime gameTime)
         {
             FindAimObject();
 
-            if (shootingMode == ShootingMode.Regular)
+            foreach (ShootingModule module in shootingModules)
             {
-                if (ShootObject != null)
+                if (primaryModule != null)
                 {
-                    lastTimeShot += gameTime.ElapsedGameTime.Milliseconds;
-
-                    if (lastTimeShot >= shootingDelay)
+                    primaryModule.Update(gameTime, ShootObject);
+                    if (primaryModule.IsReady())
                     {
                         ShootingPattern(gameTime);
-                        lastTimeShot -= shootingDelay;
-
                         Game.soundEffectsManager.PlaySoundEffect(shootSoundID, soundPan);
                     }
                 }
-            }
-            else if (shootingMode == ShootingMode.Batches)
-            {
-                if (shotsInBatch > 0)
-                    lastTimeShot += gameTime.ElapsedGameTime.Milliseconds;
-                else
-                    lastBatch += gameTime.ElapsedGameTime.Milliseconds;
 
-                if (lastBatch > batchDelay)
+                if (secondaryModule != null)
                 {
-                    shotsInBatch = batchSize;
-                    lastBatch = 0;
-                }
-
-                if (lastTimeShot >= shootingDelay)
-                {
-                    shotsInBatch--;
-
-                    ShootingPattern(gameTime);
-                    lastTimeShot -= shootingDelay;
-
-                    Game.soundEffectsManager.PlaySoundEffect(shootSoundID, soundPan);
-                }
-            }
-            else if (shootingMode == ShootingMode.Single)
-            {
-                if (!hasShot)
-                {
-                    lastTimeShot += gameTime.ElapsedGameTime.Milliseconds;
-
-                    if (lastTimeShot >= shootingDelay)
+                    secondaryModule.Update(gameTime, ShootObject);
+                    if (secondaryModule.IsReady())
                     {
-                        hasShot = true;
-                        ShootingPattern(gameTime);
-                        lastTimeShot -= shootingDelay;
-
+                        SecondaryShootingPattern(gameTime);
                         Game.soundEffectsManager.PlaySoundEffect(shootSoundID, soundPan);
                     }
                 }
@@ -151,6 +88,7 @@ namespace SpaceProject
         }
 
         protected abstract void ShootingPattern(GameTime gameTime);
-        
+
+        protected abstract void SecondaryShootingPattern(GameTime gameTime);
     }
 }

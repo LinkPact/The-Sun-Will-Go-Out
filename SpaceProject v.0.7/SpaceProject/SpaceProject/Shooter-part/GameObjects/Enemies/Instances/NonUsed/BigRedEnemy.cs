@@ -19,7 +19,7 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            ShootsOnce(300);
+            AddPrimaryModule(300, ShootingMode.Single);
 
             //Egenskaper
             SightRange = 250;
@@ -67,5 +67,8 @@ namespace SpaceProject
                 Game.stateManager.shooterState.gameObjects.Add(bullet);
             }
         }
+
+        protected override void SecondaryShootingPattern(GameTime gameTime)
+        { }
     }
 }

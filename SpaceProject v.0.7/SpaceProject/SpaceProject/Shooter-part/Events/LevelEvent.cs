@@ -369,12 +369,17 @@ namespace SpaceProject
                     }
                 case EnemyType.A_heavyBeamer:
                     {
-                        creature = new AllianceHeavyBeamer_placeholder(Game, spriteSheet, player);
+                        creature = new AllianceHeavyBeamer(Game, spriteSheet, player);
                         break;
                     }
                 case EnemyType.A_ballistic:
                     {
                         creature = new AllianceBallistic_placeholder(Game, spriteSheet, player);
+                        break;
+                    }
+                case EnemyType.A_hangar:
+                    {
+                        creature = new AllianceHangar_placeholder(Game, spriteSheet, player);
                         break;
                     }
                 #endregion

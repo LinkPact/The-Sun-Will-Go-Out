@@ -26,8 +26,8 @@ namespace SpaceProject
 
             lootValue = LootValue.veryHigh;
 
-            SetShootingDelay(500);
-            ChargeWeapon(ChargeMode.randomCharge);
+            AddPrimaryModule(500, ShootingMode.Regular);
+            primaryModule.SetRandomCharge(random);
 
             Damage = 100;
             Speed = 0.04f;
@@ -88,6 +88,8 @@ namespace SpaceProject
 
             Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
         }
-    }
 
+        protected override void SecondaryShootingPattern(GameTime gameTime)
+        { }
+    }
 }

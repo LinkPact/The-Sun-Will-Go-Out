@@ -12,7 +12,7 @@ namespace SpaceProject
         public AllianceSmallLaserShip(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
         {
-            ObjectName = "RebelThickShooter";
+            //ObjectName = "RebelThickShooter";
             Setup();
         }
 
@@ -29,8 +29,8 @@ namespace SpaceProject
 
             lootValue = LootValue.low;
 
-            SetShootingDelay(2000);
-            ChargeWeapon(ChargeMode.randomCharge);
+            AddPrimaryModule(2000, ShootingMode.Regular);
+            primaryModule.SetRandomCharge(random);
 
             Damage = 100;
             Speed = 0.06f;
@@ -65,5 +65,8 @@ namespace SpaceProject
 
             Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
         }
+
+        protected override void SecondaryShootingPattern(GameTime gameTime)
+        { }
     }
 }

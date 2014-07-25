@@ -33,8 +33,8 @@ namespace SpaceProject
 
             lootValue = LootValue.medium;
 
-            SetShootingDelay(1000);
-
+            AddPrimaryModule(1000, ShootingMode.Regular);
+            
             //Egenskaper
             SightRange = 500;
             HP = 400f;
@@ -60,5 +60,8 @@ namespace SpaceProject
 
             Game.stateManager.shooterState.gameObjects.Add(bullet);
         }
+
+        protected override void SecondaryShootingPattern(GameTime gameTime)
+        { }
     }
 }
