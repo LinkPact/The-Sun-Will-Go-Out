@@ -219,16 +219,16 @@ Reputation = 10
 State = 0
 
 [SX_AstroDodger]
-Location = Soelara Station
+Location = Fotrun Station I
 Name = Astro Dodger
-Introduction = "I've got an important job for you: We recently lost a shuttle transporting some of our company goods. As we have a great interest in our employees well-being, we need you to go and check if there were any survivors. If so, bring them back here and I will personally make sure you get a fat pay-check."
+Introduction = "I've got an important job for you: We recently lost a ship during a rutine scouting mission. We would need someone to investigate this insident. If possible rescue any survivors and if the worst has happened collect any data from the ships computers."
 ObjectiveText1 = Find the damaged shuttle in the overworld, last known coordinates were (-1750, -1800).
-ObjectiveText2 = You found the shuttle. Unfortunatly there were no survivors. Return to Soelara Station at coordinates (60, -1230) and tell the coorporate man.
+ObjectiveText2 = You found the shuttle. Unfortunatly there were no survivors. Return to Soelara Station at coordinates (60, -1230) and tell the Alliance.
 PosResponse = Tell him you'll find them.
 NegResponse = Turn him down. You have a bad feeling about this...
-Accept = "Splendid! The communications were lost during a rutine drop-off. The last recieved coordinates were (-1750, -1800) so you should find the shuttle close to that location. Good luck!"
+Accept = "Splendid! The communications were lost during a rutine scouting mission. The last recieved coordinates were (-1750, -1800) so you should find the shuttle close to that location. Good luck!"
 EventText1 = The ship is badly damaged. It seems it has been hit by several asteroids. You find it highly unlikely that there were any survivors.#Oh no! A second asteroid field is drawing near!
-EventText2 = The asteroid field finally passes you. You have experienced first hand the cause of the ship's demise but unlike your unlucky fellow space travelers you survived. You decide to return to Soelara and finish this mission. There is nothing you can do for these people now.
+EventText2 = The asteroid field finally passes you. You have experienced first hand the cause of the ship's demise but unlike your unlucky fellow space travelers you survived. #You managed to download some data from the ships computers and decides it is best to return to Fotrun. Thou you wonder what this ships did here so far away in unsharted space.
 Success = "No survivors huh? That is a real shame. I'll make sure to deliver the bad news to the families directly. But do not dispare! You've done an excellent job!
 ObjectiveCompleted = You found the ship and survived the meteor shower."
 Fail = You fail!
