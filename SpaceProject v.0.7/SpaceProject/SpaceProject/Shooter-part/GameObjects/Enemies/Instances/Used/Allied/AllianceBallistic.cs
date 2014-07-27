@@ -54,7 +54,7 @@ namespace SpaceProject
         {
             EnemyStrongBlueLaser bullet = new EnemyStrongBlueLaser(Game, spriteSheet);
             bullet.Position = Position;
-            bullet.Direction = GlobalMathFunctions.ScaleDirection(ShootObject.Position - Position);
+            bullet.Direction = MathFunctions.ScaleDirection(ShootObject.Position - Position);
             bullet.Initialize();
 
             Game.stateManager.shooterState.gameObjects.Add(bullet);

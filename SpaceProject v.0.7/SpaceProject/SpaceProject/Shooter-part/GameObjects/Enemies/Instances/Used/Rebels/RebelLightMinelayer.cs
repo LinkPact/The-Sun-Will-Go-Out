@@ -54,12 +54,12 @@ namespace SpaceProject
         protected override void ShootingPattern(GameTime gameTime)
         {
             Vector2 centerDir = new Vector2(0, 1.0f);
-            double dirRadians = GlobalMathFunctions.RadiansFromDir(centerDir);
+            double dirRadians = MathFunctions.RadiansFromDir(centerDir);
             dirRadians += random.NextDouble() * Math.PI / 8 - Math.PI / 16;
 
             MineEnemy mine = new MineEnemy(Game, spriteSheet);
             mine.Position = Position;
-            mine.Direction = GlobalMathFunctions.GetRandomDownDirection();
+            mine.Direction = MathFunctions.GetRandomDownDirection();
             mine.Initialize();
             mine.Speed = 0.003f;
             mine.Duration = 6000;

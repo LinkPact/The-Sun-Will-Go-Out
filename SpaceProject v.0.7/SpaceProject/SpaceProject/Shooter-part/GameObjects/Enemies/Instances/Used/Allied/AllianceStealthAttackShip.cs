@@ -121,7 +121,7 @@ namespace SpaceProject
                 EnemyWeakBlueLaser laser1 = new EnemyWeakBlueLaser(Game, spriteSheet);
                 laser1.Position = Position;
                 laser1.Direction = new Vector2(0, 1);
-                laser1.Direction = GlobalMathFunctions.SpreadDir(laser1.Direction, Math.PI / 8);
+                laser1.Direction = MathFunctions.SpreadDir(laser1.Direction, Math.PI / 8);
                 laser1.Initialize();
                 laser1.DrawLayer = this.DrawLayer - 0.01f;
                 laser1.SetSpreadSpeed(random);

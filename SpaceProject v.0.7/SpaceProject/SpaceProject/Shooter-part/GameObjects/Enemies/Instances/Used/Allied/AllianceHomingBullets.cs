@@ -57,13 +57,13 @@ namespace SpaceProject
             double width = 2 * Math.PI;
             int numberOfShots = 6;
 
-            List<double> spreadDirections = GlobalMathFunctions.GetSpreadDirList(width, numberOfShots);
+            List<double> spreadDirections = MathFunctions.GetSpreadDirList(width, numberOfShots);
 
             foreach (double dir in spreadDirections)
             {
                 EnemyHomingBullet bullet = new EnemyHomingBullet(Game, spriteSheet, player);
                 bullet.Position = Position;
-                bullet.Direction = GlobalMathFunctions.DirFromRadians(dir);
+                bullet.Direction = MathFunctions.DirFromRadians(dir);
                 bullet.Initialize();
                 bullet.Speed *= 0.8f;
 

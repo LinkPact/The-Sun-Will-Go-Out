@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace SpaceProject
 {
     //Klass dar jag placerat matematik som senare kunde komma tankas att behovas av ett flertal klasser
-    public class GlobalMathFunctions
+    public class MathFunctions
     {
         private static Random rand = new Random();
 
@@ -103,7 +103,7 @@ namespace SpaceProject
         //Skapar riktning inom spridningsintervall angivet kring initialriktning.
         public static Vector2 SpreadDir(Vector2 dir, double spread)
         {
-            double dirRadians = GlobalMathFunctions.RadiansFromDir(dir);
+            double dirRadians = MathFunctions.RadiansFromDir(dir);
             dirRadians += ((rand.NextDouble() * spread) - spread / 2);
 
             Vector2 newDir = DirFromRadians(dirRadians);
@@ -129,11 +129,11 @@ namespace SpaceProject
 
             foreach (GameObjectVertical obj in objects)
             {
-                if (GlobalMathFunctions.ObjectDistance(object1, obj) < tempDistance
-                     && GlobalMathFunctions.ObjectDistance(object1, obj) < range)
+                if (MathFunctions.ObjectDistance(object1, obj) < tempDistance
+                     && MathFunctions.ObjectDistance(object1, obj) < range)
                 {
                     tempTarget = obj;
-                    tempDistance = GlobalMathFunctions.ObjectDistance(object1, tempTarget);
+                    tempDistance = MathFunctions.ObjectDistance(object1, tempTarget);
                 }
             }
 
@@ -147,11 +147,11 @@ namespace SpaceProject
 
             foreach (GameObjectVertical obj in objects)
             {
-                if (obj.ObjectClass.ToLower() == kind.ToLower() && GlobalMathFunctions.ObjectDistance(object1, obj) < tempDistance
-                     && GlobalMathFunctions.ObjectDistance(object1, obj) < range)
+                if (obj.ObjectClass.ToLower() == kind.ToLower() && MathFunctions.ObjectDistance(object1, obj) < tempDistance
+                     && MathFunctions.ObjectDistance(object1, obj) < range)
                 {
                     tempTarget = obj;
-                    tempDistance = GlobalMathFunctions.ObjectDistance(object1, tempTarget);
+                    tempDistance = MathFunctions.ObjectDistance(object1, tempTarget);
                 }
             }
 
@@ -167,11 +167,11 @@ namespace SpaceProject
             {
                 for (int i = 0; i < kinds.Count; i++)
                 {
-                    if (obj.ObjectClass.ToLower() == kinds[i].ToLower() && GlobalMathFunctions.ObjectDistance(object1, obj) < tempDistance
-                         && GlobalMathFunctions.ObjectDistance(object1, obj) < range)
+                    if (obj.ObjectClass.ToLower() == kinds[i].ToLower() && MathFunctions.ObjectDistance(object1, obj) < tempDistance
+                         && MathFunctions.ObjectDistance(object1, obj) < range)
                     {
                         tempTarget = obj;
-                        tempDistance = GlobalMathFunctions.ObjectDistance(object1, tempTarget);
+                        tempDistance = MathFunctions.ObjectDistance(object1, tempTarget);
                     }
                 }
             }
@@ -255,6 +255,39 @@ namespace SpaceProject
                 directions.Add(dir);
             }
             return directions;
+        }
+
+        public static Vector2 ChangeDirection(Vector2 dir, Vector2 pos, Vector2 followedPos, double degreeChange)
+        {
+            double radians = RadiansFromDir(dir);
+
+            Vector2 dirToFollowed = new Vector2(followedPos.X - pos.X, followedPos.Y - pos.Y);
+            dirToFollowed = MathFunctions.ScaleDirection(dirToFollowed);
+
+            double dirFolRadians;
+
+            if (dirToFollowed.Y > 0)
+                dirFolRadians = Math.Acos(dirToFollowed.X);
+            else
+                dirFolRadians = 2 * Math.PI - (Math.Acos(dirToFollowed.X));
+
+            if (dirFolRadians > 2 * Math.PI)
+                dirFolRadians -= 2 * Math.PI;
+
+            if (MathFunctions.DeltaRadians(radians, dirFolRadians) > 0 && MathFunctions.DeltaRadians(radians, dirFolRadians) <= 180)
+                radians += degreeChange * (Math.PI / 180);
+            else if (MathFunctions.DeltaRadians(radians, dirFolRadians) < 0 && MathFunctions.DeltaRadians(radians, dirFolRadians) <= 180)
+                radians -= degreeChange * (Math.PI / 180);
+            else if (MathFunctions.DeltaRadians(radians, dirFolRadians) > 0 && MathFunctions.DeltaRadians(radians, dirFolRadians) > 180)
+                radians -= degreeChange * (Math.PI / 180);
+            else //(dirFolRadians < Radians && (dirFolRadians - Radians) > 180)
+                radians += degreeChange * (Math.PI / 180);
+
+            Vector2 newDir = Vector2.Zero;
+            newDir.X = (float)(Math.Cos(radians));
+            newDir.Y = (float)(Math.Sin(radians));
+
+            return newDir;
         }
     }
 }

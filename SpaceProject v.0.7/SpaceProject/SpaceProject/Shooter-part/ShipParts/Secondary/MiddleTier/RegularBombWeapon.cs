@@ -46,12 +46,12 @@ namespace SpaceProject
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
             Vector2 centerDir = new Vector2(0, -1.0f);
-            double dirRadians = GlobalMathFunctions.RadiansFromDir(centerDir);
+            double dirRadians = MathFunctions.RadiansFromDir(centerDir);
             dirRadians += random.NextDouble() * Math.PI / 2 - Math.PI / 4;
 
             RegularBomb bomb = new RegularBomb(Game, spriteSheet);
             bomb.Position = player.Position;
-            bomb.Direction = GlobalMathFunctions.DirFromRadians(dirRadians);
+            bomb.Direction = MathFunctions.DirFromRadians(dirRadians);
             bomb.Initialize();
 
             Game.stateManager.shooterState.gameObjects.Add(bomb);

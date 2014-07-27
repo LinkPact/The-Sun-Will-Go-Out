@@ -61,7 +61,7 @@ namespace SpaceProject
             EnemyWeakBlueLaser laser1 = new EnemyWeakBlueLaser(Game, spriteSheet);
             laser1.PositionX = PositionX;
             laser1.PositionY = PositionY;
-            laser1.Direction = GlobalMathFunctions.ScaleDirection(ShootObject.Position - Position);
+            laser1.Direction = MathFunctions.ScaleDirection(ShootObject.Position - Position);
             laser1.Initialize();
             laser1.Duration *= 1.5f;
 

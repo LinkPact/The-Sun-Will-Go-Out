@@ -396,7 +396,7 @@ namespace SpaceProject
         #region CreateCreature(...)
         protected void CreateCreature()
         {
-            CreationLogic(new Vector2(-1,0), CreationFlag.WITHOUT_POSITION);
+            VerticalCreationLogic(new Vector2(-1,0), CreationFlag.WITHOUT_POSITION);
         }
         
         protected void CreateCreature(float xPos)
@@ -404,19 +404,22 @@ namespace SpaceProject
             if (xPos == -1f) xPos = level.RelativeOrigin + (float)(random.NextDouble() * level.LevelWidth);
 
             Vector2 xVector = new Vector2(xPos, 0);
-            CreationLogic(xVector, CreationFlag.X_POSITION);
+            VerticalCreationLogic(xVector, CreationFlag.X_POSITION);
         }
         
         protected void CreateCreature(Vector2 position)
         {
+            VerticalShooterShip creature = RetrieveCreatureFromEnum(enemyType);
+
             if (position.X == -1f) position = new Vector2(level.RelativeOrigin + (float)(random.NextDouble() * level.LevelWidth), 0);
 
-            CreationLogic(position, CreationFlag.VECTOR_POSITION);
+            VerticalCreationLogic(position, CreationFlag.VECTOR_POSITION);
         }
 
-        private void CreationLogic(Vector2 position, CreationFlag flag)
+        private void VerticalCreationLogic(Vector2 position, CreationFlag flag)
         {
-            position.Y -= 50; // Setting a startup marginal to not "pop" on the screen
+            if (flag != CreationFlag.VECTOR_POSITION)
+                position.Y -= 50; // Setting a startup marginal to not "pop" on the screen
 
             if (Game.Window.ClientBounds.Height > 600)
             {
@@ -461,6 +464,54 @@ namespace SpaceProject
 
             Game.stateManager.shooterState.gameObjects.Add(creature);
         }
+
+        //private void HorizontalCreationLogic(Vector2 position)
+        //{
+        //    position.Y = 200; // Temporary test startY for horizontal movement
+        //
+        //    if (Game.Window.ClientBounds.Height > 600)
+        //    {
+        //        position.Y += (Game.Window.ClientBounds.Height - 600) / 2;
+        //    }
+        //
+        //    //switch (flag)
+        //    //{
+        //    //    case CreationFlag.WITHOUT_POSITION:
+        //    //        {
+        //    //            xPos = level.RelativeOrigin + (float)(random.NextDouble() * level.LevelWidth);
+        //    //            break;
+        //    //        }
+        //    //    case CreationFlag.X_POSITION:
+        //    //        {
+        //    //            xPos = level.RelativeOrigin + position.X;
+        //    //            break;
+        //    //        }
+        //    //    case CreationFlag.VECTOR_POSITION:
+        //    //        {
+        //    //            xPos = level.RelativeOrigin + position.X;
+        //    //            break;
+        //    //        }
+        //    //    default:
+        //    //        {
+        //    //            throw new ArgumentException("New unhandled flag-variant is probably present");
+        //    //        }
+        //    //}
+        //
+        //    VerticalShooterShip creature = RetrieveCreatureFromEnum(enemyType);
+        //
+        //    creature.PositionX = 50;
+        //
+        //    if (creature is AlliedShip)
+        //        throw new ArgumentException("Horizontal movement is not implemented for allies!!");
+        //    else
+        //        creature.PositionY = position.Y;
+        //
+        //    creature = StandardCreatureSetup(creature);
+        //    creature.SetLevelWidth(level.LevelWidth);
+        //    creature.MovementSetup();
+        //
+        //    Game.stateManager.shooterState.gameObjects.Add(creature);
+        //}
         #endregion
 
         #region ReturnCreature(...)
@@ -514,12 +565,6 @@ namespace SpaceProject
                 {
                     creature.SetMovement(setupCreature.newMovement);
                 }
-
-                //if (creature.ObjectSubClass != null)
-                //{
-                //    if (creature.ObjectSubClass.Equals("shooting"))
-                //        ((ShootingEnemyShip)creature).ShootingDelay *= setupCreature.shootDelayFactor;
-                //}
             }
 
             //Extra logic for allys

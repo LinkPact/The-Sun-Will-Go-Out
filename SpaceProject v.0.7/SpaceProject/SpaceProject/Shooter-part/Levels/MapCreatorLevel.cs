@@ -130,7 +130,7 @@ namespace SpaceProject
 
             SortedDictionary<string, int> settings = new SortedDictionary<string, int>();
 
-            MatchCollection matches = Regex.Matches(state, @"([XYWH])(\d+)");
+            MatchCollection matches = Regex.Matches(state, @"([XYWHD])(\d+)");
             foreach (Match match in matches)
             {
                 String letter = match.Groups[1].Value;
@@ -152,6 +152,22 @@ namespace SpaceProject
                     {
                         LevelEvent lvEv = new SingleEnemy(Game, player, spriteSheet, this, identifier, time, pos);
                         SetMovement(lvEv, movement);
+                        untriggeredEvents.Add(lvEv);
+                        break;
+                    }
+                // The horizontal event forces a horizontal movement
+                case "h":
+                    {
+                        int direction = settings["D"];
+                        int yPos = settings["Y"];
+
+                        LevelEvent lvEv = new SingleHorizontalEnemy(Game, player, spriteSheet, this, identifier, time, direction, yPos);
+
+                        if (direction == 1)
+                            SetMovement(lvEv, Movement.RightHorizontal);
+                        else
+                            SetMovement(lvEv, Movement.LeftHorizontal);
+                        
                         untriggeredEvents.Add(lvEv);
                         break;
                     }

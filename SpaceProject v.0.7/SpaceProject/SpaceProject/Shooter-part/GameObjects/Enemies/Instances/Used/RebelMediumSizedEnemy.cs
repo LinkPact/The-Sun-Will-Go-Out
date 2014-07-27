@@ -41,8 +41,6 @@ namespace SpaceProject
             Speed = 0.15f;
 
             movement = Movement.Zigzag;
-            zigzagInterval = 0.4f;
-            zigzagXdir = 0.0f;
 
             ObjectClass = "enemy";
             ObjectName = "RebelMediumEnemy";
@@ -108,13 +106,13 @@ namespace SpaceProject
 
                 bullet1.PositionX = PositionX - 10;
                 bullet1.PositionY = PositionY + 16;
-                bullet1.Direction = GlobalMathFunctions.ScaleDirection(ShootObject.Position - Position);
+                bullet1.Direction = MathFunctions.ScaleDirection(ShootObject.Position - Position);
                 bullet1.Initialize();
                 bullet1.Duration = 500;
 
                 bullet2.PositionX = PositionX + 10;
                 bullet2.PositionY = PositionY + 16;
-                bullet2.Direction = GlobalMathFunctions.ScaleDirection(ShootObject.Position - Position);
+                bullet2.Direction = MathFunctions.ScaleDirection(ShootObject.Position - Position);
                 bullet2.Initialize();
                 bullet2.Duration = 500;
 

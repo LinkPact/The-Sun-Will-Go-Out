@@ -75,6 +75,7 @@ namespace SpaceProject
 
             //Point event
             pointLibrary.Add(PointEventType.point, "0");
+            pointLibrary.Add(PointEventType.horizontal, "h");
             pointLibrary.Add(PointEventType.line, "l");
             pointLibrary.Add(PointEventType.square, "s");
             pointLibrary.Add(PointEventType.vformation, "t");
@@ -86,15 +87,13 @@ namespace SpaceProject
             //Movement
             movementLibrary.Add(Movement.None, "nn");
             movementLibrary.Add(Movement.CrossOver, "c1");
-            //movementLibrary.Add(Movement.CrossOver2, "c2");
             movementLibrary.Add(Movement.Following, "fo");
-            //movementLibrary.Add(Movement.FollowingAll, "fa");
-            //movementLibrary.Add(Movement.FollowingPlayer, "fp");
             movementLibrary.Add(Movement.Line, "ln");
             movementLibrary.Add(Movement.SlantingLine, "sl");
             movementLibrary.Add(Movement.Stopping, "st");
-            //movementLibrary.Add(Movement.SweepingShooting, "ss");
             movementLibrary.Add(Movement.Zigzag, "zz");
+            movementLibrary.Add(Movement.FullStop, "fs");
+            movementLibrary.Add(Movement.RightHorizontal, "ho");
             movementLibrary.Add(Movement.AI, "ai");
         }
 

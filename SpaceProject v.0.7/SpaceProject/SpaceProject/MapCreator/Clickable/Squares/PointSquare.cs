@@ -74,6 +74,10 @@ namespace SpaceProject
                     {
                         return triangle;
                     }
+                case PointEventType.horizontal:
+                    {
+                        return point;
+                    }
                 default:
                     {
                         throw new ArgumentException("Invalid eventType in data");

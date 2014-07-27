@@ -119,7 +119,7 @@ namespace SpaceProject
             {
                 EnemyWeakBlueLaser laser1 = new EnemyWeakBlueLaser(Game, spriteSheet);
                 laser1.Position = Position;
-                laser1.Direction = GlobalMathFunctions.DirFromRadians(dir);
+                laser1.Direction = MathFunctions.DirFromRadians(dir);
                 laser1.Initialize();
                 laser1.Duration *= 10;
                 laser1.DrawLayer = this.DrawLayer - 0.01f;

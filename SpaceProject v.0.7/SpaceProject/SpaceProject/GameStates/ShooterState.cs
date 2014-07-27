@@ -288,13 +288,13 @@ namespace SpaceProject
 
                     Boolean pixelCollisionNeedsEvaluation = true;
 
-                    if (GlobalMathFunctions.IsOneOfType<AreaDamage>(obj1, obj2))
+                    if (MathFunctions.IsOneOfType<AreaDamage>(obj1, obj2))
                     {
                         PerformAreaDamage(obj1, obj2);
                         pixelCollisionNeedsEvaluation = false;
                     }
-                    else if(GlobalMathFunctions.IsOneOfType<AreaShieldCollision>(obj1.AreaCollision, obj2.AreaCollision)
-                            && GlobalMathFunctions.IsOneOfType<PlayerBullet>(obj1, obj2))
+                    else if(MathFunctions.IsOneOfType<AreaShieldCollision>(obj1.AreaCollision, obj2.AreaCollision)
+                            && MathFunctions.IsOneOfType<PlayerBullet>(obj1, obj2))
                     {
                         pixelCollisionNeedsEvaluation = PerformShieldAreaCollision(obj1, obj2);
                     }

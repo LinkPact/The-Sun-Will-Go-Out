@@ -86,7 +86,7 @@ namespace SpaceProject
         protected void BasicBulletSetup(PlayerBullet bullet)
         {
             bullet.Direction = new Vector2(0, -1);
-            bullet.Radians = GlobalMathFunctions.RadiansFromDir(bullet.Direction);
+            bullet.Radians = MathFunctions.RadiansFromDir(bullet.Direction);
         
             BasicBulletSetupInternal(bullet);
         }
@@ -94,7 +94,7 @@ namespace SpaceProject
         protected void BasicBulletSetup(PlayerBullet bullet, Vector2 direction)
         {
             bullet.Direction = direction;
-            bullet.Radians = GlobalMathFunctions.RadiansFromDir(bullet.Direction);
+            bullet.Radians = MathFunctions.RadiansFromDir(bullet.Direction);
         
             BasicBulletSetupInternal(bullet);
         }

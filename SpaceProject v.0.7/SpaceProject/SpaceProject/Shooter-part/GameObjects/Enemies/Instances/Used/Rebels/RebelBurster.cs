@@ -55,14 +55,14 @@ namespace SpaceProject
             int nbrOfShots = 12;
             double spread = Math.PI / 8;
 
-            Vector2 initDir = GlobalMathFunctions.ScaleDirection(ShootObject.Position - Position);  
+            Vector2 initDir = MathFunctions.ScaleDirection(ShootObject.Position - Position);  
             for (int n = 0; n < nbrOfShots; n++)
             {
                 EnemyWeakRedLaser bullet = new EnemyWeakRedLaser(Game, spriteSheet);
                 bullet.PositionX = PositionX;
                 bullet.PositionY = PositionY;
             
-                bullet.Direction = GlobalMathFunctions.SpreadDir(initDir, spread);
+                bullet.Direction = MathFunctions.SpreadDir(initDir, spread);
                 bullet.Initialize();
                 bullet.Duration = 800;
                 bullet.Speed *= 0.7f;

@@ -212,7 +212,7 @@ namespace SpaceProject
         {
             for (int i = 0; i < menuOptions.Length / 2; i++)
             {
-                if (GlobalMathFunctions.IsMouseOverText(menuOptionFont, menuOptions[i, 0],
+                if (MathFunctions.IsMouseOverText(menuOptionFont, menuOptions[i, 0],
                     new Vector2((game.Window.ClientBounds.Width / 9) * 4, game.Window.ClientBounds.Height / 3 + (i * 23)) + fontOffset))
                 {
                     if (ControlManager.IsLeftMouseButtonClicked())
@@ -230,7 +230,7 @@ namespace SpaceProject
 
                 if (!menuOptions[i, 1].Equals(""))
                 {
-                    if (GlobalMathFunctions.IsMouseOverText(menuOptionFont, menuOptions[i, 1],
+                    if (MathFunctions.IsMouseOverText(menuOptionFont, menuOptions[i, 1],
                         new Vector2(game.Window.ClientBounds.Width - 150, game.Window.ClientBounds.Height / 3 + (i * 23)) + fontOffset))
                     {
                         if (ControlManager.IsLeftMouseButtonClicked())

@@ -10,8 +10,6 @@ namespace SpaceProject
     //Class used to create a single instance of an enemy
     class SingleEnemy : PointLevelEvent
     {
-        //Different constructors. In this case this lets the player choose if he wants a decided
-        //position or not.
         public SingleEnemy(Game1 Game, PlayerVerticalShooter player, Sprite spriteSheet, Level level,
             EnemyType identifier, float startTime, float startPos)
             : base(Game, player, spriteSheet, level, identifier, startTime)
@@ -25,7 +23,6 @@ namespace SpaceProject
         {
             xPos = startPos;
         }
-        //
 
         //The function called when the class is activated.
         //For events inheriting from the "PointLevelEvent"-class

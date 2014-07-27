@@ -55,7 +55,7 @@ namespace SpaceProject
         {
             MineEnemy mine = new MineEnemy(Game, spriteSheet);
             mine.Position = Position;
-            mine.Direction = GlobalMathFunctions.ScaleDirection(ShootObject.Position - Position);
+            mine.Direction = MathFunctions.ScaleDirection(ShootObject.Position - Position);
             mine.Initialize();
             mine.Speed = 0.20f;
             mine.Duration = 750;

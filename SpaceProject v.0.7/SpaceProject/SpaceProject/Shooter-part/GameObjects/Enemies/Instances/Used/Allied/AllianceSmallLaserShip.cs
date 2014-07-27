@@ -51,12 +51,12 @@ namespace SpaceProject
             double width = Math.PI / 12;
             double numberOfShots = 3;
             
-            foreach (double dir in GlobalMathFunctions.GetSpreadDirList(width, numberOfShots))
+            foreach (double dir in MathFunctions.GetSpreadDirList(width, numberOfShots))
             {
                 EnemyWeakBlueLaser laser1 = new EnemyWeakBlueLaser(Game, spriteSheet);
                 laser1.PositionX = PositionX;
                 laser1.PositionY = PositionY;
-                laser1.Direction = GlobalMathFunctions.DirFromRadians(dir);
+                laser1.Direction = MathFunctions.DirFromRadians(dir);
                 laser1.Initialize();
                 laser1.Speed *= 1.5f;
             

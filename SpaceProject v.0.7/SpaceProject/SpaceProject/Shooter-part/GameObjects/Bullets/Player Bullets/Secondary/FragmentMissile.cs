@@ -57,7 +57,7 @@ namespace SpaceProject
                 fragment.Initialize();
                 fragment.Position = Position;
                 fragment.Duration = 150;
-                fragment.Direction = GlobalMathFunctions.SpreadDir(new Vector2(0, -1), Math.PI / 3);
+                fragment.Direction = MathFunctions.SpreadDir(new Vector2(0, -1), Math.PI / 3);
 
                 fragment.Speed = (float)(random.NextDouble() * 0.5 + 0.5);
 

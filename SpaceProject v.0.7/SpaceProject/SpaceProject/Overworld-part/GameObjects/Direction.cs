@@ -25,19 +25,19 @@ namespace SpaceProject
         // Set direction from vector
         public void SetDirection(Vector2 direction)
         {
-            scaledDirection = GlobalMathFunctions.ScaleDirection(direction);
+            scaledDirection = MathFunctions.ScaleDirection(direction);
         }
 
         public void SetDirectionX(float xFactor)
         {
             Vector2 newDir = new Vector2(xFactor, scaledDirection.Y);
-            scaledDirection = GlobalMathFunctions.ScaleDirection(newDir);
+            scaledDirection = MathFunctions.ScaleDirection(newDir);
         }
 
         public void SetDirectionY(float yFactor)
         {
             Vector2 newDir = new Vector2(scaledDirection.X, yFactor);
-            scaledDirection = GlobalMathFunctions.ScaleDirection(newDir);
+            scaledDirection = MathFunctions.ScaleDirection(newDir);
         }
 
         // Set direction from radians

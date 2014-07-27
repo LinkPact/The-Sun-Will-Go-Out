@@ -124,7 +124,7 @@ namespace SpaceProject
             else
                 Direction = Direction.Zero;
 
-            angle = (float)(GlobalMathFunctions.RadiansFromDir(new Vector2(
+            angle = (float)(MathFunctions.RadiansFromDir(new Vector2(
                 Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI) / 2);
 
             // Check if arrived at destination

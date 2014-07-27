@@ -48,12 +48,12 @@ namespace SpaceProject
         {
             Vector2 centerDir = new Vector2(0, -1.0f);
 
-            double dirRadians = GlobalMathFunctions.RadiansFromDir(centerDir);
+            double dirRadians = MathFunctions.RadiansFromDir(centerDir);
             dirRadians += random.NextDouble() * 2 * Math.PI / 12 - Math.PI / 12;
 
             YellowBullet bullet = new YellowBullet(Game, spriteSheet);
             bullet.Position = player.Position;
-            bullet.Direction = GlobalMathFunctions.DirFromRadians(dirRadians);
+            bullet.Direction = MathFunctions.DirFromRadians(dirRadians);
             bullet.Initialize();
 
             bullet.Speed += ((float)random.NextDouble()) * 1.0f * bullet.Speed - 0.5f * bullet.Speed;

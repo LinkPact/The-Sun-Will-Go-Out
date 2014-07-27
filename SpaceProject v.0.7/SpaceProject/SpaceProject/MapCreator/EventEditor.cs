@@ -26,6 +26,10 @@ namespace SpaceProject
             masterPointDictionary = new Dictionary<PointEventType, SortedDictionary<string, EventSetting>>();
 
             SortedDictionary<string, EventSetting> point = new SortedDictionary<string, EventSetting>();
+            
+            SortedDictionary<string, EventSetting> horizontal = new SortedDictionary<string, EventSetting>();
+            horizontal.Add("D", new EventSetting("dir (1,2)", GetPointSettingPosition(0), 1));
+            horizontal.Add("Y", new EventSetting("y-position", GetPointSettingPosition(1), 200));
 
             SortedDictionary<string, EventSetting> line = new SortedDictionary<string, EventSetting>();
             line.Add("W", new EventSetting("x-count", GetPointSettingPosition(0), 4));
@@ -43,6 +47,7 @@ namespace SpaceProject
             vformation.Add("Y", new EventSetting("y-spacing", GetPointSettingPosition(2), 30));
 
             masterPointDictionary.Add(PointEventType.point, point);
+            masterPointDictionary.Add(PointEventType.horizontal, horizontal);
             masterPointDictionary.Add(PointEventType.line, line);
             masterPointDictionary.Add(PointEventType.square, square);
             masterPointDictionary.Add(PointEventType.vformation, vformation);

@@ -12,7 +12,7 @@ namespace SpaceProject
 
         public static void GameObjectsCollision(GameObjectVertical gameObject1, GameObjectVertical gameObject2)
         {
-            if (GlobalMathFunctions.AreObjectsOfTypes<PlayerBullet, EnemyShip>(gameObject1, gameObject2))
+            if (MathFunctions.AreObjectsOfTypes<PlayerBullet, EnemyShip>(gameObject1, gameObject2))
             {
                 if (gameObject1 is PlayerBullet)
                     CollideBulletEnemy((PlayerBullet)gameObject1, (EnemyShip)gameObject2);
@@ -20,7 +20,7 @@ namespace SpaceProject
                     CollideBulletEnemy((PlayerBullet)gameObject2, (EnemyShip)gameObject1);
             }
 
-            else if (GlobalMathFunctions.AreObjectsOfTypes<EnemyBullet, AlliedShip>(gameObject1, gameObject2))
+            else if (MathFunctions.AreObjectsOfTypes<EnemyBullet, AlliedShip>(gameObject1, gameObject2))
             {
                 if (gameObject1 is EnemyBullet)
                     CollideBulletAlly((EnemyBullet)gameObject1, (AlliedShip)gameObject2);
@@ -28,7 +28,7 @@ namespace SpaceProject
                     CollideBulletAlly((EnemyBullet)gameObject2, (AlliedShip)gameObject1);
             }
 
-            else if (GlobalMathFunctions.AreObjectsOfTypes<PlayerVerticalShooter, EnemyShip>(gameObject1, gameObject2))
+            else if (MathFunctions.AreObjectsOfTypes<PlayerVerticalShooter, EnemyShip>(gameObject1, gameObject2))
             {
                 if (gameObject1 is PlayerVerticalShooter)
                     CollidePlayerEnemy((PlayerVerticalShooter)gameObject1, (EnemyShip)gameObject2);
@@ -36,7 +36,7 @@ namespace SpaceProject
                     CollidePlayerEnemy((PlayerVerticalShooter)gameObject2, (EnemyShip)gameObject1);
             }
 
-            else if (GlobalMathFunctions.AreObjectsOfTypes<PlayerVerticalShooter, EnemyBullet>(gameObject1, gameObject2))
+            else if (MathFunctions.AreObjectsOfTypes<PlayerVerticalShooter, EnemyBullet>(gameObject1, gameObject2))
             {
                 if (gameObject1 is PlayerVerticalShooter)
                     CollidePlayerBullet((PlayerVerticalShooter)gameObject1, (EnemyBullet)gameObject2);
@@ -44,7 +44,7 @@ namespace SpaceProject
                     CollidePlayerBullet((PlayerVerticalShooter)gameObject2, (EnemyBullet)gameObject1);
             }
 
-            else if (GlobalMathFunctions.AreObjectsOfTypes<EnemyShip, AlliedShip>(gameObject1, gameObject2))
+            else if (MathFunctions.AreObjectsOfTypes<EnemyShip, AlliedShip>(gameObject1, gameObject2))
             {
                 if (gameObject1 is EnemyShip)
                     CollideEnemyAlly((EnemyShip)gameObject1, (AlliedShip)gameObject2);
@@ -52,7 +52,7 @@ namespace SpaceProject
                     CollideEnemyAlly((EnemyShip)gameObject2, (AlliedShip)gameObject1);
             }
 
-            else if (GlobalMathFunctions.AreObjectsOfTypes<AreaDamage, PlayerVerticalShooter>(gameObject1, gameObject2))
+            else if (MathFunctions.AreObjectsOfTypes<AreaDamage, PlayerVerticalShooter>(gameObject1, gameObject2))
             {
                 if (gameObject1 is AreaDamage)
                     CollideAreaDamage((AreaDamage)gameObject1, (PlayerVerticalShooter)gameObject2);
@@ -60,7 +60,7 @@ namespace SpaceProject
                     CollideAreaDamage((AreaDamage)gameObject2, (PlayerVerticalShooter)gameObject1);
             }
 
-            else if (GlobalMathFunctions.AreObjectsOfTypes<AreaDamage, AlliedShip>(gameObject1, gameObject2))
+            else if (MathFunctions.AreObjectsOfTypes<AreaDamage, AlliedShip>(gameObject1, gameObject2))
             {
                 if (gameObject1 is AreaDamage)
                     CollideAreaDamage((AreaDamage)gameObject1, (AlliedShip)gameObject2);
@@ -68,7 +68,7 @@ namespace SpaceProject
                     CollideAreaDamage((AreaDamage)gameObject2, (AlliedShip)gameObject1);
             }
 
-            else if (GlobalMathFunctions.AreObjectsOfTypes<AreaDamage, EnemyShip>(gameObject1, gameObject2))
+            else if (MathFunctions.AreObjectsOfTypes<AreaDamage, EnemyShip>(gameObject1, gameObject2))
             {
                 if (gameObject1 is AreaDamage)
                     CollideAreaDamage((AreaDamage)gameObject1, (EnemyShip)gameObject2);
@@ -76,7 +76,7 @@ namespace SpaceProject
                     CollideAreaDamage((AreaDamage)gameObject2, (EnemyShip)gameObject1);
             }
 
-            else if (GlobalMathFunctions.AreObjectsOfTypes<AreaShieldCollision, PlayerBullet>(gameObject1, gameObject2))
+            else if (MathFunctions.AreObjectsOfTypes<AreaShieldCollision, PlayerBullet>(gameObject1, gameObject2))
             {
                 if (gameObject1 is AreaShieldCollision)
                     CollideAreaCollision((AreaShieldCollision)gameObject1, (PlayerBullet)gameObject2);
@@ -84,7 +84,7 @@ namespace SpaceProject
                     CollideAreaCollision((AreaShieldCollision)gameObject2, (PlayerBullet)gameObject1);
             }
 
-            else if (GlobalMathFunctions.AreObjectsOfTypes<Bullet, Bullet>(gameObject1, gameObject2))
+            else if (MathFunctions.AreObjectsOfTypes<Bullet, Bullet>(gameObject1, gameObject2))
             {
                 CollideBulletBullet((Bullet)gameObject1, (Bullet)gameObject2);
             }
@@ -99,7 +99,7 @@ namespace SpaceProject
                 gameObject1.HP -= gameObject2.Damage;
                 gameObject2.HP -= gameObject1.Damage;
                 gameObject1.Direction = -1 * new Vector2(gameObject2.PositionX - gameObject1.PositionX, gameObject2.PositionY - gameObject1.PositionY);
-                gameObject1.Direction = GlobalMathFunctions.ScaleDirection(gameObject1.Direction);
+                gameObject1.Direction = MathFunctions.ScaleDirection(gameObject1.Direction);
 
                 gameObject1.DisableFollowObject = 500;
 

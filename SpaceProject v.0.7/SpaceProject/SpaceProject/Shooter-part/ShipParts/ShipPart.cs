@@ -102,7 +102,7 @@ namespace SpaceProject
 
         private double GetQualityNumber()
         {
-            double randNbr = GlobalMathFunctions.GetExternalRandomDouble();
+            double randNbr = MathFunctions.GetExternalRandomDouble();
 
             if (randNbr < greatQualThres)
                 return greatQuality;

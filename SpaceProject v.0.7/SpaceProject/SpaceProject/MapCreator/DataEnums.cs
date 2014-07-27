@@ -20,13 +20,12 @@ public enum Movement
     Line,
     SlantingLine,
     Zigzag,
-    //FollowingPlayer,
-    //FollowingAll,
     CrossOver,
-    //CrossOver2,
-    //SweepingShooting,
     Following,
     Stopping,
+    FullStop,
+    RightHorizontal,
+    LeftHorizontal,
     AI
 }
 
@@ -83,7 +82,8 @@ public enum PointEventType
     point,      // 0
     line,       // 1
     square,     // 2
-    vformation  // 3
+    vformation, // 3
+    horizontal  // 4
 }
 
 public enum DurationEventType

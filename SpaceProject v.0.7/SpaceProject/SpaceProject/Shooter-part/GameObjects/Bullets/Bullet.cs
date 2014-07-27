@@ -30,7 +30,7 @@ namespace SpaceProject
 
         public void SetDirectionAgainstTarget(GameObjectVertical shooter, GameObjectVertical target)
         {
-            Direction = GlobalMathFunctions.ScaleDirection(target.Position - shooter.Position);
+            Direction = MathFunctions.ScaleDirection(target.Position - shooter.Position);
         }
     }
 }
