@@ -18,9 +18,9 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            Speed = 1.5f;
+            Speed = 0.8f;
             Damage = 70;
-            Duration = 300;
+            Duration = 4000;
 
             IsKilled = false;
             ObjectClass = "enemyBullet";
@@ -33,15 +33,15 @@ namespace SpaceProject
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
         }
 
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-
-            Duration -= gameTime.ElapsedGameTime.Milliseconds;
-
-            if (Duration <= 0)
-                IsKilled = true;
-        }
+        //public override void Update(GameTime gameTime)
+        //{
+        //    base.Update(gameTime);
+        //
+        //    Duration -= gameTime.ElapsedGameTime.Milliseconds;
+        //
+        //    if (Duration <= 0)
+        //        IsKilled = true;
+        //}
 
         public override void Draw(SpriteBatch spriteBatch)
         {

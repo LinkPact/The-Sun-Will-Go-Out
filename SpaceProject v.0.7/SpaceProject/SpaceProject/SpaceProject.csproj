@@ -453,7 +453,7 @@
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceStealthAttackShip.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceHomingBullets.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceHeavyBeamer.cs" />
-    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceBallistic_placeholder.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceBallistic.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceHangar_placeholder.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceLightBeamer.cs" />
     <Compile Include="Shooter-part\Modules\BeamModule\BeamModule.cs" />

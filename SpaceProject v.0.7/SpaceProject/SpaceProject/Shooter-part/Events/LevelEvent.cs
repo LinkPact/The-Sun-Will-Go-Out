@@ -374,12 +374,12 @@ namespace SpaceProject
                     }
                 case EnemyType.A_ballistic:
                     {
-                        creature = new AllianceBallistic_placeholder(Game, spriteSheet, player);
+                        creature = new AllianceBallistic(Game, spriteSheet, player);
                         break;
                     }
                 case EnemyType.A_hangar:
                     {
-                        creature = new AllianceHangar_placeholder(Game, spriteSheet, player);
+                        creature = new AllianceHangar(Game, spriteSheet, player);
                         break;
                     }
                 #endregion

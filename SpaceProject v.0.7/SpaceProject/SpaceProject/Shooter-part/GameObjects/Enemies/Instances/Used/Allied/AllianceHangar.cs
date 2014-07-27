@@ -6,15 +6,15 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
-    class AllianceHangar_placeholder : EnemyShip
+    class AllianceHangar : ShootingEnemyShip
     {
-        public AllianceHangar_placeholder(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
+        public AllianceHangar(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
         {
             Setup();
         }
 
-        public AllianceHangar_placeholder(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player,
+        public AllianceHangar(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player,
             Movement movement) :
             base(Game, spriteSheet, player)
         {
