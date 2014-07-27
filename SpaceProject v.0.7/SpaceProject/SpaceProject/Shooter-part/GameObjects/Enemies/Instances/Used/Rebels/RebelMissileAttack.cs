@@ -26,8 +26,11 @@ namespace SpaceProject
 
             lootValue = LootValue.veryHigh;
 
-            AddPrimaryModule(500, ShootingMode.Regular);
+            AddPrimaryModule(1000, ShootingMode.Regular);
             primaryModule.SetRandomCharge(random);
+
+            AddSecondaryModule(800, ShootingMode.Regular);
+            secondaryModule.SetFullCharge();
 
             Damage = 100;
             Speed = 0.04f;
@@ -58,8 +61,14 @@ namespace SpaceProject
             missile.Direction = new Vector2(0, 1.0f);
             missile.Direction = MathFunctions.SpreadDir(missile.Direction, Math.PI / 8);
             missile.Initialize();
-            missile.Duration = 500;
 
+            Game.stateManager.shooterState.gameObjects.Add(missile);
+
+            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
+        }
+
+        protected override void SecondaryShootingPattern(GameTime gameTime)
+        {
             double width = Math.PI / 3;
             double numberOfShots = 5;
 
@@ -77,19 +86,13 @@ namespace SpaceProject
                 laser.Direction = MathFunctions.DirFromRadians(dir);
                 laser.Initialize();
 
-                laser.Duration = 1000;
                 laser.Speed *= 0.3f;
+                laser.Duration *= 1.5f;
 
                 Game.stateManager.shooterState.gameObjects.Add(laser);
 
             }
 
-            Game.stateManager.shooterState.gameObjects.Add(missile);
-
-            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
         }
-
-        protected override void SecondaryShootingPattern(GameTime gameTime)
-        { }
     }
 }

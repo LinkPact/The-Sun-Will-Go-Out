@@ -19,12 +19,12 @@ namespace SpaceProject
 
             lootValue = LootValue.medium;
 
-            AddPrimaryModule(3000, ShootingMode.Regular);
-            primaryModule.SetRandomCharge(random);
+            AddPrimaryModule(2500, ShootingMode.Regular);
+            primaryModule.SetFullCharge();
 
             //Egenskaper
             SightRange = 300;
-            HP = 175;
+            HP = 275;
             Damage = 60;
             Speed = 0.07f;
 

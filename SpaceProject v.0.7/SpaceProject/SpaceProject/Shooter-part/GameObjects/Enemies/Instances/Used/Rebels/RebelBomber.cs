@@ -35,7 +35,7 @@ namespace SpaceProject
 
             //Egenskaper
             SightRange = 400;
-            HP = 300.0f;
+            HP = 800.0f;
             Damage = 50;
             Speed = 0.06f;
 
@@ -58,7 +58,7 @@ namespace SpaceProject
             mine.Direction = MathFunctions.ScaleDirection(ShootObject.Position - Position);
             mine.Initialize();
             mine.Speed = 0.20f;
-            mine.Duration = 750;
+            mine.Duration = 1000;
 
             Game.stateManager.shooterState.gameObjects.Add(mine);
         }

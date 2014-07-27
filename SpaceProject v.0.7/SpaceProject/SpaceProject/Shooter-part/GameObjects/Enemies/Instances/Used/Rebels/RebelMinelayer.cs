@@ -38,7 +38,7 @@ namespace SpaceProject
 
             //Egenskaper
             SightRange = 1000;
-            HP = 400.0f;
+            HP = 700.0f;
             Damage = 130;
             Speed = 0.05f;
 
