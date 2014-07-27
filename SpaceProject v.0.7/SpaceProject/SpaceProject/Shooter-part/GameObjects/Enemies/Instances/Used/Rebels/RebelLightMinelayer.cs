@@ -40,7 +40,7 @@ namespace SpaceProject
             SightRange = 4000;
             HP = 200;
             Damage = 40;
-            Speed = 0.15f;
+            Speed = 0.10f;
 
             movement = Movement.SlantingLine;
 
@@ -59,9 +59,9 @@ namespace SpaceProject
 
             MineEnemy mine = new MineEnemy(Game, spriteSheet);
             mine.Position = Position;
-            mine.Direction = MathFunctions.GetRandomDownDirection();
+            mine.Direction = MathFunctions.DirFromRadians(dirRadians);
             mine.Initialize();
-            mine.Speed = 0.003f;
+            mine.Speed = 0.03f;
             mine.Duration = 6000;
 
             Game.stateManager.shooterState.gameObjects.Add(mine);

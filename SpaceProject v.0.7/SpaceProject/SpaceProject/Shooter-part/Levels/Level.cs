@@ -25,6 +25,7 @@ namespace SpaceProject
         public int WindowWidth { get; set; }
         public int WindowHeight { get; set; }
         public int LevelWidth { get; set; }
+        public int LevelHeight { get { return 600; } }
         public int RelativeOrigin
         {
             get

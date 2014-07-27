@@ -29,7 +29,7 @@ namespace SpaceProject
             
             SortedDictionary<string, EventSetting> horizontal = new SortedDictionary<string, EventSetting>();
             horizontal.Add("D", new EventSetting("dir (1,2)", GetPointSettingPosition(0), 1));
-            horizontal.Add("Y", new EventSetting("y-position", GetPointSettingPosition(1), 200));
+            horizontal.Add("Y", new EventSetting("y-pos (%)", GetPointSettingPosition(1), 200));
 
             SortedDictionary<string, EventSetting> line = new SortedDictionary<string, EventSetting>();
             line.Add("W", new EventSetting("x-count", GetPointSettingPosition(0), 4));

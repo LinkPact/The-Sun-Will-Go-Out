@@ -34,23 +34,30 @@ namespace SpaceProject
         public override void Run(GameTime gameTime)
         {
             base.Run(gameTime);
-
-            Vector2 testPos;
-            if (leftToRightDirection)
-                testPos = new Vector2(0, yPos);
-            else
-                testPos = new Vector2(level.LevelWidth, yPos);
-
-            CreateCreature(testPos);
+            Vector2 pos = GetCreaturePosition();
+            CreateCreature(pos);
         }
 
         public override List<CreaturePackage> RetrieveCreatures()
         {
             List<CreaturePackage> creatures = new List<CreaturePackage>();
-            Vector2 testPos = new Vector2(100, 200);
-
-            creatures.Add(new CreaturePackage(Game, spriteSheet, ReturnCreature(testPos), startTime));
+            Vector2 pos = GetCreaturePosition();
+            creatures.Add(new CreaturePackage(Game, spriteSheet, ReturnCreature(pos), startTime));
             return creatures;
+        }
+
+        private Vector2 GetCreaturePosition()
+        {
+            Vector2 testPos;
+
+            float levelHeight = level.LevelHeight;
+            float actualYPos = levelHeight * (yPos / 100);
+
+            if (leftToRightDirection)
+                testPos = new Vector2(0, actualYPos);
+            else
+                testPos = new Vector2(level.LevelWidth, actualYPos);
+            return testPos;
         }
     }
 }
