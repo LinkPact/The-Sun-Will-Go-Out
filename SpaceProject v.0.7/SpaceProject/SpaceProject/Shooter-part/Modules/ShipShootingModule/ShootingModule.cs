@@ -43,7 +43,15 @@ namespace SpaceProject
 
         public void SetFullCharge()
         {
-            lastTimeShot = shootingDelay;
+            if (shootingMode == ShootingMode.Batches)
+            {
+                shotsInBatch = batchSize;
+                lastBatch = 0;
+            }
+            else
+            {
+                lastTimeShot = shootingDelay;
+            }
         }
 
         public void SetRandomCharge(Random random)

@@ -35,7 +35,9 @@ namespace SpaceProject
 
             //Shooting
             //ShootsOnce(1500);
-            AddPrimaryModule(1500, ShootingMode.Single);
+            AddPrimaryModule(100, ShootingMode.Regular);
+            primaryModule.ShootsInBatchesSetup(2, 1000);
+            primaryModule.SetFullCharge();
 
             //Egenskaper
             SightRange = 600;
