@@ -292,7 +292,7 @@ namespace SpaceProject
                     }
                 case EnemyType.R_bomber:
                     {
-                        creature = new RebelBomber_placeholder(Game, spriteSheet, player);
+                        creature = new RebelBomber(Game, spriteSheet, player);
                         break;
                     }
                 case EnemyType.R_burster:
@@ -318,7 +318,7 @@ namespace SpaceProject
                     }
                 case EnemyType.R_fatzo:
                     {
-                        creature = new RebelFatzo_placeholder(Game, spriteSheet, player);
+                        creature = new RebelFatzo(Game, spriteSheet, player);
                         break;
                     }
                 #endregion

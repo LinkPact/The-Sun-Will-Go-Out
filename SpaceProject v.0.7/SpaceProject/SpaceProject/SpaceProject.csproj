@@ -458,8 +458,8 @@
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceLightBeamer.cs" />
     <Compile Include="Shooter-part\Modules\BeamModule\BeamModule.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelLightMinelayer.cs" />
-    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelFatzo_placeholder.cs" />
-    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelBomber_placeholder.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelFatzo.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelBomber.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelHomingMissile.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelMissileAttack.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelSmallAttackShip.cs" />

@@ -183,9 +183,6 @@ namespace SpaceProject
         public static float ObjectDistance(GameObjectVertical obj1, GameObjectVertical obj2)
         {
             float distance = Vector2.Distance(obj1.Position, obj2.Position);
-
-            //float distance = (float)Math.Sqrt(Math.Pow((obj1.PositionX - obj2.PositionX), 2) + Math.Pow((obj1.PositionY - obj2.PositionY), 2));
-            
             return distance;
         }
 
