@@ -33,7 +33,8 @@ namespace SpaceProject
 
             lootValue = LootValue.high;
 
-            AddPrimaryModule(2000, ShootingMode.Regular);
+            AddPrimaryModule(400, ShootingMode.Batches);
+            primaryModule.ShootsInBatchesSetup(2, 2000);
             
             //Egenskaper
             SightRange = 600;

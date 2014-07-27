@@ -34,7 +34,7 @@ namespace SpaceProject
 
             lootValue = LootValue.veryHigh;
 
-            AddPrimaryModule(1500, ShootingMode.Regular);
+            AddPrimaryModule(2500, ShootingMode.Regular);
             primaryModule.SetRandomCharge(random);
 
             //Egenskaper
@@ -54,11 +54,12 @@ namespace SpaceProject
 
         protected override void ShootingPattern(GameTime gameTime)
         {
-            RebelSmallAttackShip ship = new RebelSmallAttackShip(Game, spriteSheet, player);
+            AllianceSmallShooter ship = new AllianceSmallShooter(Game, spriteSheet, player);
             ship.Position = Position;
             ship.Direction = new Vector2(0, 1);
             ship.Initialize();
             ship.SetMovement(Movement.Following);
+            ship.Speed *= 0.6f;
 
             Game.AddGameObjToShooter(ship);
 

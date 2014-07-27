@@ -20,7 +20,7 @@ namespace SpaceProject
         {
             fraction = Fraction.alliance;
 
-            ShieldSetup(CreatureShieldCapacity.low, CreatureShieldRegeneration.medium);
+            ShieldSetup(CreatureShieldCapacity.medium, CreatureShieldRegeneration.medium);
         }
 
         public override void Initialize()
@@ -59,6 +59,7 @@ namespace SpaceProject
                 laser1.Direction = MathFunctions.DirFromRadians(dir);
                 laser1.Initialize();
                 laser1.Speed *= 1.5f;
+                laser1.Duration *= 1.5f;
             
                 Game.stateManager.shooterState.gameObjects.Add(laser1);
             }

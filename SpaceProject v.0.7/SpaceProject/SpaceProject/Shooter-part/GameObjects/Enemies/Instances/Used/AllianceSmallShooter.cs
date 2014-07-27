@@ -33,8 +33,7 @@ namespace SpaceProject
 
             lootValue = LootValue.low;
 
-            AddPrimaryModule(70, ShootingMode.Batches);
-            primaryModule.ShootsInBatchesSetup(2, 800);
+            AddPrimaryModule(1500, ShootingMode.Regular);
             primaryModule.SetRandomCharge(random);
 
             //Egenskaper
@@ -64,14 +63,21 @@ namespace SpaceProject
         protected override void ShootingPattern(GameTime gameTime)
         {
             EnemyGreenBullet laser1 = new EnemyGreenBullet(Game, spriteSheet);
-            laser1.PositionX = PositionX;
+            laser1.Initialize();
+            laser1.PositionX = PositionX + 4;
             laser1.PositionY = PositionY;
             laser1.Direction = new Vector2(0, 1.0f);
-            laser1.Initialize();
             laser1.Duration = 500;
-            laser1.Speed *= 0.5f;
 
+            EnemyGreenBullet laser2 = new EnemyGreenBullet(Game, spriteSheet);
+            laser2.Initialize();
+            laser2.PositionX = PositionX - 4;
+            laser2.PositionY = PositionY;
+            laser2.Direction = new Vector2(0, 1.0f);
+            laser2.Duration = 500;
+            
             Game.stateManager.shooterState.gameObjects.Add(laser1);
+            Game.stateManager.shooterState.gameObjects.Add(laser2);
         }
 
         protected override void SecondaryShootingPattern(GameTime gameTime)

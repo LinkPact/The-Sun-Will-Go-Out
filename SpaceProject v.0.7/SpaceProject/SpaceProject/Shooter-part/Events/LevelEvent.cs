@@ -465,53 +465,6 @@ namespace SpaceProject
             Game.stateManager.shooterState.gameObjects.Add(creature);
         }
 
-        //private void HorizontalCreationLogic(Vector2 position)
-        //{
-        //    position.Y = 200; // Temporary test startY for horizontal movement
-        //
-        //    if (Game.Window.ClientBounds.Height > 600)
-        //    {
-        //        position.Y += (Game.Window.ClientBounds.Height - 600) / 2;
-        //    }
-        //
-        //    //switch (flag)
-        //    //{
-        //    //    case CreationFlag.WITHOUT_POSITION:
-        //    //        {
-        //    //            xPos = level.RelativeOrigin + (float)(random.NextDouble() * level.LevelWidth);
-        //    //            break;
-        //    //        }
-        //    //    case CreationFlag.X_POSITION:
-        //    //        {
-        //    //            xPos = level.RelativeOrigin + position.X;
-        //    //            break;
-        //    //        }
-        //    //    case CreationFlag.VECTOR_POSITION:
-        //    //        {
-        //    //            xPos = level.RelativeOrigin + position.X;
-        //    //            break;
-        //    //        }
-        //    //    default:
-        //    //        {
-        //    //            throw new ArgumentException("New unhandled flag-variant is probably present");
-        //    //        }
-        //    //}
-        //
-        //    VerticalShooterShip creature = RetrieveCreatureFromEnum(enemyType);
-        //
-        //    creature.PositionX = 50;
-        //
-        //    if (creature is AlliedShip)
-        //        throw new ArgumentException("Horizontal movement is not implemented for allies!!");
-        //    else
-        //        creature.PositionY = position.Y;
-        //
-        //    creature = StandardCreatureSetup(creature);
-        //    creature.SetLevelWidth(level.LevelWidth);
-        //    creature.MovementSetup();
-        //
-        //    Game.stateManager.shooterState.gameObjects.Add(creature);
-        //}
         #endregion
 
         #region ReturnCreature(...)
