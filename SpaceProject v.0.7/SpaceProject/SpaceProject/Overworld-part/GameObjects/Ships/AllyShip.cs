@@ -71,6 +71,16 @@ namespace SpaceProject
             destinationPlanet = endDestination;
             destination = destinationPlanet.position;
         }
+
+        public void Initialize(Sector sec, Vector2 startingPoint, Vector2 endPoint)
+        {
+            Initialize();
+
+            sector = sec;
+            position = startingPoint;
+            destination = endPoint;
+        }
+
         public void SetSector(Sector sec) { sector = sec; }
         public void SetEndPlanet(GameObjectOverworld des) 
         { 
@@ -145,10 +155,21 @@ namespace SpaceProject
                 Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI) / 2);
 
             // Check if arrived at destination
-            if (CollisionDetection.IsRectInRect(this.Bounds, destinationPlanet.Bounds))
+            if (destinationPlanet != null)
             {
-                hasArrived = true;
-                Game.stateManager.overworldState.RemoveOverworldObject(this);
+                if (CollisionDetection.IsRectInRect(this.Bounds, destinationPlanet.Bounds))
+                {
+                    hasArrived = true;
+                    Game.stateManager.overworldState.RemoveOverworldObject(this);
+                }
+            }
+            else
+            {
+                if (CollisionDetection.IsPointInsideCircle(position, destination, 200))
+                {
+                    this.Wait();
+                    hasArrived = true;
+                }
             }
 
             if (IsUsed)

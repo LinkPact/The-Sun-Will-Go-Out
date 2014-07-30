@@ -18,6 +18,7 @@ namespace SpaceProject
 
         protected bool hasArrived;
         public bool HasArrived { get { return hasArrived; } private set { ; } }
+        public void ResetArrived() { hasArrived = false; } 
 
         protected GameObjectOverworld target;
 

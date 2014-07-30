@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
@@ -22,6 +23,9 @@ namespace SpaceProject
 
         private GameObjectOverworld destination;
         public GameObjectOverworld Destination { get { return destination; } set {destination = value; } }
+
+        private Vector2 destinationVector;
+        public Vector2 DestinationVector { get { return destinationVector; } set { destinationVector = value; } }
 
         protected EventTextCanvas eventTextCanvas;
         protected EventText objectiveCompletedEventText;
