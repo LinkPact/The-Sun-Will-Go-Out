@@ -20,8 +20,10 @@ namespace SpaceProject
         private AllyShip rebel3;
 
         private readonly Vector2 destination = new Vector2(94600, 100000);
+        private readonly int freighterStartDelay = 20000;
 
         private FreighterShip freighter;
+        private float freighterStartTime;
 
         private float message1Time;
         private float message2Time;
@@ -50,10 +52,6 @@ namespace SpaceProject
             rebel3.Initialize(null, Game.stateManager.overworldState.GetRebelOutpost.GetGameObject("Rebel Station 1").position,
                 destination + new Vector2(50, 0));
 
-            rebel1.speed = 2f;
-            rebel2.speed = 2f;
-            rebel3.speed = 2f;
-
             freighter = new FreighterShip(Game, Game.stateManager.shooterState.spriteSheet);
 
             objectives.Add(new FollowObjective(Game, this, ObjectiveDescriptions[0],
@@ -68,15 +66,9 @@ namespace SpaceProject
                 new EventTextCapsule(new EventText("ATTACK"), null, EventTextCanvas.MessageBox),
                 delegate
                 {
-                    freighter.Initialize(Game.stateManager.overworldState.GetSectorX,
-                        Game.stateManager.overworldState.GetPlanet("Soelara"),
-                        Game.stateManager.overworldState.GetStation("Fotrun Station I"));
-                    Game.stateManager.overworldState.GetSectorX.shipSpawner.AddFreighterToSector(
-                        freighter, Game.stateManager.overworldState.GetPlanet("Soelara").position);
-
-                    message1Time = StatsManager.PlayTime.GetFutureOverworldTime(5000);
-                    message2Time = StatsManager.PlayTime.GetFutureOverworldTime(10000);
-                    message3Time = StatsManager.PlayTime.GetFutureOverworldTime(15000);
+                    message1Time = StatsManager.PlayTime.GetFutureOverworldTime(3000);
+                    message2Time = StatsManager.PlayTime.GetFutureOverworldTime(6000);
+                    message3Time = StatsManager.PlayTime.GetFutureOverworldTime(9000);
                 },
                 delegate
                 {
@@ -152,6 +144,8 @@ namespace SpaceProject
         {
             ObjectiveIndex = 0;
             progress = 0;
+
+            freighterStartTime = StatsManager.PlayTime.GetFutureOverworldTime(freighterStartDelay);
         }
 
         public override void OnLoad()
@@ -174,6 +168,29 @@ namespace SpaceProject
         public override void MissionLogic()
         {
             base.MissionLogic();
+
+            if (freighterStartTime > 0
+                && StatsManager.PlayTime.HasOverworldTimePassed(freighterStartTime))
+            {
+                Game.messageBox.DisplayMessage("The freighter has left Soelara, we have to hurry!");
+
+                freighterStartTime = -1;
+
+                freighter.Initialize(Game.stateManager.overworldState.GetSectorX,
+                            Game.stateManager.overworldState.GetPlanet("Soelara"),
+                            Game.stateManager.overworldState.GetStation("Fotrun Station I"));
+                Game.stateManager.overworldState.GetSectorX.shipSpawner.AddFreighterToSector(
+                    freighter, Game.stateManager.overworldState.GetPlanet("Soelara").position);
+            }
+
+            if (ObjectiveIndex == 4
+                && !freighter.IsDead)
+            {
+                freighter.Destroy();
+                rebel1.Remove();
+                rebel2.Remove();
+                rebel3.Remove();
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)

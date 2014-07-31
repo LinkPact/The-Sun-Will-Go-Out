@@ -43,7 +43,7 @@ namespace SpaceProject
             }
             viewRadius = 300;
             position = new Vector2(0,0);
-            speed = 0.5f;
+            speed = 0.4f;
 
             centerPoint = new Vector2(sprite.SourceRectangle.Value.Width / 2, sprite.SourceRectangle.Value.Height / 2);
             color = Color.White;

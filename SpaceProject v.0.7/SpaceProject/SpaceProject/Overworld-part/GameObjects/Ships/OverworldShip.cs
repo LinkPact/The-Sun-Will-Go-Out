@@ -109,5 +109,16 @@ namespace SpaceProject
         {
         }
 
+        public void Destroy()
+        {
+            //TODO: Add explosion
+            Game.stateManager.overworldState.RemoveOverworldObject(this);
+        }
+
+        public void Remove()
+        {
+            Game.stateManager.overworldState.RemoveOverworldObject(this);
+        }
+
     }
 }
