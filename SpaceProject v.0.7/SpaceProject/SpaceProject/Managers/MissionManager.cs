@@ -329,7 +329,7 @@ namespace SpaceProject
             for (int i = 0; i < activeMissions.Count; i++)
             {
                 if (activeMissions[i].ObjectiveDestination != null &&
-                    activeMissions[i].ObjectiveDestination.name.ToLower().Equals(obj.name.ToLower()))
+                    activeMissions[i].ObjectiveDestination == obj)
                 {
                     return true;
                 }

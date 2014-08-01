@@ -19,6 +19,9 @@ namespace SpaceProject
         private AllyShip rebel2;
         private AllyShip rebel3;
 
+        private AllianceShip alliance1;
+        private AllianceShip alliance2;
+
         private readonly Vector2 destination = new Vector2(94600, 100000);
         private readonly int freighterStartDelay = 20000;
 
@@ -52,6 +55,12 @@ namespace SpaceProject
             rebel3.Initialize(null, Game.stateManager.overworldState.GetRebelOutpost.GetGameObject("Rebel Station 1").position,
                 destination + new Vector2(50, 0));
 
+            alliance1 = new AllianceShip(Game, Game.stateManager.shooterState.spriteSheet);
+            alliance1.Initialize(Game.stateManager.overworldState.GetSectorX);
+
+            alliance2 = new AllianceShip(Game, Game.stateManager.shooterState.spriteSheet);
+            alliance2.Initialize(Game.stateManager.overworldState.GetSectorX);
+
             freighter = new FreighterShip(Game, Game.stateManager.shooterState.spriteSheet);
 
             objectives.Add(new FollowObjective(Game, this, ObjectiveDescriptions[0],
@@ -60,6 +69,8 @@ namespace SpaceProject
                 "",
                 Game.stateManager.overworldState.GetRebelOutpost.GetGameObject("Rebel Station 1").position,
                 new Vector2(50, 50),
+                600,
+                "Get back here!",
                 rebel1, rebel2, rebel3));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], freighter,
@@ -134,7 +145,30 @@ namespace SpaceProject
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], freighter,
                 "PirateLevel1", LevelStartCondition.Immediately,
-                new EventTextCapsule(new EventText("FREIGHTER CAPTURED! Go back to rebel base."), null, EventTextCanvas.MessageBox)));
+                new EventTextCapsule(new EventText("FREIGHTER CAPTURED! Go back to rebel base.\nThe Alliance is sending ships to take you out. Get out of there!"), null, EventTextCanvas.MessageBox)));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                Game.stateManager.overworldState.GetStation("Rebel Station 1"),
+                delegate
+                {
+                    Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
+                        alliance1, destination + new Vector2(-600, 0), "PirateLevel2", Game.player);
+                    Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
+                        alliance2, destination + new Vector2(600, 0), "PirateLevel3", Game.player);
+                },
+                delegate
+                {
+
+                },
+                delegate
+                {
+                    return (CollisionDetection.IsPointInsideCircle(Game.player.position, 
+                        Game.stateManager.overworldState.GetStation("Rebel Station 1").position, 1000));
+                },
+                delegate
+                {
+                    return false;
+                }));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], Game.stateManager.overworldState.GetStation("Rebel Station 1"),
                 new EventTextCapsule(new EventText("Good job!"), null, EventTextCanvas.BaseState)));
@@ -190,6 +224,15 @@ namespace SpaceProject
                 rebel1.Remove();
                 rebel2.Remove();
                 rebel3.Remove();
+            }
+
+            if (ObjectiveIndex == 5)
+            {
+                PirateShip.FollowPlayer = true;
+            }
+            else
+            {
+                PirateShip.FollowPlayer = false;
             }
         }
 

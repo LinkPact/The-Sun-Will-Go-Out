@@ -256,6 +256,13 @@ namespace SpaceProject
                             Game.messageBox.DisplayMessage("You should have stayed in the warm comfort of you home planet. Surrender your cargo peacefully or take the consequences.");
                             Game.stateManager.shooterState.BeginPirateLevel();
                         }
+
+                        if (obj is AllianceShip)
+                        {
+                            RemoveOverworldObject(obj);
+                            Game.messageBox.DisplayMessage("Die!");
+                            Game.stateManager.shooterState.BeginLevel(((AllianceShip)obj).Level);
+                        }
                     }
                 }
             }

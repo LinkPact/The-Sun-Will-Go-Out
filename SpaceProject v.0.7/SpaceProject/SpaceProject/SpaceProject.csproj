@@ -321,6 +321,7 @@
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\Overworld\MiningAsteroids.cs" />
     <Compile Include="Overworld-part\GameObjects\Direction.cs" />
     <Compile Include="Overworld-part\GameObjects\Other\Beacon.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\AllianceShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\AllyShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\FreighterShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\OverworldShip.cs" />
