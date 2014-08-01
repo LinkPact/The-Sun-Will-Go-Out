@@ -186,6 +186,7 @@
     <Compile Include="MissionStuff\EventText.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\FollowObjective.cs" />
     <Compile Include="Missions\Main Missions\Phase 3\Main8_Retaliation.cs" />
+    <Compile Include="Missions\Main Missions\Phase 4\MainX1_BeginningOfTheEnd.cs" />
     <Compile Include="Missions\Mission.cs" />
     <Compile Include="MissionStuff\MissionHelper.cs" />
     <Compile Include="Managers\MissionManager.cs" />
@@ -658,7 +659,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Missions\Main Missions\Phase 4\" />
     <Folder Include="Overworld-part\GameObjects\Stations\SectorZ\" />
     <Folder Include="Shooter-part\ShipParts\Secondary\UpperTier\" />
   </ItemGroup>

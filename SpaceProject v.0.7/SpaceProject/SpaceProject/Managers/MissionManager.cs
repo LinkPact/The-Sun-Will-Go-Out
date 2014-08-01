@@ -26,6 +26,7 @@ namespace SpaceProject
         private static Main3_Rebels mainRebels;
         private static DefendColony defendColony;
         private static Main8_Retaliation mainRetaliation;
+        private static MainX1_BeginningOfTheEnd beginningOfTheEnd;
 
         // Side Missions
         private static DebtCollection debtCollection;
@@ -98,6 +99,11 @@ namespace SpaceProject
             mainRetaliation = new Main8_Retaliation(game, "RO_Main8_Retaliation", missionObjectSpriteSheet);
             mainRetaliation.Initialize();
             missions.Add(mainRetaliation);
+
+            // Main X1 - Beginning Of The End
+            beginningOfTheEnd = new MainX1_BeginningOfTheEnd(game, "P4_BeginningOfTheEnd", null);
+            beginningOfTheEnd.Initialize();
+            missions.Add(beginningOfTheEnd);
 
             // Side Missions
 
