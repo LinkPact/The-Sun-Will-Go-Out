@@ -1,0 +1,84 @@
+[Rebellbas] 
+> Rebellkontakten kallas tills vidare för "Bert"
+> Kurt
+> Energiresursen kallas för "Murt"
+> Du har precis kört klart uppdraget med kidnappning av vetenskapsmannen
+> Du vet att de utvunnit information
+> Bert har insikt i informationen
+
+"Good that you were able to come, I have urgent information to share with you."
+"You might have heard the rumours, now they are confirmed."
+"It seems that the scientists have managed to localize an asteroid containing an extreme
+amount of murt."
+"The amounts are unpreceeded. With that energy source you could either lift the whole system
+out of starvation, or use it militarly to destroy entire cities."
+"The scientists are hestitant to share this information, as they doubt that neither the rebels
+or the alliance in their current state would be able to handle the force it would bring"
+"The rebels and the alliance are both on their tracks to its wereabouts through."
+"The scientist didn't seem to know the exact coordinate for the meteorite"
+"A name was extracted through. It is yet unknown to the rebels who it is"
+
+"But I know him. It is an old collegue of mine residing on Highfence"
+"We need to go to him before the rebels and warn him. He will know what to do."
+"His name is Kurt"
+"Let's go now"
+
+
+[Färdas till Highfence]
+
+> Rebel while being attacked
+"Just tell us where you are going, and this will be over quickly"
+"What are the two of you doing? Are you attacking your fellow people?"
+
+> Other rebel
+"Why are you keeping the information from us? We trusted you!"
+"You traitouros scum, the command will be notified"
+
+> Försöker landa på Highfence
+"We can't land now, we would lead them straight to him."
+"I don't like it, but it seems like we need to dispose our followers."
+
+[Highfence]
+
+Kurt is standing close to the landing site. "I got the message that you are coming what is this all about?"
+"Quickly, let's go inside" Bert answered.
+Inside, sitting at a table.
+"They have extracted your name from the scientists. It is only a question of time before they'll come here"
+"Is that so? Then I guess we need to hurry. How are your alliegiances to the rebels now, can we trust you?"
+"You better not. I stand firm in my belief that the current regime must be countered by the people"
+"On the other hand, I don't think the rebels are able to handle a energy source like murt in it's current state"
+"It would be better for everyone if it stayed hidden until things have calmed down"
+"I just came here to warn you, I have full confidence in your judgement here"
+"I will leave you now. I have some things to explain to the command." he said with a wry smile.
+"You should bring P though. He will be more useful here than when trying to talk sense into the command"
+
+He turns to you. "I believe the best path for this sector is to put our trust in this man."
+"You should help him out. Do you have any objections?"
+
+> "What about you?"
+-
+
+> "Are you really thinking this will work out?"
+- "It might. I think it is the best shot we have right now. The rebels are volatile. If they get their hands on
+Murt they will definitely use it military
+
+
+> "You need to tell me more about the Murt"
+- I 
+
+
+> "No, no objections"
+- "Very well, I'll be on my way then. Good luck friend, I hope we'll meet again."
+
+
+[Färdas till Soelara]
+
+
+[Soelara]
+
+
+[Färdas till Fortrun]
+
+
+[Fortrun]
+
