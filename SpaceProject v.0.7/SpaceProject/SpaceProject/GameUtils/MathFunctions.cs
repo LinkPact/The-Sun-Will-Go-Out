@@ -111,6 +111,17 @@ namespace SpaceProject
             return newDir;
         }
 
+        //Skapar riktning inom spridningsintervall angivet kring initialriktning.
+        public static Vector2 SpreadPos(Vector2 position, float spreadLength)
+        {
+            double dX = rand.NextDouble() * 2 * spreadLength - spreadLength;
+            double dY = rand.NextDouble() * 2 * spreadLength - spreadLength;
+
+            position = new Vector2(position.X + (float)dX, position.Y + (float)dY);
+
+            return position;
+        }
+
         //Varies values randomly around a given value.
         //Can for example be used in differing weapons characteristics.
         public static float VaryValue(float initialVal, double percentVar)
