@@ -12,7 +12,16 @@ namespace SpaceProject
     {
         private enum EventID
         {
-
+            StartTraveling,
+            WaitForFreighter,
+            OutOfRange,
+            FreighterLeft,
+            FlavorText1,
+            FlavorText2,
+            FlavorText3,
+            AttackFreighter,
+            FreighterLevelStart,
+            ReturnToRebelBase
         }
 
         private AllyShip rebel1;
@@ -31,6 +40,8 @@ namespace SpaceProject
         private float message1Time;
         private float message2Time;
         private float message3Time;
+
+        private int outOfRangeTimer;
 
         public Main8_Retaliation(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
@@ -65,21 +76,29 @@ namespace SpaceProject
 
             objectives.Add(new FollowObjective(Game, this, ObjectiveDescriptions[0],
                 rebel2,
-                new EventTextCapsule(new EventText("Wait for the freighter to arrive."), null, EventTextCanvas.MessageBox),
-                "",
+                new EventTextCapsule(GetEvent((int)EventID.WaitForFreighter), null, EventTextCanvas.MessageBox),
+                GetEvent((int)EventID.StartTraveling).Text,
                 Game.stateManager.overworldState.GetRebelOutpost.GetGameObject("Rebel Station 1").position,
                 new Vector2(50, 50),
                 600,
-                "Get back here!",
+                GetEvent((int)EventID.OutOfRange).Text,
                 rebel1, rebel2, rebel3));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], freighter,
-                new EventTextCapsule(new EventText("ATTACK"), null, EventTextCanvas.MessageBox),
+                new EventTextCapsule(GetEvent((int)EventID.AttackFreighter), null, EventTextCanvas.MessageBox),
                 delegate
                 {
-                    message1Time = StatsManager.PlayTime.GetFutureOverworldTime(3000);
-                    message2Time = StatsManager.PlayTime.GetFutureOverworldTime(6000);
-                    message3Time = StatsManager.PlayTime.GetFutureOverworldTime(9000);
+                    Game.messageBox.DisplayMessage(GetEvent((int)EventID.FreighterLeft).Text);
+                    
+                    freighter.Initialize(Game.stateManager.overworldState.GetSectorX,
+                                Game.stateManager.overworldState.GetPlanet("Soelara"),
+                                Game.stateManager.overworldState.GetStation("Fotrun Station I"));
+                    Game.stateManager.overworldState.GetSectorX.shipSpawner.AddFreighterToSector(
+                        freighter, Game.stateManager.overworldState.GetPlanet("Soelara").position);
+
+                    message1Time = StatsManager.PlayTime.GetFutureOverworldTime(10000);
+                    message2Time = StatsManager.PlayTime.GetFutureOverworldTime(20000);
+                    message3Time = StatsManager.PlayTime.GetFutureOverworldTime(30000);
                 },
                 delegate
                 {
@@ -87,21 +106,43 @@ namespace SpaceProject
                         && StatsManager.PlayTime.HasOverworldTimePassed(message1Time))
                     {
                         message1Time = -1;
-                        Game.messageBox.DisplayMessage("TEXT 1");
+                        Game.messageBox.DisplayMessage(GetEvent((int)EventID.FlavorText1).Text);
                     }
 
                     if (message2Time > 0
                         && StatsManager.PlayTime.HasOverworldTimePassed(message2Time))
                     {
                         message2Time = -1;
-                        Game.messageBox.DisplayMessage("TEXT 2");
+                        Game.messageBox.DisplayMessage(GetEvent((int)EventID.FlavorText2).Text);
                     }
 
                     if (message3Time > 0
                         && StatsManager.PlayTime.HasOverworldTimePassed(message3Time))
                     {
                         message3Time = -1;
-                        Game.messageBox.DisplayMessage("TEXT 3");
+                        Game.messageBox.DisplayMessage(GetEvent((int)EventID.FlavorText3).Text);
+                    }
+
+                    if (!CollisionDetection.IsPointInsideCircle(Game.player.position, rebel1.position, 600)
+                        && outOfRangeTimer <= 0)
+                    {
+                        outOfRangeTimer = 150;
+                        Game.messageBox.DisplayMessage(GetEvent((int)EventID.OutOfRange).Text);
+                    }
+
+                    if (outOfRangeTimer > 0)
+                    {
+                        outOfRangeTimer--;
+
+                        if (outOfRangeTimer == 149)
+                        {
+                            Game.player.InitializeHyperSpeedJump(rebel1.position, false);
+                        }
+
+                        if (outOfRangeTimer < 1)
+                        {
+                            outOfRangeTimer = -100;
+                        }
                     }
                 },
                 delegate
@@ -114,7 +155,7 @@ namespace SpaceProject
                 }));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], freighter,
-                new EventTextCapsule(new EventText("KILL THE FREIGHTER"), null, EventTextCanvas.MessageBox),
+                new EventTextCapsule(GetEvent((int)EventID.FreighterLevelStart), null, EventTextCanvas.MessageBox),
                 delegate
                 {
                     rebel1.ResetArrived();
@@ -145,7 +186,7 @@ namespace SpaceProject
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], freighter,
                 "PirateLevel1", LevelStartCondition.Immediately,
-                new EventTextCapsule(new EventText("FREIGHTER CAPTURED! Go back to rebel base.\nThe Alliance is sending ships to take you out. Get out of there!"), null, EventTextCanvas.MessageBox)));
+                new EventTextCapsule(GetEvent((int)EventID.ReturnToRebelBase), null, EventTextCanvas.MessageBox)));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.GetStation("Rebel Station 1"),
@@ -170,8 +211,8 @@ namespace SpaceProject
                     return false;
                 }));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], Game.stateManager.overworldState.GetStation("Rebel Station 1"),
-                new EventTextCapsule(new EventText("Good job!"), null, EventTextCanvas.BaseState)));
+            objectives.Add(new ArriveAtLocationObjective(Game, this,
+                ObjectiveDescriptions[0], Game.stateManager.overworldState.GetStation("Rebel Station 1")));
         }
 
         public override void StartMission()
@@ -203,19 +244,19 @@ namespace SpaceProject
         {
             base.MissionLogic();
 
-            if (freighterStartTime > 0
-                && StatsManager.PlayTime.HasOverworldTimePassed(freighterStartTime))
-            {
-                Game.messageBox.DisplayMessage("The freighter has left Soelara, we have to hurry!");
-
-                freighterStartTime = -1;
-
-                freighter.Initialize(Game.stateManager.overworldState.GetSectorX,
-                            Game.stateManager.overworldState.GetPlanet("Soelara"),
-                            Game.stateManager.overworldState.GetStation("Fotrun Station I"));
-                Game.stateManager.overworldState.GetSectorX.shipSpawner.AddFreighterToSector(
-                    freighter, Game.stateManager.overworldState.GetPlanet("Soelara").position);
-            }
+            //if (freighterStartTime > 0
+            //    && StatsManager.PlayTime.HasOverworldTimePassed(freighterStartTime))
+            //{
+            //    Game.messageBox.DisplayMessage("The freighter has left Soelara, we have to hurry!");
+            //
+            //    freighterStartTime = -1;
+            //
+            //    freighter.Initialize(Game.stateManager.overworldState.GetSectorX,
+            //                Game.stateManager.overworldState.GetPlanet("Soelara"),
+            //                Game.stateManager.overworldState.GetStation("Fotrun Station I"));
+            //    Game.stateManager.overworldState.GetSectorX.shipSpawner.AddFreighterToSector(
+            //        freighter, Game.stateManager.overworldState.GetPlanet("Soelara").position);
+            //}
 
             if (ObjectiveIndex == 4
                 && !freighter.IsDead)
