@@ -214,7 +214,7 @@
     <Compile Include="Missions\Old Missions\Main1_AColdWelcome.cs" />
     <Compile Include="Missions\Side Missions\ColonyAid.cs" />
     <Compile Include="Missions\Old Missions\MainMissionOne.cs" />
-    <Compile Include="Missions\Side Missions\AstroDodger.cs" />
+    <Compile Include="Missions\Main Missions\Phase 2\AstroDodger.cs" />
     <Compile Include="MissionStuff\Objectives\DataCapsules\EscortDataCapsule.cs" />
     <Compile Include="MissionStuff\Objectives\DataCapsules\ResponseTextCapsule.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\ArriveAtLocationObjective.cs" />
