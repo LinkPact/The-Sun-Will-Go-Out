@@ -26,6 +26,7 @@ namespace SpaceProject
         private static Main3_Rebels mainRebels;
         private static DefendColony defendColony;
         private static Main8_Retaliation mainRetaliation;
+        private static Main10_InTheNameOfScience mainInTheNameOfScience;
         private static MainX1_BeginningOfTheEnd beginningOfTheEnd;
 
         // Side Missions
@@ -99,6 +100,11 @@ namespace SpaceProject
             mainRetaliation = new Main8_Retaliation(game, "RO_Main8_Retaliation", missionObjectSpriteSheet);
             mainRetaliation.Initialize();
             missions.Add(mainRetaliation);
+
+            // Main 10 - In The Name Of Science
+            mainInTheNameOfScience = new Main10_InTheNameOfScience(game, "RO_Main10_InTheNameOfScience", null);
+            mainInTheNameOfScience.Initialize();
+            missions.Add(mainInTheNameOfScience);
 
             // Main X1 - Beginning Of The End
             beginningOfTheEnd = new MainX1_BeginningOfTheEnd(game, "P4_BeginningOfTheEnd", null);
@@ -328,11 +334,20 @@ namespace SpaceProject
         {
             for (int i = 0; i < activeMissions.Count; i++)
             {
-                if (activeMissions[i].ObjectiveDestination != null &&
-                    activeMissions[i].ObjectiveDestination == obj)
+                if (activeMissions[i].ObjectiveDestination != null)
                 {
-                    return true;
-                }
+                    if ((activeMissions[i].ObjectiveDestination is Planet
+                        || activeMissions[i].ObjectiveDestination is Station)
+                        && (obj.name.ToLower() == activeMissions[i].ObjectiveDestination.name.ToLower()))
+                    {
+                        return true; 
+                    }
+
+                    else if (activeMissions[i].ObjectiveDestination == obj)
+                    {
+                        return true;
+                    }
+                }     
             }
 
             return false;

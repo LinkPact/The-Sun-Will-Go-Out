@@ -88,6 +88,8 @@ namespace SpaceProject
 
         #region Other Objects
 
+        private PeyeScienceStation peyeScienceStation;
+
         public HeadsUpDisplay HUD;
 
         #endregion
@@ -148,6 +150,9 @@ namespace SpaceProject
             currentSpaceRegion = sectorX;
 
             // Misc objects
+            peyeScienceStation = new PeyeScienceStation(Game, outpostSpriteSheet, GetPlanet("Peye").position);
+
+            deepSpaceGameObjects.Add(peyeScienceStation);
             deepSpaceGameObjects.Add(new MediumAsteroid(Game, shooterSheet, new Vector2(82550, 117980)));
             deepSpaceGameObjects.Add(new MediumAsteroid(Game, shooterSheet, new Vector2(82520, 118000)));
             deepSpaceGameObjects.Add(new MediumAsteroid(Game, shooterSheet, new Vector2(82490, 118021)));
@@ -571,10 +576,8 @@ namespace SpaceProject
             {
                 if (obj is Planet)
                 {
-                    Planet planet = (Planet)obj;
-
-                    if (planet.name.ToLower().Equals(planetName.ToLower()))
-                        return planet;
+                    if (obj.name.ToLower().Equals(planetName.ToLower()))
+                        return (Planet)obj;
                 }
             }
 
@@ -586,10 +589,8 @@ namespace SpaceProject
             {
                 if (obj is Station)
                 {
-                    Station station = (Station)obj;
-
-                    if (station.name.ToLower().Equals(stationName.ToLower()))
-                        return station;
+                    if (obj.name.ToLower().Equals(stationName.ToLower()))
+                        return (Station)obj;
                 }
             }
 

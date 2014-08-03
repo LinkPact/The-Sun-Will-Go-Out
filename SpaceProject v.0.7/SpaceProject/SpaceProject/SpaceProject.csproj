@@ -184,7 +184,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MissionStuff\EventText.cs" />
+    <Compile Include="MissionStuff\Objectives\Instances\CloseInOnLocationObjective.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\FollowObjective.cs" />
+    <Compile Include="Missions\Main Missions\Phase 3\Main10_InTheNameOfScience.cs" />
     <Compile Include="Missions\Main Missions\Phase 3\Main8_Retaliation.cs" />
     <Compile Include="Missions\Main Missions\Phase 4\MainX1_BeginningOfTheEnd.cs" />
     <Compile Include="Missions\Mission.cs" />
@@ -330,6 +332,7 @@
     <Compile Include="Overworld-part\GameObjects\Shop.cs" />
     <Compile Include="Overworld-part\GameObjects\ShopInventoryEntry.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\AbandonedStation.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\PeyeScienceStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\BorderXOutpost\BorderStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\MiningOutpost\MiningStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation3.cs" />
@@ -765,6 +768,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Levels\XPirateAnnihilation.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Levels\XMain10_level1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="SpaceProject_TemporaryKey.pfx" />

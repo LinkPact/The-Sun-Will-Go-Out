@@ -136,6 +136,28 @@ Progress = -1
 Reputation = -1
 State = 1
 
+[RO_Main10_InTheNameOfScience]
+Location = Rebel Station 1
+Name = Main - In the name of Science
+Introduction = "Capture scienctist at peye science station?"
+ObjectiveText1 = ""
+PosResponse = YES
+NegResponse = NO
+Accept = Good! Go to peye science station.
+FailText = ""
+EventText1 = CloseInOnStation
+EventText2 = FirstLevelCompleted
+EventText3 = FirstLevelFailed
+EventText4 = ArriveAtStation
+EventText5 = ReturnToOverworld
+ObjectiveCompleted = ""
+Success = Good work!
+Fail = ""
+Reward = -1
+Progress = -1
+Reputation = -1
+State = 1
+
 [Old second mission]
 Location = Highfence
 Name = Main - Rebels

@@ -69,3 +69,9 @@ Name = Rebel Station 3
 PositionX = 900
 PositionY = 900
 Inhabitants = 120
+
+[OW_Peye_Science_Station]
+Name = Peye Science Station
+PositionX = -3500
+PositionY = -2000
+Inhabitants = 780
