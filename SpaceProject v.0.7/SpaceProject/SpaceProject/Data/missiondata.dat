@@ -108,6 +108,30 @@ Progress = 2
 Reputation = 5
 State = 0
 
+[P2_RebelAttack]
+Location = Fotrun Station I
+Name = Attack on the rebels
+Introduction = "You have proved to be a great allay to our cause during your last missions. As I am sure you have noticed the rebels are becoming a big threat to the peace in our system"#"We are currently preaparing to end this treat once and for all. We will need every ship we can find for this to work. You are welcome to join us on this quest for peace."
+ObjectiveText1 = Follow the fleet to the Rebel base and destroy it.
+ObjectiveText2 = Return with the fleet to Fotrun and report of your victory.
+PosResponse = Join the attack on the rebels.
+NegResponse = Tell them you are not able to help at the moment. 
+Accept = "We are ready to launch the attack now. Join the fleet stationed outside of the station." The commander ends by shouting, "For Peace and liberty!"
+EventText1 = You arive at the station. It is time for those rebel scums to pay!
+EventText2 = The station is destroyed and you have won a great victory for the alliance.
+EventText3 = "An ambush! Dammit we are surounded. We need to fight" 
+EventText4 = Your ship becomes badly damaged in the fight is not manuverable. However the rebel ship consideres your ship destroyed and don't move in to finish the jobb.# The battle ends and the rebels leave and your ship remain stranded in space. Time passes and you watch as your oxygenlevel drops closer and closer to critical levels.# Suddenly you see a small dot aproach on the radar. Seeing no other option you hail the ship. 
+EventText5 = "I.. understand. Take the money then. Just don't kill me, I need to be with my boy." 
+EventText6 = You take the man's money and go. You don't feel proud of yourself but you can't really be sure if the man is telling the truth. You decide to believe he is not.
+EventText7 = "I appreiate the gesture. But It would seem you don't have enough money..."
+Success = "Good job! I'll make sure our boss knows how useful you have been."
+ObjectiveCompleted = You successfully collected the debt.
+Fail = "So you "didn't find him" huh? Your just as useless as the last one. Looks like were going to have to deal with this ourselves.." 
+ObjectiveFailed = You chose to hide the man instead, getting no reward.
+Reward = 300
+Progress = 2
+Reputation = 3
+State = 1
 
 [RO_Main8_Retaliation]
 Location = Rebel Station 1
