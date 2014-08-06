@@ -304,11 +304,11 @@ namespace SpaceProject
                 }
             }
 
-            if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))))
-            {
-                if (!Game.player.HyperspeedOn)
-                    EnterCheck();
-            }
+            //if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))))
+            //{
+            //    if (!Game.player.HyperspeedOn)
+            //        EnterCheck();
+            //}
         }
 
         private void EdgeCollisionCheck()
@@ -490,30 +490,30 @@ namespace SpaceProject
             }
         }
 
-        // Collision-Detection for entering stations and planets
+        //// Collision-Detection for entering stations and planets
         // TODO NOT USED!!!!
-        private void EnterCheck()
-        {
-            for (int i = 0; i < deepSpaceGameObjects.Count; i++)
-            {
-                if (CollisionDetection.VisiblePixelsColliding(Game.player.Bounds, ((GameObjectOverworld)deepSpaceGameObjects[i]).Bounds,
-                    Game.player.sprite, ((GameObjectOverworld)deepSpaceGameObjects[i]).sprite,
-                    Game.player.centerPoint, ((GameObjectOverworld)deepSpaceGameObjects[i]).centerPoint) == true)
-                {
-                    if (deepSpaceGameObjects[i] is Planet)
-                    {
-                        Game.stateManager.planetState.LoadPlanetData((Planet)deepSpaceGameObjects[i]);
-                        Game.stateManager.ChangeState("PlanetState");
-                    }
-
-                    else if (deepSpaceGameObjects[i] is Station)
-                    {
-                        Game.stateManager.stationState.LoadStationData((Station)deepSpaceGameObjects[i]);
-                        Game.stateManager.ChangeState("StationState");
-                    }
-                }
-            }
-        }
+        //private void EnterCheck()
+        //{
+        //    for (int i = 0; i < deepSpaceGameObjects.Count; i++)
+        //    {
+        //        if (CollisionDetection.VisiblePixelsColliding(Game.player.Bounds, ((GameObjectOverworld)deepSpaceGameObjects[i]).Bounds,
+        //            Game.player.sprite, ((GameObjectOverworld)deepSpaceGameObjects[i]).sprite,
+        //            Game.player.centerPoint, ((GameObjectOverworld)deepSpaceGameObjects[i]).centerPoint) == true)
+        //        {
+        //            if (deepSpaceGameObjects[i] is Planet)
+        //            {
+        //                Game.stateManager.planetState.LoadPlanetData((Planet)deepSpaceGameObjects[i]);
+        //                Game.stateManager.ChangeState("PlanetState");
+        //            }
+        //
+        //            else if (deepSpaceGameObjects[i] is Station)
+        //            {
+        //                Game.stateManager.stationState.LoadStationData((Station)deepSpaceGameObjects[i]);
+        //                Game.stateManager.ChangeState("StationState");
+        //            }
+        //        }
+        //    }
+        //}
 
         public override void Draw(SpriteBatch spriteBatch)
         {

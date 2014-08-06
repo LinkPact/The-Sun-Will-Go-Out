@@ -78,8 +78,12 @@ namespace SpaceProject
 
                     if (gameObjects[i] is Planet)
                     {
-                        game.stateManager.planetState.LoadPlanetData((Planet)gameObjects[i]);
-                        game.stateManager.ChangeState("PlanetState");
+                        if (MissionManager.GetMission("Main - Highfence2").ObjectiveIndex != 0 &&
+                            !gameObjects[i].name.ToLower().Equals("Highfence"))
+                        {
+                            game.stateManager.planetState.LoadPlanetData((Planet)gameObjects[i]);
+                            game.stateManager.ChangeState("PlanetState");
+                        }
                     }
 
                     else if (gameObjects[i] is Station)

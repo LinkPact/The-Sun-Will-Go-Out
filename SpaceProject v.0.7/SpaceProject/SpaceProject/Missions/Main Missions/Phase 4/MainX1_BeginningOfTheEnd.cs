@@ -13,7 +13,13 @@ namespace SpaceProject
         private enum EventID
         {
             Introduction,
-            TalkAtHighfence,
+            HighfenceEntryDenial,
+            StalkersShotDown,
+            TalkAtHighfence1,
+            TalkAtHighfence2,
+            HighfenceResponse1,
+            HighfenceResponse2,
+            TalkAtHighfence3,
             TalkAtSoelara,
             TalkAtFortun,
             ActionAtTelmun
@@ -49,14 +55,44 @@ namespace SpaceProject
             rebel2.SetPosition(MathFunctions.SpreadPos(highfence.position, 200));
             rebel2.Level = "PirateLevel2";
 
+            // OBJECTIVES
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], highfence,
+                new EventTextCapsule(GetEvent((int)EventID.StalkersShotDown), null, EventTextCanvas.MessageBox),
+                delegate { },
+                delegate 
+                {
+                    if ((((ControlManager.CheckPress(RebindableKeys.Action1) 
+                        || ControlManager.CheckKeypress(Keys.Enter)) 
+                        && !Game.player.HyperspeedOn
+                        && GameStateManager.currentState.Equals("OverworldState"))) 
+                        && CollisionDetection.IsRectInRect(Game.player.Bounds, highfence.Bounds))
+                    {
+                        Game.messageBox.DisplayMessage(GetEvent((int)EventID.HighfenceEntryDenial).Text);
+                    }
+                }, 
+                delegate 
+                {
+                    return ((rebel1.IsDead && rebel2.IsDead) 
+                        && GameStateManager.currentState.Equals("OverworldState"));
+                },
+                delegate { return false; }));
+
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], highfence, 
-                new EventTextCapsule(GetEvent((int)EventID.TalkAtHighfence), null, EventTextCanvas.BaseState)));
-            //objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], soelara, 
-            //    new EventTextCapsule(GetEvent((int)EventID.TalkAtSoelara), null, EventTextCanvas.BaseState)));
-            //objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], fortrun, 
-            //    new EventTextCapsule(GetEvent((int)EventID.TalkAtFortun), null, EventTextCanvas.BaseState)));
-            //objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], telmun, 
-            //    new EventTextCapsule(GetEvent((int)EventID.ActionAtTelmun), null, EventTextCanvas.BaseState)));
+                new EventTextCapsule(GetEvent((int)EventID.TalkAtHighfence1), null, EventTextCanvas.BaseState)));
+
+            objectives.Add(new ResponseObjective(Game, this, ObjectiveDescriptions[0], highfence,
+                new ResponseTextCapsule(GetEvent((int)EventID.TalkAtHighfence2), GetAllResponses((int)EventID.TalkAtHighfence2),
+                    new List<System.Action>() { 
+                        delegate 
+                        { 
+                            missionHelper.ShowEvent(GetEvent((int)EventID.HighfenceResponse1));
+                        },
+                        delegate 
+                        {
+                            missionHelper.ShowEvent(GetEvent((int)EventID.HighfenceResponse2));
+                        } 
+                    }),
+                    new EventTextCapsule(GetEvent((int)EventID.TalkAtHighfence3), null, EventTextCanvas.BaseState)));
         }
 
         public override void StartMission()

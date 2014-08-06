@@ -16,6 +16,22 @@ namespace SpaceProject
             ResponseTextCapsule responseTextCapsule) :
             base(game, mission, description, destination)
         {
+            Setup(responseTextCapsule);
+        }
+
+        public ResponseObjective(Game1 game, Mission mission, String description, GameObjectOverworld destination,
+            ResponseTextCapsule responseTextCapsule, EventTextCapsule eventTextCapsule) :
+            base(game, mission, description, destination)
+        {
+            Setup(responseTextCapsule);
+
+            objectiveCompletedEventText = eventTextCapsule.CompletedText;
+            objectiveFailedEventText = eventTextCapsule.FailedText;
+            eventTextCanvas = eventTextCapsule.EventTextCanvas;
+        }
+
+        private void Setup(ResponseTextCapsule responseTextCapsule)
+        {
             responseEventText = responseTextCapsule.ResponseEvents.Key;
             responseEvents = responseTextCapsule.ResponseEvents;
             actions = responseTextCapsule.Actions;
