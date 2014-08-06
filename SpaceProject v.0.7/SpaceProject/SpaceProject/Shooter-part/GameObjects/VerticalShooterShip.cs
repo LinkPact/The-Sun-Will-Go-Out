@@ -163,6 +163,9 @@ namespace SpaceProject
                 case Movement.LeftHorizontal:
                         movementModule = new HorizontalModule(Game, false);
                         break;
+                case Movement.SearchAndLockOn:
+                        movementModule = new SearchAndLockOnModule(Game);
+                        break;
                 case Movement.AI:
                         break;
                 default: 

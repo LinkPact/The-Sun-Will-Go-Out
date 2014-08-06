@@ -34,11 +34,11 @@ namespace SpaceProject
 
             lootValue = LootValue.veryHigh;
 
-            AddPrimaryModule(2500, ShootingMode.Regular);
+            AddPrimaryModule(1500, ShootingMode.Regular);
             primaryModule.SetRandomCharge(random);
 
             //Egenskaper
-            SightRange = 4000;
+            SightRange = 500;
             HP = 1000.0f;
             Damage = 0;
             Speed = 0.01f;
@@ -54,24 +54,15 @@ namespace SpaceProject
 
         protected override void ShootingPattern(GameTime gameTime)
         {
-            AllianceSmallShooter ship = new AllianceSmallShooter(Game, spriteSheet, player);
+            AllianceHangarAttackShip ship = new AllianceHangarAttackShip(Game, spriteSheet, player);
             ship.Position = Position;
-            ship.Direction = new Vector2(0, 1);
+            ship.Direction = MathFunctions.DirFromRadians(Math.PI);
             ship.Initialize();
-            ship.SetMovement(Movement.Following);
-            ship.Speed *= 0.6f;
+            ship.SetMovement(Movement.SearchAndLockOn);
+            ship.Speed *= 0.8f;
+            ship.TurningSpeed = 2f;
 
             Game.AddGameObjToShooter(ship);
-
-            //EnemyGreenBullet bullet = new EnemyGreenBullet(Game, spriteSheet);
-            //bullet.PositionX = PositionX;
-            //bullet.PositionY = PositionY;
-            //bullet.Direction = GlobalMathFunctions.ScaleDirection(ShootObject.Position - Position);
-            //bullet.Initialize();
-            //bullet.Duration = 500;
-            //bullet.Speed *= 1.5f;
-            //
-            //Game.stateManager.shooterState.gameObjects.Add(bullet);
         }
 
         protected override void SecondaryShootingPattern(GameTime gameTime)

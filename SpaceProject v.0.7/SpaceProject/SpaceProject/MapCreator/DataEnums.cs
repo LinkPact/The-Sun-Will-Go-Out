@@ -23,6 +23,8 @@ public enum Movement
     SmallZigzag,
     MediumZigzag,
     BigZigzag,
+
+    SearchAndLockOn,
     
     CrossOver,
     Following,
