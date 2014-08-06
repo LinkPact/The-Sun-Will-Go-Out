@@ -21,12 +21,12 @@ namespace SpaceProject
             base.Initialize();
 
             //Egenskaper
-            Speed = 0.05f;
+            Speed = 0.02f;
             IsKilled = false;
             Damage = 0;
             ObjectClass = "bullet";
             ObjectName = "Mine";
-            Duration = 500;
+            Duration = 50000;
 
             anim.LoopTime = 300;
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(61, 0, 10, 10)));
@@ -39,6 +39,10 @@ namespace SpaceProject
             blastRadius = 100;
             blastDamage = 100;
 
+            ShootObjectTypes.Add("player");
+            ShootObjectTypes.Add("ally");
+            SightRange = 100;
+
             collidesOtherBullets = true;
         }
 
@@ -46,6 +50,15 @@ namespace SpaceProject
         {
             if (Duration <= 0)
                 Explode();
+            else
+            {
+                GameObjectVertical obj = FindAimObject();
+                if (obj != null)
+                {
+                    Explode();
+                    IsKilled = true;
+                }
+            }
 
             base.Update(gameTime);
         }

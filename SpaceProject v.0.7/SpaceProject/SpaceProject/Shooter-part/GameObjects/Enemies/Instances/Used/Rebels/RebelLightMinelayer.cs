@@ -33,7 +33,7 @@ namespace SpaceProject
 
             lootValue = LootValue.medium;
 
-            AddPrimaryModule(900, ShootingMode.Regular);
+            AddPrimaryModule(700, ShootingMode.Regular);
             primaryModule.SetRandomCharge(random);
 
             //Egenskaper
@@ -61,8 +61,6 @@ namespace SpaceProject
             mine.Position = Position;
             mine.Direction = MathFunctions.DirFromRadians(dirRadians);
             mine.Initialize();
-            mine.Speed = 0.03f;
-            mine.Duration = 6000;
 
             Game.stateManager.shooterState.gameObjects.Add(mine);
         }

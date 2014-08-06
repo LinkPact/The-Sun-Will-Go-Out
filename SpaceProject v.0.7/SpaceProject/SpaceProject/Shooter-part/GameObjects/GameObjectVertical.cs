@@ -250,6 +250,19 @@ namespace SpaceProject
             return null;
         }
 
+        public float FindClosestAimDistance()
+        {
+            GameObjectVertical aimObject = FindAimObject();
+
+            float distance;
+            if (aimObject != null)
+                distance = MathFunctions.ObjectDistance(this, aimObject);
+            else
+                distance = 4000;
+
+            return distance;
+        }
+
         public GameObjectVertical FindAimObject()
         {
             if (ShootObject == null)

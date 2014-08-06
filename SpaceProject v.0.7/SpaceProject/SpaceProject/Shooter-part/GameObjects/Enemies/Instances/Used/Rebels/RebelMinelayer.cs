@@ -9,8 +9,6 @@ namespace SpaceProject
 {
     class RebelMinelayer : ShootingEnemyShip
     {
-        Boolean shootOffset = false;
-
         public RebelMinelayer(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
         {
@@ -64,10 +62,8 @@ namespace SpaceProject
 
             MineEnemy mine = new MineEnemy(Game, spriteSheet);
             mine.Position = Position;
-            mine.Direction = MathFunctions.GetRandomDownDirection();
+            mine.Direction = Direction;
             mine.Initialize();
-            mine.Speed = 0.003f;
-            mine.Duration = 6000;
 
             Game.stateManager.shooterState.gameObjects.Add(mine);
         }
