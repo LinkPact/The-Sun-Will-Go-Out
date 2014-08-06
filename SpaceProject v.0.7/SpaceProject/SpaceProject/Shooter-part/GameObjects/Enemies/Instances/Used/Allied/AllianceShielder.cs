@@ -33,7 +33,7 @@ namespace SpaceProject
             primaryModule.SetRandomCharge(random);
 
             Damage = 100;
-            Speed = 0.06f;
+            Speed = 0.035f;
             HP = 400;
             TurningSpeed = 2;
 

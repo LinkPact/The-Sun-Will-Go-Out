@@ -457,7 +457,7 @@
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceSingleHoming.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceSmallLaserShip.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceStealthAttackShip.cs" />
-    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceHomingBullets.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceMultipleShot.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceHeavyBeamer.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceBallistic.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceHangar.cs" />
@@ -523,11 +523,13 @@
     <Compile Include="Shooter-part\Events\PointLevelEvent.cs" />
     <Compile Include="Shooter-part\Events\WavesLevelEvent.cs" />
     <Compile Include="Shooter-part\Levels\Levels\JakobsDevelopLevel.cs" />
+    <Compile Include="Shooter-part\Modules\MovementModule\Instances\BigZigZagModule.cs" />
+    <Compile Include="Shooter-part\Modules\MovementModule\Instances\MediumZigZagModule.cs" />
     <Compile Include="Shooter-part\Modules\MovementModule\Instances\HorizontalModule.cs" />
     <Compile Include="Shooter-part\Modules\MovementModule\Instances\StoppingModule.cs" />
     <Compile Include="Shooter-part\Modules\MovementModule\Instances\FollowingModule.cs" />
     <Compile Include="Shooter-part\Modules\MovementModule\Instances\CrossOverModule.cs" />
-    <Compile Include="Shooter-part\Modules\MovementModule\Instances\ZigZagModule.cs" />
+    <Compile Include="Shooter-part\Modules\MovementModule\Instances\SmallZigZagModule.cs" />
     <Compile Include="Shooter-part\Modules\MovementModule\Instances\LinearModule.cs" />
     <Compile Include="Shooter-part\Modules\MovementModule\Instances\SlantingLineModule.cs" />
     <Compile Include="Shooter-part\Modules\MovementModule\MovementModule.cs" />

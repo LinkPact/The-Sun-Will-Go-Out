@@ -22,6 +22,8 @@ namespace SpaceProject
             AddPrimaryModule(2500, ShootingMode.Regular);
             primaryModule.SetFullCharge();
 
+            movement = Movement.SmallZigzag;
+
             //Egenskaper
             SightRange = 300;
             HP = 275;
@@ -64,8 +66,8 @@ namespace SpaceProject
             
                 bullet.Direction = MathFunctions.SpreadDir(initDir, spread);
                 bullet.Initialize();
-                bullet.Duration = 800;
-                bullet.Speed *= 0.7f;
+                bullet.Duration *= 0.8f;
+                bullet.Speed *= 1f;
 
                 bullet.SetSpreadSpeed(random);
 

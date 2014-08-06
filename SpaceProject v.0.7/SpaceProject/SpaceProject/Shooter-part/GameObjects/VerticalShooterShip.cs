@@ -136,8 +136,14 @@ namespace SpaceProject
                 case Movement.SlantingLine:
                         movementModule = new SlantingLineModule(Game);
                         break;
-                case Movement.Zigzag:
-                        movementModule = new ZigZagModule(Game);
+                case Movement.SmallZigzag:
+                        movementModule = new SmallZigZagModule(Game);
+                        break;
+                case Movement.MediumZigzag:
+                        movementModule = new MediumZigZagModule(Game);
+                        break;
+                case Movement.BigZigzag:
+                        movementModule = new BigZigZagModule(Game);
                         break;
                 case Movement.Following:
                         movementModule = new FollowingModule(Game);

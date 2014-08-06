@@ -38,8 +38,8 @@ namespace SpaceProject
             SightRange = 400;
             HP = 400.0f;
             Damage = 80;
-            Speed = 0.1f;
-            TurningSpeed = 0.4f;
+            Speed = 0.06f;
+            TurningSpeed = 8f;
 
             movement = Movement.Following;
 

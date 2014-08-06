@@ -42,7 +42,7 @@ namespace SpaceProject
             Damage = 60;
             Speed = 0.05f;
 
-            movement = Movement.Zigzag;
+            movement = Movement.SmallZigzag;
 
             //Animationer
             anim.LoopTime = 500;

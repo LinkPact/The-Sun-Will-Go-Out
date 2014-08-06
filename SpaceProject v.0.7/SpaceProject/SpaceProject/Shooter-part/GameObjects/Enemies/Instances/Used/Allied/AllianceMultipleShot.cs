@@ -6,15 +6,15 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
-    class AllianceHomingBullets : ShootingEnemyShip
+    class AllianceMultipleShot : ShootingEnemyShip
     {
-        public AllianceHomingBullets(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
+        public AllianceMultipleShot(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
         {
             Setup();
         }
 
-        public AllianceHomingBullets(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player,
+        public AllianceMultipleShot(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player,
             Movement movement) :
             base(Game, spriteSheet, player)
         {
@@ -34,16 +34,17 @@ namespace SpaceProject
 
             lootValue = LootValue.medium;
 
-            AddPrimaryModule(2000, ShootingMode.Regular);
+            AddPrimaryModule(100, ShootingMode.Batches);
             primaryModule.SetFullCharge();
+            primaryModule.ShootsInBatchesSetup(2, 2000);
 
             //Egenskaper
             SightRange = 400;
             HP = 400.0f;
             Damage = 90;
-            Speed = 0.04f;
+            Speed = 0.03f;
 
-            movement = Movement.Following;
+            movement = Movement.Line;
 
             //Animationer
             anim.LoopTime = 500;
@@ -54,22 +55,23 @@ namespace SpaceProject
 
         protected override void ShootingPattern(GameTime gameTime)
         {
-            double width = 2 * Math.PI;
+            double width = Math.PI / 4;
             int numberOfShots = 6;
 
             List<double> spreadDirections = MathFunctions.GetSpreadDirList(width, numberOfShots);
-
             foreach (double dir in spreadDirections)
             {
-                EnemyHomingBullet bullet = new EnemyHomingBullet(Game, spriteSheet, player);
-                bullet.Position = Position;
-                bullet.Direction = MathFunctions.DirFromRadians(dir);
-                bullet.Initialize();
-                bullet.Speed *= 0.8f;
+                EnemyWeakBlueLaser laser1 = new EnemyWeakBlueLaser(Game, spriteSheet);
+                laser1.PositionX = PositionX;
+                laser1.PositionY = PositionY;
+                laser1.Direction = MathFunctions.DirFromRadians(dir);
+                laser1.Initialize();
+                laser1.Speed *= 1.0f;
+                laser1.Duration *= 4.0f;
 
-                Game.stateManager.shooterState.gameObjects.Add(bullet);
-                Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
+                Game.stateManager.shooterState.gameObjects.Add(laser1);
             }
+            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
         }
 
         protected override void SecondaryShootingPattern(GameTime gameTime)

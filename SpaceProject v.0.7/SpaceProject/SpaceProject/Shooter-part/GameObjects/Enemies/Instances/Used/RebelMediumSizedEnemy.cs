@@ -40,7 +40,7 @@ namespace SpaceProject
             Damage = 120;
             Speed = 0.15f;
 
-            movement = Movement.Zigzag;
+            movement = Movement.SmallZigzag;
 
             ObjectClass = "enemy";
             ObjectName = "RebelMediumEnemy";

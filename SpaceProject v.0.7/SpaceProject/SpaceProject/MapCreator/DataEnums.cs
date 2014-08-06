@@ -19,7 +19,11 @@ public enum Movement
     None,
     Line,
     SlantingLine,
-    Zigzag,
+
+    SmallZigzag,
+    MediumZigzag,
+    BigZigzag,
+    
     CrossOver,
     Following,
     Stopping,
@@ -69,7 +73,7 @@ public enum EnemyType
     // To be implemented
     A_singleHoming      = 205,
     A_lightBeamer       = 206,
-    A_homingBullets     = 207,
+    A_multipleShot      = 207,
     A_heavyBeamer       = 208,
     A_ballistic         = 209,
     A_hangar            = 210,

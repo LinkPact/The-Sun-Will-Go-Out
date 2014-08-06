@@ -356,9 +356,9 @@ namespace SpaceProject
                         creature = new AllianceLightBeamer(Game, spriteSheet, player);
                         break;
                     }
-                case EnemyType.A_homingBullets:
+                case EnemyType.A_multipleShot:
                     {
-                        creature = new AllianceHomingBullets(Game, spriteSheet, player);
+                        creature = new AllianceMultipleShot(Game, spriteSheet, player);
                         break;
                     }
 

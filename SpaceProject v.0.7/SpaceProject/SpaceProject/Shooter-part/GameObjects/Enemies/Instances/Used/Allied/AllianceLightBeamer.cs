@@ -10,6 +10,11 @@ namespace SpaceProject
     {
         private HostileBeamModule beamModule;
 
+        private float fireTime;
+        private float cooldownTime;
+        private float currentTime;
+        private Boolean IsFiring { get { return currentTime < fireTime; } }
+
         public AllianceLightBeamer(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
         {
@@ -27,6 +32,10 @@ namespace SpaceProject
         private void Setup()
         {
             fraction = Fraction.alliance;
+
+            fireTime = 3000;
+            cooldownTime = 1000;
+            currentTime = 0;
         }
 
         public override void Initialize()
@@ -36,9 +45,9 @@ namespace SpaceProject
             lootValue = LootValue.medium;
 
             //Egenskaper
-            SightRange = 400;
+            SightRange = 500;
             HP = 200f;
-            Damage = 60.0f;
+            Damage = 80.0f;
             Speed = 0.05f;
 
             AddPrimaryModule(10, ShootingMode.Regular);
@@ -55,13 +64,25 @@ namespace SpaceProject
             beamModule = new HostileBeamModule(Game, spriteSheet, beamDamage);
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+
+            currentTime += gameTime.ElapsedGameTime.Milliseconds;
+            if (currentTime > fireTime + cooldownTime)
+                currentTime -= (fireTime + cooldownTime);
+        }
+
         protected override void ShootingPattern(GameTime gameTime)
         {
-            if (beamModule.HasTargetInLineOfSight(Position))
+            //if (beamModule.HasTargetInLineOfSight(Position))
+            //{
+            if (IsFiring)
             {
                 beamModule.Activate(Position, gameTime);
                 Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
             }
+            //}
         }
 
         protected override void SecondaryShootingPattern(GameTime gameTime)

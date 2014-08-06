@@ -68,7 +68,7 @@ namespace SpaceProject
 
             enemyLibrary.Add(EnemyType.A_singleHoming, "i");
             enemyLibrary.Add(EnemyType.A_lightBeamer, "j");
-            enemyLibrary.Add(EnemyType.A_homingBullets, "k");
+            enemyLibrary.Add(EnemyType.A_multipleShot, "k");
             enemyLibrary.Add(EnemyType.A_heavyBeamer, "l");
             enemyLibrary.Add(EnemyType.A_ballistic, "o");
             enemyLibrary.Add(EnemyType.A_hangar, "p");
@@ -91,7 +91,9 @@ namespace SpaceProject
             movementLibrary.Add(Movement.Line, "ln");
             movementLibrary.Add(Movement.SlantingLine, "sl");
             movementLibrary.Add(Movement.Stopping, "st");
-            movementLibrary.Add(Movement.Zigzag, "zz");
+            movementLibrary.Add(Movement.SmallZigzag, "zz");
+            movementLibrary.Add(Movement.MediumZigzag, "mz");
+            movementLibrary.Add(Movement.BigZigzag, "bz");
             movementLibrary.Add(Movement.FullStop, "fs");
             movementLibrary.Add(Movement.RightHorizontal, "ho");
             movementLibrary.Add(Movement.AI, "ai");
@@ -220,7 +222,7 @@ namespace SpaceProject
                 case EnemyType.A_shielder:          return new Color(102, 255, 102);
                 case EnemyType.A_attackStealth:     return new Color(0, 255, 0);
                 case EnemyType.A_lightBeamer:       return new Color(0, 153, 0);
-                case EnemyType.A_homingBullets:     return new Color(0, 51, 0);
+                case EnemyType.A_multipleShot:     return new Color(0, 51, 0);
                 case EnemyType.A_ballistic:         return new Color(102, 255, 255);
 
                 case EnemyType.A_stealthShip:       return new Color(0, 204, 204);

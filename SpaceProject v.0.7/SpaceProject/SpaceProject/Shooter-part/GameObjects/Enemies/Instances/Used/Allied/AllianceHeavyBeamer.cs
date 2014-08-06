@@ -12,6 +12,11 @@ namespace SpaceProject
         private HostileBeamModule beamModuleMiddle;
         private HostileBeamModule beamModuleRight;
 
+        private float fireTime;
+        private float cooldownTime;
+        private float currentTime;
+        private Boolean IsFiring { get { return currentTime < fireTime; } }
+
         public AllianceHeavyBeamer(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
         {
@@ -30,6 +35,10 @@ namespace SpaceProject
         {
             fraction = Fraction.alliance;
             ShieldSetup(CreatureShieldCapacity.high, CreatureShieldRegeneration.high);
+
+            fireTime = 5000;
+            cooldownTime = 2000;
+            currentTime = 0;
         }
 
         public override void Initialize()
@@ -39,9 +48,9 @@ namespace SpaceProject
             lootValue = LootValue.veryHigh;
 
             //Egenskaper
-            SightRange = 400;
+            SightRange = 500;
             HP = 400.0f;
-            Damage = 100.0f;
+            Damage = 200.0f;
             Speed = 0.02f;
 
             AddPrimaryModule(10, ShootingMode.Regular);
@@ -63,29 +72,43 @@ namespace SpaceProject
             beamModuleRight = new HostileBeamModule(Game, spriteSheet, beamDamage);
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+
+            currentTime += gameTime.ElapsedGameTime.Milliseconds;
+            if (currentTime > fireTime + cooldownTime)
+                currentTime -= (fireTime + cooldownTime);
+        }
+
         protected override void ShootingPattern(GameTime gameTime)
         {
-            float offset = 15;
-            Vector2 leftBeamPos     = new Vector2(PositionX - offset, PositionY);
-            Vector2 middleBeamPos   = new Vector2(PositionX, PositionY);
-            Vector2 rightBeamPos    = new Vector2(PositionX + offset, PositionY);
-
-            if (beamModuleLeft.HasTargetInLineOfSight(leftBeamPos))
+            if (IsFiring)
             {
+
+                float offset = 15;
+                Vector2 leftBeamPos = new Vector2(PositionX - offset, PositionY);
+                Vector2 middleBeamPos = new Vector2(PositionX, PositionY);
+                Vector2 rightBeamPos = new Vector2(PositionX + offset, PositionY);
+
+                //if (beamModuleLeft.HasTargetInLineOfSight(leftBeamPos))
+                //{
                 beamModuleLeft.Activate(leftBeamPos, gameTime);
                 Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
-            }
+                //}
 
-            if (beamModuleMiddle.HasTargetInLineOfSight(middleBeamPos))
-            {
-                beamModuleLeft.Activate(middleBeamPos, gameTime);
+                //if (beamModuleMiddle.HasTargetInLineOfSight(middleBeamPos))
+                //{
+                beamModuleMiddle.Activate(middleBeamPos, gameTime);
                 Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
-            }
+                //}
 
-            if (beamModuleRight.HasTargetInLineOfSight(rightBeamPos))
-            {
-                beamModuleLeft.Activate(rightBeamPos, gameTime);
+                //if (beamModuleRight.HasTargetInLineOfSight(rightBeamPos))
+                //{
+                beamModuleRight.Activate(rightBeamPos, gameTime);
                 Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
+
+                //}
             }
         }
 

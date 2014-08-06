@@ -6,19 +6,19 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
-    class ZigZagModule : MovementModule
+    class BigZigZagModule : MovementModule
     {
         protected float zigzagInterval;
         protected float zigzagXdir;
         protected bool zigzagDirRight;
 
-        public ZigZagModule(Game1 game)
+        public BigZigZagModule(Game1 game)
             : base(game)
         { }
 
         public override void Setup(GameObjectVertical obj)
         {
-            zigzagInterval = 0.4f;
+            zigzagInterval = 1.5f;
             zigzagXdir = 0.0f;
 
             if (random.NextDouble() > 0.5) zigzagDirRight = true;

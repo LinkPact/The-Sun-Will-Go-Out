@@ -42,7 +42,7 @@ namespace SpaceProject.Shooter_part.GameObjects.Enemies.Instances.Used
             Damage = 150;
             Speed = 0.05f;
 
-            movement = Movement.Zigzag;
+            movement = Movement.SmallZigzag;
 
             //Animationer
             anim.LoopTime = 500;
