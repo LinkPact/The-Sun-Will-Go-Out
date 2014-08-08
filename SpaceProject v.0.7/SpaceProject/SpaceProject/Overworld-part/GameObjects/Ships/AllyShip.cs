@@ -140,7 +140,12 @@ namespace SpaceProject
                 IsUsed = false;
             
             // Update view
-            view = new Rectangle((int)position.X - viewRadius, (int)position.Y - viewRadius, viewRadius * 2, viewRadius * 2); 
+            view = new Rectangle((int)position.X - viewRadius, (int)position.Y - viewRadius, viewRadius * 2, viewRadius * 2);
+
+            if (target != null)
+            {
+                destination = target.position;
+            }
 
             // Adjust course towards target
             if (destination != Vector2.Zero)

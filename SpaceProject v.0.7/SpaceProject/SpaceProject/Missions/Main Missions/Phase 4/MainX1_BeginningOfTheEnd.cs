@@ -24,12 +24,24 @@ namespace SpaceProject
             TalkAtFortun,
             ActionAtTelmun
         }
+        private List<RebelShip> rebels;
 
-        private Boolean firstRebelTriggered = false;
-        private Boolean secondRebelTriggered = false;
-
+        // Wave 1
         private RebelShip rebel1;
         private RebelShip rebel2;
+
+        // Wave 2
+        private float rebel3SpawnTime;
+        private float rebel4SpawnTime;
+        private float rebel5SpawnTime;
+
+        private RebelShip rebel3;
+        private RebelShip rebel4;
+        private RebelShip rebel5;
+
+        private AllyShip ally1;
+        private AllyShip ally2;
+        private AllyShip ally3;
 
         public MainX1_BeginningOfTheEnd(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
@@ -49,11 +61,45 @@ namespace SpaceProject
             rebel1.Initialize();
             rebel1.SetPosition(MathFunctions.SpreadPos(highfence.position, 200));
             rebel1.Level = "PirateLevel1";
+            rebel1.EncounterMessage = "Hello! 1";
 
             rebel2 = new RebelShip(Game, Game.spriteSheetVerticalShooter);
             rebel2.Initialize();
             rebel2.SetPosition(MathFunctions.SpreadPos(highfence.position, 200));
             rebel2.Level = "PirateLevel2";
+            rebel2.EncounterMessage = "Hello! 2";
+
+            rebel3 = new RebelShip(Game, Game.spriteSheetVerticalShooter);
+            rebel3.Initialize();
+            rebel3.Level = "PirateLevel1";
+            rebel3.EncounterMessage = "Hello! 3";
+
+            rebel4 = new RebelShip(Game, Game.spriteSheetVerticalShooter);
+            rebel4.Initialize();
+            rebel4.Level = "PirateLevel2";
+            rebel4.EncounterMessage = "Hello! 4";
+
+            rebel5 = new RebelShip(Game, Game.spriteSheetVerticalShooter);
+            rebel5.Initialize();
+            rebel5.Level = "PirateLevel3";
+            rebel5.EncounterMessage = "Hello! 5";
+
+            ally1 = new AllyShip(Game, Game.spriteSheetVerticalShooter, ShipType.Alliance);
+            ally1.Initialize(Game.stateManager.overworldState.GetSectorX);
+
+            ally2 = new AllyShip(Game, Game.spriteSheetVerticalShooter, ShipType.Alliance);
+            ally2.Initialize(Game.stateManager.overworldState.GetSectorX);
+
+            ally3 = new AllyShip(Game, Game.spriteSheetVerticalShooter, ShipType.Alliance);
+            ally3.Initialize(Game.stateManager.overworldState.GetSectorX);
+
+            rebels = new List<RebelShip>();
+
+            rebels.Add(rebel1);
+            rebels.Add(rebel2);
+            rebels.Add(rebel3);
+            rebels.Add(rebel4);
+            rebels.Add(rebel5);
 
             // OBJECTIVES
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], highfence,
@@ -93,6 +139,63 @@ namespace SpaceProject
                         } 
                     }),
                     new EventTextCapsule(GetEvent((int)EventID.TalkAtHighfence3), null, EventTextCanvas.BaseState)));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], soelara,
+                new EventTextCapsule(new EventText("Objective completed"), new EventText("Objective Failed"), EventTextCanvas.MessageBox),
+                delegate
+                {
+                    rebel3SpawnTime = StatsManager.PlayTime.GetFutureOverworldTime(2000);
+                    rebel4SpawnTime = StatsManager.PlayTime.GetFutureOverworldTime(7000);
+                    rebel5SpawnTime = StatsManager.PlayTime.GetFutureOverworldTime(13000);
+
+                    ally1.SetPosition(MathFunctions.SpreadPos(Game.player.position, 100));
+                    ally1.SetTarget(Game.player);
+                    Game.stateManager.overworldState.AddOverworldObject(ally1);
+
+                    ally2.SetPosition(MathFunctions.SpreadPos(Game.player.position, 100));
+                    ally2.SetTarget(Game.player);
+                    Game.stateManager.overworldState.AddOverworldObject(ally2);
+
+                    ally3.SetPosition(MathFunctions.SpreadPos(Game.player.position, 100));
+                    ally3.SetTarget(Game.player);
+                    Game.stateManager.overworldState.AddOverworldObject(ally3);
+                    
+                },
+                delegate
+                {
+                    if (rebel3SpawnTime > 0
+                        && StatsManager.PlayTime.HasOverworldTimePassed(rebel3SpawnTime))
+                    {
+                        rebel3.SetPosition(MathFunctions.SpreadPos(Game.player.position, 400));
+                        Game.stateManager.overworldState.AddOverworldObject(rebel3);
+                        rebel3SpawnTime = -1;
+                    }
+
+                    else if (rebel4SpawnTime > 0
+                        && StatsManager.PlayTime.HasOverworldTimePassed(rebel4SpawnTime))
+                    {
+                        rebel4.SetPosition(MathFunctions.SpreadPos(Game.player.position, 400));
+                        Game.stateManager.overworldState.AddOverworldObject(rebel4);
+                        rebel4SpawnTime = -1;
+                    }
+
+                    else if (rebel5SpawnTime > 0
+                        && StatsManager.PlayTime.HasOverworldTimePassed(rebel5SpawnTime))
+                    {
+                        rebel5.SetPosition(MathFunctions.SpreadPos(Game.player.position, 400));
+                        Game.stateManager.overworldState.AddOverworldObject(rebel5);
+                        rebel5SpawnTime = -1;
+                    }
+                        
+                },
+                delegate
+                {
+                    return false;
+                },
+                delegate
+                {
+                    return false;
+                }));
         }
 
         public override void StartMission()
@@ -124,25 +227,15 @@ namespace SpaceProject
         {
             base.MissionLogic();
 
-            if (!firstRebelTriggered && CollisionDetection.IsRectInRect(Game.player.Bounds, rebel1.Bounds))
+            foreach (RebelShip rebel in rebels)
             {
-                Game.stateManager.overworldState.RemoveOverworldObject(rebel1);
-                Game.messageBox.DisplayMessage("You should have stayed in the warm comfort of you home planet1.");
-                Game.stateManager.shooterState.BeginLevel(rebel1.Level);
-                firstRebelTriggered = true;
-            }
-
-            if (!secondRebelTriggered && CollisionDetection.IsRectInRect(Game.player.Bounds, rebel2.Bounds))
-            {
-                Game.stateManager.overworldState.RemoveOverworldObject(rebel2);
-                Game.messageBox.DisplayMessage("You should have stayed in the warm comfort of you home planet2.");
-                Game.stateManager.shooterState.BeginLevel(rebel2.Level);
-                secondRebelTriggered = true;
-            }
-
-            if (!firstRebelTriggered && !secondRebelTriggered)
-            { 
-            
+                if (!rebel.IsDead
+                    && CollisionDetection.IsRectInRect(Game.player.Bounds, rebel.Bounds))
+                {
+                    Game.stateManager.overworldState.RemoveOverworldObject(rebel);
+                    Game.messageBox.DisplayMessage(rebel.EncounterMessage);
+                    Game.stateManager.shooterState.BeginLevel(rebel.Level);
+                }
             }
         }
 

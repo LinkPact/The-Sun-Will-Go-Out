@@ -26,6 +26,9 @@ namespace SpaceProject
         private string level;
         public string Level { get { return level; } set { level = value; } }
 
+        private string encounterMessage;
+        public string EncounterMessage { get { return encounterMessage; } set { encounterMessage = value; } }
+
         public OverworldShip(Game1 game, Sprite SpriteSheet) :
             base(game, SpriteSheet)
         { }
