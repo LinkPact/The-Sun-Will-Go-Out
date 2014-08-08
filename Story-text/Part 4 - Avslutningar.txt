@@ -90,12 +90,49 @@ those decisions. What do you think we should do?"
 and then finally, with a trembling voice. "Yes. Let's go."
 
 "We need more time to think. Let's see what the Alliance and Rebels has to say"
-- You hear a sight of release from the other. "Yes, let's do that."
+- You hear a sigh of release from the other. "Yes, let's do that."
 
 - Text, fatta beslut i dialogruta
+
+"Patrolling alliance fleet incoming!"
+"..radio.. Identify yourselves! Alliance or rebels? Alliance or rebels?"
+
+[Banan börjar - Överlev banan]
+
+"That was close! Both the Alliance and the Rebels are really on their edge. We need to stay careful."
+
 - Undvik allierade (bana)
 - Text
+
+"It is a rebel fleet over there, I think they have seen us!
+"..radio.. I don't recognize you, who are you!?"
+"..."
+"We don't have time for this, attack!"
+
+[Banan börjar - Överlev banan]
+
+"I think we managed to shake them of! We are soon there, keep yourselves together.."
+
 - Undvik rebeller (bana)
+
+"There it is, the meteor. Now we have our chance, for better or worse"
+Another pilot "Are we really sure about this? It is not too late for us to turn back.
+This would kill not only us, but thousands of people. Rebel fighters, Allied troops and civilians alike.
+Soelara will not be habitable. The poverty will still be there. We are about to blow up the last
+beacon of hope for humanity! I can't do this! I'm leaving NOW!"
+"We need to stay firm everyone! We have decided"
+"No, it is time for me to finally take a stand. I'm leaving!!!" A second pilot quickly disappears.
+You are still five pilots.
+"..radio, targeted to you.. What will you do? Should we really go through with this?"
+The other pilots radios went silent for a moment, waiting for your response.
+
+This moment will not only decide your fate. It will decide the fate of an entire solar system. This choice will
+leave a mark in history, for better of for worse.
+
+"This is what needs to be done. We cannot hestitate now. Let's finish what we are here to do."
+
+"No, we don't have the right to do this decision for all those people. We must leave, now."
+
 - Text
 - Ytterligare beslutspunkt
 
