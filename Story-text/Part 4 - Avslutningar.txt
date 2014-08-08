@@ -1,0 +1,116 @@
+Rebell-arc
+- Text
+
+Your former commander stares at you. "So the traitor has returned. I guess you have changed your mind,
+the Alliance is not as promising as before?"
+His mimic melted slightly. "We know that you might have crucial information about the whereabouts of
+this meteor everyone is so fired up about. Help us out here, and I will make sure that we'll make
+your hickup slide."
+"It is imperial that we get to the meteor before the Alliance. If they are the ones to get control over it
+they will be able to totally dominate this sector militarily. It will be their rule, with their rules.
+The people will have no way to fight back, and the less interesting parts of the galaxy will succumb to poverty
+and starvation."
+"I hope you'll help us. I know that you don't like all of our methods. We feel the same. But sometimes
+there are things you must do. You must never forget your goal. And if you not are willing to make sacrifices,
+those who are will beat you there."
+
+"Are you willing to help us out?"
+
+"Yes. I'll show you to the meteor"
+- His face lit up. "Fantastic. I know you were made of the right material. Let's leave right away.
+The Alliance is not idle. They will attack with everything they've got. Let's roll out!"
+
+"It is a big decision. I'll need some more time to think.."
+- His smile dropped. "I don't know what you are thinking. I am afraid you aren't thinking straight"
+His eyed almost looked begging, desperate. "Please change your mind. We will forget your past.
+If you help us here, you are helping everyone"
+
+- Valdialog
+- Om ja, så färdas ni tillsammans i Overworlden till asteroidbältet
+- Mer text vid ankomst till bältet (i dialogruta?)
+- Avvärj två allierade anfall
+(- Undrar om man kan visualisera i Overworlden att man är belägrad av en allierad flotta?)
+- Text mellan och efter som beskriver hur processen med resursen går
+- Slutligen ett större anfall där ni nu har tillgång till energin, och krossar motståndet.
+- Eftertext
+- Outro
+
+
+
+Allians-arc
+- Text
+
+Your former collegue stares sceptically at you. "So you are back.. I guess the rebels wasn't as
+nice and cosy as you thought.."
+"You have the opportunity to really help us out here. We are in quite the pinch. Both we and the
+rebels are searching for the meteor, but they seem to have the upper hand in the search due to that
+poor scientist they kidnapped. What kind of people does things like that?"
+"You could help us out. It looks like they will beat us to the meteor, but if you help us we might get
+to them before they can start utilizing the energy. When they does, show mercy on this sector."
+"They will kill every single one of us Alliance. Then they will kill of those who have helped them.
+They will claim it is for the higher purpose of freeing the people. What they don't realise is that
+they will be the peoples new slavers, much cruder and harsher than we ever have been."
+"I'm the first to admit that we not always have been the nicest. But we are trying to be righteous.
+It is so hard in times like those to make everyone happy"
+
+"Will you help us? With your information, we might, just might this catastrophe from developing.
+We will strike swiftly, and we will show mercy on those who lay down their weapons. You have my word"
+
+"Yes. I'll show you to the meteor"
+- He looked sincerely happy about this. "We won't let you down. Come, lets finally bring peace and prosperity to this sector."
+
+"It is a big decision. I'll need some more time to think.."
+- He looked even more stern. "They are fooling you, with their cosy words. The reality is something else.
+They are far worse than us. You know they torture innocent people, you know they won't hestitate to kill civilians
+in order to gain power. I sincerely hope that you'll change your mind"
+
+
+
+- Valdialog
+- Om ja, så färdas ni tillsammans i Overworlden till asteroidbältet (där rebellerna redan fått fäste)
+- Mer text vid ankomst till bältet (i dialogruta?)
+- Genomför två anfall mot rebellerna
+(- Undrar om man kan visualisera i Overworlden att bältet är belägrat av en allierad flotta?)
+- Text mellan och efter som beskriver hur anfallet går
+- Slutligen ett större anfall där ni nu har tagit över tillgången till energin, och krossar rebellerna.
+- Eftertext
+- Outro
+
+On Your Own-arc
+- Åk till asteroidbältet
+
+..radio contact initiated.. "What should we do? We could blow it up, or we could help either the Rebels
+or the Alliance gaining access to the mineral. It might be used to save this sector, and let us live here
+for several more hundred years. Or it might initiate a war which will scar every single planet, and induce suffering unheard of."
+He started sounding more and more desperate. "I don't know, I don't know, I DON'T KNOW! We are not the right people to make
+those decisions. What do you think we should do?"
+
+"We need to take this in our hands. We need to blow it up."
+- You heard them mumble ..this will make us the murderes.. ..there is no other way..
+and then finally, with a trembling voice. "Yes. Let's go."
+
+"We need more time to think. Let's see what the Alliance and Rebels has to say"
+- You hear a sight of release from the other. "Yes, let's do that."
+
+- Text, fatta beslut i dialogruta
+- Undvik allierade (bana)
+- Text
+- Undvik rebeller (bana)
+- Text
+- Ytterligare beslutspunkt
+
+Burn it
+- Text (laddning riggas)
+- Överlev en viss tid på nivå
+- Nivån avbryts av en våg av eld, där alla skepp på skärmen bränns ut
+- Kommer till overworlden där en explosion spränger bort bältet och alla skepp
+- Text
+- Outro
+
+Coward
+- Text (du/ni flyr fältet)
+- Ni blir angripna, och ska helt enkelt undfly fienden
+- Ni lyckas ta er därifrån
+- När ni färdats en viss bit bort i Overworlden sprängs allt bort, du överlever med lite liv
+- Text
+- Outro
