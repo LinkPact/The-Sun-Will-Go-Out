@@ -27,8 +27,31 @@ If you help us here, you are helping everyone"
 
 - Valdialog
 - Om ja, så färdas ni tillsammans i Overworlden till asteroidbältet
+
+"It looks like we will beat the Alliance to the meteor, but they will be close behind us. The question
+is how much time we have to prepare before they arrive. We need to hurry. Lead the way."
+
+"So this is the place. It doesn't look much for the world. Let's start setting up the operation.
+Our goal is to extract enough of the material to secure our foothold from the Allied attacks."
+
 - Mer text vid ankomst till bältet (i dialogruta?)
+
+"Shit, they are already here! We must fend them of, it will still take some time before we have etablished
+the extraction. You, take the lead of the defence. It is crucial for our success that you keep them at bay."
+
+[Nivå börjar. I det här fallet, skjut av ett visst antal fiender]
+
 - Avvärj två allierade anfall
+
+"Well done! We are almost there now. Keep your stances for only a little bit longer. They will throw
+everything they got at us now. It is crucial you keep them of long enough"
+
+[Nivå börjar, överlev viss tid (2 minuter?) Efter 2 minuter, support från overpowered allierade, samt oändlig sköld?]
+> "We have reached it! Time to strike back! We will make them pay for what they have done. Strike them down without mercy!"
+
+"The counterattack is progressing quickly on all flanks. This area is soon secure. After that, we will establish control at
+Soelara, and from there we can finally launch an attack on their HQ at Fortrun. This is truly a glorious moment."
+
 (- Undrar om man kan visualisera i Overworlden att man är belägrad av en allierad flotta?)
 - Text mellan och efter som beskriver hur processen med resursen går
 - Slutligen ett större anfall där ni nu har tillgång till energin, och krossar motståndet.
@@ -64,11 +87,35 @@ We will strike swiftly, and we will show mercy on those who lay down their weapo
 They are far worse than us. You know they torture innocent people, you know they won't hestitate to kill civilians
 in order to gain power. I sincerely hope that you'll change your mind"
 
-
+"It appears they managed to arrive before us. It appears they have started trying to extract the mineral.
+But it might be that they haven't reached it yet, as we can't see any signs of abnormal energy sources on our radars.
+It is a matter of time though. If they manage to access it we are done for. They won't show us any mercy.
+They won't show us any reason. We have no choice, we must wring the meteor out of their hand before it is too late."
 
 - Valdialog
 - Om ja, så färdas ni tillsammans i Overworlden till asteroidbältet (där rebellerna redan fått fäste)
 - Mer text vid ankomst till bältet (i dialogruta?)
+
+"They are most likely waiting for us, but we have no choice but push on. They will beat us in number.
+But we can beat them in skill and dicipline. Let's show those dogs who they are tooling with.
+Let's break through!"
+
+[Bana, överlev viss tid]
+
+"We made it! Their outer troops are busy fighting the following fleets. Now, let's target their extraction site!
+We can't hold back now, give it all you've got!"
+
+[Bana, överlev först viss tid, sedan boss-fleet]
+
+"We are there! Quickly, bring down their last defenses!"
+
+"Yes! We got them! We have the source! Now, let's strike back quickly. We must act quickly, they will most likely
+try to inflict as much damage as they can before we assume total control over the sector. They must be controlled.
+Kill them if you must."
+
+"The plan is to quickly eliminate their forces here. When they are gone, we will quickly fan out to the planets
+and resume order and control. Soon we will have peace and prosperity in the sector. This is truly a glorious moment."
+
 - Genomför två anfall mot rebellerna
 (- Undrar om man kan visualisera i Overworlden att bältet är belägrat av en allierad flotta?)
 - Text mellan och efter som beskriver hur anfallet går
