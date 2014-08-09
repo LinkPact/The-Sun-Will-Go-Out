@@ -24,11 +24,11 @@ namespace SpaceProject
             base.Initialize();
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetStation("Rebel Station 1"),
+                Game.stateManager.overworldState.GetPlanet("New Norrland"),
                 new EventTextCapsule(GetEvent(0), null, EventTextCanvas.BaseState)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetStation("Rebel Station 1"), "DefendColony", LevelStartCondition.TextCleared,
+                Game.stateManager.overworldState.GetPlanet("New Norrland"), "DefendColony", LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent(1), null, EventTextCanvas.BaseState)));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2],

@@ -9,13 +9,11 @@ namespace SpaceProject
     {
         public RebelAttack(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
-        {
-        }
+        { }
 
         public override void Initialize()
         {
             base.Initialize();
-
         }
 
         public override void StartMission()
