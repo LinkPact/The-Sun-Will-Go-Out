@@ -352,34 +352,37 @@ namespace SpaceProject
         {
             BaseStateManager.TextBoxes.Clear();
 
-            BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                              BaseStateManager.LowerScreenRectangle,
-                                                              false,
-                                                              MissionManager.MissionEventBuffer[0]));
-
-            MissionManager.MissionEventBuffer.Remove(MissionManager.MissionEventBuffer[0]);
-
             if (MissionManager.MissionEventBuffer.Count > 0)
-                BaseStateManager.ButtonControl = ButtonControl.Confirm;
-
-            else if (MissionManager.MissionResponseBuffer.Count <= 0)
-                BaseStateManager.ButtonControl = ButtonControl.Confirm;
-
-            else
             {
-                for (int i = 0; i < MissionManager.MissionResponseBuffer.Count; i++)
+                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                                                                  BaseStateManager.LowerScreenRectangle,
+                                                                  false,
+                                                                  MissionManager.MissionEventBuffer[0]));
+
+                MissionManager.MissionEventBuffer.Remove(MissionManager.MissionEventBuffer[0]);
+
+                if (MissionManager.MissionEventBuffer.Count > 0)
+                    BaseStateManager.ButtonControl = ButtonControl.Confirm;
+
+                else if (MissionManager.MissionResponseBuffer.Count <= 0)
+                    BaseStateManager.ButtonControl = ButtonControl.Confirm;
+
+                else
                 {
-                    BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                          BaseStateManager.ResponseRectangles[i],
-                                                          true,
-                                                          TextUtils.WordWrap(BaseState.Game.fontManager.GetFont(14),
-                                                                             MissionManager.MissionResponseBuffer[i],
-                                                                             Game.Window.ClientBounds.Width * 2 / 3)
-                                                          ));
+                    for (int i = 0; i < MissionManager.MissionResponseBuffer.Count; i++)
+                    {
+                        BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                                                              BaseStateManager.ResponseRectangles[i],
+                                                              true,
+                                                              TextUtils.WordWrap(BaseState.Game.fontManager.GetFont(14),
+                                                                                 MissionManager.MissionResponseBuffer[i],
+                                                                                 Game.Window.ClientBounds.Width * 2 / 3)
+                                                              ));
 
+                    }
+
+                    BaseStateManager.ButtonControl = ButtonControl.Response;
                 }
-
-                BaseStateManager.ButtonControl = ButtonControl.Response;
             }
         }
 

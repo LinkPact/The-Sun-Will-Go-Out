@@ -190,6 +190,7 @@
     <Compile Include="Missions\Main Missions\Phase 3\Main10_InTheNameOfScience.cs" />
     <Compile Include="Missions\Main Missions\Phase 2\RebelAttack.cs" />
     <Compile Include="Missions\Main Missions\Phase 3\Main8_Retaliation.cs" />
+    <Compile Include="Missions\Main Missions\Phase 4\MainX2_ContinuationOfTheEnd.cs" />
     <Compile Include="Missions\Main Missions\Phase 4\MainX1_BeginningOfTheEnd.cs" />
     <Compile Include="Missions\Mission.cs" />
     <Compile Include="MissionStuff\MissionHelper.cs" />
@@ -790,6 +791,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Levels\testlevels\XDefendColony.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Levels\XCoverBlown.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="SpaceProject_TemporaryKey.pfx" />

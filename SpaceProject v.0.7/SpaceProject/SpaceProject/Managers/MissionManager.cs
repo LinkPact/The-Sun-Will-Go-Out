@@ -28,7 +28,8 @@ namespace SpaceProject
         private static RebelAttack rebelAttack;
         private static Main8_Retaliation mainRetaliation;
         private static Main10_InTheNameOfScience mainInTheNameOfScience;
-        private static MainX1_BeginningOfTheEnd beginningOfTheEnd;
+        private static MainX1_BeginningOfTheEnd mainBeginningOfTheEnd;
+        private static MainX2_ContinuationOfTheEnd mainContinuationOfTheEnd;
 
         // Side Missions
         private static DebtCollection debtCollection;
@@ -113,9 +114,14 @@ namespace SpaceProject
             missions.Add(mainInTheNameOfScience);
 
             // Main X1 - Beginning Of The End
-            beginningOfTheEnd = new MainX1_BeginningOfTheEnd(game, "P4_BeginningOfTheEnd", null);
-            beginningOfTheEnd.Initialize();
-            missions.Add(beginningOfTheEnd);
+            mainBeginningOfTheEnd = new MainX1_BeginningOfTheEnd(game, "P4_BeginningOfTheEnd", null);
+            mainBeginningOfTheEnd.Initialize();
+            missions.Add(mainBeginningOfTheEnd);
+
+            // Main X2 - Continuation Of The End
+            mainContinuationOfTheEnd = new MainX2_ContinuationOfTheEnd(game, "P4_ContinuationOfTheEnd", null);
+            mainContinuationOfTheEnd.Initialize();
+            missions.Add(mainContinuationOfTheEnd);
 
             // Side Missions
 
@@ -571,6 +577,15 @@ namespace SpaceProject
                 mainHighfence.MissionHelper.IsPlayerOnStation("Border Station"))
             {
                 MissionManager.MarkMissionAsActive("Main - Highfence");
+            }
+
+            // Start part 2 of final mission
+            if (MissionManager.mainBeginningOfTheEnd.MissionState == StateOfMission.Completed
+                && MissionManager.mainContinuationOfTheEnd.MissionState == StateOfMission.Unavailable)
+            {
+                MissionManager.mainBeginningOfTheEnd.MissionState = StateOfMission.CompletedDead;
+                MissionManager.UnlockMission(mainContinuationOfTheEnd.MissionName);
+                MissionManager.MarkMissionAsActive(mainContinuationOfTheEnd.MissionName);
             }
 
         }
