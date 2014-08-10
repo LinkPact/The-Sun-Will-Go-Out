@@ -25,6 +25,7 @@ namespace SpaceProject
         private static Main2_Highfence mainHighfence;
         private static Main3_Rebels mainRebels;
         private static DefendColony defendColony;
+        private static RebelAttack rebelAttack;
         private static Main8_Retaliation mainRetaliation;
         private static Main10_InTheNameOfScience mainInTheNameOfScience;
         private static MainX1_BeginningOfTheEnd beginningOfTheEnd;
@@ -95,6 +96,11 @@ namespace SpaceProject
             defendColony = new DefendColony(game, "SX_DefendColony", null);
             defendColony.Initialize();
             missions.Add(defendColony);
+
+            //Rebel Attack
+            rebelAttack = new RebelAttack(game, "P2_RebelAttack", null);
+            rebelAttack.Initialize();
+            missions.Add(rebelAttack);
 
             // Main 8 - Retaliation
             mainRetaliation = new Main8_Retaliation(game, "RO_Main8_Retaliation", missionObjectSpriteSheet);

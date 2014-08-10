@@ -75,6 +75,7 @@ namespace SpaceProject
             resourceLevel = new LevelResourceGather(Game, spriteSheet, player, MissionType.none);
             levels.Add(resourceLevel);
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "DefendColony", "XDefendColony", MissionType.power));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "P2AttackOnRebelStation", "P2AttackOnRebelStation", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AstroScan", "XAstroscan", MissionType.none));
 
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AstroDodger", "XAstroDodger", MissionType.dark));

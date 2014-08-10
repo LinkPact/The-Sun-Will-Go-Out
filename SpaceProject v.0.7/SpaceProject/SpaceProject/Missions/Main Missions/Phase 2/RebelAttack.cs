@@ -14,6 +14,15 @@ namespace SpaceProject
         public override void Initialize()
         {
             base.Initialize();
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
+                Game.stateManager.overworldState.GetStation("Rebel Station 1"),
+                new EventTextCapsule(GetEvent(0), null, EventTextCanvas.BaseState)));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
+                Game.stateManager.overworldState.GetStation("Rebel Station 1"), "P2AttackOnRebelStation", LevelStartCondition.TextCleared,
+                new EventTextCapsule(GetEvent(1), null, EventTextCanvas.BaseState)));
+
         }
 
         public override void StartMission()
