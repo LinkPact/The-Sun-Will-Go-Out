@@ -35,7 +35,8 @@ namespace SpaceProject
 
             jakobsLevelEntries.Add(new LevelTesterEntry("PirateLevel1", "The first of the pirate levels", Keys.Z));
             jakobsLevelEntries.Add(new LevelTesterEntry("XAstroDodger", "Astro-dodger mission!", Keys.X));
-            jakobsLevelEntries.Add(new LevelTesterEntry("XFlight_Training_1", "The first flight training mission", Keys.C));
+            jakobsLevelEntries.Add(new LevelTesterEntry("XFlightTraining_1", "The first flight training mission", Keys.C));
+            jakobsLevelEntries.Add(new LevelTesterEntry("XDefendColony", "Johans defend colony mission", Keys.V));
 
             chosenLevel = jakobsLevelEntries[0].GetPath(); ;
         }
