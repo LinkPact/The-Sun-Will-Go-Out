@@ -66,11 +66,11 @@ namespace SpaceProject
                 delegate { },
                 delegate 
                 {
-                    if ((((ControlManager.CheckPress(RebindableKeys.Action1) 
-                        || ControlManager.CheckKeypress(Keys.Enter)) 
-                        && !Game.player.HyperspeedOn
-                        && GameStateManager.currentState.Equals("OverworldState"))) 
-                        && CollisionDetection.IsRectInRect(Game.player.Bounds, highfence.Bounds))
+                    if ((GameStateManager.currentState.Equals("OverworldState")
+                        && CollisionDetection.IsRectInRect(Game.player.Bounds, highfence.Bounds) 
+                        && !Game.player.HyperspeedOn)
+                        && ((ControlManager.CheckPress(RebindableKeys.Action1) 
+                        || ControlManager.CheckKeypress(Keys.Enter))))
                     {
                         Game.messageBox.DisplayMessage(GetEvent((int)EventID.HighfenceEntryDenial).Text);
                     }

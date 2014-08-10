@@ -14,12 +14,12 @@ namespace SpaceProject
         {
             GoToNewNorrland,
             ArriveAtNewNorrland,
-            ArriveAtFotrun,
-            Question1AtFotrun,
-            Question2AtFotrun,
-            Question3AtFotrun,
+            Question1AtFortrun,
+            Question2AtFortrun,
+            Question3AtFortrun,
             RightAnswerQuestion3,
-            WrongAnswer
+            WrongAnswer,
+            TalkToContactAtFortrun
         }
         private List<RebelShip> rebels;
 
@@ -91,15 +91,15 @@ namespace SpaceProject
                     rebel4SpawnTime = StatsManager.PlayTime.GetFutureOverworldTime(14000);
                     rebel5SpawnTime = StatsManager.PlayTime.GetFutureOverworldTime(21000);
 
-                    ally1.SetPosition(MathFunctions.SpreadPos(Game.player.position, 400));
+                    ally1.SetPosition(MathFunctions.SpreadPos(highfence.position, 200));
                     ally1.SetTarget(Game.player);
                     Game.stateManager.overworldState.AddOverworldObject(ally1);
 
-                    ally2.SetPosition(MathFunctions.SpreadPos(Game.player.position, 400));
+                    ally2.SetPosition(MathFunctions.SpreadPos(highfence.position, 200));
                     ally2.SetTarget(Game.player);
                     Game.stateManager.overworldState.AddOverworldObject(ally2);
 
-                    ally3.SetPosition(MathFunctions.SpreadPos(Game.player.position, 400));
+                    ally3.SetPosition(MathFunctions.SpreadPos(highfence.position, 200));
                     ally3.SetTarget(Game.player);
                     Game.stateManager.overworldState.AddOverworldObject(ally3);
                 },
@@ -146,11 +146,10 @@ namespace SpaceProject
                     return false;
                 }));
 
-            Objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], fortrun, 
-                new EventTextCapsule(GetEvent((int)EventID.ArriveAtFotrun), null, EventTextCanvas.BaseState)));
+            Objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], fortrun));
 
             Objectives.Add(new ResponseObjective(Game, this, ObjectiveDescriptions[0], fortrun,
-                new ResponseTextCapsule(GetEvent((int)EventID.Question1AtFotrun), GetAllResponses((int)EventID.Question1AtFotrun),
+                new ResponseTextCapsule(GetEvent((int)EventID.Question1AtFortrun), GetAllResponses((int)EventID.Question1AtFortrun),
                     new List<System.Action>() 
                     {
                         delegate
@@ -159,13 +158,12 @@ namespace SpaceProject
                         },
                         delegate
                         {
-                            missionHelper.ShowEvent(GetEvent((int)EventID.WrongAnswer));
-                            missionHelper.StartLevelAfterCondition("CoverBlown", LevelStartCondition.TextCleared);
+                            OnFalseAnswer();
                         }
                     })));
 
             Objectives.Add(new ResponseObjective(Game, this, ObjectiveDescriptions[0], fortrun,
-                new ResponseTextCapsule(GetEvent((int)EventID.Question2AtFotrun), GetAllResponses((int)EventID.Question2AtFotrun),
+                new ResponseTextCapsule(GetEvent((int)EventID.Question2AtFortrun), GetAllResponses((int)EventID.Question2AtFortrun),
                     new List<System.Action>() 
                     {
                         delegate
@@ -174,40 +172,42 @@ namespace SpaceProject
                         },
                         delegate
                         {
-                            missionHelper.ShowEvent(GetEvent((int)EventID.WrongAnswer));
-                            missionHelper.StartLevelAfterCondition("CoverBlown", LevelStartCondition.TextCleared);
+                            OnFalseAnswer();
                         },
                         delegate
                         {
-                            missionHelper.ShowEvent(GetEvent((int)EventID.WrongAnswer));
-                            missionHelper.StartLevelAfterCondition("CoverBlown", LevelStartCondition.TextCleared);
+                            OnFalseAnswer();
                         }
                     })));
 
             Objectives.Add(new ResponseObjective(Game, this, ObjectiveDescriptions[0], fortrun,
-                new ResponseTextCapsule(GetEvent((int)EventID.Question3AtFotrun), GetAllResponses((int)EventID.Question3AtFotrun),
+                new ResponseTextCapsule(GetEvent((int)EventID.Question3AtFortrun), GetAllResponses((int)EventID.Question3AtFortrun),
                     new List<System.Action>() 
                     {
                         delegate
                         {
-                            missionHelper.ShowEvent(GetEvent((int)EventID.WrongAnswer));
-                            missionHelper.StartLevelAfterCondition("CoverBlown", LevelStartCondition.TextCleared);
+                            OnFalseAnswer();
                         },
                         delegate
                         {
-                            missionHelper.ShowEvent(GetEvent((int)EventID.RightAnswerQuestion3), true);
+                            missionHelper.ShowEvent(new List<EventText>
+                            {
+                                GetEvent((int)EventID.RightAnswerQuestion3),
+                                GetEvent((int)EventID.TalkToContactAtFortrun)
+                            });
                         },
                         delegate
                         {
-                            missionHelper.ShowEvent(GetEvent((int)EventID.WrongAnswer));
-                            missionHelper.StartLevelAfterCondition("CoverBlown", LevelStartCondition.TextCleared);
+                            OnFalseAnswer();
                         },
                         delegate
                         {
-                            missionHelper.ShowEvent(GetEvent((int)EventID.WrongAnswer));
-                            missionHelper.StartLevelAfterCondition("CoverBlown", LevelStartCondition.TextCleared);
+                            OnFalseAnswer();
                         }
                     })));
+
+            Objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
+                fortrun, new EventTextCapsule(GetEvent((int)EventID.TalkToContactAtFortrun), null, EventTextCanvas.BaseState)));
         }
 
         public override void StartMission()
@@ -260,6 +260,13 @@ namespace SpaceProject
         public override void SetProgress(int progress)
         {
             this.progress = progress;
+        }
+
+        private void OnFalseAnswer()
+        {
+            Game.messageBox.DisplayMessage(GetEvent((int)EventID.WrongAnswer).Text);
+            missionHelper.StartLevel("CoverBlown");
+            ObjectiveIndex = 5;
         }
     }
 }
