@@ -184,6 +184,29 @@ leave a mark in history, for better of for worse.
 - Ytterligare beslutspunkt
 
 Burn it
+
+You line up readying yourselves for what you are about to do.
+...radio contact... "We will fire simultaneously. Hopefully it will be enough energy to trigger a chain reaction in the meteor"
+"This will be the end of us and our friends. On the other hand, it might be a chance for the sector to live on."
+"Let's hope they'll take good care of this chance."
+
+"It has been an honor to know you all. Ready your weapons.."
+"..3.."
+"..2.."
+"..1.."
+"FIRE"
+
+You pull the trigger, firing a bright line of intense energy right into the center of the meteor.
+A fraction of a second later it is joined by another one, and then another one.
+You see how the meteor catches fire. First slowly, then faster and faster. Then suddenly you feel an intense heat,
+the meteor becomes a quickly growing orb of fire. The fire comes closer and closer.
+
+"What have we done.."
+
+Then everything went black.
+
+You are gone.
+
 - Text (laddning riggas)
 - Överlev en viss tid på nivå
 - Nivån avbryts av en våg av eld, där alla skepp på skärmen bränns ut
@@ -192,9 +215,48 @@ Burn it
 - Outro
 
 Coward
+
+You are quickly leaving the meteor site. The other pilots are following you.
+You think you hear them mumble "is this the right choice..", but it might be your own thoughts speaking.
+The choice is made. It is not up to you, a handful of rookies, to decide the fate of the solar system.
+
+"Hurry, both rebels and the alliance are closing in! The meteor will become the battle site!"
+
+...EXPLOSION...
+
+...silence...
+
+...silence...
+
+...radio contact... "Is anyone there? Are you there? My ship is badly damaged, I don't think I will make it"
+
+...silence...
+
+"Why didn't we try to stop it? Why didn't we see it earlier? Why? Why?"
+
+...silence...
+
+You realise that you are on your own. The only of your group that managed to survive.
+Surviving due to your resolve to flee, to push the decision to others.
+Others that apparently couldn't handle it.
+
+...silence... 
+
 - Text (du/ni flyr fältet)
 - Ni blir angripna, och ska helt enkelt undfly fienden
 - Ni lyckas ta er därifrån
 - När ni färdats en viss bit bort i Overworlden sprängs allt bort, du överlever med lite liv
 - Text
 - Outro
+
+
+
+
+
+
+
+
+
+
+
+
