@@ -166,7 +166,17 @@ namespace SpaceProject
             }
         }
 
-        public void SetupLevelTestRun(String fileName, float startTime)
+        public void SetupMapCreatorTestRun(String fileName, float startTime)
+        {
+            SetupTestRun(fileName, startTime, true);
+        }
+
+        public void SetupTestLevelRun(String fileName, float startTime)
+        {
+            SetupTestRun(fileName, startTime, false);
+        }
+
+        private void SetupTestRun(String fileName, float startTime, Boolean isMapCreatorRun)
         {
             //In order to remove duplicates when ran several times
             List<Level> removeList = new List<Level>();
@@ -183,8 +193,8 @@ namespace SpaceProject
             }
             removeList.Clear();
 
-            Boolean isTestRun = true;
-            Level lv = new MapCreatorLevel(Game, spriteSheet, player, "testRun", fileName, MissionType.none, isTestRun);
+            //Boolean isTestRun = true;
+            Level lv = new MapCreatorLevel(Game, spriteSheet, player, "testRun", fileName, MissionType.none, isMapCreatorRun);
             lv.SetCustomStartTime(startTime);
             levels.Add(lv);
         }

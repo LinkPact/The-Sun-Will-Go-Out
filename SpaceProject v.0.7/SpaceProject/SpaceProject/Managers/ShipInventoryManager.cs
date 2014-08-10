@@ -942,9 +942,11 @@ namespace SpaceProject
             isCheatActivated = true;
         }
 
-        public static void MapCreatorEquip(int equipNbr)
+        public static String MapCreatorEquip(int equipNbr)
         {
             equippedEnergyCell = new PlasmaEnergyCell(Game);
+
+            String equipInfo = "";
 
             switch (equipNbr)
             {
@@ -954,6 +956,7 @@ namespace SpaceProject
                         equippedPrimaryWeapons[1] = new DualLaserWeapon(Game);
                         equippedSecondary = new SideMissilesWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
+                        //equipInfo = "BasicLaser\nDualLaser\nSideMissiles";
                         break;
                     }
                 case 2:
@@ -1018,6 +1021,11 @@ namespace SpaceProject
                         break;
                     }
             }
+            equipInfo = "\n" + equippedPrimaryWeapons[0].ToString()
+                + "\n" + equippedPrimaryWeapons[1].ToString()
+                + "\n" + equippedSecondary.ToString();
+
+            return equipInfo;
         }
 
         public static int IndexOfItem(Item item)

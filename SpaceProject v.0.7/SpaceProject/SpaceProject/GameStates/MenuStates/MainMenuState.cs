@@ -209,6 +209,13 @@ namespace SpaceProject
             {
                 ButtonActions();
             }
+
+            // TODO: REMOVE FOR RELEASE VERSION
+            if (ControlManager.CheckKeypress(Keys.M))
+            {
+                Game.stateManager.ChangeState("LevelTesterState");
+            }
+            //
         }
 
         private void MouseControls()

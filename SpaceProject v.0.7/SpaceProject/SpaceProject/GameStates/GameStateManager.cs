@@ -33,7 +33,9 @@ namespace SpaceProject
         public PlanetState planetState;
         public StationState stationState;
         public MissionScreenState missionScreenState;
+        
         public MapCreatorState mapCreatorState;
+        public LevelTesterState levelTesterState;
         public CreditState creditState;
 
         #endregion
@@ -104,7 +106,7 @@ namespace SpaceProject
         public void GotoMapCreatorTestRun(String fileName)
         {
             float testStartTime = 0;
-            shooterState.SetupLevelTestRun(fileName, testStartTime);
+            shooterState.SetupMapCreatorTestRun(fileName, testStartTime);
             shooterState.BeginLevel("testRun");
         }
 
@@ -128,6 +130,7 @@ namespace SpaceProject
             stationState = new StationState(Game, "StationState");
             missionScreenState = new MissionScreenState(Game, "MissionScreenState");
             creditState = new CreditState(Game, "CreditState");
+            levelTesterState = new LevelTesterState(Game, "LevelTesterState");
             
             gameStates.Add(mainMenuState);
             gameStates.Add(startGameState);
@@ -145,6 +148,7 @@ namespace SpaceProject
             gameStates.Add(missionScreenState);
             gameStates.Add(mapCreatorState);
             gameStates.Add(creditState);
+            gameStates.Add(levelTesterState);
             
             mainMenuState.Initialize();
             startGameState.Initialize();
@@ -164,11 +168,7 @@ namespace SpaceProject
             missionScreenState.Initialize();
 
             creditState.Initialize();
-
-            //foreach (GameState state in gameStates)
-            //{
-            //    state.Initialize();
-            //}
+            levelTesterState.Initialize();
 
             ChangeState("MainMenuState");
         }

@@ -139,6 +139,7 @@
     <Compile Include="GameStates\CreditState.cs" />
     <Compile Include="GameStates\HelpScreenState.cs" />
     <Compile Include="GameStates\IntroFirstState.cs" />
+    <Compile Include="GameStates\LevelTesterState.cs" />
     <Compile Include="GameStates\MenuStates\MenuBackdropController.cs" />
     <Compile Include="GameStates\MenuStates\OptionMenus\SubStates\GameOptionsSubState.cs" />
     <Compile Include="GameStates\MenuStates\OptionMenus\OptionSubState.cs" />
@@ -779,6 +780,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Levels\P2AttackOnRebelStation.lvl" />
+    <Content Include="Levels\testlevels\PirateLevel1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Levels\testlevels\XAstroDodger.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Levels\testlevels\XFlightTraining_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="SpaceProject_TemporaryKey.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
