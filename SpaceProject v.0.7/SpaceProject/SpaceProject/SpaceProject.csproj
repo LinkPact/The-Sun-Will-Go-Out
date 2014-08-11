@@ -767,6 +767,7 @@
     <Content Include="Levels\XSecondMissionlvl3.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Levels\a.lvl" />
     <None Include="Levels\escortTest1.lvl" />
     <Content Include="Levels\XPirateAmbush.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -796,6 +797,12 @@
     <Content Include="Levels\XCoverBlown.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Levels\testlevels\test_lv1.lvl" />
+    <Content Include="Levels\testlevels\b.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Levels\testlevels\test_lv2.lvl" />
+    <None Include="Levels\testlevels\test_lv3.lvl" />
     <None Include="SpaceProject_TemporaryKey.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
