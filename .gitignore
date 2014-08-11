@@ -7,7 +7,14 @@
 *.sln.docstates
 
 # Build results
-[Dd]ebug/
+
+[Dd]ebug/Content/
+[Dd]ebug/Data/
+[Dd]ebug/Levels/
+*.application
+*.exe
+*.manifest
+
 [Dd]ebugPublic/
 [Rr]elease/
 x64/
@@ -185,8 +192,7 @@ FakesAssemblies/
 .LSOverride
 
 # Icon must ends with two \r.
-Icon
-
+Icon
 # Thumbnails
 ._*
 
