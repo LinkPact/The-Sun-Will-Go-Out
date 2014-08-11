@@ -36,7 +36,12 @@ namespace SpaceProject
             jakobsLevelEntries.Add(new LevelTesterEntry("PirateLevel1", "The first of the pirate levels", Keys.Z));
             jakobsLevelEntries.Add(new LevelTesterEntry("XAstroDodger", "Astro-dodger mission!", Keys.X));
             jakobsLevelEntries.Add(new LevelTesterEntry("XFlightTraining_1", "The first flight training mission", Keys.C));
-            jakobsLevelEntries.Add(new LevelTesterEntry("XDefendColony", "Johans defend colony mission", Keys.V));
+            
+            jakobsLevelEntries.Add(new LevelTesterEntry("test_lv1", "Rebel test1", Keys.A));
+            jakobsLevelEntries.Add(new LevelTesterEntry("test_lv2", "Rebel test2", Keys.S));
+            jakobsLevelEntries.Add(new LevelTesterEntry("test_lv3", "Rebel test3", Keys.D));
+            
+            johansLevelEntries.Add(new LevelTesterEntry("XDefendColony", "Johans defend colony mission", Keys.V));
 
             chosenLevel = jakobsLevelEntries[0].GetPath(); ;
         }
@@ -166,6 +171,26 @@ namespace SpaceProject
             for (int n = 0; n < jakobsLevelEntries.Count; n++)
             {
                 spriteBatch.DrawString(smallFont, jakobsLevelEntries[n].GetDescription(), new Vector2(xRight, yBase + (posCounter) * yInterval), Color.White);
+                posCounter++;
+            }
+
+            posCounter += 1;
+            spriteBatch.DrawString(smallFont, "Johans entries", new Vector2(xRight, yBase + (posCounter) * yInterval), Color.Green);
+            posCounter++;
+
+            for (int n = 0; n < johansLevelEntries.Count; n++)
+            {
+                spriteBatch.DrawString(smallFont, johansLevelEntries[n].GetDescription(), new Vector2(xRight, yBase + (posCounter) * yInterval), Color.White);
+                posCounter++;
+            }
+
+            posCounter += 1;
+            spriteBatch.DrawString(smallFont, "Dannes entries", new Vector2(xRight, yBase + (posCounter) * yInterval), Color.Green);
+            posCounter++;
+
+            for (int n = 0; n < dannesLevelEntries.Count; n++)
+            {
+                spriteBatch.DrawString(smallFont, dannesLevelEntries[n].GetDescription(), new Vector2(xRight, yBase + (posCounter) * yInterval), Color.White);
                 posCounter++;
             }
 
