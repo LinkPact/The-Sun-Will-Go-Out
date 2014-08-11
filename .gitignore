@@ -10,7 +10,7 @@
 
 [Dd]ebug/Content/
 [Dd]ebug/Data/
-[Dd]ebug/Levels/
+[Dd]ebug/MapCreatorLevels/
 *.application
 *.exe
 *.manifest
@@ -20,7 +20,9 @@
 x64/
 build/
 bld/
-[Bb]in/
+# [Bb]in/
+bin/x86/Debug/Content/
+bin/x86/Debug/Data/
 [Oo]bj/
 
 # MSTest test Results
