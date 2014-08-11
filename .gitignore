@@ -20,16 +20,16 @@ build/
 bld/
 [Bb]in/
 
-![Bb]in/
+#![Bb]in/
 
-[Bb]in/*
-![Bb]in/x86/
+#[Bb]in/*
+#![Bb]in/x86/
 
-[Bb]in/x86/*
-![Bb]in/x86/Debug/
+#[Bb]in/x86/*
+#![Bb]in/x86/Debug/
 
-[Bb]in/x86/Debug/*
-![Bb]in/x86/Debug/Levels/
+#[Bb]in/x86/Debug/*
+#![Bb]in/x86/Debug/Levels/
 
 [Oo]bj/
 
