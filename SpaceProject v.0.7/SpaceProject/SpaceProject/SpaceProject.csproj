@@ -328,9 +328,12 @@
     <Compile Include="Overworld-part\GameObjects\Ships\AllianceShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\AllyShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\FreighterShip.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\MotherShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\OverworldShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\RebelShip.cs" />
     <Compile Include="Overworld-part\GameObjects\ImmobileSpaceObject.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\FollowPlayerPrio.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Priority.cs" />
     <Compile Include="Overworld-part\GameObjects\Shop.cs" />
     <Compile Include="Overworld-part\GameObjects\ShopInventoryEntry.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\AbandonedStation.cs" />
@@ -383,7 +386,6 @@
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\System\System2Star.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\System\System3Star.cs" />
     <Compile Include="Overworld-part\GameObjects\GameObjectOverworld.cs" />
-    <Compile Include="Overworld-part\GameObjects\Ships\MotherShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Other\Particle.cs" />
     <Compile Include="Overworld-part\GameObjects\Player\PlayerOverWorld.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\SectorY\BigStation.cs" />
@@ -669,7 +671,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Overworld-part\GameObjects\Ships\ShipLogic\" />
     <Folder Include="Overworld-part\GameObjects\Stations\SectorZ\" />
     <Folder Include="Shooter-part\ShipParts\Secondary\UpperTier\" />
   </ItemGroup>

@@ -21,11 +21,13 @@ namespace SpaceProject
         public void ResetArrived() { hasArrived = false; } 
 
         protected GameObjectOverworld target;
+        public void SetTarget(GameObjectOverworld target) { this.target = target; }
 
         // Used to determine which level starts when player runs into this ship.
         private string level;
         public string Level { get { return level; } set { level = value; } }
 
+        // Message shown on encounter
         private string encounterMessage;
         public string EncounterMessage { get { return encounterMessage; } set { encounterMessage = value; } }
 
@@ -43,15 +45,25 @@ namespace SpaceProject
             deadParticles = new List<Particle>();
         }
 
-        public override void FinalGoodbye()
-        {
-            base.FinalGoodbye();
-        }
-
         public override void Update(GameTime gameTime)
         {
-            #region UpdateParticles
+            UpdateParticles(gameTime);
 
+            base.Update(gameTime);
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            foreach (Particle par in particles)
+                par.Draw(spriteBatch); 
+
+            base.Draw(spriteBatch);
+        }
+                
+        #region ParticleMethods
+
+        private void UpdateParticles(GameTime gameTime)
+        {
             foreach (Particle par in particles)
             {
                 par.Update(gameTime, this);
@@ -66,24 +78,7 @@ namespace SpaceProject
             }
 
             RemoveParticle();
-
-            #endregion
-
-            base.Update(gameTime);
         }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            foreach (Particle par in particles)
-                par.Draw(spriteBatch); 
-
-            base.Draw(spriteBatch);
-        }
-
-        public void SetPosition(Vector2 pos) { position = pos; }
-        public void SetTarget(GameObjectOverworld target) { this.target = target; }
-
-        #region ParticleMethods
 
         protected void AddParticle()
         {
@@ -110,6 +105,11 @@ namespace SpaceProject
 
         public virtual void Start()
         {
+        }
+
+        public override void FinalGoodbye()
+        {
+            base.FinalGoodbye();
         }
 
         public void Destroy()

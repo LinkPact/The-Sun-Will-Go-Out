@@ -78,9 +78,6 @@ namespace SpaceProject
 
         #endregion
 
-        //Test
-        private GoldResource gold;
-
         public ShipInventoryManager(Game1 Game_)
         {
             Game = Game_;

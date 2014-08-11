@@ -25,9 +25,6 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            Class = "PirateShip";
-            name = "Pirate Ship";
-
             sprite = spriteSheet.GetSubSprite(new Rectangle(182, 29, 27, 32));
             viewRadius = 3000;
             position = new Vector2(0,0);
@@ -70,12 +67,7 @@ namespace SpaceProject
         }
 
         public override void Update(GameTime gameTime)
-        {
-            if (GameStateManager.currentState == "OverworldState")
-                IsUsed = true;
-            else
-                IsUsed = false;
-            
+        {          
             // Update view
             view = new Rectangle((int)position.X - viewRadius, (int)position.Y - viewRadius, viewRadius * 2, viewRadius * 2); 
 
@@ -109,17 +101,13 @@ namespace SpaceProject
             angle = (float)(MathFunctions.RadiansFromDir(new Vector2(
                 Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI) / 2 + Math.PI);
 
-            if (IsUsed)
-            {
-                base.Update(gameTime);
-            }
+            base.Update(gameTime);
 
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
         {
-            if (IsUsed)
-                base.Draw(spriteBatch);
+               base.Draw(spriteBatch);
         }
 
     }

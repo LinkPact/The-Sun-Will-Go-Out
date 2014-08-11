@@ -47,7 +47,7 @@ namespace SpaceProject
         {
             PirateShip tmpShip = new PirateShip(game, spriteSheet);
             tmpShip.Initialize();
-            tmpShip.SetPosition(pos);
+            tmpShip.position = pos;
             overworld.AddOverworldObject(tmpShip);
             piratesInOverworld++;
         }
@@ -56,7 +56,7 @@ namespace SpaceProject
         {
             RebelShip tmpShip = new RebelShip(game, spriteSheet);
             tmpShip.Initialize();
-            tmpShip.SetPosition(pos);
+            tmpShip.position = pos;
             overworld.AddOverworldObject(tmpShip);
             rebelsInOverworld++;
         }
@@ -65,7 +65,7 @@ namespace SpaceProject
         {
             RebelShip tmpShip = new RebelShip(game, spriteSheet);
             tmpShip.Initialize();
-            tmpShip.SetPosition(pos);
+            tmpShip.position = pos; ;
             tmpShip.Level = levelToStart;
             overworld.AddOverworldObject(tmpShip);
             rebelsInOverworld++;
@@ -75,7 +75,7 @@ namespace SpaceProject
         {
             RebelShip tmpShip = new RebelShip(game, spriteSheet);
             tmpShip.Initialize();
-            tmpShip.SetPosition(pos);
+            tmpShip.position = pos;
             tmpShip.Level = levelToStart;
             tmpShip.SetTarget(target);
             overworld.AddOverworldObject(tmpShip);
@@ -84,7 +84,7 @@ namespace SpaceProject
 
         public void AddOverworldShip(OverworldShip ship, Vector2 pos, string levelToStart, GameObjectOverworld target)
         {
-            ship.SetPosition(pos);
+            ship.position = pos;
             ship.Level = levelToStart;
             ship.SetTarget(target);
             overworld.AddOverworldObject(ship);
@@ -143,7 +143,7 @@ namespace SpaceProject
         {
             FreighterShip tempShip = new FreighterShip(game, spriteSheet);
             tempShip.Initialize(sector);
-            tempShip.SetPosition(pos);
+            tempShip.position = pos;
             overworld.AddOverworldObject(tempShip);
             freightersInOverworld++;
 
@@ -153,7 +153,7 @@ namespace SpaceProject
         {
             FreighterShip tempShip = new FreighterShip(game, spriteSheet);
             tempShip.Initialize(sector, startingPoint, destination);
-            tempShip.SetPosition(pos);
+            tempShip.position = pos;
             overworld.AddOverworldObject(tempShip);
             freightersInOverworld++;
 
@@ -161,7 +161,7 @@ namespace SpaceProject
 
         public void AddFreighterToSector(FreighterShip freighter, Vector2 pos)
         {
-            freighter.SetPosition(pos);
+            freighter.position = pos;
             overworld.AddOverworldObject(freighter);
             freightersInOverworld++;
         }

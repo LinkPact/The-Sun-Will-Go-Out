@@ -59,13 +59,13 @@ namespace SpaceProject
 
             rebel1 = new RebelShip(Game, Game.spriteSheetVerticalShooter);
             rebel1.Initialize();
-            rebel1.SetPosition(MathFunctions.SpreadPos(highfence.position, 200));
+            rebel1.position = (MathFunctions.SpreadPos(highfence.position, 200));
             rebel1.Level = "PirateLevel1";
             rebel1.EncounterMessage = "Hello! 1";
 
             rebel2 = new RebelShip(Game, Game.spriteSheetVerticalShooter);
             rebel2.Initialize();
-            rebel2.SetPosition(MathFunctions.SpreadPos(highfence.position, 200));
+            rebel2.position = (MathFunctions.SpreadPos(highfence.position, 200));
             rebel2.Level = "PirateLevel2";
             rebel2.EncounterMessage = "Hello! 2";
 
@@ -148,15 +148,15 @@ namespace SpaceProject
                     rebel4SpawnTime = StatsManager.PlayTime.GetFutureOverworldTime(7000);
                     rebel5SpawnTime = StatsManager.PlayTime.GetFutureOverworldTime(13000);
 
-                    ally1.SetPosition(MathFunctions.SpreadPos(Game.player.position, 100));
+                    ally1.position = (MathFunctions.SpreadPos(Game.player.position, 100));
                     ally1.SetTarget(Game.player);
                     Game.stateManager.overworldState.AddOverworldObject(ally1);
 
-                    ally2.SetPosition(MathFunctions.SpreadPos(Game.player.position, 100));
+                    ally2.position = (MathFunctions.SpreadPos(Game.player.position, 100));
                     ally2.SetTarget(Game.player);
                     Game.stateManager.overworldState.AddOverworldObject(ally2);
 
-                    ally3.SetPosition(MathFunctions.SpreadPos(Game.player.position, 100));
+                    ally3.position = (MathFunctions.SpreadPos(Game.player.position, 100));
                     ally3.SetTarget(Game.player);
                     Game.stateManager.overworldState.AddOverworldObject(ally3);
                     
@@ -166,7 +166,7 @@ namespace SpaceProject
                     if (rebel3SpawnTime > 0
                         && StatsManager.PlayTime.HasOverworldTimePassed(rebel3SpawnTime))
                     {
-                        rebel3.SetPosition(MathFunctions.SpreadPos(Game.player.position, 400));
+                        rebel3.position = (MathFunctions.SpreadPos(Game.player.position, 400));
                         Game.stateManager.overworldState.AddOverworldObject(rebel3);
                         rebel3SpawnTime = -1;
                     }
@@ -174,7 +174,7 @@ namespace SpaceProject
                     else if (rebel4SpawnTime > 0
                         && StatsManager.PlayTime.HasOverworldTimePassed(rebel4SpawnTime))
                     {
-                        rebel4.SetPosition(MathFunctions.SpreadPos(Game.player.position, 400));
+                        rebel4.position = (MathFunctions.SpreadPos(Game.player.position, 400));
                         Game.stateManager.overworldState.AddOverworldObject(rebel4);
                         rebel4SpawnTime = -1;
                     }
@@ -182,7 +182,7 @@ namespace SpaceProject
                     else if (rebel5SpawnTime > 0
                         && StatsManager.PlayTime.HasOverworldTimePassed(rebel5SpawnTime))
                     {
-                        rebel5.SetPosition(MathFunctions.SpreadPos(Game.player.position, 400));
+                        rebel5.position = MathFunctions.SpreadPos(Game.player.position, 400);
                         Game.stateManager.overworldState.AddOverworldObject(rebel5);
                         rebel5SpawnTime = -1;
                     }

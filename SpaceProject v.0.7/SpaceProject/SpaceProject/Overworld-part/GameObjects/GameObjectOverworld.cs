@@ -11,6 +11,8 @@ namespace SpaceProject
     {
         protected Game1 Game { get; private set; }
 
+        public bool IsUsed { get; set; }
+
         protected Sprite spriteSheet;
 
         public string Class;
@@ -39,11 +41,6 @@ namespace SpaceProject
                                      sprite.Width, sprite.Height);
             }
         }
-
-        //For system stars only
-
-        //Checks if gameobject is used or not
-        public bool IsUsed { get; set; }
 
         public GameObjectOverworld(Game1 Game, Sprite spriteSheet)
         {
