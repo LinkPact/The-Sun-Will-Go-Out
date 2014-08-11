@@ -1,0 +1,10 @@
+Content/
+Data/
+MapCreatorLevels/
+
+save.ini
+settings.ini
+*.application
+*.exe
+*.manifest
+*.pdb

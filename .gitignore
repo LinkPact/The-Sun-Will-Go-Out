@@ -19,11 +19,11 @@ x64/
 build/
 bld/
 
-Content/
+#Content/
 
-/x86/Debug/Content/
-/x86/Debug/Data/
-/x86/Debug/MapCreatorLevel/
+#/x86/Debug/Content/
+#/x86/Debug/Data/
+#/x86/Debug/MapCreatorLevel/
 
 #[Bb]in/
 

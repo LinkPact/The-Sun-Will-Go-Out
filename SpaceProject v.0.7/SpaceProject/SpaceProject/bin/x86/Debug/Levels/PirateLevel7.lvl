@@ -1,0 +1,39 @@
+Header :duration 35:width 400:durGridWidth 3:levelObjective KillPercentageOrSurvive|X50:
+Point
+T: 0:E: afo0 0nn0 0nn0 0nn0 0nn0 0nn0 afo0:end
+T: 1:E: 0fo0 sc10 0nn0 0nn0 0nn0 sc10 0nn0:end
+T: 2:E: afo0 0nn0 0nn0 0nn0 0nn0 0nn0 afo0:end
+T: 3:E: 0nn0 sc10 0nn0 0nn0 0nn0 sc10 0nn0:end
+T: 4:E: afo0 0nn0 0nn0 0nn0 0nn0 0nn0 afo0:end
+T: 5:E: 0nn0 sc10 0nn0 0nn0 0nn0 sc10 0nn0:end
+T: 6:E: afo0 0nn0 0nn0 0nn0 0nn0 0nn0 afo0:end
+T: 7:E: 0nn0 sc10 0nn0 0nn0 0nn0 sc10 0nn0:end
+T: 8:E: afo0 0nn0 0nn0 0nn0 0nn0 0nn0 afo0:end
+T: 9:E: 0nn0 0nn0 0nn0 Lc10 0nn0 0nn0 0nn0:end
+T: 10:E: 0nn0 0nn0 Hln0 0nn0 Hln0 0nn0 0nn0:end
+T: 11:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 12:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 13:E: Gln0 0nn0 0nn0 0nn0 Gln0 0nn0 0nn0:end
+T: 14:E: 0nn0 Gln0 0nn0 0nn0 0nn0 Gln0 0nn0:end
+T: 15:E: 0nn0 0ln0 Gln0 Nfo0 0nn0 0nn0 Gln0:end
+T: 16:E: 0nn0 0nn0 0nn0 Gln0 0nn0 0nn0 0nn0:end
+T: 17:E: Gln0 Nfo0 0nn0 0fo0 Gln0 0nn0 0nn0:end
+T: 18:E: 0nn0 Gln0 0nn0 0nn0 Nfo0 Gln0 0nn0:end
+T: 19:E: 0nn0 0nn0 Gfo0 0fo0 0nn0 0nn0 Gln0:end
+T: 20:E: 0nn0 Gln0 0nn0 Nfo0 0nn0 Gln0 0nn0:end
+T: 21:E: Gln0 0nn0 0nn0 0fo0 Gln0 0nn0 0nn0:end
+T: 22:E: 0nn0 0nn0 0nn0 Gln0 0nn0 Nfo0 0nn0:end
+T: 23:E: 0nn0 Nfo0 Gln0 0fo0 0nn0 0nn0 Gln0:end
+T: 24:E: 0nn0 Gln0 0nn0 Nfo0 0nn0 Gln0 0nn0:end
+T: 25:E: Gln0 0nn0 0nn0 0nn0 Gnn0 0nn0 0nn0:end
+T: 26:E: 0nn0 Nfo0 0fo0 Nnn0 0fo0 Nfo0 0nn0:end
+T: 27:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 28:E: 0nn0 YfolW2X30 0nn0 0nn0 0nn0 YfolW2X30 0nn0:end
+T: 29:E: 0nn0 0nn0 0fo0 0nn0 0fo0 0nn0 0nn0:end
+T: 30:E: 0nn0 0fo0 0nn0 0nn0 0nn0 0fo0 0nn0:end
+T: 31:E: 0nn0 0fo0 0fo0 0nn0 0nn0 0fo0 0nn0:end
+T: 32:E: 0nn0 YfolW2X30 GfotH2X30Y30 GfotH2X30Y30 GfotH2X30Y30 YfolW2X30 0nn0:end
+T: 33:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 34:E: 0nn0 0fo0 0nn0 0nn0 0nn0 0fo0 0nn0:end
+Duration
+C:0,10 0,11:E: SlnED100
