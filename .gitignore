@@ -18,9 +18,19 @@
 x64/
 build/
 bld/
-# [Bb]in/
-bin/x86/Debug/Content/
-bin/x86/Debug/Data/
+bin/
+
+!bin/
+
+bin/*
+!bin/x86/
+
+bin/x86/*
+!bin/x86/Debug/
+
+bin/x86/Debug/*
+!bin/x86/Debug/Levels
+
 [Oo]bj/
 
 # MSTest test Results
