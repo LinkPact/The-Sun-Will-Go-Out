@@ -75,7 +75,7 @@ namespace SpaceProject
         public override void Draw(SpriteBatch spriteBatch)
         {
             foreach (Particle par in particles)
-                par.Draw(spriteBatch);
+                par.Draw(spriteBatch); 
 
             base.Draw(spriteBatch);
         }

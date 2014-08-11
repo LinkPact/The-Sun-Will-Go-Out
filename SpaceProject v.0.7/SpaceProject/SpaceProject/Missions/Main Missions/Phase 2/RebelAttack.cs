@@ -16,11 +16,11 @@ namespace SpaceProject
             base.Initialize();
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetStation("Rebel Station 1"),
+                Game.stateManager.overworldState.GetStation("Rebel Station 2"),
                 new EventTextCapsule(GetEvent(0), null, EventTextCanvas.BaseState)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetStation("Rebel Station 1"), "P2AttackOnRebelStation", LevelStartCondition.TextCleared,
+                Game.stateManager.overworldState.GetStation("Rebel Station 2"), "AttackOnRebelStation", LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent(1), null, EventTextCanvas.BaseState)));
 
         }

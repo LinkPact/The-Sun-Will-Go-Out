@@ -35,7 +35,7 @@ namespace SpaceProject
             if (LevelLoader.HasNewOutput())
             {
                 textData = LevelLoader.GetNewOutput();
-                data = new LevelData(textData);
+                 data = new LevelData(textData);
             }
         }
 
