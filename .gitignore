@@ -18,7 +18,20 @@
 x64/
 build/
 bld/
-[Bb]in/
+
+Content/
+
+/x86/Debug/Content/
+/x86/Debug/Data/
+/x86/Debug/MapCreatorLevel/
+
+#[Bb]in/
+
+#[Bb]in/*
+#[Bb]in/*/
+
+
+#![Bb]in/x86/Debug/Levels/
 
 #![Bb]in/
 
