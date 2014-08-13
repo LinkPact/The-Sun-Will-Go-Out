@@ -65,11 +65,12 @@ namespace SpaceProject
         {
             base.Update(gameTime);
 
+            UpdateControls();
             StartLevel();
             ApplyEquipments();
         }
 
-        private void StartLevel()
+        private void UpdateControls()
         {
             if (ControlManager.CheckKeypress(Keys.Enter))
             {
@@ -81,9 +82,12 @@ namespace SpaceProject
 
             if (ControlManager.CheckKeypress(Keys.Escape))
             {
-                Game.stateManager.ChangeState("MainMenu");
-            }
+                Game.stateManager.ChangeState("MainMenuState");
+            }        
+        }
 
+        private void StartLevel()
+        {
             foreach (LevelTesterEntry entry in jakobsLevelEntries)
             {
                 Keys entryKey = entry.GetKey();
