@@ -190,6 +190,7 @@
     <Compile Include="Missions\Main Missions\Phase 3\Main10_InTheNameOfScience.cs" />
     <Compile Include="Missions\Main Missions\Phase 2\RebelAttack.cs" />
     <Compile Include="Missions\Main Missions\Phase 3\Main8_Retaliation.cs" />
+    <Compile Include="Missions\Main Missions\Phase 4\MainX2_ContinuationOfTheEnd.cs" />
     <Compile Include="Missions\Main Missions\Phase 4\MainX1_BeginningOfTheEnd.cs" />
     <Compile Include="Missions\Mission.cs" />
     <Compile Include="MissionStuff\MissionHelper.cs" />
@@ -768,6 +769,7 @@
     <Content Include="Levels\XSecondMissionlvl3.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Levels\a.lvl" />
     <None Include="Levels\escortTest1.lvl" />
     <Content Include="Levels\XPirateAmbush.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -795,6 +797,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Levels\P2RebelAmbush.lvl" />
+    <Content Include="Levels\XCoverBlown.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Levels\testlevels\test_lv1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Levels\testlevels\test_lv2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\test_lv3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SpaceProject_TemporaryKey.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

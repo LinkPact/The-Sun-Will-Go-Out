@@ -1,0 +1,121 @@
+Uppdragsflödet är följande:
+Rebellbas -> Färdas till bakhållspunkten -> Vänta på fraktskeppet -> Attackera fraktskeppet -> Fly från allians-attack -> Rebellbas
+
+Rebellbas
+Text som visas:
+- Introduction
+
+Rebellerna har sedan länge filat på en plan att överta ett av alliansens fraktskepp eftersom de märkt att alliansen lägger mycket energi på att försvara dem. De vill att spelaren följer med en grupp rebellskepp med uppdrag att överta ett fraktskepp som färdas mellan Soelara och Fortrun.
+
+"""
+
+"Come in, come in", a middle aged man waves you to sit down. "You did very well during that attack against the Alliance. Thanks
+to you and the others we will have time to regroup and gather our forces before they'll come back."
+
+"You did very well during the mission, and you have more insight in the Alliance and their troops than most here.
+We would like you to participate in an importaint raid against one of their freighters.
+We don't know for sure what its cargo is, but we know that it is of high importance for the Alliance.
+It is likely to have a high degree of security, but on the other hand they won't suspect the attack.
+Hit fast, retrieve the cargo, and leave before they call in more ships."
+
+"You will meet at the coordinate (X, X). You will get further instructions there
+Is that clear? Are you ready to begin the mission?"
+
+"Yes, I'm ready"
+"Not yet, I have some preparations I need to do"
+
+"Very well, good luck!"
+"Very well, come back when you are ready. But be quick about it!"
+
+
+"""
+
+Färdas till bakhållspunkten
+Text som visas:
+- StartTraveling - vid start av färden
+- OutOfRange - ifall spelaren åker för långt ifrån rebellskeppen
+
+- Spelaren följer efter 3 rebellskepp som åker mot en koordinat mellan Soelara och Fortrun.
+
+Gruppen har fått i uppgift att vänta i bakhåll på fraktskeppet mellan Soelara och Fortrun. Spelaren följer efter skeppen till bakhållspunkten.
+
+Vänta på fraktskeppet
+Text som visas:
+- WaitForFreighter - när man når fram till bakhållspunkten
+- OutOfRange - ifall spelaren åker för långt ifrån rebellskepp
+- FlavorText 1, 2 och 3 - under tiden man väntar med 10 sekunders mellanrum
+
+
+- De tre rebellskeppen stannar upp och väntar på bakhållsplatsen tills fraktskeppet är inom räckhåll.
+- Så fort rebellskeppen nått sin position så börjar fraktskeppet färdas ifrån Soelara. Det tar ca 40 sekunder för fraktskeppet att nå fram till rebellskeppen. (Detta kan såklart kortas ner)
+- Under tiden man väntar visas tre texter med 10 sekunders mellanrum. Dessa är tänkta att vara lite småprat mellan rebellerna och spelaren innan fraktskeppet når fram. Det kan handla om taktikprat om uppdraget de snart ska genomföra eller bara allmänna funderingar om rebellerna, alliansen eller världen.
+
+"""
+
+"The rookie has arrived! I'm looking forward to see what you are made of. We will wait here for a bit longer. The freighter has leaved Soelara
+and should arrive in a little while"
+
+"It must be quite a difference, standing at the other side of their high-tech-weaponry. We need to be quick about this. If a stealth-fleet arrive before
+we have finished this, we will have some severe problems"
+
+"The cargo of the freighter is the target. Shoot down whatever you need to, but keep the goal in mind. We need to be quick about this, so no bumbling around."
+
+"I think it is time soon. Are you ready? If we get parted we will meet at the rebel base"
+
+"Here it comes. Prepare your weapons"
+
+"For the people! Attack!"
+
+
+"""
+
+
+Attackera fraktskeppet
+Text som visas:
+- AttackFreighter - när fraktskeppet är inom räckhåll
+- FreighterLevelStart - när shooterbanan där man attackerar fraktskeppet startar
+
+- När fraktskeppet är inom räckhåll för rebellskeppen attackerar de skeppet och en shooterbana påbörjas.
+- Shooterbanan (ej implementerad ännu) kommer gå ut på att man skjuter på ett fraktskepp högst upp på skärmen samtidigt som alliansskepp attackerar spelaren och allmänt försöker vara i vägen. Spelaren kommer ha 3 st rebellmedhjälpare. De som överlever följer spelaren tillbaka till rebellstationen. (även detta ej implementerat)
+
+(Jag kommer lägga till alliansskepp som färdas jämte fraktskeppet senare när vi kollat över overworld-skepp-logiken)
+
+Fly från allians-attack
+Text som visas:
+- ReturnToRebelBase - när banan klarats av och 2 alliansskepp börjar jaga spelaren
+
+"""
+
+"We have the cargo. Pull out! Pull out! They have incoming backup!"
+
+"Go go go! We meet at the rebel base, try your best to avoid further combat!
+
+
+
+"""
+
+- 2 alliansskepp attackerar från varsin sida efter att fraktskeppet är neutraliserat. Om man är snabb nog hinner man undan, annars får man spela en kort shooterbana.
+- Spelaren åker (med eventuellt överlevande rebellskepp) tillbaka till rebellstationen.
+
+Rebellstation
+Text som visas:
+- Success
+
+"""
+
+"I heard it was a close call. Well done! Let's hope this cargo proves to be as valuable as we hope. I heard rumours that it contained some kind of
+strange material. They are analyzing it in the laboratory right now."
+
+"You should get some rest, but come back here when you have rested. There is no true rest before this is over, and the Alliance has payed for what
+they have done to the people."
+
+
+"""
+
+- Uppdraget avslutas. Rebellerna behöver nu titta närmare på materialet för att avgöra vad det är och varför det är så viktigt för alliansen.
+
+
+
+
+
+

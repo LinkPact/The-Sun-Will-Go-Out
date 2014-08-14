@@ -7,13 +7,43 @@
 *.sln.docstates
 
 # Build results
-[Dd]ebug/
+
+[Dd]ebug/MapCreatorLevels/
+*.application
+*.exe
+*.manifest
+
 [Dd]ebugPublic/
 [Rr]elease/
 x64/
 build/
 bld/
+
+#Content/
+
+#/x86/Debug/Content/
+#/x86/Debug/Data/
+#/x86/Debug/MapCreatorLevel/
+
 [Bb]in/
+
+#[Bb]in/*
+#[Bb]in/*/
+
+
+#![Bb]in/x86/Debug/Levels/
+
+#![Bb]in/
+
+#[Bb]in/*
+#![Bb]in/x86/
+
+#[Bb]in/x86/*
+#![Bb]in/x86/Debug/
+
+#[Bb]in/x86/Debug/*
+#![Bb]in/x86/Debug/Levels/
+
 [Oo]bj/
 
 # MSTest test Results
@@ -185,8 +215,7 @@ FakesAssemblies/
 .LSOverride
 
 # Icon must ends with two \r.
-Icon
-
+Icon
 # Thumbnails
 ._*
 

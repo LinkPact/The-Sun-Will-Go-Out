@@ -89,6 +89,7 @@ namespace SpaceProject
             levels.Add(new SecondMissionLevel(Game, spriteSheet, player, "SecondMissionlvl3", "XSecondMissionlvl1", MissionType.rebel));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Main_TheAlliancelvl", "XMain_TheAlliance", MissionType.power));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Main10_AllianceDefence", "XMain10_level1", MissionType.power));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "CoverBlown", "XCoverBlown", MissionType.power));
 
             //TEST
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "EscortTest1", "escortTest1", MissionType.rebel));

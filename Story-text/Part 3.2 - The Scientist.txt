@@ -1,0 +1,148 @@
+Rebellbas
+Färdas till forskarstation
+Slåss mot alliansskepp som beskyddar stationen
+Landa på stationen
+Prata med forskaren och tillfångata honom
+Fly tillbaka till rebellbasen
+Rebellbas
+
+Rebellbas
+The commander is looking sternly at you. 
+"We have a mission of critical importance for you. It is very important
+that this succeeds, as it is a chance for us to keep even steps with the Alliance."
+"What I am about to share with you now is critical information you can't disclose with anyone."
+"There is a small research faculty close to Peye where a group of scientists have been
+exploring a material called Murt. You have surely heard about it, that it has potential
+but have failed as a energy source due to both its rarity and the difficulty extracting
+energy from it."
+"Those scientists have been exploring scraps of the mineral for a long time. It seems like they
+recently had a breakthrough in the extraction process. There is still the problem with its rarity
+though, but my sources tell me that they have been scanning the system for more of the resource."
+"They seem unwilling to share their information with neither us or the Alliance. I would believe that the
+reason for this is to keep the control over this energy for themselves."
+"The Alliance is on to them though, and it is a matter of time before they find out what the scientists
+have disclosed this far. This source could alter the path of this entire solar system. If the Alliance
+manage to get their hands on it, their shields and weapons would no longer be limited as today."
+"It would be disaster. They would wipe us out entirely, and they could then rule the system with an iron
+fist."
+"We can't let this happen. We must gain the information before they do. We must not lose on this one.
+Do whathever needs to be done in order to succeed."
+
+"Your goal is to go to the station at coordinate (X,X) and retrieve a scientist called Bert-Olle. Try to
+persuade him, but don't hestitate to whathever needs to be done to bring him here."
+"There will be allied fleets on your way. Try to avoid them if you can. Good luck."
+
+Färdas till forskarstation
+..radio.. "It is the Alliance battalion 32 speaking. This is forbidden territory. Turn back, or we will be
+forced to strike you down"
+
+[Nivå]
+Win: You avoid the fleet, leaving them behind. You start sighting the target station.
+Lose: Your ship is badly damaged by the Alliance fleet. Return to the home base, and try again.
+
+Landa på stationen
+You slowly lower your ship towards the ground close to the research station. It looks worn down. There
+are people hurring into the buildings with worryed looks on their faces.
+You walk out from the ship and hurry over to the described building. Inside you find a man looking exactly
+as the photo you were showed earlier.
+"Are you Bert-Ove?"
+He looks at you. He looks quite nervous, analyzing the situation.
+"Maybe. I think the more interesting question is who you are. Are you another of the Alliance men
+coming here to persuade me? Or are you something else? Are you a rebel? Or are you even acting on your own?"
+He eyes you up and down again, adjusting his shoulders.
+"The Alliance wouldn't send someone like you here, you look too inexperienced. So you are either a rebel,
+or something else."
+
+- "I am sent here by the rebels."
+
+"That seems like the most reasonable explanation.. It is still impressive that you managed to slip by
+without a battallion of Allied ships on your tail."
+He gazes at you another moment.
+"So tell me. What brings you here then? I realize you are after our research.
+What do you hope to achieve with it?"
+[Dialogue continues]
+
+- "I don't have any business for the rebels. I am working on my own."
+
+"On your own you say. So then what would your goal be? And how did you manage to slip past the
+Allied fleets unnoticed?"
+He looks at you with furrowed eyebrows.
+"So tell me. What brings you here then? I realize you are after our research.
+What do you hope to achieve with it?"
+
+"No, don't answer it. Let me guess. You are a rebel. You have been ordered to come here in order to
+bring me so that they can extract information from me."
+"You are a tool. You are being used for their liking, just as they want to do with me. Do you really
+believe in their vision? Salvation through more violence? Means to an end? How many innocent will you
+kill to achieve your ignorant goals? What makes you think that anyone would want to follow a group of
+manipulative murderers, killing innocent when it suits them?"
+He is staring angrily at your face.
+"If you want to bring me, you will have to bring me by force. I won't follow you by my own will."
+"If you do, I want you to think about what you are doing. I want you to feel what you are doing."
+"I want you to realize that you are not helping the people. You are only helping your own egocentric
+view of what is best for this sector."
+[Dialogue cancelled]
+
+You realize that there is no way to persuade him. Maybe there never was. You quickly grasp him,
+sustaining some feeble punches from the angry old man. He is no match for you, and you bring him struggling
+to your ship.
+
+- "The rebels are the best way to help the people."
+
+He looks thoughtful for a moment. Then he stares angrily, straight in your eyes.
+"You are a tool. You are being used for their liking, just as they want to do with me. Do you really
+believe in their vision? Salvation through more violence? Means to an end? How many innocent will you
+kill to achieve your ignorant goals? What makes you think that anyone would want to follow a group of
+manipulative murderers, killing innocent when it suits them?"
+He is staring angrily at your face.
+"If you want to bring me, you will have to bring me by force. I won't follow you by my own will."
+"If you do, I want you to think about what you are doing. I want you to feel what you are doing."
+"I want you to realize that you are not helping the people. You are only helping your own egocentric
+view of what is best for this sector."
+
+- "We need to prevent the Alliance from asserting total control over this sectors people."
+
+He looks thoughtful.
+"So what you say is that we should prevent the bigger evil by helping the lesser?
+For me, both are as bad. Both are forcing their solutions to those who in many cases don't want them.
+In boths own opinions, they are the saviours. They hold the best way.
+In reality no-one actually knows. I don't know, and I really don't think you do.
+But maybe it is the best way to help the rebels in this particular case. I think none of those
+organizations are able to handle the power it could bring. In this moment it looks like the Alliance
+soon are there. I will help you in order to even the balance, and hopefully give enough time
+to bring a better solution."
+
+Together you walk out to your ship. A lot of people are looking at you. Afraid.
+You can't help but wonder if you really are helping those people.
+
+...radio... "The Alliance has gotten the word about you, and are heading for you with a large force.
+They really seem to be on the edge about this. Try to get away as quickly as you can. We are cancelling our
+activities here. We will come and delay the Alliance."
+
+You are met by the commander. The instance he sees Bert-Ove, he cracks a wide smile.
+"Well done, well done! Maybe there is some hope after all."
+Bert-Ove is silent, cautiously eyeing the surroundings.
+"Bring him with me" he tells to men. "I don't know how cooperative he is.
+I guess it doesn't matter, he will soon cooperate anyway"
+He turns to you.
+"You will get further instructions about our next step when we have extracted what we want to know.
+Well done!"
+You leave with a nagging feeling of doubt in your stomache.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

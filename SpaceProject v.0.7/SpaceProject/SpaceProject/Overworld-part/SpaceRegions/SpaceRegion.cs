@@ -78,9 +78,9 @@ namespace SpaceProject
 
                     if (gameObjects[i] is Planet)
                     {
-                        if (gameObjects[i].name.ToLower().Equals("Highfence"))
+                        if (gameObjects[i].name.Equals("Highfence"))
                         {
-                            if (MissionManager.GetMission("Main - Highfence2").ObjectiveIndex != 0)
+                            if (MissionManager.GetMission("Main - Beginning Of The End").ObjectiveIndex != 0)
                             {
                                 game.stateManager.planetState.LoadPlanetData((Planet)gameObjects[i]);
                                 game.stateManager.ChangeState("PlanetState");
