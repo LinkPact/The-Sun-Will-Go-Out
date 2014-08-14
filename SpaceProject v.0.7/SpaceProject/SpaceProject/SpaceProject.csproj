@@ -771,13 +771,7 @@
     </Content>
     <None Include="Levels\a.lvl" />
     <None Include="Levels\escortTest1.lvl" />
-    <Content Include="Levels\XPirateAmbush.lvl">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Levels\XScoutingLevel.lvl">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\XPirateAnnihilation.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Levels\XMain10_level1.lvl">
@@ -809,6 +803,12 @@
     <None Include="Levels\testlevels\test_lv3.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="Levels\XPirateAmbush.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Levels\XPirateAnnihilation.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="SpaceProject_TemporaryKey.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
