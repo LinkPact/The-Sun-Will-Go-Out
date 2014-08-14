@@ -94,11 +94,11 @@ namespace SpaceProject
                     ally1.SetPosition(MathFunctions.SpreadPos(highfence.position, 200));
                     ally1.SetTarget(Game.player);
                     Game.stateManager.overworldState.AddOverworldObject(ally1);
-
+                    
                     ally2.SetPosition(MathFunctions.SpreadPos(highfence.position, 200));
                     ally2.SetTarget(Game.player);
                     Game.stateManager.overworldState.AddOverworldObject(ally2);
-
+                    
                     ally3.SetPosition(MathFunctions.SpreadPos(highfence.position, 200));
                     ally3.SetTarget(Game.player);
                     Game.stateManager.overworldState.AddOverworldObject(ally3);

@@ -25,6 +25,8 @@ namespace SpaceProject
 
         public override void Initialize()
         {
+            name = "Pirate Ship";
+
             sprite = spriteSheet.GetSubSprite(new Rectangle(182, 29, 27, 32));
             viewRadius = 3000;
             position = new Vector2(0,0);

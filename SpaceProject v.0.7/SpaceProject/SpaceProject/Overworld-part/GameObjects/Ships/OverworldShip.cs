@@ -22,6 +22,7 @@ namespace SpaceProject
 
         protected GameObjectOverworld target;
         public void SetTarget(GameObjectOverworld target) { this.target = target; }
+        public void SetPosition(Vector2 position) { this.position = position; }
 
         // Used to determine which level starts when player runs into this ship.
         private string level;

@@ -80,7 +80,17 @@ namespace SpaceProject
                     {
                         if (gameObjects[i].name.Equals("Highfence"))
                         {
-                            if (MissionManager.GetMission("Main - Beginning Of The End").ObjectiveIndex != 0)
+                            Mission mission = MissionManager.GetMission("Main - Beginning Of The End");
+
+                            if (mission.MissionState == StateOfMission.Active)
+                            {
+                                if (mission.ObjectiveIndex != 0)
+                                {
+                                    game.stateManager.planetState.LoadPlanetData((Planet)gameObjects[i]);
+                                    game.stateManager.ChangeState("PlanetState");
+                                }
+                            }
+                            else
                             {
                                 game.stateManager.planetState.LoadPlanetData((Planet)gameObjects[i]);
                                 game.stateManager.ChangeState("PlanetState");
