@@ -118,4 +118,7 @@ they have done to the people."
 
 
 
+DANNETEXT:
+
+Introduction = "We have a new mission for you. We want you to join an attack against an Alliance freighter carrying important materials. This will most likely be a dangerous mission so make sure you are prepared.
 
