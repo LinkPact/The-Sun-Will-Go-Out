@@ -21,8 +21,8 @@ namespace SpaceProject
             IsKilled = false;
             ObjectClass = "bullet";
 
-            Damage = 100;
-            Duration = 400;
+            Damage = 70;
+            Duration = 300;
             Speed = 1.1f;
 
             anim.LoopTime = 300;

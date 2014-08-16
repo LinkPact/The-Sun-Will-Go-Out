@@ -31,7 +31,7 @@ namespace SpaceProject
             Damage = 20;
             ObjectClass = "enemyBullet";
             Duration = 3000;
-            turningSpeed = 1f;
+            turningSpeed = 1.0f;
             
             anim.LoopTime = 300;
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(11, 24, 5, 5)));

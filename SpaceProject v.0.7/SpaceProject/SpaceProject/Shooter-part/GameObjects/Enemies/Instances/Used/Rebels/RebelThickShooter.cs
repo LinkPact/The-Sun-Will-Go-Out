@@ -60,14 +60,14 @@ namespace SpaceProject
             laser1.PositionY = PositionY;
             laser1.Direction = new Vector2(0, 1.0f);
             laser1.Initialize();
-            laser1.Duration = 700;
+            laser1.Duration *= 0.8f;
 
             EnemyWeakRedLaser laser2 = new EnemyWeakRedLaser(Game, spriteSheet);
             laser2.PositionX = PositionX + 4;
             laser2.PositionY = PositionY;
             laser2.Direction = new Vector2(0, 1.0f);
             laser2.Initialize();
-            laser2.Duration = 700;
+            laser2.Duration *= 0.8f;
 
             Game.stateManager.shooterState.gameObjects.Add(laser1);
             Game.stateManager.shooterState.gameObjects.Add(laser2);

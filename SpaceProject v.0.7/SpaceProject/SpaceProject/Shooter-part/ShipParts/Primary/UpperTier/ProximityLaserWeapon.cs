@@ -50,8 +50,8 @@ namespace SpaceProject
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
             float speedFactor = 0.5f;
-            float durationFactor = 0.7f;
-            float damageFactor = 0.5f;
+            float durationFactor = 1f;
+            float damageFactor = 1f;
 
             for (int dir = -3; dir <= 3; dir++)
             {

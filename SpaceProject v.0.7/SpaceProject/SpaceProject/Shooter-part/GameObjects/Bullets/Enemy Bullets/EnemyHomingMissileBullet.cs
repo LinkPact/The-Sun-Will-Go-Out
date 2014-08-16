@@ -28,7 +28,7 @@ namespace SpaceProject
             Damage = 60;
             ObjectClass = "enemyBullet";
             Duration = 3000;
-            TurningSpeed = 2f;
+            TurningSpeed = 1.2f;
 
             Follows = true;
             FollowObjectTypes.Add("player");

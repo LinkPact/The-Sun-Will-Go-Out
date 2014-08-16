@@ -87,7 +87,7 @@ namespace SpaceProject
             bullet.PositionY = PositionY;
             bullet.Direction = MathFunctions.ScaleDirection(ShootObject.Position - Position);
             bullet.Initialize();
-            bullet.Duration = 500;
+            bullet.Duration *= 1;
             bullet.Speed *= 0.8f;
 
             Game.stateManager.shooterState.gameObjects.Add(bullet);

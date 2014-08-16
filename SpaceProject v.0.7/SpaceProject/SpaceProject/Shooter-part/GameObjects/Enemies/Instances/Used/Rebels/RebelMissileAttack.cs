@@ -34,7 +34,7 @@ namespace SpaceProject
 
             Damage = 100;
             Speed = 0.04f;
-            HP = 400;
+            HP = 1500;
             TurningSpeed = 2;
 
             movement = Movement.Line;
