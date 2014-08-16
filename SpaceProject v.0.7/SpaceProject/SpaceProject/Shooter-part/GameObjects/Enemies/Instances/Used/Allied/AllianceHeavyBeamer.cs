@@ -36,8 +36,8 @@ namespace SpaceProject
             fraction = Fraction.alliance;
             ShieldSetup(CreatureShieldCapacity.high, CreatureShieldRegeneration.high);
 
-            fireTime = 5000;
-            cooldownTime = 2000;
+            fireTime = 4000;
+            cooldownTime = 3000;
             currentTime = 0;
         }
 
@@ -48,7 +48,7 @@ namespace SpaceProject
             lootValue = LootValue.veryHigh;
 
             //Egenskaper
-            SightRange = 500;
+            SightRange = 600;
             HP = 1000.0f;
             Damage = 200.0f;
             Speed = 0.02f;

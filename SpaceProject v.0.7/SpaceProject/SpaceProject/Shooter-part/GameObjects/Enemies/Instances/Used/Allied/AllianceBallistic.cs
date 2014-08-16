@@ -24,7 +24,7 @@ namespace SpaceProject
 
         private void Setup()
         {
-            fraction = Fraction.pirate;
+            fraction = Fraction.alliance;
         }
 
         public override void Initialize()
@@ -33,12 +33,12 @@ namespace SpaceProject
 
             lootValue = LootValue.high;
 
-            AddPrimaryModule(400, ShootingMode.Batches);
-            primaryModule.ShootsInBatchesSetup(2, 2000);
+            AddPrimaryModule(200, ShootingMode.Batches);
+            primaryModule.ShootsInBatchesSetup(2, 1000);
             
             //Egenskaper
             SightRange = 600;
-            HP = 400.0f;
+            HP = 500.0f;
             Damage = 70;
             Speed = 0.05f;
 
@@ -57,6 +57,7 @@ namespace SpaceProject
             bullet.Position = Position;
             bullet.Direction = MathFunctions.ScaleDirection(ShootObject.Position - Position);
             bullet.Initialize();
+            bullet.Speed *= 0.5f;
 
             Game.stateManager.shooterState.gameObjects.Add(bullet);
         }

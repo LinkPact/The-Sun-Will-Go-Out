@@ -778,18 +778,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Levels\P2AttackOnRebelStation.lvl" />
-    <Content Include="Levels\testlevels\PirateLevel1.lvl">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\XAstroDodger.lvl">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\XFlightTraining_1.lvl">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\XDefendColony.lvl">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Levels\P2RebelAmbush.lvl" />
     <Content Include="Levels\XCoverBlown.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -797,6 +785,33 @@
     <Content Include="Levels\testlevels\test_lv1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Levels\testlevels\P2AttackOnRebelStation.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\P2RebelAmbush.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\P3_Science_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\P4_hunted1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\P4_hunted2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\P4_hunted3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\P4_rebel1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\P4_rebel2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\P4_recognizedByAlliance.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Levels\testlevels\test_lv2.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

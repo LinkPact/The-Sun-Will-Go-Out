@@ -22,6 +22,17 @@ namespace SpaceProject
         private List<LevelTesterEntry> dannesLevelEntries = new List<LevelTesterEntry>();
         private List<LevelTesterEntry> johansLevelEntries = new List<LevelTesterEntry>();
 
+        private List<LevelTesterEntry> GetAllEntries()
+        {
+            List<LevelTesterEntry> combined = new List<LevelTesterEntry>();
+
+            combined.AddRange(jakobsLevelEntries);
+            combined.AddRange(dannesLevelEntries);
+            combined.AddRange(johansLevelEntries);
+
+            return combined;
+        }
+
         #endregion
 
         public LevelTesterState(Game1 game, string name) :
@@ -33,15 +44,18 @@ namespace SpaceProject
             display1.Add("Press Escape to return to main menu");
             display1.Add("Use number keys (0-9) to switch equipment");
 
-            jakobsLevelEntries.Add(new LevelTesterEntry("PirateLevel1", "The first of the pirate levels", Keys.Z));
-            jakobsLevelEntries.Add(new LevelTesterEntry("XAstroDodger", "Astro-dodger mission!", Keys.X));
-            jakobsLevelEntries.Add(new LevelTesterEntry("XFlightTraining_1", "The first flight training mission", Keys.C));
-            
-            jakobsLevelEntries.Add(new LevelTesterEntry("test_lv1", "Rebel test1", Keys.A));
-            jakobsLevelEntries.Add(new LevelTesterEntry("test_lv2", "Rebel test2", Keys.S));
-            jakobsLevelEntries.Add(new LevelTesterEntry("test_lv3", "Rebel test3", Keys.D));
-            
+            jakobsLevelEntries.Add(new LevelTesterEntry("P3_Science_1", "Phase 3 scientist-level", Keys.A));
+
+            jakobsLevelEntries.Add(new LevelTesterEntry("P4_rebel1", "Phase 4 one rebel scout", Keys.S));
+            jakobsLevelEntries.Add(new LevelTesterEntry("P4_rebel2", "Phase 4 other rebel scout", Keys.D));
+            jakobsLevelEntries.Add(new LevelTesterEntry("P4_hunted1", "Phase 4 hunted to Soelara1", Keys.F));
+            jakobsLevelEntries.Add(new LevelTesterEntry("P4_hunted2", "Phase 4 hunted to Soelara2", Keys.G));
+            jakobsLevelEntries.Add(new LevelTesterEntry("P4_hunted3", "Phase 4 hunted to Soelara3", Keys.H));
+            jakobsLevelEntries.Add(new LevelTesterEntry("P4_recognizedByAlliance", "Phase 4 Fortrun guard", Keys.J));
+
             johansLevelEntries.Add(new LevelTesterEntry("XDefendColony", "Johans defend colony mission", Keys.V));
+            johansLevelEntries.Add(new LevelTesterEntry("P2AttackOnRebelStation", "Phase 2 - Attack on station", Keys.B));
+            johansLevelEntries.Add(new LevelTesterEntry("P2RebelAmbush", "Phase 2 - Ambush", Keys.N));
 
             chosenLevel = jakobsLevelEntries[0].GetPath(); ;
         }
@@ -88,7 +102,9 @@ namespace SpaceProject
 
         private void StartLevel()
         {
-            foreach (LevelTesterEntry entry in jakobsLevelEntries)
+            List<LevelTesterEntry> combined = GetAllEntries();
+
+            foreach (LevelTesterEntry entry in combined)
             {
                 Keys entryKey = entry.GetKey();
 

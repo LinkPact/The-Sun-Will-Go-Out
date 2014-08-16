@@ -34,7 +34,7 @@ namespace SpaceProject
             fraction = Fraction.alliance;
 
             fireTime = 3000;
-            cooldownTime = 1000;
+            cooldownTime = 2000;
             currentTime = 0;
         }
 
@@ -45,7 +45,7 @@ namespace SpaceProject
             lootValue = LootValue.medium;
 
             //Egenskaper
-            SightRange = 500;
+            SightRange = 600;
             HP = 200f;
             Damage = 80.0f;
             Speed = 0.05f;
