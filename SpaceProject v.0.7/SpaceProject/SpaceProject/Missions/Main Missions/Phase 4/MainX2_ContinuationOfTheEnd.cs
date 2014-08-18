@@ -12,8 +12,8 @@ namespace SpaceProject
     {
         private enum EventID
         {
-            GoToNewNorrland,
-            ArriveAtNewNorrland,
+            GoToSoelara,
+            ArriveAtSoelara,
             Question1AtFortrun,
             Question2AtFortrun,
             Question3AtFortrun,
@@ -79,12 +79,10 @@ namespace SpaceProject
 
             rebels.Add(rebel1);
             rebels.Add(rebel2);
-            rebels.Add(rebel1);
-            rebels.Add(rebel2);
             rebels.Add(rebel3);
-
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], newNorrland,
-                new EventTextCapsule(GetEvent((int)EventID.ArriveAtNewNorrland), new EventText("Objective Failed"), EventTextCanvas.BaseState),
+            
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], soelara,
+                new EventTextCapsule(GetEvent((int)EventID.ArriveAtSoelara), new EventText("Objective Failed"), EventTextCanvas.BaseState),
                 delegate
                 {
                     rebel3SpawnTime = StatsManager.PlayTime.GetFutureOverworldTime(7000);
@@ -130,16 +128,16 @@ namespace SpaceProject
                     }
 
                     if (GameStateManager.currentState.Equals("OverworldState")
-                        && !GetEvent((int)EventID.GoToNewNorrland).Displayed)
+                        && !GetEvent((int)EventID.GoToSoelara).Displayed)
                     {
-                        Game.messageBox.DisplayMessage(GetEvent((int)EventID.GoToNewNorrland).Text);
-                        GetEvent((int)EventID.GoToNewNorrland).Displayed = true;
+                        Game.messageBox.DisplayMessage(GetEvent((int)EventID.GoToSoelara).Text);
+                        GetEvent((int)EventID.GoToSoelara).Displayed = true;
                     }
                         
                 },
                 delegate
                 {
-                    return missionHelper.IsPlayerOnPlanet("New Norrland");
+                    return missionHelper.IsPlayerOnStation("Soelara Station");
                 },
                 delegate
                 {
