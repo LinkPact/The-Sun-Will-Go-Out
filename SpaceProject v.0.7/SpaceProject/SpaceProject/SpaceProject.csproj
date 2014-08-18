@@ -197,7 +197,7 @@
     <Compile Include="Managers\MissionManager.cs" />
     <Compile Include="MissionStuff\MissionObjects\AstroDodger\DestroyedShip.cs" />
     <Compile Include="MissionStuff\MissionObjects\FirstMission\Battlefield.cs" />
-    <Compile Include="MissionStuff\MissionObjects\MidMissionAlliance\AllianceFleet.cs" />
+    <Compile Include="MissionStuff\MissionObjects\MidMissionAlliance\AllianceFleet_Old.cs" />
     <Compile Include="MissionStuff\MissionObjects\MissionObject.cs" />
     <Compile Include="GameStates\MissionScreenState\MissionInformation.cs" />
     <Compile Include="GameStates\MissionScreenState\MissionScreenCursor.cs" />
@@ -337,6 +337,8 @@
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Priority.cs" />
     <Compile Include="Overworld-part\GameObjects\Shop.cs" />
     <Compile Include="Overworld-part\GameObjects\ShopInventoryEntry.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Fleets\AllianceFleet.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Fleets\RebelFleet.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\AbandonedStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\PeyeScienceStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\BorderXOutpost\BorderStation.cs" />

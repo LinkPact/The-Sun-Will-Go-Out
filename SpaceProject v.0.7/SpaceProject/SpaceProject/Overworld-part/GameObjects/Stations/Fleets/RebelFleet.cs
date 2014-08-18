@@ -7,24 +7,20 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class AllianceFleet: MissionObject
+    public class RebelFleet : Station
     {
-        public AllianceFleet(Game1 Game, Sprite SpriteSheet) :
-            base(Game, SpriteSheet)
+        public RebelFleet(Game1 Game, Sprite spriteSheet, Vector2 positionOffset) :
+            base(Game, spriteSheet, positionOffset)
         {
+            
         }
 
         public override void Initialize()
         {
-            name = "Alliance Fleet";
-
-            sprite = spriteSheet.GetSubSprite(new Rectangle(0, 3, 71, 37));
-            scale = 1f;
-            position = new Vector2(45000, 43000);
-            color = Color.White;
-            layerDepth = 0.5f;
-
+            sprite = spriteSheet.GetSubSprite(new Rectangle(1183, 21, 64, 64));
             base.Initialize();
+            StationCodeName = "OW_Rebel_Fleet";
+            LoadStationData(StationCodeName);
         }
 
         public override void Update(GameTime gameTime)

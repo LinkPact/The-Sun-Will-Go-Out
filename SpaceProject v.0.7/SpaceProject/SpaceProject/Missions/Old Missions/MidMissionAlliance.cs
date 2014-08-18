@@ -10,7 +10,7 @@ namespace SpaceProject
 {
     public class MidMissionAlliance: Mission
     {
-        private AllianceFleet allianceFleet;
+        private AllianceFleet_Old allianceFleet;
 
         public MidMissionAlliance(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
@@ -21,7 +21,7 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            allianceFleet = new AllianceFleet(this.Game, spriteSheet);
+            allianceFleet = new AllianceFleet_Old(this.Game, spriteSheet);
             allianceFleet.Initialize();
         }
 

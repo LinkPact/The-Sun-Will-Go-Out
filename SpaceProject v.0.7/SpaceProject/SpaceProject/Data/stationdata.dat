@@ -75,3 +75,15 @@ Name = Peye Science Station
 PositionX = -3500
 PositionY = -2000
 Inhabitants = 780
+
+[OW_Alliance_Fleet]
+Name = Alliance Fleet
+PositionX = 73000
+PositionY = 113000
+Inhabitants = 15000
+
+[OW_Rebel_Fleet]
+Name = Rebel Fleet
+PositionX = 74000
+PositionY = 114000
+Inhabitants = 25000
