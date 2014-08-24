@@ -588,6 +588,25 @@ namespace SpaceProject
                 MissionManager.MarkMissionAsActive(mainContinuationOfTheEnd.MissionName);
             }
 
+            // Final mission stuff
+            if (MissionManager.mainContinuationOfTheEnd.MissionState == StateOfMission.Completed
+                && GameStateManager.currentState.Equals("OverworldState"))
+            {
+                MissionManager.mainContinuationOfTheEnd.MissionState = StateOfMission.CompletedDead;
+
+                RebelFleet rebelFleet = new RebelFleet(game,
+                    game.stateManager.overworldState.GetSectorX.GetSpriteSheet(), Vector2.Zero);
+                AllianceFleet allianceFleet = new AllianceFleet(game,
+                    game.stateManager.overworldState.GetSectorX.GetSpriteSheet(), Vector2.Zero);
+
+                rebelFleet.Initialize();
+                allianceFleet.Initialize();
+
+                game.stateManager.overworldState.AddOverworldObject(rebelFleet);
+                game.stateManager.overworldState.AddOverworldObject(allianceFleet);
+
+                game.messageBox.DisplayMessage("Time to make your choice! Go to Telmun!");
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

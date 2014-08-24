@@ -13,6 +13,7 @@ namespace SpaceProject
         protected Game1 game;
         protected String name;
         protected Sprite spriteSheet;
+        public Sprite GetSpriteSheet() { return spriteSheet; }
 
         protected List<GameObjectOverworld> gameObjects;
         protected List<GameObjectOverworld> garbageGameObjects;
