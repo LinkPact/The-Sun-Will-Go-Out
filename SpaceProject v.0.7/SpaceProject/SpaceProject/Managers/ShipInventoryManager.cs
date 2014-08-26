@@ -34,13 +34,8 @@ namespace SpaceProject
         public static int ColumnSize { get { return columnSize; } private set { } }
 
         public static int inventorySize;
-        private static float inventoryWeight;
-        public static float InventoryWeight { get { return inventoryWeight; } private set { } }
-        private static float maxWeight;
-        public static float MaxWeight { get { return maxWeight; } private set { } }
-
+        
         //Ship parts
-
         public static PlayerWeapon currentPrimaryWeapon;
         private static List<ShipPart> ownedPrimaryWeapons = new List<ShipPart>();
         public static List<ShipPart> OwnedPrimaryWeapons { get { return ownedPrimaryWeapons; } private set { } }
@@ -575,18 +570,6 @@ namespace SpaceProject
             UpdateLists(emptyItem);
         }
         
-        public static void CheckInventoryWeight()
-        {
-            float weight = 0;
-
-            foreach (Item item in shipItems)
-            {
-                weight += item.Weight;
-            }
-
-            inventoryWeight = weight;
-        }
-        
         public static void CompressInventory()
         {
             List<int> removeList = new List<int>();
@@ -613,9 +596,6 @@ namespace SpaceProject
                     shipItems.RemoveAt(inventorySize);
                 }
             }
-
-            CheckInventoryWeight();
-            maxWeight = StatsManager.CargoCapacity();
 
             ownedPrimaryWeapons.Clear();
             ownedSecondary.Clear();
@@ -933,8 +913,8 @@ namespace SpaceProject
             AddItem(new LightPlating(Game));
             AddItem(new HeavyPlating(Game));
 
-            StatsManager.cargoCapacity = 10000;
-            maxWeight = 10000;
+            //StatsManager.cargoCapacity = 10000;
+            //maxWeight = 10000;
 
             isCheatActivated = true;
         }

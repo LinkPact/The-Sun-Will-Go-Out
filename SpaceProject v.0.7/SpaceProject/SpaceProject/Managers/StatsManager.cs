@@ -40,7 +40,6 @@ namespace SpaceProject
         public static int[] FusionCells;
 
         public static int InventorySlots = 24;
-        public static int cargoCapacity = 1000;
 
         // Money
         public static int Rupees;
@@ -146,11 +145,6 @@ namespace SpaceProject
             return plating.Acceleration;
         }
         
-        public static float CargoCapacity()
-        {
-            return cargoCapacity;
-        }
-        
         public static float GetShipLife()
         {
             return plating.CurrentOverworldHealth;
@@ -232,8 +226,6 @@ namespace SpaceProject
             saveData.Add("rupees", Convert.ToString(Rupees, CultureInfo.InvariantCulture));
             saveData.Add("progress", Convert.ToString(progress, CultureInfo.InvariantCulture));
             saveData.Add("reputation", Convert.ToString(reputation, CultureInfo.InvariantCulture));
-            // Removed 14-06-24 as the current life now is handled in the armors themselves / Jakob
-            //saveData.Add("shiplife", Convert.ToString(shipLife, CultureInfo.InvariantCulture));
             saveData.Add("shipfuel", Convert.ToString(Fuel, CultureInfo.InvariantCulture));
 
             saveData.Add("gamemode", Convert.ToString(gameMode, CultureInfo.InvariantCulture));
@@ -278,8 +270,6 @@ namespace SpaceProject
             Rupees = Game.saveFile.GetPropertyAsInt("statsmanager", "rupees", 0);
             progress = Game.saveFile.GetPropertyAsInt("statsmanager", "progress", 0);
             reputation = Game.saveFile.GetPropertyAsInt("statsmanager", "reputation", 0);
-            // Removed 14-06-24 as the current life now is handled in the armors themselves / Jakob
-            //shipLife = Game.saveFile.GetPropertyAsFloat("statsmanager", "shiplife", 0);
             Fuel = Game.saveFile.GetPropertyAsFloat("statsmanager", "shipfuel", 0);
 
             gameMode = MathFunctions.ParseEnum<GameMode>(Game.saveFile.GetPropertyAsString("statsmanager", "gamemode", ""));
