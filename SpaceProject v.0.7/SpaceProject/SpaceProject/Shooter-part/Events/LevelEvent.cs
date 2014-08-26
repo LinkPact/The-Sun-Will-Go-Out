@@ -533,6 +533,9 @@ namespace SpaceProject
                     throw new ArgumentException("Unknown ally type!");
             }
 
+            // Slightly alters the draw layer to give all gameobjects individual layers
+            creature.DrawLayer += (float)(MathFunctions.GetExternalRandomDouble() * 0.01);
+
             return creature;
         }
 

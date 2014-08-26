@@ -350,6 +350,10 @@ namespace SpaceProject
             {
                 LeaveLevel();
             }
+
+
+            if (StatsManager.gameMode == GameMode.develop || StatsManager.gameMode == GameMode.hardcore)
+                StatsManager.ReduceOverwordHealthToVerticalHealth(player);
         }
 
         private void LeaveLevel()

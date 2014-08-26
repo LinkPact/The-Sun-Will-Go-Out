@@ -69,7 +69,12 @@ namespace SpaceProject
             Direction = Vector2.Zero;
 
             HPmax = StatsManager.Armor();
-            HP = StatsManager.GetShipLife();
+
+            // If hardcore the life is fixed. Else, life is set to the ships armor.
+            if (StatsManager.gameMode != GameMode.hardcore && StatsManager.gameMode != GameMode.develop)
+                HP = StatsManager.Armor();
+            else
+                HP = StatsManager.GetShipLife();
 
             ShieldMax = ShipInventoryManager.equippedShield.Capacity;
             Shield = ShieldMax;

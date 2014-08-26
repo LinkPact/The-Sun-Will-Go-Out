@@ -58,9 +58,6 @@ namespace SpaceProject
         private List<Beacon> discoveredBeacons;
         public List<Beacon> DiscoveredBeacons { get { return discoveredBeacons; } private set { ;} }
 
-        //public static Boolean isHardcore = false;
-        //public static Boolean isEasy = false;
-
         public static GameMode gameMode;
         #endregion
         
@@ -153,6 +150,12 @@ namespace SpaceProject
         public static void ReduceShipLife(int damage)
         {
             plating.CurrentOverworldHealth -= damage;
+        }
+
+        public static void ReduceOverwordHealthToVerticalHealth(PlayerVerticalShooter player)
+        {
+            
+            plating.CurrentOverworldHealth = player.HP;
         }
         
         public static void RepairShip(float repairvalue)

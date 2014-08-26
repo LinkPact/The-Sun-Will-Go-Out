@@ -80,14 +80,14 @@ namespace SpaceProject
 
         public void ApplyDifficulty(GameMode gameMode)
         {
-            if (gameMode == GameMode.hardcore)
-            {
-                Armor *= 0.1f;
-                if (Armor > 40)
-                    Armor = 40;
-
-            }
-            else if (gameMode == GameMode.easy)
+            //if (gameMode == GameMode.hardcore)
+            //{
+            //    Armor *= 0.1f;
+            //    if (Armor > 40)
+            //        Armor = 40;
+            //
+            //}
+            if (gameMode == GameMode.easy)
             {
                 Armor *= 3f;
             }
