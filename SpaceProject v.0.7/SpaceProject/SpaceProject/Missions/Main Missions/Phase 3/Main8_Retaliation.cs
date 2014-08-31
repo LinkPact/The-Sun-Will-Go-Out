@@ -12,7 +12,7 @@ namespace SpaceProject
     {
         private enum EventID
         {
-            StartTraveling,
+            StartTraveling, 
             WaitForFreighter,
             OutOfRange,
             FreighterLeft,

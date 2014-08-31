@@ -23,6 +23,27 @@ namespace SpaceProject
                 Game.stateManager.overworldState.GetStation("Rebel Station 2"), "AttackOnRebelStation", LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent(1), null, EventTextCanvas.BaseState)));
 
+            //Objectives.Add(new CustomObjective( 
+            //    Game, 
+            //    this, 
+            //    Game.stateManager.overworldState.GetPlanet("Planetnamn"), //<-- Detta bestämmer vilken destination som visas på kartan 
+            //    ObjectiveDescription[0], 
+            //    delegate 
+            //    { 
+            //        //(Kod som körs när objectiven startas) 
+            //    }, 
+            //    delegate 
+            //    { 
+            //        //(Kod som körs kontinuerligt när objectiven är aktiv) 
+            //    }, 
+            //    delegate 
+            //    { 
+            //        //(Här kan du sätta in ditt specifika complete-villkor, när det uppnås startar nästa objective i listan) 
+            //    }, 
+            //    delegate 
+            //    { 
+            //        // Failed-villkor 
+            //    }))); 
         }
 
         public override void StartMission()
