@@ -17,7 +17,7 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            sprite = spriteSheet.GetSubSprite(new Rectangle(1183, 21, 64, 64));
+            sprite = spriteSheet.GetSubSprite(new Rectangle(1183, 86, 64, 64));
             base.Initialize();
             StationCodeName = "OW_Rebel_Fleet";
             LoadStationData(StationCodeName);

@@ -123,6 +123,23 @@ Progress = 2
 Reputation = 3
 State = 0
 
+[MainX3_RebelArc]
+Location = Rebel Fleet
+Name = Main - Rebel Arc
+Introduction = Text explaining you need to go to Telmun.
+ObjectiveText1 = Go to Highfence at coordinates (0,0) and report the pirate attack. 
+PosResponse = ""
+NegResponse = ""
+Accept = ""
+FailText = ""
+EventText1 = You arrive at Telmun.
+ObjectiveCompleted = ""
+Fail = ""
+Reward = 100
+Progress = 2
+Reputation = 3
+State = 1
+
 [SX_Main3_Rebels]
 Location = Highfence
 Name = Main - Rebels

@@ -30,6 +30,7 @@ namespace SpaceProject
         private static Main10_InTheNameOfScience mainInTheNameOfScience;
         private static MainX1_BeginningOfTheEnd mainBeginningOfTheEnd;
         private static MainX2_ContinuationOfTheEnd mainContinuationOfTheEnd;
+        private static MainX3_RebelArc mainRebelArc;
 
         // Side Missions
         private static DebtCollection debtCollection;
@@ -122,6 +123,11 @@ namespace SpaceProject
             mainContinuationOfTheEnd = new MainX2_ContinuationOfTheEnd(game, "P4_ContinuationOfTheEnd", null);
             mainContinuationOfTheEnd.Initialize();
             missions.Add(mainContinuationOfTheEnd);
+
+            // Main X3 - Rebel Arc
+            mainRebelArc = new MainX3_RebelArc(game, "MainX3_RebelArc", null);
+            mainRebelArc.Initialize();
+            missions.Add(mainRebelArc);
 
             // Side Missions
 
