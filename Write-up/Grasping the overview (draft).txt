@@ -1,0 +1,126 @@
+Phase 1
+-------------------------------------
+
+Overview
+
+- The player gets acquainted to the game mechanics
+- The player gets an initial mission (for who? purpose?)
+- The player is sent to Highfence for another mission (why is the player sent there?)
+- This other mission is performed for the Alliance. 
+	It should hopefully be some kind of presentation of the organization.
+- After that mission the player is let free a little bit, to roam around
+	and make a few (maybe not so many) side-quests.
+- After some point (time or missions), something is triggered, and
+	the player gets information to initiate phase 2.
+
+Thoughts
+- The phase should be presented in a way which not makes it to the least interesting story-part
+	of the game.
+- It should be related to the rebels and the alliance. The game isn't big enough to be
+	spent doodling around with un-important fractions. So, worth to think about
+	the beginning another lap.
+
+> Tutorial
+> Initial mission on Border Station
+> Highfence - Soelara transport protection mission
+
+Phase 2
+-------------------------------------
+
+Overview
+
+- It is now time for the player to do a few missions for the Alliance (2-4? We could probably cut down
+	from our current visions).
+- It is probably good if the player not get too invested in the Alliance, as he/she soon will be
+	ripped away, and put into the rebel fraction.
+- I guess that the ripping-away-part still require us to come up with one of the more interesting
+	explanations in the game for that transition.
+- Nevertheless, the player gets due to some reason missions from the Alliance.
+- First, a nice mission. Help those nice people out.
+- Second, a less nice mission. Who ARE those people?`
+- Third, the rebel mission. Here, your allegience to the Alliance is ended due to some reason.
+- It would probably be interesting to interact with both a very representative Alliance character,
+	as well as with another character which can put some seeds of doubt into the players head.
+
+> Defend colony mission, the player travels with the Alliance to New Norrland to protect the Alliance's interests
+> ... Maybe one interlude mission?
+> Kill The Rebels, Kill Them All. The player travels with the Alliance to the Rebel base to squash the resistance.
+> The squashing backfires, and the player leaves the Alliance. 
+	Why? Maybe another person strongly recommended it? Where you a rebel infiltrator?? 
+	Did your contact want you to prevent the attack?
+	Maybe even you played a role in the prevention?	
+
+Phase 3
+-------------------------------------
+
+Overview
+
+- We have now landed at the rebels place. I'd guess that we need two characters to interact to here too.
+- We have got a dramatic introduction (which still needs to be thought through!)
+- First, we will help out the rebels through attacking a transporter ship of interest. This transporter
+	contains interesting materials of interest for the Alliance.
+
+
+- Soon there after you are sent to retrieve a scientist from Peye. You return him to the rebels.
+- You are then sent away from the rebels by an external. 
+
+> You are helping the rebels now. Probably with an initial fuzzy feeling about it.
+> Start out by raiding an Alliance ship to collect its cargo.
+> ... Something happens here? Inducing dislike for the rebels?
+> Soon you are travelling to retrieve a scientist living at Peye, in order to extract information about Murt.
+> After the scientist is retrieved it is time jump over board, leaving the ship. Travelling for some other plans.
+
+Phase 4
+-------------------------------------
+
+Overview
+
+- Now interesting things are happening. You are travelling to Highfence due to some reason for further instructions.
+- Here you meet up with some interesting people. Together you are travelling to Soelara or New Norrland where you
+	have some kind of meeting for further plans.
+- You are sent to Fortrun to get something, either information, materials or something else.
+- Here you realize that the Grand And Moral Plan has failed.
+- What to do now? What to do now? Time to force the player to do a nice decision based on all the information
+	gathered up to this point.
+
+> You are travelling to Highfence while being followed. After 1-2 levels you rendevouz with someone there who gives you more info.
+> Next, travel either to a meeting place, or maybe even directly to Fortrun. Now the plan is clear. You also have some friendly company.
+> On your way to Fortrun you are confronted and will be asked a few questions. This will probably end in a quite tough level.
+> On Fortrun you realize your plans have kallopsat, and it is now up to you with friends to decide which path to go.
+
+> From here you can go with the Alliance, or the Rebels, or taking it all in your own hands.
+
+
+PROBLEMS WITH THE CURRENT STORY
+
+-> The first part of the game does not have much purpose, not a strong story here, more doodling around
+-> Also in the Alliance part you are partly doodling around. It might pique the interest of the player if we could
+	put what he is doing there in a bigger picture?
+-> The total story arc we have is interesting, but might be too big. We need the player
+	to change allegiance first to the Alliance, then to the Rebels, and lastly, break free and think for himself.
+	That might feel a bit forced?
+-> The center of the game (Murt) is currently introduced close to the end of the game, which reduces the impact on
+	the story it could have. It might feel like you are doodling around for a while, and then BAM, you
+	are playing out an epic ending. It would have been perfect if we gradually could build up the tension
+	through all the phases, for a climax in the fourth phase.
+-> We need a lot of characters to be able to depict a nuanced picture of our complex organizations. Nuanced depictions
+	takes significant amount of words and space in the story. Therefore, it would be better for us to have fewer,
+	deeper character. How should we solve this?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
