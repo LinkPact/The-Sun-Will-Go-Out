@@ -613,6 +613,11 @@ namespace SpaceProject
 
                 game.messageBox.DisplayMessage("Time to make your choice! Go to Telmun!");
             }
+
+            if (MissionManager.mainRebelArc.MissionState == StateOfMission.Completed)
+            {
+                game.stateManager.ChangeState("OutroState");
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
