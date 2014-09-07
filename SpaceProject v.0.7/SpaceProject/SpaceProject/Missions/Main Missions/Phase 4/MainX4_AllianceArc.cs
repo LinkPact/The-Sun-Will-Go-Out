@@ -8,20 +8,20 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
-    public class MainX3_RebelArc : Mission
+    public class MainX4_AllianceArc : Mission
     {
-        private readonly string FIRST_ALLIANCE_LEVEL = "flightTraining_1";
-        private readonly string SECOND_ALLIANCE_LEVEL = "flightTraining_2";
+        private readonly string FIRST_ATTACK = "flightTraining_1";
+        private readonly string SECOND_ATTACK = "flightTraining_2";
         private readonly string FINAL_BATTLE = "flightTraining_3";
 
         private enum EventID
         {
             ArriveAtTelmun,
-            BetweenAllianceAttacks,
-            KilledOnAllianceLevel,
-            AfterAllianceAttacks
+            BetweenAttacks,
+            KilledOnLevel,
+            AfterAttacks
         }
-        public MainX3_RebelArc(Game1 Game, string section, Sprite spriteSheet) :
+        public MainX4_AllianceArc(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
         }
@@ -35,15 +35,15 @@ namespace SpaceProject
                     GetEvent((int)EventID.ArriveAtTelmun), null, EventTextCanvas.BaseState)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetPlanet("Telmun"), FIRST_ALLIANCE_LEVEL,
+                Game.stateManager.overworldState.GetPlanet("Telmun"), FIRST_ATTACK,
                 LevelStartCondition.TextCleared,
-                new EventTextCapsule(GetEvent((int)EventID.BetweenAllianceAttacks),
-                    GetEvent((int)EventID.KilledOnAllianceLevel), EventTextCanvas.BaseState)));
+                new EventTextCapsule(GetEvent((int)EventID.BetweenAttacks),
+                    GetEvent((int)EventID.KilledOnLevel), EventTextCanvas.BaseState)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[2],
-                Game.stateManager.overworldState.GetPlanet("Telmun"), SECOND_ALLIANCE_LEVEL,
+                Game.stateManager.overworldState.GetPlanet("Telmun"), SECOND_ATTACK,
                 LevelStartCondition.TextCleared,
-                new EventTextCapsule(GetEvent((int)EventID.AfterAllianceAttacks), GetEvent((int)EventID.KilledOnAllianceLevel),
+                new EventTextCapsule(GetEvent((int)EventID.AfterAttacks), GetEvent((int)EventID.KilledOnLevel),
                     EventTextCanvas.BaseState)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[3],
@@ -53,7 +53,7 @@ namespace SpaceProject
 
         public override void StartMission()
         {
-            MissionManager.RemoveAvailableMission("Main - Alliance Arc");
+            MissionManager.RemoveAvailableMission("Main - Rebel Arc");
         }
 
         public override void OnLoad()

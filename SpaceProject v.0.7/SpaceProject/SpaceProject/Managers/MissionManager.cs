@@ -31,6 +31,7 @@ namespace SpaceProject
         private static MainX1_BeginningOfTheEnd mainBeginningOfTheEnd;
         private static MainX2_ContinuationOfTheEnd mainContinuationOfTheEnd;
         private static MainX3_RebelArc mainRebelArc;
+        private static MainX4_AllianceArc mainAllianceArc;
 
         // Side Missions
         private static DebtCollection debtCollection;
@@ -128,6 +129,11 @@ namespace SpaceProject
             mainRebelArc = new MainX3_RebelArc(game, "MainX3_RebelArc", null);
             mainRebelArc.Initialize();
             missions.Add(mainRebelArc);
+
+            // Main X4 - Alliance Arc
+            mainAllianceArc = new MainX4_AllianceArc(game, "MainX4_AllianceArc", null);
+            mainAllianceArc.Initialize();
+            missions.Add(mainAllianceArc);
 
             // Side Missions
 
@@ -230,6 +236,18 @@ namespace SpaceProject
             else
             {
                 return;
+            }
+
+            RefreshLists();
+        }
+
+        public static void RemoveAvailableMission(string missionName)
+        {
+            Mission tempMission = ReturnSpecifiedMission(missionName);
+
+            if (tempMission.MissionState.Equals(StateOfMission.Available))
+            {
+                tempMission.MissionState = StateOfMission.Unavailable;
             }
 
             RefreshLists();
@@ -615,6 +633,11 @@ namespace SpaceProject
             }
 
             if (MissionManager.mainRebelArc.MissionState == StateOfMission.Completed)
+            {
+                game.stateManager.ChangeState("OutroState");
+            }
+
+            else if (MissionManager.mainAllianceArc.MissionState == StateOfMission.Completed)
             {
                 game.stateManager.ChangeState("OutroState");
             }

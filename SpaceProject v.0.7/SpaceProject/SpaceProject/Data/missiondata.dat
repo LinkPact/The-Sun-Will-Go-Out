@@ -146,6 +146,29 @@ Progress = 2
 Reputation = 3
 State = 1
 
+[MainX4_AllianceArc]
+Location = Alliance Fleet
+Name = Main - Alliance Arc
+Introduction = Introduction
+ObjectiveText1 = 1
+ObjectiveText2 = 2
+ObjectiveText3 = 3
+ObjectiveText4 = 4
+PosResponse = ""
+NegResponse = ""
+Accept = Text explaining that you need to go to Telmun (The asteroid belt)
+FailText = ""
+EventText1 = You arrive at Telmun (The asteroid belt).#Text explaining that the rebels are in control of it and that you need to take it back from them.
+EventText2 = Text between first and second attack.
+EventText3 = Text displayed if killed?.
+EventText4 = Text displayed after completing levels.#Text explaining you are now ready to crush the rebels.
+ObjectiveCompleted = ""
+Fail = ""
+Reward = 100
+Progress = 2
+Reputation = 3
+State = 1
+
 [SX_Main3_Rebels]
 Location = Highfence
 Name = Main - Rebels

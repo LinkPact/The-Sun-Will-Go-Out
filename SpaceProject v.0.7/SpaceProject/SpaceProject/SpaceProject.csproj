@@ -190,6 +190,7 @@
     <Compile Include="Missions\Main Missions\Phase 3\Main10_InTheNameOfScience.cs" />
     <Compile Include="Missions\Main Missions\Phase 2\RebelAttack.cs" />
     <Compile Include="Missions\Main Missions\Phase 3\Main8_Retaliation.cs" />
+    <Compile Include="Missions\Main Missions\Phase 4\MainX4_AllianceArc.cs" />
     <Compile Include="Missions\Main Missions\Phase 4\MainX3_RebelArc.cs" />
     <Compile Include="Missions\Main Missions\Phase 4\MainX2_ContinuationOfTheEnd.cs" />
     <Compile Include="Missions\Main Missions\Phase 4\MainX1_BeginningOfTheEnd.cs" />
