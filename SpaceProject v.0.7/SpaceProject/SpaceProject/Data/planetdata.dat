@@ -100,7 +100,7 @@ Gravity = 3.6
 Orbit = 34
 Rotation = 425
 Info = A big planet rich with valuable resources. Heavy exploitation over many years has made the planet's atmosphere extremely hazardous. The Federation outpost on the planet surface has long since been abandoned.
-HasColony = false
+HasColony = true
 
 [SY_GreyPlanet]
 Name = Grey Planet

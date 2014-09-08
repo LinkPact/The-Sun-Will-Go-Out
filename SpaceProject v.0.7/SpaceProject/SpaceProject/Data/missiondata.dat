@@ -169,6 +169,67 @@ Progress = 2
 Reputation = 3
 State = 1
 
+[MainX5_1_OnYourOwnArc]
+Location = Telmun
+Name = Main - On Your Own
+Introduction = Introduction
+ObjectiveText1 = 1
+ObjectiveText2 = 2
+PosResponse = ""
+NegResponse = ""
+Accept = Text displayed after decision.#Text explaining you need to avoid the alliance
+FailText = ""
+EventText1 = Text displayed after avoiding the alliance.#Text explaining you need to avoid the rebels.
+EventText2 = Text displayed after avoiding the rebels.#More text...
+EventText3 = Text displayed when killed on level?
+ObjectiveCompleted = ""
+Fail = ""
+Success = "Good job!"
+Reward = 100
+Progress = 2
+Reputation = 3
+State = 1
+
+[MainX5_2a_BurnIt]
+Location = Telmun
+Name = Main - Burn It
+Introduction = Introduction
+ObjectiveText1 = 1
+PosResponse = ""
+NegResponse = ""
+Accept = Text displayed after decision.#Text explaining you need to avoid the alliance
+FailText = ""
+EventText1 = Text explaining you are setting the explosions and need to survive until the bomb goes off.
+EventText2 = Text displayed when killed on level?
+ObjectiveCompleted = ""
+Fail = ""
+Success = "Good job!"
+Reward = 100
+Progress = 2
+Reputation = 3
+State = 0
+
+[MainX5_2b_Coward]
+Location = Telmun
+Name = Main - Coward
+Introduction = Introduction
+ObjectiveText1 = 1
+PosResponse = ""
+NegResponse = ""
+Accept = Text displayed after decision.#Text explaining you need to avoid the alliance
+FailText = ""
+EventText1 = Text explaining you're a coward and tries to flee.#Text explaining the rebels or alliance are trying to shoot you down and that you need to flee. 
+EventText2 = Text after evading the rebel or alliance ships.
+EventText3 = Text displayed when Telmun(the asteroid belt) explodes.
+EventText4 = Text displayed if killed?
+ObjectiveCompleted = ""
+Fail = ""
+Success = "Good job!"
+Reward = 100
+Progress = 2
+Reputation = 3
+State = 0
+
 [SX_Main3_Rebels]
 Location = Highfence
 Name = Main - Rebels

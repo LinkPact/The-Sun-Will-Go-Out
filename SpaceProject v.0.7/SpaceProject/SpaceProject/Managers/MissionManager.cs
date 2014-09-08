@@ -32,6 +32,9 @@ namespace SpaceProject
         private static MainX2_ContinuationOfTheEnd mainContinuationOfTheEnd;
         private static MainX3_RebelArc mainRebelArc;
         private static MainX4_AllianceArc mainAllianceArc;
+        private static MainX5_1_OnYourOwnArc mainOnYourOwnArc;
+        private static MainX5_2a_BurnIt mainBurnIt;
+        private static MainX5_2b_Coward mainCoward;
 
         // Side Missions
         private static DebtCollection debtCollection;
@@ -134,6 +137,21 @@ namespace SpaceProject
             mainAllianceArc = new MainX4_AllianceArc(game, "MainX4_AllianceArc", null);
             mainAllianceArc.Initialize();
             missions.Add(mainAllianceArc);
+
+            // Main X5_1 - On Your Own Arc
+            mainOnYourOwnArc = new MainX5_1_OnYourOwnArc(game, "MainX5_1_OnYourOwnArc", null);
+            mainOnYourOwnArc.Initialize();
+            missions.Add(mainOnYourOwnArc);
+
+            // Main X5_2a - Burn It
+            mainBurnIt = new MainX5_2a_BurnIt(game, "MainX5_2a_BurnIt", null);
+            mainBurnIt.Initialize();
+            missions.Add(mainBurnIt);
+
+            // Main X5_2b - Coward
+            mainCoward = new MainX5_2b_Coward(game, "MainX5_2b_Coward", null);
+            mainCoward.Initialize();
+            missions.Add(mainCoward);
 
             // Side Missions
 
@@ -635,11 +653,47 @@ namespace SpaceProject
             if (MissionManager.mainRebelArc.MissionState == StateOfMission.Completed)
             {
                 game.stateManager.ChangeState("OutroState");
+                // TODO: Ending 1
             }
 
             else if (MissionManager.mainAllianceArc.MissionState == StateOfMission.Completed)
             {
                 game.stateManager.ChangeState("OutroState");
+                // TODO: Ending 2
+            }
+
+            else if (MissionManager.mainOnYourOwnArc.MissionState == StateOfMission.Completed)
+            {
+                game.messageBox.DisplaySelectionMenu("Try to escape?",
+                    new List<String>() { "Yes", "No"},
+                    new List<System.Action>() { 
+                        delegate 
+                        {
+                            MissionManager.UnlockMission("Main - Coward");
+                            MissionManager.MarkMissionAsActive("Main - Coward");
+                            game.stateManager.planetState.OnEnter();
+                        },
+                        delegate 
+                        {
+                            MissionManager.UnlockMission("Main - Burn It");
+                            MissionManager.MarkMissionAsActive("Main - Burn It");
+                            game.stateManager.planetState.OnEnter();
+                        }});
+
+                MissionManager.mainOnYourOwnArc.MissionState = StateOfMission.CompletedDead;
+            }
+
+            if (MissionManager.mainBurnIt.MissionState == StateOfMission.CompletedDead)
+            {
+                game.stateManager.ChangeState("OutroState");
+                // TODO: Ending 3
+            }
+
+            else if (MissionManager.mainCoward.MissionState == StateOfMission.Completed
+                && game.messageBox.MessageState == MessageState.Invisible)
+            {
+                game.stateManager.ChangeState("OutroState");
+                // TODO: Ending 4
             }
         }
 
