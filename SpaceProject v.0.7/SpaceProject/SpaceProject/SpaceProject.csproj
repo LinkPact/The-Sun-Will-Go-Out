@@ -338,6 +338,7 @@
     <Compile Include="Overworld-part\GameObjects\Ships\OverworldShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\RebelShip.cs" />
     <Compile Include="Overworld-part\GameObjects\ImmobileSpaceObject.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Action.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\FollowPlayerPrio.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Priority.cs" />
     <Compile Include="Overworld-part\GameObjects\Shop.cs" />
