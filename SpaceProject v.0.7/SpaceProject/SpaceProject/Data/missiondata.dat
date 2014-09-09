@@ -256,6 +256,23 @@ Progress = 2
 Reputation = 5
 State = 0
 
+[SX_Main4_ToPhaseTwo]
+Location = Highfence
+Name = Main - To Phase Two
+Introduction = "Go to Fortrun station!"
+ObjectiveText1 = Escort the freighter to Soelara Station
+PosResponse = Okay!
+NegResponse = Not right now
+Accept = "Good!"
+FailText = ""
+EventText1 = You arrive at Fortrun station.
+Success = "Good job!"
+Fail = ""
+Reward = 300
+Progress = 2
+Reputation = 5
+State = 0
+
 [P2_RebelAttack]
 Location = Fotrun Station I
 Name = Attack on the rebels

@@ -24,6 +24,7 @@ namespace SpaceProject
         private static Main1_NewFirstMission mainNewFirstMission;
         private static Main2_Highfence mainHighfence;
         private static Main3_Rebels mainRebels;
+        private static Main4_ToPhaseTwo mainToPhaseTwo;
         private static DefendColony defendColony;
         private static RebelAttack rebelAttack;
         private static Main8_Retaliation mainRetaliation;
@@ -97,6 +98,11 @@ namespace SpaceProject
             mainRebels = new Main3_Rebels(game, "SX_Main3_Rebels", null);
             mainRebels.Initialize();
             missions.Add(mainRebels);
+
+            // Main 4 - To Phase Two
+            mainToPhaseTwo = new Main4_ToPhaseTwo(game, "SX_Main4_ToPhaseTwo", null);
+            mainToPhaseTwo.Initialize();
+            missions.Add(mainToPhaseTwo);
 
             //Defend Colony
             defendColony = new DefendColony(game, "SX_DefendColony", null);
@@ -600,41 +606,47 @@ namespace SpaceProject
             //}
 
             // Unlock missions
-            if (MissionManager.mainNewFirstMission.MissionState == StateOfMission.CompletedDead &&
-                MissionManager.mainHighfence.MissionState == StateOfMission.Unavailable)
+            if (mainNewFirstMission.MissionState == StateOfMission.CompletedDead &&
+                mainHighfence.MissionState == StateOfMission.Unavailable)
             {
                 UnlockMission("Main - Highfence");
                 UnlockMission("Flight Training");
             }
 
-            if (MissionManager.mainHighfence.MissionState == StateOfMission.CompletedDead &&
-                MissionManager.mainRebels.MissionState == StateOfMission.Unavailable)
+            if (mainHighfence.MissionState == StateOfMission.CompletedDead &&
+                mainRebels.MissionState == StateOfMission.Unavailable)
             {
                 UnlockMission("Main - Rebels");
             }
 
+            if (mainRebels.MissionState == StateOfMission.CompletedDead
+                && mainToPhaseTwo.MissionState == StateOfMission.Unavailable)
+            {
+                UnlockMission("Main - To Phase Two");
+            }
+
             // Start second mission after first is completed
-            if (MissionManager.mainNewFirstMission.MissionState == StateOfMission.CompletedDead &&
-                MissionManager.mainHighfence.MissionState == StateOfMission.Available &&
+            if (mainNewFirstMission.MissionState == StateOfMission.CompletedDead &&
+                mainHighfence.MissionState == StateOfMission.Available &&
                 mainHighfence.MissionHelper.IsPlayerOnStation("Border Station"))
             {
-                MissionManager.MarkMissionAsActive("Main - Highfence");
+                MarkMissionAsActive("Main - Highfence");
             }
 
             // Start part 2 of final mission
-            if (MissionManager.mainBeginningOfTheEnd.MissionState == StateOfMission.Completed
-                && MissionManager.mainContinuationOfTheEnd.MissionState == StateOfMission.Unavailable)
+            if (mainBeginningOfTheEnd.MissionState == StateOfMission.Completed
+                && mainContinuationOfTheEnd.MissionState == StateOfMission.Unavailable)
             {
-                MissionManager.mainBeginningOfTheEnd.MissionState = StateOfMission.CompletedDead;
-                MissionManager.UnlockMission(mainContinuationOfTheEnd.MissionName);
-                MissionManager.MarkMissionAsActive(mainContinuationOfTheEnd.MissionName);
+                mainBeginningOfTheEnd.MissionState = StateOfMission.CompletedDead;
+                UnlockMission(mainContinuationOfTheEnd.MissionName);
+                MarkMissionAsActive(mainContinuationOfTheEnd.MissionName);
             }
 
             // Final mission stuff
-            if (MissionManager.mainContinuationOfTheEnd.MissionState == StateOfMission.Completed
+            if (mainContinuationOfTheEnd.MissionState == StateOfMission.Completed
                 && GameStateManager.currentState.Equals("OverworldState"))
             {
-                MissionManager.mainContinuationOfTheEnd.MissionState = StateOfMission.CompletedDead;
+                mainContinuationOfTheEnd.MissionState = StateOfMission.CompletedDead;
 
                 RebelFleet rebelFleet = new RebelFleet(game,
                     game.stateManager.overworldState.GetSectorX.GetSpriteSheet(), Vector2.Zero);
@@ -650,46 +662,46 @@ namespace SpaceProject
                 game.messageBox.DisplayMessage("Time to make your choice! Go to Telmun!");
             }
 
-            if (MissionManager.mainRebelArc.MissionState == StateOfMission.Completed)
+            if (mainRebelArc.MissionState == StateOfMission.Completed)
             {
                 game.stateManager.ChangeState("OutroState");
                 // TODO: Ending 1
             }
 
-            else if (MissionManager.mainAllianceArc.MissionState == StateOfMission.Completed)
+            else if (mainAllianceArc.MissionState == StateOfMission.Completed)
             {
                 game.stateManager.ChangeState("OutroState");
                 // TODO: Ending 2
             }
 
-            else if (MissionManager.mainOnYourOwnArc.MissionState == StateOfMission.Completed)
+            else if (mainOnYourOwnArc.MissionState == StateOfMission.Completed)
             {
                 game.messageBox.DisplaySelectionMenu("Try to escape?",
                     new List<String>() { "Yes", "No"},
                     new List<System.Action>() { 
                         delegate 
                         {
-                            MissionManager.UnlockMission("Main - Coward");
-                            MissionManager.MarkMissionAsActive("Main - Coward");
+                            UnlockMission("Main - Coward");
+                            MarkMissionAsActive("Main - Coward");
                             game.stateManager.planetState.OnEnter();
                         },
                         delegate 
                         {
-                            MissionManager.UnlockMission("Main - Burn It");
-                            MissionManager.MarkMissionAsActive("Main - Burn It");
+                            UnlockMission("Main - Burn It");
+                            MarkMissionAsActive("Main - Burn It");
                             game.stateManager.planetState.OnEnter();
                         }});
 
-                MissionManager.mainOnYourOwnArc.MissionState = StateOfMission.CompletedDead;
+                mainOnYourOwnArc.MissionState = StateOfMission.CompletedDead;
             }
 
-            if (MissionManager.mainBurnIt.MissionState == StateOfMission.CompletedDead)
+            if (mainBurnIt.MissionState == StateOfMission.CompletedDead)
             {
                 game.stateManager.ChangeState("OutroState");
                 // TODO: Ending 3
             }
 
-            else if (MissionManager.mainCoward.MissionState == StateOfMission.Completed
+            else if (mainCoward.MissionState == StateOfMission.Completed
                 && game.messageBox.MessageState == MessageState.Invisible)
             {
                 game.stateManager.ChangeState("OutroState");

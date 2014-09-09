@@ -187,6 +187,7 @@
     <Compile Include="MissionStuff\EventText.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\CloseInOnLocationObjective.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\FollowObjective.cs" />
+    <Compile Include="Missions\Main Missions\Phase 1\Main4_ToPhaseTwo.cs" />
     <Compile Include="Missions\Main Missions\Phase 3\Main10_InTheNameOfScience.cs" />
     <Compile Include="Missions\Main Missions\Phase 2\RebelAttack.cs" />
     <Compile Include="Missions\Main Missions\Phase 3\Main8_Retaliation.cs" />
