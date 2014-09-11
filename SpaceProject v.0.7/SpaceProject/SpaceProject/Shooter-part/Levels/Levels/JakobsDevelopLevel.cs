@@ -14,20 +14,20 @@ namespace SpaceProject
             : base(Game, spriteSheet, player, missionType)
         {
             Name = "JakobDevelop";
+            LevelWidth = 500;
         }
 
         public override void Initialize()
         {
             base.Initialize();
-            LevelWidth = 500;
 
-            LevelEvent swarm = new EvenSwarm(Game, player, spriteSheet, this, EnemyType.R_mosquito, 0, 3500, 10);
+            BossLevelEvent boss = new BossLevelEvent(Game, player, spriteSheet, this, 0);
+            untriggeredEvents.Add(boss);
+
+            LevelEvent swarm = new EvenSwarm(Game, player, spriteSheet, this, EnemyType.meteor, 0, 35000, 10);
             untriggeredEvents.Add(swarm);
 
-            LevelEvent point = new SingleEnemy(Game, player, spriteSheet, this, EnemyType.R_thickShooter, 200);
-            untriggeredEvents.Add(point);
-
-            SetCustomVictoryCondition(LevelObjective.Time, 3);
+            SetCustomVictoryCondition(LevelObjective.Boss, -1);
 
         }
     }

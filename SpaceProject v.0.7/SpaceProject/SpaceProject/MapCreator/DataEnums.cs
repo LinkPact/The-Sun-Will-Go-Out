@@ -11,7 +11,9 @@ public enum LevelObjective
     KillNumberOrSurvive,
     KillNumber,
     CountMayNotPass,
-    Time
+    Time,
+
+    Boss            // Can only be created in custom logic
 }
 
 public enum Movement

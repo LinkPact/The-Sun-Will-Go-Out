@@ -82,6 +82,22 @@ namespace SpaceProject
         private List<LevelEvent> activeEvents = new List<LevelEvent>();
         private List<LevelEvent> deadEvents = new List<LevelEvent>();
 
+        public Boolean HasBossEvents()
+        {
+            foreach (LevelEvent event_ in untriggeredEvents)
+            {
+                if (event_ is BossLevelEvent)
+                    return true;
+            }
+
+            foreach (LevelEvent event_ in activeEvents)
+            {
+                if (event_ is BossLevelEvent)
+                    return true;
+            }
+            return false;
+        }
+
         bool eventsOver;
 
         public Vector2 PlayerPosition { get { return player.Position; } }
@@ -131,13 +147,13 @@ namespace SpaceProject
         {
             get
             {
-                bool isLevelComplete = false;
+                bool isLevelCompleted = false;
                 switch (levelObjective)
                 {
                     case LevelObjective.Time:
                         {
                             if (playTime > victoryTime && player.HP > 0)
-                                isLevelComplete = true;
+                                isLevelCompleted = true;
 
                             break;
                         }
@@ -147,16 +163,22 @@ namespace SpaceProject
                     case LevelObjective.KillPercentageOrSurvive:
                         {
                             if (enemiesKilled >= killCountForVictory)
-                                isLevelComplete = true;
+                                isLevelCompleted = true;
 
+                            break;
+                        }
+                    case LevelObjective.Boss:
+                        {
+                            Boolean hasLevelBossesLeft = HasBossEvents();
+                            isLevelCompleted = !hasLevelBossesLeft;
                             break;
                         }
                 }
 
                 if (winOnFinish && IsMapCompleted)
-                    isLevelComplete = true;
+                    isLevelCompleted = true;
 
-                return isLevelComplete;
+                return isLevelCompleted;
             }
         }
         
@@ -554,6 +576,11 @@ namespace SpaceProject
                         SetVictoryToKillNumberOrSurvive(killCount);
                         break;
                     }
+                case LevelObjective.Boss:
+                    {
+                        SetVictoryToKillBossEvents(objectiveValue);
+                        break;
+                    }
                 default:
                     {
                         throw new ArgumentException("Non-implemented objective encountered!");
@@ -587,6 +614,11 @@ namespace SpaceProject
         {
             levelObjective = LevelObjective.KillNumberOrSurvive;
             killCountForVictory = objectiveValue;
+            winOnFinish = true;
+        }
+        private void SetVictoryToKillBossEvents(int objectiveValue)
+        {
+            levelObjective = LevelObjective.Boss;
             winOnFinish = true;
         }
         #endregion
