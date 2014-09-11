@@ -81,7 +81,7 @@ namespace SpaceProject
             RemoveParticle();
         }
 
-        protected void AddParticle()
+        public void AddParticle()
         {
             Particle par = new Particle(Game, Game.spriteSheetOverworld);
             par.Initialize(this);

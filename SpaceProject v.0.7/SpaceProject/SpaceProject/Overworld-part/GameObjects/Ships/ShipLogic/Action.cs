@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
-    public class ShipAction
+    abstract public class ShipAction
     {
         public virtual void Update(GameTime gameTime) { }
         public bool Finished;
     }
 
-    public class CompositeAction : ShipAction
+    abstract public class CompositeAction : ShipAction
     {
         public void Add(ShipAction a)
         {
@@ -21,7 +20,7 @@ namespace SpaceProject
         protected List<ShipAction> Actions;
     }
 
-    public class ParallelAction : CompositeAction
+    abstract public class ParallelAction : CompositeAction
     {
         public override void Update(GameTime gameTime)
         {
@@ -34,7 +33,7 @@ namespace SpaceProject
         }
     }
 
-    public class SequentialAction : CompositeAction
+    abstract public class SequentialAction : CompositeAction
     {
         public override void Update(GameTime gameTime)
         {
@@ -48,7 +47,7 @@ namespace SpaceProject
         }
     }
 
-    public class PriorityAction : CompositeAction
+    abstract public class PriorityAction : CompositeAction
     {
         public override void Update(GameTime gameTime)
         {

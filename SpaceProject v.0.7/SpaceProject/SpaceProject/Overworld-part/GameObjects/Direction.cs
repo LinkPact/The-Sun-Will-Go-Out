@@ -10,7 +10,7 @@ namespace SpaceProject
     {
         private Vector2 scaledDirection;
 
-        public Direction Zero
+        public static Direction Zero
         {
             get { return new Direction(Vector2.Zero); }
         }
