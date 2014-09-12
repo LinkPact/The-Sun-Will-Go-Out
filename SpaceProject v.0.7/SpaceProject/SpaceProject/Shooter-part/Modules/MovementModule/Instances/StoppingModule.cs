@@ -15,16 +15,16 @@ namespace SpaceProject
         protected int stopTime;
         protected int currentStopCount;
 
-        public StoppingModule(Game1 game, Boolean isFullStop)
+        public StoppingModule(Game1 game, Boolean isFullStop, float stopY = 250, float stopYVariation = 200)
             : base(game)
         {
+            this.stopY = stopY;
+            this.stopYVariation = stopYVariation;
             this.isFullstop = isFullStop;
         }
 
         public override void Setup(GameObjectVertical obj)
         {
-            stopY = 250;
-            stopYVariation = 200;
             stopY += random.Next((int)stopYVariation) - stopYVariation / 2;
 
             if (!isFullstop)

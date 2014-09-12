@@ -119,6 +119,11 @@ namespace SpaceProject
             Random r = new Random(DateTime.Now.Millisecond);
             return r.Next((int)lootValue, 2*(int)lootValue);
         }
+
+        public void SetBossMovement(float yPos)
+        {
+            movementModule = new StoppingModule(Game, true, yPos, 0);
+        }
         
         public void SetMovement(Movement movement)
         {

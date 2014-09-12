@@ -21,7 +21,7 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            BossLevelEvent boss = new BossLevelEvent(Game, player, spriteSheet, this, 0);
+            BossLevelEvent boss = new EliminationBoss(Game, player, spriteSheet, this, 0);
             untriggeredEvents.Add(boss);
 
             LevelEvent swarm = new EvenSwarm(Game, player, spriteSheet, this, EnemyType.meteor, 0, 35000, 10);

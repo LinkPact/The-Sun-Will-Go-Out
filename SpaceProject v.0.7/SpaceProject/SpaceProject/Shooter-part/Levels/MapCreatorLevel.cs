@@ -30,7 +30,6 @@ namespace SpaceProject
             else
                 LevelLoader.ReadLevelFile(filePath);
             
-            
             String[] textData;
             if (LevelLoader.HasNewOutput())
             {
@@ -142,8 +141,6 @@ namespace SpaceProject
             String enemy = enemyData;
             EnemyType identifier = DataConversionLibrary.GetEnemyEnumFromString(enemy);
             Movement movement = DataConversionLibrary.GetMovementEnumFromString(movementData);
-
-
 
             #region switchEventData
             switch (eventData)

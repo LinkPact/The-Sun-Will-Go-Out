@@ -156,17 +156,6 @@ namespace SpaceProject
             triggerStatus = Trigger.Completed;
         }
         
-        public void SetMovement(Movement movement)
-        {
-            this.movement = movement;
-        }
-        
-        public void SetMovement(Movement movement, float sightRange)
-        {
-            this.movement = movement;
-            this.sightRange = sightRange;
-        }
-        
         public void CreatureSetup(SetupCreature setupCreature)
         {
             this.setupCreature = setupCreature;
@@ -468,13 +457,14 @@ namespace SpaceProject
         #endregion
 
         #region ReturnCreature(...)
+        // REALLY NEED TO CLEAN UP THIS PART OF THE CODE / Jakob 140912
         protected VerticalShooterShip ReturnCreature()
         {
             xPos = (float)(random.NextDouble() * 800);
             VerticalShooterShip creature = RetrieveCreatureFromEnum(enemyType);
             creature = StandardCreatureSetup(creature);
             creature.Position = new Vector2(xPos, 0);
-            creature.MovementSetup();
+            //creature.MovementSetup(); // I think this is done elsewhere, will remove later / Jakob 140912
 
             return creature;
         }
@@ -486,7 +476,7 @@ namespace SpaceProject
             VerticalShooterShip creature = RetrieveCreatureFromEnum(enemyType);
             creature = StandardCreatureSetup(creature);
             creature.Position = new Vector2(xPos, 0);
-            creature.MovementSetup();
+            //creature.MovementSetup();
 
             return creature;
         }
@@ -498,7 +488,7 @@ namespace SpaceProject
             VerticalShooterShip creature = RetrieveCreatureFromEnum(enemyType);
             creature = StandardCreatureSetup(creature);
             creature.Position = position;
-            creature.MovementSetup();
+            //creature.MovementSetup();
 
             return creature;
         }
