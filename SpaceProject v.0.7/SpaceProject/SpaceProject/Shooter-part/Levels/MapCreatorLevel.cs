@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using SpaceProject.MapCreator;
 
-namespace SpaceProject
+namespace SpaceProject.MapCreator
 {
     /* This class is a general class used to read data from textfiles created by MapCreator
      * The target save file is entered in the constructor (filePath)
