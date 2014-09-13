@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 namespace SpaceProject
 {
     /// <summary>
-    /// 
+    /// Instance of one of the ship that populates the overworld. 
     /// </summary>
     class PirateShip : OverworldShip
     {
@@ -15,7 +15,6 @@ namespace SpaceProject
         private int viewRadius;
         private bool roam;
         public static bool FollowPlayer = true;
-        public Vector2 destination;
 
         private Sector sector = null;
 
