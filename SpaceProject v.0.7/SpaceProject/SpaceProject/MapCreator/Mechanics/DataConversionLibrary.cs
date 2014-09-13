@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace SpaceProject
+namespace SpaceProject.MapCreator
 {
     /// <summary> Library class for characteristics of events.
     /// Library class for the different characteristics of events.

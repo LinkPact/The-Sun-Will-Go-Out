@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Text.RegularExpressions;
 
-namespace SpaceProject
+namespace SpaceProject.MapCreator
 {
     //Super-class to all clickable objects.
     //Contains basic drawing logic, and basic mousedetection logic.

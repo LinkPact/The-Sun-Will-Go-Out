@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace SpaceProject
+namespace SpaceProject.MapCreator
 {
     //Button used to run the current level
     class RunLevelButton : MapCreatorButton

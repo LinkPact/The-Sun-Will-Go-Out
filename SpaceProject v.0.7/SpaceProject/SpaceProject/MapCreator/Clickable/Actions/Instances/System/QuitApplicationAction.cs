@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SpaceProject
+namespace SpaceProject.MapCreator
 {
     public class QuitApplicationAction : SystemAction
     {

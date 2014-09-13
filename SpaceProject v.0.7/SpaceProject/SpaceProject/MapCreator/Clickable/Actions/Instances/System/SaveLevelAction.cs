@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SpaceProject
+namespace SpaceProject.MapCreator
 {
     //Action class which calls methods to save the level to a text file
     class SaveLevelAction : LevelNonIncrAction

@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Text.RegularExpressions;
 
-namespace SpaceProject
+namespace SpaceProject.MapCreator
 {
     //Class handing an array of squares. There is not much function in this class,
     //it mostly acts as a container for the squares.

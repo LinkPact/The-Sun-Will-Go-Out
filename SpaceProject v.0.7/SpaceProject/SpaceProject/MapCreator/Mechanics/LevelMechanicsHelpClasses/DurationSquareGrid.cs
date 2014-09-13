@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace SpaceProject
+namespace SpaceProject.MapCreator
 {
     class DurationSquareGrid : SquareGrid
     {

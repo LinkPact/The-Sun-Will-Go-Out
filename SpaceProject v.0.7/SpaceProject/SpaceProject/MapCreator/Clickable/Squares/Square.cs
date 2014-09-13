@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace SpaceProject
+namespace SpaceProject.MapCreator
 {
     // Visualization of a single event in the level.
     public abstract class Square : Clickable

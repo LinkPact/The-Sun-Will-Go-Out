@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using Microsoft.Xna.Framework;
 using System.Globalization;
 
-namespace SpaceProject
+namespace SpaceProject.MapCreator
 {
     //Class that will contain the levels gathered data as text.
     //Will be able to interact both with textfiles and other classes.

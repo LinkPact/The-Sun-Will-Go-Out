@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace SpaceProject
+namespace SpaceProject.MapCreator
 {
     //Button used to save the current level
     class SaveLevelButton : MapCreatorButton

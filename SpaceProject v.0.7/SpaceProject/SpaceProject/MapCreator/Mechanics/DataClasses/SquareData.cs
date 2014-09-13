@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using System.Text.RegularExpressions;
 
-namespace SpaceProject
+namespace SpaceProject.MapCreator
 {
     //Contains basal information about square that can be read
     //directly from textfile.

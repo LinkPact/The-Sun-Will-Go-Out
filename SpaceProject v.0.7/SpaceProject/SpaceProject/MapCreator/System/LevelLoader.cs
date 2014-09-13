@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using Microsoft.VisualBasic;
 
-namespace SpaceProject
+namespace SpaceProject.MapCreator
 {
     public static class LevelLoader
     {

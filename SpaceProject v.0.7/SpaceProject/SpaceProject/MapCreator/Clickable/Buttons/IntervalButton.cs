@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Text.RegularExpressions;
 
-namespace SpaceProject
+namespace SpaceProject.MapCreator
 {
     public class IntervalButton : Clickable
     {
