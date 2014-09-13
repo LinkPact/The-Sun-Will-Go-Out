@@ -410,6 +410,7 @@
     <Compile Include="Overworld-part\Interface\MessageBox.cs" />
     <Compile Include="Overworld-part\SpaceRegions\SpaceRegion.cs" />
     <Compile Include="Overworld-part\StaticFunctions.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />

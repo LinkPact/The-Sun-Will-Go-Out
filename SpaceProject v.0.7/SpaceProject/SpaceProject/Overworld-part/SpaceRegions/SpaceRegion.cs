@@ -115,6 +115,11 @@ namespace SpaceProject
                     {
                         ((Beacon)gameObjects[i]).Interact();
                     }
+
+                    else if (gameObjects[i] is SubInteractiveObject)
+                    {
+                        ((SubInteractiveObject)gameObjects[i]).Interact();
+                    }
                 }
 
             }
@@ -161,6 +166,12 @@ namespace SpaceProject
                         {
                             game.helper.DisplayText("Press 'Enter' to interact with beacon.");
                         }
+                    }
+
+                    else if (gameObjects[i] is SubInteractiveObject)
+                    {
+                        CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i]);
+                        game.helper.DisplayText("Press 'Enter' to investigate.");
                     }
                 }
             }

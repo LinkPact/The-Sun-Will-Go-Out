@@ -49,7 +49,8 @@ namespace SpaceProject
             sectorXStar = new System1Star(game, spriteSheet);
             sectorXStar.Initialize();
 
-            soelara = new Soelara(game, spriteSheet, offset);
+            soelara = new Soelara(game, spriteSheet, game.messageBox);
+
             lavis = new Lavis(game, spriteSheet, offset);
             fotrun = new Fotrun(game, spriteSheet, offset);
             highfence = new Highfence(game, spriteSheet, offset);
