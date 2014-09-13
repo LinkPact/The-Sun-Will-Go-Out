@@ -18,9 +18,6 @@ namespace SpaceProject
         public override void Initialize()
         {
             sprite = spriteSheet.GetSubSprite(new Rectangle(311, 966, 412, 412));
-            scale = 1f;
-            layerDepth = 0.3f;
-            color = Color.White;
             position = new Vector2(100000, 112000);
 
             base.Initialize();

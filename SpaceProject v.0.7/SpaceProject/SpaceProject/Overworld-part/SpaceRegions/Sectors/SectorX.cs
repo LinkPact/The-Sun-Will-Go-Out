@@ -49,8 +49,11 @@ namespace SpaceProject
             sectorXStar = new System1Star(game, spriteSheet);
             sectorXStar.Initialize();
 
+            // Sub-interactive objects
             soelara = new Soelara(game, spriteSheet, game.messageBox);
+            fotrunStation2 = new FotrunStation2(game, spriteSheet, game.messageBox);
 
+            // Planets
             lavis = new Lavis(game, spriteSheet, offset);
             fotrun = new Fotrun(game, spriteSheet, offset);
             highfence = new Highfence(game, spriteSheet, offset);
@@ -63,10 +66,10 @@ namespace SpaceProject
             newNorrland.Initialize();
             peye.Initialize();
 
+            // Stations
             lavisStation = new LavisStation(game, spriteSheet, lavis.position);
             soelaraStation = new SoelaraStation(game, spriteSheet, soelara.position);
             fotrunStation1 = new FotrunStation1(game, spriteSheet, fotrun.position);
-            fotrunStation2 = new FotrunStation2(game, spriteSheet, fotrun.position);
             lavisStation.Initialize();
             soelaraStation.Initialize();
             fotrunStation1.Initialize();

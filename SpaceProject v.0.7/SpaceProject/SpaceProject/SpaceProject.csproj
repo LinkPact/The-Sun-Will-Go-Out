@@ -353,7 +353,7 @@
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation3.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation2.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation1.cs" />
-    <Compile Include="Overworld-part\GameObjects\Stations\SectorX\FotrunStation2.cs" />
+    <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\FotrunStation2.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\SectorX\FotrunStation1.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\ShopInventoryEntry.cs" />
     <Compile Include="Overworld-part\Interface\BeaconMenu.cs" />
@@ -391,7 +391,7 @@
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\SectorX\Fotrun.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\Overworld\MediumAstroid.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\SectorX\Peye.cs" />
-    <Compile Include="Overworld-part\GameObjects\Celestial bodies\SectorX\Soelara.cs" />
+    <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Soelara.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\System\System1Star.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\System\System2Star.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\System\System3Star.cs" />

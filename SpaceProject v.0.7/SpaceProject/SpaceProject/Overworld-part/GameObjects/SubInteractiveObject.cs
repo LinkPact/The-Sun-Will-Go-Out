@@ -25,6 +25,10 @@ namespace SpaceProject
 
             text = new List<string>();
             options = new List<string>();
+
+            scale = 1f;
+            layerDepth = 0.3f;
+            color = Color.White;
         }
 
         public override void Update(GameTime gameTime)
