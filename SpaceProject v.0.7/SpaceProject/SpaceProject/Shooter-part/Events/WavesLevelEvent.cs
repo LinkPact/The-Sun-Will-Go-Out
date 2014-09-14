@@ -50,7 +50,7 @@ namespace SpaceProject
             {
                 if (package.StartPassed(timePassed))
                 {
-                    package.CreateCreature();
+                    package.CreateCreature(level);
                     removeList.Add(package);
                 }
             }

@@ -34,7 +34,9 @@ public enum Movement
     FullStop,
     RightHorizontal,
     LeftHorizontal,
-    AI
+    AI,
+
+    BossStop_X
 }
 
 //The different base states for squares.

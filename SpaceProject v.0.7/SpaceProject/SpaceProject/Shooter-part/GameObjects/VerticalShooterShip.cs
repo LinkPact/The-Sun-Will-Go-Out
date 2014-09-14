@@ -123,12 +123,13 @@ namespace SpaceProject
         public void SetBossMovement(float yPos)
         {
             movementModule = new StoppingModule(Game, true, yPos, 0);
+            movementModule.Setup(this);
         }
         
         public void SetMovement(Movement movement)
         {
             this.movement = movement;
-            MovementSetup();
+            //MovementSetup();
         }
         
         public void MovementSetup()

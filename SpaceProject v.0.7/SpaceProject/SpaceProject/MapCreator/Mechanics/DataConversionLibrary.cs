@@ -97,6 +97,8 @@ namespace SpaceProject
             movementLibrary.Add(Movement.FullStop, "fs");
             movementLibrary.Add(Movement.RightHorizontal, "ho");
             movementLibrary.Add(Movement.AI, "ai");
+
+            movementLibrary.Add(Movement.BossStop_X, "xx");
         }
 
         public static string GetEnemyStringFromEnum(EnemyType type)

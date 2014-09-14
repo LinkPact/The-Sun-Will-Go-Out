@@ -56,6 +56,14 @@ namespace SpaceProject
             }
         }
 
+        //private void NormalizePositionsTEMPORARY_SOLUTION()
+        //{
+        //    foreach (CreaturePackage package in bossCreatures)
+        //    { 
+        //        package.
+        //    }
+        //}
+
         private void CreateCreatures()
         {
             List<CreaturePackage> removeList = new List<CreaturePackage>();
@@ -63,7 +71,7 @@ namespace SpaceProject
             {
                 if (package.StartPassed(timePassed))
                 {
-                    package.CreateCreature();
+                    package.CreateCreature(level);
                     removeList.Add(package);
                 }
             }

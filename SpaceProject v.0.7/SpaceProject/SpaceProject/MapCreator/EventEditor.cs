@@ -93,6 +93,8 @@ namespace SpaceProject
             SortedDictionary<string, EventSetting> time = new SortedDictionary<string, EventSetting>();
             time.Add("T", new EventSetting("Time", GetObjectiveSettingPosition(0), 20));
 
+            SortedDictionary<string, EventSetting> bossDummy = new SortedDictionary<string, EventSetting>();
+
             masterObjectiveDictionary.Add(LevelObjective.Finish, finish);
             masterObjectiveDictionary.Add(LevelObjective.KillNumber, killNumber);
             masterObjectiveDictionary.Add(LevelObjective.KillPercentage, killPercentage);
@@ -100,6 +102,7 @@ namespace SpaceProject
             masterObjectiveDictionary.Add(LevelObjective.KillPercentageOrSurvive, killPercentageOrSurvive);
             masterObjectiveDictionary.Add(LevelObjective.CountMayNotPass, countMayNotPass);
             masterObjectiveDictionary.Add(LevelObjective.Time, time);
+            masterObjectiveDictionary.Add(LevelObjective.Boss, bossDummy);
         }
         #endregion
 

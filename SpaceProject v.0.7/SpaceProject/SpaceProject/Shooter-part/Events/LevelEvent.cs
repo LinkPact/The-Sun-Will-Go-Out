@@ -382,30 +382,56 @@ namespace SpaceProject
             return creature;
         }
 
-        #region CreateCreature(...)
-        protected void CreateCreature()
+        protected void CreateCreature(float xPos = -1f)
         {
-            VerticalCreationLogic(new Vector2(-1,0), CreationFlag.WITHOUT_POSITION);
-        }
-        
-        protected void CreateCreature(float xPos)
-        {
-            if (xPos == -1f) xPos = level.RelativeOrigin + (float)(random.NextDouble() * level.LevelWidth);
+            CreationFlag flag;
+            if (xPos == -1f)
+                flag = CreationFlag.WITHOUT_POSITION;
+            else
+                flag = CreationFlag.X_POSITION;
+
+            if (xPos == -1f) 
+                xPos = level.RelativeOrigin + (float)(random.NextDouble() * level.LevelWidth);
 
             Vector2 xVector = new Vector2(xPos, 0);
-            VerticalCreationLogic(xVector, CreationFlag.X_POSITION);
+
+            VerticalShooterShip ship = VerticalCreationLogic(xVector, flag);
+            
+            Game.stateManager.shooterState.gameObjects.Add(ship);
         }
         
         protected void CreateCreature(Vector2 position)
         {
             VerticalShooterShip creature = RetrieveCreatureFromEnum(enemyType);
-
-            if (position.X == -1f) position = new Vector2(level.RelativeOrigin + (float)(random.NextDouble() * level.LevelWidth), 0);
-
-            VerticalCreationLogic(position, CreationFlag.VECTOR_POSITION);
+            VerticalShooterShip ship = VerticalCreationLogic(position, CreationFlag.VECTOR_POSITION);
+            Game.stateManager.shooterState.gameObjects.Add(ship);
         }
 
-        private void VerticalCreationLogic(Vector2 position, CreationFlag flag)
+        protected VerticalShooterShip ReturnCreature(float xPos = -1f)
+        {
+            if (xPos == -1f) 
+                xPos = (float)(random.NextDouble() * 800);
+
+            return CreateReturnCreature(new Vector2(xPos, 0));
+        }
+
+        protected VerticalShooterShip ReturnCreature(Vector2 position)
+        {
+            if (position.X == -1f) 
+                position = new Vector2((float)(random.NextDouble() * 800), 0);
+            
+            return CreateReturnCreature(position);
+        }
+
+        private VerticalShooterShip CreateReturnCreature(Vector2 position)
+        {
+            VerticalShooterShip creature = RetrieveCreatureFromEnum(enemyType);
+            creature = StandardCreatureSetup(creature);
+            creature.Position = position;
+            return creature;
+        }
+
+        private VerticalShooterShip VerticalCreationLogic(Vector2 position, CreationFlag flag)
         {
             if (flag != CreationFlag.VECTOR_POSITION)
                 position.Y -= 50; // Setting a startup marginal to not "pop" on the screen
@@ -451,48 +477,9 @@ namespace SpaceProject
             creature.SetLevelWidth(level.LevelWidth);
             creature.MovementSetup();
 
-            Game.stateManager.shooterState.gameObjects.Add(creature);
-        }
-
-        #endregion
-
-        #region ReturnCreature(...)
-        // REALLY NEED TO CLEAN UP THIS PART OF THE CODE / Jakob 140912
-        protected VerticalShooterShip ReturnCreature()
-        {
-            xPos = (float)(random.NextDouble() * 800);
-            VerticalShooterShip creature = RetrieveCreatureFromEnum(enemyType);
-            creature = StandardCreatureSetup(creature);
-            creature.Position = new Vector2(xPos, 0);
-            //creature.MovementSetup(); // I think this is done elsewhere, will remove later / Jakob 140912
-
             return creature;
+
         }
-        
-        protected VerticalShooterShip ReturnCreature(float xPos)
-        {
-            if (xPos == -1f) xPos = (float)(random.NextDouble() * 800);
-
-            VerticalShooterShip creature = RetrieveCreatureFromEnum(enemyType);
-            creature = StandardCreatureSetup(creature);
-            creature.Position = new Vector2(xPos, 0);
-            //creature.MovementSetup();
-
-            return creature;
-        }
-        
-        protected VerticalShooterShip ReturnCreature(Vector2 position)
-        {
-            if (position.X == -1f) position = new Vector2((float)(random.NextDouble() * 800), 0);
-
-            VerticalShooterShip creature = RetrieveCreatureFromEnum(enemyType);
-            creature = StandardCreatureSetup(creature);
-            creature.Position = position;
-            //creature.MovementSetup();
-
-            return creature;
-        }
-        #endregion
 
         private VerticalShooterShip StandardCreatureSetup(VerticalShooterShip creature)
         {
@@ -506,7 +493,10 @@ namespace SpaceProject
 
                 if (setupCreature.newMovement != Movement.None)
                 {
-                    creature.SetMovement(setupCreature.newMovement);
+                    if (setupCreature.newMovement != Movement.BossStop_X)
+                        creature.SetMovement(setupCreature.newMovement);
+                    else
+                        creature.SetBossMovement(setupCreature.YStopPosition);
                 }
             }
 

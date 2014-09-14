@@ -10,7 +10,18 @@ namespace SpaceProject
     {
         private Boolean isFullstop;
 
-        protected float stopY;
+        // Temporary, for debugging, will probably be needed soon again / 140914 Jakob
+        private float internalVar;
+        protected float stopY { 
+            get 
+            { 
+                return internalVar; 
+            } 
+            set 
+            { 
+                internalVar = value; 
+            }
+        }
         protected float stopYVariation;
         protected int stopTime;
         protected int currentStopCount;
@@ -18,9 +29,9 @@ namespace SpaceProject
         public StoppingModule(Game1 game, Boolean isFullStop, float stopY = 250, float stopYVariation = 200)
             : base(game)
         {
+            this.isFullstop = isFullStop;
             this.stopY = stopY;
             this.stopYVariation = stopYVariation;
-            this.isFullstop = isFullStop;
         }
 
         public override void Setup(GameObjectVertical obj)

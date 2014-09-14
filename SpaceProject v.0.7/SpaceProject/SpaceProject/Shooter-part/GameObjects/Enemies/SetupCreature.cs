@@ -12,6 +12,9 @@ namespace SpaceProject
         public float shootDelayFactor;
         public Movement newMovement;
 
+        private float yStopPosition;
+        public float YStopPosition { get { return yStopPosition; } }
+
         public SetupCreature()
         {
             speedFactor = 1f;
@@ -38,6 +41,12 @@ namespace SpaceProject
         public void SetMovement(Movement movement)
         {
             newMovement = movement;
+        }
+
+        public void SetBossMovement(float yStopPosition)
+        {
+            newMovement = Movement.BossStop_X;
+            this.yStopPosition = yStopPosition;
         }
     }
 }

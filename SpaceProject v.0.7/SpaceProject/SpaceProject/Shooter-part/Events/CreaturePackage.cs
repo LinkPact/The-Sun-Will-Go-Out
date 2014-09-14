@@ -45,7 +45,7 @@ namespace SpaceProject
             else return false;
         }
         
-        public void CreateCreature()
+        public void CreateCreature(Level currentLevel)
         {
             if (creature != null)
             {
@@ -60,9 +60,20 @@ namespace SpaceProject
                 }
                 else 
                     creature.Position = initPos;
-                
+
+                NormalizeCreaturePosition(currentLevel);
+
                 Game.stateManager.shooterState.gameObjects.Add(creature);
             }
+        }
+
+        // Corrects the position of a ship, to take into account that the levels
+        // are placed in the middle of the screen
+        private void NormalizeCreaturePosition(Level currentLevel)
+        {
+            float offset = currentLevel.RelativeOrigin;
+            Vector2 rawPos = creature.Position;
+            creature.Position = new Vector2(rawPos.X + currentLevel.RelativeOrigin, rawPos.Y);
         }
     }
 }

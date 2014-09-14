@@ -777,5 +777,12 @@ namespace SpaceProject
 
             return -1;
         }
+
+        // Insert position in relative to 
+        protected float GetPos(float pos, float max, float window)
+        {
+            return ((pos + 0.5f) / max) * window;
+        }
+
     }
 }
