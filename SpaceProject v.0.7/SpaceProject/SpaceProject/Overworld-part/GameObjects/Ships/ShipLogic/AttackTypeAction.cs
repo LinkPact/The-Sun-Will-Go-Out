@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace SpaceProject
+namespace SpaceProject.Overworld_part.GameObjects.Ships.ShipLogic
 {
-    class FollowShipAction : ShipAction
+    class AttackTypeAction : ShipAction
     {
         OverworldShip ship;
         GameObjectOverworld target;
 
-        public FollowShipAction(OverworldShip ship, GameObjectOverworld target)
+        public AttackTypeAction(OverworldShip ship, GameObjectOverworld target)
         {
             this.ship = ship;
             this.target = target;
@@ -22,13 +24,9 @@ namespace SpaceProject
             {
                 ship.Direction.RotateTowardsPoint(ship.position, target.position, 0.2f);
                 ship.AddParticle();
-                Finished = true;
             }
             else
-            {
                 ship.Direction = Direction.Zero;
-                Finished = false;
-            }
         }
     }
 }

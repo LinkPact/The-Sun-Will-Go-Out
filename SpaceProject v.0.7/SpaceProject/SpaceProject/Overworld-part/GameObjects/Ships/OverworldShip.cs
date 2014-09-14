@@ -16,6 +16,9 @@ namespace SpaceProject
 
         #endregion
 
+        // A.I. varriables
+        protected ShipAction AIManager;
+
         protected bool hasArrived;
         public bool HasArrived { get { return hasArrived; } private set { ; } }
         public void ResetArrived() { hasArrived = false; } 
@@ -49,6 +52,8 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
+            AIManager.Update(gameTime);
+
             UpdateParticles(gameTime);
 
             base.Update(gameTime);

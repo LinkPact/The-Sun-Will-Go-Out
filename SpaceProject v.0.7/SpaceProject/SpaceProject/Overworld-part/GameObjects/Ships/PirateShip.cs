@@ -47,6 +47,15 @@ namespace SpaceProject
             sector = sec;
             SetPositionInSector();
             destination = new Vector2(position.X + 100, position.Y + 100);
+            SetDefaultBehavior();
+        }
+
+        public void SetDefaultBehavior()
+        {
+            PriorityAction tmpAction = new PriorityAction();
+            tmpAction.Add(new FollowShipAction(this, Game.player));
+            tmpAction.Add(new PatrolAction(this, Game.stateManager.overworldState.GetSectorX));
+            AIManager = tmpAction;
         }
 
         public void SetPositionInSector()
@@ -73,22 +82,22 @@ namespace SpaceProject
             view = new Rectangle((int)position.X - viewRadius, (int)position.Y - viewRadius, viewRadius * 2, viewRadius * 2); 
 
             // Select target
-            if (FollowPlayer && CollisionDetection.IsPointInsideRectangle(Game.player.position, view))
-            {
-                destination = Game.player.position;
-            }
-            else if(roam == true && sector != null)
-            {
-                if (CollisionDetection.IsPointInsideRectangle(destination, Bounds))
-                {                
-                    Random r = new Random(DateTime.Now.Millisecond);
-                    destination = new Vector2(
-                        r.Next(sector.SpaceRegionArea.Left , sector.SpaceRegionArea.Right), 
-                        r.Next(sector.SpaceRegionArea.Top, sector.SpaceRegionArea.Bottom));
-                }
-            }
-            else if(roam == false)
-                destination = Vector2.Zero;
+            //if (FollowPlayer && CollisionDetection.IsPointInsideRectangle(Game.player.position, view))
+            //{
+            //    destination = Game.player.position;
+            //}
+            //else if(roam == true && sector != null)
+            //{
+            //    if (CollisionDetection.IsPointInsideRectangle(destination, Bounds))
+            //    {                
+            //        Random r = new Random(DateTime.Now.Millisecond);
+            //        destination = new Vector2(
+            //            r.Next(sector.SpaceRegionArea.Left , sector.SpaceRegionArea.Right), 
+            //            r.Next(sector.SpaceRegionArea.Top, sector.SpaceRegionArea.Bottom));
+            //    }
+            //}
+            //else if(roam == false)
+            //    destination = Vector2.Zero;
 
             // Adjust course towards target
             if (destination != Vector2.Zero)

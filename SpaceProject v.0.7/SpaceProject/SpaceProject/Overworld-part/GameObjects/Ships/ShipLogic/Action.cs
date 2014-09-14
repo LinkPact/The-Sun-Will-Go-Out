@@ -17,10 +17,10 @@ namespace SpaceProject
         {
             Actions.Add(a);
         }
-        protected List<ShipAction> Actions;
+        protected List<ShipAction> Actions = new List<ShipAction>();
     }
 
-    abstract public class ParallelAction : CompositeAction
+    public class ParallelAction : CompositeAction
     {
         public override void Update(GameTime gameTime)
         {
@@ -33,7 +33,7 @@ namespace SpaceProject
         }
     }
 
-    abstract public class SequentialAction : CompositeAction
+    public class SequentialAction : CompositeAction
     {
         public override void Update(GameTime gameTime)
         {
@@ -47,7 +47,7 @@ namespace SpaceProject
         }
     }
 
-    abstract public class PriorityAction : CompositeAction
+    public class PriorityAction : CompositeAction
     {
         public override void Update(GameTime gameTime)
         {
