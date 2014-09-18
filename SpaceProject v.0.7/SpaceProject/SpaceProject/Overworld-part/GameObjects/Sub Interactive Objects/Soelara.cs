@@ -19,10 +19,11 @@ namespace SpaceProject
         {
             sprite = spriteSheet.GetSubSprite(new Rectangle(311, 966, 412, 412));
             position = new Vector2(100000, 112000);
+            name = "Soelara";
 
             base.Initialize();
 
-            text.Add("A big gas giant. A space station orbits the planet.");
+            SetupText("A big gas giant. A space station orbits the planet.");
         }
 
         public override void Update(GameTime gameTime)
@@ -37,7 +38,7 @@ namespace SpaceProject
 
         public override void Interact()
         {
-            Game.messageBox.DisplayMessage(text);
+            base.Interact();
         }
     }
 }

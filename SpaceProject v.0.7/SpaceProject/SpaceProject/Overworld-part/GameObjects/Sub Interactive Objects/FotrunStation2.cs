@@ -19,16 +19,15 @@ namespace SpaceProject
         {
             sprite = spriteSheet.GetSubSprite(new Rectangle(342, 871, 93, 93));
             position = new Vector2(95300, 97000);
+            name = "Fortrun Station II";
 
             base.Initialize();
 
-            text.Add("Do you want to refuel? It costs 100 rupees!");
-            text.Add("Thank you! Your fuel has been refilled!");
-            text.Add("Have a pleasent day!");
-            text.Add("I'm afraid you do not have enough money, sir.");
-
-            options.Add("Yes");
-            options.Add("No");
+            SetupFuelShop("Do you want to refuel? It costs 100 rupees!",
+                "Thanks anyway, sir!",
+                "Thank you! Your fuel has been refilled!",
+                "I'm afraid you do not have enough money, sir.",
+                "Your tank is already full! How silly of you, sir!", 100);
         }
 
         public override void Update(GameTime gameTime)
@@ -43,28 +42,7 @@ namespace SpaceProject
 
         public override void Interact()
         {
-            messageBox.DisplaySelectionMenu(text[0], options, new List<System.Action>()
-            {
-                delegate 
-                {
-                    if (StatsManager.Rupees >= 100)
-                    {
-                        messageBox.DisplayMessage(text[1], 50);
-                        StatsManager.Rupees -= 100;
-                        StatsManager.Fuel = StatsManager.MaxFuel;
-                    }
-
-                    else
-                    {
-                        messageBox.DisplayMessage(text[3], 50);
-                    }
-                }, 
-
-                delegate 
-                {
-                    messageBox.DisplayMessage(text[2], 50);
-                }
-            });
+            base.Interact();
         }
     }
 }
