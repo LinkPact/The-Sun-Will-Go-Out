@@ -27,12 +27,21 @@ namespace SpaceProject
         protected MessageBox messageBox;
         
         // fuel stuff
-        private string welcomeText;
-        private string declineFuelPurchase;
+        private string fuelWelcomeText;
+        private string fuelDeclinePurchaseText;
         private string fuelBoughtText;
-        private string notEnoughMoneyText;
+        private string fuelNotEnoughMoneyText;
         private string fuelAlreadyFullText;
         private int fuelPrice;
+
+        // level stuff
+        private bool levelCleared;
+        private bool startLevelWhenTextCleared;
+        private string level;
+        private int levelMoneyReward;
+        private List<Item> levelItemReward;
+        private List<string> levelCompletedText;
+        private string levelFailedText;
 
         protected SubInteractiveObject(Game1 game, Sprite spriteSheet, MessageBox messageBox) :
             base(game, spriteSheet)
@@ -54,6 +63,41 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
+            if (startLevelWhenTextCleared
+                && Game.messageBox.MessageState == MessageState.Invisible)
+            {
+                Game.stateManager.shooterState.BeginLevel(level);
+                startLevelWhenTextCleared = false;
+            }
+
+            if (!levelCleared
+                && level != null
+                && level != "")
+            {
+                if (Game.stateManager.shooterState.CurrentLevel != null
+                    && Game.stateManager.shooterState.CurrentLevel.Name.ToLower().Equals(level.ToLower())
+                    && Game.stateManager.shooterState.CurrentLevel.IsGameOver
+                    && GameStateManager.currentState.ToLower().Equals("overworldstate"))
+                {
+                    Game.messageBox.DisplayMessage(levelFailedText);
+                    Game.stateManager.shooterState.GetLevel(level).Initialize();
+                }
+
+                else if (Game.stateManager.shooterState.CurrentLevel != null
+                    && Game.stateManager.shooterState.CurrentLevel.Name.ToLower().Equals(level.ToLower())
+                    && Game.stateManager.shooterState.CurrentLevel.IsObjectiveCompleted
+                    && GameStateManager.currentState.ToLower().Equals("overworldstate"))
+                {
+                    levelCleared = true;
+                    Game.messageBox.DisplayMessage(levelCompletedText);
+                    foreach (Item item in levelItemReward)
+                    {
+                        ShipInventoryManager.AddItem(item);
+                    }
+                    StatsManager.Rupees += levelMoneyReward;
+                }
+            }
+
             base.Update(gameTime);
         }
 
@@ -71,11 +115,18 @@ namespace SpaceProject
                     break;
 
                 case InteractionType.LevelWithReward:
-                    break;
+                    {
+                        if (!levelCleared)
+                        {
+                            Game.messageBox.DisplayMessage(text);
+                            startLevelWhenTextCleared = true;
+                        }
+                        break;
+                    }
 
                 case InteractionType.FuelShop:
                     {
-                        messageBox.DisplaySelectionMenu(welcomeText, new List<String>(){"Yes", "No"}
+                        messageBox.DisplaySelectionMenu(fuelWelcomeText, new List<String>(){"Yes", "No"}
                             , new List<System.Action>()
                         {
                             delegate 
@@ -85,22 +136,22 @@ namespace SpaceProject
                                     messageBox.DisplayMessage(fuelAlreadyFullText, 50);
                                 }
 
-                                else if (StatsManager.Rupees >= 100)
+                                else if (StatsManager.Rupees >= fuelPrice)
                                 {
                                     messageBox.DisplayMessage(fuelBoughtText, 50);
-                                    StatsManager.Rupees -= 100;
+                                    StatsManager.Rupees -= fuelPrice;
                                     StatsManager.Fuel = StatsManager.MaxFuel;
                                 }
 
                                 else
                                 {
-                                    messageBox.DisplayMessage(notEnoughMoneyText, 50);
+                                    messageBox.DisplayMessage(fuelNotEnoughMoneyText, 50);
                                 }
                             }, 
 
                             delegate 
                             {
-                                messageBox.DisplayMessage(declineFuelPurchase, 50);
+                                messageBox.DisplayMessage(fuelDeclinePurchaseText, 50);
                             }
                         });
 
@@ -141,13 +192,43 @@ namespace SpaceProject
             String notEnoughMoneyText, String fuelAlreadyFullText, int price)
         {
             interactionType = InteractionType.FuelShop;
-            this.welcomeText = welcomeText;
-            this.declineFuelPurchase = declineFuelPurchase;
+            this.fuelWelcomeText = welcomeText;
+            this.fuelDeclinePurchaseText = declineFuelPurchase;
             this.fuelBoughtText = fuelBoughtText;
-            this.notEnoughMoneyText = notEnoughMoneyText;
+            this.fuelNotEnoughMoneyText = notEnoughMoneyText;
             this.fuelAlreadyFullText = fuelAlreadyFullText;
 
             fuelPrice = price;
+        }
+
+        protected void SetupLevel(String interactText, String level, int moneyReward, List<Item> itemReward,
+            String levelCompletedText, String levelFailedText)
+        {
+            interactionType = InteractionType.LevelWithReward;
+
+            text.Add(interactText);
+            this.level = level;
+            this.levelCompletedText = new List<string>();
+            this.levelCompletedText.Add(levelCompletedText);
+            this.levelFailedText = levelFailedText;
+            this.levelMoneyReward = moneyReward;
+
+            if (itemReward.Count > 0)
+            {
+                levelItemReward = itemReward;
+                string rewardText = "Reward:\n\n";
+                foreach (Item item in levelItemReward)
+                {
+                    rewardText += item.Name + "\n";  
+                }
+
+                if (moneyReward > 0)
+                {
+                    rewardText += moneyReward + " Rupees";
+                }
+
+                this.levelCompletedText.Add(rewardText);
+            }
         }
     }
 }

@@ -77,6 +77,7 @@ namespace SpaceProject
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "DefendColony", "XDefendColony", MissionType.power));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AttackOnRebelStation", "P2AttackOnRebelStation", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AstroScan", "XAstroscan", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "LonelyAsteroidEncounter", "LonelyAsteroidLevel", MissionType.none));
 
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AstroDodger", "XAstroDodger", MissionType.dark));
 
