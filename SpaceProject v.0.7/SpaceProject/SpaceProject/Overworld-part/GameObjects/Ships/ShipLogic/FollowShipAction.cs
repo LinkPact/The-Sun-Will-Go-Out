@@ -18,15 +18,15 @@ namespace SpaceProject
         public override void Update(GameTime gameTime)
         {
             // Adjust course towards target
-            if (target.position != Vector2.Zero)
+            if (CollisionDetection.IsPointInsideRectangle(target.position, ship.view) && target.position != Vector2.Zero)
             {
-                ship.Direction.RotateTowardsPoint(ship.position, target.position, 0.2f);
-                ship.AddParticle();
+                ship.destination = target.position;
                 Finished = true;
             }
             else
             {
-                ship.Direction = Direction.Zero;
+                //ship.Direction = Direction.Zero;
+                //ship.destination = Vector2.Zero;
                 Finished = false;
             }
         }

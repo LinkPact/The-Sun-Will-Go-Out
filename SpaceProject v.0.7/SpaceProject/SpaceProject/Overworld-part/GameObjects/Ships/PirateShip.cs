@@ -11,8 +11,6 @@ namespace SpaceProject
     /// </summary>
     class PirateShip : OverworldShip
     {
-        private Rectangle view;
-        private int viewRadius;
         private bool roam;
         public static bool FollowPlayer = true;
 
@@ -36,6 +34,7 @@ namespace SpaceProject
             color = Color.White;
             scale = 1.0f;
             layerDepth = 0.6f;
+            SetDefaultBehavior();
 
             base.Initialize();
         }
@@ -47,7 +46,6 @@ namespace SpaceProject
             sector = sec;
             SetPositionInSector();
             destination = new Vector2(position.X + 100, position.Y + 100);
-            SetDefaultBehavior();
         }
 
         public void SetDefaultBehavior()

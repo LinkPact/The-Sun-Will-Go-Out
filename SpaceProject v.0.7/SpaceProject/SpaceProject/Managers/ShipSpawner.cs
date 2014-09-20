@@ -38,7 +38,7 @@ namespace SpaceProject
             spriteSheet = overworld.shooterSheet;
             this.sector = sec;
 
-            spawnLimitPirates = 5;
+            spawnLimitPirates = 1;
             spawnLimitFreighters = 4;
             //spawnLimitRebels = 5;
         }
