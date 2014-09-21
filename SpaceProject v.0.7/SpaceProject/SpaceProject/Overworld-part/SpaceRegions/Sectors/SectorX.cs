@@ -12,7 +12,6 @@ namespace SpaceProject
         private System1Star sectorXStar;
         public System1Star SectorXStar { get { return sectorXStar; } private set { ;} }
 
-        private Soelara soelara;
         private Lavis lavis;
         private Fotrun fotrun;
         private Highfence highfence;
@@ -22,7 +21,6 @@ namespace SpaceProject
         private SoelaraStation soelaraStation;
         private LavisStation lavisStation;
         private FotrunStation1 fotrunStation1;
-        private FotrunStation2 fotrunStation2;
 
         private Beacon highfenceBeacon;
         private Beacon peyeBeacon;
@@ -30,6 +28,11 @@ namespace SpaceProject
         private Beacon fotrunBeacon;
         private Beacon soelaraBeacon;
         private Beacon newNorrlandBeacon;
+
+        // Sub interactive objects
+        private Soelara soelara;
+        private FotrunStation2 fotrunStation2;
+        private LonelyAsteroid lonelyAsteroid;
 
         public SectorX(Game1 game) :
             base(game)
@@ -52,6 +55,11 @@ namespace SpaceProject
             // Sub-interactive objects
             soelara = new Soelara(game, spriteSheet, game.messageBox);
             fotrunStation2 = new FotrunStation2(game, spriteSheet, game.messageBox);
+            lonelyAsteroid = new LonelyAsteroid(game, spriteSheet, game.messageBox);
+
+            soelara.Initialize();
+            fotrunStation2.Initialize();
+            lonelyAsteroid.Initialize();
 
             // Planets
             lavis = new Lavis(game, spriteSheet, offset);
@@ -59,7 +67,6 @@ namespace SpaceProject
             highfence = new Highfence(game, spriteSheet, offset);
             newNorrland = new NewNorrland(game, spriteSheet, offset);
             peye = new Peye(game, spriteSheet, offset);
-            soelara.Initialize();
             lavis.Initialize();
             fotrun.Initialize();
             highfence.Initialize();
@@ -73,7 +80,6 @@ namespace SpaceProject
             lavisStation.Initialize();
             soelaraStation.Initialize();
             fotrunStation1.Initialize();
-            fotrunStation2.Initialize();
 
             highfenceBeacon = new Beacon(game, spriteSheet, new Rectangle(588, 844, 100, 100), new Rectangle(487, 844, 100, 100),
                 "Highfence Beacon", highfence.position + new Vector2(300, 250));
@@ -115,10 +121,12 @@ namespace SpaceProject
             AddGameObject(newNorrland);
             AddGameObject(peye);
 
-            AddGameObject(soelaraStation);
             AddGameObject(lavisStation);
             AddGameObject(fotrunStation1);
+
+            AddGameObject(soelaraStation);
             AddGameObject(fotrunStation2);
+            AddGameObject(lonelyAsteroid);
 
             AddGameObject(highfenceBeacon);
             AddGameObject(fotrunBeacon);

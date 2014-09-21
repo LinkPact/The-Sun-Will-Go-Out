@@ -706,6 +706,21 @@ namespace SpaceProject
                     }
                     Game.saveFile.Save("save.ini", "spaceobj" + i, saveData);
                 }
+
+                else if (deepSpaceGameObjects[i] is SubInteractiveObject)
+                {
+                    ((SubInteractiveObject)deepSpaceGameObjects[i]).Save();
+                }
+            }
+
+            List<GameObjectOverworld> sectorXObjects = sectorX.GetGameObjects();
+
+            for (int i = 0; i < sectorXObjects.Count; i++)
+            {
+                if (sectorXObjects[i] is SubInteractiveObject)
+                {
+                    ((SubInteractiveObject)sectorXObjects[i]).Save();
+                }
             }
 
             // Save Shops
@@ -717,6 +732,9 @@ namespace SpaceProject
                     tmpObj.SaveShop();
                 }
             }
+
+            // Save sub interactive objects
+
         }
 
         public void Load()
@@ -755,6 +773,11 @@ namespace SpaceProject
                 {
                     ImmobileSpaceObject tmObj = (ImmobileSpaceObject)obj;
                     tmObj.LoadShop();
+                }
+
+                else if (obj is SubInteractiveObject)
+                {
+                    ((SubInteractiveObject)obj).Load();
                 }
             }
         }
