@@ -8,12 +8,8 @@ namespace SpaceProject
 {
     public class FreighterShip : OverworldShip
     {
-        private Rectangle view;
-        private int viewRadius;
         public GameObjectOverworld destinationPlanet;
-        public Vector2 destination;
         public Vector2 tempDestination;
-        private Sector sector = null;
 
         public FreighterShip(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet) { }
@@ -54,7 +50,6 @@ namespace SpaceProject
             destinationPlanet = endDestination;
             destination = destinationPlanet.position;
         }
-        public void SetSector(Sector sec) { sector = sec; }
         public void SetEndPlanet(GameObjectOverworld des) 
         { 
             destination = des.position;

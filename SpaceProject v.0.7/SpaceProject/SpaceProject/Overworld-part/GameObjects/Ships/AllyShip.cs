@@ -14,12 +14,8 @@ namespace SpaceProject
 
     public class AllyShip : OverworldShip
     {
-        private Rectangle view;
-        private int viewRadius;
         public GameObjectOverworld destinationPlanet;
-        public Vector2 destination;
         public Vector2 tempDestination;
-        private Sector sector = null;
         private ShipType type;
 
         public AllyShip(Game1 game, Sprite spriteSheet, ShipType type) :
@@ -81,7 +77,6 @@ namespace SpaceProject
             destination = endPoint;
         }
 
-        public void SetSector(Sector sec) { sector = sec; }
         public void SetEndPlanet(GameObjectOverworld des) 
         { 
             destination = des.position;

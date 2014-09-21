@@ -18,17 +18,21 @@ namespace SpaceProject
 
         // A.I. varriables
         protected ShipAction AIManager;
+        public static bool FollowPlayer = true;
 
         public Rectangle view;
         protected int viewRadius;
+        protected Sector sector = null;
+        public void SetSector(Sector sec) { sector = sec; }
 
         protected bool hasArrived;
         public bool HasArrived { get { return hasArrived; } private set { ; } }
         public void ResetArrived() { hasArrived = false; } 
 
+        // Should be removed
         protected GameObjectOverworld target;
         public void SetTarget(GameObjectOverworld target) { this.target = target; }
-        public void SetPosition(Vector2 position) { this.position = position; }
+        //
         public Vector2 destination;
 
         // Used to determine which level starts when player runs into this ship.

@@ -8,7 +8,7 @@ namespace SpaceProject
     abstract public class ShipAction
     {
         public virtual void Update(GameTime gameTime) { }
-        public bool Finished;
+        public bool Finished = false;
     }
 
     abstract public class CompositeAction : ShipAction

@@ -11,13 +11,6 @@ namespace SpaceProject
     /// </summary>
     public class AllianceShip : OverworldShip
     {
-        private Rectangle view;
-        private int viewRadius;
-        private bool roam;
-        public Vector2 destination;
-
-        private Sector sector = null;
-
         public AllianceShip(Game1 Game, Sprite SpriteSheet) :
             base(Game, SpriteSheet)
         { }
@@ -31,7 +24,6 @@ namespace SpaceProject
             viewRadius = 700;
             position = new Vector2(0, 0);
             speed = 0.4f;
-            roam = true;
             target = Game.player;
 
             centerPoint = new Vector2(sprite.SourceRectangle.Value.Width / 2, sprite.SourceRectangle.Value.Height / 2);
@@ -60,8 +52,6 @@ namespace SpaceProject
             //if (CollisionDetection.IsPointInsideRectangle(position, Game.stateManager.overWorldState.HUD.radar.View))
             //    SetPositionInSector();
         }
-        public void SetSector(Sector sec) { sector = sec; }
-        public void SetRoamBehaviour(bool newValue) { roam = newValue; }
         public override void FinalGoodbye()
         {
             IsDead = true;
@@ -82,22 +72,22 @@ namespace SpaceProject
             view = new Rectangle((int)position.X - viewRadius, (int)position.Y - viewRadius, viewRadius * 2, viewRadius * 2);
 
             // Select target
-            if (CollisionDetection.IsPointInsideRectangle(target.position, view))
-            {
-                destination = target.position;
-            }
-            else if (roam == true && sector != null)
-            {
-                if (CollisionDetection.IsPointInsideRectangle(destination, Bounds))
-                {
-                    Random r = new Random(DateTime.Now.Millisecond);
-                    destination = new Vector2(
-                        r.Next(sector.SpaceRegionArea.Left, sector.SpaceRegionArea.Right),
-                        r.Next(sector.SpaceRegionArea.Top, sector.SpaceRegionArea.Bottom));
-                }
-            }
-            else if (roam == false)
-                destination = Vector2.Zero;
+            //if (CollisionDetection.IsPointInsideRectangle(target.position, view))
+            //{
+            //    destination = target.position;
+            //}
+            //else if (roam == true && sector != null)
+            //{
+            //    if (CollisionDetection.IsPointInsideRectangle(destination, Bounds))
+            //    {
+            //        Random r = new Random(DateTime.Now.Millisecond);
+            //        destination = new Vector2(
+            //            r.Next(sector.SpaceRegionArea.Left, sector.SpaceRegionArea.Right),
+            //            r.Next(sector.SpaceRegionArea.Top, sector.SpaceRegionArea.Bottom));
+            //    }
+            //}
+            //else if (roam == false)
+            //    destination = Vector2.Zero;
 
             // Adjust course towards target
             if (destination != Vector2.Zero)

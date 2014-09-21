@@ -11,11 +11,6 @@ namespace SpaceProject
     /// </summary>
     class PirateShip : OverworldShip
     {
-        private bool roam;
-        public static bool FollowPlayer = true;
-
-        private Sector sector = null;
-
         public PirateShip(Game1 Game, Sprite SpriteSheet) :
             base(Game, SpriteSheet)
         { }
@@ -28,7 +23,6 @@ namespace SpaceProject
             viewRadius = 3000;
             position = new Vector2(0,0);
             speed = 0.35f;
-            roam = true;
 
             centerPoint = new Vector2(sprite.SourceRectangle.Value.Width / 2, sprite.SourceRectangle.Value.Height / 2);
             color = Color.White;
@@ -63,8 +57,7 @@ namespace SpaceProject
                 (int)r.Next(sector.SpaceRegionArea.Left, sector.SpaceRegionArea.Right),
                 (int)r.Next(sector.SpaceRegionArea.Top, sector.SpaceRegionArea.Bottom));
         }
-        public void SetSector(Sector sec) { sector = sec; }
-        public void SetRoamBehaviour(bool newValue) { roam = newValue; }
+        
         public override void FinalGoodbye()
         {
             IsDead = true;

@@ -17,7 +17,7 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            // Adjust course towards target
+            // Set course towards target
             if (CollisionDetection.IsPointInsideRectangle(target.position, ship.view) && target.position != Vector2.Zero)
             {
                 ship.destination = target.position;
@@ -25,8 +25,6 @@ namespace SpaceProject
             }
             else
             {
-                //ship.Direction = Direction.Zero;
-                //ship.destination = Vector2.Zero;
                 Finished = false;
             }
         }
