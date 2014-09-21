@@ -69,9 +69,6 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {          
-            // Update view
-            view = new Rectangle((int)position.X - viewRadius, (int)position.Y - viewRadius, viewRadius * 2, viewRadius * 2); 
-
             // Select target
             //if (FollowPlayer && CollisionDetection.IsPointInsideRectangle(Game.player.position, view))
             //{

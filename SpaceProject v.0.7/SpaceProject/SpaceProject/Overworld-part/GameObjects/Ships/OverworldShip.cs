@@ -73,6 +73,7 @@ namespace SpaceProject
             else
                 Direction = Direction.Zero;
 
+            // Update the exhausts
             particleManager.Update(gameTime);
 
             base.Update(gameTime);
