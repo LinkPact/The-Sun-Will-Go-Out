@@ -90,15 +90,6 @@ namespace SpaceProject
             //else if(roam == false)
             //    destination = Vector2.Zero;
 
-            // Adjust course towards target
-            if (destination != Vector2.Zero)
-            {
-                Direction.RotateTowardsPoint(this.position, destination, 0.2f);
-                AddParticle();
-            }
-            else
-                Direction = Direction.Zero;
-
             angle = (float)(MathFunctions.RadiansFromDir(new Vector2(
                 Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI) / 2 + Math.PI);
 

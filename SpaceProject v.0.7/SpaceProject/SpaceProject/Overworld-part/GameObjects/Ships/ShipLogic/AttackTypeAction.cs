@@ -23,7 +23,6 @@ namespace SpaceProject.Overworld_part.GameObjects.Ships.ShipLogic
             if (target.position != Vector2.Zero)
             {
                 ship.Direction.RotateTowardsPoint(ship.position, target.position, 0.2f);
-                ship.AddParticle();
             }
             else
                 ship.Direction = Direction.Zero;

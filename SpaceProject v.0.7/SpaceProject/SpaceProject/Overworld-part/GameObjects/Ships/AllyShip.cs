@@ -129,30 +129,10 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            if (GameStateManager.currentState == "OverworldState")
-                IsUsed = true;
-            else
-                IsUsed = false;
-            
-            // Update view
-            view = new Rectangle((int)position.X - viewRadius, (int)position.Y - viewRadius, viewRadius * 2, viewRadius * 2);
-
             if (target != null)
             {
                 destination = target.position;
             }
-
-            // Adjust course towards target
-            if (destination != Vector2.Zero)
-            {
-                Direction.RotateTowardsPoint(this.position, destination, 0.2f);
-                AddParticle();
-            }
-            else
-                Direction = Direction.Zero;
-
-            angle = (float)(MathFunctions.RadiansFromDir(new Vector2(
-                Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI) / 2);
 
             // Check if arrived at destination
             if (destinationPlanet != null)
@@ -171,6 +151,10 @@ namespace SpaceProject
                     hasArrived = true;
                 }
             }
+
+            // Rotate ship
+            angle = (float)(MathFunctions.RadiansFromDir(new Vector2(
+                Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI) / 2 + Math.PI);
 
             if (IsUsed)
             {

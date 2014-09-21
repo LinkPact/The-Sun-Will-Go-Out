@@ -9,12 +9,7 @@ namespace SpaceProject
 {
     public class OverworldShip : GameObjectOverworld
     {
-
-        #region ParticleVariables
-        private List<Particle> particles;
-        private List<Particle> deadParticles;
-
-        #endregion
+        private ParticleManager particleManager;
 
         // A.I. varriables
         protected ShipAction AIManager;
@@ -25,6 +20,7 @@ namespace SpaceProject
         protected Sector sector = null;
         public void SetSector(Sector sec) { sector = sec; }
 
+        public Vector2 destination;
         protected bool hasArrived;
         public bool HasArrived { get { return hasArrived; } private set { ; } }
         public void ResetArrived() { hasArrived = false; } 
@@ -33,7 +29,6 @@ namespace SpaceProject
         protected GameObjectOverworld target;
         public void SetTarget(GameObjectOverworld target) { this.target = target; }
         //
-        public Vector2 destination;
 
         // Used to determine which level starts when player runs into this ship.
         private string level;
@@ -53,66 +48,42 @@ namespace SpaceProject
 
             layerDepth = 0.55f;
 
-            particles = new List<Particle>();
-            deadParticles = new List<Particle>();
+            particleManager = new ParticleManager(Game, this);
         }
 
         public override void Update(GameTime gameTime)
         {
+            if (GameStateManager.currentState == "OverworldState")
+                IsUsed = true;
+            else
+                IsUsed = false;
+
+            // Update view
+            view = new Rectangle((int)position.X - viewRadius, (int)position.Y - viewRadius, viewRadius * 2, viewRadius * 2);
+
             if (AIManager != null)
                 AIManager.Update(gameTime);
 
-            UpdateParticles(gameTime);
+            // Adjust course towards target
+            if (destination != Vector2.Zero)
+            {
+                Direction.RotateTowardsPoint(this.position, destination, 0.2f);
+                particleManager.AddParticle();
+            }
+            else
+                Direction = Direction.Zero;
+
+            particleManager.Update(gameTime);
 
             base.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            foreach (Particle par in particles)
-                par.Draw(spriteBatch); 
+            particleManager.Draw(spriteBatch);
 
             base.Draw(spriteBatch);
         }
-                
-        #region ParticleMethods
-
-        private void UpdateParticles(GameTime gameTime)
-        {
-            foreach (Particle par in particles)
-            {
-                par.Update(gameTime, this);
-            }
-
-            for (int i = 0; i < particles.Count; i++)
-            {
-                if (particles[i].lifeSpawn <= 0)
-                {
-                    deadParticles.Add(particles[i]);
-                }
-            }
-
-            RemoveParticle();
-        }
-
-        public void AddParticle()
-        {
-            Particle par = new Particle(Game, Game.spriteSheetOverworld);
-            par.Initialize(this);
-            particles.Add(par);
-        }
-
-        protected void RemoveParticle()
-        {
-            for (int i = 0; i < deadParticles.Count; i++)
-            {
-                particles.Remove(deadParticles[i]);
-            }
-
-            deadParticles.Clear();
-        }
-
-        #endregion
 
         public virtual void Wait()
         {

@@ -337,6 +337,7 @@
     <Compile Include="Overworld-part\GameObjects\Ships\FreighterShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\MotherShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\OverworldShip.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\Particles\ParticleManager.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\RebelShip.cs" />
     <Compile Include="Overworld-part\GameObjects\ImmobileSpaceObject.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Action.cs" />
