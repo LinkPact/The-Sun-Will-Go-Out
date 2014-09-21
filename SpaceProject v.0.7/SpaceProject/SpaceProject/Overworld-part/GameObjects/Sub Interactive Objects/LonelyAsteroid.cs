@@ -23,10 +23,18 @@ namespace SpaceProject
 
             base.Initialize();
 
-            SetupLevel("A group of pirates attack!", "LonelyAsteroidEncounter", 50,
-                new List<Item>(){ new DualLaserWeapon(Game, ItemVariety.low), 
-                    new RegularShield(Game, ItemVariety.low)},
-                "Good job!", "Too bad!");
+            //SetupLevel("A group of pirates attack!", "LonelyAsteroidEncounter", 50,
+            //    new List<Item>(){ new DualLaserWeapon(Game, ItemVariety.low), 
+            //        new RegularShield(Game, ItemVariety.low)},
+            //    "Good job!", "Too bad!");
+
+            //SetupItemShop(new MultipleShotWeapon(Game, ItemVariety.high), "Want to buy my Multiple Shot?", "Suit yourself!", "Good choice!",
+            //    "Sorry, you don't have enough money..", "Sorry, your inventory is full, sell something and come back!", 300);
+
+            SetupGetItem("Holy crap! A weapon is just floating in space!", "..But unfortunately, your inventory is full.",
+                new BasicLaserWeapon(Game, ItemVariety.low));
+
+            SetClearedText("No more weapons here!");
         }
 
         public override void Update(GameTime gameTime)
