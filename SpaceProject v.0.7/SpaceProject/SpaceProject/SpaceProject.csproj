@@ -343,7 +343,9 @@
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Action.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\AttackTypeAction.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\FollowShipAction.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\OrbitAction.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\PatrolAction.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\WaitAction.cs" />
     <Compile Include="Overworld-part\GameObjects\Shop.cs" />
     <Compile Include="Overworld-part\GameObjects\ShopInventoryEntry.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Fleets\AllianceFleet.cs" />
