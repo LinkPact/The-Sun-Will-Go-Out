@@ -1,0 +1,26 @@
+PLANNING THE STORY WORKING
+
+Where is the story work now?
+- Soon, an overview over locations, characters, missions, and
+	content is finished.
+- Some actual textual content that could be used for mission text
+	is in place.
+
+So, two main parts, which both consists of several subparts. The overviews section, and the go-through.
+
+>>> Overviews
+
+Brief
+Clear overview graph displaying the mission-flow. No so much details about characters and such here. Can probably be inspired by the current manuscript overview.
+
+Characters
+Describe the characters and their background in a little more detail.
+
+Levels
+Link to the different mission titles. Which levels occur on each mission?
+
+>>> More extensive go-through
+
+Can be based on the current go-through. Refine it to look good, and be readable by other persons. In the end, post it on the forum?
+
+Finish this during the weekend? Probably possible if I add a few hours!

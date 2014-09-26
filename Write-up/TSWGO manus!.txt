@@ -1,4 +1,0 @@
-Location: Border Station
-Name: Main - Tutorial Mission
-
-"You are the new pilot? Excellent! We have a situation at the nearby mining 

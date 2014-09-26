@@ -1,0 +1,28 @@
+Några punkter jag utgår från i planeringen:
+- Jag undviker att föra in extra karaktärer och fraktioner.
+- Jag ger interaktionen med vetenskapsmannen större vikt i storyn. Den är redan en intergrerad del i spelet som redan är utformad för att ge en "impact" på spelaren. Tänkte öka vikten i den, och kapa idéerna om extra karaktärer.
+- Spelaren ska på något sätt hamna i en situation där han inte totalt brutit upp med någon fraktion, samtidigt som han inte heller är knuten till någon. För detta krävs att man dels undviker episk konfrontation, och dels behöver exponeras för mer information om allierade/rebeller.
+
+Ett förslag:
+> Spelaren åker till vetenskapsmannen som planerat. Man har här mer insikt i Murt, och vad rebellers och allierades mål utåt är med resursen. Skepp är lite skeptiskt, men blir uppmuntrade av både rebeller och allierade att fortsätta.
+> Vetenskapsmannen ger en insiktsfull analys av läget, och förstärker tanken man redan har. Det är kanske inte så bra att rebeller/allierade är de som får kontrollen över Murt. Samtidigt är det ett måste att utnyttja Murt. Enda lösningen är att dölja Murt, tills sektorn är i ett stabilare tillstånd, redo att hantera energikällan.
+> Det finns möjlighet att dölja meteoriten. (Hur? Kanske inte flytta den? Kanske något som stör mätinstrument så att de inte kan urskilja meteoriten från omgivande? Är det ett tjockt meteoritfält blir det som att hitta trädet bland träden).
+> Du får förslag till tillvägagångsätt av vetenskapsmannen, och för honom sedan till rebellerna ("jag kommer inte att läcka").
+> Efter interaktion med vetenskapsmannen blir du ivägskickad tillsammans med rebellerna på ett uppdrag.
+> På vägen avviker du till angiven koordinat, och gör dig av med förföljare.
+> Här träffar du inte någon person, utan får på något sätt tag på viktig information du och ditt skepp kan prata om. Förslagsvis för detta både Murt-sökandet framåt och avslöjar mer om rebeller och Allierades tankar.
+> Du har en till hållpunkt innan du ska till slutmålet. Denna har förslagsvis något att göra med den teknologi du behöver för att kunna hantera meteoriten.
+> Du interagerar med skeppet på vägen, kommer till insikter.
+> Väl där behöver ni eventuellt undvika någon allierad som ställer frågor (då vi redan har logik för det, förhöjer det inte läget kan vi skippa det).
+> Du når målet, hittar teknologin, och är redo för att ge dig av till slutdestination.
+> På väg dit inser ni att något är fel. Skeppet inser att området är svärmat av både rebeller och Allierade. Vetenskapsmannen har läckt.
+> Er plan är kraschad, och du har inte längre någon som kan vägleda dig. Du har möjlighet att interagera med rebeller, allierade, eller ta saken i egna händer. Det är ditt val...
+
+Så i korthet:
+- Interagera med vetenskapsman
+- Interagera med rebeller
+- Bli skickad på uppdrag, där du avviker från rebeller
+- Hitta information
+- Ge dig av till sista hållpunkten, för att hämta något avgörande
+- Ge dig av till slutstation
+- Inse att uppdraget misslyckats, allt är kaos, och allt är upp till dig
