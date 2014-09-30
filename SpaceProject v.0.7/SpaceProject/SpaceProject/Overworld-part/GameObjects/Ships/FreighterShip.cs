@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
 
 namespace SpaceProject
@@ -39,6 +37,7 @@ namespace SpaceProject
             sector = sec;
             SetRandomStartPlanet();
             SetRandomEndPlanet();
+            AIManager = new TravelAction(this, TravelAction.GetRandomPlanet(sector));
         }
 
         public void Initialize(Sector sec, GameObjectOverworld startingPoint, GameObjectOverworld endDestination)
@@ -102,13 +101,6 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            // Check if arrived at destination
-            if (CollisionDetection.IsRectInRect(this.Bounds, destinationPlanet.Bounds))
-            {
-                hasArrived = true;
-                Game.stateManager.overworldState.RemoveOverworldObject(this);
-            }
-
             angle = (float)(MathFunctions.RadiansFromDir(new Vector2(
                 Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI) / 2);
 

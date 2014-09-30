@@ -341,10 +341,10 @@
     <Compile Include="Overworld-part\GameObjects\Ships\RebelShip.cs" />
     <Compile Include="Overworld-part\GameObjects\ImmobileSpaceObject.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Action.cs" />
-    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\AttackTypeAction.cs" />
-    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\FollowShipAction.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\FollowInViewAction.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\OrbitAction.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\PatrolAction.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\TravelAction.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\WaitAction.cs" />
     <Compile Include="Overworld-part\GameObjects\Shop.cs" />
     <Compile Include="Overworld-part\GameObjects\ShopInventoryEntry.cs" />

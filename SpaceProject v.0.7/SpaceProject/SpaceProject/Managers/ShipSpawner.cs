@@ -14,7 +14,13 @@ namespace SpaceProject
         private Sector sector;
 
         private int piratesInOverworld;
-        private int freightersInOverworld;
+        private int freightersInOverworld
+        {
+            get
+            {
+                overworld.GetAllOverworldGameObjects.
+            }
+        }
         private int rebelsInOverworld;
 
         private int spawnLimitPirates;
@@ -171,10 +177,10 @@ namespace SpaceProject
             piratesInOverworld--;
         }
 
-        public void RemoveAllPirateShips()
-        {
-            piratesInOverworld = 0;
-        }
+        //public void RemoveAllPirateShips()
+        //{
+        //    piratesInOverworld = 0;
+        //}
 
         public void RemoveFreighterShip()
         {

@@ -4,12 +4,12 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
-    class FollowShipAction : ShipAction
+    class FollowInViewAction : ShipAction
     {
         OverworldShip ship;
         GameObjectOverworld target;
 
-        public FollowShipAction(OverworldShip ship, GameObjectOverworld target)
+        public FollowInViewAction(OverworldShip ship, GameObjectOverworld target)
         {
             this.ship = ship;
             this.target = target;
