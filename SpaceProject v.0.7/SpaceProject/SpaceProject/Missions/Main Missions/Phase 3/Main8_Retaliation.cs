@@ -91,10 +91,10 @@ namespace SpaceProject
                     Game.messageBox.DisplayMessage(GetEvent((int)EventID.FreighterLeft).Text);
                     
                     freighter.Initialize(Game.stateManager.overworldState.GetSectorX,
-                                Game.stateManager.overworldState.GetPlanet("Soelara"),
+                                Game.stateManager.overworldState.GetStation("Soelara Station"),
                                 Game.stateManager.overworldState.GetStation("Fotrun Station I"));
                     Game.stateManager.overworldState.GetSectorX.shipSpawner.AddFreighterToSector(
-                        freighter, Game.stateManager.overworldState.GetPlanet("Soelara").position);
+                        freighter, Game.stateManager.overworldState.GetStation("Soelara Station").position);
 
                     message1Time = StatsManager.PlayTime.GetFutureOverworldTime(10000);
                     message2Time = StatsManager.PlayTime.GetFutureOverworldTime(20000);
