@@ -329,7 +329,6 @@
     <Compile Include="MapCreator\Mechanics\DataClasses\SquareData.cs" />
     <Compile Include="MapCreator\System\WriteSave.cs" />
     <Compile Include="MissionStuff\Objectives\DataCapsules\EventTextCapsule.cs" />
-    <Compile Include="Overworld-part\GameObjects\Celestial bodies\Overworld\MiningAsteroids.cs" />
     <Compile Include="Overworld-part\GameObjects\Direction.cs" />
     <Compile Include="Overworld-part\GameObjects\Other\Beacon.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\AllianceShip.cs" />
@@ -353,6 +352,7 @@
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation3.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation2.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation1.cs" />
+    <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\MiningAsteroids.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\LonelyAsteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\FotrunStation2.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\SectorX\FotrunStation1.cs" />

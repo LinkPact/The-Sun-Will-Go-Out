@@ -13,7 +13,10 @@ namespace SpaceProject
         private SortedDictionary<int, System.Action> actions;
         public SortedDictionary<int, System.Action> Actions { get { return actions; } private set { ;} }
 
-        public ResponseTextCapsule(EventText eventText, List<EventText> responses, List<System.Action> actions)
+        private EventTextCanvas eventTextCanvas;
+        public EventTextCanvas EventTextCanvas { get { return eventTextCanvas; } private set { ; } }
+
+        public ResponseTextCapsule(EventText eventText, List<EventText> responses, List<System.Action> actions, EventTextCanvas canvas)
         {
             responseEvents = new KeyValuePair<EventText, List<EventText>>(eventText, responses);
             this.actions = new SortedDictionary<int, System.Action>();
@@ -22,6 +25,8 @@ namespace SpaceProject
             {
                 this.actions.Add(i, actions[i]);
             }
+
+            eventTextCanvas = canvas;
         }
     }
 }

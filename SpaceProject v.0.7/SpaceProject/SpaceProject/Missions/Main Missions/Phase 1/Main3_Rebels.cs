@@ -63,7 +63,7 @@ namespace SpaceProject
                             missionHelper.ShowEvent(
                                 new List<EventText>() { GetEvent((int)EventID.Answer), GetEvent((int)EventID.Briefing) });
                         }
-                    })));
+                    }, EventTextCanvas.BaseState)));
 
             // Lots-of-paramaters-version of EscortObjective
             objectives.Add(new EscortObjective(Game,

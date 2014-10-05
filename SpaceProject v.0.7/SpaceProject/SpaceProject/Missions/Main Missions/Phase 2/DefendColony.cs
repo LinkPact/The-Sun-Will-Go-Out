@@ -47,7 +47,7 @@ namespace SpaceProject
                                     {
                                         missionHelper.ShowEvent(GetEvent(4));
                                     }
-                                })));
+                                }, EventTextCanvas.BaseState)));
 
             RestartAfterFail();
         }

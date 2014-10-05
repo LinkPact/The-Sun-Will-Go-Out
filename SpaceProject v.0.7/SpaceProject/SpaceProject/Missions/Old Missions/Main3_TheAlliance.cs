@@ -149,7 +149,7 @@ namespace SpaceProject
                         {
                             missionHelper.ShowEvent(GetEvent(8));
                         }
-                    })));
+                    }, EventTextCanvas.BaseState)));
         }
 
         public override void StartMission() { }

@@ -97,7 +97,7 @@ namespace SpaceProject
                         {
                             missionHelper.ShowEvent(GetEvent((int)EventID.HighfenceResponse2));
                         } 
-                    }),
+                    }, EventTextCanvas.BaseState),
                     new EventTextCapsule(GetEvent((int)EventID.TalkAtHighfence3), null, EventTextCanvas.BaseState)));
         }
 

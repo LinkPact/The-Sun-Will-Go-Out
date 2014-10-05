@@ -11,6 +11,8 @@ namespace SpaceProject
         private EventText responseEventText;
         private KeyValuePair<EventText, List<EventText>> responseEvents;
         private SortedDictionary<int, System.Action> actions;
+        private EventTextCanvas canvas;
+        private bool delayResponse;
 
         public ResponseObjective(Game1 game, Mission mission, String description, GameObjectOverworld destination,
             ResponseTextCapsule responseTextCapsule) :
@@ -35,24 +37,59 @@ namespace SpaceProject
             responseEventText = responseTextCapsule.ResponseEvents.Key;
             responseEvents = responseTextCapsule.ResponseEvents;
             actions = responseTextCapsule.Actions;
+            canvas = responseTextCapsule.EventTextCanvas;
         }
 
         public override void OnActivate()
         {
             base.OnActivate();
 
-            mission.MissionHelper.ShowEvent(responseEventText);
-            mission.MissionHelper.ShowResponse(responseEvents.Value);
-
-            if (GameStateManager.currentState.Equals("PlanetState"))
+            if (canvas == EventTextCanvas.BaseState)
             {
-                game.stateManager.planetState.OnEnter();
+                mission.MissionHelper.ShowEvent(responseEventText);
+                mission.MissionHelper.ShowResponse(responseEvents.Value);
+
+                if (GameStateManager.currentState.Equals("PlanetState"))
+                {
+                    game.stateManager.planetState.OnEnter();
+                }
+
+                else if (GameStateManager.currentState.Equals("StationState"))
+                {
+                    game.stateManager.stationState.OnEnter();
+                }
             }
 
-            else if (GameStateManager.currentState.Equals("StationState"))
+            else if (canvas == EventTextCanvas.MessageBox)
             {
-                game.stateManager.stationState.OnEnter();
+                if (mission.MissionHelper.IsTextCleared())
+                {
+                    List<String> responses = new List<String>();
+                    List<System.Action> a = new List<System.Action>();
+
+                    foreach (EventText e in responseEvents.Value)
+                    {
+                        responses.Add(e.Text);
+                    }
+
+                    for (int i = 0; i < actions.Keys.Count; i++)
+                    {
+                        System.Action tempAction;
+
+                        actions.TryGetValue(i, out tempAction);
+                        a.Add(tempAction);
+                    }
+
+
+                    game.messageBox.DisplaySelectionMenu(responseEventText.Text, responses, a);
+                }
+
+                else
+                {
+                    delayResponse = true;
+                }
             }
+                
         }
 
         public override void Initialize()
@@ -70,6 +107,30 @@ namespace SpaceProject
                 {
                     actions[mission.MissionResponse - 1].Invoke();
                 }
+            }
+
+            if (delayResponse && mission.MissionHelper.IsTextCleared())
+            {
+                List<String> responses = new List<String>();
+                List<System.Action> a = new List<System.Action>();
+
+                foreach (EventText e in responseEvents.Value)
+                {
+                    responses.Add(e.Text);
+                }
+
+                for (int i = 0; i < actions.Keys.Count; i++)
+                {
+                    System.Action tempAction;
+
+                    actions.TryGetValue(i, out tempAction);
+                    a.Add(tempAction);
+                }
+
+
+                game.messageBox.DisplaySelectionMenu(responseEventText.Text, responses, a);
+
+                delayResponse = false;
             }
         }
 

@@ -75,6 +75,8 @@ namespace SpaceProject
 
         public MessageState MessageState { get { return messageState; } set { messageState = value; } }
 
+        public bool TextBufferEmpty { get { return (textBuffer.Count <= 0 && textStorage.Count <= 0); } private set { ; } } 
+
         #endregion
 
         public MessageBox(Game1 Game, Sprite SpriteSheet)
@@ -297,6 +299,7 @@ namespace SpaceProject
                 {
                     DisplayMessage(textStorage);
                     popupDelay = -1000;
+                    textStorage.Clear();
                 }
             }
 

@@ -7,25 +7,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    class MiningAsteroids : MisicSpaceObject
+    public class MiningAsteroids : SubInteractiveObject
     {
-        public MiningAsteroids(Game1 game, Sprite spriteSheet) :
-            base(game, spriteSheet)
+        public MiningAsteroids(Game1 Game, Sprite spriteSheet, MessageBox messageBox) :
+            base(Game, spriteSheet, messageBox)
         {
+            
         }
-
-        public MiningAsteroids(Game1 game, Sprite spriteSheet, Vector2 pos) :
-            base(game, spriteSheet)
-        {
-            Initialize(pos);
-        }
-
-        public void Initialize(Vector2 pos)
-        {
-            position = pos;
-            Initialize();
-        }
-
 
         public override void Initialize()
         {
@@ -33,11 +21,13 @@ namespace SpaceProject
 
             name = "Mining Asteroids";
 
+            position = new Vector2(124500, 93000);
             scale = 1f;
             color = Color.White;
             layerDepth = 0.5f;
-            IsUsed = true;
+
             base.Initialize();
+            SetupText("A group of asteroids used for mining.");
         }
 
         public override void Update(GameTime gameTime)
@@ -48,6 +38,11 @@ namespace SpaceProject
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
+        }
+
+        public override void Interact()
+        {
+            base.Interact();
         }
     }
 }

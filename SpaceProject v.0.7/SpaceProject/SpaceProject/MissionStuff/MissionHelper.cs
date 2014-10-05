@@ -101,7 +101,15 @@ namespace SpaceProject
         // Returns true if all mission-text displayed in station/planet-state is cleared by player
         public bool IsTextCleared()
         {
-            return (mission.EventBuffer.Count <= 0 && game.stateManager.planetState.SubStateManager.ButtonControl != ButtonControl.Confirm);
+            if (GameStateManager.currentState.Equals("OverworldState"))
+            {
+                return (game.messageBox.TextBufferEmpty);
+            }
+
+            else
+            {
+                return (mission.EventBuffer.Count <= 0 && game.stateManager.planetState.SubStateManager.ButtonControl != ButtonControl.Confirm);
+            }
         }
 
         public bool HasTextBeenDisplayed(EventText eventText)

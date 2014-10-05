@@ -39,36 +39,80 @@ namespace SpaceProject
                                 StatsManager.Rupees -= 1000;
                                 success = true;
                             }
-
+            
                             else
                             {
                                 missionHelper.ShowEvent(GetEvent(6), false);
                             }
                         },
-
+            
                         delegate
                         {
                             missionHelper.ShowEvent(GetEvent(3));
                             failed = true;
                         },
-
+            
                         delegate
                         {
                             missionHelper.ShowEvent(new List<EventText> { GetEvent(4), GetEvent(5) } );
                             success = true;
                         },
-
+            
                         delegate
                         {
                             missionHelper.ShowEvent(new List<EventText> { GetEvent(4), GetEvent(5) } );
                             success = true;
                         }
-                    })));
+                    }, EventTextCanvas.BaseState)));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetPlanet("Highfence"), null, null,
-                delegate { return (missionHelper.IsPlayerOnPlanet("Highfence") && success); },
-                delegate { return (missionHelper.IsPlayerOnPlanet("Highfence") && failed); }));
+            // SUBINTERACTIVE OBJECT MISSION TEST
+            //objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
+            //    Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
+            //    new EventTextCapsule(GetEvent(0), null, EventTextCanvas.MessageBox)));
+
+            //objectives.Add(new ResponseObjective(Game, this, ObjectiveDescriptions[1],
+            //    Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
+            //    new ResponseTextCapsule(GetEvent(1), GetAllResponses(1),
+            //    new List<System.Action>()
+            //        {
+            //            delegate 
+            //            {
+            //                if (StatsManager.Rupees >= 1000)
+            //                {
+            //                    Game.messageBox.DisplayMessage(GetEvent(2).Text, 20);
+            //                    StatsManager.Rupees -= 1000;
+            //                    success = true;
+            //                }
+            //
+            //                else
+            //                {
+            //                    Game.messageBox.DisplayMessage(GetEvent(6).Text, 20);
+            //                }
+            //            },
+            //
+            //            delegate
+            //            {
+            //                Game.messageBox.DisplayMessage(GetEvent(3).Text, 20);
+            //                failed = true;
+            //            },
+            //
+            //            delegate
+            //            {
+            //                Game.messageBox.DisplayMessage(new List<String> { GetEvent(4).Text, GetEvent(5).Text }, 20);
+            //                success = true;
+            //            },
+            //
+            //            delegate
+            //            {
+            //                Game.messageBox.DisplayMessage(new List<String> { GetEvent(4).Text, GetEvent(5).Text }, 20);
+            //                success = true;
+            //            }
+            //        }, EventTextCanvas.MessageBox)));
+            //
+            //objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+            //    Game.stateManager.overworldState.GetPlanet("Highfence"), null, null,
+            //    delegate { return (missionHelper.IsPlayerOnPlanet("Highfence") && success); },
+            //    delegate { return (missionHelper.IsPlayerOnPlanet("Highfence") && failed); }));
         }
 
         public override void StartMission()

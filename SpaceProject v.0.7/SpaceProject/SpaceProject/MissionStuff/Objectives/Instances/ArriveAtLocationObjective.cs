@@ -61,7 +61,7 @@ namespace SpaceProject
             {
                 return mission.MissionHelper.IsPlayerOnStation(Destination.name);
             }
-            else if (Destination is Battlefield)
+            else if (Destination is SubInteractiveObject)
             {
                 return (CollisionDetection.IsRectInRect(game.player.Bounds, Destination.Bounds) &&
                     (ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)));

@@ -13,10 +13,9 @@ namespace SpaceProject
         LevelWithReward,
         FuelShop,
         ItemShop,
-        Scenario,
         GetItem,
-        Mission,
-        Custom
+        Custom,
+        Nothing
     }
 
     public class SubInteractiveObject : GameObjectOverworld
@@ -24,8 +23,8 @@ namespace SpaceProject
         private static int count;
         private int id;
 
-        private bool disabled;
-        private string disabledText = "EMPTY";
+        private bool cleared;
+        private string clearedText = "EMPTY";
 
         protected InteractionType interactionType;
         protected List<string> text;
@@ -111,7 +110,7 @@ namespace SpaceProject
                         ShipInventoryManager.AddItem(item);
                     }
                     StatsManager.Rupees += levelMoneyReward;
-                    disabled = true;
+                    cleared = true;
                 }
             }
 
@@ -125,33 +124,35 @@ namespace SpaceProject
 
         public virtual void Interact()
         {
-            if (disabled)
+            if (!MissionManager.IsCurrentObjective(this))
             {
-                messageBox.DisplayMessage(disabledText);
+                if (cleared)
+                {
+                    messageBox.DisplayMessage(clearedText);
 
-                return;
-            }
+                    return;
+                }
 
-            switch (interactionType)
-            {
-                case InteractionType.Text:
-                    Game.messageBox.DisplayMessage(text);
-                    break;
-
-                case InteractionType.LevelWithReward:
-                    {
-                        if (!levelCleared)
-                        {
-                            Game.messageBox.DisplayMessage(text);
-                            startLevelWhenTextCleared = true;
-                        }
+                switch (interactionType)
+                {
+                    case InteractionType.Text:
+                        Game.messageBox.DisplayMessage(text);
                         break;
-                    }
 
-                case InteractionType.FuelShop:
-                    {
-                        messageBox.DisplaySelectionMenu(text[0], new List<String>(){"Yes", "No"}
-                            , new List<System.Action>()
+                    case InteractionType.LevelWithReward:
+                        {
+                            if (!levelCleared)
+                            {
+                                Game.messageBox.DisplayMessage(text);
+                                startLevelWhenTextCleared = true;
+                            }
+                            break;
+                        }
+
+                    case InteractionType.FuelShop:
+                        {
+                            messageBox.DisplaySelectionMenu(text[0], new List<String>() { "Yes", "No" }
+                                , new List<System.Action>()
                         {
                             delegate 
                             {
@@ -179,13 +180,13 @@ namespace SpaceProject
                             }
                         });
 
-                        break;
-                    }
+                            break;
+                        }
 
-                case InteractionType.ItemShop:
-                    {
-                        messageBox.DisplaySelectionMenu(text[0], new List<String>() { "Yes", "No" }
-                            , new List<System.Action>()
+                    case InteractionType.ItemShop:
+                        {
+                            messageBox.DisplaySelectionMenu(text[0], new List<String>() { "Yes", "No" }
+                                , new List<System.Action>()
                         {
                             delegate 
                             {
@@ -199,7 +200,7 @@ namespace SpaceProject
                                     messageBox.DisplayMessage(purchaseText, 50);
                                     StatsManager.Rupees -= price;
                                     ShipInventoryManager.AddItem(itemShopItem);
-                                    disabled = true;
+                                    cleared = true;
                                 }
 
                                 else
@@ -214,31 +215,26 @@ namespace SpaceProject
                             }
                         });
 
+                            break;
+                        }
+
+                    case InteractionType.GetItem:
+                        if (ShipInventoryManager.HasAvailableSlot())
+                        {
+                            ShipInventoryManager.AddItem(getItemItem);
+                            cleared = true;
+                        }
+                        else
+                        {
+                            text.Add(inventoryFullText);
+                        }
+                        messageBox.DisplayMessage(text);
                         break;
-                    }
 
-                case InteractionType.Scenario:
-                    break;
-
-                case InteractionType.GetItem:
-                    if (ShipInventoryManager.HasAvailableSlot())
-                    {
-                        ShipInventoryManager.AddItem(getItemItem);
-                        disabled = true;
-                    }
-                    else
-                    {
-                        text.Add(inventoryFullText);
-                    }
-                    messageBox.DisplayMessage(text);
-                    break;
-
-                case InteractionType.Mission:
-                    break;
-
-                case InteractionType.Custom:
-                default:
-                    break;
+                    case InteractionType.Custom:
+                    default:
+                        break;
+                }
             }
         }
 
@@ -320,7 +316,7 @@ namespace SpaceProject
 
         protected void SetClearedText(string text)
         {
-            this.disabledText = text;
+            this.clearedText = text;
         }
 
         public void Save()
@@ -328,16 +324,16 @@ namespace SpaceProject
             SortedDictionary<String, String> saveData = new SortedDictionary<string, string>();
 
             saveData.Clear();
-            saveData.Add("disabled", disabled.ToString());
-            saveData.Add("disabledText", disabledText);
+            saveData.Add("disabled", cleared.ToString());
+            saveData.Add("disabledText", clearedText);
 
             Game.saveFile.Save("save.ini", "subobject" + id, saveData);
         }
 
         public void Load()
         {
-            disabled = Game.saveFile.GetPropertyAsBool("subobject" + id, "disabled", true);
-            disabledText = Game.saveFile.GetPropertyAsString("subobject" + id, "disabledText", "");
+            cleared = Game.saveFile.GetPropertyAsBool("subobject" + id, "disabled", true);
+            clearedText = Game.saveFile.GetPropertyAsString("subobject" + id, "disabledText", "");
         }
     }
 }

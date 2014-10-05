@@ -158,7 +158,7 @@ namespace SpaceProject
                         {
                             OnFalseAnswer();
                         }
-                    })));
+                    }, EventTextCanvas.BaseState)));
 
             Objectives.Add(new ResponseObjective(Game, this, ObjectiveDescriptions[0], fortrun,
                 new ResponseTextCapsule(GetEvent((int)EventID.Question2AtFortrun), GetAllResponses((int)EventID.Question2AtFortrun),
@@ -176,7 +176,7 @@ namespace SpaceProject
                         {
                             OnFalseAnswer();
                         }
-                    })));
+                    }, EventTextCanvas.BaseState)));
 
             Objectives.Add(new ResponseObjective(Game, this, ObjectiveDescriptions[0], fortrun,
                 new ResponseTextCapsule(GetEvent((int)EventID.Question3AtFortrun), GetAllResponses((int)EventID.Question3AtFortrun),
@@ -202,7 +202,7 @@ namespace SpaceProject
                         {
                             OnFalseAnswer();
                         }
-                    })));
+                    }, EventTextCanvas.BaseState)));
 
             Objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 fortrun, new EventTextCapsule(GetEvent((int)EventID.TalkToContactAtFortrun), null, EventTextCanvas.BaseState)));

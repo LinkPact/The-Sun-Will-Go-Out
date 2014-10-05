@@ -60,7 +60,7 @@ namespace SpaceProject
         {
             if (isOnCompletedCalled)
             {
-                if (mission.MissionHelper.IsTextCleared())
+                if (mission.MissionHelper.IsTextCleared())                
                 {
                     if (!mission.MissionHelper.AllObjectivesCompleted())
                     {

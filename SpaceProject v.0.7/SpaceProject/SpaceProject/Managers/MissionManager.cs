@@ -389,7 +389,7 @@ namespace SpaceProject
             return tempList;
         }
 
-        // Checks if parameter is current objective of any active mission
+        // Checks if parameter is current objective destination of any active mission
         public static bool IsCurrentObjective(GameObjectOverworld obj)
         {
             for (int i = 0; i < activeMissions.Count; i++)
@@ -397,7 +397,8 @@ namespace SpaceProject
                 if (activeMissions[i].ObjectiveDestination != null)
                 {
                     if ((activeMissions[i].ObjectiveDestination is Planet
-                        || activeMissions[i].ObjectiveDestination is Station)
+                        || activeMissions[i].ObjectiveDestination is Station
+                        || activeMissions[i].ObjectiveDestination is SubInteractiveObject)
                         && (obj.name.ToLower() == activeMissions[i].ObjectiveDestination.name.ToLower()))
                     {
                         return true; 
