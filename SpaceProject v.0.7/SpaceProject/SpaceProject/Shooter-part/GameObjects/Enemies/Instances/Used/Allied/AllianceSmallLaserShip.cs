@@ -42,7 +42,7 @@ namespace SpaceProject
 
             //Animationer
             anim.LoopTime = 500;
-            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(380, 180, 26, 33)));
+            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(435, 80, 25, 26)));
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
         }
 
