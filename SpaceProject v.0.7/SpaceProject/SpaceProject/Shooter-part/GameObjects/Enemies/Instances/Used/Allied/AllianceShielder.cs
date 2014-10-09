@@ -42,7 +42,7 @@ namespace SpaceProject
 
             //Animationer
             anim.LoopTime = 500;
-            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(460, 180, 53, 37)));
+            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(217, 315, 38, 53)));
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
 
             areaCollision = new AreaShieldCollision(Game, this, 150);
