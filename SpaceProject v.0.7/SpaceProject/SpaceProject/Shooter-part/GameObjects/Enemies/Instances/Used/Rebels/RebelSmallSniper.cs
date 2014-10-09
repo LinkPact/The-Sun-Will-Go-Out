@@ -42,15 +42,15 @@ namespace SpaceProject
            
             //Animationer
             anim.LoopTime = 500;
-            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(401, 45, 23, 25)));
+            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(509, 80, 25, 30)));
             
             shooting = new Animation();
             shooting.LoopTime = 1000;
             
-            shooting.AddFrame(spriteSheet.GetSubSprite(new Rectangle(426, 45, 23, 25)));
-            shooting.AddFrame(spriteSheet.GetSubSprite(new Rectangle(451, 45, 23, 25)));
-            shooting.AddFrame(spriteSheet.GetSubSprite(new Rectangle(476, 45, 23, 25)));
-            shooting.AddFrame(spriteSheet.GetSubSprite(new Rectangle(501, 45, 23, 25)));
+            shooting.AddFrame(spriteSheet.GetSubSprite(new Rectangle(509, 80, 25, 30)));
+            //shooting.AddFrame(spriteSheet.GetSubSprite(new Rectangle(451, 45, 23, 25)));
+            //shooting.AddFrame(spriteSheet.GetSubSprite(new Rectangle(476, 45, 23, 25)));
+            //shooting.AddFrame(spriteSheet.GetSubSprite(new Rectangle(501, 45, 23, 25)));
             
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
         }
