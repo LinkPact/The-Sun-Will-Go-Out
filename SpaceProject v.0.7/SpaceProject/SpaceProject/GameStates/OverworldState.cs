@@ -640,10 +640,6 @@ namespace SpaceProject
                 deepSpaceGameObjects.Remove(obj);
             }
             removeObjects.Clear();
-
-            // If possible, this should be done in a better way in the future.
-            // One proposal is that the counter in ship spawner by itself counts the number of pirates present.
-            sectorX.shipSpawner.RemoveAllPirateShips();
         }
 
         private void DeleteRemovedGameObjects()

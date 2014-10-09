@@ -61,10 +61,6 @@ namespace SpaceProject
         public override void FinalGoodbye()
         {
             IsDead = true;
-            if (sector != null)
-            {
-                sector.shipSpawner.RemovePirateShip();
-            }
         }
 
         public override void Update(GameTime gameTime)

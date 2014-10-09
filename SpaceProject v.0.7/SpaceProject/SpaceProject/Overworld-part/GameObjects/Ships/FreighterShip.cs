@@ -80,10 +80,6 @@ namespace SpaceProject
         public override void FinalGoodbye()
         {
             IsDead = true;
-            if (sector != null)
-            {
-                sector.shipSpawner.RemoveFreighterShip();
-            }
         }
 
         public override void Wait()
