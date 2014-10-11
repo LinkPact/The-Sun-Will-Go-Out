@@ -66,11 +66,7 @@ namespace SpaceProject
         {
             get 
             {
-                if (IsGamepadConnected && UseGamepad)
-                    return true;
-
-                else
-                    return false;
+                return (IsGamepadConnected && UseGamepad);
             }
         }
 
@@ -88,15 +84,9 @@ namespace SpaceProject
             previouseMouseState = currentMouseState;
             currentMouseState = Mouse.GetState();
 
-            if (CurrentGamepadState.IsConnected)
-                IsGamepadConnected = true;
-            else
-                IsGamepadConnected = false;
+            IsGamepadConnected = CurrentGamepadState.IsConnected;
 
-            if (IsGamepadConnected)
-                UseGamepad = true;
-            else
-                UseGamepad = false;
+            UseGamepad = false;
         }
 
         public static void SetDefaultControls()

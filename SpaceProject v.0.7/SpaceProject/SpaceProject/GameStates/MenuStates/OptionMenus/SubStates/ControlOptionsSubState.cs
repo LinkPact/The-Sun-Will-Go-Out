@@ -112,7 +112,7 @@ namespace SpaceProject
                         }
                         else
                         {
-                            if (ControlManager.IsGamepadConnected)
+                            if (ControlManager.GamepadReady)
                             {
                                 menuOptions[0, 1] = "Gamepad";
                                 ControlManager.UseGamepad = true;

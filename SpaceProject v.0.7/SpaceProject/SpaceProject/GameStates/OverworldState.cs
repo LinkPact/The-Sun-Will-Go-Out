@@ -385,7 +385,7 @@ namespace SpaceProject
         private void InputhandlingDebug()
         {
             //Testing throw-item-menu
-            if (ControlManager.IsGamepadConnected == false)
+            if (ControlManager.GamepadReady == false)
             {
                 if (ControlManager.PreviousKeyboardState.IsKeyUp(Keys.L)
                    && ControlManager.CurrentKeyboardState.IsKeyDown(Keys.L))

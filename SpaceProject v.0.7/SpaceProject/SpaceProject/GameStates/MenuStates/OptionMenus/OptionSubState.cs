@@ -79,7 +79,7 @@ namespace SpaceProject
 
         private void ButtonControls(GameTime gameTime)
         {
-            if (!ControlManager.IsGamepadConnected)
+            if (!ControlManager.GamepadReady)
             {
                 if (ControlManager.CheckKeypress(Keys.Down))
                 {

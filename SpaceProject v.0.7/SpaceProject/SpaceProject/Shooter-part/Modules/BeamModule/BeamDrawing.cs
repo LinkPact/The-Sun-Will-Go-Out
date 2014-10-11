@@ -42,7 +42,7 @@ namespace SpaceProject
             Duration = maxDur;
 
             anim.LoopTime = 300;
-            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(18, 26, 4, 1)));
+            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(17, 26, 5, 1)));
             
             Bounding = new Rectangle(18, 26, 4, 1);
             

@@ -68,7 +68,7 @@ namespace SpaceProject
             else
                 txtSpeed -= 0.01f;
 
-            if (ControlManager.IsGamepadConnected == false)
+            if (ControlManager.GamepadReady == false)
             {
 
                 if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)))
@@ -77,7 +77,7 @@ namespace SpaceProject
                 }
             }
 
-            if (ControlManager.IsGamepadConnected == true)
+            if (ControlManager.GamepadReady == true)
             {
 
                 if (ControlManager.CurrentGamepadState.IsButtonDown(ControlManager.GamepadAction))

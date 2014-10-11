@@ -19,7 +19,7 @@ namespace SpaceProject
             viableTargetTypes.Add("player");
             viableTargetTypes.Add("ally");
 
-            color = Color.GreenYellow;
+            color = Color.Red;
         }
     }
 }
