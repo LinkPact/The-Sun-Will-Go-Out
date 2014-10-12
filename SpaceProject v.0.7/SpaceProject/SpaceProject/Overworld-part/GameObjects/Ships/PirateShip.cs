@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 namespace SpaceProject
 {
     /// <summary>
-    /// Instance of one of the ship that populates the overworld. 
+    /// Instance of one of the ships that populates the overworld. 
     /// </summary>
     class PirateShip : OverworldShip
     {
