@@ -305,11 +305,11 @@ namespace SpaceProject
                 else if (ControlManager.CheckPress(RebindableKeys.Down))
                     shopSelectCursorIndex++;
 
-                if (shopSelectCursorIndex > 2)
+                if (shopSelectCursorIndex > 1)
                     shopSelectCursorIndex = 0;
 
                 else if (shopSelectCursorIndex < 0)
-                    shopSelectCursorIndex = 2;
+                    shopSelectCursorIndex = 1;
 
                 switch (shopSelectCursorIndex)
                 {
@@ -321,13 +321,6 @@ namespace SpaceProject
                         }
 
                     case 1:
-                        {
-                            shopSelectCursor.position.X = shopSelectRectangle2.X - Game.fontManager.GetFont(16).MeasureString("Buy Fuel").X / 2 - 10;
-                            shopSelectCursor.position.Y = shopSelectRectangle2.Y + 13;
-                            break;
-                        }
-
-                    case 2:
                         {
                             shopSelectCursor.position.X = shopSelectRectangle3.X - Game.fontManager.GetFont(16).MeasureString("Back").X / 2 - 10;
                             shopSelectCursor.position.Y = shopSelectRectangle3.Y + 13;
@@ -400,11 +393,6 @@ namespace SpaceProject
                                                                                   shopSelectRectangle1,
                                                                                   true,
                                                                                   "Buy/Sell Items"));
-
-                            BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
-                                                                                  shopSelectRectangle2,
-                                                                                  true,
-                                                                                  "Buy Fuel"));
 
                             BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
                                                                                   shopSelectRectangle3,
@@ -493,13 +481,6 @@ namespace SpaceProject
                         break;
 
                     case 1:
-                        BaseStateManager.ChangeMenuSubState("FuelShop");
-
-                        BaseStateManager.TextBoxes.Clear();
-                        shopSelectCursor.isVisible = false;
-                        break;
-
-                    case 2:
                         BaseStateManager.ChangeMenuSubState("Overview");
 
                         BaseStateManager.TextBoxes.Clear();

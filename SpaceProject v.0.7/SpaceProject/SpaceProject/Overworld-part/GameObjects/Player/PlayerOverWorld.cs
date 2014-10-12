@@ -15,7 +15,6 @@ namespace SpaceProject
         #region Misc. Variables
         private float turningSpeed;
 
-        private bool usingFuel;
         private bool usingBoost;
 
         private float playerAcc;
@@ -38,17 +37,6 @@ namespace SpaceProject
         #endregion
 
         #region Misc. Properties
-
-        public bool OutOfFuel
-        {
-            get
-            {
-                if (StatsManager.Fuel < normalFuelCost)
-                    return true;
-
-                return false;
-            }
-        }
 
         public bool UsingBoost { get { return usingBoost; } }
 
@@ -196,25 +184,6 @@ namespace SpaceProject
             RemoveParticle();
 
             #endregion
-
-            if (usingFuel && GameStateManager.currentState.Equals("OverworldState"))
-            {
-                if (!hyperspeedOn)
-                {
-                    if (!usingBoost && StatsManager.Fuel > normalFuelCost)
-                    {
-                        StatsManager.Fuel -= normalFuelCost;
-                    }
-                    else if (StatsManager.Fuel > boostFuelCost)
-                    {
-                        StatsManager.Fuel -= boostFuelCost;
-                    }
-                    else if (StatsManager.Fuel < 0)
-                    {
-                        StatsManager.Fuel = 0;
-                    }
-                }
-            }
         }
 
         private void PlayerMovement(GameTime gameTime)
@@ -256,15 +225,6 @@ namespace SpaceProject
                 }
             }
 
-            // Fuel out
-            if (StatsManager.Fuel < normalFuelCost)
-            {
-                usingFuel = false;
-                Game.messageBox.DisplayMessage("Your fuel has run out! Fortunatly for you, a ship stops by and offers you some fuel for the low, low price of all of your rupees.");
-                StatsManager.Rupees = 0;
-                StatsManager.Fuel = 225;
-            }
-
             if (ControlManager.CheckHold(RebindableKeys.Up) || ControlManager.CheckHold(RebindableKeys.Down) ||
                 ControlManager.CheckHold(RebindableKeys.Left) || ControlManager.CheckHold(RebindableKeys.Right))
             {
@@ -274,7 +234,6 @@ namespace SpaceProject
                     {
                         if (ControlManager.GamepadReady && ControlManager.ThumbStickAngleY != 0)
                         {
-                            usingFuel = true;
 
                             if (StatsManager.Fuel > normalFuelCost)
                             {
@@ -285,7 +244,6 @@ namespace SpaceProject
                         }
                         else
                         {
-                            usingFuel = true;
 
                             if (StatsManager.Fuel > normalFuelCost)
                             {
@@ -347,7 +305,6 @@ namespace SpaceProject
 
             if (!ControlManager.CheckHold(RebindableKeys.Up))
             {
-                usingFuel = false;
 
                 if (speed > 0)
                 {

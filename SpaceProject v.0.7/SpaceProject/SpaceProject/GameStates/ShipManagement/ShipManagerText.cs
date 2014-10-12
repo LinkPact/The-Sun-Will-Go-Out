@@ -60,24 +60,8 @@ namespace SpaceProject
 
         public void DisplayGeneralInfo(SpriteBatch spriteBatch)
         {
-            //Fuel
-            string tempString = "Fuel: " + Math.Round(StatsManager.Fuel, 0) + " / " + StatsManager.MaxFuel + " l";
-            Color tempColor;
-
-            if (StatsManager.Fuel > StatsManager.MaxFuel / 2)
-                tempColor = FontManager.FontColorStatic;
-
-            else if (StatsManager.Fuel > StatsManager.MaxFuel / 4)
-                tempColor = Color.Orange;
-
-            else
-                tempColor = Color.Red;
-
-
-            spriteBatch.DrawString(FontManager.GetFontStatic(16), tempString, new Vector2(Game.Window.ClientBounds.Width / 2 + 20, Game.Window.ClientBounds.Height * 3 / 4 + 30) + FontManager.FontOffsetStatic, tempColor);
-
             //Money
-            spriteBatch.DrawString(FontManager.GetFontStatic(16), "Money: " + (int)StatsManager.Rupees + " Rupees", new Vector2(Game.Window.ClientBounds.Width / 2 + 20, Game.Window.ClientBounds.Height * 3 / 4 + 60) + FontManager.FontOffsetStatic, FontManager.FontColorStatic);
+            spriteBatch.DrawString(FontManager.GetFontStatic(16), "Money: " + (int)StatsManager.Rupees + " Rupees", new Vector2(Game.Window.ClientBounds.Width / 2 + 20, Game.Window.ClientBounds.Height * 3 / 4 + 30) + FontManager.FontOffsetStatic, FontManager.FontColorStatic);
         }
         
         public static void DisplayPrimaryWeaponInfo(SpriteBatch spriteBatch)

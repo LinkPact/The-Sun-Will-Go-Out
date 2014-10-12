@@ -23,8 +23,6 @@ namespace SpaceProject
         public Radar radar;
         private List<Bar> fusionCellBars;
         private Bar emergencyFusionCellBar;
-        private Bar fuelBar;
-        private bool showWarning;
         private Bar lifeBar;
 
         public HeadsUpDisplay(Game1 game)
@@ -45,10 +43,6 @@ namespace SpaceProject
                 fusionCellBars.Add(new Bar(game, spriteSheet, Color.Green, true, new Rectangle(0, 25, 41, 7), new Rectangle(1, 34, 39, 5)));
 
             emergencyFusionCellBar = new Bar(game, spriteSheet, Color.Red, true, new Rectangle(0, 25, 41, 7), new Rectangle(1, 34, 39, 5));
-            
-            fuelBar = new Bar(game, spriteSheet, Color.Olive, true);
-            fuelBar.Initialize();
-            showWarning = true;
 
             lifeBar = new Bar(game, spriteSheet, Color.Green, true);
             lifeBar.Initialize();
@@ -59,24 +53,8 @@ namespace SpaceProject
             map.Update(gameTime, game.stateManager.overworldState.GetImobileObjects, game.camera.Position, Vector2.Zero);
             radar.Update(gameTime, visibleGameObjects, game.camera.Position);
 
-            if (StatsManager.Fuel < StatsManager.MaxFuel / 4 &&
-                !game.player.OutOfFuel && showWarning)
-            {
-                game.helper.DisplayText("You're fuel is low, look for a place to refuel.", 5);
-                showWarning = false;
-            }
-
-            if (game.player.OutOfFuel)
-            {
-                game.helper.DisplayText("You're fuel has run out. You are doomed to forever drift through space.");
-            }
-
-            fuelBar.Update(gameTime, StatsManager.Fuel, StatsManager.MaxFuel,
-                new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
-                            game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 2 - 15));
-
             lifeBar.Update(gameTime, StatsManager.GetShipLife(), StatsManager.Armor(),
-                new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 158,
+                new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 10,
                             game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 2 - 15));
 
             int[] fusionCells = StatsManager.FusionCells;
@@ -99,7 +77,6 @@ namespace SpaceProject
                 map.Draw(spriteBatch);
             else if (maptoggler.Equals(Maptoggle.Radar))
                 radar.Draw(spriteBatch);
-            DrawFuel(spriteBatch);
             DrawLife(spriteBatch);
             DrawPosition(spriteBatch);
             // DON'T DELETE
@@ -108,27 +85,11 @@ namespace SpaceProject
             DrawMenuInfo(spriteBatch);
         }
 
-        private void DrawFuel(SpriteBatch spriteBatch)
-        {
-            spriteBatch.DrawString(game.fontManager.GetFont(14),
-                       "Fuel: " + ((int)StatsManager.Fuel).ToString(),
-                       new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
-                                   game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 2 - 31) + game.fontManager.FontOffset,
-                       game.fontManager.FontColor,
-                       .0f,
-                       Vector2.Zero,
-                       1f,
-                       SpriteEffects.None,
-                       0.92f);
-
-            fuelBar.Draw(spriteBatch);
-        }
-
         private void DrawLife(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(game.fontManager.GetFont(14),
                        "Life: " + ((int)StatsManager.GetShipLife()).ToString(),
-                       new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 159,
+                       new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 10,
                                    game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 2 - 31) + game.fontManager.FontOffset,
                        game.fontManager.FontColor,
                        .0f,
