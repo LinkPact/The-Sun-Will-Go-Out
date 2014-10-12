@@ -13,9 +13,27 @@ namespace SpaceProject
         private OverworldState overworld;
         private Sector sector;
 
-        private int piratesInOverworld;
-        private int freightersInOverworld;
-        private int rebelsInOverworld;
+        private int piratesInOverworld
+        {
+            get
+            {
+                return overworld.GetAllOverworldGameObjects.OfType<PirateShip>().Count(); 
+            }
+        }
+        private int freightersInOverworld
+        {
+            get
+            {
+                return overworld.GetAllOverworldGameObjects.OfType<FreighterShip>().Count();
+            }
+        }
+        private int rebelsInOverworld
+        {
+            get
+            {
+                return overworld.GetAllOverworldGameObjects.OfType<RebelShip>().Count();
+            }
+        }
 
         private int spawnLimitPirates;
         private int spawnLimitFreighters;
@@ -49,7 +67,6 @@ namespace SpaceProject
             tmpShip.Initialize();
             tmpShip.position = pos;
             overworld.AddOverworldObject(tmpShip);
-            piratesInOverworld++;
         }
 
         public void AddRebelShip(Vector2 pos)
@@ -58,7 +75,6 @@ namespace SpaceProject
             tmpShip.Initialize();
             tmpShip.position = pos;
             overworld.AddOverworldObject(tmpShip);
-            rebelsInOverworld++;
         }
 
         public void AddRebelShip(Vector2 pos, string levelToStart)
@@ -68,7 +84,6 @@ namespace SpaceProject
             tmpShip.position = pos; ;
             tmpShip.Level = levelToStart;
             overworld.AddOverworldObject(tmpShip);
-            rebelsInOverworld++;
         }
 
         public void AddRebelShip(Vector2 pos, string levelToStart, GameObjectOverworld target)
@@ -79,7 +94,6 @@ namespace SpaceProject
             tmpShip.Level = levelToStart;
             tmpShip.SetTarget(target);
             overworld.AddOverworldObject(tmpShip);
-            rebelsInOverworld++;
         }
 
         public void AddOverworldShip(OverworldShip ship, Vector2 pos, string levelToStart, GameObjectOverworld target)
@@ -88,19 +102,6 @@ namespace SpaceProject
             ship.Level = levelToStart;
             ship.SetTarget(target);
             overworld.AddOverworldObject(ship);
-
-            if (ship is RebelShip)
-            {
-                rebelsInOverworld++;
-            }
-            else if (ship is PirateShip)
-            {
-                piratesInOverworld++;
-            }
-            else if (ship is FreighterShip)
-            {
-                freightersInOverworld++;
-            }
         }
 
         public List<OverworldShip> GetOverworldShips(int number, String type)
@@ -127,7 +128,6 @@ namespace SpaceProject
             PirateShip tempShip = new PirateShip(game, spriteSheet);
             tempShip.Initialize(sector);
             overworld.AddOverworldObject(tempShip);
-            piratesInOverworld++;
         }
 
         public void AddFreighterToSector()
@@ -135,7 +135,6 @@ namespace SpaceProject
             FreighterShip tempShip = new FreighterShip(game, spriteSheet);
             tempShip.Initialize(sector);
             overworld.AddOverworldObject(tempShip);
-            freightersInOverworld++;
 
         }
 
@@ -145,8 +144,6 @@ namespace SpaceProject
             tempShip.Initialize(sector);
             tempShip.position = pos;
             overworld.AddOverworldObject(tempShip);
-            freightersInOverworld++;
-
         }
 
         public void AddFreighterToSector(Vector2 pos, GameObjectOverworld startingPoint, GameObjectOverworld destination)
@@ -155,30 +152,12 @@ namespace SpaceProject
             tempShip.Initialize(sector, startingPoint, destination);
             tempShip.position = pos;
             overworld.AddOverworldObject(tempShip);
-            freightersInOverworld++;
-
         }
 
         public void AddFreighterToSector(FreighterShip freighter, Vector2 pos)
         {
             freighter.position = pos;
             overworld.AddOverworldObject(freighter);
-            freightersInOverworld++;
-        }
-
-        public void RemovePirateShip()
-        {
-            piratesInOverworld--;
-        }
-
-        public void RemoveAllPirateShips()
-        {
-            piratesInOverworld = 0;
-        }
-
-        public void RemoveFreighterShip()
-        {
-            freightersInOverworld--;
         }
 
         public void Update(GameTime gameTime)

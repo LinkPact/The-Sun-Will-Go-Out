@@ -50,7 +50,7 @@ namespace SpaceProject
 
         public void Update(GameTime gameTime, List<GameObjectOverworld> visibleGameObjects)
         {
-            map.Update(gameTime, game.stateManager.overworldState.GetImobileObjects, game.camera.Position, Vector2.Zero);
+            map.Update(gameTime, game.stateManager.overworldState.GetImmobileObjects, game.camera.Position, Vector2.Zero);
             radar.Update(gameTime, visibleGameObjects, game.camera.Position);
 
             lifeBar.Update(gameTime, StatsManager.GetShipLife(), StatsManager.Armor(),

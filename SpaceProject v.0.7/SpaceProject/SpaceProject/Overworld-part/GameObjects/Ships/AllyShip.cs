@@ -14,12 +14,8 @@ namespace SpaceProject
 
     public class AllyShip : OverworldShip
     {
-        private Rectangle view;
-        private int viewRadius;
         public GameObjectOverworld destinationPlanet;
-        public Vector2 destination;
         public Vector2 tempDestination;
-        private Sector sector = null;
         private ShipType type;
 
         public AllyShip(Game1 game, Sprite spriteSheet, ShipType type) :
@@ -81,7 +77,6 @@ namespace SpaceProject
             destination = endPoint;
         }
 
-        public void SetSector(Sector sec) { sector = sec; }
         public void SetEndPlanet(GameObjectOverworld des) 
         { 
             destination = des.position;
@@ -113,10 +108,6 @@ namespace SpaceProject
         public override void FinalGoodbye()
         {
             IsDead = true;
-            if (sector != null)
-            {
-                sector.shipSpawner.RemoveFreighterShip();
-            }
         }
 
         public override void Wait()
@@ -134,30 +125,10 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            if (GameStateManager.currentState == "OverworldState")
-                IsUsed = true;
-            else
-                IsUsed = false;
-            
-            // Update view
-            view = new Rectangle((int)position.X - viewRadius, (int)position.Y - viewRadius, viewRadius * 2, viewRadius * 2);
-
             if (target != null)
             {
                 destination = target.position;
             }
-
-            // Adjust course towards target
-            if (destination != Vector2.Zero)
-            {
-                Direction.RotateTowardsPoint(this.position, destination, 0.2f);
-                AddParticle();
-            }
-            else
-                Direction = Direction.Zero;
-
-            angle = (float)(MathFunctions.RadiansFromDir(new Vector2(
-                Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI) / 2);
 
             // Check if arrived at destination
             if (destinationPlanet != null)
@@ -176,6 +147,10 @@ namespace SpaceProject
                     hasArrived = true;
                 }
             }
+
+            // Rotate ship
+            angle = (float)(MathFunctions.RadiansFromDir(new Vector2(
+                Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI) / 2 + Math.PI);
 
             if (IsUsed)
             {

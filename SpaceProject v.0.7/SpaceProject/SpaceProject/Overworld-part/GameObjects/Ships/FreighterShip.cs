@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
     public class FreighterShip : OverworldShip
     {
-        private Rectangle view;
-        private int viewRadius;
         public GameObjectOverworld destinationPlanet;
-        public Vector2 destination;
         public Vector2 tempDestination;
-        private Sector sector = null;
 
         public FreighterShip(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet) { }
@@ -43,6 +37,7 @@ namespace SpaceProject
             sector = sec;
             SetRandomStartPlanet();
             SetRandomEndPlanet();
+            AIManager = new TravelAction(this, TravelAction.GetRandomPlanet(sector));
         }
 
         public void Initialize(Sector sec, GameObjectOverworld startingPoint, GameObjectOverworld endDestination)
@@ -54,7 +49,6 @@ namespace SpaceProject
             destinationPlanet = endDestination;
             destination = destinationPlanet.position;
         }
-        public void SetSector(Sector sec) { sector = sec; }
         public void SetEndPlanet(GameObjectOverworld des) 
         { 
             destination = des.position;
@@ -86,10 +80,6 @@ namespace SpaceProject
         public override void FinalGoodbye()
         {
             IsDead = true;
-            if (sector != null)
-            {
-                sector.shipSpawner.RemoveFreighterShip();
-            }
         }
 
         public override void Wait()
@@ -107,32 +97,8 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            if (GameStateManager.currentState == "OverworldState")
-                IsUsed = true;
-            else
-                IsUsed = false;
-            
-            // Update view
-            view = new Rectangle((int)position.X - viewRadius, (int)position.Y - viewRadius, viewRadius * 2, viewRadius * 2); 
-
-            // Adjust course towards target
-            if (destination != Vector2.Zero)
-            {
-                Direction.RotateTowardsPoint(this.position, destination, 0.2f);
-                AddParticle();
-            }
-            else
-                Direction = Direction.Zero;
-
             angle = (float)(MathFunctions.RadiansFromDir(new Vector2(
                 Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI) / 2);
-
-            // Check if arrived at destination
-            if (CollisionDetection.IsRectInRect(this.Bounds, destinationPlanet.Bounds))
-            {
-                hasArrived = true;
-                Game.stateManager.overworldState.RemoveOverworldObject(this);
-            }
 
             if (IsUsed)
             {

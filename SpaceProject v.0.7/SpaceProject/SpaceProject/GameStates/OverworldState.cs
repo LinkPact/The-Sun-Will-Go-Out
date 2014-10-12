@@ -30,7 +30,7 @@ namespace SpaceProject
             }
         }
 
-        public List<GameObjectOverworld> GetImobileObjects
+        public List<GameObjectOverworld> GetImmobileObjects
         {
             get
             {
@@ -368,7 +368,7 @@ namespace SpaceProject
             }
             else if (ControlManager.CheckKeypress(Keys.N))
             {
-                Game.messageBox.DisplayMap(GetImobileObjects);
+                Game.messageBox.DisplayMap(GetImmobileObjects);
             }
             else if (ControlManager.CheckKeypress(Keys.H))
             {
@@ -640,10 +640,6 @@ namespace SpaceProject
                 deepSpaceGameObjects.Remove(obj);
             }
             removeObjects.Clear();
-
-            // If possible, this should be done in a better way in the future.
-            // One proposal is that the counter in ship spawner by itself counts the number of pirates present.
-            sectorX.shipSpawner.RemoveAllPirateShips();
         }
 
         private void DeleteRemovedGameObjects()
@@ -659,7 +655,7 @@ namespace SpaceProject
         private GameObjectOverworld GetCelestialBodyFromString(string classname)
         {
             Type type = Type.GetType(classname);
-            foreach (GameObjectOverworld obj in GetImobileObjects)
+            foreach (GameObjectOverworld obj in GetImmobileObjects)
             {
                 if (obj.GetType().Equals(type))
                     return obj;
@@ -724,7 +720,7 @@ namespace SpaceProject
             }
 
             // Save Shops
-            foreach (GameObjectOverworld obj in GetImobileObjects)
+            foreach (GameObjectOverworld obj in GetImmobileObjects)
             {
                 if (obj is ImmobileSpaceObject)
                 {
@@ -767,7 +763,7 @@ namespace SpaceProject
             }
 
             // Load Shop Inventory
-            foreach (GameObjectOverworld obj in GetImobileObjects)
+            foreach (GameObjectOverworld obj in GetImmobileObjects)
             {
                 if (obj is ImmobileSpaceObject)
                 {
