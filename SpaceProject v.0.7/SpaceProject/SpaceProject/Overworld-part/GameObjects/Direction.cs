@@ -69,6 +69,9 @@ namespace SpaceProject
 
         public void RotateTowardsPoint(Vector2 startingPoint, Vector2 preferredPoint, float rotateSpeed)
         {
+            if (startingPoint.Equals(preferredPoint))
+                return;
+
             SetDirection(scaledDirection + (preferredPoint - startingPoint) * rotateSpeed);
         }
     }
