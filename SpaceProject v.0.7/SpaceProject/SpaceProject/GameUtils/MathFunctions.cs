@@ -21,6 +21,9 @@ namespace SpaceProject
         //att riktningen inte andrar absolutbelopp nar man andrar riktningen.
         public static Vector2 ScaleDirection(Vector2 dir)
         {
+            if (dir.X == 0 && dir.Y == 0)
+                throw new ArgumentException("Cannot scale a (0,0)-vector");
+
             Vector2 inVector = dir;
             
             double x = dir.X;

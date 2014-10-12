@@ -44,7 +44,7 @@ namespace SpaceProject
 
         public void SetDefaultBehavior()
         {
-            PriorityAction tmpAction = new PriorityAction();
+               PriorityAction tmpAction = new PriorityAction();
             tmpAction.Add(new FollowInViewAction(this, Game.player));
             tmpAction.Add(new PatrolAction(this, Game.stateManager.overworldState.GetSectorX));
             AIManager = tmpAction;
