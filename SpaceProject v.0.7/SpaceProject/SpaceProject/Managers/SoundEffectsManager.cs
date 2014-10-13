@@ -25,7 +25,11 @@ namespace SpaceProject
         OverworldEngine,
 
         // Ambience
-        Crowd
+        Crowd,
+
+        // Menu
+        MenuHover,
+        MenuSelect
     }
 
     public class SoundEffectsManager
@@ -55,6 +59,9 @@ namespace SpaceProject
         private CustomSoundEffect overworldEngine;
 
         private CustomSoundEffect crowd;
+
+        private CustomSoundEffect menuHover;
+        private CustomSoundEffect menuSelect;
 
         public SoundEffectsManager(Game1 game)
         {
@@ -101,6 +108,34 @@ namespace SpaceProject
                 crowd = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/crowd1"), 1);
 
                 soundEffects.Add(crowd);
+
+                menuHover = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/menu_hover"), 1);
+                menuSelect = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/menu_select"), 8);
+
+                soundEffects.Add(menuHover);
+                soundEffects.Add(menuSelect);
+            }
+        }
+
+        // Plays specified sound effect with no pan and normal pitch
+        public void PlaySoundEffect(SoundEffects identifier)
+        {
+            if (!muted && LoadSoundEffects && soundEffectBuffer.Count < 32)
+            {
+                int i = (int)identifier;
+
+                SoundEffectInstance instance = soundEffects[i].CreateInstance();
+
+                if (instance != null)
+                {
+                    instance.Volume = volume;
+
+                    instance.Pan = 0;
+                    instance.Pitch = 0;
+                    instance.Play();
+
+                    soundEffectBuffer.Add(instance);
+                }
             }
         }
 
@@ -127,7 +162,7 @@ namespace SpaceProject
                     }
 
                     instance.Pan = pan;
-                    instance.Pitch = (float)StaticFunctions.GetRandomValue() * 0.5f;
+                    instance.Pitch = -0.5f + ((float)StaticFunctions.GetRandomValue() * 1.5f);
                     instance.Play();
 
                     soundEffectBuffer.Add(instance);
