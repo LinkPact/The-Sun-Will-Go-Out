@@ -18,6 +18,7 @@ namespace SpaceProject
         private float yScale;
         private const float STRETCH = 10.5f;
         private float starAngle;
+        protected float speedMod;
         #endregion
 
         private static Random rand = new Random();
@@ -97,12 +98,15 @@ namespace SpaceProject
             }
             #endregion
 
-            UpdateStarPosition();
+            UpdateStarPosition(gameTime);
             base.Update(gameTime);
         }
 
-        public void UpdateStarPosition()
+        public void UpdateStarPosition(GameTime gameTime)
         {
+            //Update star position
+            position += ((Game.player.speed * speedMod)  * Game.player.Direction.GetDirectionAsVector()) * gameTime.ElapsedGameTime.Milliseconds;
+
             //Star moves outside left edges of screen
             if (StaticFunctions.IsPositionOutsideScreenX(position, Game) == 1)
             {

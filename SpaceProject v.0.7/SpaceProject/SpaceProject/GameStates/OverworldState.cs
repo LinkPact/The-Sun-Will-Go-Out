@@ -92,6 +92,8 @@ namespace SpaceProject
 
         public HeadsUpDisplay HUD;
 
+        public BackgroundManagerOverworld bGManagerOverworld;
+
         #endregion
 
         private Camera camera;
@@ -128,6 +130,9 @@ namespace SpaceProject
             // HUD
             HUD = new HeadsUpDisplay(this.Game);
             HUD.Initialize(spriteSheet, new Vector2(OVERWORLD_WIDTH / 2, OVERWORLD_HEIGHT / 2), new Vector2(OVERWORLD_WIDTH, OVERWORLD_HEIGHT));
+
+            bGManagerOverworld = new BackgroundManagerOverworld(Game);
+            bGManagerOverworld.Initialize();
 
             beacons = new List<Beacon>();
 
@@ -178,19 +183,13 @@ namespace SpaceProject
             {
                 RemoveAllPirates();
             }
-            
-            base.OnEnter();
-
-            if (Game.bGManagerOverworld.Stars.Count <= 0)
-            {
-                Game.bGManagerOverworld.AddStar(150, spriteSheet);
-                Game.bGManagerOverworld.InitializeStars();
-            }
 
             camera.WorldWidth = OVERWORLD_WIDTH;
             camera.WorldHeight = OVERWORLD_HEIGHT;
 
             Game.camera = this.camera;
+
+            bGManagerOverworld.AddStar(spriteSheet);
 
             if (GameStateManager.previousState.Equals("IntroSecondState") || GameStateManager.previousState.Equals("StartGameState"))
             {
@@ -204,10 +203,13 @@ namespace SpaceProject
             {
                 Game.musicManager.PlayMusic(ActiveSong);
             }
+
+            base.OnEnter();
         }
 
         public override void OnLeave()
         {
+            bGManagerOverworld.ClearStarList();
         }
 
         public override void Update(GameTime gameTime)
@@ -227,7 +229,7 @@ namespace SpaceProject
 
             UpdateDeepSpaceObjects(gameTime);
 
-            Game.bGManagerOverworld.Update(gameTime);
+            bGManagerOverworld.Update(gameTime);
 
             HUD.Update(gameTime, GetAllOverworldGameObjects);
 
@@ -529,7 +531,7 @@ namespace SpaceProject
             DrawDeepSpaceObjects(spriteBatch);
 
             Game.player.Draw(spriteBatch);
-            Game.bGManagerOverworld.Draw(spriteBatch);
+            bGManagerOverworld.Draw(spriteBatch);
             HUD.Draw(spriteBatch);
 
             base.Draw(spriteBatch);

@@ -10,10 +10,10 @@ namespace SpaceProject
     public class BackgroundManagerOverworld
     {
         public List<Star> Stars;
-        private int numberOfStars;
+        private int numberOfSmallStars = 90;
+        private int numberOfMediumStars = 90;
+        private int numberOfLargeStars = 90;
         private List<Star> deadStars;
-
-        Sprite spriteSheet;
 
         private Game1 Game;
 
@@ -26,31 +26,34 @@ namespace SpaceProject
         { 
             Stars = new List<Star>();
             deadStars = new List<Star>();
-            numberOfStars = 0;
         }
 
-        public void InitializeStars()
+        public void AddStar(Sprite spriteSheet)
         {
-            foreach (Star star in Stars)
-            {
-                star.Initialize();
-            }
-        }
+            int countSmall = Stars.OfType<SmallStar>().Count();
+            int countMedium = Stars.OfType<MediumStar>().Count(); ;
+            int countLarge = Stars.OfType<LargeStar>().Count(); ;
 
-        public void AddStar(int numberOfStars, Sprite spriteSheet)
-        {
-            if (numberOfStars == 0)
+            while (countSmall <= numberOfSmallStars)
             {
-                this.numberOfStars = numberOfStars;
-                this.spriteSheet = spriteSheet;
-            }
-
-            while(numberOfStars > 0)
-            {
-                Star star = new Star(Game, spriteSheet);
+                SmallStar star = new SmallStar(Game, spriteSheet);
                 star.Initialize();
                 Stars.Add(star);
-                numberOfStars--;
+                countSmall++;
+            }
+            while (countMedium <= numberOfMediumStars)
+            {
+                MediumStar star = new MediumStar(Game, spriteSheet);
+                star.Initialize();
+                Stars.Add(star);
+                countMedium++;
+            }
+            while (countLarge <= numberOfLargeStars)
+            {
+                LargeStar star = new LargeStar(Game, spriteSheet);
+                star.Initialize();
+                Stars.Add(star);
+                countLarge++;
             }
         }
 
@@ -86,14 +89,6 @@ namespace SpaceProject
             }
 
             deadStars.Clear();
-        }
-
-        public void RemoveStar()
-        {
-            foreach (Star star in Stars)
-            {
-                deadStars.Add(star);
-            }
         }
     }
 }

@@ -34,7 +34,6 @@ namespace SpaceProject
         public GameStateManager stateManager;
         public StatsManager statsManager;
         public ShipInventoryManager shipInventoryManager;
-        public BackgroundManagerOverworld bGManagerOverworld;
         public MissionManager missionManager;
         public TutorialManager tutorialManager;
         public ShopManager shopManager;
@@ -136,9 +135,6 @@ namespace SpaceProject
 
             player = new PlayerOverWorld(this, spriteSheetOverworld);
             player.Initialize();
-
-            bGManagerOverworld = new BackgroundManagerOverworld(this);
-            bGManagerOverworld.Initialize();
 
             beaconMenu = new BeaconMenu(this, spriteSheetOverworld);
             beaconMenu.Initialize();
@@ -336,7 +332,6 @@ namespace SpaceProject
             shipInventoryManager.Initialize();
             statsManager.Initialize();
             player.Initialize();
-            bGManagerOverworld.Initialize();
             missionManager.Initialize();
             tutorialManager.Initialize();
             beaconMenu.Initialize();
