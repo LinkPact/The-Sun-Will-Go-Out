@@ -29,6 +29,18 @@ namespace SpaceProject
             swarm.CreatureSetup(testSetup);
             untriggeredEvents.Add(swarm);
 
+            LevelEvent trueMessage = new SimpleMessageVertical(Game, player, spriteSheet, this, 2000, "HELLUUU!!");
+            untriggeredEvents.Add(trueMessage);
+
+            LevelEvent trueMessage2 = new SimpleMessageVertical(Game, player, spriteSheet, this, 3000, "HELLUUU2!!");
+            untriggeredEvents.Add(trueMessage2);
+
+            LevelEvent trueMessage3 = new SimpleMessageVertical(Game, player, spriteSheet, this, 5000, "HELLUUU33!!");
+            untriggeredEvents.Add(trueMessage3);
+
+            LevelEvent message = new SingleEnemy(Game, player, spriteSheet, this, EnemyType.R_mosquito, 3000, 100);
+            untriggeredEvents.Add(message);
+
             SetCustomVictoryCondition(LevelObjective.Boss, -1);
         }
     }
