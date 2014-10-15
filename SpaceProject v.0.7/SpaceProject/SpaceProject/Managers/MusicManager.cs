@@ -20,6 +20,7 @@ namespace SpaceProject
         MainMenu2,
         PowerSong,
         SpaceStation,
+        SpaceAmbience,
         none
     }
 
@@ -43,6 +44,7 @@ namespace SpaceProject
         private Song mainMenu2;
         private Song powerSong;
         private Song spaceStation;
+        private Song spaceAmbience;
 
         public Boolean IsSongPlaying(Music song) { return activeSong == song; }
 
@@ -81,6 +83,7 @@ namespace SpaceProject
 
             powerSong = game.Content.Load<Song>("Music/PowerSong");
             spaceStation = game.Content.Load<Song>("Music/SpaceStation");
+            spaceAmbience = game.Content.Load<Song>("Music/space_ambience");
             
             //tracks.Add(mainMenuSong);
             //tracks.Add(song1);
@@ -94,6 +97,7 @@ namespace SpaceProject
             tracks.Add(mainMenu2);
             tracks.Add(powerSong);
             tracks.Add(spaceStation);
+            tracks.Add(spaceAmbience);
         }
 
         public void PlayMusic(Music identifier)

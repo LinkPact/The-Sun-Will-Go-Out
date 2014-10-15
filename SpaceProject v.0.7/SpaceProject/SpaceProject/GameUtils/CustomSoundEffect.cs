@@ -128,9 +128,17 @@ namespace SpaceProject
 
                     if (instance.Volume <= 0.05f)
                     {
-                        instance.Stop();
-                        instance.Dispose();
-                        stoppedInstances.Add(instance);
+                        if (!instance.IsDisposed)
+                        {
+                            instance.Stop();
+                            instance.Dispose();
+                            stoppedInstances.Add(instance);
+                        }
+
+                        else
+                        {
+                            stoppedInstances.Add(instance);
+                        }
                     }
                 }
 
