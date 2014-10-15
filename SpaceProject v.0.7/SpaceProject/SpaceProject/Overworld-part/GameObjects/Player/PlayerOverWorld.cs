@@ -252,7 +252,7 @@ namespace SpaceProject
 
                             AddParticle();
 
-                            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.OverworldEngine, 0f);
+                            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.OverworldEngine, 0f, 0f);
                         }
                     }
                 }
@@ -315,6 +315,8 @@ namespace SpaceProject
                 {
                     speed = 0;
                 }
+
+                Game.soundEffectsManager.FadeOutSoundEffect(SoundEffects.OverworldEngine);
             }
 
             angle = (float)(MathFunctions.RadiansFromDir(new Vector2(

@@ -101,7 +101,7 @@ namespace SpaceProject
                 soundEffects.Add(muffledExplosion);
                 soundEffects.Add(smallExplosion);
 
-                overworldEngine = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/engine1"), 1);
+                overworldEngine = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/engine_overworld_full"), 1);
 
                 soundEffects.Add(overworldEngine);
 
@@ -232,10 +232,26 @@ namespace SpaceProject
             }
         }
 
+        // Stops all instances of the specified sound effect
+        public void FadeOutSoundEffect(SoundEffects identifier)
+        {
+            if (!muted && LoadSoundEffects)
+            {
+                int i = (int)identifier;
+
+                soundEffects[i].FadeOut = true;
+            }
+        }
+
         public void Update(GameTime gameTime)
         {
             if (soundEffectBuffer.Count > 0)
             {
+                foreach (CustomSoundEffect soundEffect in soundEffects)
+                {
+                    soundEffect.Update();
+                }
+
                 if (soundEffectBuffer[0].IsDisposed)
                 {
                     soundEffectBuffer.Remove(soundEffectBuffer[0]);

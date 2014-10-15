@@ -332,13 +332,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SoundEffects\engine1.wav">
-      <Name>engine1</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="SoundEffects\crowd1.wav">
       <Name>crowd1</Name>
       <Importer>WavImporter</Importer>
@@ -362,6 +355,13 @@
   <ItemGroup>
     <Compile Include="SoundEffects\menu_hover.wav">
       <Name>menu_hover</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SoundEffects\engine_overworld_full.wav">
+      <Name>engine_overworld_full</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
