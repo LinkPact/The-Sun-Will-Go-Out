@@ -132,6 +132,8 @@ namespace SpaceProject
                 case "music":
                     game.musicManager.SwitchMusicMuted();
                     optionsMenuState.SaveSettings();
+
+                    PlaySelectSound();
                     break;
             
                 case "sound effects":
@@ -147,6 +149,8 @@ namespace SpaceProject
                 case "back":
                     optionsMenuState.LeaveSubState();
                     OnLeave();
+
+                    PlayLowPitchSelectSound();
                     break;
             }
 

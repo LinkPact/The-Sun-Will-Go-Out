@@ -175,12 +175,16 @@ namespace SpaceProject
                     game.graphics.ApplyChanges();
                     optionsMenuState.SaveSettings();
                     UpdateText();
+
+                    PlaySelectSound();
                     break;
             
                 case "show fps":
                     game.ShowFPS = !game.ShowFPS;
                     optionsMenuState.SaveSettings();
                     UpdateText();
+
+                    PlaySelectSound();
                     break;
 
                 case "resolution":
@@ -204,6 +208,8 @@ namespace SpaceProject
 
                         UpdateText();
                     }
+
+                    PlaySelectSound();
                     break;
 
                 // DON'T DELETE
@@ -238,11 +244,15 @@ namespace SpaceProject
 
                         UpdateText();
                     }
+
+                    PlaySelectSound();
                     break;
 
                 case "back":
                     optionsMenuState.LeaveSubState();
                     OnLeave();
+
+                    PlayLowPitchSelectSound();
                     break;
             }
         }
@@ -264,6 +274,8 @@ namespace SpaceProject
                 default:
                     throw new ArgumentException(String.Format("'%s' is not a valid identifier."));
             }
+
+            PlayHoverSound();
         }
 
         private void UpdateText()

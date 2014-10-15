@@ -162,7 +162,7 @@ namespace SpaceProject
                     }
 
                     instance.Pan = pan;
-                    instance.Pitch = -0.5f + ((float)StaticFunctions.GetRandomValue() * 1.5f);
+                    instance.Pitch = -0.2f + ((float)StaticFunctions.GetRandomValue() * 0.4f);
                     instance.Play();
 
                     soundEffectBuffer.Add(instance);
