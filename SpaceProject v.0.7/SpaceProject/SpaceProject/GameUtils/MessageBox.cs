@@ -12,6 +12,7 @@ namespace SpaceProject
     {
         Invisible,
         Message,
+        Tutorial,
         Menu,
         Inventory,
         YesNo,
@@ -30,6 +31,7 @@ namespace SpaceProject
 
         private Game1 Game;
         private Sprite spriteSheet;
+        private Sprite tutorialBackdrop;
         //private SpriteFont font;
 
         private MessageState messageState;
@@ -148,6 +150,16 @@ namespace SpaceProject
         {
             textStorage = txtList;
             popupDelay = delay;
+        }
+
+        public void DisplayTutorialMessage(string txt)
+        {
+
+        }
+
+        public void DisplayTutorialMessage(string txt, Sprite image)
+        {
+
         }
 
         //Display a map of the system in a pop-up
