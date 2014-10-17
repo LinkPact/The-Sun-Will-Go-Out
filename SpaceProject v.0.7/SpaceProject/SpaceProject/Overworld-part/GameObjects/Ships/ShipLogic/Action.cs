@@ -20,6 +20,7 @@ namespace SpaceProject
         protected List<ShipAction> Actions = new List<ShipAction>();
     }
 
+    // Perform several Actions in parallel
     public class ParallelAction : CompositeAction
     {
         public override void Update(GameTime gameTime)
@@ -33,6 +34,7 @@ namespace SpaceProject
         }
     }
 
+    // Performs several Actions in sequense  
     public class SequentialAction : CompositeAction
     {
         public override void Update(GameTime gameTime)
@@ -47,6 +49,7 @@ namespace SpaceProject
         }
     }
 
+    // Chose which action to execute from a prioritised list
     public class PriorityAction : CompositeAction
     {
         public override void Update(GameTime gameTime)
@@ -56,6 +59,28 @@ namespace SpaceProject
                 a.Update(gameTime);
                 if (a.Finished)
                     break;
+            }
+        }
+    }
+
+    public class LoopAction : CompositeAction
+    {
+        private int loopindex;
+
+        public LoopAction() { loopindex = 0; }
+
+        public override void Update(GameTime gameTime)
+        {
+            if (Actions.Count != 0)
+            {
+                Actions[loopindex].Update(gameTime);
+                if (Actions[loopindex].Finished)
+                {
+                    Actions[loopindex].Finished = false;
+                    loopindex++;
+                    if (loopindex > Actions.Count - 1)
+                        loopindex = 0;
+                }   
             }
         }
     }
