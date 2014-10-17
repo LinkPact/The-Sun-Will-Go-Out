@@ -20,8 +20,6 @@ namespace SpaceProject
         Map
     }
 
-
-
     public class MessageBox
     {
         private List<String> textStorage;
@@ -32,7 +30,9 @@ namespace SpaceProject
         #region variables
 
         private Game1 Game;
-        private Sprite spriteSheet;
+        private Sprite messageBackdrop;
+        private Sprite buttonUnselected;
+        private Sprite buttonSelected;
         //private SpriteFont font;
 
         private MessageState messageState;
@@ -84,9 +84,10 @@ namespace SpaceProject
 
         public MessageBox(Game1 Game, Sprite SpriteSheet)
         {
-            this.spriteSheet = SpriteSheet.GetSubSprite(new Rectangle(0, 58, 200, 150));
             this.Game = Game;
-            //font = Game.fontManager.GetFont(14);
+            messageBackdrop = SpriteSheet.GetSubSprite(new Rectangle(0, 56, 269, 184));
+            buttonUnselected = SpriteSheet.GetSubSprite(new Rectangle(112, 0, 66, 21));
+            buttonSelected = SpriteSheet.GetSubSprite(new Rectangle(180, 0, 66, 21));
         }
 
         public void Initialize()
@@ -945,29 +946,31 @@ namespace SpaceProject
             if (GameStateManager.currentState == "OverworldState")
             {
                 textBoxPos = new Vector2(Game.camera.cameraPos.X, Game.camera.cameraPos.Y);
-                textPos = new Vector2(Game.camera.cameraPos.X, Game.camera.cameraPos.Y);
+                textPos = new Vector2(Game.camera.cameraPos.X - messageBackdrop.SourceRectangle.Value.Width / 2
+                    , Game.camera.cameraPos.Y - messageBackdrop.SourceRectangle.Value.Height / 2 - 5);
             }
 
             else
             {
                 textBoxPos = new Vector2(Game.Window.ClientBounds.Width / 2, Game.Window.ClientBounds.Height / 2);
-                textPos = new Vector2(Game.Window.ClientBounds.Width / 2, Game.Window.ClientBounds.Height / 2);
+                textPos = new Vector2(Game.Window.ClientBounds.Width / 2 - messageBackdrop.SourceRectangle.Value.Width / 2,
+                    Game.Window.ClientBounds.Height / 2 - messageBackdrop.SourceRectangle.Value.Height / 2 - 5);
             }
 
             if (messageState == MessageState.Inventory)
             {
                 //Displays a larger sized combo-box when working with inventory throwing.
-                spriteBatch.Draw(spriteSheet.Texture, textBoxPos, spriteSheet.SourceRectangle, Color.White,
+                spriteBatch.Draw(messageBackdrop.Texture, textBoxPos, messageBackdrop.SourceRectangle, Color.White,
                              0.0f, new Vector2(0, 0),
                              1.0f, SpriteEffects.None, 0.95f);
-                spriteBatch.Draw(spriteSheet.Texture, textBoxPos, spriteSheet.SourceRectangle, Color.White,
-                             0.0f, new Vector2(spriteSheet.SourceRectangle.Value.Width, spriteSheet.SourceRectangle.Value.Height),
+                spriteBatch.Draw(messageBackdrop.Texture, textBoxPos, messageBackdrop.SourceRectangle, Color.White,
+                             0.0f, new Vector2(messageBackdrop.SourceRectangle.Value.Width, messageBackdrop.SourceRectangle.Value.Height),
                              1.0f, SpriteEffects.None, 0.95f);
-                spriteBatch.Draw(spriteSheet.Texture, textBoxPos, spriteSheet.SourceRectangle, Color.White,
-                                 0.0f, new Vector2(0, spriteSheet.SourceRectangle.Value.Height),
+                spriteBatch.Draw(messageBackdrop.Texture, textBoxPos, messageBackdrop.SourceRectangle, Color.White,
+                                 0.0f, new Vector2(0, messageBackdrop.SourceRectangle.Value.Height),
                                  1.0f, SpriteEffects.None, 0.95f);
-                spriteBatch.Draw(spriteSheet.Texture, textBoxPos, spriteSheet.SourceRectangle, Color.White,
-                                 0.0f, new Vector2(spriteSheet.SourceRectangle.Value.Width, 0),
+                spriteBatch.Draw(messageBackdrop.Texture, textBoxPos, messageBackdrop.SourceRectangle, Color.White,
+                                 0.0f, new Vector2(messageBackdrop.SourceRectangle.Value.Width, 0),
                                  1.0f, SpriteEffects.None, 0.95f);
             }
 
@@ -975,24 +978,28 @@ namespace SpaceProject
             {
                 case MessageState.Message:
                     {
-                        spriteBatch.Draw(spriteSheet.Texture,
+                        spriteBatch.Draw(messageBackdrop.Texture,
                              textBoxPos,
-                             spriteSheet.SourceRectangle,
-                             new Color(255, 255, 255, 185),
+                             messageBackdrop.SourceRectangle,
+                             new Color(255, 255, 255, 204),
                              0.0f,
-                             new Vector2(spriteSheet.SourceRectangle.Value.Width / 2,
-                                         spriteSheet.SourceRectangle.Value.Height / 2),
+                             new Vector2(messageBackdrop.SourceRectangle.Value.Width / 2,
+                                         messageBackdrop.SourceRectangle.Value.Height / 2),
                              1.5f,
                              SpriteEffects.None,
                              0.95f);
 
+                        spriteBatch.Draw(buttonSelected.Texture, new Vector2(textBoxPos.X, textBoxPos.Y + 102), buttonSelected.SourceRectangle,
+                            Color.White, 0f, new Vector2(buttonSelected.SourceRectangle.Value.Width / 2, buttonSelected.SourceRectangle.Value.Height / 2),
+                            1f, SpriteEffects.None, 0.975f);
+
                         String text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
-                                                    textBuffer[0], (int)Math.Round((spriteSheet.SourceRectangle.Value.Width * 1.45) - 25, 0));
+                                                    textBuffer[0], (int)Math.Round(((float)messageBackdrop.SourceRectangle.Value.Width), 0));
 
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                 text,
-                                                new Vector2(textPos.X - 130,
-                                                            textPos.Y - 98) + Game.fontManager.FontOffset,
+                                                new Vector2(textPos.X,
+                                                            textPos.Y) + Game.fontManager.FontOffset,
                                                 Game.fontManager.FontColor,
                                                 0f,
                                                 Vector2.Zero,
@@ -1001,33 +1008,32 @@ namespace SpaceProject
                                                 1f);
 
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
-                                               confirmString,
-                                               new Vector2(textPos.X,
-                                                           textPos.Y + 90) + Game.fontManager.FontOffset,
-                                               Game.fontManager.FontColor,
-                                               0f,
-                                               Game.fontManager.GetFont(14).MeasureString(confirmString) / 2,
-                                               1f,
-                                               SpriteEffects.None,
-                                               1f);
+                                                "Okay",
+                                                new Vector2(textBoxPos.X, textBoxPos.Y + 104) + Game.fontManager.FontOffset,
+                                                Game.fontManager.FontColor,
+                                                0f,
+                                                Game.fontManager.GetFont(14).MeasureString("Okay") / 2,
+                                                1f,
+                                                SpriteEffects.None,
+                                                1f);
                     }
                     break;
 
                 case MessageState.SelectionMenu:
                     {
-                        spriteBatch.Draw(spriteSheet.Texture,
+                        spriteBatch.Draw(messageBackdrop.Texture,
                              textBoxPos,
-                             spriteSheet.SourceRectangle,
+                             messageBackdrop.SourceRectangle,
                              new Color(255, 255, 255, 185),
                              0.0f,
-                             new Vector2(spriteSheet.SourceRectangle.Value.Width / 2,
-                                         spriteSheet.SourceRectangle.Value.Height / 2),
+                             new Vector2(messageBackdrop.SourceRectangle.Value.Width / 2,
+                                         messageBackdrop.SourceRectangle.Value.Height / 2),
                              1.5f,
                              SpriteEffects.None,
                              0.95f);
 
                         String text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
-                                                    textBuffer[0], (int)Math.Round((spriteSheet.SourceRectangle.Value.Width * 1.45) - 25, 0));
+                                                    textBuffer[0], (int)Math.Round((messageBackdrop.SourceRectangle.Value.Width * 1.45) - 25, 0));
 
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                 text,
@@ -1090,9 +1096,9 @@ namespace SpaceProject
                         else
                             pos = Vector2.Zero;
 
-                        spriteBatch.Draw(spriteSheet.Texture,
+                        spriteBatch.Draw(messageBackdrop.Texture,
                              pos,
-                             spriteSheet.SourceRectangle,
+                             messageBackdrop.SourceRectangle,
                              Color.White,
                              0.0f,
                              Vector2.Zero,
@@ -1134,13 +1140,13 @@ namespace SpaceProject
                     }
                     break;
                 case MessageState.Map:
-                    spriteBatch.Draw(spriteSheet.Texture,
+                    spriteBatch.Draw(messageBackdrop.Texture,
                              new Vector2((int)Game.camera.Position.X /*- Game.Window.ClientBounds.Width / 2*/, (int)Game.camera.Position.Y /*- Game.Window.ClientBounds.Height / 2*/),
-                             spriteSheet.SourceRectangle,
+                             messageBackdrop.SourceRectangle,
                              new Color(255, 255, 255, 220),
                              0.0f,
-                             new Vector2(spriteSheet.SourceRectangle.Value.Width / 2,
-                                         spriteSheet.SourceRectangle.Value.Height / 2),
+                             new Vector2(messageBackdrop.SourceRectangle.Value.Width / 2,
+                                         messageBackdrop.SourceRectangle.Value.Height / 2),
                              3.6f,
                              SpriteEffects.None,
                              0.95f);
