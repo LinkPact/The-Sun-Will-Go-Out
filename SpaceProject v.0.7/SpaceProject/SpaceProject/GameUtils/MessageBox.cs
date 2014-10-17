@@ -20,6 +20,8 @@ namespace SpaceProject
         Map
     }
 
+
+
     public class MessageBox
     {
         private List<String> textStorage;
@@ -31,7 +33,6 @@ namespace SpaceProject
 
         private Game1 Game;
         private Sprite spriteSheet;
-        private Sprite tutorialBackdrop;
         //private SpriteFont font;
 
         private MessageState messageState;
@@ -152,12 +153,12 @@ namespace SpaceProject
             popupDelay = delay;
         }
 
-        public void DisplayTutorialMessage(string txt)
+        public void DisplayMessageWithImage(string txt, Sprite canvas, Sprite image)
         {
 
         }
 
-        public void DisplayTutorialMessage(string txt, Sprite image)
+        public void DisplayMessageWithImage(List<string> txtList, Sprite canvas, Sprite image)
         {
 
         }

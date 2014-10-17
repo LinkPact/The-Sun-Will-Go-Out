@@ -7,9 +7,19 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
+    public enum TutorialImage
+    {
+        Controls
+    }
+
     public class TutorialManager
     {
         private Game1 game;
+
+        private Sprite tutorialImageCanvas;
+        private Sprite tutorialSpriteSheet;
+        private List<Sprite> tutorialImages;
+
         private bool tutorialsUsed;
         public bool TutorialsUsed { get { return tutorialsUsed; } set { tutorialsUsed = value; } }
         private int tempTimer = 1250;
@@ -34,6 +44,8 @@ namespace SpaceProject
 
         public void Initialize()
         {
+            tutorialSpriteSheet = new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/tutorial_spritesheet"), null);
+
             hasEnteredSectorX = false;
             hasEnteredStation = false;
             hasEnteredPlanet = false;
@@ -179,6 +191,22 @@ namespace SpaceProject
             }
         }
 
+        public void DisplayTutorialMessage(String message, Sprite image)
+        {
+            if (tutorialsUsed)
+            {
+                game.messageBox.DisplayMessageWithImage(message, tutorialImageCanvas, image);
+            }
+        }
+
+        public void DisplayTutorialMessage(List<String> messages, Sprite image)
+        {
+            if (tutorialsUsed)
+            {
+                game.messageBox.DisplayMessageWithImage(messages, tutorialImageCanvas, image);
+            }
+        }
+
         public void Save()
         {
             SortedDictionary<string, string> tutorialProgress = new SortedDictionary<string, string>();
@@ -207,6 +235,11 @@ namespace SpaceProject
             hasEnteredInventory = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredinventory", false);
             hasEnteredHighfenceBeaconArea = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredhighfencebeaconarea", false);
             hasActivatedHighfenceBeacon = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasactivatedhighfencebeacon", false);
+        }
+
+        private Sprite GetImageFromEnum(TutorialImage imageID)
+        {
+            throw new NotImplementedException();
         }
     }
 }
