@@ -100,11 +100,7 @@ namespace SpaceProject
             angle = (float)(MathFunctions.RadiansFromDir(new Vector2(
                 Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI) / 2);
 
-            if (IsUsed)
-            {
-                base.Update(gameTime);
-            }
-
+           base.Update(gameTime);
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
