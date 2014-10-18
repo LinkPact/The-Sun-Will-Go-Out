@@ -12,6 +12,7 @@ namespace SpaceProject
     {
         Invisible,
         Message,
+        MessageWithImage,
         Tutorial,
         Menu,
         Inventory,
@@ -26,6 +27,9 @@ namespace SpaceProject
         private List<String> optionStorage;
         private List<System.Action> actionStorage;
         private int popupDelay;
+
+        private Sprite imageCanvas;
+        private Sprite image;
 
         #region variables
 
@@ -156,12 +160,35 @@ namespace SpaceProject
 
         public void DisplayMessageWithImage(string txt, Sprite canvas, Sprite image)
         {
+            messageState = MessageState.MessageWithImage;
 
+            Game1.Paused = true;
+
+            if (!txt.Contains('#'))
+            {
+                textBuffer.Add(txt);
+            }
+            else
+            {
+                List<String> tempList = SplitHashTagText(txt);
+                foreach (String str in tempList)
+                {
+                    textBuffer.Add(str);
+                }
+            }
+
+            imageCanvas = canvas;
+            this.image = image;
+
+            tempTimer = 5;
         }
 
         public void DisplayMessageWithImage(List<string> txtList, Sprite canvas, Sprite image)
         {
-
+            foreach (string str in txtList)
+            {
+                DisplayMessageWithImage(str, canvas, image);
+            }
         }
 
         //Display a map of the system in a pop-up
@@ -361,6 +388,11 @@ namespace SpaceProject
             }
 
             tempTimer--;
+        }
+
+        private void UpdateButtonLabels()
+        {
+
         }
 
         //The different actions that happens when you move items in different ways.
@@ -694,7 +726,30 @@ namespace SpaceProject
                 }
             }
 
-            if (messageState == MessageState.Map)
+            else if (messageState == MessageState.SelectionMenu)
+            {
+                if (ControlManager.CheckPress(RebindableKeys.Right))
+                {
+                    cursorIndex--;
+                }
+
+                else if (ControlManager.CheckPress(RebindableKeys.Left))
+                {
+                    cursorIndex++;
+                }
+
+                if (cursorIndex > menuOptions.Count - 1)
+                {
+                    cursorIndex = 0;
+                }
+
+                else if (cursorIndex < 0)
+                {
+                    cursorIndex = menuOptions.Count - 1;
+                }
+            }
+
+            else if (messageState == MessageState.Map)
             {
                 if ((ControlManager.CheckKeypress(Keys.LeftShift)
                     || ControlManager.CheckKeypress(Keys.RightShift)
@@ -781,6 +836,17 @@ namespace SpaceProject
                     messageState = MessageState.Invisible;
                 }
             }
+
+            else if (messageState == MessageState.MessageWithImage && tempTimer < 0)
+            {
+                textBuffer.RemoveAt(0);
+
+                if (textBuffer.Count <= 0)
+                {
+                    Game1.Paused = false;
+                    messageState = MessageState.Invisible;
+                }
+            }
         }
 
         private void HideMap()
@@ -799,6 +865,24 @@ namespace SpaceProject
             if (messageState == MessageState.Message && tempTimer < 0)
             {
                 HideMessage();
+            }
+
+            else if (messageState == MessageState.MessageWithImage && tempTimer < 0)
+            {
+                switch (cursorIndex)
+                {
+                    case 0:
+                        HideMessage();
+                        break;
+
+                    case 1:
+                        Game.tutorialManager.TutorialsUsed = !Game.tutorialManager.TutorialsUsed;
+                        UpdateButtonLabels();
+                        break;
+
+                    default:
+                        throw new IndexOutOfRangeException("Cursor index is out of range.");
+                }
             }
 
             //checks which option the user selects and executes it.  
@@ -1018,6 +1102,52 @@ namespace SpaceProject
                                                 1f);
                     }
                     break;
+
+                case MessageState.MessageWithImage:
+                    {
+                        Vector2 imagePos = new Vector2(textBoxPos.X / 2 + 15,
+                            textBoxPos.Y / 2 - 30);
+
+                        textPos = new Vector2(textBoxPos.X / 2 + 30, textBoxPos.Y + 48);
+
+                        spriteBatch.Draw(imageCanvas.Texture,
+                             textBoxPos,
+                             imageCanvas.SourceRectangle,
+                             new Color(255, 255, 255, 204),
+                             0.0f,
+                             new Vector2(imageCanvas.SourceRectangle.Value.Width / 2,
+                                         imageCanvas.SourceRectangle.Value.Height / 2),
+                             1f,
+                             SpriteEffects.None,
+                             0.95f);
+
+                        spriteBatch.Draw(image.Texture,
+                            imagePos,
+                            image.SourceRectangle,
+                            Color.White,
+                            0f,
+                            Vector2.Zero,
+                            1f,
+                            SpriteEffects.None,
+                            0.96f);
+
+
+                        String text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
+                                                    textBuffer[0], (int)Math.Round(((float)imageCanvas.SourceRectangle.Value.Width - 60), 0));
+
+                        spriteBatch.DrawString(Game.fontManager.GetFont(14),
+                                                text,
+                                                new Vector2(textPos.X,
+                                                            textPos.Y) + Game.fontManager.FontOffset,
+                                                Game.fontManager.FontColor,
+                                                0f,
+                                                Vector2.Zero,
+                                                1f,
+                                                SpriteEffects.None,
+                                                1f);
+
+                        break;
+                    }
 
                 case MessageState.SelectionMenu:
                     {
