@@ -9,7 +9,8 @@ namespace SpaceProject
 {
     public enum TutorialImage
     {
-        Controls
+        CombatControls,
+        CombatBars
     }
 
     public class TutorialManager
@@ -49,6 +50,7 @@ namespace SpaceProject
 
             tutorialImages = new List<Sprite>();
             tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(403, 1, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(403, 199, 366, 197)));
 
             hasEnteredSectorX = false;
             hasEnteredStation = false;
@@ -142,7 +144,8 @@ namespace SpaceProject
 
                     hasEnteredVerticalShooter = true;
                     DisplayTutorialMessage(new List<String>{"Use the movement keys (Default arrowkeys) to move your ship, the fire key ('Left Control') to fire and the switch key ('Left Shift') to change weapon. You can rebind the keys in the options menu.",
-                    "Down at the bottom-left are three bars:\n\nYour health - when this runs out you fail the level and your overall health is reduced a bit.", "Your energy - weapons use energy to fire.\n\nYour shield - protects your ship from damage. Recharges over time."}, TutorialImage.Controls);
+                    "Down at the bottom-left are three bars:\n\nYour health - when this runs out you fail the level and your overall health is reduced a bit.", "Your energy - weapons use energy to fire.\n\nYour shield - protects your ship from damage. Recharges over time."},
+                    new List<TutorialImage> { TutorialImage.CombatControls, TutorialImage.CombatBars }, new List<int> {1});
                 }
             }
 
@@ -195,19 +198,34 @@ namespace SpaceProject
             }
         }
 
-        public void DisplayTutorialMessage(String message, TutorialImage image)
+        public void DisplayTutorialMessage(String message, TutorialImage imageID)
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessageWithImage(message, tutorialImageCanvas, GetImageFromEnum(image));
+                game.messageBox.DisplayMessageWithImage(message, tutorialImageCanvas, GetImageFromEnum(imageID));
             }
         }
 
-        public void DisplayTutorialMessage(List<String> messages, TutorialImage image)
+        public void DisplayTutorialMessage(List<String> messages, TutorialImage imageID)
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessageWithImage(messages, tutorialImageCanvas, GetImageFromEnum(image));
+                game.messageBox.DisplayMessageWithImage(messages, tutorialImageCanvas, GetImageFromEnum(imageID));
+            }
+        }
+
+        public void DisplayTutorialMessage(List<String> messages, List<TutorialImage> imageID, List<int>imageTriggers)
+        {
+            if (tutorialsUsed)
+            {
+                List<Sprite> sprites = new List<Sprite>();
+
+                foreach (TutorialImage imgID in imageID)
+                {
+                    sprites.Add(GetImageFromEnum(imgID));
+                }
+
+                game.messageBox.DisplayMessageWithImage(messages, tutorialImageCanvas, sprites, imageTriggers);
             }
         }
 
@@ -245,8 +263,11 @@ namespace SpaceProject
         {
             switch (imageID)
             {
-                case TutorialImage.Controls:
+                case TutorialImage.CombatControls:
                     return tutorialImages[0];
+
+                case TutorialImage.CombatBars:
+                    return tutorialImages[1];
 
                 default:
                     throw new ArgumentException("Image ID not recognized.");

@@ -29,7 +29,9 @@ namespace SpaceProject
         private int popupDelay;
 
         private Sprite imageCanvas;
-        private Sprite image;
+        private List<Sprite> imageBuffer;
+        private int imageTriggerCount;
+        private List<int> imageTriggers;
 
         #region variables
 
@@ -109,6 +111,9 @@ namespace SpaceProject
             textStorage = new List<String>();
             optionStorage = new List<String>();
             actionStorage = new List<System.Action>();
+
+            imageBuffer = new List<Sprite>();
+            imageTriggers = new List<int>();
         }
 
         //Call this method, feed in a string and the message will appear on screen 
@@ -178,7 +183,7 @@ namespace SpaceProject
             }
 
             imageCanvas = canvas;
-            this.image = image;
+            imageBuffer.Add(image);
 
             tempTimer = 5;
         }
@@ -189,6 +194,48 @@ namespace SpaceProject
             {
                 DisplayMessageWithImage(str, canvas, image);
             }
+        }
+
+        public void DisplayMessageWithImage(List<string> txtList, Sprite canvas, List<Sprite> images,
+            List<int> imageTriggers)
+        {
+            if (txtList.Count < images.Count)
+            {
+                throw new ArgumentException("At least one string per image is required.");
+            }
+
+            if (images.Count - 1 != imageTriggers.Count)
+            {
+                throw new ArgumentException("One trigger is required for each image except the first.");
+            }
+
+            imageTriggerCount = 0;
+            this.imageTriggers = imageTriggers;
+
+            messageState = MessageState.MessageWithImage;
+
+            Game1.Paused = true;
+
+            foreach (string str in txtList)
+            {
+                if (!str.Contains('#'))
+                {
+                    textBuffer.Add(str);
+                }
+                else
+                {
+                    List<String> tempList = SplitHashTagText(str);
+                    foreach (String str2 in tempList)
+                    {
+                        textBuffer.Add(str2);
+                    }
+                }
+            }
+
+            imageCanvas = canvas;
+            imageBuffer = images;
+
+            tempTimer = 5;
         }
 
         //Display a map of the system in a pop-up
@@ -846,6 +893,18 @@ namespace SpaceProject
                     Game1.Paused = false;
                     messageState = MessageState.Invisible;
                 }
+
+                else
+                {
+                    imageTriggerCount++;
+
+                    if (imageTriggers.Count > 0 &&
+                        imageTriggerCount == imageTriggers[0])
+                    {
+                        imageTriggers.RemoveAt(0);
+                        imageBuffer.RemoveAt(0);
+                    }
+                }
             }
         }
 
@@ -1121,9 +1180,9 @@ namespace SpaceProject
                              SpriteEffects.None,
                              0.95f);
 
-                        spriteBatch.Draw(image.Texture,
+                        spriteBatch.Draw(imageBuffer[0].Texture,
                             imagePos,
-                            image.SourceRectangle,
+                            imageBuffer[0].SourceRectangle,
                             Color.White,
                             0f,
                             Vector2.Zero,
