@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Microsoft.Xna.Framework;
 
 namespace SpaceProject
@@ -8,6 +7,7 @@ namespace SpaceProject
     abstract public class ShipAction
     {
         public virtual void Update(GameTime gameTime) { }
+        public virtual void Reset() { }
         public bool Finished = false;
     }
 
@@ -63,6 +63,7 @@ namespace SpaceProject
         }
     }
 
+    // Create a sequence of Action that will be repeted over and over. 
     public class LoopAction : CompositeAction
     {
         private int loopindex;
@@ -76,7 +77,7 @@ namespace SpaceProject
                 Actions[loopindex].Update(gameTime);
                 if (Actions[loopindex].Finished)
                 {
-                    Actions[loopindex].Finished = false;
+                    Actions[loopindex].Reset();
                     loopindex++;
                     if (loopindex > Actions.Count - 1)
                         loopindex = 0;

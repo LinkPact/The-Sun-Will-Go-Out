@@ -37,7 +37,7 @@ namespace SpaceProject
             sector = sec;
             SetRandomStartPlanet();
             SetRandomEndPlanet();
-            AIManager = new TravelAction(this, TravelAction.GetRandomPlanet(sector));
+            SetDefaultBehaviour();
         }
 
         public void Initialize(Sector sec, GameObjectOverworld startingPoint, GameObjectOverworld endDestination)
@@ -49,6 +49,14 @@ namespace SpaceProject
             destinationPlanet = endDestination;
             destination = destinationPlanet.position;
         }
+        public void SetDefaultBehaviour()
+        {
+            LoopAction foo = new LoopAction();
+            foo.Add(new TravelAction(this, TravelAction.GetRandomPlanet(sector)));
+            foo.Add(new WaitTimeAction(this, 7500));
+            AIManager = foo;
+        }
+
         public void SetEndPlanet(GameObjectOverworld des) 
         { 
             destination = des.position;

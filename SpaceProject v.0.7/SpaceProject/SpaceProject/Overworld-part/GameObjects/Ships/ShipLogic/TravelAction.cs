@@ -15,6 +15,12 @@ namespace SpaceProject
             this.target = target;
         }
 
+        public override void Reset()
+        {
+            target = GetRandomPlanet(ship.GetSector());
+            Finished = false;
+        }
+
         public override void Update(GameTime gameTime)
         {
             // Check if arrived at destination

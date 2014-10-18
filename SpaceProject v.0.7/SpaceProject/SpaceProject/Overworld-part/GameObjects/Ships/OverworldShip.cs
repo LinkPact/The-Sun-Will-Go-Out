@@ -19,6 +19,7 @@ namespace SpaceProject
         protected int viewRadius;
         protected Sector sector = null;
         public void SetSector(Sector sec) { sector = sec; }
+        public Sector GetSector() { return sector; }
 
         public Vector2 destination;
         protected bool hasArrived;

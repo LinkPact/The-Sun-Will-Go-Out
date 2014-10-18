@@ -7,7 +7,6 @@ namespace SpaceProject
     class WaitAction : ShipAction
     {
         OverworldShip ship;
-        Vector2 tempDestination;
         private Func<Boolean> condition;
 
         public WaitAction(OverworldShip ship, Func<Boolean> condition)
@@ -25,7 +24,6 @@ namespace SpaceProject
             else
             {
                 ship.speed = 0;
-                tempDestination = ship.destination;
                 ship.destination = Vector2.Zero;
             }
         }
