@@ -332,13 +332,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SoundEffects\engine1.wav">
-      <Name>engine1</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="SoundEffects\crowd1.wav">
       <Name>crowd1</Name>
       <Importer>WavImporter</Importer>
@@ -364,6 +357,27 @@
       <Name>menu_hover</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SoundEffects\engine_overworld_full.wav">
+      <Name>engine_overworld_full</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Music\space_ambience.mp3">
+      <Name>space_ambience</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Overworld-Sprites\tutorial_spritesheet.png">
+      <Name>tutorial_spritesheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

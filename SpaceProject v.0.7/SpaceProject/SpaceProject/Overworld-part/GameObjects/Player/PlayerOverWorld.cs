@@ -115,7 +115,7 @@ namespace SpaceProject
             scale = 1.0f;
             sprite = spriteSheet.GetSubSprite(new Rectangle(78, 0, 29, 27));
             color = Color.White;
-            position = new Vector2(48400, 28700);
+            position = new Vector2(118400, 98700);
             Direction.SetDirection(new Vector2(1, 0));
             centerPoint = new Vector2(sprite.SourceRectangle.Value.Width / 2,
             sprite.SourceRectangle.Value.Height / 2);
@@ -252,7 +252,7 @@ namespace SpaceProject
 
                             AddParticle();
 
-                            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.OverworldEngine, 0f);
+                            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.OverworldEngine, 0f, 0f);
                         }
                     }
                 }
@@ -315,6 +315,8 @@ namespace SpaceProject
                 {
                     speed = 0;
                 }
+
+                Game.soundEffectsManager.FadeOutSoundEffect(SoundEffects.OverworldEngine);
             }
 
             angle = (float)(MathFunctions.RadiansFromDir(new Vector2(

@@ -78,11 +78,15 @@ namespace SpaceProject
                     game.tutorialManager.TutorialsUsed = !game.tutorialManager.TutorialsUsed;
                     UpdateText();
                     optionsMenuState.SaveSettings();
+
+                    PlaySelectSound();
                     break;
 
                 case "back":
                     optionsMenuState.LeaveSubState();
                     OnLeave();
+
+                    PlayLowPitchSelectSound();
                     break;
             }
         }

@@ -125,51 +125,71 @@ namespace SpaceProject
                 case "action 1 / fire / confirm":
                     checkInput = true;
                     keyToRebind = RebindableKeys.Action1;
+
+                    PlaySelectSound();
                     break;
             
                 case "action 2 / switch weapons / back":
                     checkInput = true;
                     keyToRebind = RebindableKeys.Action2;
+
+                    PlaySelectSound();
                     break;
             
                 case "action 3":
                     checkInput = true;
                     keyToRebind = RebindableKeys.Action3;
+
+                    PlaySelectSound();
                     break;
             
                 case "up":
                     checkInput = true;
                     keyToRebind = RebindableKeys.Up;
+
+                    PlaySelectSound();
                     break;
             
                 case "down":
                     checkInput = true;
                     keyToRebind = RebindableKeys.Down;
+
+                    PlaySelectSound();
                     break;
             
                 case "left":
                     checkInput = true;
                     keyToRebind = RebindableKeys.Left;
+
+                    PlaySelectSound();
                     break;
             
                 case "right":
                     checkInput = true;
                     keyToRebind = RebindableKeys.Right;
+
+                    PlaySelectSound();
                     break;
             
                 case "pause":
                     checkInput = true;
                     keyToRebind = RebindableKeys.Pause;
+
+                    PlaySelectSound();
                     break;
             
                 case "reset default keys":
                     ControlManager.SetDefaultControls();
                     ResetMenuOptions(menuOptions[0, 1] == "Keyboard");
+
+                    PlaySelectSound();
                     break;
             
                 case "back":
                     optionsMenuState.LeaveSubState();
                     OnLeave();
+
+                    PlayLowPitchSelectSound();
                     break;
             } 
         }

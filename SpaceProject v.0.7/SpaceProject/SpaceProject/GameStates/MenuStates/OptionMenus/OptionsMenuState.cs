@@ -188,7 +188,7 @@ namespace SpaceProject
                 buttonIndex++;
                 holdTimer = Game.HoldKeyTreshold;
 
-                Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuHover);
+                PlayHoverSound();
             }
 
             else if (ControlManager.CheckHold(RebindableKeys.Down))
@@ -200,7 +200,7 @@ namespace SpaceProject
                     buttonIndex++;
                     holdTimer = Game.ScrollSpeedFast;
 
-                    Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuHover);
+                    PlayHoverSound();
                 }
             }
 
@@ -209,7 +209,7 @@ namespace SpaceProject
                 buttonIndex--;
                 holdTimer = Game.HoldKeyTreshold;
 
-                Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuHover);
+                PlayHoverSound();
             }
 
             else if (ControlManager.CheckHold(RebindableKeys.Up))
@@ -221,7 +221,7 @@ namespace SpaceProject
                     buttonIndex--;
                     holdTimer = Game.ScrollSpeedFast;
 
-                    Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuHover);
+                    PlayHoverSound();
                 }
             }
 
@@ -258,7 +258,7 @@ namespace SpaceProject
                     {
                         if (buttonIndex != i)
                         {
-                            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuHover);
+                            PlayHoverSound();
                         }
 
                         buttonIndex = i;
@@ -282,22 +282,26 @@ namespace SpaceProject
                 {
                     case "game options":
                         activeOptionState = gameOptionsSubState;
-                        Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuSelect);
+
+                        PlaySelectSound();
                         break;
 
                     case "control options":
                         activeOptionState = controlOptionsSubState;
-                        Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuSelect);
+
+                        PlaySelectSound();
                         break;
 
                     case "visual options":
                         activeOptionState = visualOptionsSubState;
-                        Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuSelect);
+
+                        PlaySelectSound();
                         break;
 
                     case "sound options":
                         activeOptionState = soundOptionsSubState;
-                        Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuSelect);
+
+                        PlaySelectSound();
                         break;
 
                     case "back":
@@ -310,7 +314,8 @@ namespace SpaceProject
 
                         previousScreen = "";
                         buttonIndex = 0;
-                        Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuSelect, 0, -1f);
+
+                        PlayLowPitchSelectSound();
                         break;
                 }
 
@@ -420,6 +425,24 @@ namespace SpaceProject
             gameOptionsSaveData.Add("tutorials", Game.tutorialManager.TutorialsUsed.ToString());
 
             Game.settingsFile.Save("settings.ini", "game options", gameOptionsSaveData);
+        }
+
+        private void PlayHoverSound()
+        {
+            if (Game.menuBGController.DisplayButtons)
+            {
+                Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuHover);
+            }
+        }
+
+        private void PlaySelectSound()
+        {
+            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuSelect);
+        }
+
+        private void PlayLowPitchSelectSound()
+        {
+            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuSelect, 0, -1f);
         }
     }
 }

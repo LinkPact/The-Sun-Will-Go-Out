@@ -152,7 +152,7 @@ namespace SpaceProject
                 buttonIndex--;
                 holdTimer = Game.HoldKeyTreshold;
 
-                Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuHover);
+                PlayHoverSound();
             }
 
             else if (ControlManager.CheckHold(RebindableKeys.Up))
@@ -164,7 +164,7 @@ namespace SpaceProject
                     buttonIndex--;
                     holdTimer = Game.ScrollSpeedSlow;
 
-                    Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuHover);
+                    PlayHoverSound();
                 }
             }
 
@@ -173,7 +173,7 @@ namespace SpaceProject
                 buttonIndex++;
                 holdTimer = Game.HoldKeyTreshold;
 
-                Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuHover);
+                PlayHoverSound();
             }
 
             else if (ControlManager.CheckHold(RebindableKeys.Down))
@@ -185,7 +185,7 @@ namespace SpaceProject
                     buttonIndex++;
                     holdTimer = Game.ScrollSpeedSlow;
 
-                    Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuHover);
+                    PlayHoverSound();
                 }
             }
 
@@ -242,7 +242,7 @@ namespace SpaceProject
                     {
                         if (buttonIndex != i)
                         {
-                            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuHover);
+                            PlayHoverSound();
                         }
 
                         buttonIndex = i;
@@ -276,7 +276,8 @@ namespace SpaceProject
 
                         Game.stateManager.ChangeState("IntroFirstState");*/
                         Game.menuBGController.SetPreferredBackdropPosition(new Vector2(-201, -101), "StartGameState");
-                        Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuSelect);
+
+                        PlaySelectSound();
                         break;
                     
                     //case 1:
@@ -295,7 +296,8 @@ namespace SpaceProject
                             Game.GameStarted = true;
                             MediaPlayer.Stop();
                             loadedOrNewGame = LoadedOrNewGame.Loaded;
-                            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuSelect);
+
+                            PlaySelectSound();
                         }
                         else
                             Game.messageBox.DisplayMessage("No save-file!");
@@ -303,12 +305,14 @@ namespace SpaceProject
 
                     case 2:
                         Game.menuBGController.SetPreferredBackdropPosition(new Vector2(-903, -101), "OptionsMenuState");
-                        Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuSelect);
+
+                        PlaySelectSound();
                         break;
 
                     case 3:
                         Game.stateManager.ChangeState("MapCreatorState");
-                        Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuSelect);
+
+                        PlaySelectSound();
                         //Game.stateManager.ChangeState("CreditState");
                         break;
 
@@ -365,5 +369,17 @@ namespace SpaceProject
             }
         }
 
+        private void PlayHoverSound()
+        {
+            if (Game.menuBGController.DisplayButtons)
+            {
+                Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuHover);
+            }
+        }
+
+        private void PlaySelectSound()
+        {
+            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuSelect);
+        }
     }
 }

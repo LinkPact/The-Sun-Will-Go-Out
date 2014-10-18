@@ -8,7 +8,7 @@ namespace SpaceProject
         public LargeStar(Game1 Game, Sprite spriteSheet) :
             base(Game, spriteSheet)
         {
-            speedMod = 0.4f;
+            speedMod = 0.30f;
         }
     }
 }

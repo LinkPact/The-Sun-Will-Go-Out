@@ -17,6 +17,7 @@ namespace SpaceProject
         private List<SoundEffectInstance> instances;
         private List<SoundEffectInstance> playingInstances;
         private List<SoundEffectInstance> stoppedInstances;
+        private bool fadeOut;
 
         #endregion
 
@@ -58,6 +59,23 @@ namespace SpaceProject
             private set { ;}
         }
 
+        public bool FadeOut
+        {
+            get { return fadeOut; }
+            set 
+            {
+                if (playingInstances.Count > 0)
+                {
+                    fadeOut = value;
+                }
+
+                else
+                {
+                    fadeOut = false;
+                }
+            }
+        }
+
         #endregion
 
         public CustomSoundEffect(SoundEffect soundEffect, int maxInstances)
@@ -95,6 +113,47 @@ namespace SpaceProject
         public void Play(float volume, float pitch, float pan)
         {
             soundEffect.Play(volume, pitch, pan);
+        }
+
+        public void Update()
+        {
+            if (fadeOut)
+            {
+                foreach (SoundEffectInstance instance in playingInstances)
+                {
+                    if (instance.Volume > 0.05f)
+                    {
+                        instance.Volume -= 0.04f;
+                    }
+
+                    if (instance.Volume <= 0.05f)
+                    {
+                        if (!instance.IsDisposed)
+                        {
+                            instance.Stop();
+                            instance.Dispose();
+                            stoppedInstances.Add(instance);
+                        }
+
+                        else
+                        {
+                            stoppedInstances.Add(instance);
+                        }
+                    }
+                }
+
+                foreach (SoundEffectInstance instance in stoppedInstances)
+                {
+                    instances.Remove(instance);
+                }
+
+                stoppedInstances.Clear();
+
+                if (playingInstances.Count <= 0)
+                {
+                    fadeOut = false;
+                }
+            }
         }
 
         // Disposes all current instances of this sound effect

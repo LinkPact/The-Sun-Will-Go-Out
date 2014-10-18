@@ -73,7 +73,10 @@ namespace SpaceProject
             MouseControls();
         }
 
-        public virtual void ButtonActions() { }
+        public virtual void ButtonActions() 
+        {
+            
+        }
 
         public virtual void DirectionalButtonActions(String buttonName) { }
 
@@ -85,6 +88,8 @@ namespace SpaceProject
                 {
                     cursorIndex++;
                     holdTimer = game.HoldKeyTreshold;
+
+                    PlayHoverSound();
                 }
 
                 else if (ControlManager.CurrentKeyboardState.IsKeyDown(Keys.Down))
@@ -95,6 +100,8 @@ namespace SpaceProject
                     {
                         cursorIndex++;
                         holdTimer = game.ScrollSpeedFast;
+
+                        PlayHoverSound();
                     }
                 }
 
@@ -102,6 +109,8 @@ namespace SpaceProject
                 {
                     cursorIndex--;
                     holdTimer = game.HoldKeyTreshold;
+
+                    PlayHoverSound();
                 }
 
                 else if (ControlManager.CurrentKeyboardState.IsKeyDown(Keys.Up))
@@ -112,6 +121,8 @@ namespace SpaceProject
                     {
                         cursorIndex--;
                         holdTimer = game.ScrollSpeedFast;
+
+                        PlayHoverSound();
                     }
                 }
 
@@ -139,6 +150,8 @@ namespace SpaceProject
                 {
                     cursorIndex++;
                     holdTimer = game.HoldKeyTreshold;
+
+                    PlayHoverSound();
                 }
 
                 else if (ControlManager.CurrentGamepadState.IsButtonDown(Buttons.DPadDown) ||
@@ -150,6 +163,8 @@ namespace SpaceProject
                     {
                         cursorIndex++;
                         holdTimer = game.ScrollSpeedFast;
+
+                        PlayHoverSound();
                     }
                 }
 
@@ -158,6 +173,8 @@ namespace SpaceProject
                 {
                     cursorIndex--;
                     holdTimer = game.HoldKeyTreshold;
+
+                    PlayHoverSound();
                 }
 
                 else if (ControlManager.CurrentGamepadState.IsButtonDown(Buttons.DPadUp) ||
@@ -169,6 +186,8 @@ namespace SpaceProject
                     {
                         cursorIndex--;
                         holdTimer = game.ScrollSpeedFast;
+
+                        PlayHoverSound();
                     }
                 }
 
@@ -215,6 +234,11 @@ namespace SpaceProject
                 if (MathFunctions.IsMouseOverText(menuOptionFont, menuOptions[i, 0],
                     new Vector2((game.Window.ClientBounds.Width / 9) * 4, game.Window.ClientBounds.Height / 3 + (i * 23)) + fontOffset))
                 {
+                    if (cursorIndex != i)
+                    {
+                        PlayHoverSound();
+                    }
+
                     if (ControlManager.IsLeftMouseButtonClicked())
                     {
                         ButtonActions();
@@ -233,6 +257,11 @@ namespace SpaceProject
                     if (MathFunctions.IsMouseOverText(menuOptionFont, menuOptions[i, 1],
                         new Vector2(game.Window.ClientBounds.Width - 150, game.Window.ClientBounds.Height / 3 + (i * 23)) + fontOffset))
                     {
+                        if (cursorIndex != i)
+                        {
+                            PlayHoverSound();
+                        }
+
                         if (ControlManager.IsLeftMouseButtonClicked())
                         {
                             //if (!(this is VisualOptionsSubState) || cursorIndex != 2)
@@ -323,6 +352,24 @@ namespace SpaceProject
             {
                 directionalButtons[i].Draw(spriteBatch);
             }
+        }
+
+        protected void PlayHoverSound()
+        {
+            if (game.menuBGController.DisplayButtons)
+            {
+                game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuHover);
+            }
+        }
+
+        protected void PlaySelectSound()
+        {
+            game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuSelect);
+        }
+
+        protected void PlayLowPitchSelectSound()
+        {
+            game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuSelect, 0, -1f);
         }
     }
 }

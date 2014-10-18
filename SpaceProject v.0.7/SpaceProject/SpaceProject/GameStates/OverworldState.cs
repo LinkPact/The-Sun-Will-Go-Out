@@ -125,6 +125,8 @@ namespace SpaceProject
             garbageDeepSpaceGameObjects = new List<GameObjectOverworld>();
 
             camera = new Camera(0, 0, 1, Game);
+            camera.WorldWidth = OVERWORLD_WIDTH;
+            camera.WorldHeight = OVERWORLD_HEIGHT;
             Game.camera = this.camera;
 
             // HUD
@@ -164,7 +166,7 @@ namespace SpaceProject
             deepSpaceGameObjects.Add(new MediumAsteroid(Game, shooterSheet, new Vector2(82552, 118050)));
             deepSpaceGameObjects.Add(new MediumAsteroid(Game, shooterSheet, new Vector2(82575, 118075)));
 
-            ActiveSong = Music.none;
+            ActiveSong = Music.SpaceAmbience;
 
             foreach (GameObjectOverworld obj in deepSpaceGameObjects)
                 obj.Initialize();
@@ -174,22 +176,19 @@ namespace SpaceProject
                 beacon.AddKnownBeacons(Game.stateManager.overworldState.GetAllOverworldGameObjects);
             }
 
+            bGManagerOverworld.AddStar(spriteSheet);
+
             base.Initialize();
         }
 
         public override void OnEnter()
         {
+            base.OnEnter();
+
             if (GameStateManager.previousState == "PlanetState" || GameStateManager.previousState == "StationState")
             {
                 RemoveAllPirates();
             }
-
-            camera.WorldWidth = OVERWORLD_WIDTH;
-            camera.WorldHeight = OVERWORLD_HEIGHT;
-
-            Game.camera = this.camera;
-
-            bGManagerOverworld.AddStar(spriteSheet);
 
             if (GameStateManager.previousState.Equals("IntroSecondState") || GameStateManager.previousState.Equals("StartGameState"))
             {
@@ -203,13 +202,10 @@ namespace SpaceProject
             {
                 Game.musicManager.PlayMusic(ActiveSong);
             }
-
-            base.OnEnter();
         }
 
         public override void OnLeave()
         {
-            bGManagerOverworld.ClearStarList();
         }
 
         public override void Update(GameTime gameTime)
