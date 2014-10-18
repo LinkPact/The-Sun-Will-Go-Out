@@ -36,7 +36,7 @@ namespace SpaceProject
         {
             cameraZoom = initialCameraZoom;
             cameraRotation = 0.0f;
-            cameraPos = new Vector2(Game.Window.ClientBounds.Width / 2, Game.Window.ClientBounds.Width / 2);
+            cameraPos = Game.player.position;
             viewportWidth = Game.Window.ClientBounds.Width;
             viewportHeight = Game.Window.ClientBounds.Height;
             WorldWidth = worldWidth2;

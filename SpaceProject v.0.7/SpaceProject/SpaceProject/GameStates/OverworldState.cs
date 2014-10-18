@@ -125,6 +125,8 @@ namespace SpaceProject
             garbageDeepSpaceGameObjects = new List<GameObjectOverworld>();
 
             camera = new Camera(0, 0, 1, Game);
+            camera.WorldWidth = OVERWORLD_WIDTH;
+            camera.WorldHeight = OVERWORLD_HEIGHT;
             Game.camera = this.camera;
 
             // HUD
@@ -174,6 +176,8 @@ namespace SpaceProject
                 beacon.AddKnownBeacons(Game.stateManager.overworldState.GetAllOverworldGameObjects);
             }
 
+            bGManagerOverworld.AddStar(spriteSheet);
+
             base.Initialize();
         }
 
@@ -185,13 +189,6 @@ namespace SpaceProject
             {
                 RemoveAllPirates();
             }
-
-            camera.WorldWidth = OVERWORLD_WIDTH;
-            camera.WorldHeight = OVERWORLD_HEIGHT;
-
-            Game.camera = this.camera;
-
-            bGManagerOverworld.AddStar(spriteSheet);
 
             if (GameStateManager.previousState.Equals("IntroSecondState") || GameStateManager.previousState.Equals("StartGameState"))
             {
@@ -209,7 +206,6 @@ namespace SpaceProject
 
         public override void OnLeave()
         {
-            bGManagerOverworld.ClearStarList();
         }
 
         public override void Update(GameTime gameTime)
