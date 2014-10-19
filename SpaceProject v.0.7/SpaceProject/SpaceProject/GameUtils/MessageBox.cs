@@ -33,6 +33,13 @@ namespace SpaceProject
         private int imageTriggerCount;
         private List<int> imageTriggers;
 
+        private bool useDisableTutorialButton;
+        private Sprite activeTutorialButton;
+        private Sprite tutorialButtonUnchecked;
+        private Sprite tutorialButtonChecked;
+        private Sprite tutorialButtonUncheckedSelected;
+        private Sprite tutorialButtonCheckedSelected;
+
         #region variables
 
         private Game1 Game;
@@ -47,7 +54,7 @@ namespace SpaceProject
         private Vector2 textPos;
 
         private List<string> textBuffer;
-        private string confirmString;
+        //private string confirmString;
 
         private List<string> menuOptions;
         private List<System.Action> menuActions;
@@ -94,6 +101,11 @@ namespace SpaceProject
             messageBackdrop = SpriteSheet.GetSubSprite(new Rectangle(0, 56, 269, 184));
             buttonUnselected = SpriteSheet.GetSubSprite(new Rectangle(112, 0, 66, 21));
             buttonSelected = SpriteSheet.GetSubSprite(new Rectangle(180, 0, 66, 21));
+
+            tutorialButtonUnchecked = SpriteSheet.GetSubSprite(new Rectangle(271, 0, 78, 22));
+            tutorialButtonChecked = SpriteSheet.GetSubSprite(new Rectangle(271, 48, 78, 22));
+            tutorialButtonUncheckedSelected = SpriteSheet.GetSubSprite(new Rectangle(271, 24, 78, 22));
+            tutorialButtonCheckedSelected = SpriteSheet.GetSubSprite(new Rectangle(271, 72, 78, 22));
         }
 
         public void Initialize()
@@ -117,8 +129,10 @@ namespace SpaceProject
         }
 
         //Call this method, feed in a string and the message will appear on screen 
-        public void DisplayMessage(string txt)
+        public void DisplayMessage(string txt, bool displayDisableTutorialButton)
         {
+            useDisableTutorialButton = displayDisableTutorialButton;
+
             messageState = MessageState.Message;
 
             Game1.Paused = true;
@@ -137,10 +151,14 @@ namespace SpaceProject
             }
 
             tempTimer = 5;
+
+            UpdateButtonLabels();
         }
 
-        public void DisplayMessage(string txt, int delay)
+        public void DisplayMessage(string txt, bool displayDisableTutorialButton, int delay)
         {
+            useDisableTutorialButton = displayDisableTutorialButton;
+
             textStorage = new List<String>();
             textStorage.Add(txt);
 
@@ -149,22 +167,26 @@ namespace SpaceProject
 
         //Same as above, but with more than one message. The messages will be displayed one by one, proceeding
         //when pressing the actionkey
-        public void DisplayMessage(List<string> txtList)
+        public void DisplayMessage(List<string> txtList, bool displayDisableTutorialButton)
         {
             foreach (string str in txtList)
             {
-                DisplayMessage(str);
+                DisplayMessage(str, displayDisableTutorialButton);
             }
         }
 
-        public void DisplayMessage(List<string> txtList, int delay)
+        public void DisplayMessage(List<string> txtList, bool displayDisableTutorialButton, int delay)
         {
+            useDisableTutorialButton = displayDisableTutorialButton;
+
             textStorage = txtList;
             popupDelay = delay;
         }
 
-        public void DisplayMessageWithImage(string txt, Sprite canvas, Sprite image)
+        public void DisplayMessageWithImage(string txt, Sprite canvas, Sprite image, bool displayDisableTutorialButton)
         {
+            useDisableTutorialButton = displayDisableTutorialButton;
+
             messageState = MessageState.MessageWithImage;
 
             Game1.Paused = true;
@@ -186,17 +208,19 @@ namespace SpaceProject
             imageBuffer.Add(image);
 
             tempTimer = 5;
+
+            UpdateButtonLabels();
         }
 
-        public void DisplayMessageWithImage(List<string> txtList, Sprite canvas, Sprite image)
+        public void DisplayMessageWithImage(List<string> txtList, Sprite canvas, Sprite image, bool displayDisableTutorialButton)
         {
             foreach (string str in txtList)
             {
-                DisplayMessageWithImage(str, canvas, image);
+                DisplayMessageWithImage(str, canvas, image, displayDisableTutorialButton);
             }
         }
 
-        public void DisplayMessageWithImage(List<string> txtList, Sprite canvas, List<Sprite> images,
+        public void DisplayMessageWithImage(List<string> txtList, Sprite canvas, List<Sprite> images, bool displayDisableTutorialButton,
             List<int> imageTriggers)
         {
             if (txtList.Count < images.Count)
@@ -211,6 +235,8 @@ namespace SpaceProject
 
             imageTriggerCount = 0;
             this.imageTriggers = imageTriggers;
+
+            useDisableTutorialButton = displayDisableTutorialButton;
 
             messageState = MessageState.MessageWithImage;
 
@@ -236,6 +262,8 @@ namespace SpaceProject
             imageBuffer = images;
 
             tempTimer = 5;
+
+            UpdateButtonLabels();
         }
 
         //Display a map of the system in a pop-up
@@ -364,7 +392,7 @@ namespace SpaceProject
 
         public void Update(GameTime gameTime)
         {
-            confirmString = "Press 'Enter' to continue...";
+            //confirmString = "Press 'Enter' to continue...";
 
             if (actionStorage.Count > 0)
             {
@@ -385,7 +413,7 @@ namespace SpaceProject
 
                 if (popupDelay <= 1)
                 {
-                    DisplayMessage(textStorage);
+                    DisplayMessage(textStorage, useDisableTutorialButton);
                     popupDelay = -1000;
                     textStorage.Clear();
                 }
@@ -439,7 +467,48 @@ namespace SpaceProject
 
         private void UpdateButtonLabels()
         {
+            if (messageState == MessageState.Message ||
+                messageState == MessageState.MessageWithImage)
+            {
+                if (!menuOptions.Contains("Okay"))
+                {
+                    menuOptions.Add("Okay");
+                }
 
+                if (useDisableTutorialButton)
+                {
+                    if (!menuOptions.Contains("Show tutorials"))
+                    {
+                        menuOptions.Add("Show tutorials");
+                    }
+
+                    if (Game.tutorialManager.TutorialsUsed)
+                    {
+                        if (cursorIndex == 1)
+                        {
+                            activeTutorialButton = tutorialButtonCheckedSelected;
+                        }
+
+                        else
+                        {
+                            activeTutorialButton = tutorialButtonChecked;
+                        }
+                    }
+
+                    else
+                    {
+                        if (cursorIndex == 1)
+                        {
+                            activeTutorialButton = tutorialButtonUncheckedSelected;
+                        }
+
+                        else
+                        {
+                            activeTutorialButton = tutorialButtonUnchecked;
+                        }
+                    }
+                }
+            }
         }
 
         //The different actions that happens when you move items in different ways.
@@ -773,26 +842,31 @@ namespace SpaceProject
                 }
             }
 
-            else if (messageState == MessageState.SelectionMenu)
+            else if ((messageState == MessageState.Message || messageState == MessageState.MessageWithImage) &&
+                menuOptions.Count > 1)
             {
                 if (ControlManager.CheckPress(RebindableKeys.Right))
                 {
                     cursorIndex--;
+                    UpdateButtonLabels();
                 }
 
                 else if (ControlManager.CheckPress(RebindableKeys.Left))
                 {
                     cursorIndex++;
+                    UpdateButtonLabels();
                 }
 
                 if (cursorIndex > menuOptions.Count - 1)
                 {
                     cursorIndex = 0;
+                    UpdateButtonLabels();
                 }
 
                 else if (cursorIndex < 0)
                 {
                     cursorIndex = menuOptions.Count - 1;
+                    UpdateButtonLabels();
                 }
             }
 
@@ -1100,22 +1174,22 @@ namespace SpaceProject
                     Game.Window.ClientBounds.Height / 2 - messageBackdrop.SourceRectangle.Value.Height / 2 - 5);
             }
 
-            if (messageState == MessageState.Inventory)
-            {
-                //Displays a larger sized combo-box when working with inventory throwing.
-                spriteBatch.Draw(messageBackdrop.Texture, textBoxPos, messageBackdrop.SourceRectangle, Color.White,
-                             0.0f, new Vector2(0, 0),
-                             1.0f, SpriteEffects.None, 0.95f);
-                spriteBatch.Draw(messageBackdrop.Texture, textBoxPos, messageBackdrop.SourceRectangle, Color.White,
-                             0.0f, new Vector2(messageBackdrop.SourceRectangle.Value.Width, messageBackdrop.SourceRectangle.Value.Height),
-                             1.0f, SpriteEffects.None, 0.95f);
-                spriteBatch.Draw(messageBackdrop.Texture, textBoxPos, messageBackdrop.SourceRectangle, Color.White,
-                                 0.0f, new Vector2(0, messageBackdrop.SourceRectangle.Value.Height),
-                                 1.0f, SpriteEffects.None, 0.95f);
-                spriteBatch.Draw(messageBackdrop.Texture, textBoxPos, messageBackdrop.SourceRectangle, Color.White,
-                                 0.0f, new Vector2(messageBackdrop.SourceRectangle.Value.Width, 0),
-                                 1.0f, SpriteEffects.None, 0.95f);
-            }
+            //if (messageState == MessageState.Inventory)
+            //{
+            //    //Displays a larger sized combo-box when working with inventory throwing.
+            //    spriteBatch.Draw(messageBackdrop.Texture, textBoxPos, messageBackdrop.SourceRectangle, Color.White,
+            //                 0.0f, new Vector2(0, 0),
+            //                 1.0f, SpriteEffects.None, 0.95f);
+            //    spriteBatch.Draw(messageBackdrop.Texture, textBoxPos, messageBackdrop.SourceRectangle, Color.White,
+            //                 0.0f, new Vector2(messageBackdrop.SourceRectangle.Value.Width, messageBackdrop.SourceRectangle.Value.Height),
+            //                 1.0f, SpriteEffects.None, 0.95f);
+            //    spriteBatch.Draw(messageBackdrop.Texture, textBoxPos, messageBackdrop.SourceRectangle, Color.White,
+            //                     0.0f, new Vector2(0, messageBackdrop.SourceRectangle.Value.Height),
+            //                     1.0f, SpriteEffects.None, 0.95f);
+            //    spriteBatch.Draw(messageBackdrop.Texture, textBoxPos, messageBackdrop.SourceRectangle, Color.White,
+            //                     0.0f, new Vector2(messageBackdrop.SourceRectangle.Value.Width, 0),
+            //                     1.0f, SpriteEffects.None, 0.95f);
+            //}
 
             switch (messageState)
             {
@@ -1132,10 +1206,6 @@ namespace SpaceProject
                              SpriteEffects.None,
                              0.95f);
 
-                        spriteBatch.Draw(buttonSelected.Texture, new Vector2(textBoxPos.X, textBoxPos.Y + 102), buttonSelected.SourceRectangle,
-                            Color.White, 0f, new Vector2(buttonSelected.SourceRectangle.Value.Width / 2, buttonSelected.SourceRectangle.Value.Height / 2),
-                            1f, SpriteEffects.None, 0.975f);
-
                         String text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
                                                     textBuffer[0], (int)Math.Round(((float)messageBackdrop.SourceRectangle.Value.Width), 0));
 
@@ -1150,15 +1220,7 @@ namespace SpaceProject
                                                 SpriteEffects.None,
                                                 1f);
 
-                        spriteBatch.DrawString(Game.fontManager.GetFont(14),
-                                                "Okay",
-                                                new Vector2(textBoxPos.X, textBoxPos.Y + 104) + Game.fontManager.FontOffset,
-                                                Game.fontManager.FontColor,
-                                                0f,
-                                                Game.fontManager.GetFont(14).MeasureString("Okay") / 2,
-                                                1f,
-                                                SpriteEffects.None,
-                                                1f);
+                        DrawMenuOptions(spriteBatch);
                     }
                     break;
 
@@ -1205,6 +1267,7 @@ namespace SpaceProject
                                                 SpriteEffects.None,
                                                 1f);
 
+                        DrawMenuOptions(spriteBatch);
                         break;
                     }
 
@@ -1226,8 +1289,8 @@ namespace SpaceProject
 
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                 text,
-                                                new Vector2(textPos.X - 130,
-                                                            textPos.Y - 98) + Game.fontManager.FontOffset,
+                                                new Vector2(textPos.X,
+                                                            textPos.Y) + Game.fontManager.FontOffset,
                                                 Game.fontManager.FontColor,
                                                 0f,
                                                 Vector2.Zero,
@@ -1235,42 +1298,7 @@ namespace SpaceProject
                                                 SpriteEffects.None,
                                                 1f);
 
-                        int numberOfMenuOptions = menuOptions.Count;
-                        int ySpacing = 30;
-
-                        if (numberOfMenuOptions == 5)
-                        {
-                            ySpacing = -30;
-                        }
-
-                        //loops through the menu options and colors the selected one red
-                        for (int i = 0; i < menuOptions.Count; i++)
-                        {
-                            if (i == cursorIndex)
-                                spriteBatch.DrawString(Game.fontManager.GetFont(14),
-                                                     menuOptions[i],
-                                                     new Vector2(textPos.X,
-                                                            textPos.Y + ySpacing + (i * 30)) + Game.fontManager.FontOffset,
-                                                     Color.Red,
-                                                     0f,
-                                                     Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
-                                                     1f,
-                                                     SpriteEffects.None,
-                                                     1f);
-
-                            else
-                                spriteBatch.DrawString(Game.fontManager.GetFont(14),
-                                                         menuOptions[i],
-                                                         new Vector2(textPos.X,
-                                                            textPos.Y + ySpacing + (i * 30)) + Game.fontManager.FontOffset,
-                                                         Game.fontManager.FontColor,
-                                                         0f,
-                                                         Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
-                                                         1f,
-                                                         SpriteEffects.None,
-                                                         1f);
-
-                        }
+                        DrawMenuOptions(spriteBatch);
                     }
                     break;
 
@@ -1295,39 +1323,10 @@ namespace SpaceProject
                              SpriteEffects.None,
                              0.95f);
 
-
-                        float XposAcc = 5;
-
-                        //loops through the menu options and colors the selected one red
-                        for (int i = 0; i < menuOptions.Count; i++)
-                        {
-                            if (i == cursorIndex)
-                                spriteBatch.DrawString(Game.fontManager.GetFont(14),
-                                                     menuOptions[i],
-                                                     new Vector2(pos.X + XposAcc, pos.Y) + Game.fontManager.FontOffset,
-                                                     Color.Red,
-                                                     0f,
-                                                     Vector2.Zero,
-                                                     1f,
-                                                     SpriteEffects.None,
-                                                     1f);
-
-                            else
-                                spriteBatch.DrawString(Game.fontManager.GetFont(14),
-                                                         menuOptions[i],
-                                                         new Vector2(pos.X + XposAcc, pos.Y) + Game.fontManager.FontOffset,
-                                                         Game.fontManager.FontColor,
-                                                         0f,
-                                                         Vector2.Zero,
-                                                         1f,
-                                                         SpriteEffects.None,
-                                                         1f);
-
-                            XposAcc += Game.fontManager.GetFont(14).MeasureString(menuOptions[i]).X + 15;
-                        }
-
+                        DrawMenuOptions(spriteBatch);
                     }
                     break;
+
                 case MessageState.Map:
                     spriteBatch.Draw(messageBackdrop.Texture,
                              new Vector2((int)Game.camera.Position.X /*- Game.Window.ClientBounds.Width / 2*/, (int)Game.camera.Position.Y /*- Game.Window.ClientBounds.Height / 2*/),
@@ -1336,7 +1335,7 @@ namespace SpaceProject
                              0.0f,
                              new Vector2(messageBackdrop.SourceRectangle.Value.Width / 2,
                                          messageBackdrop.SourceRectangle.Value.Height / 2),
-                             3.6f,
+                             2.5f,
                              SpriteEffects.None,
                              0.95f);
 
@@ -1378,95 +1377,277 @@ namespace SpaceProject
                     }
                     break;
 
-                case MessageState.Inventory:
-                    {
-                        //Displays information about the active weapon
-                        if (cursorColumn == 0 && cursorIndex < throwList.Count)
-                        {
-                            throwList[cursorIndex].DisplayInfo(spriteBatch, Game.fontManager.GetFont(14), new Vector2(textPos.X - 200, textPos.Y - 280), Game.fontManager.FontColor);
-                        }
-                        else
-                        {
-                            int invPos;
-                            if (cursorColumn == 1) invPos = cursorIndex;
-                            else invPos = cursorIndex + 14;
-
-                            ShipInventoryManager.ShipItems[invPos].DisplayInfo(spriteBatch, Game.fontManager.GetFont(14), new Vector2(textPos.X - 200, textPos.Y - 280), Game.fontManager.FontColor);
-                        }
-
-                        //loops through the menu options and colors the selected one red
-                        for (int i = 0; i < menuOptions.Count - 1; i++)
-                        {
-                            if (i == cursorIndex && cursorColumn == 0)
-                                spriteBatch.DrawString(Game.fontManager.GetFont(14), menuOptions[i], new Vector2(textPos.X - 125, textPos.Y - 130 + (i * 20)) + Game.fontManager.FontOffset, Color.Red,
-                                    0f, Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2, 1f, SpriteEffects.None, 1f);
-                            else if (isPicked && i == pickedIndex && pickedColumn == 0)
-                                spriteBatch.DrawString(Game.fontManager.GetFont(14), menuOptions[i], new Vector2(textPos.X - 125, textPos.Y - 130 + (i * 20)) + Game.fontManager.FontOffset, Color.Yellow,
-                                    0f, Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2, 1f, SpriteEffects.None, 1f);
-                            else
-                                spriteBatch.DrawString(Game.fontManager.GetFont(14), menuOptions[i], new Vector2(textPos.X - 125, textPos.Y - 130 + (i * 20)) + Game.fontManager.FontOffset, Game.fontManager.FontColor,
-                                    0f, Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2, 1f, SpriteEffects.None, 1f);
-                        }
-
-                        int lastIndex = menuOptions.Count - 1;
-
-                        //Displays the "finish" line
-                        if (cursorIndex == lastIndex && cursorColumn == 0)
-                            spriteBatch.DrawString(Game.fontManager.GetFont(14), menuOptions[lastIndex], new Vector2(textPos.X - 125, textPos.Y - 15) + Game.fontManager.FontOffset, Color.Red,
-                                0f, Game.fontManager.GetFont(14).MeasureString(menuOptions[lastIndex]) / 2, 1f, SpriteEffects.None, 1f);
-                        else
-                            spriteBatch.DrawString(Game.fontManager.GetFont(14), menuOptions[lastIndex], new Vector2(textPos.X - 125, textPos.Y - 15) + Game.fontManager.FontOffset, Game.fontManager.FontColor,
-                                0f, Game.fontManager.GetFont(14).MeasureString(menuOptions[lastIndex]) / 2, 1f, SpriteEffects.None, 1f);
-
-                        //Draws the inventory if the count is maximum 14 items.
-                        if (inventoryRef.Count <= 14)
-                        {
-                            for (int n = 0; n < inventoryRef.Count; n++)
-                            {
-                                if (n == cursorIndex && cursorColumn == 1)
-                                    spriteBatch.DrawString(Game.fontManager.GetFont(14), inventoryRef[n].Name, new Vector2(textPos.X, textPos.Y - 130 + (n * 20)) + Game.fontManager.FontOffset, Color.Red,
-                                                0f, Game.fontManager.GetFont(14).MeasureString(inventoryRef[n].Name) / 2, 1f, SpriteEffects.None, 1f);
-                                else if (isPicked && n == pickedIndex && pickedColumn == 1)
-                                    spriteBatch.DrawString(Game.fontManager.GetFont(14), inventoryRef[n].Name, new Vector2(textPos.X, textPos.Y - 130 + (n * 20)) + Game.fontManager.FontOffset, Color.Yellow,
-                                        0f, Game.fontManager.GetFont(14).MeasureString(inventoryRef[n].Name) / 2, 1f, SpriteEffects.None, 1f);
-                                else
-                                    spriteBatch.DrawString(Game.fontManager.GetFont(14), inventoryRef[n].Name, new Vector2(textPos.X, textPos.Y - 130 + (n * 20)) + Game.fontManager.FontOffset, Game.fontManager.FontColor,
-                                            0f, Game.fontManager.GetFont(14).MeasureString(inventoryRef[n].Name) / 2, 1f, SpriteEffects.None, 1f);
-                            }
-                        }
-                        //Draws the inventory if it has more slots than 14.
-                        else
-                        {
-                            for (int n = 0; n < 14; n++)
-                            {
-                                if (n == cursorIndex && cursorColumn == 1)
-                                    spriteBatch.DrawString(Game.fontManager.GetFont(14), inventoryRef[n].Name, new Vector2(textPos.X, textPos.Y - 130 + (n * 20)) + Game.fontManager.FontOffset, Color.Red,
-                                        0f, Game.fontManager.GetFont(14).MeasureString(inventoryRef[n].Name) / 2, 1f, SpriteEffects.None, 1f);
-                                else if (isPicked && n == pickedIndex && pickedColumn == 1)
-                                    spriteBatch.DrawString(Game.fontManager.GetFont(14), inventoryRef[n].Name, new Vector2(textPos.X, textPos.Y - 130 + (n * 20)) + Game.fontManager.FontOffset, Color.Yellow,
-                                        0f, Game.fontManager.GetFont(14).MeasureString(inventoryRef[n].Name) / 2, 1f, SpriteEffects.None, 1f);
-                                else
-                                    spriteBatch.DrawString(Game.fontManager.GetFont(14), inventoryRef[n].Name, new Vector2(textPos.X, textPos.Y - 130 + (n * 20)) + Game.fontManager.FontOffset, Game.fontManager.FontColor,
-                                        0f, Game.fontManager.GetFont(14).MeasureString(inventoryRef[n].Name) / 2, 1f, SpriteEffects.None, 1f);
-                            }
-
-                            for (int n = 0; n < inventoryRef.Count - 14; n++)
-                            {
-                                if (n == cursorIndex && cursorColumn == 2)
-                                    spriteBatch.DrawString(Game.fontManager.GetFont(14), inventoryRef[n + 14].Name, new Vector2(textPos.X + 125, textPos.Y - 130 + (n * 20)) + Game.fontManager.FontOffset, Color.Red,
-                                        0f, Game.fontManager.GetFont(14).MeasureString(inventoryRef[n + 14].Name) / 2, 1f, SpriteEffects.None, 1f);
-                                else if (isPicked && n == pickedIndex && pickedColumn == 2)
-                                    spriteBatch.DrawString(Game.fontManager.GetFont(14), inventoryRef[n + 14].Name, new Vector2(textPos.X + 125, textPos.Y - 130 + (n * 20)) + Game.fontManager.FontOffset, Color.Yellow,
-                                        0f, Game.fontManager.GetFont(14).MeasureString(inventoryRef[n + 14].Name) / 2, 1f, SpriteEffects.None, 1f);
-                                else
-                                    spriteBatch.DrawString(Game.fontManager.GetFont(14), inventoryRef[n + 14].Name, new Vector2(textPos.X + 125, textPos.Y - 130 + (n * 20)) + Game.fontManager.FontOffset, Game.fontManager.FontColor,
-                                        0f, Game.fontManager.GetFont(14).MeasureString(inventoryRef[n + 14].Name) / 2, 1f, SpriteEffects.None, 1f);
-                            }
-                        }
-                    }
-                    break;
+                //case MessageState.Inventory:
+                //    {
+                //        //Displays information about the active weapon
+                //        if (cursorColumn == 0 && cursorIndex < throwList.Count)
+                //        {
+                //            throwList[cursorIndex].DisplayInfo(spriteBatch, Game.fontManager.GetFont(14), new Vector2(textPos.X - 200, textPos.Y - 280), Game.fontManager.FontColor);
+                //        }
+                //        else
+                //        {
+                //            int invPos;
+                //            if (cursorColumn == 1) invPos = cursorIndex;
+                //            else invPos = cursorIndex + 14;
+                //
+                //            ShipInventoryManager.ShipItems[invPos].DisplayInfo(spriteBatch, Game.fontManager.GetFont(14), new Vector2(textPos.X - 200, textPos.Y - 280), Game.fontManager.FontColor);
+                //        }
+                //
+                //        //loops through the menu options and colors the selected one red
+                //        for (int i = 0; i < menuOptions.Count - 1; i++)
+                //        {
+                //            if (i == cursorIndex && cursorColumn == 0)
+                //                spriteBatch.DrawString(Game.fontManager.GetFont(14), menuOptions[i], new Vector2(textPos.X - 125, textPos.Y - 130 + (i * 20)) + Game.fontManager.FontOffset, Color.Red,
+                //                    0f, Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2, 1f, SpriteEffects.None, 1f);
+                //            else if (isPicked && i == pickedIndex && pickedColumn == 0)
+                //                spriteBatch.DrawString(Game.fontManager.GetFont(14), menuOptions[i], new Vector2(textPos.X - 125, textPos.Y - 130 + (i * 20)) + Game.fontManager.FontOffset, Color.Yellow,
+                //                    0f, Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2, 1f, SpriteEffects.None, 1f);
+                //            else
+                //                spriteBatch.DrawString(Game.fontManager.GetFont(14), menuOptions[i], new Vector2(textPos.X - 125, textPos.Y - 130 + (i * 20)) + Game.fontManager.FontOffset, Game.fontManager.FontColor,
+                //                    0f, Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2, 1f, SpriteEffects.None, 1f);
+                //        }
+                //
+                //        int lastIndex = menuOptions.Count - 1;
+                //
+                //        //Displays the "finish" line
+                //        if (cursorIndex == lastIndex && cursorColumn == 0)
+                //            spriteBatch.DrawString(Game.fontManager.GetFont(14), menuOptions[lastIndex], new Vector2(textPos.X - 125, textPos.Y - 15) + Game.fontManager.FontOffset, Color.Red,
+                //                0f, Game.fontManager.GetFont(14).MeasureString(menuOptions[lastIndex]) / 2, 1f, SpriteEffects.None, 1f);
+                //        else
+                //            spriteBatch.DrawString(Game.fontManager.GetFont(14), menuOptions[lastIndex], new Vector2(textPos.X - 125, textPos.Y - 15) + Game.fontManager.FontOffset, Game.fontManager.FontColor,
+                //                0f, Game.fontManager.GetFont(14).MeasureString(menuOptions[lastIndex]) / 2, 1f, SpriteEffects.None, 1f);
+                //
+                //        //Draws the inventory if the count is maximum 14 items.
+                //        if (inventoryRef.Count <= 14)
+                //        {
+                //            for (int n = 0; n < inventoryRef.Count; n++)
+                //            {
+                //                if (n == cursorIndex && cursorColumn == 1)
+                //                    spriteBatch.DrawString(Game.fontManager.GetFont(14), inventoryRef[n].Name, new Vector2(textPos.X, textPos.Y - 130 + (n * 20)) + Game.fontManager.FontOffset, Color.Red,
+                //                                0f, Game.fontManager.GetFont(14).MeasureString(inventoryRef[n].Name) / 2, 1f, SpriteEffects.None, 1f);
+                //                else if (isPicked && n == pickedIndex && pickedColumn == 1)
+                //                    spriteBatch.DrawString(Game.fontManager.GetFont(14), inventoryRef[n].Name, new Vector2(textPos.X, textPos.Y - 130 + (n * 20)) + Game.fontManager.FontOffset, Color.Yellow,
+                //                        0f, Game.fontManager.GetFont(14).MeasureString(inventoryRef[n].Name) / 2, 1f, SpriteEffects.None, 1f);
+                //                else
+                //                    spriteBatch.DrawString(Game.fontManager.GetFont(14), inventoryRef[n].Name, new Vector2(textPos.X, textPos.Y - 130 + (n * 20)) + Game.fontManager.FontOffset, Game.fontManager.FontColor,
+                //                            0f, Game.fontManager.GetFont(14).MeasureString(inventoryRef[n].Name) / 2, 1f, SpriteEffects.None, 1f);
+                //            }
+                //        }
+                //        //Draws the inventory if it has more slots than 14.
+                //        else
+                //        {
+                //            for (int n = 0; n < 14; n++)
+                //            {
+                //                if (n == cursorIndex && cursorColumn == 1)
+                //                    spriteBatch.DrawString(Game.fontManager.GetFont(14), inventoryRef[n].Name, new Vector2(textPos.X, textPos.Y - 130 + (n * 20)) + Game.fontManager.FontOffset, Color.Red,
+                //                        0f, Game.fontManager.GetFont(14).MeasureString(inventoryRef[n].Name) / 2, 1f, SpriteEffects.None, 1f);
+                //                else if (isPicked && n == pickedIndex && pickedColumn == 1)
+                //                    spriteBatch.DrawString(Game.fontManager.GetFont(14), inventoryRef[n].Name, new Vector2(textPos.X, textPos.Y - 130 + (n * 20)) + Game.fontManager.FontOffset, Color.Yellow,
+                //                        0f, Game.fontManager.GetFont(14).MeasureString(inventoryRef[n].Name) / 2, 1f, SpriteEffects.None, 1f);
+                //                else
+                //                    spriteBatch.DrawString(Game.fontManager.GetFont(14), inventoryRef[n].Name, new Vector2(textPos.X, textPos.Y - 130 + (n * 20)) + Game.fontManager.FontOffset, Game.fontManager.FontColor,
+                //                        0f, Game.fontManager.GetFont(14).MeasureString(inventoryRef[n].Name) / 2, 1f, SpriteEffects.None, 1f);
+                //            }
+                //
+                //            for (int n = 0; n < inventoryRef.Count - 14; n++)
+                //            {
+                //                if (n == cursorIndex && cursorColumn == 2)
+                //                    spriteBatch.DrawString(Game.fontManager.GetFont(14), inventoryRef[n + 14].Name, new Vector2(textPos.X + 125, textPos.Y - 130 + (n * 20)) + Game.fontManager.FontOffset, Color.Red,
+                //                        0f, Game.fontManager.GetFont(14).MeasureString(inventoryRef[n + 14].Name) / 2, 1f, SpriteEffects.None, 1f);
+                //                else if (isPicked && n == pickedIndex && pickedColumn == 2)
+                //                    spriteBatch.DrawString(Game.fontManager.GetFont(14), inventoryRef[n + 14].Name, new Vector2(textPos.X + 125, textPos.Y - 130 + (n * 20)) + Game.fontManager.FontOffset, Color.Yellow,
+                //                        0f, Game.fontManager.GetFont(14).MeasureString(inventoryRef[n + 14].Name) / 2, 1f, SpriteEffects.None, 1f);
+                //                else
+                //                    spriteBatch.DrawString(Game.fontManager.GetFont(14), inventoryRef[n + 14].Name, new Vector2(textPos.X + 125, textPos.Y - 130 + (n * 20)) + Game.fontManager.FontOffset, Game.fontManager.FontColor,
+                //                        0f, Game.fontManager.GetFont(14).MeasureString(inventoryRef[n + 14].Name) / 2, 1f, SpriteEffects.None, 1f);
+                //            }
+                //        }
+                //    }
+                //    break;
             }
 
+        }
+
+        private void DrawMenuOptions(SpriteBatch spriteBatch)
+        {
+            int numberOfMenuOptions = menuOptions.Count;
+            int ySpacing = 30;
+
+            if (numberOfMenuOptions == 5)
+            {
+                ySpacing = -30;
+            }
+
+            if (messageState == MessageState.Message)
+            {
+
+            }
+
+            else if (messageState == MessageState.MessageWithImage)
+            {
+                //loops through the menu options and colors the selected one red
+                for (int i = 0; i < menuOptions.Count; i++)
+                {
+                    if (i == cursorIndex)
+                    {
+                        if (menuOptions[i].ToLower().Equals("show tutorials"))
+                        {
+                            spriteBatch.Draw(activeTutorialButton.Texture,
+                                new Vector2(textBoxPos.X + 100, textBoxPos.Y + 202),
+                                activeTutorialButton.SourceRectangle,
+                                Color.White,
+                                0f,
+                                new Vector2(activeTutorialButton.SourceRectangle.Value.Width / 2,
+                                    activeTutorialButton.SourceRectangle.Value.Height / 2),
+                                1f,
+                                SpriteEffects.None,
+                                0.975f);
+                        }
+
+                        else
+                        {
+                            spriteBatch.Draw(buttonSelected.Texture,
+                                new Vector2(textBoxPos.X, textBoxPos.Y + 202),
+                                buttonSelected.SourceRectangle,
+                                Color.White,
+                                0f,
+                                new Vector2(buttonSelected.SourceRectangle.Value.Width / 2,
+                                    buttonSelected.SourceRectangle.Value.Height / 2),
+                                1f,
+                                SpriteEffects.None,
+                                0.975f);
+                        }
+
+                            spriteBatch.DrawString(Game.fontManager.GetFont(14),
+                                                 menuOptions[i],
+                                                 new Vector2(textPos.X,
+                                                        textPos.Y + ySpacing + (i * 30)) + Game.fontManager.FontOffset,
+                                                 Color.Red,
+                                                 0f,
+                                                 Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
+                                                 1f,
+                                                 SpriteEffects.None,
+                                                 1f);
+                    }
+
+                    else
+                    {
+                        if (menuOptions[i].ToLower().Equals("show tutorials"))
+                        {
+                            spriteBatch.Draw(activeTutorialButton.Texture,
+                                new Vector2(textBoxPos.X + 100, textBoxPos.Y + 202),
+                                activeTutorialButton.SourceRectangle,
+                                Color.White,
+                                0f,
+                                new Vector2(activeTutorialButton.SourceRectangle.Value.Width / 2,
+                                    activeTutorialButton.SourceRectangle.Value.Height / 2),
+                                1f,
+                                SpriteEffects.None,
+                                0.975f);
+                        }
+
+                        else
+                        {
+
+                            spriteBatch.Draw(buttonUnselected.Texture,
+                                new Vector2(textBoxPos.X, textBoxPos.Y + 202),
+                                buttonUnselected.SourceRectangle,
+                                Color.White,
+                                0f,
+                                new Vector2(buttonUnselected.SourceRectangle.Value.Width / 2,
+                                    buttonUnselected.SourceRectangle.Value.Height / 2),
+                                1f,
+                                SpriteEffects.None,
+                                0.975f);
+                        }
+
+                            spriteBatch.DrawString(Game.fontManager.GetFont(14),
+                                                     menuOptions[i],
+                                                     new Vector2(textPos.X,
+                                                        textPos.Y + ySpacing + (i * 30)) + Game.fontManager.FontOffset,
+                                                     Game.fontManager.FontColor,
+                                                     0f,
+                                                     Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
+                                                     1f,
+                                                     SpriteEffects.None,
+                                                     1f);
+                    }
+
+                }
+            }
+
+            else if (messageState == MessageState.SelectionMenu)
+            {
+                //loops through the menu options and colors the selected one red
+                for (int i = 0; i < menuOptions.Count; i++)
+                {
+                    if (i == cursorIndex)
+                        spriteBatch.DrawString(Game.fontManager.GetFont(14),
+                                             menuOptions[i],
+                                             new Vector2(textPos.X,
+                                                    textPos.Y + ySpacing + (i * 30)) + Game.fontManager.FontOffset,
+                                             Color.Red,
+                                             0f,
+                                             Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
+                                             1f,
+                                             SpriteEffects.None,
+                                             1f);
+
+                    else
+                        spriteBatch.DrawString(Game.fontManager.GetFont(14),
+                                                 menuOptions[i],
+                                                 new Vector2(textPos.X,
+                                                    textPos.Y + ySpacing + (i * 30)) + Game.fontManager.FontOffset,
+                                                 Game.fontManager.FontColor,
+                                                 0f,
+                                                 Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
+                                                 1f,
+                                                 SpriteEffects.None,
+                                                 1f);
+
+                }
+            }
+
+            else if (messageState == MessageState.Menu)
+            {
+                Vector2 pos;
+                if (GameStateManager.currentState == "OverworldState")
+                    pos = new Vector2(Game.camera.cameraPos.X - Game.Window.ClientBounds.Width / 2,
+                                      Game.camera.cameraPos.Y - Game.Window.ClientBounds.Height / 2);
+
+                else
+                    pos = Vector2.Zero;
+
+                float XposAcc = 5;
+
+                //loops through the menu options and colors the selected one red
+                for (int i = 0; i < menuOptions.Count; i++)
+                {
+                    if (i == cursorIndex)
+                        spriteBatch.DrawString(Game.fontManager.GetFont(14),
+                                             menuOptions[i],
+                                             new Vector2(pos.X + XposAcc, pos.Y) + Game.fontManager.FontOffset,
+                                             Color.Red,
+                                             0f,
+                                             Vector2.Zero,
+                                             1f,
+                                             SpriteEffects.None,
+                                             1f);
+
+                    else
+                        spriteBatch.DrawString(Game.fontManager.GetFont(14),
+                                                 menuOptions[i],
+                                                 new Vector2(pos.X + XposAcc, pos.Y) + Game.fontManager.FontOffset,
+                                                 Game.fontManager.FontColor,
+                                                 0f,
+                                                 Vector2.Zero,
+                                                 1f,
+                                                 SpriteEffects.None,
+                                                 1f);
+
+                    XposAcc += Game.fontManager.GetFont(14).MeasureString(menuOptions[i]).X + 15;
+                }
+            }
         }
 
         private List<String> SplitHashTagText(String text)

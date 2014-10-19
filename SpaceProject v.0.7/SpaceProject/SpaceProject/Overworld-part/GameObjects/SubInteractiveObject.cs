@@ -94,7 +94,7 @@ namespace SpaceProject
                     && Game.stateManager.shooterState.CurrentLevel.IsGameOver
                     && GameStateManager.currentState.ToLower().Equals("overworldstate"))
                 {
-                    Game.messageBox.DisplayMessage(levelFailedText);
+                    Game.messageBox.DisplayMessage(levelFailedText, false);
                     Game.stateManager.shooterState.GetLevel(level).Initialize();
                 }
 
@@ -104,7 +104,7 @@ namespace SpaceProject
                     && GameStateManager.currentState.ToLower().Equals("overworldstate"))
                 {
                     levelCleared = true;
-                    Game.messageBox.DisplayMessage(levelCompletedText);
+                    Game.messageBox.DisplayMessage(levelCompletedText, false);
                     foreach (Item item in levelItemReward)
                     {
                         ShipInventoryManager.AddItem(item);
@@ -128,7 +128,7 @@ namespace SpaceProject
             {
                 if (cleared)
                 {
-                    messageBox.DisplayMessage(clearedText);
+                    messageBox.DisplayMessage(clearedText, false);
 
                     return;
                 }
@@ -136,14 +136,14 @@ namespace SpaceProject
                 switch (interactionType)
                 {
                     case InteractionType.Text:
-                        Game.messageBox.DisplayMessage(text);
+                        Game.messageBox.DisplayMessage(text, false);
                         break;
 
                     case InteractionType.LevelWithReward:
                         {
                             if (!levelCleared)
                             {
-                                Game.messageBox.DisplayMessage(text);
+                                Game.messageBox.DisplayMessage(text, false);
                                 startLevelWhenTextCleared = true;
                             }
                             break;
@@ -158,25 +158,25 @@ namespace SpaceProject
                             {
                                 if (StatsManager.Fuel == StatsManager.MaxFuel)
                                 {
-                                    messageBox.DisplayMessage(fuelAlreadyFullText, 50);
+                                    messageBox.DisplayMessage(fuelAlreadyFullText, false, 50);
                                 }
 
                                 else if (StatsManager.Rupees >= price)
                                 {
-                                    messageBox.DisplayMessage(purchaseText, 50);
+                                    messageBox.DisplayMessage(purchaseText, false, 50);
                                     StatsManager.Rupees -= price;
                                     StatsManager.Fuel = StatsManager.MaxFuel;
                                 }
 
                                 else
                                 {
-                                    messageBox.DisplayMessage(notEnoughMoneyText, 50);
+                                    messageBox.DisplayMessage(notEnoughMoneyText, false, 50);
                                 }
                             }, 
 
                             delegate 
                             {
-                                messageBox.DisplayMessage(declinePurchaseText, 50);
+                                messageBox.DisplayMessage(declinePurchaseText, false, 50);
                             }
                         });
 
@@ -192,12 +192,12 @@ namespace SpaceProject
                             {
                                 if (!ShipInventoryManager.HasAvailableSlot())
                                 {
-                                    messageBox.DisplayMessage(inventoryFullText, 50);
+                                    messageBox.DisplayMessage(inventoryFullText, false, 50);
                                 }
 
                                 else if (StatsManager.Rupees >= price)
                                 {
-                                    messageBox.DisplayMessage(purchaseText, 50);
+                                    messageBox.DisplayMessage(purchaseText, false, 50);
                                     StatsManager.Rupees -= price;
                                     ShipInventoryManager.AddItem(itemShopItem);
                                     cleared = true;
@@ -205,13 +205,13 @@ namespace SpaceProject
 
                                 else
                                 {
-                                    messageBox.DisplayMessage(notEnoughMoneyText, 50);
+                                    messageBox.DisplayMessage(notEnoughMoneyText, false, 50);
                                 }
                             }, 
 
                             delegate 
                             {
-                                messageBox.DisplayMessage(declinePurchaseText, 50);
+                                messageBox.DisplayMessage(declinePurchaseText, false, 50);
                             }
                         });
 
@@ -228,7 +228,7 @@ namespace SpaceProject
                         {
                             text.Add(inventoryFullText);
                         }
-                        messageBox.DisplayMessage(text);
+                        messageBox.DisplayMessage(text, false);
                         break;
 
                     case InteractionType.Custom:

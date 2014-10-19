@@ -256,14 +256,14 @@ namespace SpaceProject
                         {
                             RemoveOverworldObject(obj);
                             //Game.messageBox.DisplayMessage("It is a great misfortune that it would have to come to this. Please surrender your cargo peacefully or we will have to take it from your cold dead hands.");
-                            Game.messageBox.DisplayMessage("You should have stayed in the warm comfort of you home planet. Surrender your cargo peacefully or take the consequences.");
+                            Game.messageBox.DisplayMessage("You should have stayed in the warm comfort of you home planet. Surrender your cargo peacefully or take the consequences.", false);
                             Game.stateManager.shooterState.BeginPirateLevel();
                         }
 
                         if (obj is AllianceShip)
                         {
                             RemoveOverworldObject(obj);
-                            Game.messageBox.DisplayMessage("Die!");
+                            Game.messageBox.DisplayMessage("Die!", false);
                             Game.stateManager.shooterState.BeginLevel(((AllianceShip)obj).Level);
                         }
                     }
@@ -426,7 +426,7 @@ namespace SpaceProject
 
         private void DevelopCommands()
         {
-            Game.messageBox.DisplayMessage("Gameshops updated");
+            Game.messageBox.DisplayMessage("Gameshops updated", false);
             ShopManager.ShopUpdateTime = 0;
         }
 

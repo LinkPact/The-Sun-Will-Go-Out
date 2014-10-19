@@ -73,7 +73,7 @@ namespace SpaceProject
                         && GameStateManager.currentState.Equals("OverworldState"))) 
                         && CollisionDetection.IsRectInRect(Game.player.Bounds, highfence.Bounds))
                     {
-                        Game.messageBox.DisplayMessage(GetEvent((int)EventID.HighfenceEntryDenial).Text);
+                        Game.messageBox.DisplayMessage(GetEvent((int)EventID.HighfenceEntryDenial).Text, false);
                     }
                 }, 
                 delegate 
@@ -136,7 +136,7 @@ namespace SpaceProject
                     && CollisionDetection.IsRectInRect(Game.player.Bounds, rebel.Bounds))
                 {
                     Game.stateManager.overworldState.RemoveOverworldObject(rebel);
-                    Game.messageBox.DisplayMessage(rebel.EncounterMessage);
+                    Game.messageBox.DisplayMessage(rebel.EncounterMessage, false);
                     Game.stateManager.shooterState.BeginLevel(rebel.Level);
                 }
             }

@@ -20,6 +20,7 @@ namespace SpaceProject
         private Sprite tutorialImageCanvas;
         private Sprite tutorialSpriteSheet;
         private List<Sprite> tutorialImages;
+        private Sprite disableTutorialButtonSprite;
 
         private bool tutorialsUsed;
         public bool TutorialsUsed { get { return tutorialsUsed; } set { tutorialsUsed = value; } }
@@ -186,7 +187,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessage(message);
+                game.messageBox.DisplayMessage(message, true);
             }
         }
 
@@ -194,7 +195,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessage(messages);
+                game.messageBox.DisplayMessage(messages, true);
             }
         }
 
@@ -202,7 +203,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessageWithImage(message, tutorialImageCanvas, GetImageFromEnum(imageID));
+                game.messageBox.DisplayMessageWithImage(message, tutorialImageCanvas, GetImageFromEnum(imageID), true);
             }
         }
 
@@ -210,7 +211,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessageWithImage(messages, tutorialImageCanvas, GetImageFromEnum(imageID));
+                game.messageBox.DisplayMessageWithImage(messages, tutorialImageCanvas, GetImageFromEnum(imageID), true);
             }
         }
 
@@ -225,7 +226,7 @@ namespace SpaceProject
                     sprites.Add(GetImageFromEnum(imgID));
                 }
 
-                game.messageBox.DisplayMessageWithImage(messages, tutorialImageCanvas, sprites, imageTriggers);
+                game.messageBox.DisplayMessageWithImage(messages, tutorialImageCanvas, sprites,  true, imageTriggers);
             }
         }
 

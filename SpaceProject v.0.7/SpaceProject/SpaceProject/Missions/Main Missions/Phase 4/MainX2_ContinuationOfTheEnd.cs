@@ -130,7 +130,7 @@ namespace SpaceProject
                     if (GameStateManager.currentState.Equals("OverworldState")
                         && !GetEvent((int)EventID.GoToSoelara).Displayed)
                     {
-                        Game.messageBox.DisplayMessage(GetEvent((int)EventID.GoToSoelara).Text);
+                        Game.messageBox.DisplayMessage(GetEvent((int)EventID.GoToSoelara).Text, false);
                         GetEvent((int)EventID.GoToSoelara).Displayed = true;
                     }
                         
@@ -239,7 +239,7 @@ namespace SpaceProject
                     && CollisionDetection.IsRectInRect(Game.player.Bounds, rebel.Bounds))
                 {
                     Game.stateManager.overworldState.RemoveOverworldObject(rebel);
-                    Game.messageBox.DisplayMessage(rebel.EncounterMessage);
+                    Game.messageBox.DisplayMessage(rebel.EncounterMessage, false);
                     Game.stateManager.shooterState.BeginLevel(rebel.Level);
                 }
             }
@@ -262,7 +262,7 @@ namespace SpaceProject
 
         private void OnFalseAnswer()
         {
-            Game.messageBox.DisplayMessage(GetEvent((int)EventID.WrongAnswer).Text);
+            Game.messageBox.DisplayMessage(GetEvent((int)EventID.WrongAnswer).Text, false);
             missionHelper.StartLevel("CoverBlown");
             ObjectiveIndex = 5;
         }

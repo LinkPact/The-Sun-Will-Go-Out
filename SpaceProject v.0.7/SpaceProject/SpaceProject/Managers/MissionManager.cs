@@ -578,7 +578,7 @@ namespace SpaceProject
                 ControlManager.CheckKeypress(Keys.Y) && !game.player.IsHyperSpeedUnlocked)
             {
                 game.player.UnlockHyperSpeed();
-                game.messageBox.DisplayMessage("Hyper speed unlocked! Hold down '" + ControlManager.GetKeyName(RebindableKeys.Action3) + "' to use.");
+                game.messageBox.DisplayMessage("Hyper speed unlocked! Hold down '" + ControlManager.GetKeyName(RebindableKeys.Action3) + "' to use.", false);
             }
 
             if (mainNewFirstMission.MissionState != StateOfMission.CompletedDead)
@@ -589,7 +589,7 @@ namespace SpaceProject
                         game.stateManager.overworldState.GetSectorX.SpaceRegionArea) &&
                         game.messageBox.MessageState == MessageState.Invisible)
                     {
-                        game.messageBox.DisplayMessage("You do not have the proper papers to enter Sector X. Please finish mission 'A Cold Welcome' first.");
+                        game.messageBox.DisplayMessage("You do not have the proper papers to enter Sector X. Please finish mission 'A Cold Welcome' first.", false);
                         game.player.Direction.SetDirection(new Vector2(game.player.position.X - game.stateManager.overworldState.GetSectorX.SectorXStar.position.X,
                             game.player.position.Y - game.stateManager.overworldState.GetSectorX.SectorXStar.position.Y));
                     }
@@ -660,7 +660,7 @@ namespace SpaceProject
                 game.stateManager.overworldState.AddOverworldObject(rebelFleet);
                 game.stateManager.overworldState.AddOverworldObject(allianceFleet);
 
-                game.messageBox.DisplayMessage("Time to make your choice! Go to Telmun!");
+                game.messageBox.DisplayMessage("Time to make your choice! Go to Telmun!", false);
             }
 
             if (mainRebelArc.MissionState == StateOfMission.Completed)
