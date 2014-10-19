@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
@@ -254,22 +252,12 @@ namespace SpaceProject
 
                 if (!Game.player.HyperspeedOn)
                 {
-                    if (CollisionDetection.IsRectInRect(Game.player.Bounds, obj.Bounds))
+                    if (obj is OverworldShip && ((OverworldShip)obj).collisionEvent != null)
                     {
-                        if (obj is PirateShip)
+                        if (CollisionDetection.IsRectInRect(obj.Bounds, ((OverworldShip)obj).collisionEvent.target.Bounds))
                         {
-                            RemoveOverworldObject(obj);
-                            //Game.messageBox.DisplayMessage("It is a great misfortune that it would have to come to this. Please surrender your cargo peacefully or we will have to take it from your cold dead hands.");
-                            Game.messageBox.DisplayMessage("You should have stayed in the warm comfort of you home planet. Surrender your cargo peacefully or take the consequences.");
-                            Game.stateManager.shooterState.BeginPirateLevel();
-                        }
-
-                        if (obj is AllianceShip)
-                        {
-                            RemoveOverworldObject(obj);
-                            Game.messageBox.DisplayMessage("Die!");
-                            Game.stateManager.shooterState.BeginLevel(((AllianceShip)obj).Level);
-                        }
+                            ((OverworldShip)obj).collisionEvent.Invoke();
+                        }                        
                     }
                 }
             }

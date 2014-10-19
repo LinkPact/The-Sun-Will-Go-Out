@@ -343,6 +343,10 @@
     <Compile Include="Overworld-part\GameObjects\Ships\RebelShip.cs" />
     <Compile Include="Overworld-part\GameObjects\ImmobileSpaceObject.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Action.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Collisions\BeginLevelCollisionEvent.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Collisions\CollisionEvent.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Collisions\PirateColllisionEvent.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Collisions\RemoveOnCollisionEvent.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\FollowInViewAction.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\OrbitAction.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\PatrolAction.cs" />

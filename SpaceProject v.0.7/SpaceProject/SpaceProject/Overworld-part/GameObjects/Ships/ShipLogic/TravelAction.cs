@@ -26,6 +26,7 @@ namespace SpaceProject
             // Check if arrived at destination
             if (CollisionDetection.IsRectInRect(ship.Bounds, target.Bounds))
             {
+                ship.HasArrived = true;
                 Finished = true;
             }
             else

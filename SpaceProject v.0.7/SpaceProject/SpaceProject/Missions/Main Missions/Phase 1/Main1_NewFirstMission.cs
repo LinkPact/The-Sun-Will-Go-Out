@@ -36,18 +36,21 @@ namespace SpaceProject
 
             ally1 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet, ShipType.Alliance);
             ally1.Initialize(Game.stateManager.overworldState.GetSectorX,
-                Game.stateManager.overworldState.GetStation("Border Station"),
-                Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
+                Game.stateManager.overworldState.GetStation("Border Station"));
+            ally1.AIManager = new TravelAction(ally1, Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
+            ally1.collisionEvent = new RemoveOnCollisionEvent(Game, ally1, Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
 
             ally2 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet, ShipType.Alliance);
             ally2.Initialize(Game.stateManager.overworldState.GetSectorX,
-                Game.stateManager.overworldState.GetStation("Border Station"),
-                Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
+                Game.stateManager.overworldState.GetStation("Border Station"));
+            ally2.AIManager = new TravelAction(ally2, Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
+            ally2.collisionEvent = new RemoveOnCollisionEvent(Game, ally2, Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
 
             ally3 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet, ShipType.Alliance);
             ally3.Initialize(Game.stateManager.overworldState.GetSectorX,
-                Game.stateManager.overworldState.GetStation("Border Station"),
-                Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
+                Game.stateManager.overworldState.GetStation("Border Station"));
+            ally3.AIManager = new TravelAction(ally3, Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
+            ally3.collisionEvent = new RemoveOnCollisionEvent(Game, ally3, Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
 
             Objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -12,7 +10,7 @@ namespace SpaceProject
         private ParticleManager particleManager;
 
         // A.I. varriables
-        protected ShipAction AIManager;
+        public ShipAction AIManager;
         public static bool FollowPlayer = true;
 
         public Rectangle view;
@@ -23,13 +21,16 @@ namespace SpaceProject
 
         public Vector2 destination;
         protected bool hasArrived;
-        public bool HasArrived { get { return hasArrived; } private set { ; } }
+        public bool HasArrived { get { return hasArrived; } set { hasArrived = value; } }
         public void ResetArrived() { hasArrived = false; } 
 
         // Should be removed
         protected GameObjectOverworld target;
         public void SetTarget(GameObjectOverworld target) { this.target = target; }
         //
+
+        // Collision behaviour 
+        public CollisionEvent collisionEvent;
 
         // Used to determine which level starts when player runs into this ship.
         private string level;

@@ -77,6 +77,14 @@ namespace SpaceProject
             destination = endPoint;
         }
 
+        public void Initialize(Sector sec, GameObjectOverworld startingPoint)
+        {
+            Initialize();
+
+            sector = sec;
+            position = startingPoint.position;
+        }
+
         public void SetEndPlanet(GameObjectOverworld des) 
         { 
             destination = des.position;
@@ -125,33 +133,32 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            if (target != null)
-            {
-                destination = target.position;
-            }
+            //if (target != null)
+            //{
+            //    destination = target.position;
+            //}
 
             // Check if arrived at destination
-            if (destinationPlanet != null)
-            {
-                if (CollisionDetection.IsRectInRect(this.Bounds, destinationPlanet.Bounds))
-                {
-                    hasArrived = true;
-                    Game.stateManager.overworldState.RemoveOverworldObject(this);
-                }
-            }
-            else
-            {
-                if (CollisionDetection.IsPointInsideCircle(position, destination, 200))
-                {
-                    this.Wait();
-                    hasArrived = true;
-                }
-            }
+            //if (destinationPlanet != null)
+            //{
+            //    if (CollisionDetection.IsRectInRect(this.Bounds, destinationPlanet.Bounds))
+            //    {
+            //        hasArrived = true;
+            //        Game.stateManager.overworldState.RemoveOverworldObject(this);
+            //    }
+            //}
+            //else
+            //{
+            //    if (CollisionDetection.IsPointInsideCircle(position, destination, 200))
+            //    {
+            //        this.Wait();
+            //        hasArrived = true;
+            //    }
+            //}
 
             // Rotate ship
             angle = (float)(MathFunctions.RadiansFromDir(new Vector2(
-                Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI) / 2 + Math.PI);
-
+                Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI) / 2);
             base.Update(gameTime);
         }
 
