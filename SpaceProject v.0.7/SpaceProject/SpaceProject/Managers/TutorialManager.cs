@@ -20,7 +20,6 @@ namespace SpaceProject
         private Sprite tutorialImageCanvas;
         private Sprite tutorialSpriteSheet;
         private List<Sprite> tutorialImages;
-        private Sprite disableTutorialButtonSprite;
 
         private bool tutorialsUsed;
         public bool TutorialsUsed { get { return tutorialsUsed; } set { tutorialsUsed = value; } }

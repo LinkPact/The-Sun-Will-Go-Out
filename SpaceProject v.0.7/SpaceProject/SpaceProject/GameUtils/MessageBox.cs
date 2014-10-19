@@ -39,6 +39,8 @@ namespace SpaceProject
         private Sprite tutorialButtonChecked;
         private Sprite tutorialButtonUncheckedSelected;
         private Sprite tutorialButtonCheckedSelected;
+        private readonly Vector2 RELATIVE_TUTORIAL_BUTTON_POSITION = new Vector2(140, 179);
+        private readonly Vector2 RELATIVE_OKAY_BUTTON_POSITION = new Vector2(0, 179);
 
         #region variables
 
@@ -477,9 +479,9 @@ namespace SpaceProject
 
                 if (useDisableTutorialButton)
                 {
-                    if (!menuOptions.Contains("Show tutorials"))
+                    if (!menuOptions.Contains("Show"))
                     {
-                        menuOptions.Add("Show tutorials");
+                        menuOptions.Add("Show");
                     }
 
                     if (Game.tutorialManager.TutorialsUsed)
@@ -1490,10 +1492,10 @@ namespace SpaceProject
                 {
                     if (i == cursorIndex)
                     {
-                        if (menuOptions[i].ToLower().Equals("show tutorials"))
+                        if (menuOptions[i].ToLower().Equals("show"))
                         {
                             spriteBatch.Draw(activeTutorialButton.Texture,
-                                new Vector2(textBoxPos.X + 100, textBoxPos.Y + 202),
+                                new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_TUTORIAL_BUTTON_POSITION,
                                 activeTutorialButton.SourceRectangle,
                                 Color.White,
                                 0f,
@@ -1502,12 +1504,23 @@ namespace SpaceProject
                                 1f,
                                 SpriteEffects.None,
                                 0.975f);
+
+                            spriteBatch.DrawString(Game.fontManager.GetFont(14),
+                                                 menuOptions[i],
+                                                 new Vector2(textPos.X + 171 + (i * 140),
+                                                         textPos.Y - 47) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION,
+                                                 Color.LightBlue,
+                                                 0f,
+                                                 Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
+                                                 1f,
+                                                 SpriteEffects.None,
+                                                 1f);
                         }
 
                         else
                         {
                             spriteBatch.Draw(buttonSelected.Texture,
-                                new Vector2(textBoxPos.X, textBoxPos.Y + 202),
+                                new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_OKAY_BUTTON_POSITION,
                                 buttonSelected.SourceRectangle,
                                 Color.White,
                                 0f,
@@ -1516,26 +1529,26 @@ namespace SpaceProject
                                 1f,
                                 SpriteEffects.None,
                                 0.975f);
-                        }
 
                             spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                  menuOptions[i],
-                                                 new Vector2(textPos.X,
-                                                        textPos.Y + ySpacing + (i * 30)) + Game.fontManager.FontOffset,
-                                                 Color.Red,
+                                                 new Vector2(textPos.X + 171 + (i * 140),
+                                                         textPos.Y - 47) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION,
+                                                 Color.LightBlue,
                                                  0f,
                                                  Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
                                                  1f,
                                                  SpriteEffects.None,
                                                  1f);
+                        }
                     }
 
                     else
                     {
-                        if (menuOptions[i].ToLower().Equals("show tutorials"))
+                        if (menuOptions[i].ToLower().Equals("show"))
                         {
                             spriteBatch.Draw(activeTutorialButton.Texture,
-                                new Vector2(textBoxPos.X + 100, textBoxPos.Y + 202),
+                                new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_TUTORIAL_BUTTON_POSITION,
                                 activeTutorialButton.SourceRectangle,
                                 Color.White,
                                 0f,
@@ -1544,13 +1557,24 @@ namespace SpaceProject
                                 1f,
                                 SpriteEffects.None,
                                 0.975f);
+
+                            spriteBatch.DrawString(Game.fontManager.GetFont(14),
+                                menuOptions[i],
+                                new Vector2(textPos.X + 171 + (i * 140),
+                                    textPos.Y - 47) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION,
+                                Game.fontManager.FontColor,
+                                0f,
+                                Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
+                                1f,
+                                SpriteEffects.None,
+                                1f);
                         }
 
                         else
                         {
 
                             spriteBatch.Draw(buttonUnselected.Texture,
-                                new Vector2(textBoxPos.X, textBoxPos.Y + 202),
+                                new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_OKAY_BUTTON_POSITION,
                                 buttonUnselected.SourceRectangle,
                                 Color.White,
                                 0f,
@@ -1559,18 +1583,18 @@ namespace SpaceProject
                                 1f,
                                 SpriteEffects.None,
                                 0.975f);
-                        }
 
                             spriteBatch.DrawString(Game.fontManager.GetFont(14),
-                                                     menuOptions[i],
-                                                     new Vector2(textPos.X,
-                                                        textPos.Y + ySpacing + (i * 30)) + Game.fontManager.FontOffset,
-                                                     Game.fontManager.FontColor,
-                                                     0f,
-                                                     Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
-                                                     1f,
-                                                     SpriteEffects.None,
-                                                     1f);
+                                menuOptions[i],
+                                new Vector2(textPos.X + 171 + (i * 140),
+                                    textPos.Y - 47) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION,
+                                Game.fontManager.FontColor,
+                                0f,
+                                Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
+                                1f,
+                                SpriteEffects.None,
+                                1f);
+                        }
                     }
 
                 }

@@ -32,6 +32,7 @@ namespace SpaceProject
 
         #region fonts
 
+        private static SpriteFont iceland_10;
         private static SpriteFont iceland_12;
         private static SpriteFont iceland_14;         
         private static SpriteFont iceland_16;
@@ -52,6 +53,7 @@ namespace SpaceProject
 
             fontColor = Color.White;
             fontOffset = Vector2.Zero;
+            iceland_10 = Game.Content.Load<SpriteFont>("Fonts/Iceland_10");
             iceland_12 = Game.Content.Load<SpriteFont>("Fonts/Iceland_12");
             iceland_14 = Game.Content.Load<SpriteFont>("Fonts/Iceland_14");
             iceland_16 = Game.Content.Load<SpriteFont>("Fonts/Iceland_16");
@@ -82,6 +84,9 @@ namespace SpaceProject
             //Returns font depending on size
             switch (tempSize)
             {
+                case 10:
+                    fontOffset = new Vector2(-2, 2);
+                    return iceland_10;
 
                 case 12:
                     fontOffset = new Vector2(-2, 2);
@@ -108,7 +113,7 @@ namespace SpaceProject
                     return iSL_Jupiter_28;
 
                 default:
-                    return null;
+                    throw new ArgumentException("Invalid font size.");
 
             }
         }
@@ -135,6 +140,9 @@ namespace SpaceProject
             //Returns font depending on size
             switch (tempSize)
             {
+                case 10:
+                    fontOffset = new Vector2(-2, 2);
+                    return iceland_10;
 
                 case 12:
                     fontOffset = new Vector2(-2, 2);
@@ -161,7 +169,7 @@ namespace SpaceProject
                     return iSL_Jupiter_28;
 
                 default:
-                    return null;
+                    throw new ArgumentException("Invalid font size.");
 
             }
         }
