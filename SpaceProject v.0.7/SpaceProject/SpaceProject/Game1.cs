@@ -242,7 +242,6 @@ namespace SpaceProject
         {
             GraphicsDevice.Clear(Color.Black);
 
-            // TODO: Look into this
             if (GameStateManager.currentState == "OverworldState")
             {
                 spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, camera.GetTransformation());
@@ -284,7 +283,7 @@ namespace SpaceProject
                                     0) + fontManager.FontOffset,
                         fontManager.FontColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
             }
-            
+
             spriteBatch.End();
 
             base.Draw(gameTime);

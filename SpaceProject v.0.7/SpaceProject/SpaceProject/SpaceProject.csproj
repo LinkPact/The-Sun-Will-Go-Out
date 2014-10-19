@@ -420,7 +420,7 @@
     <Compile Include="Overworld-part\GameObjects\Systems\System3.cs" />
     <Compile Include="Overworld-part\Interface\HelperBox.cs" />
     <Compile Include="Overworld-part\Interface\ItemComparison.cs" />
-    <Compile Include="Overworld-part\Interface\MessageBox.cs" />
+    <Compile Include="GameUtils\MessageBox.cs" />
     <Compile Include="Overworld-part\SpaceRegions\SpaceRegion.cs" />
     <Compile Include="Overworld-part\StaticFunctions.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObject.cs" />

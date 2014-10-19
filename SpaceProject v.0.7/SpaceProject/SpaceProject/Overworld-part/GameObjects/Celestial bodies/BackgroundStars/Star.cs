@@ -32,7 +32,6 @@ namespace SpaceProject
             Class = "SmallStar";
             name = "smallStar";
             layerDepth = 0.1f;
-            IsUsed = true;
 
             if (Game.camera != null)
             {
@@ -44,7 +43,7 @@ namespace SpaceProject
 
             else
             {
-                //Initialize star at a random position relative to camera position.
+                //Initialize star at a random position relative to window position.
                 position = new Vector2((float)rand.Next(0,
                 Game.Window.ClientBounds.Width), (float)rand.Next(0, Game.Window.ClientBounds.Height));
             }
@@ -114,14 +113,14 @@ namespace SpaceProject
                 (float)rand.Next((int)Game.camera.cameraPos.Y - (Game.Window.ClientBounds.Height) / 2,
                 (int)(Game.camera.cameraPos.Y + (Game.Window.ClientBounds.Height / 2))));
             }
-
+            
             //Star moves outside right edges of screen
             else if (StaticFunctions.IsPositionOutsideScreenX(position, Game) == 2)
             {
                 position = new Vector2(position.X - Game.Window.ClientBounds.Width,
                 (float)rand.Next((int)Game.camera.cameraPos.Y - (Game.Window.ClientBounds.Height / 2),
                 (int)(Game.camera.cameraPos.Y + (Game.Window.ClientBounds.Height / 2))));
-
+            
             }
             //Star moves outside top edges of screen
             if (StaticFunctions.IsPositionOutsideScreenY(position, Game) == 1)
@@ -130,7 +129,7 @@ namespace SpaceProject
                 - (Game.Window.ClientBounds.Width / 2), (int)Game.camera.cameraPos.X + (Game.Window.ClientBounds.Width / 2)),
                 position.Y + Game.Window.ClientBounds.Height);
             }
-
+            
             //Star moves outside bottom edges of screen
             else if (StaticFunctions.IsPositionOutsideScreenY(position, Game) == 2)
             {
@@ -142,23 +141,20 @@ namespace SpaceProject
 
         public void Draw(SpriteBatch spriteBatch, bool hyperSpeedOn, float speed, Direction direction)
         {
-            if (IsUsed == true)
+            if (!hyperSpeedOn)
+                spriteBatch.Draw(sprite.Texture, position, sprite.SourceRectangle, color,
+                    0f, centerPoint, scale, SpriteEffects.None, layerDepth);
+            else
             {
-                if (!hyperSpeedOn)
-                    spriteBatch.Draw(sprite.Texture, position, sprite.SourceRectangle, color,
-                        0f, centerPoint, scale, SpriteEffects.None, layerDepth);
-                else
-                {
-                    starAngle = (float)((Math.PI * 90) / 180) + (float)(MathFunctions.RadiansFromDir(direction.GetDirectionAsVector()));
+                starAngle = (float)((Math.PI * 90) / 180) + (float)(MathFunctions.RadiansFromDir(direction.GetDirectionAsVector()));
 
-                    yScale = scale + speed * STRETCH;
+                yScale = scale + speed * STRETCH;
 
-                    if (yScale < scale)
-                        yScale = scale;
+                if (yScale < scale)
+                    yScale = scale;
 
-                    spriteBatch.Draw(sprite.Texture, position, sprite.SourceRectangle, color,
-                        starAngle, centerPoint, new Vector2(scale, yScale), SpriteEffects.None, layerDepth);
-                }
+                spriteBatch.Draw(sprite.Texture, position, sprite.SourceRectangle, color,
+                    starAngle, centerPoint, new Vector2(scale, yScale), SpriteEffects.None, layerDepth);
             }
         }
     }

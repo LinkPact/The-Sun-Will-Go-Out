@@ -112,7 +112,7 @@ namespace SpaceProject
             {
                 if (boughtFuel > 0)
                 {
-                    Game.messageBox.DisplayMessage("Transaction complete! \nYou bought " + boughtFuel + " l for " + totalCost + " rupees.");
+                    Game.messageBox.DisplayMessage("Transaction complete! \nYou bought " + boughtFuel + " l for " + totalCost + " rupees.", false);
 
                     StatsManager.Fuel += boughtFuel;
                     StatsManager.Rupees -= totalCost;
@@ -125,7 +125,7 @@ namespace SpaceProject
 
             else
             {
-                Game.messageBox.DisplayMessage("You do not have enough rupees!");
+                Game.messageBox.DisplayMessage("You do not have enough rupees!", false);
             }
         }
 

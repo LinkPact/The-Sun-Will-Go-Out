@@ -88,7 +88,7 @@ namespace SpaceProject
                 new EventTextCapsule(GetEvent((int)EventID.AttackFreighter), null, EventTextCanvas.MessageBox),
                 delegate
                 {
-                    Game.messageBox.DisplayMessage(GetEvent((int)EventID.FreighterLeft).Text);
+                    Game.messageBox.DisplayMessage(GetEvent((int)EventID.FreighterLeft).Text, false);
                     
                     freighter.Initialize(Game.stateManager.overworldState.GetSectorX,
                                 Game.stateManager.overworldState.GetStation("Soelara Station"),
@@ -106,28 +106,28 @@ namespace SpaceProject
                         && StatsManager.PlayTime.HasOverworldTimePassed(message1Time))
                     {
                         message1Time = -1;
-                        Game.messageBox.DisplayMessage(GetEvent((int)EventID.FlavorText1).Text);
+                        Game.messageBox.DisplayMessage(GetEvent((int)EventID.FlavorText1).Text, false);
                     }
 
                     if (message2Time > 0
                         && StatsManager.PlayTime.HasOverworldTimePassed(message2Time))
                     {
                         message2Time = -1;
-                        Game.messageBox.DisplayMessage(GetEvent((int)EventID.FlavorText2).Text);
+                        Game.messageBox.DisplayMessage(GetEvent((int)EventID.FlavorText2).Text, false);
                     }
 
                     if (message3Time > 0
                         && StatsManager.PlayTime.HasOverworldTimePassed(message3Time))
                     {
                         message3Time = -1;
-                        Game.messageBox.DisplayMessage(GetEvent((int)EventID.FlavorText3).Text);
+                        Game.messageBox.DisplayMessage(GetEvent((int)EventID.FlavorText3).Text, false);
                     }
 
                     if (!CollisionDetection.IsPointInsideCircle(Game.player.position, rebel1.position, 600)
                         && outOfRangeTimer <= 0)
                     {
                         outOfRangeTimer = 150;
-                        Game.messageBox.DisplayMessage(GetEvent((int)EventID.OutOfRange).Text);
+                        Game.messageBox.DisplayMessage(GetEvent((int)EventID.OutOfRange).Text, false);
                     }
 
                     if (outOfRangeTimer > 0)

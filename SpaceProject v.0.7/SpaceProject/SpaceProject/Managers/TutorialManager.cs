@@ -7,9 +7,21 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
+    public enum TutorialImage
+    {
+        CombatControls,
+        CombatBars
+    }
+
     public class TutorialManager
     {
         private Game1 game;
+
+        private Sprite tutorialImageCanvas;
+        private Sprite tutorialSpriteSheet;
+        private List<Sprite> tutorialImages;
+        private Sprite disableTutorialButtonSprite;
+
         private bool tutorialsUsed;
         public bool TutorialsUsed { get { return tutorialsUsed; } set { tutorialsUsed = value; } }
         private int tempTimer = 1250;
@@ -34,6 +46,13 @@ namespace SpaceProject
 
         public void Initialize()
         {
+            tutorialSpriteSheet = new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/tutorial_spritesheet"), null);
+            tutorialImageCanvas = tutorialSpriteSheet.GetSubSprite(new Rectangle(0, 0, 400, 400));
+
+            tutorialImages = new List<Sprite>();
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(403, 1, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(403, 199, 366, 197)));
+
             hasEnteredSectorX = false;
             hasEnteredStation = false;
             hasEnteredPlanet = false;
@@ -125,8 +144,9 @@ namespace SpaceProject
                     tempTimer2 = 500;
 
                     hasEnteredVerticalShooter = true;
-                    DisplayTutorialMessage(new List<String>{"Use the movement keys (Default arrowkeys) to move your ship.\nUse the fire key ('Left Control') to fire, the switch key ('Left Shift') to change weapon and the toggle key ('Space') to toggle secondary/primary weapons. You can rebind the keys in the options menu.",
-                    "Down at the bottom-left are three bars:\n\nYour health - when this runs out you fail the level and your overall health is reduced a bit.", "Your energy - weapons use energy to fire.\n\nYour shield - protects your ship from damage. Recharges over time."});
+                    DisplayTutorialMessage(new List<String>{"Use the movement keys (Default arrowkeys) to move your ship, the fire key ('Left Control') to fire and the switch key ('Left Shift') to change weapon. You can rebind the keys in the options menu.",
+                    "Down at the bottom-left are three bars:\n\nYour health - when this runs out you fail the level and your overall health is reduced a bit.", "Your energy - weapons use energy to fire.\n\nYour shield - protects your ship from damage. Recharges over time."},
+                    new List<TutorialImage> { TutorialImage.CombatControls, TutorialImage.CombatBars }, new List<int> {1});
                 }
             }
 
@@ -167,7 +187,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessage(message);
+                game.messageBox.DisplayMessage(message, true);
             }
         }
 
@@ -175,7 +195,38 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessage(messages);
+                game.messageBox.DisplayMessage(messages, true);
+            }
+        }
+
+        public void DisplayTutorialMessage(String message, TutorialImage imageID)
+        {
+            if (tutorialsUsed)
+            {
+                game.messageBox.DisplayMessageWithImage(message, tutorialImageCanvas, GetImageFromEnum(imageID), true);
+            }
+        }
+
+        public void DisplayTutorialMessage(List<String> messages, TutorialImage imageID)
+        {
+            if (tutorialsUsed)
+            {
+                game.messageBox.DisplayMessageWithImage(messages, tutorialImageCanvas, GetImageFromEnum(imageID), true);
+            }
+        }
+
+        public void DisplayTutorialMessage(List<String> messages, List<TutorialImage> imageID, List<int>imageTriggers)
+        {
+            if (tutorialsUsed)
+            {
+                List<Sprite> sprites = new List<Sprite>();
+
+                foreach (TutorialImage imgID in imageID)
+                {
+                    sprites.Add(GetImageFromEnum(imgID));
+                }
+
+                game.messageBox.DisplayMessageWithImage(messages, tutorialImageCanvas, sprites,  true, imageTriggers);
             }
         }
 
@@ -207,6 +258,21 @@ namespace SpaceProject
             hasEnteredInventory = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredinventory", false);
             hasEnteredHighfenceBeaconArea = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredhighfencebeaconarea", false);
             hasActivatedHighfenceBeacon = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasactivatedhighfencebeacon", false);
+        }
+
+        private Sprite GetImageFromEnum(TutorialImage imageID)
+        {
+            switch (imageID)
+            {
+                case TutorialImage.CombatControls:
+                    return tutorialImages[0];
+
+                case TutorialImage.CombatBars:
+                    return tutorialImages[1];
+
+                default:
+                    throw new ArgumentException("Image ID not recognized.");
+            }
         }
     }
 }
