@@ -39,8 +39,10 @@ namespace SpaceProject
         private Sprite tutorialButtonChecked;
         private Sprite tutorialButtonUncheckedSelected;
         private Sprite tutorialButtonCheckedSelected;
-        private readonly Vector2 RELATIVE_TUTORIAL_BUTTON_POSITION = new Vector2(140, 179);
-        private readonly Vector2 RELATIVE_OKAY_BUTTON_POSITION = new Vector2(0, 179);
+        private readonly Vector2 RELATIVE_TUTORIAL_BUTTON_POSITION_NORMAL = new Vector2(140, 109);
+        private readonly Vector2 RELATIVE_OKAY_BUTTON_POSITION_NORMAL = new Vector2(0, 109);
+        private readonly Vector2 RELATIVE_TUTORIAL_BUTTON_POSITION_IMAGE = new Vector2(140, 179);
+        private readonly Vector2 RELATIVE_OKAY_BUTTON_POSITION_IMAGE = new Vector2(0, 179);
 
         #region variables
 
@@ -999,7 +1001,27 @@ namespace SpaceProject
             //Makes the messagebox invisible when pressing the actionkey if it's displaying a message
             if (messageState == MessageState.Message && tempTimer < 0)
             {
-                HideMessage();
+                if (useDisableTutorialButton)
+                {
+                    switch (cursorIndex)
+                    {
+                        case 0:
+                            HideMessage();
+                            break;
+
+                        case 1:
+                            Game.tutorialManager.TutorialsUsed = !Game.tutorialManager.TutorialsUsed;
+                            UpdateButtonLabels();
+                            break;
+
+                        default:
+                            throw new IndexOutOfRangeException("Cursor index is out of range.");
+                    }
+                }
+                else
+                {
+                    HideMessage();
+                }
             }
 
             else if (messageState == MessageState.MessageWithImage && tempTimer < 0)
@@ -1482,7 +1504,147 @@ namespace SpaceProject
 
             if (messageState == MessageState.Message)
             {
+                if (useDisableTutorialButton)
+                {
+                    //loops through the menu options and colors the selected one red
+                    for (int i = 0; i < menuOptions.Count; i++)
+                    {
+                        if (i == cursorIndex)
+                        {
+                            if (menuOptions[i].ToLower().Equals("show"))
+                            {
+                                spriteBatch.Draw(activeTutorialButton.Texture,
+                                    new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_TUTORIAL_BUTTON_POSITION_NORMAL,
+                                    activeTutorialButton.SourceRectangle,
+                                    Color.White,
+                                    0f,
+                                    new Vector2(activeTutorialButton.SourceRectangle.Value.Width / 2,
+                                        activeTutorialButton.SourceRectangle.Value.Height / 2),
+                                    1f,
+                                    SpriteEffects.None,
+                                    0.975f);
 
+                                spriteBatch.DrawString(Game.fontManager.GetFont(14),
+                                                     menuOptions[i],
+                                                     new Vector2(textPos.X + 136 + (i * 140),
+                                                             textPos.Y + 99) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_NORMAL,
+                                                     Color.LightBlue,
+                                                     0f,
+                                                     Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
+                                                     1f,
+                                                     SpriteEffects.None,
+                                                     1f);
+                            }
+
+                            else
+                            {
+                                spriteBatch.Draw(buttonSelected.Texture,
+                                    new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_OKAY_BUTTON_POSITION_NORMAL,
+                                    buttonSelected.SourceRectangle,
+                                    Color.White,
+                                    0f,
+                                    new Vector2(buttonSelected.SourceRectangle.Value.Width / 2,
+                                        buttonSelected.SourceRectangle.Value.Height / 2),
+                                    1f,
+                                    SpriteEffects.None,
+                                    0.975f);
+
+                                spriteBatch.DrawString(Game.fontManager.GetFont(14),
+                                                     menuOptions[i],
+                                                     new Vector2(textPos.X + 136 + (i * 140),
+                                                             textPos.Y + 99) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_NORMAL,
+                                                     Color.LightBlue,
+                                                     0f,
+                                                     Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
+                                                     1f,
+                                                     SpriteEffects.None,
+                                                     1f);
+                            }
+                        }
+
+                        else
+                        {
+                            if (menuOptions[i].ToLower().Equals("show"))
+                            {
+                                spriteBatch.Draw(activeTutorialButton.Texture,
+                                    new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_TUTORIAL_BUTTON_POSITION_NORMAL,
+                                    activeTutorialButton.SourceRectangle,
+                                    Color.White,
+                                    0f,
+                                    new Vector2(activeTutorialButton.SourceRectangle.Value.Width / 2,
+                                        activeTutorialButton.SourceRectangle.Value.Height / 2),
+                                    1f,
+                                    SpriteEffects.None,
+                                    0.975f);
+
+                                spriteBatch.DrawString(Game.fontManager.GetFont(14),
+                                    menuOptions[i],
+                                    new Vector2(textPos.X + 136 + (i * 140),
+                                        textPos.Y + 99) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_NORMAL,
+                                    Game.fontManager.FontColor,
+                                    0f,
+                                    Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
+                                    1f,
+                                    SpriteEffects.None,
+                                    1f);
+                            }
+
+                            else
+                            {
+
+                                spriteBatch.Draw(buttonUnselected.Texture,
+                                    new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_OKAY_BUTTON_POSITION_NORMAL,
+                                    buttonUnselected.SourceRectangle,
+                                    Color.White,
+                                    0f,
+                                    new Vector2(buttonUnselected.SourceRectangle.Value.Width / 2,
+                                        buttonUnselected.SourceRectangle.Value.Height / 2),
+                                    1f,
+                                    SpriteEffects.None,
+                                    0.975f);
+
+                                spriteBatch.DrawString(Game.fontManager.GetFont(14),
+                                    menuOptions[i],
+                                    new Vector2(textPos.X + 136 + (i * 140),
+                                        textPos.Y + 99) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_NORMAL,
+                                    Game.fontManager.FontColor,
+                                    0f,
+                                    Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
+                                    1f,
+                                    SpriteEffects.None,
+                                    1f);
+                            }
+                        }
+
+                    }
+                }
+
+                else
+                {
+                    spriteBatch.Draw(buttonSelected.Texture,
+                                    new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_OKAY_BUTTON_POSITION_NORMAL,
+                                    buttonSelected.SourceRectangle,
+                                    Color.White,
+                                    0f,
+                                    new Vector2(buttonSelected.SourceRectangle.Value.Width / 2,
+                                        buttonSelected.SourceRectangle.Value.Height / 2),
+                                    1f,
+                                    SpriteEffects.None,
+                                    0.975f);
+
+                    spriteBatch.DrawString(Game.fontManager.GetFont(14),
+                                                     "Okay",
+                                                     new Vector2(textPos.X + 136,
+                                                             textPos.Y + 99) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_NORMAL,
+                                                     Color.LightBlue,
+                                                     0f,
+                                                     Game.fontManager.GetFont(14).MeasureString("Okay") / 2,
+                                                     1f,
+                                                     SpriteEffects.None,
+                                                     1f);
+
+                    
+                }
             }
 
             else if (messageState == MessageState.MessageWithImage)
@@ -1495,7 +1657,7 @@ namespace SpaceProject
                         if (menuOptions[i].ToLower().Equals("show"))
                         {
                             spriteBatch.Draw(activeTutorialButton.Texture,
-                                new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_TUTORIAL_BUTTON_POSITION,
+                                new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_TUTORIAL_BUTTON_POSITION_IMAGE,
                                 activeTutorialButton.SourceRectangle,
                                 Color.White,
                                 0f,
@@ -1508,7 +1670,7 @@ namespace SpaceProject
                             spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                  menuOptions[i],
                                                  new Vector2(textPos.X + 171 + (i * 140),
-                                                         textPos.Y - 47) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION,
+                                                         textPos.Y - 47) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
                                                  Color.LightBlue,
                                                  0f,
                                                  Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
@@ -1520,7 +1682,7 @@ namespace SpaceProject
                         else
                         {
                             spriteBatch.Draw(buttonSelected.Texture,
-                                new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_OKAY_BUTTON_POSITION,
+                                new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
                                 buttonSelected.SourceRectangle,
                                 Color.White,
                                 0f,
@@ -1533,7 +1695,7 @@ namespace SpaceProject
                             spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                  menuOptions[i],
                                                  new Vector2(textPos.X + 171 + (i * 140),
-                                                         textPos.Y - 47) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION,
+                                                         textPos.Y - 47) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
                                                  Color.LightBlue,
                                                  0f,
                                                  Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
@@ -1548,7 +1710,7 @@ namespace SpaceProject
                         if (menuOptions[i].ToLower().Equals("show"))
                         {
                             spriteBatch.Draw(activeTutorialButton.Texture,
-                                new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_TUTORIAL_BUTTON_POSITION,
+                                new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_TUTORIAL_BUTTON_POSITION_IMAGE,
                                 activeTutorialButton.SourceRectangle,
                                 Color.White,
                                 0f,
@@ -1561,7 +1723,7 @@ namespace SpaceProject
                             spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                 menuOptions[i],
                                 new Vector2(textPos.X + 171 + (i * 140),
-                                    textPos.Y - 47) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION,
+                                    textPos.Y - 47) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
                                 Game.fontManager.FontColor,
                                 0f,
                                 Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
@@ -1574,7 +1736,7 @@ namespace SpaceProject
                         {
 
                             spriteBatch.Draw(buttonUnselected.Texture,
-                                new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_OKAY_BUTTON_POSITION,
+                                new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
                                 buttonUnselected.SourceRectangle,
                                 Color.White,
                                 0f,
@@ -1587,7 +1749,7 @@ namespace SpaceProject
                             spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                 menuOptions[i],
                                 new Vector2(textPos.X + 171 + (i * 140),
-                                    textPos.Y - 47) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION,
+                                    textPos.Y - 47) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
                                 Game.fontManager.FontColor,
                                 0f,
                                 Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
