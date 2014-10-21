@@ -65,6 +65,8 @@ namespace SpaceProject
         private readonly Vector2 RELATIVE_TUTORIAL_BUTTON_POSITION_IMAGE = new Vector2(140, 179);
         private readonly Vector2 RELATIVE_OKAY_BUTTON_POSITION_IMAGE = new Vector2(0, 179);
 
+        private readonly int OPACITY = 230;
+
         //Map related 
         private List<GameObjectOverworld> objectsOnMap;
         private float scaleX;
@@ -1225,7 +1227,7 @@ namespace SpaceProject
                         spriteBatch.Draw(messageBackdrop.Texture,
                              textBoxPos,
                              messageBackdrop.SourceRectangle,
-                             new Color(255, 255, 255, 204),
+                             new Color(255, 255, 255, OPACITY),
                              0.0f,
                              new Vector2(messageBackdrop.SourceRectangle.Value.Width / 2,
                                          messageBackdrop.SourceRectangle.Value.Height / 2),
@@ -1257,12 +1259,12 @@ namespace SpaceProject
                             textBoxPos.Y - imageCanvas.SourceRectangle.Value.Height / 2 + 18);
 
                         textPos = new Vector2(textBoxPos.X - imageCanvas.SourceRectangle.Value.Width / 2 + 30,
-                            textBoxPos.Y + 48);
+                            textBoxPos.Y + 40);
 
                         spriteBatch.Draw(imageCanvas.Texture,
                              textBoxPos,
                              imageCanvas.SourceRectangle,
-                             new Color(255, 255, 255, 204),
+                             new Color(255, 255, 255, OPACITY),
                              0.0f,
                              new Vector2(imageCanvas.SourceRectangle.Value.Width / 2,
                                          imageCanvas.SourceRectangle.Value.Height / 2),
@@ -1304,7 +1306,7 @@ namespace SpaceProject
                         spriteBatch.Draw(messageBackdrop.Texture,
                              textBoxPos,
                              messageBackdrop.SourceRectangle,
-                             new Color(255, 255, 255, 185),
+                             new Color(255, 255, 255, OPACITY),
                              0.0f,
                              new Vector2(messageBackdrop.SourceRectangle.Value.Width / 2,
                                          messageBackdrop.SourceRectangle.Value.Height / 2),
@@ -1359,7 +1361,7 @@ namespace SpaceProject
                     spriteBatch.Draw(messageBackdrop.Texture,
                              new Vector2((int)Game.camera.Position.X /*- Game.Window.ClientBounds.Width / 2*/, (int)Game.camera.Position.Y /*- Game.Window.ClientBounds.Height / 2*/),
                              messageBackdrop.SourceRectangle,
-                             new Color(255, 255, 255, 220),
+                             new Color(255, 255, 255, OPACITY),
                              0.0f,
                              new Vector2(messageBackdrop.SourceRectangle.Value.Width / 2,
                                          messageBackdrop.SourceRectangle.Value.Height / 2),
@@ -1653,6 +1655,8 @@ namespace SpaceProject
 
             else if (messageState == MessageState.MessageWithImage)
             {
+                Vector2 menuOptionPos = new Vector2(textPos.X + 171, textPos.Y - 38);
+
                 //loops through the menu options and colors the selected one red
                 for (int i = 0; i < menuOptions.Count; i++)
                 {
@@ -1673,8 +1677,8 @@ namespace SpaceProject
 
                             spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                  menuOptions[i],
-                                                 new Vector2(textPos.X + 171 + (i * 140),
-                                                         textPos.Y - 47) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
+                                                 new Vector2(menuOptionPos.X + (i * 140),
+                                                         menuOptionPos.Y) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
                                                  Color.LightBlue,
                                                  0f,
                                                  Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
@@ -1698,8 +1702,8 @@ namespace SpaceProject
 
                             spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                  menuOptions[i],
-                                                 new Vector2(textPos.X + 171 + (i * 140),
-                                                         textPos.Y - 47) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
+                                                 new Vector2(menuOptionPos.X + (i * 140),
+                                                         menuOptionPos.Y) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
                                                  Color.LightBlue,
                                                  0f,
                                                  Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
@@ -1726,8 +1730,8 @@ namespace SpaceProject
 
                             spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                 menuOptions[i],
-                                new Vector2(textPos.X + 171 + (i * 140),
-                                    textPos.Y - 47) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
+                                new Vector2(menuOptionPos.X + (i * 140),
+                                    menuOptionPos.Y) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
                                 Game.fontManager.FontColor,
                                 0f,
                                 Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
@@ -1752,8 +1756,8 @@ namespace SpaceProject
 
                             spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                 menuOptions[i],
-                                new Vector2(textPos.X + 171 + (i * 140),
-                                    textPos.Y - 47) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
+                                new Vector2(menuOptionPos.X + (i * 140),
+                                    menuOptionPos.Y) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
                                 Game.fontManager.FontColor,
                                 0f,
                                 Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,

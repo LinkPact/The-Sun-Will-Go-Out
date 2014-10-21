@@ -9,6 +9,7 @@ namespace SpaceProject
 {
     public enum TutorialImage
     {
+        OverworldControls,
         CombatControls,
         CombatBars,
         CombatBarsObjective,
@@ -54,6 +55,7 @@ namespace SpaceProject
             tutorialImageCanvas = tutorialSpriteSheet.GetSubSprite(new Rectangle(0, 0, 400, 400));
 
             tutorialImages = new List<Sprite>();
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(770, 199, 366, 197)));
             tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(403, 1, 366, 197)));
             tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(403, 199, 366, 197)));
             tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(1, 403, 366, 197)));
@@ -100,7 +102,7 @@ namespace SpaceProject
                     DisplayTutorialMessage(new List<string> {"Welcome to the overworld! To move your ship you use left and right arrow-keys to rotate and accelerate with the up-key. To enter stations or planets you position your ship above them and press 'Enter'. Press 'Escape' to bring up the menu.",
                     "Your current objective is to go to coordinates (2635, 940). To find out where that is, look at the coordinates at the bottom right of the screen, just above the minimap. The sun, in the middle of the sector, is the center point (origin) of the coordinate system.", 
                     "If you forget where you need to go you can at any time check your current mission objectives in the mission log. Press 'M' to bring up the mission screen. From there, you can select your current missions and view their objectives.",
-                    "At the bottom-left of the screen is your overall health. This determines how much health you have when entering combat. When your overall health is reduced to 0, the game is over."});
+                    "At the bottom-left of the screen is your overall health. This determines how much health you have when entering combat. When your overall health is reduced to 0, the game is over."}, TutorialImage.OverworldControls);
                 }
             }
 
@@ -276,26 +278,29 @@ namespace SpaceProject
         {
             switch (imageID)
             {
-                case TutorialImage.CombatControls:
+                case TutorialImage.OverworldControls:
                     return tutorialImages[0];
 
-                case TutorialImage.CombatBars:
+                case TutorialImage.CombatControls:
                     return tutorialImages[1];
 
-                case TutorialImage.CombatBarsObjective:
+                case TutorialImage.CombatBars:
                     return tutorialImages[2];
 
-                case TutorialImage.CombatBarsWeapon:
+                case TutorialImage.CombatBarsObjective:
                     return tutorialImages[3];
 
-                case TutorialImage.CombatBarsHealth:
+                case TutorialImage.CombatBarsWeapon:
                     return tutorialImages[4];
 
-                case TutorialImage.CombatBarsEnergy:
+                case TutorialImage.CombatBarsHealth:
                     return tutorialImages[5];
 
-                case TutorialImage.CombatBarsShield:
+                case TutorialImage.CombatBarsEnergy:
                     return tutorialImages[6];
+
+                case TutorialImage.CombatBarsShield:
+                    return tutorialImages[7];
 
                 default:
                     throw new ArgumentException("Image ID not recognized.");
