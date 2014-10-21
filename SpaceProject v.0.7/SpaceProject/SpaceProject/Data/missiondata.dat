@@ -14,20 +14,20 @@ Fail = "Was that the best you got? I must say, I am a bit disappointed. You will
 Reward = 200
 Progress = 1
 Reputation = 0
-State = 1
+State = 0
 
 [SX_Main1_NewFirstMission]
 Location = Border Station
 Name = Main - New First Mission
-Introduction = text
+Introduction = Introduction to first mission
 ObjectiveText1 = Go to asteroids at Mining Outpost
 ObjectiveText2 = Return to Border Station at coordinates (1840, 130).
 ObjectiveText3 = Return to Border Station at coordinates (1840, 130).
-PosResponse = ""
-NegResponse = ""
-Accept = ""
+PosResponse = Yes
+NegResponse = No
+Accept = Excellent!
 FailText = ""
-EventText1 = "With that taken care of - let's discuss your mission."#"Over the last couple of weeks several of our automated mining ships have gone missing in the asteroid mining belt at the nearby mining outpost. We want you to explore the asteroid belt and search for the cause of the problem."#"If you find anything, report back to me immediately." 
+EventText1 = "Then let's discuss your mission."#"Over the last couple of weeks several of our automated mining ships have gone missing in the asteroid mining belt at the nearby mining outpost. We want you to explore the asteroid belt and search for the cause of the problem."#"If you find anything, report back to me immediately." 
 EventText2 = You arrive at the asteroids and begin scouting the asteroid belt
 EventText3 = Suddenly a group of pirates emerge from behind a large asteroid. You prepare your weapons.
 EventText4 = Barely escaping the pirate ambush, you decide to return to Border Station and report your findings.
@@ -40,7 +40,7 @@ Fail = ""
 Reward = 100
 Progress = 2
 Reputation = 3
-State = 0
+State = 1
 
 [SX_Main2_Highfence]
 Location = Highfence

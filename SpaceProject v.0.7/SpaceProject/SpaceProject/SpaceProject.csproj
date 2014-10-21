@@ -219,7 +219,7 @@
     <Compile Include="Missions\Side Missions\DeathByMeteorMission.cs" />
     <Compile Include="Missions\Old Missions\MidMissionRebel.cs" />
     <Compile Include="Missions\Main Missions\Phase 1\Main3_Rebels.cs" />
-    <Compile Include="Missions\Main Missions\Phase 1\Main0_Tutorial.cs" />
+    <Compile Include="Missions\Old Missions\Main0_Tutorial.cs" />
     <Compile Include="Missions\Old Missions\MidMissionAlliance.cs" />
     <Compile Include="Missions\Old Missions\FinalMission.cs" />
     <Compile Include="Missions\Old Missions\Main1_AColdWelcome.cs" />

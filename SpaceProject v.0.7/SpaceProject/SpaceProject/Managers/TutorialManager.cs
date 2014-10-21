@@ -71,7 +71,7 @@ namespace SpaceProject
         public void UpdateTutorialMessages(GameTime gameTime)
         {
             if (!hasEnteredStation && GameStateManager.currentState.Equals("StationState") &&
-                game.stateManager.stationState.SubStateManager.ButtonControl != ButtonControl.Confirm)
+                game.stateManager.stationState.SubStateManager.ButtonControl == ButtonControl.Menu)
             {
                 hasEnteredStation = true;
 

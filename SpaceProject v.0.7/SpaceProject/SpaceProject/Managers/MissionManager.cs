@@ -566,12 +566,12 @@ namespace SpaceProject
             //    MarkMissionAsCompleted("Main - A Cold Welcome");
             //}
 
-            if (mainTutorialMission.MissionState == StateOfMission.CompletedDead
-                && mainNewFirstMission.MissionState == StateOfMission.Unavailable)
-            {
-                UnlockMission("Main - New First Mission");
-                MarkMissionAsActive("Main - New First Mission");
-            }
+            //if (mainTutorialMission.MissionState == StateOfMission.CompletedDead
+            //    && mainNewFirstMission.MissionState == StateOfMission.Unavailable)
+            //{
+            //    UnlockMission("Main - New First Mission");
+            //    MarkMissionAsActive("Main - New First Mission");
+            //}
 
             // Unlock hyperspeed
             if (ControlManager.CurrentKeyboardState.IsKeyDown(Keys.LeftAlt) &&

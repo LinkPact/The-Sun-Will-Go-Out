@@ -192,7 +192,7 @@ namespace SpaceProject
             {
                 Game.stateManager.GotoStationSubScreen("Border Station", "Mission");
 
-                Game.stateManager.stationState.SubStateManager.MissionMenuState.SelectedMission = MissionManager.GetMission("Main - Tutorial Mission");
+                Game.stateManager.stationState.SubStateManager.MissionMenuState.SelectedMission = MissionManager.GetMission("Main - New First Mission");
                 Game.stateManager.stationState.SubStateManager.MissionMenuState.DisplayMissionIntroduction();
             }
 
