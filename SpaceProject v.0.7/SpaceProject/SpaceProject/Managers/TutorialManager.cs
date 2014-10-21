@@ -10,7 +10,12 @@ namespace SpaceProject
     public enum TutorialImage
     {
         CombatControls,
-        CombatBars
+        CombatBars,
+        CombatBarsObjective,
+        CombatBarsWeapon,
+        CombatBarsHealth,
+        CombatBarsEnergy,
+        CombatBarsShield
     }
 
     public class TutorialManager
@@ -23,7 +28,7 @@ namespace SpaceProject
 
         private bool tutorialsUsed;
         public bool TutorialsUsed { get { return tutorialsUsed; } set { tutorialsUsed = value; } }
-        private int tempTimer = 1250;
+        private int tempTimer = 50;
         private int tempTimer2 = 200;
         private int tempTimer3 = 200;
 
@@ -51,6 +56,11 @@ namespace SpaceProject
             tutorialImages = new List<Sprite>();
             tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(403, 1, 366, 197)));
             tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(403, 199, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(1, 403, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(368, 403, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(1, 601, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(368, 601, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(770, 1, 366, 197)));
 
             hasEnteredSectorX = false;
             hasEnteredStation = false;
@@ -75,7 +85,7 @@ namespace SpaceProject
             {
                 hasEnteredStation = true;
 
-                DisplayTutorialMessage("This is the station menu, here you can select missions, listen to rumors and buy/sell items and fuel. Move the cursor with the arrow-keys and press 'Enter' to select.");
+                DisplayTutorialMessage("This is the station menu, here you can select missions, listen to rumors and buy/sell items. Move the cursor with the arrow-keys and press 'Enter' to select.");
             }
 
             if (!hasEnteredOverworld && GameStateManager.currentState.Equals("OverworldState"))
@@ -84,13 +94,13 @@ namespace SpaceProject
 
                 if (tempTimer < 0)
                 {
-                    tempTimer = 1250;
+                    tempTimer = 50;
                     hasEnteredOverworld = true;
 
                     DisplayTutorialMessage(new List<string> {"Welcome to the overworld! To move your ship you use left and right arrow-keys to rotate and accelerate with the up-key. To enter stations or planets you position your ship above them and press 'Enter'. Press 'Escape' to bring up the menu.",
                     "Your current objective is to go to coordinates (2635, 940). To find out where that is, look at the coordinates at the bottom right of the screen, just above the minimap. The sun, in the middle of the sector, is the center point (origin) of the coordinate system.", 
                     "If you forget where you need to go you can at any time check your current mission objectives in the mission log. Press 'M' to bring up the mission screen. From there, you can select your current missions and view their objectives.",
-                    "Next to the fuel bar at the bottom-right of the screen is your overall health. This determines how much health you have when entering combat. When your overall health is reduced to 0, the game is over."});
+                    "At the bottom-left of the screen is your overall health. This determines how much health you have when entering combat. When your overall health is reduced to 0, the game is over."});
                 }
             }
 
@@ -101,7 +111,7 @@ namespace SpaceProject
             {
                 hasEnteredPlanet = true;
 
-                DisplayTutorialMessage("This is the planet menu. Compared to the station menu, you have a few different options. You can view information about the planet and mine for resources if the planet has any. Not all planets are inhabited though.");
+                DisplayTutorialMessage("This is the planet menu. If the planet has a colony, you can buy/sell items there, accept missions and listen to rumors from it's inhabitants. Not all planets are inhabited though.");
             }
 
             if (!hasEnteredSectorX &&
@@ -124,7 +134,7 @@ namespace SpaceProject
                 CollisionDetection.IsRectInRect(game.player.Bounds, new Rectangle((int)highfenceBeaconPosition.X - 200, (int)highfenceBeaconPosition.Y - 200, 400, 400)))
             {
                 hasEnteredHighfenceBeaconArea = true;
-                DisplayTutorialMessage("This is a 'beacon'. Beacons are used for traveling quickly between stations, but they need to be activated before use. Try activating it now."); 
+                DisplayTutorialMessage("This is a 'beacon'. Beacons are used for traveling quickly between stations and planets, but they need to be activated before use. Try activating it now."); 
             }
 
             if (!hasActivatedHighfenceBeacon &&
@@ -144,8 +154,11 @@ namespace SpaceProject
 
                     hasEnteredVerticalShooter = true;
                     DisplayTutorialMessage(new List<String>{"Use the movement keys (Default arrowkeys) to move your ship, the fire key ('Left Control') to fire and the switch key ('Left Shift') to change weapon. You can rebind the keys in the options menu.",
-                    "Down at the bottom-left are three bars:\n\nYour health - when this runs out you fail the level and your overall health is reduced a bit.", "Your energy - weapons use energy to fire.\n\nYour shield - protects your ship from damage. Recharges over time."},
-                    new List<TutorialImage> { TutorialImage.CombatControls, TutorialImage.CombatBars }, new List<int> {1});
+                    "Down at the bottom-left is some information and three bars:", "Your objective - ", "Your currently active primary weapon - ", "Your health - when this runs out you fail the level and your overall health is reduced a bit.", "Your energy - weapons use energy to fire.", "Your shield - protects your ship from damage. Recharges over time."},
+                    new List<TutorialImage> { TutorialImage.CombatControls, TutorialImage.CombatBars, TutorialImage.CombatBarsObjective,
+                        TutorialImage.CombatBarsWeapon, TutorialImage.CombatBarsHealth, TutorialImage.CombatBarsEnergy,
+                        TutorialImage.CombatBarsShield },
+                        new List<int> {1, 2, 3, 4, 5, 6});
                 }
             }
 
@@ -268,6 +281,21 @@ namespace SpaceProject
 
                 case TutorialImage.CombatBars:
                     return tutorialImages[1];
+
+                case TutorialImage.CombatBarsObjective:
+                    return tutorialImages[2];
+
+                case TutorialImage.CombatBarsWeapon:
+                    return tutorialImages[3];
+
+                case TutorialImage.CombatBarsHealth:
+                    return tutorialImages[4];
+
+                case TutorialImage.CombatBarsEnergy:
+                    return tutorialImages[5];
+
+                case TutorialImage.CombatBarsShield:
+                    return tutorialImages[6];
 
                 default:
                     throw new ArgumentException("Image ID not recognized.");

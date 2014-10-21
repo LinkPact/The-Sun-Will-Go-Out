@@ -1014,6 +1014,7 @@ namespace SpaceProject
                         case 1:
                             Game.tutorialManager.TutorialsUsed = !Game.tutorialManager.TutorialsUsed;
                             UpdateButtonLabels();
+                            ClearBuffers();
                             break;
 
                         default:
@@ -1856,6 +1857,38 @@ namespace SpaceProject
             }
 
             return tempList;
+        }
+
+        private void ClearBuffers()
+        {
+            List<String> tempTextBuffer = new List<String>();
+            List<Sprite> tempImageBuffer = new List<Sprite>();
+
+            for (int i = 1; i < textBuffer.Count; i++)
+            {
+                tempTextBuffer.Add(textBuffer[i]);
+            }
+
+            if (imageBuffer.Count > 0)
+            {
+                for (int i = 1; i < imageBuffer.Count; i++)
+                {
+                    tempImageBuffer.Add(imageBuffer[i]);
+                }
+            }
+
+            foreach (String str in tempTextBuffer)
+            {
+                textBuffer.Remove(str);
+            }
+
+            foreach (Sprite spr in tempImageBuffer)
+            {
+                imageBuffer.Remove(spr);
+            }
+
+            tempTextBuffer.Clear();
+            tempImageBuffer.Clear();
         }
     }
 }
