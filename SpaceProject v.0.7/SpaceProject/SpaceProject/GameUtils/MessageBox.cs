@@ -15,7 +15,7 @@ namespace SpaceProject
         MessageWithImage,
         Tutorial,
         Menu,
-        Inventory,
+        //Inventory,
         YesNo,
         SelectionMenu,
         Map
@@ -23,6 +23,27 @@ namespace SpaceProject
 
     public class MessageBox
     {
+        #region variables
+
+        private Game1 Game;
+        private Sprite messageBackdrop;
+        private Sprite buttonUnselected;
+        private Sprite buttonSelected;
+        //private SpriteFont font;
+
+        private MessageState messageState;
+
+        private Vector2 textBoxPos;
+        private Vector2 textPos;
+
+        private List<string> textBuffer;
+        //private string confirmString;
+
+        private List<string> menuOptions;
+        private List<System.Action> menuActions;
+        private int cursorIndex;
+        private int currentIndexMax;
+
         private List<String> textStorage;
         private List<String> optionStorage;
         private List<System.Action> actionStorage;
@@ -44,29 +65,6 @@ namespace SpaceProject
         private readonly Vector2 RELATIVE_TUTORIAL_BUTTON_POSITION_IMAGE = new Vector2(140, 179);
         private readonly Vector2 RELATIVE_OKAY_BUTTON_POSITION_IMAGE = new Vector2(0, 179);
 
-        #region variables
-
-        private Game1 Game;
-        private Sprite messageBackdrop;
-        private Sprite buttonUnselected;
-        private Sprite buttonSelected;
-        //private SpriteFont font;
-
-        private MessageState messageState;
-
-        private Vector2 textBoxPos;
-        private Vector2 textPos;
-
-        private List<string> textBuffer;
-        //private string confirmString;
-
-        private List<string> menuOptions;
-        private List<System.Action> menuActions;
-        private List<Item> inventoryRef;
-        private List<Item> throwList;
-        private int cursorIndex;
-        private int currentIndexMax;
-
         //Map related 
         private List<GameObjectOverworld> objectsOnMap;
         private float scaleX;
@@ -76,14 +74,15 @@ namespace SpaceProject
         private int holdTimer;
 
         //Variables only related to the inventory popup
-        #region inventoryVariables
-
-        private int cursorColumn;
-        private int pickedColumn;
-        private int pickedIndex;
-        private bool isPicked;
-
-        #endregion
+        //#region inventoryVariables
+        //
+        //private int cursorColumn;
+        //private int pickedColumn;
+        //private int pickedIndex;
+        //private bool isPicked;
+        //private List<Item> inventoryRef;
+        //private List<Item> throwList;
+        //#endregion
 
         int tempTimer;
 
@@ -118,7 +117,7 @@ namespace SpaceProject
             menuOptions = new List<string>();
             menuActions = new List<System.Action>();
 
-            inventoryRef = ShipInventoryManager.ShipItems;
+            //inventoryRef = ShipInventoryManager.ShipItems;
 
             holdTimer = Game.HoldKeyTreshold;
 
@@ -156,6 +155,7 @@ namespace SpaceProject
 
             tempTimer = 5;
 
+            menuOptions.Clear();
             UpdateButtonLabels();
         }
 
@@ -213,6 +213,7 @@ namespace SpaceProject
 
             tempTimer = 5;
 
+            menuOptions.Clear();
             UpdateButtonLabels();
         }
 
@@ -267,6 +268,7 @@ namespace SpaceProject
 
             tempTimer = 5;
 
+            menuOptions.Clear();
             UpdateButtonLabels();
         }
 
@@ -289,28 +291,28 @@ namespace SpaceProject
             tempTimer = 5;
         }
 
-        //Displays the "Which-item-to-trash"-menu
-        public void DisplayTrashMenu(List<Item> trash)
-        {
-            cursorIndex = 0;
-            cursorColumn = 0;
-
-            messageState = MessageState.Inventory;
-            Game1.Paused = true;
-
-            //Fills up the menuOption list with throw-items
-            menuOptions.Clear();
-            foreach (Item item in trash)
-                menuOptions.Add(item.Name);
-
-            menuOptions.Add("Finish");
-
-            throwList = trash;
-
-            currentIndexMax = menuOptions.Count;
-
-            tempTimer = 5;
-        }
+        ////Displays the "Which-item-to-trash"-menu
+        //public void DisplayTrashMenu(List<Item> trash)
+        //{
+        //    cursorIndex = 0;
+        //    cursorColumn = 0;
+        //
+        //    messageState = MessageState.Inventory;
+        //    Game1.Paused = true;
+        //
+        //    //Fills up the menuOption list with throw-items
+        //    menuOptions.Clear();
+        //    foreach (Item item in trash)
+        //        menuOptions.Add(item.Name);
+        //
+        //    menuOptions.Add("Finish");
+        //
+        //    throwList = trash;
+        //
+        //    currentIndexMax = menuOptions.Count;
+        //
+        //    tempTimer = 5;
+        //}
 
         //Displays the "overmenu"
         public void DisplayMenu()
@@ -423,10 +425,10 @@ namespace SpaceProject
                 }
             }
 
-            if (messageState == MessageState.Inventory)
-                InventoryCursorControls(gameTime);
+            //if (messageState == MessageState.Inventory)
+            //    InventoryCursorControls(gameTime);
 
-            else if (messageState != MessageState.Invisible)
+            if (messageState != MessageState.Invisible)
             {
                 ButtonControls(gameTime);
                 if (GameStateManager.currentState == "OptionsMenuState")
@@ -436,21 +438,21 @@ namespace SpaceProject
             }
 
             //Makes the messagebox invisible when pressing the esc or back if it's displaying the menu
-            if (messageState == MessageState.Menu)
+            else if (messageState == MessageState.Menu)
             {
                 if (tempTimer < 0 && ControlManager.CheckPress(RebindableKeys.Pause) ||
-                    ControlManager.CheckPress(RebindableKeys.Action2) && messageState != MessageState.Inventory)
+                    ControlManager.CheckPress(RebindableKeys.Action2) /*&& messageState != MessageState.Inventory*/)
                 {
                     Game1.Paused = false;
                     messageState = MessageState.Invisible;
                 }
-                else if (tempTimer < 0 && ControlManager.CheckPress(RebindableKeys.Pause) ||
-                    ControlManager.CheckPress(RebindableKeys.Action2) && messageState == MessageState.Inventory
-                    && !isPicked)
-                {
-                    Game1.Paused = false;
-                    messageState = MessageState.Invisible;
-                }
+                //else if (tempTimer < 0 && ControlManager.CheckPress(RebindableKeys.Pause) ||
+                //    ControlManager.CheckPress(RebindableKeys.Action2) && messageState == MessageState.Inventory
+                //    && !isPicked)
+                //{
+                //    Game1.Paused = false;
+                //    messageState = MessageState.Invisible;
+                //}
             }
 
             //displays the overmenu automaticly when returning from the inventory or mission screen 
@@ -517,257 +519,257 @@ namespace SpaceProject
 
         //The different actions that happens when you move items in different ways.
         //(In the inventory popup)
-        private void InventoryAction()
-        {
-            if (cursorColumn == 0 && pickedColumn == 0 && cursorIndex < throwList.Count)
-            {
-                int pos1 = pickedIndex;
-                int pos2 = cursorIndex;
-
-                Item tempItem1 = throwList[pos1];
-                Item tempItem2 = throwList[pos2];
-
-                throwList.RemoveAt(pos1);
-                throwList.Insert(pos1, tempItem2);
-                throwList.RemoveAt(pos2);
-                throwList.Insert(pos2, tempItem1);
-
-                menuOptions.Clear();
-
-                foreach (Item item in throwList)
-                    menuOptions.Add(item.Name);
-
-                menuOptions.Add("Finish");
-            }
-            else if (pickedColumn == 0 && cursorColumn != 0)
-            {
-                int pos1 = pickedIndex;
-                int pos2;
-
-                if (cursorColumn == 1) pos2 = cursorIndex;
-                else pos2 = cursorIndex + 14;
-
-                Item tempItem1 = throwList[pos1];
-                Item tempItem2 = ShipInventoryManager.ShipItems[pos2];
-
-                throwList.RemoveAt(pos1);
-                throwList.Insert(pos1, tempItem2);
-                ShipInventoryManager.RemoveItemAt(pos2);
-                ShipInventoryManager.InsertItem(pos2, tempItem1);
-
-                menuOptions.Clear();
-
-                foreach (Item item in throwList)
-                    menuOptions.Add(item.Name);
-
-                menuOptions.Add("Finish");
-            }
-            else if (pickedColumn != 0 && cursorColumn == 0)
-            {
-                int pos1;
-                int pos2 = cursorIndex;
-
-                if (pickedColumn == 1) pos1 = pickedIndex;
-                else pos1 = pickedIndex + 14;
-
-                Item tempItem1 = ShipInventoryManager.ShipItems[pos1];
-                Item tempItem2 = throwList[pos2];
-
-                throwList.RemoveAt(pos2);
-                throwList.Insert(pos2, tempItem1);
-                ShipInventoryManager.RemoveItemAt(pos1);
-                ShipInventoryManager.InsertItem(pos1, tempItem2);
-
-                menuOptions.Clear();
-
-                foreach (Item item in throwList)
-                    menuOptions.Add(item.Name);
-
-                menuOptions.Add("Finish");
-            }
-            else if (cursorColumn != 0 && pickedColumn != 0)
-            {
-                int position1;
-                int position2;
-
-                if (pickedColumn == 1) position1 = pickedIndex;
-                else position1 = pickedIndex + 14;
-
-                if (cursorColumn == 1) position2 = cursorIndex;
-                else position2 = cursorIndex + 14;
-
-                ShipInventoryManager.SwitchItems(position1, position2);
-            }
-        }
+        //private void InventoryAction()
+        //{
+        //    if (cursorColumn == 0 && pickedColumn == 0 && cursorIndex < throwList.Count)
+        //    {
+        //        int pos1 = pickedIndex;
+        //        int pos2 = cursorIndex;
+        //
+        //        Item tempItem1 = throwList[pos1];
+        //        Item tempItem2 = throwList[pos2];
+        //
+        //        throwList.RemoveAt(pos1);
+        //        throwList.Insert(pos1, tempItem2);
+        //        throwList.RemoveAt(pos2);
+        //        throwList.Insert(pos2, tempItem1);
+        //
+        //        menuOptions.Clear();
+        //
+        //        foreach (Item item in throwList)
+        //            menuOptions.Add(item.Name);
+        //
+        //        menuOptions.Add("Finish");
+        //    }
+        //    else if (pickedColumn == 0 && cursorColumn != 0)
+        //    {
+        //        int pos1 = pickedIndex;
+        //        int pos2;
+        //
+        //        if (cursorColumn == 1) pos2 = cursorIndex;
+        //        else pos2 = cursorIndex + 14;
+        //
+        //        Item tempItem1 = throwList[pos1];
+        //        Item tempItem2 = ShipInventoryManager.ShipItems[pos2];
+        //
+        //        throwList.RemoveAt(pos1);
+        //        throwList.Insert(pos1, tempItem2);
+        //        ShipInventoryManager.RemoveItemAt(pos2);
+        //        ShipInventoryManager.InsertItem(pos2, tempItem1);
+        //
+        //        menuOptions.Clear();
+        //
+        //        foreach (Item item in throwList)
+        //            menuOptions.Add(item.Name);
+        //
+        //        menuOptions.Add("Finish");
+        //    }
+        //    else if (pickedColumn != 0 && cursorColumn == 0)
+        //    {
+        //        int pos1;
+        //        int pos2 = cursorIndex;
+        //
+        //        if (pickedColumn == 1) pos1 = pickedIndex;
+        //        else pos1 = pickedIndex + 14;
+        //
+        //        Item tempItem1 = ShipInventoryManager.ShipItems[pos1];
+        //        Item tempItem2 = throwList[pos2];
+        //
+        //        throwList.RemoveAt(pos2);
+        //        throwList.Insert(pos2, tempItem1);
+        //        ShipInventoryManager.RemoveItemAt(pos1);
+        //        ShipInventoryManager.InsertItem(pos1, tempItem2);
+        //
+        //        menuOptions.Clear();
+        //
+        //        foreach (Item item in throwList)
+        //            menuOptions.Add(item.Name);
+        //
+        //        menuOptions.Add("Finish");
+        //    }
+        //    else if (cursorColumn != 0 && pickedColumn != 0)
+        //    {
+        //        int position1;
+        //        int position2;
+        //
+        //        if (pickedColumn == 1) position1 = pickedIndex;
+        //        else position1 = pickedIndex + 14;
+        //
+        //        if (cursorColumn == 1) position2 = cursorIndex;
+        //        else position2 = cursorIndex + 14;
+        //
+        //        ShipInventoryManager.SwitchItems(position1, position2);
+        //    }
+        //}
 
         //Control over the inventory.
-        private void InventoryCursorControls(GameTime gameTime)
-        {
-            if (ControlManager.CheckPress(RebindableKeys.Action2))
-            {
-                isPicked = false;
-            }
-
-            if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))))
-            {
-                if (!isPicked)
-                {
-                    if (!(cursorColumn == 0 && cursorIndex == throwList.Count))
-                    {
-                        isPicked = true;
-                        pickedIndex = cursorIndex;
-                        pickedColumn = cursorColumn;
-                    }
-                    else if (cursorColumn == 0 && cursorIndex == throwList.Count)
-                    {
-                        Game1.Paused = false;
-                        messageState = MessageState.Invisible;
-                    }
-                }
-                else
-                {
-                    isPicked = false;
-
-                    //Prevents InventoryAction from attempting to move the finish-slot.
-                    if (!(cursorColumn == 0 && cursorIndex == throwList.Count))
-                        //LOGIC - THIS IS WHERE THE MAGIC HAPPENS
-                        InventoryAction();
-                }
-            }
-
-            if (ControlManager.CheckPress(RebindableKeys.Down))
-            {
-                cursorIndex++;
-                holdTimer = Game.HoldKeyTreshold;
-            }
-
-            else if (ControlManager.CheckHold(RebindableKeys.Down))
-            {
-                holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
-
-                if (holdTimer <= 0)
-                {
-                    cursorIndex++;
-                    holdTimer = Game.ScrollSpeedFast;
-                }
-            }
-
-            else if (ControlManager.CheckPress(RebindableKeys.Up))
-            {
-                cursorIndex--;
-                holdTimer = Game.HoldKeyTreshold;
-            }
-
-            else if (ControlManager.CheckHold(RebindableKeys.Up))
-            {
-                holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
-
-                if (holdTimer <= 0)
-                {
-                    cursorIndex--;
-                    holdTimer = Game.ScrollSpeedFast;
-                }
-            }
-
-            if (ControlManager.CheckPress(RebindableKeys.Right) && cursorColumn < 2)
-            {
-                cursorColumn++;
-
-                if (cursorColumn == 1)
-                {
-                    if (inventoryRef.Count <= 14)
-                        currentIndexMax = inventoryRef.Count - 1;
-                    else
-                        currentIndexMax = 14;
-                }
-                else if (cursorColumn == 2)
-                {
-                    currentIndexMax = inventoryRef.Count - 14;
-                }
-
-                holdTimer = Game.HoldKeyTreshold;
-            }
-
-            else if (ControlManager.CheckHold(RebindableKeys.Right) && cursorColumn < 2)
-            {
-                holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
-
-                if (holdTimer <= 0)
-                {
-                    cursorColumn++;
-
-                    if (cursorColumn == 1)
-                    {
-                        if (inventoryRef.Count <= 14)
-                            currentIndexMax = inventoryRef.Count - 1;
-                        else
-                            currentIndexMax = 14;
-                    }
-                    else if (cursorColumn == 2)
-                    {
-                        currentIndexMax = inventoryRef.Count - 14;
-                    }
-
-                    holdTimer = Game.ScrollSpeedSlow;
-                }
-            }
-
-            if (ControlManager.CheckPress(RebindableKeys.Left) && cursorColumn > 0)
-            {
-                cursorColumn--;
-
-                if (cursorColumn == 0)
-                    currentIndexMax = menuOptions.Count;
-                else if (cursorColumn == 1)
-                {
-                    if (inventoryRef.Count <= 14)
-                        currentIndexMax = inventoryRef.Count - 1;
-                    else
-                        currentIndexMax = 14;
-                }
-
-                holdTimer = Game.HoldKeyTreshold;
-            }
-
-            else if (ControlManager.CheckHold(RebindableKeys.Left) && cursorColumn > 0)
-            {
-                holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
-
-                if (holdTimer <= 0)
-                {
-                    cursorColumn--;
-
-                    if (cursorColumn == 0)
-                        currentIndexMax = menuOptions.Count;
-                    else if (cursorColumn == 1)
-                    {
-                        if (inventoryRef.Count <= 14)
-                            currentIndexMax = inventoryRef.Count - 1;
-                        else
-                            currentIndexMax = 14;
-                    }
-
-                    holdTimer = Game.ScrollSpeedSlow;
-                }
-            }
-
-
-            if (cursorIndex > currentIndexMax - 1)
-            {
-                if (ControlManager.PreviousKeyUp(RebindableKeys.Down))
-                    cursorIndex = 0;
-                else
-                    cursorIndex = currentIndexMax - 1;
-            }
-
-            else if (cursorIndex < 0)
-            {
-                if (ControlManager.PreviousKeyUp(RebindableKeys.Up))
-                    cursorIndex = currentIndexMax - 1;
-                else
-                    cursorIndex = 0;
-            }
-        }
+        //private void InventoryCursorControls(GameTime gameTime)
+        //{
+        //    if (ControlManager.CheckPress(RebindableKeys.Action2))
+        //    {
+        //        isPicked = false;
+        //    }
+        //
+        //    if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))))
+        //    {
+        //        if (!isPicked)
+        //        {
+        //            if (!(cursorColumn == 0 && cursorIndex == throwList.Count))
+        //            {
+        //                isPicked = true;
+        //                pickedIndex = cursorIndex;
+        //                pickedColumn = cursorColumn;
+        //            }
+        //            else if (cursorColumn == 0 && cursorIndex == throwList.Count)
+        //            {
+        //                Game1.Paused = false;
+        //                messageState = MessageState.Invisible;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            isPicked = false;
+        //
+        //            //Prevents InventoryAction from attempting to move the finish-slot.
+        //            if (!(cursorColumn == 0 && cursorIndex == throwList.Count))
+        //                //LOGIC - THIS IS WHERE THE MAGIC HAPPENS
+        //                InventoryAction();
+        //        }
+        //    }
+        //
+        //    if (ControlManager.CheckPress(RebindableKeys.Down))
+        //    {
+        //        cursorIndex++;
+        //        holdTimer = Game.HoldKeyTreshold;
+        //    }
+        //
+        //    else if (ControlManager.CheckHold(RebindableKeys.Down))
+        //    {
+        //        holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
+        //
+        //        if (holdTimer <= 0)
+        //        {
+        //            cursorIndex++;
+        //            holdTimer = Game.ScrollSpeedFast;
+        //        }
+        //    }
+        //
+        //    else if (ControlManager.CheckPress(RebindableKeys.Up))
+        //    {
+        //        cursorIndex--;
+        //        holdTimer = Game.HoldKeyTreshold;
+        //    }
+        //
+        //    else if (ControlManager.CheckHold(RebindableKeys.Up))
+        //    {
+        //        holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
+        //
+        //        if (holdTimer <= 0)
+        //        {
+        //            cursorIndex--;
+        //            holdTimer = Game.ScrollSpeedFast;
+        //        }
+        //    }
+        //
+        //    if (ControlManager.CheckPress(RebindableKeys.Right) && cursorColumn < 2)
+        //    {
+        //        cursorColumn++;
+        //
+        //        if (cursorColumn == 1)
+        //        {
+        //            if (inventoryRef.Count <= 14)
+        //                currentIndexMax = inventoryRef.Count - 1;
+        //            else
+        //                currentIndexMax = 14;
+        //        }
+        //        else if (cursorColumn == 2)
+        //        {
+        //            currentIndexMax = inventoryRef.Count - 14;
+        //        }
+        //
+        //        holdTimer = Game.HoldKeyTreshold;
+        //    }
+        //
+        //    else if (ControlManager.CheckHold(RebindableKeys.Right) && cursorColumn < 2)
+        //    {
+        //        holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
+        //
+        //        if (holdTimer <= 0)
+        //        {
+        //            cursorColumn++;
+        //
+        //            if (cursorColumn == 1)
+        //            {
+        //                if (inventoryRef.Count <= 14)
+        //                    currentIndexMax = inventoryRef.Count - 1;
+        //                else
+        //                    currentIndexMax = 14;
+        //            }
+        //            else if (cursorColumn == 2)
+        //            {
+        //                currentIndexMax = inventoryRef.Count - 14;
+        //            }
+        //
+        //            holdTimer = Game.ScrollSpeedSlow;
+        //        }
+        //    }
+        //
+        //    if (ControlManager.CheckPress(RebindableKeys.Left) && cursorColumn > 0)
+        //    {
+        //        cursorColumn--;
+        //
+        //        if (cursorColumn == 0)
+        //            currentIndexMax = menuOptions.Count;
+        //        else if (cursorColumn == 1)
+        //        {
+        //            if (inventoryRef.Count <= 14)
+        //                currentIndexMax = inventoryRef.Count - 1;
+        //            else
+        //                currentIndexMax = 14;
+        //        }
+        //
+        //        holdTimer = Game.HoldKeyTreshold;
+        //    }
+        //
+        //    else if (ControlManager.CheckHold(RebindableKeys.Left) && cursorColumn > 0)
+        //    {
+        //        holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
+        //
+        //        if (holdTimer <= 0)
+        //        {
+        //            cursorColumn--;
+        //
+        //            if (cursorColumn == 0)
+        //                currentIndexMax = menuOptions.Count;
+        //            else if (cursorColumn == 1)
+        //            {
+        //                if (inventoryRef.Count <= 14)
+        //                    currentIndexMax = inventoryRef.Count - 1;
+        //                else
+        //                    currentIndexMax = 14;
+        //            }
+        //
+        //            holdTimer = Game.ScrollSpeedSlow;
+        //        }
+        //    }
+        //
+        //
+        //    if (cursorIndex > currentIndexMax - 1)
+        //    {
+        //        if (ControlManager.PreviousKeyUp(RebindableKeys.Down))
+        //            cursorIndex = 0;
+        //        else
+        //            cursorIndex = currentIndexMax - 1;
+        //    }
+        //
+        //    else if (cursorIndex < 0)
+        //    {
+        //        if (ControlManager.PreviousKeyUp(RebindableKeys.Up))
+        //            cursorIndex = currentIndexMax - 1;
+        //        else
+        //            cursorIndex = 0;
+        //    }
+        //}
 
         private void ButtonControls(GameTime gameTime)
         {
@@ -1250,10 +1252,11 @@ namespace SpaceProject
 
                 case MessageState.MessageWithImage:
                     {
-                        Vector2 imagePos = new Vector2(textBoxPos.X / 2 + 15,
-                            textBoxPos.Y / 2 - 30);
+                        Vector2 imagePos = new Vector2(textBoxPos.X - imageCanvas.SourceRectangle.Value.Width / 2 + 16,
+                            textBoxPos.Y - imageCanvas.SourceRectangle.Value.Height / 2 + 18);
 
-                        textPos = new Vector2(textBoxPos.X / 2 + 30, textBoxPos.Y + 48);
+                        textPos = new Vector2(textBoxPos.X - imageCanvas.SourceRectangle.Value.Width / 2 + 30,
+                            textBoxPos.Y + 48);
 
                         spriteBatch.Draw(imageCanvas.Texture,
                              textBoxPos,
@@ -1764,15 +1767,18 @@ namespace SpaceProject
 
             else if (messageState == MessageState.SelectionMenu)
             {
+                Vector2 menuOptionPos = new Vector2(textBoxPos.X,
+                    textPos.Y + 75);
+
                 //loops through the menu options and colors the selected one red
                 for (int i = 0; i < menuOptions.Count; i++)
                 {
                     if (i == cursorIndex)
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                              menuOptions[i],
-                                             new Vector2(textPos.X,
-                                                    textPos.Y + ySpacing + (i * 30)) + Game.fontManager.FontOffset,
-                                             Color.Red,
+                                             new Vector2(menuOptionPos.X,
+                                                    menuOptionPos.Y + ySpacing + (i * 30)) + Game.fontManager.FontOffset,
+                                             Color.LightBlue,
                                              0f,
                                              Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
                                              1f,
@@ -1782,8 +1788,8 @@ namespace SpaceProject
                     else
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                  menuOptions[i],
-                                                 new Vector2(textPos.X,
-                                                    textPos.Y + ySpacing + (i * 30)) + Game.fontManager.FontOffset,
+                                                 new Vector2(menuOptionPos.X,
+                                                    menuOptionPos.Y + ySpacing + (i * 30)) + Game.fontManager.FontOffset,
                                                  Game.fontManager.FontColor,
                                                  0f,
                                                  Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
@@ -1799,10 +1805,12 @@ namespace SpaceProject
                 Vector2 pos;
                 if (GameStateManager.currentState == "OverworldState")
                     pos = new Vector2(Game.camera.cameraPos.X - Game.Window.ClientBounds.Width / 2,
-                                      Game.camera.cameraPos.Y - Game.Window.ClientBounds.Height / 2);
+                                      Game.camera.cameraPos.Y - Game.Window.ClientBounds.Height / 2 + 4);
 
                 else
-                    pos = Vector2.Zero;
+                {
+                    pos = new Vector2(0, 4);
+                }
 
                 float XposAcc = 5;
 
@@ -1813,7 +1821,7 @@ namespace SpaceProject
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                              menuOptions[i],
                                              new Vector2(pos.X + XposAcc, pos.Y) + Game.fontManager.FontOffset,
-                                             Color.Red,
+                                             Color.LightBlue,
                                              0f,
                                              Vector2.Zero,
                                              1f,
