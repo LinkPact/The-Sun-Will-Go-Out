@@ -124,33 +124,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SoundEffects\laser1.wav">
-      <Name>laser1</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-    </Compile>
-    <Compile Include="SoundEffects\laser3.wav">
-      <Name>laser3</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-    </Compile>
-    <Compile Include="SoundEffects\laser4_0.wav">
-      <Name>laser4_0</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-    </Compile>
-    <Compile Include="SoundEffects\laser6.wav">
-      <Name>laser6</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-    </Compile>
-    <Compile Include="SoundEffects\laser7.wav">
-      <Name>laser7</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-    </Compile>
-    <Compile Include="SoundEffects\laser8.wav">
-      <Name>laser8</Name>
+    <Compile Include="SoundEffects\basic_laser.wav">
+      <Name>basic_laser</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>

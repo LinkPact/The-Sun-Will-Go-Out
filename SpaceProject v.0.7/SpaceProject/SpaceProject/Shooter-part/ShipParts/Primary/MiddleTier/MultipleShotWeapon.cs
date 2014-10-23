@@ -62,7 +62,7 @@ namespace SpaceProject
 
         public override void PlaySound()
         {
-            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.Test2, 0f);
+            //Game.soundEffectsManager.PlaySoundEffect(SoundEffects.Test2, 0f);
         }
 
     }

@@ -11,11 +11,6 @@ namespace SpaceProject
     {
         // Weapons
         BasicLaser,
-        Test1,
-        Test2,
-        Test3,
-        Test4,
-        Test5,
 
         // Explosions
         MuffledExplosion,
@@ -45,12 +40,6 @@ namespace SpaceProject
 
         private bool muted;
         private float volume;
-
-        private CustomSoundEffect test1;
-        private CustomSoundEffect test2;
-        private CustomSoundEffect test3;
-        private CustomSoundEffect test4;
-        private CustomSoundEffect test5;
         
         private CustomSoundEffect basicLaser;
         private CustomSoundEffect muffledExplosion;
@@ -81,19 +70,7 @@ namespace SpaceProject
 
             if (LoadSoundEffects)
             {
-                test1 = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/laser3"), 10);
-                test2 = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/laser4_0"), 10);
-                test3 = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/laser6"), 10);
-                test4 = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/laser7"), 10);
-                test5 = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/laser8"), 10);
-
-                soundEffects.Add(test1);
-                soundEffects.Add(test2);
-                soundEffects.Add(test3);
-                soundEffects.Add(test4);
-                soundEffects.Add(test5);
-
-                basicLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/laser1"), 10);
+                basicLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/basic_laser"), 10);
                 muffledExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom6"), 10);
                 smallExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom9"), 10);
 
