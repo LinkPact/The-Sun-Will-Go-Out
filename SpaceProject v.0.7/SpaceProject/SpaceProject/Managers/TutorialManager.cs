@@ -22,8 +22,6 @@ namespace SpaceProject
     public class TutorialManager
     {
         private Game1 game;
-
-        private Sprite tutorialImageCanvas;
         private Sprite tutorialSpriteSheet;
         private List<Sprite> tutorialImages;
 
@@ -52,7 +50,6 @@ namespace SpaceProject
         public void Initialize()
         {
             tutorialSpriteSheet = new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/tutorial_spritesheet"), null);
-            tutorialImageCanvas = tutorialSpriteSheet.GetSubSprite(new Rectangle(0, 0, 400, 400));
 
             tutorialImages = new List<Sprite>();
             tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(770, 199, 366, 197)));
@@ -99,10 +96,12 @@ namespace SpaceProject
                     tempTimer = 50;
                     hasEnteredOverworld = true;
 
-                    DisplayTutorialMessage(new List<string> {"Welcome to the overworld! To move your ship you use left and right arrow-keys to rotate and accelerate with the up-key. To enter stations or planets you position your ship above them and press 'Enter'. Press 'Escape' to bring up the menu.",
-                    "Your current objective is to go to coordinates (2635, 940). To find out where that is, look at the coordinates at the bottom right of the screen, just above the minimap. The sun, in the middle of the sector, is the center point (origin) of the coordinate system.", 
-                    "If you forget where you need to go you can at any time check your current mission objectives in the mission log. Press 'M' to bring up the mission screen. From there, you can select your current missions and view their objectives.",
-                    "At the bottom-left of the screen is your overall health. This determines how much health you have when entering combat. When your overall health is reduced to 0, the game is over."}, TutorialImage.OverworldControls);
+                    DisplayTutorialImage(TutorialImage.OverworldControls);
+
+                    //DisplayTutorialMessage(new List<string> {"Welcome to the overworld! To move your ship you use left and right arrow-keys to rotate and accelerate with the up-key. To enter stations or planets you position your ship above them and press 'Enter'. Press 'Escape' to bring up the menu.",
+                    //"Your current objective is to go to coordinates (2635, 940). To find out where that is, look at the coordinates at the bottom right of the screen, just above the minimap. The sun, in the middle of the sector, is the center point (origin) of the coordinate system.", 
+                    //"If you forget where you need to go you can at any time check your current mission objectives in the mission log. Press 'M' to bring up the mission screen. From there, you can select your current missions and view their objectives.",
+                    //"At the bottom-left of the screen is your overall health. This determines how much health you have when entering combat. When your overall health is reduced to 0, the game is over."}, TutorialImage.OverworldControls);
                 }
             }
 
@@ -217,7 +216,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessageWithImage(message, tutorialImageCanvas, GetImageFromEnum(imageID), true);
+                game.messageBox.DisplayMessageWithImage(message, GetImageFromEnum(imageID), true);
             }
         }
 
@@ -225,7 +224,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessageWithImage(messages, tutorialImageCanvas, GetImageFromEnum(imageID), true);
+                game.messageBox.DisplayMessageWithImage(messages, GetImageFromEnum(imageID), true);
             }
         }
 
@@ -240,7 +239,30 @@ namespace SpaceProject
                     sprites.Add(GetImageFromEnum(imgID));
                 }
 
-                game.messageBox.DisplayMessageWithImage(messages, tutorialImageCanvas, sprites,  true, imageTriggers);
+                game.messageBox.DisplayMessageWithImage(messages, sprites,  true, imageTriggers);
+            }
+        }
+
+        public void DisplayTutorialImage(TutorialImage imageID)
+        {
+            if (tutorialsUsed)
+            {
+                game.messageBox.DisplayImage(GetImageFromEnum(imageID), true);
+            }
+        }
+
+        public void DisplayTutorialImage(List<TutorialImage> imageID)
+        {
+            if (tutorialsUsed)
+            {
+                List<Sprite> sprites = new List<Sprite>();
+
+                foreach (TutorialImage imgID in imageID)
+                {
+                    sprites.Add(GetImageFromEnum(imgID));
+                }
+
+                game.messageBox.DisplayImages(sprites, true);
             }
         }
 

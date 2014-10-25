@@ -13,6 +13,7 @@ namespace SpaceProject
         Invisible,
         Message,
         MessageWithImage,
+        Image,
         Tutorial,
         Menu,
         //Inventory,
@@ -26,7 +27,9 @@ namespace SpaceProject
         #region variables
 
         private Game1 Game;
-        private Sprite messageBackdrop;
+        private Sprite messageCanvas;
+        private Sprite messageWithImageCanvas;
+        private Sprite imageCanvas;
         private Sprite buttonUnselected;
         private Sprite buttonSelected;
         //private SpriteFont font;
@@ -49,7 +52,6 @@ namespace SpaceProject
         private List<System.Action> actionStorage;
         private int popupDelay;
 
-        private Sprite imageCanvas;
         private List<Sprite> imageBuffer;
         private int imageTriggerCount;
         private List<int> imageTriggers;
@@ -103,10 +105,13 @@ namespace SpaceProject
         public MessageBox(Game1 Game, Sprite SpriteSheet)
         {
             this.Game = Game;
-            messageBackdrop = SpriteSheet.GetSubSprite(new Rectangle(0, 56, 269, 184));
+
+            messageCanvas = SpriteSheet.GetSubSprite(new Rectangle(0, 56, 269, 184));
+            messageWithImageCanvas = SpriteSheet.GetSubSprite(new Rectangle(0, 245, 400, 400));
+            imageCanvas = SpriteSheet.GetSubSprite(new Rectangle(405, 245, 400, 257));
+
             buttonUnselected = SpriteSheet.GetSubSprite(new Rectangle(112, 0, 66, 21));
             buttonSelected = SpriteSheet.GetSubSprite(new Rectangle(180, 0, 66, 21));
-
             tutorialButtonUnchecked = SpriteSheet.GetSubSprite(new Rectangle(271, 0, 78, 22));
             tutorialButtonChecked = SpriteSheet.GetSubSprite(new Rectangle(271, 48, 78, 22));
             tutorialButtonUncheckedSelected = SpriteSheet.GetSubSprite(new Rectangle(271, 24, 78, 22));
@@ -189,7 +194,7 @@ namespace SpaceProject
             popupDelay = delay;
         }
 
-        public void DisplayMessageWithImage(string txt, Sprite canvas, Sprite image, bool displayDisableTutorialButton)
+        public void DisplayMessageWithImage(string txt, Sprite image, bool displayDisableTutorialButton)
         {
             useDisableTutorialButton = displayDisableTutorialButton;
 
@@ -210,7 +215,6 @@ namespace SpaceProject
                 }
             }
 
-            imageCanvas = canvas;
             imageBuffer.Add(image);
 
             tempTimer = 5;
@@ -219,15 +223,15 @@ namespace SpaceProject
             UpdateButtonLabels();
         }
 
-        public void DisplayMessageWithImage(List<string> txtList, Sprite canvas, Sprite image, bool displayDisableTutorialButton)
+        public void DisplayMessageWithImage(List<string> txtList, Sprite image, bool displayDisableTutorialButton)
         {
             foreach (string str in txtList)
             {
-                DisplayMessageWithImage(str, canvas, image, displayDisableTutorialButton);
+                DisplayMessageWithImage(str, image, displayDisableTutorialButton);
             }
         }
 
-        public void DisplayMessageWithImage(List<string> txtList, Sprite canvas, List<Sprite> images, bool displayDisableTutorialButton,
+        public void DisplayMessageWithImage(List<string> txtList, List<Sprite> images, bool displayDisableTutorialButton,
             List<int> imageTriggers)
         {
             if (txtList.Count < images.Count)
@@ -265,7 +269,38 @@ namespace SpaceProject
                 }
             }
 
-            imageCanvas = canvas;
+            imageBuffer = images;
+
+            tempTimer = 5;
+
+            menuOptions.Clear();
+            UpdateButtonLabels();
+        }
+
+        public void DisplayImage(Sprite image, bool displayDisableTutorialButton)
+        {
+            useDisableTutorialButton = displayDisableTutorialButton;
+
+            messageState = MessageState.Image;
+
+            Game1.Paused = true;
+
+            imageBuffer.Add(image);
+
+            tempTimer = 5;
+
+            menuOptions.Clear();
+            UpdateButtonLabels();
+        }
+
+        public void DisplayImages(List<Sprite> images, bool displayDisableTutorialButton)
+        {
+            useDisableTutorialButton = displayDisableTutorialButton;
+
+            messageState = MessageState.Image;
+
+            Game1.Paused = true;
+
             imageBuffer = images;
 
             tempTimer = 5;
@@ -475,8 +510,9 @@ namespace SpaceProject
 
         private void UpdateButtonLabels()
         {
-            if (messageState == MessageState.Message ||
-                messageState == MessageState.MessageWithImage)
+            if (messageState == MessageState.Message 
+                || messageState == MessageState.MessageWithImage
+                || messageState == MessageState.Image)
             {
                 if (!menuOptions.Contains("Okay"))
                 {
@@ -772,7 +808,6 @@ namespace SpaceProject
         //            cursorIndex = 0;
         //    }
         //}
-
         private void ButtonControls(GameTime gameTime)
         {
             if (messageState == MessageState.Menu)
@@ -850,8 +885,10 @@ namespace SpaceProject
                 }
             }
 
-            else if ((messageState == MessageState.Message || messageState == MessageState.MessageWithImage) &&
-                menuOptions.Count > 1)
+            else if ((messageState == MessageState.Message 
+                || messageState == MessageState.MessageWithImage 
+                || messageState == MessageState.Image) 
+                && menuOptions.Count > 1)
             {
                 if (ControlManager.CheckPress(RebindableKeys.Right))
                 {
@@ -988,6 +1025,21 @@ namespace SpaceProject
                     }
                 }
             }
+
+            else if (messageState == MessageState.Image
+                && tempTimer < 0)
+            {
+                if (imageBuffer.Count <= 1)
+                {
+                    Game1.Paused = false;
+                    messageState = MessageState.Invisible;
+                }
+
+                else
+                {
+                    imageBuffer.RemoveAt(0);
+                }
+            }
         }
 
         private void HideMap()
@@ -1003,7 +1055,10 @@ namespace SpaceProject
         private void ButtonActions()
         {
             //Makes the messagebox invisible when pressing the actionkey if it's displaying a message
-            if (messageState == MessageState.Message && tempTimer < 0)
+            if ((messageState == MessageState.Message
+                || messageState == MessageState.MessageWithImage
+                || messageState == MessageState.Image)
+                && tempTimer < 0)
             {
                 if (useDisableTutorialButton)
                 {
@@ -1026,24 +1081,6 @@ namespace SpaceProject
                 else
                 {
                     HideMessage();
-                }
-            }
-
-            else if (messageState == MessageState.MessageWithImage && tempTimer < 0)
-            {
-                switch (cursorIndex)
-                {
-                    case 0:
-                        HideMessage();
-                        break;
-
-                    case 1:
-                        Game.tutorialManager.TutorialsUsed = !Game.tutorialManager.TutorialsUsed;
-                        UpdateButtonLabels();
-                        break;
-
-                    default:
-                        throw new IndexOutOfRangeException("Cursor index is out of range.");
                 }
             }
 
@@ -1192,15 +1229,15 @@ namespace SpaceProject
             if (GameStateManager.currentState == "OverworldState")
             {
                 textBoxPos = new Vector2(Game.camera.cameraPos.X, Game.camera.cameraPos.Y);
-                textPos = new Vector2(Game.camera.cameraPos.X - messageBackdrop.SourceRectangle.Value.Width / 2
-                    , Game.camera.cameraPos.Y - messageBackdrop.SourceRectangle.Value.Height / 2 - 5);
+                textPos = new Vector2(Game.camera.cameraPos.X - messageCanvas.SourceRectangle.Value.Width / 2
+                    , Game.camera.cameraPos.Y - messageCanvas.SourceRectangle.Value.Height / 2 - 5);
             }
 
             else
             {
                 textBoxPos = new Vector2(Game.Window.ClientBounds.Width / 2, Game.Window.ClientBounds.Height / 2);
-                textPos = new Vector2(Game.Window.ClientBounds.Width / 2 - messageBackdrop.SourceRectangle.Value.Width / 2,
-                    Game.Window.ClientBounds.Height / 2 - messageBackdrop.SourceRectangle.Value.Height / 2 - 5);
+                textPos = new Vector2(Game.Window.ClientBounds.Width / 2 - messageCanvas.SourceRectangle.Value.Width / 2,
+                    Game.Window.ClientBounds.Height / 2 - messageCanvas.SourceRectangle.Value.Height / 2 - 5);
             }
 
             //if (messageState == MessageState.Inventory)
@@ -1224,19 +1261,19 @@ namespace SpaceProject
             {
                 case MessageState.Message:
                     {
-                        spriteBatch.Draw(messageBackdrop.Texture,
+                        spriteBatch.Draw(messageCanvas.Texture,
                              textBoxPos,
-                             messageBackdrop.SourceRectangle,
+                             messageCanvas.SourceRectangle,
                              new Color(255, 255, 255, OPACITY),
                              0.0f,
-                             new Vector2(messageBackdrop.SourceRectangle.Value.Width / 2,
-                                         messageBackdrop.SourceRectangle.Value.Height / 2),
+                             new Vector2(messageCanvas.SourceRectangle.Value.Width / 2,
+                                         messageCanvas.SourceRectangle.Value.Height / 2),
                              1.5f,
                              SpriteEffects.None,
                              0.95f);
 
                         String text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
-                                                    textBuffer[0], (int)Math.Round(((float)messageBackdrop.SourceRectangle.Value.Width), 0));
+                                                    textBuffer[0], (int)Math.Round(((float)messageCanvas.SourceRectangle.Value.Width), 0));
 
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                 text,
@@ -1261,7 +1298,7 @@ namespace SpaceProject
                         textPos = new Vector2(textBoxPos.X - imageCanvas.SourceRectangle.Value.Width / 2 + 30,
                             textBoxPos.Y + 40);
 
-                        spriteBatch.Draw(imageCanvas.Texture,
+                        spriteBatch.Draw(messageWithImageCanvas.Texture,
                              textBoxPos,
                              imageCanvas.SourceRectangle,
                              new Color(255, 255, 255, OPACITY),
@@ -1301,21 +1338,54 @@ namespace SpaceProject
                         break;
                     }
 
-                case MessageState.SelectionMenu:
+                case MessageState.Image:
                     {
-                        spriteBatch.Draw(messageBackdrop.Texture,
+                        Vector2 imagePos = new Vector2(textBoxPos.X - imageCanvas.SourceRectangle.Value.Width / 2 + 16,
+                            textBoxPos.Y - imageCanvas.SourceRectangle.Value.Height / 2 + 18);
+
+                        textPos = new Vector2(textBoxPos.X - imageCanvas.SourceRectangle.Value.Width / 2 + 30,
+                            textBoxPos.Y + 40);
+
+                        spriteBatch.Draw(imageCanvas.Texture,
                              textBoxPos,
-                             messageBackdrop.SourceRectangle,
+                             imageCanvas.SourceRectangle,
                              new Color(255, 255, 255, OPACITY),
                              0.0f,
-                             new Vector2(messageBackdrop.SourceRectangle.Value.Width / 2,
-                                         messageBackdrop.SourceRectangle.Value.Height / 2),
+                             new Vector2(imageCanvas.SourceRectangle.Value.Width / 2,
+                                         imageCanvas.SourceRectangle.Value.Height / 2),
+                             1f,
+                             SpriteEffects.None,
+                             0.95f);
+
+                        spriteBatch.Draw(imageBuffer[0].Texture,
+                            imagePos,
+                            imageBuffer[0].SourceRectangle,
+                            Color.White,
+                            0f,
+                            Vector2.Zero,
+                            1f,
+                            SpriteEffects.None,
+                            0.96f);
+
+                        DrawMenuOptions(spriteBatch);
+                        break;
+                    }
+
+                case MessageState.SelectionMenu:
+                    {
+                        spriteBatch.Draw(messageCanvas.Texture,
+                             textBoxPos,
+                             messageCanvas.SourceRectangle,
+                             new Color(255, 255, 255, OPACITY),
+                             0.0f,
+                             new Vector2(messageCanvas.SourceRectangle.Value.Width / 2,
+                                         messageCanvas.SourceRectangle.Value.Height / 2),
                              1.5f,
                              SpriteEffects.None,
                              0.95f);
 
                         String text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
-                                                    textBuffer[0], (int)Math.Round((messageBackdrop.SourceRectangle.Value.Width * 1.45) - 25, 0));
+                                                    textBuffer[0], (int)Math.Round((messageCanvas.SourceRectangle.Value.Width * 1.45) - 25, 0));
 
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                 text,
@@ -1343,9 +1413,9 @@ namespace SpaceProject
                         else
                             pos = Vector2.Zero;
 
-                        spriteBatch.Draw(messageBackdrop.Texture,
+                        spriteBatch.Draw(messageCanvas.Texture,
                              pos,
-                             messageBackdrop.SourceRectangle,
+                             messageCanvas.SourceRectangle,
                              Color.White,
                              0.0f,
                              Vector2.Zero,
@@ -1358,13 +1428,13 @@ namespace SpaceProject
                     break;
 
                 case MessageState.Map:
-                    spriteBatch.Draw(messageBackdrop.Texture,
+                    spriteBatch.Draw(messageCanvas.Texture,
                              new Vector2((int)Game.camera.Position.X /*- Game.Window.ClientBounds.Width / 2*/, (int)Game.camera.Position.Y /*- Game.Window.ClientBounds.Height / 2*/),
-                             messageBackdrop.SourceRectangle,
+                             messageCanvas.SourceRectangle,
                              new Color(255, 255, 255, OPACITY),
                              0.0f,
-                             new Vector2(messageBackdrop.SourceRectangle.Value.Width / 2,
-                                         messageBackdrop.SourceRectangle.Value.Height / 2),
+                             new Vector2(messageCanvas.SourceRectangle.Value.Width / 2,
+                                         messageCanvas.SourceRectangle.Value.Height / 2),
                              2.5f,
                              SpriteEffects.None,
                              0.95f);
@@ -1500,6 +1570,10 @@ namespace SpaceProject
 
         private void DrawMenuOptions(SpriteBatch spriteBatch)
         {
+            Vector2 menuOptionPos = Vector2.Zero;
+            Vector2 okayButtonOffset = Vector2.Zero;
+            Vector2 showTutorialButtonOffset = Vector2.Zero;
+
             int numberOfMenuOptions = menuOptions.Count;
             int ySpacing = 30;
 
@@ -1508,8 +1582,27 @@ namespace SpaceProject
                 ySpacing = -30;
             }
 
-            if (messageState == MessageState.Message)
+            if (messageState == MessageState.Message
+                || messageState == MessageState.MessageWithImage 
+                || messageState == MessageState.Image)
             {
+                switch (messageState)
+                {
+                    case MessageState.Message:
+                        menuOptionPos = new Vector2(textPos.X + 136, textPos.Y + 99);
+                        okayButtonOffset = RELATIVE_OKAY_BUTTON_POSITION_NORMAL;
+                        showTutorialButtonOffset = RELATIVE_TUTORIAL_BUTTON_POSITION_NORMAL;
+                        break;
+
+                    case MessageState.MessageWithImage:
+                        menuOptionPos = new Vector2(textPos.X + 171, textPos.Y - 38);
+                        okayButtonOffset = RELATIVE_OKAY_BUTTON_POSITION_IMAGE;
+                        showTutorialButtonOffset = RELATIVE_TUTORIAL_BUTTON_POSITION_IMAGE;
+                        break;
+
+                    case MessageState.Image:
+                        break;
+                }
                 if (useDisableTutorialButton)
                 {
                     //loops through the menu options and colors the selected one red
@@ -1520,7 +1613,7 @@ namespace SpaceProject
                             if (menuOptions[i].ToLower().Equals("show"))
                             {
                                 spriteBatch.Draw(activeTutorialButton.Texture,
-                                    new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_TUTORIAL_BUTTON_POSITION_NORMAL,
+                                    new Vector2(textBoxPos.X, textBoxPos.Y) + showTutorialButtonOffset,
                                     activeTutorialButton.SourceRectangle,
                                     Color.White,
                                     0f,
@@ -1532,8 +1625,8 @@ namespace SpaceProject
 
                                 spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                      menuOptions[i],
-                                                     new Vector2(textPos.X + 136 + (i * 140),
-                                                             textPos.Y + 99) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_NORMAL,
+                                                     new Vector2(menuOptionPos.X + (i * 140),
+                                                             menuOptionPos.Y) + Game.fontManager.FontOffset + okayButtonOffset,
                                                      Color.LightBlue,
                                                      0f,
                                                      Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
@@ -1545,7 +1638,7 @@ namespace SpaceProject
                             else
                             {
                                 spriteBatch.Draw(buttonSelected.Texture,
-                                    new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_OKAY_BUTTON_POSITION_NORMAL,
+                                    new Vector2(textBoxPos.X, textBoxPos.Y) + okayButtonOffset,
                                     buttonSelected.SourceRectangle,
                                     Color.White,
                                     0f,
@@ -1557,8 +1650,8 @@ namespace SpaceProject
 
                                 spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                      menuOptions[i],
-                                                     new Vector2(textPos.X + 136 + (i * 140),
-                                                             textPos.Y + 99) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_NORMAL,
+                                                     new Vector2(menuOptionPos.X + (i * 140),
+                                                             menuOptionPos.Y) + Game.fontManager.FontOffset + okayButtonOffset,
                                                      Color.LightBlue,
                                                      0f,
                                                      Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
@@ -1573,7 +1666,7 @@ namespace SpaceProject
                             if (menuOptions[i].ToLower().Equals("show"))
                             {
                                 spriteBatch.Draw(activeTutorialButton.Texture,
-                                    new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_TUTORIAL_BUTTON_POSITION_NORMAL,
+                                    new Vector2(textBoxPos.X, textBoxPos.Y) + showTutorialButtonOffset,
                                     activeTutorialButton.SourceRectangle,
                                     Color.White,
                                     0f,
@@ -1585,8 +1678,8 @@ namespace SpaceProject
 
                                 spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                     menuOptions[i],
-                                    new Vector2(textPos.X + 136 + (i * 140),
-                                        textPos.Y + 99) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_NORMAL,
+                                    new Vector2(menuOptionPos.X + (i * 140),
+                                        menuOptionPos.Y) + Game.fontManager.FontOffset + okayButtonOffset,
                                     Game.fontManager.FontColor,
                                     0f,
                                     Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
@@ -1599,7 +1692,7 @@ namespace SpaceProject
                             {
 
                                 spriteBatch.Draw(buttonUnselected.Texture,
-                                    new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_OKAY_BUTTON_POSITION_NORMAL,
+                                    new Vector2(textBoxPos.X, textBoxPos.Y) + okayButtonOffset,
                                     buttonUnselected.SourceRectangle,
                                     Color.White,
                                     0f,
@@ -1611,8 +1704,8 @@ namespace SpaceProject
 
                                 spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                     menuOptions[i],
-                                    new Vector2(textPos.X + 136 + (i * 140),
-                                        textPos.Y + 99) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_NORMAL,
+                                    new Vector2(menuOptionPos.X + (i * 140),
+                                        menuOptionPos.Y) + Game.fontManager.FontOffset + okayButtonOffset,
                                     Game.fontManager.FontColor,
                                     0f,
                                     Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
@@ -1628,7 +1721,7 @@ namespace SpaceProject
                 else
                 {
                     spriteBatch.Draw(buttonSelected.Texture,
-                                    new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_OKAY_BUTTON_POSITION_NORMAL,
+                                    new Vector2(textBoxPos.X, textBoxPos.Y) + okayButtonOffset,
                                     buttonSelected.SourceRectangle,
                                     Color.White,
                                     0f,
@@ -1640,8 +1733,8 @@ namespace SpaceProject
 
                     spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                      "Okay",
-                                                     new Vector2(textPos.X + 136,
-                                                             textPos.Y + 99) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_NORMAL,
+                                                     new Vector2(menuOptionPos.X,
+                                                             menuOptionPos.Y) + Game.fontManager.FontOffset + okayButtonOffset,
                                                      Color.LightBlue,
                                                      0f,
                                                      Game.fontManager.GetFont(14).MeasureString("Okay") / 2,
@@ -1653,126 +1746,9 @@ namespace SpaceProject
                 }
             }
 
-            else if (messageState == MessageState.MessageWithImage)
-            {
-                Vector2 menuOptionPos = new Vector2(textPos.X + 171, textPos.Y - 38);
-
-                //loops through the menu options and colors the selected one red
-                for (int i = 0; i < menuOptions.Count; i++)
-                {
-                    if (i == cursorIndex)
-                    {
-                        if (menuOptions[i].ToLower().Equals("show"))
-                        {
-                            spriteBatch.Draw(activeTutorialButton.Texture,
-                                new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_TUTORIAL_BUTTON_POSITION_IMAGE,
-                                activeTutorialButton.SourceRectangle,
-                                Color.White,
-                                0f,
-                                new Vector2(activeTutorialButton.SourceRectangle.Value.Width / 2,
-                                    activeTutorialButton.SourceRectangle.Value.Height / 2),
-                                1f,
-                                SpriteEffects.None,
-                                0.975f);
-
-                            spriteBatch.DrawString(Game.fontManager.GetFont(14),
-                                                 menuOptions[i],
-                                                 new Vector2(menuOptionPos.X + (i * 140),
-                                                         menuOptionPos.Y) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
-                                                 Color.LightBlue,
-                                                 0f,
-                                                 Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
-                                                 1f,
-                                                 SpriteEffects.None,
-                                                 1f);
-                        }
-
-                        else
-                        {
-                            spriteBatch.Draw(buttonSelected.Texture,
-                                new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
-                                buttonSelected.SourceRectangle,
-                                Color.White,
-                                0f,
-                                new Vector2(buttonSelected.SourceRectangle.Value.Width / 2,
-                                    buttonSelected.SourceRectangle.Value.Height / 2),
-                                1f,
-                                SpriteEffects.None,
-                                0.975f);
-
-                            spriteBatch.DrawString(Game.fontManager.GetFont(14),
-                                                 menuOptions[i],
-                                                 new Vector2(menuOptionPos.X + (i * 140),
-                                                         menuOptionPos.Y) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
-                                                 Color.LightBlue,
-                                                 0f,
-                                                 Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
-                                                 1f,
-                                                 SpriteEffects.None,
-                                                 1f);
-                        }
-                    }
-
-                    else
-                    {
-                        if (menuOptions[i].ToLower().Equals("show"))
-                        {
-                            spriteBatch.Draw(activeTutorialButton.Texture,
-                                new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_TUTORIAL_BUTTON_POSITION_IMAGE,
-                                activeTutorialButton.SourceRectangle,
-                                Color.White,
-                                0f,
-                                new Vector2(activeTutorialButton.SourceRectangle.Value.Width / 2,
-                                    activeTutorialButton.SourceRectangle.Value.Height / 2),
-                                1f,
-                                SpriteEffects.None,
-                                0.975f);
-
-                            spriteBatch.DrawString(Game.fontManager.GetFont(14),
-                                menuOptions[i],
-                                new Vector2(menuOptionPos.X + (i * 140),
-                                    menuOptionPos.Y) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
-                                Game.fontManager.FontColor,
-                                0f,
-                                Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
-                                1f,
-                                SpriteEffects.None,
-                                1f);
-                        }
-
-                        else
-                        {
-
-                            spriteBatch.Draw(buttonUnselected.Texture,
-                                new Vector2(textBoxPos.X, textBoxPos.Y) + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
-                                buttonUnselected.SourceRectangle,
-                                Color.White,
-                                0f,
-                                new Vector2(buttonUnselected.SourceRectangle.Value.Width / 2,
-                                    buttonUnselected.SourceRectangle.Value.Height / 2),
-                                1f,
-                                SpriteEffects.None,
-                                0.975f);
-
-                            spriteBatch.DrawString(Game.fontManager.GetFont(14),
-                                menuOptions[i],
-                                new Vector2(menuOptionPos.X + (i * 140),
-                                    menuOptionPos.Y) + Game.fontManager.FontOffset + RELATIVE_OKAY_BUTTON_POSITION_IMAGE,
-                                Game.fontManager.FontColor,
-                                0f,
-                                Game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
-                                1f,
-                                SpriteEffects.None,
-                                1f);
-                        }
-                    }
-
-                }
-            }
-
             else if (messageState == MessageState.SelectionMenu)
             {
-                Vector2 menuOptionPos = new Vector2(textBoxPos.X,
+                menuOptionPos = new Vector2(textBoxPos.X,
                     textPos.Y + 75);
 
                 //loops through the menu options and colors the selected one red
