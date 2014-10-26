@@ -34,6 +34,8 @@ namespace SpaceProject
 
         private static Square targetedSquare;
 
+        private String equipInfoString;
+
         #endregion
 
         #region globalPositions
@@ -133,6 +135,14 @@ namespace SpaceProject
 
             actions = new List<Action>();
             deadActions = new List<Action>();
+
+            equipInfoString = "";
+        }
+
+        // Sets string used to display current player equipment
+        public void SetEquipInfo(String equipInfo)
+        {
+            equipInfoString = equipInfo;
         }
 
         public List<Action> Update(GameTime gameTime)
@@ -156,8 +166,12 @@ namespace SpaceProject
                 button.Draw(spriteBatch, font);
             }
 
+            int leftPadding = 20;
+
             if (level.SaveStringTime())
-                spriteBatch.DrawString(font, "Save successful!", new Vector2(360, 542), Color.Green);
+                spriteBatch.DrawString(font, "Save successful!", new Vector2(leftPadding, 582), Color.Green);
+
+            spriteBatch.DrawString(font8, equipInfoString, new Vector2(leftPadding, 600), Color.Green);
 
             WriteText(spriteBatch);
         }

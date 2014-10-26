@@ -8,6 +8,18 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
+    /**
+     * The entire map creator runs from this state
+     *  
+     * It contains following main parts:
+     * - levelMechanics:    This is the point where logic related to the MapCreator is situated.
+     *                          From here, users input is handled, and data handling is performed
+     * - gui:               Uses data retrieved from levelMechanics to display the current state
+     * - squarePalethera:   Handles logic strictly related to the various grids the user can see and interact with
+     * - stringLibrary:     Information container. Main converting point, for example between save data and the
+     *                          actual classes which whom the data is related
+     */
+
     public class MapCreatorState : GameState
     {
         #region declaration
@@ -49,7 +61,8 @@ namespace SpaceProject
 
             squarePalethera = new SquarePalethera(spriteSheet, new Vector2(380, 100));
 
-            //ActiveSong = Music.Jigsaw;
+            String equipInfo = ShipInventoryManager.MapCreatorEquip(1);
+            gui.SetEquipInfo(equipInfo);
         }
 
         public override void OnEnter()
@@ -84,50 +97,55 @@ namespace SpaceProject
 
         private void ApplyEquipments()
         {
+            String equipInfo = "";
+
             if (ControlManager.CheckKeypress(Keys.D1))
             {
-                ShipInventoryManager.MapCreatorEquip(1);
+                equipInfo = ShipInventoryManager.MapCreatorEquip(1);
             }
 
             if (ControlManager.CheckKeypress(Keys.D2))
             {
-                ShipInventoryManager.MapCreatorEquip(2);
+                equipInfo = ShipInventoryManager.MapCreatorEquip(2);
             }
 
             if (ControlManager.CheckKeypress(Keys.D3))
             {
-                ShipInventoryManager.MapCreatorEquip(3);
+                equipInfo = ShipInventoryManager.MapCreatorEquip(3);
             }
 
             if (ControlManager.CheckKeypress(Keys.D4))
             {
-                ShipInventoryManager.MapCreatorEquip(4);
+                equipInfo = ShipInventoryManager.MapCreatorEquip(4);
             }
 
             if (ControlManager.CheckKeypress(Keys.D5))
             {
-                ShipInventoryManager.MapCreatorEquip(5);
+                equipInfo = ShipInventoryManager.MapCreatorEquip(5);
             }
 
             if (ControlManager.CheckKeypress(Keys.D6))
             {
-                ShipInventoryManager.MapCreatorEquip(6);
+                equipInfo = ShipInventoryManager.MapCreatorEquip(6);
             }
 
             if (ControlManager.CheckKeypress(Keys.D7))
             {
-                ShipInventoryManager.MapCreatorEquip(7);
+                equipInfo = ShipInventoryManager.MapCreatorEquip(7);
             }
 
             if (ControlManager.CheckKeypress(Keys.D8))
             {
-                ShipInventoryManager.MapCreatorEquip(8);
+                equipInfo = ShipInventoryManager.MapCreatorEquip(8);
             }
 
             if (ControlManager.CheckKeypress(Keys.D9))
             {
-                ShipInventoryManager.MapCreatorEquip(9);
+                equipInfo = ShipInventoryManager.MapCreatorEquip(9);
             }
+
+            if (equipInfo != "")
+                gui.SetEquipInfo(equipInfo);
         }
 
         private void PerformActions(List<Action> actions)

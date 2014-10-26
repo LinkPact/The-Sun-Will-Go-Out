@@ -913,9 +913,6 @@ namespace SpaceProject
             AddItem(new LightPlating(Game));
             AddItem(new HeavyPlating(Game));
 
-            //StatsManager.cargoCapacity = 10000;
-            //maxWeight = 10000;
-
             isCheatActivated = true;
         }
 
