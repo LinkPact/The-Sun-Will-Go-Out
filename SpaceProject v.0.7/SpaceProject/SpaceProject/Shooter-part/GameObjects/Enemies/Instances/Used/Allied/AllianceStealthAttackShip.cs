@@ -8,6 +8,11 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
+    /*
+     * Fast mid-tier ship with stealth. Travels quickly close to the player where it appears and starts firing
+     * bursts of basic lasers
+     */
+
     class AllianceStealthAttackShip : ShootingEnemyShip
     {
         private int tempCounter;

@@ -8,6 +8,12 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
+    /**
+     * Slow and heavy stealth-ship that alternates between hiding and being visible
+     * Fires three lasers over a small arc when visible
+     * Upper-end ship
+     */
+
     class AllianceStealthShip : ShootingEnemyShip
     {
         private int tempCounter;

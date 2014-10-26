@@ -6,6 +6,10 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
+    /*
+     * Mid-tier ship that fires bullets in batches over a wide arc
+     */
+
     class AllianceMultipleShot : ShootingEnemyShip
     {
         public AllianceMultipleShot(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :

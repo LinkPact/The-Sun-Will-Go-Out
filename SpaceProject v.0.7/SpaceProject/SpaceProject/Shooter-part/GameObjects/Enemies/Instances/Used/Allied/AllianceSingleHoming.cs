@@ -6,6 +6,10 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
+    /**
+     * Small, slow and weak lower-tier ship that shoots homing bullets
+     */
+
     class AllianceSingleHoming : ShootingEnemyShip
     {
         public AllianceSingleHoming(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :

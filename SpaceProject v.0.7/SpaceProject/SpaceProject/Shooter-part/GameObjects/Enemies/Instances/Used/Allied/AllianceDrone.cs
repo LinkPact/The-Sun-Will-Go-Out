@@ -7,6 +7,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
+    /**
+     * Slow low-end ship without weapons
+     * Travels against the player and tries to collide with player, as well as covering
+     * its friends by getting in the way of player fire
+     */
+
     class AllianceDrone : EnemyShip
     {
         public AllianceDrone(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :

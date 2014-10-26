@@ -6,6 +6,11 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
+    /**
+     * Heavy upper-tier ship firing three beams simultaneously
+     * Also aims at the player and fires single lasers at a slow firing rate
+     */
+
     class AllianceHeavyBeamer : ShootingEnemyShip
     {
         private HostileBeamModule beamModuleLeft;

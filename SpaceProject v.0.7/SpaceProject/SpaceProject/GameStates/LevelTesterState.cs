@@ -8,6 +8,17 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
+    /**
+     * A place to easily access and test added levels
+     * 
+     * Contains list with instances of "LevelTesterEntry"
+     * Those entries contains a brief comment about the level, a file-path to the level
+     *  and a button which is linked to the level.
+     * 
+     * When state is running, displayed buttons are used to choose level and equipment.
+     * Then, the user can simply run the chosen level with chosen equipment.
+     */
+
     public class LevelTesterState : GameState
     {
         #region declaration

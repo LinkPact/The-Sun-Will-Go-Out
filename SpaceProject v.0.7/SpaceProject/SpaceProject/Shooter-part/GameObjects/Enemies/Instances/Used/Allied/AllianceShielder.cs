@@ -7,6 +7,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
+    /**
+     * A slow mid-tier ship that has an enourmous shield, able to protect nearby ships
+     * Also has a weak laser with short range
+     */
+
     class AllianceShielder : ShootingEnemyShip
     {
         public AllianceShielder(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :

@@ -6,6 +6,10 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
+    /**
+     * Light, mid-range ship that toggles on a single laser firing straight over the screen
+     */
+
     class AllianceLightBeamer : ShootingEnemyShip
     {
         private HostileBeamModule beamModule;

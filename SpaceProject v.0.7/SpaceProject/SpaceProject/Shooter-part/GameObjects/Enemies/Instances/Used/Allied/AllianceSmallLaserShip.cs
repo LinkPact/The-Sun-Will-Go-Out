@@ -7,6 +7,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
+    /**
+     * Small, low-tier ship that shoot three lasers at different angles
+     * Also uses a weak shield
+     */
+
     class AllianceSmallLaserShip : ShootingEnemyShip
     {
         public AllianceSmallLaserShip(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
