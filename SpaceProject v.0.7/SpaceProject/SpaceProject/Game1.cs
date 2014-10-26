@@ -20,6 +20,7 @@ namespace SpaceProject
 
         public Sprite spriteSheetVerticalShooter;
         public Sprite spriteSheetOverworld;
+        private Sprite messageBoxSpriteSheet;
 
         public GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -126,6 +127,7 @@ namespace SpaceProject
 
             spriteSheetOverworld = new Sprite(Content.Load<Texture2D>("Overworld-Sprites/smallObjectSpriteSheet"));
             spriteSheetVerticalShooter = new Sprite(Content.Load<Texture2D>("Vertical-Sprites/shooterSheet"));
+            messageBoxSpriteSheet = new Sprite(Content.Load<Texture2D>("Overworld-Sprites/messageBoxSpriteSheet"));
 
             shipInventoryManager = new ShipInventoryManager(this);
             shipInventoryManager.Initialize();
@@ -153,7 +155,7 @@ namespace SpaceProject
 
             saveFile = new SaveFile(this);
 
-            messageBox = new MessageBox(this, spriteSheetOverworld);
+            messageBox = new MessageBox(this, messageBoxSpriteSheet);
             messageBox.Initialize();
 
             helper = new HelperBox(this);
