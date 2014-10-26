@@ -20,7 +20,7 @@ namespace SpaceProject
         {
             fraction = Fraction.alliance;
 
-            ShieldSetup(CreatureShieldCapacity.medium, CreatureShieldRegeneration.medium);
+            ShieldSetup(CreatureShieldCapacity.low, CreatureShieldRegeneration.medium);
         }
 
         public override void Initialize()
