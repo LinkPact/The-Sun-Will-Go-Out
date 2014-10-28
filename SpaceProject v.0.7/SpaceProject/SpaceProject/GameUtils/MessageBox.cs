@@ -62,9 +62,9 @@ namespace SpaceProject
         private Sprite tutorialButtonChecked;
         private Sprite tutorialButtonUncheckedSelected;
         private Sprite tutorialButtonCheckedSelected;
-        private readonly Vector2 RELATIVE_TUTORIAL_BUTTON_POSITION_NORMAL = new Vector2(140, 109);
-        private readonly Vector2 RELATIVE_OKAY_BUTTON_POSITION_NORMAL = new Vector2(0, 109);
-        private readonly Vector2 RELATIVE_TUTORIAL_BUTTON_POSITION_IMAGE = new Vector2(140, 179);
+        //private readonly Vector2 RELATIVE_TUTORIAL_BUTTON_POSITION_NORMAL = new Vector2(140, 109);
+        //private readonly Vector2 RELATIVE_OKAY_BUTTON_POSITION_NORMAL = new Vector2(0, 109);
+        //private readonly Vector2 RELATIVE_TUTORIAL_BUTTON_POSITION_IMAGE = new Vector2(140, 179);
         private readonly Vector2 RELATIVE_OKAY_BUTTON_POSITION_IMAGE = new Vector2(0, 179);
 
         private readonly int OPACITY = 230;
@@ -1031,6 +1031,7 @@ namespace SpaceProject
             {
                 if (imageBuffer.Count <= 1)
                 {
+                    imageBuffer.Clear();
                     Game1.Paused = false;
                     messageState = MessageState.Invisible;
                 }
@@ -1292,19 +1293,19 @@ namespace SpaceProject
 
                 case MessageState.MessageWithImage:
                     {
-                        Vector2 imagePos = new Vector2(textBoxPos.X - imageCanvas.SourceRectangle.Value.Width / 2 + 16,
-                            textBoxPos.Y - imageCanvas.SourceRectangle.Value.Height / 2 + 18);
+                        Vector2 imagePos = new Vector2(textBoxPos.X - messageWithImageCanvas.SourceRectangle.Value.Width / 2 + 16,
+                            textBoxPos.Y - messageWithImageCanvas.SourceRectangle.Value.Height / 2 + 18);
 
-                        textPos = new Vector2(textBoxPos.X - imageCanvas.SourceRectangle.Value.Width / 2 + 30,
+                        textPos = new Vector2(textBoxPos.X - messageWithImageCanvas.SourceRectangle.Value.Width / 2 + 30,
                             textBoxPos.Y + 40);
 
                         spriteBatch.Draw(messageWithImageCanvas.Texture,
                              textBoxPos,
-                             imageCanvas.SourceRectangle,
+                             messageWithImageCanvas.SourceRectangle,
                              new Color(255, 255, 255, OPACITY),
                              0.0f,
-                             new Vector2(imageCanvas.SourceRectangle.Value.Width / 2,
-                                         imageCanvas.SourceRectangle.Value.Height / 2),
+                             new Vector2(messageWithImageCanvas.SourceRectangle.Value.Width / 2,
+                                         messageWithImageCanvas.SourceRectangle.Value.Height / 2),
                              1f,
                              SpriteEffects.None,
                              0.95f);
@@ -1321,7 +1322,7 @@ namespace SpaceProject
 
 
                         String text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
-                                                    textBuffer[0], (int)Math.Round(((float)imageCanvas.SourceRectangle.Value.Width - 60), 0));
+                                                    textBuffer[0], (int)Math.Round(((float)messageWithImageCanvas.SourceRectangle.Value.Width - 60), 0));
 
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                 text,
@@ -1590,17 +1591,20 @@ namespace SpaceProject
                 {
                     case MessageState.Message:
                         menuOptionPos = new Vector2(textPos.X + 136, textPos.Y + 99);
-                        okayButtonOffset = RELATIVE_OKAY_BUTTON_POSITION_NORMAL;
-                        showTutorialButtonOffset = RELATIVE_TUTORIAL_BUTTON_POSITION_NORMAL;
+                        okayButtonOffset = new Vector2(0, 109);;
+                        showTutorialButtonOffset = new Vector2(140, 109);
                         break;
 
                     case MessageState.MessageWithImage:
                         menuOptionPos = new Vector2(textPos.X + 171, textPos.Y - 38);
-                        okayButtonOffset = RELATIVE_OKAY_BUTTON_POSITION_IMAGE;
-                        showTutorialButtonOffset = RELATIVE_TUTORIAL_BUTTON_POSITION_IMAGE;
+                        okayButtonOffset = new Vector2(0, 179);;
+                        showTutorialButtonOffset = new Vector2(140, 179);;
                         break;
 
                     case MessageState.Image:
+                        menuOptionPos = new Vector2(textPos.X + 171, textPos.Y - 38);
+                        okayButtonOffset = new Vector2(0, 109);;
+                        showTutorialButtonOffset = new Vector2(140, 109);
                         break;
                 }
                 if (useDisableTutorialButton)
@@ -1690,7 +1694,6 @@ namespace SpaceProject
 
                             else
                             {
-
                                 spriteBatch.Draw(buttonUnselected.Texture,
                                     new Vector2(textBoxPos.X, textBoxPos.Y) + okayButtonOffset,
                                     buttonUnselected.SourceRectangle,

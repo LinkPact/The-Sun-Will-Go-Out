@@ -11,6 +11,7 @@ namespace SpaceProject
     {
         OverworldControls,
         CombatControls,
+        MenuControls,
         CombatBars,
         CombatBarsObjective,
         CombatBarsWeapon,
@@ -52,14 +53,15 @@ namespace SpaceProject
             tutorialSpriteSheet = new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/tutorial_spritesheet"), null);
 
             tutorialImages = new List<Sprite>();
-            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(770, 199, 366, 197)));
-            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(403, 1, 366, 197)));
-            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(403, 199, 366, 197)));
-            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(1, 403, 366, 197)));
-            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(368, 403, 366, 197)));
-            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(1, 601, 366, 197)));
-            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(368, 601, 366, 197)));
-            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(770, 1, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(368, 1, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(0, 0, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(735, 1, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(1, 199, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(368, 199, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(735, 199, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(1, 397, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(368, 397, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(735, 397, 366, 197)));
 
             hasEnteredSectorX = false;
             hasEnteredStation = false;
@@ -84,7 +86,9 @@ namespace SpaceProject
             {
                 hasEnteredStation = true;
 
-                DisplayTutorialMessage("This is the station menu, here you can select missions, listen to rumors and buy/sell items. Move the cursor with the arrow-keys and press 'Enter' to select.");
+                DisplayTutorialImage(TutorialImage.MenuControls);
+
+                //DisplayTutorialMessage("This is the station menu, here you can select missions, listen to rumors and buy/sell items. Move the cursor with the arrow-keys and press 'Enter' to select.");
             }
 
             if (!hasEnteredOverworld && GameStateManager.currentState.Equals("OverworldState"))
@@ -306,23 +310,26 @@ namespace SpaceProject
                 case TutorialImage.CombatControls:
                     return tutorialImages[1];
 
-                case TutorialImage.CombatBars:
+                case TutorialImage.MenuControls:
                     return tutorialImages[2];
 
-                case TutorialImage.CombatBarsObjective:
+                case TutorialImage.CombatBars:
                     return tutorialImages[3];
 
-                case TutorialImage.CombatBarsWeapon:
+                case TutorialImage.CombatBarsObjective:
                     return tutorialImages[4];
 
-                case TutorialImage.CombatBarsHealth:
+                case TutorialImage.CombatBarsWeapon:
                     return tutorialImages[5];
 
-                case TutorialImage.CombatBarsEnergy:
+                case TutorialImage.CombatBarsHealth:
                     return tutorialImages[6];
 
-                case TutorialImage.CombatBarsShield:
+                case TutorialImage.CombatBarsEnergy:
                     return tutorialImages[7];
+
+                case TutorialImage.CombatBarsShield:
+                    return tutorialImages[8];
 
                 default:
                     throw new ArgumentException("Image ID not recognized.");
