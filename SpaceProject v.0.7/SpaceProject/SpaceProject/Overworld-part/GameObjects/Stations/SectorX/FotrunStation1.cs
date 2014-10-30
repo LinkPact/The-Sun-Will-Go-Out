@@ -17,7 +17,7 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            sprite = spriteSheet.GetSubSprite(new Rectangle(342, 871, 93, 93));
+            sprite = spriteSheet.GetSubSprite(new Rectangle(779, 1075, 291, 292));
             base.Initialize();
             StationCodeName = "SX_Fotrun_1";
             LoadStationData(StationCodeName);

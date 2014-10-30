@@ -12,7 +12,7 @@ Inhabitants = 5000
 
 [SX_Fotrun_1]
 Name = Fotrun Station I
-PositionX = 300
+PositionX = 600
 PositionY = -100
 Inhabitants = 20000
 

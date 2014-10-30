@@ -177,7 +177,7 @@ namespace SpaceProject
 
         public override bool Completed()
         {
-            return shipsToFollow[0].HasArrived;
+            return shipsToFollow[0].AIManager.Finished || shipsToFollow[0].IsDead;
         }
 
         public override bool Failed()

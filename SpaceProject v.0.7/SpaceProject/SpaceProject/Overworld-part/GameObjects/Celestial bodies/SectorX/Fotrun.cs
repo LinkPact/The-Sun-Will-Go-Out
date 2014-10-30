@@ -16,7 +16,7 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            sprite = spriteSheet.GetSubSprite(new Rectangle(0, 1080, 310, 310));
+            sprite = spriteSheet.GetSubSprite(new Rectangle(0, 21, 404, 404));
 
             base.Initialize();
 

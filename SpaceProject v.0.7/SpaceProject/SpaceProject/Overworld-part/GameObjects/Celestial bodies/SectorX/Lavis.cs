@@ -16,7 +16,7 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            sprite = spriteSheet.GetSubSprite(new Rectangle(506, 384, 203, 203));
+            sprite = spriteSheet.GetSubSprite(new Rectangle(0, 1080, 310, 309));
 
             hasColony = true;
 
