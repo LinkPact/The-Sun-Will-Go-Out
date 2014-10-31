@@ -19,11 +19,7 @@ namespace SpaceProject
         CombatControls,
         MenuControls,
         CombatBars,
-        CombatBarsObjective,
-        CombatBarsWeapon,
-        CombatBarsHealth,
-        CombatBarsEnergy,
-        CombatBarsShield
+        Coordinates
     }
 
     public class TutorialManager
@@ -48,7 +44,7 @@ namespace SpaceProject
         private bool hasEnteredInventory;
         private bool hasEnteredHighfenceBeaconArea;
         private bool hasActivatedHighfenceBeacon;
-        private bool hasStartedSecondMission;
+        private bool coordinatesDisplayed;
 
         public TutorialManager(Game1 game)
         {
@@ -65,10 +61,6 @@ namespace SpaceProject
             tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(735, 1, 366, 197)));
             tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(1, 199, 366, 197)));
             tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(368, 199, 366, 197)));
-            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(735, 199, 366, 197)));
-            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(1, 397, 366, 197)));
-            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(368, 397, 366, 197)));
-            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(735, 397, 366, 197)));
 
             hasEnteredSectorX = false;
             hasEnteredStation = false;
@@ -94,8 +86,6 @@ namespace SpaceProject
                 hasEnteredStation = true;
 
                 DisplayTutorialImage(TutorialImage.MenuControls);
-
-                //DisplayTutorialMessage("This is the station menu, here you can select missions, listen to rumors and buy/sell items. Move the cursor with the arrow-keys and press 'Enter' to select.");
             }
 
             if (!hasEnteredOverworld && GameStateManager.currentState.Equals("OverworldState"))
@@ -109,18 +99,18 @@ namespace SpaceProject
 
                     DisplayTutorialImage(TutorialImage.OverworldControls);
 
-                    //"At the bottom-left of the screen is your overall health. This determines how much health you have when entering combat. When your overall health is reduced to 0, the game is over."});
+                    //"At the bottom-left of the screen is your overall health. This determines how much health you have when entering combat. When your overall health is reduced to 0, the game is over." - After first level
                 }
             }
 
-            if (!hasStartedSecondMission
-                && MissionManager.GetMission("Main - Highfence").MissionState == StateOfMission.Active
-                && GameStateManager.currentState == "OverworldState")
+            else if (!coordinatesDisplayed 
+                && hasEnteredOverworld 
+                && game.messageBox.MessageState == MessageState.Invisible)
             {
-                hasStartedSecondMission = true;
+                coordinatesDisplayed = true;
 
                 DisplayTutorialMessage(new List<String>{"Your current objective is to go to coordinates (2635, 940). To find out where that is, look at the coordinates at the bottom right of the screen, just above the minimap. The sun, in the middle of the sector, is the center point (origin) of the coordinate system.",
-                "If you forget where you need to go you can at any time check your current mission objectives in the mission log. Press 'M' to bring up the mission screen. From there, you can select your current missions and view their objectives."});
+                "If you forget where you need to go you can at any time check your current mission objectives in the mission log. Press 'M' to bring up the mission screen. From there, you can select your current missions and view their objectives."}, TutorialImage.Coordinates);
             }
 
             if (!hasEnteredPlanet && GameStateManager.currentState.Equals("PlanetState") &&
@@ -173,11 +163,9 @@ namespace SpaceProject
 
                     hasEnteredVerticalShooter = true;
                     DisplayTutorialMessage(new List<String>{"You can rebind the keys in the options menu.",
-                    "Down at the bottom-left is some information and three bars:", "Your objective - ", "Your currently active primary weapon - ", "Your health - when this runs out you fail the level and your overall health is reduced a bit.", "Your energy - weapons use energy to fire.", "Your shield - protects your ship from damage. Recharges over time."},
-                    new List<TutorialImage> { TutorialImage.CombatControls, TutorialImage.CombatBars, TutorialImage.CombatBarsObjective,
-                        TutorialImage.CombatBarsWeapon, TutorialImage.CombatBarsHealth, TutorialImage.CombatBarsEnergy,
-                        TutorialImage.CombatBarsShield },
-                        new List<int> {1, 2, 3, 4, 5, 6});
+                    "Down at the bottom-left is some information and three bars:\n\nYour objective - Displays condition to complete level.", "Your currently active primary weapon - Toggle between your equipped primary weapons with 'Shift'.\n\nYour health - when this runs out you fail the level and your overall health is reduced a bit.", "Your energy - weapons use energy to fire.\n\nYour shield - protects your ship from damage. Recharges over time."},
+                    new List<TutorialImage> { TutorialImage.CombatControls, TutorialImage.CombatBars},
+                        new List<int> {1});
                 }
             }
 
@@ -297,7 +285,7 @@ namespace SpaceProject
             tutorialProgress.Add("hasEnteredInventory", hasEnteredInventory.ToString());
             tutorialProgress.Add("hasEnteredHighfenceBeaconArea", hasEnteredHighfenceBeaconArea.ToString());
             tutorialProgress.Add("hasActivatedHighfenceBeacon", hasActivatedHighfenceBeacon.ToString());
-            tutorialProgress.Add("hasStartedSecondMission", hasStartedSecondMission.ToString());
+            tutorialProgress.Add("hasStartedSecondMission", coordinatesDisplayed.ToString());
 
             game.saveFile.Save("save.ini", "tutorialprogress", tutorialProgress);
         }
@@ -313,7 +301,7 @@ namespace SpaceProject
             hasEnteredInventory = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredinventory", false);
             hasEnteredHighfenceBeaconArea = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredhighfencebeaconarea", false);
             hasActivatedHighfenceBeacon = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasactivatedhighfencebeacon", false);
-            hasStartedSecondMission = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasstartedsecondmission", false);
+            coordinatesDisplayed = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasstartedsecondmission", false);
         }
 
         private Sprite GetImageFromEnum(TutorialImage imageID)
@@ -332,20 +320,8 @@ namespace SpaceProject
                 case TutorialImage.CombatBars:
                     return tutorialImages[3];
 
-                case TutorialImage.CombatBarsObjective:
+                case TutorialImage.Coordinates:
                     return tutorialImages[4];
-
-                case TutorialImage.CombatBarsWeapon:
-                    return tutorialImages[5];
-
-                case TutorialImage.CombatBarsHealth:
-                    return tutorialImages[6];
-
-                case TutorialImage.CombatBarsEnergy:
-                    return tutorialImages[7];
-
-                case TutorialImage.CombatBarsShield:
-                    return tutorialImages[8];
 
                 default:
                     throw new ArgumentException("Image ID not recognized.");
