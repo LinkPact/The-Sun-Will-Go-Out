@@ -7,11 +7,10 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
-    //Change class-name to the name of the mission 
     class DebtCollection : Mission
     {
-        private bool failed;
-        private bool success;
+        //private bool failed;
+        //private bool success;
 
         public DebtCollection(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
@@ -37,7 +36,7 @@ namespace SpaceProject
                             {
                                 missionHelper.ShowEvent(GetEvent(2));
                                 StatsManager.Rupees -= 1000;
-                                success = true;
+                                //success = true;
                             }
             
                             else
@@ -49,19 +48,19 @@ namespace SpaceProject
                         delegate
                         {
                             missionHelper.ShowEvent(GetEvent(3));
-                            failed = true;
+                            //failed = true;
                         },
             
                         delegate
                         {
                             missionHelper.ShowEvent(new List<EventText> { GetEvent(4), GetEvent(5) } );
-                            success = true;
+                            //success = true;
                         },
             
                         delegate
                         {
                             missionHelper.ShowEvent(new List<EventText> { GetEvent(4), GetEvent(5) } );
-                            success = true;
+                            //success = true;
                         }
                     }, EventTextCanvas.BaseState)));
 

@@ -19,7 +19,6 @@ namespace SpaceProject
 
         private Battlefield battlefield;
         private bool died;
-        private int tempTimer;
 
         public Main1_AColdWelcome(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)

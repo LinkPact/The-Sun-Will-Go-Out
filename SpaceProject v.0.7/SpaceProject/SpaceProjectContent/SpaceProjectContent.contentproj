@@ -220,16 +220,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Overworld-Sprites\SectorYSpriteSheet.png">
-      <Name>SectorYSpriteSheet</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Overworld-Sprites\SectorZSpriteSheet.png">
-      <Name>SectorZSpriteSheet</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Overworld-Sprites\StarsSpriteSheet.png">
       <Name>StarsSpriteSheet</Name>
       <Importer>TextureImporter</Importer>

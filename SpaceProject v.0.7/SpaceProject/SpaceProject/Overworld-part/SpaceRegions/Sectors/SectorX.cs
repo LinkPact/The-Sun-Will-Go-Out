@@ -9,8 +9,8 @@ namespace SpaceProject
 {
     public class SectorX : Sector
     {
-        private System1Star sectorXStar;
-        public System1Star SectorXStar { get { return sectorXStar; } private set { ;} }
+        private SectorXStar sectorXStar;
+        public SectorXStar SectorXStar { get { return sectorXStar; } private set { ;} }
 
         private Lavis lavis;
         private Fotrun fotrun;
@@ -49,7 +49,7 @@ namespace SpaceProject
             spaceRegionArea = new Rectangle(85000, 85000, 30000, 30000);
             Vector2 offset = new Vector2(spaceRegionArea.X, spaceRegionArea.Y);
 
-            sectorXStar = new System1Star(game, spriteSheet);
+            sectorXStar = new SectorXStar(game, spriteSheet);
             sectorXStar.Initialize();
 
             // Sub-interactive objects

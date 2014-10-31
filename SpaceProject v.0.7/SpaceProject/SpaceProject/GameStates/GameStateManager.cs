@@ -21,7 +21,6 @@ namespace SpaceProject
 
         public MainMenuState mainMenuState;
         public StartGameState startGameState;
-        public LoadMenuState loadMenuState;
         public OptionsMenuState optionsMenuState;
         public HelpScreenState helpScreenState;
         public IntroFirstState introFirstState;
@@ -116,7 +115,6 @@ namespace SpaceProject
 
             mainMenuState = new MainMenuState(Game, "MainMenuState");
             startGameState = new StartGameState(Game, "StartGameState");
-            loadMenuState = new LoadMenuState(Game, "LoadMenuState");
             optionsMenuState = new OptionsMenuState(Game, "OptionsMenuState");
             helpScreenState = new HelpScreenState(Game, "HelpScreenState");
             introFirstState = new IntroFirstState(Game, "IntroFirstState");
@@ -134,7 +132,6 @@ namespace SpaceProject
             
             gameStates.Add(mainMenuState);
             gameStates.Add(startGameState);
-            gameStates.Add(loadMenuState);
             gameStates.Add(optionsMenuState);
             gameStates.Add(helpScreenState);
             gameStates.Add(introFirstState);
@@ -152,7 +149,6 @@ namespace SpaceProject
             
             mainMenuState.Initialize();
             startGameState.Initialize();
-            loadMenuState.Initialize();
             optionsMenuState.Initialize();
             helpScreenState.Initialize();
             introFirstState.Initialize();

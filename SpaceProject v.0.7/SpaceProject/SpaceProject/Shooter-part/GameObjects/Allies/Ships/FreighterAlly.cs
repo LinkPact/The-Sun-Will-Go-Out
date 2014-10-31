@@ -18,8 +18,6 @@ namespace SpaceProject
         private readonly float STANDARD_AVOID_RADIUS = 200;
         #endregion
 
-        private int overworldFreighterHP;
-
         public FreighterAlly(Game1 Game, Sprite SpriteSheet, PlayerVerticalShooter player):
             base(Game,SpriteSheet, player)
         {

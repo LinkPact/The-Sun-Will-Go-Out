@@ -321,7 +321,7 @@ namespace SpaceProject
             objectsOnMap = new List<GameObjectOverworld>();
             foreach (GameObjectOverworld obj in objectsInOverworld)
             {
-                if (obj is ImmobileSpaceObject || obj is System1Star)
+                if (obj is ImmobileSpaceObject || obj is SectorXStar)
                     objectsOnMap.Add(obj);
             }
 

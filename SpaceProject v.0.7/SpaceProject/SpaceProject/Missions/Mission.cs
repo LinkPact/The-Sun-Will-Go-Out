@@ -28,7 +28,7 @@ namespace SpaceProject
         protected bool updateLogic;
 
         protected ConfigFile configFile;
-        private string configSection;
+        private string configSection = "";
 
         private List<KeyValuePair<EventText, List<EventText>>> eventList;
 

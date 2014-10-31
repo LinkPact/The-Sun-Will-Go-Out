@@ -7,19 +7,19 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class System3Star : SystemStar
+    public class SectorXStar : SystemStar
     {
-        public System3Star(Game1 Game, Sprite spriteSheet) :
+        public SectorXStar(Game1 Game, Sprite spriteSheet) :
             base(Game, spriteSheet)
-        {
+        {            
         }
 
         public override void Initialize()
         {
-            name = "system3Star";
-            position = new Vector2(60000, 50000);
-            sprite = spriteSheet.GetSubSprite(new Rectangle(0, 3, 697, 697));
-
+            name = "system1Star";
+            position = new Vector2(OverworldState.OVERWORLD_WIDTH / 2,
+                                   OverworldState.OVERWORLD_HEIGHT / 2);
+            sprite = spriteSheet.GetSubSprite(new Rectangle(761, 384, 739, 690));
             scale = 1.0f;
 
             base.Initialize();
@@ -27,6 +27,8 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
+            IsUsed = true;
+
             base.Update(gameTime);
         }
 
