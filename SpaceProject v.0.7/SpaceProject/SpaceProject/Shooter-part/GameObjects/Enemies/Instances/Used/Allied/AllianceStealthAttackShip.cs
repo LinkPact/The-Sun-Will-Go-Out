@@ -16,7 +16,7 @@ namespace SpaceProject
     class AllianceStealthAttackShip : ShootingEnemyShip
     {
         private int tempCounter;
-        private int stealthDelay;
+        //private int stealthDelay;
 
         private Boolean stealthToggled;
 
@@ -57,7 +57,7 @@ namespace SpaceProject
             TurningSpeed *= 3;
             movement = Movement.Following;
 
-            stealthDelay = 1500;
+            //stealthDelay = 1500;
 
             //Animationer
             anim.LoopTime = 500;

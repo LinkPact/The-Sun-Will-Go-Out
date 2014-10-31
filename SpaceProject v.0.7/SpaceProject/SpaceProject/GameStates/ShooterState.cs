@@ -175,6 +175,7 @@ namespace SpaceProject
 
         public void SetupTestLevelRun(String fileName, float startTime)
         {
+            StatsManager.RestoreShipHealthToMax();
             SetupTestRun(fileName, startTime, false);
         }
 

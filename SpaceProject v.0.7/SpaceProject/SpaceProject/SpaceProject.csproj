@@ -797,6 +797,18 @@
     <Content Include="Levels\testlevels\test_lv1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Levels\testlevels\jakob_main\m4_infiltration_lv1_v1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\m4_infiltration_lv2_v1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\m5_retribution_lv1_v1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\m5_retribution_lv2_v1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Levels\testlevels\P2AttackOnRebelStation.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

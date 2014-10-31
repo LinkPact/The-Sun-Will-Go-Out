@@ -165,6 +165,11 @@ namespace SpaceProject
                 plating.CurrentOverworldHealth = Armor();
         }
 
+        public static void RestoreShipHealthToMax()
+        {
+            plating.CurrentOverworldHealth = Armor();
+        }
+
         public static void UpdateValues()
         {
             plating = ShipInventoryManager.equippedPlating;

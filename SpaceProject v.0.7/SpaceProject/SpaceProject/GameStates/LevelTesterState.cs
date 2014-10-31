@@ -55,14 +55,18 @@ namespace SpaceProject
             display1.Add("Press Escape to return to main menu");
             display1.Add("Use number keys (0-9) to switch equipment");
 
-            jakobsLevelEntries.Add(new LevelTesterEntry("P3_Science_1", "Phase 3 scientist-level", Keys.A));
-
-            jakobsLevelEntries.Add(new LevelTesterEntry("P4_rebel1", "Phase 4 one rebel scout", Keys.S));
-            jakobsLevelEntries.Add(new LevelTesterEntry("P4_rebel2", "Phase 4 other rebel scout", Keys.D));
-            jakobsLevelEntries.Add(new LevelTesterEntry("P4_hunted1", "Phase 4 hunted to Soelara1", Keys.F));
-            jakobsLevelEntries.Add(new LevelTesterEntry("P4_hunted2", "Phase 4 hunted to Soelara2", Keys.G));
-            jakobsLevelEntries.Add(new LevelTesterEntry("P4_hunted3", "Phase 4 hunted to Soelara3", Keys.H));
-            jakobsLevelEntries.Add(new LevelTesterEntry("P4_recognizedByAlliance", "Phase 4 Fortrun guard", Keys.J));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m4_infiltration_lv1_v1", "m4_1", Keys.A));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m4_infiltration_lv2_v1", "m4_2", Keys.S));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m5_retribution_lv1_v1", "m5_1", Keys.D));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m5_retribution_lv2_v1", "m5_2", Keys.F));
+            
+            //jakobsLevelEntries.Add(new LevelTesterEntry("P3_Science_1", "Phase 3 scientist-level", Keys.A));
+            //jakobsLevelEntries.Add(new LevelTesterEntry("P4_rebel1", "Phase 4 one rebel scout", Keys.S));
+            //jakobsLevelEntries.Add(new LevelTesterEntry("P4_rebel2", "Phase 4 other rebel scout", Keys.D));
+            //jakobsLevelEntries.Add(new LevelTesterEntry("P4_hunted1", "Phase 4 hunted to Soelara1", Keys.F));
+            //jakobsLevelEntries.Add(new LevelTesterEntry("P4_hunted2", "Phase 4 hunted to Soelara2", Keys.G));
+            //jakobsLevelEntries.Add(new LevelTesterEntry("P4_hunted3", "Phase 4 hunted to Soelara3", Keys.H));
+            //jakobsLevelEntries.Add(new LevelTesterEntry("P4_recognizedByAlliance", "Phase 4 Fortrun guard", Keys.J));
 
             johansLevelEntries.Add(new LevelTesterEntry("XDefendColony", "Johans defend colony mission", Keys.V));
             johansLevelEntries.Add(new LevelTesterEntry("P2AttackOnRebelStation", "Phase 2 - Attack on station", Keys.B));
