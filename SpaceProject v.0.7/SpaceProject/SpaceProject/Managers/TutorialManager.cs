@@ -1,9 +1,7 @@
 ﻿/* TutorialManager.cs
  * 
  * Handles displaying of tutorial messages
- * 
  */
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    enum TutorialImage
+    public enum TutorialImage
     {
         OverworldControls,
         CombatControls,
@@ -304,7 +302,7 @@ namespace SpaceProject
             coordinatesDisplayed = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasstartedsecondmission", false);
         }
 
-        private Sprite GetImageFromEnum(TutorialImage imageID)
+        public Sprite GetImageFromEnum(TutorialImage imageID)
         {
             switch (imageID)
             {
