@@ -23,6 +23,15 @@ namespace SpaceProject
         extreme     = 30
     }
 
+    public enum SpeedEnum
+    { 
+        low         = 1,
+        low_med     = 2,
+        med         = 3,
+        med_high    = 4,
+        high        = 5
+    }
+
     public enum LootValue
     { 
         veryLow     = 1,

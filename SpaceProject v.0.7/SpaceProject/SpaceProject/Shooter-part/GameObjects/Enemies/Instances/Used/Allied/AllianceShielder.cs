@@ -50,7 +50,8 @@ namespace SpaceProject
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(217, 315, 38, 53)));
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
 
-            areaCollision = new AreaShieldCollision(Game, this, 150);
+            int shieldRadius = 150;
+            areaCollision = new AreaShieldCollision(Game, this, shieldRadius);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

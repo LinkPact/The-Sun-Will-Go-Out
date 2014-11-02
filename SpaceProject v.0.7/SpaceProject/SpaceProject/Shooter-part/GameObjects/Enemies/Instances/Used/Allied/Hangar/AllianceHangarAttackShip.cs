@@ -24,6 +24,7 @@ namespace SpaceProject
 
         private void Setup()
         {
+            movement = Movement.SearchAndLockOn;
             fraction = Fraction.alliance;
         }
 
@@ -39,13 +40,11 @@ namespace SpaceProject
             primaryModule.SetFullCharge();
 
             //Egenskaper
-            SightRange = 600;
+            SightRange = 800;
             HP = 100.0f;
             Damage = 60;
             Speed = 0.25f;
             TurningSpeed = 2f;
-
-            movement = Movement.Following;
 
             //Animationer
             anim.LoopTime = 500;

@@ -170,6 +170,7 @@ namespace SpaceProject
 
         public void SetupMapCreatorTestRun(String fileName, float startTime)
         {
+            StatsManager.RestoreShipHealthToMax();
             SetupTestRun(fileName, startTime, true);
         }
 
