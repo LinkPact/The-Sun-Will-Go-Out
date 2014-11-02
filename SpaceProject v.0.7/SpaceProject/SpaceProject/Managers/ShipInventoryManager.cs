@@ -969,13 +969,13 @@ namespace SpaceProject
                 case 6:
                     {
                         equippedPrimaryWeapons[0] = new WaveBeamWeapon(Game);
-                        equippedPrimaryWeapons[1] = new MineLayerWeapon(Game);
+                        equippedPrimaryWeapons[1] = new BeamWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
                         break;
                     }
                 case 7:
                     {
-                        equippedPrimaryWeapons[0] = new MineLayerWeapon(Game);
+                        equippedPrimaryWeapons[0] = new BeamWeapon(Game);
                         equippedPrimaryWeapons[1] = new ProximityLaserWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
                         break;
