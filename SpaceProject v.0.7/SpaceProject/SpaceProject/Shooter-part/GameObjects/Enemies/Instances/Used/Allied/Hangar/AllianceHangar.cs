@@ -25,7 +25,7 @@ namespace SpaceProject
         private void Setup()
         {
             fraction = Fraction.alliance;
-            ShieldSetup(CreatureShieldCapacity.high, CreatureShieldRegeneration.high);
+            ShieldSetup(CreatureShieldCapacity.extreme, CreatureShieldRegeneration.extreme);
         }
 
         public override void Initialize()
@@ -34,18 +34,19 @@ namespace SpaceProject
 
             lootValue = LootValue.veryHigh;
 
-            AddPrimaryModule(1500, ShootingMode.Regular);
+            AddPrimaryModule(600, ShootingMode.Regular);
             primaryModule.SetRandomCharge(random);
+            primaryModule.ShootsInBatchesSetup(2, 7000);
 
-            //Egenskaper
-            SightRange = 500;
-            HP = 1000.0f;
-            Damage = 0;
+            AddSecondaryModule(2500, ShootingMode.Regular);
+            secondaryModule.ShootsInBatchesSetup(4, 8000);
+
+            SightRange = 1000;
+            HP = 3000.0f;
+            Damage = 10000;
             Speed = 0.01f;
-
             movement = Movement.Line;
 
-            //Animationer
             anim.LoopTime = 500;
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(0, 380, 159, 258)));
 
@@ -66,6 +67,23 @@ namespace SpaceProject
         }
 
         protected override void SecondaryShootingPattern(GameTime gameTime)
-        { }
+        {
+            int numberOfShots = 12;
+
+            for (int n = 0; n < numberOfShots; n++)
+            {
+                EnemyStrongBlueLaser bullet = new EnemyStrongBlueLaser(Game, spriteSheet);
+                bullet.Position = Position;
+                bullet.Direction = MathFunctions.ScaleDirection(ShootObject.Position - Position);
+                bullet.Direction = MathFunctions.SpreadDir(bullet.Direction, Math.PI / 12);
+                bullet.Initialize();
+                bullet.SetSpreadSpeed(random);
+                bullet.Speed *= 0.5f;
+
+                Game.stateManager.shooterState.gameObjects.Add(bullet);
+            }
+
+
+        }
     }
 }

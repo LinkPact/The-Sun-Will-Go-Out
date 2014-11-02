@@ -433,8 +433,15 @@ namespace SpaceProject
 
         private VerticalShooterShip VerticalCreationLogic(Vector2 position, CreationFlag flag)
         {
+            VerticalShooterShip creature = RetrieveCreatureFromEnum(enemyType);
+
             if (flag != CreationFlag.VECTOR_POSITION)
-                position.Y -= 50; // Setting a startup marginal to not "pop" on the screen
+            {
+                if (!(creature is AllianceHangar))
+                    position.Y -= 50; // Setting a startup marginal to not "pop" on the screen
+                else
+                    position.Y -= 150;
+            }
 
             if (Game.Window.ClientBounds.Height > 600)
             {
@@ -463,8 +470,6 @@ namespace SpaceProject
                         throw new ArgumentException("New unhandled flag-variant is probably present");
                     }
             }
-
-            VerticalShooterShip creature = RetrieveCreatureFromEnum(enemyType);
 
             creature.PositionX = xPos;
 

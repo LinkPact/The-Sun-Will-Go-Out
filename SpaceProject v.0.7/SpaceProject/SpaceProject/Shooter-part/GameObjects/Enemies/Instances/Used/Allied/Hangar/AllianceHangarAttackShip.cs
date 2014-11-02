@@ -76,6 +76,8 @@ namespace SpaceProject
         }
 
         protected override void SecondaryShootingPattern(GameTime gameTime)
-        { }
+        {
+
+        }
     }
 }
