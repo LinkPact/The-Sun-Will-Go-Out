@@ -797,6 +797,9 @@
     <Content Include="Levels\testlevels\test_lv1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Levels\testlevels\jakob_main\m10a_OYO_lv1_v1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Levels\testlevels\jakob_main\m4_infiltration_lv1_v1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

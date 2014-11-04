@@ -60,8 +60,8 @@ namespace SpaceProject
 
             AddPrimaryModule(10, ShootingMode.Regular);
 
-            AddSecondaryModule(100, ShootingMode.Regular);
-            secondaryModule.ShootsInBatchesSetup(3, 2000);
+            AddSecondaryModule(200, ShootingMode.Regular);
+            secondaryModule.ShootsInBatchesSetup(3, 3000);
 
             movement = Movement.Line;
 
@@ -124,7 +124,7 @@ namespace SpaceProject
             laser1.PositionY = PositionY;
             laser1.Direction = MathFunctions.ScaleDirection(ShootObject.Position - Position);
             laser1.Initialize();
-            laser1.Speed *= 1.5f;
+            laser1.Speed *= 1.0f;
             laser1.Duration *= 7;
 
             Game.stateManager.shooterState.gameObjects.Add(laser1);

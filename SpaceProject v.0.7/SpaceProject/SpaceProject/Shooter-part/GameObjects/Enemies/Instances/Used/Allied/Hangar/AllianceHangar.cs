@@ -68,17 +68,17 @@ namespace SpaceProject
 
         protected override void SecondaryShootingPattern(GameTime gameTime)
         {
-            int numberOfShots = 12;
+            int numberOfShots = 8;
 
             for (int n = 0; n < numberOfShots; n++)
             {
                 EnemyStrongBlueLaser bullet = new EnemyStrongBlueLaser(Game, spriteSheet);
                 bullet.Position = Position;
                 bullet.Direction = MathFunctions.ScaleDirection(ShootObject.Position - Position);
-                bullet.Direction = MathFunctions.SpreadDir(bullet.Direction, Math.PI / 12);
+                bullet.Direction = MathFunctions.SpreadDir(bullet.Direction, Math.PI / 16);
                 bullet.Initialize();
                 bullet.SetSpreadSpeed(random);
-                bullet.Speed *= 0.5f;
+                bullet.Speed *= 0.35f;
 
                 Game.stateManager.shooterState.gameObjects.Add(bullet);
             }
