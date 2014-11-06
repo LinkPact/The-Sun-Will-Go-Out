@@ -190,10 +190,10 @@ namespace SpaceProject
 
             if (GameStateManager.previousState.Equals("IntroSecondState") || GameStateManager.previousState.Equals("StartGameState"))
             {
-                Game.stateManager.GotoStationSubScreen("Border Station", "Mission");
+                MissionManager.GetMission("Main - New First Mission").MissionState = StateOfMission.Active;
+                MissionManager.GetMission("Main - New First Mission").StartMission();
 
-                Game.stateManager.stationState.SubStateManager.MissionMenuState.SelectedMission = MissionManager.GetMission("Main - New First Mission");
-                Game.stateManager.stationState.SubStateManager.MissionMenuState.DisplayMissionIntroduction();
+                Game.stateManager.GotoStationSubScreen("Border Station", "Mission");
             }
 
             else
@@ -359,12 +359,16 @@ namespace SpaceProject
             else if (ControlManager.CheckKeypress(Keys.H))
             {
                 Game.stateManager.ChangeState("HelpScreenState");
-
             }
 
             if (StatsManager.gameMode == GameMode.develop && ControlManager.CheckKeypress(Keys.U))
             {
                 DevelopCommands();
+            }
+
+            if (ControlManager.CheckKeypress(Keys.R))
+            {
+                Game.messageBox.DisplayRealtimeMessage("Testing", 1);
             }
         }
 
@@ -409,7 +413,6 @@ namespace SpaceProject
             {
                 Game.stateManager.shooterState.BeginLevel("EscortLevel");
             }
-
         }
 
         private void DevelopCommands()

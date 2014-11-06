@@ -13,6 +13,7 @@ namespace SpaceProject
         private enum EventID
         {
             Introduction,
+            TravelingToAsteroids,
             Scouting,
             PirateAttack,
             ReturnToBorder,
@@ -21,9 +22,11 @@ namespace SpaceProject
             ReturnToBorderAgain
         }
 
-        private AllyShip ally1;
-        private AllyShip ally2;
-        private AllyShip ally3;
+        //private AllyShip ally1;
+        //private AllyShip ally2;
+        //private AllyShip ally3;
+
+        float messageTime;
 
         public Main1_NewFirstMission(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
@@ -34,23 +37,39 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            ally1 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet, ShipType.Alliance);
-            ally1.Initialize(Game.stateManager.overworldState.GetSectorX,
-                Game.stateManager.overworldState.GetStation("Border Station"));
-            ally1.AIManager = new TravelAction(ally1, Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
-            ally1.collisionEvent = new RemoveOnCollisionEvent(Game, ally1, Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
+            //ally1 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet, ShipType.Alliance);
+            //ally1.Initialize(Game.stateManager.overworldState.GetSectorX,
+            //    Game.stateManager.overworldState.GetStation("Border Station"));
+            //ally1.AIManager = new TravelAction(ally1, Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
+            //ally1.collisionEvent = new RemoveOnCollisionEvent(Game, ally1, Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
+            //
+            //ally2 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet, ShipType.Alliance);
+            //ally2.Initialize(Game.stateManager.overworldState.GetSectorX,
+            //    Game.stateManager.overworldState.GetStation("Border Station"));
+            //ally2.AIManager = new TravelAction(ally2, Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
+            //ally2.collisionEvent = new RemoveOnCollisionEvent(Game, ally2, Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
+            //
+            //ally3 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet, ShipType.Alliance);
+            //ally3.Initialize(Game.stateManager.overworldState.GetSectorX,
+            //    Game.stateManager.overworldState.GetStation("Border Station"));
+            //ally3.AIManager = new TravelAction(ally3, Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
+            //ally3.collisionEvent = new RemoveOnCollisionEvent(Game, ally3, Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
 
-            ally2 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet, ShipType.Alliance);
-            ally2.Initialize(Game.stateManager.overworldState.GetSectorX,
-                Game.stateManager.overworldState.GetStation("Border Station"));
-            ally2.AIManager = new TravelAction(ally2, Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
-            ally2.collisionEvent = new RemoveOnCollisionEvent(Game, ally2, Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
-
-            ally3 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet, ShipType.Alliance);
-            ally3.Initialize(Game.stateManager.overworldState.GetSectorX,
-                Game.stateManager.overworldState.GetStation("Border Station"));
-            ally3.AIManager = new TravelAction(ally3, Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
-            ally3.collisionEvent = new RemoveOnCollisionEvent(Game, ally3, Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"));
+            //Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+            //    Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
+            //    delegate 
+            //    { 
+            //        messageTime = StatsManager.PlayTime.GetFutureOverworldTime(4000); 
+            //    },
+            //    delegate
+            //    {
+            //        if (StatsManager.PlayTime.HasOverworldTimePassed(messageTime))
+            //        {
+            //            Game.messageBox.DisplayRealtimeMessage(GetEvent((int)EventID.TravelingToAsteroids).Text);
+            //        }
+            //    },
+            //    delegate { return StatsManager.PlayTime.HasOverworldTimePassed(messageTime); },
+            //    delegate { return false; }));
 
             Objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
@@ -65,39 +84,39 @@ namespace SpaceProject
                     null,
                     EventTextCanvas.MessageBox)));
 
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
-                "PirateAmbush", LevelStartCondition.Immediately,
-                new EventTextCapsule(
-                    GetEvent((int)EventID.ReturnToBorder),
-                    null,
-                    EventTextCanvas.MessageBox)));
+            //objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
+            //    Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
+            //    "PirateAmbush", LevelStartCondition.Immediately,
+            //    new EventTextCapsule(
+            //        GetEvent((int)EventID.ReturnToBorder),
+            //        null,
+            //        EventTextCanvas.MessageBox)));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetStation("Border Station"),
-                new EventTextCapsule(
-                    GetEvent((int)EventID.Allies),
-                    null,
-                    EventTextCanvas.BaseState)));
+            //objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
+            //    Game.stateManager.overworldState.GetStation("Border Station"),
+            //    new EventTextCapsule(
+            //        GetEvent((int)EventID.Allies),
+            //        null,
+            //        EventTextCanvas.BaseState)));
 
-            objectives.Add(new FollowObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
-                new EventTextCapsule(GetEvent((int)EventID.EngagePirates), null, EventTextCanvas.MessageBox),
-                "Mercenary ships: Follow us!",
-                Game.stateManager.overworldState.GetStation("Border Station").position + new Vector2(-100, -100),
-                new Vector2(50, 50),
-                600,
-                "Mercenary ships: Stay close to us!",
-                ally1, ally2, ally3));
+            //objectives.Add(new FollowObjective(Game, this, ObjectiveDescriptions[0],
+            //    Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
+            //    new EventTextCapsule(GetEvent((int)EventID.EngagePirates), null, EventTextCanvas.MessageBox),
+            //    "Mercenary ships: Follow us!",
+            //    Game.stateManager.overworldState.GetStation("Border Station").position + new Vector2(-100, -100),
+            //    new Vector2(50, 50),
+            //    600,
+            //    "Mercenary ships: Stay close to us!",
+            //    ally1, ally2, ally3));
 
 
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
-                "PirateAnnihilation", LevelStartCondition.Immediately,
-                new EventTextCapsule(
-                    GetEvent((int)EventID.ReturnToBorderAgain),
-                    null,
-                    EventTextCanvas.MessageBox)));
+            //objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
+            //    Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
+            //    "PirateAnnihilation", LevelStartCondition.Immediately,
+            //    new EventTextCapsule(
+            //        GetEvent((int)EventID.ReturnToBorderAgain),
+            //        null,
+            //        EventTextCanvas.MessageBox)));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2],
                 Game.stateManager.overworldState.GetStation("Border Station")));

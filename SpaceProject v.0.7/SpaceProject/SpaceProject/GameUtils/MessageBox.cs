@@ -12,6 +12,7 @@ namespace SpaceProject
     {
         Invisible,
         Message,
+        RealtimeMessage,
         MessageWithImage,
         Image,
         Tutorial,
@@ -68,6 +69,8 @@ namespace SpaceProject
         private readonly Vector2 RELATIVE_OKAY_BUTTON_POSITION_IMAGE = new Vector2(0, 179);
 
         private readonly int OPACITY = 230;
+
+        private float time;
 
         //Map related 
         private List<GameObjectOverworld> objectsOnMap;
@@ -136,6 +139,19 @@ namespace SpaceProject
 
             imageBuffer = new List<Sprite>();
             imageTriggers = new List<int>();
+        }
+
+        //Call this method, feed in a string and the message will appear on screen 
+        public void DisplayRealtimeMessage(string txt, int seconds)
+        {
+            messageState = MessageState.RealtimeMessage;
+
+            time = StatsManager.PlayTime.GetFutureOverworldTime((float)seconds / 1000);
+
+            textBuffer.Add(txt);
+
+            menuOptions.Clear();
+            UpdateButtonLabels();
         }
 
         //Call this method, feed in a string and the message will appear on screen 
@@ -436,6 +452,13 @@ namespace SpaceProject
         public void Update(GameTime gameTime)
         {
             //confirmString = "Press 'Enter' to continue...";
+
+            if (MessageState == MessageState.RealtimeMessage
+                && StatsManager.PlayTime.HasOverworldTimePassed(time))
+            {
+                textBuffer.Clear();
+                MessageState = MessageState.Invisible;
+            }
 
             if (actionStorage.Count > 0)
             {
@@ -1288,6 +1311,35 @@ namespace SpaceProject
                                                 1f);
 
                         DrawMenuOptions(spriteBatch);
+                    }
+                    break;
+
+                case MessageState.RealtimeMessage:
+                    {
+                        spriteBatch.Draw(messageCanvas.Texture,
+                             textBoxPos,
+                             messageCanvas.SourceRectangle,
+                             new Color(255, 255, 255, OPACITY),
+                             0.0f,
+                             new Vector2(messageCanvas.SourceRectangle.Value.Width / 2,
+                                         messageCanvas.SourceRectangle.Value.Height / 2),
+                             1.5f,
+                             SpriteEffects.None,
+                             0.95f);
+
+                        String text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
+                                                    textBuffer[0], (int)Math.Round(((float)messageCanvas.SourceRectangle.Value.Width), 0));
+
+                        spriteBatch.DrawString(Game.fontManager.GetFont(14),
+                                                text,
+                                                new Vector2(textPos.X,
+                                                            textPos.Y) + Game.fontManager.FontOffset,
+                                                Game.fontManager.FontColor,
+                                                0f,
+                                                Vector2.Zero,
+                                                1f,
+                                                SpriteEffects.None,
+                                                1f);
                     }
                     break;
 
