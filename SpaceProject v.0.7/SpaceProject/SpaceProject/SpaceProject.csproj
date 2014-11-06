@@ -827,6 +827,9 @@
     <None Include="Levels\testlevels\johan_main\DefendColonyBreak.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Levels\testlevels\johan_main\DefendColonyHold.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Levels\testlevels\johan_main\RebelsAsteroids.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

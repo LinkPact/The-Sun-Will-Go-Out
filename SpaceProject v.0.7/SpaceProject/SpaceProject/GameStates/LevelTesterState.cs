@@ -75,9 +75,9 @@ namespace SpaceProject
 
             johansLevelEntries.Add(new LevelTesterEntry("XDefendColony", "Johans defend colony mission", Keys.V));
             johansLevelEntries.Add(new LevelTesterEntry("P2AttackOnRebelStation", "Phase 2 - Attack on station", Keys.B));
-            johansLevelEntries.Add(new LevelTesterEntry("P2RebelAmbush", "Phase 2 - Ambush", Keys.N));
             johansLevelEntries.Add(new LevelTesterEntry("johan_main\\RebelsAsteroids", "Main 1 - Rebels in Asteroids", Keys.Z));
             johansLevelEntries.Add(new LevelTesterEntry("johan_main\\DefendColonyBreak", "Main 3 - Break the Rebels defence", Keys.X));
+            johansLevelEntries.Add(new LevelTesterEntry("johan_main\\DefendColonyHold", "Main 3 - Hold against Rebels", Keys.C));
 
             chosenLevel = jakobsLevelEntries[0].GetPath(); ;
         }
