@@ -31,6 +31,7 @@ namespace SpaceProject
         private Sprite messageCanvas;
         private Sprite messageWithImageCanvas;
         private Sprite imageCanvas;
+        private Sprite realTimeMessageCanvas;
         private Sprite buttonUnselected;
         private Sprite buttonSelected;
         //private SpriteFont font;
@@ -71,6 +72,7 @@ namespace SpaceProject
         private readonly int OPACITY = 230;
 
         private float time;
+        private float realTimeMessageDelay;
 
         //Map related 
         private List<GameObjectOverworld> objectsOnMap;
@@ -112,6 +114,7 @@ namespace SpaceProject
             messageCanvas = SpriteSheet.GetSubSprite(new Rectangle(0, 56, 269, 184));
             messageWithImageCanvas = SpriteSheet.GetSubSprite(new Rectangle(0, 245, 400, 400));
             imageCanvas = SpriteSheet.GetSubSprite(new Rectangle(405, 245, 400, 257));
+            realTimeMessageCanvas = SpriteSheet.GetSubSprite(new Rectangle(354, 0, 400, 128));
 
             buttonUnselected = SpriteSheet.GetSubSprite(new Rectangle(112, 0, 66, 21));
             buttonSelected = SpriteSheet.GetSubSprite(new Rectangle(180, 0, 66, 21));
@@ -141,17 +144,26 @@ namespace SpaceProject
             imageTriggers = new List<int>();
         }
 
-        //Call this method, feed in a string and the message will appear on screen 
-        public void DisplayRealtimeMessage(string txt, int seconds)
+        public void DisplayRealtimeMessage(string txt, float milliseconds)
         {
             messageState = MessageState.RealtimeMessage;
 
-            time = StatsManager.PlayTime.GetFutureOverworldTime((float)seconds / 1000);
+            time = StatsManager.PlayTime.GetFutureOverworldTime(milliseconds);
 
             textBuffer.Add(txt);
 
             menuOptions.Clear();
             UpdateButtonLabels();
+        }
+
+        public void DisplayRealtimeMessage(List<string> txtList, float milliseconds)
+        {
+            foreach (string str in txtList)
+            {
+                DisplayRealtimeMessage(str, milliseconds);
+            }
+
+            realTimeMessageDelay = milliseconds;
         }
 
         //Call this method, feed in a string and the message will appear on screen 
@@ -456,8 +468,7 @@ namespace SpaceProject
             if (MessageState == MessageState.RealtimeMessage
                 && StatsManager.PlayTime.HasOverworldTimePassed(time))
             {
-                textBuffer.Clear();
-                MessageState = MessageState.Invisible;
+                HideMessage();
             }
 
             if (actionStorage.Count > 0)
@@ -1026,6 +1037,22 @@ namespace SpaceProject
                 }
             }
 
+            else if (messageState == MessageState.RealtimeMessage)
+            {
+                textBuffer.Remove(textBuffer[0]);
+
+                if (textBuffer.Count <= 0)
+                {
+                    MessageState = MessageState.Invisible;
+                    realTimeMessageDelay = 0;
+                }
+
+                else
+                {
+                    time = StatsManager.PlayTime.GetFutureOverworldTime(realTimeMessageDelay);
+                }
+            }
+
             else if (messageState == MessageState.MessageWithImage && tempTimer < 0)
             {
                 textBuffer.RemoveAt(0);
@@ -1316,19 +1343,23 @@ namespace SpaceProject
 
                 case MessageState.RealtimeMessage:
                     {
-                        spriteBatch.Draw(messageCanvas.Texture,
+                        textBoxPos = new Vector2(Game.camera.cameraPos.X, Game.camera.cameraPos.Y + Game.Window.ClientBounds.Height / 4);
+                        textPos = new Vector2(textBoxPos.X - realTimeMessageCanvas.Width / 2 + 30, 
+                            textBoxPos.Y - realTimeMessageCanvas.Height / 2 + 30);
+
+                        spriteBatch.Draw(realTimeMessageCanvas.Texture,
                              textBoxPos,
-                             messageCanvas.SourceRectangle,
+                             realTimeMessageCanvas.SourceRectangle,
                              new Color(255, 255, 255, OPACITY),
                              0.0f,
-                             new Vector2(messageCanvas.SourceRectangle.Value.Width / 2,
-                                         messageCanvas.SourceRectangle.Value.Height / 2),
-                             1.5f,
+                             new Vector2(realTimeMessageCanvas.SourceRectangle.Value.Width / 2,
+                                         realTimeMessageCanvas.SourceRectangle.Value.Height / 2),
+                             1.0f,
                              SpriteEffects.None,
                              0.95f);
 
                         String text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
-                                                    textBuffer[0], (int)Math.Round(((float)messageCanvas.SourceRectangle.Value.Width), 0));
+                                                    textBuffer[0], (int)Math.Round(((float)realTimeMessageCanvas.SourceRectangle.Value.Width), 0));
 
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                 text,

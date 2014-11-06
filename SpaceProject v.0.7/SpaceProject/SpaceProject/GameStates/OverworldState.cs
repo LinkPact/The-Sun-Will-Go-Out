@@ -368,7 +368,7 @@ namespace SpaceProject
 
             if (ControlManager.CheckKeypress(Keys.R))
             {
-                Game.messageBox.DisplayRealtimeMessage("Testing", 1);
+                Game.messageBox.DisplayRealtimeMessage(new List<string> { "Testing", "Testing 2", "Testing 3" }, 2000);
             }
         }
 
