@@ -821,6 +821,9 @@
     <None Include="Levels\testlevels\jakob_main\m7_infiltration_lv1_v1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Levels\testlevels\johan_main\RebelsAsteroids.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Levels\testlevels\P2AttackOnRebelStation.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
