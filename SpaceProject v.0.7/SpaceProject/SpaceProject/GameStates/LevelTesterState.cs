@@ -33,6 +33,9 @@ namespace SpaceProject
         private List<LevelTesterEntry> dannesLevelEntries = new List<LevelTesterEntry>();
         private List<LevelTesterEntry> johansLevelEntries = new List<LevelTesterEntry>();
 
+        private float lifeFactor;
+        private float initialLife;
+
         private List<LevelTesterEntry> GetAllEntries()
         {
             List<LevelTesterEntry> combined = new List<LevelTesterEntry>();
@@ -49,7 +52,10 @@ namespace SpaceProject
         public LevelTesterState(Game1 game, string name) :
             base(game, name)
         {
-            smallFont = game.Content.Load<SpriteFont>("Fonts/Iceland_14");
+            lifeFactor = 1;
+            initialLife = StatsManager.Armor();
+
+            smallFont = game.Content.Load<SpriteFont>("Fonts/Iceland_12");
 
             display1.Add("Press Enter to start chosen level");
             display1.Add("Press Escape to return to main menu");
@@ -64,14 +70,15 @@ namespace SpaceProject
             jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m7_infiltration_lv1_v1", "m7_1", Keys.J));
             jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10a_OYO_lv1_v1", "m10a_1", Keys.K));
             jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10a_OYO_lv2_v1", "m10a_2", Keys.L));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10b_rebels_lv1_v1", "m10b_1", Keys.Q));
 
-            jakobsLevelEntries.Add(new LevelTesterEntry("P3_Science_1", "Phase 3 scientist-level", Keys.Q));
-            jakobsLevelEntries.Add(new LevelTesterEntry("P4_rebel1", "Phase 4 one rebel scout", Keys.W));
-            jakobsLevelEntries.Add(new LevelTesterEntry("P4_rebel2", "Phase 4 other rebel scout", Keys.E));
-            jakobsLevelEntries.Add(new LevelTesterEntry("P4_hunted1", "Phase 4 hunted to Soelara1", Keys.R));
-            jakobsLevelEntries.Add(new LevelTesterEntry("P4_hunted2", "Phase 4 hunted to Soelara2", Keys.T));
-            jakobsLevelEntries.Add(new LevelTesterEntry("P4_hunted3", "Phase 4 hunted to Soelara3", Keys.Y));
-            jakobsLevelEntries.Add(new LevelTesterEntry("P4_recognizedByAlliance", "Phase 4 Fortrun guard", Keys.U));
+            //jakobsLevelEntries.Add(new LevelTesterEntry("P3_Science_1", "Phase 3 scientist-level", Keys.Q));
+            //jakobsLevelEntries.Add(new LevelTesterEntry("P4_rebel1", "Phase 4 one rebel scout", Keys.W));
+            //jakobsLevelEntries.Add(new LevelTesterEntry("P4_rebel2", "Phase 4 other rebel scout", Keys.E));
+            //jakobsLevelEntries.Add(new LevelTesterEntry("P4_hunted1", "Phase 4 hunted to Soelara1", Keys.R));
+            //jakobsLevelEntries.Add(new LevelTesterEntry("P4_hunted2", "Phase 4 hunted to Soelara2", Keys.T));
+            //jakobsLevelEntries.Add(new LevelTesterEntry("P4_hunted3", "Phase 4 hunted to Soelara3", Keys.Y));
+            //jakobsLevelEntries.Add(new LevelTesterEntry("P4_recognizedByAlliance", "Phase 4 Fortrun guard", Keys.U));
 
             johansLevelEntries.Add(new LevelTesterEntry("XDefendColony", "Johans defend colony mission", Keys.V));
             johansLevelEntries.Add(new LevelTesterEntry("P2AttackOnRebelStation", "Phase 2 - Attack on station", Keys.B));
@@ -106,6 +113,7 @@ namespace SpaceProject
             ApplyEquipments();
         }
 
+        float lifeFactorInterval = 0.5f;
         private void UpdateControls()
         {
             if (ControlManager.CheckKeypress(Keys.Enter))
@@ -113,13 +121,30 @@ namespace SpaceProject
                 int startTime = 0;
 
                 Game.stateManager.shooterState.SetupTestLevelRun(chosenLevel, startTime);
+                StatsManager.SetCustomLife_DEVELOPONLY(lifeFactor * initialLife);
                 Game.stateManager.shooterState.BeginLevel("testRun");
             }
 
             if (ControlManager.CheckKeypress(Keys.Escape))
             {
                 Game.stateManager.ChangeState("MainMenuState");
-            }        
+            }
+
+            if (ControlManager.CheckKeypress(Keys.Up))
+            {
+                if (lifeFactor < lifeFactorInterval)
+                    lifeFactor = lifeFactorInterval;
+                else
+                    lifeFactor += lifeFactorInterval;
+            }
+
+            if (ControlManager.CheckKeypress(Keys.Down))
+            {
+                if (lifeFactor > lifeFactorInterval)
+                    lifeFactor -= lifeFactorInterval;
+                else
+                    lifeFactor = 0.01f;
+            }
         }
 
         private void StartLevel()
@@ -193,7 +218,7 @@ namespace SpaceProject
             float xLeft = 50;
             float xRight = 450;
             float yBase = 50;
-            float yInterval = 25;
+            float yInterval = 20;
 
             // Left column
             for (int n = 0; n < display1.Count; n++)
@@ -202,6 +227,8 @@ namespace SpaceProject
             }
 
             spriteBatch.DrawString(smallFont, "Equip: " + equipInfo, new Vector2(xLeft, yBase + (display1.Count + 2) * yInterval), Color.Green);
+
+            spriteBatch.DrawString(smallFont, "Lifefactor (up/down arrow): " + lifeFactor + "x", new Vector2(xLeft, yBase + (display1.Count + 8) * yInterval), Color.Red);
 
             // Right column
             int posCounter = 0;

@@ -803,6 +803,9 @@
     <None Include="Levels\testlevels\jakob_main\m10a_OYO_lv2_v1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Levels\testlevels\jakob_main\m10b_rebels_lv1_v1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Levels\testlevels\jakob_main\m4_infiltration_lv1_v1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -154,8 +154,15 @@ namespace SpaceProject
 
         public static void ReduceOverwordHealthToVerticalHealth(PlayerVerticalShooter player)
         {
-            
             plating.CurrentOverworldHealth = player.HP;
+        }
+
+        // Sets the ships armor to an arbitrary number
+        // ONLY TO BE USED FOR STRICT DEVELOP PURPOSES
+        public static void SetCustomLife_DEVELOPONLY(float customLife)
+        {
+            plating.Armor = customLife;
+            plating.CurrentOverworldHealth = Armor();
         }
         
         public static void RepairShip(float repairvalue)
