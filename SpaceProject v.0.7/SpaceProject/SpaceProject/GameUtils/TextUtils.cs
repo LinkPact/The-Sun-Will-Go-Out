@@ -46,6 +46,46 @@ namespace SpaceProject
             return tempTextBox;
         }
 
+        /*
+         *  ScrollText() 
+         * 
+         *  Returns the specified string with progressivly more characters each time the
+         *  function is called. Use this before drawing string to the screen with DrawString().
+         */
+        private static Dictionary<string, int> strings = new Dictionary<string, int>();
+        private static readonly int appendSpeed = 1;
+        public static string ScrollText(string str)
+        {
+            StringBuilder strBuilder = new StringBuilder("");
+            int lastStrIndex;
+            int i;
+
+            if (!strings.Keys.Contains<string>(str))
+            {
+                strings.Add(str, 0);
+                lastStrIndex = 1;
+            }
+            else
+            {
+                strings.TryGetValue(str, out lastStrIndex);
+            }
+
+            for (i = 0; i + appendSpeed <= str.Length && i + appendSpeed <= lastStrIndex; i += appendSpeed)
+            {
+                strBuilder.Append(str.Substring(i, appendSpeed));
+            }
+
+            if (str.Length - strBuilder.Length < appendSpeed)
+            {
+                strBuilder.Append(str.Substring(i, str.Length - strBuilder.Length));
+            }
+
+            lastStrIndex += appendSpeed;
+            strings[str] = lastStrIndex;
+
+            return strBuilder.ToString();
+        }
+
         //Method for creating a TextBox with predefined text
         public static TextBox CreateTextBox(SpriteFont font,
                                             Rectangle textRect,

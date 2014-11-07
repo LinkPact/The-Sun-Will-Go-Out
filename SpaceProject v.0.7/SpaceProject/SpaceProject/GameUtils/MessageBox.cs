@@ -1324,7 +1324,7 @@ namespace SpaceProject
                              0.95f);
 
                         String text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
-                                                    textBuffer[0], (int)Math.Round(((float)messageCanvas.SourceRectangle.Value.Width), 0));
+                                                    TextUtils.ScrollText(textBuffer[0]), (int)Math.Round(((float)messageCanvas.SourceRectangle.Value.Width), 0));
 
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                 text,
@@ -1359,7 +1359,7 @@ namespace SpaceProject
                              0.95f);
 
                         String text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
-                                                    textBuffer[0], (int)Math.Round(((float)realTimeMessageCanvas.SourceRectangle.Value.Width), 0));
+                                                    TextUtils.ScrollText(textBuffer[0]), (int)Math.Round(((float)realTimeMessageCanvas.SourceRectangle.Value.Width), 0));
 
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                 text,
@@ -1405,7 +1405,7 @@ namespace SpaceProject
 
 
                         String text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
-                                                    textBuffer[0], (int)Math.Round(((float)messageWithImageCanvas.SourceRectangle.Value.Width - 60), 0));
+                                                    TextUtils.ScrollText(textBuffer[0]), (int)Math.Round(((float)messageWithImageCanvas.SourceRectangle.Value.Width - 60), 0));
 
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                 text,
@@ -1469,7 +1469,7 @@ namespace SpaceProject
                              0.95f);
 
                         String text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
-                                                    textBuffer[0], (int)Math.Round((messageCanvas.SourceRectangle.Value.Width * 1.45) - 25, 0));
+                                                    TextUtils.ScrollText(textBuffer[0]), (int)Math.Round((messageCanvas.SourceRectangle.Value.Width * 1.45) - 25, 0));
 
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                 text,
