@@ -10,7 +10,8 @@ namespace SpaceProject
     public class FighterAlly : AlliedShip
     {
         #region Standard values
-        private const float STANDARD_HP = 1000;
+        private const float STANDARD_HP = 5000; // Temporary boost to be able to handle meteor levels
+        //private const float STANDARD_HP = 1000;
         private const float STANDARD_SIGHTRANGE = 400;
         private const float STANDARD_SHOOTINGDELAY = 480;
         private const float STANDARD_MAXSPEED = 0.72f;
