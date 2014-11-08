@@ -12,7 +12,7 @@ namespace SpaceProject
     {
         private List<string> options;
         private List<string> helpText;
-        private List<TutorialImage> helpImages;
+        private Dictionary<string, TutorialImage> helpImages;
 
         private int cursorIndex;
 
@@ -28,7 +28,7 @@ namespace SpaceProject
 
             options = new List<string>();
             helpText = new List<string>();
-            helpImages = new List<TutorialImage>();
+            helpImages = new Dictionary<string, TutorialImage>();
 
             options.Add("Overworld Controls");
             options.Add("Shooter Controls");
@@ -57,9 +57,14 @@ namespace SpaceProject
             helpText.Add("- In order to buy or sell items you first mark the desired item using 'Enter' or 'Left Ctrl'. A menu will then pop up with options for what you can do with the item, for example buy or sell. When you are finished, click 'Escape' or 'Left Shift' to exit the shop.\n\n- You are also able to buy fuel, which is necessary to move in space. You start out with a filled tank, so you will manage quite long before needing to refill.");
             helpText.Add("The inventory allows you to access the equipment you buy or gather during your quests. \n\n- Use 'I' to access.\n\n Your ship have several equipment-slots.\n- Two primary weapon slots. \n- One Secondary weapon slot.\n- One Shield slot.\n- One Energy cell slot.\n\n To change your equipment select the slot you wish to equip on with 'Enter' or 'Left Ctrl' and select your new item from the list. Confirm with 'Enter' or 'Left Ctrl'.\n\nIt is also possible to trash items from the inventory by selecting them with 'Enter' or 'Left Ctrl' and moving them to the trash slot. ");
 
-            helpImages.Add(TutorialImage.OverworldControls);
-            helpImages.Add(TutorialImage.CombatControls);
-            helpImages.Add(TutorialImage.MenuControls);
+            helpImages.Add("overworld controls", TutorialImage.OverworldControls);
+            helpImages.Add("shooter controls", TutorialImage.CombatControls);
+            helpImages.Add("menu controls", TutorialImage.MenuControls);
+            helpImages.Add("overworld", TutorialImage.Coordinates);
+            helpImages.Add("combat", TutorialImage.CombatBars);
+            helpImages.Add("stations", TutorialImage.Stations);
+            helpImages.Add("planets & colonies", TutorialImage.Planets);
+            helpImages.Add("beacons", TutorialImage.Beacons);
         }
 
         public override void OnEnter()
@@ -122,6 +127,8 @@ namespace SpaceProject
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            Sprite sprite;
+
             base.Draw(spriteBatch);
 
             for (int i = 0; i < options.Count; i++)
@@ -141,10 +148,22 @@ namespace SpaceProject
 
             switch(options[cursorIndex].ToLower())
             {
-                case "overworld controls":
-                case "shooter controls":
-                case "menu controls":
-                    Sprite sprite = Game.tutorialManager.GetImageFromEnum(helpImages[cursorIndex]);
+                case "health":
+                case "missions":
+                case "shop":
+                case "inventory":
+                    spriteBatch.DrawString(Game.fontManager.GetFont(14),
+                        TextUtils.WordWrap(Game.fontManager.GetFont(14), helpText[cursorIndex], 390),
+                        new Vector2(Game.ScreenCenter.X, 10), Color.White);
+                    break;
+
+                case "back":
+                    break;
+
+                default:
+                    TutorialImage tutImg;
+                    helpImages.TryGetValue(options[cursorIndex].ToLower(), out tutImg);
+                    sprite = Game.tutorialManager.GetImageFromEnum(tutImg);
 
                     spriteBatch.Draw(sprite.Texture,
                         new Vector2(Game.ScreenCenter.X, 10),
@@ -159,15 +178,6 @@ namespace SpaceProject
                     spriteBatch.DrawString(Game.fontManager.GetFont(14),
                         TextUtils.WordWrap(Game.fontManager.GetFont(14), helpText[cursorIndex], 390),
                         new Vector2(Game.ScreenCenter.X, 210), Color.White);
-                    break;
-
-                case "back":
-                    break;
-
-                default:
-                    spriteBatch.DrawString(Game.fontManager.GetFont(14),
-                        TextUtils.WordWrap(Game.fontManager.GetFont(14), helpText[cursorIndex], 390),
-                        new Vector2(Game.ScreenCenter.X, 10), Color.White);
                     break;
             }
         }

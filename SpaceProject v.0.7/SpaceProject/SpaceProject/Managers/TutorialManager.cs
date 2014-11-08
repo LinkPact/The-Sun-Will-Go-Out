@@ -17,7 +17,10 @@ namespace SpaceProject
         CombatControls,
         MenuControls,
         CombatBars,
-        Coordinates
+        Coordinates,
+        Stations,
+        Planets,
+        Beacons
     }
 
     public class TutorialManager
@@ -59,6 +62,9 @@ namespace SpaceProject
             tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(735, 1, 366, 197)));
             tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(1, 199, 366, 197)));
             tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(368, 199, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(735, 199, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(1, 397, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(368, 397, 366, 197)));
 
             hasEnteredSectorX = false;
             hasEnteredStation = false;
@@ -320,6 +326,15 @@ namespace SpaceProject
 
                 case TutorialImage.Coordinates:
                     return tutorialImages[4];
+
+                case TutorialImage.Stations:
+                    return tutorialImages[5];
+
+                case TutorialImage.Planets:
+                    return tutorialImages[6];
+
+                case TutorialImage.Beacons:
+                    return tutorialImages[7];
 
                 default:
                     throw new ArgumentException("Image ID not recognized.");
