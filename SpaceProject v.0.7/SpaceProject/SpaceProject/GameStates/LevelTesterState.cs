@@ -61,7 +61,7 @@ namespace SpaceProject
             display1.Add("Press Escape to return to main menu");
             display1.Add("Use number keys (0-9) to switch equipment");
 
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m4_infiltration_lv1_v1", "m4_1", Keys.A));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m4_infiltration_lv1_v1", "m4_1", Keys.A, standardEquip: 8));
             jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m4_infiltration_lv2_v1", "m4_2", Keys.S));
             jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m5_retribution_lv1_v1", "m5_1", Keys.D));
             jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m5_retribution_lv2_v1", "m5_2", Keys.F));
@@ -112,7 +112,7 @@ namespace SpaceProject
             base.Update(gameTime);
 
             UpdateControls();
-            StartLevel();
+            ChooseLevel();
             ApplyEquipments();
         }
 
@@ -150,8 +150,10 @@ namespace SpaceProject
             }
         }
 
-        private void StartLevel()
+        private void ChooseLevel()
         {
+            // Checks if one of the level-keys is pressed. If so, assign that as chosenLevel
+
             List<LevelTesterEntry> combined = GetAllEntries();
 
             foreach (LevelTesterEntry entry in combined)
@@ -161,8 +163,21 @@ namespace SpaceProject
                 if (ControlManager.CheckKeypress(entryKey))
                 {
                     chosenLevel = entry.GetPath();
+                    CheckStandardEquip(entry);
                     break;
                 }
+            }
+        }
+
+        private void CheckStandardEquip(LevelTesterEntry entry)
+        {
+            // Evaluate if chosen entry has standard equipment
+            // If so, assign it to standard equip
+
+            int standardEq = entry.GetStandardEquip();
+            if (standardEq != -1)
+            {
+                equipInfo = ShipInventoryManager.MapCreatorEquip(standardEq);
             }
         }
 
@@ -274,12 +289,14 @@ namespace SpaceProject
             private String filepath;
             private String description;
             private Keys entryKey;
+            private int standardEquip;
 
-            public LevelTesterEntry(String filepath, String description, Keys entryKey)
+            public LevelTesterEntry(String filepath, String description, Keys entryKey, int standardEquip = -1)
             {
                 this.filepath = filepath;
                 this.description = description;
                 this.entryKey = entryKey;
+                this.standardEquip = standardEquip;
             }
 
             public String GetPath()
@@ -295,6 +312,11 @@ namespace SpaceProject
             public String GetDescription()
             {
                 return filepath + ", " + description + ", " + entryKey.ToString();
+            }
+
+            public int GetStandardEquip()
+            {
+                return standardEquip;
             }
         }
     }
