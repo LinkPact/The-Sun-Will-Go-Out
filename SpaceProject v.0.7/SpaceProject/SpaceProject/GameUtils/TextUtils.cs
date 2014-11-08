@@ -9,6 +9,11 @@ namespace SpaceProject
 {
     public static class TextUtils
     {
+        // Text scroll variables
+        private static Dictionary<string, string> stringBuffer = new Dictionary<string, string>();
+        private static List<string> garbageStringKeys = new List<string>();
+        private static readonly int CHARS_TO_APPEND = 1;
+
         public static string WordWrap(SpriteFont font, string txt, int width)
         {
             string line = string.Empty;
@@ -52,38 +57,62 @@ namespace SpaceProject
          *  Returns the specified string with progressivly more characters each time the
          *  function is called. Use this before drawing string to the screen with DrawString().
          */
-        private static Dictionary<string, int> strings = new Dictionary<string, int>();
-        private static readonly int appendSpeed = 1;
         public static string ScrollText(string str)
         {
-            StringBuilder strBuilder = new StringBuilder("");
-            int lastStrIndex;
-            int i;
+            StringBuilder strBuilder;
+            string temp = "";
 
-            if (!strings.Keys.Contains<string>(str))
+            if (!stringBuffer.Keys.Contains<string>(str))
             {
-                strings.Add(str, 0);
-                lastStrIndex = 1;
+                stringBuffer.Add(str, "");
             }
             else
             {
-                strings.TryGetValue(str, out lastStrIndex);
+                stringBuffer.TryGetValue(str, out temp);
             }
 
-            for (i = 0; i + appendSpeed <= str.Length && i + appendSpeed <= lastStrIndex; i += appendSpeed)
+            strBuilder = new StringBuilder(temp);
+
+            // Checks if there's room to add characters
+            if (str.Length - strBuilder.Length >= CHARS_TO_APPEND)
             {
-                strBuilder.Append(str.Substring(i, appendSpeed));
+                strBuilder.Append(str.Substring(strBuilder.Length, CHARS_TO_APPEND));
             }
 
-            if (str.Length - strBuilder.Length < appendSpeed)
+            // Adds any "left over" characters
+            if (str.Length - strBuilder.Length < CHARS_TO_APPEND)
             {
-                strBuilder.Append(str.Substring(i, str.Length - strBuilder.Length));
+                strBuilder.Append(str.Substring(strBuilder.Length, str.Length - strBuilder.Length));
             }
 
-            lastStrIndex += appendSpeed;
-            strings[str] = lastStrIndex;
+            temp = strBuilder.ToString();
 
-            return strBuilder.ToString();
+            if (str.Length - strBuilder.Length <= 0)
+            {
+                garbageStringKeys.Add(str);
+            }
+            else
+            {
+                stringBuffer[str] = temp;
+            }
+
+            return temp;
+        }
+
+        /*
+         *  RefreshTextScrollBuffer()
+         *  
+         *  Removes finished strings from ScrollText()'s buffer. 
+         *  Should be called anytime a scrolling message is cleared from the screen.
+         */
+        public static void RefreshTextScrollBuffer()
+        {
+            foreach (string str in garbageStringKeys)
+            {
+                stringBuffer.Remove(str);
+            }
+
+            garbageStringKeys.Clear();
         }
 
         //Method for creating a TextBox with predefined text

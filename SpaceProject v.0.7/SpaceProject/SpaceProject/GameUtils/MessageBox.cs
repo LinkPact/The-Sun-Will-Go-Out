@@ -1025,6 +1025,8 @@ namespace SpaceProject
         //Called when atempting to go back
         private void HideMessage()
         {
+            TextUtils.RefreshTextScrollBuffer();
+
             //Makes the messagebox invisible when pressing the actionkey if it's displaying a message
             if (messageState == MessageState.Message && tempTimer < 0)
             {
