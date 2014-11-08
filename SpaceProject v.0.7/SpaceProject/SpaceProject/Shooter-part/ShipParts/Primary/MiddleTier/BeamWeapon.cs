@@ -36,7 +36,7 @@ namespace SpaceProject
             energyCostPerSecond = 0.15f;
             delay = 10;
             Weight = 200;
-            damage = 6.0f;
+            damage = 8.0f;
 
             Value = 700;
             beamModule = new FriendlyBeamModule(Game, spriteSheet, damage);

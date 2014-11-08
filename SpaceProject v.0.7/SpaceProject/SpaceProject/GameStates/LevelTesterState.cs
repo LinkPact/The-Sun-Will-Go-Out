@@ -72,6 +72,8 @@ namespace SpaceProject
             jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10a_OYO_lv2_v1", "m10a_2", Keys.L));
             jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10b_rebels_lv1_v1", "m10b_1", Keys.Q));
             jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10b_rebels_lv2_v1", "m10b_2", Keys.W));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10c_alliance_lv1_v1", "m10c_1", Keys.E));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10c_alliance_lv2_v1", "m10c_2", Keys.R));
 
             //jakobsLevelEntries.Add(new LevelTesterEntry("P3_Science_1", "Phase 3 scientist-level", Keys.Q));
             //jakobsLevelEntries.Add(new LevelTesterEntry("P4_rebel1", "Phase 4 one rebel scout", Keys.W));

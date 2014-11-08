@@ -985,6 +985,7 @@ namespace SpaceProject
                         equippedPrimaryWeapons[0] = new ProximityLaserWeapon(Game);
                         equippedPrimaryWeapons[1] = new AdvancedLaserWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
+                        equippedEnergyCell.Recharge *= 1.4f;
                         break;
                     }
                 case 9:
@@ -992,6 +993,7 @@ namespace SpaceProject
                         equippedPrimaryWeapons[0] = new AdvancedLaserWeapon(Game);
                         equippedPrimaryWeapons[1] = new DrillBeamWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
+                        equippedEnergyCell.Recharge *= 1.4f;
                         break;
                     }
             }
