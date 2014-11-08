@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
@@ -57,7 +58,7 @@ namespace SpaceProject
          *  Returns the specified string with progressivly more characters each time the
          *  function is called. Use this before drawing string to the screen with DrawString().
          */
-        public static string ScrollText(string str)
+        public static string ScrollText(string str, bool flush, out bool finished)
         {
             StringBuilder strBuilder;
             string temp = "";
@@ -72,6 +73,14 @@ namespace SpaceProject
             }
 
             strBuilder = new StringBuilder(temp);
+
+            if (flush)
+            {
+                strBuilder.Append(str.Substring(strBuilder.Length, str.Length - strBuilder.Length));
+                finished = true;
+                garbageStringKeys.Add(str);
+                return strBuilder.ToString();
+            }
 
             // Checks if there's room to add characters
             if (str.Length - strBuilder.Length >= CHARS_TO_APPEND)
@@ -90,10 +99,12 @@ namespace SpaceProject
             if (str.Length - strBuilder.Length <= 0)
             {
                 garbageStringKeys.Add(str);
+                finished = true;
             }
             else
             {
                 stringBuffer[str] = temp;
+                finished = false;
             }
 
             return temp;

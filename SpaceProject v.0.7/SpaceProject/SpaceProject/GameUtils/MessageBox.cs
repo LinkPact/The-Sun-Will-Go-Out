@@ -74,6 +74,9 @@ namespace SpaceProject
         private float time;
         private float realTimeMessageDelay;
 
+        bool scrollingFinished;
+        bool flushScrollText;
+
         //Map related 
         private List<GameObjectOverworld> objectsOnMap;
         private float scaleX;
@@ -964,7 +967,9 @@ namespace SpaceProject
                 || ControlManager.CheckKeypress(Keys.Enter))
                 || (GameStateManager.currentState == "MainMenuState" && ControlManager.IsLeftMouseButtonClicked() && messageState == MessageState.Message)
                 && tempTimer <= 0))
+            {
                 ButtonActions();
+            }
         }
 
         private void MouseControls()
@@ -1028,7 +1033,8 @@ namespace SpaceProject
             TextUtils.RefreshTextScrollBuffer();
 
             //Makes the messagebox invisible when pressing the actionkey if it's displaying a message
-            if (messageState == MessageState.Message && tempTimer < 0)
+            if (scrollingFinished 
+                && messageState == MessageState.Message && tempTimer < 0)
             {
                 textBuffer.Remove(textBuffer[0]);
 
@@ -1037,6 +1043,9 @@ namespace SpaceProject
                     Game1.Paused = false;
                     messageState = MessageState.Invisible;
                 }
+
+                scrollingFinished = false;
+                flushScrollText = false;
             }
 
             else if (messageState == MessageState.RealtimeMessage)
@@ -1055,7 +1064,8 @@ namespace SpaceProject
                 }
             }
 
-            else if (messageState == MessageState.MessageWithImage && tempTimer < 0)
+            else if (scrollingFinished
+                && messageState == MessageState.MessageWithImage && tempTimer < 0)
             {
                 textBuffer.RemoveAt(0);
 
@@ -1076,6 +1086,9 @@ namespace SpaceProject
                         imageBuffer.RemoveAt(0);
                     }
                 }
+
+                scrollingFinished = false;
+                flushScrollText = false;
             }
 
             else if (messageState == MessageState.Image
@@ -1113,6 +1126,12 @@ namespace SpaceProject
                 || messageState == MessageState.Image)
                 && tempTimer < 0)
             {
+                if (messageState != MessageState.Image
+                    && !scrollingFinished)
+                {
+                    flushScrollText = true;
+                }
+
                 if (useDisableTutorialButton)
                 {
                     switch (cursorIndex)
@@ -1279,6 +1298,8 @@ namespace SpaceProject
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            String text;
+
             if (GameStateManager.currentState == "OverworldState")
             {
                 textBoxPos = new Vector2(Game.camera.cameraPos.X, Game.camera.cameraPos.Y);
@@ -1325,8 +1346,9 @@ namespace SpaceProject
                              SpriteEffects.None,
                              0.95f);
 
-                        String text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
-                                                    TextUtils.ScrollText(textBuffer[0]), (int)Math.Round(((float)messageCanvas.SourceRectangle.Value.Width), 0));
+                        text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
+                                                    TextUtils.ScrollText(textBuffer[0], flushScrollText, out scrollingFinished),
+                                                    (int)Math.Round(((float)messageCanvas.SourceRectangle.Value.Width), 0));
 
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                 text,
@@ -1360,8 +1382,9 @@ namespace SpaceProject
                              SpriteEffects.None,
                              0.95f);
 
-                        String text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
-                                                    TextUtils.ScrollText(textBuffer[0]), (int)Math.Round(((float)realTimeMessageCanvas.SourceRectangle.Value.Width), 0));
+                        text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
+                                                    TextUtils.ScrollText(textBuffer[0], flushScrollText, out scrollingFinished),
+                                                    (int)Math.Round(((float)realTimeMessageCanvas.SourceRectangle.Value.Width), 0));
 
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                 text,
@@ -1406,8 +1429,9 @@ namespace SpaceProject
                             0.96f);
 
 
-                        String text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
-                                                    TextUtils.ScrollText(textBuffer[0]), (int)Math.Round(((float)messageWithImageCanvas.SourceRectangle.Value.Width - 60), 0));
+                        text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
+                                                    TextUtils.ScrollText(textBuffer[0], flushScrollText, out scrollingFinished),
+                                                    (int)Math.Round(((float)messageWithImageCanvas.SourceRectangle.Value.Width - 60), 0));
 
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                 text,
@@ -1470,8 +1494,9 @@ namespace SpaceProject
                              SpriteEffects.None,
                              0.95f);
 
-                        String text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
-                                                    TextUtils.ScrollText(textBuffer[0]), (int)Math.Round((messageCanvas.SourceRectangle.Value.Width * 1.45) - 25, 0));
+                        text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
+                                                    TextUtils.ScrollText(textBuffer[0], flushScrollText, out scrollingFinished),
+                                                    (int)Math.Round((messageCanvas.SourceRectangle.Value.Width * 1.45) - 25, 0));
 
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                 text,
