@@ -9,10 +9,10 @@ namespace SpaceProject
 {
     public enum CreatureShieldCapacity
     { 
-        low         = 200,
-        medium      = 500,
+        low         = 150,
+        medium      = 300,
         high        = 800,
-        extreme     = 1500
+        extreme     = 1600
     }
 
     public enum CreatureShieldRegeneration

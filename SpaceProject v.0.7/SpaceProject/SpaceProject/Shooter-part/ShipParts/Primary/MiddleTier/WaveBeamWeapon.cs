@@ -31,7 +31,7 @@ namespace SpaceProject
             Name = "Wave Beam";
             Kind = "Primary";
             energyCostPerSecond = 10f;
-            delay = 60;
+            delay = 40;
 
             Weight = 130;
 
@@ -44,7 +44,7 @@ namespace SpaceProject
         
             Value = 400;
 
-            int shotsPerBatch = 2;
+            int shotsPerBatch = 3;
             int timeBetweenBatches = 250;
 
             ShootsInBatchesSetup(shotsPerBatch, timeBetweenBatches);

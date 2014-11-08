@@ -945,7 +945,7 @@ namespace SpaceProject
                 case 3:
                     {
                         equippedPrimaryWeapons[0] = new SpreadBulletWeapon(Game);
-                        equippedPrimaryWeapons[1] = new BallisticLaserWeapon(Game);
+                        equippedPrimaryWeapons[1] = new WaveBeamWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
                         //equippedSecondary = new RegularBombWeapon(Game);
                         //equippedEnergyCell = new PlasmaEnergyCell(Game);
@@ -953,7 +953,7 @@ namespace SpaceProject
                     }
                 case 4:
                     {
-                        equippedPrimaryWeapons[0] = new BallisticLaserWeapon(Game);
+                        equippedPrimaryWeapons[0] = new WaveBeamWeapon(Game);
                         equippedPrimaryWeapons[1] = new MultipleShotWeapon(Game);
                         //equippedSecondary = new RegularBombWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
@@ -962,7 +962,7 @@ namespace SpaceProject
                 case 5:
                     {
                         equippedPrimaryWeapons[0] = new MultipleShotWeapon(Game);
-                        equippedPrimaryWeapons[1] = new WaveBeamWeapon(Game);
+                        equippedPrimaryWeapons[1] = new BallisticLaserWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
                         break;
                     }

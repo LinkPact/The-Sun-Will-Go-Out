@@ -61,19 +61,19 @@ namespace SpaceProject
             display1.Add("Press Escape to return to main menu");
             display1.Add("Use number keys (0-9) to switch equipment");
 
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m4_infiltration_lv1_v1", "m4_1", Keys.A, standardEquip: 8));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m4_infiltration_lv2_v1", "m4_2", Keys.S));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m5_retribution_lv1_v1", "m5_1", Keys.D));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m5_retribution_lv2_v1", "m5_2", Keys.F));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m6_itnos_lv1_v1", "m6_1", Keys.G));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m6_itnos_lv2_v1", "m6_2", Keys.H));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m7_infiltration_lv1_v1", "m7_1", Keys.J));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10a_OYO_lv1_v1", "m10a_1", Keys.K));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10a_OYO_lv2_v1", "m10a_2", Keys.L));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10b_rebels_lv1_v1", "m10b_1", Keys.Q));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10b_rebels_lv2_v1", "m10b_2", Keys.W));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10c_alliance_lv1_v1", "m10c_1", Keys.E));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10c_alliance_lv2_v1", "m10c_2", Keys.R));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m4_infiltration_lv1_v1", "m4_1", Keys.A, standardEquip: 2));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m4_infiltration_lv2_v1", "m4_2", Keys.S, standardEquip: 2));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m5_retribution_lv1_v1", "m5_1", Keys.D, standardEquip: 4));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m5_retribution_lv2_v1", "m5_2", Keys.F, standardEquip: 4));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m6_itnos_lv1_v1", "m6_1", Keys.G, standardEquip: 5));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m6_itnos_lv2_v1", "m6_2", Keys.H, standardEquip: 5));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m7_infiltration_lv1_v1", "m7_1", Keys.J, standardEquip: 5));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10a_OYO_lv1_v1", "m10a_1", Keys.K, standardEquip: 8));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10a_OYO_lv2_v1", "m10a_2", Keys.L, standardEquip: 8));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10b_rebels_lv1_v1", "m10b_1", Keys.Q, standardEquip: 8));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10b_rebels_lv2_v1", "m10b_2", Keys.W, standardEquip: 8));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10c_alliance_lv1_v1", "m10c_1", Keys.E, standardEquip: 8));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10c_alliance_lv2_v1", "m10c_2", Keys.R, standardEquip: 8));
 
             //jakobsLevelEntries.Add(new LevelTesterEntry("P3_Science_1", "Phase 3 scientist-level", Keys.Q));
             //jakobsLevelEntries.Add(new LevelTesterEntry("P4_rebel1", "Phase 4 one rebel scout", Keys.W));
