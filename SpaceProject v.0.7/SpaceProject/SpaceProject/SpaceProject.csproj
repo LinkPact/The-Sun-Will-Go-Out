@@ -845,6 +845,9 @@
     <None Include="Levels\testlevels\johan_main\FreighterEscortlvl1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Levels\testlevels\johan_main\FreighterEscortlvl2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Levels\testlevels\johan_main\RebelsAsteroids.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
