@@ -332,6 +332,7 @@
     <Compile Include="Overworld-part\GameObjects\Ships\AllianceShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\AllyShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\FreighterShip.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\HangarShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\MotherShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\OverworldShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\Particles\ParticleManager.cs" />

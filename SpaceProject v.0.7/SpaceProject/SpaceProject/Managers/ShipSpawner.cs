@@ -34,11 +34,17 @@ namespace SpaceProject
                 return overworld.GetAllOverworldGameObjects.OfType<RebelShip>().Count();
             }
         }
+        private int hangarsInOverworld
+        {
+            get
+            {
+                return overworld.GetAllOverworldGameObjects.OfType<HangarShip>().Count();
+            }
+        }
 
         private int spawnLimitPirates;
         private int spawnLimitFreighters;
-
-        //private int spawnLimitRebels;
+        private int spawnLimitHangars;
 
         public ShipSpawner(Game1 game)
         {
@@ -58,7 +64,7 @@ namespace SpaceProject
 
             spawnLimitPirates = 5;
             spawnLimitFreighters = 4;
-            //spawnLimitRebels = 5;
+            spawnLimitHangars = 3;
         }
 
         public void AddPirateShip(Vector2 pos)
@@ -135,7 +141,13 @@ namespace SpaceProject
             FreighterShip tempShip = new FreighterShip(game, spriteSheet);
             tempShip.Initialize(sector);
             overworld.AddOverworldObject(tempShip);
+        }
 
+        public void AddHangarToSector()
+        {
+            HangarShip tempShip = new HangarShip(game, spriteSheet);
+            tempShip.Initialize(sector);
+            overworld.AddOverworldObject(tempShip);
         }
 
         public void AddFreighterToSector(Vector2 pos)
@@ -164,6 +176,7 @@ namespace SpaceProject
         {
             UpdatePirates(gameTime);
             UpdateFreighters(gameTime);
+            UpdateHangars(gameTime);
         }
 
         public void UpdatePirates(GameTime gameTime)
@@ -179,6 +192,14 @@ namespace SpaceProject
             if (freightersInOverworld < spawnLimitFreighters)
             {
                 AddFreighterToSector();
+            }
+        }
+
+        public void UpdateHangars(GameTime gameTime)
+        {
+            if (hangarsInOverworld < spawnLimitHangars)
+            {
+                AddHangarToSector();
             }
         }
     }
