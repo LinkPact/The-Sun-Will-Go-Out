@@ -129,7 +129,7 @@ namespace SpaceProject
 
             if (configData.ContainsKey(section) == false)
             {
-                return l;
+                throw new ArgumentException("Section could not be read from missiondata.dat.", section);
             }
 
             if (!section[0].Equals("["))

@@ -190,9 +190,7 @@ namespace SpaceProject
 
             if (GameStateManager.previousState.Equals("IntroSecondState") || GameStateManager.previousState.Equals("StartGameState"))
             {
-                MissionManager.GetMission("Main - New First Mission").MissionState = StateOfMission.Active;
-                MissionManager.GetMission("Main - New First Mission").StartMission();
-
+                MissionManager.MarkMissionAsActive("Main - New First Mission");
                 Game.stateManager.GotoStationSubScreen("Border Station", "Mission");
             }
 
@@ -334,7 +332,10 @@ namespace SpaceProject
 
             else if (ControlManager.CheckPress(RebindableKeys.Pause))
             {
-                Game.messageBox.DisplayMenu();
+                if (Game.messageBox.MessageState == MessageState.Invisible)
+                {
+                    Game.messageBox.DisplayMenu();
+                }
             }
 
             else if (ControlManager.CheckKeypress(Keys.M))

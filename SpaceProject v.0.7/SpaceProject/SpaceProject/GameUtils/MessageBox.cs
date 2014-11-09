@@ -153,7 +153,18 @@ namespace SpaceProject
 
             time = StatsManager.PlayTime.GetFutureOverworldTime(milliseconds);
 
-            textBuffer.Add(txt);
+            if (!txt.Contains('#'))
+            {
+                textBuffer.Add(txt);
+            }
+            else
+            {
+                List<String> tempList = SplitHashTagText(txt);
+                foreach (String str in tempList)
+                {
+                    textBuffer.Add(str);
+                }
+            }
 
             menuOptions.Clear();
             UpdateButtonLabels();
@@ -1384,7 +1395,7 @@ namespace SpaceProject
 
                         text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
                                                     TextUtils.ScrollText(textBuffer[0], flushScrollText, out scrollingFinished),
-                                                    (int)Math.Round(((float)realTimeMessageCanvas.SourceRectangle.Value.Width), 0));
+                                                    (int)Math.Round(((float)realTimeMessageCanvas.SourceRectangle.Value.Width - 60), 0));
 
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                 text,
