@@ -27,8 +27,9 @@ namespace SpaceProject
         private float shipToDefendMaxHP;
 
         private int messageTimer;
-
         private bool started;
+        private List<float> timedMessageTimes;
+        private int timedMessageCount;
 
         public EscortObjective(Game1 game, Mission mission, String description,
             GameObjectOverworld destination, EscortDataCapsule escortDataCapsule) :
@@ -60,6 +61,8 @@ namespace SpaceProject
             shipToDefendHP = escortDataCapsule.ShipToDefendHP;
             enemyMessages = escortDataCapsule.EnemyMessages;
             enemies = new List<OverworldShip>();
+            timedMessageCount = -1;
+            timedMessageTimes = new List<float>();
 
             for (int i = 0; i < escortDataCapsule.EnemyShips.Count; i++)
             {
@@ -121,6 +124,14 @@ namespace SpaceProject
         {
             base.Update(playTime);
 
+            if (timedMessageCount >= 0
+                && timedMessageCount < escortDataCapsule.TimedMessages.Count
+                && StatsManager.PlayTime.HasOverworldTimePassed(timedMessageTimes[timedMessageCount]))
+            {
+                game.messageBox.DisplayRealtimeMessage(escortDataCapsule.TimedMessages[timedMessageCount], 4000);
+                timedMessageCount++;
+            }
+
             // Player talks to freighter to begin escort
             if (!started
                 && GameStateManager.currentState.Equals("OverworldState")
@@ -136,6 +147,12 @@ namespace SpaceProject
                 started = true;
 
                 enemyAttackStartTime = StatsManager.PlayTime.GetFutureOverworldTime(escortDataCapsule.EnemyAttackStartTime);
+
+                for (int i = 0; i < escortDataCapsule.TimedMessages.Count; i++)
+                {
+                    timedMessageTimes.Add(StatsManager.PlayTime.GetFutureOverworldTime(escortDataCapsule.TimedMessageTriggers[i]));
+                }
+                timedMessageCount = 0;
             }
 
             // Escort mission begins
@@ -147,12 +164,9 @@ namespace SpaceProject
                 // Ready to spawn a new enemy ship
                 if (StatsManager.PlayTime.HasOverworldTimePassed(enemyNextWaveTime))
                 {
-                    // First time enemies spawn
-                    if (startingNumberOfEnemyShips == numberOfEnemyShips &&
-                        escortDataCapsule.AttackStartText != "" )
-                    {
-                        game.messageBox.DisplayMessage(escortDataCapsule.AttackStartText, false);
-                    }
+                    int i = startingNumberOfEnemyShips - numberOfEnemyShips;
+                    
+                    game.messageBox.DisplayMessage(escortDataCapsule.AttackStartText[i], false);
 
                     game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
                         enemies[0],
@@ -177,6 +191,7 @@ namespace SpaceProject
                     && game.stateManager.shooterState.GetLevel(levels[i]).IsObjectiveCompleted)
                 {
                     shipToDefendHP = game.stateManager.shooterState.CurrentLevel.GetFreighterHP();
+                    game.messageBox.DisplayMessage(escortDataCapsule.AfterAttackMessages[i], false, 200);
                 }
             }
 
@@ -198,7 +213,9 @@ namespace SpaceProject
 
         public override bool Completed()
         {
-            return (((FreighterShip)escortDataCapsule.ShipToDefend).HasArrived || ControlManager.CheckKeypress(Keys.V));
+            return (escortDataCapsule.ShipToDefend.AIManager.Finished 
+                || escortDataCapsule.ShipToDefend.IsDead
+                || ControlManager.CheckKeypress(Keys.V));
         }
 
         public override void OnCompleted()

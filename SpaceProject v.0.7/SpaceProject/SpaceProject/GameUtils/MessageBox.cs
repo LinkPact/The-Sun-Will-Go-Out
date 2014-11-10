@@ -151,6 +151,7 @@ namespace SpaceProject
         {
             messageState = MessageState.RealtimeMessage;
 
+            realTimeMessageDelay = milliseconds;
             time = StatsManager.PlayTime.GetFutureOverworldTime(milliseconds);
 
             if (!txt.Contains('#'))
