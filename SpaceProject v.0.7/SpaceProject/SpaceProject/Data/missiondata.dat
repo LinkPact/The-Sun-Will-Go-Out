@@ -88,7 +88,7 @@ Fail = ""
 Reward = 300
 Progress = 2
 Reputation = 5
-State = 1
+State = 0
 
 [P4_BeginningOfTheEnd]
 Location = Border Station

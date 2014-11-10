@@ -63,6 +63,7 @@ namespace SpaceProject
 
         private Sprite missionObjectSpriteSheet;
         private bool gameCompleted = false;
+        private bool askRebelMission = false;
         
         public MissionManager(Game1 Game)
         {
@@ -618,6 +619,17 @@ namespace SpaceProject
                 mainRebels.MissionState == StateOfMission.Unavailable)
             {
                 UnlockMission("Main - Rebels");
+                askRebelMission = true;
+            }
+
+            if (mainRebels.MissionState == StateOfMission.Available
+                && game.stateManager.planetState.SubStateManager.ButtonControl == ButtonControl.Menu
+                && askRebelMission)
+            {
+                askRebelMission = false;
+                game.stateManager.planetState.SubStateManager.ChangeMenuSubState("Mission");
+                game.stateManager.planetState.SubStateManager.MissionMenuState.SelectedMission = mainRebels;
+                game.stateManager.planetState.SubStateManager.MissionMenuState.DisplayMissionIntroduction();
             }
 
             if (mainRebels.MissionState == StateOfMission.CompletedDead
