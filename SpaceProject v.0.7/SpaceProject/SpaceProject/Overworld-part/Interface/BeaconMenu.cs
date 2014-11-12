@@ -41,14 +41,17 @@ namespace SpaceProject
 
         public void AddBeacon(Beacon beacon)
         {
-            if (options.Contains("Back"))
+            if (!beacons.Contains(beacon))
             {
-                options.Remove("Back");
-            }
+                if (options.Contains("Back"))
+                {
+                    options.Remove("Back");
+                }
 
-            beacons.Add(beacon);
-            options.Add(beacon.name);
-            options.Add("Back");
+                beacons.Add(beacon);
+                options.Add(beacon.name);
+                options.Add("Back");
+            }
         }
 
         public void Display(Beacon currentBeacon)

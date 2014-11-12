@@ -29,7 +29,6 @@ namespace SpaceProject
         }
 
         FreighterShip freighter1;
-        FreighterShip freighter2;
         private float freighterHP;
         public float GetFreighterHP { get { return freighterHP; } }
 
@@ -55,7 +54,6 @@ namespace SpaceProject
             freighter1.AIManager = new TravelAction(freighter1, soelaraStation);
             freighter1.collisionEvent = new RemoveOnCollisionEvent(Game, freighter1, soelaraStation); 
 
-            // Lots-of-paramaters-version of EscortObjective
             objectives.Add(new EscortObjective(Game,
                 this,
                 ObjectiveDescriptions[0],
@@ -79,6 +77,30 @@ namespace SpaceProject
                 new EventTextCapsule(GetEvent((int)EventID.ArriveAtSoelara),
                     null,
                     EventTextCanvas.BaseState)));
+
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], Game.stateManager.overworldState.GetBeacon("Soelara Beacon"),
+                GetEvent((int)EventID.Beacon1).Text, 3000, 1000));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], Game.stateManager.overworldState.GetBeacon("Soelara Beacon"),
+                delegate 
+                {
+                    if (!Game.stateManager.overworldState.GetBeacon("Highfence Beacon").IsActivated)
+                    {
+                        Game.stateManager.overworldState.GetBeacon("Highfence Beacon").Activate();
+                    }
+                },
+                delegate { },
+                delegate
+                {
+                    return (Game.player.HyperspeedOn 
+                            && Game.stateManager.overworldState.GetBeacon("Soelara Beacon").GetFinalDestination.name.ToLower() ==
+                                Game.stateManager.overworldState.GetBeacon("Highfence Beacon").name.ToLower());
+                },
+                delegate { return false; }
+                ));
+
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], Game.stateManager.overworldState.GetBeacon("Soelara Beacon"),
+                GetEvent((int)EventID.Beacon2).Text, 3000, 2500));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
                 Game.stateManager.overworldState.GetPlanet("Highfence")));

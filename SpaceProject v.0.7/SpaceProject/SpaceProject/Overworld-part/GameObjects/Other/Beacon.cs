@@ -86,14 +86,19 @@ namespace SpaceProject
             }
         }
 
+        public void Activate()
+        {
+            activated = true;
+            sprite = spriteSheet.GetSubSprite(activeSourceRect);
+            Game.statsManager.AddDiscoveredBeacon(this);
+        }
+
         public void Interact()
         {
             if (!activated)
             {
-                activated = true;
+                Activate();
                 Game.helper.DisplayText(name + " activated!", 2);
-                sprite = spriteSheet.GetSubSprite(activeSourceRect);
-                Game.statsManager.AddDiscoveredBeacon(this);
             }
 
             else
@@ -127,7 +132,7 @@ namespace SpaceProject
 
             foreach (Beacon beacon in knownBeacons)
             {
-                if (beacon == finalDestination)
+                if (beacon.name.ToLower() == finalDestination.name.ToLower())
                 {
                     path.Add(beacon.position);
                     return path;
@@ -138,7 +143,7 @@ namespace SpaceProject
             {
                 foreach (Beacon beacon2 in beacon.knownBeacons)
                 {
-                    if (beacon2 == finalDestination)
+                    if (beacon2.name.ToLower() == finalDestination.name.ToLower())
                     {
                         path.Add(beacon.position);
                         path.Add(beacon2.position);
@@ -153,7 +158,7 @@ namespace SpaceProject
                 {
                     foreach (Beacon beacon2 in beacon.knownBeacons[i].knownBeacons)
                     {
-                        if (beacon2 == finalDestination)
+                        if (beacon2.name.ToLower() == finalDestination.name.ToLower())
                         {
                             path.Add(beacon.position);
                             path.Add(beacon.knownBeacons[i].position);
