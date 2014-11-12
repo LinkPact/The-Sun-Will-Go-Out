@@ -17,7 +17,6 @@ namespace SpaceProject
         Image,
         Tutorial,
         Menu,
-        //Inventory,
         YesNo,
         SelectionMenu,
         Map
@@ -42,6 +41,7 @@ namespace SpaceProject
         private Vector2 textPos;
 
         private List<string> textBuffer;
+        private List<string> realTimeTextBuffer;
         //private string confirmString;
 
         private List<string> menuOptions;
@@ -130,10 +130,9 @@ namespace SpaceProject
         public void Initialize()
         {
             textBuffer = new List<string>();
+            realTimeTextBuffer = new List<string>();
             menuOptions = new List<string>();
             menuActions = new List<System.Action>();
-
-            //inventoryRef = ShipInventoryManager.ShipItems;
 
             holdTimer = Game.HoldKeyTreshold;
 
@@ -156,14 +155,14 @@ namespace SpaceProject
 
             if (!txt.Contains('#'))
             {
-                textBuffer.Add(txt);
+                realTimeTextBuffer.Add(txt);
             }
             else
             {
                 List<String> tempList = SplitHashTagText(txt);
                 foreach (String str in tempList)
                 {
-                    textBuffer.Add(str);
+                    realTimeTextBuffer.Add(str);
                 }
             }
 
@@ -185,9 +184,7 @@ namespace SpaceProject
         public void DisplayMessage(string txt, bool displayDisableTutorialButton)
         {
             useDisableTutorialButton = displayDisableTutorialButton;
-
             messageState = MessageState.Message;
-
             Game1.Paused = true;
 
             if (!txt.Contains('#'))
@@ -207,6 +204,7 @@ namespace SpaceProject
 
             menuOptions.Clear();
             UpdateButtonLabels();
+            realTimeTextBuffer.Clear();
         }
 
         public void DisplayMessage(string txt, bool displayDisableTutorialButton, int delay)
@@ -217,6 +215,7 @@ namespace SpaceProject
             textStorage.Add(txt);
 
             popupDelay = delay;
+            realTimeTextBuffer.Clear();
         }
 
         //Same as above, but with more than one message. The messages will be displayed one by one, proceeding
@@ -235,6 +234,7 @@ namespace SpaceProject
 
             textStorage = txtList;
             popupDelay = delay;
+            realTimeTextBuffer.Clear();
         }
 
         public void DisplayMessageWithImage(string txt, Sprite image, bool displayDisableTutorialButton)
@@ -264,6 +264,7 @@ namespace SpaceProject
 
             menuOptions.Clear();
             UpdateButtonLabels();
+            realTimeTextBuffer.Clear();
         }
 
         public void DisplayMessageWithImage(List<string> txtList, Sprite image, bool displayDisableTutorialButton)
@@ -318,6 +319,7 @@ namespace SpaceProject
 
             menuOptions.Clear();
             UpdateButtonLabels();
+            realTimeTextBuffer.Clear();
         }
 
         public void DisplayImage(Sprite image, bool displayDisableTutorialButton)
@@ -334,6 +336,7 @@ namespace SpaceProject
 
             menuOptions.Clear();
             UpdateButtonLabels();
+            realTimeTextBuffer.Clear();
         }
 
         public void DisplayImages(List<Sprite> images, bool displayDisableTutorialButton)
@@ -350,6 +353,7 @@ namespace SpaceProject
 
             menuOptions.Clear();
             UpdateButtonLabels();
+            realTimeTextBuffer.Clear();
         }
 
         //Display a map of the system in a pop-up
@@ -478,8 +482,6 @@ namespace SpaceProject
 
         public void Update(GameTime gameTime)
         {
-            //confirmString = "Press 'Enter' to continue...";
-
             if (MessageState == MessageState.RealtimeMessage
                 && StatsManager.PlayTime.HasOverworldTimePassed(time))
             {
@@ -511,9 +513,6 @@ namespace SpaceProject
                 }
             }
 
-            //if (messageState == MessageState.Inventory)
-            //    InventoryCursorControls(gameTime);
-
             if (messageState != MessageState.Invisible)
             {
                 ButtonControls(gameTime);
@@ -532,13 +531,6 @@ namespace SpaceProject
                     Game1.Paused = false;
                     messageState = MessageState.Invisible;
                 }
-                //else if (tempTimer < 0 && ControlManager.CheckPress(RebindableKeys.Pause) ||
-                //    ControlManager.CheckPress(RebindableKeys.Action2) && messageState == MessageState.Inventory
-                //    && !isPicked)
-                //{
-                //    Game1.Paused = false;
-                //    messageState = MessageState.Invisible;
-                //}
             }
 
             //displays the overmenu automaticly when returning from the inventory or mission screen 
@@ -1062,9 +1054,12 @@ namespace SpaceProject
 
             else if (messageState == MessageState.RealtimeMessage)
             {
-                textBuffer.Remove(textBuffer[0]);
+                if (realTimeTextBuffer.Count > 0)
+                {
+                    realTimeTextBuffer.RemoveAt(0);
+                }
 
-                if (textBuffer.Count <= 0)
+                if (realTimeTextBuffer.Count <= 0)
                 {
                     MessageState = MessageState.Invisible;
                     realTimeMessageDelay = 0;
@@ -1326,23 +1321,6 @@ namespace SpaceProject
                     Game.Window.ClientBounds.Height / 2 - messageCanvas.SourceRectangle.Value.Height / 2 - 5);
             }
 
-            //if (messageState == MessageState.Inventory)
-            //{
-            //    //Displays a larger sized combo-box when working with inventory throwing.
-            //    spriteBatch.Draw(messageBackdrop.Texture, textBoxPos, messageBackdrop.SourceRectangle, Color.White,
-            //                 0.0f, new Vector2(0, 0),
-            //                 1.0f, SpriteEffects.None, 0.95f);
-            //    spriteBatch.Draw(messageBackdrop.Texture, textBoxPos, messageBackdrop.SourceRectangle, Color.White,
-            //                 0.0f, new Vector2(messageBackdrop.SourceRectangle.Value.Width, messageBackdrop.SourceRectangle.Value.Height),
-            //                 1.0f, SpriteEffects.None, 0.95f);
-            //    spriteBatch.Draw(messageBackdrop.Texture, textBoxPos, messageBackdrop.SourceRectangle, Color.White,
-            //                     0.0f, new Vector2(0, messageBackdrop.SourceRectangle.Value.Height),
-            //                     1.0f, SpriteEffects.None, 0.95f);
-            //    spriteBatch.Draw(messageBackdrop.Texture, textBoxPos, messageBackdrop.SourceRectangle, Color.White,
-            //                     0.0f, new Vector2(messageBackdrop.SourceRectangle.Value.Width, 0),
-            //                     1.0f, SpriteEffects.None, 0.95f);
-            //}
-
             switch (messageState)
             {
                 case MessageState.Message:
@@ -1395,7 +1373,7 @@ namespace SpaceProject
                              0.95f);
 
                         text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
-                                                    TextUtils.ScrollText(textBuffer[0], flushScrollText, out scrollingFinished),
+                                                    TextUtils.ScrollText(realTimeTextBuffer[0], flushScrollText, out scrollingFinished),
                                                     (int)Math.Round(((float)realTimeMessageCanvas.SourceRectangle.Value.Width - 60), 0));
 
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
