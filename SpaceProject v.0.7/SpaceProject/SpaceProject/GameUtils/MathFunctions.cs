@@ -161,7 +161,8 @@ namespace SpaceProject
 
             foreach (GameObjectVertical obj in objects)
             {
-                if (obj.ObjectClass.ToLower() == kind.ToLower() && MathFunctions.ObjectDistance(object1, obj) < tempDistance
+                if (obj.ObjectClass.ToLower() == kind.ToLower() 
+                    && MathFunctions.ObjectDistance(object1, obj) < tempDistance
                      && MathFunctions.ObjectDistance(object1, obj) < range)
                 {
                     tempTarget = obj;

@@ -132,7 +132,7 @@ namespace SpaceProject
         {
             //Always updates the closest enemy, used for setting target
             closestObject = MathFunctions.ReturnClosestObject(ship, ship.SightRange,
-                Game.stateManager.shooterState.gameObjects, new List<string>(){ "enemy", "enemyBullet"});
+                Game.stateManager.shooterState.gameObjects, "enemy");
 
             if (target == null)
                 behaviour.SetTarget(closestObject);

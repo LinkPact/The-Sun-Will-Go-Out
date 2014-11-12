@@ -31,6 +31,14 @@ namespace SpaceProject
 
         public override void SetTarget(GameObjectVertical closestEnemy)
         {
+            if (closestEnemy is Meteorite15
+                || closestEnemy is Meteorite20
+                || closestEnemy is Meteorite25
+                || closestEnemy is Meteorite30)
+            {
+                return;
+            }
+
             base.SetTarget(closestEnemy);
         }
     }
