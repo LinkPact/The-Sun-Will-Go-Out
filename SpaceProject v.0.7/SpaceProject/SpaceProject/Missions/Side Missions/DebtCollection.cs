@@ -22,11 +22,11 @@ namespace SpaceProject
             base.Initialize();
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetStation("Fotrun Station I"),
+                Game.stateManager.overworldState.GetStation("Fortrun Station I"),
                 new EventTextCapsule(GetEvent(0), null, EventTextCanvas.BaseState)));
 
             objectives.Add(new ResponseObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetStation("Fotrun Station I"),
+                Game.stateManager.overworldState.GetStation("Fortrun Station I"),
                 new ResponseTextCapsule(GetEvent(1), GetAllResponses(1),
                     new List<System.Action>()
                     {

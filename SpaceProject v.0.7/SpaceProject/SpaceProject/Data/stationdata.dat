@@ -10,14 +10,14 @@ PositionX = -200
 PositionY = 200
 Inhabitants = 5000
 
-[SX_Fotrun_1]
-Name = Fotrun Station I
+[SX_Fortrun_1]
+Name = Fortrun Station I
 PositionX = 600
 PositionY = -100
 Inhabitants = 20000
 
-[SX_Fotrun_2]
-Name = Fotrun Station II
+[SX_Fortrun_2]
+Name = Fortrun Station II
 PositionX = 3300
 PositionY = 2000
 Inhabitants = 1000

@@ -214,7 +214,7 @@
     <Compile Include="Missions\Main Missions\Phase 1\Main1_NewFirstMission.cs" />
     <Compile Include="Missions\Side Missions\DebtCollection.cs" />
     <Compile Include="Missions\Old Missions\Main3_TheAlliance.cs" />
-    <Compile Include="Missions\Main Missions\Phase 2\DefendColony.cs" />
+    <Compile Include="Missions\Main Missions\Phase 2\Main5_DefendColony.cs" />
     <Compile Include="Missions\Side Missions\FlightTraining.cs" />
     <Compile Include="Missions\Side Missions\DeathByMeteorMission.cs" />
     <Compile Include="Missions\Main Missions\Phase 1\Main3_Rebels.cs" />
@@ -364,7 +364,7 @@
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\MiningAsteroids.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\LonelyAsteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\FotrunStation2.cs" />
-    <Compile Include="Overworld-part\GameObjects\Stations\SectorX\FotrunStation1.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\SectorX\FortrunStation1.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\ShopInventoryEntry.cs" />
     <Compile Include="Overworld-part\Interface\BeaconMenu.cs" />
     <Compile Include="Overworld-part\Interface\HeadsUpDisplay.cs" />
@@ -392,7 +392,7 @@
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\SectorX\Highfence.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\Overworld\OutpostX\Telmun.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\SectorX\GreyMoon.cs" />
-    <Compile Include="Overworld-part\GameObjects\Celestial bodies\SectorX\Fotrun.cs" />
+    <Compile Include="Overworld-part\GameObjects\Celestial bodies\SectorX\Fortrun.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\Overworld\MediumAstroid.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\SectorX\Peye.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\Soelara.cs" />

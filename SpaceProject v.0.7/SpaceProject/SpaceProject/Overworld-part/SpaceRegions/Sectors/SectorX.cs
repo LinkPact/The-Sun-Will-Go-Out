@@ -13,25 +13,25 @@ namespace SpaceProject
         public SectorXStar SectorXStar { get { return sectorXStar; } private set { ;} }
 
         private Lavis lavis;
-        private Fotrun fotrun;
+        private Fortrun fortrun;
         private Highfence highfence;
         private NewNorrland newNorrland;
         private Peye peye;
 
         private SoelaraStation soelaraStation;
         private LavisStation lavisStation;
-        private FotrunStation1 fotrunStation1;
+        private FortrunStation1 fortrunStation1;
 
         private Beacon highfenceBeacon;
         private Beacon peyeBeacon;
         private Beacon lavisBeacon;
-        private Beacon fotrunBeacon;
+        private Beacon fortrunBeacon;
         private Beacon soelaraBeacon;
         private Beacon newNorrlandBeacon;
 
         // Sub interactive objects
         private Soelara soelara;
-        private FotrunStation2 fotrunStation2;
+        private FortrunStation2 fortrunStation2;
         private LonelyAsteroid lonelyAsteroid;
 
         public SectorX(Game1 game) :
@@ -54,21 +54,21 @@ namespace SpaceProject
 
             // Sub-interactive objects
             soelara = new Soelara(game, spriteSheet, game.messageBox);
-            fotrunStation2 = new FotrunStation2(game, spriteSheet, game.messageBox);
+            fortrunStation2 = new FortrunStation2(game, spriteSheet, game.messageBox);
             lonelyAsteroid = new LonelyAsteroid(game, spriteSheet, game.messageBox);
 
             soelara.Initialize();
-            fotrunStation2.Initialize();
+            fortrunStation2.Initialize();
             lonelyAsteroid.Initialize();
 
             // Planets
             lavis = new Lavis(game, spriteSheet, offset);
-            fotrun = new Fotrun(game, spriteSheet, offset);
+            fortrun = new Fortrun(game, spriteSheet, offset);
             highfence = new Highfence(game, spriteSheet, offset);
             newNorrland = new NewNorrland(game, spriteSheet, offset);
             peye = new Peye(game, spriteSheet, offset);
             lavis.Initialize();
-            fotrun.Initialize();
+            fortrun.Initialize();
             highfence.Initialize();
             newNorrland.Initialize();
             peye.Initialize();
@@ -76,18 +76,18 @@ namespace SpaceProject
             // Stations
             lavisStation = new LavisStation(game, spriteSheet, lavis.position);
             soelaraStation = new SoelaraStation(game, spriteSheet, soelara.position);
-            fotrunStation1 = new FotrunStation1(game, spriteSheet, fotrun.position);
+            fortrunStation1 = new FortrunStation1(game, spriteSheet, fortrun.position);
             lavisStation.Initialize();
             soelaraStation.Initialize();
-            fotrunStation1.Initialize();
+            fortrunStation1.Initialize();
 
             highfenceBeacon = new Beacon(game, spriteSheet, new Rectangle(588, 844, 100, 100), new Rectangle(487, 844, 100, 100),
                 "Highfence Beacon", highfence.position + new Vector2(300, 250));
             highfenceBeacon.Initialize();
 
-            fotrunBeacon = new Beacon(game, spriteSheet, new Rectangle(588, 844, 100, 100), new Rectangle(487, 844, 100, 100),
-                "Fotrun Beacon", fotrun.position + new Vector2(-400, -200));
-            fotrunBeacon.Initialize();
+            fortrunBeacon = new Beacon(game, spriteSheet, new Rectangle(588, 844, 100, 100), new Rectangle(487, 844, 100, 100),
+                "Fortrun Beacon", fortrun.position + new Vector2(-400, -200));
+            fortrunBeacon.Initialize();
 
             peyeBeacon = new Beacon(game, spriteSheet, new Rectangle(588, 844, 100, 100), new Rectangle(487, 844, 100, 100),
                 "Peye Beacon", peye.position + new Vector2(-200, -450));
@@ -106,7 +106,7 @@ namespace SpaceProject
             newNorrlandBeacon.Initialize();
 
             game.stateManager.overworldState.AddBeacon(highfenceBeacon);
-            game.stateManager.overworldState.AddBeacon(fotrunBeacon);
+            game.stateManager.overworldState.AddBeacon(fortrunBeacon);
             game.stateManager.overworldState.AddBeacon(peyeBeacon);
             game.stateManager.overworldState.AddBeacon(lavisBeacon);
             game.stateManager.overworldState.AddBeacon(soelaraBeacon);
@@ -116,20 +116,20 @@ namespace SpaceProject
 
             AddGameObject(soelara);
             AddGameObject(lavis);
-            AddGameObject(fotrun);
+            AddGameObject(fortrun);
             AddGameObject(highfence);
             AddGameObject(newNorrland);
             AddGameObject(peye);
 
             AddGameObject(lavisStation);
-            AddGameObject(fotrunStation1);
+            AddGameObject(fortrunStation1);
 
             AddGameObject(soelaraStation);
-            AddGameObject(fotrunStation2);
+            AddGameObject(fortrunStation2);
             AddGameObject(lonelyAsteroid);
 
             AddGameObject(highfenceBeacon);
-            AddGameObject(fotrunBeacon);
+            AddGameObject(fortrunBeacon);
             AddGameObject(peyeBeacon);
             AddGameObject(lavisBeacon);
             AddGameObject(soelaraBeacon);

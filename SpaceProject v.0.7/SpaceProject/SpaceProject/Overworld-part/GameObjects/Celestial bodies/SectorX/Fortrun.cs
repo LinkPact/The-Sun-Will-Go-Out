@@ -7,9 +7,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class Fotrun : Planet
+    public class Fortrun : Planet
     {
-        public Fotrun(Game1 Game, Sprite spriteSheet, Vector2 positionOffset) :
+        public Fortrun(Game1 Game, Sprite spriteSheet, Vector2 positionOffset) :
             base(Game, spriteSheet, positionOffset)
         {
         }
@@ -21,8 +21,8 @@ namespace SpaceProject
             base.Initialize();
 
             // Old name: SX_Ice_Planet
-            PlanetCodeName = "SX_Fotrun";
-            ColonyCodeName = "SX_Fotrun_Colony1";
+            PlanetCodeName = "SX_Fortrun";
+            ColonyCodeName = "SX_Fortrun_Colony1";
 
             LoadPlanetData(PlanetCodeName);
         }

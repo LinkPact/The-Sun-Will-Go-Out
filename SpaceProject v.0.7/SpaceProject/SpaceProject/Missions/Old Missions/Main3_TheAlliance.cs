@@ -27,7 +27,7 @@ namespace SpaceProject
             base.Initialize();
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetStation("Fotrun Station II"),
+                Game.stateManager.overworldState.GetStation("Fortrun Station II"),
                 new EventTextCapsule(
                     GetEvent(1),
                     null,
@@ -36,14 +36,14 @@ namespace SpaceProject
                 delegate
                 {
                     if (CollisionDetection.IsPointInsideCircle(Game.player.position,
-                    Game.stateManager.overworldState.GetStation("Fotrun Station II").position,
+                    Game.stateManager.overworldState.GetStation("Fortrun Station II").position,
                     400) && savedPos == Vector2.Zero)
                     {
                         savedPos = Game.player.position;
                     }
 
                     else if (!CollisionDetection.IsPointInsideCircle(Game.player.position,
-                        Game.stateManager.overworldState.GetStation("Fotrun Station II").position,
+                        Game.stateManager.overworldState.GetStation("Fortrun Station II").position,
                         400))
                     {
                         savedPos = Vector2.Zero;
@@ -52,7 +52,7 @@ namespace SpaceProject
                     if (GameStateManager.currentState == "OverworldState"
                         && !missionHelper.IsLevelFailed("Main_TheAlliancelvl")
                         && CollisionDetection.IsPointInsideCircle(Game.player.position,
-                        Game.stateManager.overworldState.GetStation("Fotrun Station II").position,
+                        Game.stateManager.overworldState.GetStation("Fortrun Station II").position,
                         300))
                     {
                         Game.messageBox.DisplayMessage(GetEvent(0).Text, false);
@@ -99,11 +99,11 @@ namespace SpaceProject
                 }));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetStation("Fotrun Station II"),
+                Game.stateManager.overworldState.GetStation("Fortrun Station II"),
                 new EventTextCapsule(GetEvent(2), null, EventTextCanvas.BaseState)));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2],
-                Game.stateManager.overworldState.GetStation("Fotrun Station I"),
+                Game.stateManager.overworldState.GetStation("Fortrun Station I"),
                 new EventTextCapsule(GetEvent(3), null, EventTextCanvas.BaseState)));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[3],

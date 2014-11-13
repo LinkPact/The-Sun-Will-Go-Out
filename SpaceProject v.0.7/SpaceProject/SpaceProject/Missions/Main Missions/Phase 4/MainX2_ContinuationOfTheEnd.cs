@@ -47,7 +47,7 @@ namespace SpaceProject
 
             Planet highfence = Game.stateManager.overworldState.GetPlanet("Highfence");
             Station soelara = Game.stateManager.overworldState.GetStation("Soelara Station");
-            Station fortrun = Game.stateManager.overworldState.GetStation("Fotrun Station I");
+            Station fortrun = Game.stateManager.overworldState.GetStation("Fortrun Station I");
             Planet telmun = Game.stateManager.overworldState.GetPlanet("Telmun");
             Planet newNorrland = Game.stateManager.overworldState.GetPlanet("New Norrland");
 

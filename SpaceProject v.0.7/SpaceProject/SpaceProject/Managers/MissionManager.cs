@@ -25,7 +25,7 @@ namespace SpaceProject
         private static Main2_Highfence mainHighfence;
         private static Main3_Rebels mainRebels;
         private static Main4_ToPhaseTwo mainToPhaseTwo;
-        private static DefendColony defendColony;
+        private static Main5_DefendColony defendColony;
         private static RebelAttack rebelAttack;
         private static Main8_Retaliation mainRetaliation;
         private static Main10_InTheNameOfScience mainInTheNameOfScience;
@@ -105,8 +105,8 @@ namespace SpaceProject
             mainToPhaseTwo.Initialize();
             missions.Add(mainToPhaseTwo);
 
-            //Defend Colony
-            defendColony = new DefendColony(game, "SX_DefendColony", null);
+            //Main 5 - Defend Colony
+            defendColony = new Main5_DefendColony(game, "SX_Main5_DefendColony", null);
             defendColony.Initialize();
             missions.Add(defendColony);
 
@@ -638,6 +638,13 @@ namespace SpaceProject
             {
                 UnlockMission("Main - To Phase Two");
                 MarkMissionAsActive("Main - To Phase Two");
+            }
+
+            if (mainToPhaseTwo.MissionState == StateOfMission.CompletedDead
+                && defendColony.MissionState == StateOfMission.Unavailable)
+            {
+                UnlockMission("Main - Defend Colony");
+                MarkMissionAsActive("Main - Defend Colony");
             }
 
             // Start second mission after first is completed

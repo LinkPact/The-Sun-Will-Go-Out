@@ -48,14 +48,14 @@ namespace SpaceProject
                 LevelStartCondition.Immediately,
                 new EventTextCapsule(
                     GetEvent((int)EventID.Return),
-                    new EventText("You decide it's best to abandon the ship and return to Fotrun Station. No reward is worth getting crushed by asteroids."),
+                    new EventText("You decide it's best to abandon the ship and return to Fortrun Station. No reward is worth getting crushed by asteroids."),
                     EventTextCanvas.MessageBox)));
 
             objectives.Add(new ArriveAtLocationObjective(
                 Game,
                 this,
                 ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetStation("Fotrun Station I")));
+                Game.stateManager.overworldState.GetStation("Fortrun Station I")));
         }
 
         public override void StartMission()

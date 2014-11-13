@@ -43,7 +43,7 @@ namespace SpaceProject
                     EventTextCanvas.BaseState)));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetStation("Fotrun Station I")));
+                Game.stateManager.overworldState.GetStation("Fortrun Station I")));
 
             requiresAvailableSlot = true;
         }

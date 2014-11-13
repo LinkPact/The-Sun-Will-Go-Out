@@ -7,9 +7,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class FotrunStation1 : Station
+    public class FortrunStation1 : Station
     {
-        public FotrunStation1(Game1 Game, Sprite spriteSheet, Vector2 positionOffset) :
+        public FortrunStation1(Game1 Game, Sprite spriteSheet, Vector2 positionOffset) :
             base(Game, spriteSheet, positionOffset)
         {
             
@@ -19,7 +19,7 @@ namespace SpaceProject
         {
             sprite = spriteSheet.GetSubSprite(new Rectangle(779, 1075, 291, 292));
             base.Initialize();
-            StationCodeName = "SX_Fotrun_1";
+            StationCodeName = "SX_Fortrun_1";
             LoadStationData(StationCodeName);
             
             ShopSetup();

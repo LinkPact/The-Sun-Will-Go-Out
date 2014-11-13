@@ -15,7 +15,7 @@ namespace SpaceProject
             Beacon1,
             Beacon2,
             ArriveAtSoelara,
-            ArriveAtFortrun
+            ToFortrun
         }
 
         public Main4_ToPhaseTwo(Game1 Game, string section, Sprite spriteSheet) :
@@ -55,9 +55,11 @@ namespace SpaceProject
                 Game.stateManager.overworldState.GetPlanet("Highfence"),
                 new EventTextCapsule(GetEvent((int)EventID.ArriveAtSoelara), null, EventTextCanvas.BaseState)));
 
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], Game.stateManager.overworldState.GetBeacon("Soelara Beacon"),
+                GetEvent((int)EventID.ToFortrun).Text, 3000, 2500));
+
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetStation("Fotrun Station I"),
-                new EventTextCapsule(GetEvent((int)EventID.ArriveAtFortrun), null, EventTextCanvas.BaseState)));
+                Game.stateManager.overworldState.GetStation("Fortrun Station I")));
         }
 
         public override void StartMission()
@@ -86,11 +88,6 @@ namespace SpaceProject
         public override void MissionLogic()
         {
             base.MissionLogic();
-
-            if (MissionState == StateOfMission.Completed)
-            {
-                MissionState = StateOfMission.CompletedDead;
-            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)

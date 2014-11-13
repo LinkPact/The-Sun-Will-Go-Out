@@ -24,8 +24,8 @@ Surface = Gas
 Info = A smaller gasplanet. Not habitable.
 HasColony = false
 
-[SX_Fotrun]
-Name = Fotrun
+[SX_Fortrun]
+Name = Fortrun
 PositionX = 7000
 PositionY = 10000
 Surface = Ice

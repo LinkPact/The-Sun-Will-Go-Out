@@ -7,9 +7,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class FotrunStation2 : SubInteractiveObject
+    public class FortrunStation2 : SubInteractiveObject
     {
-        public FotrunStation2(Game1 Game, Sprite spriteSheet, MessageBox messageBox) :
+        public FortrunStation2(Game1 Game, Sprite spriteSheet, MessageBox messageBox) :
             base(Game, spriteSheet, messageBox)
         {
             

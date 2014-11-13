@@ -92,7 +92,7 @@ namespace SpaceProject
                     
                     freighter.Initialize(Game.stateManager.overworldState.GetSectorX,
                                 Game.stateManager.overworldState.GetStation("Soelara Station"),
-                                Game.stateManager.overworldState.GetStation("Fotrun Station I"));
+                                Game.stateManager.overworldState.GetStation("Fortrun Station I"));
                     Game.stateManager.overworldState.GetSectorX.shipSpawner.AddFreighterToSector(
                         freighter, Game.stateManager.overworldState.GetStation("Soelara Station").position);
 
@@ -253,7 +253,7 @@ namespace SpaceProject
             //
             //    freighter.Initialize(Game.stateManager.overworldState.GetSectorX,
             //                Game.stateManager.overworldState.GetPlanet("Soelara"),
-            //                Game.stateManager.overworldState.GetStation("Fotrun Station I"));
+            //                Game.stateManager.overworldState.GetStation("Fortrun Station I"));
             //    Game.stateManager.overworldState.GetSectorX.shipSpawner.AddFreighterToSector(
             //        freighter, Game.stateManager.overworldState.GetPlanet("Soelara").position);
             //}

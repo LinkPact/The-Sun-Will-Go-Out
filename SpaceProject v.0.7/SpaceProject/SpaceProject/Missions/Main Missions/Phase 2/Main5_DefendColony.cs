@@ -7,14 +7,23 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
-    public class DefendColony : Mission
+    public class Main5_DefendColony : Mission
     {
         private enum EventID
         {
-            LevelCleared = 0,
+            Introduction,
+            OutsideFortrun,
+            ToNewNorrland1,
+            ToNewNorrland2,
+            ToNewNorrland3,
+            OutsideNewNorrland,
+            FirstLevelCompleted,
+            SecondLevelCompleted,
+            ToFortrun1,
+            ToFortrun2
         }
 
-        public DefendColony(Game1 Game, string section, Sprite spriteSheet) :
+        public Main5_DefendColony(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
         }
@@ -32,10 +41,10 @@ namespace SpaceProject
                 new EventTextCapsule(GetEvent(1), null, EventTextCanvas.BaseState)));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2],
-                Game.stateManager.overworldState.GetStation("Fotrun Station I")));
+                Game.stateManager.overworldState.GetStation("Fortrun Station I")));
 
             objectives.Add(new ResponseObjective(Game, this, ObjectiveDescriptions[3],
-                Game.stateManager.overworldState.GetStation("Fotrun Station I"),
+                Game.stateManager.overworldState.GetStation("Fortrun Station I"),
                 new ResponseTextCapsule(GetEvent(2), GetAllResponses(2),
                     new List<System.Action> 
                                 {
@@ -56,6 +65,7 @@ namespace SpaceProject
         {
             ObjectiveIndex = 0;
             progress = 0;
+            missionHelper.ShowEvent(GetEvent((int)EventID.Introduction));
         }
 
         public override void OnLoad()
