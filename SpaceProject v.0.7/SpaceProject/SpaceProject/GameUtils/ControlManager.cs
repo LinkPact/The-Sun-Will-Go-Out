@@ -21,6 +21,8 @@ namespace SpaceProject
 
     public static class ControlManager
     {
+        private static bool controlsDisabled;
+
         #region Gamepad
         public static bool IsGamepadConnected;
         public static bool UseGamepad;
@@ -205,6 +207,9 @@ namespace SpaceProject
 
         public static bool CheckPress(RebindableKeys key)
         {
+            if (controlsDisabled && !key.Equals(RebindableKeys.Pause))
+                return false;
+
             switch (key)
             {
                 case RebindableKeys.Action1:
@@ -282,6 +287,9 @@ namespace SpaceProject
 
         public static bool CheckHold(RebindableKeys key)
         {
+            if (controlsDisabled)
+                return false;
+
             switch (key)
             {
                 case RebindableKeys.Action1:
@@ -585,6 +593,16 @@ namespace SpaceProject
         {
             return (previouseMouseState.RightButton == ButtonState.Pressed &&
                 !IsRightMouseButtonPressed());
+        }
+
+        public static void DisableControls()
+        {
+            controlsDisabled = true;
+        }
+
+        public static void EnableControls()
+        {
+            controlsDisabled = false;
         }
     }
 }

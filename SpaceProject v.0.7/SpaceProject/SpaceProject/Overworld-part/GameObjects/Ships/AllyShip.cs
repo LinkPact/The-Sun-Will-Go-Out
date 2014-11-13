@@ -14,6 +14,7 @@ namespace SpaceProject
 
     public class AllyShip : OverworldShip
     {
+        private readonly float SPEED = 0.4f;
         public GameObjectOverworld destinationPlanet;
         public Vector2 tempDestination;
         private ShipType type;
@@ -39,7 +40,7 @@ namespace SpaceProject
             }
             viewRadius = 300;
             position = new Vector2(0,0);
-            speed = 0.4f;
+            speed = SPEED;
 
             centerPoint = new Vector2(sprite.SourceRectangle.Value.Width / 2, sprite.SourceRectangle.Value.Height / 2);
             color = Color.White;
@@ -127,7 +128,7 @@ namespace SpaceProject
 
         public override void Start()
         {
-            speed = 0.5f;
+            speed = SPEED;
             destination = tempDestination;
         }
 

@@ -1372,20 +1372,23 @@ namespace SpaceProject
                              SpriteEffects.None,
                              0.95f);
 
-                        text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
-                                                    TextUtils.ScrollText(realTimeTextBuffer[0], flushScrollText, out scrollingFinished),
-                                                    (int)Math.Round(((float)realTimeMessageCanvas.SourceRectangle.Value.Width - 60), 0));
+                        if (realTimeTextBuffer.Count > 0)
+                        {
+                            text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
+                                                        TextUtils.ScrollText(realTimeTextBuffer[0], flushScrollText, out scrollingFinished),
+                                                        (int)Math.Round(((float)realTimeMessageCanvas.SourceRectangle.Value.Width - 60), 0));
 
-                        spriteBatch.DrawString(Game.fontManager.GetFont(14),
-                                                text,
-                                                new Vector2(textPos.X,
-                                                            textPos.Y) + Game.fontManager.FontOffset,
-                                                Game.fontManager.FontColor,
-                                                0f,
-                                                Vector2.Zero,
-                                                1f,
-                                                SpriteEffects.None,
-                                                1f);
+                            spriteBatch.DrawString(Game.fontManager.GetFont(14),
+                                                    text,
+                                                    new Vector2(textPos.X,
+                                                                textPos.Y) + Game.fontManager.FontOffset,
+                                                    Game.fontManager.FontColor,
+                                                    0f,
+                                                    Vector2.Zero,
+                                                    1f,
+                                                    SpriteEffects.None,
+                                                    1f);
+                        }
                     }
                     break;
 
