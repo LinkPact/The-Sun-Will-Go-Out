@@ -61,6 +61,7 @@ State = 0
 
 [SX_Main3_Rebels]
 Location = Highfence
+EndLocation = Soelara Station
 Name = Main - Rebels
 Introduction = "Would you help us protect the freighter and its cargo?"
 ObjectiveText1 = Escort the freighter to Soelara Station
@@ -80,15 +81,32 @@ EventText8 = [Sair] "Look, there are another group of rebels on their way. It lo
 EventText9 = [Rebel Ship] "We have no mercy for those who destroy our people. Prepare yourselves!"
 EventText10 = [Captain] "How can they think they are doing any good for anyone?"#"They are killing the people who actually struggle to get the sector to go around."#"The sector is definitely better off without them."
 EventText11 = [Captain] "We are almost there now. It looks like we will avoid further attacks."
-EventText12 = The captain turns to you. He looks tired and relieved. "That was a close one. We might not have been able to make it without your help. Thank you."#"We are travelling with samples of a mineral called Murt. The mineral seems to be of a great interest both for the Alliance and the rebels."#"You should have your reward. Here is the salary as promised."#"Also, I saw that you weren't using a shield on the way here. You can use this Regular Shield. It might not be the best, but definitely better than having no shield."#"You should return to Ai at Highfence. There is always work that needs to be done these days."#"You have been permitted to use the Beacon outside to quickly travel back to Highfence. You will be able to use them to quickly travel to locations you have visited before.It usually comes to a cost though. We don’t have much resources."#The captain salutes you. "Enough chit-chatting. Go now. Stay safe."
-EventText13 = [Sair] "We should use the Beacon he mentioned. I believe it is that circular structure over there."
-EventText14 = [Sair] "I have never experienced this before. How interesting."#"It is only possible to use for transporting small ships like ours."
-Success = Ai welcomes you.#[Ai] "Well done! There will be many opportunities for you here."#"In fact, I just got the word from the Alliance command at Fortrun that there currently is a crisis on New Norrland."#"They told us to gather as many ships as possible and meet at Fortrun immediately."#"I will go there now. You should go too. I will see you there."
+Success = The captain turns to you. He looks tired and relieved. "That was a close one. We might not have been able to make it without your help. Thank you."#"We are travelling with samples of a mineral called Murt. The mineral seems to be of a great interest both for the Alliance and the rebels."#"You should have your reward. Here is the salary as promised."#"Also, I saw that you weren't using a shield on the way here. You can use this Regular Shield. It might not be the best, but definitely better than having no shield."#"You should return to Ai at Highfence. There is always work that needs to be done these days."#"You have been permitted to use the Beacon outside to quickly travel back to Highfence. You will be able to use them to quickly travel to locations you have visited before.It usually comes to a cost though. We don’t have much resources."#The captain salutes you. "Enough chit-chatting. Go now. Stay safe."
 Fail = ""
 Reward = 300
 Progress = 2
 Reputation = 5
-State = 1
+State = 0
+
+[SX_Main4_ToPhaseTwo]
+Location = Highfence
+Name = Main - To Phase Two
+Introduction = "Go to Fortrun station!"
+ObjectiveText1 = Escort the freighter to Soelara Station
+PosResponse = Okay!
+NegResponse = Not right now
+Accept = "Good!"
+FailText = ""
+EventText1 = [Sair] "We should use the Beacon he mentioned. I believe it is that circular structure over there."
+EventText2 = [Sair] "I have never experienced this before. How interesting."#"It is only possible to use for transporting small ships like ours."
+EventText3 = Ai welcomes you.#[Ai] "Well done! There will be many opportunities for you here."#"In fact, I just got the word from the Alliance command at Fortrun that there currently is a crisis on New Norrland."#"They told us to gather as many ships as possible and meet at Fortrun immediately."#"I will go there now. You should go too. I will see you there."
+EventText4 = You arrive at Fortrun station.
+Success = "Good job!"
+Fail = ""
+Reward = 300
+Progress = 2
+Reputation = 5
+State = 0
 
 [P4_BeginningOfTheEnd]
 Location = Border Station
@@ -258,23 +276,6 @@ Success = "Good job!"
 Reward = 100
 Progress = 2
 Reputation = 3
-State = 0
-
-[SX_Main4_ToPhaseTwo]
-Location = Highfence
-Name = Main - To Phase Two
-Introduction = "Go to Fortrun station!"
-ObjectiveText1 = Escort the freighter to Soelara Station
-PosResponse = Okay!
-NegResponse = Not right now
-Accept = "Good!"
-FailText = ""
-EventText1 = You arrive at Fortrun station.
-Success = "Good job!"
-Fail = ""
-Reward = 300
-Progress = 2
-Reputation = 5
 State = 0
 
 [P2_RebelAttack]

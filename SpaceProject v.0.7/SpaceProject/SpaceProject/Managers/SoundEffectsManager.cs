@@ -149,7 +149,7 @@ namespace SpaceProject
 
         public void PlaySoundEffect(SoundEffects identifier, float pan, float pitch)
         {
-            if (!muted && soundEffectBuffer.Count < 32)
+            if (!muted && LoadSoundEffects && soundEffectBuffer.Count < 32)
             {
                 int i = (int)identifier;
 

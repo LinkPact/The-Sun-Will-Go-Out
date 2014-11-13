@@ -41,6 +41,7 @@ namespace SpaceProject
 
         private string missionName;
         private string locationName;
+        private string endLocationName;
         private string introductionText;
         private string posResponse;
         private string negResponse;
@@ -121,6 +122,22 @@ namespace SpaceProject
         public string LocationName
         {
             get { return locationName; }
+        }
+
+        public string EndLocationName
+        {
+            get 
+            {
+                if (endLocationName == null
+                    || endLocationName.Equals(""))
+                {
+                    return locationName;
+                }
+                else
+                {
+                    return endLocationName;
+                }
+            }
         }
 
         public string IntroductionText
@@ -431,6 +448,11 @@ namespace SpaceProject
                 case "Location":
                     {
                         locationName = value;
+                        break;
+                    }
+                case "EndLocation":
+                    {
+                        endLocationName = value;
                         break;
                     }
                 case "Name":

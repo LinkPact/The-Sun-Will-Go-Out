@@ -22,10 +22,7 @@ namespace SpaceProject
             RebelsAttack2,
             RebelMessage2,
             AfterRebelAttack2,
-            AlmostThere,
-            ArriveAtSoelara,
-            Beacon1,
-            Beacon2
+            AlmostThere
         }
 
         FreighterShip freighter1;
@@ -39,11 +36,11 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            Station soelaraStation = Game.stateManager.overworldState.GetStation("Soelara Station");
-
             base.Initialize();
 
             RestartAfterFail();
+            Station soelaraStation = Game.stateManager.overworldState.GetStation("Soelara Station");
+            RewardItems.Add(new RegularShield(Game));
 
             freighterHP = 2000;
 
@@ -73,37 +70,7 @@ namespace SpaceProject
                     new List<String> { GetEvent((int)EventID.AfterRebelAttack1).Text, GetEvent((int)EventID.AfterRebelAttack2).Text },
                     new List<String> { GetEvent((int)EventID.CaptainChitChat1).Text, GetEvent((int)EventID.CaptainChitChat2).Text,
                                        GetEvent((int)EventID.AlmostThere).Text },
-                    new List<int> { 4000, 24000, 56000}),
-                new EventTextCapsule(GetEvent((int)EventID.ArriveAtSoelara),
-                    null,
-                    EventTextCanvas.BaseState)));
-
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], Game.stateManager.overworldState.GetBeacon("Soelara Beacon"),
-                GetEvent((int)EventID.Beacon1).Text, 3000, 1000));
-
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], Game.stateManager.overworldState.GetBeacon("Soelara Beacon"),
-                delegate 
-                {
-                    if (!Game.stateManager.overworldState.GetBeacon("Highfence Beacon").IsActivated)
-                    {
-                        Game.stateManager.overworldState.GetBeacon("Highfence Beacon").Activate();
-                    }
-                },
-                delegate { },
-                delegate
-                {
-                    return (Game.player.HyperspeedOn 
-                            && Game.stateManager.overworldState.GetBeacon("Soelara Beacon").GetFinalDestination.name.ToLower() ==
-                                Game.stateManager.overworldState.GetBeacon("Highfence Beacon").name.ToLower());
-                },
-                delegate { return false; }
-                ));
-
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], Game.stateManager.overworldState.GetBeacon("Soelara Beacon"),
-                GetEvent((int)EventID.Beacon2).Text, 3000, 2500));
-
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetPlanet("Highfence")));
+                    new List<int> { 4000, 24000, 56000})));
         }
 
         public override void StartMission()

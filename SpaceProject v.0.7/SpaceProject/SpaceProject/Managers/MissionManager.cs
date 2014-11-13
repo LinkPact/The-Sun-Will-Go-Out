@@ -300,7 +300,8 @@ namespace SpaceProject
         {
             Mission tempMission = ReturnSpecifiedMission(missionName);
 
-            if (tempMission.MissionState.Equals(StateOfMission.Completed))
+            if (tempMission.MissionState.Equals(StateOfMission.Completed)
+                || tempMission.MissionState.Equals(StateOfMission.CompletedDead))
                 return;
 
             else if (activeMissions.Contains(tempMission))
@@ -422,7 +423,7 @@ namespace SpaceProject
 
             foreach (Mission mission in missions)
             {
-                if (mission.LocationName == planetOrStationName &&
+                if (mission.EndLocationName == planetOrStationName &&
                     mission.MissionState.Equals(StateOfMission.Completed))
                     tempList.Add(mission);
             }
@@ -636,6 +637,7 @@ namespace SpaceProject
                 && mainToPhaseTwo.MissionState == StateOfMission.Unavailable)
             {
                 UnlockMission("Main - To Phase Two");
+                MarkMissionAsActive("Main - To Phase Two");
             }
 
             // Start second mission after first is completed
