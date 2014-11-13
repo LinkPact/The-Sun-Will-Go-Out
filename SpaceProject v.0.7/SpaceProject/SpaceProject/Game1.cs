@@ -274,16 +274,20 @@ namespace SpaceProject
             if (showFPS)
             {
                 if (GameStateManager.currentState == "OverworldState")
+                {
                     spriteBatch.DrawString(fontManager.GetFont(14), "Fps: " + fps.ToString(),
                         new Vector2((camera.cameraPos.X + ScreenCenter.X) - fontManager.GetFont(14).MeasureString("Fps: " + fps.ToString()).X,
                                      camera.cameraPos.Y - ScreenCenter.Y) + fontManager.FontOffset,
                         fontManager.FontColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+                }
 
                 else
+                {
                     spriteBatch.DrawString(fontManager.GetFont(14), "Fps: " + fps.ToString(),
                         new Vector2(Window.ClientBounds.Width - fontManager.GetFont(14).MeasureString("Fps: " + fps.ToString()).X,
                                     0) + fontManager.FontOffset,
                         fontManager.FontColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+                }
             }
 
             spriteBatch.End();

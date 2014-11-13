@@ -185,6 +185,7 @@
     </Compile>
     <Compile Include="MissionStuff\EventText.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\CloseInOnLocationObjective.cs" />
+    <Compile Include="MissionStuff\Objectives\Instances\AutoPilotObjective.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\TimedMessageObjective.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\FollowObjective.cs" />
     <Compile Include="Missions\Main Missions\Phase 1\Main4_ToPhaseTwo.cs" />

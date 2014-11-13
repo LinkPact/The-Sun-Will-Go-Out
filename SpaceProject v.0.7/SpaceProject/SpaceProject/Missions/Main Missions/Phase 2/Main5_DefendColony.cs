@@ -24,12 +24,10 @@ namespace SpaceProject
             ToFortrun2
         }
 
-        private Planet newNorrland;
-        private bool autoPilot;
         private readonly float autoPilotSpeed = 0.3f;
 
         private readonly int numberOfAllies = 4;
-        private List<AllyShip> allyShips;
+        private List<OverworldShip> allyShips;
 
         public Main5_DefendColony(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
@@ -39,9 +37,10 @@ namespace SpaceProject
         public override void Initialize()
         {
             base.Initialize();
-            newNorrland = Game.stateManager.overworldState.GetPlanet("New Norrland");
+            Planet newNorrland = Game.stateManager.overworldState.GetPlanet("New Norrland");
+            Station fortrunStation = Game.stateManager.overworldState.GetStation("Fortrun Station I");
 
-            allyShips = new List<AllyShip>();
+            allyShips = new List<OverworldShip>();
 
             for (int i = 0; i < numberOfAllies; i++)
             {
@@ -56,38 +55,14 @@ namespace SpaceProject
             objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], allyShips[2],
                 100, new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun2), null, EventTextCanvas.MessageBox)));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], newNorrland,
-                delegate
-                {
-                    foreach (AllyShip ship in allyShips)
-                    {
-                        ship.Start();
-                        ship.speed = autoPilotSpeed;
-                    }
-
-                    autoPilot = true;
-                    ControlManager.DisableControls();
-                },
-                delegate
-                {
-                },
-                delegate
-                {
-                    return true;
-                },
-                delegate
-                {
-                    return false;
+            objectives.Add(new AutoPilotObjective(Game, this, ObjectiveDescriptions[0], newNorrland, autoPilotSpeed,
+                allyShips, fortrunStation.position,
+                new Dictionary<string, List<float>>
+                { 
+                    { GetEvent((int)EventID.ToNewNorrland1).Text, new List<float> { 5000, 4000 } },
+                    { GetEvent((int)EventID.ToNewNorrland2).Text, new List<float> { 3000, 4000 } },
+                    { GetEvent((int)EventID.ToNewNorrland3).Text, new List<float> { 5000, 4000 } }
                 }));
-
-            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], newNorrland,
-                GetEvent((int)EventID.ToNewNorrland1).Text, 4000, 5000));
-
-            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], newNorrland,
-                GetEvent((int)EventID.ToNewNorrland2).Text, 4000, 3000));
-
-            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], newNorrland,
-                GetEvent((int)EventID.ToNewNorrland3).Text, 4000, 5000));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2],
                 newNorrland));
@@ -118,26 +93,10 @@ namespace SpaceProject
         }
 
         public override void StartMission()
-        {
-            Vector2 stationPos = Game.stateManager.overworldState.GetStation("Fortrun Station I").position;
-
+        { 
             ObjectiveIndex = 0;
             progress = 0;
             missionHelper.ShowEvent(GetEvent((int)EventID.Introduction));
-
-            int modifier = 1;
-
-            for (int i = 0; i < allyShips.Count; i++)
-            {
-                Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
-                    allyShips[i], new Vector2(stationPos.X - 50 + (50 * i),
-                                              stationPos.Y + 325 - (25 * modifier)),
-                    "", newNorrland);
-
-                allyShips[i].Wait();
-
-                modifier *= -1;
-            }
         }
 
         public override void OnLoad()
@@ -146,18 +105,6 @@ namespace SpaceProject
         public override void MissionLogic()
         {
             base.MissionLogic();
-
-            if (autoPilot)
-            {
-                Game.player.Direction.RotateTowardsPoint(Game.player.position, newNorrland.position, 0.2f);
-                Game.player.speed = autoPilotSpeed + 0.013f;
-            }
-
-            if (Vector2.Distance(Game.player.position, newNorrland.position) < 500)
-            {
-                autoPilot = false;
-                ControlManager.EnableControls();
-            }
         }
 
         public override int GetProgress()
@@ -169,6 +116,5 @@ namespace SpaceProject
         {
             this.progress = progress;
         }
-
     }
 }

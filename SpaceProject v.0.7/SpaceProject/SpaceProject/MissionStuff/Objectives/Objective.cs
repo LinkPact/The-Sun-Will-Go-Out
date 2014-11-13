@@ -41,14 +41,14 @@ namespace SpaceProject
             this.destination = destination;
         }
 
+        public virtual void Initialize() { }
+
+        public virtual void OnMissionStart() { }
+
+        // Called when this objective begins
         public virtual void OnActivate() 
         {
             mission.ObjectiveDestination = destination;
-        }
-
-        public virtual void Initialize()
-        {
-
         }
 
         public virtual void Reset()

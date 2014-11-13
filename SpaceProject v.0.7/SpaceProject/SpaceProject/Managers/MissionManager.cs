@@ -290,6 +290,11 @@ namespace SpaceProject
             {
                 tempMission.MissionState = StateOfMission.Active;
                 tempMission.StartMission();
+
+                foreach (Objective obj in tempMission.Objectives)
+                {
+                    obj.OnMissionStart();
+                }
             }
 
             RefreshLists();
