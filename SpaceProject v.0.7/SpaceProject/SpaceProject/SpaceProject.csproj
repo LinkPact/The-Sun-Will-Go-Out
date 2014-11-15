@@ -839,6 +839,24 @@
     <None Include="Levels\testlevels\jakob_main\m7_infiltration_lv1_v1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Levels\testlevels\jakob_pirate\alliance\J_AP1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_pirate\alliance\J_AP2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_pirate\alliance\J_AP3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_pirate\rebel\J_RP1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_pirate\rebel\J_RP2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_pirate\rebel\J_RP3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Levels\testlevels\johan_main\DefendColonyBreak.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

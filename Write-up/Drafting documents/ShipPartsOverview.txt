@@ -1,0 +1,125 @@
+SHIP PARTS OVERVIEW
+
+Jag sammanfattar vad jag tror vi kommit fram till kring skeppsdelarna nedan.
+
+-------------------------
+
+SPELAREN
+
+Startequipment
+
+- Basic Laser
+- Regular Cell (Föreslår att man klarar sig med denna fram till ~Fortrun, för att minska förvirringen i början).
+- Regular Plating (Samma här)
+
+Primärvapen som i nuläget finns i spelet
+
+Basic Laser
+
+Dual Laser
+Spread Bullet
+
+Ballistic Laser
+Multiple Shot
+Wave Beam
+Beam
+
+Proximity Laser
+Advanced Laser
+
+Sekundärvapen
+
+Puny Turret
+Turret
+(Någon form av min/bomb-sweeper-puls?)
+
+Bomb
+Side Missiles
+Homing Missle
+Fragment Missile
+Mine Layer
+(Disruptor - Kort-range areaeffekt som slår ut sköldar och stealth)
+
+Celler (3-stegs, med exotiska möjligheter på Peye?)
+
+Basic Cell
+Regular Cell
+Advanced Cell
+
+Shield-charger (Laddar sköld snabbare, vapen skjuter långsammare)
+Weapon-charger (Vapen skjuter snabbare, sköld laddar långsammare)
+
+Sköldar (3-stegs, med exotiska möjligheter på Peye?)
+
+Basic Shield <- Man får på andra uppdraget
+Regular Cell
+Advanced Cell
+
+Bullet-shield (Bättre mot skott, sämre mot kollision)
+Collision-shield (Bättre mot kollision, sämre mot skott)
+
+Plating? (Blir det overkill? Om inte, här är förslaget:)
+
+Basic Plating
+Regular Plating
+Advanced Plating
+
+Light Plating (Högre rörelse, lägre försvar)
+Heavy Plating (Lägre rörelse, högre försvar)
+
+-------------------------
+
+AFFÄRER
+
+Som det ser ut just nu har vi planerat att ha fyra punkter i spelet där man kan handla saker:
+
+- Highfence
+
+Första affären i spelet. Här kan man köpa relativt enkla grejer till ett lågt pris.
+
+Primärvapen
+
+> Dual Laser
+> Spread Bullet
+> 'Thin Beam' (Eller något annat distansvapen)
+
+???
+> Regular Cell (Med slumpmässig variation)
+> Regular Plating (Med slumpmässig variation)
+???
+
+- Fortrun
+
+Allians-kontrollerad affär. Man får tillgång till denna efter att ha klarat första huvuduppdragen.
+
+Allians-vapen är centrerade runt avancerade lasrar och 'beams', 'high-tech'. 
+Kan vara lämpligt att ha samma stil på vapnen man kan köpa här.
+
+
+
+- Rebellbas
+
+Rebell-kontrollerad affär. Man får tillgång till denna efter att ha bytt sida till rebellerna.
+(Har man fortfarande tillgång till Fortrun här?)
+
+Rebell-vapen är centrerade kring mer primitiva, men fortfarande kraftfulla vapen, i stil med
+missiler, bomber och minor. Har även enklare laservapen, och kan säkert ha primitiva "effekt-vapen",
+typ sköld/stealth-disruptors utvecklade som motreaktion mot Alliansen.
+
+- Peye
+
+Kontrollerad av forskarna på Peye. Experimentella, icke-massproducerade skeppsdelar.
+Ovanliga, icke-konventionella delar, ofta till ett högt pris. Man har alltid tillgång till denna,
+men har antagligen inte råd med grejerna tidigt i spelet (om man inte grindar 'pirater', vilket man klart
+kan få belöning för om man uppskattar det).
+
+
+
+Primary
+
+Secondary
+
+Cell
+
+Shield
+
