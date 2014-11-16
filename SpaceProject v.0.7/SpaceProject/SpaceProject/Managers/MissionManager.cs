@@ -25,8 +25,8 @@ namespace SpaceProject
         private static Main2_Highfence mainHighfence;
         private static Main3_Rebels mainRebels;
         private static Main4_ToPhaseTwo mainToPhaseTwo;
-        private static Main5_DefendColony defendColony;
-        private static RebelAttack rebelAttack;
+        private static Main5_DefendColony mainDefendColony;
+        private static Main6_Infiltration mainInfiltration;
         private static Main8_Retaliation mainRetaliation;
         private static Main10_InTheNameOfScience mainInTheNameOfScience;
         private static MainX1_BeginningOfTheEnd mainBeginningOfTheEnd;
@@ -81,39 +81,39 @@ namespace SpaceProject
             // Main Missions
 
             // Main 0 - Tutorial Mission
-            mainTutorialMission = new Main0_Tutorial(game, "SX_Main0_TutorialMission", null);
+            mainTutorialMission = new Main0_Tutorial(game, "Main0_TutorialMission", null);
             mainTutorialMission.Initialize();
             missions.Add(mainTutorialMission);
 
             // Main 1 - New First Mission
-            mainNewFirstMission = new Main1_NewFirstMission(game, "SX_Main1_NewFirstMission", missionObjectSpriteSheet);
+            mainNewFirstMission = new Main1_NewFirstMission(game, "Main1_NewFirstMission", missionObjectSpriteSheet);
             mainNewFirstMission.Initialize();
             missions.Add(mainNewFirstMission);
 
             // Main 2 - Highfence
-            mainHighfence = new Main2_Highfence(game, "SX_Main2_Highfence", null);
+            mainHighfence = new Main2_Highfence(game, "Main2_Highfence", null);
             mainHighfence.Initialize();
             missions.Add(mainHighfence);
 
             // Main 3 - Rebels
-            mainRebels = new Main3_Rebels(game, "SX_Main3_Rebels", null);
+            mainRebels = new Main3_Rebels(game, "Main3_Rebels", null);
             mainRebels.Initialize();
             missions.Add(mainRebels);
 
             // Main 4 - To Phase Two
-            mainToPhaseTwo = new Main4_ToPhaseTwo(game, "SX_Main4_ToPhaseTwo", null);
+            mainToPhaseTwo = new Main4_ToPhaseTwo(game, "Main4_ToPhaseTwo", null);
             mainToPhaseTwo.Initialize();
             missions.Add(mainToPhaseTwo);
 
             //Main 5 - Defend Colony
-            defendColony = new Main5_DefendColony(game, "SX_Main5_DefendColony", null);
-            defendColony.Initialize();
-            missions.Add(defendColony);
+            mainDefendColony = new Main5_DefendColony(game, "Main5_DefendColony", null);
+            mainDefendColony.Initialize();
+            missions.Add(mainDefendColony);
 
-            //Rebel Attack
-            rebelAttack = new RebelAttack(game, "P2_RebelAttack", null);
-            rebelAttack.Initialize();
-            missions.Add(rebelAttack);
+            //Main 6 - Infiltration
+            mainInfiltration = new Main6_Infiltration(game, "Main6_Infiltration", null);
+            mainInfiltration.Initialize();
+            missions.Add(mainInfiltration);
 
             // Main 8 - Retaliation
             mainRetaliation = new Main8_Retaliation(game, "RO_Main8_Retaliation", missionObjectSpriteSheet);
@@ -646,7 +646,7 @@ namespace SpaceProject
             }
 
             if (mainToPhaseTwo.MissionState == StateOfMission.CompletedDead
-                && defendColony.MissionState == StateOfMission.Unavailable)
+                && mainDefendColony.MissionState == StateOfMission.Unavailable)
             {
                 UnlockMission("Main - Defend Colony");
                 MarkMissionAsActive("Main - Defend Colony");
