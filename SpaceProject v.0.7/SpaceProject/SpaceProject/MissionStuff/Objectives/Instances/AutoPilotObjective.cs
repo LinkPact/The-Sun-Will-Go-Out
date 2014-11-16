@@ -30,6 +30,22 @@ namespace SpaceProject
 
         public AutoPilotObjective(Game1 game, Mission mission, String description,
             GameObjectOverworld destination, float speed, List<OverworldShip> companions,
+            Vector2 companionStartingPos, Dictionary<string, List<float>> timedMessages,
+            EventTextCapsule eventTextCapsule) :
+            base(game, mission, description, destination)
+        {
+            this.speed = speed;
+            ships = companions;
+            this.companionStartingPos = companionStartingPos;
+            this.timedMessages = timedMessages;
+
+            objectiveCompletedEventText = eventTextCapsule.CompletedText;
+            eventTextCanvas = eventTextCapsule.EventTextCanvas;
+            objectiveFailedEventText = eventTextCapsule.FailedText;
+        }
+
+        public AutoPilotObjective(Game1 game, Mission mission, String description,
+            GameObjectOverworld destination, float speed, List<OverworldShip> companions,
             Vector2 companionStartingPos, Dictionary<string, List<float>> timedMessages) :
             base(game, mission, description, destination)
         {
@@ -37,6 +53,7 @@ namespace SpaceProject
             ships = companions;
             this.companionStartingPos = companionStartingPos;
             this.timedMessages = timedMessages;
+
         }
 
         public override void Initialize()
@@ -47,20 +64,6 @@ namespace SpaceProject
         public override void OnMissionStart()
         {
             base.OnMissionStart();
-
-            // Adds companion ships
-            int modifier = 1;
-            for (int i = 0; i < ships.Count; i++)
-            {
-                game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
-                    ships[i], new Vector2(companionStartingPos.X - 50 + (50 * i),
-                                              companionStartingPos.Y + 325 - (25 * modifier)),
-                    "", Destination);
-
-                ships[i].Wait();
-
-                modifier *= -1;
-            }
         }
 
         public override void OnActivate()
@@ -81,6 +84,8 @@ namespace SpaceProject
             {
                 nextMessageTime = GetNextMessageStartTime();
             }
+
+            PirateShip.FollowPlayer = false;
         }
 
         public override void Update(PlayTime playTime)
@@ -120,6 +125,12 @@ namespace SpaceProject
             base.OnCompleted();
 
             ControlManager.EnableControls();
+            foreach (OverworldShip ship in ships)
+            {
+                ship.Wait();
+            }
+
+            PirateShip.FollowPlayer = true;
         }
 
         public override bool Failed()

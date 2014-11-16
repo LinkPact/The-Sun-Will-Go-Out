@@ -69,8 +69,19 @@ namespace SpaceProject
             // Adjust course towards target
             if (destination != Vector2.Zero)
             {
-                Direction.RotateTowardsPoint(this.position, destination, 0.2f);
-                particleManager.AddParticle();
+                if ((this is PirateShip || this is HangarShip))
+                {
+                    if (PirateShip.FollowPlayer)
+                    {
+                        Direction.RotateTowardsPoint(this.position, destination, 0.2f);
+                        particleManager.AddParticle();
+                    }
+                }
+                else
+                {
+                    Direction.RotateTowardsPoint(this.position, destination, 0.2f);
+                    particleManager.AddParticle();
+                }
             }
             else
                 Direction = Direction.Zero;
