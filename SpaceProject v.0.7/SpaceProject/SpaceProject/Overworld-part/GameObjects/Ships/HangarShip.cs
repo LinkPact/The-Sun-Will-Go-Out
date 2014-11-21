@@ -44,7 +44,7 @@ namespace SpaceProject
             tmpAction.Add(new FollowInViewAction(this, Game.player));
             tmpAction.Add(new PatrolAction(this, Game.stateManager.overworldState.GetSectorX));
             AIManager = tmpAction;
-            collisionEvent = new PirateColllisionEvent(Game, this, Game.player);
+            collisionEvent = new HangarCollisionEvent(Game, this, Game.player);
         }
 
         public void SetPositionInSector()
