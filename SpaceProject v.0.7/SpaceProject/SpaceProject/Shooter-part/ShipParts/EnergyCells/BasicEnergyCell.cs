@@ -7,16 +7,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class RegularEnergyCell : PlayerEnergyCell
+    public class BasicEnergyCell : PlayerEnergyCell
     {
-
-        public RegularEnergyCell(Game1 Game) 
-            : base(Game)
+        public BasicEnergyCell(Game1 Game) :
+            base(Game)
         {
             Setup();
         }
 
-        public RegularEnergyCell(Game1 Game, ItemVariety variety) :
+        public BasicEnergyCell(Game1 Game, ItemVariety variety) :
             base(Game, variety)
         {
             Setup();
@@ -24,19 +23,17 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "Mid-range energy cell";
+            return "A simple energy cell";
         }
 
         private void Setup()
         {
-            Name = "Regular Cell";
+            Name = "Basic Cell";
             Kind = "EnergyCell";
-            Weight = 200;
-
-            Capacity = 50.0f;
-            Recharge = 5.0f;
-
-            Value = 600;
+            Weight = 300;
+            Capacity = 25.0f;
+            Recharge = 4f;
+            Value = 100;
         }
 
         public override void Initialize()

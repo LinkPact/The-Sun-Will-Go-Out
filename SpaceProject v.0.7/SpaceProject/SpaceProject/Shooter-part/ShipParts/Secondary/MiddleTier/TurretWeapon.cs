@@ -30,9 +30,10 @@ namespace SpaceProject
         {
             Name = "Turret";
             Kind = "Secondary";
-            energyCostPerSecond = 4f;
-            delay = 1000;
+            energyCostPerSecond = 2f;
+            delay = 500;
             Weight = 130;
+            
 
             bullet = new BallisticLaser(Game, spriteSheet);
             bullet.Initialize();
@@ -46,7 +47,7 @@ namespace SpaceProject
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
-            player.SightRange = 1000;
+            player.SightRange = 500;
             GameObjectVertical target = player.FindAimObject();
             if (target == null) return false;
 
@@ -59,6 +60,7 @@ namespace SpaceProject
             BasicBulletSetup(bullet);
             bullet.Direction = scaledDir;
             bullet.Speed *= 0.7f;
+            bullet.Damage *= 0.3f;
 
             Game.stateManager.shooterState.gameObjects.Add(bullet);
             return true;

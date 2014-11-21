@@ -150,11 +150,11 @@ namespace SpaceProject
                         break;
 
                     case 8:
-                        tempItem = new DurableShield(this.Game, ItemVariety.regular);
+                        tempItem = new BasicShield(this.Game, ItemVariety.regular);
                         break;
 
                     case 9:
-                        tempItem = new PlasmaShield(this.Game, ItemVariety.regular);
+                        tempItem = new AdvancedShield(this.Game, ItemVariety.regular);
                         break;
 
                     case 10:
@@ -162,11 +162,11 @@ namespace SpaceProject
                         break;
 
                     case 11:
-                        tempItem = new DurableEnergyCell(this.Game, ItemVariety.regular);
+                        tempItem = new BasicEnergyCell(this.Game, ItemVariety.regular);
                         break;
 
                     case 12:
-                        tempItem = new PlasmaEnergyCell(this.Game, ItemVariety.regular);
+                        tempItem = new AdvancedEnergyCell(this.Game, ItemVariety.regular);
                         break;
 
                     case 13:

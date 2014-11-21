@@ -278,7 +278,8 @@ namespace SpaceProject
                         {
                             if (CollisionDetection.IsPointInsideCircle(obj.Position, Position, SightRange))
                             {
-                                tempList.Add(obj);
+                                if (CheckIfValidAimTarget(obj))
+                                    tempList.Add(obj);
                             }
                         }
                     }
@@ -304,6 +305,13 @@ namespace SpaceProject
                 }
             }
             return ShootObject;
+        }
+
+        private Boolean CheckIfValidAimTarget(GameObjectVertical obj)
+        {
+            // Evaluates if input GameObjectVertical is valid aim-target for aiming weapons
+
+            return !(obj is Meteorite || obj is MineEnemy);
         }
         
         public virtual void OnKilled()

@@ -7,15 +7,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class DurableEnergyCell : PlayerEnergyCell
+    public class AdvancedEnergyCell : PlayerEnergyCell
     {
-        public DurableEnergyCell(Game1 Game) :
+        public AdvancedEnergyCell(Game1 Game) :
             base(Game)
         {
             Setup();
         }
 
-        public DurableEnergyCell(Game1 Game, ItemVariety variety) :
+        public AdvancedEnergyCell(Game1 Game, ItemVariety variety) :
             base(Game, variety)
         {
             Setup();
@@ -23,20 +23,19 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "High energy storing capacity but slow recharge";
+            return "A high-level energy cell";
         }
 
         private void Setup()
         {
-            Name = "Durable Cell";
+            Name = "Advanced Cell";
             Kind = "EnergyCell";
             Weight = 300;
-            Capacity = 150.0f;
-            Recharge = 6f;
-            Value = 300;
-        }
 
-        public override void Initialize()
-        { }
+            Capacity = 100.0f;
+            Recharge = 7.5f;
+
+            Value = 1200;
+        }
     }
 }

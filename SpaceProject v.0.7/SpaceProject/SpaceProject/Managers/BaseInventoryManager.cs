@@ -34,8 +34,8 @@ namespace SpaceProject
         private MultipleShotWeapon multipleShot;
         private RegularBombWeapon bomb;
         private RegularPlating regularShip;
-        private DurableEnergyCell durableCell;
-        private PlasmaShield plasmaShield;
+        private BasicEnergyCell durableCell;
+        private AdvancedShield plasmaShield;
         private TitaniumResource titanium;
         
         //Ships
@@ -68,8 +68,8 @@ namespace SpaceProject
             
             //Ships and other owned from the beginning
             regularShip = new RegularPlating(Game);
-            durableCell = new DurableEnergyCell(Game);
-            plasmaShield = new PlasmaShield(Game);
+            durableCell = new BasicEnergyCell(Game);
+            plasmaShield = new AdvancedShield(Game);
 
             //Resources
             titanium = new TitaniumResource(this.Game, 100);

@@ -7,15 +7,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class PlasmaEnergyCell : PlayerEnergyCell
+    public class BasicShield : PlayerShield
     {
-        public PlasmaEnergyCell(Game1 Game) :
+        public BasicShield(Game1 Game) :
             base(Game)
         {
             Setup();
         }
 
-        public PlasmaEnergyCell(Game1 Game, ItemVariety variety) :
+        public BasicShield(Game1 Game, ItemVariety variety) :
             base(Game, variety)
         {
             Setup();
@@ -23,19 +23,20 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "Built for recharging at high speed while having limited capacity";
+            return "A simple shield, offering basic protection";
         }
 
         private void Setup()
         {
-            Name = "Plasma Cell";
-            Kind = "EnergyCell";
-            Weight = 300;
+            Name = "Basic Shield";
+            Kind = "Shield";
+            Weight = 700;
 
             Capacity = 30.0f;
-            Recharge = 7.5f;
+            Regeneration = 0.1f;
+            ConversionFactor = 5f;
 
-            Value = 300;
+            Value = 200;
         }
     }
 }

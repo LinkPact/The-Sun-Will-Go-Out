@@ -344,12 +344,12 @@ namespace SpaceProject
                     return fooItem;
                 case "plasma shield":
                     var = (ItemVariety)Enum.Parse(typeof(ItemVariety), GetPropertyAsString(section, "variety", "none"), true);
-                    fooItem = new PlasmaShield(Game);
+                    fooItem = new AdvancedShield(Game);
                     fooItem.SetShipPartVariety(var);
                     return fooItem;
                 case "durable shield":
                     var = (ItemVariety)Enum.Parse(typeof(ItemVariety), GetPropertyAsString(section, "variety", "none"), true);
-                    fooItem = new DurableShield(Game);
+                    fooItem = new BasicShield(Game);
                     fooItem.SetShipPartVariety(var);
                     return fooItem;
                 case "collision shield":
@@ -370,12 +370,12 @@ namespace SpaceProject
                     return fooItem;
                 case "durable cell":
                     var = (ItemVariety)Enum.Parse(typeof(ItemVariety), GetPropertyAsString(section, "variety", "none"), true);
-                    fooItem = new DurableEnergyCell(Game);
+                    fooItem = new BasicEnergyCell(Game);
                     fooItem.SetShipPartVariety(var);
                     return fooItem;
                 case "plasma cell":
                     var = (ItemVariety)Enum.Parse(typeof(ItemVariety), GetPropertyAsString(section, "variety", "none"), true);
-                    fooItem = new PlasmaEnergyCell(Game);
+                    fooItem = new AdvancedEnergyCell(Game);
                     fooItem.SetShipPartVariety(var);
                     return fooItem;
                 case "weapon boost cell":

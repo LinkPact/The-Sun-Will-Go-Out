@@ -7,16 +7,16 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class RegularPlating : PlayerPlating
+    public class AdvancedPlating : PlayerPlating
     {
         
-        public RegularPlating(Game1 Game):
+        public AdvancedPlating(Game1 Game):
             base(Game)
         {
             Setup();
         }
 
-        public RegularPlating(Game1 Game, ItemVariety variety) :
+        public AdvancedPlating(Game1 Game, ItemVariety variety) :
             base(Game, variety)
         {
             Setup();
@@ -24,21 +24,21 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "Balanced plating with decent defense and decent agility";
+            return "High quality plating for top-level defence";
         }
 
         private void Setup()
         {
-            Name = "Regular Plating";
+            Name = "Advanced Plating";
 
-            Armor = 600.0f;
+            Armor = 1000.0f;
             CurrentOverworldHealth = Armor;
 
             Speed = 0.17f;
             Acceleration = 0.03f;
             PrimarySlots = 2;
 
-            Value = 700;
+            Value = 2000;
 
             StatsManager.ApplyDifficultyOnPlating(this);
         }

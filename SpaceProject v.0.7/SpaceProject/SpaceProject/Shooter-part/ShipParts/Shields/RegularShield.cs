@@ -23,7 +23,7 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "All-round shield with decent recharge rate and decent capacity";
+            return "A mid range shield, offering decent protection";
         }
 
         private void Setup()
@@ -33,10 +33,10 @@ namespace SpaceProject
             Weight = 500;
 
             Capacity = 50.0f;
-            Regeneration = 0.1f;
-            ConversionFactor = 2f;
+            Regeneration = 0.15f;
+            ConversionFactor = 5f;
 
-            Value = 200;
+            Value = 500;
         }
     }
 }

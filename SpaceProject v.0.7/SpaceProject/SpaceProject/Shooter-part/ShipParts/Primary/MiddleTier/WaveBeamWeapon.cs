@@ -44,7 +44,7 @@ namespace SpaceProject
         
             Value = 400;
 
-            int shotsPerBatch = 3;
+            int shotsPerBatch = 2;
             int timeBetweenBatches = 250;
 
             ShootsInBatchesSetup(shotsPerBatch, timeBetweenBatches);

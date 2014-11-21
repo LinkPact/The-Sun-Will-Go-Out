@@ -815,8 +815,8 @@ namespace SpaceProject
             if (isEnergyCheatActivated)
                 return;
 
-            AddItem(new DurableEnergyCell(Game));
-            AddItem(new PlasmaEnergyCell(Game));
+            AddItem(new BasicEnergyCell(Game));
+            AddItem(new AdvancedEnergyCell(Game));
             AddItem(new WeaponBoostEnergyCell(Game));
             AddItem(new ShieldBoostEnergyCell(Game));
 
@@ -828,8 +828,8 @@ namespace SpaceProject
             if (isShieldCheatActivated)
                 return;
 
-            AddItem(new DurableShield(Game));
-            AddItem(new PlasmaShield(Game));
+            AddItem(new BasicShield(Game));
+            AddItem(new AdvancedShield(Game));
             AddItem(new CollisionShield(Game));
             AddItem(new BulletShield(Game));
 
@@ -857,8 +857,8 @@ namespace SpaceProject
             equippedSecondary = new SideMissilesWeapon(Game);
             currentPrimaryWeapon = equippedPrimaryWeapons[0];
 
-            equippedEnergyCell = new DurableEnergyCell(Game);
-            equippedShield = new DurableShield(Game);
+            equippedEnergyCell = new BasicEnergyCell(Game);
+            equippedShield = new BasicShield(Game);
 
             isEquip1CheatActivated = true;
         }
@@ -873,8 +873,8 @@ namespace SpaceProject
             equippedSecondary = new TurretWeapon(Game);
             currentPrimaryWeapon = equippedPrimaryWeapons[0];
 
-            equippedEnergyCell = new PlasmaEnergyCell(Game);
-            equippedShield = new PlasmaShield(Game);
+            equippedEnergyCell = new AdvancedEnergyCell(Game);
+            equippedShield = new AdvancedShield(Game);
 
             isEquip2CheatActivated = true;
         }
@@ -918,7 +918,7 @@ namespace SpaceProject
 
         public static String MapCreatorEquip(int equipNbr)
         {
-            equippedEnergyCell = new PlasmaEnergyCell(Game);
+            equippedEnergyCell = new AdvancedEnergyCell(Game);
 
             String equipInfo = "";
 
@@ -937,6 +937,7 @@ namespace SpaceProject
                     {
                         equippedPrimaryWeapons[0] = new DualLaserWeapon(Game);
                         equippedPrimaryWeapons[1] = new SpreadBulletWeapon(Game);
+                        equippedSecondary = new HomingMissileWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
                         //equippedSecondary = new PunyTurretWeapon(Game);
                         //equippedEnergyCell = new PlasmaEnergyCell(Game);
@@ -946,6 +947,7 @@ namespace SpaceProject
                     {
                         equippedPrimaryWeapons[0] = new SpreadBulletWeapon(Game);
                         equippedPrimaryWeapons[1] = new WaveBeamWeapon(Game);
+                        equippedSecondary = new SideMissilesWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
                         //equippedSecondary = new RegularBombWeapon(Game);
                         //equippedEnergyCell = new PlasmaEnergyCell(Game);
@@ -955,6 +957,7 @@ namespace SpaceProject
                     {
                         equippedPrimaryWeapons[0] = new WaveBeamWeapon(Game);
                         equippedPrimaryWeapons[1] = new MultipleShotWeapon(Game);
+                        equippedSecondary = new TurretWeapon(Game);
                         //equippedSecondary = new RegularBombWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
                         break;

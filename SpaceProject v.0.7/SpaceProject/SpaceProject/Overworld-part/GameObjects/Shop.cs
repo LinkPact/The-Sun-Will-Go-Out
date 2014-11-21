@@ -308,11 +308,11 @@ namespace SpaceProject
                     }
                 case ShipPartType.DurableEnergyCell:
                     {
-                        return new DurableEnergyCell(Game);
+                        return new BasicEnergyCell(Game);
                     }
                 case ShipPartType.DurableShield:
                     {
-                        return new DurableShield(Game);
+                        return new BasicShield(Game);
                     }
                 case ShipPartType.FlameShot:
                     {
@@ -344,11 +344,11 @@ namespace SpaceProject
                     }
                 case ShipPartType.PlasmaEnergyCell:
                     {
-                        return new PlasmaEnergyCell(Game);
+                        return new AdvancedEnergyCell(Game);
                     }
                 case ShipPartType.PlasmaShield:
                     {
-                        return new PlasmaShield(Game);
+                        return new AdvancedShield(Game);
                     }
                 case ShipPartType.ProximityLaser:
                     {

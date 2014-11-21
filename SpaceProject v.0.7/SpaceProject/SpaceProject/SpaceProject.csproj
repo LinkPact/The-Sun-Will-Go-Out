@@ -427,6 +427,7 @@
     <Compile Include="Shooter-part\Events\BossLevelEvent.cs" />
     <Compile Include="Shooter-part\Events\Instances\PointInstances\SingleHorizontalEnemy.cs" />
     <Compile Include="Shooter-part\Events\Instances\TextInstances\SimpleMessageVertical.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Meteorites\Meteorite.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\Hangar\AllianceHangarAttackShip.cs" />
     <Compile Include="Shooter-part\Modules\BeamModule\FriendlyBeamModule.cs" />
     <Compile Include="Shooter-part\Modules\BeamModule\HostileBeamModule.cs" />
@@ -554,6 +555,8 @@
     <Compile Include="Shooter-part\Modules\ShipShootingModule\ShootingModule.cs" />
     <Compile Include="Shooter-part\ShipParts\EnergyCells\WeaponBoostEnergyCell.cs" />
     <Compile Include="Shooter-part\ShipParts\EnergyCells\ShieldBoostEnergyCell.cs" />
+    <Compile Include="Shooter-part\ShipParts\Plating\AdvancedPlating.cs" />
+    <Compile Include="Shooter-part\ShipParts\Plating\BasicPlating.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\MiddleTier\WaveBeamWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\UpperTier\AdvancedLaserWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\UpperTier\ProximityLaserWeapon.cs" />
@@ -585,8 +588,8 @@
     <Compile Include="Shooter-part\ShipInfo\ManaBar.cs" />
     <Compile Include="Shooter-part\ShipInfo\ShieldBar.cs" />
     <Compile Include="Shooter-part\ShipParts\EmptyItem.cs" />
-    <Compile Include="Shooter-part\ShipParts\EnergyCells\DurableEnergyCell.cs" />
-    <Compile Include="Shooter-part\ShipParts\EnergyCells\PlasmaEnergyCell.cs" />
+    <Compile Include="Shooter-part\ShipParts\EnergyCells\BasicEnergyCell.cs" />
+    <Compile Include="Shooter-part\ShipParts\EnergyCells\AdvancedEnergyCell.cs" />
     <Compile Include="Shooter-part\ShipParts\Shields\BulletShield.cs" />
     <Compile Include="Shooter-part\ShipParts\Shields\CollisionShield.cs" />
     <Compile Include="Shooter-part\ShipParts\SuperClasses\PlayerEnergyCell.cs" />
@@ -599,7 +602,7 @@
     <Compile Include="Shooter-part\ShipParts\QuantityItems\Resources\GoldResource.cs" />
     <Compile Include="Shooter-part\ShipParts\QuantityItems\Resources\ResourceItem.cs" />
     <Compile Include="Shooter-part\ShipParts\QuantityItems\Resources\TitaniumResource.cs" />
-    <Compile Include="Shooter-part\ShipParts\Shields\DurableShield.cs" />
+    <Compile Include="Shooter-part\ShipParts\Shields\BasicShield.cs" />
     <Compile Include="Shooter-part\ShipParts\Shields\EmptyShield.cs" />
     <Compile Include="Shooter-part\ShipParts\Shields\PlasmaShield.cs" />
     <Compile Include="Shooter-part\ShipParts\SuperClasses\PlayerActivated.cs" />

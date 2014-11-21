@@ -7,15 +7,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class PlasmaShield : PlayerShield
+    public class AdvancedShield : PlayerShield
     {
-        public PlasmaShield(Game1 Game) :
+        public AdvancedShield(Game1 Game) :
             base(Game)
         {
             Setup();
         }
 
-        public PlasmaShield(Game1 Game, ItemVariety variety) :
+        public AdvancedShield(Game1 Game, ItemVariety variety) :
             base(Game, variety)
         {
             Setup();
@@ -28,15 +28,15 @@ namespace SpaceProject
 
         private void Setup()
         {
-            Name = "Plasma Shield";
+            Name = "Advanced Shield";
             Kind = "Shield";
             Weight = 700;
 
-            Capacity = 60.0f;
-            Regeneration = 0.25f;
-            ConversionFactor = 1;
+            Capacity = 70.0f;
+            Regeneration = 0.2f;
+            ConversionFactor = 5;
 
-            Value = 500;
+            Value = 1000;
         }
     }
 }
