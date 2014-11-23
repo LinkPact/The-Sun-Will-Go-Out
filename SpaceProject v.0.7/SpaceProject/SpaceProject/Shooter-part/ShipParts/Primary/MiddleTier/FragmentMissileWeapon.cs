@@ -28,7 +28,7 @@ namespace SpaceProject
 
         private void Setup()
         {
-            Name = "FragmentMissile";
+            Name = "Fragment Missile";
             Kind = "Primary";
             energyCostPerSecond = 7f;
             delay = 600;

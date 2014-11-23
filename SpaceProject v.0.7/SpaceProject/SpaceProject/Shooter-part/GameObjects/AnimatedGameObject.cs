@@ -35,6 +35,9 @@ namespace SpaceProject
             }
         }
 
+        public float Width { get { return anim.Width; } }
+        public float Height { get { return anim.Height; } }
+
         protected AnimatedGameObject(Game1 Game, Sprite spriteSheet):
             base(Game)
         {

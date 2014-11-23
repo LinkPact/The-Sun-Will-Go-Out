@@ -420,10 +420,11 @@
     <Compile Include="Shooter-part\AI\Behaviour\Behaviour.cs" />
     <Compile Include="Shooter-part\AI\Behaviour\NoWeapon.cs" />
     <Compile Include="Shooter-part\AI\Behaviour\StandardBehaviour.cs" />
-    <Compile Include="Shooter-part\Area\AreaObject.cs" />
-    <Compile Include="Shooter-part\Area\AreaCollision.cs" />
-    <Compile Include="Shooter-part\Area\AreaDamage.cs" />
-    <Compile Include="Shooter-part\Area\CircularAreaDamage.cs" />
+    <Compile Include="Shooter-part\Area\SuperClasses\AreaObject.cs" />
+    <Compile Include="Shooter-part\Area\Instances\AreaShieldCollision.cs" />
+    <Compile Include="Shooter-part\Area\SuperClasses\AreaDamage.cs" />
+    <Compile Include="Shooter-part\Area\Instances\CircularAreaDamage.cs" />
+    <Compile Include="Shooter-part\Area\Instances\AreaDisruptorCollision.cs" />
     <Compile Include="Shooter-part\Events\BossLevelEvent.cs" />
     <Compile Include="Shooter-part\Events\Instances\PointInstances\SingleHorizontalEnemy.cs" />
     <Compile Include="Shooter-part\Events\Instances\TextInstances\SimpleMessageVertical.cs" />
@@ -557,6 +558,7 @@
     <Compile Include="Shooter-part\ShipParts\EnergyCells\ShieldBoostEnergyCell.cs" />
     <Compile Include="Shooter-part\ShipParts\Plating\AdvancedPlating.cs" />
     <Compile Include="Shooter-part\ShipParts\Plating\BasicPlating.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\MiddleTier\DisruptorWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\UpperTier\AdvancedBeamWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\MiddleTier\BursterWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\MiddleTier\WaveBeamWeapon.cs" />

@@ -54,6 +54,7 @@ namespace SpaceProject
             Explosion expl = ExplosionGenerator.GenerateBombExplosion(Game, spriteSheet, this);
 
             CircularAreaDamage areaExpl = new CircularAreaDamage(Game, AreaDamageType.player, this.Position, blastRadius);
+            areaExpl.Initialize();
             areaExpl.Damage = blastDamage;
 
             Game.stateManager.shooterState.backgroundObjects.Add(expl);

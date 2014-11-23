@@ -926,7 +926,7 @@ namespace SpaceProject
             {
                 case 1:
                     {
-                        equippedPrimaryWeapons[0] = new BasicLaserWeapon(Game);
+                        equippedPrimaryWeapons[0] = new DisruptorWeapon(Game);
                         equippedPrimaryWeapons[1] = new SpreadBulletWeapon(Game);
                         equippedSecondary = new SideMissilesWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
