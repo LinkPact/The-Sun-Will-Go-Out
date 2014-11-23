@@ -28,9 +28,9 @@ namespace SpaceProject
         private void Setup()
         {
             Name = "MineLayer";
-            Kind = "Primary";
-            energyCostPerSecond = 10f;
-            delay = 600;
+            Kind = "Secondary";
+            energyCostPerSecond = 1f;
+            delay = 800;
             Weight = 400;
 
             bullet = new Mine(Game, spriteSheet);
@@ -54,7 +54,7 @@ namespace SpaceProject
             mine.Direction = MathFunctions.DirFromRadians(dirRadians);
             mine.Initialize();
             mine.Speed = 0.03f;
-            mine.Duration = 6000;
+            mine.Duration = 20000;
 
             Game.stateManager.shooterState.gameObjects.Add(mine);
             return true;

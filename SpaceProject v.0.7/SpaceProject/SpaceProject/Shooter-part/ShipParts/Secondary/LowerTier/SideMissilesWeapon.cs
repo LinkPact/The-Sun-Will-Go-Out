@@ -23,7 +23,7 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "Shoots four short range missiles protecting the flanks of the ship";
+            return "Shoots six short range missiles protecting the flanks of the ship";
         }
 
         private void Setup()
@@ -31,7 +31,7 @@ namespace SpaceProject
             Name = "SideMissiles";
             Kind = "Secondary";
             energyCostPerSecond = 1f;
-            delay = 700;
+            delay = 2500;
             Weight = 500;
 
             bullet = new RegularMissile(Game, spriteSheet);
@@ -46,44 +46,36 @@ namespace SpaceProject
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
-            RegularMissile missile1 = new RegularMissile(Game, spriteSheet);
-            //Position
-            missile1.PositionX = player.PositionX - 2;
-            missile1.PositionY = player.PositionY;
-            //Direction
-            missile1.Direction = MathFunctions.DirFromRadians(-Math.PI / 2 - (2 * Math.PI / 16));
-            missile1.Radians = MathFunctions.RadiansFromDir(missile1.Direction);
-            //Initialize
-            missile1.Initialize();
+            Vector2 dir1 = MathFunctions.DirFromRadians(-Math.PI / 2 - (6 * Math.PI / 32));
+            Vector2 dir2 = MathFunctions.DirFromRadians(-Math.PI / 2 - (4 * Math.PI / 32));
+            Vector2 dir3 = MathFunctions.DirFromRadians(-Math.PI / 2 - (2 * Math.PI / 32));
+            Vector2 dir4 = MathFunctions.DirFromRadians(-Math.PI / 2 + (2 * Math.PI / 32));
+            Vector2 dir5 = MathFunctions.DirFromRadians(-Math.PI / 2 + (4 * Math.PI / 32));
+            Vector2 dir6 = MathFunctions.DirFromRadians(-Math.PI / 2 + (6 * Math.PI / 32));
 
-            RegularMissile missile2 = new RegularMissile(Game, spriteSheet);
-            missile2.PositionX = player.PositionX - 4;
-            missile2.PositionY = player.PositionY;
-            missile2.Direction = MathFunctions.DirFromRadians(-Math.PI / 2 - (3 * Math.PI / 16));
-            missile2.Radians = MathFunctions.RadiansFromDir(missile2.Direction);
-            missile2.Initialize();
-
-            RegularMissile missile3 = new RegularMissile(Game, spriteSheet);
-            missile3.PositionX = player.PositionX + 2;
-            missile3.PositionY = player.PositionY;
-            missile3.Direction = MathFunctions.DirFromRadians(-Math.PI / 2 + (2 * Math.PI / 16));
-            missile3.Radians = MathFunctions.RadiansFromDir(missile3.Direction);
-            missile3.Initialize();
-
-            RegularMissile missile4 = new RegularMissile(Game, spriteSheet);
-            missile4.PositionX = player.PositionX + 4;
-            missile4.PositionY = player.PositionY;
-            missile4.Direction = MathFunctions.DirFromRadians(-Math.PI / 2 + (3 * Math.PI / 16));
-            missile4.Radians = MathFunctions.RadiansFromDir(missile4.Direction);
-            missile4.Initialize();
-
-            //Adds created bullets to list with active objects.
-            Game.stateManager.shooterState.gameObjects.Add(missile1);
-            Game.stateManager.shooterState.gameObjects.Add(missile2);
-            Game.stateManager.shooterState.gameObjects.Add(missile3);
-            Game.stateManager.shooterState.gameObjects.Add(missile4);
+            CreateMissile(player, -4, dir1);
+            CreateMissile(player, -3, dir2, speedFactor: 0.8f);
+            CreateMissile(player, -2, dir3);
+            CreateMissile(player, 2, dir4);
+            CreateMissile(player, 3, dir5, speedFactor: 0.8f);
+            CreateMissile(player, 4, dir6);
 
             return true;
+        }
+
+        // Used to create a missile according to given parameters, and add it to the game
+        private void CreateMissile(PlayerVerticalShooter player, float xDiff, Vector2 direction, float speedFactor = 1)
+        {
+            RegularMissile missile = new RegularMissile(Game, spriteSheet);
+            missile.PositionX = player.PositionX + xDiff;
+            missile.PositionY = player.PositionY;
+            missile.Direction = direction;
+            missile.Radians = MathFunctions.RadiansFromDir(missile.Direction);
+            missile.Initialize();
+            missile.Speed *= speedFactor;
+            //missile.Duration *= 0.3f;
+
+            Game.stateManager.shooterState.gameObjects.Add(missile);
         }
     }
 }

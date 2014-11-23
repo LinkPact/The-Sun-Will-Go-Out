@@ -13,12 +13,11 @@ namespace SpaceProject
     */
     class FriendlyBeamModule : BeamModule
     {
-        public FriendlyBeamModule(Game1 game, Sprite spriteSheet, float damage)
+        public FriendlyBeamModule(Game1 game, Sprite spriteSheet, float damage, Color color)
             : base(game, spriteSheet, true, damage)
         {
             viableTargetTypes.Add("enemy");
-
-            color = new Color(0, 0, 128);
+            this.color = color;
         }
     }
 }

@@ -18,12 +18,13 @@ namespace SpaceProject
             base.Initialize();
 
             //Egenskaper
-            Speed = 0.35f;
+            Speed = 0.2f;
             IsKilled = false;
             Damage = 100;
             ObjectClass = "bullet";
             ObjectName = "RegularMissile";
-            Duration = 500;
+            
+            Duration = 3000;
 
             anim.LoopTime = 300;
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(42, 0, 7, 22)));
@@ -39,6 +40,8 @@ namespace SpaceProject
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            Speed *= 0.99f;
         }
 
         public override void Draw(SpriteBatch spriteBatch)

@@ -23,15 +23,15 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "Shoots a single powerful missile which shatters and impacts a small area";
+            return "Shoots a single missile which shatters and impacts high damage to a medium area";
         }
 
         private void Setup()
         {
             Name = "FragmentMissile";
-            Kind = "Secondary";
-            energyCostPerSecond = 2f;
-            delay = 800;
+            Kind = "Primary";
+            energyCostPerSecond = 7f;
+            delay = 600;
             Weight = 500;
 
             bullet = new RegularMissile(Game, spriteSheet);
@@ -51,6 +51,7 @@ namespace SpaceProject
             missile1.PositionY = player.PositionY;
 
             BasicBulletSetup(missile1);
+
             Game.stateManager.shooterState.gameObjects.Add(missile1);
             return true;
         }

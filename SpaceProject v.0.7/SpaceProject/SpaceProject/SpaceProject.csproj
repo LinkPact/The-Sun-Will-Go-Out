@@ -557,6 +557,8 @@
     <Compile Include="Shooter-part\ShipParts\EnergyCells\ShieldBoostEnergyCell.cs" />
     <Compile Include="Shooter-part\ShipParts\Plating\AdvancedPlating.cs" />
     <Compile Include="Shooter-part\ShipParts\Plating\BasicPlating.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\UpperTier\AdvancedBeamWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\MiddleTier\BursterWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\MiddleTier\WaveBeamWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\UpperTier\AdvancedLaserWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\UpperTier\ProximityLaserWeapon.cs" />
@@ -617,7 +619,7 @@
     <Compile Include="Shooter-part\ShipParts\EmptyWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\SuperClasses\PlayerWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\LowerTier\BallisticLaserWeapon.cs" />
-    <Compile Include="Shooter-part\ShipParts\Primary\MiddleTier\MineLayerWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Secondary\UpperTier\MineLayerWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\Other\BasicLaserWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\LowerTier\DualLaserWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\MiddleTier\BeamWeapon.cs" />
@@ -625,7 +627,7 @@
     <Compile Include="Shooter-part\ShipParts\Primary\FlameShotWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\MiddleTier\MultipleShotWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\LowerTier\SpreadBulletWeapon.cs" />
-    <Compile Include="Shooter-part\ShipParts\Secondary\LowerTier\FragmentMissileWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\MiddleTier\FragmentMissileWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Secondary\MiddleTier\HomingMissileWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Secondary\MiddleTier\RegularBombWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Secondary\LowerTier\SideMissilesWeapon.cs" />
@@ -688,7 +690,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Overworld-part\GameObjects\Stations\SectorZ\" />
-    <Folder Include="Shooter-part\ShipParts\Secondary\UpperTier\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\colonydata.dat">

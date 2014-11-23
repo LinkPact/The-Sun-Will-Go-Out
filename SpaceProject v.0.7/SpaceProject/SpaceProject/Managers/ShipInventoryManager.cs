@@ -945,7 +945,7 @@ namespace SpaceProject
                     }
                 case 3:
                     {
-                        equippedPrimaryWeapons[0] = new SpreadBulletWeapon(Game);
+                        equippedPrimaryWeapons[0] = new FragmentMissileWeapon(Game);
                         equippedPrimaryWeapons[1] = new WaveBeamWeapon(Game);
                         equippedSecondary = new SideMissilesWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
@@ -966,6 +966,7 @@ namespace SpaceProject
                     {
                         equippedPrimaryWeapons[0] = new MultipleShotWeapon(Game);
                         equippedPrimaryWeapons[1] = new BallisticLaserWeapon(Game);
+                        equippedSecondary = new MineLayerWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
                         break;
                     }
@@ -993,8 +994,8 @@ namespace SpaceProject
                     }
                 case 9:
                     {
-                        equippedPrimaryWeapons[0] = new AdvancedLaserWeapon(Game);
-                        equippedPrimaryWeapons[1] = new DrillBeamWeapon(Game);
+                        equippedPrimaryWeapons[0] = new BursterWeapon(Game);
+                        equippedPrimaryWeapons[1] = new AdvancedBeamWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
                         equippedEnergyCell.Recharge *= 1.4f;
                         break;

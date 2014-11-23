@@ -8,17 +8,17 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
-    public class BeamWeapon : PlayerWeapon
+    public class AdvancedBeamWeapon : PlayerWeapon
     {
         private BeamModule beamModule;
 
-        public BeamWeapon(Game1 Game) :
+        public AdvancedBeamWeapon(Game1 Game) :
             base(Game)
         {
             Setup();
         }
 
-        public BeamWeapon(Game1 Game, ItemVariety variety) :
+        public AdvancedBeamWeapon(Game1 Game, ItemVariety variety) :
             base(Game, variety)
         {
             Setup();
@@ -31,15 +31,15 @@ namespace SpaceProject
 
         private void Setup()
         {
-            Name = "Beam";
+            Name = "Advanced Beam";
             Kind = "Primary";
-            energyCostPerSecond = 7f;
+            energyCostPerSecond = 10f;
             delay = 10;
             Weight = 200;
-            damage = 8.0f;
+            damage = 10.0f;
 
             Value = 700;
-            Color color = new Color(0, 0, 128);
+            Color color = new Color(79, 255, 73);
             beamModule = new FriendlyBeamModule(Game, spriteSheet, damage, color);
         }
 
