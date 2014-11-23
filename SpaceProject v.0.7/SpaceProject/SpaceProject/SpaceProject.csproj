@@ -805,6 +805,12 @@
     <None Include="Levels\hangar1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Levels\hangar2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\hangar3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Levels\P2AttackOnRebelStation.lvl" />
     <None Include="Levels\P2RebelAmbush.lvl" />
     <Content Include="Levels\XCoverBlown.lvl">

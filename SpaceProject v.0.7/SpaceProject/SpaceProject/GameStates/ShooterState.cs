@@ -107,6 +107,8 @@ namespace SpaceProject
 
             //Hangar Levels
             levels.Add(new HangarLevel(Game, spriteSheet, player, "hangar1", "hangar1", MissionType.pirate));
+            levels.Add(new HangarLevel(Game, spriteSheet, player, "hangar2", "hangar2", MissionType.pirate));
+            levels.Add(new HangarLevel(Game, spriteSheet, player, "hangar3", "hangar3", MissionType.pirate));
         }
 
         public override void Initialize()
@@ -487,7 +489,7 @@ namespace SpaceProject
         public void BeginHangarLevel()
         {
             Random r = new Random(DateTime.Now.Millisecond);
-            String levelName = "hangar" + r.Next(1, 1);
+            String levelName = "hangar" + r.Next(1, 4);
             BeginLevel(levelName);
         }
 
