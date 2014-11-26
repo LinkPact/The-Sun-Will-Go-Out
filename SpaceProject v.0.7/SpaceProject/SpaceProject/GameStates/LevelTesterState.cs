@@ -104,6 +104,8 @@ namespace SpaceProject
         public override void Initialize()
         {
             base.Initialize();
+
+            equipInfo = ShipInventoryManager.MapCreatorEquip(1);
         }
 
         public override void OnEnter()
@@ -190,52 +192,30 @@ namespace SpaceProject
             }
         }
 
+        // Evaluates if a number key is pressed. If so, tells the ShipInventoryManager
+        // to equip corresponding equipment set.
         private void ApplyEquipments()
         {
             if (ControlManager.CheckKeypress(Keys.D1))
-            {
                 equipInfo = ShipInventoryManager.MapCreatorEquip(1);
-            }
-
-            if (ControlManager.CheckKeypress(Keys.D2))
-            {
+            else if (ControlManager.CheckKeypress(Keys.D2))
                 equipInfo = ShipInventoryManager.MapCreatorEquip(2);
-            }
-
-            if (ControlManager.CheckKeypress(Keys.D3))
-            {
+            else if (ControlManager.CheckKeypress(Keys.D3))
                 equipInfo = ShipInventoryManager.MapCreatorEquip(3);
-            }
-
-            if (ControlManager.CheckKeypress(Keys.D4))
-            {
+            else if (ControlManager.CheckKeypress(Keys.D4))
                 equipInfo = ShipInventoryManager.MapCreatorEquip(4);
-            }
-
-            if (ControlManager.CheckKeypress(Keys.D5))
-            {
+            else if (ControlManager.CheckKeypress(Keys.D5))
                 equipInfo = ShipInventoryManager.MapCreatorEquip(5);
-            }
-
-            if (ControlManager.CheckKeypress(Keys.D6))
-            {
+            else if (ControlManager.CheckKeypress(Keys.D6))
                 equipInfo = ShipInventoryManager.MapCreatorEquip(6);
-            }
-
-            if (ControlManager.CheckKeypress(Keys.D7))
-            {
+            else if (ControlManager.CheckKeypress(Keys.D7))
                 equipInfo = ShipInventoryManager.MapCreatorEquip(7);
-            }
-
-            if (ControlManager.CheckKeypress(Keys.D8))
-            {
+            else if (ControlManager.CheckKeypress(Keys.D8))
                 equipInfo = ShipInventoryManager.MapCreatorEquip(8);
-            }
-
-            if (ControlManager.CheckKeypress(Keys.D9))
-            {
+            else if (ControlManager.CheckKeypress(Keys.D9))
                 equipInfo = ShipInventoryManager.MapCreatorEquip(9);
-            }
+            else if (ControlManager.CheckKeypress(Keys.D0))
+                equipInfo = ShipInventoryManager.MapCreatorEquip(0);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

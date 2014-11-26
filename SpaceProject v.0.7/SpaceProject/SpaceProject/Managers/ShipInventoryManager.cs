@@ -919,91 +919,163 @@ namespace SpaceProject
         public static String MapCreatorEquip(int equipNbr)
         {
             equippedEnergyCell = new AdvancedEnergyCell(Game);
-
             String equipInfo = "";
 
             switch (equipNbr)
             {
                 case 1:
                     {
-                        equippedPrimaryWeapons[0] = new DisruptorWeapon(Game);
-                        equippedPrimaryWeapons[1] = new SpreadBulletWeapon(Game);
-                        equippedSecondary = new SideMissilesWeapon(Game);
+                        equippedPrimaryWeapons[0] = new BasicLaserWeapon(Game);
+                        equippedPrimaryWeapons[1] = new BasicLaserWeapon(Game);
+                        equippedSecondary = new EmptyWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
-                        //equipInfo = "BasicLaser\nDualLaser\nSideMissiles";
+
+                        equippedEnergyCell = new BasicEnergyCell(Game);
+                        equippedPlating = new BasicPlating(Game);
+                        equippedShield = new EmptyShield(Game);
+
+                        equipInfo += "Starters kit (mission ~1)";
+
                         break;
                     }
                 case 2:
                     {
                         equippedPrimaryWeapons[0] = new DualLaserWeapon(Game);
                         equippedPrimaryWeapons[1] = new SpreadBulletWeapon(Game);
-                        equippedSecondary = new HomingMissileWeapon(Game);
+                        equippedSecondary = new EmptyWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
-                        //equippedSecondary = new PunyTurretWeapon(Game);
-                        //equippedEnergyCell = new PlasmaEnergyCell(Game);
+
+                        equippedEnergyCell = new BasicEnergyCell(Game);
+                        equippedPlating = new BasicPlating(Game);
+                        equippedShield = new EmptyShield(Game);
+
+                        equipInfo += "Past beginner set (mission ~2)";
                         break;
                     }
                 case 3:
                     {
-                        equippedPrimaryWeapons[0] = new FragmentMissileWeapon(Game);
+                        equippedPrimaryWeapons[0] = new MultipleShotWeapon(Game);
                         equippedPrimaryWeapons[1] = new WaveBeamWeapon(Game);
-                        equippedSecondary = new SideMissilesWeapon(Game);
+                        equippedSecondary = new TurretWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
-                        //equippedSecondary = new RegularBombWeapon(Game);
-                        //equippedEnergyCell = new PlasmaEnergyCell(Game);
+
+                        equippedEnergyCell = new RegularEnergyCell(Game);
+                        equippedPlating = new BasicPlating(Game);
+                        equippedShield = new BasicShield(Game);
+
+                        equipInfo += "Has reached Fortrun (mission ~3)";
                         break;
                     }
                 case 4:
                     {
-                        equippedPrimaryWeapons[0] = new WaveBeamWeapon(Game);
+                        equippedPrimaryWeapons[0] = new BeamWeapon(Game);
                         equippedPrimaryWeapons[1] = new MultipleShotWeapon(Game);
                         equippedSecondary = new TurretWeapon(Game);
-                        //equippedSecondary = new RegularBombWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
+
+                        equippedEnergyCell = new RegularEnergyCell(Game);
+                        equippedPlating = new RegularPlating(Game);
+                        equippedShield = new RegularShield(Game);
+
+                        equipInfo += "A bit more progress at Fortrun (mission ~4)";
                         break;
                     }
                 case 5:
                     {
-                        equippedPrimaryWeapons[0] = new MultipleShotWeapon(Game);
-                        equippedPrimaryWeapons[1] = new BallisticLaserWeapon(Game);
-                        equippedSecondary = new MineLayerWeapon(Game);
+                        equippedPrimaryWeapons[0] = new FragmentMissileWeapon(Game);
+                        equippedPrimaryWeapons[1] = new BeamWeapon(Game);
+                        equippedSecondary = new SideMissilesWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
+
+                        equippedEnergyCell = new RegularEnergyCell(Game);
+                        equippedPlating = new RegularPlating(Game);
+                        equippedShield = new RegularShield(Game);
+
+                        equipInfo += "Has now reached Rebel Station (mission ~5)";
                         break;
                     }
                 case 6:
                     {
-                        equippedPrimaryWeapons[0] = new WaveBeamWeapon(Game);
-                        equippedPrimaryWeapons[1] = new BeamWeapon(Game);
+                        equippedPrimaryWeapons[0] = new BallisticLaserWeapon(Game);
+                        equippedPrimaryWeapons[1] = new BursterWeapon(Game);
+                        equippedSecondary = new SideMissilesWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
+
+                        equippedEnergyCell = new AdvancedEnergyCell(Game);
+                        equippedPlating = new RegularPlating(Game);
+                        equippedShield = new RegularShield(Game);
+
+                        equipInfo += "Running to Peye (mission ~6+)";
                         break;
                     }
                 case 7:
                     {
-                        equippedPrimaryWeapons[0] = new BeamWeapon(Game);
+                        equippedPrimaryWeapons[0] = new AdvancedLaserWeapon(Game);
                         equippedPrimaryWeapons[1] = new ProximityLaserWeapon(Game);
+                        equippedSecondary = new SideMissilesWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
+
+                        equippedEnergyCell = new AdvancedEnergyCell(Game);
+                        equippedPlating = new RegularPlating(Game);
+                        equippedShield = new AdvancedShield(Game);
+
+                        equipInfo += "Getting inaccurate here (mission >6-7)";
                         break;
                     }
                 case 8:
                     {
-                        equippedPrimaryWeapons[0] = new ProximityLaserWeapon(Game);
-                        equippedPrimaryWeapons[1] = new AdvancedLaserWeapon(Game);
+                        equippedPrimaryWeapons[0] = new AdvancedBeamWeapon(Game);
+                        equippedPrimaryWeapons[1] = new ProximityLaserWeapon(Game);
+                        equippedSecondary = new SideMissilesWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
-                        equippedEnergyCell.Recharge *= 1.4f;
+
+                        equippedEnergyCell = new AdvancedEnergyCell(Game);
+                        equippedPlating = new AdvancedPlating(Game);
+                        equippedShield = new AdvancedShield(Game);
+
+                        equipInfo += "Currently highest tier (mission ~10)";
                         break;
                     }
                 case 9:
                     {
                         equippedPrimaryWeapons[0] = new BursterWeapon(Game);
-                        equippedPrimaryWeapons[1] = new AdvancedBeamWeapon(Game);
+                        equippedPrimaryWeapons[1] = new BursterWeapon(Game);
+                        equippedSecondary = new BursterWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
-                        equippedEnergyCell.Recharge *= 1.4f;
+
+                        equippedEnergyCell = new AdvancedEnergyCell(Game);
+                        equippedPlating = new AdvancedPlating(Game);
+                        equippedShield = new AdvancedShield(Game);
+                        
+                        equippedEnergyCell.Recharge *= 10f;
+                        equippedPlating.Speed *= 3f;
+                        equippedPlating.Armor *= 10f;
+                        equippedShield.Regeneration *= 5f;
+
+                        equipInfo += "What's going on here??";
+                        break;
+                    }
+                case 0:
+                    {
+                        equippedPrimaryWeapons[0] = new BursterWeapon(Game);
+                        equippedPrimaryWeapons[1] = new BallisticLaserWeapon(Game);
+                        equippedSecondary = new EmptyWeapon(Game);
+                        currentPrimaryWeapon = equippedPrimaryWeapons[0];
+
+                        equippedEnergyCell = new AdvancedEnergyCell(Game);
+                        equippedPlating = new AdvancedPlating(Game);
+                        equippedShield = new AdvancedShield(Game);
+
+                        equipInfo += "Jakobs testing slot";
                         break;
                     }
             }
-            equipInfo = "\n" + equippedPrimaryWeapons[0].ToString()
+            equipInfo += "\n" + equippedPrimaryWeapons[0].ToString()
                 + "\n" + equippedPrimaryWeapons[1].ToString()
-                + "\n" + equippedSecondary.ToString();
+                + "\n" + equippedSecondary.ToString()
+                + "\n" + equippedEnergyCell.ToString()
+                + "\n" + equippedShield.ToString()
+                + "\n" + equippedPlating.ToString();
 
             return equipInfo;
         }
