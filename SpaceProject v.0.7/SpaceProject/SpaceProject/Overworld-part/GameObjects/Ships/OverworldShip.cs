@@ -22,7 +22,7 @@ namespace SpaceProject
         public Vector2 destination;
         protected bool hasArrived;
         public bool HasArrived { get { return hasArrived; } set { hasArrived = value; } }
-        public void ResetArrived() { hasArrived = false; } 
+        public void ResetArrived() { hasArrived = false; }
 
         // Should be removed
         protected GameObjectOverworld target;

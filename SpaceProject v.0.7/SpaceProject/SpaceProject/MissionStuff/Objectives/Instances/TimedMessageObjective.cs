@@ -23,6 +23,20 @@ namespace SpaceProject
         }
 
         public TimedMessageObjective(Game1 game, Mission mission, String description,
+            GameObjectOverworld destination, String message, float messageDelay, float startTime,
+            EventTextCapsule eventTextCapsule) :
+            base(game, mission, description, destination)
+        {
+            messages.Add(message);
+            this.messageDelay = messageDelay;
+            messageTime = startTime;
+
+            objectiveCompletedEventText = eventTextCapsule.CompletedText;
+            eventTextCanvas = eventTextCapsule.EventTextCanvas;
+            objectiveFailedEventText = eventTextCapsule.FailedText;
+        }
+
+        public TimedMessageObjective(Game1 game, Mission mission, String description,
             GameObjectOverworld destination, List<String> messages, float messageDelay, float startTime) :
             base(game, mission, description, destination)
         {
