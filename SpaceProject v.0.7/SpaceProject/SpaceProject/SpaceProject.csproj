@@ -345,6 +345,7 @@
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Collisions\CollisionEvent.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Collisions\HangarCollisionEvent.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Collisions\PirateColllisionEvent.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Collisions\RebelPirateCollisionEvent.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Collisions\RemoveOnCollisionEvent.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\FollowInViewAction.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\OrbitAction.cs" />

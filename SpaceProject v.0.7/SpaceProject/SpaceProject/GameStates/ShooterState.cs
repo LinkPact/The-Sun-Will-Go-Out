@@ -493,6 +493,20 @@ namespace SpaceProject
             BeginLevel(levelName);
         }
 
+        public void BeginRebelPirateLevel()
+        {
+            Random r = new Random(DateTime.Now.Millisecond);
+            String levelName = "RebelPirate" + r.Next(1, 4);
+            BeginLevel(levelName);
+        }
+
+        public void BeginAlliancePirateLevel()
+        {
+            Random r = new Random(DateTime.Now.Millisecond);
+            String levelName = "AlliancePirate" + r.Next(1, 4);
+            BeginLevel(levelName);
+        }
+
         public Level GetLevel(string levelName)
         {
             foreach (Level level in levels)
