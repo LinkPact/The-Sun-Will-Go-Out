@@ -26,12 +26,12 @@ namespace SpaceProject
 
         private void ShopSetup()
         {
-            AddShopEntry(new ShopInventoryEntry(ShipPartType.SpreadBullet, ShipPartAvailability.common, ItemVariety.random));
-            AddShopEntry(new ShopInventoryEntry(ShipPartType.DurableEnergyCell, ShipPartAvailability.common, ItemVariety.random));
-            AddShopEntry(new ShopInventoryEntry(ShipPartType.BallisticLaser, ShipPartAvailability.uncommon, ItemVariety.random));
-            AddShopEntry(new ShopInventoryEntry(ShipPartType.SideMissiles, ShipPartAvailability.common, ItemVariety.random));
-
-            SetShopFilling(ShopFilling.regular);
+            //AddShopEntry(new ShopInventoryEntry(ShipPartType.SpreadBullet, ShipPartAvailability.common, ItemVariety.random));
+            //AddShopEntry(new ShopInventoryEntry(ShipPartType.DurableEnergyCell, ShipPartAvailability.common, ItemVariety.random));
+            //AddShopEntry(new ShopInventoryEntry(ShipPartType.BallisticLaser, ShipPartAvailability.uncommon, ItemVariety.random));
+            //AddShopEntry(new ShopInventoryEntry(ShipPartType.SideMissiles, ShipPartAvailability.common, ItemVariety.random));
+            //
+            //SetShopFilling(ShopFilling.regular);
         }
 
         public override void Update(GameTime gameTime)

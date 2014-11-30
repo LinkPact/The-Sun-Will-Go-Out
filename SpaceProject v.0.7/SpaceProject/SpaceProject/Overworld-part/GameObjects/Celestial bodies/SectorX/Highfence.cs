@@ -28,11 +28,12 @@ namespace SpaceProject
 
         private void ShopSetup()
         {
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.BasicLaser, ShipPartAvailability.common, ItemVariety.random));
             AddShopEntry(new ShopInventoryEntry(ShipPartType.DualLaser, ShipPartAvailability.ubiquitous, ItemVariety.random));
             AddShopEntry(new ShopInventoryEntry(ShipPartType.SpreadBullet, ShipPartAvailability.common, ItemVariety.random));
 
-            AddShopEntry(new ShopInventoryEntry(ShipPartType.RegularEnergyCell, ShipPartAvailability.common, ItemVariety.random));
-            AddShopEntry(new ShopInventoryEntry(ShipPartType.RegularShield, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.BasicEnergyCell, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.BasicPlating, ShipPartAvailability.uncommon, ItemVariety.random));
 
             SetShopFilling(ShopFilling.filled);
         }

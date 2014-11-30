@@ -274,134 +274,48 @@ namespace SpaceProject
         {
             switch (shipPartEnum)
             {
-                case ShipPartType.AdvancedLaser:
-                    {
-                        return new AdvancedLaserWeapon(Game);
-                    }
-                case ShipPartType.BallisticLaser:
-                    {
-                        return new BallisticLaserWeapon(Game);
-                    }
-                case ShipPartType.BasicLaser:
-                    {
-                        return new BasicLaserWeapon(Game);
-                    }
-                case ShipPartType.Beam:
-                    {
-                        return new BeamWeapon(Game);
-                    }
-                case ShipPartType.BulletShield:
-                    {
-                        return new BulletShield(Game);
-                    }
-                case ShipPartType.CollisionShield:
-                    {
-                        return new CollisionShield(Game);
-                    }
-                case ShipPartType.DrillBeam:
-                    {
-                        return new DrillBeamWeapon(Game);
-                    }
-                case ShipPartType.DualLaser:
-                    {
-                        return new DualLaserWeapon(Game);
-                    }
-                case ShipPartType.DurableEnergyCell:
-                    {
-                        return new BasicEnergyCell(Game);
-                    }
-                case ShipPartType.DurableShield:
-                    {
-                        return new BasicShield(Game);
-                    }
-                case ShipPartType.FlameShot:
-                    {
-                        return new FlameShotWeapon(Game);
-                    }
-                case ShipPartType.FragmentMissile:
-                    {
-                        return new FragmentMissileWeapon(Game);
-                    }
-                case ShipPartType.HeavyPlating:
-                    {
-                        return new HeavyPlating(Game);
-                    }
-                case ShipPartType.HomingMissile:
-                    {
-                        return new HomingMissileWeapon(Game);
-                    }
-                case ShipPartType.LightPlating:
-                    {
-                        return new LightPlating(Game);
-                    }
-                case ShipPartType.MineLayer:
-                    {
-                        return new MineLayerWeapon(Game);
-                    }
-                case ShipPartType.MultipleShot:
-                    {
-                        return new MultipleShotWeapon(Game);
-                    }
-                case ShipPartType.PlasmaEnergyCell:
-                    {
-                        return new AdvancedEnergyCell(Game);
-                    }
-                case ShipPartType.PlasmaShield:
-                    {
-                        return new AdvancedShield(Game);
-                    }
-                case ShipPartType.ProximityLaser:
-                    {
-                        return new ProximityLaserWeapon(Game);
-                    }
-                case ShipPartType.PunyTurret:
-                    {
-                        return new PunyTurretWeapon(Game);
-                    }
-                case ShipPartType.RegularBomb:
-                    {
-                        return new RegularBombWeapon(Game);
-                    }
-                case ShipPartType.RegularEnergyCell:
-                    {
-                        return new RegularEnergyCell(Game);
-                    }
-                case ShipPartType.RegularPlating:
-                    {
-                        return new RegularPlating(Game);
-                    }
-                case ShipPartType.RegularShield:
-                    {
-                        return new RegularShield(Game);
-                    }
-                case ShipPartType.SideMissiles:
-                    {
-                        return new SideMissilesWeapon(Game);
-                    }
-                case ShipPartType.ShieldBoostEnergyCell:
-                    {
-                        return new ShieldBoostEnergyCell(Game);
-                    }
-                case ShipPartType.SpreadBullet:
-                    {
-                        return new SpreadBulletWeapon(Game);
-                    }
-                case ShipPartType.Turret:
-                    {
-                        return new TurretWeapon(Game);
-                    }
-                case ShipPartType.WaveBeam:
-                    {
-                        return new WaveBeamWeapon(Game);
-                    }
-                case ShipPartType.WeaponBoostEnergyCell:
-                    {
-                        return new WeaponBoostEnergyCell(Game);
-                    }
+                case ShipPartType.BasicLaser:               return new BasicLaserWeapon(Game);
+                case ShipPartType.DualLaser:                return new DualLaserWeapon(Game);
+                case ShipPartType.SpreadBullet:             return new SpreadBulletWeapon(Game);
+                case ShipPartType.Beam:                     return new BeamWeapon(Game);
+                case ShipPartType.MultipleShot:             return new MultipleShotWeapon(Game);
+                case ShipPartType.WaveBeam:                 return new WaveBeamWeapon(Game);
+                case ShipPartType.BallisticLaser:           return new BallisticLaserWeapon(Game);
+                case ShipPartType.FragmentMissile:          return new FragmentMissileWeapon(Game);
+                case ShipPartType.Burster:                  return new BursterWeapon(Game);
+                case ShipPartType.AdvancedLaser:            return new AdvancedLaserWeapon(Game);
+                case ShipPartType.ProximityLaser:           return new ProximityLaserWeapon(Game);
+                case ShipPartType.AdvancedBeam:             return new AdvancedBeamWeapon(Game);
+
+                case ShipPartType.Turret:                   return new TurretWeapon(Game);
+                case ShipPartType.FieldDamage:              return new FieldDamageWeapon(Game);
+                case ShipPartType.SideMissiles:             return new SideMissilesWeapon(Game);
+                case ShipPartType.HomingMissile:            return new HomingMissileWeapon(Game);
+                case ShipPartType.Disruptor:                return new DisruptorWeapon(Game);
+                case ShipPartType.MineLayer:                return new MineLayerWeapon(Game);
+                case ShipPartType.RegularBomb:              return new RegularBombWeapon(Game);
+                case ShipPartType.PunyTurret:               return new PunyTurretWeapon(Game);
+
+                case ShipPartType.BasicPlating:             return new BasicPlating(Game);
+                case ShipPartType.RegularPlating:           return new RegularPlating(Game);
+                case ShipPartType.AdvancedPlating:          return new AdvancedPlating(Game);
+                case ShipPartType.HeavyPlating:             return new HeavyPlating(Game);
+                case ShipPartType.LightPlating:             return new LightPlating(Game);
+                
+                case ShipPartType.BasicEnergyCell:          return new BasicEnergyCell(Game);
+                case ShipPartType.RegularEnergyCell:        return new RegularEnergyCell(Game);
+                case ShipPartType.AdvancedEnergyCell:       return new AdvancedEnergyCell(Game);
+                case ShipPartType.WeaponBoostEnergyCell:    return new WeaponBoostEnergyCell(Game);
+                case ShipPartType.ShieldBoostEnergyCell:    return new ShieldBoostEnergyCell(Game);
+
+                case ShipPartType.BasicShield:              return new BasicShield(Game);
+                case ShipPartType.RegularShield:            return new RegularShield(Game);
+                case ShipPartType.AdvancedShield:           return new AdvancedShield(Game);
+                case ShipPartType.CollisionShield:          return new CollisionShield(Game);
+                case ShipPartType.BulletShield:             return new BulletShield(Game);
+
                 default:
-                    {
                         throw new ArgumentException("Undefined enum value! Check enum in DataEnums-class");
-                    }
             }
         }
 

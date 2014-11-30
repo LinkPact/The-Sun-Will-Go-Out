@@ -26,18 +26,18 @@ namespace SpaceProject
 
         private void ShopSetup()
         {
-            AddShopEntry(new ShopInventoryEntry(ShipPartType.BasicLaser, ShipPartAvailability.ubiquitous, ItemVariety.regular));
-
-            AddShopEntry(new ShopInventoryEntry(ShipPartType.RegularShield, ShipPartAvailability.common, ItemVariety.regular));
-            AddShopEntry(new ShopInventoryEntry(ShipPartType.RegularEnergyCell, ShipPartAvailability.common, ItemVariety.regular));
-
-            AddShopEntry(new ShopInventoryEntry(ShipPartType.DualLaser, ShipPartAvailability.uncommon, ItemVariety.regular));
-            AddShopEntry(new ShopInventoryEntry(ShipPartType.PunyTurret, ShipPartAvailability.uncommon, ItemVariety.regular));
-
-            AddShopEntry(new ShopInventoryEntry(ShipPartType.MultipleShot, ShipPartAvailability.rare, ItemVariety.regular));
-            AddShopEntry(new ShopInventoryEntry(ShipPartType.FragmentMissile, ShipPartAvailability.rare, ItemVariety.regular));
-
-            SetShopFilling(ShopFilling.regular);
+            //AddShopEntry(new ShopInventoryEntry(ShipPartType.BasicLaser, ShipPartAvailability.ubiquitous, ItemVariety.regular));
+            //
+            //AddShopEntry(new ShopInventoryEntry(ShipPartType.RegularShield, ShipPartAvailability.common, ItemVariety.regular));
+            //AddShopEntry(new ShopInventoryEntry(ShipPartType.RegularEnergyCell, ShipPartAvailability.common, ItemVariety.regular));
+            //
+            //AddShopEntry(new ShopInventoryEntry(ShipPartType.DualLaser, ShipPartAvailability.uncommon, ItemVariety.regular));
+            //AddShopEntry(new ShopInventoryEntry(ShipPartType.PunyTurret, ShipPartAvailability.uncommon, ItemVariety.regular));
+            //
+            //AddShopEntry(new ShopInventoryEntry(ShipPartType.MultipleShot, ShipPartAvailability.rare, ItemVariety.regular));
+            //AddShopEntry(new ShopInventoryEntry(ShipPartType.FragmentMissile, ShipPartAvailability.rare, ItemVariety.regular));
+            //
+            //SetShopFilling(ShopFilling.regular);
         }
 
         public override void Update(GameTime gameTime)

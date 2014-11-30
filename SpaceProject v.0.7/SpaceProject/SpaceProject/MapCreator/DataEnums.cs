@@ -104,41 +104,56 @@ public enum DurationEventType
 
 public enum ShipPartType
 { 
-    BasicLaser          = 1,
-    BallisticLaser      = 2,
-    DualLaser           = 3,
-    SpreadBullet        = 4,
-    Beam                = 5,
-    MineLayer           = 6,
-    MultipleShot        = 7,
-    WaveBeam            = 8,
-    AdvancedLaser       = 9,
-    ProximityLaser      = 10,
-    DrillBeam           = 11,
-    FlameShot           = 12,
+    // Primary
+    BasicLaser              = 1,
+    DualLaser               = 2,
+    SpreadBullet            = 3,
+
+    Beam                    = 4,
+    MultipleShot            = 5,
+    WaveBeam                = 6,
+
+    BallisticLaser          = 7,
+    FragmentMissile         = 8,
+    Burster                 = 9,
+
+    AdvancedLaser           = 10,
+    ProximityLaser          = 11,
+    AdvancedBeam            = 12,
+
+    // Secondary
+    Turret                  = 13,
+    FieldDamage             = 14,
+
+    SideMissiles            = 15,
+    HomingMissile           = 16,
+    Disruptor               = 17,
     
-    PunyTurret          = 13,
-    FragmentMissile     = 14,
-    SideMissiles        = 15,
-    HomingMissile       = 16,
-    RegularBomb         = 17,
-    Turret              = 18,
+    MineLayer               = 18,
 
-    HeavyPlating        = 19,
-    LightPlating        = 20,
-    RegularPlating      = 21,
+    RegularBomb             = 19,
+    PunyTurret              = 20,
 
-    DurableEnergyCell   = 22,
-    PlasmaEnergyCell    = 23,
-    RegularEnergyCell   = 24,
-    WeaponBoostEnergyCell = 25,
-    ShieldBoostEnergyCell = 26,
+    // Plating
+    BasicPlating            = 21,
+    RegularPlating          = 22,
+    AdvancedPlating         = 23,
+    HeavyPlating            = 24,
+    LightPlating            = 25,
 
-    DurableShield       = 27,
-    PlasmaShield        = 28,
-    RegularShield       = 29,
-    CollisionShield     = 30,
-    BulletShield        = 31
+    // Energy cell
+    BasicEnergyCell         = 26,
+    RegularEnergyCell       = 27,
+    AdvancedEnergyCell      = 28,
+    WeaponBoostEnergyCell   = 29,
+    ShieldBoostEnergyCell   = 30,
+
+    // Shield
+    BasicShield             = 31,
+    RegularShield           = 32,
+    AdvancedShield          = 33,
+    CollisionShield         = 34,
+    BulletShield            = 35
 }
 
 public enum ShipPartAvailability

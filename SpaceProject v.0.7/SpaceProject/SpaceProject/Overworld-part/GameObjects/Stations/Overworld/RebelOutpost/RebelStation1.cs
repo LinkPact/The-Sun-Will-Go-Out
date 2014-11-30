@@ -21,6 +21,25 @@ namespace SpaceProject
             base.Initialize();
             StationCodeName = "RO_Rebel_Station_1";
             LoadStationData(StationCodeName);
+
+            ShopSetup();
+        }
+
+        private void ShopSetup()
+        {
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.BallisticLaser, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.FragmentMissile, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.Burster, ShipPartAvailability.common, ItemVariety.random));
+
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.SideMissiles, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.Disruptor, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.HomingMissile, ShipPartAvailability.common, ItemVariety.random));
+
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.AdvancedEnergyCell, ShipPartAvailability.ubiquitous, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.AdvancedPlating, ShipPartAvailability.uncommon, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.AdvancedShield, ShipPartAvailability.common, ItemVariety.random));
+
+            SetShopFilling(ShopFilling.veryFilled);
         }
 
         public override void Update(GameTime gameTime)
