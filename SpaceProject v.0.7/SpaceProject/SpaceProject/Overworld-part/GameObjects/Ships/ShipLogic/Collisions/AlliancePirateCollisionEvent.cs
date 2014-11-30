@@ -3,24 +3,24 @@ using System.Collections.Generic;
 
 namespace SpaceProject
 {
-    class RebelPirateCollisionEvent : CollisionEvent
+    class AlliancePirateCollisionEvent : CollisionEvent
     {
-        private List<string> messages;
+         private List<string> messages;
 
-        public RebelPirateCollisionEvent(Game1 game, OverworldShip ship, GameObjectOverworld target)
+         public AlliancePirateCollisionEvent(Game1 game, OverworldShip ship, GameObjectOverworld target)
             : base(game, ship, target) 
         {
             messages = new List<string>();
-            messages.Add("The alliance must be destroyed!");
-            messages.Add("Death to the alliance!");
-            messages.Add("The Alliance are destroying our homes. You must pay!");
+            messages.Add("Die rebel scum!");
+            messages.Add("You are deamed a traitor to the alliance. You will pay for your crimes!");
+            messages.Add("Resistance is futile, surrender now!");
         }
 
         public override void Invoke()
         {
             game.stateManager.overworldState.RemoveOverworldObject(ship);
             game.messageBox.DisplayMessage(GetMessage(), false);
-            game.stateManager.shooterState.BeginRebelPirateLevel();
+            game.stateManager.shooterState.BeginAlliancePirateLevel();
         }
 
         private string GetMessage()

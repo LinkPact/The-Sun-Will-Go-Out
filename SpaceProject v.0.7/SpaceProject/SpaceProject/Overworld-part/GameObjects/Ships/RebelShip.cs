@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 namespace SpaceProject
 {
     /// <summary>
-    /// 
+    /// The Rebels smaller ship in the overworld
     /// </summary>
     public class RebelShip : OverworldShip
     {
@@ -21,7 +21,7 @@ namespace SpaceProject
             name = "Rebel Ship";
 
             sprite = spriteSheet.GetSubSprite(new Rectangle(484, 0, 23, 34));
-            viewRadius = 400;
+            viewRadius = 3000;
             position = new Vector2(0, 0);
             speed = 0.42f;
             target = Game.player;
@@ -30,6 +30,7 @@ namespace SpaceProject
             color = Color.White;
             scale = 1.0f;
             layerDepth = 0.6f;
+            SetDefaultBehavior();
 
             base.Initialize();
         }
@@ -52,6 +53,16 @@ namespace SpaceProject
             //if (CollisionDetection.IsPointInsideRectangle(position, Game.stateManager.overWorldState.HUD.radar.View))
             //    SetPositionInSector();
         }
+
+        public void SetDefaultBehavior()
+        {
+            PriorityAction tmpAction = new PriorityAction();
+            tmpAction.Add(new FollowInViewAction(this, Game.player));
+            tmpAction.Add(new PatrolAction(this, Game.stateManager.overworldState.GetSectorX));
+            AIManager = tmpAction;
+            collisionEvent = new RebelPirateCollisionEvent(Game, this, Game.player);
+        }
+
         public override void FinalGoodbye()
         {
             IsDead = true;

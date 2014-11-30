@@ -41,10 +41,19 @@ namespace SpaceProject
                 return overworld.GetAllOverworldGameObjects.OfType<HangarShip>().Count();
             }
         }
+        private int allianceInOverworld
+        {
+            get
+            {
+                return overworld.GetAllOverworldGameObjects.OfType<AllianceShip>().Count();
+            }
+        }
 
         private int spawnLimitPirates;
         private int spawnLimitFreighters;
         private int spawnLimitHangars;
+        private int spawnLimitRebels;
+        private int spawnLimitAlliance;
 
         public ShipSpawner(Game1 game)
         {
@@ -65,6 +74,8 @@ namespace SpaceProject
             spawnLimitPirates = 5;
             spawnLimitFreighters = 4;
             spawnLimitHangars = 3;
+            spawnLimitRebels = 5;
+            spawnLimitAlliance = 5;
         }
 
         public void AddPirateShip(Vector2 pos)
@@ -150,19 +161,17 @@ namespace SpaceProject
             overworld.AddOverworldObject(tempShip);
         }
 
-        public void AddFreighterToSector(Vector2 pos)
+        public void AddRebelToSector()
         {
-            FreighterShip tempShip = new FreighterShip(game, spriteSheet);
+            RebelShip tempShip = new RebelShip(game, spriteSheet);
             tempShip.Initialize(sector);
-            tempShip.position = pos;
             overworld.AddOverworldObject(tempShip);
         }
 
-        public void AddFreighterToSector(Vector2 pos, GameObjectOverworld startingPoint, GameObjectOverworld destination)
+        public void AddAllianceToSector()
         {
-            FreighterShip tempShip = new FreighterShip(game, spriteSheet);
-            tempShip.Initialize(sector, startingPoint, destination);
-            tempShip.position = pos;
+            AllianceShip tempShip = new AllianceShip(game, spriteSheet);
+            tempShip.Initialize(sector);
             overworld.AddOverworldObject(tempShip);
         }
 
@@ -175,6 +184,8 @@ namespace SpaceProject
         public void Update(GameTime gameTime)
         {
             UpdatePirates(gameTime);
+            UpdateRebels(gameTime);
+            UpdateAlliance(gameTime);
             UpdateFreighters(gameTime);
             UpdateHangars(gameTime);
         }
@@ -184,6 +195,22 @@ namespace SpaceProject
             if (piratesInOverworld < spawnLimitPirates)
             {
                 AddPirateToSector();
+            }
+        }
+
+        public void UpdateRebels(GameTime gameTime)
+        {
+            if (rebelsInOverworld < spawnLimitRebels)
+            {
+                AddRebelToSector();
+            }
+        }
+
+        public void UpdateAlliance(GameTime gameTime)
+        {
+            if (allianceInOverworld < spawnLimitAlliance)
+            {
+                AddAllianceToSector();
             }
         }
 

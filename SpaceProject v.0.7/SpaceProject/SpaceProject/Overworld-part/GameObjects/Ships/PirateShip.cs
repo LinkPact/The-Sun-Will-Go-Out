@@ -66,35 +66,15 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {          
-            // Select target
-            //if (FollowPlayer && CollisionDetection.IsPointInsideRectangle(Game.player.position, view))
-            //{
-            //    destination = Game.player.position;
-            //}
-            //else if(roam == true && sector != null)
-            //{
-            //    if (CollisionDetection.IsPointInsideRectangle(destination, Bounds))
-            //    {                
-            //        Random r = new Random(DateTime.Now.Millisecond);
-            //        destination = new Vector2(
-            //            r.Next(sector.SpaceRegionArea.Left , sector.SpaceRegionArea.Right), 
-            //            r.Next(sector.SpaceRegionArea.Top, sector.SpaceRegionArea.Bottom));
-            //    }
-            //}
-            //else if(roam == false)
-            //    destination = Vector2.Zero;
-
             angle = (float)(MathFunctions.RadiansFromDir(new Vector2(
                 Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI) / 2 + Math.PI);
 
             base.Update(gameTime);
-
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
         {
                base.Draw(spriteBatch);
         }
-
     }
 }
