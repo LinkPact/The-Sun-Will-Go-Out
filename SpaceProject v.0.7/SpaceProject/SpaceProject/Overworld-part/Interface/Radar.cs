@@ -117,11 +117,11 @@ namespace SpaceProject
                         colorSwapCounter = 0;
                     }
                 }
-                else if (obj is PirateShip)
+                else if (obj is RebelShip)
                 {
                     tempColor = Color.Red;
                 }
-                else if (obj is FreighterShip)
+                else if (obj is FreighterShip || obj is AllianceShip || obj is HangarShip)
                 {
                     tempColor = Color.Blue;
                 }
