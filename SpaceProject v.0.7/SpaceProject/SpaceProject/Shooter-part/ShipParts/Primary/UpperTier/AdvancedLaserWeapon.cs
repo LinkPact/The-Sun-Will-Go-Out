@@ -30,7 +30,7 @@ namespace SpaceProject
         {
             Name = "Advanced Laser";
             Kind = "Primary";
-            energyCostPerSecond = 12f;
+            energyCostPerSecond = 11f;
             delay = 180;
             Weight = 400;
 

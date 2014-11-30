@@ -61,23 +61,23 @@ namespace SpaceProject
             display1.Add("Press Escape to return to main menu");
             display1.Add("Use number keys (0-9) to switch equipment");
 
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m4_infiltration_lv1_v1", "m4_1", Keys.A, standardEquip: 2));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m4_infiltration_lv2_v1", "m4_2", Keys.S, standardEquip: 2));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m5_retribution_lv1_v1", "m5_1", Keys.D, standardEquip: 4));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m5_retribution_lv2_v1", "m5_2", Keys.F, standardEquip: 4));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m6_itnos_lv1_v1", "m6_1", Keys.G, standardEquip: 5));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m6_itnos_lv2_v1", "m6_2", Keys.H, standardEquip: 5));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m7_infiltration_lv1_v1", "m7_1", Keys.J, standardEquip: 5));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10a_OYO_lv1_v1", "m10a_1", Keys.K, standardEquip: 8));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10a_OYO_lv2_v1", "m10a_2", Keys.L, standardEquip: 8));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10b_rebels_lv1_v1", "m10b_1", Keys.Q, standardEquip: 8));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10b_rebels_lv2_v1", "m10b_2", Keys.W, standardEquip: 8));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10c_alliance_lv1_v1", "m10c_1", Keys.E, standardEquip: 8));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10c_alliance_lv2_v1", "m10c_2", Keys.R, standardEquip: 8));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m4_infiltration_lv1_v1", "m4_1", Keys.A, standardEquip: 4));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m4_infiltration_lv2_v1", "m4_2", Keys.S, standardEquip: 4));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m5_retribution_lv1_v1", "m5_1", Keys.D, standardEquip: 5));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m5_retribution_lv2_v1", "m5_2", Keys.F, standardEquip: 5));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m6_itnos_lv1_v1", "m6_1", Keys.G, standardEquip: 6));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m6_itnos_lv2_v1", "m6_2", Keys.H, standardEquip: 6));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m7_infiltration_lv1_v1", "m7_1", Keys.J, standardEquip: 6));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10a_OYO_lv1_v1", "m10a_1", Keys.K, standardEquip: 7));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10a_OYO_lv2_v1", "m10a_2", Keys.L, standardEquip: 7));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10b_rebels_lv1_v1", "m10b_1", Keys.Q, standardEquip: 7));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10b_rebels_lv2_v1", "m10b_2", Keys.W, standardEquip: 7));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10c_alliance_lv1_v1", "m10c_1", Keys.E, standardEquip: 7));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10c_alliance_lv2_v1", "m10c_2", Keys.R, standardEquip: 7));
 
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\rebel\\J_RP1", "J_RP1", Keys.T, standardEquip: 2));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\rebel\\J_RP2", "J_RP2", Keys.Y, standardEquip: 2));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\rebel\\J_RP3", "J_RP3", Keys.U, standardEquip: 2));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\rebel\\J_RP1", "J_RP1", Keys.T, standardEquip: 3));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\rebel\\J_RP2", "J_RP2", Keys.Y, standardEquip: 3));
+            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\rebel\\J_RP3", "J_RP3", Keys.U, standardEquip: 3));
             jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\alliance\\J_AP1", "J_AP1", Keys.I, standardEquip: 5));
             jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\alliance\\J_AP2", "J_AP2", Keys.O, standardEquip: 5));
             jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\alliance\\J_AP3", "J_AP3", Keys.P, standardEquip: 5));
@@ -95,8 +95,8 @@ namespace SpaceProject
             johansLevelEntries.Add(new LevelTesterEntry("johan_main\\RebelsAsteroids", "Main 1 - Rebels in Asteroids", Keys.Z, standardEquip: 1));
             johansLevelEntries.Add(new LevelTesterEntry("johan_main\\FreighterEscortlvl1", "Main 2 - Defend ship, first ", Keys.X, standardEquip: 2));
             johansLevelEntries.Add(new LevelTesterEntry("johan_main\\FreighterEscortlvl2", "Main 2 - Defend ship, second ", Keys.C, standardEquip: 2));
-            johansLevelEntries.Add(new LevelTesterEntry("johan_main\\DefendColonyBreak", "Main 3 - Break the Rebels defence", Keys.V, standardEquip: 4));
-            johansLevelEntries.Add(new LevelTesterEntry("johan_main\\DefendColonyHold", "Main 3 - Hold against Rebels", Keys.B, standardEquip: 4));
+            johansLevelEntries.Add(new LevelTesterEntry("johan_main\\DefendColonyBreak", "Main 3 - Break the Rebels defence", Keys.V, standardEquip: 3));
+            johansLevelEntries.Add(new LevelTesterEntry("johan_main\\DefendColonyHold", "Main 3 - Hold against Rebels", Keys.B, standardEquip: 3));
 
             chosenLevel = jakobsLevelEntries[0].GetPath(); ;
         }
@@ -234,7 +234,6 @@ namespace SpaceProject
             }
 
             spriteBatch.DrawString(smallFont, "Equip: " + equipInfo, new Vector2(xLeft, yBase + (display1.Count + 2) * yInterval), Color.Green);
-
             spriteBatch.DrawString(smallFont, "Lifefactor (up/down arrow): " + lifeFactor + "x", new Vector2(xLeft, yBase + (display1.Count + 8) * yInterval), Color.Red);
 
             // Right column

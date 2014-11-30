@@ -31,7 +31,7 @@ namespace SpaceProject
             Name = "Basic Laser";
             Kind = "Primary";
             //energyCost = 1.2f;
-            energyCostPerSecond = 6f;
+            energyCostPerSecond = 5f;
             delay = 180;
             Weight = 130;
 

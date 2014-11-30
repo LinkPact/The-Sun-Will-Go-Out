@@ -30,8 +30,8 @@ namespace SpaceProject
         {
             Name = "Turret";
             Kind = "Secondary";
-            energyCostPerSecond = 2f;
-            delay = 500;
+            energyCostPerSecond = 1f;
+            delay = 1500;
             Weight = 130;
             
 

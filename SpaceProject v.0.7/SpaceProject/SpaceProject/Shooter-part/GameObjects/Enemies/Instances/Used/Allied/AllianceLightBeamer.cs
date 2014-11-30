@@ -64,7 +64,7 @@ namespace SpaceProject
 
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
 
-            float beamDamage = 6.0f;
+            float beamDamage = 12.0f;
             beamModule = new HostileBeamModule(Game, spriteSheet, beamDamage);
         }
 

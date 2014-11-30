@@ -17,13 +17,15 @@ namespace SpaceProject
         private AreaDamageType type;
         public AreaDamageType Type { get { return type; } private set { } }
 
-        public AreaDamage(Game1 game, AreaDamageType type, Vector2 position)
+        public AreaDamage(Game1 game, AreaDamageType type, Vector2 position, float damage)
             : base(game, position)
         {
             this.type = type;
 
             ObjectClass = "areadamage";
             ObjectName = "areadamage";
+
+            this.Damage = damage;
         }
 
         public override void Update(GameTime gameTime)

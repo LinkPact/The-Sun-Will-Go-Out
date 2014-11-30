@@ -7,20 +7,22 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class AreaDisruptorCollision : AreaDamage
+    public class AreaDisruptorCollision : CircularAreaDamage
     {
         private float radius;
         
         private GameObjectVertical sourceObject;
         public GameObjectVertical SourceObject { get { return sourceObject; } }
 
+        public int DisruptionTimeMilliseconds = 5000;
+
         public AreaDisruptorCollision(Game1 game, GameObjectVertical sourceObject, float radius)
-            : base(game, AreaDamageType.player, sourceObject.Position)
+            : base(game, AreaDamageType.player, sourceObject.Position, 0, radius)
         {
             this.sourceObject = sourceObject;
             this.radius = radius;
 
-            Damage = 10000;  // TODO: Remove, for testing purposes
+            //Damage = 10000;  // TODO: Remove, for testing purposes
         }
 
         public override Boolean IsOverlapping(AnimatedGameObject obj)
@@ -35,12 +37,5 @@ namespace SpaceProject
 
             return false;
         }
-
-        //public void InflictDamage(VerticalShooterShip ship)
-        //{
-        //    ship.InflictDamage(this);
-        //    //sourceObject.InflictDamage(bullet);
-        //    //bullet.InflictDamage(sourceObject);
-        //}
     }
 }

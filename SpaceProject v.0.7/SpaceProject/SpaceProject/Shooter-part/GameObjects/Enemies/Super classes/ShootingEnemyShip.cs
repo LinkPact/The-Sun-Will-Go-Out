@@ -54,7 +54,7 @@ namespace SpaceProject
         {
             base.Update(gameTime);
 
-            if (!stealthOn && !stealthSwitching)
+            if (!stealthOn && !stealthSwitching && !IsDisrupted)
                 UpdateShooting(gameTime);
         }
 

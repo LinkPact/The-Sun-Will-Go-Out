@@ -30,7 +30,7 @@ namespace SpaceProject
         {
             Name = "Fragment Missile";
             Kind = "Primary";
-            energyCostPerSecond = 7f;
+            energyCostPerSecond = 10f;
             delay = 600;
             Weight = 500;
 

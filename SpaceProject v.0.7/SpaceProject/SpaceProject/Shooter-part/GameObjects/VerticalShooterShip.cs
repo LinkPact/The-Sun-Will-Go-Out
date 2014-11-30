@@ -56,6 +56,9 @@ namespace SpaceProject
 
         protected LootValue lootValue = LootValue.low;
 
+        protected int disruptionMilliseconds = 0;
+        protected Boolean IsDisrupted { get { return disruptionMilliseconds > 0; } }
+
         #region shield
         private Boolean hasShield;
         public Boolean HasShield { get { return hasShield; } }
@@ -99,7 +102,6 @@ namespace SpaceProject
         public override void Initialize()
         {
             base.Initialize();
-
             MovementSetup();
 
             //Egenskaper
@@ -210,6 +212,28 @@ namespace SpaceProject
                 if (currentShield > shieldCapacity)
                     currentShield = shieldCapacity;
             }
+
+            DisruptionLogic(gameTime);
+        }
+
+        private void DisruptionLogic(GameTime gameTime)
+        {
+            if (IsDisrupted)
+            {
+                currentShield = 0;
+                stealthOn = false;
+                ObjectColor = Color.Green;
+
+                disruptionMilliseconds -= gameTime.ElapsedGameTime.Milliseconds;
+                if (disruptionMilliseconds < 0)
+                {
+                    disruptionMilliseconds = 0;
+                }
+            }
+            else
+            {
+                ObjectColor = Color.White;
+            }
         }
 
         private void CheckWallCollision()
@@ -241,14 +265,17 @@ namespace SpaceProject
 
         public override void InflictDamage(GameObjectVertical obj)
         {
-            float enemyDamage = obj.Damage;
+            if (obj is AreaDisruptorCollision)
+            {
+                disruptionMilliseconds = ((AreaDisruptorCollision)obj).DisruptionTimeMilliseconds;
+            }
 
+            float enemyDamage = obj.Damage;
             if (hasShield && currentShield > 0)
             {
                 if (currentShield > enemyDamage)
                 {
                     currentShield -= enemyDamage;
-
                     Game.AddGameObjToShooter(ShieldEffectGenerator.GenerateStandardShieldEffect(Game, spriteSheet, this));
                 }
                 else

@@ -31,7 +31,7 @@ namespace SpaceProject
             Name = "Dual Laser";
             Kind = "Primary";
             //energyCost = 2f;
-            energyCostPerSecond = 7f;
+            energyCostPerSecond = 5.5f;
             delay = 270;
             Weight = 200;
 

@@ -30,7 +30,7 @@ namespace SpaceProject
             Name = "Spread Bullet";
             Kind = "Primary";
             //energyCost = 0.15f;
-            energyCostPerSecond = 9f;
+            energyCostPerSecond = 6f;
             delay = 14;
             Weight = 500;
 

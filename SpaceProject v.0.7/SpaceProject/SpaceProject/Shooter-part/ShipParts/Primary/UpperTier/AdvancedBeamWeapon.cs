@@ -33,7 +33,7 @@ namespace SpaceProject
         {
             Name = "Advanced Beam";
             Kind = "Primary";
-            energyCostPerSecond = 10f;
+            energyCostPerSecond = 8f;
             delay = 10;
             Weight = 200;
             damage = 10.0f;
@@ -41,6 +41,7 @@ namespace SpaceProject
             Value = 700;
             Color color = new Color(79, 255, 73);
             beamModule = new FriendlyBeamModule(Game, spriteSheet, damage, color);
+            isBeam = true;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)

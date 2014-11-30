@@ -33,7 +33,7 @@ namespace SpaceProject
         {
             Name = "Beam";
             Kind = "Primary";
-            energyCostPerSecond = 7f;
+            energyCostPerSecond = 10f;  // This does not seem to work perfectly? Burns less than 6 energy?
             delay = 10;
             Weight = 200;
             damage = 8.0f;
@@ -41,6 +41,7 @@ namespace SpaceProject
             Value = 700;
             Color color = new Color(0, 0, 128);
             beamModule = new FriendlyBeamModule(Game, spriteSheet, damage, color);
+            isBeam = true;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)

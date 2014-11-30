@@ -6,15 +6,18 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
-    public class DisruptorWeapon : PlayerWeapon
+    public class FieldDamageWeapon : PlayerWeapon
     {
-        public DisruptorWeapon(Game1 Game, ItemVariety variety) :
+        private float blastRadius = 200;
+        private float fieldDamage = 100;
+
+        public FieldDamageWeapon(Game1 Game, ItemVariety variety) :
             base(Game, variety)
         {
             Setup();
         }
 
-        public DisruptorWeapon(Game1 Game) :
+        public FieldDamageWeapon(Game1 Game) :
             base(Game)
         {
             Setup();
@@ -45,15 +48,11 @@ namespace SpaceProject
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
-            float blastRadius = 200;
-            CircularAreaDamage areaExpl = new CircularAreaDamage(Game, AreaDamageType.player, player.Position, blastRadius);
-            //areaExpl.Damage = blastDamage;
+            CircularAreaDamage areaExpl = new CircularAreaDamage(Game, AreaDamageType.player, player.Position, fieldDamage, blastRadius);
             areaExpl.Initialize();
 
             Game.stateManager.shooterState.gameObjects.Add(areaExpl);
-            Game.AddGameObjToShooter(ShieldEffectGenerator.GenerateStandardShieldEffect(Game, spriteSheet, player));
-
-            
+                        
             return true;
         }
     }

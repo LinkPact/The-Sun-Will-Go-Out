@@ -29,7 +29,7 @@ namespace SpaceProject
         {
             Name = "Multiple Shot";
             Kind = "Primary";
-            energyCostPerSecond = 10f;
+            energyCostPerSecond = 9f;
             delay = 120;
             Weight = 800;
 

@@ -31,7 +31,7 @@ namespace SpaceProject
             Name = "Basic Cell";
             Kind = "EnergyCell";
             Weight = 300;
-            Capacity = 25.0f;
+            Capacity = 30.0f;
             Recharge = 4f;
             Value = 100;
         }

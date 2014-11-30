@@ -7,21 +7,18 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    class CircularAreaDamage : AreaDamage
+    public class CircularAreaDamage : AreaDamage
     {
         private Boolean visualizeCircle;
         private float scaleFactor;
-        private float transparency;
-        
         private float radius;
 
-        public CircularAreaDamage(Game1 game, AreaDamageType type, Vector2 position, float radius)
-            : base(game, type, position)
+        public CircularAreaDamage(Game1 game, AreaDamageType type, Vector2 position, float damage, float radius)
+            : base(game, type, position, damage)
         {
             this.radius = radius;
             visualizeCircle = true;
             transparency = 0.5f;
-
         }
 
         public override void Initialize()

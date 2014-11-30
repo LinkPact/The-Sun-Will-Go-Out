@@ -34,7 +34,7 @@ namespace SpaceProject
             Weight = 200;
 
             Capacity = 50.0f;
-            Recharge = 5.0f;
+            Recharge = 6f;
 
             Value = 600;
         }

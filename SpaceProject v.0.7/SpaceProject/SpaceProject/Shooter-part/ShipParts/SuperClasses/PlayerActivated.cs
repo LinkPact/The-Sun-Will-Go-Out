@@ -10,11 +10,11 @@ namespace SpaceProject
     {
         protected Sprite spriteSheet;
 
+        protected Boolean isBeam = false;
+
         protected float delay;
         public float Delay { get { return delay; } private set { } }
         
-        //protected float energyCost;
-        //public float EnergyCost { get { return energyCost; } private set { } }
         public float EnergyCost { 
             get 
             {
@@ -121,7 +121,13 @@ namespace SpaceProject
 
             if (isActivatedThisTurn)
             {
-                player.MP -= EnergyCost;
+                float activationCost;
+                if (!isBeam)
+                    activationCost = EnergyCost;
+                else
+                    activationCost = energyCostPerSecond * gameTime.ElapsedGameTime.Milliseconds / 1000;
+
+                player.MP -= activationCost;
             }
 
             if (isActivatedThisTurn && shootsInBatches)

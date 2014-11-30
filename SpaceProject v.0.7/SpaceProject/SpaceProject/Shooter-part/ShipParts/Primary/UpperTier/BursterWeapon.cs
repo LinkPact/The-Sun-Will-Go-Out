@@ -29,8 +29,7 @@ namespace SpaceProject
         {
             Name = "Burster";
             Kind = "Primary";
-            //energyCost = 0.15f;
-            energyCostPerSecond = 12f;
+            energyCostPerSecond = 11f;
             delay = 400;
             Weight = 500;
 

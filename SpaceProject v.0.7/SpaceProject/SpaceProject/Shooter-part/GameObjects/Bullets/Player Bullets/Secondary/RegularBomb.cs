@@ -52,28 +52,12 @@ namespace SpaceProject
         {
             Explosion expl = ExplosionGenerator.GenerateBombExplosion(Game, spriteSheet, this);
 
-            CircularAreaDamage areaExpl = new CircularAreaDamage(Game, AreaDamageType.player, this.Position, blastRadius);
-            areaExpl.Damage = blastDamage;
+            CircularAreaDamage areaExpl = new CircularAreaDamage(Game, AreaDamageType.player, this.Position, blastDamage, blastRadius);
+            //areaExpl.Damage = blastDamage;
 
             Game.stateManager.shooterState.backgroundObjects.Add(expl);
             Game.stateManager.shooterState.gameObjects.Add(areaExpl);
 
-            // Old explosion code / Jakob 140612
-
-            //int fragmentCount = 40;
-            //
-            //for (int n = 0; n < fragmentCount; n++)
-            //{
-            //    MissileFragment fragment = new MissileFragment(Game, spriteSheet);
-            //    fragment.Initialize();
-            //    fragment.Position = Position;
-            //    fragment.Duration = 100;                
-            //    fragment.Direction = GlobalFunctions.SpreadDir(new Vector2(1.0f, 0.0f), Math.PI * 2);
-            //
-            //    fragment.Speed = (float)(random.NextDouble() * 0.5 + 0.25);
-            //
-            //    Game.stateManager.shooterState.gameObjects.Add(fragment);
-            //}
         }
 
         public override void OnKilled()

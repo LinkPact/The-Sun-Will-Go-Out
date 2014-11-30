@@ -30,7 +30,7 @@ namespace SpaceProject
         {
             Name = "Wave Beam";
             Kind = "Primary";
-            energyCostPerSecond = 10f;
+            energyCostPerSecond = 8.5f;
             delay = 40;
 
             Weight = 130;

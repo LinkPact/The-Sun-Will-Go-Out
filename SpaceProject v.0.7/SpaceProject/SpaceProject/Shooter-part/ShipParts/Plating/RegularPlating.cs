@@ -31,7 +31,7 @@ namespace SpaceProject
         {
             Name = "Regular Plating";
 
-            Armor = 600.0f;
+            Armor = 450.0f;
             CurrentOverworldHealth = Armor;
 
             Speed = 0.17f;

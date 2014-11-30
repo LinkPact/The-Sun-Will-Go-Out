@@ -30,7 +30,7 @@ namespace SpaceProject
         {
             Name = "Heavy Plating";
 
-            Armor = 500.0f;
+            Armor = 600.0f;
             CurrentOverworldHealth = Armor;
             
             Speed = 0.12f;

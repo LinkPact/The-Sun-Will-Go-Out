@@ -970,7 +970,7 @@ namespace SpaceProject
                     {
                         equippedPrimaryWeapons[0] = new BeamWeapon(Game);
                         equippedPrimaryWeapons[1] = new MultipleShotWeapon(Game);
-                        equippedSecondary = new TurretWeapon(Game);
+                        equippedSecondary = new FieldDamageWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
 
                         equippedEnergyCell = new RegularEnergyCell(Game);
@@ -987,7 +987,7 @@ namespace SpaceProject
                         equippedSecondary = new SideMissilesWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
 
-                        equippedEnergyCell = new RegularEnergyCell(Game);
+                        equippedEnergyCell = new AdvancedEnergyCell(Game);
                         equippedPlating = new RegularPlating(Game);
                         equippedShield = new RegularShield(Game);
 
@@ -1012,7 +1012,7 @@ namespace SpaceProject
                     {
                         equippedPrimaryWeapons[0] = new AdvancedLaserWeapon(Game);
                         equippedPrimaryWeapons[1] = new ProximityLaserWeapon(Game);
-                        equippedSecondary = new SideMissilesWeapon(Game);
+                        equippedSecondary = new DisruptorWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
 
                         equippedEnergyCell = new AdvancedEnergyCell(Game);
@@ -1059,7 +1059,7 @@ namespace SpaceProject
                     {
                         equippedPrimaryWeapons[0] = new BursterWeapon(Game);
                         equippedPrimaryWeapons[1] = new BallisticLaserWeapon(Game);
-                        equippedSecondary = new EmptyWeapon(Game);
+                        equippedSecondary = new DisruptorWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
 
                         equippedEnergyCell = new AdvancedEnergyCell(Game);

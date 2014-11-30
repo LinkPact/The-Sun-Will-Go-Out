@@ -30,7 +30,7 @@ namespace SpaceProject
         {
             Name = "Ballistic Laser";
             Kind = "Primary";
-            energyCostPerSecond = 8f;
+            energyCostPerSecond = 10f;
             delay = 1200;
             Weight = 200;
 
