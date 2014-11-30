@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -11,14 +9,14 @@ namespace SpaceProject
     {
         public BackgroundObject(Game1 Game, Sprite spriteSheet) :
             base(Game, spriteSheet)
-        { 
-            
+        {
+
         }
 
         public override void Update(GameTime gameTime)
         {
             //if (anim.HasEnded) 
-                IsKilled = true;
+            IsKilled = true;
 
             base.Update(gameTime);
         }

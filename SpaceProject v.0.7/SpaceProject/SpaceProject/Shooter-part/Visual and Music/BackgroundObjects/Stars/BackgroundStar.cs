@@ -21,6 +21,10 @@ namespace SpaceProject
             anim.LoopTime = 1;
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(6, 24, 2, 2)));
 
+            Random r = new Random(DateTime.Now.Millisecond);
+            Speed = 0.06f;
+            Direction = new Vector2(0, 1);
+
             DrawLayer = 0.2f;
         }
 

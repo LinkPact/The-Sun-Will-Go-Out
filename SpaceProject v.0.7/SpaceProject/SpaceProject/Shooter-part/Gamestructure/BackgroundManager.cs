@@ -88,7 +88,8 @@ namespace SpaceProject
 
             foreach (GameObjectVertical star in backgroundStars)
             {
-                star.PositionY += 0.5f;
+                //star.PositionY += 0.5f;
+                star.Update(gameTime);
             
                 if (star.PositionY > windowHeight)
                 {

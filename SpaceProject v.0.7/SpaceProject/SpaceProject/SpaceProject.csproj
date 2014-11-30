@@ -579,7 +579,7 @@
     <Compile Include="Shooter-part\GameObjects\GameObjectVertical.cs" />
     <Compile Include="Shooter-part\Gamestructure\PlayerShotHandler.cs" />
     <Compile Include="Shooter-part\Gamestructure\ShotHandlerHelper.cs" />
-    <Compile Include="Shooter-part\Levels\BackgroundStar.cs" />
+    <Compile Include="Shooter-part\Visual and Music\BackgroundObjects\Stars\BackgroundStar.cs" />
     <Compile Include="Shooter-part\Levels\CheckPoint.cs" />
     <Compile Include="Shooter-part\Levels\Level.cs" />
     <Compile Include="Shooter-part\Levels\Oldlevels\DanneLevel.cs" />
@@ -643,7 +643,7 @@
     <Compile Include="Shooter-part\Gamestructure\CollisionHandling.cs" />
     <Compile Include="GameUtils\MathFunctions.cs" />
     <Compile Include="Shooter-part\Visual and Music\Animation.cs" />
-    <Compile Include="Shooter-part\Visual and Music\BackgroundObject.cs" />
+    <Compile Include="Shooter-part\Visual and Music\BackgroundObjects\BackgroundObject.cs" />
     <Compile Include="Shooter-part\Visual and Music\Cursor.cs" />
     <Compile Include="Shooter-part\Visual and Music\DeathAnims\Explosion.cs" />
     <Compile Include="Shooter-part\Visual and Music\DeathAnims\ExplosionGenerator.cs" />
