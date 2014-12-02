@@ -25,6 +25,7 @@ namespace SpaceProject
         protected Animation DamageAnimation = new Animation();
 
         protected float transparency = 1;
+        protected float scale = 1f;
 
         public Animation Anim { get { return anim; } }
         public Animation CurrentAnim { get { return currentAnim; }
@@ -104,7 +105,7 @@ namespace SpaceProject
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(currentAnim.CurrentFrame.Texture, Position, currentAnim.CurrentFrame.SourceRectangle, ObjectColor * transparency, 0.0f, CenterPoint, 1f, SpriteEffects.None, DrawLayer);
+            spriteBatch.Draw(currentAnim.CurrentFrame.Texture, Position, currentAnim.CurrentFrame.SourceRectangle, ObjectColor * transparency, 0.0f, CenterPoint, scale, SpriteEffects.None, DrawLayer);
         }
     }
 }

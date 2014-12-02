@@ -34,9 +34,9 @@ namespace SpaceProject
                     Speed = 0.1f;
                     break;
             }
-            
+            scale = (float)(r.NextDouble() * 1.5);
             Direction = new Vector2(0, 1);
-
+            
             DrawLayer = 0.2f;
         }
 
