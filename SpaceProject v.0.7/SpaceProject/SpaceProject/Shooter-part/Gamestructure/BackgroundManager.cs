@@ -177,7 +177,7 @@ namespace SpaceProject
             {
                 backgroundStars.Clear();
 
-                int numberOfStars = 200;
+                int numberOfStars = 500;
 
                 for (int n = 0; n < numberOfStars; n++)
                 {

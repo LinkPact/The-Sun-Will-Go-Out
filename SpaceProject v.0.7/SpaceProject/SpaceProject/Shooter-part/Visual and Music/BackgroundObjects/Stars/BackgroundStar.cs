@@ -35,6 +35,7 @@ namespace SpaceProject
                     break;
             }
             scale = (float)(r.NextDouble() * 1.5);
+            baseColor = new Color(r.Next(200, 255), r.Next(155, 255), r.Next(200, 255), 255);
             Direction = new Vector2(0, 1);
             
             DrawLayer = 0.2f;

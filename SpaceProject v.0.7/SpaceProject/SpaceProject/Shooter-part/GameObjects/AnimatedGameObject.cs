@@ -13,6 +13,7 @@ namespace SpaceProject
         protected Sprite spriteSheet;
 
         public Color ObjectColor;
+        protected Color baseColor;
         
         protected Animation anim;
         private Animation currentAnim;
@@ -82,13 +83,14 @@ namespace SpaceProject
             {
                 animDamageTimer += gameTime.ElapsedGameTime.Milliseconds;
                 if (animDamageTimer > animDamageInterval)
-                    this.ObjectColor = Color.White;
+                    this.ObjectColor = baseColor;
             }
         }
 
         public override void OnDamage()
         {
             animDamageTimer = 0;
+            this.baseColor = ObjectColor;
             this.ObjectColor = Color.LightSalmon;
         }
 
