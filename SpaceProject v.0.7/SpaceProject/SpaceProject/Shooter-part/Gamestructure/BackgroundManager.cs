@@ -93,7 +93,7 @@ namespace SpaceProject
                 if (star.PositionY > windowHeight)
                 {
                     star.PositionY = 0;
-                    star.PositionX = (float)rand.NextDouble() * windowWidth - 30;
+                    star.PositionX = (float)rand.NextDouble() * windowWidth;
                 }
             }
         }
@@ -183,8 +183,8 @@ namespace SpaceProject
                 {
                     BackgroundStar star = new BackgroundStar(Game, verticalShooterSpriteSheet);
                     star.Initialize();
-                    star.PositionX = (float)rand.NextDouble() * windowWidth - 30;
-                    star.PositionY = (float)rand.NextDouble() * windowHeight - 30;
+                    star.PositionX = (float)rand.NextDouble() * windowWidth;
+                    star.PositionY = (float)rand.NextDouble() * windowHeight;
                     backgroundStars.Add(star);
                 }
             }
