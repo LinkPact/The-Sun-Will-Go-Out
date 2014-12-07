@@ -169,6 +169,33 @@ Progress = 2
 Reputation = 3
 State = 1
 
+[Main7_Retaliation]
+Location = Rebel Station 2
+EndLocation = Rebel Station 2
+Name = Main - Infiltration
+Introduction = ""
+ObjectiveText1 = Follow the fleet to the Rebel base and destroy it.
+PosResponse = Join the attack on the rebels.
+NegResponse = Tell them you are not able to help at the moment. 
+Accept = ""
+EventText1 = Rok turns to you with a wide smile.#[Rok]"Friend! Welcome! I am very glad to have you here. We need people like you. People that aren't afraid to do what must be done."#"The people here are poor and frustrated with how the Alliance keeps using its strength to exploit us."#"We need more skilled pilots to be able to fight back. Like you!"#"And I'm sure your insight into the Alliance will prove to be very useful..."#"Actually, we need your help right now."#"We are planning to raid a transport travelling between Soelara and Fortrun which we believe carries a particularly large batch of Murt."#"Have you heard about Murt? It is said to be the energy source of the future."#"Both us and the Alliance are looking into it. The scientists on Peye are also researching it, but they are very restrictive in what information they share."#"It could be the single factor that determines the future path of the sector. We must do what we can to prevent the Alliance from gaining further insight into it."#"I will mark the coordinates for the attack on your map. You will meet the rest of the fleet at that location."#"Some of us are still sceptical of your presence here. This might be the chance to prove where your true allegiance lies."
+EventText2 = [Ai] "...They are planning an attack on the freighter?"#"It is surprising that they know about the transport. They must have more insiders than we know about..."#"I will look into it. You should participate in the raid as planned."#"You can't do anything erratic now. I will see what I can do about the content of it."
+EventText3 = [Rebel] "So! You are the new cape-turner."#"Heard you worked for the Alliance for a while, but got cold feet?"#"I guess they aren't as pretty as they try to look. Only caring about the rich. Leaving us poor to starvation."#"You are very welcome. Your help is appreciated."
+EventText4 = [Rebel] "Do you prefer ranged weapons like Ballistic Laser, or close combat weapons like Spread Bullet?"#"You know, if you ask me weapons like Ballistic Laser and Beam are for meaklings, afraid of taking a few hits."#"I hope I have enough money to buy a proximity laser one day. That would be fantastic."
+EventText5 = [Rebel] "Lately, the Alliance has made a lot of development on its stealth technology."#"The fleet protecting the freighter might have some of those ships."#"Keep your eyes sharp. The ships are not invisible, but very hard to see!"
+EventText6 = [Rebel] "I can see them on my radar now."#"Remember, we are only here for the cargo. Hit it fast and hard, and then leave."#"No need to hold back though, hit those bastards where it hurts!"#"Here it goes, for the people!"
+EventText7 = [Rebel] "Surrender the cargo peacefully, and you will come to no harm..."#[Alliance] "Do you believe that bullshit yourselves? You are going down with us."
+EventText8 = [Rebel] "We've got the cargo. Pull out! Pull out!"#[Rebel] "Their reinforcements must be on their way. We'll meet at the base."
+EventText9 = [Sair] "I don't like those high-odds operations. If the Alliance hangar ships would have arrived a bit earlier we would have been done for..."#"We threw the right side of the dice this time."#"We should meet Rok at the rebel base, see what he has to say."
+Success = Rok greets you.#[Rok] "I heard it was a close call. But what's important is that you got out, and that you have the cargo."#"Let's see if it proves to be as valuable as we hope. They are searching the cargo right now."#He looks thoughtful.#"I don't like how the Alliance have been acting lately."#"The transport seemed to be of high importance for them. But if the cargo was really important for them, the escort security should have been even higher."#"This didn't seem like a crucial piece for them, and that worries me.."#"You should get some rest while you can. Come back then.#"Hopefully they'll manage to extract some useful information about the cargo, maybe a lead on what we should do next."
+ObjectiveCompleted = You successfully collected the debt.
+Fail = "So you "didn't find him" huh? Your just as useless as the last one. Looks like were going to have to deal with this ourselves.." 
+ObjectiveFailed = You chose to hide the man instead, getting no reward.
+Reward = 300
+Progress = 2
+Reputation = 3
+State = 1
+
 [P4_BeginningOfTheEnd]
 Location = Border Station
 Name = Main - Beginning Of The End
@@ -338,33 +365,6 @@ Reward = 100
 Progress = 2
 Reputation = 3
 State = 0
-
-[RO_Main8_Retaliation]
-Location = Rebel Station 1
-Name = Main - Retaliation
-Introduction = "Come in, come in", a middle aged man waves you to sit down. "You did very well during that attack against the Alliance. Thanks to you we will have time to regroup and gather our forces before the Alliance has time to attack again."#"You have done very well, and you have more insight in the ways of the Alliance than most of us. We would like you to participate in an important raid against one of their freighters"#"We are not certain about its content, but it seems to be of particularly high importance for the Alliance. We want you to retrieve its cargo so that we can study it further. Hit it fast, and leave before they can call in more ships."#"The others joining this mission is waiting outside. Follow them to the coordinate for the ambush."
-ObjectiveText1 = "Are you ready to go?"
-PosResponse = I'm ready!
-NegResponse = Not yet!
-Accept = "Good! The freighter is travelling from Soelara to Fortrun. Follow the other rebel ships to the coordinate (0,0) and wait for the freighter to arrive."# "When it arrives, take out the Alliance ships guarding it and seize the freighters cargo. Then leave as quickly as you can." 
-FailText = "FailText"
-EventText1 = "So you are the new guy, eh? I guess we'll see what you are made of today!"#"Follow us, we'll show the way to the ambush site."
-EventText2 = "EventText2"
-EventText3 = "What are you doing, rookie? Don't stray too far, follow us closely."
-EventText4 = "Here is the site. It seems to still be a while before the freighter arrives. I guess we just have to wait."
-EventText5 = "So, I heard you worked for the Alliance for a while, but got cold feet?"#"I guess they aren't as pretty as they try to look. Only caring about the rich population. Leaving poorer parts of the sector to starvation."
-EventText6 = "So do you prefer ranged weapons like ballistic laser, or close combat weapon like spread bullet?"#"Personally I think weapons like ballistic laser and beam are for meeklings, afraid of taking a few hits."#"I hope I have enough money to buy a proximity laser one day. That would be fantastic."
-EventText7 = "Lately the Alliance have made a lot of developments with their stealth technology."#"The fleet protecting the freighter might have some of those ships. You can see them, but you go to look closely!"
-EventText8 = "Here it goes! Remember, get the cargo and get out!"
-EventText9 = "For the people!"
-EventText10 = "We got the cargo. Pull out! Pull out! Their reinforcements will soon arrive! We'll meet at the base."
-ObjectiveCompleted = "ObjectiveCompleted"
-Success = The commander greets you. "I heard it was a close call. Well done! Let's hope that this cargo proves to be as valuable as we hope. They are analyzing it in the laboratory right now, it seems to contain some strange material."#"There is something strange going on here, we need to keep our guards up."#He looks thoughtful. "You should get some rest while you can." he say, and waves you towards the door."
-Fail = "Fail"
-Reward = -1
-Progress = -1
-Reputation = -1
-State = 1
 
 [RO_Main10_InTheNameOfScience]
 Location = Rebel Station 1

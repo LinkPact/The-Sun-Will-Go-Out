@@ -27,7 +27,7 @@ namespace SpaceProject
         private static Main4_ToPhaseTwo mainToPhaseTwo;
         private static Main5_DefendColony mainDefendColony;
         private static Main6_Infiltration mainInfiltration;
-        private static Main8_Retaliation mainRetaliation;
+        private static Main7_Retaliation mainRetaliation;
         private static Main10_InTheNameOfScience mainInTheNameOfScience;
         private static MainX1_BeginningOfTheEnd mainBeginningOfTheEnd;
         private static MainX2_ContinuationOfTheEnd mainContinuationOfTheEnd;
@@ -115,8 +115,8 @@ namespace SpaceProject
             mainInfiltration.Initialize();
             missions.Add(mainInfiltration);
 
-            // Main 8 - Retaliation
-            mainRetaliation = new Main8_Retaliation(game, "RO_Main8_Retaliation", missionObjectSpriteSheet);
+            // Main 7 - Retaliation
+            mainRetaliation = new Main7_Retaliation(game, "Main7_Retaliation", missionObjectSpriteSheet);
             mainRetaliation.Initialize();
             missions.Add(mainRetaliation);
 
