@@ -14,15 +14,13 @@ namespace SpaceProject
         private GameObjectVertical sourceObject;
         public GameObjectVertical SourceObject { get { return sourceObject; } }
 
-        public int DisruptionTimeMilliseconds = 5000;
+        public int DisruptionTimeMilliseconds = 2500;
 
         public AreaDisruptorCollision(Game1 game, GameObjectVertical sourceObject, float radius)
             : base(game, AreaDamageType.player, sourceObject.Position, 0, radius)
         {
             this.sourceObject = sourceObject;
             this.radius = radius;
-
-            //Damage = 10000;  // TODO: Remove, for testing purposes
         }
 
         public override Boolean IsOverlapping(AnimatedGameObject obj)

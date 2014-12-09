@@ -12,13 +12,15 @@ namespace SpaceProject
         private Boolean visualizeCircle;
         private float scaleFactor;
         private float radius;
+        private Color color;
 
         public CircularAreaDamage(Game1 game, AreaDamageType type, Vector2 position, float damage, float radius)
             : base(game, type, position, damage)
         {
             this.radius = radius;
             visualizeCircle = true;
-            transparency = 0.5f;
+            transparency = 0.15f;
+            this.color = Color.Orange;
         }
 
         public override void Initialize()
@@ -48,7 +50,7 @@ namespace SpaceProject
             if (visualizeCircle)
             {
                 spriteBatch.Draw(CurrentAnim.CurrentFrame.Texture, Position, CurrentAnim.CurrentFrame.SourceRectangle,
-                    Color.White * transparency, 0f, CenterPoint, scaleFactor, SpriteEffects.None, 0.65f);
+                    color * transparency, 0f, CenterPoint, scaleFactor, SpriteEffects.None, 0.65f);
             }
         }
     }

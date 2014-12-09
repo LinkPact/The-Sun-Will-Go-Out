@@ -26,10 +26,10 @@ namespace SpaceProject
 
             lootValue = LootValue.veryHigh;
 
-            AddPrimaryModule(1000, ShootingMode.Regular);
+            AddPrimaryModule(800, ShootingMode.Regular);
             primaryModule.SetRandomCharge(random);
 
-            AddSecondaryModule(800, ShootingMode.Regular);
+            AddSecondaryModule(1000, ShootingMode.Regular);
             secondaryModule.SetFullCharge();
 
             Damage = 100;
@@ -56,11 +56,14 @@ namespace SpaceProject
 
         protected override void ShootingPattern(GameTime gameTime)
         {
+            var spreadAngle = Math.PI / 3;
+
             EnemyMissileBullet missile = new EnemyMissileBullet(Game, spriteSheet);
             missile.Position = Position;
             missile.Direction = new Vector2(0, 1.0f);
-            missile.Direction = MathFunctions.SpreadDir(missile.Direction, Math.PI / 8);
+            missile.Direction = MathFunctions.SpreadDir(missile.Direction, spreadAngle);
             missile.Initialize();
+            missile.Speed *= 0.6f;
 
             Game.stateManager.shooterState.gameObjects.Add(missile);
 
@@ -69,16 +72,17 @@ namespace SpaceProject
 
         protected override void SecondaryShootingPattern(GameTime gameTime)
         {
-            double width = Math.PI / 3;
-            double numberOfShots = 5;
+            double width = Math.PI;
+            double numberOfShots = 7;
 
             List<double> spreadDirections = MathFunctions.GetSpreadDirList(width, numberOfShots);
 
             int shotNbr = 0;
+            int centerShot = (int)(numberOfShots / 2) + 1;
             foreach (double dir in spreadDirections)
             {
                 shotNbr++;
-                if (shotNbr == 3)
+                if (shotNbr == centerShot)
                     continue;
 
                 EnemyWeakRedLaser laser = new EnemyWeakRedLaser(Game, spriteSheet);

@@ -25,7 +25,7 @@ namespace SpaceProject
         {
             fraction = Fraction.alliance;
 
-            ShieldSetup(CreatureShieldCapacity.low, CreatureShieldRegeneration.medium);
+            //ShieldSetup(CreatureShieldCapacity.low, CreatureShieldRegeneration.medium);
         }
 
         public override void Initialize()
@@ -34,8 +34,9 @@ namespace SpaceProject
 
             lootValue = LootValue.low;
 
-            AddPrimaryModule(2000, ShootingMode.Regular);
+            AddPrimaryModule(300, ShootingMode.Batches);
             primaryModule.SetRandomCharge(random);
+            primaryModule.ShootsInBatchesSetup(2, 1000);
 
             Damage = 100;
             Speed = 0.17f;
@@ -64,7 +65,7 @@ namespace SpaceProject
                 laser1.Direction = MathFunctions.DirFromRadians(dir);
                 laser1.Initialize();
                 laser1.Speed *= 1.5f;
-                laser1.Duration *= 1.5f;
+                laser1.Duration *= 2.0f;
             
                 Game.stateManager.shooterState.gameObjects.Add(laser1);
             }

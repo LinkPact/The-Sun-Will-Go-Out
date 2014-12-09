@@ -12,7 +12,7 @@ namespace SpaceProject
         low         = 150,
         medium      = 300,
         high        = 800,
-        extreme     = 1600
+        extreme     = 2500
     }
 
     public enum CreatureShieldRegeneration
@@ -20,7 +20,7 @@ namespace SpaceProject
         low         = 1,
         medium      = 5,
         high        = 10,
-        extreme     = 30
+        extreme     = 100
     }
 
     public enum SpeedEnum

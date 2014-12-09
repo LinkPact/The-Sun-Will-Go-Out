@@ -30,8 +30,8 @@ namespace SpaceProject
         {
             Name = "Fragment Missile";
             Kind = "Primary";
-            energyCostPerSecond = 10f;
-            delay = 600;
+            energyCostPerSecond = 9f;
+            delay = 450;
             Weight = 500;
 
             bullet = new RegularMissile(Game, spriteSheet);

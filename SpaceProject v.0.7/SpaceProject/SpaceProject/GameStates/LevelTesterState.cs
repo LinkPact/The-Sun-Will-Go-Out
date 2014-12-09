@@ -61,19 +61,21 @@ namespace SpaceProject
             display1.Add("Press Escape to return to main menu");
             display1.Add("Use number keys (0-9) to switch equipment");
 
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m4_infiltration_lv1_v1", "m4_1", Keys.A, standardEquip: 4));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m4_infiltration_lv2_v1", "m4_2", Keys.S, standardEquip: 4));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m5_retribution_lv1_v1", "m5_1", Keys.D, standardEquip: 5));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m5_retribution_lv2_v1", "m5_2", Keys.F, standardEquip: 5));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m6_itnos_lv1_v1", "m6_1", Keys.G, standardEquip: 6));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m6_itnos_lv2_v1", "m6_2", Keys.H, standardEquip: 6));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m7_infiltration_lv1_v1", "m7_1", Keys.J, standardEquip: 6));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10a_OYO_lv1_v1", "m10a_1", Keys.K, standardEquip: 7));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10a_OYO_lv2_v1", "m10a_2", Keys.L, standardEquip: 7));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10b_rebels_lv1_v1", "m10b_1", Keys.Q, standardEquip: 7));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10b_rebels_lv2_v1", "m10b_2", Keys.W, standardEquip: 7));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10c_alliance_lv1_v1", "m10c_1", Keys.E, standardEquip: 7));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_main\\m10c_alliance_lv2_v1", "m10c_2", Keys.R, standardEquip: 7));
+            var jakobMissionPathDict = GetMissionPathDict();
+
+            jakobsLevelEntries.Add(new LevelTesterEntry(jakobMissionPathDict["4_1"], "4 - Infiltration (1)", Keys.A, standardEquip: 4));
+            jakobsLevelEntries.Add(new LevelTesterEntry(jakobMissionPathDict["4_2"], "4 - Infiltration (2)", Keys.S, standardEquip: 4));
+            jakobsLevelEntries.Add(new LevelTesterEntry(jakobMissionPathDict["5_1"], "5 - Retribution (1)", Keys.D, standardEquip: 5));
+            jakobsLevelEntries.Add(new LevelTesterEntry(jakobMissionPathDict["5_2"], "5 - Retribution (2)", Keys.F, standardEquip: 5));
+            jakobsLevelEntries.Add(new LevelTesterEntry(jakobMissionPathDict["6_1"], "6 - ITNOS (1)", Keys.G, standardEquip: 6));
+            jakobsLevelEntries.Add(new LevelTesterEntry(jakobMissionPathDict["6_2"], "6 - ITNOS (2)", Keys.H, standardEquip: 6));
+            jakobsLevelEntries.Add(new LevelTesterEntry(jakobMissionPathDict["7_1"], "7 - Information", Keys.J, standardEquip: 6));
+            jakobsLevelEntries.Add(new LevelTesterEntry(jakobMissionPathDict["8o_1"], "8 - On Your Own End (1)", Keys.K, standardEquip: 7));
+            jakobsLevelEntries.Add(new LevelTesterEntry(jakobMissionPathDict["8o_2"], "8 - On Your Own End (2)", Keys.L, standardEquip: 7));
+            jakobsLevelEntries.Add(new LevelTesterEntry(jakobMissionPathDict["8r_1"], "8 - Rebels End (1)", Keys.Q, standardEquip: 7));
+            jakobsLevelEntries.Add(new LevelTesterEntry(jakobMissionPathDict["8r_2"], "8 - Rebels End (2)", Keys.W, standardEquip: 7));
+            jakobsLevelEntries.Add(new LevelTesterEntry(jakobMissionPathDict["8a_1"], "8 - Alliance End (1)", Keys.E, standardEquip: 7));
+            jakobsLevelEntries.Add(new LevelTesterEntry(jakobMissionPathDict["8a_2"], "8 - Alliance End (2)", Keys.R, standardEquip: 7));
 
             jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\rebel\\J_RP1", "J_RP1", Keys.T, standardEquip: 3));
             jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\rebel\\J_RP2", "J_RP2", Keys.Y, standardEquip: 3));
@@ -101,10 +103,35 @@ namespace SpaceProject
             chosenLevel = jakobsLevelEntries[0].GetPath(); ;
         }
 
+        // Creates and returns a dictionary linking level names to string paths
+        private Dictionary<String, String> GetMissionPathDict()
+        {
+            var pathDict = new Dictionary<String, String>();
+
+            pathDict.Add("4_1", "jakob_main\\4_infiltration\\m4_infiltration_lv1_v1");
+            pathDict.Add("4_2", "jakob_main\\4_infiltration\\m4_infiltration_lv2_v2");
+
+            pathDict.Add("5_1", "jakob_main\\5_retribution\\m5_retribution_lv1_v2");
+            pathDict.Add("5_2", "jakob_main\\5_retribution\\m5_retribution_lv2_v2");
+
+            pathDict.Add("6_1", "jakob_main\\6_itnos\\m6_itnos_lv1_v1");
+            pathDict.Add("6_2", "jakob_main\\6_itnos\\m6_itnos_lv2_v1");
+
+            pathDict.Add("7_1", "jakob_main\\7_infiltration\\m7_infiltration_lv1_v1");
+
+            pathDict.Add("8o_1", "jakob_main\\8a_oyo\\m10a_OYO_lv1_v1");
+            pathDict.Add("8o_2", "jakob_main\\8a_oyo\\m10a_OYO_lv1_v1");
+            pathDict.Add("8r_1", "jakob_main\\8b_rebels\\m10b_rebels_lv1_v1");
+            pathDict.Add("8r_2", "jakob_main\\8b_rebels\\m10b_rebels_lv1_v1");
+            pathDict.Add("8a_1", "jakob_main\\8c_alliance\\m10c_alliance_lv1_v1");
+            pathDict.Add("8a_2", "jakob_main\\8c_alliance\\m10c_alliance_lv1_v1");
+
+            return pathDict;
+        }
+
         public override void Initialize()
         {
             base.Initialize();
-
             equipInfo = ShipInventoryManager.MapCreatorEquip(1);
         }
 
@@ -270,42 +297,6 @@ namespace SpaceProject
             }
 
             spriteBatch.DrawString(smallFont, "Chosen level: " + chosenLevel, new Vector2(xRight, yBase), Color.White);
-        }
-
-        private class LevelTesterEntry
-        {
-            private String filepath;
-            private String description;
-            private Keys entryKey;
-            private int standardEquip;
-
-            public LevelTesterEntry(String filepath, String description, Keys entryKey, int standardEquip = -1)
-            {
-                this.filepath = filepath;
-                this.description = description;
-                this.entryKey = entryKey;
-                this.standardEquip = standardEquip;
-            }
-
-            public String GetPath()
-            {
-                return "testlevels\\" + filepath;
-            }
-
-            public Keys GetKey()
-            {
-                return entryKey;
-            }
-
-            public String GetDescription()
-            {
-                return filepath + ", " + description + ", " + entryKey.ToString();
-            }
-
-            public int GetStandardEquip()
-            {
-                return standardEquip;
-            }
         }
     }
 }

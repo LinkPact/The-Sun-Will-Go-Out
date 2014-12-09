@@ -8,7 +8,6 @@ namespace SpaceProject
 {
     public class SideMissilesWeapon : PlayerWeapon
     {
-
         public SideMissilesWeapon(Game1 Game) :
             base(Game)
         {
@@ -30,8 +29,8 @@ namespace SpaceProject
         {
             Name = "SideMissiles";
             Kind = "Secondary";
-            energyCostPerSecond = 1.5f;
-            delay = 1400;
+            energyCostPerSecond = 2.0f;
+            delay = 2000;
             Weight = 500;
 
             bullet = new RegularMissile(Game, spriteSheet);

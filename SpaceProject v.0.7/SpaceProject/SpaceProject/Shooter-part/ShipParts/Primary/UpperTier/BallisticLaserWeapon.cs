@@ -31,13 +31,13 @@ namespace SpaceProject
             Name = "Ballistic Laser";
             Kind = "Primary";
             energyCostPerSecond = 10f;
-            delay = 1200;
+            delay = 800;
             Weight = 200;
 
             bullet = new BasicLaser(Game, spriteSheet);
             bullet.Initialize();
 
-            damage = 400;
+            damage = 200;
             duration = 1000;
             speed = 1.5f;
 

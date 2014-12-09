@@ -180,6 +180,8 @@
     <Compile Include="GameStates\PlanetAndStationStates\StationStateManager.cs" />
     <Compile Include="GameUtils\MenuDisplay\ShipInventoryDisplayObject.cs" />
     <Compile Include="GameUtils\PlayTime.cs" />
+    <Compile Include="LevelTester\LevelTesterCampaign.cs" />
+    <Compile Include="LevelTester\LevelTesterEntry.cs" />
     <Compile Include="Managers\BaseInventoryManager.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -851,43 +853,52 @@
     <Content Include="Levels\testlevels\test_lv1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Levels\testlevels\jakob_main\m10a_OYO_lv1_v1.lvl">
+    <None Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv1_v1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Levels\testlevels\jakob_main\m10a_OYO_lv2_v1.lvl">
+    <None Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv2_v1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Levels\testlevels\jakob_main\m10b_rebels_lv1_v1.lvl">
+    <None Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv1_v1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Levels\testlevels\jakob_main\m10b_rebels_lv2_v1.lvl">
+    <None Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv2_v1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Levels\testlevels\jakob_main\m10c_alliance_lv1_v1.lvl">
+    <None Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv1_v1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Levels\testlevels\jakob_main\m10c_alliance_lv2_v1.lvl">
+    <None Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv2_v1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Levels\testlevels\jakob_main\m4_infiltration_lv1_v1.lvl">
+    <None Include="Levels\testlevels\jakob_main\4_infiltration\m4_infiltration_lv1_v1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Levels\testlevels\jakob_main\m4_infiltration_lv2_v1.lvl">
+    <None Include="Levels\testlevels\jakob_main\4_infiltration\m4_infiltration_lv2_v1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Levels\testlevels\jakob_main\m5_retribution_lv1_v1.lvl">
+    <None Include="Levels\testlevels\jakob_main\4_infiltration\m4_infiltration_lv2_v2.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Levels\testlevels\jakob_main\m5_retribution_lv2_v1.lvl">
+    <None Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv1_v1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Levels\testlevels\jakob_main\m6_itnos_lv1_v1.lvl">
+    <None Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv1_v2.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Levels\testlevels\jakob_main\m6_itnos_lv2_v1.lvl">
+    <None Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv2_v1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Levels\testlevels\jakob_main\m7_infiltration_lv1_v1.lvl">
+    <None Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv2_v2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\6_itnos\m6_itnos_lv1_v1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\6_itnos\m6_itnos_lv2_v1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\7_infiltration\m7_infiltration_lv1_v1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Levels\testlevels\jakob_pirate\alliance\J_AP1.lvl">

@@ -49,10 +49,7 @@ namespace SpaceProject
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
-            //float damage = 1000;
-            //CircularAreaDamage areaExpl = new CircularAreaDamage(Game, AreaDamageType.player, player.Position, damage, blastRadius);
             AreaDisruptorCollision areaExpl = new AreaDisruptorCollision(Game, player, disruptionRadius);
-            //areaExpl.Damage = blastDamage;
             areaExpl.Initialize();
 
             Game.stateManager.shooterState.gameObjects.Add(areaExpl);

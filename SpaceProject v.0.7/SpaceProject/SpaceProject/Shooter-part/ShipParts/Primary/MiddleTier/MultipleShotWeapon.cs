@@ -30,7 +30,7 @@ namespace SpaceProject
             Name = "Multiple Shot";
             Kind = "Primary";
             energyCostPerSecond = 9f;
-            delay = 120;
+            delay = 180;
             Weight = 800;
 
             bullet = new GreenBullet(Game, spriteSheet);
