@@ -84,16 +84,6 @@ namespace SpaceProject
             jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\alliance\\J_AP2", "J_AP2", Keys.O, standardEquip: 5));
             jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\alliance\\J_AP3", "J_AP3", Keys.P, standardEquip: 5));
 
-            //jakobsLevelEntries.Add(new LevelTesterEntry("P3_Science_1", "Phase 3 scientist-level", Keys.Q));
-            //jakobsLevelEntries.Add(new LevelTesterEntry("P4_rebel1", "Phase 4 one rebel scout", Keys.W));
-            //jakobsLevelEntries.Add(new LevelTesterEntry("P4_rebel2", "Phase 4 other rebel scout", Keys.E));
-            //jakobsLevelEntries.Add(new LevelTesterEntry("P4_hunted1", "Phase 4 hunted to Soelara1", Keys.R));
-            //jakobsLevelEntries.Add(new LevelTesterEntry("P4_hunted2", "Phase 4 hunted to Soelara2", Keys.T));
-            //jakobsLevelEntries.Add(new LevelTesterEntry("P4_hunted3", "Phase 4 hunted to Soelara3", Keys.Y));
-            //jakobsLevelEntries.Add(new LevelTesterEntry("P4_recognizedByAlliance", "Phase 4 Fortrun guard", Keys.U));
-
-            //johansLevelEntries.Add(new LevelTesterEntry("XDefendColony", "Johans defend colony mission", Keys.V));
-            //johansLevelEntries.Add(new LevelTesterEntry("P2AttackOnRebelStation", "Phase 2 - Attack on station", Keys.B));
             johansLevelEntries.Add(new LevelTesterEntry("johan_main\\RebelsAsteroids", "Main 1 - Rebels in Asteroids", Keys.Z, standardEquip: 1));
             johansLevelEntries.Add(new LevelTesterEntry("johan_main\\FreighterEscortlvl1", "Main 2 - Defend ship, first ", Keys.X, standardEquip: 2));
             johansLevelEntries.Add(new LevelTesterEntry("johan_main\\FreighterEscortlvl2", "Main 2 - Defend ship, second ", Keys.C, standardEquip: 2));

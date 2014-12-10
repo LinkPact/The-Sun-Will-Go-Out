@@ -43,7 +43,7 @@ namespace SpaceProject
             AddShopEntry(new ShopInventoryEntry(ShipPartType.LightPlating, ShipPartAvailability.common, ItemVariety.high));
             AddShopEntry(new ShopInventoryEntry(ShipPartType.HeavyPlating, ShipPartAvailability.common, ItemVariety.high));
 
-            SetShopFilling(ShopFilling.regular);
+            SetShopFilling(ShopFilling.sparse);
         }
 
         public override void Update(GameTime gameTime)

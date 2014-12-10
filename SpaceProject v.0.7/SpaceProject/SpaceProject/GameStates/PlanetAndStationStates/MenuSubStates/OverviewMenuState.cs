@@ -344,9 +344,6 @@ namespace SpaceProject
                 {
                     OnEnter();
                 }
-
-                else
-                    base.Update(gameTime);
             }
 
             base.Update(gameTime);
@@ -458,7 +455,10 @@ namespace SpaceProject
                             //Actions for pressing "BACK" button
                             if (BaseStateManager.ActiveMenuState.Equals(BaseStateManager.OverviewMenuState))
                             {
-                                Game.stateManager.ChangeState("OverworldState");
+                                if (StatsManager.gameMode != GameMode.campaign)
+                                    Game.stateManager.ChangeState("OverworldState");
+                                else
+                                    Game.stateManager.ChangeState("CampaignState");
                             }
 
                             break;

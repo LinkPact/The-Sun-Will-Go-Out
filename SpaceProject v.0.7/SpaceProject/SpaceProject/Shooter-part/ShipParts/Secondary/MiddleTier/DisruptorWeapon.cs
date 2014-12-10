@@ -31,8 +31,8 @@ namespace SpaceProject
         {
             Name = "Disruptor";
             Kind = "Secondary";
-            energyCostPerSecond = 1f;
-            delay = 800;
+            energyCostPerSecond = 2f;
+            delay = 1200;
             Weight = 400;
 
             bullet = new Mine(Game, spriteSheet);
@@ -44,7 +44,7 @@ namespace SpaceProject
 
             Value = 500;
 
-            disruptionRadius = 120;
+            disruptionRadius = 80;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)

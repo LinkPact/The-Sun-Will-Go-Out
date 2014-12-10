@@ -12,7 +12,8 @@ namespace SpaceProject
         normal,
         easy,
         hardcore,
-        develop
+        develop,
+        campaign
     }
 
     //Central class where variables for player and current game are stored global.
@@ -195,7 +196,6 @@ namespace SpaceProject
                 return ShipInventoryManager.equippedShield.Regeneration * 1.5f;
             else
                 return ShipInventoryManager.equippedShield.Regeneration;
-                
         }
 
         public static float GetEnergyRegeneration()
@@ -206,7 +206,6 @@ namespace SpaceProject
                 return ShipInventoryManager.equippedEnergyCell.Recharge * 0.5f;
             else
                 return ShipInventoryManager.equippedEnergyCell.Recharge;
-
         }
 
         public bool FusionCellsDepleted()

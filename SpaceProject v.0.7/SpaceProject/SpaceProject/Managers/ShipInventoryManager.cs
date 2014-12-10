@@ -91,9 +91,9 @@ namespace SpaceProject
 
             //Initial inventory items
             BasicLaserWeapon basicLaser = new BasicLaserWeapon(Game);
-            RegularEnergyCell regularCell = new RegularEnergyCell(Game);    
-            RegularShield regularShield = new RegularShield(Game);
-            RegularPlating regularPlating = new RegularPlating(Game);
+            BasicEnergyCell regularCell = new BasicEnergyCell(Game);    
+            //RegularShield regularShield = new RegularShield(Game);
+            BasicPlating regularPlating = new BasicPlating(Game);
 
             shipItems.Clear();
 
@@ -102,7 +102,7 @@ namespace SpaceProject
 
             shipItems.Add(basicLaser);
             shipItems.Add(regularCell);
-            shipItems.Add(regularShield);
+            //shipItems.Add(regularShield);
             shipItems.Add(regularPlating);
 
             //Equipped from the beginning
@@ -113,7 +113,8 @@ namespace SpaceProject
             equippedPrimaryWeapons.Clear();
             equippedPrimaryWeapons.Add(basicLaser);
             equippedEnergyCell = regularCell;
-            equippedShield = regularShield;
+            //equippedShield = regularShield;
+            equippedShield = emptyShield;
             equippedPlating = regularPlating;
 
             for (int n = equippedPrimaryWeapons.Count; n < primarySlots; n++)

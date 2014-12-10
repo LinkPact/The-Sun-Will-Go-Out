@@ -128,12 +128,10 @@ namespace SpaceProject
 
             if (!station.Abandoned)
             {
-
                 dataBody = TextUtils.FormatDataBody(Game.fontManager.GetFont(16),
                    new List<string>() { "Inhabitants:" },
                    new List<string>() { station.StationInhabitants.ToString() },
                    383);
-
             }
             else
             {

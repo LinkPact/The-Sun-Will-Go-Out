@@ -22,6 +22,11 @@ namespace SpaceProject
 
         public Rectangle SpaceRegionArea { get { return spaceRegionArea; } private set { ; } }
 
+        public void UpdateShops_DEVELOP()
+        {
+            ShopManager.UpdateShops(gameObjects);
+        }
+
         protected SpaceRegion(Game1 game, Sprite spriteSheet)
         {
             this.game = game;
