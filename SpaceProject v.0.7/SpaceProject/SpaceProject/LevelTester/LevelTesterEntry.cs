@@ -33,6 +33,11 @@ namespace SpaceProject
 
         public String GetDescription()
         {
+            return description;
+        }
+
+        public String GetDescriptionWithKey()
+        {
             //return filepath + ", " + description + ", " + entryKey.ToString();
             return description + ", " + entryKey.ToString();
         }

@@ -223,6 +223,11 @@ namespace SpaceProject
             {
                 Game.stateManager.ChangeState("LevelTesterState");
             }
+
+            if (ControlManager.CheckKeypress(Keys.C))
+            {
+                Game.stateManager.ChangeState("CampaignState");
+            }
             //
         }
 

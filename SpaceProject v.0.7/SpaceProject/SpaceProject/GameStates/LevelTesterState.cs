@@ -100,7 +100,7 @@ namespace SpaceProject
             johansLevelEntries.Add(new LevelTesterEntry("johan_main\\DefendColonyBreak", "Main 3 - Break the Rebels defence", Keys.V, standardEquip: 3));
             johansLevelEntries.Add(new LevelTesterEntry("johan_main\\DefendColonyHold", "Main 3 - Hold against Rebels", Keys.B, standardEquip: 3));
 
-            chosenLevel = jakobsLevelEntries[0].GetPath(); ;
+            chosenLevel = jakobsLevelEntries[0].GetPath();
         }
 
         // Creates and returns a dictionary linking level names to string paths
@@ -272,7 +272,7 @@ namespace SpaceProject
 
             for (int n = 0; n < jakobsLevelEntries.Count; n++)
             {
-                spriteBatch.DrawString(smallFont, jakobsLevelEntries[n].GetDescription(), new Vector2(xRight, yBase + (posCounter) * yInterval), Color.White);
+                spriteBatch.DrawString(smallFont, jakobsLevelEntries[n].GetDescriptionWithKey(), new Vector2(xRight, yBase + (posCounter) * yInterval), Color.White);
                 posCounter++;
             }
 
@@ -282,7 +282,7 @@ namespace SpaceProject
 
             for (int n = 0; n < johansLevelEntries.Count; n++)
             {
-                spriteBatch.DrawString(smallFont, johansLevelEntries[n].GetDescription(), new Vector2(xRight, yBase + (posCounter) * yInterval), Color.White);
+                spriteBatch.DrawString(smallFont, johansLevelEntries[n].GetDescriptionWithKey(), new Vector2(xRight, yBase + (posCounter) * yInterval), Color.White);
                 posCounter++;
             }
 
@@ -292,7 +292,7 @@ namespace SpaceProject
 
             for (int n = 0; n < dannesLevelEntries.Count; n++)
             {
-                spriteBatch.DrawString(smallFont, dannesLevelEntries[n].GetDescription(), new Vector2(xRight, yBase + (posCounter) * yInterval), Color.White);
+                spriteBatch.DrawString(smallFont, dannesLevelEntries[n].GetDescriptionWithKey(), new Vector2(xRight, yBase + (posCounter) * yInterval), Color.White);
                 posCounter++;
             }
 

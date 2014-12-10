@@ -52,12 +52,12 @@ namespace SpaceProject
             Vector2 dir5 = MathFunctions.DirFromRadians(-Math.PI / 2 + (4 * Math.PI / 32));
             Vector2 dir6 = MathFunctions.DirFromRadians(-Math.PI / 2 + (6 * Math.PI / 32));
 
-            CreateMissile(player, -4, dir1);
+            //CreateMissile(player, -4, dir1);
             CreateMissile(player, -3, dir2, speedFactor: 0.8f);
             CreateMissile(player, -2, dir3, speedFactor: 1.5f, damageFactor: 2f);
             CreateMissile(player, 2, dir4, speedFactor: 1.5f, damageFactor: 2f);
             CreateMissile(player, 3, dir5, speedFactor: 0.8f);
-            CreateMissile(player, 4, dir6);
+            //CreateMissile(player, 4, dir6);
 
             return true;
         }

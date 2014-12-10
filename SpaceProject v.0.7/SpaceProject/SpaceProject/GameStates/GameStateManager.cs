@@ -35,6 +35,7 @@ namespace SpaceProject
         
         public MapCreatorState mapCreatorState;
         public LevelTesterState levelTesterState;
+        public CampaignState campaignState;
         public CreditState creditState;
 
         #endregion
@@ -128,8 +129,10 @@ namespace SpaceProject
             stationState = new StationState(Game, "StationState");
             missionScreenState = new MissionScreenState(Game, "MissionScreenState");
             creditState = new CreditState(Game, "CreditState");
+
             levelTesterState = new LevelTesterState(Game, "LevelTesterState");
-            
+            campaignState = new CampaignState(Game, "CampaignState");
+
             gameStates.Add(mainMenuState);
             gameStates.Add(startGameState);
             gameStates.Add(optionsMenuState);
@@ -145,8 +148,10 @@ namespace SpaceProject
             gameStates.Add(missionScreenState);
             gameStates.Add(mapCreatorState);
             gameStates.Add(creditState);
+
             gameStates.Add(levelTesterState);
-            
+            gameStates.Add(campaignState);
+
             mainMenuState.Initialize();
             startGameState.Initialize();
             optionsMenuState.Initialize();
@@ -165,6 +170,7 @@ namespace SpaceProject
 
             creditState.Initialize();
             levelTesterState.Initialize();
+            campaignState.Initialize();
 
             ChangeState("MainMenuState");
         }

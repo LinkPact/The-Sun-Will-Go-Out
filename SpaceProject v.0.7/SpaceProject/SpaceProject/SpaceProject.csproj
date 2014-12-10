@@ -136,6 +136,7 @@
     <Compile Include="GameStates\BaseManagement\BaseManagerText.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GameStates\CampaignState.cs" />
     <Compile Include="GameStates\CreditState.cs" />
     <Compile Include="GameStates\HelpScreenState.cs" />
     <Compile Include="GameStates\IntroFirstState.cs" />
