@@ -16,9 +16,9 @@ namespace SpaceProject
     {
         #region declaration
 
-        private const int checkpoint1 = 2;
-        private const int checkpoint2 = 3;
-        private const int checkpoint3 = 4;
+        private const int checkpoint1 = 4;
+        private const int checkpoint2 = 8;
+        private const int checkpoint3 = 10;
 
         private SpriteFont smallFont;
         private SpriteFont bigFont;
