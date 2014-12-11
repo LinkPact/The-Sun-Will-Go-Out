@@ -33,12 +33,12 @@ namespace SpaceProject
         {
             Name = "Advanced Beam";
             Kind = "Primary";
-            energyCostPerSecond = 8f;
+            energyCostPerSecond = 11f;
             delay = 10;
             Weight = 200;
-            damage = 10.0f;
+            damage = 12.0f;
 
-            Value = 700;
+            Value = 2200;
             Color color = new Color(79, 255, 73);
             beamModule = new FriendlyBeamModule(Game, spriteSheet, damage, color);
             isBeam = true;

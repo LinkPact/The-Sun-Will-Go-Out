@@ -12,7 +12,7 @@ namespace SpaceProject
         low         = 150,
         medium      = 300,
         high        = 800,
-        extreme     = 2500
+        extreme     = 1800
     }
 
     public enum CreatureShieldRegeneration

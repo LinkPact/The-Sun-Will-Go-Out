@@ -37,11 +37,11 @@ namespace SpaceProject
             bullet = new BasicLaser(Game, spriteSheet);
             bullet.Initialize();
 
-            damage = 200;
+            damage = 150;
             duration = 1000;
             speed = 1.5f;
 
-            Value = 300;
+            Value = 1000;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)

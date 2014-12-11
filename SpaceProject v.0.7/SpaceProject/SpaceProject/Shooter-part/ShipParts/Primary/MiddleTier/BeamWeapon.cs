@@ -38,7 +38,7 @@ namespace SpaceProject
             Weight = 200;
             damage = 8.0f;
 
-            Value = 700;
+            Value = 600;
             Color color = new Color(0, 0, 128);
             beamModule = new FriendlyBeamModule(Game, spriteSheet, damage, color);
             isBeam = true;

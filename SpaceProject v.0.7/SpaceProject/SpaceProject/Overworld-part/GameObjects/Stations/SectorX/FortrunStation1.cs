@@ -34,7 +34,7 @@ namespace SpaceProject
             AddShopEntry(new ShopInventoryEntry(ShipPartType.Turret, ShipPartAvailability.common, ItemVariety.random));
             AddShopEntry(new ShopInventoryEntry(ShipPartType.FieldDamage, ShipPartAvailability.common, ItemVariety.random));
 
-            AddShopEntry(new ShopInventoryEntry(ShipPartType.RegularEnergyCell, ShipPartAvailability.common, ItemVariety.random));
+            AddShopEntry(new ShopInventoryEntry(ShipPartType.RegularEnergyCell, ShipPartAvailability.ubiquitous, ItemVariety.random));
             AddShopEntry(new ShopInventoryEntry(ShipPartType.RegularShield, ShipPartAvailability.common, ItemVariety.random));
             AddShopEntry(new ShopInventoryEntry(ShipPartType.RegularPlating, ShipPartAvailability.uncommon, ItemVariety.random));
 

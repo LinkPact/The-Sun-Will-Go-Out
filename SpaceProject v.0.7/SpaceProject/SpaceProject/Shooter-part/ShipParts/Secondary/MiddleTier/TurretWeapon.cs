@@ -47,7 +47,7 @@ namespace SpaceProject
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
-            player.SightRange = 500;
+            player.SightRange = 300;
             GameObjectVertical target = player.FindAimObject();
             if (target == null) return false;
 

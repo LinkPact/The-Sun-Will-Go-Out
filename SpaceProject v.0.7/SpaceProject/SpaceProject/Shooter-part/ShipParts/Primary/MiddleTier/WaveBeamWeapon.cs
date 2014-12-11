@@ -42,7 +42,7 @@ namespace SpaceProject
             duration = Bullet.Duration;
             speed = Bullet.Speed;
         
-            Value = 400;
+            Value = 550;
 
             int shotsPerBatch = 2;
             int timeBetweenBatches = 250;

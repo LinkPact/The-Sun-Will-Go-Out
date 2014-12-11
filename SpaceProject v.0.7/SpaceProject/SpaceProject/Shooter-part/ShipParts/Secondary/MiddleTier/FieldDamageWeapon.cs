@@ -30,7 +30,7 @@ namespace SpaceProject
 
         private void Setup()
         {
-            Name = "Disruptor";
+            Name = "Field Damage";
             Kind = "Secondary";
             energyCostPerSecond = 1f;
             delay = 800;
