@@ -71,6 +71,7 @@ namespace SpaceProject
             infoText.Add("Range: " + Math.Round((double)Speed * Duration, 1).ToString() + " units");
             infoText.Add("Energy: " + Math.Round((double)energyCostPerSecond, 1).ToString() + " energy/second");
             infoText.Add("Value: " + Math.Round((double)Value, 0).ToString() + " Rupees");
+            infoText.Add("Quality: " + Variety.ToString());
 
             infoText.Add("");
             infoText.Add(GetDescription());

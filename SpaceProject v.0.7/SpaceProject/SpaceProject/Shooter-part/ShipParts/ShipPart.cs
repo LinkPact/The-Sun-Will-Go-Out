@@ -80,8 +80,9 @@ namespace SpaceProject
                     }
                 case ItemVariety.random:
                     {
-                        double quality = GetQualityNumber();
-                        SetShipPartVariety(ShipPart.regularItemSpreadFactor, quality);
+                        // Recursive call with the obtained proper quality
+                        ItemVariety var = GetRandomVariety();
+                        SetShipPartVariety(var);
                         break;
                     }
                 case ItemVariety.none:
@@ -98,6 +99,18 @@ namespace SpaceProject
         public void SetWorkingRandom(Random externalRandom)
         {
             this.random = externalRandom;
+        }
+
+        private ItemVariety GetRandomVariety()
+        {
+            double randNbr = MathFunctions.GetExternalRandomDouble();
+
+            if (randNbr < goodQualThres)
+                return ItemVariety.high;
+            else if (randNbr < regQualThres)
+                return ItemVariety.regular;
+            else //if (randNbr < regQualThres)
+                return ItemVariety.low;
         }
 
         private double GetQualityNumber()
