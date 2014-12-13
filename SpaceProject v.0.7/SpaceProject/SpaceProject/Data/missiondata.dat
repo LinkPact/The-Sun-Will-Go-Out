@@ -172,7 +172,7 @@ State = 1
 [Main7_Retaliation]
 Location = Rebel Station 2
 EndLocation = Rebel Station 2
-Name = Main - Infiltration
+Name = Main - Retaliation
 Introduction = ""
 ObjectiveText1 = Follow the fleet to the Rebel base and destroy it.
 PosResponse = Join the attack on the rebels.

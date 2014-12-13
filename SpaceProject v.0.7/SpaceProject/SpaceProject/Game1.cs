@@ -69,15 +69,9 @@ namespace SpaceProject
         private bool showFPS;
         public bool ShowFPS { get { return showFPS; } set { showFPS = value; } }
 
-        public static List<Vector2> ResolutionOptions = new List<Vector2> { 
-            new Vector2(800, 600),
-            new Vector2(1024, 768),
-            new Vector2(1024, 576),
-            new Vector2(1280, 720),
-            new Vector2(1366, 768)
-        };
+        public static List<Vector2> ResolutionOptions;
 
-        private Vector2 resolution = Game1.ResolutionOptions[0];
+        private Vector2 resolution;
  
         public Vector2 Resolution { get { return resolution; } }
         public Vector2 DefaultResolution { get { return new Vector2(800, 600); } }
@@ -93,6 +87,8 @@ namespace SpaceProject
 
         protected override void Initialize()
         {
+            GetAvailableResolutions();
+
             GameStarted = false;
 
             settingsFile = new SaveFile(this);
@@ -366,6 +362,20 @@ namespace SpaceProject
             base.OnExiting(sender, args);
 
             soundEffectsManager.DisposeSoundEffect();
+        }
+
+        private void GetAvailableResolutions()
+        {
+            ResolutionOptions = new List<Vector2>();
+
+            foreach (DisplayMode mode in GraphicsAdapter.DefaultAdapter.SupportedDisplayModes)
+            {
+                Vector2 resolution = new Vector2(mode.Width, mode.Height);
+
+                ResolutionOptions.Add(resolution);
+            }
+
+            ResolutionOptions = ResolutionOptions.OrderBy(resolution => resolution.X).ToList<Vector2>();
         }
     }
 }

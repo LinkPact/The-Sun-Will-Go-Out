@@ -20,7 +20,7 @@ namespace SpaceProject
         private Vector2 preferredBackdropPosition;
         private Direction backdropDirection;
         public float backdropSpeed;
-        private const float backdropAcc = 0.01f;
+        private readonly float backdropAcc = 0.0011f;
         private double totalDistance;
         private double distance;
 
@@ -67,16 +67,16 @@ namespace SpaceProject
         {
             distance = Math.Abs(Vector2.Distance(preferredBackdropPosition, backdropPosition));
 
-            backdropPosition += (backdropSpeed * backdropDirection.GetDirectionAsVector()) * gameTime.ElapsedGameTime.Milliseconds;
             backdropDirection.RotateTowardsPoint(backdropPosition, preferredBackdropPosition, 1f);
+            backdropPosition += (backdropSpeed * backdropDirection.GetDirectionAsVector()) * gameTime.ElapsedGameTime.Milliseconds;
 
             if (distance > totalDistance / 2)
             {
-                backdropSpeed += backdropAcc;
+                backdropSpeed += backdropAcc * gameTime.ElapsedGameTime.Milliseconds;
             }
             else if (distance <= totalDistance / 2)
             {
-                backdropSpeed -= backdropAcc;
+                backdropSpeed -= backdropAcc * gameTime.ElapsedGameTime.Milliseconds;
             }
 
             pressDelay--;
