@@ -726,34 +726,34 @@
     <Content Include="Levels\HardLevel.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\map1.lvl">
+    <Content Include="Levels\Old Levels\map1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\PirateLevel1.lvl">
+    <Content Include="Levels\Old Levels\PirateLevel1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\PirateLevel2.lvl">
+    <Content Include="Levels\Old Levels\PirateLevel2.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\PirateLevel3.lvl">
+    <Content Include="Levels\Old Levels\PirateLevel3.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\PirateLevel4.lvl">
+    <Content Include="Levels\Old Levels\PirateLevel4.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\PirateLevel5.lvl">
+    <Content Include="Levels\Old Levels\PirateLevel5.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\PirateLevel6.lvl">
+    <Content Include="Levels\Old Levels\PirateLevel6.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\PirateLevel7.lvl">
+    <Content Include="Levels\Old Levels\PirateLevel7.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\PirateLevel8.lvl">
+    <Content Include="Levels\Old Levels\PirateLevel8.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\test.lvl">
+    <Content Include="Levels\Old Levels\test.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Levels\XAstroDodger.lvl">
@@ -795,14 +795,14 @@
     <Content Include="Levels\XSecondMissionlvl3.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Levels\a.lvl" />
+    <None Include="Levels\Old Levels\a.lvl" />
     <None Include="Levels\AlliancePirate1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Levels\AlliancePirate2.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Levels\escortTest1.lvl" />
+    <None Include="Levels\Old Levels\escortTest1.lvl" />
     <Content Include="Levels\XScoutingLevel.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
