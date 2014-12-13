@@ -123,11 +123,11 @@ namespace SpaceProject
             pathDict.Add("7_1", "jakob_main\\7_infiltration\\m7_infiltration_lv1_v1");
 
             pathDict.Add("8o_1", "jakob_main\\8a_oyo\\m10a_OYO_lv1_v1");
-            pathDict.Add("8o_2", "jakob_main\\8a_oyo\\m10a_OYO_lv1_v1");
+            pathDict.Add("8o_2", "jakob_main\\8a_oyo\\m10a_OYO_lv2_v1");
             pathDict.Add("8r_1", "jakob_main\\8b_rebels\\m10b_rebels_lv1_v1");
-            pathDict.Add("8r_2", "jakob_main\\8b_rebels\\m10b_rebels_lv1_v1");
+            pathDict.Add("8r_2", "jakob_main\\8b_rebels\\m10b_rebels_lv2_v1");
             pathDict.Add("8a_1", "jakob_main\\8c_alliance\\m10c_alliance_lv1_v1");
-            pathDict.Add("8a_2", "jakob_main\\8c_alliance\\m10c_alliance_lv1_v1");
+            pathDict.Add("8a_2", "jakob_main\\8c_alliance\\m10c_alliance_lv2_v1");
 
             return pathDict;
         }
@@ -214,19 +214,19 @@ namespace SpaceProject
                 Game.stateManager.ChangeState("PlanetState");
             }
 
-            if (ControlManager.CheckKeypress(Keys.D2))
+            if (ControlManager.CheckKeypress(Keys.D2) && currentLevel >= checkpoint1)
             {
                 Game.stateManager.stationState.LoadStationData(Game.stateManager.overworldState.GetStation("Fortrun Station I"));
                 Game.stateManager.ChangeState("StationState");
             }
 
-            if (ControlManager.CheckKeypress(Keys.D3))
+            if (ControlManager.CheckKeypress(Keys.D3) && currentLevel >= checkpoint2)
             {
                 Game.stateManager.stationState.LoadStationData(Game.stateManager.overworldState.GetStation("Rebel Station 1"));
                 Game.stateManager.ChangeState("StationState");
             }
 
-            if (ControlManager.CheckKeypress(Keys.D4))
+            if (ControlManager.CheckKeypress(Keys.D4) && currentLevel >= checkpoint3)
             {
                 Game.stateManager.planetState.LoadPlanetData(Game.stateManager.overworldState.GetPlanet("Peye"));
                 Game.stateManager.ChangeState("PlanetState");

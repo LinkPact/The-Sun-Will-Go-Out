@@ -42,7 +42,7 @@ namespace SpaceProject
             secondaryModule.ShootsInBatchesSetup(4, 8000);
 
             SightRange = 1000;
-            HP = 3000.0f;
+            HP = 4000.0f;
             Damage = 10000;
             Speed = 0.01f;
             movement = Movement.Line;

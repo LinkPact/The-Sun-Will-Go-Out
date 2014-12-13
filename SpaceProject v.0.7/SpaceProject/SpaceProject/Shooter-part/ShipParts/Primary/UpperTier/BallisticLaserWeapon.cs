@@ -37,9 +37,9 @@ namespace SpaceProject
             bullet = new BasicLaser(Game, spriteSheet);
             bullet.Initialize();
 
-            damage = 150;
+            damage = 150;     // Nonsense value!
             duration = 1000;
-            speed = 1.5f;
+            speed = 1.5f;     // Nonsense value!
 
             Value = 1000;
         }

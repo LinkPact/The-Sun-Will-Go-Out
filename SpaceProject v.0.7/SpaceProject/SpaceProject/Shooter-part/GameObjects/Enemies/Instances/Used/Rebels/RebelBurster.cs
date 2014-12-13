@@ -67,7 +67,7 @@ namespace SpaceProject
                 bullet.Direction = MathFunctions.SpreadDir(initDir, spread);
                 bullet.Initialize();
                 bullet.Duration *= 0.8f;
-                bullet.Speed *= 1f;
+                bullet.Speed *= 0.8f;
 
                 bullet.SetSpreadSpeed(random);
 

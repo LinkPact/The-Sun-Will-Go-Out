@@ -42,7 +42,7 @@ namespace SpaceProject
             duration = Bullet.Duration;
             speed = Bullet.Speed;
 
-            Value = 500;
+            Value = 600;
 
             disruptionRadius = 80;
         }

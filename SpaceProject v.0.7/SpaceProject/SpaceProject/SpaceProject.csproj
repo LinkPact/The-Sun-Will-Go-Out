@@ -617,7 +617,7 @@
     <Compile Include="Shooter-part\ShipParts\QuantityItems\Resources\TitaniumResource.cs" />
     <Compile Include="Shooter-part\ShipParts\Shields\BasicShield.cs" />
     <Compile Include="Shooter-part\ShipParts\Shields\EmptyShield.cs" />
-    <Compile Include="Shooter-part\ShipParts\Shields\PlasmaShield.cs" />
+    <Compile Include="Shooter-part\ShipParts\Shields\AdvancedShield.cs" />
     <Compile Include="Shooter-part\ShipParts\SuperClasses\PlayerActivated.cs" />
     <Compile Include="Shooter-part\ShipParts\SuperClasses\PlayerShield.cs" />
     <Compile Include="Shooter-part\ShipParts\Shields\RegularShield.cs" />

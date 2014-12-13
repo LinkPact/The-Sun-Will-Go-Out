@@ -39,8 +39,8 @@ namespace SpaceProject
             Damage = 150;
             Speed = 0.02f;
 
-            AddPrimaryModule(300, ShootingMode.Regular);
-            primaryModule.ShootsInBatchesSetup(3, 2500);
+            AddPrimaryModule(700, ShootingMode.Regular);
+            primaryModule.ShootsInBatchesSetup(2, 2500);
             
             AddSecondaryModule(3000, ShootingMode.Regular);
             secondaryModule.SetFullCharge();
