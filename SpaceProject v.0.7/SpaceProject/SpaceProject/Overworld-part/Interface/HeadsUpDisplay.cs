@@ -7,19 +7,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public enum Maptoggle
-    {
-        Radar,
-        Map
-    }
-
     public class HeadsUpDisplay
     {
         private Game1 game;
 
-        public Maptoggle maptoggler = Maptoggle.Radar;
-
-        private MiniMap map;
         public Radar radar;
         private List<Bar> fusionCellBars;
         private Bar emergencyFusionCellBar;
@@ -32,9 +23,6 @@ namespace SpaceProject
 
         public void Initialize(Sprite spriteSheet, Vector2 mapCenter, Vector2 mapScale)
         {
-            map = new MiniMap(game, spriteSheet);
-            map.Initialize(mapCenter, mapScale);
-
             radar = new Radar(game, spriteSheet);
             radar.Initialize(mapCenter, 10000);
 
@@ -50,7 +38,6 @@ namespace SpaceProject
 
         public void Update(GameTime gameTime, List<GameObjectOverworld> visibleGameObjects)
         {
-            map.Update(gameTime, game.stateManager.overworldState.GetImmobileObjects, game.camera.Position, Vector2.Zero);
             radar.Update(gameTime, visibleGameObjects, game.camera.Position);
 
             lifeBar.Update(gameTime, StatsManager.GetShipLife(), StatsManager.Armor(),
@@ -73,10 +60,7 @@ namespace SpaceProject
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (maptoggler.Equals(Maptoggle.Map))
-                map.Draw(spriteBatch);
-            else if (maptoggler.Equals(Maptoggle.Radar))
-                radar.Draw(spriteBatch);
+            radar.Draw(spriteBatch);
             DrawLife(spriteBatch);
             DrawPosition(spriteBatch);
             // DON'T DELETE
@@ -164,14 +148,6 @@ namespace SpaceProject
                     game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 60) +
                     game.fontManager.FontOffset,
                 game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, 0.92f);
-        }
-
-        public void ToggleMap()
-        {
-            if (maptoggler.Equals(Maptoggle.Radar))
-                maptoggler = Maptoggle.Map;
-            else if (maptoggler.Equals(Maptoggle.Map))
-                maptoggler = Maptoggle.Radar;
         }
     }
 }

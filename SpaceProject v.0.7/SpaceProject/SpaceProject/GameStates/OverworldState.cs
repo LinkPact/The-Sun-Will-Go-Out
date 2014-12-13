@@ -349,10 +349,6 @@ namespace SpaceProject
                 Game.stateManager.shooterState.Initialize();
             }
 
-            else if (ControlManager.CheckKeypress(Keys.R))
-            {
-                HUD.ToggleMap();
-            }
             else if (ControlManager.CheckKeypress(Keys.N))
             {
                 Game.messageBox.DisplayMap(GetImmobileObjects);
