@@ -741,6 +741,15 @@ namespace SpaceProject
                         tmpShip.SetEndPlanet(dest);
                         sectorX.shipSpawner.AddFreighterToSector(tmpShip, new Vector2(posx, posy));
                         break;
+                    case "Alliance Ship":
+                        sectorX.shipSpawner.AddRebelShip(new Vector2(posx, posy));
+                        break;
+                    case "Hangar Ship":
+                        sectorX.shipSpawner.AddRebelShip(new Vector2(posx, posy));
+                        break;
+                    case "Ally Ship":
+                        sectorX.shipSpawner.AddRebelShip(new Vector2(posx, posy));
+                        break;
                 }
             }
 
