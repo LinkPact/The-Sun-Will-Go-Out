@@ -383,7 +383,6 @@
     <Compile Include="Overworld-part\SpaceRegions\Outposts\OutpostX.cs" />
     <Compile Include="Overworld-part\SpaceRegions\Sectors\Sector.cs" />
     <Compile Include="Overworld-part\SpaceRegions\Sectors\SectorX.cs" />
-    <Compile Include="Overworld-part\GameObjects\Ships\PirateShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\OutpostX\OutpostXStation.cs" />
     <Compile Include="Overworld-part\Interface\MiniMap.cs" />
     <Compile Include="Overworld-part\BackgroundManagerOverworld.cs" />

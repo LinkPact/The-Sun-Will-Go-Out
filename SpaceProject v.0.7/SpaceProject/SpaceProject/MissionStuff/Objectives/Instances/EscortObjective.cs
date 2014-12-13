@@ -142,8 +142,6 @@ namespace SpaceProject
 
                 ((FreighterShip)escortDataCapsule.ShipToDefend).Start();
 
-                PirateShip.FollowPlayer = false;
-
                 started = true;
 
                 enemyAttackStartTime = StatsManager.PlayTime.GetFutureOverworldTime(escortDataCapsule.EnemyAttackStartTime);
@@ -221,7 +219,7 @@ namespace SpaceProject
         public override void OnCompleted()
         {
             base.OnCompleted();
-            PirateShip.FollowPlayer = true;
+            OverworldShip.FollowPlayer = true;
 
             if (Destination is Station)
             {

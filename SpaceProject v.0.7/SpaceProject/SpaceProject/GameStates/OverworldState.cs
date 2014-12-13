@@ -615,7 +615,7 @@ namespace SpaceProject
             List<GameObjectOverworld> removeObjects = new List<GameObjectOverworld>();
             foreach (GameObjectOverworld obj in deepSpaceGameObjects)
             {
-                if (obj is PirateShip)
+                if (obj is RebelShip || obj is AllianceShip)
                 {
                     removeObjects.Add(obj);
                 }
@@ -729,9 +729,6 @@ namespace SpaceProject
 
                 switch (Game.saveFile.GetPropertyAsString("spaceobj" + i, "name", "error"))
                 {
-                    case "Pirate Ship":
-                        sectorX.shipSpawner.AddPirateShip(new Vector2(posx, posy));
-                        break;
                     case "Rebel Ship":
                         string levelName = Game.saveFile.GetPropertyAsString("spaceobj" + i, "level", "error");
                         sectorX.shipSpawner.AddRebelShip(new Vector2(posx, posy), levelName);

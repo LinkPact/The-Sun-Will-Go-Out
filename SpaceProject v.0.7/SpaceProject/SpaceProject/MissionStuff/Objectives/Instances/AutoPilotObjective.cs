@@ -84,8 +84,6 @@ namespace SpaceProject
             {
                 nextMessageTime = GetNextMessageStartTime();
             }
-
-            PirateShip.FollowPlayer = false;
         }
 
         public override void Update(PlayTime playTime)
@@ -130,7 +128,7 @@ namespace SpaceProject
                 ship.Wait();
             }
 
-            PirateShip.FollowPlayer = true;
+            OverworldShip.FollowPlayer = true;
         }
 
         public override bool Failed()

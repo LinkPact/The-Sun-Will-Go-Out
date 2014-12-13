@@ -13,13 +13,6 @@ namespace SpaceProject
         private OverworldState overworld;
         private Sector sector;
 
-        private int piratesInOverworld
-        {
-            get
-            {
-                return overworld.GetAllOverworldGameObjects.OfType<PirateShip>().Count(); 
-            }
-        }
         private int freightersInOverworld
         {
             get
@@ -49,7 +42,6 @@ namespace SpaceProject
             }
         }
 
-        private int spawnLimitPirates;
         private int spawnLimitFreighters;
         private int spawnLimitHangars;
         private int spawnLimitRebels;
@@ -71,19 +63,10 @@ namespace SpaceProject
             spriteSheet = overworld.shooterSheet;
             this.sector = sec;
 
-            spawnLimitPirates = 5;
             spawnLimitFreighters = 4;
             spawnLimitHangars = 3;
             spawnLimitRebels = 5;
             spawnLimitAlliance = 5;
-        }
-
-        public void AddPirateShip(Vector2 pos)
-        {
-            PirateShip tmpShip = new PirateShip(game, spriteSheet);
-            tmpShip.Initialize();
-            tmpShip.position = pos;
-            overworld.AddOverworldObject(tmpShip);
         }
 
         public void AddRebelShip(Vector2 pos)
@@ -140,13 +123,6 @@ namespace SpaceProject
             return shipList;
         }
 
-        public void AddPirateToSector()
-        {
-            PirateShip tempShip = new PirateShip(game, spriteSheet);
-            tempShip.Initialize(sector);
-            overworld.AddOverworldObject(tempShip);
-        }
-
         public void AddFreighterToSector()
         {
             FreighterShip tempShip = new FreighterShip(game, spriteSheet);
@@ -183,19 +159,10 @@ namespace SpaceProject
 
         public void Update(GameTime gameTime)
         {
-            UpdatePirates(gameTime);
             UpdateRebels(gameTime);
             UpdateAlliance(gameTime);
             UpdateFreighters(gameTime);
             UpdateHangars(gameTime);
-        }
-
-        public void UpdatePirates(GameTime gameTime)
-        {
-            if (piratesInOverworld < spawnLimitPirates)
-            {
-                AddPirateToSector();
-            }
         }
 
         public void UpdateRebels(GameTime gameTime)
