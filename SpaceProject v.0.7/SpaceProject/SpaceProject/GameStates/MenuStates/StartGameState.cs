@@ -96,9 +96,9 @@ namespace SpaceProject
 
             descriptions = new List<string>();
             descriptions.Add("Mode for development and testing.");
-            descriptions.Add("Easy mode for inexperienced players.");
-            descriptions.Add("Regular difficulty.");
-            descriptions.Add("An extra difficulty for players looking for a real \nchallenge.");
+            descriptions.Add("Easy mode for inexperienced players.\nYou take less damage from enemy fire and you recive more money.");
+            descriptions.Add("Regular difficulty.\n The way the game was intended to be played.");
+            descriptions.Add("An extra difficulty for players looking for a real \nchallenge.\nYou take more damage from enemy fire and you recive less money.");
             descriptions.Add("Return to main menu");
 
             base.Initialize();

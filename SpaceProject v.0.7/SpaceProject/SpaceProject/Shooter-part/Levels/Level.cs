@@ -365,7 +365,7 @@ namespace SpaceProject
         {
             EndText = "";
             if (missionType.Equals(MissionType.pirate))
-                EndText = "You earned: " + (int)(LevelLoot * StatsManager.lootFactor) + " rupees. \n";
+                EndText = "You earned: " + (int)(LevelLoot * StatsManager.moneyFactor) + " rupees. \n";
             EndText += "Press 'Enter' to continue..";
 
             if (ControlManager.CheckKeypress(Keys.Enter))
@@ -381,7 +381,7 @@ namespace SpaceProject
         private void LeaveLevel()
         {
             if (missionType.Equals(MissionType.pirate))
-                StatsManager.AddLoot((int)(LevelLoot * StatsManager.lootFactor));
+                StatsManager.AddLoot((int)(LevelLoot * StatsManager.moneyFactor));
                 //StatsManager.Rupees += LevelLoot;
             ReturnToPreviousScreen();
         }

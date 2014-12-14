@@ -229,7 +229,8 @@ namespace SpaceProject
 
         public int MoneyReward
         { 
-            get { return moneyReward; }
+            // Adjusted for difficulty by moneyFactor
+            get { return (int)(moneyReward * StatsManager.moneyFactor); }
         }
 
         public int ProgressReward

@@ -280,18 +280,18 @@ namespace SpaceProject
 
             base.OnDamage();
 
-            ShieldImpact(obj);
+            ApplyDamage(obj);
 
             TempInvincibility = CollisionHandlingVerticalShooter.TEMP_INVINCIBILITY;
         }
 
-        private void ShieldImpact(GameObjectVertical obj)
+        private void ApplyDamage(GameObjectVertical obj)
         {
-            float shieldDamage = ShipInventoryManager.equippedShield.GetShieldDamage(obj);
+            float damage = ShipInventoryManager.equippedShield.GetShieldDamage(obj) * StatsManager.damageFactor;
 
-            if (Shield > shieldDamage)
+            if (Shield > damage)
             {
-                Shield -= shieldDamage;
+                Shield -= damage;
                 Game.AddGameObjToShooter(ShieldEffectGenerator.GenerateStandardShieldEffect(Game, spriteSheet, this));
             }
             else if (Shield > obj.Damage)
