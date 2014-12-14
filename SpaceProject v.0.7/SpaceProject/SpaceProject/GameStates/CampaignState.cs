@@ -169,8 +169,9 @@ namespace SpaceProject
                 }
                 else
                 {
+                    rupees += prizeMoney;
+                    //lifeFactor++;
                     attemptNbr++;
-                    lifeFactor++;
                 }
             }
         }
