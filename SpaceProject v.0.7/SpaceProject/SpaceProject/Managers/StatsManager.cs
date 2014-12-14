@@ -19,8 +19,8 @@ namespace SpaceProject
     //Central class where variables for player and current game are stored global.
     public class StatsManager
     {
-        public static float moneyFactor;
-        public static float damageFactor;
+        public static float moneyFactor = 1f;
+        public static float damageFactor = 1f;
 
         
         #region declaration
