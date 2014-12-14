@@ -55,11 +55,6 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            if (GameStateManager.currentState == "OverworldState")
-                IsUsed = true;
-            else
-                IsUsed = false;
-
             // Update view
             view = new Rectangle((int)position.X - viewRadius, (int)position.Y - viewRadius, viewRadius * 2, viewRadius * 2);
 

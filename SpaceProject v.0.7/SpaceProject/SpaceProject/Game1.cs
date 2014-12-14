@@ -223,7 +223,6 @@ namespace SpaceProject
                     musicManager.SwitchMusicMuted();
                 }
 
-
                 menuBGController.Update(gameTime);
 
                 if (saveOnEnterOverworld)
