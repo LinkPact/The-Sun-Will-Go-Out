@@ -71,7 +71,7 @@ namespace SpaceProject
             HPmax = StatsManager.Armor();
 
             // If hardcore the life is fixed. Else, life is set to the ships armor.
-            if (StatsManager.gameMode != GameMode.hardcore && StatsManager.gameMode != GameMode.develop)
+            if (StatsManager.gameMode != GameMode.hardcore)
                 HP = StatsManager.Armor();
             else
                 HP = StatsManager.GetShipLife();
@@ -280,18 +280,18 @@ namespace SpaceProject
 
             base.OnDamage();
 
-            ShieldImpact(obj);
+            ApplyDamage(obj);
 
             TempInvincibility = CollisionHandlingVerticalShooter.TEMP_INVINCIBILITY;
         }
 
-        private void ShieldImpact(GameObjectVertical obj)
+        private void ApplyDamage(GameObjectVertical obj)
         {
-            float shieldDamage = ShipInventoryManager.equippedShield.GetShieldDamage(obj);
+            float damage = ShipInventoryManager.equippedShield.GetShieldDamage(obj) * StatsManager.damageFactor;
 
-            if (Shield > shieldDamage)
+            if (Shield > damage)
             {
-                Shield -= shieldDamage;
+                Shield -= damage;
                 Game.AddGameObjToShooter(ShieldEffectGenerator.GenerateStandardShieldEffect(Game, spriteSheet, this));
             }
             else if (Shield > obj.Damage)

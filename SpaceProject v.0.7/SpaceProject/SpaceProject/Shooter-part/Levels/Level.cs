@@ -365,23 +365,22 @@ namespace SpaceProject
         {
             EndText = "";
             if (missionType.Equals(MissionType.pirate))
-                EndText = "You earned: " + (int)(LevelLoot * StatsManager.lootFactor) + " rupees. \n";
+                EndText = "You earned: " + (int)(LevelLoot * StatsManager.moneyFactor) + " rupees. \n";
             EndText += "Press 'Enter' to continue..";
+
+            if (StatsManager.gameMode == GameMode.hardcore)
+                StatsManager.ReduceOverwordHealthToVerticalHealth(player);
 
             if (ControlManager.CheckKeypress(Keys.Enter))
             {
                 LeaveLevel();
             }
-
-
-            if (StatsManager.gameMode == GameMode.develop || StatsManager.gameMode == GameMode.hardcore)
-                StatsManager.ReduceOverwordHealthToVerticalHealth(player);
         }
 
         private void LeaveLevel()
         {
             if (missionType.Equals(MissionType.pirate))
-                StatsManager.AddLoot((int)(LevelLoot * StatsManager.lootFactor));
+                StatsManager.AddLoot((int)(LevelLoot * StatsManager.moneyFactor));
                 //StatsManager.Rupees += LevelLoot;
             ReturnToPreviousScreen();
         }

@@ -79,8 +79,7 @@ namespace SpaceProject
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
         {
-            if (IsUsed)
-                base.Draw(spriteBatch);
+            base.Draw(spriteBatch);
         }
 
     }

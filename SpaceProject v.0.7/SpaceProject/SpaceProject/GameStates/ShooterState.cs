@@ -123,6 +123,17 @@ namespace SpaceProject
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AlliancePirate3", "AlliancePirate3", MissionType.pirate));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AlliancePirate4", "AlliancePirate4", MissionType.pirate));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AlliancePirate5", "AlliancePirate5", MissionType.pirate));
+
+            // Main mission levels
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelsInTheMeteors", "mainlevels/RebelsAsteroids", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "FreighterEscort1", "mainlevels/FreighterEscortlvl1", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "FreighterEscort2", "mainlevels/FreighterEscortlvl2", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "DefendColonyBreak", "mainlevels/DefendColonyBreak", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "DefendColonyHold", "mainlevels/DefendColonyHold", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Infiltration1", "mainlevels/m4_infiltration_lv1_v1", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Infiltration2", "mainlevels/m4_infiltration_lv2_v2", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Retribution1", "mainlevels/m5_retribution_lv1_v2", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Retribution2", "mainlevels/m5_retribution_lv2_v2", MissionType.none));
         }
 
         public override void Initialize()

@@ -11,6 +11,7 @@ namespace SpaceProject
     { 
         normal,
         easy,
+        hard,
         hardcore,
         develop,
         campaign
@@ -19,7 +20,9 @@ namespace SpaceProject
     //Central class where variables for player and current game are stored global.
     public class StatsManager
     {
-        public const float lootFactor = 0.33f;
+        public static float moneyFactor = 1f;
+        public static float damageFactor = 1f;
+
         
         #region declaration
         private Game1 Game;
@@ -97,24 +100,40 @@ namespace SpaceProject
         public static void SetEasyStats()
         {
             UpdateValues();
+            moneyFactor = 0.70f;
+            damageFactor = 0.60f;
             gameMode = GameMode.easy;
-        }
-
-        public static void SetHardcoreStats()
-        {
-            UpdateValues();
-            gameMode = GameMode.hardcore;
         }
 
         public static void SetNormalStats()
         {
             UpdateValues();
+            moneyFactor = 0.33f;
+            damageFactor = 1.0f;
             gameMode = GameMode.normal;
+        }
+
+        public static void SetHardStats()
+        {
+            UpdateValues();
+            moneyFactor = 0.2f;
+            damageFactor = 1.2f;
+            gameMode = GameMode.hard;
+        }
+
+        public static void SetHardcoreStats()
+        {
+            UpdateValues();
+            moneyFactor = 0.20f;
+            damageFactor = 1.20f;
+            gameMode = GameMode.hardcore;
         }
 
         public static void SetDevelopStats()
         {
             UpdateValues();
+            moneyFactor = 0.33f;
+            damageFactor = 1.0f;
             gameMode = GameMode.develop;
 
             Rupees = 100000;

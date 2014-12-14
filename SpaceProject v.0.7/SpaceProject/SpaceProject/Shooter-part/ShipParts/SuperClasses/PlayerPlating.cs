@@ -90,7 +90,7 @@ namespace SpaceProject
             //}
             if (gameMode == GameMode.easy)
             {
-                Armor *= 3f;
+                Armor *= 2f;
             }
 
             CurrentOverworldHealth = Armor;
