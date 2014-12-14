@@ -24,6 +24,7 @@ namespace SpaceProject
         private MenuDisplayObject devButton;
         private MenuDisplayObject easyButton;
         private MenuDisplayObject normalButton;
+        private MenuDisplayObject hardButton;
         private MenuDisplayObject hardCoreButton;
         private MenuDisplayObject backButton;
 
@@ -66,10 +67,18 @@ namespace SpaceProject
                             buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             normalButton.name = "Normal";
 
-            hardCoreButton = new MenuDisplayObject(Game,
+            hardButton = new MenuDisplayObject(Game,
                     buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                     buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
                     new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition + BUTTON_Y_DISTANCE * 3),
+                    new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
+                        buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
+            hardButton.name = "Hard";
+
+            hardCoreButton = new MenuDisplayObject(Game,
+                    buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
+                    buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
+                    new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition + BUTTON_Y_DISTANCE * 4),
                     new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                             buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             hardCoreButton.name = "Hardcore";
@@ -77,7 +86,7 @@ namespace SpaceProject
             backButton = new MenuDisplayObject(Game,
                     buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                     buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                    new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition + BUTTON_Y_DISTANCE * 4),
+                    new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition + BUTTON_Y_DISTANCE * 5),
                     new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                             buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             backButton.name = "Back";
@@ -87,6 +96,7 @@ namespace SpaceProject
             buttons.Add(devButton);
             buttons.Add(easyButton);
             buttons.Add(normalButton);
+            buttons.Add(hardButton);
             buttons.Add(hardCoreButton);
             buttons.Add(backButton);
 
@@ -99,6 +109,7 @@ namespace SpaceProject
             descriptions.Add("Easy mode for inexperienced players.\nYou take less damage from enemy fire and you recive more money.");
             descriptions.Add("Regular difficulty.\n The way the game was intended to be played.");
             descriptions.Add("An extra difficulty for players looking for a real \nchallenge.\nYou take more damage from enemy fire and you recive less money.");
+            descriptions.Add("An extra difficulty for players looking for a real \nchallenge.\nAs hard as Hard-difficulty but your life remain constant in both Shooter and Space.\nIf you run out of life you die... ");
             descriptions.Add("Return to main menu");
 
             base.Initialize();
@@ -269,6 +280,18 @@ namespace SpaceProject
                         KeyboardState current = Keyboard.GetState();
                         Game.shipInventoryManager.Initialize();
                         StatsManager.SetNormalStats();
+                        Game.stateManager.StartGame("IntroFirstState");
+                        Game.GameStarted = true;
+
+                        PlaySelectSound();
+                        break;
+
+                    case "hard":
+                        StatsManager.gameMode = GameMode.hard;
+                        MediaPlayer.Stop();
+                        MainMenuState.LoadedOrNewGame = LoadedOrNewGame.New;
+                        Game.shipInventoryManager.Initialize();
+                        StatsManager.SetHardStats();
                         Game.stateManager.StartGame("IntroFirstState");
                         Game.GameStarted = true;
 

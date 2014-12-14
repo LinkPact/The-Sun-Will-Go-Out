@@ -11,6 +11,7 @@ namespace SpaceProject
     { 
         normal,
         easy,
+        hard,
         hardcore,
         develop,
         campaign
@@ -104,20 +105,28 @@ namespace SpaceProject
             gameMode = GameMode.easy;
         }
 
-        public static void SetHardcoreStats()
-        {
-            UpdateValues();
-            moneyFactor = 0.20f;
-            damageFactor = 1.20f;
-            gameMode = GameMode.hardcore;
-        }
-
         public static void SetNormalStats()
         {
             UpdateValues();
             moneyFactor = 0.33f;
             damageFactor = 1.0f;
             gameMode = GameMode.normal;
+        }
+
+        public static void SetHardStats()
+        {
+            UpdateValues();
+            moneyFactor = 0.2f;
+            damageFactor = 1.2f;
+            gameMode = GameMode.hard;
+        }
+
+        public static void SetHardcoreStats()
+        {
+            UpdateValues();
+            moneyFactor = 0.20f;
+            damageFactor = 1.20f;
+            gameMode = GameMode.hardcore;
         }
 
         public static void SetDevelopStats()
