@@ -71,7 +71,7 @@ namespace SpaceProject
             HPmax = StatsManager.Armor();
 
             // If hardcore the life is fixed. Else, life is set to the ships armor.
-            if (StatsManager.gameMode != GameMode.hardcore && StatsManager.gameMode != GameMode.develop)
+            if (StatsManager.gameMode != GameMode.hardcore)
                 HP = StatsManager.Armor();
             else
                 HP = StatsManager.GetShipLife();

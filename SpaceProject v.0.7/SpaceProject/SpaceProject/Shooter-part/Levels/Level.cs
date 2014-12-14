@@ -368,14 +368,13 @@ namespace SpaceProject
                 EndText = "You earned: " + (int)(LevelLoot * StatsManager.moneyFactor) + " rupees. \n";
             EndText += "Press 'Enter' to continue..";
 
+            if (StatsManager.gameMode == GameMode.hardcore)
+                StatsManager.ReduceOverwordHealthToVerticalHealth(player);
+
             if (ControlManager.CheckKeypress(Keys.Enter))
             {
                 LeaveLevel();
             }
-
-
-            if (StatsManager.gameMode == GameMode.develop || StatsManager.gameMode == GameMode.hardcore)
-                StatsManager.ReduceOverwordHealthToVerticalHealth(player);
         }
 
         private void LeaveLevel()
