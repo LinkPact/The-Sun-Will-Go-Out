@@ -60,7 +60,7 @@ namespace SpaceProject
 
             Objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
-                "ScoutingLevel", LevelStartCondition.Immediately,
+                "RebelsInTheMeteors", LevelStartCondition.Immediately,
                 new EventTextCapsule(GetEvent((int)EventID.AfterCombat),
                     null,
                     EventTextCanvas.MessageBox)));

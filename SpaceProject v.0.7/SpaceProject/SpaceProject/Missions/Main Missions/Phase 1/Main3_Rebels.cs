@@ -66,7 +66,7 @@ namespace SpaceProject
                     38000,
                     8000,
                     2000,
-                    new List<String> { "SecondMissionlvl1", "SecondMissionlvl2" },
+                    new List<String> { "FreighterEscort1", "FreighterEscort2" },
                     new List<String> { GetEvent((int)EventID.AfterRebelAttack1).Text, GetEvent((int)EventID.AfterRebelAttack2).Text },
                     new List<String> { GetEvent((int)EventID.CaptainChitChat1).Text, GetEvent((int)EventID.CaptainChitChat2).Text,
                                        GetEvent((int)EventID.AlmostThere).Text },

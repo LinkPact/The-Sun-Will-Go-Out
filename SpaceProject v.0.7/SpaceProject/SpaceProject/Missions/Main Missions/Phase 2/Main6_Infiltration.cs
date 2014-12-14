@@ -64,7 +64,10 @@ namespace SpaceProject
                 300, new EventTextCapsule(GetEvent((int)EventID.LevelBegins), null, EventTextCanvas.MessageBox)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], allianceShips[1],
-                "PirateLevel1", LevelStartCondition.TextCleared));
+                "Infiltration1", LevelStartCondition.TextCleared));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], allianceShips[1],
+                "Infiltration2", LevelStartCondition.Immediately));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.GetStation("Rebel Station 2"), 

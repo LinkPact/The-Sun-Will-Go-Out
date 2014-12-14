@@ -67,7 +67,7 @@ namespace SpaceProject
                 new EventTextCapsule(GetEvent((int)EventID.OutsideNewNorrland), null, EventTextCanvas.MessageBox)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
-                newNorrland, "DefendColony", LevelStartCondition.TextCleared));
+                newNorrland, "DefendColonyBreak", LevelStartCondition.TextCleared));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], newNorrland,
                 new EventTextCapsule(GetEvent((int)EventID.FirstLevelCompleted), null, EventTextCanvas.BaseState),
@@ -77,7 +77,7 @@ namespace SpaceProject
                 delegate { return false; }));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
-                newNorrland, "PirateLevel1", LevelStartCondition.TextCleared,
+                newNorrland, "DefendColonyHold", LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.SecondLevelCompleted), null, EventTextCanvas.BaseState)));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], newNorrland,

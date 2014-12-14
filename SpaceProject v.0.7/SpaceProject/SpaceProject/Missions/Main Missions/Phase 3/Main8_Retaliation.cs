@@ -27,7 +27,6 @@ namespace SpaceProject
         private readonly int numberOfRebelShips = 3;
         
         private AllianceShip alliance1;
-        private AllianceShip alliance2;
 
         private readonly Vector2 destination = new Vector2(94600, 100000);
 
@@ -51,9 +50,6 @@ namespace SpaceProject
 
             alliance1 = new AllianceShip(Game, Game.stateManager.shooterState.spriteSheet);
             alliance1.Initialize(Game.stateManager.overworldState.GetSectorX);
-
-            alliance2 = new AllianceShip(Game, Game.stateManager.shooterState.spriteSheet);
-            alliance2.Initialize(Game.stateManager.overworldState.GetSectorX);
 
             rebelShips = new List<RebelShip>();
 
@@ -145,7 +141,7 @@ namespace SpaceProject
                 delegate { return false; }));
             
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], freighter,
-                "PirateAmbush", LevelStartCondition.Immediately,
+                "Retribution1", LevelStartCondition.Immediately,
                 new EventTextCapsule(GetEvent((int)EventID.AfterLevel), null, EventTextCanvas.MessageBox)));
             
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
@@ -154,9 +150,7 @@ namespace SpaceProject
                 {
                     freighter.Destroy();
                     Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
-                        alliance1, destination + new Vector2(-600, 0), "PirateLevel2", Game.player);
-                    Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
-                        alliance2, destination + new Vector2(600, 0), "PirateLevel3", Game.player);
+                        alliance1, destination + new Vector2(-600, 0), "Retribution2", Game.player);
                 },
                 delegate
                 {
