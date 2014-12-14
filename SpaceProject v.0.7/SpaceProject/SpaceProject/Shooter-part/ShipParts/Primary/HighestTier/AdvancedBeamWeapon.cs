@@ -10,7 +10,8 @@ namespace SpaceProject
 {
     public class AdvancedBeamWeapon : PlayerWeapon
     {
-        private BeamModule beamModule;
+        private BeamModule beamModule1;
+        private BeamModule beamModule2;
 
         public AdvancedBeamWeapon(Game1 Game) :
             base(Game)
@@ -26,27 +27,29 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "Shoots a single solid beam at great range";
+            return "Shoots two solid beams at great range";
         }
 
         private void Setup()
         {
             Name = "Advanced Beam";
             Kind = "Primary";
-            energyCostPerSecond = 11f;
+            energyCostPerSecond = 13f;
             delay = 10;
             Weight = 200;
-            damage = 12.0f;
+            damage = 9.0f;
 
             Value = 2200;
             Color color = new Color(79, 255, 73);
-            beamModule = new FriendlyBeamModule(Game, spriteSheet, damage, color);
+            beamModule1 = new FriendlyBeamModule(Game, spriteSheet, damage, color);
+            beamModule2 = new FriendlyBeamModule(Game, spriteSheet, damage, color);
             isBeam = true;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
-            beamModule.Activate(player.Position, gameTime);
+            beamModule1.Activate(new Vector2(player.PositionX - 4, player.PositionY), gameTime);
+            beamModule2.Activate(new Vector2(player.PositionX + 4, player.PositionY), gameTime);
             return true;
         }
 

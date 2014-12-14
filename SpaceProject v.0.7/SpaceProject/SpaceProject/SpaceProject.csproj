@@ -567,11 +567,11 @@
     <Compile Include="Shooter-part\ShipParts\Plating\BasicPlating.cs" />
     <Compile Include="Shooter-part\ShipParts\Secondary\MiddleTier\FieldDamageWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Secondary\MiddleTier\DisruptorWeapon.cs" />
-    <Compile Include="Shooter-part\ShipParts\Primary\UpperTier\AdvancedBeamWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\HighestTier\AdvancedBeamWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\UpperTier\BursterWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\MiddleTier\WaveBeamWeapon.cs" />
-    <Compile Include="Shooter-part\ShipParts\Primary\UpperTier\AdvancedLaserWeapon.cs" />
-    <Compile Include="Shooter-part\ShipParts\Primary\UpperTier\ProximityLaserWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\HighestTier\AdvancedLaserWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\HighestTier\ProximityLaserWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Secondary\MiddleTier\TurretWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Secondary\Other\PunyTurretWeapon.cs" />
     <Compile Include="Shooter-part\GameObjects\AnimatedGameObject.cs" />
@@ -853,19 +853,40 @@
     <Content Include="Levels\testlevels\test_lv1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Levels\testlevels\jakob_main\6_itnos\m6_itnos_lv1_v2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\7_infiltration\m7_infiltration_lv1_v2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv1_v1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv1_v2.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv2_v1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv2_v2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv1_v1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv1_v2.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv2_v1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv2_v2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv1_v1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv1_v2.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv2_v1.lvl">
@@ -899,6 +920,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Levels\testlevels\jakob_main\7_infiltration\m7_infiltration_lv1_v1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv2_v2.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Levels\testlevels\jakob_pirate\alliance\J_AP1.lvl">

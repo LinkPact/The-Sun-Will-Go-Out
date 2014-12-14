@@ -32,7 +32,7 @@ namespace SpaceProject
             Kind = "Primary";
             //energyCost = 2f;
             energyCostPerSecond = 5.5f;
-            delay = 270;
+            delay = 320;
             Weight = 200;
 
             bullet = new BasicLaser(Game, spriteSheet);

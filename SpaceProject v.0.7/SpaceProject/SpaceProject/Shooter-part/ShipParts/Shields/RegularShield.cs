@@ -33,7 +33,7 @@ namespace SpaceProject
             Weight = 500;
 
             Capacity = 50.0f;
-            Regeneration = 0.15f;
+            Regeneration = 0.2f;
             ConversionFactor = 5f;
 
             Value = 500;

@@ -23,7 +23,7 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "Specialized for fast recharge rate but with compromised durability";
+            return "High level shield for top protection";
         }
 
         private void Setup()
@@ -33,7 +33,7 @@ namespace SpaceProject
             Weight = 700;
 
             Capacity = 70.0f;
-            Regeneration = 0.2f;
+            Regeneration = 0.3f;
             ConversionFactor = 5;
 
             Value = 1000;

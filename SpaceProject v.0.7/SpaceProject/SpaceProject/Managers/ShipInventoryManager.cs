@@ -776,6 +776,7 @@ namespace SpaceProject
                 EquipItemFromSublist(ShipParts.Plating, 0, pos);
         }
 
+        #region cheats
         public static void ActivateCheatPrimary()
         {
             if (isPrimaryCheatActivated)
@@ -916,6 +917,7 @@ namespace SpaceProject
 
             isCheatActivated = true;
         }
+        #endregion
 
         public static String MapCreatorEquip(int equipNbr)
         {
@@ -1039,7 +1041,7 @@ namespace SpaceProject
                     }
                 case 9:
                     {
-                        equippedPrimaryWeapons[0] = new BursterWeapon(Game);
+                        equippedPrimaryWeapons[0] = new AdvancedBeamWeapon(Game);
                         equippedPrimaryWeapons[1] = new BursterWeapon(Game);
                         equippedSecondary = new BursterWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
