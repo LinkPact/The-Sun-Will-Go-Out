@@ -52,5 +52,7 @@ namespace SpaceProject
                 return false;
         }
 
+        public override void OnKilled()
+        { }
     }
 }

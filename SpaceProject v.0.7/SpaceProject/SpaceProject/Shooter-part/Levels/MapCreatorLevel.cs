@@ -88,14 +88,14 @@ namespace SpaceProject
 
                     if (!squareString.Substring(0, 1).Equals("0"))
                     {
-                        float position = GetPos(w, data.pointWidth, LevelWidth);
+                        float position = GetComponentPos(w, data.pointWidth, LevelWidth);
                         CreatePointEvent(squareString, position, 1000 * timeVector[h]);
                     }
                 }
             }
         }
         
-        private float GetPos(float pos, float max, float window)
+        private float GetComponentPos(float pos, float max, float window)
         {
             return ((pos + 0.5f) / max) * window;
         }

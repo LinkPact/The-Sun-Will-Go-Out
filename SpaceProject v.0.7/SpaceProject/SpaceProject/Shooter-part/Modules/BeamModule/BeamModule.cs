@@ -156,7 +156,7 @@ namespace SpaceProject
 
         private void InflictDamage(GameObjectVertical obj)
         {
-            Bullet dummyBullet = new Bullet(game, spriteSheet);
+            Bullet dummyBullet = new YellowBullet(game, spriteSheet);
             dummyBullet.Damage = damage;
             ((CombatGameObject)obj).InflictDamage(dummyBullet);
         }

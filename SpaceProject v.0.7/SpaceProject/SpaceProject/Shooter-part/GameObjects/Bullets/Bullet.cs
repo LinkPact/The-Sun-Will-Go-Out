@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
-    public class Bullet : CombatGameObject
+    public abstract class Bullet : CombatGameObject
     {
         protected Boolean collidesOtherBullets;
         public Boolean CollidesOtherBullets { get { return collidesOtherBullets; } private set { } }
@@ -32,5 +32,8 @@ namespace SpaceProject
         {
             Direction = MathFunctions.ScaleDirection(target.Position - shooter.Position);
         }
+
+        public override void OnKilled()
+        { }
     }
 }

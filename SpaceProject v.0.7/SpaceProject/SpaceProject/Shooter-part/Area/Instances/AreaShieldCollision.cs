@@ -38,5 +38,8 @@ namespace SpaceProject
             sourceObject.InflictDamage(bullet);
             //bullet.InflictDamage(sourceObject);
         }
+
+        public override void OnKilled()
+        { }
     }
 }

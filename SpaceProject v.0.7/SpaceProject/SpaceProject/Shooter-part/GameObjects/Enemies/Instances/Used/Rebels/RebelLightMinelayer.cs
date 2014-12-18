@@ -8,6 +8,8 @@ namespace SpaceProject
 {
     class RebelLightMinelayer : ShootingEnemyShip
     {
+        private const int mineActivationTime = 1000;
+
         public RebelLightMinelayer(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
         {
@@ -57,10 +59,12 @@ namespace SpaceProject
             double dirRadians = MathFunctions.RadiansFromDir(centerDir);
             dirRadians += random.NextDouble() * Math.PI / 8 - Math.PI / 16;
 
-            MineEnemy mine = new MineEnemy(Game, spriteSheet);
+            MineEnemy mine = new MineEnemy(Game, spriteSheet, player);
             mine.Position = Position;
             mine.Direction = MathFunctions.DirFromRadians(dirRadians);
             mine.Initialize();
+
+            mine.SetActivationTime(mineActivationTime);
 
             Game.stateManager.shooterState.gameObjects.Add(mine);
         }

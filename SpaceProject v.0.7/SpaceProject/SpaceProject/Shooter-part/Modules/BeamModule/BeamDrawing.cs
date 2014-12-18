@@ -93,5 +93,8 @@ namespace SpaceProject
                 }
             }
         }
+
+        public override void OnKilled()
+        { }
     }
 }

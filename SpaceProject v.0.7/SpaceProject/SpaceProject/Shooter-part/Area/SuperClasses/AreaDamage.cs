@@ -33,5 +33,8 @@ namespace SpaceProject
             base.Update(gameTime);
             IsKilled = true;
         }
+
+        public override void OnKilled()
+        { }
     }
 }

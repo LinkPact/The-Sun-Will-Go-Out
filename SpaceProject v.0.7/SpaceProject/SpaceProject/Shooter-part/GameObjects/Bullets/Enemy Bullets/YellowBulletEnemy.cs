@@ -7,11 +7,8 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    //Objekt som representerar en av spelarens magier
-    public class YellowBulletEnemy : AnimatedGameObject
+    public class YellowBulletEnemy : EnemyBullet
     {
-
-        //public int duration;
 
         public YellowBulletEnemy(Game1 Game, Sprite spriteSheet) :
             base(Game, spriteSheet)

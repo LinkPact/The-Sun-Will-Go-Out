@@ -25,5 +25,8 @@ namespace SpaceProject
         {
             base.Draw(spriteBatch);
         }
+
+        public override void OnKilled()
+        { }
     }
 }

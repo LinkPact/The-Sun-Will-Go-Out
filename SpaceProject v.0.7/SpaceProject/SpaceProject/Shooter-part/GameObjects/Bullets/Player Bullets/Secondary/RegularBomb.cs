@@ -30,9 +30,9 @@ namespace SpaceProject
             TempInvincibility = Duration;
 
             anim.LoopTime = 300;
-            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(61, 0, 10, 10)));
+            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(80, 100, 20, 20)));
 
-            Bounding = new Rectangle(61, 0, 10, 10);
+            Bounding = new Rectangle(80, 100, 20, 20);
             BoundingSpace = 0;
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
 

@@ -37,7 +37,7 @@ namespace SpaceProject
             SightRange = 400;
             HP = 500.0f;
             Damage = 50;
-            Speed = 0.06f;
+            Speed = 0.04f;
 
             AddPrimaryModule(1500, ShootingMode.Regular);
             primaryModule.SetFullCharge();
@@ -53,11 +53,11 @@ namespace SpaceProject
 
         protected override void ShootingPattern(GameTime gameTime)
         {
-            MineEnemy mine = new MineEnemy(Game, spriteSheet);
+            MineEnemy mine = new MineEnemy(Game, spriteSheet, player);
             mine.Position = Position;
-            mine.Direction = MathFunctions.ScaleDirection(ShootObject.Position - Position);
             mine.Initialize();
-            mine.Speed = 0.20f;
+            mine.Direction = MathFunctions.ScaleDirection(ShootObject.Position - Position);
+            mine.Speed = 0.10f;
             mine.Duration = 1000;
 
             Game.stateManager.shooterState.gameObjects.Add(mine);

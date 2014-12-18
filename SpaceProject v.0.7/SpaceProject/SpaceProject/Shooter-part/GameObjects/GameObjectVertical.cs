@@ -207,6 +207,9 @@ namespace SpaceProject
             if (shootObject != null)
                 if (shootObject.IsKilled || shootObject.IsOutside) 
                     shootObject = null;
+
+            if (IsKilled)
+                OnKilled();
         }
         
         public virtual void Draw(SpriteBatch spriteBatch)
@@ -313,9 +316,8 @@ namespace SpaceProject
 
             return !(obj is Meteorite || obj is MineEnemy);
         }
-        
-        public virtual void OnKilled()
-        { }
+
+        public abstract void OnKilled();
 
         public virtual void OnDamage()
         { }

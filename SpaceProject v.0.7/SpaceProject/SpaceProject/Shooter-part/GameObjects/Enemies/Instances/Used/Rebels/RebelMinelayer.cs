@@ -9,6 +9,8 @@ namespace SpaceProject
 {
     class RebelMinelayer : ShootingEnemyShip
     {
+        private const int mineActivationTime = 1000;
+
         public RebelMinelayer(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
         {
@@ -33,7 +35,7 @@ namespace SpaceProject
 
             lootValue = LootValue.high;
 
-            AddPrimaryModule(1200, ShootingMode.Regular);
+            AddPrimaryModule(2000, ShootingMode.Regular);
             primaryModule.SetRandomCharge(random);
 
             AddSecondaryModule(900, ShootingMode.Regular);
@@ -60,10 +62,12 @@ namespace SpaceProject
             double dirRadians = MathFunctions.RadiansFromDir(centerDir);
             dirRadians += random.NextDouble() * Math.PI / 8 - Math.PI / 16;
 
-            MineEnemy mine = new MineEnemy(Game, spriteSheet);
+            MineEnemy mine = new MineEnemy(Game, spriteSheet, player);
+            mine.Initialize();
             mine.Position = Position;
             mine.Direction = Direction;
-            mine.Initialize();
+
+            mine.SetActivationTime(mineActivationTime);
 
             Game.stateManager.shooterState.gameObjects.Add(mine);
         }

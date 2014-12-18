@@ -108,8 +108,8 @@ namespace SpaceProject
             IsKilled = false;
 
             //Startriktning
-            Direction = new Vector2((float)random.NextDouble()*2-1, (float)random.NextDouble()*2-1);
-            Direction = MathFunctions.ScaleDirection(Direction);
+            //Direction = new Vector2((float)random.NextDouble()*2-1, (float)random.NextDouble()*2-1);
+            //Direction = MathFunctions.ScaleDirection(Direction);
 
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
             Rotation = 0;
@@ -290,5 +290,8 @@ namespace SpaceProject
                 HP -= obj.Damage;
             }
         }
+
+        public override void OnKilled()
+        { }
     }
 }

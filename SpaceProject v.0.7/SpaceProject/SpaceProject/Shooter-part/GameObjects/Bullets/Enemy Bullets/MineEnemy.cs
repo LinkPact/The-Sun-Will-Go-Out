@@ -7,13 +7,17 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    class MineEnemy : EnemyBullet
+    class MineEnemy : EnemyShip
     {
         private float blastRadius;
         private float blastDamage;
 
-        public MineEnemy(Game1 Game, Sprite spriteSheet) :
-            base(Game, spriteSheet)
+        private Boolean delayIsActivated = false;
+        private Boolean isActivated = false;
+        private int remainingTimeBeforeExplosion;
+
+        public MineEnemy(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
+            base(Game, spriteSheet, player)
         { }
 
         public override void Initialize()
@@ -24,12 +28,13 @@ namespace SpaceProject
             Speed = 0.02f;
             IsKilled = false;
             Damage = 0;
-            ObjectClass = "bullet";
+            ObjectClass = "enemy";
             ObjectName = "Mine";
             Duration = 50000;
+            HP = 200;
 
             anim.LoopTime = 300;
-            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(61, 0, 10, 10)));
+            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(80, 100, 20, 20)));
 
             Bounding = new Rectangle(149, 60, 9, 26);
             BoundingSpace = 0;
@@ -43,7 +48,13 @@ namespace SpaceProject
             ShootObjectTypes.Add("ally");
             SightRange = 100;
 
-            collidesOtherBullets = true;
+            //collidesOtherBullets = true;
+        }
+
+        public void SetActivationTime(int activationTimeMilliseconds)
+        {
+            delayIsActivated = true;
+            remainingTimeBeforeExplosion = activationTimeMilliseconds;
         }
 
         public override void Update(GameTime gameTime)
@@ -51,20 +62,43 @@ namespace SpaceProject
             if (Duration <= 0)
                 Explode();
             else
-            {
-                GameObjectVertical obj = FindAimObject();
-                if (obj != null)
-                {
-                    Explode();
-                    IsKilled = true;
-                }
-            }
+                CheckIfTargetIsClose();
+
+            if (isActivated)
+                DelayLogic(gameTime);
 
             base.Update(gameTime);
         }
 
+        private void CheckIfTargetIsClose()
+        {
+            GameObjectVertical obj = FindAimObject();
+            if (obj != null)
+            {
+                if (delayIsActivated)
+                {
+                    isActivated = true;
+                }
+                else
+                { 
+                    Explode();
+                }
+            }
+        }
+
+        private void DelayLogic(GameTime gameTime)
+        {
+            remainingTimeBeforeExplosion -= gameTime.ElapsedGameTime.Milliseconds;
+            if (remainingTimeBeforeExplosion <= 0)
+            {
+                Explode();
+            }
+        }
+
         private void Explode()
         {
+            IsKilled = true;
+
             Explosion expl = ExplosionGenerator.GenerateBombExplosion(Game, spriteSheet, this);
 
             CircularAreaDamage areaExpl = new CircularAreaDamage(Game, AreaDamageType.enemy, this.Position, blastDamage, blastRadius);
@@ -77,13 +111,17 @@ namespace SpaceProject
 
         public override void OnKilled()
         {
-            base.OnKilled();
             Explode();
+            base.OnKilled();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(anim.CurrentFrame.Texture, Position, anim.CurrentFrame.SourceRectangle, Color.White, (float)(Radians + Math.PI / 2), CenterPoint, 1.0f, SpriteEffects.None, DrawLayer);
+            Color drawColor = Color.White;
+            if (isActivated)
+                drawColor = Color.Red;
+
+            spriteBatch.Draw(anim.CurrentFrame.Texture, Position, anim.CurrentFrame.SourceRectangle, drawColor, (float)(Radians + Math.PI / 2), CenterPoint, 1.0f, SpriteEffects.None, DrawLayer);
         }
 
     }

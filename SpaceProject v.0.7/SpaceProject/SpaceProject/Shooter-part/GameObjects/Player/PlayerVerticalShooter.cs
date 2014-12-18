@@ -304,5 +304,8 @@ namespace SpaceProject
                 Shield = 0;
             }
         }
+
+        public override void OnKilled()
+        { }
     }
 }

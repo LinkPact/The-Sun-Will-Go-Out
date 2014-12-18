@@ -181,7 +181,6 @@
     <Compile Include="GameStates\PlanetAndStationStates\StationStateManager.cs" />
     <Compile Include="GameUtils\MenuDisplay\ShipInventoryDisplayObject.cs" />
     <Compile Include="GameUtils\PlayTime.cs" />
-    <Compile Include="LevelTester\LevelTesterCampaign.cs" />
     <Compile Include="LevelTester\LevelTesterEntry.cs" />
     <Compile Include="Managers\BaseInventoryManager.cs">
       <SubType>Code</SubType>
