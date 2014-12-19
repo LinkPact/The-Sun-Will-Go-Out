@@ -28,7 +28,7 @@ namespace SpaceProject
         private static Main5_DefendColony mainDefendColony;
         private static Main6_Infiltration mainInfiltration;
         private static Main7_Retaliation mainRetaliation;
-        private static Main10_InTheNameOfScience mainInTheNameOfScience;
+        private static Main8_InTheNameOfScience mainInTheNameOfScience;
         private static MainX1_BeginningOfTheEnd mainBeginningOfTheEnd;
         private static MainX2_ContinuationOfTheEnd mainContinuationOfTheEnd;
         private static MainX3_RebelArc mainRebelArc;
@@ -120,8 +120,8 @@ namespace SpaceProject
             mainRetaliation.Initialize();
             missions.Add(mainRetaliation);
 
-            // Main 10 - In The Name Of Science
-            mainInTheNameOfScience = new Main10_InTheNameOfScience(game, "RO_Main10_InTheNameOfScience", null);
+            // Main 8 - In The Name Of Science
+            mainInTheNameOfScience = new Main8_InTheNameOfScience(game, "Main8_InTheNameOfScience", null);
             mainInTheNameOfScience.Initialize();
             missions.Add(mainInTheNameOfScience);
 

@@ -8,18 +8,26 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
-    public class Main10_InTheNameOfScience : Mission
+    public class Main8_InTheNameOfScience : Mission
     {
         private enum EventID
         {
-            CloseInOnStation,
-            FirstLevelCompleted,
-            FirstLevelFailed,
-            ArriveAtStation,
-            ReturnToOverworld
+            Introduction,
+            OutsideRebelStation1,
+            AtRebelRendezvous,
+            TravelToScienceStation1,
+            TravelToScienceStation2,
+            TravelToScienceStation3,
+            ArriveAtScienceStation,
+            AfterLevel1,
+            InsideScienceStation,
+            OutsideScienceStation,
+            BreakThroughLevel,
+            AfterLevel2,
+            OutsideRebelStation2
         }
 
-        public Main10_InTheNameOfScience(Game1 Game, string section, Sprite spriteSheet) :
+        public Main8_InTheNameOfScience(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
         }

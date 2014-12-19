@@ -191,9 +191,10 @@
     <Compile Include="MissionStuff\Objectives\Instances\TimedMessageObjective.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\FollowObjective.cs" />
     <Compile Include="Missions\Main Missions\Phase 1\Main4_ToPhaseTwo.cs" />
-    <Compile Include="Missions\Main Missions\Phase 3\Main10_InTheNameOfScience.cs" />
+    <Compile Include="Missions\Main Missions\Phase 3\Main9_Information.cs" />
+    <Compile Include="Missions\Main Missions\Phase 3\Main8_InTheNameOfScience.cs" />
     <Compile Include="Missions\Main Missions\Phase 2\Main6_Infiltration.cs" />
-    <Compile Include="Missions\Main Missions\Phase 3\Main8_Retaliation.cs" />
+    <Compile Include="Missions\Main Missions\Phase 3\Main7_Retaliation.cs" />
     <Compile Include="Missions\Main Missions\Phase 4\MainX5_2b_Coward.cs" />
     <Compile Include="Missions\Main Missions\Phase 4\MainX5_2a_BurnIt.cs" />
     <Compile Include="Missions\Main Missions\Phase 4\MainX5_1_OnYourOwnArc.cs" />

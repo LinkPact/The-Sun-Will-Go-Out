@@ -142,7 +142,7 @@ State = 1
 
 [Main6_Infiltration]
 Location = Fortrun Station I
-EndLocation = Rebel Station 2
+EndLocation = Rebel Station 3
 Name = Main - Infiltration
 Introduction = ""
 ObjectiveText1 = Follow the fleet to the Rebel base and destroy it.
@@ -170,8 +170,7 @@ Reputation = 3
 State = 1
 
 [Main7_Retaliation]
-Location = Rebel Station 2
-EndLocation = Rebel Station 2
+Location = Rebel Station 3
 Name = Main - Retaliation
 Introduction = ""
 ObjectiveText1 = Follow the fleet to the Rebel base and destroy it.
@@ -194,6 +193,36 @@ ObjectiveFailed = You chose to hide the man instead, getting no reward.
 Reward = 300
 Progress = 2
 Reputation = 3
+State = 1
+
+[Main8_InTheNameOfScience]
+Location = Rebel Station 3
+Name = Main - In the Name of Science
+Introduction = ""
+ObjectiveText1 = "Your goal is to go to the station close to Peye at coordinate (X,X) and retrieve a scientist called Bert-Olle. Try to persuade him but don't hestitate to do whathever needs to be done in order to bring him here.\n\nAre you ready to go?"
+PosResponse = Yes, I can go right away
+NegResponse = I need some more time to prepare
+Accept = "Good! There will be allied fleets guarding the station. Try your best to avoid combat. Good luck!"
+FailText = "FailText"
+EventText1 = Rok greets you. He looks worried.#[Rok] "Welcome back. It is good that you came so quickly."#"We didn't find much Murt in the cargo. It seems like they unloaded right before leaving.."#"On the other hand, we found some interesting conversations in their log system."#"They spoke about a group of scientists living near Peye, who have been scanning the solar system for Murt."#"They have no particular allegiance, neither to the Alliance nor to us rebels, but have lately been depending on a small Alliance fleet for their protection."#"According to the logged conversation, it seems like the group has located a massive amount of Murt."#"They seem hestitant to share this information with the Alliance though. They seem worried that the Alliance would use the Murt for military purposes."#"Naturally, the Alliance is very upset about this, and is currently pressuring the scientists to share their information. It is probably only a matter of time before they get what they want."#"That's why we have to act now, as quickly as possible."#"We have the name of one scientist that seems to be of high importance - Ente."#"He has been deeply involved in the Murt research, and is said to be very sceptical of their relationship to the Alliance."#"We want to bring him here, to have a.. chat with him."#"We will send a small group of ships to slip through the Alliance's defenses around the research station, extract Ente, and return him here."#"The idea is simple, but this will likely be a highly dangerous mission."#"You should prepare yourself properly. The rest of the fleet will be waiting close to the rebel base."
+EventText2 = [Sair] "'Bring him here to have a chat with him', that sounds really sinister to me.."#"We shouldn't let our guards down. Remember why we are here."#"We should speak to Ai. Let's do it when we aren't so close to the other ships."
+EventText3 = [Rebel] "All here? Good."#"We'll move as one unit until we have passed the Alliance's defenses around the station."#"Then we'll split up and search for that scientist."#"When he is found, send a signal to all others, and we will all try to pull out as quickly as possible."#"This is a high-risk mission. I doubt that all of us will come back."#"But I'm sure that some of us will, and that they will continue to do what they can for the people."#"I have no more words for you. Good luck friends."
+EventText4 = [Ai] ... "You are seriously going to try to extract Ente?"#"That's a suicide mission.. Even if some of you managed to slipped in through the defenses, you would never be able to escape."#"We have several Hangar ships stationed around the research station. When alerted, they would surround the station, cutting of all exit paths."#"But an interesting thought occured to me."#"The scientists know something that they won't share with us. Maybe Ente is willing to share with the rebels."#"Then the rebels could lead us there.."#"I need to speak to the command. I will be back in a moment."
+EventText5 = [Sair] "It is a risky plan, to let the rebel get the information about Murt, and then shadow them to the location."#"But it might actually work.."
+EventText6 = [Ai] "I have spoken with command. I have got green light to go ahead with the plan."#"I will try to distract the defenses around the station."#"It will still be challenging to get through. But not suicidal. You will make it. Good luck."
+EventText7 = [Rebel] "It seems like we have reached their defenses. The goal is to slip through. Don't do anything risky."
+EventText8 = [Rebel] "Seems like most of us got through. We are tougher than they think!"#"Now, let's search the station."#"If you find Ente, send the signal. If you receive the signal, pull out as quickly as possible."#[Sair] "Let's see. Let's explore that smaller building outside the complex."
+EventText9 = You quickly walk into the building, looking around, searching for the man in the picture you saw.#A man appears in one of the door openings. He looks surprised, and a bit nervous. You ask him if he is Ente.#[Ente] "Well, yes, I am."#"I must say I am a bit surprised by your visit. Can you tell me, who might you be?"#"No, don't tell me. Let me guess."#"..."#"Are you yet another Alliance coming here to persuade me to share my information?#"You look too inexperienced for that. Maybe you are something else."#"A rebel? Probably a rebel. But somehow something about you feels... different."#...#"You are here to bring me to the Rebel Station you say?"#"But your eyes tell me something else."#"You don't really know why you are here. You are confused. You wonder what's really going on."#"I will assume my observations are correct. I will tell you a little bit more. Maybe we can even help each other here."#"As you know, I am a scientist."#"As you also probably know, I am part of a group that are researching Murt."#"We are developing and testing scanners able to detect and locate Murt."#"Up until now, only small amounts have been found at a time around the system."#"This has been very useful for research, but we have only found very small amounts."#"Up until recently, that is."#"Our scans have shown us an asteroid containing a massive amount of Murt.#"It is thousands of times more than what we have found up until now combined. It is an unimaginable source of power."#"In the right hands, it could be an immense help for the people of the sector."#"In the wrong hands... It could be used for such destruction."#"..."#"You realize the problem here, don't you?"#"Currently, the whole sector is in conict. Rebels and Alliance struggle for control."#"The Alliance wants to assert full control in order to achieve a nicely controlled sector."#"The rebels on the other hand resent this. They want freedom, to let each planet walk its own path, and are willing to sacrifice the order of the sector for that freedom."#"Which way is better? I can't say. What I know is that, as it looks now, Murt will be used as a tool of war."#"We must put the Murt to use, but we must put it to good use."#"So what is my suggestion? We must hide the Murt."#"Hide it."#"Hide it until the sector is ready to handle it."#"When the sector stabilizes one day, in ten or a hundred years, we can bring it out in the open."#Ente eyes you curiously.#"You know. I am telling you all this for a reason."#"I want your cooperation."#"All of this information will leak to the Alliance and the rebels eventually."#"We must hide Murt away before that happens."#"To do this, you will need to access one of our information centrals."#"There you will nd information about where to nd the technology, as well as the exact location of the meteor."#"You should bring me to the Rebel Base. Then you should go to the information hub."#"I will not leak crucial information until I know that you have finished your mission."#"By then it will be too late for them to do anything about it."#"Let's go"#The strange man hurries before you up into the ship.
+EventText10 = [Sair] "What a strange man. Nevertheless, it seems the most logical path for us to at least initially follow his plan."#"We can always share the information with Ai or Rok later on."#"I'll send the signal to the other rebels. Let's move out now."
+EventText11 = [Sair] "Seems Ai wasn't as successful in diverging the Alliance attention as she hoped to be. This looks like it will be a tough one."#[Rebel] "... We have no choice but to try to break through. Good luck, everyone."
+EventText12 = [Rebel] "We are through! Let's meet at the Rebel Station!"
+EventText13 = [Ente] "Remember what I have told you."#"Go to the coordinate I marked on your map. You will nd more information there."#"Make sure that you aren't followed."#"I don't know if we will meet again. I trust that you will do what's best for the sector."#"Remember. In their own minds, all people are their own heroes, defender of their own beliefs."#"There are no good people, and there are no bad people. There are just people."
+ObjectiveCompleted = "ObjectiveCompleted"
+Success = Rok speaks to the group.#[Rok] "Well done, all of you."#He turns to Ente who looks visibly uncomfortable. Rok bears a slightly sinister look.#"Welcome to the Rebel Base, Ente. We will soon have a little chat, you and me."#There is something very unsettling in his voice. He turns to the group of rebel pilots again.#"I will keep in touch. Come back soon, there will definitely be more to do in the near future."#He and Ente leave the room. While Ente passes, he quickly whispers to you.#"Good luck"
+Fail = "Fail"
+Reward = -1
+Progress = -1
+Reputation = -1
 State = 1
 
 [P4_BeginningOfTheEnd]
@@ -365,28 +394,6 @@ Reward = 100
 Progress = 2
 Reputation = 3
 State = 0
-
-[RO_Main10_InTheNameOfScience]
-Location = Rebel Station 1
-Name = Main - In the name of Science
-Introduction = The commander greets you. "We have a mission of critical importance for you. It might be our only chance to keep even steps with the Alliance, so I want your full attention."#"What I am about to disclose for you now is critical information that you cannot share with anyone. Have you heard about the material called Murt?"#"It is a rare mineral with particular characteristics. As you might have heard, the scientists on Peye are researching it and have managed to extract a huge energy-to-mass ratio from it"#"It is very rare though, and has therefore not been possible to utilize in any practical applications. We have reasons to belive though that they recently have gained information about an asteroid containing huge amount of Murt."#"They seem unwilling to share this information with neither us or the Alliance. It is probable that they want to keep the source for themselves, so that they can etablish themselves as a third great power in the sector."#"The Alliance has also been working on Murt with some success. At the moment it seems like they try to find the asteroid, and are persuading the scientists to help them."#His eyebrows furrows deeper. "We must not let that happen. IF the Alliance get their hands on the source they would be able to scatter our forces in less than a week and would inflict great suffering to the people in this sector."#"If we on the other hand get our hands on it, we finally have the opportunity to gain the upper hand, and this sector can finally get peace and prosperity."
-ObjectiveText1 = "Your goal is to go to the station close to Peye at coordinate (X,X) and retrieve a scientist called Bert-Olle. Try to persuade him but don't hestitate to do whathever needs to be done in order to bring him here.\n\nAre you ready to go?"
-PosResponse = Yes, I can go right away
-NegResponse = I need some more time to prepare
-Accept = "Good! There will be allied fleets guarding the station. Try your best to avoid combat. Good luck!"
-FailText = "FailText"
-EventText1 = "Who are you? You need to turn back, or we will bring you down!"
-EventText2 = You managed to slip past the fleet, leaving them behind.
-EventText3 = You are forced to turn back, and barely escape being brought in by the fleet. You need to resupply and try again.
-EventText4 = Your ship slowly lowers towards the ground close to the research station. People are hurring into the buildings with worried looks on their faces.#You walk out from the ship and hurries over the building you are told to search. Inside you find a man looking like the description you got earlier#The man eyes you up and down, analyzing the situation. He looks calm, but his voice is strained.#"Who are you? Are you another of the Alliance coming here to persuade me? Or are you something else? A rebel?"#He eyes you up and down again, adjusting his shoulders. "The Alliance wouldn't send someone like you here. You look too inexperienced. So you are either a rebel or something else. A rebel seems like the most reasonable explanation."#He gazes at you another moment. "So tell me, what brings you here then? I realize you are after our research. The question is what you hope to achieve with it"#"No, don't answer, let me guess. You are a rebel. You have been ordered to come here in order to bring me so that they can extract information from me."#"You are a tool. You are being used for their liking, just as they want to do with me. To you really believe in their vision?"#"Salvation through violence? Means to an end? How many are you ready to kill to achieve your quite ignorant goals?"#"What makes you think anyone would follow a group of murderers, even if they managed to assert control over the sector? You can pretend, but you are not helping anyone."#You realize there is no way to persuade him. Maybe there never was. You quickly grasp the feeble man. He is no match for you, and you bring him struggling to your ship.#People are watching you in a distance. Afraid. Are you really helping those people?
-EventText5 = ...radio... "You got him? Fantastic. There is no time to lose, hurry back here."
-ObjectiveCompleted = "ObjectiveCompleted"
-Success = You are met by the commander. The instance he sees you and Bert-Ove he cracks a wide smile. "Well done, well done! Maybe there still is some hope after all."#Bert-Ove is silenty, cautiously eying the surroundings. "Bring him with me" the commander tells his men. "I don't know how cooperative he is, but I guess it doesn't matter. We will extract what we need anyway."#He turns to you. "You will soon get further instructions. This is a great victory for the people. Well done!"#They start leaving the room. When passing you Bert-Ove quickly whispers something to you.#"There is no good. There is no bad. There is just people."
-Fail = "Fail"
-Reward = -1
-Progress = -1
-Reputation = -1
-State = 1
 
 [Old second mission]
 Location = Highfence
