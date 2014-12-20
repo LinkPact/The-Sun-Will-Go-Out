@@ -27,6 +27,11 @@ namespace SpaceProject
             OutsideRebelStation2
         }
 
+        private readonly float autoPilotSpeed = 0.3f;
+
+        private readonly int numberOfAllies = 4;
+        private List<OverworldShip> allyShips1;
+
         public Main8_InTheNameOfScience(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
@@ -35,26 +40,39 @@ namespace SpaceProject
         public override void Initialize()
         {
             base.Initialize();
+            Station rebelStation3 = Game.stateManager.overworldState.GetStation("Rebel Station 3");
+            Station peyeScienceStation = Game.stateManager.overworldState.GetStation("Peye Science Station");
 
             RestartAfterFail();
 
-            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetStation("Peye Science Station"), 1000,
-                new EventTextCapsule(new EventText("1 - CloseInOnStation"), null, EventTextCanvas.MessageBox)));
+            allyShips1 = CreateAllyShips(numberOfAllies);
 
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetStation("Peye Science Station"),
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], rebelStation3,
+                delegate { SetupAllyShips(allyShips1, rebelStation3.position, peyeScienceStation); },
+                delegate { },
+                delegate { return true; },
+                delegate { return false; }));
+
+            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], peyeScienceStation,
+                new EventTextCapsule(GetEvent((int)EventID.OutsideRebelStation1), null, EventTextCanvas.MessageBox),
+                delegate { },
+                delegate { },
+                delegate { return (GameStateManager.currentState.ToLower().Equals("overworldstate")); },
+                delegate { return false; }));
+
+            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], peyeScienceStation, 1000,
+                new EventTextCapsule(GetEvent((int)EventID.ArriveAtScienceStation), null, EventTextCanvas.MessageBox)));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], peyeScienceStation,
                 "Main10_AllianceDefence", LevelStartCondition.TextCleared,
-                new EventTextCapsule(new EventText("2 - FirstLevelCompleted"),
-                    new EventText("3 - FirstLevelFailed"), EventTextCanvas.MessageBox)));
+                new EventTextCapsule(GetEvent((int)EventID.AfterLevel1),
+                    null, EventTextCanvas.MessageBox)));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetStation("Peye Science Station"),
-                new EventTextCapsule(new EventText("4 - ArriveAtStation"), null, EventTextCanvas.BaseState)));
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], peyeScienceStation,
+                new EventTextCapsule(GetEvent((int)EventID.InsideScienceStation), null, EventTextCanvas.BaseState)));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetStation("Rebel Station 1"),
-                new EventTextCapsule(new EventText("5 - ReturnToOverworld"), null, EventTextCanvas.MessageBox),
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], rebelStation3,
+                new EventTextCapsule(GetEvent((int)EventID.OutsideScienceStation), null, EventTextCanvas.MessageBox),
                 delegate { }, delegate { },
                 delegate 
                 {
@@ -62,14 +80,16 @@ namespace SpaceProject
                 },
                 delegate { return false; }));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], 
-                Game.stateManager.overworldState.GetStation("Rebel Station 1")));
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
+                rebelStation3));
         }
 
         public override void StartMission()
         {
             ObjectiveIndex = 0;
             progress = 0;
+
+            missionHelper.ShowEvent(GetEvent((int)EventID.Introduction));
         }
 
         public override void OnLoad()
@@ -108,5 +128,48 @@ namespace SpaceProject
         {
             this.progress = progress;
         }
+
+        private void RemoveShips(List<OverworldShip> ships)
+        {
+            foreach (OverworldShip ship in ships)
+            {
+                ship.IsDead = true;
+                Game.stateManager.overworldState.RemoveOverworldObject(ship);
+            }
+
+            ships.Clear();
+        }
+
+        private List<OverworldShip> CreateAllyShips(int count)
+        {
+            List<OverworldShip> ships = new List<OverworldShip>();
+
+            for (int i = 0; i < count; i++)
+            {
+                ships.Add(new AllyShip(Game, Game.stateManager.shooterState.spriteSheet, ShipType.Rebel));
+            }
+
+            return ships;
+        }
+
+        private void SetupAllyShips(List<OverworldShip> ships, Vector2 startingPoint, GameObjectOverworld destination)
+        {
+            // Adds companion ships
+            int modifier = 1;
+            for (int i = 0; i < ships.Count; i++)
+            {
+                ships[i].Initialize();
+                ships[i].AIManager = new TravelAction(ships[i], destination);
+                Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
+                    ships[i], new Vector2(startingPoint.X - 50 + (50 * i),
+                                              startingPoint.Y + 325 - (25 * modifier)),
+                    "", destination);
+
+                ships[i].Wait();
+
+                modifier *= -1;
+            }
+        }
+
     }
 }
