@@ -31,6 +31,7 @@ namespace SpaceProject
 
         private readonly int numberOfAllies = 4;
         private List<OverworldShip> allyShips1;
+        private HangarShip hangar;
 
         public Main8_InTheNameOfScience(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
@@ -61,20 +62,20 @@ namespace SpaceProject
                 delegate { return false; }));
 
             objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], allyShips1[1],
-                200, new EventTextCapsule(new EventText("Let's go!"), null, EventTextCanvas.MessageBox)));
+                200, new EventTextCapsule(new EventText("[Rebel] \"Let's go!\""), null, EventTextCanvas.MessageBox)));
 
             objectives.Add(new AutoPilotObjective(Game, this, ObjectiveDescriptions[0], peyeScienceStation, autoPilotSpeed,
                 allyShips1, peyeScienceStation.position,
                 new Dictionary<string, List<float>>
                             { 
                                 { GetEvent((int)EventID.TravelToScienceStation1).Text, new List<float> { 5000, 3000 } },
-                                { GetEvent((int)EventID.TravelToScienceStation2).Text, new List<float> { 8000, 3000 } },
-                                { GetEvent((int)EventID.TravelToScienceStation3).Text, new List<float> { 20000, 3000 } }
+                                { GetEvent((int)EventID.TravelToScienceStation2).Text, new List<float> { 23000, 3000 } },
+                                { GetEvent((int)EventID.TravelToScienceStation3).Text, new List<float> { 9000, 3000 } }
                             },
                 new EventTextCapsule(GetEvent((int)EventID.ArriveAtScienceStation), null, EventTextCanvas.MessageBox)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], peyeScienceStation,
-                "Main10_AllianceDefence", LevelStartCondition.TextCleared,
+                "Itnos_1", LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.AfterLevel1),
                     null, EventTextCanvas.MessageBox)));
 
@@ -89,6 +90,9 @@ namespace SpaceProject
                     return GameStateManager.currentState == "OverworldState";
                 },
                 delegate { return false; }));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], rebelStation3,
+                "Itnos_2", LevelStartCondition.TextCleared, new EventTextCapsule(GetEvent((int)EventID.AfterLevel2), null, EventTextCanvas.MessageBox)));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 rebelStation3));

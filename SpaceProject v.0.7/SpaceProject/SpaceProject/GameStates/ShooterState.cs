@@ -134,6 +134,8 @@ namespace SpaceProject
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Infiltration2", "mainlevels/m4_infiltration_lv2_v2", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Retribution1", "mainlevels/m5_retribution_lv1_v2", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Retribution2", "mainlevels/m5_retribution_lv2_v2", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Itnos_1", "mainlevels/m6_itnos_lv1_v2", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Itnos_2", "mainlevels/m6_itnos_lv2_v1", MissionType.none));
         }
 
         public override void Initialize()

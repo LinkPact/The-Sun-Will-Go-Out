@@ -141,6 +141,16 @@ namespace SpaceProject
             missionHelper.ShowEvent(GetEvent((int)EventID.Introduction));
         }
 
+        public override void OnReset()
+        {
+            base.OnReset();
+
+            ObjectiveIndex = 0;
+
+            allyShips1 = CreateAllyShips(numberOfAllies);
+            allyShips2 = CreateAllyShips(numberOfAllies);
+        }
+
         public override void OnLoad()
         { }
 
