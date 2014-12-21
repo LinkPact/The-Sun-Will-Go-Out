@@ -15,7 +15,10 @@ namespace SpaceProject
         private Sprite barSprite;
 
         private Vector2 borderPosition;
-        public Vector2 Position { get { return borderPosition; } set { borderPosition = value; } }
+        public Vector2 Position { 
+            get { return borderPosition; } 
+            set { borderPosition = value; } 
+        }
         private Vector2 barPosition;
         private float scale;
         private Color color;
@@ -53,8 +56,8 @@ namespace SpaceProject
 
         public void Update(GameTime gameTime, float value, float maxValue, Vector2 pos)
         {
-            borderPosition = pos;
-            barPosition = new Vector2(pos.X +1, pos.Y +1);
+            Position = pos;
+            barPosition = new Vector2(pos.X + 1, pos.Y + 1);
 
             this.value = value;
             this.maxValue = maxValue;

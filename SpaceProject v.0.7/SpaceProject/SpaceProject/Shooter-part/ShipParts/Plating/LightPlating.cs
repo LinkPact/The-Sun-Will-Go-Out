@@ -31,7 +31,7 @@ namespace SpaceProject
         {
             Name = "Light Plating";
          
-            Armor = 250.0f;
+            armor = 250.0f;
             CurrentOverworldHealth = Armor;
 
             Speed = 0.25f;
@@ -39,8 +39,6 @@ namespace SpaceProject
             PrimarySlots = 1;
 
             Value = 500;
-
-            StatsManager.ApplyDifficultyOnPlating(this);
         }
 
         public override void Initialize()

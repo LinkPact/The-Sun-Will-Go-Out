@@ -439,7 +439,6 @@ namespace SpaceProject
                     {
                         equippedPlating = (PlayerPlating)ShipInventoryManager.ownedPlatings[invPos];
                         ChangePrimarySlots(equippedPlating.PrimarySlots);
-                        StatsManager.UpdateValues();
                         break;
                     }
                 case ShipParts.EnergyCell:
@@ -501,7 +500,6 @@ namespace SpaceProject
             {
                 equippedPlating = (PlayerPlating)ShipInventoryManager.shipItems[invPos];
                 ChangePrimarySlots(equippedPlating.PrimarySlots);
-                StatsManager.UpdateValues();
             }
             else if (kind == "EnergyCell")
                 ShipInventoryManager.equippedEnergyCell = (PlayerEnergyCell)shipItems[invPos];
@@ -1050,10 +1048,10 @@ namespace SpaceProject
                         equippedPlating = new AdvancedPlating(Game);
                         equippedShield = new AdvancedShield(Game);
                         
-                        equippedEnergyCell.Recharge *= 10f;
-                        equippedPlating.Speed *= 3f;
-                        equippedPlating.Armor *= 10f;
-                        equippedShield.Regeneration *= 5f;
+                        //equippedEnergyCell.Recharge *= 10f;
+                        //equippedPlating.Speed *= 3f;
+                        //equippedPlating.Armor *= 10f;
+                        //equippedShield.Regeneration *= 5f;
 
                         equipInfo += "What's going on here??";
                         break;

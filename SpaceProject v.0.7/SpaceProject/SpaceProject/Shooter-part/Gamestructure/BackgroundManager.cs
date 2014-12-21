@@ -100,54 +100,63 @@ namespace SpaceProject
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            
             if (backgroundType.Equals("deadSpace"))
                 Game.GraphicsDevice.Clear(Color.Black);
 
-            //Shows stats
-            spriteBatch.DrawString(
-                shipInfoFontSmall, 
-                "Primary: " + ShipInventoryManager.currentPrimaryWeapon.Name, 
-                //new Vector2(160, Game.Window.ClientBounds.Height - 33) + Game.fontManager.FontOffset,
-                new Vector2(8, Game.Window.ClientBounds.Height - 68) + Game.fontManager.FontOffset,
-                Color.White, 
-                0.0f, 
-                Vector2.Zero, 
-                1.0f, 
-                SpriteEffects.None, 
-                drawLayerText);
-
-            String objectiveString = level.GetObjectiveString();
-            spriteBatch.DrawString(
-                shipInfoFont,
-                objectiveString,
-                new Vector2(8, Game.Window.ClientBounds.Height - 88) + Game.fontManager.FontOffset,
-                Color.White,
-                0.0f,
-                Vector2.Zero,
-                1.0f,
-                SpriteEffects.None,
-                drawLayerText);
-
-            spriteBatch.DrawString(
-                shipInfoFontSmall,
-                "Health:\nEnergy:\nShield:",
-                new Vector2(8, Game.Window.ClientBounds.Height - 49) + Game.fontManager.FontOffset,
-                Color.White,
-                0.0f,
-                Vector2.Zero,
-                1.0f,
-                SpriteEffects.None,
-                drawLayerText);
+            DrawInfo(spriteBatch);
 
             healthBar.Draw(spriteBatch);
             energyBar.Draw(spriteBatch);
             shieldBar.Draw(spriteBatch);
-            
+
+            DrawShipInfo(spriteBatch);
+
             foreach (GameObjectVertical backObj in backgroundStars)
             {
                 backObj.Draw(spriteBatch);
             }
+        }
+
+        private void DrawInfo(SpriteBatch spriteBatch)
+        {
+            String objectiveString = level.GetObjectiveString();
+            Vector2 objectiveStringPos = new Vector2(8, Game.Window.ClientBounds.Height - 103) + Game.fontManager.FontOffset;
+            DrawStandardString(spriteBatch, shipInfoFontSmall, objectiveString, objectiveStringPos);
+            
+            String primaryString = "Primary: " + ShipInventoryManager.currentPrimaryWeapon.Name;
+            Vector2 primaryStringPos = new Vector2(8, Game.Window.ClientBounds.Height - 83) + Game.fontManager.FontOffset;
+            DrawStandardString(spriteBatch, shipInfoFontSmall, primaryString, primaryStringPos);
+
+            String secondaryString = "Secondary: " + ShipInventoryManager.equippedSecondary.Name;
+            Vector2 secondaryStringPos = new Vector2(8, Game.Window.ClientBounds.Height - 68) + Game.fontManager.FontOffset;
+            DrawStandardString(spriteBatch, shipInfoFontSmall, secondaryString, secondaryStringPos);
+
+            String shipStatsNamesString = "Health:\nEnergy:\nShield:";
+            Vector2 shipStatsNamesStringPos = new Vector2(8, Game.Window.ClientBounds.Height - 49) + Game.fontManager.FontOffset;
+            DrawStandardString(spriteBatch, shipInfoFontSmall, shipStatsNamesString, shipStatsNamesStringPos);
+        }
+
+        private void DrawShipInfo(SpriteBatch spriteBatch)
+        {
+            int statsInfoXOffset = 220;
+
+            String healthString = string.Format("{0}/{1}", (int)player.HP, player.HPmax);
+            Vector2 healthStringPos = new Vector2(statsInfoXOffset, healthPos.Y - 5);
+            DrawStandardString(spriteBatch, shipInfoFontSmall, healthString, healthStringPos);
+
+            String energyString = string.Format("{0}/{1}", (int)player.MP, player.MPmax);
+            Vector2 energyStringPos = new Vector2(statsInfoXOffset, energyPos.Y - 5);
+            DrawStandardString(spriteBatch, shipInfoFontSmall, energyString, energyStringPos);
+
+            String shieldString = string.Format("{0}/{1}", (int)player.Shield, player.ShieldMax);
+            Vector2 shieldStringPos = new Vector2(statsInfoXOffset, shieldPos.Y - 5);
+            DrawStandardString(spriteBatch, shipInfoFontSmall, shieldString, shieldStringPos);
+        }
+
+        private void DrawStandardString(SpriteBatch spriteBatch, SpriteFont font, String text, Vector2 position)
+        {
+            spriteBatch.DrawString(font, text, position, Color.White, 0.0f, Vector2.Zero, 
+                1.0f, SpriteEffects.None, drawLayerText);
         }
 
         private void InitializeBackground(BackgroundType backgroundType)

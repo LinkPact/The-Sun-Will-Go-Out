@@ -11,7 +11,9 @@ namespace SpaceProject
     {
         protected Sprite spriteSheet;
 
-        public float Armor;
+        protected float armor;
+        public float Armor { get { return armor; } }
+        
         public float Speed;
         public float Acceleration;
         public int PrimarySlots;
@@ -53,7 +55,7 @@ namespace SpaceProject
         {
             if (quality < 0) { quality = 0; }
 
-            Armor = (float)quality * Armor;
+            armor = (float)quality * Armor;
             Value = (int)(Value * ((float)quality) * ((float)quality));
         }
 
@@ -77,23 +79,6 @@ namespace SpaceProject
         public override String RetrieveSaveData()
         {
             return "emptyitem";
-        }
-
-        public void ApplyDifficulty(GameMode gameMode)
-        {
-            //if (gameMode == GameMode.hardcore)
-            //{
-            //    Armor *= 0.1f;
-            //    if (Armor > 40)
-            //        Armor = 40;
-            //
-            //}
-            if (gameMode == GameMode.easy)
-            {
-                Armor *= 2f;
-            }
-
-            CurrentOverworldHealth = Armor;
         }
     }
 }

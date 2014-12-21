@@ -166,7 +166,7 @@ namespace SpaceProject
                 int startTime = 0;
 
                 Game.stateManager.shooterState.SetupTestLevelRun(chosenLevelEntry.GetPath(), startTime);
-                StatsManager.SetCustomLife_DEVELOPONLY(lifeFactor * initialLife);
+                StatsManager.SetCustomDamageFactor_DEVELOPONLY(lifeFactor);
                 Game.stateManager.shooterState.BeginLevel("testRun");
             }
 

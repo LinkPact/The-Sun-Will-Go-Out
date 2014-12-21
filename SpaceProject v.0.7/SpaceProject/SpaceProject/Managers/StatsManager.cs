@@ -23,7 +23,6 @@ namespace SpaceProject
         public static float moneyFactor = 1f;
         public static float damageFactor = 1f;
 
-        
         #region declaration
         private Game1 Game;
         private Sprite spriteSheet;
@@ -31,11 +30,10 @@ namespace SpaceProject
         public static PlayTime PlayTime;
 
         //Statsvariabler relaterade till spelaren
-        private static PlayerPlating plating;
-
-        //private static float shipLifeMax;
-        private static float shipLife;
+        private static PlayerPlating plating { get { return ShipInventoryManager.equippedPlating; } }
+        public static float Armor() { return plating.Armor; }
         
+        //private static float shipLife;
         public static float ShieldMax;
         public static int statPoints;
 
@@ -74,8 +72,7 @@ namespace SpaceProject
 
         public void Initialize()
         {
-            plating = ShipInventoryManager.equippedPlating;
-            shipLife = plating.Armor;
+            //plating = ShipInventoryManager.equippedPlating;
 
             // Money
             Rupees = 100;
@@ -99,7 +96,6 @@ namespace SpaceProject
 
         public static void SetEasyStats()
         {
-            UpdateValues();
             moneyFactor = 0.70f;
             damageFactor = 0.60f;
             gameMode = GameMode.easy;
@@ -107,7 +103,6 @@ namespace SpaceProject
 
         public static void SetNormalStats()
         {
-            UpdateValues();
             moneyFactor = 0.33f;
             damageFactor = 1.0f;
             gameMode = GameMode.normal;
@@ -115,7 +110,6 @@ namespace SpaceProject
 
         public static void SetHardStats()
         {
-            UpdateValues();
             moneyFactor = 0.2f;
             damageFactor = 1.2f;
             gameMode = GameMode.hard;
@@ -123,7 +117,6 @@ namespace SpaceProject
 
         public static void SetHardcoreStats()
         {
-            UpdateValues();
             moneyFactor = 0.20f;
             damageFactor = 1.20f;
             gameMode = GameMode.hardcore;
@@ -131,7 +124,6 @@ namespace SpaceProject
 
         public static void SetDevelopStats()
         {
-            UpdateValues();
             moneyFactor = 0.33f;
             damageFactor = 1.0f;
             gameMode = GameMode.develop;
@@ -139,18 +131,8 @@ namespace SpaceProject
             Rupees = 100000;
         }
 
-        public static void ApplyDifficultyOnPlating(PlayerPlating plating)
-        {
-            plating.ApplyDifficulty(gameMode);
-        }
-
         public void Update()
         { }
-
-        public static float Armor()
-        {
-            return plating.Armor;
-        }
         
         public static float Speed()
         {
@@ -179,10 +161,9 @@ namespace SpaceProject
 
         // Sets the ships armor to an arbitrary number
         // ONLY TO BE USED FOR STRICT DEVELOP PURPOSES
-        public static void SetCustomLife_DEVELOPONLY(float customLife)
+        public static void SetCustomDamageFactor_DEVELOPONLY(float lifeFactor)
         {
-            plating.Armor = customLife;
-            plating.CurrentOverworldHealth = Armor();
+            damageFactor = 1 / lifeFactor;
         }
         
         public static void RepairShip(float repairvalue)
@@ -195,11 +176,6 @@ namespace SpaceProject
         public static void RestoreShipHealthToMax()
         {
             plating.CurrentOverworldHealth = Armor();
-        }
-
-        public static void UpdateValues()
-        {
-            plating = ShipInventoryManager.equippedPlating;
         }
 
         public static void AddLoot(int loot)

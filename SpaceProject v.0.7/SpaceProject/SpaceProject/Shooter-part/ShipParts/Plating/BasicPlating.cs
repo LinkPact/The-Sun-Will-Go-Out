@@ -31,7 +31,7 @@ namespace SpaceProject
         {
             Name = "Basic Plating";
 
-            Armor = 350.0f;
+            armor = 350.0f;
             CurrentOverworldHealth = Armor;
 
             Speed = 0.17f;
@@ -39,8 +39,6 @@ namespace SpaceProject
             PrimarySlots = 2;
 
             Value = 200;
-
-            StatsManager.ApplyDifficultyOnPlating(this);
         }
     }
 }

@@ -250,7 +250,6 @@ namespace SpaceProject
             CheckKeyboard();
 
             base.Update(gameTime);
-
         }
 
         public override void Draw(SpriteBatch spriteBatch)

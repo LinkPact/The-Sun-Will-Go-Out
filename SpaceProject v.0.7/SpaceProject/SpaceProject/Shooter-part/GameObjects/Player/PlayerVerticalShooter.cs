@@ -108,7 +108,6 @@ namespace SpaceProject
         public override void Update(GameTime gameTime)
         {
             anim.Update(gameTime);
-
             base.Update(gameTime);
 
             //Skotthantering
