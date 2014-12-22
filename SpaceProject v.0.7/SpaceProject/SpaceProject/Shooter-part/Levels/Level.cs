@@ -415,16 +415,16 @@ namespace SpaceProject
             if (LevelWidth < Game.Resolution.X)
             {
                 //left border
-                spriteBatch.Draw(
-                    border.Texture,
-                    new Vector2(((float)Game.Window.ClientBounds.Width - (float)LevelWidth) / 2 - (float)Game.Window.ClientBounds.Width / 8, 0),
-                    border.SourceRectangle,
-                    Color.Black,
-                    0.0f,
-                    new Vector2(0, 0),
-                    new Vector2((float)Game.Window.ClientBounds.Width / 8, (float)Game.Window.ClientBounds.Height),
-                    SpriteEffects.None,
-                    DrawLayer);
+                //spriteBatch.Draw(
+                //    border.Texture,
+                //    new Vector2(((float)Game.Window.ClientBounds.Width - (float)LevelWidth) / 2 - (float)Game.Window.ClientBounds.Width / 8, 0),
+                //    border.SourceRectangle,
+                //    Color.Black,
+                //    0.0f,
+                //    new Vector2(0, 0),
+                //    new Vector2((float)Game.Window.ClientBounds.Width / 8, (float)Game.Window.ClientBounds.Height),
+                //    SpriteEffects.None,
+                //    DrawLayer);
 
                 spriteBatch.Draw(
                     border.Texture,
@@ -438,16 +438,16 @@ namespace SpaceProject
                     0.8f);
 
                 // right Border
-                spriteBatch.Draw(
-                    border.Texture,
-                    new Vector2((float)Game.Window.ClientBounds.Width - ((float)Game.Window.ClientBounds.Width - (float)LevelWidth) / 2, 0),
-                    border.SourceRectangle,
-                    Color.Black,
-                    0.0f,
-                    new Vector2(0, 0),
-                    new Vector2((float)Game.Window.ClientBounds.Width / 8, (float)Game.Window.ClientBounds.Height),
-                    SpriteEffects.None,
-                    DrawLayer);
+                //spriteBatch.Draw(
+                //    border.Texture,
+                //    new Vector2((float)Game.Window.ClientBounds.Width - ((float)Game.Window.ClientBounds.Width - (float)LevelWidth) / 2, 0),
+                //    border.SourceRectangle,
+                //    Color.Black,
+                //    0.0f,
+                //    new Vector2(0, 0),
+                //    new Vector2((float)Game.Window.ClientBounds.Width / 8, (float)Game.Window.ClientBounds.Height),
+                //    SpriteEffects.None,
+                //    DrawLayer);
 
                 spriteBatch.Draw(
                     border.Texture,
@@ -465,9 +465,9 @@ namespace SpaceProject
             if (Game.Window.ClientBounds.Height > 600)
             {
                 //upper border
-                spriteBatch.Draw(border.Texture, new Vector2(((float)Game.Window.ClientBounds.Width - (float)LevelWidth) / 2, 0), 
-                    border.SourceRectangle, Color.Black, 0.0f, Vector2.Zero, 
-                    new Vector2(LevelWidth, (float)(Game.Window.ClientBounds.Height - 600) / 2),  SpriteEffects.None, DrawLayer + 0.01f);
+                //spriteBatch.Draw(border.Texture, new Vector2(((float)Game.Window.ClientBounds.Width - (float)LevelWidth) / 2, 0), 
+                //    border.SourceRectangle, Color.Black, 0.0f, Vector2.Zero, 
+                //    new Vector2(LevelWidth, (float)(Game.Window.ClientBounds.Height - 600) / 2),  SpriteEffects.None, DrawLayer + 0.01f);
 
                 spriteBatch.Draw( border.Texture, new Vector2((Game.Window.ClientBounds.Width - LevelWidth) / 2,
                                                              (float)(WindowHeight - Game.DefaultResolution.Y) / 2),
@@ -475,11 +475,11 @@ namespace SpaceProject
                     SpriteEffects.None, 0.8f);
                 
                 // lower border
-                spriteBatch.Draw(border.Texture,
-                    new Vector2(((float)Game.Window.ClientBounds.Width - (float)LevelWidth) / 2, (float)Game.Window.ClientBounds.Height - (float)(Game.Window.ClientBounds.Height - 600) / 2),
-                    border.SourceRectangle, Color.Black, 0.0f, Vector2.Zero,
-                    new Vector2(LevelWidth, (float)(Game.Window.ClientBounds.Height - 600) / 2),
-                    SpriteEffects.None, DrawLayer);
+                //spriteBatch.Draw(border.Texture,
+                //    new Vector2(((float)Game.Window.ClientBounds.Width - (float)LevelWidth) / 2, (float)Game.Window.ClientBounds.Height - (float)(Game.Window.ClientBounds.Height - 600) / 2),
+                //    border.SourceRectangle, Color.Black, 0.0f, Vector2.Zero,
+                //    new Vector2(LevelWidth, (float)(Game.Window.ClientBounds.Height - 600) / 2),
+                //    SpriteEffects.None, DrawLayer);
 
                 spriteBatch.Draw(
                     border.Texture,
