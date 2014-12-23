@@ -23,8 +23,9 @@ namespace SpaceProject
 
         public List<int> ownedWeapons;
 
-        private bool primaryOn;
-        private bool secondaryOn;
+        private static bool primaryOn;
+        private static bool secondaryOn;
+        public static bool SecondaryOn { get { return secondaryOn; } }
 
         private bool switchMode;
 

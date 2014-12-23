@@ -8,7 +8,7 @@ namespace SpaceProject
 {
     class RebelLightMinelayer : ShootingEnemyShip
     {
-        private const int mineActivationTime = 1000;
+        private const int mineActivationTime = 700;
 
         public RebelLightMinelayer(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)

@@ -31,7 +31,7 @@ namespace SpaceProject
 
         private readonly int numberOfAllies = 4;
         private List<OverworldShip> allyShips1;
-        private HangarShip hangar;
+        //private HangarShip hangar;
 
         public Main8_InTheNameOfScience(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)

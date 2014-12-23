@@ -34,7 +34,7 @@ namespace SpaceProject
         public int BorderDrawStart {
             get { return RelativeOrigin - 800; }
         }
-        private float DrawLayer = 0.7f;
+        //private float DrawLayer = 0.7f;
 
         protected PlayerVerticalShooter player;
 

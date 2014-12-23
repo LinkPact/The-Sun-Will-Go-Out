@@ -31,10 +31,10 @@ namespace SpaceProject
             ObjectClass = "enemy";
             ObjectName = "Mine";
             Duration = 50000;
-            HP = 200;
+            HP = 100;
 
             anim.LoopTime = 300;
-            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(80, 100, 20, 20)));
+            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(80, 100, 15, 15)));
 
             Bounding = new Rectangle(149, 60, 9, 26);
             BoundingSpace = 0;

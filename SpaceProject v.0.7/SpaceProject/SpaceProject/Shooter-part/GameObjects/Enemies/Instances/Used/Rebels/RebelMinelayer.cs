@@ -9,7 +9,7 @@ namespace SpaceProject
 {
     class RebelMinelayer : ShootingEnemyShip
     {
-        private const int mineActivationTime = 1000;
+        private const int mineActivationTime = 700;
 
         public RebelMinelayer(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
@@ -36,8 +36,6 @@ namespace SpaceProject
             lootValue = LootValue.high;
 
             AddPrimaryModule(2000, ShootingMode.Regular);
-            primaryModule.SetRandomCharge(random);
-
             AddSecondaryModule(900, ShootingMode.Regular);
 
             //Egenskaper

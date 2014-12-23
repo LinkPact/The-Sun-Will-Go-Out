@@ -155,7 +155,7 @@ namespace SpaceProject
             //ChooseLevel();
             //ApplyEquipments();
 
-            if (standardEquipEnabled)
+            if (standardEquipEnabled && currentLevel <= campaignEntries.Count)
                 CheckStandardEquip(campaignEntries[currentLevel-1]);
         }
 

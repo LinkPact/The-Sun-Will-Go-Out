@@ -49,14 +49,14 @@ namespace SpaceProject
 
         private void Explode()
         {
-            int fragmentCount = 20;
+            int fragmentCount = 30;
 
             for (int n = 0; n < fragmentCount; n++)
             {
                 MissileFragment fragment = new MissileFragment(Game, spriteSheet);
                 fragment.Initialize();
                 fragment.Position = Position;
-                fragment.Duration = 300;
+                fragment.Duration = 400;
                 fragment.Direction = MathFunctions.SpreadDir(new Vector2(0, -1), Math.PI / 3);
 
                 fragment.Speed = (float)(random.NextDouble() * 0.5 + 0.5);

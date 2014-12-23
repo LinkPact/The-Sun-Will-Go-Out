@@ -47,11 +47,11 @@ namespace SpaceProject
                 {
                     if (isLeft)
                     {
-                        obj.DirectionX = 1.2f;
+                        obj.DirectionX = 1f;
                     }
                     else
                     {
-                        obj.DirectionX = -1.2f;
+                        obj.DirectionX = -1f;
                     }
                 }
             }

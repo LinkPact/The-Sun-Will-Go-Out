@@ -67,12 +67,14 @@ namespace SpaceProject
 
         protected override void SecondaryShootingPattern(GameTime gameTime)
         {
+            int activationTimeMilliseconds = 500;
             MineEnemy mine = new MineEnemy(Game, spriteSheet, player);
-            mine.Position = Position;
             mine.Initialize();
+            mine.SetActivationTime(activationTimeMilliseconds);
+            mine.Position = Position;
 
             mine.Direction = MathFunctions.ScaleDirection(ShootObject.Position - Position);
-            mine.Speed = 0.3f;
+            mine.Speed = 0.15f;
 
             float distance = MathFunctions.ObjectDistance(this, ShootObject);
 

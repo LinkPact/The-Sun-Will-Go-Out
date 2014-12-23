@@ -53,9 +53,12 @@ namespace SpaceProject
 
         protected override void ShootingPattern(GameTime gameTime)
         {
+            int activationTimeMilliseconds = 500;
+
             MineEnemy mine = new MineEnemy(Game, spriteSheet, player);
-            mine.Position = Position;
             mine.Initialize();
+            mine.Position = Position;
+            mine.SetActivationTime(activationTimeMilliseconds);
             mine.Direction = MathFunctions.ScaleDirection(ShootObject.Position - Position);
             mine.Speed = 0.10f;
             mine.Duration = 1000;
