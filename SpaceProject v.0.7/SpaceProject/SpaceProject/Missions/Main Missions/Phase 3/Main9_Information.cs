@@ -12,7 +12,13 @@ namespace SpaceProject
     {
         private enum EventID
         {
-
+            Introduction,
+            Followed,
+            Followed2,
+            DispatchRebels,
+            AfterBattle,
+            HubFound,
+            AtHub
         }
 
         public Main9_Information(Game1 Game, string section, Sprite spriteSheet) :
