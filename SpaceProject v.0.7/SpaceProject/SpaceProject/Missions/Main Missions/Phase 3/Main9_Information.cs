@@ -31,6 +31,37 @@ namespace SpaceProject
             base.Initialize();
 
             RestartAfterFail();
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], Game.stateManager.overworldState.GetPlanet("Highfence"),
+                new EventTextCapsule(GetEvent((int)EventID.Introduction), null, EventTextCanvas.MessageBox),
+                delegate { },
+                delegate { },
+                delegate { return (GameStateManager.currentState.ToLower().Equals("overworldstate")); },
+                delegate { return false; }));
+
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
+                Game.stateManager.overworldState.GetPlanet("Highfence"),
+                GetEvent((int)EventID.Followed).Text,
+                4000, 5000));
+
+            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
+                Game.stateManager.overworldState.GetPlanet("Highfence"), 3000,
+                new EventTextCapsule(GetEvent((int)EventID.Followed2), null, EventTextCanvas.MessageBox)));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
+                Game.stateManager.overworldState.GetPlanet("Highfence"),
+                "Information",
+                LevelStartCondition.TextCleared,
+                new EventTextCapsule(
+                    GetEvent((int)EventID.AfterBattle), null, EventTextCanvas.MessageBox)));
+
+            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
+                Game.stateManager.overworldState.GetPlanet("Highfence"), 600,
+                new EventTextCapsule(GetEvent((int)EventID.HubFound), null, EventTextCanvas.MessageBox)));
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
+                Game.stateManager.overworldState.GetPlanet("Highfence"),
+                new EventTextCapsule(GetEvent((int)EventID.AtHub), null, EventTextCanvas.BaseState)));
         }
 
         public override void StartMission()
