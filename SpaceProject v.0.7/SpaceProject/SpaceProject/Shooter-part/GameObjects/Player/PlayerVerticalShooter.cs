@@ -287,20 +287,32 @@ namespace SpaceProject
         private void ApplyDamage(GameObjectVertical obj)
         {
             float damage = ShipInventoryManager.equippedShield.GetShieldDamage(obj) * StatsManager.damageFactor;
+            float HPdamage = 0;
+            float shieldDamage = 0;
 
             if (Shield > damage)
             {
-                Shield -= damage;
+                shieldDamage = damage;
+                Shield -= shieldDamage;
                 Game.AddGameObjToShooter(ShieldEffectGenerator.GenerateStandardShieldEffect(Game, spriteSheet, this));
             }
             else if (Shield > obj.Damage)
             {
                 Shield = 0;
+                throw new ArgumentException("Trying if this ever gets called, if so, tell Jakob");
             }
             else
             {
-                HP -= (obj.Damage - Shield);
+                HPdamage = obj.Damage - Shield;
+                shieldDamage = Shield;
+                HP -= HPdamage;
                 Shield = 0;
+            }
+
+            if (Level.IsLogging)
+            {
+                Level.AddShipDamage(HPdamage);
+                Level.AddShieldDamage(shieldDamage);
             }
         }
 

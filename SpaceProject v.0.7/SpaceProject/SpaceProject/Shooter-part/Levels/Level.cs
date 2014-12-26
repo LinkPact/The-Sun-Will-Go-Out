@@ -51,7 +51,6 @@ namespace SpaceProject
         protected BackgroundManager backgroundManager;
         private Sprite border;
 
-        #region victory
         protected LevelObjective levelObjective;
 
         protected float victoryTime;
@@ -63,14 +62,11 @@ namespace SpaceProject
 
         protected Boolean winOnFinish;
         private bool levelGivenUp;
-        #endregion
 
-        #region customStartTime
         protected float customStartTime;
         public void SetCustomStartTime(float customStartTime) { this.customStartTime = customStartTime; }
         private Boolean isCustomStartSet;
         public Boolean IsCustomStartSet() { return isCustomStartSet; }
-        #endregion
 
         private bool firstIterationGameOver;
 
@@ -109,6 +105,14 @@ namespace SpaceProject
         public float playTime;
         public float PlayTimeRounded { get { return (int)(playTime / 1000);} private set { } }
         #endregion
+
+        private LevelLogger levelLogger;
+        private static Boolean isLogging = true;
+        public static Boolean IsLogging { get { return isLogging; } }
+        private static float accumulatedShipDamage;
+        public static void AddShipDamage(float damage) { accumulatedShipDamage += damage; }
+        private static float accumulatedShieldDamage;
+        public static void AddShieldDamage(float damage) { accumulatedShieldDamage += damage; }
 
         #endregion
 
@@ -215,6 +219,8 @@ namespace SpaceProject
 
         public virtual void Initialize()
         {
+            levelLogger = new LevelLogger(accumulatedShipDamage.ToString() + "/" + accumulatedShieldDamage.ToString());
+            
             Game.stateManager.shooterState.gameObjects.Clear();
             CreatePlayer();
 
