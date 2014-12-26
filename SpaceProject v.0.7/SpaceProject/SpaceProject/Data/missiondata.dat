@@ -202,7 +202,7 @@ Introduction = ""
 ObjectiveText1 = "Your goal is to go to the station close to Peye at coordinate (X,X) and retrieve a scientist called Bert-Olle. Try to persuade him but don't hestitate to do whathever needs to be done in order to bring him here.\n\nAre you ready to go?"
 PosResponse = Yes, I can go right away
 NegResponse = I need some more time to prepare
-Accept = "Good! There will be allied fleets guarding the station. Try your best to avoid combat. Good luck!"
+Accept = ""
 FailText = "FailText"
 EventText1 = Rok greets you. He looks worried.#[Rok] "Welcome back. It is good that you came so quickly."#"We didn't find much Murt in the cargo. It seems like they unloaded right before leaving.."#"On the other hand, we found some interesting conversations in their log system."#"They spoke about a group of scientists living near Peye, who have been scanning the solar system for Murt."#"They have no particular allegiance, neither to the Alliance nor to us rebels, but have lately been depending on a small Alliance fleet for their protection."#"According to the logged conversation, it seems like the group has located a massive amount of Murt."#"They seem hestitant to share this information with the Alliance though. They seem worried that the Alliance would use the Murt for military purposes."#"Naturally, the Alliance is very upset about this, and is currently pressuring the scientists to share their information. It is probably only a matter of time before they get what they want."#"That's why we have to act now, as quickly as possible."#"We have the name of one scientist that seems to be of high importance - Ente."#"He has been deeply involved in the Murt research, and is said to be very sceptical of their relationship to the Alliance."#"We want to bring him here, to have a.. chat with him."#"We will send a small group of ships to slip through the Alliance's defenses around the research station, extract Ente, and return him here."#"The idea is simple, but this will likely be a highly dangerous mission."#"You should prepare yourself properly. The rest of the fleet will be waiting close to the rebel base."
 EventText2 = [Sair] "'Bring him here to have a chat with him', that sounds really sinister to me.."#"We shouldn't let our guards down. Remember why we are here."#"We should speak to Ai. Let's do it when we aren't so close to the other ships."
@@ -217,6 +217,30 @@ EventText10 = [Sair] "What a strange man. Nevertheless, it seems the most logica
 EventText11 = [Sair] "Seems Ai wasn't as successful in diverging the Alliance attention as she hoped to be. This looks like it will be a tough one."#[Rebel] "... We have no choice but to try to break through. Good luck, everyone."
 EventText12 = [Rebel] "We are through! Let's meet at the Rebel Station!"
 EventText13 = [Ente] "Remember what I have told you."#"Go to the coordinate I marked on your map. You will nd more information there."#"Make sure that you aren't followed."#"I don't know if we will meet again. I trust that you will do what's best for the sector."#"Remember. In their own minds, all people are their own heroes, defender of their own beliefs."#"There are no good people, and there are no bad people. There are just people."
+ObjectiveCompleted = "ObjectiveCompleted"
+Success = Rok speaks to the group.#[Rok] "Well done, all of you."#He turns to Ente who looks visibly uncomfortable. Rok bears a slightly sinister look.#"Welcome to the Rebel Base, Ente. We will soon have a little chat, you and me."#There is something very unsettling in his voice. He turns to the group of rebel pilots again.#"I will keep in touch. Come back soon, there will definitely be more to do in the near future."#He and Ente leave the room. While Ente passes, he quickly whispers to you.#"Good luck"
+Fail = "Fail"
+Reward = -1
+Progress = -1
+Reputation = -1
+State = 1
+
+[Main9_Information]
+Location = Rebel Station 3
+Name = Main - Information
+Introduction = ""
+ObjectiveText1 = "Your goal is to go to the station close to Peye at coordinate (X,X) and retrieve a scientist called Bert-Olle. Try to persuade him but don't hestitate to do whathever needs to be done in order to bring him here.\n\nAre you ready to go?"
+PosResponse = Yes, I can go right away
+NegResponse = I need some more time to prepare
+Accept = ""
+FailText = "FailText"
+EventText1 = [Sair] "We should go to that information hub he was speaking about."#"And if what he said about the Murt meteorite is true.. Hiding it might be the correct option."#"Let's not contact Ai just yet.."
+EventText2 = [Sair] "It looks like we are being followed. We can't lead them to the information hub."#"Either we'll have to shake them o, or we will have to make sure they can't follow us anymore."
+EventText3 = [Sair] "They won't stop following us. We will need to do something about them."
+EventText4 = [Rebel] "What are you doing? I will report this to the command!"
+EventText5 = [Sair] "That was all of them.."
+EventText6 = [Sair] "This must be it. Well hidden, indeed!"
+EventText7 = [Sair] "So, let's see what we have here. I'll enter the password we got from Ente.."#"..."#"We have access."#"..."#"..."#"Interesting. There is a lot of information here about both the Alliance and the rebels."#"It seems like the ocial story about how the Alliance came to power might be slightly.. altered."#"Yes, they came to power through an election. But the elections don't seem to have been as free as they claim..."#"The rebels on the other hand seem to have started as an anarchist organization, attempting to 'liberate' the sector through spreading chaos and disorder."#"They seem to have gradually adapted over time to be more... presentable... for the people around here."#"But that's not why we are here. I wish we had found this place earlier..."#"I think I have found their information about Murt."#"It seems like after they increased the range of their scanners, they started to pick up huge signals from a particular asteroid outside New Norrland."#"That must be it. I have recorded the coordiates. Now we only need to find data on that cloak-technology.."#"..."#"Here it is. Quite recently, they started to develop a cloaking technology on another outpost close to Peye."#"We should go there immediately. I have downloaded the data. I will process it on the way."#"I have marked the coordinates on the map. I will tell you more during travel."
 ObjectiveCompleted = "ObjectiveCompleted"
 Success = Rok speaks to the group.#[Rok] "Well done, all of you."#He turns to Ente who looks visibly uncomfortable. Rok bears a slightly sinister look.#"Welcome to the Rebel Base, Ente. We will soon have a little chat, you and me."#There is something very unsettling in his voice. He turns to the group of rebel pilots again.#"I will keep in touch. Come back soon, there will definitely be more to do in the near future."#He and Ente leave the room. While Ente passes, he quickly whispers to you.#"Good luck"
 Fail = "Fail"
