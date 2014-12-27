@@ -186,6 +186,11 @@ namespace SpaceProject
         {
             return new Vector2(pos.X - origin.X, pos.Y - origin.Y);
         }
+
+        public static Vector2 PointToVector2(Point p)
+        {
+            return new Vector2(p.X, p.Y);
+        }
     }
 
 }

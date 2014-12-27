@@ -21,7 +21,8 @@ namespace SpaceProject
         private Sprite menuSpriteSheet;
 
         //Visuell kuriosa
-        private Sprite lineTexture;
+        private Sprite background;
+        private Sprite ship;
 
         private ShipManagerCursor cursorManager;
         private ShipManagerText fontManager;
@@ -35,12 +36,11 @@ namespace SpaceProject
 
         private static Rectangle upperLeftRectangle;
         private static Rectangle lowerLeftRectangle;
-        private static Rectangle upperRightRectangle;
-        private static Rectangle lowerRightRectangle;
+        private static Rectangle rightRectangle;
 
         public static Rectangle GetUpperLeftRectangle { get { return upperLeftRectangle; } private set { ;} }
         public static Rectangle GetLowerLeftRectangle { get { return lowerLeftRectangle; } private set { ;} }
-        public static Rectangle GetUpperRightRectangle { get { return upperRightRectangle; } private set { ;} }
+        public static Rectangle GetUpperRightRectangle { get { return rightRectangle; } private set { ;} }
         public static Rectangle GetLowerRightRectangle { get { return lowerLeftRectangle; } private set { ;} }
 
         //Cursor-related variables
@@ -68,17 +68,18 @@ namespace SpaceProject
 
         public override void Initialize() 
         {
+            background = spriteSheet.GetSubSprite(new Rectangle(0, 0, 1024, 768));
+            ship = spriteSheet.GetSubSprite(new Rectangle(0, 771, 212, 185));
+
             upperLeftRectangle = new Rectangle(0, 0,
-                (int)Game.Window.ClientBounds.Width / 2, (int)Game.Window.ClientBounds.Height / 3);
+                (int)Game.Window.ClientBounds.Width / 2, (int)Game.Window.ClientBounds.Height / 2);
 
             lowerLeftRectangle = new Rectangle(0, upperLeftRectangle.Height,
-                upperLeftRectangle.Width, (int)Game.Window.ClientBounds.Width * 2 / 3);
+                upperLeftRectangle.Width, upperLeftRectangle.Height);
 
-            upperRightRectangle = new Rectangle(lowerLeftRectangle.Width, 0,
-                lowerLeftRectangle.Width, (int)(Game.Window.ClientBounds.Height * 3 / 4));
+            rightRectangle = new Rectangle(lowerLeftRectangle.Width, 0,
+                lowerLeftRectangle.Width, (int)(Game.Window.ClientBounds.Height));
 
-            lowerRightRectangle = new Rectangle(lowerLeftRectangle.Width, upperRightRectangle.Height,
-                upperRightRectangle.Width, (int)(Game.Window.ClientBounds.Height - upperRightRectangle.Height));
 
             //Managers for cursor and text.
             cursorManager = new ShipManagerCursor(Game, spriteSheet);
@@ -105,11 +106,7 @@ namespace SpaceProject
         
         public override void OnEnter()
         {
-            menuSpriteSheet = new Sprite(Game.Content.Load<Texture2D>("Vertical-Sprites/MenuSheet"));
             elapsedTimeMilliseconds = 0;
-
-            //Kuriosa
-            lineTexture = menuSpriteSheet.GetSubSprite(new Rectangle(0, 0, 1, 1));
 
             holdTimer = Game.HoldKeyTreshold;
         }
@@ -368,22 +365,14 @@ namespace SpaceProject
         private void DrawBackground(SpriteBatch spriteBatch)
         {
             //Backdrop
-            for (int i = 0; i < (int)((Game.Window.ClientBounds.Width / BG_WIDTH) + 1); i++)
-            {
-                for (int j = 0; j < (int)((Game.Window.ClientBounds.Height / BG_HEIGHT) + 1); j++)
-                    spriteBatch.Draw(spriteSheet.Texture, new Vector2(BG_WIDTH * i, BG_HEIGHT * j),
-                    new Rectangle(0, 190, BG_WIDTH, BG_HEIGHT), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-            }
+            spriteBatch.Draw(background.Texture, Vector2.Zero, background.SourceRectangle, Color.White, 0f, Vector2.Zero,
+                new Vector2(Game.Resolution.X / background.Width, Game.Resolution.Y / background.Height), SpriteEffects.None,
+                0.0f);
 
-            //Bakgrundslinjer
-            spriteBatch.Draw(lineTexture.Texture, new Vector2(upperLeftRectangle.Width, 0), lineTexture.SourceRectangle, Color.White,
-                0f, Vector2.Zero, new Vector2(1, Game.Window.ClientBounds.Height), SpriteEffects.None, 1f);
-
-            spriteBatch.Draw(lineTexture.Texture, new Vector2(0, upperLeftRectangle.Height), lineTexture.SourceRectangle, Color.White,
-                0f, Vector2.Zero, new Vector2(upperLeftRectangle.Width, 1), SpriteEffects.None, 1f);
-
-            spriteBatch.Draw(lineTexture.Texture, new Vector2(upperLeftRectangle.Width, lowerRightRectangle.Y), lineTexture.SourceRectangle, Color.White,
-                0f, Vector2.Zero, new Vector2(lowerRightRectangle.Width, 1), SpriteEffects.None, 1f);
+            // Ship
+            spriteBatch.Draw(ship.Texture, StaticFunctions.PointToVector2(upperLeftRectangle.Center),
+                ship.SourceRectangle, Color.White, 0f, ship.CenterPoint,
+                1f, SpriteEffects.None, 0.0f);
         }
         
         private void CheckCursorLevel1()
