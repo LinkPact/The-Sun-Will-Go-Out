@@ -363,8 +363,10 @@ namespace SpaceProject
 
             Game1.Paused = true;
 
-            scaleX = OverworldState.OVERWORLD_WIDTH / Game.Window.ClientBounds.Width;
-            scaleY = OverworldState.OVERWORLD_HEIGHT / Game.Window.ClientBounds.Height;
+            //scaleX = OverworldState.OVERWORLD_WIDTH / Game.Window.ClientBounds.Width;
+            //scaleY = OverworldState.OVERWORLD_HEIGHT / Game.Window.ClientBounds.Height;
+            scaleX = Game.stateManager.overworldState.GetSectorX.SpaceRegionArea.Width / (messageCanvas.SourceRectangle.Value.Width * 2.5f);
+            scaleY = Game.stateManager.overworldState.GetSectorX.SpaceRegionArea.Height / (messageCanvas.SourceRectangle.Value.Height * 2.5f);
             objectsOnMap = new List<GameObjectOverworld>();
             foreach (GameObjectOverworld obj in objectsInOverworld)
             {
@@ -1556,8 +1558,18 @@ namespace SpaceProject
 
                     foreach (GameObjectOverworld obj in objectsOnMap)
                     {
+                        //spriteBatch.Draw(obj.sprite.Texture,
+                        //    new Vector2(Game.camera.cameraPos.X - Game.Window.ClientBounds.Width / 4 + ((obj.position.X - Game.stateManager.overworldState.GetSectorX.SpaceRegionArea.X) / scaleX), Game.camera.cameraPos.Y - Game.Window.ClientBounds.Height / 4 + ((obj.position.Y - Game.stateManager.overworldState.GetSectorX.SpaceRegionArea.Y) / scaleY)),
+                        //    obj.sprite.SourceRectangle,
+                        //    Color.White,
+                        //    0.0f,
+                        //    new Vector2(obj.sprite.SourceRectangle.Value.Width / 2, obj.sprite.SourceRectangle.Value.Height / 2),
+                        //    0.15f,
+                        //    SpriteEffects.None,
+                        //    0.98f);
+
                         spriteBatch.Draw(obj.sprite.Texture,
-                            new Vector2(Game.camera.cameraPos.X - Game.Window.ClientBounds.Width / 2 + (obj.position.X / scaleX), Game.camera.cameraPos.Y - Game.Window.ClientBounds.Height / 2 + (obj.position.Y / scaleY)),
+                            new Vector2(Game.camera.cameraPos.X - ((messageCanvas.SourceRectangle.Value.Width * 2.5f) / 2) + ((obj.position.X - Game.stateManager.overworldState.GetSectorX.SpaceRegionArea.X) / scaleX), Game.camera.cameraPos.Y - ((messageCanvas.SourceRectangle.Value.Height * 2.5f) / 2) + ((obj.position.Y - Game.stateManager.overworldState.GetSectorX.SpaceRegionArea.Y) / scaleY)),
                             obj.sprite.SourceRectangle,
                             Color.White,
                             0.0f,
