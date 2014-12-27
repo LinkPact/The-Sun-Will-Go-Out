@@ -18,8 +18,6 @@ namespace SpaceProject
         private int elapsedSinceKey;
         private int elapseDelay;
 
-        private Sprite menuSpriteSheet;
-
         //Visuell kuriosa
         private Sprite background;
         private Sprite ship;
@@ -92,7 +90,7 @@ namespace SpaceProject
             //Data about current active user position.
             cursorLevel = 1;
             //cursorLevel1Position = 0;
-            cursorCoordLv1 = new CursorCoordinate(0, 0, 3, 2, true);
+            cursorCoordLv1 = new CursorCoordinate(0, 0, 4, 2, true);
             cursorLevel2Position = 0;
             cursorLevel3Position = 0;
             column = 1;
@@ -373,6 +371,8 @@ namespace SpaceProject
             spriteBatch.Draw(ship.Texture, StaticFunctions.PointToVector2(upperLeftRectangle.Center),
                 ship.SourceRectangle, Color.White, 0f, ship.CenterPoint,
                 1f, SpriteEffects.None, 0.0f);
+
+            cursorCoordLv1.Draw(spriteBatch);
         }
         
         private void CheckCursorLevel1()

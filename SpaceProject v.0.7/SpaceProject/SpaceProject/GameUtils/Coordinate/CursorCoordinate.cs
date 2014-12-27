@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
@@ -10,6 +12,8 @@ namespace SpaceProject
         private int gridWidth;
         private int gridHeight;
         private Boolean oddEnd;
+        private int lastX;
+        private int lastY;
 
         public int Position { get { return ToInt(); } private set { } }
 
@@ -32,7 +36,7 @@ namespace SpaceProject
             this.y += y;
 
             SetXCoordinateToValid();
-            SetYCoordinateToValid();
+            SetYCoordinateToValid(x);
         }
 
         private void SetXCoordinateToValid()
@@ -40,7 +44,9 @@ namespace SpaceProject
             if (x < 0)
             {
                 if (oddEnd == false || Y != gridHeight - 1)
+                {
                     x += gridWidth;
+                }
                 else
                 {
                     x += gridWidth + 1;
@@ -49,28 +55,42 @@ namespace SpaceProject
             else if (x >= gridWidth)
             {
                 if (oddEnd == false || Y != gridHeight - 1)
-                    // 14-06-24 Why not set it to zero here? / Jakob
-                    //x = x % gridWidth;
                     x = 0;
                 else
                 {
-                    if (x >= gridWidth + 1)
+                    if (x >= gridWidth)
                         x = 0;
-
                 }
             }
         }
 
-        private void SetYCoordinateToValid()
+        private void SetYCoordinateToValid(int x)
         {
-            if (y < 0)
+            if (this.x == 0 || this.x == 2)
             {
-                y += gridHeight;
+                lastY = y;
+                y = 0;
             }
-            else if (y >= gridHeight)
+
+            else if (x != 0)
             {
-                y = y % gridHeight;
+                y = lastY;
             }
+
+            if (y >= gridHeight)
+            {
+                y = 0;
+            }
+
+            else if (y < 0)
+            {
+                y = gridHeight - 1;
+            }
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.DrawString(FontManager.GetFontStatic(12), "X: " + x + " Y: " + y, new Vector2(10, 10), Color.White);
         }
     }
 }
