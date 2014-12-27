@@ -23,6 +23,11 @@ namespace SpaceProject
             get { return SourceRectangle.Value.Height;  }
         }
 
+        public Vector2 CenterPoint
+        {
+            get { return new Vector2(Width / 2, Height / 2); }
+        }
+
         public Sprite()
         {
         Texture = null;
