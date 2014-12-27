@@ -664,6 +664,19 @@ namespace SpaceProject
                 UnlockMission("Main - Infiltration");
             }
 
+            if (mainInfiltration.MissionState == StateOfMission.CompletedDead
+                && mainRetaliation.MissionState == StateOfMission.Unavailable)
+            {
+                UnlockMission("Main - Retaliation");
+                MarkMissionAsActive("Main - Retaliation");
+            }
+
+            if (mainRetaliation.MissionState == StateOfMission.CompletedDead
+                && mainInTheNameOfScience.MissionState == StateOfMission.Unavailable)
+            {
+                UnlockMission("Main - In the name of Science");
+            }
+
             // Start second mission after first is completed
             if (mainNewFirstMission.MissionState == StateOfMission.CompletedDead &&
                 mainHighfence.MissionState == StateOfMission.Available &&

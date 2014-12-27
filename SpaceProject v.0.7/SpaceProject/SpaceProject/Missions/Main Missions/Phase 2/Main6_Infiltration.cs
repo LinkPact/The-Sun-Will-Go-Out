@@ -70,7 +70,7 @@ namespace SpaceProject
                 "Infiltration2", LevelStartCondition.Immediately));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetStation("Rebel Station 2"), 
+                Game.stateManager.overworldState.GetStation("Rebel Station 3"), 
                 new EventTextCapsule(GetEvent((int)EventID.AfterLevel), null, EventTextCanvas.MessageBox),
                 delegate
                 {
@@ -82,7 +82,7 @@ namespace SpaceProject
                 delegate { return false; }));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetStation("Rebel Station 2")));
+                Game.stateManager.overworldState.GetStation("Rebel Station 3")));
         }
 
         public override void StartMission()
@@ -133,6 +133,7 @@ namespace SpaceProject
                 rebelShips.Add(new RebelShip(Game, Game.stateManager.shooterState.spriteSheet));
                 rebelShips[i].Initialize();
                 rebelShips[i].position = new Vector2(98500 + (i * 50), 77000);
+                rebelShips[i].RemoveOnStationEnter = false;
                 rebelShips[i].collisionEvent = new RemoveOnCollisionEvent(Game, rebelShips[i],
                     Game.stateManager.overworldState.GetRebelOutpost.GetGameObject("Rebel Station 2"));
 
@@ -152,6 +153,7 @@ namespace SpaceProject
             {
                 allianceShips.Add(new AllianceShip(Game, Game.stateManager.shooterState.spriteSheet));
                 allianceShips[i].Initialize();
+                allianceShips[i].RemoveOnStationEnter = false;
                 allianceShips[i].position = new Vector2(
                     Game.stateManager.overworldState.GetStation("Lavis Station").position.X - 500 + (i * 50),
                     Game.stateManager.overworldState.GetStation("Lavis Station").position.Y - 200);
@@ -178,6 +180,7 @@ namespace SpaceProject
 
                 rebelShips.Add(new RebelShip(Game, Game.stateManager.shooterState.spriteSheet));
                 rebelShips[i].Initialize();
+                rebelShips[i].RemoveOnStationEnter = false;
                 rebelShips[i].position = new Vector2(
                     Game.stateManager.overworldState.GetStation("Lavis Station").position.X - 500 + (i * 50),
                     Game.stateManager.overworldState.GetStation("Lavis Station").position.Y - 200);

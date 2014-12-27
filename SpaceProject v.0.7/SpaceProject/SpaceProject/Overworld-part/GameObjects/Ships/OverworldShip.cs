@@ -12,6 +12,8 @@ namespace SpaceProject
         // A.I. varriables
         public ShipAction AIManager;
         public static bool FollowPlayer = true;
+        private bool removeOnStationEnter = true;
+        public bool RemoveOnStationEnter { get { return removeOnStationEnter; } set { removeOnStationEnter = value; } }
 
         public Rectangle view;
         protected int viewRadius;
