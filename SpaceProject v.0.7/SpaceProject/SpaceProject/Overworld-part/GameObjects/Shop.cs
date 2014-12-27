@@ -36,6 +36,12 @@ namespace SpaceProject
             shopInventoryEntries.Add(entry);
         }
 
+        protected List<ShopInventoryEntry> mandatoryShipItems = new List<ShopInventoryEntry>();
+        public void AddMandatoryShipItem(ShopInventoryEntry mandatoryItem)
+        {
+            mandatoryShipItems.Add(mandatoryItem);
+        }
+
         protected ShopFilling shopFilling;
         public ShopFilling ShopFilling { get { return shopFilling; } 
             set { 
@@ -75,7 +81,7 @@ namespace SpaceProject
             }
         }
 
-        private void FillShopInventory()
+        private void FillShopInventoryWithEmptyItem()
         {
             if (shopInventory.Count < 14)
             {
@@ -101,7 +107,7 @@ namespace SpaceProject
         public void UpdateShopInventory()
         {
             if (shopFilling == ShopFilling.none)
-                throw new ArgumentException("Should not be called?");
+                throw new ArgumentException("Due to bad programming this can be called when shopfilling is none, but it shouldn't be");
 
             // Logic for controlling shopinventory-numbers
             int removeCount = random.Next(0, 2);
@@ -174,21 +180,32 @@ namespace SpaceProject
                 iterations++;
                 if (iterations > 1000)
                 {
-                    throw new ArgumentOutOfRangeException("Something is wrong in this loop");
+                    throw new ArgumentOutOfRangeException("You are attempting to add an item to a full shop inventory");
                 }
             }
         }
 
         protected void InventoryItemSetup(ShopFilling filling)
         {
-            FillShopInventory();
+            FillShopInventoryWithEmptyItem();
 
             int items = random.Next(GetLowerFillLimit(filling), GetUpperFillLimit(filling));
 
             for (int n = 0; n < items; n++)
             {
-                ShipPart part = ExtractShipPartFromItemFrequencies();
-                InsertPartAt(part, n);
+                if (n < mandatoryShipItems.Count)
+                {
+                    ShopInventoryEntry entry = mandatoryShipItems[n];
+
+                    ShipPart part = RetrievePartFromEnum(entry.ShipPartType);
+                    part.SetShipPartVariety(entry.ItemVariety);
+                    InsertPartAt(part, n);
+                }
+                else
+                {
+                    ShipPart part = ExtractShipPartFromItemFrequencies();
+                    InsertPartAt(part, n);
+                }
             }
         }
 
@@ -196,7 +213,6 @@ namespace SpaceProject
         {
             shopInventory.RemoveAt(index);
             shopInventory.Insert(index, part);
-
             CompressShopInventory();
         }
 
@@ -204,7 +220,6 @@ namespace SpaceProject
         {
             shopInventory.RemoveAt(index);
             shopInventory.Insert(index, new EmptyItem(Game));
-
             CompressShopInventory();
         }
 

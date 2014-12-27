@@ -12,46 +12,25 @@ namespace SpaceProject
 
         public List<Item> ShopInventory 
         { 
-            get 
-            { 
-                return shop.ShopInventory; 
-            } 
-            set 
-            { 
-                shop.ShopInventory = value; 
-            } 
+            get { return shop.ShopInventory; } 
+            set { shop.ShopInventory = value; } 
         }
 
         public ShopFilling ShopFilling 
         { 
-            get 
-            { 
-                return shop.ShopFilling; 
-            } 
+            get { return shop.ShopFilling; } 
         }
 
         public List<Item> OnEnterShopInventory 
         { 
-            get 
-            { 
-                return shop.OnEnterShopInventory; 
-            } 
-            set 
-            { 
-                shop.OnEnterShopInventory = value; 
-            } 
+            get { return shop.OnEnterShopInventory; } 
+            set { shop.OnEnterShopInventory = value; } 
         }
 
         public List<Item> ItemPool 
         { 
-            get 
-            { 
-                return shop.ItemPool; 
-            } 
-            set 
-            { 
-                shop.ItemPool = value; 
-            } 
+            get { return shop.ItemPool; } 
+            set { shop.ItemPool = value; } 
         }
 
         public ImmobileSpaceObject(Game1 Game, Sprite SpriteSheet)
@@ -63,6 +42,11 @@ namespace SpaceProject
         public void AddShopEntry(ShopInventoryEntry entry)
         {
             shop.AddShopEntry(entry);
+        }
+
+        public void AddMandatoryItem(ShopInventoryEntry entry)
+        {
+            shop.AddMandatoryShipItem(entry);
         }
 
         public void SetShopFilling(ShopFilling filling)
