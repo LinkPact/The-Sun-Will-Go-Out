@@ -18,10 +18,20 @@ namespace SpaceProject
         public override void Update(GameTime gameTime)
         {
             // Set course towards target
-            if (CollisionDetection.IsPointInsideRectangle(target.position, ship.view) && target.position != Vector2.Zero)
+            if (CollisionDetection.IsPointInsideRectangle(target.position, ship.view) 
+                && target.position != Vector2.Zero)
             {
-                ship.destination = target.position;
-                Finished = true;
+                if (target is PlayerOverWorld &&
+                    OverworldShip.FollowPlayer)
+                {
+                    ship.destination = target.position;
+                    Finished = true;
+                }
+                else if (!(target is PlayerOverWorld))
+                {
+                    ship.destination = target.position;
+                    Finished = true;
+                }
             }
             else
             {

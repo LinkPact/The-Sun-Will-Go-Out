@@ -658,6 +658,12 @@ namespace SpaceProject
                 MarkMissionAsActive("Main - Defend Colony");
             }
 
+            if (mainDefendColony.MissionState == StateOfMission.CompletedDead
+                && mainInfiltration.MissionState == StateOfMission.Unavailable)
+            {
+                UnlockMission("Main - Infiltration");
+            }
+
             // Start second mission after first is completed
             if (mainNewFirstMission.MissionState == StateOfMission.CompletedDead &&
                 mainHighfence.MissionState == StateOfMission.Available &&
