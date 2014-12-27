@@ -19,7 +19,7 @@ namespace SpaceProject
         {
             this.radius = radius;
             visualizeCircle = true;
-            transparency = 0.15f;
+            transparency = 0.25f;
             this.color = Color.Orange;
         }
 

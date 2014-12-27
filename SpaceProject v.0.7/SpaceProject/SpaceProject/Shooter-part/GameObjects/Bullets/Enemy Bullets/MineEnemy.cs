@@ -41,8 +41,8 @@ namespace SpaceProject
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
             useDeathAnim = true;
 
-            blastRadius = 100;
-            blastDamage = 100;
+            blastRadius = 55;
+            blastDamage = 70;
 
             ShootObjectTypes.Add("player");
             ShootObjectTypes.Add("ally");
