@@ -611,7 +611,8 @@ namespace SpaceProject
             List<GameObjectOverworld> removeObjects = new List<GameObjectOverworld>();
             foreach (GameObjectOverworld obj in deepSpaceGameObjects)
             {
-                if (obj is RebelShip || obj is AllianceShip)
+                if ((obj is RebelShip || obj is AllianceShip)
+                    && ((OverworldShip)obj).RemoveOnStationEnter)
                 {
                     removeObjects.Add(obj);
                 }

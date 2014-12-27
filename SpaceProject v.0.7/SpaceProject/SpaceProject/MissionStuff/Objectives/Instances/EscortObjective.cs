@@ -91,6 +91,8 @@ namespace SpaceProject
                 ((FreighterShip)escortDataCapsule.ShipToDefend).Wait();
             }
 
+            OverworldShip.FollowPlayer = false;
+
             base.OnActivate();
         }
 
@@ -259,6 +261,7 @@ namespace SpaceProject
             base.OnFailed();
 
             mission.OnReset();
+            mission.MissionState = StateOfMission.Failed;
             game.stateManager.overworldState.RemoveOverworldObject(escortDataCapsule.ShipToDefend);
             game.messageBox.DisplayMessage("Noooo! The freighter was destroyed. We failed.", false);
             game.stateManager.ChangeState("OverworldState");
@@ -309,6 +312,8 @@ namespace SpaceProject
                 && messageTimer == 1)
             {
                 mission.OnReset();
+                game.stateManager.overworldState.RemoveOverworldObject(escortDataCapsule.ShipToDefend);
+                mission.MissionState = StateOfMission.Failed;
                 game.messageBox.DisplayMessage("\"What are you doing?! You compromised our entire mission. Get out of my sight, you moron!\"", false);
             }
         }

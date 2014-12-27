@@ -89,11 +89,6 @@ namespace SpaceProject
             }
         }
 
-        public String GetPropertyOnLine(String section, int line, String defaultValue)
-        {
-            return defaultValue;
-        }
-
         public int GetPropertyAsInt(String section, String name, int defaultValue)
         {
             section = section.ToLower();

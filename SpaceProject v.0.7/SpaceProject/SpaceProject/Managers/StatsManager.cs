@@ -96,35 +96,35 @@ namespace SpaceProject
 
         public static void SetEasyStats()
         {
-            moneyFactor = 0.70f;
+            moneyFactor = 1.20f;
             damageFactor = 0.60f;
             gameMode = GameMode.easy;
         }
 
         public static void SetNormalStats()
         {
-            moneyFactor = 0.33f;
+            moneyFactor = 1.0f;
             damageFactor = 1.0f;
             gameMode = GameMode.normal;
         }
 
         public static void SetHardStats()
         {
-            moneyFactor = 0.2f;
+            moneyFactor = 0.8f;
             damageFactor = 1.2f;
             gameMode = GameMode.hard;
         }
 
         public static void SetHardcoreStats()
         {
-            moneyFactor = 0.20f;
+            moneyFactor = 0.8f;
             damageFactor = 1.20f;
             gameMode = GameMode.hardcore;
         }
 
         public static void SetDevelopStats()
         {
-            moneyFactor = 0.33f;
+            moneyFactor = 1.0f;
             damageFactor = 1.0f;
             gameMode = GameMode.develop;
 

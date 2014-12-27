@@ -63,10 +63,10 @@ namespace SpaceProject
             spriteSheet = overworld.shooterSheet;
             this.sector = sec;
 
-            spawnLimitFreighters = 4;
-            spawnLimitHangars = 3;
-            spawnLimitRebels = 5;
-            spawnLimitAlliance = 5;
+            spawnLimitFreighters = 0;//4;
+            spawnLimitHangars = 0;//3;
+            spawnLimitRebels = 0;// 5;
+            spawnLimitAlliance = 0;// 5;
         }
 
         public void AddRebelShip(Vector2 pos)

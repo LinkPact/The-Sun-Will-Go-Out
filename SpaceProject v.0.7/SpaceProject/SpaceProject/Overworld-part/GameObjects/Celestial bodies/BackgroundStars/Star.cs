@@ -51,6 +51,7 @@ namespace SpaceProject
             sprite = spriteSheet.GetSubSprite(new Rectangle(4, 4, 2, 2));
             color = new Color(rand.Next(200,255), rand.Next(155,255) , rand.Next(200,255), 255);
             scale = (float)(rand.NextDouble() * 1.5);
+            speedMod = rand.Next(4, 10) / 10f;
 
             base.Initialize();
         }

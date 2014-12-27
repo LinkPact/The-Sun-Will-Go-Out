@@ -10,9 +10,7 @@ namespace SpaceProject
     public class BackgroundManagerOverworld
     {
         public List<Star> Stars;
-        private int numberOfSmallStars = 90;
-        private int numberOfMediumStars = 90;
-        private int numberOfLargeStars = 90;
+        private int numberOfStars = 400;
         private List<Star> deadStars;
 
         private Game1 Game;
@@ -30,31 +28,16 @@ namespace SpaceProject
 
         public void AddStar(Sprite spriteSheet)
         {
-            int countSmall = Stars.OfType<SmallStar>().Count();
-            int countMedium = Stars.OfType<MediumStar>().Count(); ;
-            int countLarge = Stars.OfType<LargeStar>().Count(); ;
+            int count = Stars.OfType<Star>().Count();
+            
+            while (count <= numberOfStars)
+            {
+                Star star = new Star(Game, spriteSheet);
+                star.Initialize();
+                Stars.Add(star);
+                count++;
+            }
 
-            while (countSmall <= numberOfSmallStars)
-            {
-                SmallStar star = new SmallStar(Game, spriteSheet);
-                star.Initialize();
-                Stars.Add(star);
-                countSmall++;
-            }
-            while (countMedium <= numberOfMediumStars)
-            {
-                MediumStar star = new MediumStar(Game, spriteSheet);
-                star.Initialize();
-                Stars.Add(star);
-                countMedium++;
-            }
-            while (countLarge <= numberOfLargeStars)
-            {
-                LargeStar star = new LargeStar(Game, spriteSheet);
-                star.Initialize();
-                Stars.Add(star);
-                countLarge++;
-            }
         }
 
         public void Update(GameTime gameTime)

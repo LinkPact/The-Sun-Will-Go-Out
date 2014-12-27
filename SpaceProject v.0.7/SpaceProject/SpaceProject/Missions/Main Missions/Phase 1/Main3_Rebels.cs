@@ -26,6 +26,7 @@ namespace SpaceProject
         }
 
         FreighterShip freighter1;
+        private List<OverworldShip> enemies;
         private float freighterHP;
         public float GetFreighterHP { get { return freighterHP; } }
 
@@ -49,7 +50,14 @@ namespace SpaceProject
                 Game.stateManager.overworldState.GetPlanet("Highfence"),
                 soelaraStation);
             freighter1.AIManager = new TravelAction(freighter1, soelaraStation);
-            freighter1.collisionEvent = new RemoveOnCollisionEvent(Game, freighter1, soelaraStation); 
+            freighter1.collisionEvent = new RemoveOnCollisionEvent(Game, freighter1, soelaraStation);
+
+            enemies = Game.stateManager.overworldState.GetSectorX.shipSpawner.GetOverworldShips(2, "rebel");
+
+            foreach (OverworldShip ship in enemies)
+            {
+                ship.AIManager = new FollowInViewAction(ship, freighter1);
+            }
 
             objectives.Add(new EscortObjective(Game,
                 this,
@@ -57,7 +65,7 @@ namespace SpaceProject
                 Game.stateManager.overworldState.GetStation("Soelara Station"),
                 new EscortDataCapsule(freighter1,
                     GetEvent((int)EventID.CaptainIntro).Text,
-                    Game.stateManager.overworldState.GetSectorX.shipSpawner.GetOverworldShips(2, "rebel"),
+                    enemies,
                     new List<String> { GetEvent((int)EventID.RebelMessage1).Text, GetEvent((int)EventID.RebelMessage2).Text },
                     null,
                     Game.stateManager.overworldState.GetPlanet("Highfence").position + new Vector2(-200, 0),
