@@ -22,18 +22,7 @@ namespace SpaceProject
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(6, 24, 2, 2)));
 
             Random r = new Random(DateTime.Now.Millisecond);
-            switch (r.Next(1, 4))
-            {
-                case 1:
-                    Speed = 0.04f;
-                    break;
-                case 2:
-                    Speed = 0.07f;
-                    break;
-                case 3:
-                    Speed = 0.1f;
-                    break;
-            }
+            Speed = r.Next(4, 10) / 100f;
             scale = (float)(r.NextDouble() * 1.5);
             baseColor = new Color(r.Next(200, 255), r.Next(155, 255), r.Next(200, 255), 255);
             Direction = new Vector2(0, 1);
