@@ -654,11 +654,11 @@ namespace SpaceProject
 
             ownCounts.Clear();
 
-            ownCounts.Add(ownedPrimaryWeapons.Count);
-            ownCounts.Add(ownedSecondary.Count);
-            ownCounts.Add(ownedPlatings.Count);
             ownCounts.Add(ownedEnergyCells.Count);
+            ownCounts.Add(ownedPlatings.Count);
             ownCounts.Add(ownedShields.Count);
+            ownCounts.Add(ownedSecondary.Count);
+            ownCounts.Add(ownedPrimaryWeapons.Count);
         }
         
         public static bool HasAvailableSlot()

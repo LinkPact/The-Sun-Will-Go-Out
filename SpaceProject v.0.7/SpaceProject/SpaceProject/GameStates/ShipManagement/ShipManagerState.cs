@@ -29,8 +29,8 @@ namespace SpaceProject
         private const int BG_WIDTH = 92;
         private const int BG_HEIGHT = 92;
 
-        private int inventoryPos = 5;
-        private int backPos = 6;
+        private int inventoryPos = -1;
+        private int backPos = -2;
 
         private static Rectangle upperLeftRectangle;
         private static Rectangle lowerLeftRectangle;
@@ -45,7 +45,6 @@ namespace SpaceProject
         private int cursorLevel;
         private CursorCoordinate cursorCoordLv1;
         private int cursorLevel2Position;
-        private int cursorLevel3Position;
 
         private int column;
 
@@ -92,7 +91,6 @@ namespace SpaceProject
             //cursorLevel1Position = 0;
             cursorCoordLv1 = new CursorCoordinate(0, 0, 4, 2, true);
             cursorLevel2Position = 0;
-            cursorLevel3Position = 0;
             column = 1;
 
             elapsedSinceKey = 0;
@@ -121,9 +119,9 @@ namespace SpaceProject
 
             CheckKeys(gameTime);
 
-            cursorManager.Update(gameTime, cursorLevel, cursorCoordLv1, cursorLevel2Position, cursorLevel3Position);
-            fontManager.Update(gameTime, cursorLevel, cursorCoordLv1.ToInt(), cursorLevel2Position, cursorLevel3Position);
-            informationManager.Update(gameTime, cursorLevel, cursorCoordLv1.ToInt(), cursorLevel2Position, cursorLevel3Position, "ShipManagerState", -1);
+            cursorManager.Update(gameTime, cursorLevel, cursorCoordLv1, cursorLevel2Position);
+            fontManager.Update(gameTime, cursorLevel, cursorCoordLv1.ToInt(), cursorLevel2Position);
+            informationManager.Update(gameTime, cursorLevel, cursorCoordLv1.ToInt(), cursorLevel2Position, "ShipManagerState", -1);
 
             elapsedSinceKey += gameTime.ElapsedGameTime.Milliseconds;
 
@@ -134,109 +132,71 @@ namespace SpaceProject
 
         private void ItemComparision()
         {
-            switch (cursorLevel)
-            {
-                case 1:
-                    {
-                        itemComp.OkayToClearStats = true;
-                        itemComp.OkayToClearSymbols = true;
-                        break;
-                    }
-
-                case 2:
-                    {
-                        itemComp.OkayToClearStats = true;
-                        itemComp.OkayToClearSymbols = true;
-
-                        switch (cursorCoordLv1.ToInt())
-                        {
-                            case 0:
-                                tempItem = ShipInventoryManager.equippedPrimaryWeapons[cursorLevel2Position];
-                                break;
-
-                            case 1:
-                                tempItem = ShipInventoryManager.equippedSecondary;
-                                break;
-
-                            case 2:
-                                tempItem = ShipInventoryManager.equippedPlating;
-                                break;
-
-                            case 3:
-                                tempItem = ShipInventoryManager.equippedEnergyCell;
-                                break;
-
-                            case 4:
-                                tempItem = ShipInventoryManager.equippedShield;
-                                break;
-
-                            case 5:
-                                tempItem = ShipInventoryManager.ShipItems[cursorLevel2Position];
-                                itemComp.SetItem2(ShipInventoryManager.ShipItems[cursorLevel2Position]);
-                                itemComp.FindEquippedItem(ShipInventoryManager.ShipItems[cursorLevel2Position].Kind);
-                                itemComp.ShowSymbols = true;
-                                break;
-                        }
-
-                        break;
-                    }
-
-                case 3:
-                    {
-                        switch (cursorCoordLv1.ToInt())
-                        {
-                            case 0:
-                                itemComp.SetItem2(ShipInventoryManager.OwnedPrimaryWeapons[cursorLevel3Position]);
-                                itemComp.SetItem1(tempItem);
-                                itemComp.ShowSymbols = true;
-                                break;
-
-                            case 1:
-                                itemComp.SetItem2(ShipInventoryManager.OwnedSecondary[cursorLevel3Position]);
-                                itemComp.SetItem1(tempItem);
-                                itemComp.ShowSymbols = true;
-                                break;
-
-                            case 2:
-                                itemComp.SetItem2(ShipInventoryManager.OwnedPlatings[cursorLevel3Position]);
-                                itemComp.SetItem1(tempItem);
-                                itemComp.ShowSymbols = true;
-                                break;
-
-                            case 3:
-                                itemComp.SetItem2(ShipInventoryManager.ownedEnergyCells[cursorLevel3Position]);
-                                itemComp.SetItem1(tempItem);
-                                itemComp.ShowSymbols = true;
-                                break;
-
-                            case 4:
-                                itemComp.SetItem2(ShipInventoryManager.ownedShields[cursorLevel3Position]);
-                                itemComp.SetItem1(tempItem);
-                                itemComp.ShowSymbols = true;
-                                break;
-
-                            case 5:
-
-                                if (!CheckForOutOfRange())
-                                {
-                                    if (ShipInventoryManager.ShipItems[cursorLevel3Position].Kind != "Empty")
-                                    {
-                                        if (!CheckForOutOfRange())
-                                            itemComp.SetItem2(ShipInventoryManager.ShipItems[cursorLevel3Position]);
-
-                                        itemComp.SetItem1(tempItem);
-
-                                        itemComp.ShowSymbols = true;
-                                    }
-
-                                    else
-                                        itemComp.ShowSymbols = false;
-                                }
-                                break;
-                        }
-                        break;
-                    }
-            }
+            //switch (cursorLevel)
+            //{
+            //    case 1:
+            //        {
+            //            itemComp.OkayToClearStats = true;
+            //            itemComp.OkayToClearSymbols = true;
+            //            break;
+            //        }
+            //
+            //    case 3:
+            //        {
+            //            switch (cursorCoordLv1.ToInt())
+            //            {
+            //                case 0:
+            //                    itemComp.SetItem2(ShipInventoryManager.OwnedPrimaryWeapons[cursorLevel3Position]);
+            //                    itemComp.SetItem1(tempItem);
+            //                    itemComp.ShowSymbols = true;
+            //                    break;
+            //
+            //                case 1:
+            //                    itemComp.SetItem2(ShipInventoryManager.OwnedSecondary[cursorLevel3Position]);
+            //                    itemComp.SetItem1(tempItem);
+            //                    itemComp.ShowSymbols = true;
+            //                    break;
+            //
+            //                case 2:
+            //                    itemComp.SetItem2(ShipInventoryManager.OwnedPlatings[cursorLevel3Position]);
+            //                    itemComp.SetItem1(tempItem);
+            //                    itemComp.ShowSymbols = true;
+            //                    break;
+            //
+            //                case 3:
+            //                    itemComp.SetItem2(ShipInventoryManager.ownedEnergyCells[cursorLevel3Position]);
+            //                    itemComp.SetItem1(tempItem);
+            //                    itemComp.ShowSymbols = true;
+            //                    break;
+            //
+            //                case 4:
+            //                    itemComp.SetItem2(ShipInventoryManager.ownedShields[cursorLevel3Position]);
+            //                    itemComp.SetItem1(tempItem);
+            //                    itemComp.ShowSymbols = true;
+            //                    break;
+            //
+            //                case 5:
+            //
+            //                    if (!CheckForOutOfRange())
+            //                    {
+            //                        if (ShipInventoryManager.ShipItems[cursorLevel3Position].Kind != "Empty")
+            //                        {
+            //                            if (!CheckForOutOfRange())
+            //                                itemComp.SetItem2(ShipInventoryManager.ShipItems[cursorLevel3Position]);
+            //
+            //                            itemComp.SetItem1(tempItem);
+            //
+            //                            itemComp.ShowSymbols = true;
+            //                        }
+            //
+            //                        else
+            //                            itemComp.ShowSymbols = false;
+            //                    }
+            //                    break;
+            //            }
+            //            break;
+            //        }
+            //}
         }
 
         private void DeveloperOptions()
@@ -310,7 +270,7 @@ namespace SpaceProject
         
         private bool CheckForOutOfRange()
         {
-            if (cursorLevel3Position < 0 || cursorLevel3Position > ShipInventoryManager.ShipItems.Count - 1)
+            if (cursorLevel2Position < 0 || cursorLevel2Position > ShipInventoryManager.ShipItems.Count - 1)
                 return true;
 
             return false;
@@ -324,8 +284,6 @@ namespace SpaceProject
                 CheckCursorLevel1();
             else if (cursorLevel == 2)
                 CheckCursorLevel2(gameTime);
-            else if (cursorLevel == 3)
-                CheckCursorLevel3(gameTime);
         }     
         
         public override void Draw(SpriteBatch spriteBatch)
@@ -409,7 +367,8 @@ namespace SpaceProject
             if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)) && cursorLevel == 1
                 && elapsedSinceKey > elapseDelay))
             {
-                if (cursorCoordLv1.Position != backPos)
+                if (cursorCoordLv1.Position != backPos
+                    && ShipInventoryManager.ownCounts[cursorCoordLv1.Position] > 0)
                 {
                     cursorLevel = 2;
                     cursorLevel2Position = 0;
@@ -426,209 +385,19 @@ namespace SpaceProject
         {
             Game.stateManager.ChangeState(GameStateManager.previousState);
         }
-        
+
         private void CheckCursorLevel2(GameTime gameTime)
         {
-            if (cursorLevel == 2)
-            {
-                if (cursorCoordLv1.Position != inventoryPos && cursorCoordLv1.Position != backPos)
-                {
-                    ShipPartSubLv2Logic(gameTime);
-                }
-                else if (cursorCoordLv1.Position == inventoryPos)
-                {
-                    InventoryLv2Logic(gameTime);
-                }
-            }
-        }
-
-        private void ShipPartSubLv2Logic(GameTime gameTime)
-        {
-            int listLength = ShipInventoryManager.equipCounts[cursorCoordLv1.Position];
-            int ownedListLength = ShipInventoryManager.ownCounts[cursorCoordLv1.Position];
-
-            if (ControlManager.CheckPress(RebindableKeys.Down) && cursorLevel == 2
-                && elapsedSinceKey > elapseDelay)
-            {
-                cursorLevel2Position += 1;
-                if (cursorLevel2Position > listLength - 1)
-                    cursorLevel2Position -= listLength;
-
-                elapsedSinceKey = 0;
-            }
-
-            if (ControlManager.CheckPress(RebindableKeys.Up) && cursorLevel == 2
-                && elapsedSinceKey > elapseDelay)
-            {
-                cursorLevel2Position -= 1;
-                if (cursorLevel2Position < 0)
-                    cursorLevel2Position += listLength;
-
-                elapsedSinceKey = 0;
-            }
-
-            if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)) && cursorLevel == 2
-                && elapsedSinceKey > elapseDelay && ownedListLength > 0))
-            {
-                cursorLevel = 3;
-                cursorLevel3Position = 0;
-                elapsedSinceKey = 0;
-            }
-
-            if (ControlManager.CheckPress(RebindableKeys.Action2) && cursorLevel == 2
-                && elapsedSinceKey > elapseDelay)
-            {
-                cursorLevel = 1;
-                elapsedSinceKey = 0;
-            }
-        }
-
-        private void InventoryLv2Logic(GameTime gameTime)
-        { 
-            int listLength = ShipInventoryManager.inventorySize;
-                
-            int firstHalf;
-            int secondHalf;
-
-            if (ShipInventoryManager.inventorySize > 14)
-            {
-                firstHalf = 14;
-                secondHalf = listLength - firstHalf;
-            }
-            else
-            {
-                firstHalf = listLength;
-                secondHalf = 0;
-            }
-
-            if (ControlManager.CheckPress(RebindableKeys.Down)
-                && elapsedSinceKey > elapseDelay)
-            {
-                cursorLevel2Position += 1;
-            
-                if (cursorLevel2Position == firstHalf && column == 1) { cursorLevel2Position -= firstHalf; }
-                if (cursorLevel2Position == listLength && column == 2) { cursorLevel2Position = firstHalf; }
-            
-                elapsedSinceKey = 0;
-
-                itemComp.ShowSymbols = false;
-                holdTimer = Game.HoldKeyTreshold;
-            }
-
-            else if (ControlManager.CheckHold(RebindableKeys.Down))
-            {
-                holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
-
-                if (holdTimer <= 0)
-                {
-                    cursorLevel2Position += 1;
-
-                    if (cursorLevel2Position == firstHalf && column == 1) cursorLevel2Position = firstHalf - 1;
-                    if (cursorLevel2Position == listLength && column == 2) cursorLevel2Position = listLength - 1;
-
-                    elapsedSinceKey = 0;
-
-                    itemComp.ShowSymbols = false;
-                    holdTimer = Game.ScrollSpeedFast;
-                }
-            }
-
-            if (ControlManager.CheckPress(RebindableKeys.Up)
-                && elapsedSinceKey > elapseDelay)
-            {
-                cursorLevel2Position -= 1;
-                    
-                if (cursorLevel2Position == -1 && column == 1) { cursorLevel2Position += firstHalf; }
-                if (cursorLevel2Position == firstHalf - 1 && column == 2) { cursorLevel2Position += secondHalf; }
-            
-                elapsedSinceKey = 0;
-
-                itemComp.ShowSymbols = false;
-                holdTimer = Game.HoldKeyTreshold;
-            }
-
-            else if (ControlManager.CheckHold(RebindableKeys.Up))
-            {
-                holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
-
-                if (holdTimer < 0)
-                {
-                    cursorLevel2Position -= 1;
-
-                    if (cursorLevel2Position == -1 && column == 1) { cursorLevel2Position = 0; }
-                    if (cursorLevel2Position == firstHalf - 1 && column == 2) { cursorLevel2Position = firstHalf; }
-
-                    elapsedSinceKey = 0;
-
-                    itemComp.ShowSymbols = false;
-                    holdTimer = Game.ScrollSpeedFast;
-                }
-            }
-
-            if (ControlManager.CheckPress(RebindableKeys.Right)
-                && elapsedSinceKey > elapseDelay)
-            {
-                if (cursorLevel2Position < firstHalf && secondHalf != 0) 
-                {
-                    if (cursorLevel2Position + firstHalf < listLength)
-                    {
-                        cursorLevel2Position += firstHalf;
-                        column = 2;
-                    }
-                    else
-                    {
-                        cursorLevel2Position = listLength - 1;
-                    }
-                    column = 2;
-                }
-                elapsedSinceKey = 0;
-
-                itemComp.ShowSymbols = false;
-            }
-
-            if (ControlManager.CheckPress(RebindableKeys.Left)
-                && elapsedSinceKey > elapseDelay)
-            {
-                if (cursorLevel2Position >= firstHalf) 
-                { 
-                    cursorLevel2Position -= firstHalf;
-                    column = 1;
-                }
-                column = 1;
-
-                elapsedSinceKey = 0;
-
-                itemComp.ShowSymbols = false;
-            }
-
-            if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))
-                && elapsedSinceKey > elapseDelay))
-            {
-                cursorLevel = 3;
-                cursorLevel3Position = cursorLevel2Position;
-                elapsedSinceKey = 0;
-            }
-
-            if (ControlManager.CheckPress(RebindableKeys.Action2)
-                && elapsedSinceKey > elapseDelay)
-            {
-                cursorLevel = 1;
-                elapsedSinceKey = 0;
-            }
-        }
-
-        private void CheckCursorLevel3(GameTime gameTime)
-        {
-            if (cursorLevel == 3 && cursorCoordLv1.Position != inventoryPos)
+            if (cursorLevel == 2 && cursorCoordLv1.Position != inventoryPos)
             {
                 int listLength = ShipInventoryManager.ownCounts[cursorCoordLv1.Position];
 
-                if (ControlManager.CheckPress(RebindableKeys.Down) && cursorLevel == 3
+                if (ControlManager.CheckPress(RebindableKeys.Down) && cursorLevel == 2
                     && elapsedSinceKey > elapseDelay)
                 {
-                    cursorLevel3Position += 1;
-                    if (cursorLevel3Position > listLength - 1)
-                        cursorLevel3Position -= listLength;
+                    cursorLevel2Position += 1;
+                    if (cursorLevel2Position > listLength - 1)
+                        cursorLevel2Position -= listLength;
 
                     elapsedSinceKey = 0;
 
@@ -641,9 +410,9 @@ namespace SpaceProject
 
                     if (holdTimer <= 0)
                     {
-                        cursorLevel3Position += 1;
-                        if (cursorLevel3Position > listLength - 1)
-                            cursorLevel3Position = listLength - 1;
+                        cursorLevel2Position += 1;
+                        if (cursorLevel2Position > listLength - 1)
+                            cursorLevel2Position = listLength - 1;
 
                         elapsedSinceKey = 0;
 
@@ -651,12 +420,12 @@ namespace SpaceProject
                     }
                 }
 
-                if (ControlManager.CheckPress(RebindableKeys.Up) && cursorLevel == 3
+                if (ControlManager.CheckPress(RebindableKeys.Up) && cursorLevel == 2
                     && elapsedSinceKey > elapseDelay)
                 {
-                    cursorLevel3Position -= 1;
-                    if (cursorLevel3Position < 0)
-                        cursorLevel3Position += listLength;
+                    cursorLevel2Position -= 1;
+                    if (cursorLevel2Position < 0)
+                        cursorLevel2Position += listLength;
 
                     elapsedSinceKey = 0;
 
@@ -669,9 +438,9 @@ namespace SpaceProject
 
                     if (holdTimer <= 0)
                     {
-                        cursorLevel3Position -= 1;
-                        if (cursorLevel3Position < 0)
-                            cursorLevel3Position = 0;
+                        cursorLevel2Position -= 1;
+                        if (cursorLevel2Position < 0)
+                            cursorLevel2Position = 0;
 
                         elapsedSinceKey = 0;
 
@@ -680,7 +449,7 @@ namespace SpaceProject
                 }
 
                 //This is where the magic happens.
-                if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)) && cursorLevel == 3
+                if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)) && cursorLevel == 2
                     && elapsedSinceKey > elapseDelay))
                 {
                     //This is the command for equipping an owned weapon.
@@ -690,167 +459,150 @@ namespace SpaceProject
                     elapsedSinceKey = 0;
                 }
 
-                if (ControlManager.CheckPress(RebindableKeys.Action2) && cursorLevel == 3
+                if (ControlManager.CheckPress(RebindableKeys.Action2) && cursorLevel == 2
                     && elapsedSinceKey > elapseDelay)
                 {
-                    cursorLevel = 2;
+                    cursorLevel = 1;
                     elapsedSinceKey = 0;
                 }
             }
 
-            if (cursorLevel == 3 && cursorCoordLv1.Position == inventoryPos)
-            {
-                int listLength = ShipInventoryManager.inventorySize;
-
-                int firstHalf;
-                int secondHalf;
-
-                if (ShipInventoryManager.inventorySize > 14)
-                {
-                    firstHalf = 14;
-                    secondHalf = listLength - firstHalf;
-                }
-                else
-                {
-                    firstHalf = listLength;
-                    secondHalf = 0;
-                }
-
-                if (ControlManager.CheckPress(RebindableKeys.Down)
-                    && elapsedSinceKey > elapseDelay)
-                {
-                    cursorLevel3Position += 1;
-
-                    if (cursorLevel3Position == firstHalf && column == 1) { cursorLevel3Position -= firstHalf + 1; }
-                    if (cursorLevel3Position == listLength && column == 2) { cursorLevel3Position = firstHalf; }                    
-
-                    elapsedSinceKey = 0;
-
-                    holdTimer = Game.HoldKeyTreshold;
-                }
-
-                else if (ControlManager.CheckHold(RebindableKeys.Down))
-                {
-                    holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
-
-                    if (holdTimer <= 0)
-                    {
-                        cursorLevel3Position += 1;
-
-                        if (cursorLevel3Position == firstHalf && column == 1) { cursorLevel3Position = firstHalf - 1; }
-                        if (cursorLevel3Position == listLength && column == 2) { cursorLevel3Position = listLength - 1; }
-
-                        elapsedSinceKey = 0;
-
-                        holdTimer = Game.ScrollSpeedFast;
-                    }
-                }
-
-                if (ControlManager.CheckPress(RebindableKeys.Up)
-                    && elapsedSinceKey > elapseDelay)
-                {
-                    cursorLevel3Position -= 1;
-
-                    if (cursorLevel3Position == -2 && column == 1) { cursorLevel3Position += firstHalf + 1; }
-                    if (cursorLevel3Position == firstHalf - 1 && column == 2) { cursorLevel3Position += secondHalf; }
-
-                    elapsedSinceKey = 0;
-
-                    holdTimer = Game.HoldKeyTreshold;
-                }
-
-                else if (ControlManager.CheckHold(RebindableKeys.Up))
-                {
-                    holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
-
-                    if (holdTimer <= 0)
-                    {
-                        cursorLevel3Position -= 1;
-
-                        if (cursorLevel3Position == -1 && column == 1) { cursorLevel3Position = 0; }
-                        if (cursorLevel3Position == firstHalf - 1 && column == 2) { cursorLevel3Position = firstHalf; }
-
-                        elapsedSinceKey = 0;
-
-                        holdTimer = Game.ScrollSpeedFast;
-                    }
-                }
-
-                if (ControlManager.CheckPress(RebindableKeys.Right)
-                    && elapsedSinceKey > elapseDelay)
-                {
-                    if (cursorLevel3Position < firstHalf && secondHalf != 0)
-                    {
-                        if (cursorLevel3Position + firstHalf < listLength)
-                        {
-                            cursorLevel3Position += firstHalf;
-                            column = 2;
-                        }
-                        else
-                        {
-                            cursorLevel3Position = listLength - 1;
-                        }
-                        column = 2;
-                    }
-                    
-                    elapsedSinceKey = 0;
-                }
-
-                if (ControlManager.CheckPress(RebindableKeys.Left)
-                    && elapsedSinceKey > elapseDelay)
-                {
-                    if (cursorLevel3Position >= firstHalf)
-                    {
-                        cursorLevel3Position -= firstHalf;
-                        column = 1;
-                    }
-                    column = 1;
-
-                    elapsedSinceKey = 0;
-                }
-
-                //This is where the magic happens.
-                if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))
-                    && elapsedSinceKey > elapseDelay))
-                {
-                    //This is the command for equipping an owned weapon.
-                    if (cursorLevel3Position != -1)
-                    {
-                        if (ShipInventoryManager.ShipItems[cursorLevel2Position] is QuantityItem && 
-                            ShipInventoryManager.ShipItems[cursorLevel2Position].Kind == ShipInventoryManager.ShipItems[cursorLevel3Position].Kind &&
-                            ShipInventoryManager.ShipItems[cursorLevel2Position].Name == ShipInventoryManager.ShipItems[cursorLevel3Position].Name)
-                        {
-                            float tempQuant = ((QuantityItem)ShipInventoryManager.ShipItems[cursorLevel2Position]).Quantity;
-                            string tempKind = ShipInventoryManager.ShipItems[cursorLevel2Position].Kind;
-                            string tempName = ShipInventoryManager.ShipItems[cursorLevel2Position].Name;
-
-                            EraseComponent();
-
-                            ShipInventoryManager.AddQuantityItem(this.Game, tempQuant, tempKind, tempName);
-                        }
-
-                        else
-                        {
-                            SwitchComponents();
-                            cursorLevel2Position = cursorLevel3Position;
-                        }
-                    }
-                    else if (cursorLevel3Position == -1)
-                    {
-                        EraseComponent();
-                    }
-
-                    cursorLevel = 2;
-                    elapsedSinceKey = 0;
-                }
-
-                if (ControlManager.CheckPress(RebindableKeys.Action2)
-                    && elapsedSinceKey > elapseDelay)
-                {
-                    cursorLevel = 2;
-                    elapsedSinceKey = 0;
-                }
-            }
+            //if (cursorLevel == 3 && cursorCoordLv1.Position == inventoryPos)
+            //{
+            //    int listLength = ShipInventoryManager.inventorySize;
+            //
+            //    int firstHalf;
+            //    int secondHalf;
+            //
+            //    if (ShipInventoryManager.inventorySize > 14)
+            //    {
+            //        firstHalf = 14;
+            //        secondHalf = listLength - firstHalf;
+            //    }
+            //    else
+            //    {
+            //        firstHalf = listLength;
+            //        secondHalf = 0;
+            //    }
+            //
+            //    if (ControlManager.CheckPress(RebindableKeys.Down)
+            //        && elapsedSinceKey > elapseDelay)
+            //    {
+            //        cursorLevel3Position += 1;
+            //
+            //        if (cursorLevel3Position == firstHalf && column == 1) { cursorLevel3Position -= firstHalf + 1; }
+            //        if (cursorLevel3Position == listLength && column == 2) { cursorLevel3Position = firstHalf; }                    
+            //
+            //        elapsedSinceKey = 0;
+            //
+            //        holdTimer = Game.HoldKeyTreshold;
+            //    }
+            //
+            //    else if (ControlManager.CheckHold(RebindableKeys.Down))
+            //    {
+            //        holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
+            //
+            //        if (holdTimer <= 0)
+            //        {
+            //            cursorLevel3Position += 1;
+            //
+            //            if (cursorLevel3Position == firstHalf && column == 1) { cursorLevel3Position = firstHalf - 1; }
+            //            if (cursorLevel3Position == listLength && column == 2) { cursorLevel3Position = listLength - 1; }
+            //
+            //            elapsedSinceKey = 0;
+            //
+            //            holdTimer = Game.ScrollSpeedFast;
+            //        }
+            //    }
+            //
+            //    if (ControlManager.CheckPress(RebindableKeys.Up)
+            //        && elapsedSinceKey > elapseDelay)
+            //    {
+            //        cursorLevel3Position -= 1;
+            //
+            //        if (cursorLevel3Position == -2 && column == 1) { cursorLevel3Position += firstHalf + 1; }
+            //        if (cursorLevel3Position == firstHalf - 1 && column == 2) { cursorLevel3Position += secondHalf; }
+            //
+            //        elapsedSinceKey = 0;
+            //
+            //        holdTimer = Game.HoldKeyTreshold;
+            //    }
+            //
+            //    else if (ControlManager.CheckHold(RebindableKeys.Up))
+            //    {
+            //        holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
+            //
+            //        if (holdTimer <= 0)
+            //        {
+            //            cursorLevel3Position -= 1;
+            //
+            //            if (cursorLevel3Position == -1 && column == 1) { cursorLevel3Position = 0; }
+            //            if (cursorLevel3Position == firstHalf - 1 && column == 2) { cursorLevel3Position = firstHalf; }
+            //
+            //            elapsedSinceKey = 0;
+            //
+            //            holdTimer = Game.ScrollSpeedFast;
+            //        }
+            //    }
+            //
+            //    if (ControlManager.CheckPress(RebindableKeys.Right)
+            //        && elapsedSinceKey > elapseDelay)
+            //    {
+            //        if (cursorLevel3Position < firstHalf && secondHalf != 0)
+            //        {
+            //            if (cursorLevel3Position + firstHalf < listLength)
+            //            {
+            //                cursorLevel3Position += firstHalf;
+            //                column = 2;
+            //            }
+            //            else
+            //            {
+            //                cursorLevel3Position = listLength - 1;
+            //            }
+            //            column = 2;
+            //        }
+            //        
+            //        elapsedSinceKey = 0;
+            //    }
+            //
+            //    if (ControlManager.CheckPress(RebindableKeys.Left)
+            //        && elapsedSinceKey > elapseDelay)
+            //    {
+            //        if (cursorLevel3Position >= firstHalf)
+            //        {
+            //            cursorLevel3Position -= firstHalf;
+            //            column = 1;
+            //        }
+            //        column = 1;
+            //
+            //        elapsedSinceKey = 0;
+            //    }
+            //
+            //    //This is where the magic happens.
+            //    if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))
+            //        && elapsedSinceKey > elapseDelay))
+            //    {
+            //        //This is the command for equipping an owned weapon.
+            //        if (cursorLevel3Position != -1)
+            //        {
+            //            SwitchComponents();
+            //        }
+            //        else if (cursorLevel3Position == -1)
+            //        {
+            //            EraseComponent();
+            //        }
+            //
+            //        cursorLevel = 2;
+            //        elapsedSinceKey = 0;
+            //    }
+            //
+            //    if (ControlManager.CheckPress(RebindableKeys.Action2)
+            //        && elapsedSinceKey > elapseDelay)
+            //    {
+            //        cursorLevel = 2;
+            //        elapsedSinceKey = 0;
+            //    }
+            //}
         }
         
         private void CheckStateChangeCommands()
@@ -864,7 +616,7 @@ namespace SpaceProject
 
             if (ControlManager.CheckPress(RebindableKeys.Pause) && elapsedSinceKey > elapseDelay && cursorLevel > 1)
             {
-                cursorLevel -= 1;
+                cursorLevel = 1;
                 elapsedSinceKey = 0;
             }
 
@@ -880,27 +632,27 @@ namespace SpaceProject
             {
                 case 0:
                     {
-                        ShipInventoryManager.EquipItemFromSublist(ShipParts.Primary, cursorLevel2Position, cursorLevel3Position);
-                        break;
+                        ShipInventoryManager.EquipItemFromSublist(ShipParts.EnergyCell, 0, cursorLevel2Position);
+                        break; 
                     }
                 case 1:
                     {
-                        ShipInventoryManager.EquipItemFromSublist(ShipParts.Secondary, 0, cursorLevel3Position);
+                        ShipInventoryManager.EquipItemFromSublist(ShipParts.Plating, 0, cursorLevel2Position);
                         break;
                     }
                 case 2:
                     {
-                        ShipInventoryManager.EquipItemFromSublist(ShipParts.Plating, 0, cursorLevel3Position);
+                        ShipInventoryManager.EquipItemFromSublist(ShipParts.Shield, 0, cursorLevel2Position);
                         break;
                     }
                 case 3:
                     {
-                        ShipInventoryManager.EquipItemFromSublist(ShipParts.EnergyCell, 0, cursorLevel3Position);
+                        ShipInventoryManager.EquipItemFromSublist(ShipParts.Secondary, 0, cursorLevel2Position);
                         break;
                     }
                 case 4:
                     {
-                        ShipInventoryManager.EquipItemFromSublist(ShipParts.Shield, 0, cursorLevel3Position);
+                        ShipInventoryManager.EquipItemFromSublist(ShipParts.Primary, cursorCoordLv1.Y, cursorLevel2Position);
                         break;
                     }
                 default:
@@ -910,26 +662,26 @@ namespace SpaceProject
             }
         }
         
-        private void SwitchComponents()
-        {
-            if (cursorCoordLv1.Position == inventoryPos)
-            {
-                ShipInventoryManager.SwitchItems(cursorLevel2Position, cursorLevel3Position);
-            }
-        }
+        //private void SwitchComponents()
+        //{
+        //    if (cursorCoordLv1.Position == inventoryPos)
+        //    {
+        //        ShipInventoryManager.SwitchItems(cursorLevel2Position, cursorLevel3Position);
+        //    }
+        //}
         
-        private void EraseComponent()
-        {
-            if (cursorCoordLv1.Position == inventoryPos)
-            {
-                Item erasedItem = new EmptyItem(Game);
-
-                if (ShipInventoryManager.ShipItems[cursorLevel2Position] != ShipInventoryManager.equippedEnergyCell && ShipInventoryManager.ShipItems[cursorLevel2Position] != ShipInventoryManager.equippedPlating)
-                {
-                    ShipInventoryManager.RemoveItemAt(cursorLevel2Position);
-                    ShipInventoryManager.InsertItem(cursorLevel2Position, erasedItem);
-                }
-            }
-        }
+        //private void EraseComponent()
+        //{
+        //    if (cursorCoordLv1.Position == inventoryPos)
+        //    {
+        //        Item erasedItem = new EmptyItem(Game);
+        //
+        //        if (ShipInventoryManager.ShipItems[cursorLevel2Position] != ShipInventoryManager.equippedEnergyCell && ShipInventoryManager.ShipItems[cursorLevel2Position] != ShipInventoryManager.equippedPlating)
+        //        {
+        //            ShipInventoryManager.RemoveItemAt(cursorLevel2Position);
+        //            ShipInventoryManager.InsertItem(cursorLevel2Position, erasedItem);
+        //        }
+        //    }
+        //}
     }
 }

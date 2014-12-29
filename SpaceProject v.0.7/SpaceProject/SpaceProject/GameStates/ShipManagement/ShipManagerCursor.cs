@@ -24,9 +24,9 @@ namespace SpaceProject
         private ShipInventoryDisplayObject primaryDisplay;
         private ShipInventoryDisplayObject primaryDisplay2;
         private ShipInventoryDisplayObject secondaryDisplay;
-        private ShipInventoryDisplayObject inventoryDisplay;
-
-        private ShipInventoryDisplayObject back;
+        //private ShipInventoryDisplayObject inventoryDisplay;
+        //
+        //private ShipInventoryDisplayObject back;
 
         public List<ShipInventoryDisplayObject> displayList;
 
@@ -39,10 +39,6 @@ namespace SpaceProject
         private int layer;
         private CursorCoordinate cursorCoordLv1;
         private int cursorLv2Pos;
-        private int cursorLv3Pos;
-
-        private Cursor CursorLevel2;
-        private Cursor CursorLevel3;
 
         #endregion
         public ShipManagerCursor(Game1 Game, Sprite spriteSheet)
@@ -101,107 +97,17 @@ namespace SpaceProject
             //displayList.Add(inventoryDisplay = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(225, 15, 40, 40)),
             //    spriteSheet.GetSubSprite(new Rectangle(305, 15, 40, 40)),
             //    new Vector2(origin.X + xSpacing * 5, origin.Y), inventoryCoord));
-
-            CursorLevel2 = new Cursor(Game, spriteSheet);
-            CursorLevel2.Initialize();
-            CursorLevel3 = new Cursor(Game, spriteSheet);
-            CursorLevel3.Initialize();
         }
 
-        public void Update(GameTime gameTime, int layer, CursorCoordinate cursorCoordLv1, int cursorLv2Pos, int cursorLv3Pos)
+        public void Update(GameTime gameTime, int layer, CursorCoordinate cursorCoordLv1, int cursorLv2Pos)
         {
             this.layer = layer;
             this.cursorCoordLv1 = cursorCoordLv1;
             this.cursorLv2Pos = cursorLv2Pos;
-            this.cursorLv3Pos = cursorLv3Pos;
 
             foreach (ShipInventoryDisplayObject menuDisplay in displayList)
             { 
                 menuDisplay.UpdateActivity(cursorCoordLv1);
-            }
-
-            CursorHandling();
-        }
-
-        public void CursorHandling()
-        {
-            switch (layer)
-            {
-                case 1:
-                    {
-                        CursorLevel2.isActive = false;
-                        CursorLevel2.isVisible = false;
-                        CursorLevel3.isActive = false;
-                        CursorLevel3.isVisible = false;
-                        break;
-                    }
-                case 2:
-                    {
-                        int cursorLevel1Position = cursorCoordLv1.ToInt();
-
-                        CursorLevel2.isVisible = true;
-                        CursorLevel2.isActive = true;
-                        CursorLevel3.isVisible = false;
-                        CursorLevel3.isActive = false;
-
-                        if (cursorLevel1Position != inventoryPos)
-                        {
-                            CursorLevel2.position.X = Game.Window.ClientBounds.Width / 2 + 39;
-                            CursorLevel2.position.Y = (float)(105 + cursorLv2Pos * 23);
-                        }
-
-                        if (cursorCoordLv1.ToInt() == inventoryPos)
-                        {
-                            if (cursorLv2Pos < 14)
-                            {
-                                CursorLevel2.position.X = Game.Window.ClientBounds.Width / 2 + 10;
-                                CursorLevel2.position.Y = (float)(53 + cursorLv2Pos * 23);
-                            }
-                            else
-                            {
-                                CursorLevel2.position.X = Game.Window.ClientBounds.Width * 3/4 - 10;
-                                CursorLevel2.position.Y = (float)(53 + (cursorLv2Pos - 14) * 23);
-                            }
-                        }
-
-                        break;
-                    }
-                case 3:
-                    {
-                        int cursorLevel1Position = cursorCoordLv1.ToInt();
-
-                        CursorLevel2.isVisible = true;
-                        CursorLevel2.isActive = false;
-                        CursorLevel3.isVisible = true;
-                        CursorLevel3.isActive = true;
-
-                        if (cursorLevel1Position != inventoryPos)
-                        {
-                            CursorLevel3.position.X = Game.Window.ClientBounds.Width / 2 + 39;
-                            CursorLevel3.position.Y = (float)(185 + cursorLv3Pos * 23);
-                        }
-
-                        if (cursorLevel1Position == inventoryPos)
-                        {
-                            if (cursorLv3Pos == -1)
-                            {
-                                CursorLevel3.position.X = Game.Window.ClientBounds.Width / 2 + 10;
-                                CursorLevel3.position.Y = Game.Window.ClientBounds.Width / 2 + 13;
-                            }
-                            else if (cursorLv3Pos < 14)
-                            {
-                                CursorLevel3.position.X = Game.Window.ClientBounds.Width / 2 + 10;
-                                CursorLevel3.position.Y = (float)(53 + cursorLv3Pos * 23);
-                            }
-                            else
-                            {
-                                CursorLevel3.position.X = Game.Window.ClientBounds.Width * 3 / 4 - 10;
-                                CursorLevel3.position.Y = (float)(53 + (cursorLv3Pos - 14) * 23);
-                            }
-                        }
-
-                        break;
-                    }
             }
         }
 
@@ -215,7 +121,7 @@ namespace SpaceProject
             #region InventorySubMenues
             if (primaryDisplay.isActive)
             {
-                ShipManagerText.DisplayPrimaryWeaponInfo(spriteBatch);
+                ShipManagerText.DisplayPrimaryWeaponInfo1(spriteBatch);
 
                 if (layer >= 2)
                     InventoryInformation.DisplayPrimaryWeaponInfo(spriteBatch);
@@ -223,7 +129,7 @@ namespace SpaceProject
 
             if (primaryDisplay2.isActive)
             {
-                ShipManagerText.DisplayPrimaryWeaponInfo(spriteBatch);
+                ShipManagerText.DisplayPrimaryWeaponInfo2(spriteBatch);
 
                 if (layer >= 2)
                     InventoryInformation.DisplayPrimaryWeaponInfo(spriteBatch);
@@ -276,9 +182,6 @@ namespace SpaceProject
             //}
 
             #endregion
-
-            CursorLevel2.Draw(spriteBatch);
-            CursorLevel3.Draw(spriteBatch);
         }
     }
 }

@@ -12,7 +12,6 @@ namespace SpaceProject
         private int gridWidth;
         private int gridHeight;
         private Boolean oddEnd;
-        private int lastX;
         private int lastY;
 
         public int Position { get { return ToInt(); } private set { } }
@@ -27,7 +26,30 @@ namespace SpaceProject
 
         public int ToInt()
         {
-            return (X + 1) + (Y * gridWidth) - 1;
+            switch (x)
+            {
+                case 0:
+                    return 0;
+
+                case 1:
+                    if (y == 0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+
+                case 2:
+                    return 3;
+
+                case 3:
+                    return 4;
+
+                default:
+                    throw new ArgumentException("Invalid coordinate position.");
+            }
         }
 
         public void MoveCursor(int x, int y)
