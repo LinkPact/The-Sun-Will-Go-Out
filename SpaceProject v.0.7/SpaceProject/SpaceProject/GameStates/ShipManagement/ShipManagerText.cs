@@ -65,47 +65,37 @@ namespace SpaceProject
         public static void DisplayPrimaryWeaponInfo1(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), "Primary weapon slot 1", topDisplayPos + FontManager.FontOffsetStatic, FontManager.FontColorStatic, 0, FontManager.GetFontStatic(16).MeasureString("Primary weapon slot 1") / 2, 1.0f, SpriteEffects.None, 0.5f);
-
-            //spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), "Equipped weapon", equippedDisplayPos + FontManager.FontOffsetStatic, FontManager.FontColorStatic);
-            //
-            //spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), ShipInventoryManager.equippedPrimaryWeapons[0].Name, new Vector2(equippedStartPos.X, equippedStartPos.Y) + FontManager.FontOffsetStatic, FontManager.FontColorStatic);
-
             DisplayList(spriteBatch, "Owned weapons", ShipInventoryManager.OwnedPrimaryWeapons, equippedDisplayPos + FontManager.FontOffsetStatic, ySpacing);
         }
 
         public static void DisplayPrimaryWeaponInfo2(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), "Primary weapon slot 2", topDisplayPos + FontManager.FontOffsetStatic, FontManager.FontColorStatic, 0, FontManager.GetFontStatic(16).MeasureString("Primary weapon slot 2") / 2, 1.0f, SpriteEffects.None, 0.5f);
-
-            //spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), "Equipped weapons", equippedDisplayPos + FontManager.FontOffsetStatic, FontManager.FontColorStatic);
-            //
-            //spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), ShipInventoryManager.equippedPrimaryWeapons[1].Name, new Vector2(equippedStartPos.X, equippedStartPos.Y) + FontManager.FontOffsetStatic, FontManager.FontColorStatic);
-
             DisplayList(spriteBatch, "Owned weapons", ShipInventoryManager.OwnedPrimaryWeapons, equippedDisplayPos + FontManager.FontOffsetStatic, ySpacing);
         }
 
         public static void DisplaySecondaryInfo(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), "Secondary weapon", topDisplayPos + FontManager.FontOffsetStatic, FontManager.FontColorStatic, 0, FontManager.GetFontStatic(16).MeasureString("Secondary weapon") / 2, 1.0f, SpriteEffects.None, 0.5f);
-            DisplayList(spriteBatch, "Owned secondary", ShipInventoryManager.OwnedSecondary, equippedStartPos + FontManager.FontOffsetStatic, ySpacing);
+            DisplayList(spriteBatch, "Owned secondary", ShipInventoryManager.OwnedSecondary, equippedDisplayPos + FontManager.FontOffsetStatic, ySpacing);
         }
 
         public static void DisplayPlatingInfo(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), "Platings", topDisplayPos + FontManager.FontOffsetStatic, FontManager.FontColorStatic, 0, FontManager.GetFontStatic(16).MeasureString("Plating") / 2, 1.0f, SpriteEffects.None, 0.5f);
-            DisplayList(spriteBatch, "Owned platings", ShipInventoryManager.OwnedPlatings, equippedStartPos + FontManager.FontOffsetStatic, ySpacing);
+            DisplayList(spriteBatch, "Owned platings", ShipInventoryManager.OwnedPlatings, equippedDisplayPos + FontManager.FontOffsetStatic, ySpacing);
         }
         
         public static void DisplayEnergyCellInfo(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), "Energy cell", topDisplayPos + FontManager.FontOffsetStatic, FontManager.FontColorStatic, 0, FontManager.GetFontStatic(16).MeasureString("Energy cell") / 2, 1.0f, SpriteEffects.None, 0.5f);
-            DisplayList(spriteBatch, "Owned energy cells", ShipInventoryManager.OwnedEnergyCells, equippedStartPos + FontManager.FontOffsetStatic, ySpacing);
+            DisplayList(spriteBatch, "Owned energy cells", ShipInventoryManager.OwnedEnergyCells, equippedDisplayPos + FontManager.FontOffsetStatic, ySpacing);
         }
         
         public static void DisplayShieldInfo(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), "Shields", topDisplayPos + FontManager.FontOffsetStatic, FontManager.FontColorStatic, 0, FontManager.GetFontStatic(16).MeasureString("Shields") / 2, 1.0f, SpriteEffects.None, 0.5f);
-            DisplayList(spriteBatch, "Owned shields", ShipInventoryManager.OwnedShields, equippedStartPos + FontManager.FontOffsetStatic, ySpacing);
+            DisplayList(spriteBatch, "Owned shields", ShipInventoryManager.OwnedShields, equippedDisplayPos + FontManager.FontOffsetStatic, ySpacing);
         }
 
         private static void DisplayList(SpriteBatch spriteBatch, String tag, List<ShipPart> partList, Vector2 startPosition, float deltaY)

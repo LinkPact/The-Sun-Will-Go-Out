@@ -787,19 +787,22 @@ namespace SpaceProject
                 ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y - 1].DisplayInfo(spriteBatch,
                                                                                            BaseState.Game.fontManager.GetFont(14),
                                                                                            new Vector2(10, 50),
-                                                                                           Game.fontManager.FontColor);
+                                                                                           Game.fontManager.FontColor,
+                                                                                           Game.Window.ClientBounds.Width / 2 - 10);
 
             else if (inventoryCursorIndex.X == 2)
                 ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y + 13].DisplayInfo(spriteBatch,
                                                                                        BaseState.Game.fontManager.GetFont(14),
                                                                                        new Vector2(10, 50),
-                                                                                       Game.fontManager.FontColor);
+                                                                                       Game.fontManager.FontColor,
+                                                                                       Game.Window.ClientBounds.Width / 2 - 10);
 
             else if (inventoryCursorIndex.X == 3)
                 shopInventory[(int)inventoryCursorIndex.Y - 1].DisplayInfo(spriteBatch,
                                                                            BaseState.Game.fontManager.GetFont(14),
                                                                            new Vector2(10, 50),
-                                                                           Game.fontManager.FontColor);
+                                                                           Game.fontManager.FontColor,
+                                                                            Game.Window.ClientBounds.Width / 2 - 10);
 
             itemComp.Draw(spriteBatch, new Vector2(1, 76), 15);
 

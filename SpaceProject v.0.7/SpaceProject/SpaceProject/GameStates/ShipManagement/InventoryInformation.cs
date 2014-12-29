@@ -17,6 +17,7 @@ namespace SpaceProject
         private static int layer1pos;
         private static int layer2pos;
         private static int section;
+        private static readonly SpriteFont infoFont = FontManager.GetFontStatic(16);
 
         //private String state;
         #endregion
@@ -48,8 +49,8 @@ namespace SpaceProject
                 if (layer2pos > ShipInventoryManager.ShipItems.Count - 1) layer2pos = 
                     ShipInventoryManager.ShipItems.Count - 1;
                 if(layer2pos != -1)
-                    ShipInventoryManager.ShipItems[layer2pos].DisplayInventoryInfo(spriteBatch, 
-                        FontManager.GetFontStatic(14), FontManager.FontColorStatic); 
+                    ShipInventoryManager.ShipItems[layer2pos].DisplayInventoryInfo(spriteBatch,
+                        infoFont, FontManager.FontColorStatic); 
             }
         }
 
@@ -60,8 +61,7 @@ namespace SpaceProject
                 if (ShipInventoryManager.OwnedPrimaryWeapons.Count > 0)
                 {
                     ShipInventoryManager.OwnedPrimaryWeapons[layer2pos].DisplayInventoryInfo(
-                        spriteBatch, FontManager.GetFontStatic(14),
-                        FontManager.FontColorStatic);
+                        spriteBatch, infoFont, FontManager.FontColorStatic);
                 }
             }
         }
@@ -72,7 +72,7 @@ namespace SpaceProject
             {
                 if (ShipInventoryManager.OwnedSecondary.Count > 0)
                     ShipInventoryManager.OwnedSecondary[layer2pos].DisplayInventoryInfo(
-                        spriteBatch, FontManager.GetFontStatic(14),
+                        spriteBatch, infoFont,
                         FontManager.FontColorStatic);
             }
         }
@@ -83,7 +83,7 @@ namespace SpaceProject
             {
                 if (ShipInventoryManager.ownedPlatings.Count > 0)
                     ShipInventoryManager.ownedPlatings[layer2pos].DisplayInventoryInfo(
-                        spriteBatch, FontManager.GetFontStatic(14),
+                        spriteBatch, infoFont,
                         FontManager.FontColorStatic);
             }
         }
@@ -94,7 +94,7 @@ namespace SpaceProject
             {
                 if (ShipInventoryManager.ownedEnergyCells.Count > 0)
                     ShipInventoryManager.ownedEnergyCells[layer2pos].DisplayInventoryInfo(
-                        spriteBatch, FontManager.GetFontStatic(14),
+                        spriteBatch, infoFont,
                         FontManager.FontColorStatic);
             }
         }
@@ -105,7 +105,7 @@ namespace SpaceProject
             {
                 if (ShipInventoryManager.ownedShields.Count > 0)
                     ShipInventoryManager.ownedShields[layer2pos].DisplayInventoryInfo(
-                        spriteBatch, FontManager.GetFontStatic(14),
+                        spriteBatch, infoFont,
                         FontManager.FontColorStatic);
             }
         }

@@ -30,7 +30,7 @@ namespace SpaceProject
 
         public List<ShipInventoryDisplayObject> displayList;
 
-        private int inventoryPos = 5;
+        //private int inventoryPos = 5;
         
         //position variables
         private readonly int BACKGROUND_SHIP_LENGTH = 208;

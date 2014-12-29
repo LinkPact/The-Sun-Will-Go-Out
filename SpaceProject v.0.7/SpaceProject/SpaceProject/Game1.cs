@@ -87,7 +87,7 @@ namespace SpaceProject
 
         protected override void Initialize()
         {
-            GetAvailableResolutions();
+            SetAvailableResolutions();
 
             GameStarted = false;
 
@@ -363,18 +363,14 @@ namespace SpaceProject
             soundEffectsManager.DisposeSoundEffect();
         }
 
-        private void GetAvailableResolutions()
+        private void SetAvailableResolutions()
         {
             ResolutionOptions = new List<Vector2>();
 
-            foreach (DisplayMode mode in GraphicsAdapter.DefaultAdapter.SupportedDisplayModes)
-            {
-                Vector2 resolution = new Vector2(mode.Width, mode.Height);
-
-                ResolutionOptions.Add(resolution);
-            }
-
-            ResolutionOptions = ResolutionOptions.OrderBy(resolution => resolution.X).ToList<Vector2>();
+            ResolutionOptions.Add(new Vector2(800, 600));
+            ResolutionOptions.Add(new Vector2(1024, 576));
+            ResolutionOptions.Add(new Vector2(1024, 768));
+            ResolutionOptions.Add(new Vector2(1280, 720));
         }
     }
 }

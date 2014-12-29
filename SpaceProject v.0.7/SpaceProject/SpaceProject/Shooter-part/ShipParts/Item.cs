@@ -36,12 +36,12 @@ namespace SpaceProject
 
         public void DisplayInventoryInfo(SpriteBatch spriteBatch, SpriteFont font, Color textColor)
         {
-            Vector2 position = new Vector2(20, Game.Window.ClientBounds.Height / 3 + 20);
-            DisplayInfo(spriteBatch, font, position, textColor);
+            Vector2 position = new Vector2(54, Game.Window.ClientBounds.Height / 2 + 52);
+            DisplayInfo(spriteBatch, font, position, textColor, Game.Window.ClientBounds.Width / 2 - 100);
         }
 
         public void DisplayInfo(SpriteBatch spriteBatch, SpriteFont font,
-            Vector2 startingPos, Color color)
+            Vector2 startingPos, Color color, int wordWrapWidth)
         {
             List<String> infoText = GetInfoText();
             float deltaY = 15;
@@ -59,7 +59,7 @@ namespace SpaceProject
                 if (n == infoText.Count - 1)
                 {
                     text = "Description: " + infoText[n]; 
-                    text = TextUtils.WordWrap(font, infoText[n], Game.Window.ClientBounds.Width / 2 - 10);   
+                    text = TextUtils.WordWrap(font, infoText[n], Game.Window.ClientBounds.Width / 2 - 100);   
                 }
 
                 spriteBatch.DrawString(font, text, new Vector2(startingPos.X,
