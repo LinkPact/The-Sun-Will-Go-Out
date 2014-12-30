@@ -30,7 +30,7 @@ namespace SpaceProject
         private static Main7_Retaliation mainRetaliation;
         private static Main8_InTheNameOfScience mainInTheNameOfScience;
         private static Main9_Information mainInformation;
-        private static MainX1_BeginningOfTheEnd mainBeginningOfTheEnd;
+        private static Main10_1_BeginningOfTheEnd mainBeginningOfTheEnd;
         private static MainX2_ContinuationOfTheEnd mainContinuationOfTheEnd;
         private static MainX3_RebelArc mainRebelArc;
         private static MainX4_AllianceArc mainAllianceArc;
@@ -131,8 +131,8 @@ namespace SpaceProject
             mainInformation.Initialize();
             missions.Add(mainInformation);
 
-            // Main X1 - Beginning Of The End
-            mainBeginningOfTheEnd = new MainX1_BeginningOfTheEnd(game, "P4_BeginningOfTheEnd", null);
+            // Main 10-1 - Beginning Of The End
+            mainBeginningOfTheEnd = new Main10_1_BeginningOfTheEnd(game, "Main10_1_BeginningOfTheEnd", null);
             mainBeginningOfTheEnd.Initialize();
             missions.Add(mainBeginningOfTheEnd);
 
@@ -547,7 +547,7 @@ namespace SpaceProject
         {
             foreach (Mission mission in missions)
             {
-                if (mission.MissionName.Equals(missionName))
+                if (mission.MissionName.ToLower().Equals(missionName.ToLower()))
                     return mission;
             }
 
@@ -677,6 +677,21 @@ namespace SpaceProject
                 UnlockMission("Main - In the name of Science");
             }
 
+            if (mainInTheNameOfScience.MissionState == StateOfMission.CompletedDead
+                && mainInformation.MissionState == StateOfMission.Unavailable)
+            {
+                UnlockMission("Main - Information");
+                MarkMissionAsActive("Main - Information");
+            }
+
+            if (mainInformation.MissionState == StateOfMission.Completed
+                && mainBeginningOfTheEnd.MissionState == StateOfMission.Unavailable)
+            {
+                mainInformation.MissionState = StateOfMission.CompletedDead;
+                UnlockMission("Main - Beginning of the End");
+                MarkMissionAsActive("Main - Beginning of the End");
+            }
+
             // Start second mission after first is completed
             if (mainNewFirstMission.MissionState == StateOfMission.CompletedDead &&
                 mainHighfence.MissionState == StateOfMission.Available &&
@@ -685,14 +700,14 @@ namespace SpaceProject
                 MarkMissionAsActive("Main - Highfence");
             }
 
-            // Start part 2 of final mission
-            if (mainBeginningOfTheEnd.MissionState == StateOfMission.Completed
-                && mainContinuationOfTheEnd.MissionState == StateOfMission.Unavailable)
-            {
-                mainBeginningOfTheEnd.MissionState = StateOfMission.CompletedDead;
-                UnlockMission(mainContinuationOfTheEnd.MissionName);
-                MarkMissionAsActive(mainContinuationOfTheEnd.MissionName);
-            }
+            //// Start part 2 of final mission
+            //if (mainBeginningOfTheEnd.MissionState == StateOfMission.Completed
+            //    && mainContinuationOfTheEnd.MissionState == StateOfMission.Unavailable)
+            //{
+            //    mainBeginningOfTheEnd.MissionState = StateOfMission.CompletedDead;
+            //    UnlockMission(mainContinuationOfTheEnd.MissionName);
+            //    MarkMissionAsActive(mainContinuationOfTheEnd.MissionName);
+            //}
 
             // Final mission stuff
             if (mainContinuationOfTheEnd.MissionState == StateOfMission.Completed
