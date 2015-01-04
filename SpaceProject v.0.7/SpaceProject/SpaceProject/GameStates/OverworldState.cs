@@ -97,6 +97,8 @@ namespace SpaceProject
         private Camera camera;
         public Sprite spriteSheet;
 
+        private BurnOutEnding burnOutEnding;
+
         public Sprite shooterSheet;
         private Sprite outpostSpriteSheet;
 
@@ -176,6 +178,9 @@ namespace SpaceProject
 
             bGManagerOverworld.AddStar(spriteSheet);
 
+            burnOutEnding = new BurnOutEnding(Game, spriteSheet);
+            burnOutEnding.Initialize();
+
             base.Initialize();
         }
 
@@ -226,6 +231,19 @@ namespace SpaceProject
             HUD.Update(gameTime, GetAllOverworldGameObjects);
 
             Inputhandling();
+
+            if (burnOutEnding.Finished)
+            {
+                Game.stateManager.ChangeState("OutroState");
+                ControlManager.EnableControls();
+            }
+
+            if (ControlManager.CheckKeypress(Keys.F12))
+            {
+                Game.player.speed = 0;
+                ControlManager.DisableControls();
+                burnOutEnding.Activate(Game.camera.Position, 100);
+            }
             //InputhandlingDebug();
 
             EdgeCollisionCheck();
@@ -234,6 +252,8 @@ namespace SpaceProject
             {
                 DeleteRemovedGameObjects();
             }
+
+            burnOutEnding.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -512,6 +532,8 @@ namespace SpaceProject
             Game.player.Draw(spriteBatch);
             bGManagerOverworld.Draw(spriteBatch);
             HUD.Draw(spriteBatch);
+
+            burnOutEnding.Draw(spriteBatch);
 
             base.Draw(spriteBatch);
         }
