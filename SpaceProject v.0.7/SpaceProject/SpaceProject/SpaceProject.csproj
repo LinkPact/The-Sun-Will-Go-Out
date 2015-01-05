@@ -190,6 +190,8 @@
     <Compile Include="MissionStuff\Objectives\Instances\AutoPilotObjective.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\TimedMessageObjective.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\FollowObjective.cs" />
+    <Compile Include="MissionStuff\Éndings\BurnOutEnding\BurnOutEndingParticle.cs" />
+    <Compile Include="MissionStuff\Éndings\Ending.cs" />
     <Compile Include="Missions\Main Missions\Phase 1\Main4_ToPhaseTwo.cs" />
     <Compile Include="Missions\Main Missions\Phase 3\Main9_Information.cs" />
     <Compile Include="Missions\Main Missions\Phase 3\Main8_InTheNameOfScience.cs" />
@@ -329,7 +331,7 @@
     <Compile Include="MapCreator\Mechanics\DataClasses\SquareData.cs" />
     <Compile Include="MapCreator\System\WriteSave.cs" />
     <Compile Include="MissionStuff\Objectives\DataCapsules\EventTextCapsule.cs" />
-    <Compile Include="MissionStuff\Éndings\BurnOutEnding.cs" />
+    <Compile Include="MissionStuff\Éndings\BurnOutEnding\BurnOutEnding.cs" />
     <Compile Include="Overworld-part\GameObjects\Direction.cs" />
     <Compile Include="Overworld-part\GameObjects\Other\Beacon.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\AllianceShip.cs" />
