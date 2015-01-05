@@ -31,7 +31,7 @@ namespace SpaceProject
         private static Main8_InTheNameOfScience mainInTheNameOfScience;
         private static Main9_Information mainInformation;
         private static Main10_1_BeginningOfTheEnd mainBeginningOfTheEnd;
-        private static MainX2_ContinuationOfTheEnd mainContinuationOfTheEnd;
+        private static Main10_2_TheEnd mainContinuationOfTheEnd;
         private static MainX3_RebelArc mainRebelArc;
         private static MainX4_AllianceArc mainAllianceArc;
         private static MainX5_1_OnYourOwnArc mainOnYourOwnArc;
@@ -136,8 +136,8 @@ namespace SpaceProject
             mainBeginningOfTheEnd.Initialize();
             missions.Add(mainBeginningOfTheEnd);
 
-            // Main X2 - Continuation Of The End
-            mainContinuationOfTheEnd = new MainX2_ContinuationOfTheEnd(game, "P4_ContinuationOfTheEnd", null);
+            // Main 10-2 - Continuation Of The End
+            mainContinuationOfTheEnd = new Main10_2_TheEnd(game, "Main10_2_TheEnd", null);
             mainContinuationOfTheEnd.Initialize();
             missions.Add(mainContinuationOfTheEnd);
 

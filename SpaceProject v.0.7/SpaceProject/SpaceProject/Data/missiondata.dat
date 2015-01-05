@@ -274,7 +274,7 @@ Progress = 2
 Reputation = 3
 State = 0
 
-[P4_ContinuationOfTheEnd]
+[Main10_2_TheEnd]
 Location = Border Station
 Name = Main - Continuation Of The End
 Introduction = text
@@ -283,23 +283,11 @@ PosResponse = ""
 NegResponse = ""
 Accept = ""
 FailText = ""
-EventText1 = Text explaining you need to go to Soelara.
-EventText2 = Text when entering Soelara. People argue but decide to go to Fortrun.
-EventText3 = Text explaining you arrived at Fortrun and is being confronted by a guard with questions.#Question 1
-EventText3Response1 = Answer 1 (Correct)
-EventText3Response2 = Answer 2
-EventText4 = You answered the first question correctely!#Question 2
-EventText4Response1 = Answer 1 (Correct)
-EventText4Response2 = Answer 2
-EventText4Response3 = Answer 3
-EventText5 = You answered the second question correctely!#Question 3
-EventText5Response1 = Answer 1
-EventText5Response2 = Answer 2 (Correct)
-EventText5Response3 = Answer 3
-EventText5Response4 = Answer 4
-EventText6 = Question 3 answered correctly
-EventText7 = Wrong answer, now you die!
-EventText8 = You get past the security at Fortrun and talk to your contact.#You get more information on what consequences your current objective will bring.#People argue more and some people leave.
+EventText1 = [Sair] "Both the rebels and the Alliance are already scanning the asteroid belt. We will not be able to carry out our initial plan."#"What should we do now? What can we do now?"#"I need to process this information further."
+EventText2 = [Sair] "So. Summarizing the situation."#"Both rebels and the Alliance know about the Murt asteroid."#"The rebels roughly know its whereabouts, and the Alliance knows that the rebels know."#"If the rebels get control over it, they will use it to ght back against the Alliance."#"With the Murt, they would probably win in the end. It is highly uncertain how the sector would look with them in control."#"If on the other hand the Alliance get control over it, it will use it to subdue the rebels in the sector."#"They would succeed, and could then take total control over the sector."#"It would probably mean peace, under their control. People would have to live according to their rules."
+EventText3 = [Sair] "Another, desperate, alternative is to destroy the Murt itself."#"It is unstable. If we put it under intense re, it would start a chain reaction leading to an enormous explosion."#"This would eradicate everyone in the meteor belt, and probably scar New Norrland badly."#"It would also destroy something that could be used to help the people of this sector."#"Status quo is upheld. But what kind of status quo?"
+EventText4 = [Sair] "They still don't know the exact location of Murt. Our information could be very useful for any side."#"Should we try to help either the rebels or the Alliance?"#"Or should we try to take it in our own hands? Destroying the Murt."#"I can't calculate this. What is the best path? What should we do?"
+EventText5 = [Sair] "We are here.#"This one is up to you."#"We should speak to the rebels and the Alliance fleet, see what they think about the situation."#"You must decide if you want to help either of them, or if we should go ahead on our own."
 ObjectiveCompleted = ""
 Fail = ""
 Reward = 100

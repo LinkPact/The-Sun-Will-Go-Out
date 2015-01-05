@@ -202,7 +202,7 @@
     <Compile Include="Missions\Main Missions\Phase 4\MainX5_1_OnYourOwnArc.cs" />
     <Compile Include="Missions\Main Missions\Phase 4\MainX4_AllianceArc.cs" />
     <Compile Include="Missions\Main Missions\Phase 4\MainX3_RebelArc.cs" />
-    <Compile Include="Missions\Main Missions\Phase 4\MainX2_ContinuationOfTheEnd.cs" />
+    <Compile Include="Missions\Main Missions\Phase 4\Main10_2_TheEnd.cs" />
     <Compile Include="Missions\Main Missions\Phase 4\Main10_1_BeginningOfTheEnd.cs" />
     <Compile Include="Missions\Mission.cs" />
     <Compile Include="MissionStuff\MissionHelper.cs" />
