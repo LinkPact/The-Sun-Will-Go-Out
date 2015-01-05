@@ -31,7 +31,7 @@ namespace SpaceProject
             Name = "Ballistic Laser";
             Kind = "Primary";
             energyCostPerSecond = 10f;
-            delay = 800;
+            delay = 1200;
             Weight = 200;
 
             bullet = new BasicLaser(Game, spriteSheet);
