@@ -31,7 +31,7 @@ namespace SpaceProject
         private static Main8_InTheNameOfScience mainInTheNameOfScience;
         private static Main9_Information mainInformation;
         private static Main10_1_BeginningOfTheEnd mainBeginningOfTheEnd;
-        private static Main10_2_TheEnd mainContinuationOfTheEnd;
+        private static Main10_2_TheEnd mainTheEnd;
         private static MainX3_RebelArc mainRebelArc;
         private static MainX4_AllianceArc mainAllianceArc;
         private static MainX5_1_OnYourOwnArc mainOnYourOwnArc;
@@ -137,9 +137,9 @@ namespace SpaceProject
             missions.Add(mainBeginningOfTheEnd);
 
             // Main 10-2 - Continuation Of The End
-            mainContinuationOfTheEnd = new Main10_2_TheEnd(game, "Main10_2_TheEnd", null);
-            mainContinuationOfTheEnd.Initialize();
-            missions.Add(mainContinuationOfTheEnd);
+            mainTheEnd = new Main10_2_TheEnd(game, "Main10_2_TheEnd", null);
+            mainTheEnd.Initialize();
+            missions.Add(mainTheEnd);
 
             // Main X3 - Rebel Arc
             mainRebelArc = new MainX3_RebelArc(game, "MainX3_RebelArc", null);
@@ -700,20 +700,20 @@ namespace SpaceProject
                 MarkMissionAsActive("Main - Highfence");
             }
 
-            //// Start part 2 of final mission
-            //if (mainBeginningOfTheEnd.MissionState == StateOfMission.Completed
-            //    && mainContinuationOfTheEnd.MissionState == StateOfMission.Unavailable)
-            //{
-            //    mainBeginningOfTheEnd.MissionState = StateOfMission.CompletedDead;
-            //    UnlockMission(mainContinuationOfTheEnd.MissionName);
-            //    MarkMissionAsActive(mainContinuationOfTheEnd.MissionName);
-            //}
+            // Start part 2 of final mission
+            if (mainBeginningOfTheEnd.MissionState == StateOfMission.Completed
+                && mainTheEnd.MissionState == StateOfMission.Unavailable)
+            {
+                mainBeginningOfTheEnd.MissionState = StateOfMission.CompletedDead;
+                UnlockMission(mainTheEnd.MissionName);
+                MarkMissionAsActive(mainTheEnd.MissionName);
+            }
 
             // Final mission stuff
-            if (mainContinuationOfTheEnd.MissionState == StateOfMission.Completed
+            if (mainTheEnd.MissionState == StateOfMission.Completed
                 && GameStateManager.currentState.Equals("OverworldState"))
             {
-                mainContinuationOfTheEnd.MissionState = StateOfMission.CompletedDead;
+                mainTheEnd.MissionState = StateOfMission.CompletedDead;
 
                 RebelFleet rebelFleet = new RebelFleet(game,
                     game.stateManager.overworldState.GetSectorX.GetSpriteSheet(), Vector2.Zero);
@@ -725,8 +725,6 @@ namespace SpaceProject
 
                 game.stateManager.overworldState.AddOverworldObject(rebelFleet);
                 game.stateManager.overworldState.AddOverworldObject(allianceFleet);
-
-                game.messageBox.DisplayMessage("Time to make your choice! Go to Telmun!", false);
             }
 
             if (mainRebelArc.MissionState == StateOfMission.Completed)
