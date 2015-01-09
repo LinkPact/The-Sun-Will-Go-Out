@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
@@ -38,6 +39,8 @@ namespace SpaceProject
 
         public void Update(GameTime gameTime, List<GameObjectOverworld> visibleGameObjects)
         {
+            UpdateZoomMap(gameTime);
+
             radar.Update(gameTime, visibleGameObjects, game.camera.Position);
 
             lifeBar.Update(gameTime, StatsManager.GetShipLife(), StatsManager.Armor(),
@@ -56,6 +59,11 @@ namespace SpaceProject
             emergencyFusionCellBar.Update(gameTime, StatsManager.EmergencyFusionCell, 1,
                 new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
                             game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 2 - 45));
+        }
+
+        private void UpdateZoomMap(GameTime gameTime)
+        {
+            
         }
 
         public void Draw(SpriteBatch spriteBatch)

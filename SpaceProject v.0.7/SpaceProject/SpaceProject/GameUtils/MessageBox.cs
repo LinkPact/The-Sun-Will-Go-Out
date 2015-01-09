@@ -35,6 +35,14 @@ namespace SpaceProject
         private Sprite buttonSelected;
         //private SpriteFont font;
 
+        private readonly float ZOOM_SPEED = 0.0546875f;
+        private readonly float ZOOMED_OUT_VALUE = 0.025f;
+        private readonly float ZOOM_PLAYER_SCALE = 0.25f;
+
+        private bool zoomingMap;
+        private bool zoomingOut;
+        public bool ZoomingMap { get { return zoomingMap; } private set { ; } }
+
         private MessageState messageState;
 
         private Vector2 textBoxPos;
@@ -78,9 +86,9 @@ namespace SpaceProject
         bool flushScrollText;
 
         //Map related 
-        private List<GameObjectOverworld> objectsOnMap;
-        private float scaleX;
-        private float scaleY;
+        //private List<GameObjectOverworld> objectsOnMap;
+        //private float scaleX;
+        //private float scaleY;
 
         //private ItemComparison itemComp;
         private int holdTimer;
@@ -359,21 +367,20 @@ namespace SpaceProject
         //Display a map of the system in a pop-up
         public void DisplayMap(List<GameObjectOverworld> objectsInOverworld)
         {
-            messageState = MessageState.Map;
-
-            Game1.Paused = true;
-
             //scaleX = OverworldState.OVERWORLD_WIDTH / Game.Window.ClientBounds.Width;
             //scaleY = OverworldState.OVERWORLD_HEIGHT / Game.Window.ClientBounds.Height;
-            scaleX = Game.stateManager.overworldState.GetSectorX.SpaceRegionArea.Width / (messageCanvas.SourceRectangle.Value.Width * 2.5f);
-            scaleY = Game.stateManager.overworldState.GetSectorX.SpaceRegionArea.Height / (messageCanvas.SourceRectangle.Value.Height * 2.5f);
-            objectsOnMap = new List<GameObjectOverworld>();
-            foreach (GameObjectOverworld obj in objectsInOverworld)
-            {
-                if (obj is ImmobileSpaceObject || obj is SectorXStar)
-                    objectsOnMap.Add(obj);
-            }
 
+            //scaleX = Game.stateManager.overworldState.GetSectorX.SpaceRegionArea.Width / (messageCanvas.SourceRectangle.Value.Width * 2.5f);
+            //scaleY = Game.stateManager.overworldState.GetSectorX.SpaceRegionArea.Height / (messageCanvas.SourceRectangle.Value.Height * 2.5f);
+            //objectsOnMap = new List<GameObjectOverworld>();
+            //foreach (GameObjectOverworld obj in objectsInOverworld)
+            //{
+            //    if (obj is ImmobileSpaceObject || obj is SectorXStar)
+            //        objectsOnMap.Add(obj);
+            //}
+            //
+            zoomingMap = true;
+            zoomingOut = true;
             tempTimer = 5;
         }
 
@@ -484,6 +491,11 @@ namespace SpaceProject
 
         public void Update(GameTime gameTime)
         {
+            if (zoomingMap)
+            {
+                UpdateMapZoom(gameTime);
+            }
+
             if (MessageState == MessageState.RealtimeMessage
                 && StatsManager.PlayTime.HasOverworldTimePassed(time))
             {
@@ -538,10 +550,7 @@ namespace SpaceProject
             //displays the overmenu automaticly when returning from the inventory or mission screen 
             if (displayOnReturn == true)
             {
-                if (GameStateManager.currentState.Equals("OverworldState") ||
-                GameStateManager.currentState.Equals("System1State") ||
-                GameStateManager.currentState.Equals("System2State") ||
-                GameStateManager.currentState.Equals("System2State"))
+                if (GameStateManager.currentState.Equals("OverworldState"))
                 {
                     DisplayMenu();
                     displayOnReturn = false;
@@ -549,6 +558,37 @@ namespace SpaceProject
             }
 
             tempTimer--;
+        }
+
+        private void UpdateMapZoom(GameTime gameTime)
+        {
+            if (Game.camera.Zoom < ZOOM_PLAYER_SCALE)
+            {
+                Game.player.scale = ZOOM_PLAYER_SCALE / Game.camera.Zoom;
+            }
+
+            if (zoomingOut)
+            {
+                Game.camera.Zoom *= (ZOOM_SPEED * gameTime.ElapsedGameTime.Milliseconds);
+
+                if (Game.camera.Zoom <= ZOOMED_OUT_VALUE)
+                {
+                    messageState = MessageState.Map;
+                    Game1.Paused = true;
+                    zoomingMap = false;
+                }
+            }
+            else
+            {
+                Game.camera.Zoom *= (1 + ( 1 - (ZOOM_SPEED * gameTime.ElapsedGameTime.Milliseconds)));
+
+                if (Game.camera.Zoom >= 1f)
+                {
+                    Game.camera.Zoom = 1f;
+                    Game.player.scale = 1f;
+                    zoomingMap = false;
+                }
+            }
         }
 
         private void UpdateButtonLabels()
@@ -1119,12 +1159,11 @@ namespace SpaceProject
 
         private void HideMap()
         {
-            //Makes the messagebox invisible when pressing the actionkey if it's displaying a message
-            if (messageState == MessageState.Map && tempTimer < 0)
-            {
-                Game1.Paused = false;
-                messageState = MessageState.Invisible;
-            }
+            zoomingMap = true;
+            zoomingOut = false;
+
+            Game1.Paused = false;
+            messageState = MessageState.Invisible;
         }
 
         private void ButtonActions()
@@ -1360,7 +1399,7 @@ namespace SpaceProject
                 case MessageState.RealtimeMessage:
                     {
                         textBoxPos = new Vector2(Game.camera.cameraPos.X, Game.camera.cameraPos.Y + Game.Window.ClientBounds.Height / 4);
-                        textPos = new Vector2(textBoxPos.X - realTimeMessageCanvas.Width / 2 + 30, 
+                        textPos = new Vector2(textBoxPos.X - realTimeMessageCanvas.Width / 2 + 30,
                             textBoxPos.Y - realTimeMessageCanvas.Height / 2 + 30);
 
                         spriteBatch.Draw(realTimeMessageCanvas.Texture,
@@ -1533,65 +1572,65 @@ namespace SpaceProject
                     }
                     break;
 
-                case MessageState.Map:
-                    spriteBatch.Draw(messageCanvas.Texture,
-                             new Vector2((int)Game.camera.Position.X /*- Game.Window.ClientBounds.Width / 2*/, (int)Game.camera.Position.Y /*- Game.Window.ClientBounds.Height / 2*/),
-                             messageCanvas.SourceRectangle,
-                             new Color(255, 255, 255, OPACITY),
-                             0.0f,
-                             new Vector2(messageCanvas.SourceRectangle.Value.Width / 2,
-                                         messageCanvas.SourceRectangle.Value.Height / 2),
-                             2.5f,
-                             SpriteEffects.None,
-                             0.95f);
-
-                    spriteBatch.Draw(Game.player.sprite.Texture,
-                        new Vector2(Game.camera.cameraPos.X - Game.Window.ClientBounds.Width / 2 + (Game.player.position.X / scaleX), Game.camera.cameraPos.Y - Game.Window.ClientBounds.Height / 2 + (Game.player.position.Y / scaleY)),
-                        Game.player.sprite.SourceRectangle,
-                        Color.Beige,
-                        0.0f,
-                        new Vector2(Game.player.sprite.SourceRectangle.Value.Width / 2, Game.player.sprite.SourceRectangle.Value.Height / 2),
-                        0.5f,
-                        SpriteEffects.None,
-                        0.99f
-                        );
-
-                    foreach (GameObjectOverworld obj in objectsOnMap)
-                    {
-                        //spriteBatch.Draw(obj.sprite.Texture,
-                        //    new Vector2(Game.camera.cameraPos.X - Game.Window.ClientBounds.Width / 4 + ((obj.position.X - Game.stateManager.overworldState.GetSectorX.SpaceRegionArea.X) / scaleX), Game.camera.cameraPos.Y - Game.Window.ClientBounds.Height / 4 + ((obj.position.Y - Game.stateManager.overworldState.GetSectorX.SpaceRegionArea.Y) / scaleY)),
-                        //    obj.sprite.SourceRectangle,
-                        //    Color.White,
-                        //    0.0f,
-                        //    new Vector2(obj.sprite.SourceRectangle.Value.Width / 2, obj.sprite.SourceRectangle.Value.Height / 2),
-                        //    0.15f,
-                        //    SpriteEffects.None,
-                        //    0.98f);
-
-                        spriteBatch.Draw(obj.sprite.Texture,
-                            new Vector2(Game.camera.cameraPos.X - ((messageCanvas.SourceRectangle.Value.Width * 2.5f) / 2) + ((obj.position.X - Game.stateManager.overworldState.GetSectorX.SpaceRegionArea.X) / scaleX), Game.camera.cameraPos.Y - ((messageCanvas.SourceRectangle.Value.Height * 2.5f) / 2) + ((obj.position.Y - Game.stateManager.overworldState.GetSectorX.SpaceRegionArea.Y) / scaleY)),
-                            obj.sprite.SourceRectangle,
-                            Color.White,
-                            0.0f,
-                            new Vector2(obj.sprite.SourceRectangle.Value.Width / 2, obj.sprite.SourceRectangle.Value.Height / 2),
-                            0.15f,
-                            SpriteEffects.None,
-                            0.98f);
-
-                        if (obj is Planet)
-                        {
-                            spriteBatch.DrawString(Game.fontManager.GetFont(14),
-                                obj.name,
-                                new Vector2(Game.camera.cameraPos.X - Game.Window.ClientBounds.Width / 2 + (obj.position.X / scaleX), Game.camera.cameraPos.Y - Game.Window.ClientBounds.Height / 2 + (obj.position.Y / scaleY) - 40),
-                                Game.fontManager.FontColor,
-                                0f,
-                                Vector2.Zero,
-                                1f,
-                                SpriteEffects.None,
-                                0.98f);
-                        }
-                    }
-                    break;
+                //case MessageState.Map:
+                //    spriteBatch.Draw(messageCanvas.Texture,
+                //             new Vector2((int)Game.camera.Position.X /*- Game.Window.ClientBounds.Width / 2*/, (int)Game.camera.Position.Y /*- Game.Window.ClientBounds.Height / 2*/),
+                //             messageCanvas.SourceRectangle,
+                //             new Color(255, 255, 255, OPACITY),
+                //             0.0f,
+                //             new Vector2(messageCanvas.SourceRectangle.Value.Width / 2,
+                //                         messageCanvas.SourceRectangle.Value.Height / 2),
+                //             2.5f,
+                //             SpriteEffects.None,
+                //             0.95f);
+                //
+                //    spriteBatch.Draw(Game.player.sprite.Texture,
+                //        new Vector2(Game.camera.cameraPos.X - Game.Window.ClientBounds.Width / 2 + (Game.player.position.X / scaleX), Game.camera.cameraPos.Y - Game.Window.ClientBounds.Height / 2 + (Game.player.position.Y / scaleY)),
+                //        Game.player.sprite.SourceRectangle,
+                //        Color.Beige,
+                //        0.0f,
+                //        new Vector2(Game.player.sprite.SourceRectangle.Value.Width / 2, Game.player.sprite.SourceRectangle.Value.Height / 2),
+                //        0.5f,
+                //        SpriteEffects.None,
+                //        0.99f
+                //        );
+                //
+                //    foreach (GameObjectOverworld obj in objectsOnMap)
+                //    {
+                //        //spriteBatch.Draw(obj.sprite.Texture,
+                //        //    new Vector2(Game.camera.cameraPos.X - Game.Window.ClientBounds.Width / 4 + ((obj.position.X - Game.stateManager.overworldState.GetSectorX.SpaceRegionArea.X) / scaleX), Game.camera.cameraPos.Y - Game.Window.ClientBounds.Height / 4 + ((obj.position.Y - Game.stateManager.overworldState.GetSectorX.SpaceRegionArea.Y) / scaleY)),
+                //        //    obj.sprite.SourceRectangle,
+                //        //    Color.White,
+                //        //    0.0f,
+                //        //    new Vector2(obj.sprite.SourceRectangle.Value.Width / 2, obj.sprite.SourceRectangle.Value.Height / 2),
+                //        //    0.15f,
+                //        //    SpriteEffects.None,
+                //        //    0.98f);
+                //
+                //        spriteBatch.Draw(obj.sprite.Texture,
+                //            new Vector2(Game.camera.cameraPos.X - ((messageCanvas.SourceRectangle.Value.Width * 2.5f) / 2) + ((obj.position.X - Game.stateManager.overworldState.GetSectorX.SpaceRegionArea.X) / scaleX), Game.camera.cameraPos.Y - ((messageCanvas.SourceRectangle.Value.Height * 2.5f) / 2) + ((obj.position.Y - Game.stateManager.overworldState.GetSectorX.SpaceRegionArea.Y) / scaleY)),
+                //            obj.sprite.SourceRectangle,
+                //            Color.White,
+                //            0.0f,
+                //            new Vector2(obj.sprite.SourceRectangle.Value.Width / 2, obj.sprite.SourceRectangle.Value.Height / 2),
+                //            0.15f,
+                //            SpriteEffects.None,
+                //            0.98f);
+                //
+                //        if (obj is Planet)
+                //        {
+                //            spriteBatch.DrawString(Game.fontManager.GetFont(14),
+                //                obj.name,
+                //                new Vector2(Game.camera.cameraPos.X - Game.Window.ClientBounds.Width / 2 + (obj.position.X / scaleX), Game.camera.cameraPos.Y - Game.Window.ClientBounds.Height / 2 + (obj.position.Y / scaleY) - 40),
+                //                Game.fontManager.FontColor,
+                //                0f,
+                //                Vector2.Zero,
+                //                1f,
+                //                SpriteEffects.None,
+                //                0.98f);
+                //        }
+                //    }
+                //    break;
 
                 //case MessageState.Inventory:
                 //    {
@@ -1681,7 +1720,6 @@ namespace SpaceProject
                 //    }
                 //    break;
             }
-
         }
 
         private void DrawMenuOptions(SpriteBatch spriteBatch)
