@@ -1,0 +1,8 @@
+Sound effects
+
+1-2 menu sounds
+4 laser sounds (1 short, 2 medium length, 1 heavy)
+1 beam sound
+2 bullet hit sounds
+3 explosion sounds
+1 mega explosion
