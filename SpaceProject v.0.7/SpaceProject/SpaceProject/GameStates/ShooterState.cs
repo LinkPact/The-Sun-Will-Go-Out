@@ -296,8 +296,11 @@ namespace SpaceProject
             if (ControlManager.CheckPress(RebindableKeys.Pause) && timeSinceStarted > 200)
                 Game.messageBox.DisplayMenu();
 
-            //if (ControlManager.CheckKeypress(Keys.Y))
-            //    Game.messageBox.DisplayMessage("Hello world!");
+            if (ControlManager.CheckKeypress(Keys.Y))
+            {
+                //Game.messageBox.DisplayMessage("Hello world!");
+                Game.soundEffectsManager.MutateLaserSound_DEVELOP();
+            }
 
             //if (ControlManager.CheckKeypress(Keys.F1))
             //    AlliedShip.ShowSightRange = !AlliedShip.ShowSightRange;

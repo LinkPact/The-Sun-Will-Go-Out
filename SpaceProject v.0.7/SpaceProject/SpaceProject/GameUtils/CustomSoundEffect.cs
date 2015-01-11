@@ -87,6 +87,11 @@ namespace SpaceProject
             stoppedInstances = new List<SoundEffectInstance>();
         }
 
+        public void UpdateSoundEffect(SoundEffect soundEffect)
+        {
+            this.soundEffect = soundEffect;
+        }
+
         public SoundEffectInstance CreateInstance()
         {
             if (OkayToCreateNewInstance())

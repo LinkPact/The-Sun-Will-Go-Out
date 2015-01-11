@@ -219,10 +219,15 @@ namespace SpaceProject
 
             DetermineCurrentRegion();
 
-            if (currentSpaceRegion != null)
-            {
-                currentSpaceRegion.Update(gameTime);
-            }
+            //if (currentSpaceRegion != null)
+            //{
+            //    currentSpaceRegion.Update(gameTime);
+            //}
+            sectorX.Update(gameTime);
+            outpostX.Update(gameTime);
+            borderXOutpost.Update(gameTime);
+            miningOutpost.Update(gameTime);
+            rebelOutpost.Update(gameTime);
 
             UpdateDeepSpaceObjects(gameTime);
 
@@ -522,16 +527,26 @@ namespace SpaceProject
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (currentSpaceRegion != null)
-            {
-                currentSpaceRegion.Draw(spriteBatch);
-            }
+            //if (currentSpaceRegion != null)
+            //{
+            //    currentSpaceRegion.Draw(spriteBatch);
+            //}
+            sectorX.Draw(spriteBatch);
+            outpostX.Draw(spriteBatch);
+            borderXOutpost.Draw(spriteBatch);
+            miningOutpost.Draw(spriteBatch);
+            rebelOutpost.Draw(spriteBatch);
 
             DrawDeepSpaceObjects(spriteBatch);
 
             Game.player.Draw(spriteBatch);
-            bGManagerOverworld.Draw(spriteBatch);
-            HUD.Draw(spriteBatch);
+
+            if (Game.messageBox.MessageState != MessageState.Map
+                && !Game.messageBox.ZoomingMap)
+            {
+                bGManagerOverworld.Draw(spriteBatch);
+                HUD.Draw(spriteBatch);
+            }
 
             burnOutEnding.Draw(spriteBatch);
 

@@ -29,6 +29,8 @@ namespace SpaceProject
 
     public class SoundEffectsManager
     {
+        private const int SoundEffectBufferMaxCount = 32;
+
         public static bool LoadSoundEffects;
 
         private Game1 game;
@@ -51,6 +53,8 @@ namespace SpaceProject
 
         private CustomSoundEffect menuHover;
         private CustomSoundEffect menuSelect;
+
+        private List<SoundEffect> laserSounds;
 
         public SoundEffectsManager(Game1 game)
         {
@@ -91,65 +95,91 @@ namespace SpaceProject
 
                 soundEffects.Add(menuHover);
                 soundEffects.Add(menuSelect);
+
+                // Test list for testing purposes
+                laserSounds = GetLaserSoundTestList();
+            }
+        }
+
+        private List<SoundEffect> GetLaserSoundTestList()
+        {
+            var list = new List<SoundEffect>();
+
+            list.Add(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/distorted_laser"));
+            list.Add(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/distorted_laser_with_noise"));
+            list.Add(game.Content.Load<SoundEffect>("SoundEffects/basic_laser"));
+
+            return list;
+        }
+
+        private int currentLaserTestIndex = 0;
+        public void MutateLaserSound_DEVELOP() 
+        {
+            basicLaser.UpdateSoundEffect(laserSounds[currentLaserTestIndex]);
+
+            currentLaserTestIndex++;
+            if (currentLaserTestIndex >= laserSounds.Count) 
+            {
+                currentLaserTestIndex = 0;
             }
         }
 
         // Plays specified sound effect with no pan and normal pitch
-        public void PlaySoundEffect(SoundEffects identifier)
-        {
-            if (!muted && LoadSoundEffects && soundEffectBuffer.Count < 32)
-            {
-                int i = (int)identifier;
-
-                SoundEffectInstance instance = soundEffects[i].CreateInstance();
-
-                if (instance != null)
-                {
-                    instance.Volume = volume;
-
-                    instance.Pan = 0;
-                    instance.Pitch = 0;
-                    instance.Play();
-
-                    soundEffectBuffer.Add(instance);
-                }
-            }
-        }
+        //public void PlaySoundEffect(SoundEffects identifier)
+        //{
+        //    if (!muted && LoadSoundEffects && soundEffectBuffer.Count < 32)
+        //    {
+        //        int i = (int)identifier;
+        //
+        //        SoundEffectInstance instance = soundEffects[i].CreateInstance();
+        //
+        //        if (instance != null)
+        //        {
+        //            instance.Volume = volume;
+        //
+        //            instance.Pan = 0;
+        //            instance.Pitch = 0;
+        //            instance.Play();
+        //
+        //            soundEffectBuffer.Add(instance);
+        //        }
+        //    }
+        //}
 
         // Plays specified sound effect with random pitch
-        public void PlaySoundEffect(SoundEffects identifier, float pan)
+        //public void PlaySoundEffect(SoundEffects identifier, float pan)
+        //{
+        //    if (!muted && LoadSoundEffects && soundEffectBuffer.Count < 32)
+        //    {
+        //        int i = (int)identifier;
+        //    
+        //        SoundEffectInstance instance = soundEffects[i].CreateInstance();
+        //
+        //        if (instance != null)
+        //        {
+        //            instance.Volume = volume;
+        //
+        //            if (pan > 1)
+        //            {
+        //                pan = 1;
+        //            }
+        //            else if (pan < -1)
+        //            {
+        //                pan = -1;
+        //            }
+        //
+        //            instance.Pan = pan;
+        //            instance.Pitch = -0.2f + ((float)StaticFunctions.GetRandomValue() * 0.4f);
+        //            instance.Play();
+        //
+        //            soundEffectBuffer.Add(instance);
+        //        }
+        //    }
+        //}
+
+        public void PlaySoundEffect(SoundEffects identifier, float pan = 0, float pitch = 0)
         {
-            if (!muted && LoadSoundEffects && soundEffectBuffer.Count < 32)
-            {
-                int i = (int)identifier;
-            
-                SoundEffectInstance instance = soundEffects[i].CreateInstance();
-
-                if (instance != null)
-                {
-                    instance.Volume = volume;
-
-                    if (pan > 1)
-                    {
-                        pan = 1;
-                    }
-                    else if (pan < -1)
-                    {
-                        pan = -1;
-                    }
-
-                    instance.Pan = pan;
-                    instance.Pitch = -0.2f + ((float)StaticFunctions.GetRandomValue() * 0.4f);
-                    instance.Play();
-
-                    soundEffectBuffer.Add(instance);
-                }
-            }
-        }
-
-        public void PlaySoundEffect(SoundEffects identifier, float pan, float pitch)
-        {
-            if (!muted && LoadSoundEffects && soundEffectBuffer.Count < 32)
+            if (!muted && LoadSoundEffects && soundEffectBuffer.Count < SoundEffectBufferMaxCount)
             {
                 int i = (int)identifier;
 
@@ -179,7 +209,7 @@ namespace SpaceProject
 
         public void LoopSoundEffect(SoundEffects identifier, float pan, float pitch)
         {
-            if (!muted && LoadSoundEffects && soundEffectBuffer.Count < 32)
+            if (!muted && LoadSoundEffects && soundEffectBuffer.Count < SoundEffectBufferMaxCount)
             {
                 int i = (int)identifier;
 

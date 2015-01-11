@@ -10,11 +10,10 @@ namespace SpaceProject
 {
     public class Camera
     {
-
         public Vector2 cameraPos;
 
         private const float zoomUpperLimit = 1.5f;
-        private const float zoomLowerLimit = 0.5f;
+        private const float zoomLowerLimit = 0.0001f;
 
         private float cameraZoom;
         private Matrix transform;
