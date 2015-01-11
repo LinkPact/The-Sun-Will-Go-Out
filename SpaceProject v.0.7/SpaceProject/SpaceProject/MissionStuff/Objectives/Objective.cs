@@ -29,6 +29,7 @@ namespace SpaceProject
 
         protected EventTextCanvas eventTextCanvas;
         protected EventText objectiveCompletedEventText;
+        public EventText ObjectiveCompletedEventText { get { return objectiveCompletedEventText; } set { objectiveCompletedEventText = value; } }
         protected EventText objectiveFailedEventText;
 
         protected bool isOnCompletedCalled;
