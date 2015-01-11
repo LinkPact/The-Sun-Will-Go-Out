@@ -107,6 +107,8 @@ namespace SpaceProject
 
             list.Add(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/distorted_laser"));
             list.Add(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/distorted_laser_with_noise"));
+            list.Add(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/click_laser"));
+            list.Add(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/click_laser_noiseReduced"));
             list.Add(game.Content.Load<SoundEffect>("SoundEffects/basic_laser"));
 
             return list;
