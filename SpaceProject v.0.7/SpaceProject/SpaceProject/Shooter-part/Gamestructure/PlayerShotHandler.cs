@@ -102,20 +102,22 @@ namespace SpaceProject
             ShipInventoryManager.currentPrimaryWeapon = (PlayerWeapon)shotHandlerHelper.currentPrimary;
 
         }
+
         //Delegerar vidare vilket vapen som ska anropas baserat pa en int
         private void UseWeapon(PlayerWeapon weapon, GameTime gameTime)
         {
             if (primaryOn && weapon.Kind.Equals("Primary") && weapon.IsReadyToUse && weapon.EnergyCost < player.MP)
             {
                 weapon.Use(player, gameTime);
-                weapon.PlaySound();
+                //weapon.PlaySound();
             }
 
             if (secondaryOn && weapon.Kind.Equals("Secondary") && weapon.IsReadyToUse && weapon.EnergyCost < player.MP)
             {
                 weapon.Use(player, gameTime);
             }
-        }     
+        }    
+ 
         public void Draw(SpriteBatch spriteBatch)
         { 
             

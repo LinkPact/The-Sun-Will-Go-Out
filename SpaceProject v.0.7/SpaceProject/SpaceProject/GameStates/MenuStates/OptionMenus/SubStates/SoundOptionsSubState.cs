@@ -206,7 +206,7 @@ namespace SpaceProject
                         game.soundEffectsManager.SetSoundVolume(
                             game.soundEffectsManager.GetSoundVolume() - 0.1f);
                 
-                    game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, 0f);
+                    game.soundEffectsManager.PlaySoundEffect(SoundEffects.SmallLaser, 0f);
                     optionsMenuState.SaveSettings();
                     break;
             }

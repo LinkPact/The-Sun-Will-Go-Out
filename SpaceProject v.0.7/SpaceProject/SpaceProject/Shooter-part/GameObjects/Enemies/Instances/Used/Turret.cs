@@ -208,7 +208,7 @@ namespace SpaceProject
                 Game.stateManager.shooterState.gameObjects.Add(laser2);
 
                 shootingDelay2 = 350;
-                Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
+                Game.soundEffectsManager.PlaySoundEffect(SoundEffects.SmallLaser, soundPan);
             }
 
             if (shootingDelay2 != -1 && lastTimeShot >= shootingDelay2)
@@ -236,7 +236,7 @@ namespace SpaceProject
 
                 shootingDelay2 = -1;
 
-                Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
+                Game.soundEffectsManager.PlaySoundEffect(SoundEffects.SmallLaser, soundPan);
             }
         }
     }

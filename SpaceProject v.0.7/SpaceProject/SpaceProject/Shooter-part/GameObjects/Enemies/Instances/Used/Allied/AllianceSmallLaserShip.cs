@@ -9,7 +9,6 @@ namespace SpaceProject
 {
     /**
      * Small, low-tier ship that shoot three lasers at different angles
-     * Also uses a weak shield
      */
 
     class AllianceSmallLaserShip : ShootingEnemyShip
@@ -17,15 +16,12 @@ namespace SpaceProject
         public AllianceSmallLaserShip(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
         {
-            //ObjectName = "RebelThickShooter";
             Setup();
         }
 
         private void Setup()
         {
             fraction = Fraction.alliance;
-
-            //ShieldSetup(CreatureShieldCapacity.low, CreatureShieldRegeneration.medium);
         }
 
         public override void Initialize()
@@ -44,6 +40,7 @@ namespace SpaceProject
             TurningSpeed = 2;
 
             movement = Movement.Following;
+            shootSoundID = SoundEffects.SmallLaser;
             SightRange = 400;
 
             //Animationer
@@ -69,8 +66,6 @@ namespace SpaceProject
             
                 Game.stateManager.shooterState.gameObjects.Add(laser1);
             }
-
-            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
         }
 
         protected override void SecondaryShootingPattern(GameTime gameTime)

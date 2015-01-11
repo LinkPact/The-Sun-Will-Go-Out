@@ -58,6 +58,7 @@ namespace SpaceProject
             Damage = 150;
             Speed = 0.03f;
             movement = Movement.Line;
+            shootSoundID = SoundEffects.SmallLaser;
 
             //Animationer
             anim.LoopTime = 500;
@@ -132,8 +133,6 @@ namespace SpaceProject
 
                 Game.AddGameObjToShooter(laser1);
             }
-
-            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);   
         }
 
         protected override void SecondaryShootingPattern(GameTime gameTime)

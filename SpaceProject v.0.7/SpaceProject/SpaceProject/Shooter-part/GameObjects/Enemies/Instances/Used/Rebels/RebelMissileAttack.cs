@@ -39,6 +39,7 @@ namespace SpaceProject
 
             movement = Movement.Line;
             SightRange = 4000;
+            shootSoundID = SoundEffects.ClickLaser;
 
             //Animationer
             anim.LoopTime = 500;
@@ -66,8 +67,6 @@ namespace SpaceProject
             missile.Speed *= 0.6f;
 
             Game.stateManager.shooterState.gameObjects.Add(missile);
-
-            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
         }
 
         protected override void SecondaryShootingPattern(GameTime gameTime)
@@ -96,7 +95,6 @@ namespace SpaceProject
                 Game.stateManager.shooterState.gameObjects.Add(laser);
 
             }
-
         }
     }
 }

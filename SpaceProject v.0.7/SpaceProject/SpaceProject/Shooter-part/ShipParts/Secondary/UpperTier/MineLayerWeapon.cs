@@ -32,6 +32,7 @@ namespace SpaceProject
             energyCostPerSecond = 1f;
             delay = 800;
             Weight = 400;
+            ActivatedSoundID = SoundEffects.ClickLaser;
 
             bullet = new Mine(Game, spriteSheet);
             bullet.Initialize();

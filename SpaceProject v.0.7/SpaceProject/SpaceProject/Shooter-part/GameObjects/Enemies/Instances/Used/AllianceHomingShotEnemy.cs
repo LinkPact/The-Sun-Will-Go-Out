@@ -89,7 +89,7 @@ namespace SpaceProject
                     bullet.Initialize();
 
                     Game.stateManager.shooterState.gameObjects.Add(bullet);
-                    Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
+                    Game.soundEffectsManager.PlaySoundEffect(SoundEffects.SmallLaser, soundPan);
                 }
             }
         }        

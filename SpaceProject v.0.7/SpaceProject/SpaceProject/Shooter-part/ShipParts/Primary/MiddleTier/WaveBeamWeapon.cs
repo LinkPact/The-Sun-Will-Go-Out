@@ -32,8 +32,9 @@ namespace SpaceProject
             Kind = "Primary";
             energyCostPerSecond = 8.5f;
             delay = 40;
-
             Weight = 130;
+            Value = 550;
+            ActivatedSoundID = SoundEffects.SmallLaser;
 
             bullet = new GreenBullet(Game, spriteSheet);
             bullet.Initialize();
@@ -41,12 +42,9 @@ namespace SpaceProject
             damage = Bullet.Damage;
             duration = Bullet.Duration;
             speed = Bullet.Speed;
-        
-            Value = 550;
 
             int shotsPerBatch = 2;
             int timeBetweenBatches = 250;
-
             ShootsInBatchesSetup(shotsPerBatch, timeBetweenBatches);
         }
 
@@ -60,11 +58,6 @@ namespace SpaceProject
             
             Game.stateManager.shooterState.gameObjects.Add(bul);
             return true;
-        }
-
-        public override void PlaySound()
-        {
-            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, 0f);
         }
     }
 }

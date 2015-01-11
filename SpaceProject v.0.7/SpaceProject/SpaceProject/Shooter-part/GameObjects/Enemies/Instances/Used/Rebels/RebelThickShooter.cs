@@ -38,6 +38,7 @@ namespace SpaceProject
 
             movement = Movement.Following;
             SightRange = 400;
+            shootSoundID = SoundEffects.SmallLaser;
 
             //Animationer
             anim.LoopTime = 500;
@@ -71,8 +72,6 @@ namespace SpaceProject
 
             Game.stateManager.shooterState.gameObjects.Add(laser1);
             Game.stateManager.shooterState.gameObjects.Add(laser2);
-
-            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
         }
 
         protected override void SecondaryShootingPattern(GameTime gameTime)

@@ -64,6 +64,7 @@ namespace SpaceProject
             secondaryModule.ShootsInBatchesSetup(3, 3000);
 
             movement = Movement.Line;
+            shootSoundID = SoundEffects.SmallLaser;
 
             //Animationer
             anim.LoopTime = 500;
@@ -96,24 +97,9 @@ namespace SpaceProject
                 Vector2 middleBeamPos = new Vector2(PositionX, PositionY);
                 Vector2 rightBeamPos = new Vector2(PositionX + offset, PositionY);
 
-                //if (beamModuleLeft.HasTargetInLineOfSight(leftBeamPos))
-                //{
                 beamModuleLeft.Activate(leftBeamPos, gameTime);
-                Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
-                //}
-
-                //if (beamModuleMiddle.HasTargetInLineOfSight(middleBeamPos))
-                //{
                 beamModuleMiddle.Activate(middleBeamPos, gameTime);
-                Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
-                //}
-
-                //if (beamModuleRight.HasTargetInLineOfSight(rightBeamPos))
-                //{
                 beamModuleRight.Activate(rightBeamPos, gameTime);
-                Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
-
-                //}
             }
         }
 

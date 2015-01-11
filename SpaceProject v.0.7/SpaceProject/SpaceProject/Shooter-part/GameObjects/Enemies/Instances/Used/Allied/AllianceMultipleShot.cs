@@ -49,11 +49,12 @@ namespace SpaceProject
             Speed = 0.03f;
 
             movement = Movement.Line;
+            shootSoundID = SoundEffects.SmallLaser;
 
             //Animationer
             anim.LoopTime = 500;
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(257, 379, 23, 34)));
-
+            
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
         }
 
@@ -75,7 +76,6 @@ namespace SpaceProject
 
                 Game.stateManager.shooterState.gameObjects.Add(laser1);
             }
-            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
         }
 
         protected override void SecondaryShootingPattern(GameTime gameTime)

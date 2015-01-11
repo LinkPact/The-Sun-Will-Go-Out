@@ -32,6 +32,7 @@ namespace SpaceProject
             energyCostPerSecond = 11f;
             delay = 400;
             Weight = 500;
+            ActivatedSoundID = SoundEffects.BigLaser;
 
             bullet = new BasicLaser(Game, spriteSheet);
             bullet.Initialize();
@@ -45,7 +46,6 @@ namespace SpaceProject
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
-
             Vector2 centerDir = new Vector2(0, -1.0f);
             int nbrOfShots = 12;
             double spread = Math.PI / 8;
@@ -68,11 +68,6 @@ namespace SpaceProject
             }
 
             return true;
-        }
-
-        public override void PlaySound()
-        {
-            //Game.soundEffectsManager.PlaySoundEffect(SoundEffects.Test3, 0f);
         }
     }
 }

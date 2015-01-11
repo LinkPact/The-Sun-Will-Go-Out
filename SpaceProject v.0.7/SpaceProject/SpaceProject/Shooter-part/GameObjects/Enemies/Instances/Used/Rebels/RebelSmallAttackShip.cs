@@ -47,6 +47,7 @@ namespace SpaceProject
             TurningSpeed *= 10f;
 
             movement = Movement.Following;
+            shootSoundID = SoundEffects.SmallLaser;
 
             //Animationer
             anim.LoopTime = 500;

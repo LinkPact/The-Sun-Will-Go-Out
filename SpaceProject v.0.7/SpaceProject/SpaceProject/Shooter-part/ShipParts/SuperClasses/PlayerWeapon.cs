@@ -47,9 +47,6 @@ namespace SpaceProject
             base.Use(player, gameTime);
         }
 
-        public virtual void PlaySound()
-        { }
-
         protected override void SetShipPartVariety(double percent, double quality)
         {
             if (quality < 0) { quality = 0; }

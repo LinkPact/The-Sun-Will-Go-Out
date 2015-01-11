@@ -32,6 +32,7 @@ namespace SpaceProject
             energyCostPerSecond = 2f;
             delay = 800;
             Weight = 500;
+            ActivatedSoundID = SoundEffects.ClickLaser;
 
             bullet = new HomingMissile(Game, spriteSheet);
             bullet.Initialize();

@@ -32,6 +32,7 @@ namespace SpaceProject
             energyCostPerSecond = 5f;
             delay = 500;
             Weight = 100;
+            ActivatedSoundID = SoundEffects.MuffledExplosion;
 
             bullet = new FlameShot(Game, spriteSheet);
             bullet.Initialize();
@@ -125,11 +126,6 @@ namespace SpaceProject
             Game.stateManager.shooterState.gameObjects.Add(shot2_6);
 
             return true;
-        }
-
-        public override void PlaySound()
-        {
-            //Game.soundEffectsManager.PlaySoundEffect(SoundEffects.Test1, 0f);
         }
     }
 }

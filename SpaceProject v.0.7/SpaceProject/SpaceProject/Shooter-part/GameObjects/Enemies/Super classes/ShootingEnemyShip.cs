@@ -36,7 +36,7 @@ namespace SpaceProject
         private List<String> targetTypes = new List<String>();
 
         // Sound
-        protected SoundEffects shootSoundID = SoundEffects.BasicLaser;
+        protected SoundEffects shootSoundID = SoundEffects.SmallLaser;
         public SoundEffects getShootSoundID() { return shootSoundID; }
 
         #endregion

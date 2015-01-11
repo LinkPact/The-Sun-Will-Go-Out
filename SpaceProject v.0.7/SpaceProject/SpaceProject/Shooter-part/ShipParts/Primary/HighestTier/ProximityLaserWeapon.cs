@@ -34,6 +34,7 @@ namespace SpaceProject
             energyCostPerSecond = 11f;
             delay = 80;
             Weight = 150;
+            ActivatedSoundID = SoundEffects.SmallLaser;
 
             bullet = new AdvancedLaser(Game, spriteSheet);
             bullet.Initialize();

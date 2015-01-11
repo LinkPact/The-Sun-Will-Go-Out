@@ -46,6 +46,7 @@ namespace SpaceProject
             secondaryModule.SetFullCharge();
 
             movement = Movement.Line;
+            shootSoundID = SoundEffects.SmallLaser;
 
             //Animationer
             anim.LoopTime = 500;
@@ -77,7 +78,6 @@ namespace SpaceProject
             mine.Speed = 0.15f;
 
             float distance = MathFunctions.ObjectDistance(this, ShootObject);
-
 
             // Shoots at a location close to the players current
             mine.Duration = distance / mine.Speed * 0.9f;

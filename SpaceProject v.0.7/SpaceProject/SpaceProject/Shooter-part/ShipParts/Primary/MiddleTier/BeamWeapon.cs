@@ -37,8 +37,9 @@ namespace SpaceProject
             delay = 10;
             Weight = 200;
             damage = 8.0f;
-
             Value = 600;
+            ActivatedSoundID = SoundEffects.SmallLaser;
+
             Color color = new Color(0, 0, 128);
             beamModule = new FriendlyBeamModule(Game, spriteSheet, damage, color);
             isBeam = true;
@@ -48,11 +49,6 @@ namespace SpaceProject
         {
             beamModule.Activate(player.Position, gameTime);
             return true;
-        }
-
-        public override void PlaySound()
-        {
-            //Game.soundEffectsManager.PlaySoundEffect(SoundEffects.Test4, 0f);
         }
     }
 }

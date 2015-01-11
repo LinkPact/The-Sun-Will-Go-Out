@@ -10,7 +10,9 @@ namespace SpaceProject
     public enum SoundEffects
     {
         // Weapons
-        BasicLaser,
+        SmallLaser,
+        BigLaser,
+        ClickLaser,
 
         // Explosions
         MuffledExplosion,
@@ -29,7 +31,7 @@ namespace SpaceProject
 
     public class SoundEffectsManager
     {
-        private const int SoundEffectBufferMaxCount = 32;
+        private readonly int SoundEffectBufferMaxCount = 32;
 
         public static bool LoadSoundEffects;
 
@@ -43,7 +45,10 @@ namespace SpaceProject
         private bool muted;
         private float volume;
         
-        private CustomSoundEffect basicLaser;
+        private CustomSoundEffect smallLaser;
+        private CustomSoundEffect bigLaser;
+        private CustomSoundEffect clickLaser;
+
         private CustomSoundEffect muffledExplosion;
         private CustomSoundEffect smallExplosion;
 
@@ -74,11 +79,16 @@ namespace SpaceProject
 
             if (LoadSoundEffects)
             {
-                basicLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/basic_laser"), 10);
+                smallLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/basic_laser"), 10);
+                bigLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/distorted_laser"), 10);
+                clickLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/click_laser_noiseReduced"), 10);
+
                 muffledExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom6"), 10);
                 smallExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom9"), 10);
 
-                soundEffects.Add(basicLaser);
+                soundEffects.Add(smallLaser);
+                soundEffects.Add(bigLaser);
+                soundEffects.Add(clickLaser);
                 soundEffects.Add(muffledExplosion);
                 soundEffects.Add(smallExplosion);
 
@@ -107,7 +117,6 @@ namespace SpaceProject
 
             list.Add(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/distorted_laser"));
             list.Add(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/distorted_laser_with_noise"));
-            list.Add(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/click_laser"));
             list.Add(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/click_laser_noiseReduced"));
             list.Add(game.Content.Load<SoundEffect>("SoundEffects/basic_laser"));
 
@@ -117,7 +126,7 @@ namespace SpaceProject
         private int currentLaserTestIndex = 0;
         public void MutateLaserSound_DEVELOP() 
         {
-            basicLaser.UpdateSoundEffect(laserSounds[currentLaserTestIndex]);
+            smallLaser.UpdateSoundEffect(laserSounds[currentLaserTestIndex]);
 
             currentLaserTestIndex++;
             if (currentLaserTestIndex >= laserSounds.Count) 
@@ -126,60 +135,7 @@ namespace SpaceProject
             }
         }
 
-        // Plays specified sound effect with no pan and normal pitch
-        //public void PlaySoundEffect(SoundEffects identifier)
-        //{
-        //    if (!muted && LoadSoundEffects && soundEffectBuffer.Count < 32)
-        //    {
-        //        int i = (int)identifier;
-        //
-        //        SoundEffectInstance instance = soundEffects[i].CreateInstance();
-        //
-        //        if (instance != null)
-        //        {
-        //            instance.Volume = volume;
-        //
-        //            instance.Pan = 0;
-        //            instance.Pitch = 0;
-        //            instance.Play();
-        //
-        //            soundEffectBuffer.Add(instance);
-        //        }
-        //    }
-        //}
-
-        // Plays specified sound effect with random pitch
-        //public void PlaySoundEffect(SoundEffects identifier, float pan)
-        //{
-        //    if (!muted && LoadSoundEffects && soundEffectBuffer.Count < 32)
-        //    {
-        //        int i = (int)identifier;
-        //    
-        //        SoundEffectInstance instance = soundEffects[i].CreateInstance();
-        //
-        //        if (instance != null)
-        //        {
-        //            instance.Volume = volume;
-        //
-        //            if (pan > 1)
-        //            {
-        //                pan = 1;
-        //            }
-        //            else if (pan < -1)
-        //            {
-        //                pan = -1;
-        //            }
-        //
-        //            instance.Pan = pan;
-        //            instance.Pitch = -0.2f + ((float)StaticFunctions.GetRandomValue() * 0.4f);
-        //            instance.Play();
-        //
-        //            soundEffectBuffer.Add(instance);
-        //        }
-        //    }
-        //}
-
-        public void PlaySoundEffect(SoundEffects identifier, float pan = 0, float pitch = 0)
+        public void PlaySoundEffect(SoundEffects identifier, float pan = 0, float pitch = 0, Boolean isLooped = false)
         {
             if (!muted && LoadSoundEffects && soundEffectBuffer.Count < SoundEffectBufferMaxCount)
             {
@@ -202,6 +158,7 @@ namespace SpaceProject
 
                     instance.Pan = pan;
                     instance.Pitch = pitch;
+                    instance.IsLooped = isLooped;
                     instance.Play();
 
                     soundEffectBuffer.Add(instance);
@@ -211,23 +168,24 @@ namespace SpaceProject
 
         public void LoopSoundEffect(SoundEffects identifier, float pan, float pitch)
         {
-            if (!muted && LoadSoundEffects && soundEffectBuffer.Count < SoundEffectBufferMaxCount)
-            {
-                int i = (int)identifier;
-
-                SoundEffectInstance instance = soundEffects[i].CreateInstance();
-
-                if (instance != null)
-                {
-                    instance.Volume = volume;
-                    instance.Pan = pan;
-                    instance.Pitch = pitch;
-                    instance.IsLooped = true;
-                    instance.Play();
-
-                    soundEffectBuffer.Add(instance);
-                }
-            }
+            PlaySoundEffect(identifier, pan, pitch, true);
+            //if (!muted && LoadSoundEffects && soundEffectBuffer.Count < SoundEffectBufferMaxCount)
+            //{
+            //    int i = (int)identifier;
+            //
+            //    SoundEffectInstance instance = soundEffects[i].CreateInstance();
+            //
+            //    if (instance != null)
+            //    {
+            //        instance.Volume = volume;
+            //        instance.Pan = pan;
+            //        instance.Pitch = pitch;
+            //        instance.IsLooped = true;
+            //        instance.Play();
+            //
+            //        soundEffectBuffer.Add(instance);
+            //    }
+            //}
         }
 
         // Stops all instances of the specified sound effect

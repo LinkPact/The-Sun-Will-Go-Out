@@ -10,6 +10,16 @@ namespace SpaceProject
     {
         protected Sprite spriteSheet;
 
+        private Boolean isSoundAssigned = false;
+        private SoundEffects activatedSoundID;
+        protected SoundEffects ActivatedSoundID { 
+            set 
+            { 
+                isSoundAssigned = true;
+                activatedSoundID = value;
+            } 
+        }
+
         protected Boolean isBeam = false;
 
         protected float delay;
@@ -128,11 +138,21 @@ namespace SpaceProject
                     activationCost = energyCostPerSecond * gameTime.ElapsedGameTime.Milliseconds / 1000;
 
                 player.MP -= activationCost;
+
+                ActivationSound();
             }
 
             if (isActivatedThisTurn && shootsInBatches)
             {
                 shotsLeftInBatch--;
+            }
+        }
+
+        private void ActivationSound()
+        {
+            if (isSoundAssigned)
+            {
+                Game.soundEffectsManager.PlaySoundEffect(activatedSoundID);
             }
         }
 

@@ -33,6 +33,7 @@ namespace SpaceProject
             energyCostPerSecond = 9f;
             delay = 450;
             Weight = 500;
+            ActivatedSoundID = SoundEffects.ClickLaser;
 
             bullet = new RegularMissile(Game, spriteSheet);
             bullet.Initialize();
@@ -55,6 +56,5 @@ namespace SpaceProject
             Game.stateManager.shooterState.gameObjects.Add(missile1);
             return true;
         }
-
     }
 }

@@ -33,6 +33,7 @@ namespace SpaceProject
             energyCostPerSecond = 10f;
             delay = 1200;
             Weight = 200;
+            ActivatedSoundID = SoundEffects.BigLaser;
 
             bullet = new BasicLaser(Game, spriteSheet);
             bullet.Initialize();
@@ -54,11 +55,6 @@ namespace SpaceProject
 
             Game.stateManager.shooterState.gameObjects.Add(laser);
             return true;
-        }
-
-        public override void PlaySound()
-        {
-            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, 0f);
         }
     }
 }

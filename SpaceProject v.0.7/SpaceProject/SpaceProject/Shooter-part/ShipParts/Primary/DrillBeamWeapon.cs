@@ -42,6 +42,7 @@ namespace SpaceProject
             energyCostPerSecond = 0.15f;
             delay = 10;
             Weight = 100;
+            ActivatedSoundID = SoundEffects.SmallLaser;
 
             damage = 0.5f;
             miningSpeedCopper = 0.2f;
@@ -71,6 +72,7 @@ namespace SpaceProject
             return true;
 
         }
+
         private GameObjectVertical LocateTarget(Vector2 playerPosition)
         {   
             GameObjectVertical target = null;
@@ -105,6 +107,7 @@ namespace SpaceProject
             if (target != null) return target;
             else return null;
         }
+
         private void BeamUpdate(GameObjectVertical player, GameObjectVertical beamTarget, GameTime gameTime)
         {
             if (beamTarget != null)
@@ -123,6 +126,7 @@ namespace SpaceProject
             else
                 beam.Update_(gameTime, player.PositionX, player.PositionY, 0);
         }
+
         private void InitBeam(Vector2 playerPosition)
         {
             beamOn = true;
@@ -134,12 +138,14 @@ namespace SpaceProject
 
             Game.stateManager.shooterState.gameObjects.Add(beam);
         }
+
         private bool IntervalInsideInterval(float start1, float end1, float start2, float end2)
         {
             if (end1 < start2 || end2 < start1) return false;
 
             return true;
         }
+
         private void ExtractResources(PlayerVerticalShooter player, GameObjectVertical beamTarget)
         {
             float miningDamageFactor = 20;

@@ -46,6 +46,7 @@ namespace SpaceProject
             Damage = 10000;
             Speed = 0.01f;
             movement = Movement.Line;
+            shootSoundID = SoundEffects.BigLaser;
 
             anim.LoopTime = 500;
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(0, 380, 159, 258)));
@@ -82,8 +83,6 @@ namespace SpaceProject
 
                 Game.stateManager.shooterState.gameObjects.Add(bullet);
             }
-
-
         }
     }
 }

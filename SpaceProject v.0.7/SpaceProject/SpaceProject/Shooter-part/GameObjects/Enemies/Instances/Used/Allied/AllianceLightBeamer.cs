@@ -55,8 +55,8 @@ namespace SpaceProject
             Speed = 0.05f;
 
             AddPrimaryModule(10, ShootingMode.Regular);
-
             movement = Movement.Following;
+            shootSoundID = SoundEffects.ClickLaser;
 
             //Animationer
             anim.LoopTime = 500;
@@ -79,14 +79,10 @@ namespace SpaceProject
 
         protected override void ShootingPattern(GameTime gameTime)
         {
-            //if (beamModule.HasTargetInLineOfSight(Position))
-            //{
             if (IsFiring)
             {
                 beamModule.Activate(Position, gameTime);
-                Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BasicLaser, soundPan);
             }
-            //}
         }
 
         protected override void SecondaryShootingPattern(GameTime gameTime)

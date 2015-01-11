@@ -46,11 +46,9 @@ namespace SpaceProject
             
             shooting = new Animation();
             shooting.LoopTime = 1000;
+            shootSoundID = SoundEffects.ClickLaser;
             
             shooting.AddFrame(spriteSheet.GetSubSprite(new Rectangle(509, 80, 25, 30)));
-            //shooting.AddFrame(spriteSheet.GetSubSprite(new Rectangle(451, 45, 23, 25)));
-            //shooting.AddFrame(spriteSheet.GetSubSprite(new Rectangle(476, 45, 23, 25)));
-            //shooting.AddFrame(spriteSheet.GetSubSprite(new Rectangle(501, 45, 23, 25)));
             
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
         }
@@ -58,27 +56,7 @@ namespace SpaceProject
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            //UpdateAnimation(gameTime);
         }
-
-        //public override void Draw(SpriteBatch spriteBatch)
-        //{
-        //    if (!IsKilled)
-        //    {
-        //        if (lastTimeShot >= ShootingDelay - 1000 && ShootObject != null)
-        //            spriteBatch.Draw(shooting.CurrentFrame.Texture, Position, shooting.CurrentFrame.SourceRectangle, Color.White, 0.0f, CenterPoint, 1.0f, SpriteEffects.None, DrawLayer);
-        //        else
-        //        {
-        //            base.Draw(spriteBatch);
-        //        }
-        //    }
-        //}
-
-        //private void UpdateAnimation(GameTime gameTime)
-        //{
-        //    if (lastTimeShot >= ShootingDelay - 1000)
-        //        shooting.Update(gameTime);
-        //}
 
         protected override void ShootingPattern(GameTime gameTime)
         {
