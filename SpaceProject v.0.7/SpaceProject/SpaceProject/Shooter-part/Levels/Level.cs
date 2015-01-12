@@ -100,6 +100,7 @@ namespace SpaceProject
 
         #region runtimeVariables
         public int enemiesKilled;
+        public int enemiesKilledByPlayer;
         public int enemiesLetThrough;
         public int totalLevelEnemyCount;
         public float playTime;
@@ -259,6 +260,7 @@ namespace SpaceProject
             eventsOver = false;
 
             enemiesKilled = 0;
+            enemiesKilledByPlayer = 0;
             enemiesLetThrough = 0;
 
             if (levelSong != null) Game.musicManager.PlayMusic(Music.Asteroids);

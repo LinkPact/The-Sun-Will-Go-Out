@@ -446,6 +446,12 @@ namespace SpaceProject
                     {
                         currentLevel.LevelLoot += ((EnemyShip)obj1).GetLoot();
                         currentLevel.enemiesKilled++;
+
+                        if (obj1.LastHitBy == Tracker.Player
+                            && !(obj1 is Meteorite))
+                        {
+                            currentLevel.enemiesKilledByPlayer++;
+                        }
                     }
 
                     if ((obj1.IsOutside && obj1 is EnemyShip))

@@ -7,9 +7,18 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
+    public enum Tracker
+    {
+        None,
+        Player,
+        Ally
+    }
+
     public class PlayerBullet : Bullet
     {
         protected Random random;
+        protected Tracker tracker;
+        public Tracker Tracker { get { return tracker; } set { tracker = value; } }
 
         public PlayerBullet(Game1 Game, Sprite spriteSheet) :
             base(Game, spriteSheet)
@@ -20,6 +29,7 @@ namespace SpaceProject
         public override void Initialize()
         {
             base.Initialize();
+            tracker = Tracker.Player;
         }
 
         public override void Update(GameTime gameTime)

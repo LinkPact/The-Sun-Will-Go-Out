@@ -132,6 +132,7 @@ namespace SpaceProject
         private static void CollideBulletEnemy(PlayerBullet bullet, EnemyShip enemy)
         {
             bullet.InflictDamage(enemy);
+            enemy.LastHitBy = bullet.Tracker;
             enemy.InflictDamage(bullet);
         }
 

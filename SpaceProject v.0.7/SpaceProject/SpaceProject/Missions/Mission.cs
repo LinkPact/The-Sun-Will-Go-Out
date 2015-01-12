@@ -19,6 +19,14 @@ namespace SpaceProject
         FailedDead              // 6
     }
 
+    public enum TextType
+    {
+        Introduction,
+        Event,
+        Completed,
+        Failed
+    }
+
     public abstract class Mission
     {
         protected Game1 Game;
@@ -57,7 +65,7 @@ namespace SpaceProject
 
         private StateOfMission missionState;
 
-        private int moneyReward;
+        protected int moneyReward;
         private int progressReward;
         private int reputationReward;
 
@@ -589,6 +597,44 @@ namespace SpaceProject
         protected List<EventText> GetAllResponses(int eventID)
         {
             return EventList[eventID].Value;
+        }
+
+        public void ReplaceObjectiveText(TextType textType, string ID, Object replacement, int index = 0)
+        {
+            switch (textType)
+            {
+                case TextType.Introduction:
+                    if (introductionText.Contains(ID))
+                    {
+                        introductionText =
+                            introductionText.Replace(ID, replacement.ToString());
+                    }
+                    break;
+
+                case TextType.Event:
+                    if (eventList[index].Key.Text.Contains(ID))
+                    {
+                        eventList[index].Key.Text =
+                            eventList[index].Key.Text.Replace(ID, replacement.ToString());
+                    }
+                    break;
+
+                case TextType.Completed:
+                    if (completedText.Contains(ID))
+                    {
+                        completedText =
+                            completedText.Replace(ID, replacement.ToString());
+                    }
+                    break;
+
+                case TextType.Failed:
+                    if (failedText.Contains(ID))
+                    {
+                        failedText =
+                            failedText.Replace(ID, replacement.ToString());
+                    }
+                    break;
+            }
         }
     }
 }

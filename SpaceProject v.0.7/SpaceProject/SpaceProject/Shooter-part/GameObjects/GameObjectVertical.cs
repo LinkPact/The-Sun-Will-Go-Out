@@ -116,6 +116,10 @@ namespace SpaceProject
         protected float soundPan;
         public float SoundPan { get { return soundPan; } private set { ;} }
 
+        // Misc
+        protected Tracker lastHitBy = Tracker.None;
+        public Tracker LastHitBy { get { return lastHitBy; } set { lastHitBy = value; } }
+
         #endregion
         
         public GameObjectVertical(Game1 Game)

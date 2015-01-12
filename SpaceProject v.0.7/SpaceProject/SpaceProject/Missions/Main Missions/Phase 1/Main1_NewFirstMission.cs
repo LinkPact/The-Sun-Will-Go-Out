@@ -21,14 +21,12 @@ namespace SpaceProject
 
         }
 
-        private readonly string ShipsID = "[SHIPS]";
         private readonly string MoneyID = "[MONEY]";
         private readonly string BonusID = "[BONUS]";
 
         private readonly int DownedShipsMultiplier = 10;
 
-        bool textChanged = false;
-
+        private int downedShips = -1;
         private AllyShip ally1;
 
         public Main1_NewFirstMission(Game1 Game, string section, Sprite spriteSheet) :
@@ -100,12 +98,14 @@ namespace SpaceProject
         {
             base.MissionLogic();
 
-            if (!textChanged 
+            if (downedShips == -1 
                 && Game.stateManager.shooterState.GetLevel("RebelsInTheMeteors").IsMapCompleted)
             {
-                int downedShips = Game.stateManager.shooterState.GetLevel("RebelsInTheMeteors").enemiesKilled;
-                ReplaceText(4, GetEvent((int)EventID.AfterCombat), ShipsID, downedShips);
-                textChanged = true;
+                downedShips = Game.stateManager.shooterState.GetLevel("RebelsInTheMeteors").enemiesKilledByPlayer;
+                int bonus = downedShips * DownedShipsMultiplier;
+                ReplaceObjectiveText(TextType.Completed, MoneyID, MoneyReward);
+                ReplaceObjectiveText(TextType.Completed, BonusID, bonus);
+                moneyReward += bonus;
             }
         }
 
@@ -122,20 +122,6 @@ namespace SpaceProject
         public override void SetProgress(int progress)
         {
             this.progress = progress;
-        }
-
-        private void ReplaceText(int objectiveIndex, EventText e, string key, int val)
-        {
-            if (objectives[objectiveIndex].ObjectiveCompletedEventText.Text.Contains(key))
-            {
-                objectives[objectiveIndex].ObjectiveCompletedEventText.Text = 
-                    objectives[objectiveIndex].ObjectiveCompletedEventText.Text.Replace(key, val.ToString());
-            }
-
-            else
-            {
-                throw new ArgumentException("Key not found in specified event text.");
-            }
         }
     }
 }

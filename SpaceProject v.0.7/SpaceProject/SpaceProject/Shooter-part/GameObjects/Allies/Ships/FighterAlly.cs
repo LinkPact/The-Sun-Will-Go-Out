@@ -125,6 +125,7 @@ namespace SpaceProject
                 laser1.PositionY = PositionY;
                 laser1.Direction = new Vector2(0, -1.0f);
                 laser1.Initialize();
+                laser1.Tracker = Tracker.Ally;
                 laser1.Duration = 500;
 
                 BasicLaser laser2 = new BasicLaser(Game, spriteSheet);
@@ -132,6 +133,7 @@ namespace SpaceProject
                 laser2.PositionY = PositionY;
                 laser2.Direction = new Vector2(0, -1.0f);
                 laser2.Initialize();
+                laser2.Tracker = Tracker.Ally;
                 laser2.Duration = 500;
 
                 Game.stateManager.shooterState.gameObjects.Add(laser1);

@@ -15,6 +15,8 @@ namespace SpaceProject
             Introduction
         }
 
+        private readonly string ActionKeyID = "[ACTIONKEY2]";
+
         public Main2_Highfence(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
@@ -26,6 +28,8 @@ namespace SpaceProject
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.GetPlanet("Highfence")));
+
+            ReplaceObjectiveText(TextType.Event, ActionKeyID, ControlManager.GetKeyName(RebindableKeys.Action2), 0);
         }
 
         public override void StartMission()
