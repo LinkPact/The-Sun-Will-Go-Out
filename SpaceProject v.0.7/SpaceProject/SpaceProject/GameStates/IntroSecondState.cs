@@ -10,7 +10,9 @@ namespace SpaceProject
 {
     public class IntroSecondState : GameState
     {
-        private static Random random = new Random();
+        private readonly int NumberOfStars = 100;
+
+        private Random random;
         private TextBox textBox;
         private SpriteFont spriteFont;
         private Sprite contrastBackdrop;
@@ -18,11 +20,11 @@ namespace SpaceProject
         private float txtSpeed;
         private const float txtMaxSpeed = 0.95f;
         private const float txtMinSpeed = 0.25f;
-        //private Texture2D backdrop;
 
         private Sprite starSprite;
         private float starSpeed;
         private Vector2[] starPositions;
+        private List<float> starSpeedModifiers;
         private float starAngle;
         private Vector2 starScale;
 
@@ -48,7 +50,6 @@ namespace SpaceProject
         {
             txtSpeed = 0.15f;
             base.Initialize();
-            //backdrop = Game.Content.Load<Texture2D>("Overworld-Sprites/introBackdrop");
             spriteSheet = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/smallObjectSpriteSheet"), null);
             introMercSprite = spriteSheet.GetSubSprite(new Rectangle(78, 0, 29, 27));
             contrastBackdrop = spriteSheet.GetSubSprite(new Rectangle(0, 0, 1, 1));
@@ -56,11 +57,16 @@ namespace SpaceProject
             starAngle = (float)((Math.PI * 90) / 180) ;
             starScale = new Vector2(1f, 40f);
             starSpeed = 3;
+            random = new Random();
 
             starPositions = new Vector2[100];
-            for (int i = 0; i < starPositions.Length; i++)
+            starSpeedModifiers = new List<float>();
+            for (int i = 0; i < NumberOfStars; i++)
+            {
                 starPositions[i] = new Vector2(random.Next(0, Game.Window.ClientBounds.Width),
                                                random.Next(0, Game.Window.ClientBounds.Height));
+                starSpeedModifiers.Add(random.Next(4, 10) / 10f);
+            }
 
 
             List<string> tempList = new List<string>();
@@ -83,8 +89,6 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            //Game.Window.Title = ("SpaceExplorationGame - " + "Intro");
-
             #region Input
 
             if (ControlManager.CheckHold(RebindableKeys.Up))
@@ -127,17 +131,13 @@ namespace SpaceProject
             if (textBox.TextBoxPosY < 200)
                 Game.stateManager.ChangeState("OverworldState");
 
-            for (int i = 0; i < starPositions.Length; i++)
+            for (int i = 0; i < NumberOfStars; i++)
             {
-                starPositions[i].X += starSpeed * gameTime.ElapsedGameTime.Milliseconds;
+                starPositions[i].X += (starSpeed * starSpeedModifiers[i]) * gameTime.ElapsedGameTime.Milliseconds;
 
                 int returnValue = StaticFunctions.IsPositionOutsideScreenX(starPositions[i], Game);
 
-                if (returnValue == 1)
-                {
-                }
-
-                else if (returnValue == 2)
+                if (returnValue == 2)
                 {
                     starPositions[i] = new Vector2(-30, (float)random.Next(0, Game.Window.ClientBounds.Height));
                 }
@@ -145,10 +145,8 @@ namespace SpaceProject
 
         }
 
-        //private const float widthMultiplier = 0.5f;
         public override void Draw(SpriteBatch spriteBatch)
         {
-
             foreach (Vector2 v in starPositions)
             {
                 if (v.Y > Game.Window.ClientBounds.Height * 2 / 3)

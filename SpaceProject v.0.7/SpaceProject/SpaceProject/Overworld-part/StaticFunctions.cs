@@ -17,7 +17,7 @@ namespace SpaceProject
         //and returns "0" if none of the above is true
         public static int IsPositionOutsideScreenX(Vector2 pos, Game1 Game)
         {
-            if (Game.camera != null)
+            if (GameStateManager.currentState.ToLower().Equals("overworldstate"))
             {
                 if (pos.X < Game.camera.cameraPos.X - (Game.Window.ClientBounds.Width / 2))
                     return 1;
@@ -72,13 +72,6 @@ namespace SpaceProject
             }
         }
 
-        ////Call to pause
-        //public static void Pause(Game1 Game)
-        //{
-        //    Game.player.IsUsed = false;
-        //    Game.stateManager.ChangeState("PauseMenuState");
-        //}
-
         //Checks if the systemsprites in a list should be drawn to the screen
         public static void CheckObjectUsage(Game1 Game, List<GameObjectOverworld> list)
         {
@@ -125,62 +118,6 @@ namespace SpaceProject
         //
         //    return font;
         //}
-
-        private static double lastDouble;
-        public static double GetRandomValue()
-        {
-            Random random = new Random();
-
-        SetValue:
-            double value = random.NextDouble();
-
-            if (value == lastDouble)
-                goto SetValue;
-
-            lastDouble = value;
-
-            return value;
-        }
-
-        private static int lastInt;
-        public static int GetRandomValue(int maxValue)
-        {
-            Random random = new Random();
-
-        SetValue:
-            int value = random.Next(maxValue);
-
-            if (value == lastInt)
-                goto SetValue;
-
-            lastInt = value;
-
-            return value;
-        }
-
-        public static int GetRandomValue(int minValue, int maxValue)
-        {
-            Random random = new Random();
-
-        SetValue:
-            int value = random.Next(minValue, maxValue);
-
-            if (value == lastInt)
-                goto SetValue;
-
-            lastInt = value;
-
-            return value;
-        }
-
-        public static float GetRandomValue(float minValue, float maxValue)
-        {
-            Random random = new Random();
-            float diff = maxValue - minValue;
-            float value = (float)(random.NextDouble() * diff) + minValue;
-
-            return value;
-        }
 
         public static Vector2 NormalizePosition(Vector2 pos, Vector2 origin)
         {

@@ -2,6 +2,7 @@
 
 using SpaceProject;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace SpaceProject
 {
@@ -24,6 +25,8 @@ namespace SpaceProject
         // ----
 
         // Variables
+        private Random random;
+
         private Sprite sprite;
 
         private float speed;
@@ -39,13 +42,14 @@ namespace SpaceProject
         public void Initialize(Vector2 position, Sprite spriteSheet)
         {
             this.position = position;
+            random = new Random();
             sprite = spriteSheet.GetSubSprite(new Rectangle(0, 47, 159, 152));
 
             scale = INIT_SCALE;
             speed = INIT_EXPLOSION_SPEED;
             direction = new Direction(MathFunctions.GetRandomDirection());
             color = INIT_COLOR;
-            lifeTime = BASE_LIFE_TIME + StaticFunctions.GetRandomValue(RANDOM_LIFE_TIME);
+            lifeTime = BASE_LIFE_TIME + random.Next(RANDOM_LIFE_TIME);
         }
 
         public void Update(GameTime gameTime)
