@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
-    public class MainX4_AllianceArc : Mission
+    public class Main10_3b_AllianceArc : Mission
     {
         private readonly string FIRST_ATTACK = "flightTraining_1";
         private readonly string SECOND_ATTACK = "flightTraining_2";
@@ -21,7 +21,7 @@ namespace SpaceProject
             KilledOnLevel,
             AfterAttacks
         }
-        public MainX4_AllianceArc(Game1 Game, string section, Sprite spriteSheet) :
+        public Main10_3b_AllianceArc(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
         }

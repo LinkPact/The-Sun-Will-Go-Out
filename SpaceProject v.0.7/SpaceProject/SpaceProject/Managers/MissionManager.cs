@@ -32,11 +32,9 @@ namespace SpaceProject
         private static Main9_Information mainInformation;
         private static Main10_1_BeginningOfTheEnd mainBeginningOfTheEnd;
         private static Main10_2_TheEnd mainTheEnd;
-        private static MainX3_RebelArc mainRebelArc;
-        private static MainX4_AllianceArc mainAllianceArc;
-        private static MainX5_1_OnYourOwnArc mainOnYourOwnArc;
-        private static MainX5_2a_BurnIt mainBurnIt;
-        private static MainX5_2b_Coward mainCoward;
+        private static Main10_3a_RebelArc mainRebelArc;
+        private static Main10_3b_AllianceArc mainAllianceArc;
+        private static Main10_3c_OnYourOwnArc mainOnYourOwnArc;
 
         // Side Missions
         private static DebtCollection debtCollection;
@@ -142,29 +140,19 @@ namespace SpaceProject
             missions.Add(mainTheEnd);
 
             // Main X3 - Rebel Arc
-            mainRebelArc = new MainX3_RebelArc(game, "MainX3_RebelArc", null);
+            mainRebelArc = new Main10_3a_RebelArc(game, "Main10_3a_RebelArc", null);
             mainRebelArc.Initialize();
             missions.Add(mainRebelArc);
 
             // Main X4 - Alliance Arc
-            mainAllianceArc = new MainX4_AllianceArc(game, "MainX4_AllianceArc", null);
+            mainAllianceArc = new Main10_3b_AllianceArc(game, "Main10_3b_AllianceArc", null);
             mainAllianceArc.Initialize();
             missions.Add(mainAllianceArc);
 
             // Main X5_1 - On Your Own Arc
-            mainOnYourOwnArc = new MainX5_1_OnYourOwnArc(game, "MainX5_1_OnYourOwnArc", null);
+            mainOnYourOwnArc = new Main10_3c_OnYourOwnArc(game, "Main10_3c_OnYourOwnArc", null);
             mainOnYourOwnArc.Initialize();
             missions.Add(mainOnYourOwnArc);
-
-            // Main X5_2a - Burn It
-            mainBurnIt = new MainX5_2a_BurnIt(game, "MainX5_2a_BurnIt", null);
-            mainBurnIt.Initialize();
-            missions.Add(mainBurnIt);
-
-            // Main X5_2b - Coward
-            mainCoward = new MainX5_2b_Coward(game, "MainX5_2b_Coward", null);
-            mainCoward.Initialize();
-            missions.Add(mainCoward);
 
             // Side Missions
 
@@ -760,17 +748,10 @@ namespace SpaceProject
                 mainOnYourOwnArc.MissionState = StateOfMission.CompletedDead;
             }
 
-            if (mainBurnIt.MissionState == StateOfMission.CompletedDead)
+            if (mainOnYourOwnArc.MissionState == StateOfMission.CompletedDead)
             {
                 game.stateManager.ChangeState("OutroState");
                 // TODO: Ending 3
-            }
-
-            else if (mainCoward.MissionState == StateOfMission.Completed
-                && game.messageBox.MessageState == MessageState.Invisible)
-            {
-                game.stateManager.ChangeState("OutroState");
-                // TODO: Ending 4
             }
         }
 

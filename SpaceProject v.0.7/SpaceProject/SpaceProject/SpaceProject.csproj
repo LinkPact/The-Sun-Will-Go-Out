@@ -110,6 +110,7 @@
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Speech" />
     <Reference Include="System.Xml">
       <Private>False</Private>
     </Reference>
@@ -181,6 +182,7 @@
     <Compile Include="GameStates\PlanetAndStationStates\StationStateManager.cs" />
     <Compile Include="GameUtils\MenuDisplay\ShipInventoryDisplayObject.cs" />
     <Compile Include="GameUtils\PlayTime.cs" />
+    <Compile Include="GameUtils\TextToSpeech.cs" />
     <Compile Include="LevelTester\LevelTesterEntry.cs" />
     <Compile Include="Managers\BaseInventoryManager.cs">
       <SubType>Code</SubType>
@@ -197,11 +199,9 @@
     <Compile Include="Missions\Main Missions\Phase 3\Main8_InTheNameOfScience.cs" />
     <Compile Include="Missions\Main Missions\Phase 2\Main6_Infiltration.cs" />
     <Compile Include="Missions\Main Missions\Phase 3\Main7_Retaliation.cs" />
-    <Compile Include="Missions\Main Missions\Phase 4\MainX5_2b_Coward.cs" />
-    <Compile Include="Missions\Main Missions\Phase 4\MainX5_2a_BurnIt.cs" />
-    <Compile Include="Missions\Main Missions\Phase 4\MainX5_1_OnYourOwnArc.cs" />
-    <Compile Include="Missions\Main Missions\Phase 4\MainX4_AllianceArc.cs" />
-    <Compile Include="Missions\Main Missions\Phase 4\MainX3_RebelArc.cs" />
+    <Compile Include="Missions\Main Missions\Phase 4\Main10_3c_OnYourOwnArc.cs" />
+    <Compile Include="Missions\Main Missions\Phase 4\Main10_3b_AllianceArc.cs" />
+    <Compile Include="Missions\Main Missions\Phase 4\Main10_3a_RebelArc.cs" />
     <Compile Include="Missions\Main Missions\Phase 4\Main10_2_TheEnd.cs" />
     <Compile Include="Missions\Main Missions\Phase 4\Main10_1_BeginningOfTheEnd.cs" />
     <Compile Include="Missions\Mission.cs" />

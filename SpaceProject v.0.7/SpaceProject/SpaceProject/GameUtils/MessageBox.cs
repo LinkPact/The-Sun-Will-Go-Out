@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Speech.Synthesis;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -176,6 +177,8 @@ namespace SpaceProject
 
             menuOptions.Clear();
             UpdateButtonLabels();
+
+            TextToSpeech.Speak(realTimeTextBuffer[0], 5);
         }
 
         public void DisplayRealtimeMessage(List<string> txtList, float milliseconds)
@@ -213,6 +216,8 @@ namespace SpaceProject
             menuOptions.Clear();
             UpdateButtonLabels();
             realTimeTextBuffer.Clear();
+
+            TextToSpeech.Speak(textBuffer[0], 2);
         }
 
         public void DisplayMessage(string txt, bool displayDisableTutorialButton, int delay)
@@ -1090,6 +1095,11 @@ namespace SpaceProject
                     messageState = MessageState.Invisible;
                 }
 
+                else
+                {
+                    TextToSpeech.Speak(textBuffer[0], 2);
+                }
+
                 scrollingFinished = false;
                 flushScrollText = false;
             }
@@ -1110,6 +1120,8 @@ namespace SpaceProject
                 else
                 {
                     time = StatsManager.PlayTime.GetFutureOverworldTime(realTimeMessageDelay);
+
+                    TextToSpeech.Speak(realTimeTextBuffer[0], 5);
                 }
             }
 
@@ -1174,6 +1186,8 @@ namespace SpaceProject
                 || messageState == MessageState.Image)
                 && tempTimer < 0)
             {
+                TextToSpeech.Stop();
+
                 if (messageState != MessageState.Image
                     && !scrollingFinished)
                 {

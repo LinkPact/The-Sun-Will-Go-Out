@@ -8,18 +8,20 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
-    public class MainX5_1_OnYourOwnArc : Mission
+    public class Main10_3c_OnYourOwnArc : Mission
     {
         private readonly string AVOID_ALLIANCE = "flightTraining_1";
         private readonly string AVOID_REBELS = "flightTraining_2";
+        private readonly string FINAL_BATTLE = "PirateLevel1";
 
         private enum EventID
         {
             AfterAllianceAttack,
             AfterRebelAttack,
-            KilledOnLevel
+            KilledOnLevel,
+            SettingExplosions
         }
-        public MainX5_1_OnYourOwnArc(Game1 Game, string section, Sprite spriteSheet) :
+        public Main10_3c_OnYourOwnArc(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
         }
@@ -36,6 +38,19 @@ namespace SpaceProject
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
                 Game.stateManager.overworldState.GetPlanet("Telmun"), AVOID_REBELS, LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.AfterRebelAttack), GetEvent((int)EventID.KilledOnLevel),
+                    EventTextCanvas.BaseState)));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                Game.stateManager.overworldState.GetPlanet("Telmun"),
+                new EventTextCapsule(GetEvent((int)EventID.SettingExplosions), null, EventTextCanvas.MessageBox),
+                delegate { },
+                delegate { },
+                delegate { return true; },
+                delegate { return false; }));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
+                Game.stateManager.overworldState.GetPlanet("Telmun"), FINAL_BATTLE, LevelStartCondition.TextCleared,
+                new EventTextCapsule(null, GetEvent((int)EventID.KilledOnLevel),
                     EventTextCanvas.BaseState)));
         }
 

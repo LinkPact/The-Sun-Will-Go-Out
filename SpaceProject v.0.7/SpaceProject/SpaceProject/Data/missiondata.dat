@@ -27,13 +27,13 @@ PosResponse = Yes
 NegResponse = No
 Accept = ""
 FailText = ""
-EventText1 = "You must be the new pilot, right?" A middle aged man eyes you carefully. "I am Berr, and I am coordinating the pilots here at Border Station. Previously, my job was to keep track of our transport ships. Lately the rebels has become an increasing problem, though, both here and in the rest of the sector."#"Currently a small rebel fleet is hiding in a nearby asteroid belt. They are not a threat against the Border Station itself, but they raid and plunder ships and transports that travel between the Border Station and the planet Lavis.#"We must stop them now, before they do any more damage. A small fleet will soon leave to search the asteroid belt for rebels. You should join them. You might learn a thing or two."
+EventText1 = [Berr] "You must be the new pilot, right?" A middle aged man eyes you carefully.#"I am Berr, and I am coordinating the pilots here at Border Station. Previously, my job was to keep track of our transport ships. Lately the rebels has become an increasing problem though, both here and in the rest of the sector."#"Currently a small rebel fleet is hiding in a nearby asteroid belt. They are not a threat against the Border Station itself, but they raid and plunder ships and transports that travel between the Border Station and the planet Lavis.#"We must stop them now, before they do any more damage. A small fleet will soon leave to search the asteroid belt for rebels. You should join them. You might learn a thing or two."
 EventText2 = [SAIR] "So this seems to be going quite well. I hope you are focused."#"I would really dislike getting holes blasted in my hull.."
 EventText3 = [Captain] "So rookie. I see you have one of those silly talking ships."#"Bwahaha! Don't let it distract you."#[SAIR] "..."#[Captain] "Anyway, get over here and talk to me so I can give you a run-down of the mission."
 EventText4 = [Captain] "Let's see.."#"According to our scans, this rebel group should have much weaker weapons than us."#"This will probably be an easy mission, but let's stay cautious."#"They often make up for their poor firepower by sheer numbers."#"We want to shoot down as many of them as possible, but be careful! Better to let a rebel ship slip through than take a hit."#"Remember, our goal is to scare them off, not to eradicate them."
 EventText5 = [Captain] "That's a job well done!"#"That should keep them away for a while."#"Now, let's head back to Border Station."
 EventText6 = [SAIR] "That is one annoying captain..."#"Nevertheless, the mission went well. A successful first mission."
-Success = "Well done, well done! Keep it up, and you will have loads of opportunities in the Alliance."#"Here is your reward! [MONEY] rupees, plus a bonus [BONUS] for the ships you brought down."#"This weapon could also be of use for you. It is called a 'Spread Bullet', a powerful close-range weapon."
+Success = [Berr] "Well done, well done! Keep it up, and you will have loads of opportunities in the Alliance."#"Here is your reward! [MONEY] rupees, plus a bonus [BONUS] for the ships you brought down."#"This weapon could also be of use for you. It is called a 'Spread Bullet', a powerful close-range weapon."
 ObjectiveCompleted = New First Mission completed!
 Fail = ""
 Reward = 100
@@ -81,7 +81,7 @@ EventText8 = [SAIR] "Look, there are another group of rebels on their way. It lo
 EventText9 = [Rebel Ship] "We have no mercy for those who destroy our people. Prepare yourselves!"
 EventText10 = [Captain] "How can they think they are doing any good for anyone?"#"They are killing the people who actually struggle to get the sector to go around."#"The sector is definitely better off without them."
 EventText11 = [Captain] "We are almost there now. It looks like we will avoid further attacks."
-Success = The captain turns to you. He looks tired and relieved. "That was a close one. We might not have been able to make it without your help. Thank you."#"We are travelling with samples of a mineral called Murt. The mineral seems to be of a great interest both for the Alliance and the rebels."#"You should have your reward. Here is the salary as promised."#"Also, I saw that you weren't using a shield on the way here. You can use this Regular Shield. It might not be the best, but definitely better than having no shield at all."#"You should return to Ai at Highfence. There is always work that needs to be done these days."#"By the way, you have been permitted to use the Beacon outside to quickly travel back to Highfence. You will be able to use them to quickly travel to locations you have visited before. It usually comes to a cost, we don’t have much resources after all, but I'll pay for it this time."#The captain salutes you. "Enough chit-chatting. Go now. Stay safe."
+Success = The captain turns to you. He looks tired and relieved.#[Captain] "That was a close one. We might not have been able to make it without your help. Thank you."#"We are travelling with samples of a mineral called Murt. The mineral seems to be of a great interest both for the Alliance and the rebels."#"You should have your reward. Here is the salary as promised."#"Also, I saw that you weren't using a shield on the way here. You can use this Regular Shield. It might not be the best, but definitely better than having no shield at all."#"You should return to Ai at Highfence. There is always work that needs to be done these days."#"By the way, you have been permitted to use the Beacon outside to quickly travel back to Highfence. You will be able to use them to quickly travel to locations you have visited before. It usually comes to a cost, we don’t have much resources after all, but I'll pay for it this time."#The captain salutes you. "Enough chit-chatting. Go now. Stay safe."
 Fail = ""
 Reward = 300
 Progress = 2
@@ -223,7 +223,7 @@ Fail = "Fail"
 Reward = -1
 Progress = -1
 Reputation = -1
-State = 0
+State = 1
 
 [Main9_Information]
 Location = Rebel Station 3
@@ -247,7 +247,7 @@ Fail = "Fail"
 Reward = -1
 Progress = -1
 Reputation = -1
-State = 1
+State = 0
 
 [Main10_1_BeginningOfTheEnd]
 Location = Border Station
@@ -295,7 +295,7 @@ Progress = 2
 Reputation = 3
 State = 0
 
-[MainX3_RebelArc]
+[Main10_3a_RebelArc]
 Location = Rebel Fleet
 Name = Main - Rebel Arc
 Introduction = Introduction
@@ -318,7 +318,7 @@ Progress = 2
 Reputation = 3
 State = 1
 
-[MainX4_AllianceArc]
+[Main10_3b_AllianceArc]
 Location = Alliance Fleet
 Name = Main - Alliance Arc
 Introduction = Introduction
@@ -341,7 +341,7 @@ Progress = 2
 Reputation = 3
 State = 1
 
-[MainX5_1_OnYourOwnArc]
+[Main10_3c_OnYourOwnArc]
 Location = Telmun
 Name = Main - On Your Own
 Introduction = Introduction
@@ -354,6 +354,7 @@ FailText = ""
 EventText1 = Text displayed after avoiding the alliance.#Text explaining you need to avoid the rebels.
 EventText2 = Text displayed after avoiding the rebels.#More text...
 EventText3 = Text displayed when killed on level?
+EventText4 = Text explaining you are setting the explosions and need to survive until the bomb goes off.
 ObjectiveCompleted = ""
 Fail = ""
 Success = "Good job!"
@@ -361,46 +362,6 @@ Reward = 100
 Progress = 2
 Reputation = 3
 State = 1
-
-[MainX5_2a_BurnIt]
-Location = Telmun
-Name = Main - Burn It
-Introduction = Introduction
-ObjectiveText1 = 1
-PosResponse = ""
-NegResponse = ""
-Accept = Text displayed after decision.#Text explaining you need to avoid the alliance
-FailText = ""
-EventText1 = Text explaining you are setting the explosions and need to survive until the bomb goes off.
-EventText2 = Text displayed when killed on level?
-ObjectiveCompleted = ""
-Fail = ""
-Success = "Good job!"
-Reward = 100
-Progress = 2
-Reputation = 3
-State = 0
-
-[MainX5_2b_Coward]
-Location = Telmun
-Name = Main - Coward
-Introduction = Introduction
-ObjectiveText1 = 1
-PosResponse = ""
-NegResponse = ""
-Accept = Text displayed after decision.#Text explaining you need to avoid the alliance
-FailText = ""
-EventText1 = Text explaining you're a coward and tries to flee.#Text explaining the rebels or alliance are trying to shoot you down and that you need to flee. 
-EventText2 = Text after evading the rebel or alliance ships.
-EventText3 = Text displayed when Telmun(the asteroid belt) explodes.
-EventText4 = Text displayed if killed?
-ObjectiveCompleted = ""
-Fail = ""
-Success = "Good job!"
-Reward = 100
-Progress = 2
-Reputation = 3
-State = 0
 
 [Old second mission]
 Location = Highfence
@@ -445,14 +406,14 @@ State = 1
 [SX_FlightTraining]
 Location = Border Station
 Name = Flight Training
-Introduction = "What do we have here, a rookie! You are my favourites. So soft and brave. You know so little about the world, and still you are brimming with visions.#You just want to do some honest work, you say? I don't believe you. But I like that. I will give you a head start to those other rookies. I have a three-mission-program which will make you a full fledged slightly-less-rookie.#What do you say? If you bear with me the whole way through, I might even give you something useful!"
+Introduction = "What do we have here, a rookie! You are my favourites. So soft and brave. You know so little about the world, and still you are brimming with visions.#"You just want to do some honest work, you say? I don't believe you. But I like that. I will give you a head start to those other rookies. I have a three-mission-program which will make you a full fledged slightly-less-rookie.#"What do you say? If you bear with me the whole way through, I might even give you something useful!"
 ObjectiveText1 = Return to the Border Station at coordinates (1840, 130) for further information.
 PosResponse = You decide to try, despite his condesending tone.
 NegResponse = Put off by this weird and slightly annoying man you leave silently.
 Accept = "Good choice. Maybe you will have a chance in this world."#"The first part is simple. There will be a few enemies, but it should me manageble. Avoid them, shoot them down, just don't run into them. If you take some hits, try to avoid them for a while until your shields are up again."#"Leave this station to start the mission. Come back here when you have finished it."
 FailText = "FAIL"
-EventText1 = "Good job! Quick and easy was it, eh? But that was just the warmup. The next one should be a bit more challenging.#Here, you get a chance to train your agility. Sometimes there just are too many enemies to handle. What do you do then, you think? Fight even harder?#No, stupid. You avoid the danger. Circle around the enemies, occationally shooting down some of them. Your business is to survive, not to be some kind of killer-maniac. Most of the time, that is. Let's go!"
-EventText2 = "Good job! A few scratches there, or is it just my old eyes? I couldn't resist, adding those last meteors. An old geezer like me has to have some fun.. Sorry, where where we? Right. The last mission.#I'm sure your trigger finger is itching after that last mission. In this last mission there is actually some point in shooting down the enemies as quick as possible. If you don't they'll shoot you down.#Not so cocky now, are you? I'll tell you, it is your lucky day! Two of my other promising students are preparing to run the mission right now. After all, you need to be able cooperate to survive in this harsh world. Enough talking, fire away!"
+EventText1 = "Good job! Quick and easy was it, eh? But that was just the warmup. The next one should be a bit more challenging.#"Here, you get a chance to train your agility. Sometimes there just are too many enemies to handle. What do you do then, you think? Fight even harder?"#"No, stupid. You avoid the danger. Circle around the enemies, occationally shooting down some of them. Your business is to survive, not to be some kind of killer-maniac. Most of the time, that is. Let's go!"
+EventText2 = "Good job! A few scratches there, or is it just my old eyes? I couldn't resist, adding those last meteors. An old geezer like me has to have some fun.. Sorry, where where we? Right. The last mission.#"I'm sure your trigger finger is itching after that last mission. In this last mission there is actually some point in shooting down the enemies as quick as possible. If you don't they'll shoot you down.#"Not so cocky now, are you? I'll tell you, it is your lucky day! Two of my other promising students are preparing to run the mission right now. After all, you need to be able cooperate to survive in this harsh world. Enough talking, fire away!"
 Success = "I must say, I am quite proud of you. You remind me of my son Ben. He also was a brave and proud young pilot ready to take on the world. He is very dead now. Don't end up like him. Be careful."#"Here, take this weapon. Used right, it might give you an edge against those rebel-pests."
 Fail = "Was that the best you got? I must say, I am a bit disappointed. You will not survive long in this world of you don't take it more seriously. But, generous as I am, I welcome you to come back later and try again."
 Reward = 200

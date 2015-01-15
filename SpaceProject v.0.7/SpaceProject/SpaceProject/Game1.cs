@@ -94,6 +94,8 @@ namespace SpaceProject
             settingsFile = new SaveFile(this);
             settingsFile.Load("settings.ini");
 
+            TextToSpeech.UseTTS = settingsFile.GetPropertyAsBool("sound", "text-to-speech", false);
+
             resolution = new Vector2(settingsFile.GetPropertyAsFloat("visual", "resolutionx", 800),
                                      settingsFile.GetPropertyAsFloat("visual", "resolutiony", 600));
 
@@ -157,6 +159,8 @@ namespace SpaceProject
             helper = new HelperBox(this);
 
             ShopManager.SetShopUpdateTime(ShopManager.PRESET_SHOPTIME);
+
+            TextToSpeech.Initialize();
 
             base.Initialize();
         }

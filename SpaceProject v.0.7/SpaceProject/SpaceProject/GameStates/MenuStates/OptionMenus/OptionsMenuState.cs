@@ -385,6 +385,7 @@ namespace SpaceProject
 
         public void LeaveSubState()
         {
+            SaveSettings();
             activeOptionState = null;
         }
 
@@ -418,6 +419,7 @@ namespace SpaceProject
             soundSaveData.Add("muteSound", Game.soundEffectsManager.isSoundMuted().ToString());
             soundSaveData.Add("soundvolume", Convert.ToString(Game.soundEffectsManager.GetSoundVolume(), CultureInfo.InvariantCulture));
             soundSaveData.Add("loadsound", SoundEffectsManager.LoadSoundEffects.ToString());
+            soundSaveData.Add("text-to-speech", TextToSpeech.UseTTS.ToString());
 
             Game.settingsFile.Save("settings.ini", "sound", soundSaveData);
 

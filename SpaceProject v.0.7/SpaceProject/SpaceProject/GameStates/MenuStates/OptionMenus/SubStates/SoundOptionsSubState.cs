@@ -55,7 +55,7 @@ namespace SpaceProject
             directionalButtons.Add(soundLeftButton);
             directionalButtons.Add(soundRightButton);
 
-            menuOptions = new String[6, 2];
+            menuOptions = new String[7, 2];
         }
 
         public override void OnDisplay()
@@ -88,8 +88,18 @@ namespace SpaceProject
                 menuOptions[4, 1] = "Off";
             }
 
-            menuOptions[5, 0] = "Back";
-            menuOptions[5, 1] = "";
+            menuOptions[5, 0] = "Text-To-Speech";
+            if (TextToSpeech.UseTTS)
+            {
+                menuOptions[5, 1] = "On";
+            }
+            else
+            {
+                menuOptions[5, 1] = "Off";
+            }
+
+            menuOptions[6, 0] = "Back";
+            menuOptions[6, 1] = "";
             base.OnDisplay();
         }
 
@@ -131,19 +141,18 @@ namespace SpaceProject
             {
                 case "music":
                     game.musicManager.SwitchMusicMuted();
-                    optionsMenuState.SaveSettings();
-
-                    PlaySelectSound();
                     break;
             
                 case "sound effects":
                     game.soundEffectsManager.SwitchSoundMuted();
-                    optionsMenuState.SaveSettings();
                     break;
 
                 case "load sound effects":
                     SoundEffectsManager.LoadSoundEffects = !SoundEffectsManager.LoadSoundEffects;
-                    optionsMenuState.SaveSettings();
+                    break;
+
+                case "text-to-speech":
+                    TextToSpeech.UseTTS = !TextToSpeech.UseTTS;
                     break;
             
                 case "back":
@@ -237,6 +246,15 @@ namespace SpaceProject
             else
             {
                 menuOptions[4, 1] = "Off";
+            }
+
+            if (TextToSpeech.UseTTS)
+            {
+                menuOptions[5, 1] = "On";
+            }
+            else
+            {
+                menuOptions[5, 1] = "Off";
             }
         }
 

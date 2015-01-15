@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
-    public class MainX3_RebelArc : Mission
+    public class Main10_3a_RebelArc : Mission
     {
         private readonly string FIRST_ALLIANCE_LEVEL = "flightTraining_1";
         private readonly string SECOND_ALLIANCE_LEVEL = "flightTraining_2";
@@ -21,7 +21,7 @@ namespace SpaceProject
             KilledOnAllianceLevel,
             AfterAllianceAttacks
         }
-        public MainX3_RebelArc(Game1 Game, string section, Sprite spriteSheet) :
+        public Main10_3a_RebelArc(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
         }

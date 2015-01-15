@@ -233,7 +233,9 @@ namespace SpaceProject
         }
 
         public override void ButtonActions()
-        {   
+        {
+            TextToSpeech.Stop();
+
             //Actions for pressing Ok-key in "SELECTMISSION STATE" 
             if (BaseStateManager.ButtonControl.Equals(ButtonControl.Mission))
             {
@@ -359,6 +361,8 @@ namespace SpaceProject
                                                                   false,
                                                                   MissionManager.MissionEventBuffer[0]));
 
+                TextToSpeech.Speak(MissionManager.MissionEventBuffer[0], 2);
+
                 MissionManager.MissionEventBuffer.Remove(MissionManager.MissionEventBuffer[0]);
 
                 if (MissionManager.MissionEventBuffer.Count > 0)
@@ -394,6 +398,8 @@ namespace SpaceProject
                                                               BaseStateManager.LowerScreenRectangle,
                                                               false,
                                                               MissionManager.MissionStartBuffer[0]));
+
+            TextToSpeech.Speak(MissionManager.MissionStartBuffer[0], 2);
 
             MissionManager.MissionStartBuffer.Remove(MissionManager.MissionStartBuffer[0]);
 
@@ -478,6 +484,8 @@ namespace SpaceProject
                     BaseStateManager.ButtonControl = ButtonControl.Response;
                     ResponseCursorIndex = 0;
                 }
+
+                TextToSpeech.Speak(temp[0], 2);
             }
 
         }
@@ -548,6 +556,8 @@ namespace SpaceProject
                     BaseStateManager.ButtonControl = ButtonControl.Confirm;
 
                     selectedMission.IntroductionText += "/ok";
+
+                    TextToSpeech.Speak(temp[0], 2);
                 }
 
                 else
@@ -583,6 +593,8 @@ namespace SpaceProject
                 BaseStateManager.ButtonControl = ButtonControl.Confirm;
 
                 selectedMission.IntroductionText += "/ok";
+
+                TextToSpeech.Speak(temp[0], 2);
             }
         }
 
@@ -594,6 +606,8 @@ namespace SpaceProject
                                                               BaseStateManager.LowerScreenRectangle,
                                                               false,
                                                               selectedMission.AcceptFailedText));
+
+            TextToSpeech.Speak(selectedMission.AcceptFailedText, 2);
 
             missionCursorIndex = 0;
 
@@ -625,13 +639,13 @@ namespace SpaceProject
                             rewardText += "\n" + reward.Name;
                         }
 
-                        temp[temp.Length - 1] += "\n\n" + "You reward is: \n" + completedMissions[0].MoneyReward +
+                        temp[temp.Length - 1] += "\n\n" + "Your reward is: \n" + completedMissions[0].MoneyReward +
                             " Rupees" + rewardText;
                     }
 
                     else
                     {
-                        temp[temp.Length - 1] += "\n\n" + "You reward is: \n" + completedMissions[0].MoneyReward +
+                        temp[temp.Length - 1] += "\n\n" + "Your reward is: \n" + completedMissions[0].MoneyReward +
                             " Rupees";
                     }
 
@@ -669,7 +683,7 @@ namespace SpaceProject
                                                                           false,
                                                                           temp[0] +
                                                                           "\n\n" +
-                                                                          "You reward is: \n" +
+                                                                          "Your reward is: \n" +
                                                                           completedMissions[0].MoneyReward + " Rupees" +
                                                                           rewardText));
                     }
@@ -681,7 +695,7 @@ namespace SpaceProject
                                                                           false,
                                                                           temp[0] +
                                                                           "\n\n" +
-                                                                          "You reward is: \n" +
+                                                                          "Your reward is: \n" +
                                                                           completedMissions[0].MoneyReward + " Rupees"));
                     }
 
@@ -689,6 +703,8 @@ namespace SpaceProject
 
                     BaseStateManager.ButtonControl = ButtonControl.Confirm;
                 }
+
+                TextToSpeech.Speak(temp[0], 2);
             }
         }
 
