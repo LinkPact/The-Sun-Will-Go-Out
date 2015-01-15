@@ -361,7 +361,7 @@ namespace SpaceProject
                                                                   false,
                                                                   MissionManager.MissionEventBuffer[0]));
 
-                TextToSpeech.Speak(MissionManager.MissionEventBuffer[0], 2);
+                TextToSpeech.Speak(MissionManager.MissionEventBuffer[0]);
 
                 MissionManager.MissionEventBuffer.Remove(MissionManager.MissionEventBuffer[0]);
 
@@ -399,7 +399,7 @@ namespace SpaceProject
                                                               false,
                                                               MissionManager.MissionStartBuffer[0]));
 
-            TextToSpeech.Speak(MissionManager.MissionStartBuffer[0], 2);
+            TextToSpeech.Speak(MissionManager.MissionStartBuffer[0]);
 
             MissionManager.MissionStartBuffer.Remove(MissionManager.MissionStartBuffer[0]);
 
@@ -485,7 +485,7 @@ namespace SpaceProject
                     ResponseCursorIndex = 0;
                 }
 
-                TextToSpeech.Speak(temp[0], 2);
+                TextToSpeech.Speak(temp[0]);
             }
 
         }
@@ -557,7 +557,7 @@ namespace SpaceProject
 
                     selectedMission.IntroductionText += "/ok";
 
-                    TextToSpeech.Speak(temp[0], 2);
+                    TextToSpeech.Speak(temp[0]);
                 }
 
                 else
@@ -594,7 +594,7 @@ namespace SpaceProject
 
                 selectedMission.IntroductionText += "/ok";
 
-                TextToSpeech.Speak(temp[0], 2);
+                TextToSpeech.Speak(temp[0]);
             }
         }
 
@@ -607,7 +607,7 @@ namespace SpaceProject
                                                               false,
                                                               selectedMission.AcceptFailedText));
 
-            TextToSpeech.Speak(selectedMission.AcceptFailedText, 2);
+            TextToSpeech.Speak(selectedMission.AcceptFailedText);
 
             missionCursorIndex = 0;
 
@@ -704,7 +704,7 @@ namespace SpaceProject
                     BaseStateManager.ButtonControl = ButtonControl.Confirm;
                 }
 
-                TextToSpeech.Speak(temp[0], 2);
+                TextToSpeech.Speak(temp[0]);
             }
         }
 

@@ -128,6 +128,54 @@ namespace SpaceProject
         {
             return new Vector2(p.X, p.Y);
         }
+
+        public static string GetOSName()
+        {
+            System.OperatingSystem oSInfo =
+                System.Environment.OSVersion;
+
+            switch (oSInfo.Version.Major)
+            {
+                case 5:
+                    switch (oSInfo.Version.Minor)
+                    {
+                        case 0:
+                            return "Windows 2000";
+
+                        case 1:
+                        case 2:
+                            return "Windows XP";
+
+                        default:
+                            return "Unknown";
+                    }
+
+                case 6:
+                    switch (oSInfo.Version.Minor)
+                    {
+                        case 0:
+                            return "Windows Vista";
+
+                        case 1:
+                            return "Windows 7";
+
+                        case 2:
+                            return "Windows 8";
+
+                        case 3:
+                            return "Windows 8.1";
+
+                        default:
+                            return "Unknown";
+                    }
+
+                case 10:
+                    return "Windows 10";
+
+                default:
+                    return "Unknown";
+            }
+        }
     }
 
 }

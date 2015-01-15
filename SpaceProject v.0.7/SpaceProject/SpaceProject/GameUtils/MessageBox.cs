@@ -178,7 +178,7 @@ namespace SpaceProject
             menuOptions.Clear();
             UpdateButtonLabels();
 
-            TextToSpeech.Speak(realTimeTextBuffer[0], 5);
+            TextToSpeech.Speak(realTimeTextBuffer[0], TextToSpeech.FastRate);
         }
 
         public void DisplayRealtimeMessage(List<string> txtList, float milliseconds)
@@ -217,7 +217,7 @@ namespace SpaceProject
             UpdateButtonLabels();
             realTimeTextBuffer.Clear();
 
-            TextToSpeech.Speak(textBuffer[0], 2);
+            TextToSpeech.Speak(textBuffer[0]);
         }
 
         public void DisplayMessage(string txt, bool displayDisableTutorialButton, int delay)
@@ -1097,7 +1097,7 @@ namespace SpaceProject
 
                 else
                 {
-                    TextToSpeech.Speak(textBuffer[0], 2);
+                    TextToSpeech.Speak(textBuffer[0]);
                 }
 
                 scrollingFinished = false;
@@ -1121,7 +1121,7 @@ namespace SpaceProject
                 {
                     time = StatsManager.PlayTime.GetFutureOverworldTime(realTimeMessageDelay);
 
-                    TextToSpeech.Speak(realTimeTextBuffer[0], 5);
+                    TextToSpeech.Speak(realTimeTextBuffer[0], TextToSpeech.FastRate);
                 }
             }
 

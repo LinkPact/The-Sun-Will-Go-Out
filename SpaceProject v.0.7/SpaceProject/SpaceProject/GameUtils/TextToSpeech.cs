@@ -8,17 +8,39 @@ namespace SpaceProject
 {
     public class TextToSpeech
     {
-        // Constants
-        private static readonly string MaleVoice = "Microsoft David Desktop";
-        private static readonly string FemaleVoice = "Microsoft Hazel Desktop";
-        private static readonly string SAIRVoice = "Microsoft Zira Desktop";
+        #region Constants
 
-        // variables
+        /// Windows 8 voices
+        private static readonly string MaleVoiceW8 = "Microsoft David Desktop";
+        private static readonly string FemaleVoiceW8 = "Microsoft Hazel Desktop";
+        private static readonly string SAIRVoiceW8 = "Microsoft Zira Desktop";
+
+        // Windows 7/Vista voices
+        private static readonly string VoiceW7 = "Microsoft Anna";
+
+        // Windows XP voices
+        private static readonly string MaleVoiceWXP = "Microsoft Mike";
+        private static readonly string FemaleVoiceWXP = "Microsoft Mary";
+
+        public const int DefaultRate = 2;
+        public const int FastRate = 5;
+
+        #endregion
+
+        #region Variables
         private static SpeechSynthesizer synth = new SpeechSynthesizer();
+        private static string maleVoice;
+        private static string femaleVoice;
+        private static string sairVoice;
 
         private static bool useTTS;
+        #endregion
 
-        // properties
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets (if OS is supported) text-to-speech activation
+        /// </summary>
         public static bool UseTTS
         {
             get
@@ -28,7 +50,7 @@ namespace SpaceProject
 
             set
             {
-                if (IsVoicesInstalled())
+                if (IsOSSupported())
                 {
                     useTTS = value;
                 }
@@ -38,17 +60,24 @@ namespace SpaceProject
                 }
             }
         }
+
         public static int Volume { get { return synth.Volume; } set { synth.Volume = value; } }
+
+        #endregion
 
         public static void Initialize()
         {
-            if (useTTS)
+            if (IsOSSupported())
             {
+                SetVoices();
                 synth.SetOutputToDefaultAudioDevice();
-                synth.SelectVoice(MaleVoice);
+                synth.SelectVoice(MaleVoiceW8);
             }
         }
 
+        /// <summary>
+        /// Cancels all currently playing text-to-speech voices.
+        /// </summary>
         public static void Stop()
         {
             if (useTTS
@@ -58,16 +87,26 @@ namespace SpaceProject
             }
         }
 
-        public static void Speak(string text, int rate)
+        /// <summary>
+        /// Starts text-to-speech on string parameter if text-to-speech is enabled.
+        /// </summary>
+        /// <param name="text">Text to be spoken</param>
+        /// <param name="rate">Rate of speech</param>
+        public static void Speak(string text, int rate = DefaultRate)
         {
             if (useTTS)
             {
                 synth.Rate = rate;
-                SetVoice(text);
+                SelectVoice(text);
                 synth.SpeakAsync(FormatText(text));
             }
         }
 
+        /// <summary>
+        /// Format string parameter so only text within quotation marks is returned.
+        /// </summary>
+        /// <param name="s">Unformatted text</param>
+        /// <returns>Returns only text to be spoken.</returns>
         private static string FormatText(string s)
         {
             bool copyChar = false;
@@ -87,25 +126,24 @@ namespace SpaceProject
                 }
             }
 
-            if (s.Contains("Ai"))
-            {
-                newString.Replace("Ai", "Eye");
-            }
-
             return newString.ToString();
         }
 
-        private static void SetVoice(string s)
+        /// <summary>
+        /// Selects voice depending on certain keywords in string parameter. 
+        /// </summary>
+        /// <param name="s"></param>
+        private static void SelectVoice(string s)
         {
             if (s.Contains("[SAIR]"))
             {
-                synth.SelectVoice(SAIRVoice);
+                synth.SelectVoice(sairVoice);
             }
 
             else if (s.Contains("[Ai]")
                 || s.Contains("[Squad member 2]"))
             {
-                synth.SelectVoice(FemaleVoice);
+                synth.SelectVoice(femaleVoice);
             }
 
             else if (s.Contains("[Captain]")
@@ -121,41 +159,44 @@ namespace SpaceProject
                 || s.Contains("[Rebel]")
                 || s.Contains("[Civilian]"))
             {
-                synth.SelectVoice(MaleVoice);
+                synth.SelectVoice(maleVoice);
             }
         }
 
-        private static bool IsVoicesInstalled()
+        private static bool IsOSSupported()
         {
-            int count = 0;
+            return !StaticFunctions.GetOSName().Equals("Unknown");
+        }
 
-            foreach (InstalledVoice voice in synth.GetInstalledVoices())
+        /// <summary>
+        /// Sets default voices depending on OS.
+        /// </summary>
+        private static void SetVoices()
+        {
+            switch (StaticFunctions.GetOSName())
             {
-                if (voice.VoiceInfo.Name.Equals(MaleVoice))
-                {
-                    count++;
-                    continue;
-                }
+                case "Windows 2000":
+                case "Windows XP":
+                    maleVoice = MaleVoiceWXP;
+                    femaleVoice = FemaleVoiceWXP;
+                    sairVoice = FemaleVoiceWXP;
+                    break;
 
-                if (voice.VoiceInfo.Name.Equals(FemaleVoice))
-                {
-                    count++;
-                    continue;
-                }
+                case "Windows Vista":
+                case "Windows 7":
+                    maleVoice = VoiceW7;
+                    femaleVoice = VoiceW7;
+                    sairVoice = VoiceW7;
+                    break;
 
-                if (voice.VoiceInfo.Name.Equals(SAIRVoice))
-                {
-                    count++;
-                    continue;
-                }
+                case "Windows 8":
+                case "Windows 8.1":
+                case "Windows 10":
+                    maleVoice = MaleVoiceW8;
+                    femaleVoice = FemaleVoiceW8;
+                    sairVoice = SAIRVoiceW8;
+                    break;
             }
-
-            if (count == 3)
-            {
-                return true;
-            }
-
-            return false;
         }
     }
 }
