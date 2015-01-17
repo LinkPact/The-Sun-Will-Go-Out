@@ -6,6 +6,13 @@ using System.Speech.Synthesis;
 
 namespace SpaceProject
 {
+    public enum TextToSpeechMode
+    {
+        Dialog,
+        Full,
+        Off
+    }
+    
     public class TextToSpeech
     {
         #region Constants
@@ -33,30 +40,30 @@ namespace SpaceProject
         private static string femaleVoice;
         private static string sairVoice;
 
-        private static bool useTTS;
+        private static TextToSpeechMode ttsMode;
         #endregion
 
         #region Properties
 
         /// <summary>
-        /// Gets or sets (if OS is supported) text-to-speech activation
+        /// Gets or sets (if OS is supported) text-to-speech mode.
         /// </summary>
-        public static bool UseTTS
+        public static TextToSpeechMode TTSMode
         {
             get
             {
-                return useTTS;
+                return ttsMode;
             }
 
             set
             {
                 if (IsOSSupported())
                 {
-                    useTTS = value;
+                    ttsMode = value;
                 }
                 else
                 {
-                    useTTS = false;
+                    ttsMode = TextToSpeechMode.Off;
                 }
             }
         }
@@ -80,7 +87,7 @@ namespace SpaceProject
         /// </summary>
         public static void Stop()
         {
-            if (useTTS
+            if (ttsMode != TextToSpeechMode.Off
                 && synth.State == SynthesizerState.Speaking)
             {
                 synth.SpeakAsyncCancelAll();
@@ -94,10 +101,11 @@ namespace SpaceProject
         /// <param name="rate">Rate of speech</param>
         public static void Speak(string text, int rate = DefaultRate)
         {
-            if (useTTS)
+            if (ttsMode != TextToSpeechMode.Off)
             {
                 synth.Rate = rate;
                 SelectVoice(text);
+
                 synth.SpeakAsync(FormatText(text));
             }
         }
@@ -113,17 +121,40 @@ namespace SpaceProject
 
             StringBuilder newString = new StringBuilder("");
 
-            for (int i = 0; i < s.Length; i++)
-            {
-                if (s[i] == '\"')
+
+                for (int i = 0; i < s.Length; i++)
                 {
-                    copyChar = !copyChar;
+                    if (TTSMode == TextToSpeechMode.Dialog)
+                    {
+                        if (s[i] == '\"')
+                        {
+                            copyChar = !copyChar;
+                        }
+                    }
+                    else
+                    {
+                        copyChar = true;
+                    }
+                        
+                    if (copyChar)
+                    {
+                        newString.Append(s[i]);
+                    }      
                 }
 
-                if (copyChar)
-                {
-                    newString.Append(s[i]);
-                }
+            if (newString.ToString().Contains("]"))
+            {
+                newString.Insert(newString.ToString().IndexOf("]"), "says: ");
+            }
+
+            if (newString.ToString().Contains("SAIR"))
+            {
+                newString.Replace("SAIR", "Sair");
+            }
+
+            if (newString.ToString().Contains("Ai"))
+            {
+                newString.Replace("Ai", "Eye");
             }
 
             return newString.ToString();

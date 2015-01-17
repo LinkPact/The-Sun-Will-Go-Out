@@ -89,9 +89,13 @@ namespace SpaceProject
             }
 
             menuOptions[5, 0] = "Text-To-Speech";
-            if (TextToSpeech.UseTTS)
+            if (TextToSpeech.TTSMode == TextToSpeechMode.Full)
             {
-                menuOptions[5, 1] = "On";
+                menuOptions[5, 1] = "Full";
+            }
+            else if (TextToSpeech.TTSMode == TextToSpeechMode.Dialog)
+            {
+                menuOptions[5, 1] = "Dialog";
             }
             else
             {
@@ -152,7 +156,12 @@ namespace SpaceProject
                     break;
 
                 case "text-to-speech":
-                    TextToSpeech.UseTTS = !TextToSpeech.UseTTS;
+                    int index = (int)TextToSpeech.TTSMode;
+                    if (++index > (int)TextToSpeechMode.Off)
+                    {
+                        index = 0;
+                    }
+                    TextToSpeech.TTSMode = (TextToSpeechMode)index;
                     break;
             
                 case "back":
@@ -248,9 +257,13 @@ namespace SpaceProject
                 menuOptions[4, 1] = "Off";
             }
 
-            if (TextToSpeech.UseTTS)
+            if (TextToSpeech.TTSMode == TextToSpeechMode.Full)
             {
-                menuOptions[5, 1] = "On";
+                menuOptions[5, 1] = "Full";
+            }
+            else if (TextToSpeech.TTSMode == TextToSpeechMode.Dialog)
+            {
+                menuOptions[5, 1] = "Dialog";
             }
             else
             {

@@ -419,7 +419,7 @@ namespace SpaceProject
             soundSaveData.Add("muteSound", Game.soundEffectsManager.isSoundMuted().ToString());
             soundSaveData.Add("soundvolume", Convert.ToString(Game.soundEffectsManager.GetSoundVolume(), CultureInfo.InvariantCulture));
             soundSaveData.Add("loadsound", SoundEffectsManager.LoadSoundEffects.ToString());
-            soundSaveData.Add("text-to-speech", TextToSpeech.UseTTS.ToString());
+            soundSaveData.Add("text-to-speech", ((int)TextToSpeech.TTSMode).ToString());
 
             Game.settingsFile.Save("settings.ini", "sound", soundSaveData);
 

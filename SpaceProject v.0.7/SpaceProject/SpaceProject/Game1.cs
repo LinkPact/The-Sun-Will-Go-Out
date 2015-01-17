@@ -94,7 +94,7 @@ namespace SpaceProject
             settingsFile = new SaveFile(this);
             settingsFile.Load("settings.ini");
 
-            TextToSpeech.UseTTS = settingsFile.GetPropertyAsBool("sound", "text-to-speech", false);
+            TextToSpeech.TTSMode = (TextToSpeechMode)settingsFile.GetPropertyAsInt("sound", "text-to-speech", 2);
 
             resolution = new Vector2(settingsFile.GetPropertyAsFloat("visual", "resolutionx", 800),
                                      settingsFile.GetPropertyAsFloat("visual", "resolutiony", 600));
