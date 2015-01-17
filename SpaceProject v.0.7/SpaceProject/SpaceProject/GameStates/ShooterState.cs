@@ -50,7 +50,7 @@ namespace SpaceProject
             player = new PlayerVerticalShooter(Game, spriteSheet);
 
             // (Levels used for development only)
-            levels.Add(new JakobsDevelopLevel(Game, spriteSheet, player, MissionType.rebel));
+            levels.Add(new JakobsDevelopLevel(Game, spriteSheet, player, MissionType.rebel, "JakobDevelop"));
             //
 
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "mapCreator2", "map1", MissionType.none));
@@ -132,6 +132,8 @@ namespace SpaceProject
 
         public override void Initialize()
         {
+            LevelLogger.InitializeNewLogfile();
+
             if (windowHeightOffset == 0 
                 && Game.Window.ClientBounds.Height > 600)
             {
@@ -210,7 +212,7 @@ namespace SpaceProject
             List<Level> removeList = new List<Level>();
             foreach (Level level in levels)
             {
-                if (level.Name.Equals("testRun"))
+                if (level.Identifier.Equals("testRun"))
                 {
                     removeList.Add(level);
                 }
@@ -495,7 +497,7 @@ namespace SpaceProject
         public void BeginLevel(string levelName)
         {
             foreach (Level level in levels)
-                if (level.Name == levelName)
+                if (level.Identifier == levelName)
                 {
                     currentLevel = level;
                     Game.stateManager.shooterState.Initialize();
@@ -537,7 +539,7 @@ namespace SpaceProject
         public Level GetLevel(string levelName)
         {
             foreach (Level level in levels)
-                if (level.Name == levelName)
+                if (level.Identifier == levelName)
                     return level;
 
             return null;

@@ -90,7 +90,7 @@ namespace SpaceProject
                 && level != "")
             {
                 if (Game.stateManager.shooterState.CurrentLevel != null
-                    && Game.stateManager.shooterState.CurrentLevel.Name.ToLower().Equals(level.ToLower())
+                    && Game.stateManager.shooterState.CurrentLevel.Identifier.ToLower().Equals(level.ToLower())
                     && Game.stateManager.shooterState.CurrentLevel.IsObjectiveFailed
                     && GameStateManager.currentState.ToLower().Equals("overworldstate"))
                 {
@@ -99,7 +99,7 @@ namespace SpaceProject
                 }
 
                 else if (Game.stateManager.shooterState.CurrentLevel != null
-                    && Game.stateManager.shooterState.CurrentLevel.Name.ToLower().Equals(level.ToLower())
+                    && Game.stateManager.shooterState.CurrentLevel.Identifier.ToLower().Equals(level.ToLower())
                     && Game.stateManager.shooterState.CurrentLevel.IsObjectiveCompleted
                     && GameStateManager.currentState.ToLower().Equals("overworldstate"))
                 {

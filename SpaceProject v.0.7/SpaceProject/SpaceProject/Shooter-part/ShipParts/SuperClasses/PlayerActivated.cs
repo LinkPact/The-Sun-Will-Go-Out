@@ -131,13 +131,13 @@ namespace SpaceProject
 
             if (isActivatedThisTurn)
             {
-                float activationCost;
-                if (!isBeam)
-                    activationCost = EnergyCost;
-                else
-                    activationCost = energyCostPerSecond * gameTime.ElapsedGameTime.Milliseconds / 1000;
-
+                float activationCost = GetActivationCost(gameTime);
                 player.MP -= activationCost;
+
+                if (Level.IsLogging)
+                {
+                    Level.AddConsumedEnergy(activationCost);
+                }
 
                 ActivationSound();
             }
@@ -146,6 +146,16 @@ namespace SpaceProject
             {
                 shotsLeftInBatch--;
             }
+        }
+
+        private float GetActivationCost(GameTime gameTime)
+        {
+            float activationCost;
+            if (!isBeam)
+                activationCost = EnergyCost;
+            else
+                activationCost = energyCostPerSecond * gameTime.ElapsedGameTime.Milliseconds / 1000;
+            return activationCost;
         }
 
         private void ActivationSound()

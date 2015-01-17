@@ -30,6 +30,7 @@ namespace SpaceProject
         private bool switchMode;
 
         #endregion
+
         public PlayerShotHandler(PlayerVerticalShooter player, Game1 Game, Sprite spriteSheet)
         {
             this.player = player;
@@ -38,6 +39,7 @@ namespace SpaceProject
 
             shotHandlerHelper = new ShotHandlerHelper(Game);
         }
+        
         public void Initialize()
         {
             shotHandlerHelper.Initialize();
@@ -46,6 +48,7 @@ namespace SpaceProject
 
             switchMode = false;
         }
+        
         public void Update(GameTime gameTime)
         {
             if (primaryOn)

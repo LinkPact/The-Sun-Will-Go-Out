@@ -47,7 +47,7 @@ namespace SpaceProject
                 delegate
                 {
                     if (GameStateManager.currentState.Equals("ShooterState") &&
-                        Game.stateManager.shooterState.CurrentLevel.Name.Equals("FirstMissionLevel"))
+                        Game.stateManager.shooterState.CurrentLevel.Identifier.Equals("FirstMissionLevel"))
                     {
                         if (Game.stateManager.shooterState.CurrentLevel.IsObjectiveFailed)
                         {

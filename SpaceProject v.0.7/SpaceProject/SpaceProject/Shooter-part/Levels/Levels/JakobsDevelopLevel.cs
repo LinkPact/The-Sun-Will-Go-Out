@@ -9,10 +9,10 @@ namespace SpaceProject
 {
     class JakobsDevelopLevel : Level
     {
-        public JakobsDevelopLevel(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player, MissionType missionType)
-            : base(Game, spriteSheet, player, missionType)
+        public JakobsDevelopLevel(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player, MissionType missionType, String identifier)
+            : base(Game, spriteSheet, player, missionType, identifier)
         {
-            Name = "JakobDevelop";
+            //Identifier = "JakobDevelop";
             LevelWidth = 500;
         }
 

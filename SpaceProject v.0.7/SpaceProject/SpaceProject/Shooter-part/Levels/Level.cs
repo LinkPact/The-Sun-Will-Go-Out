@@ -34,7 +34,6 @@ namespace SpaceProject
         public int BorderDrawStart {
             get { return RelativeOrigin - 800; }
         }
-        //private float DrawLayer = 0.7f;
 
         protected PlayerVerticalShooter player;
 
@@ -44,10 +43,9 @@ namespace SpaceProject
         protected MissionType missionType;
         public MissionType GetMissionType() { return missionType; }
 
-        public string Name;
+        public string Identifier;
         protected SpriteFont font1;
         protected Random random;
-        //protected SpawnController spawnController;
         protected BackgroundManager backgroundManager;
         private Sprite border;
 
@@ -107,18 +105,25 @@ namespace SpaceProject
         public float PlayTimeRounded { get { return (int)(playTime / 1000);} private set { } }
         #endregion
 
+        #region logging
         private static Boolean isLogging = true;
         public static Boolean IsLogging { get { return isLogging; } }
+
         private static float accumulatedShipDamage;
         public static void AddShipDamage(float damage) { accumulatedShipDamage += damage; }
         private static float accumulatedShieldDamage;
         public static void AddShieldDamage(float damage) { accumulatedShieldDamage += damage; }
+        private static float totalConsumedEnergy;
+        public static void AddConsumedEnergy(float energy) { totalConsumedEnergy += energy; }
+        #endregion
 
         #endregion
 
-        protected Level(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player, MissionType missionType)
+        protected Level(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player, MissionType missionType, String identifier)
         {
             this.Game = Game;
+            this.Identifier = identifier;
+
             border = new Sprite(Game.Content.Load<Texture2D>("Vertical-Sprites/BorderSprite"), new Rectangle(5, 5, 1, 1));
             this.spriteSheet = spriteSheet;
             this.player = player;
@@ -219,8 +224,6 @@ namespace SpaceProject
 
         public virtual void Initialize()
         {
-            WriteLogEntry();
-
             Game.stateManager.shooterState.gameObjects.Clear();
             CreatePlayer();
 
@@ -250,8 +253,6 @@ namespace SpaceProject
             player.AmassedCopper = 0;
             player.AmassedGold = 0;
             player.AmassedTitanium = 0;
-
-            //firstIterationGameOver = true;
 
             untriggeredEvents.Clear();
             activeEvents.Clear();
@@ -348,15 +349,17 @@ namespace SpaceProject
                 ManageEvents(gameTime);
             }
             else
-                CheckGameOverUserInput();
-
-            if (!IsObjectiveCompleted && !IsMapCompleted) { }
-            //SpawnControlUpdate(gameTime);
-            else
             {
-                if (IsObjectiveCompleted)
-                    MapCompletionLogic();
+                CheckGameOverUserInput();
+            }
 
+            if (IsObjectiveCompleted)
+            {
+                MapCompletionLogic();
+            }
+
+            if (IsObjectiveCompleted || IsMapCompleted)
+            {
                 player.TempInvincibility = 1000000;
             }
 
@@ -379,14 +382,6 @@ namespace SpaceProject
             }
         }
 
-        private void LeaveLevel()
-        {
-            if (missionType.Equals(MissionType.pirate))
-                StatsManager.AddLoot((int)(LevelLoot * StatsManager.moneyFactor));
-                //StatsManager.Rupees += LevelLoot;
-            ReturnToPreviousScreen();
-        }
-
         private void CheckGameOverUserInput()
         {
             if (ControlManager.CheckKeypress(Keys.R))
@@ -395,7 +390,7 @@ namespace SpaceProject
             }
             else if (ControlManager.CheckPress(RebindableKeys.Action2))
             {
-                ReturnToPreviousScreen();
+                LeaveLevel();
             }
         }
 
@@ -616,8 +611,13 @@ namespace SpaceProject
         public virtual void ResetLevel()
         { }
         
-        public virtual void ReturnToPreviousScreen()
+        public virtual void LeaveLevel()
         {
+            WriteLogEntry();
+
+            if (missionType.Equals(MissionType.pirate))
+                StatsManager.AddLoot((int)(LevelLoot * StatsManager.moneyFactor));
+
             if (GameStateManager.previousState.Equals("StationState"))
                 Game.stateManager.stationState.LoadStationData(
                     Game.stateManager.overworldState.GetStation(StationState.PreviousStation));
@@ -732,13 +732,28 @@ namespace SpaceProject
 
         private void WriteLogEntry()
         {
-            //levelLogger = new LevelLogger(accumulatedShipDamage.ToString() + "/" + accumulatedShieldDamage.ToString());
             String timeString = DateTime.Now.ToString("HH:mm:ss tt");
 
             LevelLogger.WriteLine("------------------------");
-            LevelLogger.WriteLine(timeString);
-            LevelLogger.WriteLine(String.Format("Ship damage {0}", accumulatedShipDamage));
-            LevelLogger.WriteLine(String.Format("Shield damage {0}", accumulatedShieldDamage));
+            LevelLogger.WriteLine(String.Format("Level\t{0}", Identifier));
+            LevelLogger.WriteLine(String.Format("LoggingTime\t{0}", timeString));
+            LevelLogger.WriteLine(String.Format("LevelRuntime\t{0}", playTime));
+            LevelLogger.WriteLine(String.Format("ObjectiveCompleted\t{0}", IsObjectiveCompleted));
+
+            LevelLogger.WriteLine("");
+            
+            LevelLogger.WriteLine(String.Format("Ship damage\t{0}", accumulatedShipDamage));
+            LevelLogger.WriteLine(String.Format("Shield damage\t{0}", accumulatedShieldDamage));
+            LevelLogger.WriteLine(String.Format("Consumed energy\t{0}", totalConsumedEnergy));
+
+            LevelLogger.WriteLine("");
+
+            LevelLogger.WriteLine(String.Format("Primary1\t{0}", ShipInventoryManager.equippedPrimaryWeapons[0].ToString()));
+            LevelLogger.WriteLine(String.Format("Primary2\t{0}", ShipInventoryManager.equippedPrimaryWeapons[1].ToString()));
+            LevelLogger.WriteLine(String.Format("Secondary\t{0}", ShipInventoryManager.equippedSecondary.ToString()));
+            LevelLogger.WriteLine(String.Format("Cell\t{0}", ShipInventoryManager.equippedEnergyCell.ToString()));
+            LevelLogger.WriteLine(String.Format("Shield\t{0}", ShipInventoryManager.equippedShield.ToString()));
+            LevelLogger.WriteLine(String.Format("Hull\t{0}", ShipInventoryManager.equippedPlating.ToString()));
         }
 
         // Insert position in relative to 

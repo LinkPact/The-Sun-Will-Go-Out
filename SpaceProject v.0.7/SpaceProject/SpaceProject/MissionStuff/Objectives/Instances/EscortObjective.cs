@@ -187,7 +187,7 @@ namespace SpaceProject
             for (int i = 0; i < levels.Count; i++)
             {
                 if (GameStateManager.currentState.Equals("ShooterState")
-                    && game.stateManager.shooterState.CurrentLevel.Name.Equals(levels[i])
+                    && game.stateManager.shooterState.CurrentLevel.Identifier.Equals(levels[i])
                     && game.stateManager.shooterState.GetLevel(levels[i]).IsObjectiveCompleted)
                 {
                     shipToDefendHP = game.stateManager.shooterState.CurrentLevel.GetFreighterHP();
@@ -238,7 +238,7 @@ namespace SpaceProject
             for (int i = 0; i < levels.Count; i++)
             {
                 if (GameStateManager.currentState.Equals("ShooterState")
-                    && game.stateManager.shooterState.CurrentLevel.Name.Equals(levels[i])
+                    && game.stateManager.shooterState.CurrentLevel.Identifier.Equals(levels[i])
                     && game.stateManager.shooterState.GetLevel(levels[i]).GetFreighterHP() <= 0)
                 {
                     return true;
@@ -246,7 +246,7 @@ namespace SpaceProject
 
                 else if (GameStateManager.currentState.Equals("OverworldState")
                     && game.stateManager.shooterState.CurrentLevel != null 
-                    && game.stateManager.shooterState.CurrentLevel.Name.Equals(levels[i])
+                    && game.stateManager.shooterState.CurrentLevel.Identifier.Equals(levels[i])
                     && game.stateManager.shooterState.CurrentLevel.IsObjectiveFailed)
                 {
                     return true;

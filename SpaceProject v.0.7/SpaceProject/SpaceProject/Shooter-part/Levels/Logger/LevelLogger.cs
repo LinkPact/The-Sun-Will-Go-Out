@@ -8,21 +8,15 @@ namespace SpaceProject
 {
     class LevelLogger
     {
-        public LevelLogger(String message)
-        {
-            String basepath = "Log\\testlog.txt";
-
-            System.IO.Directory.CreateDirectory("Log");
-
-            using (StreamWriter file = File.AppendText(@basepath))
-            {
-                file.WriteLine(message);
-            }
-        }
-
         public static String writeDir = "Log";
-        public static String writeFile = "testlog.txt";
+        public static String writeFile = "defaultlog.txt";
         private static String currentPath { get { return writeDir + "\\" + writeFile; } }
+
+        public static void InitializeNewLogfile()
+        {
+            String timeString = DateTime.Now.ToString("Md_HHmmss tt");
+            writeFile = "log" + timeString + ".txt";
+        }
 
         public static void WriteLine(String message)
         {

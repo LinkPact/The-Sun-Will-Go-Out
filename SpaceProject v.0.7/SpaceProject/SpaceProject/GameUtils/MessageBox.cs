@@ -1291,7 +1291,7 @@ namespace SpaceProject
                         break;
 
                     case "Exit Level":
-                        Game.stateManager.shooterState.CurrentLevel.ReturnToPreviousScreen();
+                        Game.stateManager.shooterState.CurrentLevel.LeaveLevel();
                         messageState = SpaceProject.MessageState.Invisible;
                         Game1.Paused = false;
                         break;
