@@ -423,13 +423,13 @@ namespace SpaceProject
                                         switch (val)
                                         {
                                             case 0:
-                                                ((LevelResourceGather)Game.stateManager.shooterState.GetLevel("ResourceGatherLevel")).SetUpLevel(((Planet)BaseState.GetBase()));
-                                                break;
+                                                throw new NotImplementedException("Outdated recource gather level removed during Level-class cleaning // Jakob 150117");
+                                                //((LevelResourceGather)Game.stateManager.shooterState.GetLevel("ResourceGatherLevel")).SetUpLevel(((Planet)BaseState.GetBase()));
 
                                             case 1:
-                                                ((LevelResourceGather)Game.stateManager.shooterState.GetLevel("ResourceGatherLevel")).SetUpLevel(((Planet)BaseState.GetBase()),
-                                                    "green", 45);
-                                                break;
+                                                throw new NotImplementedException("Outdated recource gather level removed during Level-class cleaning // Jakob 150117");
+                                                //((LevelResourceGather)Game.stateManager.shooterState.GetLevel("ResourceGatherLevel")).SetUpLevel(((Planet)BaseState.GetBase()),
+                                                //    "green", 45);
 
                                             case 2:
                                                 tempStrList.Add("green");
@@ -438,9 +438,9 @@ namespace SpaceProject
                                                 tempIntList.Add(18);
                                                 tempStrList.Add("blue");
                                                 tempIntList.Add(9);
-                                                ((LevelResourceGather)Game.stateManager.shooterState.GetLevel("ResourceGatherLevel")).SetUpLevel(((Planet)BaseState.GetBase()),
-                                                    tempStrList, tempIntList);
-                                                break;
+                                                throw new NotImplementedException("Outdated recource gather level removed during Level-class cleaning // Jakob 150117");
+                                                //((LevelResourceGather)Game.stateManager.shooterState.GetLevel("ResourceGatherLevel")).SetUpLevel(((Planet)BaseState.GetBase()),
+                                                //    tempStrList, tempIntList);
                                         }
 
                                         Game.stateManager.shooterState.BeginLevel("ResourceGatherLevel");

@@ -76,9 +76,9 @@ namespace SpaceProject
         {
             if (IsOSSupported())
             {
-                SetVoices();
-                synth.SetOutputToDefaultAudioDevice();
-                synth.SelectVoice(MaleVoiceW8);
+                //SetVoices();
+                //synth.SetOutputToDefaultAudioDevice();
+                //synth.SelectVoice(MaleVoiceW8);
             }
         }
 

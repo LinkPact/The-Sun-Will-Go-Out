@@ -19,5 +19,19 @@ namespace SpaceProject
                 file.WriteLine(message);
             }
         }
+
+        public static String writeDir = "Log";
+        public static String writeFile = "testlog.txt";
+        private static String currentPath { get { return writeDir + "\\" + writeFile; } }
+
+        public static void WriteLine(String message)
+        {
+            System.IO.Directory.CreateDirectory(writeDir);
+
+            using (StreamWriter file = File.AppendText(@currentPath))
+            {
+                file.WriteLine(message);
+            }
+        }
     }
 }

@@ -585,15 +585,8 @@
     <Compile Include="Shooter-part\Visual and Music\BackgroundObjects\Stars\BackgroundStar.cs" />
     <Compile Include="Shooter-part\Levels\CheckPoint.cs" />
     <Compile Include="Shooter-part\Levels\Level.cs" />
-    <Compile Include="Shooter-part\Levels\Oldlevels\DanneLevel.cs" />
-    <Compile Include="Shooter-part\Levels\Oldlevels\EliminationLevel.cs" />
-    <Compile Include="Shooter-part\Levels\Oldlevels\EscortLevel.cs" />
-    <Compile Include="Shooter-part\Levels\Oldlevels\ExperimentLevel.cs" />
-    <Compile Include="Shooter-part\Levels\Levels\LevelMeteor.cs" />
-    <Compile Include="Shooter-part\Levels\Levels\LevelResourceGather.cs" />
     <Compile Include="Shooter-part\Levels\Levels\FirstMissionLevel.cs" />
     <Compile Include="Shooter-part\Levels\Levels\SecondMissionLevel.cs" />
-    <Compile Include="Shooter-part\Levels\Oldlevels\StartingLevel.cs" />
     <Compile Include="Shooter-part\Levels\MapCreatorLevel.cs" />
     <Compile Include="Shooter-part\GameObjects\Misc GameObjects\Supplies.cs" />
     <Compile Include="Shooter-part\GameObjects\Player\PlayerVerticalShooter.cs" />
@@ -701,6 +694,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Overworld-part\GameObjects\Stations\SectorZ\" />
+    <Folder Include="Shooter-part\Levels\Oldlevels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\colonydata.dat">

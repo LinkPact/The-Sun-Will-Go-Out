@@ -247,7 +247,7 @@ namespace SpaceProject
                 else if (GameStateManager.currentState.Equals("OverworldState")
                     && game.stateManager.shooterState.CurrentLevel != null 
                     && game.stateManager.shooterState.CurrentLevel.Name.Equals(levels[i])
-                    && game.stateManager.shooterState.CurrentLevel.IsGameOver)
+                    && game.stateManager.shooterState.CurrentLevel.IsObjectiveFailed)
                 {
                     return true;
                 }

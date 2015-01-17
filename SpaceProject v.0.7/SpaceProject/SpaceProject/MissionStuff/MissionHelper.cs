@@ -94,7 +94,7 @@ namespace SpaceProject
 
         public bool IsLevelFailed(String levelName)
         {
-            return (game.stateManager.shooterState.GetLevel(levelName).IsGameOver 
+            return (game.stateManager.shooterState.GetLevel(levelName).IsObjectiveFailed 
                 && GameStateManager.currentState == "OverworldState");
         }
 

@@ -49,7 +49,7 @@ namespace SpaceProject
                     if (GameStateManager.currentState.Equals("ShooterState") &&
                         Game.stateManager.shooterState.CurrentLevel.Name.Equals("FirstMissionLevel"))
                     {
-                        if (Game.stateManager.shooterState.CurrentLevel.IsGameOver)
+                        if (Game.stateManager.shooterState.CurrentLevel.IsObjectiveFailed)
                         {
                             died = true;
                             ((FirstMissionLevel)Game.stateManager.shooterState.GetLevel("FirstMissionLevel")).SuppliesCount = 0;

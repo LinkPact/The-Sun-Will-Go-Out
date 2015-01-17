@@ -169,23 +169,6 @@ namespace SpaceProject
         public void LoopSoundEffect(SoundEffects identifier, float pan, float pitch)
         {
             PlaySoundEffect(identifier, pan, pitch, true);
-            //if (!muted && LoadSoundEffects && soundEffectBuffer.Count < SoundEffectBufferMaxCount)
-            //{
-            //    int i = (int)identifier;
-            //
-            //    SoundEffectInstance instance = soundEffects[i].CreateInstance();
-            //
-            //    if (instance != null)
-            //    {
-            //        instance.Volume = volume;
-            //        instance.Pan = pan;
-            //        instance.Pitch = pitch;
-            //        instance.IsLooped = true;
-            //        instance.Play();
-            //
-            //        soundEffectBuffer.Add(instance);
-            //    }
-            //}
         }
 
         // Stops all instances of the specified sound effect

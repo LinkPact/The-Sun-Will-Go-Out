@@ -21,8 +21,6 @@ namespace SpaceProject
         private PlayerVerticalShooter player;
 
         //Declaration of level(s)
-        private LevelResourceGather resourceLevel;
-
         private List<Level> levels = new List<Level>();
         private Level currentLevel;
 
@@ -67,13 +65,6 @@ namespace SpaceProject
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "hardLevel", "XHardLevel", MissionType.rebel));
 
             //Levels
-            levels.Add(new LevelMeteor(Game, spriteSheet, player, MissionType.none));
-            levels.Add(new ExperimentLevel(Game, spriteSheet, player, MissionType.none));
-            levels.Add(new EliminationLevel(Game, spriteSheet, player, MissionType.none));
-            levels.Add(new DanneLevel(Game, spriteSheet, player, MissionType.none));
-            levels.Add(new EscortLevel(Game, spriteSheet, player, MissionType.none));
-            resourceLevel = new LevelResourceGather(Game, spriteSheet, player, MissionType.none);
-            levels.Add(resourceLevel);
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "DefendColony", "XDefendColony", MissionType.power));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AttackOnRebelStation", "P2AttackOnRebelStation", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AstroScan", "XAstroscan", MissionType.none));

@@ -89,7 +89,7 @@ namespace SpaceProject
 
         public override bool Failed()
         {
-            return (game.stateManager.shooterState.GetLevel(level).IsGameOver
+            return (game.stateManager.shooterState.GetLevel(level).IsObjectiveFailed
                 && GameStateManager.currentState != "ShooterState");
         }
     }

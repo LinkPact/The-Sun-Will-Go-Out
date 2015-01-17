@@ -61,14 +61,14 @@ namespace SpaceProject
         protected int letThroughCountForLoss;
 
         protected Boolean winOnFinish;
-        private bool levelGivenUp;
+        private bool isLevelGivenUp;
 
         protected float customStartTime;
         public void SetCustomStartTime(float customStartTime) { this.customStartTime = customStartTime; }
         private Boolean isCustomStartSet;
         public Boolean IsCustomStartSet() { return isCustomStartSet; }
 
-        private bool firstIterationGameOver;
+        //private bool firstIterationGameOver;
 
         public int LevelLoot;
 
@@ -107,7 +107,6 @@ namespace SpaceProject
         public float PlayTimeRounded { get { return (int)(playTime / 1000);} private set { } }
         #endregion
 
-        private LevelLogger levelLogger;
         private static Boolean isLogging = true;
         public static Boolean IsLogging { get { return isLogging; } }
         private static float accumulatedShipDamage;
@@ -187,12 +186,12 @@ namespace SpaceProject
             }
         }
         
-        public bool IsGameOver
+        public bool IsObjectiveFailed
         {
             get
             {
                 bool IsGameOver = false;
-                if (player.IsKilled || levelGivenUp)
+                if (player.IsKilled || isLevelGivenUp)
                 {
                     IsGameOver = true;
                 }
@@ -220,15 +219,15 @@ namespace SpaceProject
 
         public virtual void Initialize()
         {
-            levelLogger = new LevelLogger(accumulatedShipDamage.ToString() + "/" + accumulatedShieldDamage.ToString());
-            
+            WriteLogEntry();
+
             Game.stateManager.shooterState.gameObjects.Clear();
             CreatePlayer();
 
             WindowWidth = Game.Window.ClientBounds.Width;
             WindowHeight = Game.Window.ClientBounds.Height;
 
-            levelGivenUp = false;
+            isLevelGivenUp = false;
 
             if (customStartTime == -1)
             {
@@ -252,7 +251,7 @@ namespace SpaceProject
             player.AmassedGold = 0;
             player.AmassedTitanium = 0;
 
-            firstIterationGameOver = true;
+            //firstIterationGameOver = true;
 
             untriggeredEvents.Clear();
             activeEvents.Clear();
@@ -343,27 +342,22 @@ namespace SpaceProject
 
         public virtual void Update(GameTime gameTime)
         {
-            if (!IsGameOver && !levelGivenUp)
+            if (!IsObjectiveFailed && !isLevelGivenUp)
             {
                 playTime += gameTime.ElapsedGameTime.Milliseconds;
                 ManageEvents(gameTime);
             }
             else
-                GameIsOver();
+                CheckGameOverUserInput();
 
-            if (!IsObjectiveCompleted && !IsMapCompleted)
-                SpawnControlUpdate(gameTime);
+            if (!IsObjectiveCompleted && !IsMapCompleted) { }
+            //SpawnControlUpdate(gameTime);
             else
             {
                 if (IsObjectiveCompleted)
-                {
                     MapCompletionLogic();
-                    player.TempInvincibility = 1000000;
-                }
-                else
-                {
-                    player.TempInvincibility = 1000000;
-                }
+
+                player.TempInvincibility = 1000000;
             }
 
             backgroundManager.Update(gameTime);
@@ -393,27 +387,16 @@ namespace SpaceProject
             ReturnToPreviousScreen();
         }
 
-        private void GameIsOver()
+        private void CheckGameOverUserInput()
         {
-            if (firstIterationGameOver)
-            {
-                firstIterationGameOver = false;
-                StatsManager.ReduceShipLife(40);
-                if (StatsManager.GetShipLife() <= 0)
-                    Game.stateManager.ChangeState("OutroState");
-            }
             if (ControlManager.CheckKeypress(Keys.R))
             {
-                //this.ResetLevel();
-                //Game.stateManager.shooterState.Initialize();
                 this.Initialize();
             }
-
             else if (ControlManager.CheckPress(RebindableKeys.Action2))
             {
                 ReturnToPreviousScreen();
             }
-
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
@@ -515,7 +498,7 @@ namespace SpaceProject
                                        SpriteEffects.None,
                                        0.9f);
 
-            else if (IsGameOver)
+            else if (IsObjectiveFailed)
                 spriteBatch.DrawString(font1, "You are dead!\n\nPress 'R' to try again '" + ControlManager.GetKeyName(RebindableKeys.Action2) + "' to go back.", 
                                        new Vector2(Game.Window.ClientBounds.Width / 2,
                                                    Game.Window.ClientBounds.Height / 2) + Game.fontManager.FontOffset,
@@ -526,7 +509,7 @@ namespace SpaceProject
                                        SpriteEffects.None,
                                        1f);
 
-            else if (levelGivenUp)
+            else if (isLevelGivenUp)
                 spriteBatch.DrawString(font1, "You gave up!\n\nPress 'R' to try again or '" + ControlManager.GetKeyName(RebindableKeys.Action2) + "' to go back.",
                                        new Vector2(Game.Window.ClientBounds.Width / 2,
                                                    Game.Window.ClientBounds.Height / 2) + Game.fontManager.FontOffset,
@@ -630,11 +613,6 @@ namespace SpaceProject
         }
         #endregion
 
-        public virtual void SpawnControlUpdate(GameTime gameTime)
-        {
-            List<GameObjectVertical> listRef = Game.stateManager.shooterState.gameObjects;
-        }
-        
         public virtual void ResetLevel()
         { }
         
@@ -747,9 +725,29 @@ namespace SpaceProject
 
         public void GiveUpLevel()
         {
-            levelGivenUp = true;
+            isLevelGivenUp = true;
         }
 
+        // Misc methods //
+
+        private void WriteLogEntry()
+        {
+            //levelLogger = new LevelLogger(accumulatedShipDamage.ToString() + "/" + accumulatedShieldDamage.ToString());
+            String timeString = DateTime.Now.ToString("HH:mm:ss tt");
+
+            LevelLogger.WriteLine("------------------------");
+            LevelLogger.WriteLine(timeString);
+            LevelLogger.WriteLine(String.Format("Ship damage {0}", accumulatedShipDamage));
+            LevelLogger.WriteLine(String.Format("Shield damage {0}", accumulatedShieldDamage));
+        }
+
+        // Insert position in relative to 
+        protected float GetPos(float pos, float max, float window)
+        {
+            return ((pos + 0.5f) / max) * window;
+        }
+
+        // Mission methods
         public void SetFreighterMaxHP(float MaxHP)
         {
             foreach (GameObjectVertical obj in Game.stateManager.shooterState.gameObjects)
@@ -784,12 +782,5 @@ namespace SpaceProject
 
             return -1;
         }
-
-        // Insert position in relative to 
-        protected float GetPos(float pos, float max, float window)
-        {
-            return ((pos + 0.5f) / max) * window;
-        }
-
     }
 }

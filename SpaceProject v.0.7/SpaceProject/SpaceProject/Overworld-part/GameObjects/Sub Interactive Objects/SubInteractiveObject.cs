@@ -91,7 +91,7 @@ namespace SpaceProject
             {
                 if (Game.stateManager.shooterState.CurrentLevel != null
                     && Game.stateManager.shooterState.CurrentLevel.Name.ToLower().Equals(level.ToLower())
-                    && Game.stateManager.shooterState.CurrentLevel.IsGameOver
+                    && Game.stateManager.shooterState.CurrentLevel.IsObjectiveFailed
                     && GameStateManager.currentState.ToLower().Equals("overworldstate"))
                 {
                     Game.messageBox.DisplayMessage(levelFailedText, false);
