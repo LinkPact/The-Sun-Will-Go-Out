@@ -37,7 +37,7 @@ namespace SpaceProject
                                  float startingSpeed, float size, bool randomDir, int index)
         {
             speed = 0.024f + (float)(random.NextDouble() * 0.02f);
-            lifeTime = 50 + random.Next(75);
+            lifeTime = (50 + random.Next(75));
 
             CommonSetup(game, spriteSheet, startingPos, startingDir, startingSpeed, size, randomDir, index);
         }
@@ -48,7 +48,7 @@ namespace SpaceProject
         {
             speed = fragmentSpeed;
             lifeTime = fragmentLifeTime;
-
+        
             CommonSetup(game, spriteSheet, startingPos, startingDir, startingSpeed, size, randomDir, index);
         }
 

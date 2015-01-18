@@ -13,21 +13,11 @@ namespace SpaceProject
         public static Explosion GenerateFixedExplosion(Game1 game, Sprite spriteSheet,
                                                   GameObjectVertical source)
         {
-            float size = source.BoundingWidth / 2;
-            Vector2 position = source.Position;
-            Vector2 direction = source.Direction;
-            float speed = source.Speed;
-
             Explosion tempExplosion = new Explosion(game, spriteSheet);
 
-            ExplosionParticle[] tempParticleArray = new ExplosionParticle[8];
-
-            for (int i = 0; i < 8; i++)
-                tempParticleArray[i] = new ExplosionParticle(game, spriteSheet, position,
-                                                             direction, speed, size,
-                                                             false, i);
-
-            tempExplosion.setParticles(tempParticleArray);
+            int nbrPartices = 8;
+            float size = source.BoundingWidth / 2;
+            tempExplosion.GenerateExplosionParticles(game, spriteSheet, source, nbrPartices, size);
 
             return tempExplosion;
         }
@@ -35,23 +25,12 @@ namespace SpaceProject
         public static Explosion GenerateRandomExplosion(Game1 game, Sprite spriteSheet,
                                                         GameObjectVertical source)
         {
-            float size = source.BoundingWidth + source.BoundingHeight;
-            Vector2 position = source.Position;
-            Vector2 direction = source.Direction;
-            float speed = source.Speed;
-
             Explosion tempExplosion = new Explosion(game, spriteSheet);
 
-            int numberOfParticles = random.Next(8, 16);
+            int nbrParticles = random.Next(8, 16);
+            float size = source.BoundingWidth + source.BoundingHeight;
 
-            ExplosionParticle[] tempParticleArray = new ExplosionParticle[numberOfParticles];
-
-            for (int i = 0; i < numberOfParticles; i++)
-                tempParticleArray[i] = new ExplosionParticle(game, spriteSheet, position,
-                                                             direction, speed, size,
-                                                             true, i);
-
-            tempExplosion.setParticles(tempParticleArray);
+            tempExplosion.GenerateExplosionParticles(game, spriteSheet, source, nbrParticles, size, randomDir: true);
 
             game.soundEffectsManager.PlaySoundEffect(source.getDeathSoundID(), source.SoundPan);
             return tempExplosion;
@@ -60,54 +39,30 @@ namespace SpaceProject
         public static Explosion GenerateBulletExplosion(Game1 game, Sprite spriteSheet,
                                                 GameObjectVertical source)
         {
-            float size = (source.BoundingWidth + source.BoundingHeight) * 3;
-            Vector2 position = source.Position;
-            Vector2 direction = source.Direction *-1;
-            float speed = source.Speed / 10;
-
             Explosion tempExplosion = new Explosion(game, spriteSheet);
 
-            int numberOfParticles = 1;
-
-            ExplosionParticle[] tempParticleArray = new ExplosionParticle[numberOfParticles];
-
-            tempParticleArray[0] = new ExplosionParticle(game, spriteSheet, position,
-                                                             direction, speed, size,
-                                                             true, 0);
-
-            tempExplosion.setParticles(tempParticleArray);
-
+            int nbrParticles = 1;
+            float size = (source.BoundingWidth + source.BoundingHeight) * 3;
+            tempExplosion.GenerateExplosionParticles(game, spriteSheet, source, nbrParticles, size, 
+                randomDir: true, speedFactor: 0.1f, dirFactor: -1);
             game.soundEffectsManager.PlaySoundEffect(source.getDeathSoundID(), source.SoundPan);
             return tempExplosion;
         }
 
-        public static Explosion GenerateBombExplosion(Game1 game, Sprite spriteSheet,
-                                                GameObjectVertical source)
+        public static Explosion GenerateBombExplosion(Game1 game, Sprite spriteSheet, GameObjectVertical source)
         {
-            // EXPERIMENTAL VARIABLES
-            float TESTSIZE = 20;
-            float TESTFRAGMENTSPEED = 0.4f;
-            int TESTLIFETIME = 15;
-            int TESTNBRPARTICLESBASE = 50;
-
-            float size = TESTSIZE;
-            Vector2 position = source.Position;
-            Vector2 direction = source.Direction;
-            float speed = source.Speed;
+            float size = 20;
+            float fragmentSpeed = 0.4f;
+            int lifeTime = 15;
+            int nbrParticlesBase = 50;
 
             Explosion tempExplosion = new Explosion(game, spriteSheet);
 
-            int numberOfParticles = random.Next(TESTNBRPARTICLESBASE, TESTNBRPARTICLESBASE + (int)(TESTNBRPARTICLESBASE * 0.5));
+            int nbrParticles = random.Next(nbrParticlesBase, nbrParticlesBase + (int)(nbrParticlesBase * 0.5));
 
-            ExplosionParticle[] tempParticleArray = new ExplosionParticle[numberOfParticles];
-
-            for (int i = 0; i < numberOfParticles; i++)
-                tempParticleArray[i] = new ExplosionParticle(game, spriteSheet, position,
-                                                             direction, speed, size,
-                                                             true, i, TESTFRAGMENTSPEED, TESTLIFETIME);
-
-            tempExplosion.setParticles(tempParticleArray);
-
+            tempExplosion.GenerateAbsoluteExplosion(game, spriteSheet, source, nbrParticles, size,
+                randomDir: true, speed: source.Speed, fragmentDur: lifeTime, fragmentSpeed: fragmentSpeed);
+            
             game.soundEffectsManager.PlaySoundEffect(source.getDeathSoundID(), source.SoundPan);
             return tempExplosion;
         }
