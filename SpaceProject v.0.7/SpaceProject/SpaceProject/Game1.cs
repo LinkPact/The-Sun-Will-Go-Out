@@ -11,7 +11,6 @@ using Microsoft.Xna.Framework.Media;
 
 namespace SpaceProject
 {
-
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         #region declaration
