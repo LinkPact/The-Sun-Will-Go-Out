@@ -18,9 +18,12 @@ namespace SpaceProject
 
         public override void Invoke()
         {
-            game.stateManager.overworldState.RemoveOverworldObject(ship);
-            game.messageBox.DisplayMessage(GetMessage(), false);
-            game.stateManager.shooterState.BeginRebelPirateLevel();
+            if (StatsManager.reputation >= 0)
+            {
+                game.stateManager.overworldState.RemoveOverworldObject(ship);
+                game.messageBox.DisplayMessage(GetMessage(), false);
+                game.stateManager.shooterState.BeginRebelPirateLevel();
+            }
         }
 
         private string GetMessage()

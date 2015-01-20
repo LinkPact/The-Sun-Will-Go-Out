@@ -65,8 +65,8 @@ namespace SpaceProject
 
             spawnLimitFreighters = 0;//4;
             spawnLimitHangars = 0;//3;
-            spawnLimitRebels = 0;// 5;
-            spawnLimitAlliance = 0;// 5;
+            spawnLimitRebels = 5;// 5;
+            spawnLimitAlliance = 5;// 5;
         }
 
         public void AddRebelShip(Vector2 pos)

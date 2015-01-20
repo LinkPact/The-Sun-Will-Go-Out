@@ -13,7 +13,7 @@ Success = "I must say, I am quite proud of you. You remind me of my son Ben. He 
 Fail = "Was that the best you got? I must say, I am a bit disappointed. You will not survive long in this world of you don't take it more seriously. But, generous as I am, I welcome you to come back later and try again."
 Reward = 200
 Progress = 1
-Reputation = 0
+Reputation = 2
 State = 0
 
 [Main1_NewFirstMission]
@@ -38,7 +38,7 @@ ObjectiveCompleted = New First Mission completed!
 Fail = ""
 Reward = 100
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 1
 
 [Main2_Highfence]
@@ -56,7 +56,7 @@ ObjectiveCompleted = ""
 Fail = ""
 Reward = 100
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 0
 
 [Main3_Rebels]
@@ -85,7 +85,7 @@ Success = The captain turns to you. He looks tired and relieved.#[Captain] "That
 Fail = ""
 Reward = 300
 Progress = 2
-Reputation = 5
+Reputation = 0
 State = 0
 
 [Main4_ToPhaseTwo]
@@ -106,7 +106,7 @@ Success = You arrive at Fortrun.
 Fail = ""
 Reward = 300
 Progress = 2
-Reputation = 5
+Reputation = 0
 State = 0
 
 [Main5_DefendColony]
@@ -137,7 +137,7 @@ Fail = The Rebel force is to strong! You can not defeat them at this point. You 
 ObjectiveFailed = You failed to fight of the rebels. Build up your strength and return. The Rebels must be defeated!
 Reward = 500
 Progress = 2
-Reputation = 2
+Reputation = 0
 State = 0
 
 [Main6_Infiltration]
@@ -166,7 +166,7 @@ Fail = "So you "didn't find him" huh? Your just as useless as the last one. Look
 ObjectiveFailed = You chose to hide the man instead, getting no reward.
 Reward = 300
 Progress = 2
-Reputation = 3
+Reputation = -5
 State = 0
 
 [Main7_Retaliation]
@@ -192,7 +192,7 @@ Fail = "So you "didn't find him" huh? Your just as useless as the last one. Look
 ObjectiveFailed = You chose to hide the man instead, getting no reward.
 Reward = 300
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 0
 
 [Main8_InTheNameOfScience]
@@ -221,8 +221,8 @@ ObjectiveCompleted = "ObjectiveCompleted"
 Success = Rok speaks to the group.#[Rok] "Well done, all of you."#He turns to Ente who looks visibly uncomfortable. Rok bears a slightly sinister look.#"Welcome to the Rebel Base, Ente. We will soon have a little chat, you and me."#There is something very unsettling in his voice. He turns to the group of rebel pilots again.#"I will keep in touch. Come back soon, there will definitely be more to do in the near future."#He and Ente leave the room. While Ente passes, he quickly whispers to you.#"Good luck"
 Fail = "Fail"
 Reward = -1
-Progress = -1
-Reputation = -1
+Progress = 0
+Reputation = 0
 State = 1
 
 [Main9_Information]
@@ -245,8 +245,8 @@ ObjectiveCompleted = "ObjectiveCompleted"
 Success = ""
 Fail = "Fail"
 Reward = -1
-Progress = -1
-Reputation = -1
+Progress = 0
+Reputation = 0
 State = 0
 
 [Main10_1_BeginningOfTheEnd]
@@ -271,7 +271,7 @@ ObjectiveCompleted = ""
 Fail = ""
 Reward = 100
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 0
 
 [Main10_2_TheEnd]
@@ -292,7 +292,7 @@ ObjectiveCompleted = ""
 Fail = ""
 Reward = 100
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 0
 
 [Main10_3a_RebelArc]
@@ -315,7 +315,7 @@ ObjectiveCompleted = ""
 Fail = ""
 Reward = 100
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 1
 
 [Main10_3b_AllianceArc]
@@ -338,7 +338,7 @@ ObjectiveCompleted = ""
 Fail = ""
 Reward = 100
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 1
 
 [Main10_3c_OnYourOwnArc]
@@ -360,7 +360,7 @@ Fail = ""
 Success = "Good job!"
 Reward = 100
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 1
 
 [Old second mission]
@@ -383,7 +383,7 @@ ObjectiveCompleted = You safely escorted the freighter from Highfence to Soelara
 Fail = "That didn't go so well, now did it? Alright, let's try again, just be more careful this time!"
 Reward = 300
 Progress = 2
-Reputation = 5
+Reputation = 0
 State = 0
 
 [SX_JakobTest1]
@@ -400,7 +400,7 @@ EventText1 = "You managed to beat the level, you bastard! You get promotion! You
 Fail = "Haha! Oh, I mean, sorry. Look what a mess you are. Of course you weren't able to make it through the level. But you are welcome to try again. If you do, maybe you too will be a legend one day."
 Reward = 1000
 Progress = 1
-Reputation = 5
+Reputation = 0
 State = 1
 
 [SX_FlightTraining]
@@ -439,7 +439,7 @@ ObjectiveCompleted = You investigated the battlefield for resources.
 Fail = ""
 Reward = 100
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 0
 
 [SX_TheAlliance]
@@ -473,7 +473,7 @@ ObjectiveCompleted = You successfully defended Fortrun Station II and escorted t
 Fail = Mission Failed!
 Reward = 0
 Progress = 2
-Reputation = 10
+Reputation = 0
 State = 0
 
 [SX_AstroDodger]
@@ -493,7 +493,7 @@ Fail = You fail!
 ObjectiveFailed = You failed! D:
 Reward = 400
 Progress = 2
-Reputation = -1
+Reputation = 0
 State = 1
 
 [SX_DebtCollection]
@@ -523,7 +523,7 @@ Fail = "So you "didn't find him" huh? Your just as useless as the last one. Look
 ObjectiveFailed = You chose to hide the man instead, getting no reward.
 Reward = 300
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 1
 
 [SX_AstroScan]
@@ -542,7 +542,7 @@ Fail = No Fail
 ObjectiveFailed = No fail
 Reward = 200
 Progress = 2
-Reputation = -1
+Reputation = 0
 State = 1
 
 [SX_MidMission_Rebel]
@@ -611,7 +611,7 @@ ObjectiveFailed = You lost the medical supplies! The colony will now surely succ
 Fail = "You suck!"
 Reward = 200
 Progress = 2
-Reputation = -3
+Reputation = 0
 State = 1
 
 [SY_Main1]
