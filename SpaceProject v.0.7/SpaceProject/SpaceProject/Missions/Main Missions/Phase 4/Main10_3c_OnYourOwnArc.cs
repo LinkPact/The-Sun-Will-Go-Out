@@ -12,7 +12,7 @@ namespace SpaceProject
     {
         private readonly string AVOID_ALLIANCE = "flightTraining_1";
         private readonly string AVOID_REBELS = "flightTraining_2";
-        private readonly string FINAL_BATTLE = "PirateLevel1";
+        private readonly string FINAL_BATTLE = "flightTraining_3";
 
         private enum EventID
         {
@@ -48,10 +48,20 @@ namespace SpaceProject
                 delegate { return true; },
                 delegate { return false; }));
 
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetPlanet("Telmun"), FINAL_BATTLE, LevelStartCondition.TextCleared,
-                new EventTextCapsule(null, GetEvent((int)EventID.KilledOnLevel),
-                    EventTextCanvas.BaseState)));
+            //objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
+            //    Game.stateManager.overworldState.GetPlanet("Telmun"), FINAL_BATTLE, LevelStartCondition.TextCleared,
+            //    new EventTextCapsule(null, GetEvent((int)EventID.KilledOnLevel),
+            //        EventTextCanvas.BaseState)));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                Game.stateManager.overworldState.GetPlanet("Telmun"),
+                delegate 
+                { 
+                    Game.stateManager.shooterState.BeginLevel(FINAL_BATTLE); 
+                },
+                delegate { },
+                delegate { return Game.stateManager.shooterState.GetLevel(FINAL_BATTLE).IsObjectiveCompleted; },
+                delegate { return false; }));
         }
 
         public override void StartMission()

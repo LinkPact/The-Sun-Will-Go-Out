@@ -293,7 +293,7 @@ Fail = ""
 Reward = 100
 Progress = 2
 Reputation = 0
-State = 1
+State = 0
 
 [Main10_3a_RebelArc]
 Location = Rebel Fleet
@@ -321,19 +321,19 @@ State = 1
 [Main10_3b_AllianceArc]
 Location = Alliance Fleet
 Name = Main - Alliance Arc
-Introduction = Introduction
+Introduction = [Ai] "Long time, no see. It is good to finally see you again."#"We have known for a while that the scientists have located a huge quantity of Murt."#"They have kept their mouths shut about it. It seems like they don't trust us in the Alliance to be capable of using it well."#"After you kidnapped that scientist the rebels suddenly started gathering a large fleet of ships."#"They abandoned many of their stations, even suddenly abandoning raids against transports."#"All of them started travelling here."#"This was the signal. They must have suceeded in extracting information about the Murts position from that scientist."#"We moved out immediately, but we were unprepared for the speed with which the rebels were able to gather their forces."#"They were here before us, and have had more time to scan the asteroids.#"We believe they are able to take control of it any minute now."#"It would be a catastrophe. We wouldn't be able to protect the sector anymore."#"They would be able to roam freely, plundering and spreading chaos throughout the sector."#"We must stop this at all cost. We are battling them right now, and are closely monitoring their movements in the asteroid belt."#"You will be needed here, so make sure you stay around. This will be a tough one."#Do you want to share information about Murt with Ai?
 ObjectiveText1 = 1
 ObjectiveText2 = 2
 ObjectiveText3 = 3
 ObjectiveText4 = 4
-PosResponse = ""
-NegResponse = ""
-Accept = Text explaining that you need to go to Telmun (The asteroid belt)
+PosResponse = Tell her what you know.
+NegResponse = Not yet, I want to check the other options.
+Accept = "What is it you are telling me? You knew all this without telling me until now? Why!"#"We don't have time to take that discussion now."#"I'm glad you came to your senses anyway. We should move out immediately."#"Maybe there is still time to get to the Murt before the rebels. This could tip everything in our favour."
 FailText = ""
-EventText1 = You arrive at Telmun (The asteroid belt).#Text explaining that the rebels are in control of it and that you need to take it back from them.
-EventText2 = Text between first and second attack.
+EventText1 = [Ai] "It must be that asteroid. It is swarmed by rebels, goddammit."#"They seem defensive. They don't have access to the Murt yet."#"When they do, they will swarm us like wasps. It will be the end. But there is still time."#"Our only option is to hit them with what we've got. Let's break down their defenses before it's too late."
+EventText2 = [Ai] "We are almost there. Now, we must take control over Murt. Hit them hard and fast."
 EventText3 = Text displayed if killed?.
-EventText4 = Text displayed after completing levels.#Text explaining you are now ready to crush the rebels.
+EventText4 = [Ai] "Yes! We have won! We have control over Murt."#"Let's incorporate it into our energy systems. They won't stand a chance."#"Let's show them the Alliance's power. Let's show them what happens if you oppose us."#"Let's show them who rules this sector."
 ObjectiveCompleted = ""
 Fail = ""
 Reward = 100
@@ -344,17 +344,17 @@ State = 1
 [Main10_3c_OnYourOwnArc]
 Location = Telmun
 Name = Main - On Your Own
-Introduction = Introduction
+Introduction = [Sair] "It is possible that we could manage to destroy the entire Murt meteorite before anyone else reaches the location."#"It would mean that we keep Murt out of the hands of both the Alliance and the rebels."#"It would also mean that we destroy what rightfully belongs to the people of this sector."#"Something that could transform their life to the better."#"It would kill the entire Alliance- and rebels fleets that are here, and likely burn away this side of New Norrland."#"It would be the end for us."#"We wouldn't be thanked for that. It wouldn't end the conflict."#"But it would prevent the Murt from being misused to kill and control."#"Should we go ahead and do it?"
 ObjectiveText1 = 1
 ObjectiveText2 = 2
-PosResponse = ""
-NegResponse = ""
-Accept = Text displayed after decision.#Text explaining you need to avoid the alliance
+PosResponse = Yes. Let's go ahead and destroy the Murt.
+NegResponse = I have to think a bit more about this.
+Accept = [SAIR] "Well then, it is decided. Let's go!"
 FailText = ""
-EventText1 = Text displayed after avoiding the alliance.#Text explaining you need to avoid the rebels.
-EventText2 = Text displayed after avoiding the rebels.#More text...
+EventText1 = [Alliance] "Identify yourself! Are you a rebel ship? I'm sorry. We can't let you continue."
+EventText2 = [Sair] "Well done. The area seems to be swarmed by both Alliance and rebel scouts. Stay alert."#"A rebel scout fleet is incoming. Let's try to slip through!"
 EventText3 = Text displayed when killed on level?
-EventText4 = Text explaining you are setting the explosions and need to survive until the bomb goes off.
+EventText4 = [Sair] "Finally, we made it through! It appears we managed to make it here before the others."#"To end this, just open re. Hit the asteroid until it takes re. Burning it. Burning it all."#"Are you ready to do it? Is this the way to go? I still don't know."#"Maybe we are removing the system's last hope in vain."#"Or maybe this will prevent further war and chaos."#"No backing down now, I guess. Let's open re!"
 ObjectiveCompleted = ""
 Fail = ""
 Success = "Good job!"

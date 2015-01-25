@@ -121,7 +121,6 @@ namespace SpaceProject
 
             StringBuilder newString = new StringBuilder("");
 
-
                 for (int i = 0; i < s.Length; i++)
                 {
                     if (TTSMode == TextToSpeechMode.Dialog)

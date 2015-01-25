@@ -695,6 +695,13 @@ namespace SpaceProject
             return null;
         }
 
+        public void ActivateBurnOutEnding()
+        {
+            Game.player.speed = 0;
+            ControlManager.DisableControls();
+            burnOutEnding.Activate(Game.camera.Position, 100);
+        }
+
         public void Save()
         {
             SortedDictionary<String, String> saveData = new SortedDictionary<string, string>();
