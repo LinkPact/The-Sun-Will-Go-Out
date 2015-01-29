@@ -884,6 +884,36 @@
     <Content Include="Levels\testlevels\test_lv1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Levels\testlevels\all_pirates\AlliancePirate1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\all_pirates\AlliancePirate2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\all_pirates\AlliancePirate3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\all_pirates\AlliancePirate4.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\all_pirates\AlliancePirate5.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\all_pirates\RebelPirate1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\all_pirates\RebelPirate2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\all_pirates\RebelPirate3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\all_pirates\RebelPirate4.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\all_pirates\RebelPirate5.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Levels\testlevels\jakob_main\6_itnos\m6_itnos_lv1_v2.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

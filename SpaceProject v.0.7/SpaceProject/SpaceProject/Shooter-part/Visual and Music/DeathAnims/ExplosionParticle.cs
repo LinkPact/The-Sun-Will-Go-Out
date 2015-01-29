@@ -33,6 +33,9 @@ namespace SpaceProject
         private int lifeTime;
         public int LifeTime { get { return lifeTime; } private set { ;} }
 
+        private float leftRemovalPos;
+        private float rightRemovalPos;
+
         public ExplosionParticle(Game1 game, Sprite spriteSheet, Vector2 startingPos, Vector2 startingDir,
                                  float startingSpeed, float size, bool randomDir, int index)
         {
@@ -72,6 +75,10 @@ namespace SpaceProject
             position = startingPos;
             startingDirection = startingDir;
             this.startingSpeed = startingSpeed;
+
+            leftRemovalPos = (game.Window.ClientBounds.Width - game.stateManager.shooterState.CurrentLevel.LevelWidth) / 2 - 50;
+            rightRemovalPos = (game.Window.ClientBounds.Width - game.stateManager.shooterState.CurrentLevel.LevelWidth) / 2 + game.stateManager.shooterState.CurrentLevel.LevelWidth + 50;
+
         }
 
         public void Update(GameTime gameTime)
@@ -88,9 +95,7 @@ namespace SpaceProject
             if (b > 5)
                 b -= 5;
 
-            if (position.X < (game.Window.ClientBounds.Width - game.stateManager.shooterState.CurrentLevel.LevelWidth) / 2 - 50 ||
-                position.X > (game.Window.ClientBounds.Width - game.stateManager.shooterState.CurrentLevel.LevelWidth) / 2 +
-                game.stateManager.shooterState.CurrentLevel.LevelWidth + 50)
+            if (position.X < leftRemovalPos || position.X > rightRemovalPos)
             {
                 lifeTime = 0;
             }

@@ -83,12 +83,24 @@ namespace SpaceProject
             jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["8a_1"], "8 - Alliance End (1)", Keys.E, standardEquip: 7));
             jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["8a_2"], "8 - Alliance End (2)", Keys.R, standardEquip: 7));
 
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\rebel\\J_RP1", "J_RP1", Keys.T, standardEquip: 3));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\rebel\\J_RP2", "J_RP2", Keys.Y, standardEquip: 3));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\rebel\\J_RP3", "J_RP3", Keys.U, standardEquip: 3));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\alliance\\J_AP1", "J_AP1", Keys.I, standardEquip: 5));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\alliance\\J_AP2", "J_AP2", Keys.O, standardEquip: 5));
-            jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\alliance\\J_AP3", "J_AP3", Keys.P, standardEquip: 5));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["rp1"], "RebPir1", Keys.F1, standardEquip: 2));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["rp2"], "RebPir2", Keys.F2, standardEquip: 2));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["rp3"], "RebPir3", Keys.F3, standardEquip: 2));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["rp4"], "RebPir4", Keys.F4, standardEquip: 2));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["rp5"], "RebPir5", Keys.F5, standardEquip: 2));
+
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["ap1"], "AllPir1", Keys.F6, standardEquip: 4));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["ap2"], "AllPir2", Keys.F7, standardEquip: 4));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["ap3"], "AllPir3", Keys.F8, standardEquip: 4));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["ap4"], "AllPir4", Keys.F9, standardEquip: 4));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["ap5"], "AllPir5", Keys.F10, standardEquip: 4));
+
+            //jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\rebel\\J_RP1", "J_RP1", Keys.T, standardEquip: 3));
+            //jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\rebel\\J_RP2", "J_RP2", Keys.Y, standardEquip: 3));
+            //jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\rebel\\J_RP3", "J_RP3", Keys.U, standardEquip: 3));
+            //jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\alliance\\J_AP1", "J_AP1", Keys.I, standardEquip: 5));
+            //jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\alliance\\J_AP2", "J_AP2", Keys.O, standardEquip: 5));
+            //jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\alliance\\J_AP3", "J_AP3", Keys.P, standardEquip: 5));
 
             chosenLevel = jakobsLevelEntries[0].GetPath();
         }
@@ -121,6 +133,18 @@ namespace SpaceProject
             pathDict.Add("8r_2", "jakob_main\\8b_rebels\\m10b_rebels_lv2_v2");
             pathDict.Add("8a_1", "jakob_main\\8c_alliance\\m10c_alliance_lv1_v2");
             pathDict.Add("8a_2", "jakob_main\\8c_alliance\\m10c_alliance_lv2_v2");
+
+            pathDict.Add("rp1", "all_pirates\\RebelPirate1");
+            pathDict.Add("rp2", "all_pirates\\RebelPirate2");
+            pathDict.Add("rp3", "all_pirates\\RebelPirate3");
+            pathDict.Add("rp4", "all_pirates\\RebelPirate4");
+            pathDict.Add("rp5", "all_pirates\\RebelPirate5");
+            
+            pathDict.Add("ap1", "all_pirates\\AlliancePirate1");
+            pathDict.Add("ap2", "all_pirates\\AlliancePirate2");
+            pathDict.Add("ap3", "all_pirates\\AlliancePirate3");
+            pathDict.Add("ap4", "all_pirates\\AlliancePirate4");
+            pathDict.Add("ap5", "all_pirates\\AlliancePirate5");
 
             return pathDict;
         }

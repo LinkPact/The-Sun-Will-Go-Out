@@ -13,9 +13,7 @@ namespace SpaceProject
 
         public Explosion(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
-        {
-
-        }
+        { }
 
         public override void Update(GameTime gameTime)
         {
