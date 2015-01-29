@@ -28,6 +28,24 @@ namespace SpaceProject
             }
         }
 
+        public List<GameObjectOverworld> GetZoomObjects
+        {
+            get
+            {
+                List<GameObjectOverworld> tempList = new List<GameObjectOverworld>();
+                tempList.Add(Game.player);
+                foreach (GameObjectOverworld obj in GetAllOverworldGameObjects)
+                {
+                    if (obj is Planet 
+                        || obj is Station)
+                    {
+                        tempList.Add(obj);
+                    }
+                }
+                return tempList;
+            }
+        }
+
         public List<GameObjectOverworld> GetImmobileObjects
         {
             get
@@ -373,11 +391,6 @@ namespace SpaceProject
                 Game.stateManager.ChangeState("ShipManagerState");
                 Game.stateManager.shooterState.Initialize();
             }
-
-            else if (ControlManager.CheckKeypress(Keys.N))
-            {
-                Game.messageBox.DisplayMap(GetImmobileObjects);
-            }
             else if (ControlManager.CheckKeypress(Keys.H))
             {
                 Game.stateManager.ChangeState("HelpScreenState");
@@ -541,8 +554,7 @@ namespace SpaceProject
 
             Game.player.Draw(spriteBatch);
 
-            if (Game.messageBox.MessageState != MessageState.Map
-                && !Game.messageBox.ZoomingMap)
+            if (!ZoomMap.ZoomingMap)
             {
                 bGManagerOverworld.Draw(spriteBatch);
                 HUD.Draw(spriteBatch);

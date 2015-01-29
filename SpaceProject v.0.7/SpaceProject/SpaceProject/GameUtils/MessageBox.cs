@@ -19,8 +19,8 @@ namespace SpaceProject
         Tutorial,
         Menu,
         YesNo,
-        SelectionMenu,
-        Map
+        SelectionMenu
+        //Map
     }
 
     public class MessageBox
@@ -35,14 +35,6 @@ namespace SpaceProject
         private Sprite buttonUnselected;
         private Sprite buttonSelected;
         //private SpriteFont font;
-
-        private readonly float ZOOM_SPEED = 0.0546875f;
-        private readonly float ZOOMED_OUT_VALUE = 0.025f;
-        private readonly float ZOOM_PLAYER_SCALE = 0.25f;
-
-        private bool zoomingMap;
-        private bool zoomingOut;
-        public bool ZoomingMap { get { return zoomingMap; } private set { ; } }
 
         private MessageState messageState;
 
@@ -384,9 +376,6 @@ namespace SpaceProject
             //        objectsOnMap.Add(obj);
             //}
             //
-            zoomingMap = true;
-            zoomingOut = true;
-            tempTimer = 5;
         }
 
         ////Displays the "Which-item-to-trash"-menu
@@ -496,11 +485,6 @@ namespace SpaceProject
 
         public void Update(GameTime gameTime)
         {
-            if (zoomingMap)
-            {
-                UpdateMapZoom(gameTime);
-            }
-
             if (MessageState == MessageState.RealtimeMessage
                 && StatsManager.PlayTime.HasOverworldTimePassed(time))
             {
@@ -563,37 +547,6 @@ namespace SpaceProject
             }
 
             tempTimer--;
-        }
-
-        private void UpdateMapZoom(GameTime gameTime)
-        {
-            if (Game.camera.Zoom < ZOOM_PLAYER_SCALE)
-            {
-                Game.player.scale = ZOOM_PLAYER_SCALE / Game.camera.Zoom;
-            }
-
-            if (zoomingOut)
-            {
-                Game.camera.Zoom *= (ZOOM_SPEED * gameTime.ElapsedGameTime.Milliseconds);
-
-                if (Game.camera.Zoom <= ZOOMED_OUT_VALUE)
-                {
-                    messageState = MessageState.Map;
-                    Game1.Paused = true;
-                    zoomingMap = false;
-                }
-            }
-            else
-            {
-                Game.camera.Zoom *= (1 + ( 1 - (ZOOM_SPEED * gameTime.ElapsedGameTime.Milliseconds)));
-
-                if (Game.camera.Zoom >= 1f)
-                {
-                    Game.camera.Zoom = 1f;
-                    Game.player.scale = 1f;
-                    zoomingMap = false;
-                }
-            }
         }
 
         private void UpdateButtonLabels()
@@ -1003,16 +956,16 @@ namespace SpaceProject
                 }
             }
 
-            else if (messageState == MessageState.Map)
-            {
-                if ((ControlManager.CheckKeypress(Keys.LeftShift)
-                    || ControlManager.CheckKeypress(Keys.RightShift)
-                    || ControlManager.CheckKeypress(Keys.N))
-                    && tempTimer <= 0)
-                {
-                    HideMap();
-                }
-            }
+            //else if (messageState == MessageState.Map)
+            //{
+            //    if ((ControlManager.CheckKeypress(Keys.LeftShift)
+            //        || ControlManager.CheckKeypress(Keys.RightShift)
+            //        || ControlManager.CheckKeypress(Keys.N))
+            //        && tempTimer <= 0)
+            //    {
+            //        HideMap();
+            //    }
+            //}
 
             if (((ControlManager.CheckPress(RebindableKeys.Action1)
                 || ControlManager.CheckKeypress(Keys.Enter))
@@ -1169,14 +1122,11 @@ namespace SpaceProject
             }
         }
 
-        private void HideMap()
-        {
-            zoomingMap = true;
-            zoomingOut = false;
-
-            Game1.Paused = false;
-            messageState = MessageState.Invisible;
-        }
+        //private void HideMap()
+        //{
+        //    Game1.Paused = false;
+        //    messageState = MessageState.Invisible;
+        //}
 
         private void ButtonActions()
         {
