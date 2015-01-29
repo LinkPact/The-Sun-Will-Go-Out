@@ -13,7 +13,7 @@ Success = "I must say, I am quite proud of you. You remind me of my son Ben. He 
 Fail = "Was that the best you got? I must say, I am a bit disappointed. You will not survive long in this world of you don't take it more seriously. But, generous as I am, I welcome you to come back later and try again."
 Reward = 200
 Progress = 1
-Reputation = 0
+Reputation = 2
 State = 0
 
 [Main1_NewFirstMission]
@@ -38,7 +38,7 @@ ObjectiveCompleted = New First Mission completed!
 Fail = ""
 Reward = 100
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 1
 
 [Main2_Highfence]
@@ -56,7 +56,7 @@ ObjectiveCompleted = ""
 Fail = ""
 Reward = 100
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 0
 
 [Main3_Rebels]
@@ -85,7 +85,7 @@ Success = The captain turns to you. He looks tired and relieved.#[Captain] "That
 Fail = ""
 Reward = 300
 Progress = 2
-Reputation = 5
+Reputation = 0
 State = 0
 
 [Main4_ToPhaseTwo]
@@ -106,7 +106,7 @@ Success = You arrive at Fortrun.
 Fail = ""
 Reward = 300
 Progress = 2
-Reputation = 5
+Reputation = 0
 State = 0
 
 [Main5_DefendColony]
@@ -137,7 +137,7 @@ Fail = The Rebel force is to strong! You can not defeat them at this point. You 
 ObjectiveFailed = You failed to fight of the rebels. Build up your strength and return. The Rebels must be defeated!
 Reward = 500
 Progress = 2
-Reputation = 2
+Reputation = 0
 State = 0
 
 [Main6_Infiltration]
@@ -166,7 +166,7 @@ Fail = "So you "didn't find him" huh? Your just as useless as the last one. Look
 ObjectiveFailed = You chose to hide the man instead, getting no reward.
 Reward = 300
 Progress = 2
-Reputation = 3
+Reputation = -5
 State = 0
 
 [Main7_Retaliation]
@@ -192,7 +192,7 @@ Fail = "So you "didn't find him" huh? Your just as useless as the last one. Look
 ObjectiveFailed = You chose to hide the man instead, getting no reward.
 Reward = 300
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 0
 
 [Main8_InTheNameOfScience]
@@ -221,9 +221,9 @@ ObjectiveCompleted = "ObjectiveCompleted"
 Success = Rok speaks to the group.#[Rok] "Well done, all of you."#He turns to Ente who looks visibly uncomfortable. Rok bears a slightly sinister look.#"Welcome to the Rebel Base, Ente. We will soon have a little chat, you and me."#There is something very unsettling in his voice. He turns to the group of rebel pilots again.#"I will keep in touch. Come back soon, there will definitely be more to do in the near future."#He and Ente leave the room. While Ente passes, he quickly whispers to you.#"Good luck"
 Fail = "Fail"
 Reward = -1
-Progress = -1
-Reputation = -1
-State = 1
+Progress = 0
+Reputation = 0
+State = 0
 
 [Main9_Information]
 Location = Rebel Station 3
@@ -245,8 +245,8 @@ ObjectiveCompleted = "ObjectiveCompleted"
 Success = ""
 Fail = "Fail"
 Reward = -1
-Progress = -1
-Reputation = -1
+Progress = 0
+Reputation = 0
 State = 0
 
 [Main10_1_BeginningOfTheEnd]
@@ -271,7 +271,7 @@ ObjectiveCompleted = ""
 Fail = ""
 Reward = 100
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 0
 
 [Main10_2_TheEnd]
@@ -292,75 +292,75 @@ ObjectiveCompleted = ""
 Fail = ""
 Reward = 100
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 0
 
 [Main10_3a_RebelArc]
 Location = Rebel Fleet
 Name = Main - Rebel Arc
-Introduction = Introduction
+Introduction = [Rok] "There you are! I'm glad you came."#"After some persuasion, the scientist told us many interesting things."#"He told us about an enourmous quantity of Murt, which apparently is located somewhere in this asteroid belt."#"It is only a matter of time before we will know which asteroid that contains the Murt."#"The Alliance has also somehow picked up the information. This makes the situation more critical."#"We were here before the Alliance, and we will probably get to the Murt before them. But it might not be enough."#"They have a stronger force here, so if we aren't fast enough, they might be able to overtake the Murt by force before we are able to start using it."#"Your help is really appreciated here. We could move out any minute now, so stay here and stay alert."#Do you want to share what you now about Murt with Rok?
 ObjectiveText1 = 1
 ObjectiveText2 = 2
 ObjectiveText3 = 3
 ObjectiveText4 = 4
-PosResponse = ""
-NegResponse = ""
-Accept = Text explaining that you need to go to Telmun (The asteroid belt)
+PosResponse = Tell him what you know
+NegResponse = Not yet, I want to check the other options
+Accept = [Rok] "So that was what you were doing? And the scout fleet, was that you?"#"Let's take that discussion later."#"If this is true, this information could tip this entire situation in our favour. We are moving out immediately."
 FailText = ""
-EventText1 = You arrive at Telmun (The asteroid belt).#Text explaining the alliance is attacking.
-EventText2 = Text between first and second attack.
+EventText1 = [Rok] "If this information is correct it might buy us the time that we need..."#"An Alliance scout team! We must shatter them. We can't lead them to the Murt. Bring them down!"
+EventText2 = [Rok] "Yes! This must be the asteroid. It looks perfectly ordinary, but our sensors beg to differ."#"Let's start the extraction."#"One of our teams has started the drilling. We have prepared energy cells that are able to handle the Murt."#"When they are ready, we will use them to beat down the Alliance. Exciting, exciting!"#"There is a large Alliance force incoming. We must hold them o for long enough."#"This will be the nal battle. We can't lose now. Keep it tight everyone!"
 EventText3 = Text displayed if killed on alliance attacks.
-EventText4 = Text displayed after repelling alliance attacks.#Text explaining you are now ready to crush the alliance.
+EventText4 = [Rok] "We have access to the Murt!"#"Quickly, equip those energy cells."#"With those, both the shields and the weapons will overflow with power."#"We will be invincible and immensely powerful."#"We can finally pay back for all they have done to us!"#"We can finally get our revenge!"#"We can finally eradicate the Alliance!"
 ObjectiveCompleted = ""
 Fail = ""
 Reward = 100
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 1
 
 [Main10_3b_AllianceArc]
 Location = Alliance Fleet
 Name = Main - Alliance Arc
-Introduction = Introduction
+Introduction = [Ai] "Long time, no see. It is good to finally see you again."#"We have known for a while that the scientists have located a huge quantity of Murt."#"They have kept their mouths shut about it. It seems like they don't trust us in the Alliance to be capable of using it well."#"After you kidnapped that scientist the rebels suddenly started gathering a large fleet of ships."#"They abandoned many of their stations, even suddenly abandoning raids against transports."#"All of them started travelling here."#"This was the signal. They must have suceeded in extracting information about the Murts position from that scientist."#"We moved out immediately, but we were unprepared for the speed with which the rebels were able to gather their forces."#"They were here before us, and have had more time to scan the asteroids.#"We believe they are able to take control of it any minute now."#"It would be a catastrophe. We wouldn't be able to protect the sector anymore."#"They would be able to roam freely, plundering and spreading chaos throughout the sector."#"We must stop this at all cost. We are battling them right now, and are closely monitoring their movements in the asteroid belt."#"You will be needed here, so make sure you stay around. This will be a tough one."#Do you want to share information about Murt with Ai?
 ObjectiveText1 = 1
 ObjectiveText2 = 2
 ObjectiveText3 = 3
 ObjectiveText4 = 4
-PosResponse = ""
-NegResponse = ""
-Accept = Text explaining that you need to go to Telmun (The asteroid belt)
+PosResponse = Tell her what you know.
+NegResponse = Not yet, I want to check the other options.
+Accept = "What is it you are telling me? You knew all this without telling me until now? Why!"#"We don't have time to take that discussion now."#"I'm glad you came to your senses anyway. We should move out immediately."#"Maybe there is still time to get to the Murt before the rebels. This could tip everything in our favour."
 FailText = ""
-EventText1 = You arrive at Telmun (The asteroid belt).#Text explaining that the rebels are in control of it and that you need to take it back from them.
-EventText2 = Text between first and second attack.
+EventText1 = [Ai] "It must be that asteroid. It is swarmed by rebels, goddammit."#"They seem defensive. They don't have access to the Murt yet."#"When they do, they will swarm us like wasps. It will be the end. But there is still time."#"Our only option is to hit them with what we've got. Let's break down their defenses before it's too late."
+EventText2 = [Ai] "We are almost there. Now, we must take control over Murt. Hit them hard and fast."
 EventText3 = Text displayed if killed?.
-EventText4 = Text displayed after completing levels.#Text explaining you are now ready to crush the rebels.
+EventText4 = [Ai] "Yes! We have won! We have control over Murt."#"Let's incorporate it into our energy systems. They won't stand a chance."#"Let's show them the Alliance's power. Let's show them what happens if you oppose us."#"Let's show them who rules this sector."
 ObjectiveCompleted = ""
 Fail = ""
 Reward = 100
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 1
 
 [Main10_3c_OnYourOwnArc]
 Location = Telmun
 Name = Main - On Your Own
-Introduction = Introduction
+Introduction = [Sair] "It is possible that we could manage to destroy the entire Murt meteorite before anyone else reaches the location."#"It would mean that we keep Murt out of the hands of both the Alliance and the rebels."#"It would also mean that we destroy what rightfully belongs to the people of this sector."#"Something that could transform their life to the better."#"It would kill the entire Alliance- and rebels fleets that are here, and likely burn away this side of New Norrland."#"It would be the end for us."#"We wouldn't be thanked for that. It wouldn't end the conflict."#"But it would prevent the Murt from being misused to kill and control."#"Should we go ahead and do it?"
 ObjectiveText1 = 1
 ObjectiveText2 = 2
-PosResponse = ""
-NegResponse = ""
-Accept = Text displayed after decision.#Text explaining you need to avoid the alliance
+PosResponse = Yes. Let's go ahead and destroy the Murt.
+NegResponse = I have to think a bit more about this.
+Accept = [SAIR] "Well then, it is decided. Let's go!"
 FailText = ""
-EventText1 = Text displayed after avoiding the alliance.#Text explaining you need to avoid the rebels.
-EventText2 = Text displayed after avoiding the rebels.#More text...
+EventText1 = [Alliance] "Identify yourself! Are you a rebel ship? I'm sorry. We can't let you continue."
+EventText2 = [Sair] "Well done. The area seems to be swarmed by both Alliance and rebel scouts. Stay alert."#"A rebel scout fleet is incoming. Let's try to slip through!"
 EventText3 = Text displayed when killed on level?
-EventText4 = Text explaining you are setting the explosions and need to survive until the bomb goes off.
+EventText4 = [Sair] "Finally, we made it through! It appears we managed to make it here before the others."#"To end this, just open re. Hit the asteroid until it takes re. Burning it. Burning it all."#"Are you ready to do it? Is this the way to go? I still don't know."#"Maybe we are removing the system's last hope in vain."#"Or maybe this will prevent further war and chaos."#"No backing down now, I guess. Let's open re!"
 ObjectiveCompleted = ""
 Fail = ""
 Success = "Good job!"
 Reward = 100
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 1
 
 [Old second mission]
@@ -383,7 +383,7 @@ ObjectiveCompleted = You safely escorted the freighter from Highfence to Soelara
 Fail = "That didn't go so well, now did it? Alright, let's try again, just be more careful this time!"
 Reward = 300
 Progress = 2
-Reputation = 5
+Reputation = 0
 State = 0
 
 [SX_JakobTest1]
@@ -400,7 +400,7 @@ EventText1 = "You managed to beat the level, you bastard! You get promotion! You
 Fail = "Haha! Oh, I mean, sorry. Look what a mess you are. Of course you weren't able to make it through the level. But you are welcome to try again. If you do, maybe you too will be a legend one day."
 Reward = 1000
 Progress = 1
-Reputation = 5
+Reputation = 0
 State = 1
 
 [SX_FlightTraining]
@@ -439,7 +439,7 @@ ObjectiveCompleted = You investigated the battlefield for resources.
 Fail = ""
 Reward = 100
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 0
 
 [SX_TheAlliance]
@@ -473,7 +473,7 @@ ObjectiveCompleted = You successfully defended Fortrun Station II and escorted t
 Fail = Mission Failed!
 Reward = 0
 Progress = 2
-Reputation = 10
+Reputation = 0
 State = 0
 
 [SX_AstroDodger]
@@ -493,7 +493,7 @@ Fail = You fail!
 ObjectiveFailed = You failed! D:
 Reward = 400
 Progress = 2
-Reputation = -1
+Reputation = 0
 State = 1
 
 [SX_DebtCollection]
@@ -523,7 +523,7 @@ Fail = "So you "didn't find him" huh? Your just as useless as the last one. Look
 ObjectiveFailed = You chose to hide the man instead, getting no reward.
 Reward = 300
 Progress = 2
-Reputation = 3
+Reputation = 0
 State = 1
 
 [SX_AstroScan]
@@ -542,7 +542,7 @@ Fail = No Fail
 ObjectiveFailed = No fail
 Reward = 200
 Progress = 2
-Reputation = -1
+Reputation = 0
 State = 1
 
 [SX_MidMission_Rebel]
@@ -611,7 +611,7 @@ ObjectiveFailed = You lost the medical supplies! The colony will now surely succ
 Fail = "You suck!"
 Reward = 200
 Progress = 2
-Reputation = -3
+Reputation = 0
 State = 1
 
 [SY_Main1]

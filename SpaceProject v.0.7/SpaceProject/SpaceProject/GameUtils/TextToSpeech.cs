@@ -76,9 +76,9 @@ namespace SpaceProject
         {
             if (IsOSSupported())
             {
-                //SetVoices();
-                //synth.SetOutputToDefaultAudioDevice();
-                //synth.SelectVoice(MaleVoiceW8);
+                SetVoices();
+                synth.SetOutputToDefaultAudioDevice();
+                synth.SelectVoice(maleVoice);
             }
         }
 
@@ -120,7 +120,6 @@ namespace SpaceProject
             bool copyChar = false;
 
             StringBuilder newString = new StringBuilder("");
-
 
                 for (int i = 0; i < s.Length; i++)
                 {

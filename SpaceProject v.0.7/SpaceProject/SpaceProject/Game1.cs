@@ -11,7 +11,6 @@ using Microsoft.Xna.Framework.Media;
 
 namespace SpaceProject
 {
-
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         #region declaration
@@ -209,6 +208,16 @@ namespace SpaceProject
                 }
 
                 soundEffectsManager.Update(gameTime);
+
+                if (ControlManager.CheckKeypress(Keys.N))
+                {
+                    ZoomMap.ToggleMap();
+                }
+
+                if (ZoomMap.ZoomingMap)
+                {
+                    ZoomMap.Update(gameTime, stateManager.overworldState.GetZoomObjects, camera);
+                }
 
                 messageBox.Update(gameTime);
                 helper.Update(gameTime);

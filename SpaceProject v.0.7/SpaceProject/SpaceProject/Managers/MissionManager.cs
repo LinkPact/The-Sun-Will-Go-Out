@@ -729,29 +729,9 @@ namespace SpaceProject
 
             else if (mainOnYourOwnArc.MissionState == StateOfMission.Completed)
             {
-                game.messageBox.DisplaySelectionMenu("Try to escape?",
-                    new List<String>() { "Yes", "No"},
-                    new List<System.Action>() { 
-                        delegate 
-                        {
-                            UnlockMission("Main - Coward");
-                            MarkMissionAsActive("Main - Coward");
-                            game.stateManager.planetState.OnEnter();
-                        },
-                        delegate 
-                        {
-                            UnlockMission("Main - Burn It");
-                            MarkMissionAsActive("Main - Burn It");
-                            game.stateManager.planetState.OnEnter();
-                        }});
-
                 mainOnYourOwnArc.MissionState = StateOfMission.CompletedDead;
-            }
-
-            if (mainOnYourOwnArc.MissionState == StateOfMission.CompletedDead)
-            {
-                game.stateManager.ChangeState("OutroState");
-                // TODO: Ending 3
+                game.stateManager.ChangeState("OverworldState");
+                game.stateManager.overworldState.ActivateBurnOutEnding();
             }
         }
 

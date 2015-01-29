@@ -10,9 +10,9 @@ namespace SpaceProject
 {
     public class Main10_3a_RebelArc : Mission
     {
-        private readonly string FIRST_ALLIANCE_LEVEL = "flightTraining_1";
-        private readonly string SECOND_ALLIANCE_LEVEL = "flightTraining_2";
-        private readonly string FINAL_BATTLE = "flightTraining_3";
+        private readonly string FirstAllianceLevel = "AlliancePirate1";
+        private readonly string SecondAllianceLevel = "AlliancePirate2";
+        private readonly string ThirdAllianceLevel = "AlliancePirate3";
 
         private enum EventID
         {
@@ -35,19 +35,19 @@ namespace SpaceProject
                     GetEvent((int)EventID.ArriveAtTelmun), null, EventTextCanvas.BaseState)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetPlanet("Telmun"), FIRST_ALLIANCE_LEVEL,
+                Game.stateManager.overworldState.GetPlanet("Telmun"), FirstAllianceLevel,
                 LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.BetweenAllianceAttacks),
                     GetEvent((int)EventID.KilledOnAllianceLevel), EventTextCanvas.BaseState)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[2],
-                Game.stateManager.overworldState.GetPlanet("Telmun"), SECOND_ALLIANCE_LEVEL,
+                Game.stateManager.overworldState.GetPlanet("Telmun"), SecondAllianceLevel,
                 LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.AfterAllianceAttacks), GetEvent((int)EventID.KilledOnAllianceLevel),
                     EventTextCanvas.BaseState)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[3],
-                Game.stateManager.overworldState.GetPlanet("Telmun"), FINAL_BATTLE,
+                Game.stateManager.overworldState.GetPlanet("Telmun"), ThirdAllianceLevel,
                 LevelStartCondition.TextCleared));
         }
 
