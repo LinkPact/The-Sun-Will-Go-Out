@@ -1,6 +1,6 @@
 Header :duration 30:width 400:durGridWidth 3:levelObjective Finish|X0:
 Point
-T: 0:E: 0nn0 0nn0 cnn0 0nn0 0nn0 0nn0 cnn0 0nn0 0nn0:end
+T: 0:E: 0nn0 Ynn0 Ynn0 0nn0 0nn0 0nn0 Ynn0 Ynn0 0nn0:end
 T: 1:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 2:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 3:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
@@ -31,5 +31,5 @@ T: 27:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 28:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 29:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 Duration
-C:0,15 0,23:E: YnnED20
-C:2,0 2,29:E: SnnED5
+C:0,15 0,23:E: YnnED12
+C:2,1 2,29:E: SnnED8

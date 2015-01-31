@@ -948,7 +948,7 @@ namespace SpaceProject
 
                         equippedEnergyCell = new BasicEnergyCell(Game);
                         equippedPlating = new BasicPlating(Game);
-                        equippedShield = new EmptyShield(Game);
+                        equippedShield = new BasicShield(Game);
 
                         equipInfo += "Past beginner set (mission ~2)";
                         break;
