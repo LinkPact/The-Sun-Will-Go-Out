@@ -86,22 +86,12 @@ namespace SpaceProject
             //TEST
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "EscortTest1", "escortTest1", MissionType.rebel));
 
-            //Pirate Levels
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "PirateLevel1", "PirateLevel1", MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "PirateLevel2", "PirateLevel2", MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "PirateLevel3", "PirateLevel3", MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "PirateLevel4", "PirateLevel4", MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "PirateLevel5", "PirateLevel5", MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "PirateLevel6", "PirateLevel6", MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "PirateLevel7", "PirateLevel7", MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "PirateLevel8", "PirateLevel8", MissionType.pirate));
-
             //Rebel Pirate Levels
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelPirate1", "RebelPirate1", MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelPirate2", "RebelPirate2", MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelPirate3", "RebelPirate3", MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelPirate4", "RebelPirate4", MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelPirate5", "RebelPirate5", MissionType.pirate));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelPirate1", "pirates/RebelPirate1", MissionType.pirate));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelPirate2", "pirates/RebelPirate2", MissionType.pirate));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelPirate3", "pirates/RebelPirate3", MissionType.pirate));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelPirate4", "pirates/RebelPirate4", MissionType.pirate));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelPirate5", "pirates/RebelPirate5", MissionType.pirate));
 
             //Hangar Levels
             levels.Add(new HangarLevel(Game, spriteSheet, player, "hangar1", "hangar1", MissionType.pirate));
@@ -109,11 +99,11 @@ namespace SpaceProject
             levels.Add(new HangarLevel(Game, spriteSheet, player, "hangar3", "hangar3", MissionType.pirate));
 
             //Alliance Pirate Levels
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AlliancePirate1", "AlliancePirate1", MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AlliancePirate2", "AlliancePirate2", MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AlliancePirate3", "AlliancePirate3", MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AlliancePirate4", "AlliancePirate4", MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AlliancePirate5", "AlliancePirate5", MissionType.pirate));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AlliancePirate1", "pirates/AlliancePirate1", MissionType.pirate));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AlliancePirate2", "pirates/AlliancePirate2", MissionType.pirate));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AlliancePirate3", "pirates/AlliancePirate3", MissionType.pirate));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AlliancePirate4", "pirates/AlliancePirate4", MissionType.pirate));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AlliancePirate5", "pirates/AlliancePirate5", MissionType.pirate));
 
             // Main mission levels
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelsInTheMeteors", "mainlevels/RebelsAsteroids", MissionType.none));

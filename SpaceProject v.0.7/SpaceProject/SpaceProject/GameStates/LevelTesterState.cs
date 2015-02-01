@@ -95,13 +95,6 @@ namespace SpaceProject
             jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["ap4"], "AllPir4", Keys.F9, standardEquip: 4));
             jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["ap5"], "AllPir5", Keys.F10, standardEquip: 4));
 
-            //jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\rebel\\J_RP1", "J_RP1", Keys.T, standardEquip: 3));
-            //jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\rebel\\J_RP2", "J_RP2", Keys.Y, standardEquip: 3));
-            //jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\rebel\\J_RP3", "J_RP3", Keys.U, standardEquip: 3));
-            //jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\alliance\\J_AP1", "J_AP1", Keys.I, standardEquip: 5));
-            //jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\alliance\\J_AP2", "J_AP2", Keys.O, standardEquip: 5));
-            //jakobsLevelEntries.Add(new LevelTesterEntry("jakob_pirate\\alliance\\J_AP3", "J_AP3", Keys.P, standardEquip: 5));
-
             chosenLevel = jakobsLevelEntries[0].GetPath();
         }
 
