@@ -373,11 +373,36 @@ namespace SpaceProject
                 && elapsedSinceKey > elapseDelay))
             {
                 if (cursorCoordLv1.Position != backPos
+                    && cursorCoordLv1.Position < 4
                     && ShipInventoryManager.ownCounts[cursorCoordLv1.Position] > 0)
                 {
                     cursorLevel = 2;
                     cursorLevel2Position = 0;
                     elapsedSinceKey = 0;
+                }
+
+                else if (cursorCoordLv1.Position == 4)
+                {
+                    switch (cursorCoordLv1.Y)
+                    {
+                        case 0:
+                            if (ShipInventoryManager.GetAvailablePrimaryWeapons(1).Count > 0)
+                            {
+                                cursorLevel = 2;
+                                cursorLevel2Position = 0;
+                                elapsedSinceKey = 0;
+                            }
+                            break;
+
+                        case 1:
+                            if (ShipInventoryManager.GetAvailablePrimaryWeapons(2).Count > 0)
+                            {
+                                cursorLevel = 2;
+                                cursorLevel2Position = 0;
+                                elapsedSinceKey = 0;
+                            }
+                            break;
+                    }
                 }
                 else if (cursorCoordLv1.Position == backPos)
                 {
@@ -395,7 +420,24 @@ namespace SpaceProject
         {
             if (cursorLevel == 2 && cursorCoordLv1.Position != inventoryPos)
             {
-                int listLength = ShipInventoryManager.ownCounts[cursorCoordLv1.Position];
+                int listLength;
+
+                if (cursorCoordLv1.Position != 4)
+                {
+                    listLength = ShipInventoryManager.ownCounts[cursorCoordLv1.Position];
+                }
+
+                else
+                {
+                    if (cursorCoordLv1.Y == 0)
+                    {
+                        listLength = ShipInventoryManager.GetAvailablePrimaryWeapons(1).Count;
+                    }
+                    else
+                    {
+                        listLength = ShipInventoryManager.GetAvailablePrimaryWeapons(2).Count;
+                    }
+                }
 
                 if (ControlManager.CheckPress(RebindableKeys.Down) && cursorLevel == 2
                     && elapsedSinceKey > elapseDelay)
@@ -657,7 +699,16 @@ namespace SpaceProject
                     }
                 case 4:
                     {
-                        ShipInventoryManager.EquipItemFromSublist(ShipParts.Primary, cursorCoordLv1.Y, cursorLevel2Position);
+                        switch (cursorCoordLv1.Y)
+                        {
+                            case 0:
+                                ShipInventoryManager.EquipItemFromSublist(ShipParts.Primary1, cursorCoordLv1.Y, cursorLevel2Position);
+                                break;
+
+                            case 1:
+                                ShipInventoryManager.EquipItemFromSublist(ShipParts.Primary2, cursorCoordLv1.Y, cursorLevel2Position);
+                                break;
+                        }
                         break;
                     }
                 default:

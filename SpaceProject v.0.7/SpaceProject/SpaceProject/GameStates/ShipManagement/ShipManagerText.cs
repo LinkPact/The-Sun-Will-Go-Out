@@ -65,13 +65,13 @@ namespace SpaceProject
         public static void DisplayPrimaryWeaponInfo1(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), "Primary weapon slot 1", topDisplayPos + FontManager.FontOffsetStatic, FontManager.FontColorStatic, 0, FontManager.GetFontStatic(16).MeasureString("Primary weapon slot 1") / 2, 1.0f, SpriteEffects.None, 0.5f);
-            DisplayList(spriteBatch, "Owned weapons", ShipInventoryManager.OwnedPrimaryWeapons, equippedDisplayPos + FontManager.FontOffsetStatic, ySpacing);
+            DisplayList(spriteBatch, "Owned weapons", ShipInventoryManager.GetAvailablePrimaryWeapons(1), equippedDisplayPos + FontManager.FontOffsetStatic, ySpacing, 1);
         }
 
         public static void DisplayPrimaryWeaponInfo2(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), "Primary weapon slot 2", topDisplayPos + FontManager.FontOffsetStatic, FontManager.FontColorStatic, 0, FontManager.GetFontStatic(16).MeasureString("Primary weapon slot 2") / 2, 1.0f, SpriteEffects.None, 0.5f);
-            DisplayList(spriteBatch, "Owned weapons", ShipInventoryManager.OwnedPrimaryWeapons, equippedDisplayPos + FontManager.FontOffsetStatic, ySpacing);
+            DisplayList(spriteBatch, "Owned weapons", ShipInventoryManager.GetAvailablePrimaryWeapons(2), equippedDisplayPos + FontManager.FontOffsetStatic, ySpacing, 2);
         }
 
         public static void DisplaySecondaryInfo(SpriteBatch spriteBatch)
@@ -98,7 +98,7 @@ namespace SpaceProject
             DisplayList(spriteBatch, "Owned shields", ShipInventoryManager.OwnedShields, equippedDisplayPos + FontManager.FontOffsetStatic, ySpacing);
         }
 
-        private static void DisplayList(SpriteBatch spriteBatch, String tag, List<ShipPart> partList, Vector2 startPosition, float deltaY)
+        private static void DisplayList(SpriteBatch spriteBatch, String tag, List<ShipPart> partList, Vector2 startPosition, float deltaY, int slot = 0)
         {
             spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), tag, startPosition, FontManager.FontColorStatic);
 
@@ -108,7 +108,14 @@ namespace SpaceProject
                 string name = part.Name;
                 Color color = Color.White;
 
-                if (ShipInventoryManager.IsEquipped(part))
+                if (!part.Kind.ToLower().Equals("primary")
+                    && ShipInventoryManager.IsEquipped(part))
+                {
+                    name += " [equipped]";
+                }
+
+                else if (part.Kind.ToLower().Equals("primary")
+                    && ShipInventoryManager.IsEquippedAt(part, slot))
                 {
                     name += " [equipped]";
                 }
