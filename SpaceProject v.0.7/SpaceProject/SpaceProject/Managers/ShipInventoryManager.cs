@@ -8,7 +8,8 @@ namespace SpaceProject
 {
     public enum ShipParts
     { 
-        Primary,
+        Primary1,
+        Primary2,
         Secondary,
         Plating,
         EnergyCell,
@@ -424,10 +425,16 @@ namespace SpaceProject
         {
             switch (kind)
             {
-                case ShipParts.Primary:
+                case ShipParts.Primary1:
                     {
-                        ShipInventoryManager.equippedPrimaryWeapons.RemoveAt(equipPos);
-                        ShipInventoryManager.equippedPrimaryWeapons.Insert(equipPos, (PlayerWeapon)ShipInventoryManager.ownedPrimaryWeapons[invPos]);
+                        ShipInventoryManager.equippedPrimaryWeapons.RemoveAt(0);
+                        ShipInventoryManager.equippedPrimaryWeapons.Insert(0, (PlayerWeapon)ShipInventoryManager.GetAvailablePrimaryWeapons(1)[invPos]);
+                        break;
+                    }
+                case ShipParts.Primary2:
+                    {
+                        ShipInventoryManager.equippedPrimaryWeapons.RemoveAt(1);
+                        ShipInventoryManager.equippedPrimaryWeapons.Insert(1, (PlayerWeapon)ShipInventoryManager.GetAvailablePrimaryWeapons(2)[invPos]);
                         break;
                     }
                 case ShipParts.Secondary:
@@ -453,7 +460,7 @@ namespace SpaceProject
                     }
                 default:
                     {
-                        throw new ArgumentException("You entered inimplemented shippart!");
+                        throw new ArgumentException("You entered an unimplemented shippart!");
                     }
             }
 
@@ -755,7 +762,7 @@ namespace SpaceProject
             {
                 pos = Game.saveFile.GetPropertyAsInt("shipequipped", "primaryinvpos" + i, -1);
                 if (pos != -1)
-                    EquipItemFromSublist(ShipParts.Primary, i, pos);
+                    EquipItemFromSublist(ShipParts.Primary1, i, pos);
             }
 
             pos = Game.saveFile.GetPropertyAsInt("shipequipped", "secondaryinvpos", -1);
@@ -1107,6 +1114,25 @@ namespace SpaceProject
             return false;
         }
 
+        public static bool IsEquippedAt(Item item, int slot)
+        {
+            if (!IsEquipped(item))
+            {
+                return false;
+            }
+
+            for (int i = 0; i < equippedPrimaryWeapons.Count; i++)
+            {
+                if (item == equippedPrimaryWeapons[i]
+                    && i == slot - 1)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public static bool IsLastEquipped(Item item)
         {
             for (int i = 0; i < shipItems.Count; i++)
@@ -1149,6 +1175,43 @@ namespace SpaceProject
             }
 
             return 0;
+        }
+
+        /// <summary>
+        /// Returns primary weapons available to equip for specified slot.
+        /// </summary>
+        /// <param name="slot">primary weapon slot - 1 or 2</param>
+        /// <returns></returns>
+        public static List<ShipPart> GetAvailablePrimaryWeapons(int slot)
+        {
+            List<ShipPart> primaryWeapons = new List<ShipPart>();
+            int otherSlot;
+
+            if (slot < 1 
+                || slot > 2)
+            {
+                throw new ArgumentException("slot parameter out of bounds - only 1 and 2 allowed.");
+            }
+
+            if (slot == 1)
+            {
+                otherSlot = 2;
+            }
+            else
+            {
+                otherSlot = 1;
+            }
+
+            foreach (ShipPart primary in ownedPrimaryWeapons)
+            {
+                if (!IsEquippedAt(primary, otherSlot)
+                    && !primary.Kind.ToLower().Equals("empty"))
+                {
+                    primaryWeapons.Add(primary);
+                }
+            }
+
+            return primaryWeapons;
         }
     }
 }
