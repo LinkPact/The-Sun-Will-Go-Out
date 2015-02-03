@@ -695,6 +695,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Levels\unsorted\" />
     <Folder Include="Overworld-part\GameObjects\Stations\SectorZ\" />
     <Folder Include="Shooter-part\Levels\Oldlevels\" />
   </ItemGroup>
