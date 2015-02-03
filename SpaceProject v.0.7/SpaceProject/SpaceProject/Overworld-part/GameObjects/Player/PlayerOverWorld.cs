@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
-    public class PlayerOverWorld : GameObjectOverworld
+    public class PlayerOverworld : GameObjectOverworld
     {
         private int damageTimer = 0;
 
@@ -102,7 +102,7 @@ namespace SpaceProject
 
         #endregion
 
-        public PlayerOverWorld(Game1 Game, Sprite spriteSheet):
+        public PlayerOverworld(Game1 Game, Sprite spriteSheet):
             base(Game, spriteSheet)
         { }
 

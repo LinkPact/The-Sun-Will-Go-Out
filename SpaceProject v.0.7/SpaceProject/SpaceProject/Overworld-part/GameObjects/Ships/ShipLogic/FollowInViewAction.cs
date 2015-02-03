@@ -21,7 +21,7 @@ namespace SpaceProject
             if (CollisionDetection.IsPointInsideRectangle(target.position, ship.view) 
                 && target.position != Vector2.Zero)
             {
-                if (target is PlayerOverWorld &&
+                if (target is PlayerOverworld &&
                     OverworldShip.FollowPlayer &&
                     ((ship is RebelShip && StatsManager.reputation >= 0) ||
                     (ship is AllianceShip && StatsManager.reputation < 0)))
@@ -29,7 +29,7 @@ namespace SpaceProject
                     ship.destination = target.position;
                     Finished = true;
                 }
-                else if (!(target is PlayerOverWorld))
+                else if (!(target is PlayerOverworld))
                 {
                     ship.destination = target.position;
                     Finished = true;

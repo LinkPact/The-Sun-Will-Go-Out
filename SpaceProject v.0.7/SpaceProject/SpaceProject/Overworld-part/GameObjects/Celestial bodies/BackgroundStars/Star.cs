@@ -143,8 +143,10 @@ namespace SpaceProject
         public void Draw(SpriteBatch spriteBatch, bool hyperSpeedOn, float speed, Direction direction)
         {
             if (!hyperSpeedOn)
+            {
                 spriteBatch.Draw(sprite.Texture, position, sprite.SourceRectangle, color,
                     0f, centerPoint, scale, SpriteEffects.None, layerDepth);
+            }
             else
             {
                 starAngle = (float)((Math.PI * 90) / 180) + (float)(MathFunctions.RadiansFromDir(direction.GetDirectionAsVector()));
@@ -152,7 +154,9 @@ namespace SpaceProject
                 yScale = scale + speed * STRETCH;
 
                 if (yScale < scale)
+                {
                     yScale = scale;
+                }
 
                 spriteBatch.Draw(sprite.Texture, position, sprite.SourceRectangle, color,
                     starAngle, centerPoint, new Vector2(scale, yScale), SpriteEffects.None, layerDepth);

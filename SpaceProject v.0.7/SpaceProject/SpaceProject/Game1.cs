@@ -24,7 +24,7 @@ namespace SpaceProject
         public GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        public PlayerOverWorld player;
+        public PlayerOverworld player;
 
         public MenuBackdropController menuBGController;
 
@@ -132,7 +132,7 @@ namespace SpaceProject
             statsManager = new StatsManager(this);
             statsManager.Initialize();
 
-            player = new PlayerOverWorld(this, spriteSheetOverworld);
+            player = new PlayerOverworld(this, spriteSheetOverworld);
             player.Initialize();
 
             beaconMenu = new BeaconMenu(this, spriteSheetOverworld);
@@ -214,7 +214,7 @@ namespace SpaceProject
                     ZoomMap.ToggleMap();
                 }
 
-                if (ZoomMap.ZoomingMap)
+                if (ZoomMap.IsMapOn)
                 {
                     ZoomMap.Update(gameTime, stateManager.overworldState.GetZoomObjects, camera);
                 }
@@ -252,34 +252,36 @@ namespace SpaceProject
         {
             GraphicsDevice.Clear(Color.Black);
 
-            if (GameStateManager.currentState == "OverworldState")
+            switch (GameStateManager.currentState.ToLower())
             {
-                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, camera.GetTransformation());
-            }
-            else if (GameStateManager.currentState == "ShooterState")
-            {
-                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
-            }
-            else if (GameStateManager.currentState == "IntroSecondState")
-            {
-                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
-            }
-            else
-            {
-                spriteBatch.Begin();
+                case "overworldstate":
+                    spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, camera.GetTransformation());
+                    break;
+
+                case "shooterstate":
+                case "introsecondstate":
+                    spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
+                    break;
+
+                default:
+                    spriteBatch.Begin();
+                    break;
             }
 
             stateManager.Draw(spriteBatch);
             missionManager.Draw(spriteBatch);
             tutorialManager.Draw(spriteBatch);
 
-            if (messageBox.MessageState != MessageState.Invisible)
+            if (messageBox.MessageState != MessageState.Invisible
+                && !ZoomMap.IsMapOn)
+            {
                 messageBox.Draw(spriteBatch);
+            }
 
             helper.Draw(spriteBatch);
             beaconMenu.Draw(spriteBatch);
 
-            if (showFPS)
+            if (showFPS && !ZoomMap.IsMapOn)
             {
                 if (GameStateManager.currentState == "OverworldState")
                 {

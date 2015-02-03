@@ -407,7 +407,7 @@
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\SectorX\SectorXStar.cs" />
     <Compile Include="Overworld-part\GameObjects\GameObjectOverworld.cs" />
     <Compile Include="Overworld-part\GameObjects\Other\Particle.cs" />
-    <Compile Include="Overworld-part\GameObjects\Player\PlayerOverWorld.cs" />
+    <Compile Include="Overworld-part\GameObjects\Player\PlayerOverworld.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\SectorY\BigStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\SectorX\LavisStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\SectorX\SoelaraStation.cs" />

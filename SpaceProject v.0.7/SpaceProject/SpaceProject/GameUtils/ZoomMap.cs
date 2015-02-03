@@ -6,57 +6,110 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
+    enum MapState
+    {
+        ZoomingOut,
+        ZoomingIn,
+        On,
+        Off
+    }
+    
     class ZoomMap
     {
-        private const float ZOOM_SPEED = 0.0546875f;
-        private const float ZOOMED_OUT_VALUE = 0.025f;
-        private const float ZOOM_PLAYER_SCALE = 0.25f;
+        private const float ZoomRate = 0.0546875f;
+        private const float ZoomedOutValue = 0.02f;
 
-        private static bool zoomingMap;
-        private static bool zoomingOut;
-        public static bool ZoomingMap { get { return zoomingMap; } private set { ; } }
+        private const float StarZoomScale = 0.15f;
+        private const float PlanetZoomScale = 0.15f;
+        private const float StationZoomScale = 0.2f;
+        private const float PlayerZoomScale = 0.5f;
+
+        private static MapState mapState = MapState.Off;
+        public static bool IsMapOn { get { return mapState != MapState.Off; } private set { ; } }
+        public static MapState MapState { get { return mapState; } private set { ; } }
 
         public static void ToggleMap()
         {
-            zoomingMap = true;
-            zoomingOut = !zoomingOut;
-            //Game1.Paused = !Game1.Paused;
-        }
-
-        public static void Update(GameTime gameTime, List<GameObjectOverworld> gameObjects, Camera camera)
-        {
-            if (camera.Zoom < ZOOM_PLAYER_SCALE)
+            if (IsMapOn)
             {
-                foreach (GameObjectOverworld obj in gameObjects)
-                {
-                    obj.scale = ZOOM_PLAYER_SCALE / camera.Zoom;
-                }
-            }
-
-            if (zoomingOut)
-            {
-                camera.Zoom *= (ZOOM_SPEED * gameTime.ElapsedGameTime.Milliseconds);
-
-                if (camera.Zoom <= ZOOMED_OUT_VALUE)
-                {
-                    //Game1.Paused = true;
-                    zoomingMap = false;
-                }
+                mapState = MapState.ZoomingIn;
             }
             else
             {
-                camera.Zoom *= (1 + (1 - (ZOOM_SPEED * gameTime.ElapsedGameTime.Milliseconds)));
+                mapState = MapState.ZoomingOut;
+            }
+        }
+
+        /// <summary>
+        /// Updates map zooming
+        /// </summary>
+        /// <param name="gameObjects">Objects to be scaled up for visibility</param>
+        public static void Update(GameTime gameTime, List<GameObjectOverworld> gameObjects, Camera camera)
+        {
+            // Scale up objects
+            foreach (GameObjectOverworld obj in gameObjects)
+            {
+                if (obj is Planet
+                    || obj.name.ToLower().Equals("soelara")
+                    || obj.name.ToLower().Equals("fortrun station i")
+                    && camera.Zoom < PlanetZoomScale)
+                {
+                    obj.scale = PlanetZoomScale / camera.Zoom;
+                }
+
+                else if (obj is SystemStar
+                    && camera.Zoom < StarZoomScale)
+                {
+                    obj.scale = StarZoomScale / camera.Zoom;
+                }
+
+                else if (obj is Station
+                    && camera.Zoom < StationZoomScale)
+                {
+                    obj.scale = StationZoomScale / camera.Zoom;
+                }
+
+                else if (obj is PlayerOverworld
+                    && camera.Zoom < PlayerZoomScale)
+                {
+                    obj.scale = PlayerZoomScale / camera.Zoom;
+                }
+            }
+
+            if (mapState == MapState.ZoomingOut)
+            {
+                camera.Zoom *= (ZoomRate * gameTime.ElapsedGameTime.Milliseconds);
+
+                if (camera.Zoom <= ZoomedOutValue)
+                {
+                    Game1.Paused = true;
+                    mapState = MapState.On;
+                }
+            }
+            else if (mapState == MapState.ZoomingIn)
+            {
+                camera.Zoom *= (1 + (1 - (ZoomRate * gameTime.ElapsedGameTime.Milliseconds)));
 
                 if (camera.Zoom >= 1f)
                 {
-                    camera.Zoom = 1f;
-                    foreach (GameObjectOverworld obj in gameObjects)
-                    {
-                        obj.scale = 1;
-                    }
-                    zoomingMap = false;
+                    HideMap(camera, gameObjects);
                 }
             }
+        }
+
+        /// <summary>
+        /// Unpauses game and resets camera zoom and object scales
+        /// </summary>
+        private static void HideMap(Camera camera, List<GameObjectOverworld> gameObjects)
+        {
+            foreach (GameObjectOverworld obj in gameObjects)
+            {
+                obj.scale = 1;
+            }
+
+            Game1.Paused = false;
+            camera.Zoom = 1f;
+            mapState = MapState.Off;
         }
     }
 }
