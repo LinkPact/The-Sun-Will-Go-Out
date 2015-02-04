@@ -10,8 +10,8 @@ namespace SpaceProject
 {
     public class Main10_3c_OnYourOwnArc : Mission
     {
-        private readonly string AVOID_ALLIANCE = "flightTraining_1";
-        private readonly string AVOID_REBELS = "flightTraining_2";
+        private readonly string AVOID_ALLIANCE = "OnYourOwn_1";
+        private readonly string AVOID_REBELS = "OnYourOwn_2";
         private readonly string FINAL_BATTLE = "flightTraining_3";
 
         private enum EventID

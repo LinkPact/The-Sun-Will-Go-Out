@@ -793,19 +793,34 @@
     <Content Include="Levels\XSecondMissionlvl3.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\mainlevels\RebelsAsteroids.lvl">
+    <Content Include="Levels\mainlevels\m10a_OYO_lv1_v2.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\mainlevels\FreighterEscortlvl1.lvl">
+    <Content Include="Levels\mainlevels\m10a_OYO_lv2_v2.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\mainlevels\FreighterEscortlvl2.lvl">
+    <Content Include="Levels\mainlevels\m10b_rebels_lv1_v2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Levels\mainlevels\m10b_rebels_lv2_v2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Levels\mainlevels\m10c_alliance_lv1_v2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Levels\mainlevels\m10c_alliance_lv2_v2.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Levels\mainlevels\DefendColonyBreak.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Levels\mainlevels\DefendColonyHold.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Levels\mainlevels\FreighterEscortlvl1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Levels\mainlevels\FreighterEscortlvl2.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Levels\mainlevels\m4_infiltration_lv1_v1.lvl">
@@ -826,7 +841,13 @@
     <Content Include="Levels\mainlevels\m6_itnos_lv2_v1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\mainlevels\m7_information_lv1_v2.lvl">
+    <Content Include="Levels\mainlevels\m7_infiltration_lv1_v1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Levels\mainlevels\m7_infiltration_lv1_v2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Levels\mainlevels\RebelsAsteroids.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Levels\Old Levels\a.lvl" />

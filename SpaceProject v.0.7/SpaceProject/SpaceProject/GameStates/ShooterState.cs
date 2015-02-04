@@ -118,6 +118,12 @@ namespace SpaceProject
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Itnos_1", "mainlevels/m6_itnos_lv1_v2", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Itnos_2", "mainlevels/m6_itnos_lv2_v1", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Information", "mainlevels/m7_information_lv1_v2", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "OnYourOwn_1", "mainlevels/m10a_OYO_lv1_v2", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "OnYourOwn_2", "mainlevels/m10a_OYO_lv2_v2", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelBranch_1", "m10b_rebels_lv1_v2", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelBranch_2", "m10b_rebels_lv2_v2", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AllianceBranch_1", "m10c_alliance_lv1_v2", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AllianceBranch_2", "m10c_alliance_lv1_v2", MissionType.none));
         }
 
         public override void Initialize()
@@ -266,12 +272,14 @@ namespace SpaceProject
             float yBase = 100f;
 
             String objectiveString = currentLevel.GetObjectiveString();
-            spriteBatch.DrawString(MapCreatorGUI.staticFontExperiment, objectiveString, new Vector2(xBase, yBase), Color.DarkOliveGreen);
 
-            spriteBatch.DrawString(MapCreatorGUI.staticFontExperiment, "Enemies killed: " + currentLevel.enemiesKilled, new Vector2(xBase, yBase + 20), Color.DarkOliveGreen);
-            spriteBatch.DrawString(MapCreatorGUI.staticFontExperiment, "Enemies escaped: " + currentLevel.enemiesLetThrough, new Vector2(xBase, yBase + 40), Color.DarkOliveGreen);
-            spriteBatch.DrawString(MapCreatorGUI.staticFontExperiment, "Enemy count: " + currentLevel.totalLevelEnemyCount, new Vector2(xBase, yBase + 60), Color.DarkOliveGreen);
-            spriteBatch.DrawString(MapCreatorGUI.staticFontExperiment, "Elapsed time: " + currentLevel.PlayTimeRounded, new Vector2(xBase, yBase + 80), Color.DarkOliveGreen);
+            spriteBatch.DrawString(MapCreatorGUI.staticFontExperiment, "Level name: " + currentLevel.Identifier, new Vector2(xBase, yBase), Color.DarkOliveGreen);
+            spriteBatch.DrawString(MapCreatorGUI.staticFontExperiment, objectiveString, new Vector2(xBase, yBase + 20), Color.DarkOliveGreen);
+
+            spriteBatch.DrawString(MapCreatorGUI.staticFontExperiment, "Enemies killed: " + currentLevel.enemiesKilled, new Vector2(xBase, yBase + 40), Color.DarkOliveGreen);
+            spriteBatch.DrawString(MapCreatorGUI.staticFontExperiment, "Enemies escaped: " + currentLevel.enemiesLetThrough, new Vector2(xBase, yBase + 60), Color.DarkOliveGreen);
+            spriteBatch.DrawString(MapCreatorGUI.staticFontExperiment, "Enemy count: " + currentLevel.totalLevelEnemyCount, new Vector2(xBase, yBase + 80), Color.DarkOliveGreen);
+            spriteBatch.DrawString(MapCreatorGUI.staticFontExperiment, "Elapsed time: " + currentLevel.PlayTimeRounded, new Vector2(xBase, yBase + 100), Color.DarkOliveGreen);
         }
 
         private void CheckKeyboard()

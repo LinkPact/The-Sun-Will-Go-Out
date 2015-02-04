@@ -10,8 +10,8 @@ namespace SpaceProject
 {
     public class Main10_3b_AllianceArc : Mission
     {
-        private readonly string FIRST_ATTACK = "flightTraining_1";
-        private readonly string SECOND_ATTACK = "flightTraining_2";
+        private readonly string FIRST_ATTACK = "AllianceBranch_1";
+        private readonly string SECOND_ATTACK = "AllianceBranch_2";
         private readonly string FINAL_BATTLE = "flightTraining_3";
 
         private enum EventID
