@@ -16,6 +16,8 @@ namespace SpaceProject
             TravelingToAsteroids,
             TalkWithCaptain1,
             TalkWithCaptain2,
+            InLevel1,
+            InLevel2,
             AfterCombat,
             TravelingBack,
 

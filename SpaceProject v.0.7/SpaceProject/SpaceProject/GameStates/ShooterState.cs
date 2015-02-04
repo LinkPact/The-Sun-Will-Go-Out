@@ -106,7 +106,7 @@ namespace SpaceProject
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AlliancePirate5", "pirates/AlliancePirate5", MissionType.pirate));
 
             // Main mission levels
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelsInTheMeteors", "mainlevels/RebelsAsteroids", MissionType.none));
+            levels.Add(new RebelsInTheMeteors(Game, spriteSheet, player, "RebelsInTheMeteors", "mainlevels/RebelsAsteroids", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "FreighterEscort1", "mainlevels/FreighterEscortlvl1", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "FreighterEscort2", "mainlevels/FreighterEscortlvl2", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "DefendColonyBreak", "mainlevels/DefendColonyBreak", MissionType.none));
