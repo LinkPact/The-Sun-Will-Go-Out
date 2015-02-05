@@ -37,7 +37,7 @@ namespace SpaceProject
 
         //If called: allows player to enter planet depending of the planet name the player is currently over.
         public static void PlayerOverPlanet(GameStateManager stateManager,    
-                                            PlayerOverWorld player,
+                                            PlayerOverworld player,
                                             Planet planet)
         {
            

@@ -34,6 +34,8 @@ namespace SpaceProject
             {
                 List<GameObjectOverworld> tempList = new List<GameObjectOverworld>();
                 tempList.Add(Game.player);
+                tempList.Add(GetSectorX.GetGameObject("Soelara"));
+                tempList.Add(GetSectorX.GetGameObject("system1Star"));
                 foreach (GameObjectOverworld obj in GetAllOverworldGameObjects)
                 {
                     if (obj is Planet 
@@ -237,10 +239,6 @@ namespace SpaceProject
 
             DetermineCurrentRegion();
 
-            //if (currentSpaceRegion != null)
-            //{
-            //    currentSpaceRegion.Update(gameTime);
-            //}
             sectorX.Update(gameTime);
             outpostX.Update(gameTime);
             borderXOutpost.Update(gameTime);
@@ -554,7 +552,7 @@ namespace SpaceProject
 
             Game.player.Draw(spriteBatch);
 
-            if (!ZoomMap.ZoomingMap)
+            if (!ZoomMap.IsMapOn)
             {
                 bGManagerOverworld.Draw(spriteBatch);
                 HUD.Draw(spriteBatch);

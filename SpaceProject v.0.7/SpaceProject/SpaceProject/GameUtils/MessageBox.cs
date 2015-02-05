@@ -20,7 +20,6 @@ namespace SpaceProject
         Menu,
         YesNo,
         SelectionMenu
-        //Map
     }
 
     public class MessageBox
@@ -34,7 +33,6 @@ namespace SpaceProject
         private Sprite realTimeMessageCanvas;
         private Sprite buttonUnselected;
         private Sprite buttonSelected;
-        //private SpriteFont font;
 
         private MessageState messageState;
 
@@ -43,7 +41,6 @@ namespace SpaceProject
 
         private List<string> textBuffer;
         private List<string> realTimeTextBuffer;
-        //private string confirmString;
 
         private List<string> menuOptions;
         private List<System.Action> menuActions;
@@ -65,9 +62,7 @@ namespace SpaceProject
         private Sprite tutorialButtonChecked;
         private Sprite tutorialButtonUncheckedSelected;
         private Sprite tutorialButtonCheckedSelected;
-        //private readonly Vector2 RELATIVE_TUTORIAL_BUTTON_POSITION_NORMAL = new Vector2(140, 109);
-        //private readonly Vector2 RELATIVE_OKAY_BUTTON_POSITION_NORMAL = new Vector2(0, 109);
-        //private readonly Vector2 RELATIVE_TUTORIAL_BUTTON_POSITION_IMAGE = new Vector2(140, 179);
+
         private readonly Vector2 RELATIVE_OKAY_BUTTON_POSITION_IMAGE = new Vector2(0, 179);
 
         private readonly int OPACITY = 230;
@@ -85,17 +80,6 @@ namespace SpaceProject
 
         //private ItemComparison itemComp;
         private int holdTimer;
-
-        //Variables only related to the inventory popup
-        //#region inventoryVariables
-        //
-        //private int cursorColumn;
-        //private int pickedColumn;
-        //private int pickedIndex;
-        //private bool isPicked;
-        //private List<Item> inventoryRef;
-        //private List<Item> throwList;
-        //#endregion
 
         int tempTimer;
 

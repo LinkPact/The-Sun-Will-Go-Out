@@ -584,7 +584,7 @@ namespace SpaceProject
             }
         }
 
-        protected EventText GetEvent(int eventID)
+        public EventText GetEvent(int eventID)
         {
             return EventList[eventID].Key;
         }

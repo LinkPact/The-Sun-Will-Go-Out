@@ -10,8 +10,8 @@ namespace SpaceProject
 {
     public class Main10_3a_RebelArc : Mission
     {
-        private readonly string FirstAllianceLevel = "AlliancePirate1";
-        private readonly string SecondAllianceLevel = "AlliancePirate2";
+        private readonly string FirstAllianceLevel = "RebelBranch_1";
+        private readonly string SecondAllianceLevel = "RebelBranch_2";
         private readonly string ThirdAllianceLevel = "AlliancePirate3";
 
         private enum EventID

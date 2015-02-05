@@ -31,7 +31,7 @@ namespace SpaceProject
 
     public class SoundEffectsManager
     {
-        private readonly int SoundEffectBufferMaxCount = 32;
+        private readonly int SoundEffectBufferMaxCount = 64;
 
         public static bool LoadSoundEffects;
 

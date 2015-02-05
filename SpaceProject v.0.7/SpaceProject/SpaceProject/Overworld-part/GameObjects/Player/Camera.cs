@@ -110,7 +110,7 @@ namespace SpaceProject
         }
 
         // Updates camera position relative to players position if camera is within bounds of screen 
-        public void CameraUpdate(GameTime gameTime, PlayerOverWorld player)
+        public void CameraUpdate(GameTime gameTime, PlayerOverworld player)
         {
             if ((cameraPos.X - (Game.Window.ClientBounds.Width / 2) >= 0 && (cameraPos.X + Game.Window.ClientBounds.Width / 2) <= WorldWidth)
                    || (cameraPos.Y - (Game.Window.ClientBounds.Height / 2) >= 0 && cameraPos.Y + (Game.Window.ClientBounds.Height / 2) <= WorldHeight))
