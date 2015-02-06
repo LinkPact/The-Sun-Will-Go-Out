@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
@@ -16,15 +17,18 @@ namespace SpaceProject
     
     class ZoomMap
     {
+        // constants
         private const float ZoomRate = 0.0546875f;
         private const float ZoomedOutValue = 0.02f;
-
         private const float StarZoomScale = 0.15f;
         private const float PlanetZoomScale = 0.15f;
         private const float StationZoomScale = 0.2f;
         private const float PlayerZoomScale = 0.5f;
 
+        // variables
         private static MapState mapState = MapState.Off;
+
+        // properties
         public static bool IsMapOn { get { return mapState != MapState.Off; } private set { ; } }
         public static MapState MapState { get { return mapState; } private set { ; } }
 
@@ -46,12 +50,32 @@ namespace SpaceProject
         /// <param name="gameObjects">Objects to be scaled up for visibility</param>
         public static void Update(GameTime gameTime, List<GameObjectOverworld> gameObjects, Camera camera)
         {
+            if (mapState == MapState.ZoomingOut)
+            {
+                camera.Zoom *= (ZoomRate * gameTime.ElapsedGameTime.Milliseconds);
+
+                if (camera.Zoom <= ZoomedOutValue)
+                {
+                    Game1.Paused = true;
+                    mapState = MapState.On;
+                }
+            }
+            else if (mapState == MapState.ZoomingIn)
+            {
+                camera.Zoom *= (1 + (1 - (ZoomRate * gameTime.ElapsedGameTime.Milliseconds)));
+
+                if (camera.Zoom >= 1f)
+                {
+                    HideMap(camera, gameObjects);
+                }
+            }
+
             // Scale up objects
             foreach (GameObjectOverworld obj in gameObjects)
             {
-                if (obj is Planet
+                if ((obj is Planet
                     || obj.name.ToLower().Equals("soelara")
-                    || obj.name.ToLower().Equals("fortrun station i")
+                    || obj.name.ToLower().Equals("fortrun station i"))
                     && camera.Zoom < PlanetZoomScale)
                 {
                     obj.scale = PlanetZoomScale / camera.Zoom;
@@ -75,24 +99,15 @@ namespace SpaceProject
                     obj.scale = PlayerZoomScale / camera.Zoom;
                 }
             }
+        }
 
-            if (mapState == MapState.ZoomingOut)
+        public static void DrawOverlay(SpriteBatch spriteBatch, List<GameObjectOverworld> gameObjects)
+        {
+            if (mapState == MapState.On)
             {
-                camera.Zoom *= (ZoomRate * gameTime.ElapsedGameTime.Milliseconds);
-
-                if (camera.Zoom <= ZoomedOutValue)
+                foreach (GameObjectOverworld obj in gameObjects)
                 {
-                    Game1.Paused = true;
-                    mapState = MapState.On;
-                }
-            }
-            else if (mapState == MapState.ZoomingIn)
-            {
-                camera.Zoom *= (1 + (1 - (ZoomRate * gameTime.ElapsedGameTime.Milliseconds)));
-
-                if (camera.Zoom >= 1f)
-                {
-                    HideMap(camera, gameObjects);
+                    spriteBatch.DrawString(FontManager.GetFontStatic(14), obj.name, obj.position, Color.LightSeaGreen, 0f, Vector2.Zero, 50f, SpriteEffects.None, 1f);
                 }
             }
         }

@@ -277,6 +277,10 @@ namespace SpaceProject
             {
                 messageBox.Draw(spriteBatch);
             }
+            else if (ZoomMap.IsMapOn)
+            {
+                ZoomMap.DrawOverlay(spriteBatch, stateManager.overworldState.GetZoomObjects);
+            }
 
             helper.Draw(spriteBatch);
             beaconMenu.Draw(spriteBatch);
