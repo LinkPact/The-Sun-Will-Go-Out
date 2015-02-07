@@ -78,6 +78,8 @@ namespace SpaceProject
         }
         private List<GameObjectOverworld> garbageDeepSpaceGameObjects;
 
+        private List<GameObjectOverworld> effectsObjects;
+
         #region Space Regions
 
         private SpaceRegion previousSpaceRegion;
@@ -143,6 +145,8 @@ namespace SpaceProject
 
             deepSpaceGameObjects = new List<GameObjectOverworld>();
             garbageDeepSpaceGameObjects = new List<GameObjectOverworld>();
+
+            effectsObjects = new List<GameObjectOverworld>();
 
             camera = new Camera(0, 0, 1, Game);
             camera.WorldWidth = OVERWORLD_WIDTH;
@@ -281,6 +285,7 @@ namespace SpaceProject
 
         private void UpdateDeepSpaceObjects(GameTime gameTime)
         {
+            
             foreach (GameObjectOverworld obj in deepSpaceGameObjects)
             {
                 obj.Update(gameTime);
@@ -327,6 +332,11 @@ namespace SpaceProject
                         }
                     }
                 }
+            }
+
+            foreach (GameObjectOverworld obj in effectsObjects)
+            {
+                obj.Update(gameTime);
             }
 
             //if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))))
@@ -599,6 +609,11 @@ namespace SpaceProject
                     //    Game.helper.DisplayText("Press 'Enter' to investigate battlefield.");
                     //}
                 }
+
+                foreach (GameObjectOverworld obj in effectsObjects)
+                {
+                    obj.Draw(spriteBatch);
+                }
             }
         }
 
@@ -627,6 +642,11 @@ namespace SpaceProject
             }
 
             throw new ArgumentException(String.Format("No station by the name of '%s'", stationName));
+        }
+
+        public void AddEffectsObject(GameObjectOverworld obj)
+        {
+            effectsObjects.Add(obj);
         }
 
         public void AddOverworldObject(GameObjectOverworld obj)

@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
-    public class ExplosionParticle
+    public class ExplosionParticleOverworld
     {
         private Game1 game;
         private static Random random = new Random();
@@ -31,10 +31,7 @@ namespace SpaceProject
         private int lifeTime;
         public int LifeTime { get { return lifeTime; } private set { ;} }
 
-        private float leftRemovalPos;
-        private float rightRemovalPos;
-
-        public ExplosionParticle(Game1 game, Sprite spriteSheet, Vector2 startingPos, Vector2 startingDir,
+        public ExplosionParticleOverworld(Game1 game, Sprite spriteSheet, Vector2 startingPos, Vector2 startingDir,
                                  float startingSpeed, float size, bool randomDir, int index)
         {
             speed = 0.024f + (float)(random.NextDouble() * 0.02f);
@@ -43,7 +40,7 @@ namespace SpaceProject
             CommonSetup(game, spriteSheet, startingPos, startingDir, startingSpeed, size, randomDir, index);
         }
 
-        public ExplosionParticle(Game1 game, Sprite spriteSheet, Vector2 startingPos, Vector2 startingDir,
+        public ExplosionParticleOverworld(Game1 game, Sprite spriteSheet, Vector2 startingPos, Vector2 startingDir,
                                  float startingSpeed, float size, bool randomDir, int index, 
                                  float fragmentSpeed, int fragmentLifeTime)
         {
@@ -73,10 +70,6 @@ namespace SpaceProject
             position = startingPos;
             startingDirection = startingDir;
             this.startingSpeed = startingSpeed;
-
-            leftRemovalPos = (game.Window.ClientBounds.Width - game.stateManager.shooterState.CurrentLevel.LevelWidth) / 2 - 50;
-            rightRemovalPos = (game.Window.ClientBounds.Width - game.stateManager.shooterState.CurrentLevel.LevelWidth) / 2 + game.stateManager.shooterState.CurrentLevel.LevelWidth + 50;
-
         }
 
         public void Update(GameTime gameTime)
@@ -93,11 +86,6 @@ namespace SpaceProject
             if (b > 5)
                 b -= 5;
 
-            if (position.X < leftRemovalPos || position.X > rightRemovalPos)
-            {
-                lifeTime = 0;
-            }
-
             else if (position.Y < (game.Window.ClientBounds.Height - 600) / 2 ||
                 position.Y > (game.Window.ClientBounds.Height - 600) / 2 + 600)
             {
@@ -112,11 +100,6 @@ namespace SpaceProject
             if (lifeTime > 0)
                 spriteBatch.Draw(sprite.Texture, position, sprite.SourceRectangle,
                     color, 0f, centerPoint, scale, SpriteEffects.None, 0.65f); 
-        }
-
-        private void setFixedDirection(int i)
-        {
-
         }
     }
 }

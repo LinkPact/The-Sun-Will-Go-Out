@@ -66,6 +66,7 @@ namespace SpaceProject
         public override void FinalGoodbye()
         {
             IsDead = true;
+            base.FinalGoodbye();
         }
 
         public override void Update(GameTime gameTime)

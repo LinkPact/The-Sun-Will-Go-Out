@@ -64,5 +64,23 @@ namespace SpaceProject
             game.soundEffectsManager.PlaySoundEffect(source.getDeathSoundID(), source.SoundPan);
             return tempExplosion;
         }
+
+        public static OverworldExplosion GenerateOverworldExplosion(Game1 game, Sprite spriteSheet, GameObjectOverworld source)
+        {
+            float size = 20;
+            float fragmentSpeed = 0.4f;
+            int lifeTime = 15;
+            int nbrParticlesBase = 50;
+
+            OverworldExplosion tempExplosion = new OverworldExplosion(game, spriteSheet);
+
+            int nbrParticles = random.Next(nbrParticlesBase, nbrParticlesBase + (int)(nbrParticlesBase * 0.5));
+
+            tempExplosion.GenerateAbsoluteExplosion(game, spriteSheet, source, nbrParticles, size,
+                randomDir: true, speed: source.speed, fragmentDur: lifeTime, fragmentSpeed: fragmentSpeed);
+
+            //game.soundEffectsManager.PlaySoundEffect(source.getDeathSoundID(), source.SoundPan);
+            return tempExplosion;
+        }
     }
 }

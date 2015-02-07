@@ -40,7 +40,7 @@ ObjectiveCompleted = New First Mission completed!
 Fail = ""
 Reward = 100
 Progress = 2
-Reputation = 0
+Reputation = 2
 State = 1
 
 [Main2_Highfence]

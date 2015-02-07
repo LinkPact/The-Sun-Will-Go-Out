@@ -335,6 +335,7 @@
     <Compile Include="MissionStuff\Éndings\BurnOutEnding\BurnOutEnding.cs" />
     <Compile Include="Overworld-part\GameObjects\Direction.cs" />
     <Compile Include="Overworld-part\GameObjects\Other\Beacon.cs" />
+    <Compile Include="Overworld-part\GameObjects\Other\ExplosionParticleOverworld.cs" />
     <Compile Include="Overworld-part\GameObjects\Other\OverworldExplosion.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\AllianceShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Ships\AllyShip.cs" />
