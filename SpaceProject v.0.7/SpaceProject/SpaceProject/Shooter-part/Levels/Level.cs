@@ -111,10 +111,29 @@ namespace SpaceProject
 
         private static float accumulatedShipDamage;
         public static void AddShipDamage(float damage) { accumulatedShipDamage += damage; }
+        public static float RetrieveAccumulatedShipDamage() 
+        { 
+            float temp = accumulatedShipDamage;
+            accumulatedShipDamage = 0;
+            return temp;
+        }
+
         private static float accumulatedShieldDamage;
         public static void AddShieldDamage(float damage) { accumulatedShieldDamage += damage; }
+        public static float RetrieveAccumulatedShieldDamage()
+        {
+            float temp = accumulatedShieldDamage;
+            accumulatedShieldDamage = 0;
+            return temp;
+        }
+
         private static float totalConsumedEnergy;
         public static void AddConsumedEnergy(float energy) { totalConsumedEnergy += energy; }
+        public static float RetrieveTotalConsumedEnergy() {
+            float temp = totalConsumedEnergy;
+            totalConsumedEnergy = 0;
+            return temp;
+        }
         #endregion
 
         #endregion
@@ -742,9 +761,9 @@ namespace SpaceProject
 
             LevelLogger.WriteLine("");
             
-            LevelLogger.WriteLine(String.Format("Ship damage\t{0}", accumulatedShipDamage));
-            LevelLogger.WriteLine(String.Format("Shield damage\t{0}", accumulatedShieldDamage));
-            LevelLogger.WriteLine(String.Format("Consumed energy\t{0}", totalConsumedEnergy));
+            LevelLogger.WriteLine(String.Format("Ship damage\t{0}", RetrieveAccumulatedShipDamage()));
+            LevelLogger.WriteLine(String.Format("Shield damage\t{0}", RetrieveAccumulatedShieldDamage()));
+            LevelLogger.WriteLine(String.Format("Consumed energy\t{0}", RetrieveTotalConsumedEnergy()));
 
             LevelLogger.WriteLine("");
 

@@ -49,6 +49,9 @@ namespace SpaceProject
             //Player
             player = new PlayerVerticalShooter(Game, spriteSheet);
 
+            // Create new log file
+            LevelLogger.InitializeNewLogfile();
+
             // (Levels used for development only)
             levels.Add(new JakobsDevelopLevel(Game, spriteSheet, player, MissionType.rebel, "JakobDevelop"));
             //
@@ -128,8 +131,6 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            LevelLogger.InitializeNewLogfile();
-
             if (windowHeightOffset == 0 
                 && Game.Window.ClientBounds.Height > 600)
             {

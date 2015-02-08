@@ -20,6 +20,7 @@ namespace SpaceProject
         private Game1 Game;
         private String identifyer;
         protected Random random;
+        private Boolean inventoryIsFixed = true;
 
         protected List<Item> shopInventory;
         public List<Item> ShopInventory { get { return shopInventory; } set { shopInventory = value; } }
@@ -108,6 +109,11 @@ namespace SpaceProject
         {
             if (shopFilling == ShopFilling.none)
                 throw new ArgumentException("Due to bad programming this can be called when shopfilling is none, but it shouldn't be");
+
+            if (inventoryIsFixed)
+            {
+                return;
+            }
 
             // Logic for controlling shopinventory-numbers
             int removeCount = random.Next(0, 2);
@@ -201,7 +207,7 @@ namespace SpaceProject
                     part.SetShipPartVariety(entry.ItemVariety);
                     InsertPartAt(part, n);
                 }
-                else
+                else if (!inventoryIsFixed)
                 {
                     ShipPart part = ExtractShipPartFromItemFrequencies();
                     InsertPartAt(part, n);
