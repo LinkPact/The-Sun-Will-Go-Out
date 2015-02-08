@@ -77,9 +77,8 @@ namespace SpaceProject
             int nbrParticles = random.Next(nbrParticlesBase, nbrParticlesBase + (int)(nbrParticlesBase * 0.5));
 
             tempExplosion.GenerateAbsoluteExplosion(game, spriteSheet, source, nbrParticles, size,
-                randomDir: true, speed: source.speed, fragmentDur: lifeTime, fragmentSpeed: fragmentSpeed);
+                randomDir: true, speed: 0, fragmentDur: lifeTime, fragmentSpeed: fragmentSpeed);
 
-            //game.soundEffectsManager.PlaySoundEffect(source.getDeathSoundID(), source.SoundPan);
             return tempExplosion;
         }
     }

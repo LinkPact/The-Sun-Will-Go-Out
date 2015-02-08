@@ -32,6 +32,12 @@ namespace SpaceProject
         public SpriteEffects spriteEffect;
         public float layerDepth;               //"0" for back, "1" for front
 
+        // Sound
+        protected SoundEffects deathSoundID = SoundEffects.SmallExplosion;
+        public SoundEffects getDeathSoundID() { return deathSoundID; }
+        protected float soundPan;
+        public float SoundPan { get { return soundPan; } private set { ;} }
+
         public Rectangle Bounds 
         {
             get
@@ -63,6 +69,8 @@ namespace SpaceProject
 
         public virtual void Update(GameTime gameTime)
         {
+            soundPan = (position.X);
+
             position += (speed * direction.GetDirectionAsVector()) * gameTime.ElapsedGameTime.Milliseconds;
         }
 

@@ -8,15 +8,29 @@ namespace SpaceProject
     public class OverworldExplosion : GameObjectOverworld
     {
         private ExplosionParticleOverworld[] particleArray;
+        private int delay = 0;
+        private int delaytimer = 0;
 
         public OverworldExplosion(Game1 Game, Sprite spriteSheet) :
             base(Game, spriteSheet)
-        { }
+        {
+            delay = Game.random.Next(100, 400);
+        }
 
         public override void Update(GameTime gameTime)
         {
-            foreach (ExplosionParticleOverworld par in particleArray)
-                par.Update(gameTime);
+            delaytimer += gameTime.ElapsedGameTime.Milliseconds;
+            if (delaytimer > delay)
+            {
+                foreach (ExplosionParticleOverworld par in particleArray)
+                    par.Update(gameTime);
+            }
+
+            if (ExplosionFinished())
+            {
+                Game.soundEffectsManager.PlaySoundEffect(getDeathSoundID(), SoundPan);
+                this.IsDead = true;
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)

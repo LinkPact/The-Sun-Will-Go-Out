@@ -68,8 +68,7 @@ namespace SpaceProject
             List<GameObjectOverworld> tempList = new List<GameObjectOverworld>();
             tempList.AddRange(sector.GetGameObjects());
 
-            Random r = new Random(DateTime.Now.Millisecond);
-            position = tempList[(int)r.Next(0, tempList.Count - 1)].position;
+            position = tempList[(int)Game.random.Next(0, tempList.Count - 1)].position;
         }
 
         public void SetRandomEndPlanet()
@@ -77,8 +76,7 @@ namespace SpaceProject
             List<GameObjectOverworld> tempList = new List<GameObjectOverworld>();
             tempList.AddRange(sector.GetGameObjects());
 
-            Random r = new Random(DateTime.Now.Millisecond);
-            destinationPlanet = tempList[(int)r.Next(0, tempList.Count - 1)];
+            destinationPlanet = tempList[(int)Game.random.Next(0, tempList.Count - 1)];
             destination = destinationPlanet.position;
 
             if (position == destination)

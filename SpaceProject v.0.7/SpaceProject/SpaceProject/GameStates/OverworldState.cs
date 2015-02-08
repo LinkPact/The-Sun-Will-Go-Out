@@ -79,6 +79,7 @@ namespace SpaceProject
         private List<GameObjectOverworld> garbageDeepSpaceGameObjects;
 
         private List<GameObjectOverworld> effectsObjects;
+        private List<GameObjectOverworld> garbageEffectsObjects;
 
         #region Space Regions
 
@@ -147,6 +148,7 @@ namespace SpaceProject
             garbageDeepSpaceGameObjects = new List<GameObjectOverworld>();
 
             effectsObjects = new List<GameObjectOverworld>();
+            garbageEffectsObjects = new List<GameObjectOverworld>();
 
             camera = new Camera(0, 0, 1, Game);
             camera.WorldWidth = OVERWORLD_WIDTH;
@@ -278,6 +280,11 @@ namespace SpaceProject
                 DeleteRemovedGameObjects();
             }
 
+            if (garbageEffectsObjects.Count > 0)
+            {
+                DeleteRemovedEffects();
+            }
+
             burnOutEnding.Update(gameTime);
 
             base.Update(gameTime);
@@ -337,6 +344,8 @@ namespace SpaceProject
             foreach (GameObjectOverworld obj in effectsObjects)
             {
                 obj.Update(gameTime);
+                if (obj.IsDead)
+                    RemoveEffectsObject(obj);
             }
 
             //if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))))
@@ -667,6 +676,11 @@ namespace SpaceProject
         {
             garbageDeepSpaceGameObjects.Add(deepSpaceGameObjects[index]);
         }
+
+        public void RemoveEffectsObject(GameObjectOverworld obj)
+        {
+            garbageEffectsObjects.Add(obj);
+        }
         
         public Boolean ContainsOverworldObject(GameObjectOverworld obj)
         {
@@ -699,6 +713,16 @@ namespace SpaceProject
             }
 
             garbageDeepSpaceGameObjects.Clear();
+        }
+
+        private void DeleteRemovedEffects()
+        {
+            foreach (GameObjectOverworld obj in garbageEffectsObjects)
+            {
+                effectsObjects.Remove(obj);
+            }
+
+            garbageEffectsObjects.Clear();
         }
 
         private GameObjectOverworld GetCelestialBodyFromString(string classname)
