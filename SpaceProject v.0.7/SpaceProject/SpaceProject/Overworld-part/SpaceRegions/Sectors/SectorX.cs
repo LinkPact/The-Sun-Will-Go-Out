@@ -33,6 +33,7 @@ namespace SpaceProject
         private Soelara soelara;
         private FortrunStation2 fortrunStation2;
         private LonelyAsteroid lonelyAsteroid;
+        private DamagedShip damagedShip;
 
         public SectorX(Game1 game) :
             base(game)
@@ -56,10 +57,12 @@ namespace SpaceProject
             soelara = new Soelara(game, spriteSheet, game.messageBox);
             fortrunStation2 = new FortrunStation2(game, spriteSheet, game.messageBox);
             lonelyAsteroid = new LonelyAsteroid(game, spriteSheet, game.messageBox);
+            damagedShip = new DamagedShip(game, new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/MissionObjectSpriteSheet"), null), game.messageBox);
 
             soelara.Initialize();
             fortrunStation2.Initialize();
             lonelyAsteroid.Initialize();
+            damagedShip.Initialize();
 
             // Planets
             lavis = new Lavis(game, spriteSheet, offset);
@@ -127,6 +130,7 @@ namespace SpaceProject
             AddGameObject(soelaraStation);
             AddGameObject(fortrunStation2);
             AddGameObject(lonelyAsteroid);
+            AddGameObject(damagedShip);
 
             AddGameObject(highfenceBeacon);
             AddGameObject(fortrunBeacon);

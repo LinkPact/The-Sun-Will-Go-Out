@@ -5,23 +5,21 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class Soelara : SubInteractiveObject
+    class DamagedShip : SubInteractiveObject
     {
-        public Soelara(Game1 Game, Sprite spriteSheet, MessageBox messageBox) :
+        public DamagedShip(Game1 Game, Sprite spriteSheet, MessageBox messageBox) :
             base(Game, spriteSheet, messageBox)
-        {
-
-        }
+        {}
 
         public override void Initialize()
         {
-            sprite = spriteSheet.GetSubSprite(new Rectangle(311, 966, 412, 412));
-            position = new Vector2(100000, 112000);
-            name = "Soelara";
+            sprite = spriteSheet.GetSubSprite(new Rectangle(15, 55, 91, 37));
+            position = new Vector2(100000, 110000);
+            name = "Destroyed Ship";
 
             base.Initialize();
 
-            SetupText("A big gas giant. A space station orbits the planet.");
+            SetupText("You find the remnants of a ship drifting through space. The ship seems to be of civilian origin and the hull shows signs of blast damage. But you are unable to determine who the attacker might have been.");
         }
 
         public override void Update(GameTime gameTime)

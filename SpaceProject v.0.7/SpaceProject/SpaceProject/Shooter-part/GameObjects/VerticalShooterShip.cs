@@ -127,8 +127,7 @@ namespace SpaceProject
 
         public int GetLoot()
         {
-            Random r = new Random(DateTime.Now.Millisecond);
-            return r.Next((int)lootValue, 2*(int)lootValue);
+            return Game.random.Next((int)lootValue, 2*(int)lootValue);
         }
 
         public void SetBossMovement(float yPos)

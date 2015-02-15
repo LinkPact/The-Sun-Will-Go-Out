@@ -46,10 +46,9 @@ namespace SpaceProject
 
         public void SetPositionInSector()
         {
-            Random r = new Random(DateTime.Now.Millisecond);
             position = new Vector2(
-                (int)r.Next(sector.SpaceRegionArea.Left, sector.SpaceRegionArea.Right),
-                (int)r.Next(sector.SpaceRegionArea.Top, sector.SpaceRegionArea.Bottom));
+                (int)Game.random.Next(sector.SpaceRegionArea.Left, sector.SpaceRegionArea.Right),
+                (int)Game.random.Next(sector.SpaceRegionArea.Top, sector.SpaceRegionArea.Bottom));
             //if (CollisionDetection.IsPointInsideRectangle(position, Game.stateManager.overWorldState.HUD.radar.View))
             //    SetPositionInSector();
         }

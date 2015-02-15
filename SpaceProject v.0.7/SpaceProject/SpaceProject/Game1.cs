@@ -71,6 +71,8 @@ namespace SpaceProject
         public static List<Vector2> ResolutionOptions;
 
         private Vector2 resolution;
+
+        public Random random;
  
         public Vector2 Resolution { get { return resolution; } }
         public Vector2 DefaultResolution { get { return new Vector2(800, 600); } }
@@ -97,6 +99,8 @@ namespace SpaceProject
 
             resolution = new Vector2(settingsFile.GetPropertyAsFloat("visual", "resolutionx", 800),
                                      settingsFile.GetPropertyAsFloat("visual", "resolutiony", 600));
+
+            random = new Random();
 
             showFPS = settingsFile.GetPropertyAsBool("visual", "showfps", false);
 
