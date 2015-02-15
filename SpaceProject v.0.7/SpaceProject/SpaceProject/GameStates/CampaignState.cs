@@ -73,7 +73,7 @@ namespace SpaceProject
             //display1.Add("Press Escape to return to main menu");
             //display1.Add("Use number keys (0-9) to switch equipment");
 
-            var jakobMissionPathDict = LevelTesterState.GetMissionPathDict();
+            var jakobMissionPathDict = ShooterState.GetMissionPathDict();
 
             campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["1_1"], "1 - Rebels in Asteroids (1)", Keys.A, standardEquip: 1));
             campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["2_1"], "2 - Defend Ship (1)", Keys.A, standardEquip: 2));

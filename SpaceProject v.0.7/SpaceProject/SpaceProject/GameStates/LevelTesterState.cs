@@ -61,7 +61,7 @@ namespace SpaceProject
             display1.Add("Press Escape to return to main menu");
             display1.Add("Use number keys (0-9) to switch equipment");
 
-            var missionPathDict = GetMissionPathDict();
+            var missionPathDict = ShooterState.GetMissionPathDict();
 
             johansLevelEntries.Add(new LevelTesterEntry(missionPathDict["1_1"], "Main 1 - Rebels in Asteroids", Keys.Z, standardEquip: 1));
             johansLevelEntries.Add(new LevelTesterEntry(missionPathDict["2_1"], "Main 2 - Defend ship, first ", Keys.X, standardEquip: 2));
@@ -96,50 +96,6 @@ namespace SpaceProject
             jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["ap5"], "AllPir5", Keys.F10, standardEquip: 4));
 
             chosenLevel = jakobsLevelEntries[0].GetPath();
-        }
-
-        // Creates and returns a dictionary linking level names to string paths
-        public static Dictionary<String, String> GetMissionPathDict()
-        {
-            var pathDict = new Dictionary<String, String>();
-
-            pathDict.Add("1_1", "johan_main\\RebelsAsteroids");
-            pathDict.Add("2_1", "johan_main\\FreighterEscortlvl1");
-            pathDict.Add("2_2", "johan_main\\FreighterEscortlvl2");
-            pathDict.Add("3_1", "johan_main\\DefendColonyBreak");
-            pathDict.Add("3_2", "johan_main\\DefendColonyHold");
-
-            pathDict.Add("4_1", "jakob_main\\4_infiltration\\m4_infiltration_lv1_v1");
-            pathDict.Add("4_2", "jakob_main\\4_infiltration\\m4_infiltration_lv2_v2");
-
-            pathDict.Add("5_1", "jakob_main\\5_retribution\\m5_retribution_lv1_v2");
-            pathDict.Add("5_2", "jakob_main\\5_retribution\\m5_retribution_lv2_v2");
-
-            pathDict.Add("6_1", "jakob_main\\6_itnos\\m6_itnos_lv1_v2");
-            pathDict.Add("6_2", "jakob_main\\6_itnos\\m6_itnos_lv2_v1");
-
-            pathDict.Add("7_1", "jakob_main\\7_infiltration\\m7_infiltration_lv1_v2");
-
-            pathDict.Add("8o_1", "jakob_main\\8a_oyo\\m10a_OYO_lv1_v2");
-            pathDict.Add("8o_2", "jakob_main\\8a_oyo\\m10a_OYO_lv2_v2");
-            pathDict.Add("8r_1", "jakob_main\\8b_rebels\\m10b_rebels_lv1_v2");
-            pathDict.Add("8r_2", "jakob_main\\8b_rebels\\m10b_rebels_lv2_v2");
-            pathDict.Add("8a_1", "jakob_main\\8c_alliance\\m10c_alliance_lv1_v2");
-            pathDict.Add("8a_2", "jakob_main\\8c_alliance\\m10c_alliance_lv2_v2");
-
-            pathDict.Add("rp1", "all_pirates\\RebelPirate1");
-            pathDict.Add("rp2", "all_pirates\\RebelPirate2");
-            pathDict.Add("rp3", "all_pirates\\RebelPirate3");
-            pathDict.Add("rp4", "all_pirates\\RebelPirate4");
-            pathDict.Add("rp5", "all_pirates\\RebelPirate5");
-            
-            pathDict.Add("ap1", "all_pirates\\AlliancePirate1");
-            pathDict.Add("ap2", "all_pirates\\AlliancePirate2");
-            pathDict.Add("ap3", "all_pirates\\AlliancePirate3");
-            pathDict.Add("ap4", "all_pirates\\AlliancePirate4");
-            pathDict.Add("ap5", "all_pirates\\AlliancePirate5");
-
-            return pathDict;
         }
 
         public override void Initialize()

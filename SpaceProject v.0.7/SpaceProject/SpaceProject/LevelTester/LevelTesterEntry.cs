@@ -23,7 +23,7 @@ namespace SpaceProject
 
         public String GetPath()
         {
-            return "testlevels\\" + filepath;
+            return filepath;
         }
 
         public Keys GetKey()
