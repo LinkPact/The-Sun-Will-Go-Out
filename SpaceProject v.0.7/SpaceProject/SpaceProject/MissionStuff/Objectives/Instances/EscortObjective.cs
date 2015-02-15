@@ -140,7 +140,7 @@ namespace SpaceProject
                 && CollisionDetection.IsPointInsideRectangle(game.player.position, escortDataCapsule.ShipToDefend.Bounds)
                 && ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))))
             {
-                game.messageBox.DisplayMessage(escortDataCapsule.ShipIntroductionText, false);
+                game.messageBox.DisplayMessage(0, escortDataCapsule.ShipIntroductionText);
 
                 ((FreighterShip)escortDataCapsule.ShipToDefend).Start();
 

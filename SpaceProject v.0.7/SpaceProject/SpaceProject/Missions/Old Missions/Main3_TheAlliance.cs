@@ -55,7 +55,7 @@ namespace SpaceProject
                         Game.stateManager.overworldState.GetStation("Fortrun Station II").position,
                         300))
                     {
-                        Game.messageBox.DisplayMessage(GetEvent(0).Text, false);
+                        Game.messageBox.DisplayMessage(0, GetEvent(0).Text);
                         missionHelper.StartLevel("Main_TheAlliancelvl");
                     }
 
@@ -83,7 +83,7 @@ namespace SpaceProject
                         {
                             died = false;
 
-                            Game.messageBox.DisplayMessage(GetEvent(9).Text, false);
+                            Game.messageBox.DisplayMessage(0, GetEvent(9).Text);
                             Game.stateManager.shooterState.GetLevel("Main_TheAlliancelvl").Initialize();
                             CurrentObjective.Reset();
                         }

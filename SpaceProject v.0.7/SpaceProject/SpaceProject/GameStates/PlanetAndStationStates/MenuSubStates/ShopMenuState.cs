@@ -1068,7 +1068,7 @@ namespace SpaceProject
             {
                 if (ShipInventoryManager.IsEquipped(itemToSell) && itemToSell is PlayerEnergyCell)
                 {
-                    Game.messageBox.DisplayMessage("You can't sell equipped energy cells!", false);
+                    Game.messageBox.DisplayMessage(0, "You can't sell equipped energy cells!");
                 }
 
                 else if (ShipInventoryManager.IsEquipped(itemToSell) && itemToSell is PlayerPlating)

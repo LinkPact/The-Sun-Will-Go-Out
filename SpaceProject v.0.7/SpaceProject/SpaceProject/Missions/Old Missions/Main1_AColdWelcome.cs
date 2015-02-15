@@ -58,7 +58,7 @@ namespace SpaceProject
 
                     if (died && GameStateManager.currentState.Equals("OverworldState"))
                     {
-                        Game.messageBox.DisplayMessage("Fei Yan: Too bad. Try again! Return to Border Station if you need to repair your ship.", false);
+                        Game.messageBox.DisplayMessage(0, "Fei Yan: Too bad. Try again! Return to Border Station if you need to repair your ship.");
                         died = false;
                         ObjectiveIndex = 0;
                         objectives[0].Reset();

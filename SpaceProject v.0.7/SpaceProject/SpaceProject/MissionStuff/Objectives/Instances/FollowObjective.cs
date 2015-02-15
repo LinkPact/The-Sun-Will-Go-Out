@@ -117,7 +117,7 @@ namespace SpaceProject
                 && !startMessageDisplayed)
             {
                 startMessageDisplayed = true;
-                game.messageBox.DisplayMessage(startMessage, false, 100);
+                game.messageBox.DisplayMessage(100, startMessage);
             }
 
             if (!deviationAllowed

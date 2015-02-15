@@ -464,7 +464,7 @@ namespace SpaceProject
 
         private void DevelopCommands()
         {
-            Game.messageBox.DisplayMessage("Gameshops updated", false);
+            Game.messageBox.DisplayMessage(0, "Gameshops updated");
             ShopManager.ShopUpdateTime = 0;
         }
 

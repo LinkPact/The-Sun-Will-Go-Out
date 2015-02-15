@@ -94,7 +94,7 @@ namespace SpaceProject
                     && Game.stateManager.shooterState.CurrentLevel.IsObjectiveFailed
                     && GameStateManager.currentState.ToLower().Equals("overworldstate"))
                 {
-                    Game.messageBox.DisplayMessage(levelFailedText, false);
+                    Game.messageBox.DisplayMessage(0, levelFailedText);
                     Game.stateManager.shooterState.GetLevel(level).Initialize();
                 }
 
@@ -104,7 +104,7 @@ namespace SpaceProject
                     && GameStateManager.currentState.ToLower().Equals("overworldstate"))
                 {
                     levelCleared = true;
-                    Game.messageBox.DisplayMessage(levelCompletedText, false);
+                    Game.messageBox.DisplayMessage(0, levelCompletedText);
                     foreach (Item item in levelItemReward)
                     {
                         ShipInventoryManager.AddItem(item);

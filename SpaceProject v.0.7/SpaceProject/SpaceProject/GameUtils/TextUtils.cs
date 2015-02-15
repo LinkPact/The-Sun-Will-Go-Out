@@ -266,5 +266,19 @@ namespace SpaceProject
 
             return text;
         }
+
+        public static List<String> SplitHashTagText(String text)
+        {
+            List<String> tempList = new List<String>();
+
+            String[] split = text.Split('#');
+            for (int i = 0; i < split.Length; i++)
+            {
+                split[i] = split[i].Trim();
+                tempList.Add(split[i]);
+            }
+
+            return tempList;
+        }
     }
 }

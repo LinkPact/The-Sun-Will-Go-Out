@@ -210,7 +210,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessage(message, true);
+                game.messageBox.DisplayMessage(0, message);
             }
         }
 

@@ -101,6 +101,11 @@ namespace SpaceProject
             }
         }
 
+        /// <summary>
+        /// Draws names of all objects in gameObjects relative to their position
+        /// </summary>
+        /// <param name="spriteBatch"></param>
+        /// <param name="gameObjects">objects which names to be displayed</param>
         public static void DrawOverlay(SpriteBatch spriteBatch, List<GameObjectOverworld> gameObjects)
         {
             if (mapState == MapState.On)
