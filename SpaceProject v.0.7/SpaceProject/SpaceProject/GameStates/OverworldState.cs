@@ -297,7 +297,7 @@ namespace SpaceProject
             {
                 obj.Update(gameTime);
 
-                if (!Game.player.HyperspeedOn)
+                if (!Game.player.HyperspeedOn && OverworldShip.FollowPlayer)
                 {
                     if (obj is OverworldShip && ((OverworldShip)obj).collisionEvent != null)
                     {

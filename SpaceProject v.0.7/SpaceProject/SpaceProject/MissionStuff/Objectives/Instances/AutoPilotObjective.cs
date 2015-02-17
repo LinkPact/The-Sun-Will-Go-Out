@@ -70,7 +70,7 @@ namespace SpaceProject
         {
             base.OnActivate();
 
-            OverworldShip.FollowPlayer = true;
+            OverworldShip.FollowPlayer = false;
 
             // Starts companion ships and disables player controls
             foreach (OverworldShip ship in ships)
