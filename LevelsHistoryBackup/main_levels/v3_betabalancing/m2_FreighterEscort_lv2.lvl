@@ -1,0 +1,63 @@
+Header :duration 50:width 600:durGridWidth 3:levelObjective Finish|X0:
+Point
+T: 0:E: 0nn0 0nn0 0nn0 Ann0 0nn0 Fnn0 0nn0 Ann0 0nn0 0nn0 0nn0:end
+T: 0.9:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 1.8:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 2.7:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 3.6:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 Gc1sH5W2X30Y30:end
+T: 4.5:E: Gc1sH5W2X30Y30 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 5.5:E: 0nn0 0nn0 0nn0 afo0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 Gc1sH5W2X30Y30:end
+T: 6.4:E: Gc1sH5W2X30Y30 0nn0 0nn0 0fo0 Yfs0 0fs0 Yfs0 afo0 0nn0 0nn0 0nn0:end
+T: 7.3:E: 0nn0 0nn0 0nn0 afo0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 8.2:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 9.1:E: 0nn0 0nn0 0nn0 0fs0 0nn0 0nn0 0nn0 0fs0 0nn0 0nn0 0nn0:end
+T: 10:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 10.9:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 11.8:E: 0nn0 0nn0 Yfs0 0nn0 0nn0 Yfs0 0nn0 0nn0 Yfs0 0nn0 0nn0:end
+T: 12.7:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 13.6:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 14.5:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 15.5:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 16.4:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 17.3:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 18.2:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 19.1:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 20:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 20.9:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 21.8:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 22.7:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 23.6:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 24.5:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 25.5:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 26.4:E: 0nn0 0nn0 0fo0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 27.3:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 28.2:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 29.1:E: 0nn0 0nn0 0nn0 0nn0 0nn0 Bnn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 30:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 30.9:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 31.8:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 32.7:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 33.6:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 34.5:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 35.5:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 36.4:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 37.3:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 38.2:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 39.1:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 40:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 40.9:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 41.8:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 42.7:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 43.6:E: 0nn0 0nn0 0nn0 0nn0 0nn0 enn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 44.5:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 45.5:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 46.4:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 47.3:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 48.2:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 49.1:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+Duration
+C:1,18 1,22:E: SnnED50
+C:0,25 0,29:E: GfoED50
+C:0,51 0,53:E: GnnED50
+C:1,35 1,46:E: SnnED5
+C:0,38 0,42:E: YstED20

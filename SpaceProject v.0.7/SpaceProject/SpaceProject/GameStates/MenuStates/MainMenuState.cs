@@ -59,7 +59,7 @@ namespace SpaceProject
 
             holdTimer = Game.HoldKeyTreshold;
 
-            ActiveSong = Music.MainMenu2;
+            ActiveSong = Music.MainMenu;
 
             base.Initialize();
         }

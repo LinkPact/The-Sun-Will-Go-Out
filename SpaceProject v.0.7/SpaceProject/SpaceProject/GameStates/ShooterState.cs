@@ -114,8 +114,8 @@ namespace SpaceProject
 
             // Main mission levels
             levels.Add(new RebelsInTheMeteors(Game, spriteSheet, player, "RebelsInTheMeteors",  "mainlevels/m1_RebelsAsteroids", MissionType.none));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "FreighterEscort1",       "mainlevels/m2_FreighterEscort_lv1", MissionType.none));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "FreighterEscort2",       "mainlevels/m2_FreighterEscort_lv2", MissionType.none));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "FreighterEscort1",       "mainlevels/m2_FreighterEscort_lv1", MissionType.rebel));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "FreighterEscort2",       "mainlevels/m2_FreighterEscort_lv2", MissionType.rebel));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "DefendColonyBreak",      "mainlevels/m3_DefendColony_lv1", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "DefendColonyHold",       "mainlevels/m3_DefendColony_lv2", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Infiltration1",          "mainlevels/m4_infiltration_lv1", MissionType.none));
@@ -213,12 +213,12 @@ namespace SpaceProject
             {
                 case MissionType.rebel:
                     {
-                        ActiveSong = Music.Rebels;
+                        ActiveSong = Music.Falling;
                         break;
                     }
                 case MissionType.pirate:
                     {
-                        ActiveSong = Music.Asteroids;
+                        ActiveSong = Music.Stars;
                         break;
                     }
                 case MissionType.dark:
@@ -233,7 +233,7 @@ namespace SpaceProject
                     }
                 case MissionType.none:
                     {
-                        ActiveSong = Music.Asteroids;
+                        ActiveSong = Music.AllianceBattle;
                         break;
                     }
             }

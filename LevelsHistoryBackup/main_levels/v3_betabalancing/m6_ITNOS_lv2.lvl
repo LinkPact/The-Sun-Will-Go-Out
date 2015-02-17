@@ -1,0 +1,18 @@
+Header :duration 15:width 400:durGridWidth 3:levelObjective Finish|X0:
+Point
+T: 0:E: 0nn0 Cxx0 0nn0 Cxx0 0nn0 Cxx0 0nn0 Cxx0 0nn0:end
+T: 1:E: 0nn0 0nn0 Cxx0 0nn0 Cxx0 0nn0 Cxx0 0nn0 0nn0:end
+T: 2:E: 0nn0 0nn0 0nn0 0nn0 0xx0 0nn0 0nn0 0nn0 0nn0:end
+T: 3:E: Cxx0 Cxx0 0nn0 0nn0 0nn0 0nn0 0nn0 Cxx0 Cxx0:end
+T: 4:E: 0nn0 0nn0 0nn0 0xx0 Cxx0 0nn0 0nn0 0nn0 0nn0:end
+T: 5:E: 0nn0 0nn0 0nn0 0xx0 0nn0 0xx0 0nn0 0nn0 0nn0:end
+T: 6:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 7:E: 0nn0 Cxx0 0nn0 0nn0 Cxx0 0nn0 0nn0 Cxx0 0nn0:end
+T: 8:E: 0nn0 0nn0 0nn0 0nn0 0xx0 0nn0 0nn0 0nn0 0nn0:end
+T: 9:E: 0nn0 0nn0 0nn0 Cxx0 0nn0 Cxx0 0nn0 0nn0 0nn0:end
+T: 10:E: 0nn0 0nn0 0nn0 0nn0 pfs0 0nn0 0nn0 0nn0 0nn0:end
+T: 11:E: 0nn0 0nn0 Cxx0 0nn0 0nn0 0nn0 Cxx0 0nn0 0nn0:end
+T: 12:E: Cxx0 0nn0 0nn0 0nn0 Cxx0 0nn0 0nn0 0nn0 Cxx0:end
+T: 13:E: 0nn0 Cxx0 0nn0 0nn0 0nn0 0nn0 0nn0 Cxx0 0nn0:end
+T: 14:E: 0nn0 0nn0 0nn0 0xx0 0nn0 0xx0 0nn0 0nn0 0nn0:end
+Duration

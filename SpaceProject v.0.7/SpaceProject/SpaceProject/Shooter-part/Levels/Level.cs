@@ -282,7 +282,7 @@ namespace SpaceProject
             enemiesKilledByPlayer = 0;
             enemiesLetThrough = 0;
 
-            if (levelSong != null) Game.musicManager.PlayMusic(Music.Asteroids);
+            if (levelSong != null) Game.musicManager.PlayMusic(Music.Stars);
 
             CalculateLevelEnemyCount();
         }

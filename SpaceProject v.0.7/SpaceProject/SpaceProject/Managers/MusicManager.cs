@@ -8,19 +8,21 @@ namespace SpaceProject
 {
     public enum Music
     {
-        //MainMenu,
-        //Song1,
-        //Song2,
-        Rebels,
-        //SpaceTravel,
-        Asteroids,
-        //Jigsaw,
-        TheOboeSong,
-        DarkSpace,
-        MainMenu2,
-        PowerSong,
+        GoingOut,
+        MainMenu,
+        Outro,
         SpaceStation,
+        TheOboeSong,
+
+        DarkPiano,
+        DarkSpace,
         SpaceAmbience,
+
+        AllianceBattle,
+        Falling,
+        PowerSong,
+        Stars,
+        
         none
     }
 
@@ -31,20 +33,6 @@ namespace SpaceProject
         private List<Song> tracks;
 
         private Music activeSong;
-
-        //private Song mainMenuSong;
-        //private Song song1;
-        //private Song song2;
-        private Song rebels;
-        //private Song spaceTravel;
-        private Song asteroids;
-        //private Song jigsaw;
-        private Song theOboeSong;
-        private Song darkSpace;
-        private Song mainMenu2;
-        private Song powerSong;
-        private Song spaceStation;
-        private Song spaceAmbience;
 
         public Boolean IsSongPlaying(Music song) { return activeSong == song; }
 
@@ -70,34 +58,26 @@ namespace SpaceProject
             MediaPlayer.IsMuted = game.settingsFile.GetPropertyAsBool("sound", "mutemusic", false);
             MediaPlayer.Volume = game.settingsFile.GetPropertyAsFloat("sound", "musicvolume", 1);
 
-            //mainMenuSong = game.Content.Load<Song>("Music/SpaceProject_Intro");
-            //song1 = game.Content.Load<Song>("Music/song1");
-            //song2 = game.Content.Load<Song>("Music/song2");
-            rebels = game.Content.Load<Song>("Music/Rebels");
-            //spaceTravel = game.Content.Load<Song>("Music/SpaceTravel");
-            asteroids = game.Content.Load<Song>("Music/Asteroids");
-            //jigsaw = game.Content.Load<Song>("Music/Jigsaw");
-            theOboeSong = game.Content.Load<Song>("Music/TheEditedOboeSong");
-            darkSpace = game.Content.Load<Song>("Music/DarkSpace");
-            mainMenu2 = game.Content.Load<Song>("Music/MainMenuTest");
+            AddSongToTracks(tracks, "Music/other/GoingOut");
+            AddSongToTracks(tracks, "Music/other/MainMenu");
+            AddSongToTracks(tracks, "Music/other/Outro");
+            AddSongToTracks(tracks, "Music/other/SpaceStation");
+            AddSongToTracks(tracks, "Music/other/TheOboeSong");
 
-            powerSong = game.Content.Load<Song>("Music/PowerSong");
-            spaceStation = game.Content.Load<Song>("Music/SpaceStation");
-            spaceAmbience = game.Content.Load<Song>("Music/space_ambience");
-            
-            //tracks.Add(mainMenuSong);
-            //tracks.Add(song1);
-            //tracks.Add(song2);
-            tracks.Add(rebels);
-            //tracks.Add(spaceTravel);
-            tracks.Add(asteroids);
-            //tracks.Add(jigsaw);
-            tracks.Add(theOboeSong);
-            tracks.Add(darkSpace);
-            tracks.Add(mainMenu2);
-            tracks.Add(powerSong);
-            tracks.Add(spaceStation);
-            tracks.Add(spaceAmbience);
+            AddSongToTracks(tracks, "Music/overworld/DarkPiano");
+            AddSongToTracks(tracks, "Music/overworld/DarkSpace");
+            AddSongToTracks(tracks, "Music/overworld/SpaceAmbience");
+
+            AddSongToTracks(tracks, "Music/vertical/AllianceBattle");
+            AddSongToTracks(tracks, "Music/vertical/Falling");
+            AddSongToTracks(tracks, "Music/vertical/Stars");
+            AddSongToTracks(tracks, "Music/vertical/PowerSong");
+
+        }
+
+        private void AddSongToTracks(List<Song> tracks, String path)
+        {
+            tracks.Add(game.Content.Load<Song>(path));
         }
 
         public void PlayMusic(Music identifier)
