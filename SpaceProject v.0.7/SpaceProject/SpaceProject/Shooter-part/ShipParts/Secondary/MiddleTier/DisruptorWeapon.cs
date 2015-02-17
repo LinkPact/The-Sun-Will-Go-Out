@@ -35,6 +35,7 @@ namespace SpaceProject
             delay = 1200;
             Weight = 400;
             ActivatedSoundID = SoundEffects.MuffledExplosion;
+            displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(100, 100, 100, 100));
 
             bullet = new Mine(Game, spriteSheet);
             bullet.Initialize();

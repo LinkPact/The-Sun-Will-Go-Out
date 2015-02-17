@@ -33,6 +33,7 @@ namespace SpaceProject
             delay = 800;
             Weight = 500;
             ActivatedSoundID = SoundEffects.ClickLaser;
+            displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(300, 100, 100, 100));
 
             bullet = new HomingMissile(Game, spriteSheet);
             bullet.Initialize();

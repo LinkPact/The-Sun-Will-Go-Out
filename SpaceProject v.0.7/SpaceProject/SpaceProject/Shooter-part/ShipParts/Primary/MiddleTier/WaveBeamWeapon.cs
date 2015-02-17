@@ -35,6 +35,7 @@ namespace SpaceProject
             Weight = 130;
             Value = 550;
             ActivatedSoundID = SoundEffects.SmallLaser;
+            displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(500, 0, 100, 100));
 
             bullet = new GreenBullet(Game, spriteSheet);
             bullet.Initialize();

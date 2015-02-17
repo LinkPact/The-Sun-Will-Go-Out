@@ -34,6 +34,7 @@ namespace SpaceProject
             delay = 1500;
             Weight = 130;
             ActivatedSoundID = SoundEffects.BigLaser;
+            displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(0, 100, 100, 100));
 
             bullet = new BallisticLaser(Game, spriteSheet);
             bullet.Initialize();
