@@ -381,7 +381,13 @@
       <Processor>SongProcessor</Processor>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="itemVisualSheet.png">
+      <Name>itemVisualSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="Music\vertical\AllianceBattle.mp3">
       <Name>AllianceBattle</Name>

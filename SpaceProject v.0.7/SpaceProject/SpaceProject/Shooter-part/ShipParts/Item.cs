@@ -21,6 +21,8 @@ namespace SpaceProject
 
         protected Random random;
 
+        protected Sprite displaySprite;
+
         protected Item(Game1 Game)
         {
             this.Game = Game;
@@ -65,6 +67,12 @@ namespace SpaceProject
                 spriteBatch.DrawString(font, text, new Vector2(startingPos.X,
                     startingPos.Y + deltaY * n + titleSpacing) + Game.fontManager.FontOffset,
                     color, 0, new Vector2(0, 0), 1.0f, SpriteEffects.None, 0.5f);
+            }
+
+            if (displaySprite != null) 
+            {
+                float imageOffset = 250;
+                spriteBatch.Draw(displaySprite.Texture, new Vector2(startingPos.X + imageOffset, startingPos.Y), displaySprite.SourceRectangle, Color.White);
             }
         }
 
