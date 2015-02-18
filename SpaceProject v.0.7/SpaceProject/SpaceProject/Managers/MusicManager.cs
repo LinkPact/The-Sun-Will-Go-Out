@@ -70,8 +70,8 @@ namespace SpaceProject
 
             AddSongToTracks(tracks, "Music/vertical/AllianceBattle");
             AddSongToTracks(tracks, "Music/vertical/Falling");
-            AddSongToTracks(tracks, "Music/vertical/Stars");
             AddSongToTracks(tracks, "Music/vertical/PowerSong");
+            AddSongToTracks(tracks, "Music/vertical/Stars");
 
         }
 

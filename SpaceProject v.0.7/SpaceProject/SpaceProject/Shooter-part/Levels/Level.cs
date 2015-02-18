@@ -11,10 +11,13 @@ namespace SpaceProject
 {
     public enum MissionType
     {
-        rebel,
-        pirate,
-        dark,
+        rebelpirate,
+        alliancepirate,
+        goingout,
         power,
+        dark,
+        regularalliance,
+        regularrebel,
         none
     }
 
@@ -388,7 +391,7 @@ namespace SpaceProject
         private void MapCompletionLogic()
         {
             EndText = "";
-            if (missionType.Equals(MissionType.pirate))
+            if (missionType.Equals(MissionType.alliancepirate))
                 EndText = "You earned: " + (int)(LevelLoot * StatsManager.moneyFactor) + " rupees. \n";
             EndText += "Press 'Enter' to continue..";
 
@@ -634,7 +637,7 @@ namespace SpaceProject
         {
             WriteLogEntry();
 
-            if (missionType.Equals(MissionType.pirate))
+            if (missionType.Equals(MissionType.alliancepirate))
                 StatsManager.AddLoot((int)(LevelLoot * StatsManager.moneyFactor));
 
             if (GameStateManager.previousState.Equals("StationState"))

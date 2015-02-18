@@ -23,8 +23,8 @@ namespace SpaceProject
         //Declaration of level(s)
         private List<Level> levels = new List<Level>();
         private Level currentLevel;
-
         public Level CurrentLevel { get { return currentLevel; } }
+        private Level testRunLevel;
 
         public List<GameObjectVertical> gameObjects = new List<GameObjectVertical>(); //Contains all used GameObjects
         private List<GameObjectVertical> deadGameObjects = new List<GameObjectVertical>();
@@ -53,19 +53,19 @@ namespace SpaceProject
             LevelLogger.InitializeNewLogfile();
 
             // (Levels used for development only)
-            levels.Add(new JakobsDevelopLevel(Game, spriteSheet, player, MissionType.rebel, "JakobDevelop"));
+            levels.Add(new JakobsDevelopLevel(Game, spriteSheet, player, MissionType.rebelpirate, "JakobDevelop"));
             //
 
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "mapCreator2", "map1", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "mapCreator", "xExperimental", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "finalBattle", "xFinalBattle", MissionType.none));
 
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "DeathByMeteor", "XDeathByMeteor", MissionType.rebel));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "DeathByMeteor", "XDeathByMeteor", MissionType.rebelpirate));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "flightTraining_1", "XFlightTraining_1", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "flightTraining_2", "XFlightTraining_2", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "flightTraining_3", "XFlightTraining_3", MissionType.none));
 
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "hardLevel", "XHardLevel", MissionType.rebel));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "hardLevel", "XHardLevel", MissionType.rebelpirate));
 
             //Levels
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "DefendColony", "XDefendColony", MissionType.power));
@@ -73,108 +73,106 @@ namespace SpaceProject
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AstroScan", "XAstroscan", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "LonelyAsteroidEncounter", "LonelyAsteroidLevel", MissionType.none));
 
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AstroDodger", "XAstroDodger", MissionType.dark));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AstroDodger", "XAstroDodger", MissionType.goingout));
 
             //levels.Add(new FirstMissionLevel(Game, spriteSheet, player, "FirstMissionLevel", "XFirstMission", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "ScoutingLevel", "XScoutingLevel", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "PirateAmbush", "XPirateAmbush", MissionType.none));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "PirateAnnihilation", "XPirateAnnihilation", MissionType.none));
-            levels.Add(new SecondMissionLevel(Game, spriteSheet, player, "SecondMissionlvl1", "XSecondMissionlvl3", MissionType.rebel));
-            levels.Add(new SecondMissionLevel(Game, spriteSheet, player, "SecondMissionlvl2", "XSecondMissionlvl2", MissionType.rebel));
-            levels.Add(new SecondMissionLevel(Game, spriteSheet, player, "SecondMissionlvl3", "XSecondMissionlvl1", MissionType.rebel));
+            levels.Add(new SecondMissionLevel(Game, spriteSheet, player, "SecondMissionlvl1", "XSecondMissionlvl3", MissionType.rebelpirate));
+            levels.Add(new SecondMissionLevel(Game, spriteSheet, player, "SecondMissionlvl2", "XSecondMissionlvl2", MissionType.rebelpirate));
+            levels.Add(new SecondMissionLevel(Game, spriteSheet, player, "SecondMissionlvl3", "XSecondMissionlvl1", MissionType.rebelpirate));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Main_TheAlliancelvl", "XMain_TheAlliance", MissionType.power));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Main10_AllianceDefence", "XMain10_level1", MissionType.power));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "CoverBlown", "XCoverBlown", MissionType.power));
 
             //TEST
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "EscortTest1", "escortTest1", MissionType.rebel));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "EscortTest1", "escortTest1", MissionType.rebelpirate));
 
             //Hangar Levels
-            levels.Add(new HangarLevel(Game, spriteSheet, player, "hangar1", "hangar1", MissionType.pirate));
-            levels.Add(new HangarLevel(Game, spriteSheet, player, "hangar2", "hangar2", MissionType.pirate));
-            levels.Add(new HangarLevel(Game, spriteSheet, player, "hangar3", "hangar3", MissionType.pirate));
+            levels.Add(new HangarLevel(Game, spriteSheet, player, "hangar1", "hangar1", MissionType.alliancepirate));
+            levels.Add(new HangarLevel(Game, spriteSheet, player, "hangar2", "hangar2", MissionType.alliancepirate));
+            levels.Add(new HangarLevel(Game, spriteSheet, player, "hangar3", "hangar3", MissionType.alliancepirate));
 
             //////////// USED LEVELS //////////////
 
-            var missionPathDict = ShooterState.GetMissionPathDict();
+            var levelDict = ShooterState.GetMissionPathDict();
 
-            //Rebel Pirate Levels
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelPirate1", missionPathDict["rp1"], MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelPirate2", missionPathDict["rp2"], MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelPirate3", missionPathDict["rp3"], MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelPirate4", missionPathDict["rp4"], MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelPirate5", missionPathDict["rp5"], MissionType.pirate));
+            //Pirate Levels
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["rp1"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["rp2"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["rp3"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["rp4"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["rp5"]));
 
-            //Alliance Pirate Levels
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AlliancePirate1", missionPathDict["ap1"], MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AlliancePirate2", missionPathDict["ap2"], MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AlliancePirate3", missionPathDict["ap3"], MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AlliancePirate4", missionPathDict["ap4"], MissionType.pirate));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AlliancePirate5", missionPathDict["ap5"], MissionType.pirate));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["ap1"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["ap2"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["ap3"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["ap4"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["ap5"]));
 
             // Main mission levels
-            levels.Add(new RebelsInTheMeteors(Game, spriteSheet, player, "RebelsInTheMeteors",  "mainlevels/m1_RebelsAsteroids", MissionType.none));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "FreighterEscort1",       "mainlevels/m2_FreighterEscort_lv1", MissionType.rebel));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "FreighterEscort2",       "mainlevels/m2_FreighterEscort_lv2", MissionType.rebel));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "DefendColonyBreak",      "mainlevels/m3_DefendColony_lv1", MissionType.none));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "DefendColonyHold",       "mainlevels/m3_DefendColony_lv2", MissionType.none));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Infiltration1",          "mainlevels/m4_infiltration_lv1", MissionType.none));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Infiltration2",          "mainlevels/m4_infiltration_lv2", MissionType.none));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Retribution1",           "mainlevels/m5_retribution_lv1", MissionType.none));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Retribution2",           "mainlevels/m5_retribution_lv2", MissionType.none));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Itnos_1",                "mainlevels/m6_itnos_lv1", MissionType.none));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Itnos_2",                "mainlevels/m6_itnos_lv2", MissionType.none));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Information",            "mainlevels/m7_information_lv1", MissionType.none));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "OnYourOwn_1",            "mainlevels/m8a_OYO_lv1", MissionType.none));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "OnYourOwn_2",            "mainlevels/m8a_OYO_lv2", MissionType.none));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelBranch_1",          "mainlevels/m8b_rebels_lv1", MissionType.none));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "RebelBranch_2",          "mainlevels/m8b_rebels_lv2", MissionType.none));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AllianceBranch_1",       "mainlevels/m8c_alliance_lv1", MissionType.none));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AllianceBranch_2",       "mainlevels/m8c_alliance_lv1", MissionType.none));
+            levels.Add(new RebelsInTheMeteors(Game, spriteSheet, player, levelDict["1_1"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["2_1"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["2_2"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["3_1"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["3_2"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["4_1"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["4_2"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["5_1"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["5_2"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["6_1"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["6_2"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["7_1"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["8o_1"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["8o_2"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["8r_1"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["8r_2"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["8a_1"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["8a_2"]));
+            
         }
 
         // Creates and returns a dictionary linking level names to string paths
-        public static Dictionary<String, String> GetMissionPathDict()
+        public static Dictionary<String, LevelEntry> GetMissionPathDict()
         {
-            var pathDict = new Dictionary<String, String>();
+            //var pathDict = new Dictionary<String, String>();
+            var entryDict = new Dictionary<String, LevelEntry>();
 
-            pathDict.Add("1_1", "mainlevels\\m1_RebelsAsteroids");
-            pathDict.Add("2_1", "mainlevels/m2_FreighterEscort_lv1");
-            pathDict.Add("2_2", "mainlevels/m2_FreighterEscort_lv2");
-            pathDict.Add("3_1", "mainlevels/m3_DefendColony_lv1");
-            pathDict.Add("3_2", "mainlevels/m3_DefendColony_lv2");
+            entryDict.Add("1_1", new LevelEntry("RebelsInTheMeteors",   "mainlevels/m1_RebelsAsteroids",        MissionType.regularalliance));
+            entryDict.Add("2_1", new LevelEntry("FreighterEscort1",     "mainlevels/m2_FreighterEscort_lv1",    MissionType.regularalliance));
+            entryDict.Add("2_2", new LevelEntry("FreighterEscort2",     "mainlevels/m2_FreighterEscort_lv2",    MissionType.regularalliance));
+            entryDict.Add("3_1", new LevelEntry("DefendColonyBreak",    "mainlevels/m3_DefendColony_lv1",       MissionType.power));
+            entryDict.Add("3_2", new LevelEntry("DefendColonyHold",     "mainlevels/m3_DefendColony_lv2",       MissionType.power));
 
-            pathDict.Add("4_1", "mainlevels/m4_infiltration_lv1");
-            pathDict.Add("4_2", "mainlevels/m4_infiltration_lv2");
+            entryDict.Add("4_1", new LevelEntry("Infiltration1",        "mainlevels/m4_infiltration_lv1",       MissionType.dark));
+            entryDict.Add("4_2", new LevelEntry("Infiltration2",        "mainlevels/m4_infiltration_lv2",       MissionType.dark));
+            entryDict.Add("5_1", new LevelEntry("Retribution1",         "mainlevels/m5_retribution_lv1",        MissionType.regularrebel));
+            entryDict.Add("5_2", new LevelEntry("Retribution2",         "mainlevels/m5_retribution_lv2",        MissionType.regularrebel));
+            entryDict.Add("6_1", new LevelEntry("Itnos_1",              "mainlevels/m6_itnos_lv1",              MissionType.regularrebel));
+            entryDict.Add("6_2", new LevelEntry("Itnos_2",              "mainlevels/m6_itnos_lv2",              MissionType.regularrebel));
+            entryDict.Add("7_1", new LevelEntry("Information",          "mainlevels/m7_information",            MissionType.dark));
 
-            pathDict.Add("5_1", "mainlevels/m5_retribution_lv1");
-            pathDict.Add("5_2", "mainlevels/m5_retribution_lv2");
+            entryDict.Add("8o_1", new LevelEntry("OnYourOwn_1",         "mainlevels/m8a_OYO_lv1",               MissionType.goingout));
+            entryDict.Add("8o_2", new LevelEntry("OnYourOwn_2",         "mainlevels/m8a_OYO_lv2",               MissionType.goingout));
+            entryDict.Add("8r_1", new LevelEntry("RebelBranch_1",       "mainlevels/m8b_rebels_lv1",            MissionType.regularrebel));
+            entryDict.Add("8r_2", new LevelEntry("RebelBranch_2",       "mainlevels/m8b_rebels_lv2",            MissionType.regularrebel));
+            entryDict.Add("8a_1", new LevelEntry("AllianceBranch_1",    "mainlevels/m8c_alliance_lv1",          MissionType.power));
+            entryDict.Add("8a_2", new LevelEntry("AllianceBranch_2",    "mainlevels/m8c_alliance_lv2",          MissionType.power));
 
-            pathDict.Add("6_1", "mainlevels/m6_itnos_lv1");
-            pathDict.Add("6_2", "mainlevels/m6_itnos_lv2");
+            entryDict.Add("rp1", new LevelEntry("RebelPirate1",         "pirates/RebelPirate1",                 MissionType.rebelpirate));
+            entryDict.Add("rp2", new LevelEntry("RebelPirate1",         "pirates/RebelPirate2",                 MissionType.rebelpirate));
+            entryDict.Add("rp3", new LevelEntry("RebelPirate1",         "pirates/RebelPirate3",                 MissionType.rebelpirate));
+            entryDict.Add("rp4", new LevelEntry("RebelPirate1",         "pirates/RebelPirate4",                 MissionType.rebelpirate));
+            entryDict.Add("rp5", new LevelEntry("RebelPirate1",         "pirates/RebelPirate5",                 MissionType.rebelpirate));
 
-            pathDict.Add("7_1", "mainlevels/m7_information");
+            entryDict.Add("ap1", new LevelEntry("AlliancePirate1",      "pirates/AlliancePirate1",              MissionType.regularalliance));
+            entryDict.Add("ap2", new LevelEntry("AlliancePirate1",      "pirates/AlliancePirate2",              MissionType.regularalliance));
+            entryDict.Add("ap3", new LevelEntry("AlliancePirate1",      "pirates/AlliancePirate3",              MissionType.regularalliance));
+            entryDict.Add("ap4", new LevelEntry("AlliancePirate1",      "pirates/AlliancePirate4",              MissionType.regularalliance));
+            entryDict.Add("ap5", new LevelEntry("AlliancePirate1",      "pirates/AlliancePirate5",              MissionType.regularalliance));
 
-            pathDict.Add("8o_1", "mainlevels/m8a_OYO_lv1");
-            pathDict.Add("8o_2", "mainlevels/m8a_OYO_lv2");
-            pathDict.Add("8r_1", "mainlevels/m8b_rebels_lv1");
-            pathDict.Add("8r_2", "mainlevels/m8b_rebels_lv2");
-            pathDict.Add("8a_1", "mainlevels/m8c_alliance_lv1");
-            pathDict.Add("8a_2", "mainlevels/m8c_alliance_lv2");
-
-            pathDict.Add("rp1", "pirates/RebelPirate1");
-            pathDict.Add("rp2", "pirates/RebelPirate2");
-            pathDict.Add("rp3", "pirates/RebelPirate3");
-            pathDict.Add("rp4", "pirates/RebelPirate4");
-            pathDict.Add("rp5", "pirates/RebelPirate5");
-
-            pathDict.Add("ap1", "pirates/AlliancePirate1");
-            pathDict.Add("ap2", "pirates/AlliancePirate2");
-            pathDict.Add("ap3", "pirates/AlliancePirate3");
-            pathDict.Add("ap4", "pirates/AlliancePirate4");
-            pathDict.Add("ap5", "pirates/AlliancePirate5");
-
-            return pathDict;
+            return entryDict;
         }
 
         public override void Initialize()
@@ -211,19 +209,19 @@ namespace SpaceProject
         {
             switch ((currentLevel).GetMissionType())
             {
-                case MissionType.rebel:
-                    {
-                        ActiveSong = Music.Falling;
-                        break;
-                    }
-                case MissionType.pirate:
+                case MissionType.rebelpirate:
                     {
                         ActiveSong = Music.Stars;
                         break;
                     }
-                case MissionType.dark:
+                case MissionType.alliancepirate:
                     {
-                        ActiveSong = Music.DarkSpace;
+                        ActiveSong = Music.Stars;
+                        break;
+                    }
+                case MissionType.goingout:
+                    {
+                        ActiveSong = Music.GoingOut;
                         break;
                     }
                 case MissionType.power:
@@ -231,47 +229,45 @@ namespace SpaceProject
                         ActiveSong = Music.PowerSong;
                         break;
                     }
-                case MissionType.none:
+                case MissionType.dark:
+                    {
+                        ActiveSong = Music.DarkPiano;
+                        break;
+                    }
+                case MissionType.regularalliance:
                     {
                         ActiveSong = Music.AllianceBattle;
+                        break;
+                    }
+                case MissionType.regularrebel:
+                    {
+                        ActiveSong = Music.Falling;
+                        break;
+                    }
+                case MissionType.none:
+                    {
+                        ActiveSong = Music.SpaceAmbience;
                         break;
                     }
             }
         }
 
-        public void SetupMapCreatorTestRun(String fileName, float startTime)
+        public void SetupMapCreatorTestRun(String filePath, float startTime)
         {
             StatsManager.RestoreShipHealthToMax();
-            SetupTestRun(fileName, startTime, true);
+            Boolean isMapCreatorRun = true;
+            testRunLevel = new MapCreatorLevel(Game, spriteSheet, player, "testRun", filePath, MissionType.none, isMapCreatorRun);
+            testRunLevel.SetCustomStartTime(startTime);
+            levels.Add(testRunLevel);
         }
 
-        public void SetupTestLevelRun(String fileName, float startTime)
+        public void SetupTestLevelRun(LevelEntry levelEntry, float startTime)
         {
             StatsManager.RestoreShipHealthToMax();
-            SetupTestRun(fileName, startTime, false);
-        }
-
-        private void SetupTestRun(String fileName, float startTime, Boolean isMapCreatorRun)
-        {
-            //In order to remove duplicates when ran several times
-            List<Level> removeList = new List<Level>();
-            foreach (Level level in levels)
-            {
-                if (level.Identifier.Equals("testRun"))
-                {
-                    removeList.Add(level);
-                }
-            }
-            foreach (Level level in removeList)
-            {
-                levels.Remove(level);
-            }
-            removeList.Clear();
-
-            //Boolean isTestRun = true;
-            Level lv = new MapCreatorLevel(Game, spriteSheet, player, "testRun", fileName, MissionType.none, isMapCreatorRun);
-            lv.SetCustomStartTime(startTime);
-            levels.Add(lv);
+            Boolean isMapCreatorRun = false;
+            testRunLevel = new MapCreatorLevel(Game, spriteSheet, player, "testRun", levelEntry.FilePath, levelEntry.MissionType, isMapCreatorRun);
+            testRunLevel.SetCustomStartTime(startTime);
+            levels.Add(testRunLevel);
         }
 
         public override void OnLeave()
@@ -541,9 +537,22 @@ namespace SpaceProject
             }
         }
 
+        public void BeginTestLevel()
+        {
+            if (testRunLevel == null)
+            {
+                throw new ArgumentException("No test level assigned!");
+            }
+
+            currentLevel = testRunLevel;
+            Game.stateManager.shooterState.Initialize();
+            Game.stateManager.ChangeState("ShooterState");
+        }
+
         public void BeginLevel(string levelName)
         {
             foreach (Level level in levels)
+            {
                 if (level.Identifier == levelName)
                 {
                     currentLevel = level;
@@ -551,6 +560,7 @@ namespace SpaceProject
                     Game.stateManager.ChangeState("ShooterState");
                     return;
                 }
+            }
 
             throw new ArgumentException("No suitable level found!");
         }

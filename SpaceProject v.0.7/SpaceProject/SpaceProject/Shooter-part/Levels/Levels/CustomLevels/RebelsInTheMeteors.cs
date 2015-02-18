@@ -16,6 +16,11 @@ namespace SpaceProject
         {
         }
 
+        public RebelsInTheMeteors(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player1, LevelEntry levelEntry)
+            : base(Game, spriteSheet, player1, levelEntry)
+        {
+        }
+
         public override void Initialize()
         {
             base.Initialize();

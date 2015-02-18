@@ -26,7 +26,7 @@ namespace SpaceProject
         private String equipInfo;
 
         private List<LevelTesterEntry> campaignEntries = new List<LevelTesterEntry>();
-        private LevelTesterEntry chosenLevelEntry
+        private LevelTesterEntry chosenLevelTesterEntry
         {
             get
             {
@@ -75,26 +75,26 @@ namespace SpaceProject
 
             var jakobMissionPathDict = ShooterState.GetMissionPathDict();
 
-            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["1_1"], "1 - Rebels in Asteroids (1)", Keys.A, standardEquip: 1));
-            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["2_1"], "2 - Defend Ship (1)", Keys.A, standardEquip: 2));
-            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["2_2"], "2 - Defend Ship (2)", Keys.A, standardEquip: 2));
-            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["3_1"], "3 - Break the Rebels defence (1)", Keys.A, standardEquip: 3));
-            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["3_2"], "3 - Break the Rebels defence (2)", Keys.A, standardEquip: 3));
+            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["1_1"], Keys.A, standardEquip: 1));
+            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["2_1"], Keys.A, standardEquip: 2));
+            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["2_2"], Keys.A, standardEquip: 2));
+            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["3_1"], Keys.A, standardEquip: 3));
+            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["3_2"], Keys.A, standardEquip: 3));
 
             //campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["4_1"], "4 - Infiltration (1)", Keys.A, standardEquip: 4));
-            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["4_2"], "4 - Infiltration (2)", Keys.S, standardEquip: 4));
-            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["5_1"], "5 - Retribution (1)", Keys.D, standardEquip: 5));
-            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["5_2"], "5 - Retribution (2)", Keys.F, standardEquip: 5));
-            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["6_1"], "6 - ITNOS (1)", Keys.G, standardEquip: 6));
-            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["6_2"], "6 - ITNOS (2)", Keys.H, standardEquip: 6));
-            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["7_1"], "7 - Information", Keys.J, standardEquip: 6));
+            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["4_2"], Keys.S, standardEquip: 4));
+            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["5_1"], Keys.D, standardEquip: 5));
+            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["5_2"], Keys.F, standardEquip: 5));
+            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["6_1"], Keys.G, standardEquip: 6));
+            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["6_2"], Keys.H, standardEquip: 6));
+            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["7_1"], Keys.J, standardEquip: 6));
             
-            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["8o_1"], "8 - On Your Own End (1)", Keys.K, standardEquip: 7));
-            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["8o_2"], "8 - On Your Own End (2)", Keys.L, standardEquip: 7));
-            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["8r_1"], "8 - Rebels End (1)", Keys.K, standardEquip: 7));
-            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["8r_2"], "8 - Rebels End (2)", Keys.L, standardEquip: 7));
-            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["8a_1"], "8 - Alliance End (1)", Keys.K, standardEquip: 7));
-            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["8a_2"], "8 - Alliance End (2)", Keys.L, standardEquip: 7));
+            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["8o_1"], Keys.K, standardEquip: 7));
+            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["8o_2"], Keys.L, standardEquip: 7));
+            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["8r_1"], Keys.K, standardEquip: 7));
+            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["8r_2"], Keys.L, standardEquip: 7));
+            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["8a_1"], Keys.K, standardEquip: 7));
+            campaignEntries.Add(new LevelTesterEntry(jakobMissionPathDict["8a_2"], Keys.L, standardEquip: 7));
             
         }
 
@@ -152,9 +152,7 @@ namespace SpaceProject
             base.Update(gameTime);
 
             UpdateControls();
-            //ChooseLevel();
-            //ApplyEquipments();
-
+ 
             if (standardEquipEnabled && currentLevel <= campaignEntries.Count)
                 CheckStandardEquip(campaignEntries[currentLevel-1]);
         }
@@ -165,9 +163,9 @@ namespace SpaceProject
             {
                 int startTime = 0;
 
-                Game.stateManager.shooterState.SetupTestLevelRun(chosenLevelEntry.GetPath(), startTime);
+                Game.stateManager.shooterState.SetupTestLevelRun(chosenLevelTesterEntry.GetLevelEntry(), startTime);
                 StatsManager.SetCustomDamageFactor_DEVELOPONLY(lifeFactor);
-                Game.stateManager.shooterState.BeginLevel("testRun");
+                Game.stateManager.shooterState.BeginTestLevel();
             }
 
             if (ControlManager.CheckKeypress(Keys.Escape))
@@ -308,7 +306,7 @@ namespace SpaceProject
         {
             var strings = new List<String>();
             strings.Add("Level: " + currentLevel + "/" + campaignEntries.Count);
-            strings.Add("Description: " + chosenLevelEntry.GetDescription());
+            strings.Add("Description: " + chosenLevelTesterEntry.GetDescription());
             strings.Add("Prize money: " + prizeMoney);
             strings.Add("Lifefactor: " + lifeFactor + "x");
             strings.Add("Attempt: " + attemptNbr);

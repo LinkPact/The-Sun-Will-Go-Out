@@ -21,6 +21,13 @@ namespace SpaceProject
             Setup(filePath, isTestRun);
         }
 
+        public MapCreatorLevel(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player1,
+            LevelEntry levelEntry, Boolean isTestRun = false)
+            : base(Game, spriteSheet, player1, levelEntry.MissionType, levelEntry.Identifier)
+        {
+            Setup(levelEntry.FilePath, isTestRun);
+        }
+
         private void Setup(String filePath, Boolean isTestRun)
         {
             //this.Identifier = identifier;

@@ -25,7 +25,7 @@ namespace SpaceProject
 
         private SpriteFont smallFont;
 
-        private String chosenLevel;
+        private LevelEntry chosenLevel;
         private String equipInfo;
 
         private List<String> display1 = new List<String>();
@@ -63,39 +63,39 @@ namespace SpaceProject
 
             var missionPathDict = ShooterState.GetMissionPathDict();
 
-            johansLevelEntries.Add(new LevelTesterEntry(missionPathDict["1_1"], "Main 1 - Rebels in Asteroids", Keys.Z, standardEquip: 1));
-            johansLevelEntries.Add(new LevelTesterEntry(missionPathDict["2_1"], "Main 2 - Defend ship, first ", Keys.X, standardEquip: 2));
-            johansLevelEntries.Add(new LevelTesterEntry(missionPathDict["2_2"], "Main 2 - Defend ship, second ", Keys.C, standardEquip: 2));
-            johansLevelEntries.Add(new LevelTesterEntry(missionPathDict["3_1"], "Main 3 - Break the Rebels defence", Keys.V, standardEquip: 3));
-            johansLevelEntries.Add(new LevelTesterEntry(missionPathDict["3_2"], "Main 3 - Hold against Rebels", Keys.B, standardEquip: 3));
+            johansLevelEntries.Add(new LevelTesterEntry(missionPathDict["1_1"], Keys.Z, standardEquip: 1));
+            johansLevelEntries.Add(new LevelTesterEntry(missionPathDict["2_1"], Keys.X, standardEquip: 2));
+            johansLevelEntries.Add(new LevelTesterEntry(missionPathDict["2_2"], Keys.C, standardEquip: 2));
+            johansLevelEntries.Add(new LevelTesterEntry(missionPathDict["3_1"], Keys.V, standardEquip: 3));
+            johansLevelEntries.Add(new LevelTesterEntry(missionPathDict["3_2"], Keys.B, standardEquip: 3));
 
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["4_1"], "4 - Infiltration (1)", Keys.A, standardEquip: 4));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["4_2"], "4 - Infiltration (2)", Keys.S, standardEquip: 4));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["5_1"], "5 - Retribution (1)", Keys.D, standardEquip: 5));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["5_2"], "5 - Retribution (2)", Keys.F, standardEquip: 5));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["6_1"], "6 - ITNOS (1)", Keys.G, standardEquip: 6));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["6_2"], "6 - ITNOS (2)", Keys.H, standardEquip: 6));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["7_1"], "7 - Information", Keys.J, standardEquip: 6));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["8o_1"], "8 - On Your Own End (1)", Keys.K, standardEquip: 7));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["8o_2"], "8 - On Your Own End (2)", Keys.L, standardEquip: 7));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["8r_1"], "8 - Rebels End (1)", Keys.Q, standardEquip: 7));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["8r_2"], "8 - Rebels End (2)", Keys.W, standardEquip: 7));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["8a_1"], "8 - Alliance End (1)", Keys.E, standardEquip: 7));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["8a_2"], "8 - Alliance End (2)", Keys.R, standardEquip: 7));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["4_1"], Keys.A, standardEquip: 4));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["4_2"], Keys.S, standardEquip: 4));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["5_1"], Keys.D, standardEquip: 5));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["5_2"], Keys.F, standardEquip: 5));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["6_1"], Keys.G, standardEquip: 6));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["6_2"], Keys.H, standardEquip: 6));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["7_1"], Keys.J, standardEquip: 6));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["8o_1"], Keys.K, standardEquip: 7));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["8o_2"], Keys.L, standardEquip: 7));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["8r_1"], Keys.Q, standardEquip: 7));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["8r_2"], Keys.W, standardEquip: 7));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["8a_1"], Keys.E, standardEquip: 7));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["8a_2"], Keys.R, standardEquip: 7));
 
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["rp1"], "RebPir1", Keys.F1, standardEquip: 2));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["rp2"], "RebPir2", Keys.F2, standardEquip: 2));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["rp3"], "RebPir3", Keys.F3, standardEquip: 2));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["rp4"], "RebPir4", Keys.F4, standardEquip: 2));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["rp5"], "RebPir5", Keys.F5, standardEquip: 2));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["rp1"], Keys.F1, standardEquip: 2));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["rp2"], Keys.F2, standardEquip: 2));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["rp3"], Keys.F3, standardEquip: 2));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["rp4"], Keys.F4, standardEquip: 2));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["rp5"], Keys.F5, standardEquip: 2));
 
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["ap1"], "AllPir1", Keys.F6, standardEquip: 4));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["ap2"], "AllPir2", Keys.F7, standardEquip: 4));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["ap3"], "AllPir3", Keys.F8, standardEquip: 4));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["ap4"], "AllPir4", Keys.F9, standardEquip: 4));
-            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["ap5"], "AllPir5", Keys.F10, standardEquip: 4));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["ap1"], Keys.F6, standardEquip: 4));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["ap2"], Keys.F7, standardEquip: 4));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["ap3"], Keys.F8, standardEquip: 4));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["ap4"], Keys.F9, standardEquip: 4));
+            jakobsLevelEntries.Add(new LevelTesterEntry(missionPathDict["ap5"], Keys.F10, standardEquip: 4));
 
-            chosenLevel = jakobsLevelEntries[0].GetPath();
+            chosenLevel = jakobsLevelEntries[0].GetLevelEntry();
         }
 
         public override void Initialize()
@@ -132,7 +132,7 @@ namespace SpaceProject
 
                 Game.stateManager.shooterState.SetupTestLevelRun(chosenLevel, startTime);
                 StatsManager.SetCustomDamageFactor_DEVELOPONLY(lifeFactor);
-                Game.stateManager.shooterState.BeginLevel("testRun");
+                Game.stateManager.shooterState.BeginTestLevel();
             }
 
             if (ControlManager.CheckKeypress(Keys.Escape))
@@ -169,7 +169,7 @@ namespace SpaceProject
 
                 if (ControlManager.CheckKeypress(entryKey))
                 {
-                    chosenLevel = entry.GetPath();
+                    chosenLevel = entry.GetLevelEntry();
                     CheckStandardEquip(entry);
                     break;
                 }
@@ -265,7 +265,7 @@ namespace SpaceProject
                 posCounter++;
             }
 
-            spriteBatch.DrawString(smallFont, "Chosen level: " + chosenLevel, new Vector2(xRight, yBase), Color.White);
+            spriteBatch.DrawString(smallFont, "Chosen level: " + chosenLevel.Identifier, new Vector2(xRight, yBase), Color.White);
         }
     }
 }

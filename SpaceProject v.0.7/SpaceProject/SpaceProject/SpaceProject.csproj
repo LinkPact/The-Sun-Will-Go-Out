@@ -184,7 +184,8 @@
     <Compile Include="GameUtils\PlayTime.cs" />
     <Compile Include="GameUtils\TextToSpeech.cs" />
     <Compile Include="GameUtils\ZoomMap.cs" />
-    <Compile Include="LevelTester\LevelTesterEntry.cs" />
+    <Compile Include="LevelHelpClasses\LevelEntry.cs" />
+    <Compile Include="LevelHelpClasses\LevelTesterEntry.cs" />
     <Compile Include="Managers\BaseInventoryManager.cs">
       <SubType>Code</SubType>
     </Compile>
