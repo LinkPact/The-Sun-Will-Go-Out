@@ -46,7 +46,7 @@ namespace SpaceProject
             Damage = 10000;
             Speed = 0.01f;
             movement = Movement.Line;
-            shootSoundID = SoundEffects.BigLaser;
+            PrimaryShootSoundID = SoundEffects.BigLaser;
 
             anim.LoopTime = 500;
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(0, 380, 159, 258)));

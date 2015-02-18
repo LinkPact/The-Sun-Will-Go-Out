@@ -38,7 +38,7 @@ namespace SpaceProject
             HP = 500.0f;
             Damage = 50;
             Speed = 0.04f;
-            shootSoundID = SoundEffects.ClickLaser;
+            PrimaryShootSoundID = SoundEffects.ClickLaser;
 
             AddPrimaryModule(1500, ShootingMode.Regular);
             primaryModule.SetFullCharge();

@@ -56,7 +56,7 @@ namespace SpaceProject
 
             AddPrimaryModule(10, ShootingMode.Regular);
             movement = Movement.Following;
-            shootSoundID = SoundEffects.ClickLaser;
+            //shootSoundID = SoundEffects.ClickLaser;
 
             //Animationer
             anim.LoopTime = 500;

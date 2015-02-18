@@ -40,7 +40,7 @@ namespace SpaceProject
             TurningSpeed = 2;
 
             movement = Movement.Following;
-            shootSoundID = SoundEffects.SmallLaser;
+            PrimaryShootSoundID = SoundEffects.SmallLaser;
             SightRange = 400;
 
             //Animationer

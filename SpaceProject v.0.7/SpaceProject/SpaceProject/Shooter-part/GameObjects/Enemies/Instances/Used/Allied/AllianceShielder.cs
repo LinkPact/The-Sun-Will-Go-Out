@@ -44,7 +44,7 @@ namespace SpaceProject
 
             movement = Movement.Following;
             SightRange = 400;
-            shootSoundID = SoundEffects.SmallLaser;
+            PrimaryShootSoundID = SoundEffects.SmallLaser;
 
             //Animationer
             anim.LoopTime = 500;

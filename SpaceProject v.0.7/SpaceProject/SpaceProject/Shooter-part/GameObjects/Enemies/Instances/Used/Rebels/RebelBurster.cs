@@ -23,7 +23,7 @@ namespace SpaceProject
             primaryModule.SetFullCharge();
 
             movement = Movement.SmallZigzag;
-            shootSoundID = SoundEffects.BigLaser;
+            PrimaryShootSoundID = SoundEffects.BigLaser;
 
             //Egenskaper
             SightRange = 300;

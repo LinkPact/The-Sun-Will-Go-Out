@@ -46,7 +46,7 @@ namespace SpaceProject
             
             shooting = new Animation();
             shooting.LoopTime = 1000;
-            shootSoundID = SoundEffects.ClickLaser;
+            PrimaryShootSoundID = SoundEffects.ClickLaser;
             
             shooting.AddFrame(spriteSheet.GetSubSprite(new Rectangle(509, 80, 25, 30)));
             

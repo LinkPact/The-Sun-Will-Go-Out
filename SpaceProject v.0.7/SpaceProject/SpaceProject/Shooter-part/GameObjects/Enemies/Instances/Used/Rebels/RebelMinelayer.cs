@@ -45,7 +45,7 @@ namespace SpaceProject
             Speed = 0.05f;
 
             movement = Movement.SmallZigzag;
-            shootSoundID = SoundEffects.ClickLaser;
+            PrimaryShootSoundID = SoundEffects.ClickLaser;
 
             //Animationer
             anim.LoopTime = 500;

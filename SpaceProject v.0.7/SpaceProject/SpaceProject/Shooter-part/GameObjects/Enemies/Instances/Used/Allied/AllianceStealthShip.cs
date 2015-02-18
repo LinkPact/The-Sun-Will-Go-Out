@@ -58,7 +58,7 @@ namespace SpaceProject
             Damage = 150;
             Speed = 0.03f;
             movement = Movement.Line;
-            shootSoundID = SoundEffects.SmallLaser;
+            PrimaryShootSoundID = SoundEffects.SmallLaser;
 
             //Animationer
             anim.LoopTime = 500;

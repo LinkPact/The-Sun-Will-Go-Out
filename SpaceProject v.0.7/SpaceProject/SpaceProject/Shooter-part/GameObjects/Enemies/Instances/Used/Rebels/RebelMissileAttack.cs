@@ -39,7 +39,8 @@ namespace SpaceProject
 
             movement = Movement.Line;
             SightRange = 4000;
-            shootSoundID = SoundEffects.ClickLaser;
+            PrimaryShootSoundID = SoundEffects.ClickLaser;
+            SecondaryShootSoundID = SoundEffects.SmallLaser;
 
             //Animationer
             anim.LoopTime = 500;

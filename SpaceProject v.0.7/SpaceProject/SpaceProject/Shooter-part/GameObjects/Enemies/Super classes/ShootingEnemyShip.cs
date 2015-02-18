@@ -36,8 +36,23 @@ namespace SpaceProject
         private List<String> targetTypes = new List<String>();
 
         // Sound
-        protected SoundEffects shootSoundID = SoundEffects.SmallLaser;
-        public SoundEffects getShootSoundID() { return shootSoundID; }
+        private Boolean isPrimarySoundAssigned = false;
+        private SoundEffects primaryShootSoundID;
+        protected SoundEffects PrimaryShootSoundID { 
+            set {
+                isPrimarySoundAssigned = true;
+                primaryShootSoundID = value;
+            } 
+        }
+
+        private Boolean isSecondarySoundAssigned = false;
+        private SoundEffects secondaryShootSoundID;
+        protected SoundEffects SecondaryShootSoundID { 
+            set {
+                isSecondarySoundAssigned = true;
+                secondaryShootSoundID = value;
+            }
+        }
 
         #endregion
 
@@ -71,7 +86,11 @@ namespace SpaceProject
                     if (primaryModule.IsReady())
                     {
                         ShootingPattern(gameTime);
-                        Game.soundEffectsManager.PlaySoundEffect(shootSoundID, soundPan);
+
+                        if (isPrimarySoundAssigned) 
+                        {
+                            Game.soundEffectsManager.PlaySoundEffect(primaryShootSoundID, soundPan);
+                        }
                     }
                 }
 
@@ -81,7 +100,11 @@ namespace SpaceProject
                     if (secondaryModule.IsReady())
                     {
                         SecondaryShootingPattern(gameTime);
-                        Game.soundEffectsManager.PlaySoundEffect(shootSoundID, soundPan);
+
+                        if (isSecondarySoundAssigned) 
+                        {
+                            Game.soundEffectsManager.PlaySoundEffect(secondaryShootSoundID, soundPan);
+                        }
                     }
                 }
             }

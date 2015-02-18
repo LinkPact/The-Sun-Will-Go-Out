@@ -45,7 +45,7 @@ namespace SpaceProject
             Speed = 0.10f;
 
             movement = Movement.SlantingLine;
-            shootSoundID = SoundEffects.ClickLaser;
+            PrimaryShootSoundID = SoundEffects.ClickLaser;
 
             //Animationer
             anim.LoopTime = 500;

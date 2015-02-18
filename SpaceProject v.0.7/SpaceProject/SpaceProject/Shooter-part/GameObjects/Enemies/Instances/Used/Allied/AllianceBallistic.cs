@@ -47,7 +47,7 @@ namespace SpaceProject
             Speed = 0.05f;
 
             movement = Movement.Line;
-            shootSoundID = SoundEffects.BigLaser;
+            PrimaryShootSoundID = SoundEffects.BigLaser;
 
             //Animationer
             anim.LoopTime = 500;

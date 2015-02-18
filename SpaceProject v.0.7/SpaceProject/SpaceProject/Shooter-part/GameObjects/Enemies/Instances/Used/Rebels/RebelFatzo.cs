@@ -46,7 +46,8 @@ namespace SpaceProject
             secondaryModule.SetFullCharge();
 
             movement = Movement.Line;
-            shootSoundID = SoundEffects.SmallLaser;
+            PrimaryShootSoundID = SoundEffects.ClickLaser;
+            SecondaryShootSoundID = SoundEffects.ClickLaser;
 
             //Animationer
             anim.LoopTime = 500;

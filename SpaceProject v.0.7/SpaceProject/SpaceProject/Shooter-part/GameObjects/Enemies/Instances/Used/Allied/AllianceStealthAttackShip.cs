@@ -56,7 +56,7 @@ namespace SpaceProject
             Speed = 0.14f;
             TurningSpeed *= 3;
             movement = Movement.Following;
-            shootSoundID = SoundEffects.SmallLaser;
+            PrimaryShootSoundID = SoundEffects.SmallLaser;
 
             //stealthDelay = 1500;
 
