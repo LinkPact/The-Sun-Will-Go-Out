@@ -144,7 +144,8 @@ namespace SpaceProject
 
         private bool WasLevelCompleted()
         {
-            return Game.stateManager.shooterState.GetLevel("testRun").IsObjectiveCompleted;
+            return Game.stateManager.shooterState.IsTestRunLevelCompleted();
+            //return Game.stateManager.shooterState.GetLevel(chosenLevelTesterEntry.GetDescription()).IsObjectiveCompleted;
         }
 
         public override void Update(GameTime gameTime)

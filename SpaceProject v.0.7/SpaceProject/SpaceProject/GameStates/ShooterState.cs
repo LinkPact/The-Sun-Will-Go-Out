@@ -25,6 +25,10 @@ namespace SpaceProject
         private Level currentLevel;
         public Level CurrentLevel { get { return currentLevel; } }
         private Level testRunLevel;
+        public Boolean IsTestRunLevelCompleted() 
+        { 
+            return testRunLevel.IsObjectiveCompleted;
+        }
 
         public List<GameObjectVertical> gameObjects = new List<GameObjectVertical>(); //Contains all used GameObjects
         private List<GameObjectVertical> deadGameObjects = new List<GameObjectVertical>();
@@ -265,7 +269,7 @@ namespace SpaceProject
         {
             StatsManager.RestoreShipHealthToMax();
             Boolean isMapCreatorRun = false;
-            testRunLevel = new MapCreatorLevel(Game, spriteSheet, player, "testRun", levelEntry.FilePath, levelEntry.MissionType, isMapCreatorRun);
+            testRunLevel = new MapCreatorLevel(Game, spriteSheet, player, levelEntry.FilePath, levelEntry.FilePath, levelEntry.MissionType, isMapCreatorRun);
             testRunLevel.SetCustomStartTime(startTime);
             levels.Add(testRunLevel);
         }
@@ -341,7 +345,7 @@ namespace SpaceProject
             //if (ControlManager.CheckKeypress(Keys.F1))
             //    AlliedShip.ShowSightRange = !AlliedShip.ShowSightRange;
 
-            if (StatsManager.gameMode == GameMode.develop)
+            if (StatsManager.gameMode == GameMode.develop || StatsManager.gameMode == GameMode.campaign)
                 DevelopCommands();
         }
 

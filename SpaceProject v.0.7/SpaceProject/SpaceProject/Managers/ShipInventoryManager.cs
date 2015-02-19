@@ -1078,12 +1078,12 @@ namespace SpaceProject
                         break;
                     }
             }
-            equipInfo += "\n" + equippedPrimaryWeapons[0].ToString()
-                + "\n" + equippedPrimaryWeapons[1].ToString()
-                + "\n" + equippedSecondary.ToString()
-                + "\n" + equippedEnergyCell.ToString()
-                + "\n" + equippedShield.ToString()
-                + "\n" + equippedPlating.ToString();
+            equipInfo += "\n" + equippedPrimaryWeapons[0].Name
+                + "\n" + equippedPrimaryWeapons[1].Name
+                + "\n" + equippedSecondary.Name
+                + "\n" + equippedEnergyCell.Name
+                + "\n" + equippedShield.Name
+                + "\n" + equippedPlating.Name;
 
             return equipInfo;
         }

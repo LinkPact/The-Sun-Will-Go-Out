@@ -159,7 +159,7 @@ namespace SpaceProject
 
         public void finishLevel_DEVELOPONLY()
         {
-            if (StatsManager.gameMode != GameMode.develop)
+            if (StatsManager.gameMode != GameMode.develop && StatsManager.gameMode != GameMode.campaign)
                 throw new ArgumentException("This function should ONLY be called for debug purposes // Jakob");
 
             levelObjective = LevelObjective.KillNumber;
@@ -770,12 +770,12 @@ namespace SpaceProject
 
             LevelLogger.WriteLine("");
 
-            LevelLogger.WriteLine(String.Format("Primary1\t{0}", ShipInventoryManager.equippedPrimaryWeapons[0].ToString()));
-            LevelLogger.WriteLine(String.Format("Primary2\t{0}", ShipInventoryManager.equippedPrimaryWeapons[1].ToString()));
-            LevelLogger.WriteLine(String.Format("Secondary\t{0}", ShipInventoryManager.equippedSecondary.ToString()));
-            LevelLogger.WriteLine(String.Format("Cell\t{0}", ShipInventoryManager.equippedEnergyCell.ToString()));
-            LevelLogger.WriteLine(String.Format("Shield\t{0}", ShipInventoryManager.equippedShield.ToString()));
-            LevelLogger.WriteLine(String.Format("Hull\t{0}", ShipInventoryManager.equippedPlating.ToString()));
+            LevelLogger.WriteLine(String.Format("Primary1\t{0}", ShipInventoryManager.equippedPrimaryWeapons[0].Name));
+            LevelLogger.WriteLine(String.Format("Primary2\t{0}", ShipInventoryManager.equippedPrimaryWeapons[1].Name));
+            LevelLogger.WriteLine(String.Format("Secondary\t{0}", ShipInventoryManager.equippedSecondary.Name));
+            LevelLogger.WriteLine(String.Format("Cell\t{0}", ShipInventoryManager.equippedEnergyCell.Name));
+            LevelLogger.WriteLine(String.Format("Shield\t{0}", ShipInventoryManager.equippedShield.Name));
+            LevelLogger.WriteLine(String.Format("Hull\t{0}", ShipInventoryManager.equippedPlating.Name));
         }
 
         // Insert position in relative to 
