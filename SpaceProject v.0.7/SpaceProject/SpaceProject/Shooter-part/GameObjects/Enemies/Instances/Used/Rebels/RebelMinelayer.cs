@@ -65,6 +65,7 @@ namespace SpaceProject
             mine.Initialize();
             mine.Position = Position;
             mine.Direction = Direction;
+            mine.blastRadius *= 1.5f;
 
             mine.SetActivationTime(mineActivationTime);
 

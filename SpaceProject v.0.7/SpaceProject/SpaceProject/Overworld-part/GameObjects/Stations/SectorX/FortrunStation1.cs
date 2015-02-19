@@ -11,9 +11,7 @@ namespace SpaceProject
     {
         public FortrunStation1(Game1 Game, Sprite spriteSheet, Vector2 positionOffset) :
             base(Game, spriteSheet, positionOffset)
-        {
-            
-        }
+        { }
 
         public override void Initialize()
         {
@@ -34,6 +32,7 @@ namespace SpaceProject
 
             AddMandatoryItem(new ShopInventoryEntry(ShipPartType.MultipleShot, ShipPartAvailability.common, ItemVariety.regular));
             AddMandatoryItem(new ShopInventoryEntry(ShipPartType.Beam, ShipPartAvailability.common, ItemVariety.regular));
+            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.BallisticLaser, ShipPartAvailability.common, ItemVariety.regular));
             AddMandatoryItem(new ShopInventoryEntry(ShipPartType.WaveBeam, ShipPartAvailability.common, ItemVariety.regular));
 
             //AddShopEntry(new ShopInventoryEntry(ShipPartType.Turret, ShipPartAvailability.common, ItemVariety.random));

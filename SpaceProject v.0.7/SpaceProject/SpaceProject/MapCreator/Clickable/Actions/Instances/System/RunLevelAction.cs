@@ -15,7 +15,7 @@ namespace SpaceProject
         protected override void ActionLogic(Game1 game, LevelMechanics level)
         {
             game.stateManager.shooterState.SetupMapCreatorTestRun(level.GetName(), level.GetTestStartTime());
-            game.stateManager.shooterState.BeginLevel("testRun");
+            game.stateManager.shooterState.BeginTestLevel();
         }
     }
 }

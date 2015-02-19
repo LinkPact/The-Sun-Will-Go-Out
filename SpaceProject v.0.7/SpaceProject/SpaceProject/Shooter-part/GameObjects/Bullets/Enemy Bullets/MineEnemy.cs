@@ -9,7 +9,7 @@ namespace SpaceProject
 {
     class MineEnemy : EnemyShip
     {
-        private float blastRadius;
+        public float blastRadius;
         private float blastDamage;
 
         private Boolean delayIsActivated = false;
@@ -41,7 +41,7 @@ namespace SpaceProject
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
             useDeathAnim = true;
 
-            blastRadius = 55;
+            blastRadius = 70;
             blastDamage = 70;
 
             ShootObjectTypes.Add("player");

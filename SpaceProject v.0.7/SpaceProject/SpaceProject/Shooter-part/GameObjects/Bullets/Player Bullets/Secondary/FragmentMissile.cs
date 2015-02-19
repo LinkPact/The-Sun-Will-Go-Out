@@ -20,7 +20,7 @@ namespace SpaceProject
             //Egenskaper
             Speed = 0.2f;
             IsKilled = false;
-            Damage = 120;
+            Damage = 60;
             ObjectClass = "bullet";
             ObjectName = "FragmentMissile";
             Duration = 500;
