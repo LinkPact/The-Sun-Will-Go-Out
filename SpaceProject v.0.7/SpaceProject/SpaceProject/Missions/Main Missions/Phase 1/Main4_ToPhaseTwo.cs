@@ -14,7 +14,7 @@ namespace SpaceProject
         {
             Beacon1,
             Beacon2,
-            ArriveAtSoelara,
+            ArriveAtHighfence,
             ToFortrun
         }
 
@@ -53,12 +53,12 @@ namespace SpaceProject
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.GetPlanet("Highfence"),
-                new EventTextCapsule(GetEvent((int)EventID.ArriveAtSoelara), null, EventTextCanvas.BaseState)));
+                new EventTextCapsule(GetEvent((int)EventID.ArriveAtHighfence), null, EventTextCanvas.BaseState)));
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], Game.stateManager.overworldState.GetBeacon("Soelara Beacon"),
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1], Game.stateManager.overworldState.GetStation("Fortrun Station I"),
                 GetEvent((int)EventID.ToFortrun).Text, 3000, 2500));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
                 Game.stateManager.overworldState.GetStation("Fortrun Station I")));
         }
 

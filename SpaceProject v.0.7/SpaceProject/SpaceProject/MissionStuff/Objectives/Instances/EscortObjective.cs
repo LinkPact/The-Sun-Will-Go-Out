@@ -14,6 +14,8 @@ namespace SpaceProject
 
         private List<OverworldShip> enemies;
 
+        private List<String> descriptions;
+
         private int startingNumberOfEnemyShips;
         private int numberOfEnemyShips;
         private int enemyShipSpawnDelay;
@@ -31,10 +33,13 @@ namespace SpaceProject
         private List<float> timedMessageTimes;
         private int timedMessageCount;
 
-        public EscortObjective(Game1 game, Mission mission, String description,
+        public EscortObjective(Game1 game, Mission mission, List<String> descriptions,
             GameObjectOverworld destination, EscortDataCapsule escortDataCapsule) :
-            base(game, mission, description, destination)
+            base(game, mission, descriptions[0], destination)
         {
+            descriptions.RemoveAt(0);
+            this.descriptions = descriptions;
+
             Setup(escortDataCapsule);
         }
 
@@ -146,6 +151,8 @@ namespace SpaceProject
 
                 started = true;
 
+                this.Description = descriptions[0];
+
                 enemyAttackStartTime = StatsManager.PlayTime.GetFutureOverworldTime(escortDataCapsule.EnemyAttackStartTime);
 
                 for (int i = 0; i < escortDataCapsule.TimedMessages.Count; i++)
@@ -165,6 +172,16 @@ namespace SpaceProject
                 if (StatsManager.PlayTime.HasOverworldTimePassed(enemyNextWaveTime))
                 {
                     int i = startingNumberOfEnemyShips - numberOfEnemyShips;
+
+                    if (descriptions.Count > 0)
+                    {
+                        if (descriptions.Count > 1)
+                        {
+                            descriptions.RemoveAt(0);
+                        }
+
+                        this.Description = descriptions[0];
+                    }
                     
                     game.messageBox.DisplayMessage(escortDataCapsule.AttackStartText[i], false);
 
