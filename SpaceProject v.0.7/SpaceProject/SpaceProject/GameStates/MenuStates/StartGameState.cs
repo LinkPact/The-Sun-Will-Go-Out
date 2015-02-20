@@ -136,7 +136,7 @@ namespace SpaceProject
                 Game.menuBGController.SetPreferredBackdropPosition(new Vector2(-101, -703), "MainMenuState");
             }
             else if (ControlManager.CheckPress(RebindableKeys.Action1) ||
-                ControlManager.CheckKeypress(Keys.Enter))
+                ControlManager.CheckKeyPress(Keys.Enter))
             {
                 ButtonActions();
             }

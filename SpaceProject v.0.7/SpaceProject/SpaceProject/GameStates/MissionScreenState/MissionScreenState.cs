@@ -166,7 +166,7 @@ namespace SpaceProject
                 elapsedSinceKey = 0;
             }
             
-            if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)) &&
+            if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) &&
                 cursorLevel == 1 && elapsedSinceKey > 100)
             {
                 if (cursorLevel1Position == 0 && MissionManager.ReturnActiveMissions().Count > 0)
@@ -225,7 +225,7 @@ namespace SpaceProject
                     elapsedSinceKey = 0;
                 }
 
-                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)) && cursorLevel == 2
+                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) && cursorLevel == 2
                     && elapsedSinceKey > 100)
                 {
                     int missionCount = MissionManager.ReturnActiveMissions().Count;
@@ -270,7 +270,7 @@ namespace SpaceProject
                     elapsedSinceKey = 0;
                 }
 
-                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)) && cursorLevel == 2
+                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) && cursorLevel == 2
                     && elapsedSinceKey > 100)
                 {
                     int missionCount = MissionManager.ReturnCompletedDeadMissions().Count;
@@ -315,7 +315,7 @@ namespace SpaceProject
                     elapsedSinceKey = 0;
                 }
 
-                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)) && cursorLevel == 2
+                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) && cursorLevel == 2
                     && elapsedSinceKey > 100)
                 {
                     int missionCount = MissionManager.ReturnFailedDeadMissions().Count;
@@ -361,7 +361,7 @@ namespace SpaceProject
                 elapsedSinceKey = 0;
             }
 
-            if (ControlManager.CheckKeypress(Keys.M) && elapsedTimeMilliseconds > 200
+            if (ControlManager.CheckKeyPress(Keys.M) && elapsedTimeMilliseconds > 200
                 && elapsedSinceKey > 100)
             {
                 Game.stateManager.ChangeState(GameStateManager.previousState);

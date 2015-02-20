@@ -88,7 +88,7 @@ namespace SpaceProject
                 counter2 = 0;
             }
 
-            if (ControlManager.CheckPress(RebindableKeys.Action2) || ControlManager.CheckKeypress(Keys.Escape))
+            if (ControlManager.CheckPress(RebindableKeys.Action2) || ControlManager.CheckKeyPress(Keys.Escape))
             {
                 boughtFuel = 0;
                 totalCost = 0;

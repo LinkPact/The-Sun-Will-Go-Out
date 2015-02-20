@@ -206,27 +206,27 @@ namespace SpaceProject
 
         private void DeveloperOptions()
         {
-            if (ControlManager.CheckKeypress(Keys.D1))
+            if (ControlManager.CheckKeyPress(Keys.D1))
             {
                 Game.stateManager.shooterState.BeginLevel("flightTraining_1");
             }
 
-            if (ControlManager.CheckKeypress(Keys.D2))
+            if (ControlManager.CheckKeyPress(Keys.D2))
             {
                 Game.stateManager.shooterState.BeginLevel("flightTraining_2");
             }
 
-            if (ControlManager.CheckKeypress(Keys.D3))
+            if (ControlManager.CheckKeyPress(Keys.D3))
             {
                 Game.stateManager.shooterState.BeginLevel("flightTraining_3");
             }
 
-            if (ControlManager.CheckKeypress(Keys.D0))
+            if (ControlManager.CheckKeyPress(Keys.D0))
             {
                 Game.stateManager.shooterState.BeginLevel("JakobDevelop");
             }
 
-            if (ControlManager.CheckKeypress(Keys.D9))
+            if (ControlManager.CheckKeyPress(Keys.D9))
             {
                 Game.stateManager.shooterState.BeginLevel("mapCreator2");
             }
@@ -236,37 +236,37 @@ namespace SpaceProject
             //    ShipInventoryManager.ActivateCheat();
             //}
 
-            if (ControlManager.CheckKeypress(Keys.NumPad0))
+            if (ControlManager.CheckKeyPress(Keys.NumPad0))
             {
                 ShipInventoryManager.ActivateCheatPrimary();
             }
 
-            if (ControlManager.CheckKeypress(Keys.NumPad1))
+            if (ControlManager.CheckKeyPress(Keys.NumPad1))
             {
                 ShipInventoryManager.ActivateCheatSecondary();
             }
 
-            if (ControlManager.CheckKeypress(Keys.NumPad2))
+            if (ControlManager.CheckKeyPress(Keys.NumPad2))
             {
                 ShipInventoryManager.ActivateCheatEnergy();
             }
 
-            if (ControlManager.CheckKeypress(Keys.NumPad3))
+            if (ControlManager.CheckKeyPress(Keys.NumPad3))
             {
                 ShipInventoryManager.ActivateCheatShield();
             }
 
-            if (ControlManager.CheckKeypress(Keys.NumPad4))
+            if (ControlManager.CheckKeyPress(Keys.NumPad4))
             {
                 ShipInventoryManager.ActivateCheatPlating();
             }
 
-            if (ControlManager.CheckKeypress(Keys.NumPad5))
+            if (ControlManager.CheckKeyPress(Keys.NumPad5))
             {
                 ShipInventoryManager.ActivateCheatEquip1();
             }
 
-            if (ControlManager.CheckKeypress(Keys.NumPad6))
+            if (ControlManager.CheckKeyPress(Keys.NumPad6))
             {
                 ShipInventoryManager.ActivateCheatEquip2();
             }
@@ -369,7 +369,7 @@ namespace SpaceProject
                 elapsedSinceKey = 0;
             }
 
-            if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)) && cursorLevel == 1
+            if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) && cursorLevel == 1
                 && elapsedSinceKey > elapseDelay))
             {
                 if (cursorCoordLv1.Position != backPos
@@ -496,7 +496,7 @@ namespace SpaceProject
                 }
 
                 //This is where the magic happens.
-                if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)) && cursorLevel == 2
+                if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) && cursorLevel == 2
                     && elapsedSinceKey > elapseDelay))
                 {
                     //This is the command for equipping an owned weapon.
@@ -667,7 +667,7 @@ namespace SpaceProject
                 elapsedSinceKey = 0;
             }
 
-            if (ControlManager.CheckKeypress(Keys.I) && elapsedTimeMilliseconds > 200
+            if (ControlManager.CheckKeyPress(Keys.I) && elapsedTimeMilliseconds > 200
                 && elapsedSinceKey > elapseDelay)
                 BackToOverworldLogic();
 

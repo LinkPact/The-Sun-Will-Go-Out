@@ -265,7 +265,7 @@ namespace SpaceProject
                 ControlManager.EnableControls();
             }
 
-            if (ControlManager.CheckKeypress(Keys.F12))
+            if (ControlManager.CheckKeyPress(Keys.F12))
             {
                 Game.player.speed = 0;
                 ControlManager.DisableControls();
@@ -385,7 +385,7 @@ namespace SpaceProject
         private void Inputhandling()
         {
             if (ControlManager.CheckPress(RebindableKeys.Action1)
-                || ControlManager.CheckKeypress(Keys.Enter))
+                || ControlManager.CheckKeyPress(Keys.Enter))
             {
                 EnterCheck();
             }
@@ -398,22 +398,22 @@ namespace SpaceProject
                 }
             }
 
-            else if (ControlManager.CheckKeypress(Keys.M))
+            else if (ControlManager.CheckKeyPress(Keys.M))
             {
                 Game.stateManager.ChangeState("MissionScreenState");
             }
 
-            else if (ControlManager.CheckKeypress(Keys.I))
+            else if (ControlManager.CheckKeyPress(Keys.I))
             {
                 Game.stateManager.ChangeState("ShipManagerState");
                 Game.stateManager.shooterState.Initialize();
             }
-            else if (ControlManager.CheckKeypress(Keys.H))
+            else if (ControlManager.CheckKeyPress(Keys.H))
             {
                 Game.stateManager.ChangeState("HelpScreenState");
             }
 
-            if (StatsManager.gameMode == GameMode.develop && ControlManager.CheckKeypress(Keys.U))
+            if (StatsManager.gameMode == GameMode.develop && ControlManager.CheckKeyPress(Keys.U))
             {
                 DevelopCommands();
             }
@@ -442,21 +442,21 @@ namespace SpaceProject
             //}
 
             //Changes states to play-state and playerstats-state
-            if (ControlManager.CheckKeypress(Keys.P))
+            if (ControlManager.CheckKeyPress(Keys.P))
             {
                 Game.stateManager.shooterState.BeginLevel("Level1");
             }
-            if (ControlManager.CheckKeypress(Keys.E))
+            if (ControlManager.CheckKeyPress(Keys.E))
             {
                 Game.stateManager.shooterState.BeginLevel("ExperimentLevel");
             }
 
-            if (ControlManager.CheckKeypress(Keys.O))
+            if (ControlManager.CheckKeyPress(Keys.O))
             {
                 Game.stateManager.shooterState.BeginLevel("DanneLevel");
             }
 
-            if (ControlManager.CheckKeypress(Keys.U))
+            if (ControlManager.CheckKeyPress(Keys.U))
             {
                 Game.stateManager.shooterState.BeginLevel("EscortLevel");
             }

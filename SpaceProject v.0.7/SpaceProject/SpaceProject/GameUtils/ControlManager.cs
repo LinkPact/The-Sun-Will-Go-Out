@@ -181,7 +181,7 @@ namespace SpaceProject
             GamepadPause = Buttons.Start;
         }
 
-        public static bool CheckKeypress(Keys key)
+        public static bool CheckKeyPress(Keys key)
         {
             if (CurrentKeyboardState.IsKeyDown(key) && PreviousKeyboardState.IsKeyUp(key))
                 return true;
@@ -216,19 +216,19 @@ namespace SpaceProject
                     if (GamepadReady)
                         return CheckButtonPress(GamepadAction);
                     else
-                        return CheckKeypress(KeyboardAction);
+                        return CheckKeyPress(KeyboardAction);
 
                 case RebindableKeys.Action2:
                     if (GamepadReady)
                         return CheckButtonPress(GamepadAction2);
                     else
-                        return CheckKeypress(KeyboardAction2);
+                        return CheckKeyPress(KeyboardAction2);
 
                 case RebindableKeys.Action3:
                     if (GamepadReady)
                         return CheckButtonPress(GamepadAction3);
                     else
-                        return CheckKeypress(KeyboardAction3);
+                        return CheckKeyPress(KeyboardAction3);
 
                 case RebindableKeys.Up:
                     if (GamepadReady)
@@ -239,7 +239,7 @@ namespace SpaceProject
                             return CheckButtonPress(Buttons.DPadUp);
                     }
                     else
-                        return CheckKeypress(KeyboardUp);
+                        return CheckKeyPress(KeyboardUp);
 
                 case RebindableKeys.Down:
                     if (GamepadReady)
@@ -250,7 +250,7 @@ namespace SpaceProject
                             return CheckButtonPress(Buttons.DPadDown);
                     }
                     else
-                        return CheckKeypress(KeyboardDown);
+                        return CheckKeyPress(KeyboardDown);
 
                 case RebindableKeys.Left:
                     if (GamepadReady)
@@ -261,7 +261,7 @@ namespace SpaceProject
                             return CheckButtonPress(Buttons.DPadLeft);
                     }
                     else
-                        return CheckKeypress(KeyboardLeft);
+                        return CheckKeyPress(KeyboardLeft);
 
                 case RebindableKeys.Right:
                     if (GamepadReady)
@@ -272,13 +272,13 @@ namespace SpaceProject
                             return CheckButtonPress(Buttons.DPadRight);
                     }
                     else
-                        return CheckKeypress(KeyboardRight);
+                        return CheckKeyPress(KeyboardRight);
 
                 case RebindableKeys.Pause:
                     if (GamepadReady)
                         return CheckButtonPress(GamepadPause);
                     else
-                        return CheckKeypress(KeyboardPause);
+                        return CheckKeyPress(KeyboardPause);
 
                 default:
                     return false;

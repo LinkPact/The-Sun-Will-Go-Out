@@ -576,7 +576,7 @@ namespace SpaceProject
 
             // Unlock hyperspeed
             if (ControlManager.CurrentKeyboardState.IsKeyDown(Keys.LeftAlt) &&
-                ControlManager.CheckKeypress(Keys.Y) && !game.player.IsHyperSpeedUnlocked)
+                ControlManager.CheckKeyPress(Keys.Y) && !game.player.IsHyperSpeedUnlocked)
             {
                 game.player.UnlockHyperSpeed();
                 game.messageBox.DisplayMessage("Hyper speed unlocked! Hold down '" + ControlManager.GetKeyName(RebindableKeys.Action3) + "' to use.", false);

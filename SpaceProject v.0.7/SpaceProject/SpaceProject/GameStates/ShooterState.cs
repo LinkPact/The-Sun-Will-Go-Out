@@ -336,7 +336,7 @@ namespace SpaceProject
             if (ControlManager.CheckPress(RebindableKeys.Pause) && timeSinceStarted > 200)
                 Game.messageBox.DisplayMenu();
 
-            if (ControlManager.CheckKeypress(Keys.Y))
+            if (ControlManager.CheckKeyPress(Keys.Y))
             {
                 //Game.messageBox.DisplayMessage("Hello world!");
                 Game.soundEffectsManager.MutateLaserSound_DEVELOP();
@@ -351,7 +351,7 @@ namespace SpaceProject
 
         private void DevelopCommands()
         { 
-            if (ControlManager.CheckKeypress(Keys.F))
+            if (ControlManager.CheckKeyPress(Keys.F))
             {
                 currentLevel.finishLevel_DEVELOPONLY();
             }

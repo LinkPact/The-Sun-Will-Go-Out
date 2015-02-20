@@ -126,7 +126,7 @@ namespace SpaceProject
         float lifeFactorInterval = 0.5f;
         private void UpdateControls()
         {
-            if (ControlManager.CheckKeypress(Keys.Enter))
+            if (ControlManager.CheckKeyPress(Keys.Enter))
             {
                 int startTime = 0;
 
@@ -135,12 +135,12 @@ namespace SpaceProject
                 Game.stateManager.shooterState.BeginTestLevel();
             }
 
-            if (ControlManager.CheckKeypress(Keys.Escape))
+            if (ControlManager.CheckKeyPress(Keys.Escape))
             {
                 Game.stateManager.ChangeState("MainMenuState");
             }
 
-            if (ControlManager.CheckKeypress(Keys.Up))
+            if (ControlManager.CheckKeyPress(Keys.Up))
             {
                 if (lifeFactor < lifeFactorInterval)
                     lifeFactor = lifeFactorInterval;
@@ -148,7 +148,7 @@ namespace SpaceProject
                     lifeFactor += lifeFactorInterval;
             }
 
-            if (ControlManager.CheckKeypress(Keys.Down))
+            if (ControlManager.CheckKeyPress(Keys.Down))
             {
                 if (lifeFactor > lifeFactorInterval)
                     lifeFactor -= lifeFactorInterval;
@@ -167,7 +167,7 @@ namespace SpaceProject
             {
                 Keys entryKey = entry.GetKey();
 
-                if (ControlManager.CheckKeypress(entryKey))
+                if (ControlManager.CheckKeyPress(entryKey))
                 {
                     chosenLevel = entry.GetLevelEntry();
                     CheckStandardEquip(entry);
@@ -192,25 +192,25 @@ namespace SpaceProject
         // to equip corresponding equipment set.
         private void ApplyEquipments()
         {
-            if (ControlManager.CheckKeypress(Keys.D1))
+            if (ControlManager.CheckKeyPress(Keys.D1))
                 equipInfo = ShipInventoryManager.MapCreatorEquip(1);
-            else if (ControlManager.CheckKeypress(Keys.D2))
+            else if (ControlManager.CheckKeyPress(Keys.D2))
                 equipInfo = ShipInventoryManager.MapCreatorEquip(2);
-            else if (ControlManager.CheckKeypress(Keys.D3))
+            else if (ControlManager.CheckKeyPress(Keys.D3))
                 equipInfo = ShipInventoryManager.MapCreatorEquip(3);
-            else if (ControlManager.CheckKeypress(Keys.D4))
+            else if (ControlManager.CheckKeyPress(Keys.D4))
                 equipInfo = ShipInventoryManager.MapCreatorEquip(4);
-            else if (ControlManager.CheckKeypress(Keys.D5))
+            else if (ControlManager.CheckKeyPress(Keys.D5))
                 equipInfo = ShipInventoryManager.MapCreatorEquip(5);
-            else if (ControlManager.CheckKeypress(Keys.D6))
+            else if (ControlManager.CheckKeyPress(Keys.D6))
                 equipInfo = ShipInventoryManager.MapCreatorEquip(6);
-            else if (ControlManager.CheckKeypress(Keys.D7))
+            else if (ControlManager.CheckKeyPress(Keys.D7))
                 equipInfo = ShipInventoryManager.MapCreatorEquip(7);
-            else if (ControlManager.CheckKeypress(Keys.D8))
+            else if (ControlManager.CheckKeyPress(Keys.D8))
                 equipInfo = ShipInventoryManager.MapCreatorEquip(8);
-            else if (ControlManager.CheckKeypress(Keys.D9))
+            else if (ControlManager.CheckKeyPress(Keys.D9))
                 equipInfo = ShipInventoryManager.MapCreatorEquip(9);
-            else if (ControlManager.CheckKeypress(Keys.D0))
+            else if (ControlManager.CheckKeyPress(Keys.D0))
                 equipInfo = ShipInventoryManager.MapCreatorEquip(0);
         }
 

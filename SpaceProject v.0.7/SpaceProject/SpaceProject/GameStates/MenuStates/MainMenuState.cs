@@ -213,18 +213,18 @@ namespace SpaceProject
             activeButton.isActive = true;
 
             if (ControlManager.CheckPress(RebindableKeys.Action1) ||
-                ControlManager.CheckKeypress(Keys.Enter))
+                ControlManager.CheckKeyPress(Keys.Enter))
             {
                 ButtonActions();
             }
 
             // TODO: REMOVE FOR RELEASE VERSION
-            if (ControlManager.CheckKeypress(Keys.M))
+            if (ControlManager.CheckKeyPress(Keys.M))
             {
                 Game.stateManager.ChangeState("LevelTesterState");
             }
 
-            if (ControlManager.CheckKeypress(Keys.C))
+            if (ControlManager.CheckKeyPress(Keys.C))
             {
                 Game.stateManager.ChangeState("CampaignState");
             }

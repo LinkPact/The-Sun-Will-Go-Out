@@ -281,308 +281,308 @@ namespace SpaceProject
             #region Keyboard
             if (!ControlManager.UseGamepad)
             {
-                if (ControlManager.CheckKeypress(Keys.A))
+                if (ControlManager.CheckKeyPress(Keys.A))
                 {
                     ControlManager.RebindKey(false ,keyToRebind, Keys.A, null);
                     tempKey = Keys.A.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.B))
+                else if (ControlManager.CheckKeyPress(Keys.B))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.B, null);
                     tempKey = Keys.B.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.C))
+                else if (ControlManager.CheckKeyPress(Keys.C))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.C, null);
                     tempKey = Keys.C.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.D))
+                else if (ControlManager.CheckKeyPress(Keys.D))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.D, null);
                     tempKey = Keys.D.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.E))
+                else if (ControlManager.CheckKeyPress(Keys.E))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.E, null);
                     tempKey = Keys.E.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.F))
+                else if (ControlManager.CheckKeyPress(Keys.F))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.F, null);
                     tempKey = Keys.F.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.G))
+                else if (ControlManager.CheckKeyPress(Keys.G))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.G, null);
                     tempKey = Keys.G.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.H))
+                else if (ControlManager.CheckKeyPress(Keys.H))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.H, null);
                     tempKey = Keys.H.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.I))
+                else if (ControlManager.CheckKeyPress(Keys.I))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.I, null);
                     tempKey = Keys.I.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.J))
+                else if (ControlManager.CheckKeyPress(Keys.J))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.J, null);
                     tempKey = Keys.J.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.K))
+                else if (ControlManager.CheckKeyPress(Keys.K))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.K, null);
                     tempKey = Keys.K.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.L))
+                else if (ControlManager.CheckKeyPress(Keys.L))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.L, null);
                     tempKey = Keys.L.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.M))
+                else if (ControlManager.CheckKeyPress(Keys.M))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.M, null);
                     tempKey = Keys.M.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.N))
+                else if (ControlManager.CheckKeyPress(Keys.N))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.N, null);
                     tempKey = Keys.N.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.O))
+                else if (ControlManager.CheckKeyPress(Keys.O))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.O, null);
                     tempKey = Keys.O.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.P))
+                else if (ControlManager.CheckKeyPress(Keys.P))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.P, null);
                     tempKey = Keys.P.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.Q))
+                else if (ControlManager.CheckKeyPress(Keys.Q))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.Q, null);
                     tempKey = Keys.Q.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.R))
+                else if (ControlManager.CheckKeyPress(Keys.R))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.R, null);
                     tempKey = Keys.R.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.S))
+                else if (ControlManager.CheckKeyPress(Keys.S))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.S, null);
                     tempKey = Keys.S.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.T))
+                else if (ControlManager.CheckKeyPress(Keys.T))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.T, null);
                     tempKey = Keys.T.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.U))
+                else if (ControlManager.CheckKeyPress(Keys.U))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.U, null);
                     tempKey = Keys.U.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.V))
+                else if (ControlManager.CheckKeyPress(Keys.V))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.V, null);
                     tempKey = Keys.V.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.W))
+                else if (ControlManager.CheckKeyPress(Keys.W))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.W, null);
                     tempKey = Keys.W.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.X))
+                else if (ControlManager.CheckKeyPress(Keys.X))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.X, null);
                     tempKey = Keys.X.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.Y))
+                else if (ControlManager.CheckKeyPress(Keys.Y))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.Y, null);
                     tempKey = Keys.Y.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.Z))
+                else if (ControlManager.CheckKeyPress(Keys.Z))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.Z, null);
                     tempKey = Keys.Z.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.Up))
+                else if (ControlManager.CheckKeyPress(Keys.Up))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.Up, null);
                     tempKey = Keys.Up.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.Down))
+                else if (ControlManager.CheckKeyPress(Keys.Down))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.Down, null);
                     tempKey = Keys.Down.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.Left))
+                else if (ControlManager.CheckKeyPress(Keys.Left))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.Left, null);
                     tempKey = Keys.Left.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.Right))
+                else if (ControlManager.CheckKeyPress(Keys.Right))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.Right, null);
                     tempKey = Keys.Right.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.Enter))
+                else if (ControlManager.CheckKeyPress(Keys.Enter))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.Enter, null);
                     tempKey = Keys.Enter.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.Space))
+                else if (ControlManager.CheckKeyPress(Keys.Space))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.Space, null);
                     tempKey = Keys.Space.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.Back))
+                else if (ControlManager.CheckKeyPress(Keys.Back))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.Enter, null);
                     tempKey = Keys.Enter.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.Escape))
+                else if (ControlManager.CheckKeyPress(Keys.Escape))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.Escape, null);
                     tempKey = Keys.Escape.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.LeftShift))
+                else if (ControlManager.CheckKeyPress(Keys.LeftShift))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.LeftShift, null);
                     tempKey = Keys.LeftShift.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.RightShift))
+                else if (ControlManager.CheckKeyPress(Keys.RightShift))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.RightShift, null);
                     tempKey = Keys.RightShift.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.Tab))
+                else if (ControlManager.CheckKeyPress(Keys.Tab))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.Tab, null);
                     tempKey = Keys.Tab.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.LeftControl))
+                else if (ControlManager.CheckKeyPress(Keys.LeftControl))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.LeftControl, null);
                     tempKey = Keys.LeftControl.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.RightControl))
+                else if (ControlManager.CheckKeyPress(Keys.RightControl))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.RightControl, null);
                     tempKey = Keys.RightControl.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.LeftAlt))
+                else if (ControlManager.CheckKeyPress(Keys.LeftAlt))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.LeftAlt, null);
                     tempKey = Keys.LeftAlt.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.RightAlt))
+                else if (ControlManager.CheckKeyPress(Keys.RightAlt))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.RightAlt, null);
                     tempKey = Keys.RightAlt.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.OemComma))
+                else if (ControlManager.CheckKeyPress(Keys.OemComma))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.OemComma, null);
                     tempKey = Keys.OemComma.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.OemPeriod))
+                else if (ControlManager.CheckKeyPress(Keys.OemPeriod))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.OemPeriod, null);
                     tempKey = Keys.OemPeriod.ToString();
                     goto end;
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.OemMinus))
+                else if (ControlManager.CheckKeyPress(Keys.OemMinus))
                 {
                     ControlManager.RebindKey(false, keyToRebind, Keys.OemMinus, null);
                     tempKey = Keys.OemMinus.ToString();

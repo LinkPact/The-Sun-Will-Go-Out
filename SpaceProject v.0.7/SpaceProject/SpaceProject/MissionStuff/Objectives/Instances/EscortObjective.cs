@@ -143,7 +143,7 @@ namespace SpaceProject
             if (!started
                 && GameStateManager.currentState.Equals("OverworldState")
                 && CollisionDetection.IsPointInsideRectangle(game.player.position, escortDataCapsule.ShipToDefend.Bounds)
-                && ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))))
+                && ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter))))
             {
                 game.messageBox.DisplayMessage(escortDataCapsule.ShipIntroductionText, false);
 
@@ -232,7 +232,7 @@ namespace SpaceProject
         {
             return (escortDataCapsule.ShipToDefend.AIManager.Finished 
                 || escortDataCapsule.ShipToDefend.IsDead
-                || ControlManager.CheckKeypress(Keys.V));
+                || ControlManager.CheckKeyPress(Keys.V));
         }
 
         public override void OnCompleted()

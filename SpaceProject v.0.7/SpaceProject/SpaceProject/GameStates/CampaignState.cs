@@ -160,7 +160,7 @@ namespace SpaceProject
 
         private void UpdateControls()
         {
-            if (ControlManager.CheckKeypress(Keys.Enter))
+            if (ControlManager.CheckKeyPress(Keys.Enter))
             {
                 int startTime = 0;
 
@@ -169,41 +169,41 @@ namespace SpaceProject
                 Game.stateManager.shooterState.BeginTestLevel();
             }
 
-            if (ControlManager.CheckKeypress(Keys.Escape))
+            if (ControlManager.CheckKeyPress(Keys.Escape))
             {
                 Game.stateManager.ChangeState("MainMenuState");
             }
 
-            if (ControlManager.CheckKeypress(Keys.D1))
+            if (ControlManager.CheckKeyPress(Keys.D1))
             {
                 Game.stateManager.planetState.LoadPlanetData(Game.stateManager.overworldState.GetPlanet("Highfence"));
                 Game.stateManager.ChangeState("PlanetState");
             }
 
-            if (ControlManager.CheckKeypress(Keys.D2) && currentLevel >= checkpoint1)
+            if (ControlManager.CheckKeyPress(Keys.D2) && currentLevel >= checkpoint1)
             {
                 Game.stateManager.stationState.LoadStationData(Game.stateManager.overworldState.GetStation("Fortrun Station I"));
                 Game.stateManager.ChangeState("StationState");
             }
 
-            if (ControlManager.CheckKeypress(Keys.D3) && currentLevel >= checkpoint2)
+            if (ControlManager.CheckKeyPress(Keys.D3) && currentLevel >= checkpoint2)
             {
                 Game.stateManager.stationState.LoadStationData(Game.stateManager.overworldState.GetStation("Rebel Station 1"));
                 Game.stateManager.ChangeState("StationState");
             }
 
-            if (ControlManager.CheckKeypress(Keys.D4) && currentLevel >= checkpoint3)
+            if (ControlManager.CheckKeyPress(Keys.D4) && currentLevel >= checkpoint3)
             {
                 Game.stateManager.planetState.LoadPlanetData(Game.stateManager.overworldState.GetPlanet("Peye"));
                 Game.stateManager.ChangeState("PlanetState");
             }
 
-            if (ControlManager.CheckKeypress(Keys.Space))
+            if (ControlManager.CheckKeyPress(Keys.Space))
             {
                 standardEquipEnabled = true;
             }
 
-            if (ControlManager.CheckKeypress(Keys.Z))
+            if (ControlManager.CheckKeyPress(Keys.Z))
             {
                 currentLevel = checkpoint3;
                 rupees = 10000;

@@ -99,47 +99,47 @@ namespace SpaceProject
         {
             String equipInfo = "";
 
-            if (ControlManager.CheckKeypress(Keys.D1))
+            if (ControlManager.CheckKeyPress(Keys.D1))
             {
                 equipInfo = ShipInventoryManager.MapCreatorEquip(1);
             }
 
-            if (ControlManager.CheckKeypress(Keys.D2))
+            if (ControlManager.CheckKeyPress(Keys.D2))
             {
                 equipInfo = ShipInventoryManager.MapCreatorEquip(2);
             }
 
-            if (ControlManager.CheckKeypress(Keys.D3))
+            if (ControlManager.CheckKeyPress(Keys.D3))
             {
                 equipInfo = ShipInventoryManager.MapCreatorEquip(3);
             }
 
-            if (ControlManager.CheckKeypress(Keys.D4))
+            if (ControlManager.CheckKeyPress(Keys.D4))
             {
                 equipInfo = ShipInventoryManager.MapCreatorEquip(4);
             }
 
-            if (ControlManager.CheckKeypress(Keys.D5))
+            if (ControlManager.CheckKeyPress(Keys.D5))
             {
                 equipInfo = ShipInventoryManager.MapCreatorEquip(5);
             }
 
-            if (ControlManager.CheckKeypress(Keys.D6))
+            if (ControlManager.CheckKeyPress(Keys.D6))
             {
                 equipInfo = ShipInventoryManager.MapCreatorEquip(6);
             }
 
-            if (ControlManager.CheckKeypress(Keys.D7))
+            if (ControlManager.CheckKeyPress(Keys.D7))
             {
                 equipInfo = ShipInventoryManager.MapCreatorEquip(7);
             }
 
-            if (ControlManager.CheckKeypress(Keys.D8))
+            if (ControlManager.CheckKeyPress(Keys.D8))
             {
                 equipInfo = ShipInventoryManager.MapCreatorEquip(8);
             }
 
-            if (ControlManager.CheckKeypress(Keys.D9))
+            if (ControlManager.CheckKeyPress(Keys.D9))
             {
                 equipInfo = ShipInventoryManager.MapCreatorEquip(9);
             }

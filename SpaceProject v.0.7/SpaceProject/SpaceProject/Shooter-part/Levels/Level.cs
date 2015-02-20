@@ -398,7 +398,7 @@ namespace SpaceProject
             if (StatsManager.gameMode == GameMode.hardcore)
                 StatsManager.ReduceOverwordHealthToVerticalHealth(player);
 
-            if (ControlManager.CheckKeypress(Keys.Enter))
+            if (ControlManager.CheckKeyPress(Keys.Enter))
             {
                 LeaveLevel();
             }
@@ -406,7 +406,7 @@ namespace SpaceProject
 
         private void CheckGameOverUserInput()
         {
-            if (ControlManager.CheckKeypress(Keys.R))
+            if (ControlManager.CheckKeyPress(Keys.R))
             {
                 this.Initialize();
             }

@@ -84,7 +84,7 @@ namespace SpaceProject
             if (pressDelay < 0 &&
                 (ControlManager.CheckPress(RebindableKeys.Action1) || 
                 ControlManager.CheckPress(RebindableKeys.Action2) ||
-                ControlManager.CheckKeypress(Keys.Enter) ||
+                ControlManager.CheckKeyPress(Keys.Enter) ||
                 (ControlManager.IsLeftMouseButtonClicked() && game.IsActive)))
             {
                 backdropSpeed = 0;

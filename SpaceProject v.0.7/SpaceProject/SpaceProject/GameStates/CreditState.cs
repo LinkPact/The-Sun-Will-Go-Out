@@ -59,7 +59,7 @@ namespace SpaceProject
             if (ControlManager.GamepadReady == false)
             {
             
-                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)))
+                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)))
                 {
                     Game.stateManager.ChangeState("MainMenuState");
                 }
@@ -89,7 +89,7 @@ namespace SpaceProject
             else if (txtSpeed < txtMinSpeed)
                 txtSpeed = txtMinSpeed;
 
-            if (textBox.TextBoxPosY < -20 || ControlManager.CheckKeypress(Keys.Enter))
+            if (textBox.TextBoxPosY < -20 || ControlManager.CheckKeyPress(Keys.Enter))
             {
                 Game.Restart();
             }

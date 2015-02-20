@@ -84,7 +84,7 @@ namespace SpaceProject
         {
             if (!ControlManager.GamepadReady)
             {
-                if (ControlManager.CheckKeypress(Keys.Down))
+                if (ControlManager.CheckKeyPress(Keys.Down))
                 {
                     cursorIndex++;
                     holdTimer = game.HoldKeyTreshold;
@@ -105,7 +105,7 @@ namespace SpaceProject
                     }
                 }
 
-                else if (ControlManager.CheckKeypress(Keys.Up))
+                else if (ControlManager.CheckKeyPress(Keys.Up))
                 {
                     cursorIndex--;
                     holdTimer = game.HoldKeyTreshold;
@@ -221,7 +221,7 @@ namespace SpaceProject
             }
 
             else if (ControlManager.CheckPress(RebindableKeys.Action1) ||
-                ControlManager.CheckKeypress(Keys.Enter))
+                ControlManager.CheckKeyPress(Keys.Enter))
             {
                 ButtonActions();
             }

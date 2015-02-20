@@ -167,7 +167,7 @@ namespace SpaceProject
                 }
 
                 else if (ControlManager.CheckPress(RebindableKeys.Action1) ||
-                    ControlManager.CheckKeypress(Keys.Enter))
+                    ControlManager.CheckKeyPress(Keys.Enter))
                 {
                     ButtonActions();
                 }

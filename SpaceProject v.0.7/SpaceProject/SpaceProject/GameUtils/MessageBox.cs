@@ -470,7 +470,9 @@ namespace SpaceProject
         public void Update(GameTime gameTime)
         {
             if (MessageState == MessageState.RealtimeMessage
-                && StatsManager.PlayTime.HasOverworldTimePassed(time))
+                && (StatsManager.PlayTime.HasOverworldTimePassed(time)
+                    || ControlManager.CheckPress(RebindableKeys.Action1)
+                    || ControlManager.CheckKeyPress(Keys.Enter)))
             {
                 HideMessage();
             }
@@ -952,7 +954,7 @@ namespace SpaceProject
             //}
 
             if (((ControlManager.CheckPress(RebindableKeys.Action1)
-                || ControlManager.CheckKeypress(Keys.Enter))
+                || ControlManager.CheckKeyPress(Keys.Enter))
                 || (GameStateManager.currentState == "MainMenuState" && ControlManager.IsLeftMouseButtonClicked() && messageState == MessageState.Message)
                 && tempTimer <= 0))
             {

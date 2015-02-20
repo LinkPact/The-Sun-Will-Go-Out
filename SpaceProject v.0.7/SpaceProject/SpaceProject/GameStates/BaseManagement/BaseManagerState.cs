@@ -312,7 +312,7 @@ namespace SpaceProject
 
             if (cursorLevel1Position == 0) ChangeInventory();
 
-            if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)) && cursorLevel == 3)
+            if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) && cursorLevel == 3)
                 cursorSplit = false;
         }
         private void SelectAmountControls()
@@ -344,7 +344,7 @@ namespace SpaceProject
                     amountToMove--;                       
             }
 
-            if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)) && elapsedSinceKey > elapseDelay)
+            if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) && elapsedSinceKey > elapseDelay)
             {
                 if (selectAmount && amountToMove > 0)
                 {
@@ -383,7 +383,7 @@ namespace SpaceProject
                 Game.stateManager.ChangeState(GameStateManager.previousState);
             }
 
-            if (ControlManager.CheckKeypress(Keys.B) && elapsedTimeMilliseconds > 200 && elapsedSinceKey > elapseDelay)
+            if (ControlManager.CheckKeyPress(Keys.B) && elapsedTimeMilliseconds > 200 && elapsedSinceKey > elapseDelay)
             {
                 Game.stateManager.ChangeState(GameStateManager.previousState);
             }
@@ -531,7 +531,7 @@ namespace SpaceProject
                 elapsedSinceKey = 0;
             }
 
-            if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)) && cursorLevel == 1 && elapsedSinceKey > elapseDelay)
+            if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) && cursorLevel == 1 && elapsedSinceKey > elapseDelay)
             {
                 cursorLevel = 2;
                 cursorLevel2Position = 0;
@@ -765,7 +765,7 @@ namespace SpaceProject
                             elapsedSinceKey = 0;
                         }
 
-                        if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))
+                        if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter))
                             && elapsedSinceKey > elapseDelay)
                         {
                             cursorLevel = 3;
@@ -863,7 +863,7 @@ namespace SpaceProject
                             elapsedSinceKey = 0;
                         }
 
-                        if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)) && elapsedSinceKey > elapseDelay)
+                        if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) && elapsedSinceKey > elapseDelay)
                         {
                             cursorLevel = 3;
                             cursorLevel3Position = cursorLevel2Position;
@@ -908,7 +908,7 @@ namespace SpaceProject
                     elapsedSinceKey = 0;
                 }
 
-                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))
+                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter))
                     && cursorLevel == 2
                     && elapsedSinceKey > elapseDelay &&
                     ownedListLength > 0)
@@ -1118,7 +1118,7 @@ namespace SpaceProject
                 #endregion
                 #region magichappens
                 //This is where the magic happens.
-                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)) && elapsedSinceKey > elapseDelay)
+                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) && elapsedSinceKey > elapseDelay)
                 {
                     //This is the command for equipping an owned weapon.
                     if (cursorLevel3Position != -1 && section == 0 && !cursorSplit)
@@ -1246,7 +1246,7 @@ namespace SpaceProject
                 }
 
                 //This is where the magic happens.
-                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter)) && cursorLevel == 3 && elapsedSinceKey > elapseDelay)
+                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) && cursorLevel == 3 && elapsedSinceKey > elapseDelay)
                 {
                     //This is the command for changing equipped ship.
                     BaseInventoryManager.ChangeShip(cursorLevel3Position);

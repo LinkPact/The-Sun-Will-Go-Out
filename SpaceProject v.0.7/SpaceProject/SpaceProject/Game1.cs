@@ -189,7 +189,7 @@ namespace SpaceProject
                 ControlManager.Update(gameTime);
 
                 //Toggles fullscreen on/off
-                if (ControlManager.CurrentKeyboardState.IsKeyDown(Keys.LeftAlt) && ControlManager.CheckKeypress(Keys.F))
+                if (ControlManager.CurrentKeyboardState.IsKeyDown(Keys.LeftAlt) && ControlManager.CheckKeyPress(Keys.F))
                 {
                     graphics.ToggleFullScreen();
                     graphics.ApplyChanges();
@@ -215,7 +215,7 @@ namespace SpaceProject
 
                 soundEffectsManager.Update(gameTime);
 
-                if (ControlManager.CheckKeypress(Keys.N))
+                if (ControlManager.CheckKeyPress(Keys.N))
                 {
                     ZoomMap.ToggleMap();
                 }
@@ -237,7 +237,7 @@ namespace SpaceProject
                 }
 
                 if (ControlManager.CurrentKeyboardState.IsKeyDown(Keys.LeftAlt) &&
-                    ControlManager.CheckKeypress(Keys.M))
+                    ControlManager.CheckKeyPress(Keys.M))
                 {
                     musicManager.SwitchMusicMuted();
                 }

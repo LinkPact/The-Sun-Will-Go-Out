@@ -94,7 +94,7 @@ namespace SpaceProject
                     cursorIndex = options.Count - 1;
                 }
 
-                if (ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))
+                if (ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter))
                 {
                     if (cursorIndex < beacons.Count)
                     {
