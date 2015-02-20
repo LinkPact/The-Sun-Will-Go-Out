@@ -165,16 +165,16 @@ namespace SpaceProject
             entryDict.Add("8a_2", new LevelEntry("AllianceBranch_2",    "mainlevels/m8c_alliance_lv2",          MissionType.power));
 
             entryDict.Add("rp1", new LevelEntry("RebelPirate1",         "pirates/RebelPirate1",                 MissionType.rebelpirate));
-            entryDict.Add("rp2", new LevelEntry("RebelPirate1",         "pirates/RebelPirate2",                 MissionType.rebelpirate));
-            entryDict.Add("rp3", new LevelEntry("RebelPirate1",         "pirates/RebelPirate3",                 MissionType.rebelpirate));
-            entryDict.Add("rp4", new LevelEntry("RebelPirate1",         "pirates/RebelPirate4",                 MissionType.rebelpirate));
-            entryDict.Add("rp5", new LevelEntry("RebelPirate1",         "pirates/RebelPirate5",                 MissionType.rebelpirate));
+            entryDict.Add("rp2", new LevelEntry("RebelPirate2",         "pirates/RebelPirate2",                 MissionType.rebelpirate));
+            entryDict.Add("rp3", new LevelEntry("RebelPirate3",         "pirates/RebelPirate3",                 MissionType.rebelpirate));
+            entryDict.Add("rp4", new LevelEntry("RebelPirate4",         "pirates/RebelPirate4",                 MissionType.rebelpirate));
+            entryDict.Add("rp5", new LevelEntry("RebelPirate5",         "pirates/RebelPirate5",                 MissionType.rebelpirate));
 
             entryDict.Add("ap1", new LevelEntry("AlliancePirate1",      "pirates/AlliancePirate1",              MissionType.regularalliance));
-            entryDict.Add("ap2", new LevelEntry("AlliancePirate1",      "pirates/AlliancePirate2",              MissionType.regularalliance));
-            entryDict.Add("ap3", new LevelEntry("AlliancePirate1",      "pirates/AlliancePirate3",              MissionType.regularalliance));
-            entryDict.Add("ap4", new LevelEntry("AlliancePirate1",      "pirates/AlliancePirate4",              MissionType.regularalliance));
-            entryDict.Add("ap5", new LevelEntry("AlliancePirate1",      "pirates/AlliancePirate5",              MissionType.regularalliance));
+            entryDict.Add("ap2", new LevelEntry("AlliancePirate2",      "pirates/AlliancePirate2",              MissionType.regularalliance));
+            entryDict.Add("ap3", new LevelEntry("AlliancePirate3",      "pirates/AlliancePirate3",              MissionType.regularalliance));
+            entryDict.Add("ap4", new LevelEntry("AlliancePirate4",      "pirates/AlliancePirate4",              MissionType.regularalliance));
+            entryDict.Add("ap5", new LevelEntry("AlliancePirate5",      "pirates/AlliancePirate5",              MissionType.regularalliance));
 
             return entryDict;
         }
