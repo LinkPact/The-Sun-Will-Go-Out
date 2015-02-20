@@ -73,11 +73,11 @@ namespace SpaceProject
                     null,
                     EventTextCanvas.MessageBox)));
 
-            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
+            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
                 Game.stateManager.overworldState.GetBorderXOutpost.GetGameObject("Border Station"),
                 GetEvent((int)EventID.TravelingBack).Text, 3000, 3000));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
                 Game.stateManager.overworldState.GetStation("Border Station")));
                 
         }
