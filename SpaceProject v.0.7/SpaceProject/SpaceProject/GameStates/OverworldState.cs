@@ -262,13 +262,13 @@ namespace SpaceProject
             if (burnOutEnding.Finished)
             {
                 Game.stateManager.ChangeState("OutroState");
-                ControlManager.EnableControls();
+                Game.player.EnableControls();
             }
 
             if (ControlManager.CheckKeyPress(Keys.F12))
             {
                 Game.player.speed = 0;
-                ControlManager.DisableControls();
+                Game.player.DisableControls();
                 burnOutEnding.Activate(Game.camera.Position, 100);
             }
             //InputhandlingDebug();
@@ -752,7 +752,7 @@ namespace SpaceProject
         public void ActivateBurnOutEnding()
         {
             Game.player.speed = 0;
-            ControlManager.DisableControls();
+            Game.player.DisableControls();
             burnOutEnding.Activate(Game.camera.Position, 100);
         }
 

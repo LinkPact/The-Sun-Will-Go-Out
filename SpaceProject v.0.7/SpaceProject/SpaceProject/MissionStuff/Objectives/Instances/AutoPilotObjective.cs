@@ -79,8 +79,6 @@ namespace SpaceProject
                 ship.speed = speed;
             }
 
-            ControlManager.DisableControls();
-
             // Sets starting time of first message
             if (timedMessages.Keys.Count > 0)
             {
@@ -94,7 +92,7 @@ namespace SpaceProject
 
             // Updates player direction and speed
             game.player.Direction.RotateTowardsPoint(game.player.position, Destination.position, 0.2f);
-            game.player.speed = speed + 0.013f;
+            game.player.speed = speed;
 
             // Displays timed messages
             if (timedMessages.Keys.Count > 0
@@ -124,7 +122,7 @@ namespace SpaceProject
         {
             base.OnCompleted();
 
-            ControlManager.EnableControls();
+            game.player.EnableControls();
             foreach (OverworldShip ship in ships)
             {
                 ship.Wait();

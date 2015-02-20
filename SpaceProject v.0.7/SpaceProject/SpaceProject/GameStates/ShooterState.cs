@@ -203,7 +203,7 @@ namespace SpaceProject
         {
             if (!gameObjects.Contains(player))
                 gameObjects.Add(player);
-            
+
             currentLevel.Initialize();
             MusicSelection();
             base.OnEnter();

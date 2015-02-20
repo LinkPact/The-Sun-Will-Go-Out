@@ -71,14 +71,15 @@ namespace SpaceProject
                     Game.stateManager.overworldState.GetPlanet("Highfence").position + new Vector2(-200, 0),
                     new List<String> { GetEvent((int)EventID.RebelsAttack1).Text,
                                        GetEvent((int)EventID.RebelsAttack2).Text },
-                    38000,
-                    8000,
+                    28500,
+                    4000,
                     2000,
                     new List<String> { "FreighterEscort1", "FreighterEscort2" },
                     new List<String> { GetEvent((int)EventID.AfterRebelAttack1).Text, GetEvent((int)EventID.AfterRebelAttack2).Text },
                     new List<String> { GetEvent((int)EventID.CaptainChitChat1).Text, GetEvent((int)EventID.CaptainChitChat2).Text,
                                        GetEvent((int)EventID.AlmostThere).Text },
-                    new List<int> { 4000, 24000, 56000})));
+                    new List<int> { 4000, 20000, 35000}, 0.4f),
+                true));
         }
 
         public override void StartMission()

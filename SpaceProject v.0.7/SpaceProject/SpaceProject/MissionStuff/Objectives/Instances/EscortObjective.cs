@@ -33,12 +33,15 @@ namespace SpaceProject
         private List<float> timedMessageTimes;
         private int timedMessageCount;
 
+        private bool autofollow;
+
         public EscortObjective(Game1 game, Mission mission, List<String> descriptions,
-            GameObjectOverworld destination, EscortDataCapsule escortDataCapsule) :
+            GameObjectOverworld destination, EscortDataCapsule escortDataCapsule, bool autofollow = false) :
             base(game, mission, descriptions[0], destination)
         {
             descriptions.RemoveAt(0);
             this.descriptions = descriptions;
+            this.autofollow = autofollow;
 
             Setup(escortDataCapsule);
         }
@@ -131,6 +134,12 @@ namespace SpaceProject
         {
             base.Update(playTime);
 
+            if (autofollow && started)
+            {
+                game.player.Direction.RotateTowardsPoint(game.player.position, Destination.position, 0.2f);
+                game.player.speed = escortDataCapsule.ShipToDefend.speed;
+            }
+
             if (timedMessageCount >= 0
                 && timedMessageCount < escortDataCapsule.TimedMessages.Count
                 && StatsManager.PlayTime.HasOverworldTimePassed(timedMessageTimes[timedMessageCount]))
@@ -148,8 +157,14 @@ namespace SpaceProject
                 game.messageBox.DisplayMessage(escortDataCapsule.ShipIntroductionText, false);
 
                 ((FreighterShip)escortDataCapsule.ShipToDefend).Start();
+                escortDataCapsule.ShipToDefend.speed = escortDataCapsule.FreighterSpeed;
 
                 started = true;
+
+                if (autofollow)
+                {
+                    game.player.DisableControls();
+                }
 
                 this.Description = descriptions[0];
 
@@ -238,6 +253,7 @@ namespace SpaceProject
         public override void OnCompleted()
         {
             base.OnCompleted();
+            game.player.EnableControls();
             OverworldShip.FollowPlayer = true;
 
             if (Destination is Station)
@@ -276,6 +292,8 @@ namespace SpaceProject
         public override void OnFailed()
         {
             base.OnFailed();
+
+            game.player.EnableControls();
 
             mission.OnReset();
             mission.MissionState = StateOfMission.Failed;

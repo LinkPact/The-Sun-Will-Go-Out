@@ -12,6 +12,8 @@ namespace SpaceProject
     {
         private int damageTimer = 0;
 
+        private bool controlsEnabled;
+
         #region Misc. Variables
         private float turningSpeed;
 
@@ -111,6 +113,8 @@ namespace SpaceProject
             Class = "Player";
             name = "player";
 
+            controlsEnabled = true;
+
             layerDepth = 0.6f;
             scale = 1.0f;
             sprite = spriteSheet.GetSubSprite(new Rectangle(78, 0, 29, 27));
@@ -200,15 +204,20 @@ namespace SpaceProject
 
             if (StatsManager.Fuel >= normalFuelCost)
             {
-                if (ControlManager.CheckHold(RebindableKeys.Action3) && isHyperSpeedUnlocked && !isDevelopSpeedUnlocked)
+                if (ControlManager.CheckHold(RebindableKeys.Action3) 
+                    && isHyperSpeedUnlocked 
+                    && !isDevelopSpeedUnlocked 
+                    && controlsEnabled)
                 {
                     maxSpeed = boostSpeed;
                     turningSpeed = boostTurningSpeed;
                     playerAcc = commonAcc;
                     usingBoost = true;
                 }
-                
-                else if (ControlManager.CheckHold(RebindableKeys.Action3) && isDevelopSpeedUnlocked)
+
+                else if (ControlManager.CheckHold(RebindableKeys.Action3) 
+                    && isDevelopSpeedUnlocked 
+                    && controlsEnabled)
                 {
                     maxSpeed = developSpeed;
                     turningSpeed = boostTurningSpeed;
@@ -225,85 +234,70 @@ namespace SpaceProject
                 }
             }
 
-            if (ControlManager.CheckHold(RebindableKeys.Up) || ControlManager.CheckHold(RebindableKeys.Down) ||
-                ControlManager.CheckHold(RebindableKeys.Left) || ControlManager.CheckHold(RebindableKeys.Right))
+            if (ControlManager.CheckHold(RebindableKeys.Up) 
+                && controlsEnabled)
             {
-                if (ControlManager.CheckHold(RebindableKeys.Up))
+                if (StatsManager.Fuel > normalFuelCost)
                 {
-                    if (StatsManager.Fuel > normalFuelCost)
+                    if (ControlManager.GamepadReady && ControlManager.ThumbStickAngleY != 0)
                     {
-                        if (ControlManager.GamepadReady && ControlManager.ThumbStickAngleY != 0)
+
+                        if (StatsManager.Fuel > normalFuelCost)
                         {
-
-                            if (StatsManager.Fuel > normalFuelCost)
-                            {
-                                speed += playerAcc;
-                            }
-
-                            AddParticle();
+                            speed += playerAcc;
                         }
-                        else
-                        {
 
-                            if (StatsManager.Fuel > normalFuelCost)
-                            {
-                                speed += playerAcc;
-                            }
-
-                            AddParticle();
-
-                            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.OverworldEngine, 0f, 0f);
-                        }
+                        AddParticle();
                     }
-                }
-
-                else if (ControlManager.CheckHold(RebindableKeys.Down))
-                {
-                    if (StatsManager.Fuel > normalFuelCost)
+                    else
                     {
-                        if (ControlManager.GamepadReady && ControlManager.ThumbStickAngleY != 0)
-                        {
 
-                        }
-                        else
+                        if (StatsManager.Fuel > normalFuelCost)
                         {
-                            //Direction.SetDirection(new Vector2(Direction.ScaledDirection.X, Direction.ScaledDirection.Y + turningSpeed));
+                            speed += playerAcc;
                         }
-                    }
-                }
 
-                if (ControlManager.CheckHold(RebindableKeys.Right))
-                {
-                    if (StatsManager.Fuel > normalFuelCost)
-                    {
-                        if (ControlManager.GamepadReady && ControlManager.ThumbStickAngleX != 0)
-                        {
-                            Direction.SetDirection(Direction.GetDirectionAsDegree() + turningSpeed);
-                        }
-                        else
-                        {
-                            Direction.SetDirection(Direction.GetDirectionAsDegree() + turningSpeed);
-                        }
-                    }
-                }
+                        AddParticle();
 
-                else if (ControlManager.CheckHold(RebindableKeys.Left))
-                {
-                    if (StatsManager.Fuel > normalFuelCost)
-                    {
-                        if (ControlManager.GamepadReady && ControlManager.ThumbStickAngleX != 0)
-                        {
-                            Direction.SetDirection(Direction.GetDirectionAsDegree() - turningSpeed);
-                        }
-                        else
-                        {
-                            Direction.SetDirection(Direction.GetDirectionAsDegree() - turningSpeed);
-                        }
+                        Game.soundEffectsManager.PlaySoundEffect(SoundEffects.OverworldEngine, 0f, 0f);
                     }
                 }
             }
 
-            if (!ControlManager.CheckHold(RebindableKeys.Up))
+            if (ControlManager.CheckHold(RebindableKeys.Right)
+                && controlsEnabled)
+            {
+                if (StatsManager.Fuel > normalFuelCost)
+                {
+                    if (ControlManager.GamepadReady && ControlManager.ThumbStickAngleX != 0)
+                    {
+                        Direction.SetDirection(Direction.GetDirectionAsDegree() + turningSpeed);
+                    }
+                    else
+                    {
+                        Direction.SetDirection(Direction.GetDirectionAsDegree() + turningSpeed);
+                    }
+                }
+            }
+
+            else if (ControlManager.CheckHold(RebindableKeys.Left)
+                && controlsEnabled)
+            {
+                if (StatsManager.Fuel > normalFuelCost)
+                {
+                    if (ControlManager.GamepadReady && ControlManager.ThumbStickAngleX != 0)
+                    {
+                        Direction.SetDirection(Direction.GetDirectionAsDegree() - turningSpeed);
+                    }
+                    else
+                    {
+                        Direction.SetDirection(Direction.GetDirectionAsDegree() - turningSpeed);
+                    }
+                }
+            }
+
+            if (!ControlManager.CheckHold(RebindableKeys.Up)
+                && controlsEnabled)
             {
 
                 if (speed > 0)
@@ -556,6 +550,16 @@ namespace SpaceProject
                     StatsManager.ReduceShipLife(1);
                 }
             }
+        }
+
+        public void DisableControls()
+        {
+            controlsEnabled = false;
+        }
+
+        public void EnableControls()
+        {
+            controlsEnabled = true;
         }
     }
 }

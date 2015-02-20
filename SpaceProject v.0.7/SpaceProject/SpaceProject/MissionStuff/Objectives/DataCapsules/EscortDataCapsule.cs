@@ -50,6 +50,9 @@ namespace SpaceProject
         private List<int> timedMessageTriggers;
         public List<int> TimedMessageTriggers { get { return timedMessageTriggers; } set { timedMessageTriggers = value; } }
 
+        private float freighterSpeed;
+        public float FreighterSpeed { get { return freighterSpeed; } set { freighterSpeed = value; } }
+
         public EscortDataCapsule(OverworldShip shipToDefend, String shipIntroductionText, List<OverworldShip> enemyShips,
             Vector2 startingPoint, List<String> levels, int enemyAttackStartTime, int enemyAttackFrequency)
         {
@@ -64,7 +67,7 @@ namespace SpaceProject
         public EscortDataCapsule(OverworldShip shipToDefend, String shipIntroductionText, List<OverworldShip> enemyShips,
             List<String> enemyMessages, List<OverworldShip> allyShips, Vector2 startingPoint, List<String> attackStartText,
             int enemyAttackStartTime, int enemyAttackFrequency, int shipToDefendHP, List<String> levels, 
-            List<String> afterAttackMessages, List<String> timedMessages, List<int> timedMessageTriggers)
+            List<String> afterAttackMessages, List<String> timedMessages, List<int> timedMessageTriggers, float speed)
         {
             Setup(shipToDefend, shipIntroductionText, enemyShips, startingPoint, levels, enemyAttackStartTime, enemyAttackFrequency);
 
@@ -77,6 +80,7 @@ namespace SpaceProject
             this.afterAttackMessages = afterAttackMessages;
             this.timedMessages = timedMessages;
             this.timedMessageTriggers = timedMessageTriggers;
+            freighterSpeed = speed;
 
             if (this.allyShips == null)
             {
