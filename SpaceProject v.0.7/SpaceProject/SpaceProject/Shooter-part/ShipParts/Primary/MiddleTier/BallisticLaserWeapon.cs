@@ -43,7 +43,7 @@ namespace SpaceProject
             duration = 1000;
             speed = 1.5f;     // Nonsense value!
 
-            Value = 1000;
+            Value = 650;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)

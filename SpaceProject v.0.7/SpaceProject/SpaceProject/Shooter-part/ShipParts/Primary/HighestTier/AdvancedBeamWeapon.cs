@@ -34,7 +34,7 @@ namespace SpaceProject
         {
             Name = "Advanced Beam";
             Kind = "Primary";
-            energyCostPerSecond = 13f;
+            energyCostPerSecond = 14f;
             delay = 10;
             Weight = 200;
             damage = 9.0f;

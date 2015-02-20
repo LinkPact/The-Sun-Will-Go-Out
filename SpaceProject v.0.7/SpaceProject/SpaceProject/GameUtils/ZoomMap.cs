@@ -18,7 +18,10 @@ namespace SpaceProject
     class ZoomMap
     {
         // constants
-        private const float ZoomRate = 0.0546875f;
+        private const float ZoomDelta = 0.125f;
+        private static float ZoomInFactor { get { return 1 + ZoomDelta; } }
+        private static float ZoomOutFactor { get { return 1 - ZoomDelta; } }
+        
         private const float ZoomedOutValue = 0.02f;
         private const float StarZoomScale = 0.15f;
         private const float PlanetZoomScale = 0.15f;
@@ -52,17 +55,20 @@ namespace SpaceProject
         {
             if (mapState == MapState.ZoomingOut)
             {
-                camera.Zoom *= (ZoomRate * gameTime.ElapsedGameTime.Milliseconds);
+                camera.Zoom *= ZoomOutFactor;
+
+                if (Game1.Paused == false)
+                    Game1.Paused = true;
 
                 if (camera.Zoom <= ZoomedOutValue)
                 {
-                    Game1.Paused = true;
                     mapState = MapState.On;
+                    camera.Zoom = ZoomedOutValue;
                 }
             }
             else if (mapState == MapState.ZoomingIn)
             {
-                camera.Zoom *= (1 + (1 - (ZoomRate * gameTime.ElapsedGameTime.Milliseconds)));
+                camera.Zoom *= ZoomInFactor;
 
                 if (camera.Zoom >= 1f)
                 {

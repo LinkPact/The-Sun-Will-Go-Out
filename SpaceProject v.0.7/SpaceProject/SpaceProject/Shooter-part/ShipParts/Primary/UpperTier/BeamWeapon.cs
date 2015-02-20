@@ -37,7 +37,7 @@ namespace SpaceProject
             delay = 10;
             Weight = 200;
             damage = 8.0f;
-            Value = 600;
+            Value = 1100;
             //ActivatedSoundID = SoundEffects.SmallLaser;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(400, 0, 100, 100));
 
