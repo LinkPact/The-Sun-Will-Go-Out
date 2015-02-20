@@ -325,6 +325,8 @@ namespace SpaceProject
         {
             ResetEventText();
 
+            ObjectiveIndex = 0;
+
             foreach (Objective obj in objectives)
             {
                 obj.Reset();
@@ -548,39 +550,17 @@ namespace SpaceProject
 
         private void ResetEventText()
         {
-            List<String> lines = configFile.GetAllLinesInSection(section);
-
-            int eventCounter = 0;
-            int responseCounter = 1;
-
-            for (int i = 0; i < lines.Count; i++)
+            foreach (KeyValuePair<EventText, List<EventText>> index in EventList)
             {
-                String[] split = lines[i].Split('=');
-                split[0] = split[0].Trim();
-                split[1] = split[1].Trim();
-                split[0] = split[0] + "=";
-
-                if (split[0].Contains("EventText"))
+                if (index.Key.Text.Contains("/ok"))
                 {
-                    if (!split[0].Contains("Response"))
-                    {
-                        if (!lines[i + 1].Contains("Response"))
-                        {
-                            eventCounter++;
-                        }
-                        continue;
-                    }
-
-                    else
-                    {
-                        responseCounter++;
-
-                        if (!lines[i + 1].Contains("Response"))
-                        {
-                            eventCounter++;
-                        }
-                    }
+                    index.Key.Text = index.Key.Text.Replace("/ok", "");
                 }
+            }
+
+            if (introductionText.Contains("/ok"))
+            {
+                introductionText = introductionText.Replace("/ok", "");
             }
         }
 

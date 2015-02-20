@@ -202,6 +202,11 @@ namespace SpaceProject
 
         public bool AllObjectivesCompleted()
         {
+            if (mission.MissionState == StateOfMission.Failed)
+            {
+                return false;
+            }
+
             for (int i = mission.ObjectiveIndex; i < mission.Objectives.Count; i++)
             {
                 if (!mission.Objectives[i].Completed())

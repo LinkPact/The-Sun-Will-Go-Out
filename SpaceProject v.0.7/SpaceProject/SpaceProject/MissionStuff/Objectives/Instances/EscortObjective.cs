@@ -268,6 +268,11 @@ namespace SpaceProject
 
         public override bool Failed()
         {
+            if (ControlManager.CheckKeyPress(Keys.F12))
+            {
+                return true;
+            }
+
             for (int i = 0; i < levels.Count; i++)
             {
                 if (GameStateManager.currentState.Equals("ShooterState")
@@ -294,9 +299,9 @@ namespace SpaceProject
             base.OnFailed();
 
             game.player.EnableControls();
+            OverworldShip.FollowPlayer = true;
 
             mission.OnReset();
-            mission.MissionState = StateOfMission.Failed;
             game.stateManager.overworldState.RemoveOverworldObject(escortDataCapsule.ShipToDefend);
             game.messageBox.DisplayMessage("Noooo! The freighter was destroyed. We failed.", false);
             game.stateManager.ChangeState("OverworldState");

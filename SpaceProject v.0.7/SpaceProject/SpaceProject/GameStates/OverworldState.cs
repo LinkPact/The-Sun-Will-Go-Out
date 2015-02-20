@@ -264,13 +264,6 @@ namespace SpaceProject
                 Game.stateManager.ChangeState("OutroState");
                 Game.player.EnableControls();
             }
-
-            if (ControlManager.CheckKeyPress(Keys.F12))
-            {
-                Game.player.speed = 0;
-                Game.player.DisableControls();
-                burnOutEnding.Activate(Game.camera.Position, 100);
-            }
             //InputhandlingDebug();
 
             EdgeCollisionCheck();
