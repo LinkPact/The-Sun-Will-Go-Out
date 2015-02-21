@@ -38,7 +38,7 @@ namespace SpaceProject
             Acceleration = 0.03f;
             PrimarySlots = 2;
 
-            Value = 2000;
+            Value = 1300;
         }
     }
 }

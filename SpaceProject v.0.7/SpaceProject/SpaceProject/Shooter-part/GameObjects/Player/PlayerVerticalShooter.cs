@@ -27,6 +27,20 @@ namespace SpaceProject
 
         public float conversionFactor;
         public float shieldRegeneration;
+        public float ShieldRegeneration
+        {
+            get
+            {
+                if (MP == MPmax)
+                {
+                    return shieldRegeneration * 1.5f;
+                }
+                else
+                {
+                    return shieldRegeneration;
+                }
+            }
+        }
 
         private float acceleration;
         private float deAcceleration;
@@ -143,13 +157,7 @@ namespace SpaceProject
 
             if (Shield < ShieldMax - shieldRegeneration)
             {
-                Shield += shieldRegeneration;
-
-                //Increase regeneration when energy is full
-                if (MP == MPmax)
-                {
-                    Shield += shieldRegeneration;
-                }
+                Shield += ShieldRegeneration;
             }
             else
             {

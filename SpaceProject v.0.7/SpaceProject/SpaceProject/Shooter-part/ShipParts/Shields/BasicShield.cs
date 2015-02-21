@@ -32,7 +32,7 @@ namespace SpaceProject
             Kind = "Shield";
             Weight = 700;
 
-            Capacity = 30.0f;
+            Capacity = 25.0f;
             Regeneration = 0.1f;
             ConversionFactor = 5f;
 

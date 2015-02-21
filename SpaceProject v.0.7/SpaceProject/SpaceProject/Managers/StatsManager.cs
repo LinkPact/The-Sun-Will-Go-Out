@@ -96,7 +96,7 @@ namespace SpaceProject
 
         public static void SetEasyStats()
         {
-            moneyFactor = 1.20f;
+            moneyFactor = 1.50f;
             damageFactor = 0.60f;
             gameMode = GameMode.easy;
         }
@@ -110,8 +110,8 @@ namespace SpaceProject
 
         public static void SetHardStats()
         {
-            moneyFactor = 0.8f;
-            damageFactor = 1.2f;
+            moneyFactor = 0.7f;
+            damageFactor = 1.5f;
             gameMode = GameMode.hard;
         }
 

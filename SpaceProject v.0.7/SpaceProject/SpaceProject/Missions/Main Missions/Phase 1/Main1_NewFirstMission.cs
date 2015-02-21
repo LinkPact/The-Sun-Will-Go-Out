@@ -40,7 +40,7 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            RewardItems.Add(new SpreadBulletWeapon(Game));
+            RewardItems.Add(new SpreadBulletWeapon(Game, ItemVariety.regular));
 
             ally1 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet, ShipType.Alliance);
             ally1.Initialize(Game.stateManager.overworldState.GetSectorX,

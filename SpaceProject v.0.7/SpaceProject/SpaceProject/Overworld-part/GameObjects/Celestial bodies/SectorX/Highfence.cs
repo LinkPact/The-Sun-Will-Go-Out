@@ -35,7 +35,8 @@ namespace SpaceProject
             AddMandatoryItem(new ShopInventoryEntry(ShipPartType.SpreadBullet, ShipPartAvailability.common, ItemVariety.regular));
 
             AddMandatoryItem(new ShopInventoryEntry(ShipPartType.BasicEnergyCell, ShipPartAvailability.common, ItemVariety.regular));
-            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.BasicPlating, ShipPartAvailability.uncommon, ItemVariety.regular));
+            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.BasicPlating, ShipPartAvailability.common, ItemVariety.regular));
+            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.BasicShield, ShipPartAvailability.common, ItemVariety.regular));
 
             SetShopFilling(ShopFilling.veryFilled);
         }

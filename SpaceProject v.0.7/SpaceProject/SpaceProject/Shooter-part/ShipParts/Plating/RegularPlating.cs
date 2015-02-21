@@ -31,14 +31,14 @@ namespace SpaceProject
         {
             Name = "Regular Plating";
 
-            armor = 500.0f;
+            armor = 550.0f;
             CurrentOverworldHealth = Armor;
 
             Speed = 0.17f;
             Acceleration = 0.03f;
             PrimarySlots = 2;
 
-            Value = 700;
+            Value = 600;
         }
     }
 }

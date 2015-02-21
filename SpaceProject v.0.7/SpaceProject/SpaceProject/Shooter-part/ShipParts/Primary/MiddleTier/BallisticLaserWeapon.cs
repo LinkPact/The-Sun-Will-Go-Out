@@ -31,7 +31,7 @@ namespace SpaceProject
             Name = "Ballistic Laser";
             Kind = "Primary";
             energyCostPerSecond = 10f;
-            delay = 1200;
+            delay = 900;
             Weight = 200;
             ActivatedSoundID = SoundEffects.BigLaser;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(600, 0, 100, 100));
