@@ -82,7 +82,7 @@ namespace SpaceProject
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], peyeScienceStation,
                 new EventTextCapsule(GetEvent((int)EventID.InsideScienceStation), null, EventTextCanvas.BaseState)));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], rebelStation3,
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1], rebelStation3,
                 new EventTextCapsule(GetEvent((int)EventID.OutsideScienceStation), null, EventTextCanvas.MessageBox),
                 delegate { }, delegate { },
                 delegate 
@@ -91,10 +91,10 @@ namespace SpaceProject
                 },
                 delegate { return false; }));
 
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], rebelStation3,
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1], rebelStation3,
                 "Itnos_2", LevelStartCondition.TextCleared, new EventTextCapsule(GetEvent((int)EventID.AfterLevel2), null, EventTextCanvas.MessageBox)));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
                 rebelStation3));
         }
 

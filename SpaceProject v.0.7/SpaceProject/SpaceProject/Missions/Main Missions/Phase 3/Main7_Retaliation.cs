@@ -144,7 +144,7 @@ namespace SpaceProject
                 "Retribution1", LevelStartCondition.Immediately,
                 new EventTextCapsule(GetEvent((int)EventID.AfterLevel), null, EventTextCanvas.MessageBox)));
             
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1],
                 Game.stateManager.overworldState.GetStation("Rebel Station 3"),
                 delegate
                 {
@@ -167,7 +167,7 @@ namespace SpaceProject
                 }));
             
             objectives.Add(new ArriveAtLocationObjective(Game, this,
-                ObjectiveDescriptions[0], Game.stateManager.overworldState.GetStation("Rebel Station 3")));
+                ObjectiveDescriptions[1], Game.stateManager.overworldState.GetStation("Rebel Station 3")));
         }
 
         public override void StartMission()

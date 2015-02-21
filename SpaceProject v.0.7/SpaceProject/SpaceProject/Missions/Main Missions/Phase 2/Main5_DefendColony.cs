@@ -56,7 +56,7 @@ namespace SpaceProject
             objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], allyShips1[2],
                 100, new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun2), null, EventTextCanvas.MessageBox)));
 
-            objectives.Add(new AutoPilotObjective(Game, this, ObjectiveDescriptions[0], newNorrland, autoPilotSpeed,
+            objectives.Add(new AutoPilotObjective(Game, this, ObjectiveDescriptions[1], newNorrland, autoPilotSpeed,
                 allyShips1, fortrunStation.position,
                 new Dictionary<string, List<float>>
                 { 
@@ -80,7 +80,7 @@ namespace SpaceProject
                 newNorrland, "DefendColonyHold", LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.SecondLevelCompleted), null, EventTextCanvas.BaseState)));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], newNorrland,
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1], newNorrland,
                 new EventTextCapsule(new EventText("[Ai] \"Let's go\""), null, EventTextCanvas.MessageBox),
                 delegate 
                 {
@@ -93,7 +93,7 @@ namespace SpaceProject
                 delegate { return GameStateManager.currentState == "OverworldState"; },
                 delegate { return false; }));
 
-            objectives.Add(new AutoPilotObjective(Game, this, ObjectiveDescriptions[0], fortrunStation, autoPilotSpeed,
+            objectives.Add(new AutoPilotObjective(Game, this, ObjectiveDescriptions[2], fortrunStation, autoPilotSpeed,
                 allyShips2, newNorrland.position,
                 new Dictionary<string, List<float>>
                 { 
@@ -101,7 +101,7 @@ namespace SpaceProject
                     { GetEvent((int)EventID.ToFortrun2).Text, new List<float> { 8000, 3000 } }
                 }));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], newNorrland,
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[2], newNorrland,
                 delegate 
                 {
                     RemoveShips(allyShips2);
@@ -111,7 +111,7 @@ namespace SpaceProject
                 delegate { return true; },
                 delegate { return false; }));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], fortrunStation));
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2], fortrunStation));
 
             //objectives.Add(new ArSecondLevelCompletedive(Game, this, ObjectiveDescriptions[2],
             //    Game.stateManager.overworldState.GetStation("Fortrun Station I")));

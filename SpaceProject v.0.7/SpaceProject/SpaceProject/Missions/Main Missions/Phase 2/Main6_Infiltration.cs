@@ -53,23 +53,23 @@ namespace SpaceProject
             objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], rebelShips[1],
                 300, new EventTextCapsule(GetEvent((int)EventID.AtMeeting), null, EventTextCanvas.MessageBox)));
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], allianceShips[1],
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1], allianceShips[1],
                 GetEvent((int)EventID.AfterMeeting1).Text, 3000, 5000,
                 new EventTextCapsule(GetEvent((int)EventID.AfterMeeting2), null, EventTextCanvas.MessageBox)));
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], allianceShips[1],
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1], allianceShips[1],
                 GetEvent((int)EventID.ToLavis).Text, 3000, 5000));
 
-            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], allianceShips[1],
+            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[1], allianceShips[1],
                 300, new EventTextCapsule(GetEvent((int)EventID.LevelBegins), null, EventTextCanvas.MessageBox)));
 
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], allianceShips[1],
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1], allianceShips[1],
                 "Infiltration1", LevelStartCondition.TextCleared));
 
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], allianceShips[1],
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1], allianceShips[1],
                 "Infiltration2", LevelStartCondition.Immediately));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[2],
                 Game.stateManager.overworldState.GetStation("Rebel Station 3"), 
                 new EventTextCapsule(GetEvent((int)EventID.AfterLevel), null, EventTextCanvas.MessageBox),
                 delegate
@@ -81,7 +81,7 @@ namespace SpaceProject
                 delegate { return true; },
                 delegate { return false; }));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2],
                 Game.stateManager.overworldState.GetStation("Rebel Station 3")));
         }
 

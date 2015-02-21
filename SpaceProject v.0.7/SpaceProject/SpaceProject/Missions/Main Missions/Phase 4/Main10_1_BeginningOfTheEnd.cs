@@ -50,20 +50,20 @@ namespace SpaceProject
                 delegate { return true; },
                 delegate { return false; }));
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], telmun,
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1], telmun,
                 GetEvent((int)EventID.SairCommentingOnMessage1).Text, 3000, 3000));
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], telmun,
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1], telmun,
                 GetEvent((int)EventID.IncomingMessage2).Text, 3000, 2000));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], telmun,
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1], telmun,
                 new EventTextCapsule(GetEvent((int)EventID.RebelMessage), null, EventTextCanvas.MessageBox),
                 delegate { },
                 delegate { },
                 delegate { return true; },
                 delegate { return false; }));
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], telmun,
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1], telmun,
                 GetEvent((int)EventID.SairCommentingOnMessage2).Text, 3000, 2000));
         }
 
