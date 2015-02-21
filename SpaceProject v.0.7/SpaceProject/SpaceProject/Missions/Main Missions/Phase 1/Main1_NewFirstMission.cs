@@ -63,15 +63,30 @@ namespace SpaceProject
                 GetEvent((int)EventID.TalkWithCaptain1).Text,
                 3000, 0));
 
-            Objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], ally1,
-                new EventTextCapsule(GetEvent((int)EventID.TalkWithCaptain2), null, EventTextCanvas.MessageBox)));
+            ArriveAtLocationObjective talkToCaptainObjective = new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], ally1,
+                new EventTextCapsule(GetEvent((int)EventID.TalkWithCaptain2), null, EventTextCanvas.MessageBox));
 
-            Objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
+            Objectives.Add(talkToCaptainObjective);
+
+            ShootingLevelObjective shootingLevelObjective = new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
                 "RebelsInTheMeteors", LevelStartCondition.Immediately,
                 new EventTextCapsule(GetEvent((int)EventID.AfterCombat),
                     null,
-                    EventTextCanvas.MessageBox)));
+                    EventTextCanvas.MessageBox));
+
+            shootingLevelObjective.SetFailLogic(
+                delegate
+                {
+                    Game.player.position = Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("mining asteroids").position;
+                    Game.messageBox.DisplayMessage("Too bad. Talk to me to try again.", false);
+                    talkToCaptainObjective.Reset();
+                    shootingLevelObjective.Reset();
+                    ObjectiveIndex = 3;
+                }
+            );
+
+            Objectives.Add(shootingLevelObjective);
 
             Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
                 Game.stateManager.overworldState.GetBorderXOutpost.GetGameObject("Border Station"),

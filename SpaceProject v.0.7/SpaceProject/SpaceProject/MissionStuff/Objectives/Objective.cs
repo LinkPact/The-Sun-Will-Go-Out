@@ -18,6 +18,8 @@ namespace SpaceProject
         protected Game1 game;
         protected Mission mission;
 
+        private System.Action failLogic;
+
         private String description;
         public String Description { get { return description; } set { description = value; } }
 
@@ -86,6 +88,7 @@ namespace SpaceProject
         }
 
         public abstract bool Completed();
+
         public virtual void OnCompleted() 
         {  
             isOnCompletedCalled = true;
@@ -103,23 +106,36 @@ namespace SpaceProject
             }
         }
 
+        public void SetFailLogic(System.Action failLogic)
+        {
+            this.failLogic = failLogic;
+        }
+
         public abstract bool Failed();
+
         public virtual void OnFailed()
         {
-            if (objectiveFailedEventText != null && objectiveFailedEventText.Text != "")
+            if (failLogic == null)
             {
-                if (eventTextCanvas.Equals(EventTextCanvas.BaseState))
+                if (objectiveFailedEventText != null && objectiveFailedEventText.Text != "")
                 {
-                    mission.MissionHelper.ShowEvent(objectiveFailedEventText);
+                    if (eventTextCanvas.Equals(EventTextCanvas.BaseState))
+                    {
+                        mission.MissionHelper.ShowEvent(objectiveFailedEventText);
+                    }
+                    else if (eventTextCanvas.Equals(EventTextCanvas.MessageBox))
+                    {
+                        game.messageBox.DisplayMessage(objectiveFailedEventText.Text, false);
+                    }
                 }
-                else if (eventTextCanvas.Equals(EventTextCanvas.MessageBox))
-                {
-                    game.messageBox.DisplayMessage(objectiveFailedEventText.Text, false);
-                }
-            }
 
-            MissionManager.MarkMissionAsFailed(mission.MissionName);
-            mission.CurrentObjective = null;
+                MissionManager.MarkMissionAsFailed(mission.MissionName);
+                mission.CurrentObjective = null;
+            }
+            else
+            {
+                failLogic.Invoke();
+            }
         }
     }
 }
