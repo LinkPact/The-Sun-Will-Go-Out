@@ -69,6 +69,7 @@ namespace SpaceProject
 
         private float time;
         private float realTimeMessageDelay;
+        private float tempRealTimeMessageTime;
 
         bool scrollingFinished;
         bool flushScrollText;
@@ -136,7 +137,7 @@ namespace SpaceProject
             messageState = MessageState.RealtimeMessage;
 
             realTimeMessageDelay = milliseconds;
-            time = StatsManager.PlayTime.GetFutureOverworldTime(milliseconds);
+            tempRealTimeMessageTime = milliseconds;
 
             if (!txt.Contains('#'))
             {
@@ -163,8 +164,6 @@ namespace SpaceProject
             {
                 DisplayRealtimeMessage(str, milliseconds);
             }
-
-            realTimeMessageDelay = milliseconds;
         }
 
         //Call this method, feed in a string and the message will appear on screen 
@@ -480,11 +479,34 @@ namespace SpaceProject
         public void Update(GameTime gameTime)
         {
             if (MessageState == MessageState.RealtimeMessage
-                && (StatsManager.PlayTime.HasOverworldTimePassed(time)
-                    || ControlManager.CheckPress(RebindableKeys.Action1)
-                    || ControlManager.CheckKeyPress(Keys.Enter)))
+                && scrollingFinished
+                && tempRealTimeMessageTime != -1)
+            {
+                time = StatsManager.PlayTime.GetFutureOverworldTime(realTimeMessageDelay);
+                tempRealTimeMessageTime = -1;
+            }
+
+            if (MessageState == MessageState.RealtimeMessage
+                && scrollingFinished
+                && StatsManager.PlayTime.HasOverworldTimePassed(time))
             {
                 HideMessage();
+            }
+
+            else if (MessageState == MessageState.RealtimeMessage
+                && (ControlManager.CheckPress(RebindableKeys.Action1)
+                    || ControlManager.CheckKeyPress(Keys.Enter)))
+            {
+                if (scrollingFinished)
+                {
+                    HideMessage();
+                }
+                else
+                {
+                    flushScrollText = true;
+                    time = StatsManager.PlayTime.GetFutureOverworldTime(realTimeMessageDelay);
+                    tempRealTimeMessageTime = realTimeMessageDelay;
+                }
             }
 
             if (actionStorage.Count > 0)
@@ -1069,9 +1091,13 @@ namespace SpaceProject
                 else
                 {
                     time = StatsManager.PlayTime.GetFutureOverworldTime(realTimeMessageDelay);
+                    tempRealTimeMessageTime = realTimeMessageDelay;
 
                     TextToSpeech.Speak(realTimeTextBuffer[0], TextToSpeech.FastRate);
                 }
+
+                scrollingFinished = false;
+                flushScrollText = false;
             }
 
             else if (scrollingFinished

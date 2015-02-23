@@ -144,7 +144,7 @@ namespace SpaceProject
                 && timedMessageCount < escortDataCapsule.TimedMessages.Count
                 && StatsManager.PlayTime.HasOverworldTimePassed(timedMessageTimes[timedMessageCount]))
             {
-                game.messageBox.DisplayRealtimeMessage(escortDataCapsule.TimedMessages[timedMessageCount], 4000);
+                game.messageBox.DisplayRealtimeMessage(escortDataCapsule.TimedMessages[timedMessageCount], 2000);
                 timedMessageCount++;
             }
 
