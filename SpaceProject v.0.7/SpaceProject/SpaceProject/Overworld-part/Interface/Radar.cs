@@ -93,7 +93,8 @@ namespace SpaceProject
             float drawDistance = 0.91f;
             foreach (GameObjectOverworld obj in objectsVisibleOnRadar)
             {
-                Color tempColor = Color.Gray;
+                Color color = Color.Gray;
+                float scale = 1f;
                 ActiveSprite = ObjectSprite;
                 drawDistance = 0.91f;
 
@@ -102,13 +103,15 @@ namespace SpaceProject
                     drawDistance += 0.01f;
                     if (colorSwapCounter <= 25)
                     {
-                        tempColor = Color.DarkOrange;
+                        color = Color.DarkOrange;
                         ActiveSprite = BlinkingSprite;
+                        scale = 1.25f;
                     }
 
                     else
                     {
-                        tempColor = Color.White;
+                        color = Color.White;
+                        scale = 1f;
                     }
 
                     colorSwapCounter++;
@@ -119,24 +122,29 @@ namespace SpaceProject
                 }
                 else if (obj is RebelShip)
                 {
-                    tempColor = Color.Red;
+                    color = Color.Red;
                 }
                 else if (obj is FreighterShip || obj is AllianceShip || obj is HangarShip)
                 {
-                    tempColor = Color.Blue;
+                    color = Color.Blue;
                 }
                 else if (obj is Station || obj is Planet)
                 {
-                    tempColor = Color.Yellow;
+                    color = Color.Yellow;
+                }
+                else if (obj is SystemStar)
+                {
+                    color = Color.White;
+                    scale = 1.25f;
                 }
 
                 spriteBatch.Draw(ActiveSprite.Texture,
                         new Vector2(Origin.X + ((obj.position.X - View.X) / scaleX), Origin.Y + ((obj.position.Y - View.Y) / scaleY)),
                         ActiveSprite.SourceRectangle,
-                        tempColor,
+                        color,
                         0.0f,
                         new Vector2(ActiveSprite.SourceRectangle.Value.Width / 2, ActiveSprite.SourceRectangle.Value.Height / 2),
-                        1f,
+                        scale,
                         SpriteEffects.None,
                         drawDistance
                         ); 

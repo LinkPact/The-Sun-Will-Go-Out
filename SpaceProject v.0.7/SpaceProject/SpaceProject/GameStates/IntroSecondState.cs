@@ -128,7 +128,7 @@ namespace SpaceProject
             else if (txtSpeed < txtMinSpeed)
                 txtSpeed = txtMinSpeed;
 
-            if (textBox.TextBoxPosY < 200)
+            if (textBox.TextBoxPosY < 325)
                 Game.stateManager.ChangeState("OverworldState");
 
             for (int i = 0; i < NumberOfStars; i++)

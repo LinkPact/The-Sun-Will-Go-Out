@@ -10,27 +10,27 @@ namespace SpaceProject
     public class FighterAlly : AlliedShip
     {
         #region Standard values
-        private const float STANDARD_HP = 2000;
-        private const float STANDARD_SIGHTRANGE = 400;
-        private const float STANDARD_SHOOTINGDELAY = 480;
-        private const float STANDARD_MAXSPEED = 0.72f;
-        private const string STANDARD_WEAPON = "basiclaser";
-        private const float STANDARD_AVOID_RADIUS = 150;
+        private const float StandardHP = 2000;
+        private const float StandardSightRange = 400;
+        private const float StandardShootingDelay = 480;
+        private const float StandardMaxSpeed = 0.72f;
+        private const string StandardWeapon = "basiclaser";
+        private const float StandardAvoidRadius = 150;
         #endregion
 
         public FighterAlly(Game1 Game, Sprite SpriteSheet, PlayerVerticalShooter player) :
             base(Game, SpriteSheet, player)
         {
-            HPmax = STANDARD_HP;
+            HPmax = StandardHP;
             HP = HPmax;
 
-            SightRange = STANDARD_SIGHTRANGE;
-            ShootingDelay = STANDARD_SHOOTINGDELAY;
-            MaxSpeed = STANDARD_MAXSPEED;
+            SightRange = StandardSightRange;
+            ShootingDelay = StandardShootingDelay;
+            MaxSpeed = StandardMaxSpeed;
 
-            Weapon = STANDARD_WEAPON;
+            Weapon = StandardWeapon;
             FormationArea = new Rectangle(-1, 0, 0, 0);
-            AvoidRadius = STANDARD_AVOID_RADIUS;
+            AvoidRadius = StandardAvoidRadius;
         }
 
         public FighterAlly(Game1 Game, Sprite SpriteSheet, PlayerVerticalShooter player, Rectangle FormationArea) :
@@ -38,15 +38,15 @@ namespace SpaceProject
         {
             this.FormationArea = FormationArea;
 
-            HPmax = STANDARD_HP;
+            HPmax = StandardHP;
             HP = HPmax;
 
-            SightRange = STANDARD_SIGHTRANGE;
-            ShootingDelay = STANDARD_SHOOTINGDELAY;
-            MaxSpeed = STANDARD_MAXSPEED;
+            SightRange = StandardSightRange;
+            ShootingDelay = StandardShootingDelay;
+            MaxSpeed = StandardMaxSpeed;
 
-            Weapon = STANDARD_WEAPON;
-            AvoidRadius = STANDARD_AVOID_RADIUS;
+            Weapon = StandardWeapon;
+            AvoidRadius = StandardAvoidRadius;
         }
 
         public FighterAlly(Game1 Game, Sprite SpriteSheet, PlayerVerticalShooter player, Rectangle? FormationArea, string Weapon, float AvoidRadius, float HP,
