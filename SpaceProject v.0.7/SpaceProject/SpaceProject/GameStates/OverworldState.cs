@@ -233,6 +233,7 @@ namespace SpaceProject
 
         public override void OnLeave()
         {
+            base.OnLeave();
         }
 
         public override void Update(GameTime gameTime)

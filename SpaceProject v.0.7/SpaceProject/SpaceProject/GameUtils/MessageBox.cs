@@ -194,6 +194,7 @@ namespace SpaceProject
             realTimeTextBuffer.Clear();
 
             TextToSpeech.Speak(textBuffer[0]);
+            Game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public void DisplayMessage(string txt, bool displayDisableTutorialButton, int delay)
@@ -254,6 +255,8 @@ namespace SpaceProject
             menuOptions.Clear();
             UpdateButtonLabels();
             realTimeTextBuffer.Clear();
+
+            Game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public void DisplayMessageWithImage(List<string> txtList, Sprite image, bool displayDisableTutorialButton)
@@ -309,6 +312,8 @@ namespace SpaceProject
             menuOptions.Clear();
             UpdateButtonLabels();
             realTimeTextBuffer.Clear();
+
+            Game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public void DisplayImage(Sprite image, bool displayDisableTutorialButton)
@@ -326,6 +331,7 @@ namespace SpaceProject
             menuOptions.Clear();
             UpdateButtonLabels();
             realTimeTextBuffer.Clear();
+            Game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public void DisplayImages(List<Sprite> images, bool displayDisableTutorialButton)
@@ -343,6 +349,7 @@ namespace SpaceProject
             menuOptions.Clear();
             UpdateButtonLabels();
             realTimeTextBuffer.Clear();
+            Game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         //Display a map of the system in a pop-up
@@ -419,6 +426,7 @@ namespace SpaceProject
             currentIndexMax = menuOptions.Count;
 
             tempTimer = 5;
+            Game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public void DisplaySelectionMenu(string message, List<String> options)
@@ -434,6 +442,7 @@ namespace SpaceProject
             {
                 menuOptions.Add(options[i]);
             }
+            Game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public void DisplaySelectionMenu(string message, List<String> options, List<System.Action> actions)
@@ -465,6 +474,7 @@ namespace SpaceProject
                 menuOptions.Add(options[i]);
                 menuActions.Add(actions[i]);
             }
+            Game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public void Update(GameTime gameTime)
@@ -512,10 +522,10 @@ namespace SpaceProject
             }
 
             //Makes the messagebox invisible when pressing the esc or back if it's displaying the menu
-            else if (messageState == MessageState.Menu)
+            if (messageState == MessageState.Menu)
             {
-                if (tempTimer < 0 && ControlManager.CheckPress(RebindableKeys.Pause) ||
-                    ControlManager.CheckPress(RebindableKeys.Action2) /*&& messageState != MessageState.Inventory*/)
+                if (tempTimer < 0 && (ControlManager.CheckPress(RebindableKeys.Pause) ||
+                    ControlManager.CheckPress(RebindableKeys.Action2)))
                 {
                     Game1.Paused = false;
                     messageState = MessageState.Invisible;

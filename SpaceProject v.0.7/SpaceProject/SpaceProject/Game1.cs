@@ -218,6 +218,7 @@ namespace SpaceProject
                 if (ControlManager.CheckKeyPress(Keys.N))
                 {
                     ZoomMap.ToggleMap();
+                    soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
                 }
 
                 if (ZoomMap.IsMapOn)

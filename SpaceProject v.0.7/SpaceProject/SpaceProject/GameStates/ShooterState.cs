@@ -206,6 +206,7 @@ namespace SpaceProject
 
             currentLevel.Initialize();
             MusicSelection();
+
             base.OnEnter();
         }
 

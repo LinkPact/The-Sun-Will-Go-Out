@@ -110,16 +110,6 @@ namespace SpaceProject
             soundEffect.Dispose();
         }
 
-        public void Play()
-        {
-            soundEffect.Play();
-        }
-
-        public void Play(float volume, float pitch, float pan)
-        {
-            soundEffect.Play(volume, pitch, pan);
-        }
-
         public void Update()
         {
             if (fadeOut)
