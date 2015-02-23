@@ -369,9 +369,7 @@
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\PeyeScienceStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\BorderXOutpost\BorderStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\MiningOutpost\MiningStation.cs" />
-    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation3.cs" />
-    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation2.cs" />
-    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation1.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\DamagedShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\MiningAsteroids.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\LonelyAsteroid.cs" />

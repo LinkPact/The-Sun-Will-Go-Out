@@ -146,7 +146,7 @@ State = 0
 
 [Main6_Infiltration]
 Location = Fortrun Station I
-EndLocation = Rebel Station 3
+EndLocation = Rebel Base
 Name = Main - Infiltration
 Introduction = Ai turns to you with a serious look on her face.#[Ai] "I just returned from a meeting with the command."#"We have a big favour to ask of you."#"But first, I need to know if you are ready for this?"
 ObjectiveText1 = Meet with the rebel captain at coordinates (-145, 2300)
@@ -155,15 +155,15 @@ ObjectiveText3 = Go to the rebel base at coordinates (290, 2125) and report to R
 PosResponse = Yes
 NegResponse = I need some more time to prepare.
 Accept = "Then I will tell you a bit more about the situation."
-EventText1 = "You have heard about our research on the mineral Murt. We have made progress lately. We only have very small quantities of the mineral though. If we manage to find greater amounts of the mineral, it would be able to really help the sector."#"On the other hand, it could also be used for creating almost unimaginably powerful weapons, shields and bombs."#"We have reasons to believe that there is a huge source of Murt somewhere in this sector."#"We think the the rebels know ab out this."#"If they gained access to it, it would be a catastrophe."#"We must stop them at all costs."#"It is here you come in. We need an insider. Someone they can trust, who can provide us with insight into what they know and what they plan."#"You are a skilled and trusted pilot and you are unknown to them."#"Sometimes people leave the Alliance and join the rebels, fooled by their nice words. You could pretend to be one of them."#"Our plan is to let you leak crucial information to them about a coming attack against one of their outposts near Lavis."#"You will join them during the attack. You will be sent there together with a group of suspected traitors."#"You and the rebels will help us get rid of them, and at the same time lay a foundation of trust for you."#"I have set up a meeting with a lower rebel leader at coordinates (X,X)."#"You should travel there immediately, and hand him this file."#"Then, you will travel to the outpost and join the attack fleet. I will provide you with the exact coordinates after the meeting."#She looks at you seriously.#"Good luck. I will stay in touch."
+EventText1 = "You have heard about our research on the mineral Murt. We have made progress lately. We only have very small quantities of the mineral though. If we manage to find greater amounts of the mineral, it would be able to really help the sector."#"On the other hand, it could also be used for creating almost unimaginably powerful weapons, shields and bombs."#"We have reasons to believe that there is a huge source of Murt somewhere in this sector."#"We think the the rebels know ab out this."#"If they gained access to it, it would be a catastrophe."#"We must stop them at all costs."#"It is here you come in. We need an insider. Someone they can trust, who can provide us with insight into what they know and what they plan."#"You are a skilled and trusted pilot and you are unknown to them."#"Sometimes people leave the Alliance and join the rebels, fooled by their nice words. You could pretend to be one of them."#"Our plan is to let you leak crucial information to them about a coming attack against one of their outposts near Lavis."#"You will join them during the attack. You will be sent there together with a group of suspected traitors."#"You and the rebels will help us get rid of them, and at the same time lay a foundation of trust for you."#"I have set up a meeting with a lower rebel leader at coordinates (-145, 2300)."#"You should travel there immediately, and hand him this file."#"Then, you will travel to the outpost and join the attack fleet. I will provide you with the exact coordinates after the meeting."#She looks at you seriously.#"Good luck. I will stay in touch."
 EventText2 = [SAIR] "That was unexpected. But it might be the logical choice. Let’s go meet that rebel person."
 EventText3 = [SAIR] "You know, this might be the last moment of stillness we get in a while."#"You should take a moment to appreciate it."
 EventText4 = A young man with a fierce look appears on your display.#[Rok] "So you came after all. And you seem to have no company. Brave!”#"Stupid, but brave.. Let’s get to it. You had information. Send it over."#He speaks with a quite harsh voice. But it sounds like he isn't as confident with the situation as he tries to appear.#You transfer the information.#[Rok] "..."#"... Why would you tell us this. A change of heart you say?"#"I have difficulties believing you."#"..."#"I will leave you now. If this is true, and you follow the plan through, there will be a place for you among us."#"If not... I will make sure you regret this meeting."#"Goodbye for now."#The screen goes blank, and the small group leaves silently.
 EventText5 = [SAIR] "That was tense. It wouldn't have been illogical for them to shoot us down at the spot."
-EventText6 = [Ai] "..Did it go as planned? Good. Now, join the attack fleet at coordinates (X, X)."#"There is no looking back now. This might be our best chance to get a grip on the rebels."
+EventText6 = [Ai] "..Did it go as planned? Good. Now, join the attack fleet at coordinates (1235, 1400)."#"There is no looking back now. This might be our best chance to get a grip on the rebels."
 EventText7 = [SAIR] "Remember. Even if the Alliance fleet we will join consists of quite unexperienced pilots, they will have better equipment than most of the rebels we have faced this far."#"Be careful."
 EventText8 = A rough and seemingly annoyed man appears on your display.#[Attack fleet leader] "You are late, scum. What do you think this is? A walk in the park?"#"I will not watch your back if you not are able to follow orders."#He directs his next message to the entire fleet.#"I will not hold a fucking inspirational speech for you. Do your job, and we can go home."#"I don't know what they are fucking thinking, sending us here. I guess someone has to do their dirty job."#"Let’s try to make this as quick as possible. Go in, destroy everything, and leave."#"Make sure they don't have time to forward the message, or we will be swarmed by their ships on our way back."#"Let's move out. Don’t fall behind."
-EventText9 = Rok appears, looking relieved and excited.#[Rok] "Amazing job, my friend! We really got them there."#"They will think twice before attacking us again."#"We would not have been able to do this without you. We really appreciate it."#"A small, but significant step towards liberating the people. Thank you."#"Travel to the coordinates (X,X). There you will find our base."#"I will tell you more about us, and you will tell us more about you."#"You will get a place among us rebels. You will not regret this choice. See you later!"
+EventText9 = Rok appears, looking relieved and excited.#[Rok] "Amazing job, my friend! We really got them there."#"They will think twice before attacking us again."#"We would not have been able to do this without you. We really appreciate it."#"A small, but significant step towards liberating the people. Thank you."#"Travel to the coordinates (290, 2125). There you will find our base."#"I will tell you more about us, and you will tell us more about you."#"You will get a place among us rebels. You will not regret this choice. See you later!"
 EventText10 = [Ai] "It went as expected? Good."#"I feel bad for putting you through this, but it was a necessity."#"I'm sure you understand."#"Don't get fooled by them. Many of them actually believe that they stand for good and justice."#"Remember all the people they plundered and murdered around the system."#"I wish you the best of luck. Contact me immediately when you find anything useful."
 Success = Rok turns to you with a wide smile.
 ObjectiveCompleted = You successfully collected the debt.
@@ -172,10 +172,10 @@ ObjectiveFailed = You chose to hide the man instead, getting no reward.
 Reward = 300
 Progress = 2
 Reputation = -5
-State = 0
+State = 1
 
 [Main7_Retaliation]
-Location = Rebel Station 3
+Location = Rebel Base
 Name = Main - Retaliation
 Introduction = ""
 ObjectiveText1 = Meet with the rebel attack fleet at coordinates (-535, 0) and wait for the freighter.
@@ -199,10 +199,10 @@ ObjectiveFailed = You chose to hide the man instead, getting no reward.
 Reward = 300
 Progress = 2
 Reputation = 0
-State = 0
+State = 1
 
 [Main8_InTheNameOfScience]
-Location = Rebel Station 3
+Location = Rebel Base
 Name = Main - In the Name of Science
 Introduction = ""
 ObjectiveText1 = Follow the rebel fleet to Peye Science Station find Ente the scientist.
@@ -230,10 +230,10 @@ Fail = "Fail"
 Reward = -1
 Progress = 0
 Reputation = 0
-State = 0
+State = 1
 
 [Main9_Information]
-Location = Rebel Station 3
+Location = Rebel Base
 Name = Main - Information
 Introduction = ""
 ObjectiveText1 = Go to the information hub at coordinates (1300, 200) and access the Murt information.
@@ -254,7 +254,7 @@ Fail = "Fail"
 Reward = -1
 Progress = 0
 Reputation = 0
-State = 1
+State = 0
 
 [Main10_1_BeginningOfTheEnd]
 Location = Border Station
@@ -369,7 +369,7 @@ Success = "Good job!"
 Reward = 100
 Progress = 2
 Reputation = 0
-State = 1
+State = 0
 
 [Old second mission]
 Location = Highfence

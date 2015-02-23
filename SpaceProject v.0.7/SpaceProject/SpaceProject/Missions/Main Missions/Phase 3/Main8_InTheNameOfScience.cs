@@ -41,7 +41,7 @@ namespace SpaceProject
         public override void Initialize()
         {
             base.Initialize();
-            Station rebelStation3 = Game.stateManager.overworldState.GetStation("Rebel Station 3");
+            Station rebelStation3 = Game.stateManager.overworldState.GetStation("Rebel Base");
             Station peyeScienceStation = Game.stateManager.overworldState.GetStation("Peye Science Station");
 
             RestartAfterFail();
