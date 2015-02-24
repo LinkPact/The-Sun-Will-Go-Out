@@ -22,7 +22,15 @@ namespace SpaceProject
             {
                 game.stateManager.overworldState.RemoveOverworldObject(ship);
                 game.messageBox.DisplayMessage(GetMessage(), false);
-                game.stateManager.shooterState.BeginAlliancePirateLevel();
+                if (ship.Level == null 
+                    || ship.Level.Equals(""))
+                {
+                    game.stateManager.shooterState.BeginAlliancePirateLevel();
+                }
+                else
+                {
+                    game.stateManager.shooterState.BeginLevel(ship.Level);
+                }
             }
         }
 

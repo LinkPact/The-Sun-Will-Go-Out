@@ -111,6 +111,7 @@ namespace SpaceProject
             Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], rebelShips[0],
                 delegate
                 {
+                    OverworldShip.FollowPlayer = false;
                     StartFreighter();
                 },
                 delegate { },
@@ -149,8 +150,10 @@ namespace SpaceProject
                 delegate
                 {
                     freighter.Destroy();
+                    StatsManager.reputation = -100;
                     Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
-                        alliance1, destination + new Vector2(-600, 0), "Retribution2", Game.player);
+                        alliance1, destination + new Vector2(-300, 0), "Retribution2", Game.player);
+                    OverworldShip.FollowPlayer = true;
                 },
                 delegate
                 {

@@ -285,8 +285,7 @@ namespace SpaceProject
         }
 
         private void UpdateDeepSpaceObjects(GameTime gameTime)
-        {
-            
+        {     
             foreach (GameObjectOverworld obj in deepSpaceGameObjects)
             {
                 obj.Update(gameTime);

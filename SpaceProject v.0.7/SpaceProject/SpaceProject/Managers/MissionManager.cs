@@ -44,14 +44,6 @@ namespace SpaceProject
         private static FlightTraining flightTraining;
         private static ColonyAid colonyAid;
 
-        //Old Missions
-        //private static MidMissionRebel midMissionRebel;
-        //private static FinalMission finalMission;
-        //private static MainMissionOne mainMission1;
-        //private static MidMissionAlliance midMissionAlliance;
-        //private static Main1_AColdWelcome aColdWelcome;
-        //private static Main3_TheAlliance theAlliance;
-
         private static List<string> missionEventBuffer = new List<string>();
         private static List<string> missionResponseBuffer = new List<string>();
         private static List<string> missionStartBuffer = new List<string>();
@@ -561,18 +553,6 @@ namespace SpaceProject
 
         public void UpdateProgressionConditions()
         {
-            //// DEBUG
-            //if (ControlManager.CheckKeypress(Microsoft.Xna.Framework.Input.Keys.End))
-            //{
-            //    MarkMissionAsCompleted("Main - A Cold Welcome");
-            //}
-
-            //if (mainTutorialMission.MissionState == StateOfMission.CompletedDead
-            //    && mainNewFirstMission.MissionState == StateOfMission.Unavailable)
-            //{
-            //    UnlockMission("Main - New First Mission");
-            //    MarkMissionAsActive("Main - New First Mission");
-            //}
 
             // Unlock hyperspeed
             if (ControlManager.CurrentKeyboardState.IsKeyDown(Keys.LeftAlt) &&
@@ -596,16 +576,6 @@ namespace SpaceProject
                     }
                 }
             }
-
-            //if (MissionManager.theAlliance.MissionState == StateOfMission.CompletedDead &&
-            //    GameStateManager.currentState.Equals("OverworldState") &&
-            //    !gameCompleted)
-            //{
-            //    game.messageBox.DisplayMessage(new List<string> { "Congratulations! You have completed all the story missions we have managed to make so far! You are now free to explore the star system however you like! Look for side-missions you might have missed or just see if you can find any secrets! ;)",
-            //        "You can now use the hyper speed button! Hold down 'Space' when moving your ship around in the overworld to go much faster! If you restart the game, you can unlock it by holding down 'Alt' and pressing 'Y'."});
-            //    gameCompleted = true;
-            //    game.player.UnlockHyperSpeed();
-            //}
 
             // Unlock missions
             if (mainNewFirstMission.MissionState == StateOfMission.CompletedDead &&
@@ -701,6 +671,7 @@ namespace SpaceProject
             if (mainTheEnd.MissionState == StateOfMission.Completed
                 && GameStateManager.currentState.Equals("OverworldState"))
             {
+                UnlockMission(mainOnYourOwnArc.MissionName);
                 mainTheEnd.MissionState = StateOfMission.CompletedDead;
 
                 RebelFleet rebelFleet = new RebelFleet(game,
