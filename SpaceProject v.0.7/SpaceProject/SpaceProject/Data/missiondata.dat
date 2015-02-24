@@ -202,7 +202,7 @@ ObjectiveFailed = You chose to hide the man instead, getting no reward.
 Reward = 300
 Progress = 2
 Reputation = 0
-State = 1
+State = 0
 
 [Main8_InTheNameOfScience]
 Location = Rebel Base
@@ -226,14 +226,14 @@ EventText9 = You quickly walk into the building, looking around, searching for t
 EventText10 = [SAIR] "What a strange man. Nevertheless, it seems the most logical path for us to at least initially follow his plan."#"We can always share the information with Ai or Rok later on."#"I'll send the signal to the other rebels. Let's move out now."
 EventText11 = [SAIR] "Seems Ai wasn't as successful in diverging the Alliance attention as she hoped to be. This looks like it will be a tough one."#[Rebel] "... We have no choice but to try to break through. Good luck, everyone."
 EventText12 = [Rebel] "We are through! Let's meet at the Rebel Station!"
-EventText13 = [Ente] "Remember what I have told you."#"Go to the coordinate I marked on your map. You will nd more information there."#"Make sure that you aren't followed."#"I don't know if we will meet again. I trust that you will do what's best for the sector."#"Remember. In their own minds, all people are their own heroes, defender of their own beliefs."#"There are no good people, and there are no bad people. There are just people."
+EventText13 = [Ente] "Remember what I have told you."#"Go to the coordinate I marked on your map. You will find more information there."#"Make sure that you aren't followed."#"I don't know if we will meet again. I trust that you will do what's best for the sector."#"Remember. In their own minds, all people are their own heroes, defender of their own beliefs."#"There are no good people, and there are no bad people. There are just people."
 ObjectiveCompleted = "ObjectiveCompleted"
 Success = Rok speaks to the group.#[Rok] "Well done, all of you."#He turns to Ente who looks visibly uncomfortable. Rok bears a slightly sinister look.#"Welcome to the Rebel Base, Ente. We will soon have a little chat, you and me."#There is something very unsettling in his voice. He turns to the group of rebel pilots again.#"I will keep in touch. Come back soon, there will definitely be more to do in the near future."#He and Ente leave the room. While Ente passes, he quickly whispers to you.#"Good luck"
 Fail = "Fail"
-Reward = -1
+Reward = 600
 Progress = 0
 Reputation = 0
-State = 1
+State = 0
 
 [Main9_Information]
 Location = Rebel Base
@@ -247,7 +247,7 @@ FailText = "FailText"
 EventText1 = [SAIR] "We should go to that information hub he was speaking about."#"And if what he said about the Murt meteorite is true.. Hiding it might be the correct option."#"Let's not contact Ai just yet.."
 EventText2 = [SAIR] "It looks like we are being followed. We can't lead them to the information hub."#"Either we'll have to shake them o, or we will have to make sure they can't follow us anymore."
 EventText3 = [SAIR] "They won't stop following us. We will need to do something about them."
-EventText4 = [Rebel] "What are you doing? I will report this to the command!"
+EventText4 = [Rebel] "What are you doing? I will report this to command!"
 EventText5 = [SAIR] "That was all of them.."
 EventText6 = [SAIR] "This must be it. Well hidden, indeed!"
 EventText7 = [SAIR] "So, let's see what we have here. I'll enter the password we got from Ente.."#"..."#"We have access."#"..."#"..."#"Interesting. There is a lot of information here about both the Alliance and the rebels."#"It seems like the ocial story about how the Alliance came to power might be slightly.. altered."#"Yes, they came to power through an election. But the elections don't seem to have been as free as they claim..."#"The rebels on the other hand seem to have started as an anarchist organization, attempting to 'liberate' the sector through spreading chaos and disorder."#"They seem to have gradually adapted over time to be more... presentable... for the people around here."#"But that's not why we are here. I wish we had found this place earlier..."#"I think I have found their information about Murt."#"It seems like after they increased the range of their scanners, they started to pick up huge signals from a particular asteroid outside New Norrland."#"That must be it. I have recorded the coordiates. Now we only need to find data on that cloak-technology.."#"..."#"Here it is. Quite recently, they started to develop a cloaking technology on another outpost close to Peye."#"We should go there immediately. I have downloaded the data. I will process it on the way."#"I have marked the coordinates on the map. I will tell you more during travel."
