@@ -18,8 +18,14 @@ namespace SpaceProject
         public float scaleX;
         public float scaleY;
 
+        private Vector2 RadarCenterPos {
+            get {
+                return new Vector2(Origin.X + radarWidth / 2, Origin.Y + radarHeight / 2);
+            }
+        }
+
         private List<GameObjectOverworld> objectsVisibleOnRadar;
-        private List<Vector2> objektsOnMap = null;
+        private List<Vector2> objectsOnMap = null;
 
         private Vector2 playerpos;
 
@@ -30,6 +36,8 @@ namespace SpaceProject
         
         protected Sprite spriteSheet;
         protected Sprite background;
+
+        private DirectionArrow testArrow;
 
         private static int colorSwapCounter = 0;
         
@@ -48,7 +56,7 @@ namespace SpaceProject
         public void Initialize(Vector2 Origin, int viewRadius)
         {
             objectsVisibleOnRadar = new List<GameObjectOverworld>();
-            objektsOnMap = new List<Vector2>();
+            objectsOnMap = new List<Vector2>();
             this.Origin = Origin;
             this.viewRadius = viewRadius;
            // View = new Rectangle((int)game.player.position.X - viewRadius, (int)game.player.position.Y - viewRadius, viewRadius * 2, viewRadius * 2);
@@ -60,6 +68,8 @@ namespace SpaceProject
             ObjectSprite = spriteSheet.GetSubSprite(new Rectangle(42, 24, 6, 6));
             BlinkingSprite = spriteSheet.GetSubSprite(new Rectangle(49, 24, 6, 6));
             background = new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/radar"), new Rectangle(0, 0, 198, 198));
+
+            testArrow = new DirectionArrow(game.spriteSheetVerticalShooter, new Vector2(118354, 98654));
         }
 
         public void Update(GameTime gameTime, List<GameObjectOverworld> objectsInOverworld, Vector2 cameraPos)
@@ -75,10 +85,14 @@ namespace SpaceProject
             playerpos = game.player.position;
             Origin = new Vector2(cameraPos.X + game.Window.ClientBounds.Width / 2 - background.SourceRectangle.Value.Width,
                 cameraPos.Y + game.Window.ClientBounds.Height / 2 - background.SourceRectangle.Value.Height);
+
+            testArrow.Update(playerpos);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            testArrow.Draw(spriteBatch, RadarCenterPos, playerpos);
+
             spriteBatch.Draw(background.Texture,
                 Origin,
                 background.SourceRectangle,

@@ -379,6 +379,7 @@
     <Compile Include="Overworld-part\GameObjects\Stations\SectorX\FortrunStation1.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\ShopInventoryEntry.cs" />
     <Compile Include="Overworld-part\Interface\BeaconMenu.cs" />
+    <Compile Include="Overworld-part\Interface\DirectionArrow.cs" />
     <Compile Include="Overworld-part\Interface\HeadsUpDisplay.cs" />
     <Compile Include="Overworld-part\Interface\Radar.cs" />
     <Compile Include="Overworld-part\SpaceRegions\Outposts\BorderXOutpost.cs" />
