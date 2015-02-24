@@ -369,9 +369,7 @@
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\PeyeScienceStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\BorderXOutpost\BorderStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\MiningOutpost\MiningStation.cs" />
-    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation3.cs" />
-    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation2.cs" />
-    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation1.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\DamagedShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\MiningAsteroids.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\LonelyAsteroid.cs" />
@@ -442,7 +440,11 @@
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Meteorites\Meteorite.cs" />
     <Compile Include="Shooter-part\Events\Instances\WaveInstances\HangarBoss.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\Hangar\AllianceHangarAttackShip.cs" />
-    <Compile Include="Shooter-part\Levels\Levels\CustomLevels\RebelsInTheMeteors.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\CustomMissionLevels\Information1Level.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\CustomMissionLevels\Retaliation1Level.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\CustomMissionLevels\Infiltration2Level.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\CustomMissionLevels\RebelsInTheMeteorsLevel.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\CustomMissionLevels\Infiltration1Level.cs" />
     <Compile Include="Shooter-part\Levels\Levels\Used\HangarLevel.cs" />
     <Compile Include="Shooter-part\Levels\Logger\LevelLogger.cs" />
     <Compile Include="Shooter-part\Modules\BeamModule\FriendlyBeamModule.cs" />
@@ -593,7 +595,7 @@
     <Compile Include="Shooter-part\Levels\CheckPoint.cs" />
     <Compile Include="Shooter-part\Levels\Level.cs" />
     <Compile Include="Shooter-part\Levels\Levels\FirstMissionLevel.cs" />
-    <Compile Include="Shooter-part\Levels\Levels\SecondMissionLevel.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\CustomMissionLevels\SecondMissionLevel.cs" />
     <Compile Include="Shooter-part\Levels\MapCreatorLevel.cs" />
     <Compile Include="Shooter-part\GameObjects\Misc GameObjects\Supplies.cs" />
     <Compile Include="Shooter-part\GameObjects\Player\PlayerVerticalShooter.cs" />
@@ -1055,7 +1057,6 @@
     <Content Include="Levels\testlevels\XDefendColony.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="SpaceProject_TemporaryKey.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

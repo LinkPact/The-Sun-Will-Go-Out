@@ -233,6 +233,7 @@ namespace SpaceProject
 
         public override void OnLeave()
         {
+            base.OnLeave();
         }
 
         public override void Update(GameTime gameTime)
@@ -284,8 +285,7 @@ namespace SpaceProject
         }
 
         private void UpdateDeepSpaceObjects(GameTime gameTime)
-        {
-            
+        {     
             foreach (GameObjectOverworld obj in deepSpaceGameObjects)
             {
                 obj.Update(gameTime);

@@ -1052,7 +1052,7 @@ namespace SpaceProject
                     confirmOptions.Add("Buy");
                 }
 
-                if (itemToBuy is PlayerWeapon || itemToBuy is PlayerEnergyCell || itemToBuy is PlayerShield)
+                if (itemToBuy is PlayerWeapon || itemToBuy is PlayerEnergyCell || itemToBuy is PlayerShield || itemToBuy is PlayerPlating)
                 {
                     confirmOptions.Add("Buy & equip");
                 }
@@ -1066,14 +1066,17 @@ namespace SpaceProject
 
             else if (itemToSell != null)
             {
-                if (ShipInventoryManager.IsEquipped(itemToSell) && itemToSell is PlayerEnergyCell)
+                if (ShipInventoryManager.IsEquipped(itemToSell) 
+                    && itemToSell is PlayerEnergyCell)
                 {
-                    Game.messageBox.DisplayMessage("You can't sell equipped energy cells!", false);
+                    Game.messageBox.DisplayMessage("You can't sell your equipped energy cells!", false);
                 }
 
-                else if (ShipInventoryManager.IsEquipped(itemToSell) && itemToSell is PlayerPlating)
+                else if (ShipInventoryManager.IsEquipped(itemToSell) 
+                    && itemToSell is PlayerPlating
+                    && ShipInventoryManager.IsLastEquipped(itemToSell))
                 {
-                    Game.messageBox.DisplayMessage("You can't sell equipped platings!", false);
+                    Game.messageBox.DisplayMessage("You can't sell your last plating!", false);
                 }
                 else
                 {

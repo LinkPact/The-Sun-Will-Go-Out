@@ -182,6 +182,19 @@ namespace SpaceProject
             }
         }
 
+        public void StopAllSoundEffects()
+        {
+            foreach (SoundEffectInstance sfx in soundEffectBuffer)
+            {
+                if (!sfx.IsDisposed)
+                {
+                    sfx.Stop();
+                }
+            }
+
+            soundEffectBuffer.Clear();
+        }
+
         // Stops all instances of the specified sound effect
         public void FadeOutSoundEffect(SoundEffects identifier)
         {

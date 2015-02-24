@@ -76,7 +76,7 @@ namespace SpaceProject
                         break;
 
                     case 1:
-                        actions.Add(new TravelAction(rebelShips[i], Game.stateManager.overworldState.GetStation("Rebel Station 2")));
+                        actions.Add(new TravelAction(rebelShips[i], Game.stateManager.overworldState.GetStation("Rebel Base")));
                         break;
 
                     case 2:
@@ -111,6 +111,7 @@ namespace SpaceProject
             Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], rebelShips[0],
                 delegate
                 {
+                    OverworldShip.FollowPlayer = false;
                     StartFreighter();
                 },
                 delegate { },
@@ -145,12 +146,14 @@ namespace SpaceProject
                 new EventTextCapsule(GetEvent((int)EventID.AfterLevel), null, EventTextCanvas.MessageBox)));
             
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetStation("Rebel Station 3"),
+                Game.stateManager.overworldState.GetStation("Rebel Base"),
                 delegate
                 {
                     freighter.Destroy();
+                    StatsManager.reputation = -100;
                     Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
-                        alliance1, destination + new Vector2(-600, 0), "Retribution2", Game.player);
+                        alliance1, destination + new Vector2(-300, 0), "Retribution2", Game.player);
+                    OverworldShip.FollowPlayer = true;
                 },
                 delegate
                 {
@@ -159,7 +162,7 @@ namespace SpaceProject
                 delegate
                 {
                     return (CollisionDetection.IsPointInsideCircle(Game.player.position, 
-                        Game.stateManager.overworldState.GetStation("Rebel Station 3").position, 1000));
+                        Game.stateManager.overworldState.GetStation("Rebel Base").position, 1000));
                 },
                 delegate
                 {
@@ -167,7 +170,7 @@ namespace SpaceProject
                 }));
             
             objectives.Add(new ArriveAtLocationObjective(Game, this,
-                ObjectiveDescriptions[1], Game.stateManager.overworldState.GetStation("Rebel Station 3")));
+                ObjectiveDescriptions[1], Game.stateManager.overworldState.GetStation("Rebel Base")));
         }
 
         public override void StartMission()

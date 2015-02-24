@@ -8,15 +8,15 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
-    public class RebelStation1 : Station
+    public class RebelBaseStation : Station
     {
-        public RebelStation1(Game1 Game, Sprite spriteSheet, Vector2 positionOffset) :
+        public RebelBaseStation(Game1 Game, Sprite spriteSheet, Vector2 positionOffset) :
             base(Game, spriteSheet, positionOffset)
         { }
 
         public override void Initialize()
         {
-            sprite = spriteSheet.GetSubSprite(new Rectangle(0, 523, 93, 93));
+            sprite = spriteSheet.GetSubSprite(new Rectangle(580, 335, 240, 198));
             base.Initialize();
             StationCodeName = "RO_Rebel_Station_1";
             LoadStationData(StationCodeName);

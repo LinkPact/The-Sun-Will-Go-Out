@@ -37,8 +37,8 @@ namespace SpaceProject
         }
 
         public virtual void OnLeave() 
-        { 
-        
+        {
+            Game.soundEffectsManager.StopAllSoundEffects();
         }
 
         public virtual void Update(GameTime gameTime)

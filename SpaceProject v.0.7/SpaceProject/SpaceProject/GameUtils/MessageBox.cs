@@ -69,6 +69,7 @@ namespace SpaceProject
 
         private float time;
         private float realTimeMessageDelay;
+        private float tempRealTimeMessageTime;
 
         bool scrollingFinished;
         bool flushScrollText;
@@ -136,7 +137,7 @@ namespace SpaceProject
             messageState = MessageState.RealtimeMessage;
 
             realTimeMessageDelay = milliseconds;
-            time = StatsManager.PlayTime.GetFutureOverworldTime(milliseconds);
+            tempRealTimeMessageTime = milliseconds;
 
             if (!txt.Contains('#'))
             {
@@ -163,8 +164,6 @@ namespace SpaceProject
             {
                 DisplayRealtimeMessage(str, milliseconds);
             }
-
-            realTimeMessageDelay = milliseconds;
         }
 
         //Call this method, feed in a string and the message will appear on screen 
@@ -194,6 +193,7 @@ namespace SpaceProject
             realTimeTextBuffer.Clear();
 
             TextToSpeech.Speak(textBuffer[0]);
+            Game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public void DisplayMessage(string txt, bool displayDisableTutorialButton, int delay)
@@ -254,6 +254,8 @@ namespace SpaceProject
             menuOptions.Clear();
             UpdateButtonLabels();
             realTimeTextBuffer.Clear();
+
+            Game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public void DisplayMessageWithImage(List<string> txtList, Sprite image, bool displayDisableTutorialButton)
@@ -309,6 +311,8 @@ namespace SpaceProject
             menuOptions.Clear();
             UpdateButtonLabels();
             realTimeTextBuffer.Clear();
+
+            Game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public void DisplayImage(Sprite image, bool displayDisableTutorialButton)
@@ -326,6 +330,7 @@ namespace SpaceProject
             menuOptions.Clear();
             UpdateButtonLabels();
             realTimeTextBuffer.Clear();
+            Game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public void DisplayImages(List<Sprite> images, bool displayDisableTutorialButton)
@@ -343,6 +348,7 @@ namespace SpaceProject
             menuOptions.Clear();
             UpdateButtonLabels();
             realTimeTextBuffer.Clear();
+            Game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         //Display a map of the system in a pop-up
@@ -419,6 +425,7 @@ namespace SpaceProject
             currentIndexMax = menuOptions.Count;
 
             tempTimer = 5;
+            Game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public void DisplaySelectionMenu(string message, List<String> options)
@@ -434,6 +441,7 @@ namespace SpaceProject
             {
                 menuOptions.Add(options[i]);
             }
+            Game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public void DisplaySelectionMenu(string message, List<String> options, List<System.Action> actions)
@@ -465,16 +473,40 @@ namespace SpaceProject
                 menuOptions.Add(options[i]);
                 menuActions.Add(actions[i]);
             }
+            Game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public void Update(GameTime gameTime)
         {
             if (MessageState == MessageState.RealtimeMessage
-                && (StatsManager.PlayTime.HasOverworldTimePassed(time)
-                    || ControlManager.CheckPress(RebindableKeys.Action1)
-                    || ControlManager.CheckKeyPress(Keys.Enter)))
+                && scrollingFinished
+                && tempRealTimeMessageTime != -1)
+            {
+                time = StatsManager.PlayTime.GetFutureOverworldTime(realTimeMessageDelay);
+                tempRealTimeMessageTime = -1;
+            }
+
+            if (MessageState == MessageState.RealtimeMessage
+                && scrollingFinished
+                && StatsManager.PlayTime.HasOverworldTimePassed(time))
             {
                 HideMessage();
+            }
+
+            else if (MessageState == MessageState.RealtimeMessage
+                && (ControlManager.CheckPress(RebindableKeys.Action1)
+                    || ControlManager.CheckKeyPress(Keys.Enter)))
+            {
+                if (scrollingFinished)
+                {
+                    HideMessage();
+                }
+                else
+                {
+                    flushScrollText = true;
+                    time = StatsManager.PlayTime.GetFutureOverworldTime(realTimeMessageDelay);
+                    tempRealTimeMessageTime = realTimeMessageDelay;
+                }
             }
 
             if (actionStorage.Count > 0)
@@ -512,10 +544,10 @@ namespace SpaceProject
             }
 
             //Makes the messagebox invisible when pressing the esc or back if it's displaying the menu
-            else if (messageState == MessageState.Menu)
+            if (messageState == MessageState.Menu)
             {
-                if (tempTimer < 0 && ControlManager.CheckPress(RebindableKeys.Pause) ||
-                    ControlManager.CheckPress(RebindableKeys.Action2) /*&& messageState != MessageState.Inventory*/)
+                if (tempTimer < 0 && (ControlManager.CheckPress(RebindableKeys.Pause) ||
+                    ControlManager.CheckPress(RebindableKeys.Action2)))
                 {
                     Game1.Paused = false;
                     messageState = MessageState.Invisible;
@@ -1059,9 +1091,13 @@ namespace SpaceProject
                 else
                 {
                     time = StatsManager.PlayTime.GetFutureOverworldTime(realTimeMessageDelay);
+                    tempRealTimeMessageTime = realTimeMessageDelay;
 
                     TextToSpeech.Speak(realTimeTextBuffer[0], TextToSpeech.FastRate);
                 }
+
+                scrollingFinished = false;
+                flushScrollText = false;
             }
 
             else if (scrollingFinished

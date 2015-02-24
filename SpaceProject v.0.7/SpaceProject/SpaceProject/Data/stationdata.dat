@@ -53,21 +53,9 @@ PositionY = 750
 Inhabitants = 80000
 
 [RO_Rebel_Station_1]
-Name = Rebel Station 1
+Name = Rebel Base
 PositionX = 700
 PositionY = 700
-Inhabitants = 120
-
-[RO_Rebel_Station_2]
-Name = Rebel Station 2
-PositionX = 1100
-PositionY = 700
-Inhabitants = 120
-
-[RO_Rebel_Station_3]
-Name = Rebel Station 3
-PositionX = 900
-PositionY = 900
 Inhabitants = 120
 
 [OW_Peye_Science_Station]

@@ -17,8 +17,11 @@ namespace SpaceProject
             AfterMeeting1,
             AfterMeeting2,
             ToLavis,
-            LevelBegins,
-            AfterLevel,
+            Level1Begins,
+            DuringLevel1,
+            Level2Begins,
+            DuringLevel2,
+            AfterLevel2,
             ToRebelBase
         }
 
@@ -26,6 +29,7 @@ namespace SpaceProject
         private List<OverworldShip> allianceShips;
         private readonly int numberOfRebelShips = 3;
         private readonly int numberOfAllianceShips = 3;
+        private float time;
 
         public Main6_Infiltration(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
@@ -61,17 +65,18 @@ namespace SpaceProject
                 GetEvent((int)EventID.ToLavis).Text, 3000, 5000));
 
             objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[1], allianceShips[1],
-                300, new EventTextCapsule(GetEvent((int)EventID.LevelBegins), null, EventTextCanvas.MessageBox)));
+                300, new EventTextCapsule(GetEvent((int)EventID.Level1Begins), null, EventTextCanvas.MessageBox)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1], allianceShips[1],
-                "Infiltration1", LevelStartCondition.TextCleared));
+                "Infiltration1", LevelStartCondition.TextCleared,
+                new EventTextCapsule(GetEvent((int)EventID.Level2Begins), null, EventTextCanvas.MessageBox)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1], allianceShips[1],
                 "Infiltration2", LevelStartCondition.Immediately));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[2],
-                Game.stateManager.overworldState.GetStation("Rebel Station 3"), 
-                new EventTextCapsule(GetEvent((int)EventID.AfterLevel), null, EventTextCanvas.MessageBox),
+                Game.stateManager.overworldState.GetStation("Rebel Base"),
+                new EventTextCapsule(GetEvent((int)EventID.AfterLevel2), null, EventTextCanvas.MessageBox),
                 delegate
                 {
                     RemoveAllianceShips();
@@ -81,8 +86,18 @@ namespace SpaceProject
                 delegate { return true; },
                 delegate { return false; }));
 
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], Game.stateManager.overworldState.GetStation("Rebel Base"),
+                new EventTextCapsule(GetEvent((int)EventID.ToRebelBase), null, EventTextCanvas.MessageBox),
+                delegate 
+                {
+                    time = StatsManager.PlayTime.GetFutureOverworldTime(2000);
+                },
+                delegate { },
+                delegate { return StatsManager.PlayTime.HasOverworldTimePassed(time); },
+                delegate { return false; }));
+
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2],
-                Game.stateManager.overworldState.GetStation("Rebel Station 3")));
+                Game.stateManager.overworldState.GetStation("Rebel Base")));
         }
 
         public override void StartMission()
@@ -135,7 +150,7 @@ namespace SpaceProject
                 rebelShips[i].position = new Vector2(98500 + (i * 50), 77000);
                 rebelShips[i].RemoveOnStationEnter = false;
                 rebelShips[i].collisionEvent = new RemoveOnCollisionEvent(Game, rebelShips[i],
-                    Game.stateManager.overworldState.GetRebelOutpost.GetGameObject("Rebel Station 2"));
+                    Game.stateManager.overworldState.GetRebelOutpost.GetGameObject("Rebel Base"));
 
                 actions.Add(new WaitAction(rebelShips[i],
                     delegate
@@ -144,7 +159,7 @@ namespace SpaceProject
                     }));
 
                 actions.Add(new TravelAction(rebelShips[i],
-                    Game.stateManager.overworldState.GetRebelOutpost.GetGameObject("Rebel Station 2")));
+                    Game.stateManager.overworldState.GetRebelOutpost.GetGameObject("Rebel Base")));
 
                 rebelShips[i].AIManager = actions;
             }
@@ -185,7 +200,7 @@ namespace SpaceProject
                     Game.stateManager.overworldState.GetStation("Lavis Station").position.X - 500 + (i * 50),
                     Game.stateManager.overworldState.GetStation("Lavis Station").position.Y - 200);
                 rebelShips[i].collisionEvent = new RemoveOnCollisionEvent(Game, rebelShips[i],
-                    Game.stateManager.overworldState.GetRebelOutpost.GetGameObject("Rebel Station 2"));
+                    Game.stateManager.overworldState.GetRebelOutpost.GetGameObject("Rebel Base"));
 
                 actions.Add(new WaitAction(rebelShips[i],
                     delegate
@@ -194,7 +209,7 @@ namespace SpaceProject
                     }));
 
                 actions.Add(new TravelAction(rebelShips[i],
-                    Game.stateManager.overworldState.GetRebelOutpost.GetGameObject("Rebel Station 2")));
+                    Game.stateManager.overworldState.GetRebelOutpost.GetGameObject("Rebel Base")));
 
                 rebelShips[i].AIManager = actions;
             }

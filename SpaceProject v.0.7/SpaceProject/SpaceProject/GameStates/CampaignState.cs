@@ -188,7 +188,7 @@ namespace SpaceProject
 
             if (ControlManager.CheckKeyPress(Keys.D3) && currentLevel >= checkpoint2)
             {
-                Game.stateManager.stationState.LoadStationData(Game.stateManager.overworldState.GetStation("Rebel Station 1"));
+                Game.stateManager.stationState.LoadStationData(Game.stateManager.overworldState.GetStation("Rebel Base"));
                 Game.stateManager.ChangeState("StationState");
             }
 

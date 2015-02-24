@@ -110,55 +110,48 @@ namespace SpaceProject
             soundEffect.Dispose();
         }
 
-        public void Play()
-        {
-            soundEffect.Play();
-        }
-
-        public void Play(float volume, float pitch, float pan)
-        {
-            soundEffect.Play(volume, pitch, pan);
-        }
-
         public void Update()
         {
+            foreach (SoundEffectInstance instance in playingInstances)
+            {
+                if (instance.IsDisposed)
+                {
+                    stoppedInstances.Add(instance);
+                }
+            }
+
             if (fadeOut)
             {
                 foreach (SoundEffectInstance instance in playingInstances)
                 {
-                    if (instance.Volume > 0.05f)
+                    if (!instance.IsDisposed)
                     {
-                        instance.Volume -= 0.04f;
-                    }
+                        if (instance.Volume > 0.05f)
+                        {
+                            instance.Volume -= 0.04f;
+                        }
 
-                    if (instance.Volume <= 0.05f)
-                    {
-                        if (!instance.IsDisposed)
+                        if (instance.Volume <= 0.05f)
                         {
                             instance.Stop();
                             instance.Dispose();
                             stoppedInstances.Add(instance);
                         }
-
-                        else
-                        {
-                            stoppedInstances.Add(instance);
-                        }
                     }
                 }
-
-                foreach (SoundEffectInstance instance in stoppedInstances)
-                {
-                    instances.Remove(instance);
-                }
-
-                stoppedInstances.Clear();
 
                 if (playingInstances.Count <= 0)
                 {
                     fadeOut = false;
                 }
             }
+
+            foreach (SoundEffectInstance instance in stoppedInstances)
+            {
+                instances.Remove(instance);
+            }
+
+            stoppedInstances.Clear();
         }
 
         // Disposes all current instances of this sound effect

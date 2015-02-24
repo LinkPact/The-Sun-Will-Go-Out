@@ -24,7 +24,7 @@ namespace SpaceProject
                 if (target is PlayerOverworld &&
                     OverworldShip.FollowPlayer &&
                     ((ship is RebelShip && StatsManager.reputation >= 0) ||
-                    (ship is AllianceShip && StatsManager.reputation < 0)))
+                    ((ship is AllianceShip || ship is HangarShip) && StatsManager.reputation < 0)))
                 {
                     ship.destination = target.position;
                     Finished = true;

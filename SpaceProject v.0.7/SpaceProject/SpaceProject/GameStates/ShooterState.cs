@@ -117,17 +117,17 @@ namespace SpaceProject
 
             // Main mission levels
             levels.Add(new RebelsInTheMeteors(Game, spriteSheet, player, levelDict["1_1"]));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["2_1"]));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["2_2"]));
+            levels.Add(new SecondMissionLevel(Game, spriteSheet, player, levelDict["2_1"]));
+            levels.Add(new SecondMissionLevel(Game, spriteSheet, player, levelDict["2_2"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["3_1"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["3_2"]));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["4_1"]));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["4_2"]));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["5_1"]));
+            levels.Add(new Infiltration1Level(Game, spriteSheet, player, levelDict["4_1"]));
+            levels.Add(new Infiltration2Level(Game, spriteSheet, player, levelDict["4_2"]));
+            levels.Add(new Retaliation1Level(Game, spriteSheet, player, levelDict["5_1"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["5_2"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["6_1"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["6_2"]));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["7_1"]));
+            levels.Add(new Information1Level(Game, spriteSheet, player, levelDict["7_1"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["8o_1"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["8o_2"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["8r_1"]));
@@ -206,6 +206,7 @@ namespace SpaceProject
 
             currentLevel.Initialize();
             MusicSelection();
+
             base.OnEnter();
         }
 

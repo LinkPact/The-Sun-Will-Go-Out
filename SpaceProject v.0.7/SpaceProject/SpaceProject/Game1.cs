@@ -111,7 +111,9 @@ namespace SpaceProject
             graphics.ApplyChanges();
 
             IsMouseVisible = true;
-            IsFixedTimeStep = false;
+            graphics.SynchronizeWithVerticalRetrace = false;
+            this.IsFixedTimeStep = true;
+            this.TargetElapsedTime = System.TimeSpan.FromMilliseconds(1000 / 60f); 
 
             menuBGController = new MenuBackdropController(this);
             menuBGController.Initialize();
@@ -218,6 +220,7 @@ namespace SpaceProject
                 if (ControlManager.CheckKeyPress(Keys.N))
                 {
                     ZoomMap.ToggleMap();
+                    soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
                 }
 
                 if (ZoomMap.IsMapOn)
