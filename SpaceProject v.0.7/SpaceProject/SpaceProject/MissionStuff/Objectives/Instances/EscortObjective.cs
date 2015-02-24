@@ -268,15 +268,11 @@ namespace SpaceProject
 
         public override bool Failed()
         {
-            if (ControlManager.CheckKeyPress(Keys.F12))
-            {
-                return true;
-            }
-
             for (int i = 0; i < levels.Count; i++)
             {
-                if (GameStateManager.currentState.Equals("ShooterState")
+                if (GameStateManager.currentState.Equals("OverworldState")
                     && game.stateManager.shooterState.CurrentLevel.Identifier.Equals(levels[i])
+                    && game.stateManager.shooterState.GetLevel(levels[i]).GetFreighterHP() != -1
                     && game.stateManager.shooterState.GetLevel(levels[i]).GetFreighterHP() <= 0)
                 {
                     return true;

@@ -117,8 +117,8 @@ namespace SpaceProject
 
             // Main mission levels
             levels.Add(new RebelsInTheMeteors(Game, spriteSheet, player, levelDict["1_1"]));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["2_1"]));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["2_2"]));
+            levels.Add(new SecondMissionLevel(Game, spriteSheet, player, levelDict["2_1"]));
+            levels.Add(new SecondMissionLevel(Game, spriteSheet, player, levelDict["2_2"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["3_1"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["3_2"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["4_1"]));
