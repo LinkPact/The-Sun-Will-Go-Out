@@ -121,8 +121,8 @@ namespace SpaceProject
             levels.Add(new SecondMissionLevel(Game, spriteSheet, player, levelDict["2_2"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["3_1"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["3_2"]));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["4_1"]));
-            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["4_2"]));
+            levels.Add(new Infiltration1Level(Game, spriteSheet, player, levelDict["4_1"]));
+            levels.Add(new Infiltration2Level(Game, spriteSheet, player, levelDict["4_2"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["5_1"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["5_2"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["6_1"]));

@@ -439,7 +439,9 @@
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Meteorites\Meteorite.cs" />
     <Compile Include="Shooter-part\Events\Instances\WaveInstances\HangarBoss.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\Hangar\AllianceHangarAttackShip.cs" />
-    <Compile Include="Shooter-part\Levels\Levels\CustomLevels\RebelsInTheMeteors.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\Used\Infiltration_2.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\Used\RebelsInTheMeteors - Copy.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\Used\Infiltration_1.cs" />
     <Compile Include="Shooter-part\Levels\Levels\Used\HangarLevel.cs" />
     <Compile Include="Shooter-part\Levels\Logger\LevelLogger.cs" />
     <Compile Include="Shooter-part\Modules\BeamModule\FriendlyBeamModule.cs" />
@@ -590,7 +592,7 @@
     <Compile Include="Shooter-part\Levels\CheckPoint.cs" />
     <Compile Include="Shooter-part\Levels\Level.cs" />
     <Compile Include="Shooter-part\Levels\Levels\FirstMissionLevel.cs" />
-    <Compile Include="Shooter-part\Levels\Levels\SecondMissionLevel.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\Used\SecondMissionLevel.cs" />
     <Compile Include="Shooter-part\Levels\MapCreatorLevel.cs" />
     <Compile Include="Shooter-part\GameObjects\Misc GameObjects\Supplies.cs" />
     <Compile Include="Shooter-part\GameObjects\Player\PlayerVerticalShooter.cs" />
