@@ -48,14 +48,17 @@ namespace SpaceProject
 
         public override void OnReset()
         {
+            SetDestinations();
+            SetupObjectives();
+
             base.OnReset();
+        }
 
-            ObjectiveIndex = 0;
+        public override void OnFailed()
+        {
+            base.OnFailed();
 
-            for (int i = 0; i < objectives.Count; i++)
-            {
-                objectives[i].Reset();
-            }
+            Game.messageBox.DisplayMessage("You did not manage to shake off the suspicious rebels. Go back to the rebel base to try again.", false);
         }
 
         public override void MissionLogic()

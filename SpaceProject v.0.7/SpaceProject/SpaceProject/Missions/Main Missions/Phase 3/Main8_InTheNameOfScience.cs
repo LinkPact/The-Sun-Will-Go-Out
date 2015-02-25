@@ -27,7 +27,7 @@ namespace SpaceProject
             OutsideRebelStation2
         }
 
-        private readonly float autoPilotSpeed = 0.3f;
+        private readonly float autoPilotSpeed = 0.5f;
         private float hangarAttackTime;
 
         private readonly int numberOfAllies = 4;
@@ -65,14 +65,19 @@ namespace SpaceProject
 
         public override void OnReset()
         {
+            allyShips1 = CreateAllyShips(numberOfAllies);
+            SetDestinations();
+            SetupObjectives();
+
             base.OnReset();
+        }
 
-            ObjectiveIndex = 0;
+        public override void OnFailed()
+        {
+            base.OnFailed();
 
-            for (int i = 0; i < objectives.Count; i++)
-            {
-                objectives[i].Reset();
-            }
+            RemoveShips();
+            Game.messageBox.DisplayMessage("You were unsuccessful in retrieving Ente. Return to the rebel base to try again.", false);
         }
 
         public override void MissionLogic()
@@ -93,48 +98,6 @@ namespace SpaceProject
         public override void SetProgress(int progress)
         {
             this.progress = progress;
-        }
-
-        private void RemoveShips(List<OverworldShip> ships)
-        {
-            foreach (OverworldShip ship in ships)
-            {
-                ship.IsDead = true;
-                Game.stateManager.overworldState.RemoveOverworldObject(ship);
-            }
-
-            ships.Clear();
-        }
-
-        private List<OverworldShip> CreateAllyShips(int count)
-        {
-            List<OverworldShip> ships = new List<OverworldShip>();
-
-            for (int i = 0; i < count; i++)
-            {
-                ships.Add(new AllyShip(Game, Game.stateManager.shooterState.spriteSheet, ShipType.Rebel));
-            }
-
-            return ships;
-        }
-
-        private void SetupAllyShips(List<OverworldShip> ships, Vector2 startingPoint, GameObjectOverworld destination)
-        {
-            // Adds companion ships
-            int modifier = 1;
-            for (int i = 0; i < ships.Count; i++)
-            {
-                ships[i].Initialize();
-                ships[i].AIManager = new TravelAction(ships[i], destination);
-                Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
-                    ships[i], new Vector2(startingPoint.X - 50 + (50 * i),
-                                              startingPoint.Y + 325 - (25 * modifier)),
-                    "", destination);
-
-                ships[i].Wait();
-
-                modifier *= -1;
-            }
         }
 
         protected override void SetDestinations()
@@ -196,7 +159,10 @@ namespace SpaceProject
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1], destinations[6],
                 new EventTextCapsule(GetEvent((int)EventID.OutsideScienceStation), null, EventTextCanvas.MessageBox),
-                delegate { }, delegate { },
+                delegate 
+                {
+                    RemoveShips();
+                }, delegate { },
                 delegate
                 {
                     return GameStateManager.currentState == "OverworldState";
@@ -221,6 +187,46 @@ namespace SpaceProject
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
                 destinations[9]));
+        }
+
+        private void RemoveShips()
+        {
+            foreach (OverworldShip ship in allyShips1)
+            {
+                ship.IsDead = true;
+                Game.stateManager.overworldState.RemoveOverworldObject(ship);
+            }
+        }
+
+        private List<OverworldShip> CreateAllyShips(int count)
+        {
+            List<OverworldShip> ships = new List<OverworldShip>();
+
+            for (int i = 0; i < count; i++)
+            {
+                ships.Add(new AllyShip(Game, Game.stateManager.shooterState.spriteSheet, ShipType.Rebel));
+            }
+
+            return ships;
+        }
+
+        private void SetupAllyShips(List<OverworldShip> ships, Vector2 startingPoint, GameObjectOverworld destination)
+        {
+            // Adds companion ships
+            int modifier = 1;
+            for (int i = 0; i < ships.Count; i++)
+            {
+                ships[i].Initialize();
+                ships[i].AIManager = new TravelAction(ships[i], destination);
+                Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
+                    ships[i], new Vector2(startingPoint.X - 50 + (50 * i),
+                                              startingPoint.Y + 325 - (25 * modifier)),
+                    "", destination);
+
+                ships[i].Wait();
+
+                modifier *= -1;
+            }
         }
     }
 }
