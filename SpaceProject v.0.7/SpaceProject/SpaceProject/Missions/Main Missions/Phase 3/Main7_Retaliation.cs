@@ -42,51 +42,7 @@ namespace SpaceProject
             base.Initialize();
 
             RestartAfterFail();
-
-            freighter = new FreighterShip(Game, Game.stateManager.shooterState.spriteSheet);
-            freighter.Initialize(Game.stateManager.overworldState.GetSectorX,
-                Game.stateManager.overworldState.GetStation("Soelara Station"),
-                Game.stateManager.overworldState.GetStation("Fortrun Station I"));
-
-            alliance1 = new AllianceShip(Game, Game.stateManager.shooterState.spriteSheet);
-            alliance1.Initialize(Game.stateManager.overworldState.GetSectorX);
-
-            rebelShips = new List<RebelShip>();
-
-            for (int i = 0; i < numberOfRebelShips; i++)
-            {
-                CompositeAction actions = new SequentialAction();
-
-                rebelShips.Add(new RebelShip(Game, Game.stateManager.shooterState.spriteSheet));
-                rebelShips[i].Initialize();
-                rebelShips[i].position = new Vector2(destination.X + (i * 50), destination.Y);
-                rebelShips[i].collisionEvent = null;
-
-                actions.Add(new WaitAction(rebelShips[i],
-                    delegate
-                    {
-                        return ObjectiveIndex >= 6;
-                    }));
-                
-                actions.Add(new TravelAction(rebelShips[i], freighter));
-                switch (i)
-                {
-                    case 0:
-                        actions.Add(new TravelAction(rebelShips[i], Game.stateManager.overworldState.GetPlanet("Lavis")));
-                        break;
-
-                    case 1:
-                        actions.Add(new TravelAction(rebelShips[i], Game.stateManager.overworldState.GetStation("Rebel Base")));
-                        break;
-
-                    case 2:
-                        actions.Add(new TravelAction(rebelShips[i], Game.stateManager.overworldState.GetPlanet("New Norrland")));
-                        break;
-                }
-                
-                rebelShips[i].AIManager = actions;
-            }
-
+            InitializeShips();
             SetDestinations();
             SetupObjectives();
         }
@@ -97,6 +53,8 @@ namespace SpaceProject
             progress = 0;
 
             missionHelper.ShowEvent(GetEvent((int)EventID.Introduction));
+
+            StatsManager.reputation = -100;
         }
 
         public override void OnLoad()
@@ -106,28 +64,24 @@ namespace SpaceProject
 
         public override void OnReset()
         {
+            InitializeShips();
+            SetDestinations();
+            SetupObjectives();
+
             base.OnReset();
+        }
 
-            ObjectiveIndex = 0;
+        public override void OnFailed()
+        {
+            base.OnFailed();
 
-            for (int i = 0; i < objectives.Count; i++)
-            {
-                objectives[i].Reset();
-            }
+            RemoveShips();
+            Game.messageBox.DisplayMessage("The attack on the alliance freighter failed. Return to the rebel base to try again.", false);
         }
 
         public override void MissionLogic()
         {
             base.MissionLogic();
-            
-            if (ObjectiveIndex == 5)
-            {
-                //PirateShip.FollowPlayer = true;
-            }
-            else
-            {
-                //PirateShip.FollowPlayer = false;
-            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -145,12 +99,6 @@ namespace SpaceProject
             this.progress = progress;
         }
 
-        private void StartFreighter()
-        {
-            Game.stateManager.overworldState.GetSectorX.shipSpawner.AddFreighterToSector(
-                freighter, Game.stateManager.overworldState.GetStation("Soelara Station").position);
-        }
-
         protected override void SetDestinations()
         {
             destinations = new List<GameObjectOverworld>();
@@ -164,6 +112,7 @@ namespace SpaceProject
             destinations.Add(rebelShips[0]);
             destinations.Add(freighter);
             destinations.Add(freighter);
+            destinations.Add(rebelBase);
             destinations.Add(rebelBase);
             destinations.Add(rebelBase);
             destinations.Add(rebelBase);
@@ -235,7 +184,6 @@ namespace SpaceProject
                 delegate
                 {
                     freighter.Destroy();
-                    StatsManager.reputation = -100;
                     Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
                         alliance1, destination + new Vector2(-300, 0), "Retribution2", Game.player);
                     OverworldShip.FollowPlayer = true;
@@ -246,15 +194,104 @@ namespace SpaceProject
                 },
                 delegate
                 {
-                    return (CollisionDetection.IsPointInsideCircle(Game.player.position,
-                        Game.stateManager.overworldState.GetStation("Rebel Base").position, 1000));
+                    return true;
                 },
                 delegate
                 {
                     return false;
                 }));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1], destinations[9]));
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1], destinations[9],
+                delegate { },
+                delegate { },
+                delegate
+                {
+                    if (Game.stateManager.shooterState.CurrentLevel != null
+                        && Game.stateManager.shooterState.CurrentLevel.Identifier.Equals("Retribution2"))
+                    {
+                        return (Game.stateManager.shooterState.CurrentLevel.IsMapCompleted
+                            && GameStateManager.currentState.Equals("OverworldState"));
+                    }
+
+                    return (missionHelper.IsPlayerOnStation("Rebel Base"));
+                },
+                delegate
+                {
+                    if (Game.stateManager.shooterState.CurrentLevel != null
+                        && Game.stateManager.shooterState.CurrentLevel.Identifier.Equals("Retribution2"))
+                    {
+                        return (Game.stateManager.shooterState.CurrentLevel.IsObjectiveFailed
+                            && GameStateManager.currentState.Equals("OverworldState"));
+                    }
+
+                    return false;
+                }));
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1], destinations[10]));
+        }
+
+        private void StartFreighter()
+        {
+            Game.stateManager.overworldState.GetSectorX.shipSpawner.AddFreighterToSector(
+                freighter, Game.stateManager.overworldState.GetStation("Soelara Station").position);
+        }
+
+        private void InitializeShips()
+        {
+            freighter = new FreighterShip(Game, Game.stateManager.shooterState.spriteSheet);
+            freighter.Initialize(Game.stateManager.overworldState.GetSectorX,
+                Game.stateManager.overworldState.GetStation("Soelara Station"),
+                Game.stateManager.overworldState.GetStation("Fortrun Station I"));
+
+            alliance1 = new AllianceShip(Game, Game.stateManager.shooterState.spriteSheet);
+            alliance1.Initialize(Game.stateManager.overworldState.GetSectorX);
+
+            rebelShips = new List<RebelShip>();
+
+            for (int i = 0; i < numberOfRebelShips; i++)
+            {
+                CompositeAction actions = new SequentialAction();
+
+                rebelShips.Add(new RebelShip(Game, Game.stateManager.shooterState.spriteSheet));
+                rebelShips[i].Initialize();
+                rebelShips[i].RemoveOnStationEnter = false;
+                rebelShips[i].position = new Vector2(destination.X + (i * 50), destination.Y);
+                rebelShips[i].collisionEvent = null;
+
+                actions.Add(new WaitAction(rebelShips[i],
+                    delegate
+                    {
+                        return ObjectiveIndex >= 6;
+                    }));
+
+                actions.Add(new TravelAction(rebelShips[i], freighter));
+                switch (i)
+                {
+                    case 0:
+                        actions.Add(new TravelAction(rebelShips[i], Game.stateManager.overworldState.GetPlanet("Lavis")));
+                        break;
+
+                    case 1:
+                        actions.Add(new TravelAction(rebelShips[i], Game.stateManager.overworldState.GetStation("Rebel Base")));
+                        break;
+
+                    case 2:
+                        actions.Add(new TravelAction(rebelShips[i], Game.stateManager.overworldState.GetPlanet("New Norrland")));
+                        break;
+                }
+
+                rebelShips[i].AIManager = actions;
+            }
+        }
+
+        private void RemoveShips()
+        {
+            alliance1.Remove();
+            freighter.Remove();
+            foreach (RebelShip rebel in rebelShips)
+            {
+                rebel.Remove();
+            }
         }
     }
 }
