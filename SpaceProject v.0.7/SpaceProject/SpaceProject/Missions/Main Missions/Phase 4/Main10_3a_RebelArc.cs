@@ -30,25 +30,8 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetPlanet("Telmun"), new EventTextCapsule(
-                    GetEvent((int)EventID.ArriveAtTelmun), null, EventTextCanvas.BaseState)));
-
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetPlanet("Telmun"), FirstAllianceLevel,
-                LevelStartCondition.TextCleared,
-                new EventTextCapsule(GetEvent((int)EventID.BetweenAllianceAttacks),
-                    GetEvent((int)EventID.KilledOnAllianceLevel), EventTextCanvas.BaseState)));
-
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[2],
-                Game.stateManager.overworldState.GetPlanet("Telmun"), SecondAllianceLevel,
-                LevelStartCondition.TextCleared,
-                new EventTextCapsule(GetEvent((int)EventID.AfterAllianceAttacks), GetEvent((int)EventID.KilledOnAllianceLevel),
-                    EventTextCanvas.BaseState)));
-
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[3],
-                Game.stateManager.overworldState.GetPlanet("Telmun"), ThirdAllianceLevel,
-                LevelStartCondition.TextCleared));
+            SetDestinations();
+            SetupObjectives();
         }
 
         public override void StartMission()
@@ -91,6 +74,37 @@ namespace SpaceProject
         public override void SetProgress(int progress)
         {
             this.progress = progress;
+        }
+
+        protected override void SetDestinations()
+        {
+            destinations = new List<GameObjectOverworld>();
+
+            GameObjectOverworld telmun = Game.stateManager.overworldState.GetPlanet("Telmun");
+
+            destinations.Add(telmun);
+            destinations.Add(telmun);
+            destinations.Add(telmun);
+            destinations.Add(telmun);
+        }
+
+        protected override void SetupObjectives()
+        {
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[0], new EventTextCapsule(
+                    GetEvent((int)EventID.ArriveAtTelmun), null, EventTextCanvas.BaseState)));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1], destinations[1],
+                FirstAllianceLevel, LevelStartCondition.TextCleared,
+                new EventTextCapsule(GetEvent((int)EventID.BetweenAllianceAttacks),
+                    GetEvent((int)EventID.KilledOnAllianceLevel), EventTextCanvas.BaseState)));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[2], destinations[2],
+                SecondAllianceLevel, LevelStartCondition.TextCleared,
+                new EventTextCapsule(GetEvent((int)EventID.AfterAllianceAttacks), GetEvent((int)EventID.KilledOnAllianceLevel),
+                    EventTextCanvas.BaseState)));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[3], destinations[3],
+                ThirdAllianceLevel, LevelStartCondition.TextCleared));
         }
     }
 }

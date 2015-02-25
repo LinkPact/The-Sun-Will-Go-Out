@@ -19,8 +19,7 @@ namespace SpaceProject
             InLevel1,
             InLevel2,
             AfterCombat,
-            TravelingBack,
-
+            TravelingBack
         }
 
         private readonly string MoneyID = "[MONEY]";
@@ -49,52 +48,8 @@ namespace SpaceProject
                     Vector2.Zero);
             ally1.AIManager = new WaitAction(ally1, delegate { return false; });
 
-            // OBJECTIVES
-
-            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
-                GetEvent((int)EventID.TravelingToAsteroids).Text, 3000, 3000));
-
-            Objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
-                ally1, 500));
-
-            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
-                GetEvent((int)EventID.TalkWithCaptain1).Text,
-                3000, 0));
-
-            ArriveAtLocationObjective talkToCaptainObjective = new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], ally1,
-                new EventTextCapsule(GetEvent((int)EventID.TalkWithCaptain2), null, EventTextCanvas.MessageBox));
-
-            Objectives.Add(talkToCaptainObjective);
-
-            ShootingLevelObjective shootingLevelObjective = new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids"),
-                "RebelsInTheMeteors", LevelStartCondition.Immediately,
-                new EventTextCapsule(GetEvent((int)EventID.AfterCombat),
-                    null,
-                    EventTextCanvas.MessageBox));
-
-            shootingLevelObjective.SetFailLogic(
-                delegate
-                {
-                    Game.player.position = Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("mining asteroids").position;
-                    Game.messageBox.DisplayMessage("Too bad. Talk to me to try again.", false);
-                    talkToCaptainObjective.Reset();
-                    shootingLevelObjective.Reset();
-                    ObjectiveIndex = 3;
-                }
-            );
-
-            Objectives.Add(shootingLevelObjective);
-
-            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetBorderXOutpost.GetGameObject("Border Station"),
-                GetEvent((int)EventID.TravelingBack).Text, 3000, 3000));
-
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetStation("Border Station")));
-                
+            SetDestinations();
+            SetupObjectives();
         }
 
         public override void StartMission()
@@ -139,6 +94,68 @@ namespace SpaceProject
         public override void SetProgress(int progress)
         {
             this.progress = progress;
+        }
+
+        public override void OnReset() { }
+
+        protected override void SetDestinations()
+        {
+            GameObjectOverworld miningAsteroids =
+                Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids");
+            GameObjectOverworld borderStation =
+                Game.stateManager.overworldState.GetBorderXOutpost.GetGameObject("Border Station");
+
+            destinations = new List<GameObjectOverworld>();
+
+            destinations.Add(ally1);
+            destinations.Add(ally1);
+            destinations.Add(ally1);
+            destinations.Add(ally1);
+            destinations.Add(miningAsteroids);
+            destinations.Add(borderStation);
+            destinations.Add(borderStation);
+        }
+
+        protected override void SetupObjectives()
+        {
+            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[0],
+                GetEvent((int)EventID.TravelingToAsteroids).Text, 3000, 3000));
+
+            Objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
+                destinations[1], 500));
+
+            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[2],
+                GetEvent((int)EventID.TalkWithCaptain1).Text,
+                3000, 0));
+
+            ArriveAtLocationObjective talkToCaptainObjective = new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
+                destinations[3], new EventTextCapsule(GetEvent((int)EventID.TalkWithCaptain2), null, EventTextCanvas.MessageBox));
+
+            Objectives.Add(talkToCaptainObjective);
+
+            ShootingLevelObjective shootingLevelObjective = new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
+                destinations[4], "RebelsInTheMeteors", LevelStartCondition.Immediately,
+                new EventTextCapsule(GetEvent((int)EventID.AfterCombat),
+                    null,
+                    EventTextCanvas.MessageBox));
+
+            shootingLevelObjective.SetFailLogic(
+                delegate
+                {
+                    Game.player.position = Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("mining asteroids").position;
+                    Game.messageBox.DisplayMessage("Too bad. Talk to me to try again.", false);
+                    talkToCaptainObjective.Reset();
+                    shootingLevelObjective.Reset();
+                    ObjectiveIndex = 3;
+                }
+            );
+
+            Objectives.Add(shootingLevelObjective);
+
+            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1], destinations[5],
+                GetEvent((int)EventID.TravelingBack).Text, 3000, 3000));
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1], destinations[6]));
         }
     }
 }

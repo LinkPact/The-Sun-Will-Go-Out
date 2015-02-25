@@ -27,24 +27,10 @@ namespace SpaceProject
             SideMissilesWeapon sideMissiles = new SideMissilesWeapon(Game, ItemVariety.regular);
             RewardItems.Add(sideMissiles);
 
-            Station borderStation = Game.stateManager.overworldState.GetStation("Border Station");
-
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], borderStation,
-                "flightTraining_1", LevelStartCondition.EnteringOverworld));
-
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], borderStation,
-                new EventTextCapsule(GetEvent((int)EventID.FirstCleared), null, EventTextCanvas.BaseState)));
-
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], borderStation,
-                "flightTraining_2", LevelStartCondition.EnteringOverworld));
-
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], borderStation,
-                new EventTextCapsule(GetEvent((int)EventID.SecondCleared), null, EventTextCanvas.BaseState)));
-
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], borderStation,
-                "flightTraining_3", LevelStartCondition.EnteringOverworld));
-
             RestartAfterFail();
+
+            SetDestinations();
+            SetupObjectives();
         }
 
         public override void StartMission()
@@ -68,6 +54,37 @@ namespace SpaceProject
         public override void SetProgress(int progress)
         {
             this.progress = progress;
+        }
+
+        protected override void SetDestinations()
+        {
+            destinations = new List<GameObjectOverworld>();
+
+            Station borderStation = Game.stateManager.overworldState.GetStation("Border Station");
+
+            destinations.Add(borderStation);
+            destinations.Add(borderStation);
+            destinations.Add(borderStation);
+            destinations.Add(borderStation);
+            destinations.Add(borderStation);
+        }
+
+        protected override void SetupObjectives()
+        {
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], destinations[0],
+                "flightTraining_1", LevelStartCondition.EnteringOverworld));
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[1],
+                new EventTextCapsule(GetEvent((int)EventID.FirstCleared), null, EventTextCanvas.BaseState)));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], destinations[2],
+                "flightTraining_2", LevelStartCondition.EnteringOverworld));
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[3],
+                new EventTextCapsule(GetEvent((int)EventID.SecondCleared), null, EventTextCanvas.BaseState)));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], destinations[4],
+                "flightTraining_3", LevelStartCondition.EnteringOverworld));
         }
     }
 }

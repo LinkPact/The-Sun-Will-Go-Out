@@ -44,60 +44,8 @@ namespace SpaceProject
 
             InitializeOverworldShips();
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], rebelShips[1],
-                new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun), null, EventTextCanvas.MessageBox),
-                delegate { },
-                delegate { },
-                delegate { return GameStateManager.currentState.ToLower().Equals("overworldstate"); },
-                delegate { return false; }));
-
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], rebelShips[1],
-                GetEvent((int)EventID.ToMeetingPoint).Text, 3000, 6000));
-
-            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], rebelShips[1],
-                300, new EventTextCapsule(GetEvent((int)EventID.AtMeeting), null, EventTextCanvas.MessageBox)));
-
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1], allianceShips[1],
-                GetEvent((int)EventID.AfterMeeting1).Text, 3000, 5000,
-                new EventTextCapsule(GetEvent((int)EventID.AfterMeeting2), null, EventTextCanvas.MessageBox)));
-
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1], allianceShips[1],
-                GetEvent((int)EventID.ToLavis).Text, 3000, 5000));
-
-            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[1], allianceShips[1],
-                300, new EventTextCapsule(GetEvent((int)EventID.Level1Begins), null, EventTextCanvas.MessageBox)));
-
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1], allianceShips[1],
-                "Infiltration1", LevelStartCondition.TextCleared,
-                new EventTextCapsule(GetEvent((int)EventID.Level2Begins), null, EventTextCanvas.MessageBox)));
-
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1], allianceShips[1],
-                "Infiltration2", LevelStartCondition.Immediately));
-
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[2],
-                Game.stateManager.overworldState.GetStation("Rebel Base"),
-                new EventTextCapsule(GetEvent((int)EventID.AfterLevel2), null, EventTextCanvas.MessageBox),
-                delegate
-                {
-                    RemoveAllianceShips();
-                    AddRebelShips();
-                },
-                delegate { },
-                delegate { return true; },
-                delegate { return false; }));
-
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], Game.stateManager.overworldState.GetStation("Rebel Base"),
-                new EventTextCapsule(GetEvent((int)EventID.ToRebelBase), null, EventTextCanvas.MessageBox),
-                delegate 
-                {
-                    time = StatsManager.PlayTime.GetFutureOverworldTime(2000);
-                },
-                delegate { },
-                delegate { return StatsManager.PlayTime.HasOverworldTimePassed(time); },
-                delegate { return false; }));
-
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2],
-                Game.stateManager.overworldState.GetStation("Rebel Base")));
+            SetDestinations();
+            SetupObjectives();
         }
 
         public override void StartMission()
@@ -218,6 +166,81 @@ namespace SpaceProject
             {
                 Game.stateManager.overworldState.AddOverworldObject(ship);
             }
+        }
+
+        protected override void SetDestinations()
+        {
+            destinations = new List<GameObjectOverworld>();
+
+            GameObjectOverworld rebelBase = Game.stateManager.overworldState.GetStation("Rebel Base");
+
+            destinations.Add(rebelShips[1]);
+            destinations.Add(rebelShips[1]);
+            destinations.Add(rebelShips[1]);
+            destinations.Add(allianceShips[1]);
+            destinations.Add(allianceShips[1]);
+            destinations.Add(allianceShips[1]);
+            destinations.Add(allianceShips[1]);
+            destinations.Add(allianceShips[1]);
+            destinations.Add(rebelBase);
+            destinations.Add(rebelBase);
+            destinations.Add(rebelBase);
+        }
+
+        protected override void SetupObjectives()
+        {
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[0],
+                new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun), null, EventTextCanvas.MessageBox),
+                delegate { },
+                delegate { },
+                delegate { return GameStateManager.currentState.ToLower().Equals("overworldstate"); },
+                delegate { return false; }));
+
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[1],
+                GetEvent((int)EventID.ToMeetingPoint).Text, 3000, 6000));
+
+            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[2],
+                300, new EventTextCapsule(GetEvent((int)EventID.AtMeeting), null, EventTextCanvas.MessageBox)));
+
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1], destinations[3],
+                GetEvent((int)EventID.AfterMeeting1).Text, 3000, 5000,
+                new EventTextCapsule(GetEvent((int)EventID.AfterMeeting2), null, EventTextCanvas.MessageBox)));
+
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1], destinations[4],
+                GetEvent((int)EventID.ToLavis).Text, 3000, 5000));
+
+            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[1], destinations[5],
+                300, new EventTextCapsule(GetEvent((int)EventID.Level1Begins), null, EventTextCanvas.MessageBox)));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1], destinations[6],
+                "Infiltration1", LevelStartCondition.TextCleared,
+                new EventTextCapsule(GetEvent((int)EventID.Level2Begins), null, EventTextCanvas.MessageBox)));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1], destinations[7],
+                "Infiltration2", LevelStartCondition.Immediately));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[2], destinations[8],
+                new EventTextCapsule(GetEvent((int)EventID.AfterLevel2), null, EventTextCanvas.MessageBox),
+                delegate
+                {
+                    RemoveAllianceShips();
+                    AddRebelShips();
+                },
+                delegate { },
+                delegate { return true; },
+                delegate { return false; }));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[9],
+                new EventTextCapsule(GetEvent((int)EventID.ToRebelBase), null, EventTextCanvas.MessageBox),
+                delegate
+                {
+                    time = StatsManager.PlayTime.GetFutureOverworldTime(2000);
+                },
+                delegate { },
+                delegate { return StatsManager.PlayTime.HasOverworldTimePassed(time); },
+                delegate { return false; }));
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2], destinations[10]));
         }
     }
 }

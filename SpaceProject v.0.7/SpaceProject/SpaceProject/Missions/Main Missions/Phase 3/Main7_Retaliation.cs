@@ -87,90 +87,8 @@ namespace SpaceProject
                 rebelShips[i].AIManager = actions;
             }
 
-            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], rebelShips[0],
-                new EventTextCapsule(GetEvent((int)EventID.ToMeetingPoint), null, EventTextCanvas.MessageBox),
-                delegate { },
-                delegate { },
-                delegate { return (GameStateManager.currentState.ToLower().Equals("overworldstate")); },
-                delegate { return false; }));
-
-            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], rebelShips[0],
-                delegate
-                {
-                    foreach (OverworldShip ship in rebelShips)
-                    {
-                        Game.stateManager.overworldState.AddOverworldObject(ship);
-                    }
-                },
-                delegate { },
-                delegate { return true; },
-                delegate { return false; })); 
-
-            Objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], rebelShips[0], 400));
-
-            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], rebelShips[0],
-                delegate
-                {
-                    OverworldShip.FollowPlayer = false;
-                    StartFreighter();
-                },
-                delegate { },
-                delegate { return true; },
-                delegate { return false; }));
-
-            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], rebelShips[0],
-                new List<string> { GetEvent((int)EventID.AtMeetingPoint1).Text, GetEvent((int)EventID.AtMeetingPoint2).Text,
-                    GetEvent((int)EventID.AtMeetingPoint3).Text, GetEvent((int)EventID.AtMeetingPoint4).Text },
-                3000, 1000));
-
-            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], freighter,
-                delegate { },
-                delegate { },
-                delegate
-                {
-                    return Vector2.Distance(rebelShips[0].position, freighter.position) < 500;
-                },
-                delegate { return false; }));
-
-            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], freighter,
-                delegate { },
-                delegate { },
-                delegate 
-                { 
-                    return CollisionDetection.IsRectInRect(rebelShips[0].Bounds, freighter.Bounds);
-                },
-                delegate { return false; }));
-            
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], freighter,
-                "Retribution1", LevelStartCondition.Immediately,
-                new EventTextCapsule(GetEvent((int)EventID.AfterLevel), null, EventTextCanvas.MessageBox)));
-            
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetStation("Rebel Base"),
-                delegate
-                {
-                    freighter.Destroy();
-                    StatsManager.reputation = -100;
-                    Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
-                        alliance1, destination + new Vector2(-300, 0), "Retribution2", Game.player);
-                    OverworldShip.FollowPlayer = true;
-                },
-                delegate
-                {
-            
-                },
-                delegate
-                {
-                    return (CollisionDetection.IsPointInsideCircle(Game.player.position, 
-                        Game.stateManager.overworldState.GetStation("Rebel Base").position, 1000));
-                },
-                delegate
-                {
-                    return false;
-                }));
-            
-            objectives.Add(new ArriveAtLocationObjective(Game, this,
-                ObjectiveDescriptions[1], Game.stateManager.overworldState.GetStation("Rebel Base")));
+            SetDestinations();
+            SetupObjectives();
         }
 
         public override void StartMission()
@@ -231,6 +149,110 @@ namespace SpaceProject
         {
             Game.stateManager.overworldState.GetSectorX.shipSpawner.AddFreighterToSector(
                 freighter, Game.stateManager.overworldState.GetStation("Soelara Station").position);
+        }
+
+        protected override void SetDestinations()
+        {
+            destinations = new List<GameObjectOverworld>();
+
+            GameObjectOverworld rebelBase = Game.stateManager.overworldState.GetStation("Rebel Base");
+
+            destinations.Add(rebelShips[0]);
+            destinations.Add(rebelShips[0]);
+            destinations.Add(rebelShips[0]);
+            destinations.Add(rebelShips[0]);
+            destinations.Add(rebelShips[0]);
+            destinations.Add(freighter);
+            destinations.Add(freighter);
+            destinations.Add(rebelBase);
+            destinations.Add(rebelBase);
+            destinations.Add(rebelBase);
+        }
+
+        protected override void SetupObjectives()
+        {
+            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[0],
+                new EventTextCapsule(GetEvent((int)EventID.ToMeetingPoint), null, EventTextCanvas.MessageBox),
+                delegate { },
+                delegate { },
+                delegate { return (GameStateManager.currentState.ToLower().Equals("overworldstate")); },
+                delegate { return false; }));
+
+            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[1],
+                delegate
+                {
+                    foreach (OverworldShip ship in rebelShips)
+                    {
+                        Game.stateManager.overworldState.AddOverworldObject(ship);
+                    }
+                },
+                delegate { },
+                delegate { return true; },
+                delegate { return false; }));
+
+            Objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[2], 400));
+
+            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[3],
+                delegate
+                {
+                    OverworldShip.FollowPlayer = false;
+                    StartFreighter();
+                },
+                delegate { },
+                delegate { return true; },
+                delegate { return false; }));
+
+            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[4],
+                new List<string> { GetEvent((int)EventID.AtMeetingPoint1).Text, GetEvent((int)EventID.AtMeetingPoint2).Text,
+                    GetEvent((int)EventID.AtMeetingPoint3).Text, GetEvent((int)EventID.AtMeetingPoint4).Text },
+                3000, 1000));
+
+            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[5],
+                delegate { },
+                delegate { },
+                delegate
+                {
+                    return Vector2.Distance(rebelShips[0].position, freighter.position) < 500;
+                },
+                delegate { return false; }));
+
+            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[6],
+                delegate { },
+                delegate { },
+                delegate
+                {
+                    return CollisionDetection.IsRectInRect(rebelShips[0].Bounds, freighter.Bounds);
+                },
+                delegate { return false; }));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], destinations[7],
+                "Retribution1", LevelStartCondition.Immediately,
+                new EventTextCapsule(GetEvent((int)EventID.AfterLevel), null, EventTextCanvas.MessageBox)));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1], destinations[8],
+                delegate
+                {
+                    freighter.Destroy();
+                    StatsManager.reputation = -100;
+                    Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
+                        alliance1, destination + new Vector2(-300, 0), "Retribution2", Game.player);
+                    OverworldShip.FollowPlayer = true;
+                },
+                delegate
+                {
+
+                },
+                delegate
+                {
+                    return (CollisionDetection.IsPointInsideCircle(Game.player.position,
+                        Game.stateManager.overworldState.GetStation("Rebel Base").position, 1000));
+                },
+                delegate
+                {
+                    return false;
+                }));
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1], destinations[9]));
         }
     }
 }

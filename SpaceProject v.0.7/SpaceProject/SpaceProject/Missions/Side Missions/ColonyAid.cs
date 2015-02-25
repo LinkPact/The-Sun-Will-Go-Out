@@ -37,13 +37,6 @@ namespace SpaceProject
             regularCell = new RegularEnergyCell(Game, ItemVariety.high);
             RewardItems.Add(regularCell);
 
-            objectives.Add(new ItemTransportObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetStation("Lavis Station"), medicalSupplies,
-                new EventTextCapsule(GetEvent((int)EventID.LeaveSupplies), GetEvent((int)EventID.SoldSupplies),
-                    EventTextCanvas.BaseState)));
-
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetStation("Fortrun Station I")));
 
             requiresAvailableSlot = true;
         }
@@ -73,5 +66,23 @@ namespace SpaceProject
             this.progress = progress;
         }
 
+        protected override void SetDestinations()
+        {
+            destinations = new List<GameObjectOverworld>();
+
+            destinations.Add(Game.stateManager.overworldState.GetStation("Lavis Station"));
+            destinations.Add(Game.stateManager.overworldState.GetStation("Fortrun Station I"));
+        }
+
+        protected override void SetupObjectives()
+        {
+            objectives.Add(new ItemTransportObjective(Game, this, ObjectiveDescriptions[0],
+                destinations[0], medicalSupplies,
+                new EventTextCapsule(GetEvent((int)EventID.LeaveSupplies), GetEvent((int)EventID.SoldSupplies),
+                    EventTextCanvas.BaseState)));
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
+                destinations[1]));
+        }
     }
 }

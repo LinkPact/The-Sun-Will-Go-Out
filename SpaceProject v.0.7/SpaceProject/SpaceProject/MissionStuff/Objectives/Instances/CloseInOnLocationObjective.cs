@@ -77,5 +77,10 @@ namespace SpaceProject
         {
             base.OnFailed();
         }
+
+        public override void Reset()
+        {
+            base.Reset();
+        }
     }
 }

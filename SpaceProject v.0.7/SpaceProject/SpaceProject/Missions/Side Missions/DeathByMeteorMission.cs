@@ -26,11 +26,10 @@ namespace SpaceProject
             FlameShotWeapon flameShot = new FlameShotWeapon(Game, ItemVariety.high);
             RewardItems.Add(flameShot);
 
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetPlanet("Peye"), "DeathByMeteor", LevelStartCondition.TextCleared,
-                new EventTextCapsule(GetEvent((int)EventID.LevelCleared), null, EventTextCanvas.BaseState)));
-
             RestartAfterFail();
+
+            SetDestinations();
+            SetupObjectives();
         }
 
         public override void StartMission()
@@ -57,5 +56,18 @@ namespace SpaceProject
             this.progress = progress;
         }
 
+        protected override void SetDestinations()
+        {
+            destinations = new List<GameObjectOverworld>();
+
+            destinations.Add(Game.stateManager.overworldState.GetPlanet("Peye"));
+        }
+
+        protected override void SetupObjectives()
+        {
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
+                destinations[0], "DeathByMeteor", LevelStartCondition.TextCleared,
+                new EventTextCapsule(GetEvent((int)EventID.LevelCleared), null, EventTextCanvas.BaseState)));
+        }
     }
 }

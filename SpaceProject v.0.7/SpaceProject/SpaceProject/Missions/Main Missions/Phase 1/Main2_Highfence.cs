@@ -26,8 +26,8 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetPlanet("Highfence")));
+            SetDestinations();
+            SetupObjectives();
 
             ReplaceObjectiveText(TextType.Event, ActionKeyID, ControlManager.GetKeyName(RebindableKeys.Action2), 0);
         }
@@ -72,6 +72,20 @@ namespace SpaceProject
         public override void SetProgress(int progress)
         {
             this.progress = progress;
+        }
+
+        protected override void SetDestinations()
+        {
+            destinations = new List<GameObjectOverworld>();
+
+            GameObjectOverworld highfence = Game.stateManager.overworldState.GetPlanet("Highfence");
+
+            destinations.Add(highfence);
+        }
+
+        protected override void SetupObjectives()
+        {
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[0]));
         }
     }
 }
