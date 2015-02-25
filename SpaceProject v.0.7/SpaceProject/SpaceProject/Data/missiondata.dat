@@ -360,12 +360,11 @@ ObjectiveText1 = 1
 ObjectiveText2 = 2
 PosResponse = Yes. Let's go ahead and destroy the Murt.
 NegResponse = I have to think a bit more about this.
-Accept = [SAIR] "Well then, it is decided. Let's go!"
+Accept = [SAIR] "Well then, it is decided. Let's go!"#[Alliance] "Identify yourself! Are you a rebel ship? I'm sorry. We can't let you continue."
 FailText = ""
-EventText1 = [Alliance] "Identify yourself! Are you a rebel ship? I'm sorry. We can't let you continue."
-EventText2 = [Sair] "Well done. The area seems to be swarmed by both Alliance and rebel scouts. Stay alert."#"A rebel scout fleet is incoming. Let's try to slip through!"
-EventText3 = Text displayed when killed on level?
-EventText4 = [Sair] "Finally, we made it through! It appears we managed to make it here before the others."#"To end this, just open re. Hit the asteroid until it takes re. Burning it. Burning it all."#"Are you ready to do it? Is this the way to go? I still don't know."#"Maybe we are removing the system's last hope in vain."#"Or maybe this will prevent further war and chaos."#"No backing down now, I guess. Let's open re!"
+EventText1 = [Sair] "Well done. The area seems to be swarmed by both Alliance and rebel scouts. Stay alert."#"A rebel scout fleet is incoming. Let's try to slip through!"
+EventText2 = Text displayed when killed on level?
+EventText3 = [Sair] "Finally, we made it through! It appears we managed to make it here before the others."#"To end this, just open re. Hit the asteroid until it takes re. Burning it. Burning it all."#"Are you ready to do it? Is this the way to go? I still don't know."#"Maybe we are removing the system's last hope in vain."#"Or maybe this will prevent further war and chaos."#"No backing down now, I guess. Let's open re!"
 ObjectiveCompleted = ""
 Fail = ""
 Success = "Good job!"

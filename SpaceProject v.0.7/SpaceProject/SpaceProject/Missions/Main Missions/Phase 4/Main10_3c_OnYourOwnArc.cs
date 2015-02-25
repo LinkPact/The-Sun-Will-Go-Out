@@ -12,12 +12,11 @@ namespace SpaceProject
     {
         private readonly string AvoidAllianceLevel = "OnYourOwn_1";
         private readonly string AvoidRebelsLevel = "OnYourOwn_2";
-        private readonly string FinalBattle = "flightTraining_3";
+        //private readonly string FinalBattle = "flightTraining_3";
 
         private enum EventID
         {
             AfterAllianceAttack,
-            AfterRebelAttack,
             KilledOnLevel,
             SettingExplosions
         }
@@ -32,6 +31,7 @@ namespace SpaceProject
 
             SetDestinations();
             SetupObjectives();
+            RestartAfterFail();
         }
 
         public override void StartMission()
@@ -47,14 +47,17 @@ namespace SpaceProject
 
         public override void OnReset()
         {
+            SetDestinations();
+            SetupObjectives();
+
             base.OnReset();
+        }
 
-            ObjectiveIndex = 0;
+        public override void OnFailed()
+        {
+            base.OnFailed();
 
-            for (int i = 0; i < objectives.Count; i++)
-            {
-                objectives[i].Reset();
-            }
+            Game.messageBox.DisplayMessage("You could not reach the Murt before the Alliance and the rebels. Go to Telmun to try again.", false);
         }
 
         public override void MissionLogic()
@@ -95,31 +98,42 @@ namespace SpaceProject
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 destinations[0], AvoidAllianceLevel, LevelStartCondition.TextCleared,
-                new EventTextCapsule(GetEvent((int)EventID.AfterAllianceAttack), GetEvent((int)EventID.KilledOnLevel),
+                new EventTextCapsule(GetEvent((int)EventID.AfterAllianceAttack), null,
                     EventTextCanvas.BaseState)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
                 destinations[1], AvoidRebelsLevel, LevelStartCondition.TextCleared,
-                new EventTextCapsule(GetEvent((int)EventID.AfterRebelAttack), GetEvent((int)EventID.KilledOnLevel),
+                new EventTextCapsule(GetEvent((int)EventID.SettingExplosions), null,
                     EventTextCanvas.BaseState)));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                destinations[2],
-                new EventTextCapsule(GetEvent((int)EventID.SettingExplosions), null, EventTextCanvas.MessageBox),
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[2],
                 delegate { },
                 delegate { },
-                delegate { return true; },
-                delegate { return false; }));
-
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                destinations[3],
                 delegate
                 {
-                    Game.stateManager.shooterState.BeginLevel(FinalBattle);
+                    return missionHelper.IsTextCleared();
+                },
+                delegate { return false; }));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[3],
+                delegate 
+                {
+                    Game.stateManager.ChangeState("OverworldState");
+                    Game.stateManager.overworldState.ActivateBurnOutEnding();
                 },
                 delegate { },
-                delegate { return Game.stateManager.shooterState.GetLevel(FinalBattle).IsObjectiveCompleted; },
+                delegate { return false; },
                 delegate { return false; }));
+
+            //objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+            //    destinations[3],
+            //    delegate
+            //    {
+            //        Game.stateManager.shooterState.BeginLevel(FinalBattle);
+            //    },
+            //    delegate { },
+            //    delegate { return Game.stateManager.shooterState.GetLevel(FinalBattle).IsObjectiveCompleted; },
+            //    delegate { return false; }));
         }
     }
 }

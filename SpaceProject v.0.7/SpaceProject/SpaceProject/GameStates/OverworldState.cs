@@ -302,7 +302,8 @@ namespace SpaceProject
                 }
             }
 
-            if (PlanetState.PreviousPlanet != "")
+            if (PlanetState.PreviousPlanet != ""
+                || StationState.PreviousStation != "")
             {
                 foreach (GameObjectOverworld obj in deepSpaceGameObjects)
                 {
@@ -340,12 +341,6 @@ namespace SpaceProject
                 if (obj.IsDead)
                     RemoveEffectsObject(obj);
             }
-
-            //if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))))
-            //{
-            //    if (!Game.player.HyperspeedOn)
-            //        EnterCheck();
-            //}
         }
 
         private void EdgeCollisionCheck()
