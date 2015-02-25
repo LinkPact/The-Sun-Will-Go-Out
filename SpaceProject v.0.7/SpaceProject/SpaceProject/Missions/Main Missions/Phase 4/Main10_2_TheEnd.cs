@@ -88,6 +88,8 @@ namespace SpaceProject
 
         protected override void SetupObjectives()
         {
+            objectives.Clear();
+
             objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[0],
                     new List<String>{
                     GetEvent((int)EventID.ToAsteroidBelt1).Text

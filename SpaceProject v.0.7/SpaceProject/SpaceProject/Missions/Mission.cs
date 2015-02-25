@@ -335,6 +335,11 @@ namespace SpaceProject
             }
         }
 
+        public virtual void OnFailed()
+        {
+
+        }
+
         public virtual void MissionLogic()
         {
             RefreshCurrentObjective();

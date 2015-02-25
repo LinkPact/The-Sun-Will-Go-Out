@@ -118,6 +118,8 @@ namespace SpaceProject
 
         protected override void SetupObjectives()
         {
+            objectives.Clear();
+
             Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[0],
                 GetEvent((int)EventID.TravelingToAsteroids).Text, 3000, 3000));
 

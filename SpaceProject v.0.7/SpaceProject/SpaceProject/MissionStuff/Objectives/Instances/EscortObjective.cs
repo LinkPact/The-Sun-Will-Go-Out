@@ -299,7 +299,6 @@ namespace SpaceProject
             OverworldShip.FollowPlayer = true;
 
             game.stateManager.overworldState.RemoveOverworldObject(escortDataCapsule.ShipToDefend);
-            game.messageBox.DisplayMessage("Noooo! The freighter was destroyed. We failed.", false);
             game.stateManager.ChangeState("OverworldState");
         }
 

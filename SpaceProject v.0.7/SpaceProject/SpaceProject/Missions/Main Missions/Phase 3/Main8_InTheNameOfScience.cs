@@ -158,6 +158,8 @@ namespace SpaceProject
 
         protected override void SetupObjectives()
         {
+            objectives.Clear();
+
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[0],
                 delegate { SetupAllyShips(allyShips1, destinations[0].position, destinations[1]); },
                 delegate { },

@@ -95,6 +95,8 @@ namespace SpaceProject
 
         protected override void SetupObjectives()
         {
+            objectives.Clear();
+
             objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[0],
                 GetEvent((int)EventID.TravellingToCoordinate).Text, 3000, 2000));
 

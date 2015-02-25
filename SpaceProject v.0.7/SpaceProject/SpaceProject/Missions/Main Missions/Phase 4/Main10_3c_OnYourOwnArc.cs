@@ -91,6 +91,8 @@ namespace SpaceProject
 
         protected override void SetupObjectives()
         {
+            objectives.Clear();
+
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 destinations[0], AvoidAllianceLevel, LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.AfterAllianceAttack), GetEvent((int)EventID.KilledOnLevel),

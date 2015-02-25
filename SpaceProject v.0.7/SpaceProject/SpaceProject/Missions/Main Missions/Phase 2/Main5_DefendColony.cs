@@ -78,6 +78,13 @@ namespace SpaceProject
         public override void OnLoad()
         { }
 
+        public override void OnFailed()
+        {
+            base.OnFailed();
+
+            Game.messageBox.DisplayMessage("The operation was a failure. Return to Fortrun Station 1 to try again.", false);
+        }
+
         public override void MissionLogic()
         {
             base.MissionLogic();

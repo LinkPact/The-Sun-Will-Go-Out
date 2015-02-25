@@ -134,7 +134,12 @@ namespace SpaceProject
                 failLogic.Invoke();
             }
 
-            MissionManager.ResetMission(mission.MissionName);
+            mission.OnFailed();
+
+            if (mission.IsRestartAfterFail())
+            {
+                MissionManager.ResetMission(mission.MissionName);
+            }
         }
     }
 }

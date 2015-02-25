@@ -46,6 +46,7 @@ namespace SpaceProject
 
             SetDestinations();
             SetupObjectives();
+            RestartAfterFail();
         }
 
         public override void StartMission()
@@ -58,6 +59,25 @@ namespace SpaceProject
 
         public override void OnLoad()
         { }
+
+        public override void OnReset()
+        {
+            InitializeOverworldShips();
+            SetDestinations();
+            SetupObjectives();
+
+            base.OnReset();
+        }
+
+        public override void OnFailed()
+        {
+            base.OnFailed();
+
+            RemoveAllianceShips();
+            RemoveRebelShips();
+
+            Game.messageBox.DisplayMessage("You failed to dispatch the treacherous alliance attack fleet leader and gain the trust of the rebels. Go back to Fortrun Station 1 to try again.", false);
+        }
 
         public override void MissionLogic()
         {
@@ -133,6 +153,15 @@ namespace SpaceProject
             }
         }
 
+        private void RemoveRebelShips()
+        {
+            foreach (OverworldShip ship in allianceShips)
+            {
+                Game.stateManager.overworldState.RemoveOverworldObject(ship);
+                ship.IsDead = true;
+            }
+        }
+
         private void AddRebelShips()
         {
             rebelShips.Clear();
@@ -189,6 +218,8 @@ namespace SpaceProject
 
         protected override void SetupObjectives()
         {
+            objectives.Clear();
+
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[0],
                 new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun), null, EventTextCanvas.MessageBox),
                 delegate { },

@@ -171,6 +171,8 @@ namespace SpaceProject
 
         protected override void SetupObjectives()
         {
+            objectives.Clear();
+
             Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[0],
                 new EventTextCapsule(GetEvent((int)EventID.ToMeetingPoint), null, EventTextCanvas.MessageBox),
                 delegate { },

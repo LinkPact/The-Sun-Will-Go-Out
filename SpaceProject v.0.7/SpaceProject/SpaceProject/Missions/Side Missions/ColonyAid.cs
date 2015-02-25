@@ -76,6 +76,8 @@ namespace SpaceProject
 
         protected override void SetupObjectives()
         {
+            objectives.Clear();
+
             objectives.Add(new ItemTransportObjective(Game, this, ObjectiveDescriptions[0],
                 destinations[0], medicalSupplies,
                 new EventTextCapsule(GetEvent((int)EventID.LeaveSupplies), GetEvent((int)EventID.SoldSupplies),

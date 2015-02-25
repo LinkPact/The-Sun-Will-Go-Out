@@ -67,6 +67,13 @@ namespace SpaceProject
             Setup();
         }
 
+        public override void OnFailed()
+        {
+            base.OnFailed();
+
+            Game.messageBox.DisplayMessage("The freighter was destroyed and the mission failed. Return to Highfence to try again.", false);
+        }
+
         public override void MissionLogic()
         {
             base.MissionLogic();
@@ -119,6 +126,8 @@ namespace SpaceProject
 
         protected override void SetupObjectives()
         {
+            objectives.Clear();
+
             objectives.Add(new EscortObjective(Game,
                this,
                new List<String> { ObjectiveDescriptions[0], ObjectiveDescriptions[1], ObjectiveDescriptions[2] },
