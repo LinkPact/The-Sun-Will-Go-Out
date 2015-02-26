@@ -60,7 +60,8 @@ namespace SpaceProject
                 return true;
             }
 
-            return CollisionDetection.IsPointInsideCircle(game.player.position, Destination.position, radius);
+            return (GameStateManager.currentState.Equals("OverworldState")
+                && CollisionDetection.IsPointInsideCircle(game.player.position, Destination.position, radius));
         }
 
         public override void OnCompleted()

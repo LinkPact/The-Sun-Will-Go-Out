@@ -7,11 +7,15 @@ namespace SpaceProject
 {
     public class OverworldShip : GameObjectOverworld
     {
+        public static bool FollowPlayer = true;
+
         private ParticleManager particleManager;
 
         // A.I. varriables
         public ShipAction AIManager;
-        public static bool FollowPlayer = true;
+
+        private bool saveShip = true;
+        public bool SaveShip { get { return saveShip; } set { saveShip = value; } }
         private bool removeOnStationEnter = true;
         public bool RemoveOnStationEnter { get { return removeOnStationEnter; } set { removeOnStationEnter = value; } }
 

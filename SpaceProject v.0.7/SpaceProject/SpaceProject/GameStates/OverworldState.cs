@@ -754,7 +754,8 @@ namespace SpaceProject
 
             for (int i = 0; i < deepSpaceGameObjects.Count; i++)
             {
-                if (deepSpaceGameObjects[i] is OverworldShip)
+                if (deepSpaceGameObjects[i] is OverworldShip &&
+                    ((OverworldShip)deepSpaceGameObjects[i]).SaveShip)
                 {
                     saveData.Clear();
                     saveData.Add("name", deepSpaceGameObjects[i].name);

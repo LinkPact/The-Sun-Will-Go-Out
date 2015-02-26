@@ -104,6 +104,7 @@ namespace SpaceProject
                 destinations[0]);
             freighter1.AIManager = new TravelAction(freighter1, destinations[0]);
             freighter1.collisionEvent = new RemoveOnCollisionEvent(Game, freighter1, destinations[0]);
+            freighter1.SaveShip = false;
 
             enemies = Game.stateManager.overworldState.GetSectorX.shipSpawner.GetOverworldShips(2, "rebel");
 
