@@ -60,7 +60,15 @@ namespace SpaceProject
 
         public override void OnLoad()
         {
-         
+            switch (ObjectiveIndex)
+            {
+                case 1:
+                case 2:
+                case 3:
+                    ObjectiveIndex = 0;
+                    break;
+
+            }
         }
 
         public override void OnReset()

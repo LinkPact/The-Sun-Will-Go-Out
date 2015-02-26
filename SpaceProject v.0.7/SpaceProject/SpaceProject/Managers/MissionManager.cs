@@ -62,6 +62,8 @@ namespace SpaceProject
 
         public void Initialize()
         {
+            RebelFleet.IsShown = false;
+
             missionObjectSpriteSheet = new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/MissionObjectSpriteSheet"), null);
 
             activeMissions = new List<Mission>();
@@ -662,7 +664,9 @@ namespace SpaceProject
             }
 
             // Final mission stuff
-            if (mainTheEnd.MissionState == StateOfMission.Completed
+            if ((mainTheEnd.MissionState == StateOfMission.Completed
+                    || (mainTheEnd.MissionState == StateOfMission.CompletedDead 
+                        && !RebelFleet.IsShown))
                 && GameStateManager.currentState.Equals("OverworldState"))
             {
                 UnlockMission(mainOnYourOwnArc.MissionName);
@@ -672,6 +676,7 @@ namespace SpaceProject
                     game.stateManager.overworldState.GetSectorX.GetSpriteSheet(), Vector2.Zero);
                 AllianceFleet allianceFleet = new AllianceFleet(game,
                     game.stateManager.overworldState.GetSectorX.GetSpriteSheet(), Vector2.Zero);
+                RebelFleet.IsShown = true;
 
                 rebelFleet.Initialize();
                 allianceFleet.Initialize();

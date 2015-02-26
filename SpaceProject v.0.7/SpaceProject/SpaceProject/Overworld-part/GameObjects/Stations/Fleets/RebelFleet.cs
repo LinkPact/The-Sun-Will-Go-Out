@@ -9,6 +9,8 @@ namespace SpaceProject
 {
     public class RebelFleet : Station
     {
+        public static bool IsShown;
+
         public RebelFleet(Game1 Game, Sprite spriteSheet, Vector2 positionOffset) :
             base(Game, spriteSheet, positionOffset)
         {

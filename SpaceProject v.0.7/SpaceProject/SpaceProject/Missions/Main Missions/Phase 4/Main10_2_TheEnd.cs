@@ -110,7 +110,7 @@ namespace SpaceProject
                     GetEvent((int)EventID.ToAsteroidBelt4).Text
                 }, 3000, 3000));
 
-            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[4], 600,
+            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[4], 1200,
                 new EventTextCapsule(GetEvent((int)EventID.AtAsteroidBelt), null, EventTextCanvas.MessageBox)));
         }
     }
