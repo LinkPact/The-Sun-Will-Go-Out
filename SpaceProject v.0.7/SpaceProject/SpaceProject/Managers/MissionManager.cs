@@ -573,7 +573,6 @@ namespace SpaceProject
 
         public void UpdateProgressionConditions()
         {
-
             // Unlock hyperspeed
             if (ControlManager.CurrentKeyboardState.IsKeyDown(Keys.LeftAlt) &&
                 ControlManager.CheckKeyPress(Keys.Y) && !game.player.IsHyperSpeedUnlocked)
@@ -582,17 +581,20 @@ namespace SpaceProject
                 game.messageBox.DisplayMessage("Hyper speed unlocked! Hold down '" + ControlManager.GetKeyName(RebindableKeys.Action3) + "' to use.", false);
             }
 
-            if (mainNewFirstMission.MissionState != StateOfMission.CompletedDead)
+            // Screening off player from certain locations
+            if (mainInfiltration.MissionState != StateOfMission.CompletedDead
+                && mainInfiltration.ObjectiveIndex < 9)
             {
-                if (StatsManager.gameMode != GameMode.develop)
+                if (StatsManager.gameMode != GameMode.develop
+                    && !game.player.HyperspeedOn)
                 {
                     if (CollisionDetection.IsRectInRect(game.player.Bounds,
-                        game.stateManager.overworldState.GetSectorX.SpaceRegionArea) &&
-                        game.messageBox.MessageState == MessageState.Invisible)
+                        game.stateManager.overworldState.GetRebelOutpost.SpaceRegionArea) &&
+                        game.messageBox.MessageState != MessageState.Message)
                     {
-                        game.messageBox.DisplayMessage("You do not have the proper papers to enter Sector X. Please finish mission 'A Cold Welcome' first.", false);
-                        game.player.Direction.SetDirection(new Vector2(game.player.position.X - game.stateManager.overworldState.GetSectorX.SectorXStar.position.X,
-                            game.player.position.Y - game.stateManager.overworldState.GetSectorX.SectorXStar.position.Y));
+                        game.messageBox.DisplayMessage("A large group of rebels prevents you from entering this area.", false);
+                        game.player.InitializeHyperSpeedJump(new Vector2(game.player.position.X + (100 * -game.player.Direction.GetDirectionAsVector().X),
+                            game.player.position.Y + (100 * -game.player.Direction.GetDirectionAsVector().Y)), false);
                     }
                 }
             }

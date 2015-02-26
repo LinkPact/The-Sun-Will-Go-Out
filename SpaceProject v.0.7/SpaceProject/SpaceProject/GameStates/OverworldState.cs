@@ -778,6 +778,7 @@ namespace SpaceProject
                 }
             }
 
+            // Save sub interactive objects
             List<GameObjectOverworld> sectorXObjects = sectorX.GetGameObjects();
 
             for (int i = 0; i < sectorXObjects.Count; i++)
@@ -788,18 +789,15 @@ namespace SpaceProject
                 }
             }
 
-            // Save Shops
-            foreach (GameObjectOverworld obj in GetImmobileObjects)
-            {
-                if (obj is ImmobileSpaceObject)
-                {
-                    ImmobileSpaceObject tmpObj = (ImmobileSpaceObject)obj;
-                    tmpObj.SaveShop();
-                }
-            }
-
-            // Save sub interactive objects
-
+            //// Save Shops
+            //foreach (GameObjectOverworld obj in GetImmobileObjects)
+            //{
+            //    if (obj is ImmobileSpaceObject)
+            //    {
+            //        ImmobileSpaceObject tmpObj = (ImmobileSpaceObject)obj;
+            //        tmpObj.SaveShop();
+            //    }
+            //}
         }
 
         public void Load()
@@ -840,13 +838,13 @@ namespace SpaceProject
             // Load Shop Inventory
             foreach (GameObjectOverworld obj in GetImmobileObjects)
             {
-                if (obj is ImmobileSpaceObject)
-                {
-                    ImmobileSpaceObject tmObj = (ImmobileSpaceObject)obj;
-                    tmObj.LoadShop();
-                }
+                //if (obj is ImmobileSpaceObject)
+                //{
+                //    ImmobileSpaceObject tmObj = (ImmobileSpaceObject)obj;
+                //    tmObj.LoadShop();
+                //}
 
-                else if (obj is SubInteractiveObject)
+                if (obj is SubInteractiveObject)
                 {
                     ((SubInteractiveObject)obj).Load();
                 }
