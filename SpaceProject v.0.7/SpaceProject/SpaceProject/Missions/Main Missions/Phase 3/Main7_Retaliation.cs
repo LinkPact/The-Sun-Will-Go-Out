@@ -59,7 +59,26 @@ namespace SpaceProject
 
         public override void OnLoad()
         {
-         
+            switch (ObjectiveIndex)
+            {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                    ObjectiveIndex = 1;
+                    break;
+
+                case 7:
+                case 9:
+                    ObjectiveIndex = 8;
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         public override void OnReset()
@@ -156,7 +175,7 @@ namespace SpaceProject
             Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[4],
                 new List<string> { GetEvent((int)EventID.AtMeetingPoint1).Text, GetEvent((int)EventID.AtMeetingPoint2).Text,
                     GetEvent((int)EventID.AtMeetingPoint3).Text, GetEvent((int)EventID.AtMeetingPoint4).Text },
-                3000, 1000));
+                2000, 1000));
 
             Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[5],
                 delegate { },
@@ -185,21 +204,10 @@ namespace SpaceProject
                 {
                     freighter.Destroy();
                     Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
-                        alliance1, destination + new Vector2(-300, 0), "Retribution2", Game.player);
+                        alliance1, Game.player.position + new Vector2(-300, 0), "Retribution2", Game.player);
                     OverworldShip.FollowPlayer = true;
                 },
-                delegate
-                {
-
-                },
-                delegate
-                {
-                    return true;
-                },
-                delegate
-                {
-                    return false;
-                }));
+                delegate { }, delegate { return true; }, delegate { return false; }));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1], destinations[9],
                 delegate { },
@@ -209,7 +217,7 @@ namespace SpaceProject
                     if (Game.stateManager.shooterState.CurrentLevel != null
                         && Game.stateManager.shooterState.CurrentLevel.Identifier.Equals("Retribution2"))
                     {
-                        return (Game.stateManager.shooterState.CurrentLevel.IsMapCompleted
+                        return (Game.stateManager.shooterState.CurrentLevel.IsObjectiveCompleted
                             && GameStateManager.currentState.Equals("OverworldState"));
                     }
 
@@ -244,6 +252,7 @@ namespace SpaceProject
                 Game.stateManager.overworldState.GetStation("Fortrun Station I"));
 
             alliance1 = new AllianceShip(Game, Game.stateManager.shooterState.spriteSheet);
+            alliance1.SaveShip = false;
             alliance1.Initialize(Game.stateManager.overworldState.GetSectorX);
 
             rebelShips = new List<RebelShip>();
@@ -257,6 +266,7 @@ namespace SpaceProject
                 rebelShips[i].RemoveOnStationEnter = false;
                 rebelShips[i].position = new Vector2(destination.X + (i * 50), destination.Y);
                 rebelShips[i].collisionEvent = null;
+                rebelShips[i].SaveShip = false;
 
                 actions.Add(new WaitAction(rebelShips[i],
                     delegate

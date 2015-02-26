@@ -25,7 +25,8 @@ namespace SpaceProject
             ToRebelBase
         }
 
-        private List<OverworldShip> rebelShips;
+        private List<OverworldShip> rebelShips1;
+        private List<OverworldShip> rebelShips2;
         private List<OverworldShip> allianceShips;
         private readonly int numberOfRebelShips = 3;
         private readonly int numberOfAllianceShips = 3;
@@ -39,10 +40,13 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            rebelShips = new List<OverworldShip>();
+            rebelShips1 = new List<OverworldShip>();
+            rebelShips2 = new List<OverworldShip>();
             allianceShips = new List<OverworldShip>();
 
-            InitializeOverworldShips();
+            InitializeRebelShips1();
+            InitializeRebelShips2();
+            InitializeAllianceShips();
 
             SetDestinations();
             SetupObjectives();
@@ -54,15 +58,34 @@ namespace SpaceProject
             ObjectiveIndex = 0;
             progress = 0;
             missionHelper.ShowEvent(GetEvent((int)EventID.Introduction));
-            AddOverworldShips();
+            AddShips(rebelShips1);
+            AddShips(allianceShips);
         }
 
         public override void OnLoad()
-        { }
+        {
+            switch (ObjectiveIndex)
+            {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                    AddShips(rebelShips1);
+                    AddShips(allianceShips);
+                    break;
+
+                default:
+                    break;
+            }
+        }
 
         public override void OnReset()
         {
-            InitializeOverworldShips();
+            InitializeRebelShips1();
+            InitializeRebelShips2();
+            InitializeAllianceShips();
             SetDestinations();
             SetupObjectives();
 
@@ -73,8 +96,9 @@ namespace SpaceProject
         {
             base.OnFailed();
 
-            RemoveAllianceShips();
-            RemoveRebelShips();
+            RemoveShips(allianceShips);
+            RemoveShips(rebelShips1);
+            RemoveShips(rebelShips2);
 
             Game.messageBox.DisplayMessage("You failed to dispatch the treacherous alliance attack fleet leader and gain the trust of the rebels. Go back to Fortrun Station 1 to try again.", false);
         }
@@ -94,44 +118,8 @@ namespace SpaceProject
             this.progress = progress;
         }
 
-        private void AddOverworldShips()
+        private void InitializeAllianceShips()
         {
-            foreach (OverworldShip ship in rebelShips)
-            {
-                Game.stateManager.overworldState.AddOverworldObject(ship);
-            }
-
-            foreach (OverworldShip ship in allianceShips)
-            {
-                Game.stateManager.overworldState.AddOverworldObject(ship);
-            }
-        }
-
-        private void InitializeOverworldShips()
-        {
-            for (int i = 0; i < numberOfRebelShips; i++)
-            {
-                CompositeAction actions = new SequentialAction();
-
-                rebelShips.Add(new RebelShip(Game, Game.stateManager.shooterState.spriteSheet));
-                rebelShips[i].Initialize();
-                rebelShips[i].position = new Vector2(98500 + (i * 50), 77000);
-                rebelShips[i].RemoveOnStationEnter = false;
-                rebelShips[i].collisionEvent = new RemoveOnCollisionEvent(Game, rebelShips[i],
-                    Game.stateManager.overworldState.GetRebelOutpost.GetGameObject("Rebel Base"));
-
-                actions.Add(new WaitAction(rebelShips[i],
-                    delegate
-                    {
-                        return ObjectiveIndex >= 3;
-                    }));
-
-                actions.Add(new TravelAction(rebelShips[i],
-                    Game.stateManager.overworldState.GetRebelOutpost.GetGameObject("Rebel Base")));
-
-                rebelShips[i].AIManager = actions;
-            }
-
             for (int i = 0; i < numberOfAllianceShips; i++)
             {
                 allianceShips.Add(new AllianceShip(Game, Game.stateManager.shooterState.spriteSheet));
@@ -141,59 +129,80 @@ namespace SpaceProject
                     Game.stateManager.overworldState.GetStation("Lavis Station").position.X - 500 + (i * 50),
                     Game.stateManager.overworldState.GetStation("Lavis Station").position.Y - 200);
                 allianceShips[i].AIManager = new WaitAction(allianceShips[i], delegate { return false; });
+                allianceShips[i].SaveShip = false;
             }
         }
 
-        private void RemoveAllianceShips()
+        private void InitializeRebelShips1()
         {
-            foreach (OverworldShip ship in allianceShips)
-            {
-                Game.stateManager.overworldState.RemoveOverworldObject(ship);
-                ship.IsDead = true;
-            }
-        }
-
-        private void RemoveRebelShips()
-        {
-            foreach (OverworldShip ship in allianceShips)
-            {
-                Game.stateManager.overworldState.RemoveOverworldObject(ship);
-                ship.IsDead = true;
-            }
-        }
-
-        private void AddRebelShips()
-        {
-            rebelShips.Clear();
-
             for (int i = 0; i < numberOfRebelShips; i++)
             {
                 CompositeAction actions = new SequentialAction();
 
-                rebelShips.Add(new RebelShip(Game, Game.stateManager.shooterState.spriteSheet));
-                rebelShips[i].Initialize();
-                rebelShips[i].RemoveOnStationEnter = false;
-                rebelShips[i].position = new Vector2(
+                rebelShips1.Add(new RebelShip(Game, Game.stateManager.shooterState.spriteSheet));
+                rebelShips1[i].Initialize();
+                rebelShips1[i].position = new Vector2(98500 + (i * 50), 77000);
+                rebelShips1[i].RemoveOnStationEnter = false;
+                rebelShips1[i].collisionEvent = new RemoveOnCollisionEvent(Game, rebelShips1[i],
+                    Game.stateManager.overworldState.GetRebelOutpost.GetGameObject("Rebel Base"));
+                rebelShips1[i].SaveShip = false;
+
+                actions.Add(new WaitAction(rebelShips1[i],
+                    delegate
+                    {
+                        return ObjectiveIndex >= 3;
+                    }));
+
+                actions.Add(new TravelAction(rebelShips1[i],
+                    Game.stateManager.overworldState.GetRebelOutpost.GetGameObject("Rebel Base")));
+
+                rebelShips1[i].AIManager = actions;
+            }
+        }
+
+        private void InitializeRebelShips2()
+        {
+            for (int i = 0; i < numberOfRebelShips; i++)
+            {
+                CompositeAction actions = new SequentialAction();
+
+                rebelShips2.Add(new RebelShip(Game, Game.stateManager.shooterState.spriteSheet));
+                rebelShips2[i].Initialize();
+                rebelShips2[i].RemoveOnStationEnter = false;
+                rebelShips2[i].position = new Vector2(
                     Game.stateManager.overworldState.GetStation("Lavis Station").position.X - 500 + (i * 50),
                     Game.stateManager.overworldState.GetStation("Lavis Station").position.Y - 200);
-                rebelShips[i].collisionEvent = new RemoveOnCollisionEvent(Game, rebelShips[i],
+                rebelShips2[i].collisionEvent = new RemoveOnCollisionEvent(Game, rebelShips2[i],
                     Game.stateManager.overworldState.GetRebelOutpost.GetGameObject("Rebel Base"));
+                rebelShips2[i].SaveShip = false;
 
-                actions.Add(new WaitAction(rebelShips[i],
+                actions.Add(new WaitAction(rebelShips2[i],
                     delegate
                     {
                         return ObjectiveIndex >= 8;
                     }));
 
-                actions.Add(new TravelAction(rebelShips[i],
+                actions.Add(new TravelAction(rebelShips2[i],
                     Game.stateManager.overworldState.GetRebelOutpost.GetGameObject("Rebel Base")));
 
-                rebelShips[i].AIManager = actions;
+                rebelShips2[i].AIManager = actions;
             }
+        }
 
-            foreach (OverworldShip ship in rebelShips)
+        private void AddShips(List<OverworldShip> ships)
+        {
+            foreach (OverworldShip ship in ships)
             {
                 Game.stateManager.overworldState.AddOverworldObject(ship);
+            }
+        }
+
+        private void RemoveShips(List<OverworldShip> ships)
+        {
+            foreach (OverworldShip ship in ships)
+            {
+                Game.stateManager.overworldState.RemoveOverworldObject(ship);
+                ship.IsDead = true;
             }
         }
 
@@ -203,9 +212,9 @@ namespace SpaceProject
 
             GameObjectOverworld rebelBase = Game.stateManager.overworldState.GetStation("Rebel Base");
 
-            destinations.Add(rebelShips[1]);
-            destinations.Add(rebelShips[1]);
-            destinations.Add(rebelShips[1]);
+            destinations.Add(rebelShips1[1]);
+            destinations.Add(rebelShips1[1]);
+            destinations.Add(rebelShips1[1]);
             destinations.Add(allianceShips[1]);
             destinations.Add(allianceShips[1]);
             destinations.Add(allianceShips[1]);
@@ -254,8 +263,8 @@ namespace SpaceProject
                 new EventTextCapsule(GetEvent((int)EventID.AfterLevel2), null, EventTextCanvas.MessageBox),
                 delegate
                 {
-                    RemoveAllianceShips();
-                    AddRebelShips();
+                    RemoveShips(allianceShips);
+                    AddShips(rebelShips2);
                 },
                 delegate { },
                 delegate { return true; },
