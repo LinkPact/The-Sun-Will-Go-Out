@@ -124,7 +124,7 @@ namespace SpaceProject
 
         public virtual void Interact()
         {
-            if (!MissionManager.IsCurrentObjective(this))
+            if (!MissionManager.IsCurrentObjectiveDestination(this))
             {
                 if (cleared)
                 {

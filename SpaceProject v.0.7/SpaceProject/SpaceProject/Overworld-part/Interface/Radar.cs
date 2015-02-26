@@ -86,9 +86,9 @@ namespace SpaceProject
                 }
 
                 // Adds mission arrows for non-visible mission coordinates
-                else if (MissionManager.IsCurrentObjective(obj))
+                else if (MissionManager.IsCurrentObjectiveDestination(obj))
                 {
-                    Boolean isMain = MissionManager.ContainsMainMission(obj);
+                    Boolean isMain = MissionManager.IsMainMissionDestination(obj);
                     missionArrows.Add(new DirectionArrow(spriteSheet, obj.position, playerpos, isMain));
                 }
             }
@@ -141,7 +141,7 @@ namespace SpaceProject
                 ActiveSprite = ObjectSprite;
                 drawDistance = 0.91f;
 
-                if (MissionManager.IsCurrentObjective(obj))
+                if (MissionManager.IsCurrentObjectiveDestination(obj))
                 {
                     drawDistance += 0.01f;
                     if (colorSwapCounter <= 25)

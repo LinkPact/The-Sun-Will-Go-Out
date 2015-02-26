@@ -379,15 +379,15 @@ namespace SpaceProject
         }
 
         // Checks if parameter is current objective destination of any active mission
-        public static bool IsCurrentObjective(GameObjectOverworld obj)
+        public static bool IsCurrentObjectiveDestination(GameObjectOverworld obj)
         {
-            return GetMissionsWithActiveObjectives(obj).Count != 0;
+            return GetActiveMissionsAtDestination(obj).Count != 0;
         }
 
         // Checks if gameobject is target for main mission objective
-        public static Boolean ContainsMainMission(GameObjectOverworld obj)
+        public static Boolean IsMainMissionDestination(GameObjectOverworld obj)
         {
-            List<Mission> currentMissions = GetMissionsWithActiveObjectives(obj);
+            List<Mission> currentMissions = GetActiveMissionsAtDestination(obj);
 
             foreach (Mission mission in currentMissions)
             {
@@ -399,7 +399,7 @@ namespace SpaceProject
             return false;
         }
 
-        private static List<Mission> GetMissionsWithActiveObjectives(GameObjectOverworld obj)
+        private static List<Mission> GetActiveMissionsAtDestination(GameObjectOverworld obj)
         {
             List<Mission> currentMissions = new List<Mission>();
             
