@@ -33,7 +33,9 @@ namespace SpaceProject
 
         public Main6_Infiltration(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
-        { }
+        {
+            isMainMission = true; 
+        }
 
         public override void Initialize()
         {

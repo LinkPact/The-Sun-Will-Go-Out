@@ -385,6 +385,28 @@ namespace SpaceProject
         // Checks if parameter is current objective destination of any active mission
         public static bool IsCurrentObjective(GameObjectOverworld obj)
         {
+            return GetMissionsWithActiveObjectives(obj).Count != 0;
+        }
+
+        // Checks if gameobject is target for main mission objective
+        public static Boolean ContainsMainMission(GameObjectOverworld obj)
+        {
+            List<Mission> currentMissions = GetMissionsWithActiveObjectives(obj);
+
+            foreach (Mission mission in currentMissions)
+            {
+                if (mission.IsMainMission)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private static List<Mission> GetMissionsWithActiveObjectives(GameObjectOverworld obj)
+        {
+            List<Mission> currentMissions = new List<Mission>();
+            
             for (int i = 0; i < activeMissions.Count; i++)
             {
                 if (activeMissions[i].ObjectiveDestination != null)
@@ -394,18 +416,20 @@ namespace SpaceProject
                         || activeMissions[i].ObjectiveDestination is SubInteractiveObject)
                         && (obj.name.ToLower() == activeMissions[i].ObjectiveDestination.name.ToLower()))
                     {
-                        return true; 
+                        currentMissions.Add(activeMissions[i]);
                     }
 
                     else if (activeMissions[i].ObjectiveDestination == obj)
                     {
-                        return true;
+                        currentMissions.Add(activeMissions[i]);
                     }
-                }     
+                }
             }
 
-            return false;
+            return currentMissions;
         }
+
+        /////////////////
 
         //Returns a list of Missions of completed missions on a specified planet or station
         public static List<Mission> ReturnCompletedMissions(string planetOrStationName)

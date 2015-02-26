@@ -24,6 +24,7 @@ namespace SpaceProject
         public Main9_Information(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
+            isMainMission = true;
         }
 
         public override void Initialize()

@@ -25,6 +25,7 @@ namespace SpaceProject
         public Main10_1_BeginningOfTheEnd(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
+            isMainMission = true;
         }
 
         public override void Initialize()

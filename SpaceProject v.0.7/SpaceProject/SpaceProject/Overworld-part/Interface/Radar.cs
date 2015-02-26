@@ -37,7 +37,7 @@ namespace SpaceProject
         protected Sprite spriteSheet;
         protected Sprite background;
 
-        private DirectionArrow testArrow;
+        private List<DirectionArrow> missionArrows;
 
         private static int colorSwapCounter = 0;
         
@@ -69,30 +69,37 @@ namespace SpaceProject
             BlinkingSprite = spriteSheet.GetSubSprite(new Rectangle(49, 24, 6, 6));
             background = new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/radar"), new Rectangle(0, 0, 198, 198));
 
-            testArrow = new DirectionArrow(game.spriteSheetVerticalShooter, new Vector2(118354, 98654));
+            missionArrows = new List<DirectionArrow>();
         }
 
         public void Update(GameTime gameTime, List<GameObjectOverworld> objectsInOverworld, Vector2 cameraPos)
         {
+
             objectsVisibleOnRadar.Clear();
+            missionArrows.Clear();
             foreach (GameObjectOverworld obj in objectsInOverworld)
             {
+                // Adds visible game objects
                 if (CollisionDetection.IsPointInsideCircle(obj.position, game.player.position, viewRadius))
                 {
                     objectsVisibleOnRadar.Add(obj);
                 }
+
+                // Adds mission arrows for non-visible mission coordinates
+                else if (MissionManager.IsCurrentObjective(obj))
+                {
+                    Boolean isMain = MissionManager.ContainsMainMission(obj);
+                    missionArrows.Add(new DirectionArrow(spriteSheet, obj.position, playerpos, isMain));
+                }
             }
+
             playerpos = game.player.position;
             Origin = new Vector2(cameraPos.X + game.Window.ClientBounds.Width / 2 - background.SourceRectangle.Value.Width,
                 cameraPos.Y + game.Window.ClientBounds.Height / 2 - background.SourceRectangle.Value.Height);
-
-            testArrow.Update(playerpos);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            testArrow.Draw(spriteBatch, RadarCenterPos, playerpos);
-
             spriteBatch.Draw(background.Texture,
                 Origin,
                 background.SourceRectangle,
@@ -104,6 +111,28 @@ namespace SpaceProject
                 0.9f
                 );
 
+            DrawVisibleGameObjects(spriteBatch);
+
+            foreach (DirectionArrow arrow in missionArrows)
+            {
+                arrow.Draw(spriteBatch, RadarCenterPos);
+            }
+
+            // Draw background sprite
+            spriteBatch.Draw(ObjectSprite.Texture,
+                new Vector2(Origin.X + ((playerpos.X - View.X) / scaleX), Origin.Y + ((playerpos.Y - View.Y) / scaleY)),
+                ObjectSprite.SourceRectangle,
+                Color.White,
+                0.0f,
+                new Vector2(ObjectSprite.SourceRectangle.Value.Width / 2, ObjectSprite.SourceRectangle.Value.Height / 2),
+                1f,
+                SpriteEffects.None,
+                0.911f
+                );
+        }
+
+        private void DrawVisibleGameObjects(SpriteBatch spriteBatch)
+        {
             float drawDistance = 0.91f;
             foreach (GameObjectOverworld obj in objectsVisibleOnRadar)
             {
@@ -161,20 +190,8 @@ namespace SpaceProject
                         scale,
                         SpriteEffects.None,
                         drawDistance
-                        ); 
+                        );
             }
-
-            // Draw background sprite
-            spriteBatch.Draw(ObjectSprite.Texture,
-                new Vector2(Origin.X + ((playerpos.X - View.X) / scaleX), Origin.Y + ((playerpos.Y - View.Y) / scaleY)),
-                ObjectSprite.SourceRectangle,
-                Color.White,
-                0.0f,
-                new Vector2(ObjectSprite.SourceRectangle.Value.Width / 2, ObjectSprite.SourceRectangle.Value.Height / 2),
-                1f,
-                SpriteEffects.None,
-                0.911f
-                );
         }
     }
 }

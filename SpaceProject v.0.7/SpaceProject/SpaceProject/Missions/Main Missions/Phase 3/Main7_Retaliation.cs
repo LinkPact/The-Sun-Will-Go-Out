@@ -35,6 +35,7 @@ namespace SpaceProject
         public Main7_Retaliation(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
+            isMainMission = true;
         }
 
         public override void Initialize()

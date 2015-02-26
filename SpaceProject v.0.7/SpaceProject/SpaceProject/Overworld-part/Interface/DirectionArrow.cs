@@ -13,22 +13,19 @@ namespace SpaceProject
         private Sprite sprite;
 
         public float rotation;
+        private Boolean isMainMission;
 
-        public DirectionArrow(Sprite spriteSheet, Vector2 target)
+        public DirectionArrow(Sprite spriteSheet, Vector2 target, Vector2 playerpos, Boolean isMainMission)
         {
-            sprite = spriteSheet.GetSubSprite(new Rectangle(182, 29, 27, 32));
+            sprite = spriteSheet.GetSubSprite(new Rectangle(45, 35, 15, 8));
             this.targetCoordinate = new Vector2(target.X, target.Y);
 
+            SetRotation(playerpos);
 
+            this.isMainMission = isMainMission;
         }
 
-        public void Update(Vector2 playerPosition)
-        {
-            UpdateRotation(playerPosition);
-            //System.Diagnostics.Debug.WriteLine(rotation);
-        }
-
-        private void UpdateRotation(Vector2 playerPosition)
+        private void SetRotation(Vector2 playerPosition)
         {
             Vector2 targetDir = new Vector2(targetCoordinate.X - playerPosition.X, targetCoordinate.Y - playerPosition.Y);
             Vector2 targetDirScaled = MathFunctions.ScaleDirection(targetDir);
@@ -36,14 +33,28 @@ namespace SpaceProject
             rotation = (float)(radiansDir - Math.PI / 2);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 origin, Vector2 playerpos)
+        public void Draw(SpriteBatch spriteBatch, Vector2 drawCenter)
         {
-            float arrowOffset = -68;
+            float arrowOffset = -92;
             float drawLayer = 0.912f;
 
-            spriteBatch.Draw(sprite.Texture, origin, sprite.SourceRectangle, Color.White, rotation,
+            Color tint = GetColor(isMainMission);
+
+            spriteBatch.Draw(sprite.Texture, drawCenter, sprite.SourceRectangle, tint, rotation,
                 new Vector2(sprite.SourceRectangle.Value.Width / 2, arrowOffset),
                 1f, SpriteEffects.None, drawLayer);
+        }
+
+        private Color GetColor(Boolean isMain)
+        {
+            if (!isMain)
+            {
+                return Color.White;
+            }
+            else
+            {
+                return Color.Green;
+            }
         }
     }
 }

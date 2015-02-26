@@ -24,6 +24,7 @@ namespace SpaceProject
         public Main10_3a_RebelArc(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
+            isMainMission = true;
         }
 
         public override void Initialize()

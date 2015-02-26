@@ -20,6 +20,7 @@ namespace SpaceProject
         public Main2_Highfence(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
+            isMainMission = true;
         }
 
         public override void Initialize()

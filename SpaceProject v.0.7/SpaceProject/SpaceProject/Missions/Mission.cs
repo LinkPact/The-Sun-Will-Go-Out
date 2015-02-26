@@ -50,6 +50,7 @@ namespace SpaceProject
         private string missionName;
         private string locationName;
         private string endLocationName;
+
         private string introductionText;
         private string posResponse;
         private string negResponse;
@@ -61,6 +62,7 @@ namespace SpaceProject
         private string failedText;
         private string objectiveFailed;
 
+        protected Boolean isMainMission = false;
         private Boolean restartAfterFail = false;
 
         private StateOfMission missionState;
@@ -98,6 +100,11 @@ namespace SpaceProject
         #region Properties
 
         public bool UpdateLogic { get { return updateLogic; } set { updateLogic = value;} }
+
+        public Boolean IsMainMission
+        {
+            get { return isMainMission; }
+        }
 
         public string ConfigSection
         {
@@ -267,7 +274,7 @@ namespace SpaceProject
             return restartAfterFail;
         }
 
-        public bool RequiresAvailableSlot { get { return requiresAvailableSlot; } private set { ; } }
+        public bool RequiresAvailableSlot { get { return requiresAvailableSlot; } }
 
         #endregion
 

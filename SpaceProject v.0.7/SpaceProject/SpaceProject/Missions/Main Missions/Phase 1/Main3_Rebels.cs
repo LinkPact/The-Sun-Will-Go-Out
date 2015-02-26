@@ -33,6 +33,7 @@ namespace SpaceProject
         public Main3_Rebels(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
+            isMainMission = true;
         }
 
         public override void Initialize()

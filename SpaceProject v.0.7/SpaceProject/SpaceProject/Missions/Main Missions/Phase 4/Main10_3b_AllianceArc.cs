@@ -24,6 +24,7 @@ namespace SpaceProject
         public Main10_3b_AllianceArc(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
+            isMainMission = true;
         }
 
         public override void Initialize()

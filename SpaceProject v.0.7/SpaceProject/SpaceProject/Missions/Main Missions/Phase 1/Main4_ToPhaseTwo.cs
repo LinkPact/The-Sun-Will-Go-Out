@@ -21,6 +21,7 @@ namespace SpaceProject
         public Main4_ToPhaseTwo(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
+            isMainMission = true;
         }
 
         public override void Initialize()
