@@ -302,7 +302,8 @@ namespace SpaceProject
                 }
             }
 
-            if (PlanetState.PreviousPlanet != "")
+            if (PlanetState.PreviousPlanet != ""
+                || StationState.PreviousStation != "")
             {
                 foreach (GameObjectOverworld obj in deepSpaceGameObjects)
                 {
@@ -340,12 +341,6 @@ namespace SpaceProject
                 if (obj.IsDead)
                     RemoveEffectsObject(obj);
             }
-
-            //if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))))
-            //{
-            //    if (!Game.player.HyperspeedOn)
-            //        EnterCheck();
-            //}
         }
 
         private void EdgeCollisionCheck()
@@ -759,7 +754,8 @@ namespace SpaceProject
 
             for (int i = 0; i < deepSpaceGameObjects.Count; i++)
             {
-                if (deepSpaceGameObjects[i] is OverworldShip)
+                if (deepSpaceGameObjects[i] is OverworldShip &&
+                    ((OverworldShip)deepSpaceGameObjects[i]).SaveShip)
                 {
                     saveData.Clear();
                     saveData.Add("name", deepSpaceGameObjects[i].name);
@@ -835,9 +831,9 @@ namespace SpaceProject
                     case "Hangar Ship":
                         sectorX.shipSpawner.AddRebelShip(new Vector2(posx, posy));
                         break;
-                    case "Ally Ship":
-                        sectorX.shipSpawner.AddRebelShip(new Vector2(posx, posy));
-                        break;
+                    //case "Ally Ship":
+                    //    sectorX.shipSpawner.AddRebelShip(new Vector2(posx, posy));
+                    //    break;
                 }
             }
 

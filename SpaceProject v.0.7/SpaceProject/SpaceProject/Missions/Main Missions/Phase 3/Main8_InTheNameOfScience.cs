@@ -27,12 +27,11 @@ namespace SpaceProject
             OutsideRebelStation2
         }
 
-        private readonly float autoPilotSpeed = 0.3f;
+        private readonly float autoPilotSpeed = 0.5f;
         private float hangarAttackTime;
 
         private readonly int numberOfAllies = 4;
         private List<OverworldShip> allyShips1;
-        //private HangarShip hangar;
 
         public Main8_InTheNameOfScience(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
@@ -43,74 +42,13 @@ namespace SpaceProject
         public override void Initialize()
         {
             base.Initialize();
-            Station RebelBase = Game.stateManager.overworldState.GetStation("Rebel Base");
-            Station peyeScienceStation = Game.stateManager.overworldState.GetStation("Peye Science Station");
 
             RestartAfterFail();
 
             allyShips1 = CreateAllyShips(numberOfAllies);
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], RebelBase,
-                delegate { SetupAllyShips(allyShips1, RebelBase.position, peyeScienceStation); },
-                delegate { },
-                delegate { return true; },
-                delegate { return false; }));
-
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], peyeScienceStation,
-                new EventTextCapsule(GetEvent((int)EventID.OutsideRebelStation1), null, EventTextCanvas.MessageBox),
-                delegate { },
-                delegate { },
-                delegate { return (GameStateManager.currentState.ToLower().Equals("overworldstate")); },
-                delegate { return false; }));
-
-            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], allyShips1[1],
-                200, new EventTextCapsule(new EventText("[Rebel] \"Let's go!\""), null, EventTextCanvas.MessageBox)));
-
-            objectives.Add(new AutoPilotObjective(Game, this, ObjectiveDescriptions[0], peyeScienceStation, autoPilotSpeed,
-                allyShips1, peyeScienceStation.position,
-                new Dictionary<string, List<float>>
-                            { 
-                                { GetEvent((int)EventID.TravelToScienceStation1).Text, new List<float> { 5000, 3000 } },
-                                { GetEvent((int)EventID.TravelToScienceStation2).Text, new List<float> { 23000, 3000 } },
-                                { GetEvent((int)EventID.TravelToScienceStation3).Text, new List<float> { 9000, 3000 } }
-                            },
-                new EventTextCapsule(GetEvent((int)EventID.ArriveAtScienceStation), null, EventTextCanvas.MessageBox)));
-
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], peyeScienceStation,
-                "Itnos_1", LevelStartCondition.TextCleared,
-                new EventTextCapsule(GetEvent((int)EventID.AfterLevel1),
-                    null, EventTextCanvas.MessageBox)));
-
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], peyeScienceStation,
-                new EventTextCapsule(GetEvent((int)EventID.InsideScienceStation), null, EventTextCanvas.BaseState)));
-
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1], RebelBase,
-                new EventTextCapsule(GetEvent((int)EventID.OutsideScienceStation), null, EventTextCanvas.MessageBox),
-                delegate { }, delegate { },
-                delegate 
-                {
-                    return GameStateManager.currentState == "OverworldState";
-                },
-                delegate { return false; }));
-
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1], RebelBase,
-                new EventTextCapsule(GetEvent((int)EventID.BreakThroughLevel), null, EventTextCanvas.MessageBox),
-                delegate 
-                {
-                    hangarAttackTime = StatsManager.PlayTime.GetFutureOverworldTime(2000);
-                },
-                delegate { },
-                delegate
-                {
-                    return StatsManager.PlayTime.HasOverworldTimePassed(hangarAttackTime);
-                },
-                delegate { return false; }));
-
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1], RebelBase,
-                "Itnos_2", LevelStartCondition.TextCleared, new EventTextCapsule(GetEvent((int)EventID.AfterLevel2), null, EventTextCanvas.MessageBox)));
-
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
-                RebelBase));
+            SetDestinations();
+            SetupObjectives();
         }
 
         public override void StartMission()
@@ -123,19 +61,32 @@ namespace SpaceProject
 
         public override void OnLoad()
         {
-         
+            switch (ObjectiveIndex)
+            {
+                case 1:
+                case 2:
+                case 3:
+                    ObjectiveIndex = 0;
+                    break;
+
+            }
         }
 
         public override void OnReset()
         {
+            allyShips1 = CreateAllyShips(numberOfAllies);
+            SetDestinations();
+            SetupObjectives();
+
             base.OnReset();
+        }
 
-            ObjectiveIndex = 0;
+        public override void OnFailed()
+        {
+            base.OnFailed();
 
-            for (int i = 0; i < objectives.Count; i++)
-            {
-                objectives[i].Reset();
-            }
+            RemoveShips();
+            Game.messageBox.DisplayMessage("You were unsuccessful in retrieving Ente. Return to the rebel base to try again.", false);
         }
 
         public override void MissionLogic()
@@ -158,15 +109,102 @@ namespace SpaceProject
             this.progress = progress;
         }
 
-        private void RemoveShips(List<OverworldShip> ships)
+        protected override void SetDestinations()
         {
-            foreach (OverworldShip ship in ships)
+            destinations = new List<GameObjectOverworld>();
+
+            Station rebelBase = Game.stateManager.overworldState.GetStation("Rebel Base");
+            Station peyeScienceStation = Game.stateManager.overworldState.GetStation("Peye Science Station");
+
+            destinations.Add(rebelBase);
+            destinations.Add(peyeScienceStation);
+            destinations.Add(allyShips1[1]);
+            destinations.Add(peyeScienceStation);
+            destinations.Add(peyeScienceStation);
+            destinations.Add(peyeScienceStation);
+            destinations.Add(rebelBase);
+            destinations.Add(rebelBase);
+            destinations.Add(rebelBase);
+            destinations.Add(rebelBase);
+        }
+
+        protected override void SetupObjectives()
+        {
+            objectives.Clear();
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[0],
+                delegate { SetupAllyShips(allyShips1, destinations[0].position, destinations[1]); },
+                delegate { },
+                delegate { return true; },
+                delegate { return false; }));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[1],
+                new EventTextCapsule(GetEvent((int)EventID.OutsideRebelStation1), null, EventTextCanvas.MessageBox),
+                delegate { },
+                delegate { },
+                delegate { return (GameStateManager.currentState.ToLower().Equals("overworldstate")); },
+                delegate { return false; }));
+
+            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[2],
+                200, new EventTextCapsule(new EventText("[Rebel] \"Let's go!\""), null, EventTextCanvas.MessageBox)));
+
+            objectives.Add(new AutoPilotObjective(Game, this, ObjectiveDescriptions[0], destinations[3], autoPilotSpeed,
+                allyShips1, destinations[3].position,
+                new Dictionary<string, List<float>>
+                            { 
+                                { GetEvent((int)EventID.TravelToScienceStation1).Text, new List<float> { 5000, 3000 } },
+                                { GetEvent((int)EventID.TravelToScienceStation2).Text, new List<float> { 23000, 3000 } },
+                                { GetEvent((int)EventID.TravelToScienceStation3).Text, new List<float> { 9000, 3000 } }
+                            },
+                new EventTextCapsule(GetEvent((int)EventID.ArriveAtScienceStation), null, EventTextCanvas.MessageBox)));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], destinations[4],
+                "Itnos_1", LevelStartCondition.TextCleared,
+                new EventTextCapsule(GetEvent((int)EventID.AfterLevel1),
+                    null, EventTextCanvas.MessageBox)));
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[5],
+                new EventTextCapsule(GetEvent((int)EventID.InsideScienceStation), null, EventTextCanvas.BaseState)));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1], destinations[6],
+                new EventTextCapsule(GetEvent((int)EventID.OutsideScienceStation), null, EventTextCanvas.MessageBox),
+                delegate 
+                {
+                    RemoveShips();
+                }, delegate { },
+                delegate
+                {
+                    return GameStateManager.currentState == "OverworldState";
+                },
+                delegate { return false; }));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1], destinations[7],
+                new EventTextCapsule(GetEvent((int)EventID.BreakThroughLevel), null, EventTextCanvas.MessageBox),
+                delegate
+                {
+                    hangarAttackTime = StatsManager.PlayTime.GetFutureOverworldTime(2000);
+                },
+                delegate { },
+                delegate
+                {
+                    return StatsManager.PlayTime.HasOverworldTimePassed(hangarAttackTime);
+                },
+                delegate { return false; }));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1], destinations[8],
+                "Itnos_2", LevelStartCondition.TextCleared, new EventTextCapsule(GetEvent((int)EventID.AfterLevel2), null, EventTextCanvas.MessageBox)));
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
+                destinations[9]));
+        }
+
+        private void RemoveShips()
+        {
+            foreach (OverworldShip ship in allyShips1)
             {
                 ship.IsDead = true;
                 Game.stateManager.overworldState.RemoveOverworldObject(ship);
             }
-
-            ships.Clear();
         }
 
         private List<OverworldShip> CreateAllyShips(int count)
@@ -199,6 +237,5 @@ namespace SpaceProject
                 modifier *= -1;
             }
         }
-
     }
 }

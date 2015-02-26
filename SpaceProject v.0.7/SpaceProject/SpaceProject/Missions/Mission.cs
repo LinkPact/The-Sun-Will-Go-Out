@@ -88,6 +88,7 @@ namespace SpaceProject
         protected RumorsMenuState RumorsMenuState;
         protected ShopMenuState ShopMenuState;
 
+        protected List<GameObjectOverworld> destinations;
         protected GameObjectOverworld objectiveDestination;
         public GameObjectOverworld ObjectiveDestination { get { return objectiveDestination; } set { objectiveDestination = value; } }
 
@@ -334,10 +335,16 @@ namespace SpaceProject
 
             ObjectiveIndex = 0;
 
-            foreach (Objective obj in objectives)
+            for (int i = 0; i < objectives.Count; i++)
             {
-                obj.Reset();
+                objectives[i].Destination = destinations[i];
+                objectives[i].Reset();
             }
+        }
+
+        public virtual void OnFailed()
+        {
+
         }
 
         public virtual void MissionLogic()
@@ -623,5 +630,9 @@ namespace SpaceProject
                     break;
             }
         }
+
+        protected abstract void SetDestinations();
+        protected abstract void SetupObjectives();
+
     }
 }

@@ -271,6 +271,7 @@ namespace SpaceProject
             for (int i = 0; i < levels.Count; i++)
             {
                 if (GameStateManager.currentState.Equals("OverworldState")
+                    && game.stateManager.shooterState.CurrentLevel != null
                     && game.stateManager.shooterState.CurrentLevel.Identifier.Equals(levels[i])
                     && game.stateManager.shooterState.GetLevel(levels[i]).GetFreighterHP() != -1
                     && game.stateManager.shooterState.GetLevel(levels[i]).GetFreighterHP() <= 0)
@@ -297,9 +298,7 @@ namespace SpaceProject
             game.player.EnableControls();
             OverworldShip.FollowPlayer = true;
 
-            mission.OnReset();
             game.stateManager.overworldState.RemoveOverworldObject(escortDataCapsule.ShipToDefend);
-            game.messageBox.DisplayMessage("Noooo! The freighter was destroyed. We failed.", false);
             game.stateManager.ChangeState("OverworldState");
         }
 

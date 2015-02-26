@@ -1,0 +1,18 @@
+FONTS:
+
+"Iceland"
+Skapare: Cyreal
+Nedladdat från: Google fonts
+Licens: SIL Open Font License
+
+"ISL_Jupiter"
+Skapare: Isurus Labs
+Nedladdat från: dafont.com
+Licens: Public domain
+
+MUSIK:
+
+"Space Music Ambient"
+Skapare: evanjones4
+Nedladdat från: Freesounds.org
+Licens: Creative Commons

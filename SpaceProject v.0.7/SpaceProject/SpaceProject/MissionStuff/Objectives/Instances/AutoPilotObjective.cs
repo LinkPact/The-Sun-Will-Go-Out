@@ -71,6 +71,7 @@ namespace SpaceProject
             base.OnActivate();
 
             OverworldShip.FollowPlayer = false;
+            game.player.DisableControls();
 
             // Starts companion ships and disables player controls
             foreach (OverworldShip ship in ships)
@@ -129,6 +130,7 @@ namespace SpaceProject
             }
 
             OverworldShip.FollowPlayer = true;
+            game.player.EnableControls();
         }
 
         public override bool Failed()
@@ -139,6 +141,11 @@ namespace SpaceProject
         public override void OnFailed()
         {
             base.OnFailed();
+        }
+
+        public override void Reset()
+        {
+            base.Reset();
         }
 
         private float GetNextMessageStartTime()

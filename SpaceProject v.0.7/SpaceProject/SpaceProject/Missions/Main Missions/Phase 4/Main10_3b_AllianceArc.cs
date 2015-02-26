@@ -10,9 +10,9 @@ namespace SpaceProject
 {
     public class Main10_3b_AllianceArc : Mission
     {
-        private readonly string FIRST_ATTACK = "AllianceBranch_1";
-        private readonly string SECOND_ATTACK = "AllianceBranch_2";
-        private readonly string FINAL_BATTLE = "flightTraining_3";
+        private readonly string FirstAttack = "AllianceBranch_1";
+        private readonly string SecondAttack = "AllianceBranch_2";
+        //private readonly string FinalBattle = "flightTraining_3";
 
         private enum EventID
         {
@@ -31,30 +31,15 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetPlanet("Telmun"), new EventTextCapsule(
-                    GetEvent((int)EventID.ArriveAtTelmun), null, EventTextCanvas.BaseState)));
-
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetPlanet("Telmun"), FIRST_ATTACK,
-                LevelStartCondition.TextCleared,
-                new EventTextCapsule(GetEvent((int)EventID.BetweenAttacks),
-                    GetEvent((int)EventID.KilledOnLevel), EventTextCanvas.BaseState)));
-
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[2],
-                Game.stateManager.overworldState.GetPlanet("Telmun"), SECOND_ATTACK,
-                LevelStartCondition.TextCleared,
-                new EventTextCapsule(GetEvent((int)EventID.AfterAttacks), GetEvent((int)EventID.KilledOnLevel),
-                    EventTextCanvas.BaseState)));
-
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[3],
-                Game.stateManager.overworldState.GetPlanet("Telmun"), FINAL_BATTLE,
-                LevelStartCondition.TextCleared));
+            SetDestinations();
+            SetupObjectives();
+            RestartAfterFail();
         }
 
         public override void StartMission()
         {
             MissionManager.RemoveAvailableMission("Main - Rebel Arc");
+            MissionManager.RemoveAvailableMission("Main - On Your Own");
         }
 
         public override void OnLoad()
@@ -64,14 +49,17 @@ namespace SpaceProject
 
         public override void OnReset()
         {
+            SetDestinations();
+            SetupObjectives();
+
             base.OnReset();
+        }
 
-            ObjectiveIndex = 0;
+        public override void OnFailed()
+        {
+            base.OnFailed();
 
-            for (int i = 0; i < objectives.Count; i++)
-            {
-                objectives[i].Reset();
-            }
+            Game.messageBox.DisplayMessage("You could not gain control of the Murt, return to the Alliance fleet outside Telmun to try again.", false);
         }
 
         public override void MissionLogic()
@@ -92,6 +80,52 @@ namespace SpaceProject
         public override void SetProgress(int progress)
         {
             this.progress = progress;
+        }
+
+        protected override void SetDestinations()
+        {
+            destinations = new List<GameObjectOverworld>();
+
+            GameObjectOverworld telmun = Game.stateManager.overworldState.GetPlanet("Telmun");
+
+            destinations.Add(telmun);
+            destinations.Add(telmun);
+            destinations.Add(telmun);
+            destinations.Add(telmun);
+        }
+
+        protected override void SetupObjectives()
+        {
+            objectives.Clear();
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
+                destinations[0], new EventTextCapsule(
+                    GetEvent((int)EventID.ArriveAtTelmun), null, EventTextCanvas.BaseState)));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
+                destinations[1], FirstAttack,
+                LevelStartCondition.TextCleared,
+                new EventTextCapsule(GetEvent((int)EventID.BetweenAttacks),
+                    null, EventTextCanvas.BaseState)));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[2],
+                destinations[2], SecondAttack,
+                LevelStartCondition.TextCleared,
+                new EventTextCapsule(GetEvent((int)EventID.AfterAttacks), null,
+                    EventTextCanvas.BaseState)));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[3],
+                delegate { },
+                delegate { },
+                delegate
+                {
+                    return missionHelper.IsTextCleared();
+                },
+                delegate { return false; }));
+
+            //objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[3],
+            //    destinations[3], FinalBattle,
+            //    LevelStartCondition.TextCleared));
         }
     }
 }

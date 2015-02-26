@@ -20,7 +20,6 @@ namespace SpaceProject
         // Missions
 
         // Main Missions
-        private static Main0_Tutorial mainTutorialMission;
         private static Main1_NewFirstMission mainNewFirstMission;
         private static Main2_Highfence mainHighfence;
         private static Main3_Rebels mainRebels;
@@ -63,6 +62,8 @@ namespace SpaceProject
 
         public void Initialize()
         {
+            RebelFleet.IsShown = false;
+
             missionObjectSpriteSheet = new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/MissionObjectSpriteSheet"), null);
 
             activeMissions = new List<Mission>();
@@ -70,11 +71,6 @@ namespace SpaceProject
             missions = new List<Mission>();
 
             // Main Missions
-
-            // Main 0 - Tutorial Mission
-            mainTutorialMission = new Main0_Tutorial(game, "Main0_TutorialMission", null);
-            mainTutorialMission.Initialize();
-            missions.Add(mainTutorialMission);
 
             // Main 1 - New First Mission
             mainNewFirstMission = new Main1_NewFirstMission(game, "Main1_NewFirstMission", missionObjectSpriteSheet);
@@ -230,18 +226,16 @@ namespace SpaceProject
         {
             Mission tempMission = ReturnSpecifiedMission(missionName);
 
-            if (tempMission.MissionState.Equals(StateOfMission.Active))
+            if (tempMission.MissionState.Equals(StateOfMission.Active)
+                || tempMission.MissionState.Equals(StateOfMission.Failed))
             {
-                removedActiveMissions.Add(tempMission);
-                tempMission.MissionState = StateOfMission.Available;
                 tempMission.OnReset();
-            }
-            else if (tempMission.MissionState.Equals(StateOfMission.Failed) 
-                && tempMission.IsRestartAfterFail())
-            {
-                removedActiveMissions.Add(tempMission);
                 tempMission.MissionState = StateOfMission.Available;
-                tempMission.OnReset();
+
+                if (tempMission.MissionState.Equals(StateOfMission.Active))
+                {
+                    removedActiveMissions.Add(tempMission);
+                }
             }
 
             else
@@ -359,7 +353,9 @@ namespace SpaceProject
             else if (tempMission.MissionState.Equals(StateOfMission.Failed))
             {
                 if (!tempMission.IsRestartAfterFail())
+                {
                     tempMission.MissionState = StateOfMission.FailedDead;
+                }
                 else
                 {
                     ResetMission(tempMission.MissionName);
@@ -692,7 +688,9 @@ namespace SpaceProject
             }
 
             // Final mission stuff
-            if (mainTheEnd.MissionState == StateOfMission.Completed
+            if ((mainTheEnd.MissionState == StateOfMission.Completed
+                    || (mainTheEnd.MissionState == StateOfMission.CompletedDead 
+                        && !RebelFleet.IsShown))
                 && GameStateManager.currentState.Equals("OverworldState"))
             {
                 UnlockMission(mainOnYourOwnArc.MissionName);
@@ -702,6 +700,7 @@ namespace SpaceProject
                     game.stateManager.overworldState.GetSectorX.GetSpriteSheet(), Vector2.Zero);
                 AllianceFleet allianceFleet = new AllianceFleet(game,
                     game.stateManager.overworldState.GetSectorX.GetSpriteSheet(), Vector2.Zero);
+                RebelFleet.IsShown = true;
 
                 rebelFleet.Initialize();
                 allianceFleet.Initialize();

@@ -9,9 +9,6 @@ namespace SpaceProject
 {
     class DebtCollection : Mission
     {
-        //private bool failed;
-        //private bool success;
-
         public DebtCollection(Game1 Game, string section, Sprite spriteSheet) :
             base(Game, section, spriteSheet)
         {
@@ -21,12 +18,56 @@ namespace SpaceProject
         {
             base.Initialize();
 
+            SetDestinations();
+            SetupObjectives();
+        }
+
+        public override void StartMission()
+        {
+            ObjectiveIndex = 0;
+            progress = 0;
+        }
+
+        public override void OnLoad()
+        { }
+
+        public override void MissionLogic()
+        {
+            base.MissionLogic();                                                                          
+        }
+
+        public override int GetProgress()
+        {
+            return progress;
+        }
+
+        public override void SetProgress(int progress)
+        {
+            this.progress = progress;
+        }
+
+        protected override void SetDestinations()
+        {
+            destinations = new List<GameObjectOverworld>();
+
+            GameObjectOverworld fortrunStaion1 =
+                Game.stateManager.overworldState.GetStation("Fortrun Station I");
+
+            destinations.Add(fortrunStaion1);
+            destinations.Add(fortrunStaion1);
+
+        }
+
+        protected override void SetupObjectives()
+        {
+            objectives.Clear();
+
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetStation("Fortrun Station I"),
+                destinations[0],
                 new EventTextCapsule(GetEvent(0), null, EventTextCanvas.BaseState)));
 
             objectives.Add(new ResponseObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetStation("Fortrun Station I"),
+                destinations[1],
                 new ResponseTextCapsule(GetEvent(1), GetAllResponses(1),
                     new List<System.Action>()
                     {
@@ -112,30 +153,6 @@ namespace SpaceProject
             //    Game.stateManager.overworldState.GetPlanet("Highfence"), null, null,
             //    delegate { return (missionHelper.IsPlayerOnPlanet("Highfence") && success); },
             //    delegate { return (missionHelper.IsPlayerOnPlanet("Highfence") && failed); }));
-        }
-
-        public override void StartMission()
-        {
-            ObjectiveIndex = 0;
-            progress = 0;
-        }
-
-        public override void OnLoad()
-        { }
-
-        public override void MissionLogic()
-        {
-            base.MissionLogic();                                                                          
-        }
-
-        public override int GetProgress()
-        {
-            return progress;
-        }
-
-        public override void SetProgress(int progress)
-        {
-            this.progress = progress;
         }
     }
 }

@@ -287,18 +287,18 @@ namespace SpaceProject
                               true,
                               "Back"));
 
-                        if (selectedMission == MissionManager.GetMission("Main - Tutorial Mission")
-                            && MissionManager.GetMission("Main - New First Mission").MissionState == StateOfMission.Unavailable)
-                        {
-                            MissionManager.UnlockMission("Main - New First Mission");
-                            MissionManager.MarkMissionAsActive("Main - New First Mission");
-                            MissionEvent();
-                        }
-
-                        else
-                        {
-                            SelectMission();
-                        }
+                        //if (selectedMission == MissionManager.GetMission("Main - Tutorial Mission")
+                        //    && MissionManager.GetMission("Main - New First Mission").MissionState == StateOfMission.Unavailable)
+                        //{
+                        //    MissionManager.UnlockMission("Main - New First Mission");
+                        //    MissionManager.MarkMissionAsActive("Main - New First Mission");
+                        //    MissionEvent();
+                        //}
+                        //
+                        //else
+                        //{
+                        SelectMission();
+                        //}
                     }
                 }
             }

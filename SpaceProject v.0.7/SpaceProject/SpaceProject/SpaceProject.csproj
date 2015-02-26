@@ -221,13 +221,10 @@
     <Compile Include="Missions\Main Missions\Phase 1\Main2_Highfence.cs" />
     <Compile Include="Missions\Main Missions\Phase 1\Main1_NewFirstMission.cs" />
     <Compile Include="Missions\Side Missions\DebtCollection.cs" />
-    <Compile Include="Missions\Old Missions\Main3_TheAlliance.cs" />
     <Compile Include="Missions\Main Missions\Phase 2\Main5_DefendColony.cs" />
     <Compile Include="Missions\Side Missions\FlightTraining.cs" />
     <Compile Include="Missions\Side Missions\DeathByMeteorMission.cs" />
     <Compile Include="Missions\Main Missions\Phase 1\Main3_Rebels.cs" />
-    <Compile Include="Missions\Old Missions\Main0_Tutorial.cs" />
-    <Compile Include="Missions\Old Missions\Main1_AColdWelcome.cs" />
     <Compile Include="Missions\Side Missions\ColonyAid.cs" />
     <Compile Include="Missions\Main Missions\Phase 2\AstroDodger.cs" />
     <Compile Include="MissionStuff\Objectives\DataCapsules\EscortDataCapsule.cs" />

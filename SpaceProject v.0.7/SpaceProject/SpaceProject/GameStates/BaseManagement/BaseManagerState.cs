@@ -135,7 +135,7 @@ namespace SpaceProject
                 cursorManager.Update(gameTime, cursorLevel, cursorLevel1Position, cursorLevel2Position, cursorLevel3Position, section, cursorSplit);
 
             fontManager.Update(gameTime, cursorLevel, cursorLevel1Position, cursorLevel2Position, cursorLevel3Position, section);
-            informationManager.Update(gameTime, cursorLevel, cursorLevel1Position, cursorLevel3Position, "BaseManagerState", section);
+            informationManager.Update(gameTime, cursorLevel, cursorLevel1Position, 1, cursorLevel3Position, "BaseManagerState", section);
 
             elapsedSinceKey += gameTime.ElapsedGameTime.Milliseconds;
 

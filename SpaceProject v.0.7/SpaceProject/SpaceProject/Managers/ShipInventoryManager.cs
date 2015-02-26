@@ -423,18 +423,22 @@ namespace SpaceProject
         
         public static void EquipItemFromSublist(ShipParts kind, int equipPos, int invPos)
         {
+            List<ShipPart> availablePrimaryWeapons;
+
             switch (kind)
             {
                 case ShipParts.Primary1:
                     {
+                        availablePrimaryWeapons = ShipInventoryManager.GetAvailablePrimaryWeapons(1);
                         ShipInventoryManager.equippedPrimaryWeapons.RemoveAt(0);
-                        ShipInventoryManager.equippedPrimaryWeapons.Insert(0, (PlayerWeapon)ShipInventoryManager.GetAvailablePrimaryWeapons(1)[invPos]);
+                        ShipInventoryManager.equippedPrimaryWeapons.Insert(0, (PlayerWeapon)availablePrimaryWeapons[invPos]);
                         break;
                     }
                 case ShipParts.Primary2:
                     {
+                        availablePrimaryWeapons = ShipInventoryManager.GetAvailablePrimaryWeapons(2);
                         ShipInventoryManager.equippedPrimaryWeapons.RemoveAt(1);
-                        ShipInventoryManager.equippedPrimaryWeapons.Insert(1, (PlayerWeapon)ShipInventoryManager.GetAvailablePrimaryWeapons(2)[invPos]);
+                        ShipInventoryManager.equippedPrimaryWeapons.Insert(1, (PlayerWeapon)availablePrimaryWeapons[invPos]);
                         break;
                     }
                 case ShipParts.Secondary:

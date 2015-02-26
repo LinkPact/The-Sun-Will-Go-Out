@@ -29,30 +29,8 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            Planet telmun = Game.stateManager.overworldState.GetPlanet("Telmun");
-
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], telmun,
-                new List<String>{
-                    GetEvent((int)EventID.ToAsteroidBelt1).Text
-                }, 3000, 3000));
-
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], telmun,
-                new List<String>{
-                    GetEvent((int)EventID.ToAsteroidBelt2).Text
-                }, 3000, 3000));
-
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], telmun,
-                new List<String>{
-                    GetEvent((int)EventID.ToAsteroidBelt3).Text
-                }, 3000, 3000));
-
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], telmun,
-                new List<String>{
-                    GetEvent((int)EventID.ToAsteroidBelt4).Text
-                }, 3000, 3000));
-
-            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], telmun, 600,
-                new EventTextCapsule(GetEvent((int)EventID.AtAsteroidBelt), null, EventTextCanvas.MessageBox)));
+            SetDestinations();
+            SetupObjectives();
         }
 
         public override void StartMission()
@@ -94,6 +72,47 @@ namespace SpaceProject
         public override void SetProgress(int progress)
         {
             this.progress = progress;
+        }
+
+        protected override void SetDestinations()
+        {
+            destinations = new List<GameObjectOverworld>();
+
+            Planet telmun = Game.stateManager.overworldState.GetPlanet("Telmun");
+
+            destinations.Add(telmun);
+            destinations.Add(telmun);
+            destinations.Add(telmun);
+            destinations.Add(telmun);
+            destinations.Add(telmun);
+        }
+
+        protected override void SetupObjectives()
+        {
+            objectives.Clear();
+
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[0],
+                    new List<String>{
+                    GetEvent((int)EventID.ToAsteroidBelt1).Text
+                }, 3000, 3000));
+
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[1],
+                new List<String>{
+                    GetEvent((int)EventID.ToAsteroidBelt2).Text
+                }, 3000, 3000));
+
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[2],
+                new List<String>{
+                    GetEvent((int)EventID.ToAsteroidBelt3).Text
+                }, 3000, 3000));
+
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[3],
+                new List<String>{
+                    GetEvent((int)EventID.ToAsteroidBelt4).Text
+                }, 3000, 3000));
+
+            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[4], 1200,
+                new EventTextCapsule(GetEvent((int)EventID.AtAsteroidBelt), null, EventTextCanvas.MessageBox)));
         }
     }
 }

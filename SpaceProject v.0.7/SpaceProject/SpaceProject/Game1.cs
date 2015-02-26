@@ -14,7 +14,6 @@ namespace SpaceProject
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         #region declaration
-        //public static bool OkayToExit = false;
         public SaveFile settingsFile;
 
         public Sprite spriteSheetVerticalShooter;
@@ -108,12 +107,10 @@ namespace SpaceProject
             graphics.PreferredBackBufferWidth = (int)resolution.X;
             graphics.PreferredBackBufferHeight = (int)resolution.Y;
             graphics.IsFullScreen = settingsFile.GetPropertyAsBool("visual", "fullscreen", false);
+            graphics.SynchronizeWithVerticalRetrace = true;
             graphics.ApplyChanges();
 
             IsMouseVisible = true;
-            graphics.SynchronizeWithVerticalRetrace = false;
-            this.IsFixedTimeStep = true;
-            this.TargetElapsedTime = System.TimeSpan.FromMilliseconds(1000 / 60f); 
 
             menuBGController = new MenuBackdropController(this);
             menuBGController.Initialize();

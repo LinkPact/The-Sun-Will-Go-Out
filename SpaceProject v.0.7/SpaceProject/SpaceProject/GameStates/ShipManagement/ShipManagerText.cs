@@ -59,7 +59,15 @@ namespace SpaceProject
         public void DisplayGeneralInfo(SpriteBatch spriteBatch)
         {
             //Money
-            spriteBatch.DrawString(FontManager.GetFontStatic(16), "Money: " + (int)StatsManager.Rupees + " Rupees", new Vector2(Game.Window.ClientBounds.Width / 2 + 20, Game.Window.ClientBounds.Height * 3 / 4 + 30) + FontManager.FontOffsetStatic, FontManager.FontColorStatic);
+            spriteBatch.DrawString(FontManager.GetFontStatic(16),
+                "Money: " + (int)StatsManager.Rupees + " Rupees",
+                new Vector2(Game.Window.ClientBounds.Width / 2 + Game.Window.ClientBounds.Width / 4, Game.Window.ClientBounds.Height * 3 / 4 + 30) + FontManager.FontOffsetStatic,
+                FontManager.FontColorStatic,
+                0f,
+                FontManager.GetFontStatic(16).MeasureString("Money: " + (int)StatsManager.Rupees + " Rupees") / 2,
+                1f,
+                SpriteEffects.None,
+                1f);
         }
         
         public static void DisplayPrimaryWeaponInfo1(SpriteBatch spriteBatch)

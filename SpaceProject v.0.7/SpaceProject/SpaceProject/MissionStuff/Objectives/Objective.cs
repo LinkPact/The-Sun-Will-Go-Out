@@ -26,9 +26,6 @@ namespace SpaceProject
         private GameObjectOverworld destination;
         public GameObjectOverworld Destination { get { return destination; } set {destination = value; } }
 
-        private Vector2 destinationVector;
-        public Vector2 DestinationVector { get { return destinationVector; } set { destinationVector = value; } }
-
         protected EventTextCanvas eventTextCanvas;
         protected EventText objectiveCompletedEventText;
         protected EventText objectiveFailedEventText;
@@ -135,6 +132,13 @@ namespace SpaceProject
             else
             {
                 failLogic.Invoke();
+            }
+
+            mission.OnFailed();
+
+            if (mission.IsRestartAfterFail())
+            {
+                MissionManager.ResetMission(mission.MissionName);
             }
         }
     }

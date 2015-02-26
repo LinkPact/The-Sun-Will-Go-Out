@@ -12,7 +12,7 @@ namespace SpaceProject
     {
         private readonly string FirstAllianceLevel = "RebelBranch_1";
         private readonly string SecondAllianceLevel = "RebelBranch_2";
-        private readonly string ThirdAllianceLevel = "AlliancePirate3";
+        //private readonly string ThirdAllianceLevel = "AlliancePirate3";
 
         private enum EventID
         {
@@ -31,30 +31,15 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetPlanet("Telmun"), new EventTextCapsule(
-                    GetEvent((int)EventID.ArriveAtTelmun), null, EventTextCanvas.BaseState)));
-
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetPlanet("Telmun"), FirstAllianceLevel,
-                LevelStartCondition.TextCleared,
-                new EventTextCapsule(GetEvent((int)EventID.BetweenAllianceAttacks),
-                    GetEvent((int)EventID.KilledOnAllianceLevel), EventTextCanvas.BaseState)));
-
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[2],
-                Game.stateManager.overworldState.GetPlanet("Telmun"), SecondAllianceLevel,
-                LevelStartCondition.TextCleared,
-                new EventTextCapsule(GetEvent((int)EventID.AfterAllianceAttacks), GetEvent((int)EventID.KilledOnAllianceLevel),
-                    EventTextCanvas.BaseState)));
-
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[3],
-                Game.stateManager.overworldState.GetPlanet("Telmun"), ThirdAllianceLevel,
-                LevelStartCondition.TextCleared));
+            SetDestinations();
+            SetupObjectives();
+            RestartAfterFail();
         }
 
         public override void StartMission()
         {
             MissionManager.RemoveAvailableMission("Main - Alliance Arc");
+            MissionManager.RemoveAvailableMission("Main - On Your Own");
         }
 
         public override void OnLoad()
@@ -64,14 +49,17 @@ namespace SpaceProject
 
         public override void OnReset()
         {
+            SetDestinations();
+            SetupObjectives();
+
             base.OnReset();
+        }
 
-            ObjectiveIndex = 0;
+        public override void OnFailed()
+        {
+            base.OnFailed();
 
-            for (int i = 0; i < objectives.Count; i++)
-            {
-                objectives[i].Reset();
-            }
+            Game.messageBox.DisplayMessage("You could not defend the Murt from the Alliance, return to the rebel fleet outside Telmun to try again.", false);
         }
 
         public override void MissionLogic()
@@ -92,6 +80,48 @@ namespace SpaceProject
         public override void SetProgress(int progress)
         {
             this.progress = progress;
+        }
+
+        protected override void SetDestinations()
+        {
+            destinations = new List<GameObjectOverworld>();
+
+            GameObjectOverworld telmun = Game.stateManager.overworldState.GetPlanet("Telmun");
+
+            destinations.Add(telmun);
+            destinations.Add(telmun);
+            destinations.Add(telmun);
+            destinations.Add(telmun);
+        }
+
+        protected override void SetupObjectives()
+        {
+            objectives.Clear();
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[0], new EventTextCapsule(
+                    GetEvent((int)EventID.ArriveAtTelmun), null, EventTextCanvas.BaseState)));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1], destinations[1],
+                FirstAllianceLevel, LevelStartCondition.TextCleared,
+                new EventTextCapsule(GetEvent((int)EventID.BetweenAllianceAttacks),
+                    null, EventTextCanvas.BaseState)));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[2], destinations[2],
+                SecondAllianceLevel, LevelStartCondition.TextCleared,
+                new EventTextCapsule(GetEvent((int)EventID.AfterAllianceAttacks), null,
+                    EventTextCanvas.BaseState)));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[3],
+                delegate { },
+                delegate { },
+                delegate
+                {
+                    return missionHelper.IsTextCleared();
+                },
+                delegate { return false; }));
+
+            //objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[3], destinations[3],
+            //    ThirdAllianceLevel, LevelStartCondition.TextCleared));
         }
     }
 }

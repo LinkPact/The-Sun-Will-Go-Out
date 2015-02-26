@@ -23,19 +23,15 @@ namespace SpaceProject
             base.Initialize();
 
             RewardItems.Add(new DrillBeamWeapon(Game));
-
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                Game.stateManager.overworldState.GetPlanet("Lavis")));
-
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
-                Game.stateManager.overworldState.GetPlanet("Lavis"), "AstroScan", LevelStartCondition.Immediately,
-                new EventTextCapsule(GetEvent((int)EventID.FlyBack), null, EventTextCanvas.MessageBox)));
         }
 
         public override void StartMission()
         {
             ObjectiveIndex = 0;
             progress = 0;
+
+            SetDestinations();
+            SetupObjectives();
         }
 
         public override void OnLoad()
@@ -56,5 +52,26 @@ namespace SpaceProject
             this.progress = progress;
         }
 
+        protected override void SetDestinations()
+        {
+            destinations = new List<GameObjectOverworld>();
+
+            GameObjectOverworld lavis = Game.stateManager.overworldState.GetPlanet("Lavis");
+
+            destinations.Add(lavis);
+            destinations.Add(lavis);
+        }
+
+        protected override void SetupObjectives()
+        {
+            objectives.Clear();
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
+                destinations[0]));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
+                destinations[1], "AstroScan", LevelStartCondition.Immediately,
+                new EventTextCapsule(GetEvent((int)EventID.FlyBack), null, EventTextCanvas.MessageBox)));
+        }
     }
 }
