@@ -830,9 +830,9 @@ namespace SpaceProject
                     case "Hangar Ship":
                         sectorX.shipSpawner.AddRebelShip(new Vector2(posx, posy));
                         break;
-                    case "Ally Ship":
-                        sectorX.shipSpawner.AddRebelShip(new Vector2(posx, posy));
-                        break;
+                    //case "Ally Ship":
+                    //    sectorX.shipSpawner.AddRebelShip(new Vector2(posx, posy));
+                    //    break;
                 }
             }
 

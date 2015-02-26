@@ -41,12 +41,7 @@ namespace SpaceProject
 
             RewardItems.Add(new SpreadBulletWeapon(Game, ItemVariety.regular));
 
-            ally1 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet, ShipType.Alliance);
-            ally1.Initialize(Game.stateManager.overworldState.GetSectorX,
-                new Vector2(Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids").position.X - 200,
-                    Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids").position.Y + 200),
-                    Vector2.Zero);
-            ally1.AIManager = new WaitAction(ally1, delegate { return false; });
+            CreateAllyShip();
 
             SetDestinations();
             SetupObjectives();
@@ -64,6 +59,7 @@ namespace SpaceProject
 
         public override void OnLoad()
         {
+            Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(ally1, ally1.position, "", null);
         }
 
         public override void MissionLogic()
@@ -158,6 +154,16 @@ namespace SpaceProject
                 GetEvent((int)EventID.TravelingBack).Text, 3000, 3000));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1], destinations[6]));
+        }
+
+        private void CreateAllyShip()
+        {
+            ally1 = new AllyShip(Game, Game.stateManager.shooterState.spriteSheet, ShipType.Alliance);
+            ally1.Initialize(Game.stateManager.overworldState.GetSectorX,
+                new Vector2(Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids").position.X - 200,
+                    Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids").position.Y + 200),
+                    Vector2.Zero);
+            ally1.AIManager = new WaitAction(ally1, delegate { return false; });
         }
     }
 }

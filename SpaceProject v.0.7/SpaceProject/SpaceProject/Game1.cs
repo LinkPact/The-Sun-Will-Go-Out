@@ -63,7 +63,6 @@ namespace SpaceProject
         public Camera camera;
 
         //fps
-        private static readonly float TargetFrameRate = 60f;
         private float fps;
         private float fpsTimer;
         private bool showFPS;
@@ -108,8 +107,7 @@ namespace SpaceProject
             graphics.PreferredBackBufferWidth = (int)resolution.X;
             graphics.PreferredBackBufferHeight = (int)resolution.Y;
             graphics.IsFullScreen = settingsFile.GetPropertyAsBool("visual", "fullscreen", false);
-            graphics.SynchronizeWithVerticalRetrace = false;
-            this.TargetElapsedTime = System.TimeSpan.FromMilliseconds(1000 / TargetFrameRate); 
+            graphics.SynchronizeWithVerticalRetrace = true;
             graphics.ApplyChanges();
 
             IsMouseVisible = true;
