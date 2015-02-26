@@ -95,8 +95,8 @@ namespace SpaceProject
             elapsedSinceKey = 0;
             elapseDelay = 50;
 
-            itemComp = new ItemComparison(this.Game, this.spriteSheet, new Rectangle(386, 14, 9, 5),
-                new Rectangle(386, 29, 9, 8), new Rectangle(386, 20, 9, 8));
+            itemComp = new ItemComparison(this.Game, this.spriteSheet, new Rectangle(504, 772, 9, 5),
+                new Rectangle(504, 787, 9, 8), new Rectangle(504, 778, 9, 8));
         }
         
         public override void OnEnter()
@@ -120,7 +120,8 @@ namespace SpaceProject
 
             cursorManager.Update(gameTime, cursorLevel, cursorCoordLv1, cursorLevel2Position);
             fontManager.Update(gameTime, cursorLevel, cursorCoordLv1.ToInt(), cursorLevel2Position);
-            informationManager.Update(gameTime, cursorLevel, cursorCoordLv1.ToInt(), cursorLevel2Position, "ShipManagerState", -1);
+            informationManager.Update(gameTime, cursorLevel, cursorCoordLv1.ToInt(),
+                cursorCoordLv1.Y, cursorLevel2Position, "ShipManagerState", -1);
 
             elapsedSinceKey += gameTime.ElapsedGameTime.Milliseconds;
 
@@ -179,25 +180,6 @@ namespace SpaceProject
                                 itemComp.SetItem1(ShipInventoryManager.equippedPrimaryWeapons[1]);
                                 itemComp.ShowSymbols = true;
                                 break;
-            
-                            //case 6:
-                            //
-                            //    if (!CheckForOutOfRange())
-                            //    {
-                            //        if (ShipInventoryManager.ShipItems[cursorLevel2Position].Kind != "Empty")
-                            //        {
-                            //            if (!CheckForOutOfRange())
-                            //                itemComp.SetItem2(ShipInventoryManager.ShipItems[cursorLevel2Position]);
-                            //
-                            //            itemComp.SetItem1(tempItem);
-                            //
-                            //            itemComp.ShowSymbols = true;
-                            //        }
-                            //
-                            //        else
-                            //            itemComp.ShowSymbols = false;
-                            //    }
-                            //    break;
                         }
                         break;
                     }
@@ -230,11 +212,6 @@ namespace SpaceProject
             {
                 Game.stateManager.shooterState.BeginLevel("mapCreator2");
             }
-
-            //if (ControlManager.CurrentKeyboardState.IsKeyDown(Keys.Delete) && !ShipInventoryManager.isCheatActivated)
-            //{
-            //    ShipInventoryManager.ActivateCheat();
-            //}
 
             if (ControlManager.CheckKeyPress(Keys.NumPad0))
             {

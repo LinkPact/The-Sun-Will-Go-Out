@@ -15,6 +15,7 @@ namespace SpaceProject
         //Denotes current active position of cursor.
         private static int layer;
         private static int layer1pos;
+        private static int layer1YPos;
         private static int layer2pos;
         private static int section;
         private static readonly SpriteFont infoFont = FontManager.GetFontStatic(16);
@@ -29,10 +30,11 @@ namespace SpaceProject
         public void Initialize()
         { }
 
-        public void Update(GameTime gameTime, int layer_, int var1_, int var2_, String state_, int section_)
+        public void Update(GameTime gameTime, int layer_, int var1_, int var1_y, int var2_, String state_, int section_)
         {
             layer = layer_;
             layer1pos = var1_;
+            layer1YPos = var1_y;
             layer2pos = var2_;
             section = section_;
         }
@@ -60,7 +62,9 @@ namespace SpaceProject
             {
                 if (ShipInventoryManager.OwnedPrimaryWeapons.Count > 0)
                 {
-                    ShipInventoryManager.OwnedPrimaryWeapons[layer2pos].DisplayInventoryInfo(
+                    int slot = layer1YPos + 1;
+
+                    ShipInventoryManager.GetAvailablePrimaryWeapons(slot)[layer2pos].DisplayInventoryInfo(
                         spriteBatch, infoFont, FontManager.FontColorStatic);
                 }
             }
