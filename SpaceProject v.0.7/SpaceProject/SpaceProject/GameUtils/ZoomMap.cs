@@ -28,12 +28,17 @@ namespace SpaceProject
         private const float StationZoomScale = 0.2f;
         private const float PlayerZoomScale = 0.5f;
 
+        private const float CameraPanSpeed = 75f;
+
         // variables
         private static MapState mapState = MapState.Off;
+        private static Vector2 cameraPosition;
+        private static Vector2 originalCameraPosition;
 
         // properties
         public static bool IsMapOn { get { return mapState != MapState.Off; } private set { ; } }
         public static MapState MapState { get { return mapState; } private set { ; } }
+        public static Vector2 CameraPosition { get { return cameraPosition; } private set { ;} }
 
         public static void ToggleMap()
         {
@@ -53,6 +58,42 @@ namespace SpaceProject
         /// <param name="gameObjects">Objects to be scaled up for visibility</param>
         public static void Update(GameTime gameTime, List<GameObjectOverworld> gameObjects, Camera camera)
         {
+            if (mapState == MapState.On)
+            {
+                if (ControlManager.CheckHold(RebindableKeys.Right))
+                {
+                    cameraPosition.X += CameraPanSpeed;
+                }
+
+                else if (ControlManager.CheckHold(RebindableKeys.Left))
+                {
+                    cameraPosition.X -= CameraPanSpeed;
+                }
+
+                if (ControlManager.CheckHold(RebindableKeys.Up))
+                {
+                    cameraPosition.Y -= CameraPanSpeed;
+                }
+
+                else if (ControlManager.CheckHold(RebindableKeys.Down))
+                {
+                    cameraPosition.Y += CameraPanSpeed;
+                }
+
+                else if (!ControlManager.CheckHold(RebindableKeys.Right)
+                    && !ControlManager.CheckHold(RebindableKeys.Left)
+                    && !ControlManager.CheckHold(RebindableKeys.Up)
+                    && !ControlManager.CheckHold(RebindableKeys.Down))
+                {
+                    cameraPosition = originalCameraPosition;
+                }
+            }
+
+            else
+            {
+                originalCameraPosition = camera.Position;
+            }
+
             if (mapState == MapState.ZoomingOut)
             {
                 camera.Zoom *= ZoomOutFactor;

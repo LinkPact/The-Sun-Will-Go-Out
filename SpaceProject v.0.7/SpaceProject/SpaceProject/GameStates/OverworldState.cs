@@ -242,7 +242,6 @@ namespace SpaceProject
             "Pos: " + Game.player.position;
 
             StaticFunctions.CheckObjectUsage(Game, deepSpaceGameObjects);
-            camera.CameraUpdate(gameTime, Game.player);
 
             DetermineCurrentRegion();
 

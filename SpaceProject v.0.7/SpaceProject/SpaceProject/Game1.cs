@@ -212,6 +212,8 @@ namespace SpaceProject
                     shopManager.Update(gameTime);
                 }
 
+                camera.CameraUpdate(gameTime, player);
+
                 soundEffectsManager.Update(gameTime);
 
                 if (ControlManager.CheckKeyPress(Keys.N))

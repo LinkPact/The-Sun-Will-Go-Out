@@ -114,7 +114,16 @@ namespace SpaceProject
         {
             if ((cameraPos.X - (Game.Window.ClientBounds.Width / 2) >= 0 && (cameraPos.X + Game.Window.ClientBounds.Width / 2) <= WorldWidth)
                    || (cameraPos.Y - (Game.Window.ClientBounds.Height / 2) >= 0 && cameraPos.Y + (Game.Window.ClientBounds.Height / 2) <= WorldHeight))
-                Position = player.position;
+            {
+                if (ZoomMap.MapState == MapState.On)
+                {
+                    Position = ZoomMap.CameraPosition;
+                }
+                else
+                {
+                    Position = player.position;
+                }
+            }
         }
     }
 }
