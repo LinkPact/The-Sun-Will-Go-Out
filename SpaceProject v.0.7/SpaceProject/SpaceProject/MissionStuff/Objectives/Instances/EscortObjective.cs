@@ -151,7 +151,7 @@ namespace SpaceProject
             // Player talks to freighter to begin escort
             if (!started
                 && GameStateManager.currentState.Equals("OverworldState")
-                && CollisionDetection.IsPointInsideRectangle(game.player.position, escortDataCapsule.ShipToDefend.Bounds)
+                && CollisionDetection.IsRectInRect(game.player.Bounds, escortDataCapsule.ShipToDefend.Bounds)
                 && ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter))))
             {
                 game.messageBox.DisplayMessage(escortDataCapsule.ShipIntroductionText, false);

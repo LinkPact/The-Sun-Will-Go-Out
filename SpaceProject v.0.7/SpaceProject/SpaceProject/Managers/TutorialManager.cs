@@ -150,8 +150,9 @@ namespace SpaceProject
                 DisplayTutorialMessage("This is a 'beacon'. Beacons are used for traveling quickly between stations and planets, but they need to be activated before use. Try activating it now."); 
             }
 
-            if (!hasActivatedHighfenceBeacon &&
-                game.stateManager.overworldState.GetBeacon("Highfence Beacon").IsActivated)
+            if (hasEnteredHighfenceBeaconArea
+                && !hasActivatedHighfenceBeacon
+                && game.stateManager.overworldState.GetBeacon("Highfence Beacon").IsActivated)
             {
                 hasActivatedHighfenceBeacon = true;
                 DisplayTutorialMessage("Good! This beacon is now activated and you can press 'Enter' above it to open the beacon menu. However, you won't be able to use it until you activate more beacons. All planets in the sector have a beacon orbiting it. Don't forget to activate them when you see them!");
