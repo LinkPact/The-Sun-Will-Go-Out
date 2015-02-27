@@ -12,8 +12,11 @@ namespace SpaceProject
     {
         public Vector2 cameraPos;
 
-        private const float zoomUpperLimit = 1.5f;
-        private const float zoomLowerLimit = 0.0001f;
+        private const float CameraPanSpeed = 75f;
+        private const float ZoomUpperLimit = 1.5f;
+        private const float ZoomLowerLimit = 0.0001f;
+
+        private Vector2 originalCameraPos;
 
         private float cameraZoom;
         private Matrix transform;
@@ -49,11 +52,11 @@ namespace SpaceProject
             get { return cameraZoom; }
             set {
                 cameraZoom = value;
-                if (cameraZoom < zoomLowerLimit)
-                    cameraZoom = zoomLowerLimit;
+                if (cameraZoom < ZoomLowerLimit)
+                    cameraZoom = ZoomLowerLimit;
 
-                if (cameraZoom > zoomUpperLimit)
-                    cameraZoom = zoomUpperLimit;
+                if (cameraZoom > ZoomUpperLimit)
+                    cameraZoom = ZoomUpperLimit;
                 }
 
         }
@@ -73,7 +76,8 @@ namespace SpaceProject
         public Vector2 Position
         {
             get { return cameraPos; }
-            private set {
+            private set 
+            {
 
                 leftBarrier = (float)viewportWidth * 0.5f / cameraZoom;
                 rightBarrier = WorldWidth - (float)viewportWidth * 0.5f / cameraZoom;
@@ -94,8 +98,7 @@ namespace SpaceProject
                 if (cameraPos.Y < bottomBarrier)
                     cameraPos.Y = bottomBarrier;
 
-
-                }
+            }
         }
 
         public Matrix GetTransformation()
@@ -112,17 +115,48 @@ namespace SpaceProject
         // Updates camera position relative to players position if camera is within bounds of screen 
         public void CameraUpdate(GameTime gameTime, PlayerOverworld player)
         {
-            if ((cameraPos.X - (Game.Window.ClientBounds.Width / 2) >= 0 && (cameraPos.X + Game.Window.ClientBounds.Width / 2) <= WorldWidth)
-                   || (cameraPos.Y - (Game.Window.ClientBounds.Height / 2) >= 0 && cameraPos.Y + (Game.Window.ClientBounds.Height / 2) <= WorldHeight))
+            // Camera panning
+            if (ZoomMap.MapState == MapState.On)
             {
-                if (ZoomMap.MapState == MapState.On)
+                if (ControlManager.CheckHold(RebindableKeys.Right))
                 {
-                    Position = ZoomMap.CameraPosition;
+                    cameraPos.X += CameraPanSpeed;
                 }
-                else
+
+                else if (ControlManager.CheckHold(RebindableKeys.Left))
                 {
-                    Position = player.position;
+                    cameraPos.X -= CameraPanSpeed;
                 }
+
+                if (ControlManager.CheckHold(RebindableKeys.Up))
+                {
+                    cameraPos.Y -= CameraPanSpeed;
+                }
+
+                else if (ControlManager.CheckHold(RebindableKeys.Down))
+                {
+                    cameraPos.Y += CameraPanSpeed;
+                }
+
+                else if (!ControlManager.CheckHold(RebindableKeys.Right)
+                    && !ControlManager.CheckHold(RebindableKeys.Left)
+                    && !ControlManager.CheckHold(RebindableKeys.Up)
+                    && !ControlManager.CheckHold(RebindableKeys.Down))
+                {
+                    cameraPos = originalCameraPos;
+                }
+            }
+
+            else
+            {
+                originalCameraPos = cameraPos;
+            }
+
+            if (ZoomMap.MapState != MapState.On
+                && ((cameraPos.X - (Game.Window.ClientBounds.Width / 2) >= 0 && (cameraPos.X + Game.Window.ClientBounds.Width / 2) <= WorldWidth)
+                   || (cameraPos.Y - (Game.Window.ClientBounds.Height / 2) >= 0 && cameraPos.Y + (Game.Window.ClientBounds.Height / 2) <= WorldHeight)))
+            {
+                Position = player.position;
             }
         }
     }

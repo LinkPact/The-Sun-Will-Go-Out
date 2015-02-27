@@ -243,6 +243,8 @@ namespace SpaceProject
 
             StaticFunctions.CheckObjectUsage(Game, deepSpaceGameObjects);
 
+            camera.CameraUpdate(gameTime, Game.player);
+
             DetermineCurrentRegion();
 
             sectorX.Update(gameTime);

@@ -212,7 +212,10 @@ namespace SpaceProject
                     shopManager.Update(gameTime);
                 }
 
-                camera.CameraUpdate(gameTime, player);
+                else if (ZoomMap.IsMapOn)
+                {
+                    camera.CameraUpdate(gameTime, player);
+                }
 
                 soundEffectsManager.Update(gameTime);
 
