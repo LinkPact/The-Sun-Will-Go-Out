@@ -130,7 +130,7 @@ namespace SpaceProject
                 && timedMessageCount < escortDataCapsule.TimedMessages.Count
                 && StatsManager.PlayTime.HasOverworldTimePassed(timedMessageTimes[timedMessageCount]))
             {
-                game.messageBox.DisplayRealtimeMessage(escortDataCapsule.TimedMessages[timedMessageCount], 4000);
+                game.messageBox.DisplayRealtimeMessage(4000, escortDataCapsule.TimedMessages[timedMessageCount]);
                 timedMessageCount++;
             }
 
@@ -165,8 +165,8 @@ namespace SpaceProject
                 if (StatsManager.PlayTime.HasOverworldTimePassed(enemyNextWaveTime))
                 {
                     int i = startingNumberOfEnemyShips - numberOfEnemyShips;
-                    
-                    game.messageBox.DisplayMessage(escortDataCapsule.AttackStartText[i], false);
+
+                    game.messageBox.DisplayMessage(0, escortDataCapsule.AttackStartText[i]);
 
                     game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
                         enemies[0],
@@ -191,7 +191,7 @@ namespace SpaceProject
                     && game.stateManager.shooterState.GetLevel(levels[i]).IsObjectiveCompleted)
                 {
                     shipToDefendHP = game.stateManager.shooterState.CurrentLevel.GetFreighterHP();
-                    game.messageBox.DisplayMessage(escortDataCapsule.AfterAttackMessages[i], false, 200);
+                    game.messageBox.DisplayMessage(200, escortDataCapsule.AfterAttackMessages[i]);
                 }
             }
 
@@ -263,7 +263,7 @@ namespace SpaceProject
             mission.OnReset();
             mission.MissionState = StateOfMission.Failed;
             game.stateManager.overworldState.RemoveOverworldObject(escortDataCapsule.ShipToDefend);
-            game.messageBox.DisplayMessage("Noooo! The freighter was destroyed. We failed.", false);
+            game.messageBox.DisplayMessage(0, "Noooo! The freighter was destroyed. We failed.");
             game.stateManager.ChangeState("OverworldState");
         }
 
@@ -279,7 +279,7 @@ namespace SpaceProject
                     {
                         if (enemyMessages.Count > 0)
                         {
-                            game.messageBox.DisplayMessage(enemyMessages[0], false);
+                            game.messageBox.DisplayMessage(0, enemyMessages[0]);
                             enemyMessages.RemoveAt(0);
                         }
 
@@ -296,7 +296,7 @@ namespace SpaceProject
                 && !CollisionDetection.IsPointInsideCircle(game.player.position, escortDataCapsule.ShipToDefend.position, 600) &&
                 messageTimer <= 0)
             {
-                game.messageBox.DisplayMessage("\"Don't stray too far from the freighter, get back here!\"", false);
+                game.messageBox.DisplayMessage(0, "\"Don't stray too far from the freighter, get back here!\"");
                 messageTimer = 200;
             }
 
@@ -304,7 +304,7 @@ namespace SpaceProject
                 && CollisionDetection.IsPointInsideCircle(game.player.position, escortDataCapsule.ShipToDefend.position, 600) &&
                 messageTimer > 0)
             {
-                game.messageBox.DisplayMessage("\"Good! Now keep the freighter in sight at all times!\"", false);
+                game.messageBox.DisplayMessage(0, "\"Good! Now keep the freighter in sight at all times!\"");
                 messageTimer = 0;
             }
 
@@ -314,7 +314,7 @@ namespace SpaceProject
                 mission.OnReset();
                 game.stateManager.overworldState.RemoveOverworldObject(escortDataCapsule.ShipToDefend);
                 mission.MissionState = StateOfMission.Failed;
-                game.messageBox.DisplayMessage("\"What are you doing?! You compromised our entire mission. Get out of my sight, you moron!\"", false);
+                game.messageBox.DisplayMessage(0, "\"What are you doing?! You compromised our entire mission. Get out of my sight, you moron!\"");
             }
         }
     }

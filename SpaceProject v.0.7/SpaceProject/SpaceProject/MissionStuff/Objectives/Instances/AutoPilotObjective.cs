@@ -100,7 +100,7 @@ namespace SpaceProject
             if (timedMessages.Keys.Count > 0
                 && StatsManager.PlayTime.HasOverworldTimePassed(nextMessageTime))
             {
-                game.messageBox.DisplayRealtimeMessage(timedMessages.Keys.First(), GetNextMessageDuration());
+                game.messageBox.DisplayRealtimeMessage(GetNextMessageDuration(), timedMessages.Keys.First());
                 timedMessages.Remove(timedMessages.Keys.First());
 
                 if (timedMessages.Keys.Count > 0)

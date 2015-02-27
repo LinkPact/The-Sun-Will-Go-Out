@@ -125,7 +125,7 @@ namespace SpaceProject
 
             else
             {
-                Game.messageBox.DisplayMessage("You do not have enough rupees!", false);
+                Game.messageBox.DisplayMessage(0, "You do not have enough rupees!");
             }
         }
 

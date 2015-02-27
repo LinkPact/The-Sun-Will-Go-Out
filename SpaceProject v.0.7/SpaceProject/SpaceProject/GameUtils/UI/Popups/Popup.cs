@@ -25,7 +25,7 @@ namespace SpaceProject
 
         protected List<String> textBuffer;
 
-        private int popupTime;
+        private float popupTime;
         private Sprite unselectedButton;
         private Sprite selectedButton;
 
@@ -40,6 +40,8 @@ namespace SpaceProject
 
         public virtual void Initialize()
         {
+            textBuffer = new List<String>();
+
             // Sets position of canvas and text
             if (GameStateManager.currentState == "OverworldState")
             {
@@ -80,7 +82,7 @@ namespace SpaceProject
                  LayerDepth);
         }
 
-        public void SetText(params string[] text)
+        public void SetMessage(params string[] text)
         {
             foreach (string str in text)
             {
@@ -104,12 +106,14 @@ namespace SpaceProject
             if (pauseGame)
             {
                 Game1.Paused = true;
+
+                TextToSpeech.Speak(textBuffer[0], TextToSpeech.DefaultRate);
             }
         }
 
-        public void SetDelay(int milliseconds)
+        public void SetDelay(float milliseconds)
         {
-            popupTime = (int)StatsManager.PlayTime.GetFuturePlayTime(milliseconds);
+            popupTime = StatsManager.PlayTime.GetFuturePlayTime(milliseconds);
         }
 
         protected virtual void Hide()

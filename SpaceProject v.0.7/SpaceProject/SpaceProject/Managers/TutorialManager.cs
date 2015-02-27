@@ -218,7 +218,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessage(messages, true);
+                game.messageBox.DisplayMessage(0, messages.ToArray());
             }
         }
 
@@ -226,7 +226,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessageWithImage(message, GetImageFromEnum(imageID), true);
+                game.messageBox.DisplayMessageWithImage(new List<Sprite>(){GetImageFromEnum(imageID)}, new List<int>(){0}, message);
             }
         }
 
@@ -234,7 +234,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessageWithImage(messages, GetImageFromEnum(imageID), true);
+                //game.messageBox.DisplayMessageWithImage(messages, GetImageFromEnum(imageID), true);
             }
         }
 
@@ -249,7 +249,7 @@ namespace SpaceProject
                     sprites.Add(GetImageFromEnum(imgID));
                 }
 
-                game.messageBox.DisplayMessageWithImage(messages, sprites,  true, imageTriggers);
+                //game.messageBox.DisplayMessageWithImage(messages, sprites,  true, imageTriggers);
             }
         }
 
@@ -257,7 +257,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayImage(GetImageFromEnum(imageID), true);
+                //game.messageBox.DisplayImage(GetImageFromEnum(imageID), true);
             }
         }
 
@@ -272,7 +272,7 @@ namespace SpaceProject
                     sprites.Add(GetImageFromEnum(imgID));
                 }
 
-                game.messageBox.DisplayImages(sprites, true);
+                //game.messageBox.DisplayImages(sprites, true);
             }
         }
 

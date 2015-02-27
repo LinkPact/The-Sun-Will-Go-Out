@@ -125,7 +125,7 @@ namespace SpaceProject
                 && outOfRangeTimer <= 0)
             {
                 outOfRangeTimer = 150;
-                game.messageBox.DisplayMessage(deviationMessage, false);
+                game.messageBox.DisplayMessage(0, deviationMessage);
 
                 foreach (OverworldShip ship in shipsToFollow)
                 {

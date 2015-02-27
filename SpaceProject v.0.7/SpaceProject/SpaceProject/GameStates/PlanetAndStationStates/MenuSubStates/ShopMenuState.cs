@@ -1073,7 +1073,7 @@ namespace SpaceProject
 
                 else if (ShipInventoryManager.IsEquipped(itemToSell) && itemToSell is PlayerPlating)
                 {
-                    Game.messageBox.DisplayMessage("You can't sell equipped platings!", false);
+                    Game.messageBox.DisplayMessage(0, "You can't sell equipped platings!");
                 }
                 else
                 {
@@ -1280,13 +1280,13 @@ namespace SpaceProject
         {
             if (!ShipInventoryManager.HasAvailableSlot())
             {
-                Game.messageBox.DisplayMessage("You do not have any free inventory slots. Sell something first!", false);
+                Game.messageBox.DisplayMessage(0, "You do not have any free inventory slots. Sell something first!");
                 return false;
             }
 
             else if (StatsManager.Rupees < Math.Round(item.Value * quantity, 0))
             {
-                Game.messageBox.DisplayMessage("You do not have enough rupees!", false);
+                Game.messageBox.DisplayMessage(0, "You do not have enough rupees!");
                 return false;
             }
 
@@ -1317,13 +1317,13 @@ namespace SpaceProject
         {
             if (!ShipInventoryManager.HasAvailableSlot())
             {
-                Game.messageBox.DisplayMessage("You do not have any free inventory slots. Sell something first!", false);
+                Game.messageBox.DisplayMessage(0, "You do not have any free inventory slots. Sell something first!");
                 return false;
             }
 
             else if (StatsManager.Rupees < item.Value)
             {
-                Game.messageBox.DisplayMessage("You do not have enough rupees!", false);
+                Game.messageBox.DisplayMessage(0, "You do not have enough rupees!");
                 return false;
             }
 

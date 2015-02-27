@@ -65,7 +65,7 @@ namespace SpaceProject
                 && StatsManager.PlayTime.HasOverworldTimePassed(messageTime))
             {
                 messageTime = -1;
-                game.messageBox.DisplayRealtimeMessage(messages, messageDelay);
+                game.messageBox.DisplayRealtimeMessage(messageDelay, messages.ToArray());
             }
             base.Update(playTime);
         }

@@ -13,6 +13,7 @@ namespace SpaceProject
         private readonly float ImageLayerDepth = 0.96f;
 
         protected List<Sprite> imageBuffer;
+        protected int imageTriggerIndex;
         protected List<int> imageTriggers;
         private Vector2 imagePosition;
 
@@ -53,6 +54,18 @@ namespace SpaceProject
                              1f,
                              SpriteEffects.None,
                              ImageLayerDepth);
+        }
+
+        public void SetImages(List<Sprite> images, List<int> imageTriggers)
+        {
+            SetImages(images.ToArray());
+            this.imageTriggers = imageTriggers;
+            imageTriggerIndex = 0;
+        }
+
+        public void SetImages(params Sprite[] images)
+        {
+            imageBuffer = images.ToList<Sprite>();
         }
     }
 }

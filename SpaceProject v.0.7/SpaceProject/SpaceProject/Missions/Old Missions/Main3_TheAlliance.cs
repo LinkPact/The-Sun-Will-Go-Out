@@ -124,7 +124,7 @@ namespace SpaceProject
 
                     if (tempTimer == 1)
                     {
-                        Game.messageBox.DisplayMessage(GetEvent(4).Text, false);
+                        Game.messageBox.DisplayMessage(0, GetEvent(4).Text);
                     }
                 },
                 delegate
