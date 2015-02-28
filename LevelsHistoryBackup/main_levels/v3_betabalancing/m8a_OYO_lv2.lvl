@@ -81,7 +81,7 @@ T: 77:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 78:E: 0nn0 0nn0 ffs0 0nn0 0nn0 0nn0 ffs0 0nn0 0nn0:end
 T: 79:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 80:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
-T: 81:E: 0nn0 0nn0 0nn0 0nn0 Nnn0 0nn0 0nn0 0nn0 0nn0:end
+T: 81:E: 0nn0 0nn0 0nn0 0nn0 bnn0 0nn0 0nn0 0nn0 0nn0:end
 T: 82:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 83:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 84:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
@@ -103,7 +103,6 @@ T: 99:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 Duration
 C:0,43 0,60:E: annED13
 C:0,8 0,24:E: GnnED13
-C:0,70 0,99:E: SnnED5
 C:2,35 2,69:E: SslED22
-C:2,70 2,99:E: SslED22
 C:2,0 2,34:E: SslED22
+C:2,70 2,99:E: SnnED5

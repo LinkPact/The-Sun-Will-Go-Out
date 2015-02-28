@@ -31,5 +31,5 @@ T: 27:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 28:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 29:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 Duration
-C:0,15 0,23:E: YnnED12
 C:2,1 2,29:E: SnnED8
+C:0,15 0,23:E: YnnED8

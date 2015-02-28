@@ -1,6 +1,6 @@
 Header :duration 50:width 600:durGridWidth 3:levelObjective Finish|X0:
 Point
-T: 0:E: 0nn0 0nn0 0nn0 Ann0 0nn0 Fnn0 0nn0 Ann0 0nn0 0nn0 0nn0:end
+T: 0:E: 0nn0 0nn0 0nn0 Ann0 0nn0 0nn0 0nn0 Ann0 0nn0 0nn0 0nn0:end
 T: 0.9:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 1.8:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 2.7:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end

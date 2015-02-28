@@ -1,6 +1,6 @@
 Header :duration 30:width 400:durGridWidth 3:levelObjective Finish|X0:
 Point
-T: 0:E: 0nn0 Gnn0 Nnn0 Gnn0 0zz0 Gnn0 Nnn0 Gnn0 0nn0:end
+T: 0:E: 0nn0 Gnn0 0nn0 Gnn0 Nnn0 Gnn0 0nn0 Gnn0 0nn0:end
 T: 1:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 2:E: 0nn0 Gnn0 0nn0 Gnn0 0nn0 Gnn0 0nn0 Gnn0 0nn0:end
 T: 3:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
@@ -10,7 +10,7 @@ T: 6:E: 0nn0 0nn0 ann0 ann0 0nn0 ann0 ann0 0nn0 0nn0:end
 T: 7:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 8:E: 0nn0 0nn0 0nn0 0nn0 ann0 0nn0 0nn0 0nn0 0nn0:end
 T: 9:E: 0nn0 0nn0 0nn0 0nn0 0ln0 0nn0 0nn0 0nn0 0nn0:end
-T: 10:E: 0nn0 ann0 ann0 Yfs0 Yfs0 Yfs0 ann0 ann0 0nn0:end
+T: 10:E: ann0 ann0 0nn0 Yfs0 Yfs0 Yfs0 0nn0 ann0 ann0:end
 T: 11:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 12:E: 0nn0 0ln0 0fs0 0nn0 0nn0 0nn0 0nn0 0ln0 0nn0:end
 T: 13:E: 0nn0 0nn0 0ln0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
