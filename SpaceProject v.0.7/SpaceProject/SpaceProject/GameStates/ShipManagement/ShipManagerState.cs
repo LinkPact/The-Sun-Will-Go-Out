@@ -55,6 +55,15 @@ namespace SpaceProject
 
         #endregion
 
+        public bool IsShieldSlotSelected
+        {
+            get
+            {
+                return (cursorCoordLv1.Position == 2
+                    && cursorLevel == 2);
+            }
+        }
+
         public ShipManagerState(Game1 Game, String name) :
             base(Game, name)
         {

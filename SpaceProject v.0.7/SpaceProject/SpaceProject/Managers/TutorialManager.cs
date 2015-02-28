@@ -33,7 +33,6 @@ namespace SpaceProject
         public bool TutorialsUsed { get { return tutorialsUsed; } set { tutorialsUsed = value; } }
         private int tempTimer = 50;
         private int tempTimer2 = 200;
-        private int tempTimer3 = 200;
 
         // progress flags
         private bool hasEnteredSectorX;
@@ -46,6 +45,10 @@ namespace SpaceProject
         private bool hasEnteredHighfenceBeaconArea;
         private bool hasActivatedHighfenceBeacon;
         private bool coordinatesDisplayed;
+
+        private bool equipShieldTutorial;
+        private int equipShieldProgress;
+        private bool equipShieldTutorialFinished;
 
         public TutorialManager(Game1 game)
         {
@@ -113,8 +116,8 @@ namespace SpaceProject
             {
                 coordinatesDisplayed = true;
 
-                DisplayTutorialMessage(new List<String>{"Your current objective is to go to coordinates (2635, 940). To find out where that is, look at the coordinates at the bottom right of the screen, just above the minimap. The sun, in the middle of the sector, is the center point (origin) of the coordinate system.",
-                "If you forget where you need to go you can at any time check your current mission objectives in the mission log. Press 'M' to bring up the mission screen. From there, you can select your current missions and view their objectives."}, TutorialImage.Coordinates);
+                DisplayTutorialMessage(new List<String>{"Your current objective is to go to coordinates (2635, 940). To find out where that is, look at the coordinates at the bottom right of the screen, just above the minimap.",
+                "If you forget where you need to go you can at any time check your current mission objectives in the mission log. Press 'M' to bring up the mission screen."}, TutorialImage.Coordinates);
             }
 
             if (!hasEnteredPlanet && GameStateManager.currentState.Equals("PlanetState") &&
@@ -174,31 +177,100 @@ namespace SpaceProject
                 }
             }
 
-            if (!hasEnteredShop && ((GameStateManager.currentState.Equals("PlanetState") &&
-                game.stateManager.planetState.SubStateManager.ActiveMenuState.Equals(
-                game.stateManager.planetState.SubStateManager.ShopMenuState)) ||
-                (GameStateManager.currentState.Equals("StationState") &&
-                game.stateManager.stationState.SubStateManager.ActiveMenuState.Equals(
-                game.stateManager.stationState.SubStateManager.ShopMenuState))))
-            {
-                hasEnteredShop = true;
+            //if (!hasEnteredShop && ((GameStateManager.currentState.Equals("PlanetState") &&
+            //    game.stateManager.planetState.SubStateManager.ActiveMenuState.Equals(
+            //    game.stateManager.planetState.SubStateManager.ShopMenuState)) ||
+            //    (GameStateManager.currentState.Equals("StationState") &&
+            //    game.stateManager.stationState.SubStateManager.ActiveMenuState.Equals(
+            //    game.stateManager.stationState.SubStateManager.ShopMenuState))))
+            //{
+            //    hasEnteredShop = true;
+            //
+            //    DisplayTutorialMessage(new List<String> { "This is the shop, here you can buy new equipment for your ship as well as sell your old equipment. The two left columns displays your current inventory and the right column displays the shop's inventory.", 
+            //        "Move the cursor with the arrowkeys. Press 'Enter' to get options for buying and selling items. When you are done shopping, press 'Escape' to leave the shop."});
+            //}
 
-                DisplayTutorialMessage(new List<String> { "This is the shop, here you can buy new equipment for your ship as well as sell your old equipment. The two left columns displays your current inventory and the right column displays the shop's inventory.", 
-                    "Move the cursor with the arrowkeys. Press 'Enter' to get options for buying and selling items. When you are done shopping, press 'Escape' to leave the shop."});
+            //if (!hasEnteredInventory && GameStateManager.currentState.Equals("ShipManagerState"))
+            //{
+            //    hasEnteredInventory = true;
+            //
+            //    DisplayTutorialMessage(new List<String> { "This is your inventory. Here, you can check and equip your different ship parts. You can also see your complete inventory. In order to equip a part, enter that menu using 'Enter'. Then choose the position you want to equip to. Finally choose what part you want to the chosen position.",
+            //    "What parts you have equipped is crucial for your success. Come back here often and try different combinations of ship parts. Now equip what you bought and leave the inventory by pressing 'Escape'." });
+            //}
+
+            if (equipShieldTutorial
+                && !equipShieldTutorialFinished)
+            {
+                game.stateManager.planetState.SubStateManager.ShopMenuState.DisplayBuyAndEquip = false;
+                switch (equipShieldProgress)
+                {
+                    case 0:
+                        if (GameStateManager.currentState.Equals("PlanetState") &&
+                            game.stateManager.planetState.Planet.name.Equals("Highfence")
+                            && game.stateManager.planetState.SubStateManager.ActiveMenuState.Equals(game.stateManager.planetState.SubStateManager.ShopMenuState))
+                        {
+                            DisplayTutorialMessage("[Captain] \"Select the 'Basic shield' in the shop and select 'Buy'.\"");
+                            equipShieldProgress = 1;
+                        }
+                        break;
+
+                    case 1:
+                        if (GameStateManager.currentState.Equals("PlanetState") &&
+                            game.stateManager.planetState.Planet.name.Equals("Highfence")
+                            && game.stateManager.planetState.SubStateManager.ActiveMenuState.Equals(game.stateManager.planetState.SubStateManager.ShopMenuState)
+                            && ShipInventoryManager.ownedShields.Count > 0)
+                        {
+                            DisplayTutorialMessage("[Captain] \"Good! Now exit the shop with 'Escape' and return to the overworld!\"");
+                            equipShieldProgress = 2;
+                        }
+                        break;
+
+                    case 2:
+                        if (GameStateManager.currentState.Equals("OverworldState"))
+                        {
+                            DisplayTutorialMessage("[Captain] \"Now, press 'I' to access your inventory.\"");
+                            equipShieldProgress = 3;
+                        }
+                        break;
+
+                    case 3:
+                        if (GameStateManager.currentState.Equals("ShipManagerState"))
+                        {
+                            DisplayTutorialMessage("[Captain] \"To equip your shield, select the shield slot and press 'Enter' to select from your list of available shields.\"");
+                            equipShieldProgress = 4;
+                        }
+                        break;
+
+                    case 4:
+                        if (GameStateManager.currentState.Equals("ShipManagerState")
+                            && game.stateManager.shipManagerState.IsShieldSlotSelected)
+                        {
+                            DisplayTutorialMessage("[Captain] \"Now, press 'Enter' again to equip the selected shield.\"");
+                            equipShieldProgress = 5;
+                        }
+                        break;
+
+                    case 5:
+                        if (!(ShipInventoryManager.equippedShield is EmptyShield))
+                        {
+                            DisplayTutorialMessage("[Captain] \"Good! Now your shield is equipped! Exit the inventory by pressing 'Escape' and return to me!\"");
+                            equipShieldTutorialFinished = true;
+                        }
+                        break;
+                }
+
+                if (equipShieldProgress < 2
+                    && ShipInventoryManager.OwnedShields.Count > 0)
+                {
+                    DisplayTutorialMessage("You already bought a shield? Okay, then press 'I' to access your inventory.");
+                    equipShieldProgress = 3;
+                }
             }
 
-            if (!hasEnteredInventory && GameStateManager.currentState.Equals("ShipManagerState"))
+            if (equipShieldTutorialFinished
+                && game.stateManager.planetState.SubStateManager.ShopMenuState.DisplayBuyAndEquip == false)
             {
-                tempTimer3 -= gameTime.ElapsedGameTime.Milliseconds;
-
-                if (tempTimer3 < 0)
-                {
-                    tempTimer3 = 200;
-                    hasEnteredInventory = true;
-
-                    DisplayTutorialMessage(new List<String> { "This is your inventory. Here, you can check and equip your different ship parts. You can also see your complete inventory. In order to equip a part, enter that menu using 'Enter'. Then choose the position you want to equip to. Finally choose what part you want to the chosen position.",
-                    "What parts you have equipped is crucial for your success. Come back here often and try different combinations of ship parts. Now equip what you bought and leave the inventory by pressing 'Escape'." });
-                }
+                game.stateManager.planetState.SubStateManager.ShopMenuState.DisplayBuyAndEquip = true;
             }
         }
 
@@ -291,6 +363,7 @@ namespace SpaceProject
             tutorialProgress.Add("hasEnteredHighfenceBeaconArea", hasEnteredHighfenceBeaconArea.ToString());
             tutorialProgress.Add("hasActivatedHighfenceBeacon", hasActivatedHighfenceBeacon.ToString());
             tutorialProgress.Add("hasStartedSecondMission", coordinatesDisplayed.ToString());
+            tutorialProgress.Add("equipShieldTutorial", equipShieldTutorialFinished.ToString());
 
             game.saveFile.Save("save.ini", "tutorialprogress", tutorialProgress);
         }
@@ -307,6 +380,7 @@ namespace SpaceProject
             hasEnteredHighfenceBeaconArea = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredhighfencebeaconarea", false);
             hasActivatedHighfenceBeacon = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasactivatedhighfencebeacon", false);
             coordinatesDisplayed = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasstartedsecondmission", false);
+            equipShieldTutorialFinished = game.saveFile.GetPropertyAsBool("tutorialprogress", "equipshieldtutorial", false);
         }
 
         public Sprite GetImageFromEnum(TutorialImage imageID)
@@ -340,6 +414,11 @@ namespace SpaceProject
                 default:
                     throw new ArgumentException("Image ID not recognized.");
             }
+        }
+
+        public void EnableEquipTutorial()
+        {
+            equipShieldTutorial = true;
         }
     }
 }

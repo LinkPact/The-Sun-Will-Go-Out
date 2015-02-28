@@ -34,6 +34,7 @@ namespace SpaceProject
         private int timedMessageCount;
 
         private bool autofollow;
+        private bool showInventoryTutorial = true;
 
         public EscortObjective(Game1 game, Mission mission, List<String> descriptions,
             GameObjectOverworld destination, EscortDataCapsule escortDataCapsule, bool autofollow = false) :
@@ -154,27 +155,39 @@ namespace SpaceProject
                 && CollisionDetection.IsRectInRect(game.player.Bounds, escortDataCapsule.ShipToDefend.Bounds)
                 && ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter))))
             {
-                game.messageBox.DisplayMessage(escortDataCapsule.ShipIntroductionText, false);
 
-                ((FreighterShip)escortDataCapsule.ShipToDefend).Start();
-                escortDataCapsule.ShipToDefend.speed = escortDataCapsule.FreighterSpeed;
-
-                started = true;
-
-                if (autofollow)
+                if (game.tutorialManager.TutorialsUsed
+                    && showInventoryTutorial
+                    && ShipInventoryManager.equippedShield is EmptyShield)
                 {
-                    game.player.DisableControls();
+                    game.messageBox.DisplayMessage("[Captain] \"You need to equip a shield before we leave. Buy one in the Highfence shop and equip it in your inventory.\"", false);
+                    game.tutorialManager.EnableEquipTutorial();
                 }
 
-                this.Description = descriptions[0];
-
-                enemyAttackStartTime = StatsManager.PlayTime.GetFutureOverworldTime(escortDataCapsule.EnemyAttackStartTime);
-
-                for (int i = 0; i < escortDataCapsule.TimedMessages.Count; i++)
+                else
                 {
-                    timedMessageTimes.Add(StatsManager.PlayTime.GetFutureOverworldTime(escortDataCapsule.TimedMessageTriggers[i]));
+                    game.messageBox.DisplayMessage(escortDataCapsule.ShipIntroductionText, false);
+
+                    ((FreighterShip)escortDataCapsule.ShipToDefend).Start();
+                    escortDataCapsule.ShipToDefend.speed = escortDataCapsule.FreighterSpeed;
+
+                    started = true;
+
+                    if (autofollow)
+                    {
+                        game.player.DisableControls();
+                    }
+
+                    this.Description = descriptions[0];
+
+                    enemyAttackStartTime = StatsManager.PlayTime.GetFutureOverworldTime(escortDataCapsule.EnemyAttackStartTime);
+
+                    for (int i = 0; i < escortDataCapsule.TimedMessages.Count; i++)
+                    {
+                        timedMessageTimes.Add(StatsManager.PlayTime.GetFutureOverworldTime(escortDataCapsule.TimedMessageTriggers[i]));
+                    }
+                    timedMessageCount = 0;
                 }
-                timedMessageCount = 0;
             }
 
             // Escort mission begins

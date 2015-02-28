@@ -39,6 +39,9 @@ namespace SpaceProject
 
         private List<string> confirmOptions;
 
+        private bool displayBuyAndEquip = true;
+        public bool DisplayBuyAndEquip { get { return displayBuyAndEquip; } set { displayBuyAndEquip = value; } }
+
         private ItemComparison itemComp;
 
         public ShopMenuState(Game1 game, String name, BaseStateManager manager, BaseState baseState) :
@@ -1052,7 +1055,11 @@ namespace SpaceProject
                     confirmOptions.Add("Buy");
                 }
 
-                if (itemToBuy is PlayerWeapon || itemToBuy is PlayerEnergyCell || itemToBuy is PlayerShield || itemToBuy is PlayerPlating)
+                if (displayBuyAndEquip 
+                    && (itemToBuy is PlayerWeapon 
+                        || itemToBuy is PlayerEnergyCell 
+                        || itemToBuy is PlayerShield 
+                        || itemToBuy is PlayerPlating))
                 {
                     confirmOptions.Add("Buy & equip");
                 }
