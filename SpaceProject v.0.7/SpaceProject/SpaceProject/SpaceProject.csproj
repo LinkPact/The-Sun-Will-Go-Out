@@ -707,9 +707,6 @@
     <Content Include="Data\colonydata.dat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\missiondata.dat">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Data\planetdata.dat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -830,6 +827,9 @@
     <Content Include="Levels\LonelyAsteroidLevel.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Data\missiondata.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Levels\hangar1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
