@@ -9,8 +9,8 @@ namespace SpaceProject
     public class EmptyShield : PlayerShield
     {
 
-        public EmptyShield(Game1 Game) :
-            base(Game)
+        public EmptyShield(Game1 Game, ItemVariety variety=ItemVariety.regular) :
+            base(Game, variety)
         {
             Name = "---";
             Kind = "Empty";

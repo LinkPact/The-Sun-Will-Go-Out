@@ -9,13 +9,7 @@ namespace SpaceProject
 {
     public class RegularShield : PlayerShield
     {
-        public RegularShield(Game1 Game) :
-            base(Game)
-        {
-            Setup();
-        }
-
-        public RegularShield(Game1 Game, ItemVariety variety) :
+        public RegularShield(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
         {
             Setup();
@@ -29,7 +23,6 @@ namespace SpaceProject
         private void Setup()
         {
             Name = "Regular Shield";
-            Kind = "Shield";
             Weight = 500;
 
             Capacity = 50.0f;

@@ -62,12 +62,6 @@ namespace SpaceProject
 
         protected Boolean isActivatedThisTurn;
 
-        protected PlayerActivated(Game1 Game) :
-            base(Game)
-        {
-            this.spriteSheet = Game.spriteSheetVerticalShooter;
-        }
-
         protected PlayerActivated(Game1 Game, ItemVariety variety) :
             base(Game, variety)
         {

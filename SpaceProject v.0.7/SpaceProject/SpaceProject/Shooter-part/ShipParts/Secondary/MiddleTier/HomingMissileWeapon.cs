@@ -8,13 +8,7 @@ namespace SpaceProject
 {
     public class HomingMissileWeapon : PlayerWeapon
     {
-        public HomingMissileWeapon(Game1 Game) :
-            base(Game)
-        {
-            Setup();
-        }
-
-        public HomingMissileWeapon(Game1 Game, ItemVariety variety) :
+        public HomingMissileWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
         {
             Setup();

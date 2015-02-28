@@ -9,13 +9,7 @@ namespace SpaceProject
 {
     public class CollisionShield : PlayerShield
     {
-        public CollisionShield(Game1 Game) :
-            base(Game)
-        {
-            Setup();
-        }
-
-        public CollisionShield(Game1 Game, ItemVariety variety) :
+        public CollisionShield(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
         {
             Setup();
@@ -29,7 +23,6 @@ namespace SpaceProject
         private void Setup()
         {
             Name = "Collision Shield";
-            Kind = "Shield";
             Weight = 700;
 
             Capacity = 70.0f;

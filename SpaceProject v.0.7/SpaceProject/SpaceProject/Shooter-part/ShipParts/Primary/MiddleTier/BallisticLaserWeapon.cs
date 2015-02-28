@@ -9,14 +9,8 @@ namespace SpaceProject
 {
     public class BallisticLaserWeapon : PlayerWeapon
     {
-        public BallisticLaserWeapon(Game1 Game, ItemVariety variety) :
+        public BallisticLaserWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
-        {
-            Setup();
-        }
-
-        public BallisticLaserWeapon(Game1 Game) :
-            base(Game)
         {
             Setup();
         }

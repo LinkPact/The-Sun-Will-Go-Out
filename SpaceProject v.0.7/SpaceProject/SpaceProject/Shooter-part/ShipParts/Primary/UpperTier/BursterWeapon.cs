@@ -8,13 +8,7 @@ namespace SpaceProject
 {
     public class BursterWeapon : PlayerWeapon
     {
-        public BursterWeapon(Game1 Game) :
-            base(Game)
-        {
-            Setup();
-        }
-
-        public BursterWeapon(Game1 Game, ItemVariety variety) :
+        public BursterWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
         {
             Setup();

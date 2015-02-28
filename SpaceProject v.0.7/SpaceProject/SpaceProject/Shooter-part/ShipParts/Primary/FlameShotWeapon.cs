@@ -8,13 +8,7 @@ namespace SpaceProject
 {
     public class FlameShotWeapon : PlayerWeapon
     {
-        public FlameShotWeapon(Game1 Game) :
-            base(Game)
-        {
-            Setup();
-        }
-
-        public FlameShotWeapon(Game1 Game, ItemVariety variety) :
+        public FlameShotWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
         {
             Setup();

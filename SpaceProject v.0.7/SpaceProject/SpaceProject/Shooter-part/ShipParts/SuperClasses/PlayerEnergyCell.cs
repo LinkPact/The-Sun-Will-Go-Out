@@ -18,12 +18,7 @@ namespace SpaceProject
             base(Game, variety)
         {
             this.spriteSheet = Game.spriteSheetVerticalShooter;
-        }
-
-        protected PlayerEnergyCell(Game1 Game) :
-            base(Game)
-        {
-            this.spriteSheet = Game.spriteSheetVerticalShooter;
+            Kind = "EnergyCell";
         }
 
         public virtual void Initialize()
@@ -44,6 +39,7 @@ namespace SpaceProject
             List<String> infoText = new List<String>();
 
             infoText.Add(Name);
+            infoText.Add("Type: " + Kind);
             infoText.Add("Capacity: " + Math.Round((double)Capacity, 0).ToString() + " energy");
             infoText.Add("Recharge: " + Math.Round((double)Recharge, 1).ToString() + " energy/sec");
             infoText.Add("Value: " + Math.Round((double)Value, 0).ToString() + " Rupees");

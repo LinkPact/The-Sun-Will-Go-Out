@@ -8,9 +8,8 @@ namespace SpaceProject
 {
     public class EmptyWeapon : PlayerWeapon
     {
-
         public EmptyWeapon(Game1 Game) :
-            base(Game)
+            base(Game, ItemVariety.regular)
         {
             Name = "---";
             Kind = "Empty";

@@ -9,14 +9,7 @@ namespace SpaceProject
 {
     public class RegularPlating : PlayerPlating
     {
-        
-        public RegularPlating(Game1 Game):
-            base(Game)
-        {
-            Setup();
-        }
-
-        public RegularPlating(Game1 Game, ItemVariety variety) :
+        public RegularPlating(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
         {
             Setup();

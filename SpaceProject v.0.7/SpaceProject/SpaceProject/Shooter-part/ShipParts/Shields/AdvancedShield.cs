@@ -9,13 +9,7 @@ namespace SpaceProject
 {
     public class AdvancedShield : PlayerShield
     {
-        public AdvancedShield(Game1 Game) :
-            base(Game)
-        {
-            Setup();
-        }
-
-        public AdvancedShield(Game1 Game, ItemVariety variety) :
+        public AdvancedShield(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
         {
             Setup();
@@ -29,7 +23,6 @@ namespace SpaceProject
         private void Setup()
         {
             Name = "Advanced Shield";
-            Kind = "Shield";
             Weight = 700;
 
             Capacity = 70.0f;

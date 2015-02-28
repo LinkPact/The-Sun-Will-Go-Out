@@ -28,19 +28,8 @@ namespace SpaceProject
                 CurrentOverworldHealth = loadedHealth;
         }
 
-        protected PlayerPlating(Game1 Game):
-            base(Game)
-        {
-            Setup();
-        }
-
         protected PlayerPlating(Game1 Game, ItemVariety variety) :
             base(Game, variety)
-        {
-            Setup();
-        }
-
-        private void Setup()
         {
             this.spriteSheet = Game.spriteSheetVerticalShooter;
             Kind = "Plating";
@@ -64,6 +53,7 @@ namespace SpaceProject
             List<String> infoText = new List<String>();
 
             infoText.Add(Name);
+            infoText.Add("Type: " + Kind);
             infoText.Add("Armor: " + Math.Round((double)Armor, 0).ToString() + " units");
             infoText.Add("Speed: " + Math.Round((double)1000 * Speed, 0).ToString() + " units");
             infoText.Add("Size: " + (10 * PrimarySlots).ToString() + " feet");

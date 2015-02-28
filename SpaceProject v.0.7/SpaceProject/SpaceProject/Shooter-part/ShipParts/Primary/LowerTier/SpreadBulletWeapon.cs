@@ -8,13 +8,7 @@ namespace SpaceProject
 {
     public class SpreadBulletWeapon : PlayerWeapon
     {
-        public SpreadBulletWeapon(Game1 Game) :
-            base(Game)
-        {
-            Setup();
-        }
-
-        public SpreadBulletWeapon(Game1 Game, ItemVariety variety) :
+        public SpreadBulletWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
         {
             Setup();
@@ -29,7 +23,6 @@ namespace SpaceProject
         {
             Name = "Spread Bullet";
             Kind = "Primary";
-            //energyCost = 0.15f;
             energyCostPerSecond = 6f;
             delay = 14;
             Weight = 500;

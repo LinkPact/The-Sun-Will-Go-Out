@@ -18,18 +18,12 @@ namespace SpaceProject
         protected float collisionDamageFactor;
         protected float bulletDamageFactor;
         
-        protected PlayerShield(Game1 Game):
-            base(Game)
-        {
-            this.spriteSheet = Game.spriteSheetVerticalShooter;
-            SetDefaultValues();
-        }
-
         protected PlayerShield(Game1 Game, ItemVariety variety) :
             base(Game, variety)
         {
             this.spriteSheet = Game.spriteSheetVerticalShooter;
             SetDefaultValues();
+            Kind = "Shield";
         }
 
         private void SetDefaultValues()
@@ -54,6 +48,7 @@ namespace SpaceProject
             List<String> infoText = new List<String>();
 
             infoText.Add(Name);
+            infoText.Add("Type: " + Kind);
             infoText.Add("Capacity: " + Math.Round((double)Capacity, 0).ToString() + " units");
             infoText.Add("Regeneration: " + Math.Round((double)Regeneration, 1).ToString() + " units/second");
             //infoText.Add("Conversion factor: " + Math.Round((double)ConversionFactor, 1).ToString() + " energy/unit");

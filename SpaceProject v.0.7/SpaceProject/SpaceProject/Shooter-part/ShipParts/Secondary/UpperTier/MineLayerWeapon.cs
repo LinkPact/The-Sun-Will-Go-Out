@@ -8,14 +8,8 @@ namespace SpaceProject
 {
     public class MineLayerWeapon : PlayerWeapon
     {
-        public MineLayerWeapon(Game1 Game, ItemVariety variety) :
+        public MineLayerWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
-        {
-            Setup();
-        }
-
-        public MineLayerWeapon(Game1 Game) :
-            base(Game)
         {
             Setup();
         }

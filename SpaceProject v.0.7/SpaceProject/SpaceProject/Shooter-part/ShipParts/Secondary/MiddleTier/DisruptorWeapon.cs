@@ -10,14 +10,8 @@ namespace SpaceProject
     {
         private float disruptionRadius;
 
-        public DisruptorWeapon(Game1 Game, ItemVariety variety) :
+        public DisruptorWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
-        {
-            Setup();
-        }
-
-        public DisruptorWeapon(Game1 Game) :
-            base(Game)
         {
             Setup();
         }

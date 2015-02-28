@@ -8,14 +8,8 @@ namespace SpaceProject
 {
     public class RegularBombWeapon : PlayerWeapon
     {
-        public RegularBombWeapon(Game1 Game, ItemVariety variety) :
+        public RegularBombWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
-        {
-            Setup();
-        }
-
-        public RegularBombWeapon(Game1 Game) :
-            base(Game)
         {
             Setup();
         }

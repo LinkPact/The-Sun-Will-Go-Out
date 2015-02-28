@@ -10,13 +10,7 @@ namespace SpaceProject
     public class ShieldBoostEnergyCell : PlayerEnergyCell
     {
 
-        public ShieldBoostEnergyCell(Game1 Game)
-            : base(Game)
-        {
-            Setup();
-        }
-
-        public ShieldBoostEnergyCell(Game1 Game, ItemVariety variety) :
+        public ShieldBoostEnergyCell(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
         {
             Setup();
@@ -30,7 +24,6 @@ namespace SpaceProject
         private void Setup()
         {
             Name = "Shield Boost Cell";
-            Kind = "EnergyCell";
             Weight = 500;
 
             Capacity = 75.0f;

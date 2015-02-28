@@ -12,13 +12,7 @@ namespace SpaceProject
     {
         private BeamModule beamModule;
 
-        public BeamWeapon(Game1 Game) :
-            base(Game)
-        {
-            Setup();
-        }
-
-        public BeamWeapon(Game1 Game, ItemVariety variety) :
+        public BeamWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
         {
             Setup();
@@ -33,12 +27,11 @@ namespace SpaceProject
         {
             Name = "Beam";
             Kind = "Primary";
-            energyCostPerSecond = 10f;  // This does not seem to work perfectly? Burns less than 6 energy?
+            energyCostPerSecond = 10f;
             delay = 10;
             Weight = 200;
             damage = 8.0f;
             Value = 1100;
-            //ActivatedSoundID = SoundEffects.SmallLaser;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(400, 0, 100, 100));
 
             Color color = new Color(0, 0, 128);

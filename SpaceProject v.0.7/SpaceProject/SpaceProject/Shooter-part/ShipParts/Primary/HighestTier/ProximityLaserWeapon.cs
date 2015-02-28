@@ -8,15 +8,7 @@ namespace SpaceProject
 {
     class ProximityLaserWeapon : PlayerWeapon
     {
-
-        public ProximityLaserWeapon(Game1 Game)
-            : base(Game)
-        
-        {
-            Setup();
-        }
-
-        public ProximityLaserWeapon(Game1 Game, ItemVariety variety)
+        public ProximityLaserWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular)
             : base(Game, variety)
         {
             Setup();

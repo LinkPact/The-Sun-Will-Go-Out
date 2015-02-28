@@ -8,13 +8,7 @@ namespace SpaceProject
 {
     public class MultipleShotWeapon : PlayerWeapon
     {
-        public MultipleShotWeapon(Game1 Game) :
-            base(Game)
-        {
-            Setup();
-        }
-
-        public MultipleShotWeapon(Game1 Game, ItemVariety variety) :
+        public MultipleShotWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
         {
             Setup();

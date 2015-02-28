@@ -125,18 +125,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameStates\BaseManagement\BaseManagerCursor.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GameStates\BaseManagement\BaseManagerInformation.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GameStates\BaseManagement\BaseManagerState.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GameStates\BaseManagement\BaseManagerText.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="GameStates\CampaignState.cs" />
     <Compile Include="GameStates\CreditState.cs" />
     <Compile Include="GameStates\HelpScreenState.cs" />
@@ -186,9 +174,6 @@
     <Compile Include="GameUtils\ZoomMap.cs" />
     <Compile Include="LevelHelpClasses\LevelEntry.cs" />
     <Compile Include="LevelHelpClasses\LevelTesterEntry.cs" />
-    <Compile Include="Managers\BaseInventoryManager.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="MissionStuff\EventText.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\CloseInOnLocationObjective.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\AutoPilotObjective.cs" />

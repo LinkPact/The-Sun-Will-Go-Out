@@ -244,7 +244,7 @@ namespace SpaceProject
                     var = (ItemVariety)Enum.Parse(typeof(ItemVariety), GetPropertyAsString(section, "variety", "none"), true);
                     fooItem = new BasicLaserWeapon(Game);
                     fooItem.SetShipPartVariety(var);
-                     return fooItem;
+                    return fooItem;
                 case "beam":
                     var = (ItemVariety)Enum.Parse(typeof(ItemVariety), GetPropertyAsString(section, "variety", "none"), true);
                     fooItem = new BeamWeapon(Game);

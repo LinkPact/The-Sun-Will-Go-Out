@@ -10,21 +10,13 @@ namespace SpaceProject
 {
     public class DrillBeamWeapon : PlayerWeapon
     {
-        #region decl
         
-        Boolean beamOn;
-        DrillBeam beam;
+        private Boolean beamOn;
+        private DrillBeam beam;
 
-        float miningSpeedCopper, miningSpeedGold, miningSpeedTitanium;
+        private float miningSpeedCopper, miningSpeedGold, miningSpeedTitanium;
 
-        #endregion
-        public DrillBeamWeapon(Game1 Game) :
-            base(Game)
-        {
-            Setup();
-        }
-
-        public DrillBeamWeapon(Game1 Game, ItemVariety variety) :
+        public DrillBeamWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
         {
             Setup();

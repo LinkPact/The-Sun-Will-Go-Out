@@ -8,13 +8,7 @@ namespace SpaceProject
 {
     public class SideMissilesWeapon : PlayerWeapon
     {
-        public SideMissilesWeapon(Game1 Game) :
-            base(Game)
-        {
-            Setup();
-        }
-
-        public SideMissilesWeapon(Game1 Game, ItemVariety variety) :
+        public SideMissilesWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
         {
             Setup();

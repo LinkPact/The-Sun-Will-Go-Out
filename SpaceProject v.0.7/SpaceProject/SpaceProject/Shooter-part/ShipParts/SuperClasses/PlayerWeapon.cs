@@ -22,13 +22,6 @@ namespace SpaceProject
         protected GameObjectVertical bullet;
         public GameObjectVertical Bullet { get { return bullet; } private set { } }
 
-        protected PlayerWeapon(Game1 Game) 
-            : base(Game)
-        {
-            this.spriteSheet = Game.spriteSheetVerticalShooter;
-            random = new Random();
-        }
-
         protected PlayerWeapon(Game1 Game, ItemVariety variety) 
             : base(Game, variety)
         {
@@ -63,6 +56,7 @@ namespace SpaceProject
             List<String> infoText = new List<String>();
 
             infoText.Add(Name);
+            infoText.Add("Type: " + Kind + " Weapon");
             infoText.Add("Damage: " + Math.Round((double)Damage, 1).ToString() + " units");
             infoText.Add("Rate: " + Math.Round((double)1000 / Delay, 1).ToString() + " shots/second");
             infoText.Add("Range: " + Math.Round((double)Speed * Duration, 1).ToString() + " units");

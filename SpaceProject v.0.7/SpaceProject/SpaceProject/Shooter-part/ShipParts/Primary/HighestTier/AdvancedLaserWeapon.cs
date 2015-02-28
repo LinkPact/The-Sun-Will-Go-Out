@@ -9,13 +9,7 @@ namespace SpaceProject
 {
     public class AdvancedLaserWeapon : PlayerWeapon
     {
-        public AdvancedLaserWeapon(Game1 Game) :
-            base(Game)
-        {
-            Setup();
-        }
-
-        public AdvancedLaserWeapon(Game1 Game, ItemVariety variety) :
+        public AdvancedLaserWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
         {
             Setup();

@@ -13,13 +13,7 @@ namespace SpaceProject
         private BeamModule beamModule1;
         private BeamModule beamModule2;
 
-        public AdvancedBeamWeapon(Game1 Game) :
-            base(Game)
-        {
-            Setup();
-        }
-
-        public AdvancedBeamWeapon(Game1 Game, ItemVariety variety) :
+        public AdvancedBeamWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
         {
             Setup();
@@ -38,7 +32,6 @@ namespace SpaceProject
             delay = 10;
             Weight = 200;
             damage = 9.0f;
-            //ActivatedSoundID = SoundEffects.SmallLaser;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(1100, 0, 100, 100));
 
             Value = 2200;

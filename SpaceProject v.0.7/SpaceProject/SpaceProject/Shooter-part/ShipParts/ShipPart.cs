@@ -38,12 +38,6 @@ namespace SpaceProject
 
         public Boolean needExternalRandomization = false;
 
-        protected ShipPart(Game1 Game) 
-            : base(Game)
-        {
-            variety = ItemVariety.none;
-        }
-
         protected ShipPart(Game1 Game, ItemVariety variety)
             : base(Game)
         {
@@ -60,7 +54,7 @@ namespace SpaceProject
         public void SetShipPartVariety(ItemVariety variety)
         {
             this.variety = variety;
-
+        
             switch (variety)
             { 
                 case ItemVariety.regular:
