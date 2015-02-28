@@ -60,7 +60,10 @@ namespace SpaceProject
 
         public override void OnLoad()
         {
-            Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(ally1, ally1.position, "", null);
+            if (this.MissionState != StateOfMission.CompletedDead)
+            {
+                Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(ally1, ally1.position, "", null);
+            }
         }
 
         public override void MissionLogic()
@@ -104,36 +107,28 @@ namespace SpaceProject
 
             destinations = new List<GameObjectOverworld>();
 
-            destinations.Add(ally1);
-            destinations.Add(ally1);
-            destinations.Add(ally1);
-            destinations.Add(ally1);
-            destinations.Add(miningAsteroids);
-            destinations.Add(borderStation);
-            destinations.Add(borderStation);
+            AddDestination(ally1, 3);
+            AddDestination(miningAsteroids);
+            AddDestination(borderStation, 2);
         }
 
         protected override void SetupObjectives()
         {
             objectives.Clear();
 
-            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[0],
+            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
                 GetEvent((int)EventID.TravelingToAsteroids).Text, 3000, 3000));
 
             Objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
-                destinations[1], 500));
-
-            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[2],
-                GetEvent((int)EventID.TalkWithCaptain1).Text,
-                3000, 0));
+                500, new EventTextCapsule(GetEvent((int)EventID.TalkWithCaptain1), null, EventTextCanvas.MessageBox)));
 
             ArriveAtLocationObjective talkToCaptainObjective = new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                destinations[3], new EventTextCapsule(GetEvent((int)EventID.TalkWithCaptain2), null, EventTextCanvas.MessageBox));
+                new EventTextCapsule(GetEvent((int)EventID.TalkWithCaptain2), null, EventTextCanvas.MessageBox));
 
             Objectives.Add(talkToCaptainObjective);
 
             ShootingLevelObjective shootingLevelObjective = new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
-                destinations[4], "RebelsInTheMeteors", LevelStartCondition.Immediately,
+                "RebelsInTheMeteors", LevelStartCondition.Immediately,
                 new EventTextCapsule(GetEvent((int)EventID.AfterCombat),
                     null,
                     EventTextCanvas.MessageBox));
@@ -145,16 +140,16 @@ namespace SpaceProject
                     Game.messageBox.DisplayMessage("Too bad. Talk to me to try again.", false);
                     talkToCaptainObjective.Reset();
                     shootingLevelObjective.Reset();
-                    ObjectiveIndex = 3;
+                    ObjectiveIndex = 2;
                 }
             );
 
             Objectives.Add(shootingLevelObjective);
 
-            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1], destinations[5],
+            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
                 GetEvent((int)EventID.TravelingBack).Text, 3000, 3000));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1], destinations[6]));
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1]));
         }
 
         private void CreateAllyShip()

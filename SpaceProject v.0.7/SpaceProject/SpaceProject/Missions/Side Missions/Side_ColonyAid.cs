@@ -78,13 +78,11 @@ namespace SpaceProject
         {
             objectives.Clear();
 
-            objectives.Add(new ItemTransportObjective(Game, this, ObjectiveDescriptions[0],
-                destinations[0], medicalSupplies,
+            objectives.Add(new ItemTransportObjective(Game, this, ObjectiveDescriptions[0], medicalSupplies,
                 new EventTextCapsule(GetEvent((int)EventID.LeaveSupplies), GetEvent((int)EventID.SoldSupplies),
                     EventTextCanvas.BaseState)));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1],
-                destinations[1]));
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1]));
         }
     }
 }

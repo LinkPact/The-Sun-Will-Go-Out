@@ -18,6 +18,7 @@ namespace SpaceProject
             AtMeetingPoint2,
             AtMeetingPoint3,
             AtMeetingPoint4,
+            AttackFreighter,
             Level,
             AfterLevel,
             BackToRebelBase
@@ -125,31 +126,23 @@ namespace SpaceProject
 
             GameObjectOverworld rebelBase = Game.stateManager.overworldState.GetStation("Rebel Base");
 
-            destinations.Add(rebelShips[0]);
-            destinations.Add(rebelShips[0]);
-            destinations.Add(rebelShips[0]);
-            destinations.Add(rebelShips[0]);
-            destinations.Add(rebelShips[0]);
-            destinations.Add(freighter);
-            destinations.Add(freighter);
-            destinations.Add(rebelBase);
-            destinations.Add(rebelBase);
-            destinations.Add(rebelBase);
-            destinations.Add(rebelBase);
+            AddDestination(rebelShips[0], 6);
+            AddDestination(freighter, 2);
+            AddDestination(rebelBase, 4);
         }
 
         protected override void SetupObjectives()
         {
             objectives.Clear();
 
-            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[0],
+            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.ToMeetingPoint), null, EventTextCanvas.MessageBox),
                 delegate { },
                 delegate { },
                 delegate { return (GameStateManager.currentState.ToLower().Equals("overworldstate")); },
                 delegate { return false; }));
 
-            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[1],
+            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 delegate
                 {
                     foreach (OverworldShip ship in rebelShips)
@@ -161,9 +154,10 @@ namespace SpaceProject
                 delegate { return true; },
                 delegate { return false; }));
 
-            Objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[2], 400));
+            Objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], 400));
 
-            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[3],
+            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                new EventTextCapsule(GetEvent((int)EventID.AtMeetingPoint1), null, EventTextCanvas.MessageBox),
                 delegate
                 {
                     OverworldShip.FollowPlayer = false;
@@ -173,12 +167,15 @@ namespace SpaceProject
                 delegate { return true; },
                 delegate { return false; }));
 
-            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[4],
-                new List<string> { GetEvent((int)EventID.AtMeetingPoint1).Text, GetEvent((int)EventID.AtMeetingPoint2).Text,
-                    GetEvent((int)EventID.AtMeetingPoint3).Text, GetEvent((int)EventID.AtMeetingPoint4).Text },
-                2000, 1000));
+            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
+                GetEvent((int)EventID.AtMeetingPoint2).Text, 2000, 10000));
 
-            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[5],
+            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
+                GetEvent((int)EventID.AtMeetingPoint3).Text, 2000, 10000,
+                new EventTextCapsule(GetEvent((int)EventID.AtMeetingPoint4), null, EventTextCanvas.MessageBox)));
+
+            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                new EventTextCapsule(GetEvent((int)EventID.AttackFreighter), null, EventTextCanvas.MessageBox),
                 delegate { },
                 delegate { },
                 delegate
@@ -187,7 +184,7 @@ namespace SpaceProject
                 },
                 delegate { return false; }));
 
-            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[6],
+            Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 delegate { },
                 delegate { },
                 delegate
@@ -196,11 +193,11 @@ namespace SpaceProject
                 },
                 delegate { return false; }));
 
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], destinations[7],
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 "Retribution1", LevelStartCondition.Immediately,
                 new EventTextCapsule(GetEvent((int)EventID.AfterLevel), null, EventTextCanvas.MessageBox)));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1], destinations[8],
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1],
                 delegate
                 {
                     freighter.Destroy();
@@ -210,7 +207,7 @@ namespace SpaceProject
                 },
                 delegate { }, delegate { return true; }, delegate { return false; }));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1], destinations[9],
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1],
                 delegate { },
                 delegate { },
                 delegate
@@ -236,7 +233,7 @@ namespace SpaceProject
                     return false;
                 }));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1], destinations[10]));
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1]));
         }
 
         private void StartFreighter()
@@ -272,7 +269,7 @@ namespace SpaceProject
                 actions.Add(new WaitAction(rebelShips[i],
                     delegate
                     {
-                        return ObjectiveIndex >= 6;
+                        return ObjectiveIndex >= 7;
                     }));
 
                 actions.Add(new TravelAction(rebelShips[i], freighter));

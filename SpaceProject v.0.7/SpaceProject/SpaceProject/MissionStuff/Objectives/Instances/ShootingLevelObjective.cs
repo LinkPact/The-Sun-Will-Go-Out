@@ -13,16 +13,16 @@ namespace SpaceProject
         private LevelStartCondition levelStartCondition;
 
         public ShootingLevelObjective(Game1 game, Mission mission, String description,
-            GameObjectOverworld destination, String level, LevelStartCondition levelStartCondition) :
-            base(game, mission, description, destination)
+            String level, LevelStartCondition levelStartCondition) :
+            base(game, mission, description)
         {
             Setup(level, levelStartCondition);
         }
 
         public ShootingLevelObjective(Game1 game, Mission mission, String description,
-            GameObjectOverworld destination, String level, LevelStartCondition levelStartCondition,
+            String level, LevelStartCondition levelStartCondition,
             EventTextCapsule eventTextCapsule) :
-            base(game, mission, description, destination)
+            base(game, mission, description)
         {
             Setup(level, levelStartCondition);
 

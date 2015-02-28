@@ -73,19 +73,19 @@ namespace SpaceProject
         {
             objectives.Clear();
 
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], destinations[0],
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 "flightTraining_1", LevelStartCondition.EnteringOverworld));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[1],
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.FirstCleared), null, EventTextCanvas.BaseState)));
 
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], destinations[2],
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 "flightTraining_2", LevelStartCondition.EnteringOverworld));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[3],
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.SecondCleared), null, EventTextCanvas.BaseState)));
 
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], destinations[4],
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 "flightTraining_3", LevelStartCondition.EnteringOverworld));
         }
     }

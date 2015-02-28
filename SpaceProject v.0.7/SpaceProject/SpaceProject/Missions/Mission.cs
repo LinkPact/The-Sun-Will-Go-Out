@@ -92,6 +92,7 @@ namespace SpaceProject
         protected List<GameObjectOverworld> destinations;
         protected GameObjectOverworld objectiveDestination;
         public GameObjectOverworld ObjectiveDestination { get { return objectiveDestination; } set { objectiveDestination = value; } }
+        public List<GameObjectOverworld> Destinations { get { return destinations; } private set { ; } }
 
         // Change this to true if your mission requires an available slot to accept.
         protected bool requiresAvailableSlot;
@@ -336,7 +337,6 @@ namespace SpaceProject
         public virtual void OnReset()
         {
             ResetEventText();
-
             ObjectiveIndex = 0;
 
             for (int i = 0; i < objectives.Count; i++)
@@ -652,6 +652,14 @@ namespace SpaceProject
             }
 
             missionName = stringBuilder.ToString();
+        }
+
+        protected void AddDestination(GameObjectOverworld destination, int times = 1)
+        {
+            for (int i = 0; i < times; i++)
+            {
+                destinations.Add(destination);
+            }
         }
     }
 }

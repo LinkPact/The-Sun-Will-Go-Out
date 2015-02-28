@@ -9,14 +9,12 @@ namespace SpaceProject
 {
     public class ArriveAtLocationObjective : Objective
     {
-        public ArriveAtLocationObjective(Game1 game, Mission mission, String description,
-            GameObjectOverworld destination) :
-            base(game, mission, description, destination)
+        public ArriveAtLocationObjective(Game1 game, Mission mission, String description) :
+            base(game, mission, description)
         { }
 
-        public ArriveAtLocationObjective(Game1 game, Mission mission, String description,
-            GameObjectOverworld destination, EventTextCapsule eventTextCapsule) :
-            base(game, mission, description, destination)
+        public ArriveAtLocationObjective(Game1 game, Mission mission, String description, EventTextCapsule eventTextCapsule) :
+            base(game, mission, description)
         {
             objectiveCompletedEventText = eventTextCapsule.CompletedText;
             eventTextCanvas = eventTextCapsule.EventTextCanvas;

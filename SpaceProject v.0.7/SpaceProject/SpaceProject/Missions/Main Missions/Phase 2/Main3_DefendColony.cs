@@ -124,37 +124,29 @@ namespace SpaceProject
         {
             destinations = new List<GameObjectOverworld>();
 
-            destinations.Add(fortrunStation);
-            destinations.Add(allyShips1[2]);
-            destinations.Add(allyShips1[2]);
-            destinations.Add(newNorrland);
-            destinations.Add(newNorrland);
-            destinations.Add(newNorrland);
-            destinations.Add(newNorrland);
-            destinations.Add(newNorrland);
-            destinations.Add(newNorrland);
-            destinations.Add(fortrunStation);
-            destinations.Add(fortrunStation);
-            destinations.Add(fortrunStation);
+            AddDestination(fortrunStation);
+            AddDestination(allyShips1[2], 2);
+            AddDestination(newNorrland, 6);
+            AddDestination(fortrunStation, 3);
         }
 
         protected override void SetupObjectives()
         {
             objectives.Clear();
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[0],
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 delegate { SetupAllyShips(allyShips1, fortrunStation.position, newNorrland); },
                 delegate { },
                 delegate { return true; },
                 delegate { return false; }));
 
-            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[1],
+            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
                 200, new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun1), null, EventTextCanvas.MessageBox)));
 
-            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[2],
+            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
                 100, new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun2), null, EventTextCanvas.MessageBox)));
 
-            objectives.Add(new AutoPilotObjective(Game, this, ObjectiveDescriptions[1], destinations[3], AutoPilotSpeed,
+            objectives.Add(new AutoPilotObjective(Game, this, ObjectiveDescriptions[1], AutoPilotSpeed,
                 allyShips1, fortrunStation.position,
                 new Dictionary<string, List<float>>
                 { 
@@ -165,9 +157,9 @@ namespace SpaceProject
                 new EventTextCapsule(GetEvent((int)EventID.OutsideNewNorrland), null, EventTextCanvas.MessageBox)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
-                destinations[4], "DefendColonyBreak", LevelStartCondition.TextCleared));
+                "DefendColonyBreak", LevelStartCondition.TextCleared));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[5],
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.FirstLevelCompleted), null, EventTextCanvas.BaseState),
                 delegate { Game.stateManager.GotoPlanetSubScreen("New Norrland", "Mission"); },
                 delegate { },
@@ -175,10 +167,10 @@ namespace SpaceProject
                 delegate { return false; }));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
-                destinations[6], "DefendColonyHold", LevelStartCondition.TextCleared,
+                "DefendColonyHold", LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.SecondLevelCompleted), null, EventTextCanvas.BaseState)));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1], destinations[7],
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1],
                 delegate
                 {
                     RemoveShips(allyShips1);
@@ -190,10 +182,10 @@ namespace SpaceProject
                 delegate { return true; },
                 delegate { return false; }));
 
-            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[1], destinations[8], 200,
+            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[1], 200,
                 new EventTextCapsule(new EventText("[Ai] \"Let's go\""), null, EventTextCanvas.MessageBox)));
 
-            objectives.Add(new AutoPilotObjective(Game, this, ObjectiveDescriptions[2], destinations[9], AutoPilotSpeed,
+            objectives.Add(new AutoPilotObjective(Game, this, ObjectiveDescriptions[2], AutoPilotSpeed,
                 allyShips2, newNorrland.position,
                 new Dictionary<string, List<float>>
                 { 
@@ -201,7 +193,7 @@ namespace SpaceProject
                     { GetEvent((int)EventID.ToFortrun2).Text, new List<float> { 8000, 3000 } }
                 }));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[2], destinations[10],
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[2],
                 delegate
                 {
                     RemoveShips(allyShips2);
@@ -211,7 +203,7 @@ namespace SpaceProject
                 delegate { return true; },
                 delegate { return false; }));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2], destinations[11]));
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2]));
         }
 
         private void RemoveShips(List<OverworldShip> ships)

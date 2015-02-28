@@ -2,40 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
-    public class Side_DeathByMeteor : Mission
+    class Side_AstroScan : Mission
     {
         private enum EventID
         {
-            LevelCleared = 0,
+            FlyBack = 0
         }
 
-        public Side_DeathByMeteor(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
+        public Side_AstroScan(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
             base(Game, section, spriteSheet, missionID)
         {
+            RestartAfterFail();
         }
 
         public override void Initialize()
         {
             base.Initialize();
 
-            FlameShotWeapon flameShot = new FlameShotWeapon(Game, ItemVariety.high);
-            RewardItems.Add(flameShot);
-
-            RestartAfterFail();
-
-            SetDestinations();
-            SetupObjectives();
+            RewardItems.Add(new BasicLaserWeapon(Game, ItemVariety.high));
         }
 
         public override void StartMission()
         {
             ObjectiveIndex = 0;
             progress = 0;
+
+            SetDestinations();
+            SetupObjectives();
         }
 
         public override void OnLoad()
@@ -60,16 +56,20 @@ namespace SpaceProject
         {
             destinations = new List<GameObjectOverworld>();
 
-            destinations.Add(Game.stateManager.overworldState.GetPlanet("Peye"));
+            GameObjectOverworld lavis = Game.stateManager.overworldState.GetPlanet("Lavis");
+
+            destinations.Add(lavis);
+            destinations.Add(lavis);
         }
 
         protected override void SetupObjectives()
         {
             objectives.Clear();
 
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
-                destinations[0], "DeathByMeteor", LevelStartCondition.TextCleared,
-                new EventTextCapsule(GetEvent((int)EventID.LevelCleared), null, EventTextCanvas.BaseState)));
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0]));
+
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1], "AstroScan", LevelStartCondition.Immediately,
+                new EventTextCapsule(GetEvent((int)EventID.FlyBack), null, EventTextCanvas.MessageBox)));
         }
     }
 }

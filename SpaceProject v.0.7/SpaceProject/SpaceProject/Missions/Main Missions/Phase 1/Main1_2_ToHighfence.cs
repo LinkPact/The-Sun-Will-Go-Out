@@ -81,14 +81,14 @@ namespace SpaceProject
 
             GameObjectOverworld highfence = Game.stateManager.overworldState.GetPlanet("Highfence");
 
-            destinations.Add(highfence);
+            AddDestination(highfence);
         }
 
         protected override void SetupObjectives()
         {
             objectives.Clear();
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[0]));
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0]));
         }
     }
 }

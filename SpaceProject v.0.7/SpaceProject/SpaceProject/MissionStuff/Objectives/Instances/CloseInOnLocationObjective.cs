@@ -12,16 +12,15 @@ namespace SpaceProject
     {
         private int radius;
 
-        public CloseInOnLocationObjective(Game1 game, Mission mission, String description,
-            GameObjectOverworld destination, int radius) :
-            base(game, mission, description, destination)
+        public CloseInOnLocationObjective(Game1 game, Mission mission, String description, int radius) :
+            base(game, mission, description)
         {
             this.radius = radius;
         }
 
         public CloseInOnLocationObjective(Game1 game, Mission mission, String description,
-            GameObjectOverworld destination, int radius, EventTextCapsule eventTextCapsule) :
-            base(game, mission, description, destination)
+            int radius, EventTextCapsule eventTextCapsule) :
+            base(game, mission, description)
         {
             this.radius = radius;
 

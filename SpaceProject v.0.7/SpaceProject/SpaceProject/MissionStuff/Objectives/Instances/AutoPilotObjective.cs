@@ -22,17 +22,16 @@ namespace SpaceProject
         private Dictionary<string, List<float>> timedMessages;
         private float nextMessageTime;
 
-        public AutoPilotObjective(Game1 game, Mission mission, String description,
-            GameObjectOverworld destination, float speed) :
-            base(game, mission, description, destination)
+        public AutoPilotObjective(Game1 game, Mission mission, String description, float speed) :
+            base(game, mission, description)
         {
         }
 
         public AutoPilotObjective(Game1 game, Mission mission, String description,
-            GameObjectOverworld destination, float speed, List<OverworldShip> companions,
+            float speed, List<OverworldShip> companions,
             Vector2 companionStartingPos, Dictionary<string, List<float>> timedMessages,
             EventTextCapsule eventTextCapsule) :
-            base(game, mission, description, destination)
+            base(game, mission, description)
         {
             this.speed = speed;
             ships = companions;
@@ -45,9 +44,9 @@ namespace SpaceProject
         }
 
         public AutoPilotObjective(Game1 game, Mission mission, String description,
-            GameObjectOverworld destination, float speed, List<OverworldShip> companions,
+            float speed, List<OverworldShip> companions,
             Vector2 companionStartingPos, Dictionary<string, List<float>> timedMessages) :
-            base(game, mission, description, destination)
+            base(game, mission, description)
         {
             this.speed = speed;
             ships = companions;

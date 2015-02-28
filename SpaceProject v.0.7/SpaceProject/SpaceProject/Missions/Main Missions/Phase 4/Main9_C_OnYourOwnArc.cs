@@ -87,10 +87,7 @@ namespace SpaceProject
 
             GameObjectOverworld telmun = Game.stateManager.overworldState.GetPlanet("Telmun");
 
-            destinations.Add(telmun);
-            destinations.Add(telmun);
-            destinations.Add(telmun);
-            destinations.Add(telmun);
+            AddDestination(telmun, 4);
         }
 
         protected override void SetupObjectives()
@@ -98,16 +95,16 @@ namespace SpaceProject
             objectives.Clear();
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
-                destinations[0], AvoidAllianceLevel, LevelStartCondition.TextCleared,
+                AvoidAllianceLevel, LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.AfterAllianceAttack), null,
                     EventTextCanvas.BaseState)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
-                destinations[1], AvoidRebelsLevel, LevelStartCondition.TextCleared,
+                AvoidRebelsLevel, LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.SettingExplosions), null,
                     EventTextCanvas.BaseState)));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[2],
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 delegate { },
                 delegate { },
                 delegate
@@ -116,7 +113,7 @@ namespace SpaceProject
                 },
                 delegate { return false; }));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[3],
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 delegate 
                 {
                     Game.stateManager.ChangeState("OverworldState");

@@ -84,50 +84,44 @@ namespace SpaceProject
             Planet peye = Game.stateManager.overworldState.GetPlanet("Peye");
             Planet telmun = Game.stateManager.overworldState.GetPlanet("Telmun");
 
-            destinations.Add(peye);
-            destinations.Add(peye);
-            destinations.Add(telmun);
-            destinations.Add(telmun);
-            destinations.Add(telmun);
-            destinations.Add(telmun);
-            destinations.Add(telmun);
-            destinations.Add(telmun);
+            AddDestination(peye, 2);
+            AddDestination(telmun, 6);
         }
 
         protected override void SetupObjectives()
         {
             objectives.Clear();
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[0],
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
                 GetEvent((int)EventID.TravellingToCoordinate).Text, 3000, 2000));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[1],
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.AtCoordinate), null, EventTextCanvas.MessageBox)));
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[2],
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
                 GetEvent((int)EventID.IncomingMessage1).Text, 3000, 3000));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[3],
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.AllianceMessage), null, EventTextCanvas.MessageBox),
                 delegate { },
                 delegate { },
                 delegate { return true; },
                 delegate { return false; }));
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1], destinations[4],
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
                 GetEvent((int)EventID.SairCommentingOnMessage1).Text, 3000, 3000));
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1], destinations[5],
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
                 GetEvent((int)EventID.IncomingMessage2).Text, 3000, 2000));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1], destinations[6],
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1],
                 new EventTextCapsule(GetEvent((int)EventID.RebelMessage), null, EventTextCanvas.MessageBox),
                 delegate { },
                 delegate { },
                 delegate { return true; },
                 delegate { return false; }));
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1], destinations[7],
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
                 GetEvent((int)EventID.SairCommentingOnMessage2).Text, 3000, 2000));
         }
     }

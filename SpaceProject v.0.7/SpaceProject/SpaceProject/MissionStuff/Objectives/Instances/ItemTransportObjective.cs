@@ -10,16 +10,15 @@ namespace SpaceProject
     {
         private Item item;
 
-        public ItemTransportObjective(Game1 game, Mission mission, String description,
-            GameObjectOverworld destination, Item item) :
-            base(game, mission, description, destination)
+        public ItemTransportObjective(Game1 game, Mission mission, String description, Item item) :
+            base(game, mission, description)
         {
             Setup(item);
         }
 
         public ItemTransportObjective(Game1 game, Mission mission, String description,
-            GameObjectOverworld destination, Item item, EventTextCapsule eventTextCapsule) :
-            base(game, mission, description, destination)
+            Item item, EventTextCapsule eventTextCapsule) :
+            base(game, mission, description)
         {
             Setup(item);
 

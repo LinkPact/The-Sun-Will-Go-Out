@@ -1,4 +1,4 @@
-[Main0_TutorialMission]
+﻿[Main0_TutorialMission]
 Location = Border Station
 Name = Main - Tutorial Mission
 Introduction = "You're the new pilot? Excellent! We have a situation at the nearby mining outpost that we would like you to look into. But first, some basics."#"Since pirate attacks have gotten more and more common, we strongly recommend that all new recruits take our combat simulation program."
@@ -191,10 +191,11 @@ EventText2 = [Ai] "...They are planning an attack on the freighter?"#"It is surp
 EventText3 = [Rebel] "So! You are the new cape-turner."#"Heard you worked for the Alliance for a while, but got cold feet?"#"I guess they aren't as pretty as they try to look. Only caring about the rich. Leaving us poor to starvation."#"You are very welcome. Your help is appreciated."
 EventText4 = [Rebel] "Do you prefer ranged weapons like Ballistic Laser, or close combat weapons like Spread Bullet?"#"You know, if you ask me weapons like Ballistic Laser and Beam are for meaklings, afraid of taking a few hits."#"I hope I have enough money to buy a proximity laser one day. That would be fantastic."
 EventText5 = [Rebel] "Lately, the Alliance has made a lot of development on its stealth technology."#"The fleet protecting the freighter might have some of those ships."#"Keep your eyes sharp. The ships are not invisible, but very hard to see!"
-EventText6 = [Rebel] "I can see them on my radar now."#"Remember, we are only here for the cargo. Hit it fast and hard, then leave."#"No need to hold back though, hit those bastards where it hurts!"#"Here it goes, for the people!"
-EventText7 = [Rebel] "Surrender the cargo peacefully, and you will come to no harm..."#[Alliance] "Do you believe that bullshit yourselves? You are going down with us."
-EventText8 = [Rebel] "We've got the cargo. Pull out! Pull out!"#[Rebel] "Their reinforcements must be on their way. We'll meet at the base."
-EventText9 = [SAIR] "I don't like those high-odds operations. If the Alliance hangar ships would have arrived a bit earlier we would have been done for..."#"We threw the right side of the dice this time."#"We should meet Rok at the rebel base, see what he has to say."
+EventText6 = [Rebel] "I can see them on my radar now."#"Remember, we are only here for the cargo. Hit it fast and hard, then leave."#"No need to hold back though, hit those bastards where it hurts!"
+EventText7 = [Rebel] "Here it goes, for the people!"
+EventText8 = [Rebel] "Surrender the cargo peacefully, and you will come to no harm..."#[Alliance] "Do you believe that bullshit yourselves? You are going down with us."
+EventText9 = [Rebel] "We've got the cargo. Pull out! Pull out!"#[Rebel] "Their reinforcements must be on their way. We'll meet at the base."
+EventText10 = [SAIR] "I don't like those high-odds operations. If the Alliance hangar ships would have arrived a bit earlier we would have been done for..."#"We threw the right side of the dice this time."#"We should meet Rok at the rebel base, see what he has to say."
 Success = Rok greets you.#[Rok] "I heard it was a close call. But what's important is that you got out, and that you have the cargo."#"Let's see if it proves to be as valuable as we hope. They are searching the cargo right now."#He looks thoughtful.#"I don't like how the Alliance have been acting lately."#"The transport seemed to be of high importance for them. But if the cargo was really important for them, the escort security should have been even higher."#"This didn't seem like a crucial piece for them, and that worries me.."#"You should get some rest while you can. Come back then.#"Hopefully they'll manage to extract some useful information about the cargo, maybe a lead on what we should do next."
 ObjectiveCompleted = You successfully collected the debt.
 Fail = "So you "didn't find him" huh? Your just as useless as the last one. Looks like were going to have to deal with this ourselves.."

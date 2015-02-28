@@ -13,9 +13,9 @@ namespace SpaceProject
         private float messageDelay;
         private float messageTime;
 
-        public TimedMessageObjective(Game1 game, Mission mission, String description,
-            GameObjectOverworld destination, String message, float messageDelay, float startTime) :
-            base(game, mission, description, destination)
+        public TimedMessageObjective(Game1 game, Mission mission, String description, 
+            String message, float messageDelay, float startTime) :
+            base(game, mission, description)
         {
             messages.Add(message);
             this.messageDelay = messageDelay;
@@ -23,9 +23,9 @@ namespace SpaceProject
         }
 
         public TimedMessageObjective(Game1 game, Mission mission, String description,
-            GameObjectOverworld destination, String message, float messageDelay, float startTime,
+            String message, float messageDelay, float startTime,
             EventTextCapsule eventTextCapsule) :
-            base(game, mission, description, destination)
+            base(game, mission, description)
         {
             messages.Add(message);
             this.messageDelay = messageDelay;
@@ -37,8 +37,8 @@ namespace SpaceProject
         }
 
         public TimedMessageObjective(Game1 game, Mission mission, String description,
-            GameObjectOverworld destination, List<String> messages, float messageDelay, float startTime) :
-            base(game, mission, description, destination)
+            List<String> messages, float messageDelay, float startTime) :
+            base(game, mission, description)
         {
             foreach (string str in messages)
             {
