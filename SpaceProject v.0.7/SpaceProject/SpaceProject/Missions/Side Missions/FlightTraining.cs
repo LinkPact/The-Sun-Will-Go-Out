@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
-    public class FlightTraining : Mission
+    public class Side_FlightTraining : Mission
     {
         private enum EventID
         {
@@ -15,8 +15,8 @@ namespace SpaceProject
             SecondCleared = 1
         }
 
-        public FlightTraining(Game1 Game, string section, Sprite spriteSheet) :
-            base(Game, section, spriteSheet)
+        public Side_FlightTraining(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
+            base(Game, section, spriteSheet, missionID)
         {
         }
 

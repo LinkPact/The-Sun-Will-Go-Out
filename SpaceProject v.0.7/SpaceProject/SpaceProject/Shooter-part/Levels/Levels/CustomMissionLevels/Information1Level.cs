@@ -17,7 +17,7 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            untriggeredEvents.Add(new SimpleMessageVertical(Game, player, spriteSheet, this, Message1Time, MissionManager.GetMission("Main - Information").GetEvent(Message1Index).Text));
+            untriggeredEvents.Add(new SimpleMessageVertical(Game, player, spriteSheet, this, Message1Time, MissionManager.GetMission(MissionID.Main7_Information).GetEvent(Message1Index).Text));
         }
     }
 }

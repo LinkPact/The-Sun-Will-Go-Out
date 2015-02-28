@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
-    class Main6_Infiltration : Mission
+    class Main4_Infiltration : Mission
     {
         enum EventID
         {
@@ -32,8 +32,8 @@ namespace SpaceProject
         private readonly int numberOfAllianceShips = 3;
         private float time;
 
-        public Main6_Infiltration(Game1 Game, string section, Sprite spriteSheet) :
-            base(Game, section, spriteSheet)
+        public Main4_Infiltration(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
+            base(Game, section, spriteSheet, missionID)
         {
             isMainMission = true; 
         }

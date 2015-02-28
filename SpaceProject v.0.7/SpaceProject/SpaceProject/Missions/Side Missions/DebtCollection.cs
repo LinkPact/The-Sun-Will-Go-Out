@@ -7,10 +7,10 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
-    class DebtCollection : Mission
+    class Side_DebtCollection : Mission
     {
-        public DebtCollection(Game1 Game, string section, Sprite spriteSheet) :
-            base(Game, section, spriteSheet)
+        public Side_DebtCollection(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
+            base(Game, section, spriteSheet, missionID)
         {
         }
 

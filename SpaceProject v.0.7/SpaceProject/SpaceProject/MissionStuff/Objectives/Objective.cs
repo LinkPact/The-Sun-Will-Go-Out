@@ -126,7 +126,7 @@ namespace SpaceProject
                     }
                 }
 
-                MissionManager.MarkMissionAsFailed(mission.MissionName);
+                MissionManager.MarkMissionAsFailed(mission.MissionID);
                 mission.CurrentObjective = null;
             }
             else
@@ -138,7 +138,7 @@ namespace SpaceProject
 
             if (mission.IsRestartAfterFail())
             {
-                MissionManager.ResetMission(mission.MissionName);
+                MissionManager.ResetMission(mission.MissionID);
             }
         }
     }

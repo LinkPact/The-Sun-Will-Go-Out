@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
-    public class Main10_3b_AllianceArc : Mission
+    public class Main9_B_AllianceArc : Mission
     {
         private readonly string FirstAttack = "AllianceBranch_1";
         private readonly string SecondAttack = "AllianceBranch_2";
@@ -21,8 +21,8 @@ namespace SpaceProject
             KilledOnLevel,
             AfterAttacks
         }
-        public Main10_3b_AllianceArc(Game1 Game, string section, Sprite spriteSheet) :
-            base(Game, section, spriteSheet)
+        public Main9_B_AllianceArc(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
+            base(Game, section, spriteSheet, missionID)
         {
             isMainMission = true;
         }
@@ -38,8 +38,8 @@ namespace SpaceProject
 
         public override void StartMission()
         {
-            MissionManager.RemoveAvailableMission("Main - Rebel Arc");
-            MissionManager.RemoveAvailableMission("Main - On Your Own");
+            MissionManager.RemoveAvailableMission(MissionID.Main9_A_RebelArc);
+            MissionManager.RemoveAvailableMission(MissionID.Main9_C_OnYourOwnArc);
         }
 
         public override void OnLoad()

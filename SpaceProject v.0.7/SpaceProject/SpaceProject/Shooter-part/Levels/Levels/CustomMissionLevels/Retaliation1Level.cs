@@ -17,7 +17,7 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            untriggeredEvents.Add(new SimpleMessageVertical(Game, player, spriteSheet, this, Message1Time, MissionManager.GetMission("Main - Retaliation").GetEvent(Message1Index).Text));
+            untriggeredEvents.Add(new SimpleMessageVertical(Game, player, spriteSheet, this, Message1Time, MissionManager.GetMission(MissionID.Main5_Retribution).GetEvent(Message1Index).Text));
         }
     }
 }

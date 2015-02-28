@@ -25,8 +25,8 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            untriggeredEvents.Add(new SimpleMessageVertical(Game, player, spriteSheet, this, Message1Time, MissionManager.GetMission("Main - New First Mission").GetEvent(Message1).Text));
-            untriggeredEvents.Add(new SimpleMessageVertical(Game, player, spriteSheet, this, Message2Time, MissionManager.GetMission("Main - New First Mission").GetEvent(Message2).Text));
+            untriggeredEvents.Add(new SimpleMessageVertical(Game, player, spriteSheet, this, Message1Time, MissionManager.GetMission(MissionID.Main1_1_RebelsInTheAsteroids).GetEvent(Message1).Text));
+            untriggeredEvents.Add(new SimpleMessageVertical(Game, player, spriteSheet, this, Message2Time, MissionManager.GetMission(MissionID.Main1_1_RebelsInTheAsteroids).GetEvent(Message2).Text));
         }
     }
 }

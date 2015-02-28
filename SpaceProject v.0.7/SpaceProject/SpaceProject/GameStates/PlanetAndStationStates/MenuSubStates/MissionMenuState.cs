@@ -535,7 +535,7 @@ namespace SpaceProject
 
                     BaseStateManager.TextBoxes.Clear();
 
-                    MissionManager.MarkMissionAsActive(selectedMission.MissionName);
+                    MissionManager.MarkMissionAsActive(selectedMission.MissionID);
 
                     //BaseStateManager.TextBoxes.AddRange(TextUtils.CreateFormattedTextBoxes(BaseState.Game.fontManager.GetFont(14),
                     //    BaseStateManager.LowerScreenRectangle, false, selectedMission.AcceptText[selectedMission.AcceptIndex]));
@@ -572,7 +572,7 @@ namespace SpaceProject
 
                 BaseStateManager.TextBoxes.Clear();
 
-                MissionManager.MarkMissionAsActive(selectedMission.MissionName);
+                MissionManager.MarkMissionAsActive(selectedMission.MissionID);
 
                 //BaseStateManager.TextBoxes.AddRange(TextUtils.CreateFormattedTextBoxes(BaseState.Game.fontManager.GetFont(14),
                 //    BaseStateManager.LowerScreenRectangle, false, selectedMission.AcceptText[selectedMission.AcceptIndex]));
@@ -659,7 +659,7 @@ namespace SpaceProject
                         MissionManager.MissionEventBuffer.Add(temp[i]);
                     }
 
-                    MissionManager.MarkCompletedMissionAsDead(completedMissions[0].MissionName);
+                    MissionManager.MarkCompletedMissionAsDead(completedMissions[0].MissionID);
 
                     BaseStateManager.ButtonControl = ButtonControl.Confirm;
                 }
@@ -699,7 +699,7 @@ namespace SpaceProject
                                                                           completedMissions[0].MoneyReward + " Rupees"));
                     }
 
-                    MissionManager.MarkCompletedMissionAsDead(completedMissions[0].MissionName);
+                    MissionManager.MarkCompletedMissionAsDead(completedMissions[0].MissionID);
 
                     BaseStateManager.ButtonControl = ButtonControl.Confirm;
                 }
@@ -729,7 +729,7 @@ namespace SpaceProject
                 }
             }
 
-            MissionManager.MarkFailedMissionAsDead(failedMissions[0].MissionName);
+            MissionManager.MarkFailedMissionAsDead(failedMissions[0].MissionID);
 
             BaseStateManager.ButtonControl = ButtonControl.Confirm;
         }

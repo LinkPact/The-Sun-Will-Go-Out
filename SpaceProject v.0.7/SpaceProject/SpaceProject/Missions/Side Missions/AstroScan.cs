@@ -5,15 +5,15 @@ using System.Text;
 
 namespace SpaceProject
 {
-    class AstroScan : Mission
+    class Side_AstroScan : Mission
     {
         private enum EventID
         {
             FlyBack = 0
         }
 
-        public AstroScan(Game1 Game, string section, Sprite spriteSheet) :
-            base(Game, section, spriteSheet)
+        public Side_AstroScan(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
+            base(Game, section, spriteSheet, missionID)
         {
             RestartAfterFail();
         }

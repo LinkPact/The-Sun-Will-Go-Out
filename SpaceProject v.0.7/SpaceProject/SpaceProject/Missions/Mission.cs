@@ -47,6 +47,7 @@ namespace SpaceProject
 
         protected int progress;
 
+        private MissionID missionID;
         private string missionName;
         private string locationName;
         private string endLocationName;
@@ -100,7 +101,7 @@ namespace SpaceProject
 
         #region Properties
 
-        public bool UpdateLogic { get { return updateLogic; } set { updateLogic = value;} }
+        public bool UpdateLogic { get { return updateLogic; } set { updateLogic = value; } }
 
         public Boolean IsMainMission
         {
@@ -130,6 +131,11 @@ namespace SpaceProject
             set { responseBuffer = value; }
         }
 
+        public MissionID MissionID
+        {
+            get { return missionID; }
+        }
+
         public string MissionName
         {
             get { return missionName; }
@@ -142,7 +148,7 @@ namespace SpaceProject
 
         public string EndLocationName
         {
-            get 
+            get
             {
                 if (endLocationName == null
                     || endLocationName.Equals(""))
@@ -183,7 +189,7 @@ namespace SpaceProject
 
         public string CurrentObjectiveDescription
         {
-            get { return currentObjectiveDescription; } 
+            get { return currentObjectiveDescription; }
             set { currentObjectiveDescription = value; }
         }
 
@@ -244,7 +250,7 @@ namespace SpaceProject
         }
 
         public int MoneyReward
-        { 
+        {
             // Adjusted for difficulty by moneyFactor
             get { return (int)(moneyReward * StatsManager.moneyFactor); }
         }
@@ -279,22 +285,18 @@ namespace SpaceProject
 
         #endregion
 
-        protected Mission(Game1 Game, string section, Sprite spriteSheet) :
-            this(Game, section)
+        protected Mission(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
+            this(Game, section, missionID)
         {
             if (spriteSheet != null)
                 this.spriteSheet = spriteSheet;
-
-            this.Game = Game;
-            this.section = section;
-            configFile = new ConfigFile();
-            configFile.Load("Data/missiondata.dat");
         }
 
-        protected Mission(Game1 Game, string section)
+        protected Mission(Game1 Game, string section, MissionID missionID)
         {
             this.Game = Game;
             this.section = section;
+            this.missionID = missionID;
             configFile = new ConfigFile();
             configFile.Load("Data/missiondata.dat");
         }
@@ -321,6 +323,8 @@ namespace SpaceProject
             acceptText = new string[1];
 
             LoadMissionData();
+
+            SetMissionType();
         }
 
         public virtual void StartMission()
@@ -387,7 +391,7 @@ namespace SpaceProject
                                    0.5f);
         }
 
-        public virtual void Draw(SpriteBatch spriteBatch) 
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             if (currentObjective != null)
             {
@@ -414,7 +418,7 @@ namespace SpaceProject
 
                 if (missionHelper.AllObjectivesCompleted())
                 {
-                    MissionManager.MarkMissionAsCompleted(this.MissionName);
+                    MissionManager.MarkMissionAsCompleted(this.MissionID);
                 }
             }
         }
@@ -457,7 +461,7 @@ namespace SpaceProject
                             newEventEntry.Value.Add(new EventText(responseValue));
                         }
                         EventList.Add(newEventEntry);
-                    }                    
+                    }
                 }
                 else
                 {
@@ -634,5 +638,20 @@ namespace SpaceProject
         protected abstract void SetDestinations();
         protected abstract void SetupObjectives();
 
+        private void SetMissionType()
+        {
+            StringBuilder stringBuilder = new StringBuilder(missionName);
+
+            if (isMainMission)
+            {
+                stringBuilder.Insert(0, "Main - ");
+            }
+            else
+            {
+                stringBuilder.Insert(0, "Secondary - ");
+            }
+
+            missionName = stringBuilder.ToString();
+        }
     }
 }

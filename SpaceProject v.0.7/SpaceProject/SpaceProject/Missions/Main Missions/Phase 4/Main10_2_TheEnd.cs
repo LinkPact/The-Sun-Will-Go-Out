@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
-    public class Main10_2_TheEnd : Mission
+    public class Main8_2_TheEnd : Mission
     {
         private enum EventID
         {
@@ -19,8 +19,8 @@ namespace SpaceProject
             AtAsteroidBelt
         }
 
-        public Main10_2_TheEnd(Game1 Game, string section, Sprite spriteSheet) :
-            base(Game, section, spriteSheet)
+        public Main8_2_TheEnd(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
+            base(Game, section, spriteSheet, missionID)
         {
             isMainMission = true;
         }

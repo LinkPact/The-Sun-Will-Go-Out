@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
-    public class Main7_Retaliation : Mission
+    public class Main5_Retribution : Mission
     {
         private enum EventID
         {
@@ -32,8 +32,8 @@ namespace SpaceProject
 
         private FreighterShip freighter;
 
-        public Main7_Retaliation(Game1 Game, string section, Sprite spriteSheet) :
-            base(Game, section, spriteSheet)
+        public Main5_Retribution(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
+            base(Game, section, spriteSheet, missionID)
         {
             isMainMission = true;
         }

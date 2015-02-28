@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
-    public class Main5_DefendColony : Mission
+    public class Main3_DefendColony : Mission
     {
         private enum EventID
         {
@@ -32,8 +32,8 @@ namespace SpaceProject
         Planet newNorrland;
         Station fortrunStation;
 
-        public Main5_DefendColony(Game1 Game, string section, Sprite spriteSheet) :
-            base(Game, section, spriteSheet)
+        public Main3_DefendColony(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
+            base(Game, section, spriteSheet, missionID)
         {
             isMainMission = true;
         }

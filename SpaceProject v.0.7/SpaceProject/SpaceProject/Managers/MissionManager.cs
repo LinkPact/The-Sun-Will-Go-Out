@@ -8,8 +8,38 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
+    public enum MissionID
+    {
+        //Main
+        Main1_1_RebelsInTheAsteroids,
+        Main1_2_ToHighfence,
+        Main2_1_TheConvoy,
+        Main2_2_ToFortrun,
+        Main3_DefendColony,
+        Main4_Infiltration,
+        Main5_Retribution,
+        Main6_InTheNameOfScience,
+        Main7_Information,
+        Main8_1_BeginningOfTheEnd,
+        Main8_2_TheEnd,
+        Main9_A_RebelArc,
+        Main9_B_AllianceArc,
+        Main9_C_OnYourOwnArc,
+
+        //Side missions
+        Side_DebtCollection,
+        Side_AstroDodger,
+        Side_AstroScan,
+        Side_DeathByMeteor,
+        Side_FlightTraining,
+        Side_ColonyAid
+    }
+
     public class MissionManager
     {
+        public static readonly Color MainMissionColor = Color.Green;
+        public static readonly Color SideMissionColor = Color.Yellow;
+
         private Game1 game;
 
         //Lists
@@ -20,28 +50,28 @@ namespace SpaceProject
         // Missions
 
         // Main Missions
-        private static Main1_NewFirstMission mainNewFirstMission;
-        private static Main2_Highfence mainHighfence;
-        private static Main3_Rebels mainRebels;
-        private static Main4_ToPhaseTwo mainToPhaseTwo;
-        private static Main5_DefendColony mainDefendColony;
-        private static Main6_Infiltration mainInfiltration;
-        private static Main7_Retaliation mainRetaliation;
-        private static Main8_InTheNameOfScience mainInTheNameOfScience;
-        private static Main9_Information mainInformation;
-        private static Main10_1_BeginningOfTheEnd mainBeginningOfTheEnd;
-        private static Main10_2_TheEnd mainTheEnd;
-        private static Main10_3a_RebelArc mainRebelArc;
-        private static Main10_3b_AllianceArc mainAllianceArc;
-        private static Main10_3c_OnYourOwnArc mainOnYourOwnArc;
+        private static Main1_1_RebelsInTheAsteroids mainNewFirstMission;
+        private static Main1_2_ToHighfence mainHighfence;
+        private static Main2_1_TheConvoy mainRebels;
+        private static Main2_2_ToFortrun mainToPhaseTwo;
+        private static Main3_DefendColony mainDefendColony;
+        private static Main4_Infiltration mainInfiltration;
+        private static Main5_Retribution mainRetaliation;
+        private static Main6_InTheNameOfScience mainInTheNameOfScience;
+        private static Main7_Information mainInformation;
+        private static Main8_1_BeginningOfTheEnd mainBeginningOfTheEnd;
+        private static Main8_2_TheEnd mainTheEnd;
+        private static Main9_A_RebelArc mainRebelArc;
+        private static Main9_B_AllianceArc mainAllianceArc;
+        private static Main9_C_OnYourOwnArc mainOnYourOwnArc;
 
         // Side Missions
-        private static DebtCollection debtCollection;
-        private static AstroDodger astroDodger;
-        private static AstroScan astroScan;
-        private static DeathByMeteorMission deathByMeteor;
-        private static FlightTraining flightTraining;
-        private static ColonyAid colonyAid;
+        private static Side_DebtCollection debtCollection;
+        private static Side_AstroDodger astroDodger;
+        private static Side_AstroScan astroScan;
+        private static Side_DeathByMeteor deathByMeteor;
+        private static Side_FlightTraining flightTraining;
+        private static Side_ColonyAid colonyAid;
 
         private static List<string> missionEventBuffer = new List<string>();
         private static List<string> missionResponseBuffer = new List<string>();
@@ -72,146 +102,154 @@ namespace SpaceProject
 
             // Main Missions
 
-            // Main 1 - New First Mission
-            mainNewFirstMission = new Main1_NewFirstMission(game, "Main1_NewFirstMission", missionObjectSpriteSheet);
+            // Main 1-1 - Rebels in the Asteroids
+            mainNewFirstMission = new Main1_1_RebelsInTheAsteroids(game, "Main1_1_RebelsInTheAsteroids",
+                missionObjectSpriteSheet, MissionID.Main1_1_RebelsInTheAsteroids);
+
             mainNewFirstMission.Initialize();
             missions.Add(mainNewFirstMission);
 
-            // Main 2 - Highfence
-            mainHighfence = new Main2_Highfence(game, "Main2_Highfence", null);
+            // Main 1-2 - To Highfence
+            mainHighfence = new Main1_2_ToHighfence(game, "Main1_2_ToHighfence", null,
+                MissionID.Main1_2_ToHighfence);
+
             mainHighfence.Initialize();
             missions.Add(mainHighfence);
 
-            // Main 3 - Rebels
-            mainRebels = new Main3_Rebels(game, "Main3_Rebels", null);
+            // Main 2-1 - The Convoy
+            mainRebels = new Main2_1_TheConvoy(game, "Main2_1_TheConvoy", null,
+                MissionID.Main2_1_TheConvoy);
+
             mainRebels.Initialize();
             missions.Add(mainRebels);
 
-            // Main 4 - To Phase Two
-            mainToPhaseTwo = new Main4_ToPhaseTwo(game, "Main4_ToPhaseTwo", null);
+            // Main 2-2 - To Fortrun
+            mainToPhaseTwo = new Main2_2_ToFortrun(game, "Main2_2_ToFortrun", null,
+                MissionID.Main2_2_ToFortrun);
+
             mainToPhaseTwo.Initialize();
             missions.Add(mainToPhaseTwo);
 
-            //Main 5 - Defend Colony
-            mainDefendColony = new Main5_DefendColony(game, "Main5_DefendColony", null);
+            //Main 3 - Defend Colony
+            mainDefendColony = new Main3_DefendColony(game, "Main3_DefendColony", null,
+                MissionID.Main3_DefendColony);
+
             mainDefendColony.Initialize();
             missions.Add(mainDefendColony);
 
-            //Main 6 - Infiltration
-            mainInfiltration = new Main6_Infiltration(game, "Main6_Infiltration", null);
+            //Main 4 - Infiltration
+            mainInfiltration = new Main4_Infiltration(game, "Main4_Infiltration", null,
+                MissionID.Main4_Infiltration);
+
             mainInfiltration.Initialize();
             missions.Add(mainInfiltration);
 
-            // Main 7 - Retaliation
-            mainRetaliation = new Main7_Retaliation(game, "Main7_Retaliation", missionObjectSpriteSheet);
+            // Main 5 - Retribution
+            mainRetaliation = new Main5_Retribution(game, "Main5_Retribution", missionObjectSpriteSheet,
+                MissionID.Main5_Retribution);
+
             mainRetaliation.Initialize();
             missions.Add(mainRetaliation);
 
-            // Main 8 - In The Name Of Science
-            mainInTheNameOfScience = new Main8_InTheNameOfScience(game, "Main8_InTheNameOfScience", null);
+            // Main 6 - In The Name Of Science
+            mainInTheNameOfScience = new Main6_InTheNameOfScience(game, "Main6_InTheNameOfScience", null,
+                MissionID.Main6_InTheNameOfScience);
+
             mainInTheNameOfScience.Initialize();
             missions.Add(mainInTheNameOfScience);
 
-            // Main 9 - Information
-            mainInformation = new Main9_Information(game, "Main9_Information", null);
+            // Main 7 - Information
+            mainInformation = new Main7_Information(game, "Main7_Information", null,
+                MissionID.Main7_Information);
+
             mainInformation.Initialize();
             missions.Add(mainInformation);
 
-            // Main 10-1 - Beginning Of The End
-            mainBeginningOfTheEnd = new Main10_1_BeginningOfTheEnd(game, "Main10_1_BeginningOfTheEnd", null);
+            // Main 8-1 - Beginning Of The End
+            mainBeginningOfTheEnd = new Main8_1_BeginningOfTheEnd(game, "Main8_1_BeginningOfTheEnd", null,
+                MissionID.Main8_1_BeginningOfTheEnd);
+
             mainBeginningOfTheEnd.Initialize();
             missions.Add(mainBeginningOfTheEnd);
 
-            // Main 10-2 - Continuation Of The End
-            mainTheEnd = new Main10_2_TheEnd(game, "Main10_2_TheEnd", null);
+            // Main 8-2 - The End
+            mainTheEnd = new Main8_2_TheEnd(game, "Main8_2_TheEnd", null,
+                MissionID.Main8_2_TheEnd);
+
             mainTheEnd.Initialize();
             missions.Add(mainTheEnd);
 
-            // Main X3 - Rebel Arc
-            mainRebelArc = new Main10_3a_RebelArc(game, "Main10_3a_RebelArc", null);
+            // Main 9-A - Rebel Arc
+            mainRebelArc = new Main9_A_RebelArc(game, "Main9_A_RebelArc", null,
+                MissionID.Main9_A_RebelArc);
+
             mainRebelArc.Initialize();
             missions.Add(mainRebelArc);
 
-            // Main X4 - Alliance Arc
-            mainAllianceArc = new Main10_3b_AllianceArc(game, "Main10_3b_AllianceArc", null);
+            // Main 9-B - Alliance Arc
+            mainAllianceArc = new Main9_B_AllianceArc(game, "Main9_B_AllianceArc", null,
+                MissionID.Main9_B_AllianceArc);
+
             mainAllianceArc.Initialize();
             missions.Add(mainAllianceArc);
 
-            // Main X5_1 - On Your Own Arc
-            mainOnYourOwnArc = new Main10_3c_OnYourOwnArc(game, "Main10_3c_OnYourOwnArc", null);
+            // Main 9-C - On Your Own Arc
+            mainOnYourOwnArc = new Main9_C_OnYourOwnArc(game, "Main9_C_OnYourOwnArc", null,
+                MissionID.Main9_C_OnYourOwnArc);
+
             mainOnYourOwnArc.Initialize();
             missions.Add(mainOnYourOwnArc);
 
             // Side Missions
 
             //DebtCollection
-            debtCollection = new DebtCollection(game, "SX_DebtCollection", null);
+            debtCollection = new Side_DebtCollection(game, "Side_DebtCollection", null,
+                MissionID.Side_DebtCollection);
+
             debtCollection.Initialize();
             missions.Add(debtCollection);
 
             //Astro Dodger
-            astroDodger = new AstroDodger(game, "SX_AstroDodger", missionObjectSpriteSheet);
+            astroDodger = new Side_AstroDodger(game, "Side_AstroDodger", missionObjectSpriteSheet,
+                MissionID.Side_AstroDodger);
+
             astroDodger.Initialize();
             missions.Add(astroDodger);
 
             // Astro Scan
-            astroScan = new AstroScan(game, "SX_AstroScan", null);
+            astroScan = new Side_AstroScan(game, "Side_AstroScan", null,
+                MissionID.Side_AstroScan);
+
             astroScan.Initialize();
             missions.Add(astroScan);
 
-            // Jakobs first test mission
-            deathByMeteor = new DeathByMeteorMission(game, "SX_JakobTest1", null);
+            // Death by Meteor
+            deathByMeteor = new Side_DeathByMeteor(game, "Side_DeathByMeteor", null,
+                MissionID.Side_DeathByMeteor);
+
             deathByMeteor.Initialize();
             missions.Add(deathByMeteor);
 
             // Flight training
-            flightTraining = new FlightTraining(game, "SX_FlightTraining", null);
+            flightTraining = new Side_FlightTraining(game, "Side_FlightTraining", null,
+                MissionID.Side_FlightTraining);
+
             flightTraining.Initialize();
             missions.Add(flightTraining);
 
-            // ColonyAid
-            colonyAid = new ColonyAid(game, "SY_ColonyAid", null);
+            // Colony Aid
+            colonyAid = new Side_ColonyAid(game, "Side_ColonyAid", null,
+                MissionID.Side_ColonyAid);
+
             colonyAid.Initialize();
             missions.Add(colonyAid);
-
-            // Old missions
-
-            // Final Mission
-            //finalMission = new FinalMission(game, "SZ_FinalMission", null);
-            //finalMission.Initialize();
-            //missions.Add(finalMission);
-
-            //Main1
-            //mainMission1 = new MainMissionOne(game, "SY_Main1", null);
-            //mainMission1.Initialize();
-            //missions.Add(mainMission1);
-
-            // MidMission Alliance
-            //midMissionAlliance = new MidMissionAlliance(game, "SY_MidMission_Alliance", missionObjectSpriteSheet);
-            //midMissionAlliance.Initialize();
-            //missions.Add(midMissionAlliance);
-
-            // Mid Mission Rebel
-            //midMissionRebel = new MidMissionRebel(game, "SX_MidMission_Rebel", null);
-            //midMissionRebel.Initialize();
-            //missions.Add(midMissionRebel);
-
-            // First Mission
-            //aColdWelcome = new Main1_AColdWelcome(game, "SX_AColdWelcome", missionObjectSpriteSheet);
-            //aColdWelcome.Initialize();
-            //missions.Add(aColdWelcome);
-
-            // Third Mission
-            //theAlliance = new Main3_TheAlliance(game, "SX_TheAlliance", null);
-            //theAlliance.Initialize();
-            //missions.Add(theAlliance);
 
             RefreshLists();
         }
 
-        public static void UnlockMission(string missionName)
+        public static void UnlockMission(MissionID missionID)
         {
-            Mission tempMission = ReturnSpecifiedMission(missionName);
+            Mission tempMission = GetMission(missionID);
 
             if (tempMission.MissionState.Equals(StateOfMission.Available))
                 return;
@@ -222,9 +260,9 @@ namespace SpaceProject
             RefreshLists();
         }
 
-        public static void ResetMission(string missionName)
+        public static void ResetMission(MissionID missionID)
         {
-            Mission tempMission = ReturnSpecifiedMission(missionName);
+            Mission tempMission = GetMission(missionID);
 
             if (tempMission.MissionState.Equals(StateOfMission.Active)
                 || tempMission.MissionState.Equals(StateOfMission.Failed))
@@ -246,9 +284,9 @@ namespace SpaceProject
             RefreshLists();
         }
 
-        public static void RemoveAvailableMission(string missionName)
+        public static void RemoveAvailableMission(MissionID missionID)
         {
-            Mission tempMission = ReturnSpecifiedMission(missionName);
+            Mission tempMission = GetMission(missionID);
 
             if (tempMission.MissionState.Equals(StateOfMission.Available))
             {
@@ -259,9 +297,9 @@ namespace SpaceProject
         }
 
         //Sets the state of the mission sent in to ACTIVE
-        public static void MarkMissionAsActive(string missionName)
+        public static void MarkMissionAsActive(MissionID missionID)
         {
-            Mission tempMission = ReturnSpecifiedMission(missionName);
+            Mission tempMission = GetMission(missionID);
 
             if (tempMission.MissionState.Equals(StateOfMission.Active))
                 return;
@@ -281,9 +319,9 @@ namespace SpaceProject
         }
 
         //Sets the state of the mission sent in to COMPLETED
-        public static void MarkMissionAsCompleted(string missionName)
+        public static void MarkMissionAsCompleted(MissionID missionID)
         {
-            Mission tempMission = ReturnSpecifiedMission(missionName);
+            Mission tempMission = GetMission(missionID);
 
             if (tempMission.MissionState.Equals(StateOfMission.Completed)
                 || tempMission.MissionState.Equals(StateOfMission.CompletedDead))
@@ -299,9 +337,9 @@ namespace SpaceProject
             RefreshLists();
         }
 
-        public static void MarkCompletedMissionAsDead(string missionName)
+        public static void MarkCompletedMissionAsDead(MissionID missionID)
         {
-            Mission tempMission = ReturnSpecifiedMission(missionName);
+            Mission tempMission = GetMission(missionID);
             tempMission.CurrentObjectiveDescription = tempMission.ObjectiveCompleted;
 
             if (tempMission.MissionState.Equals(StateOfMission.CompletedDead))
@@ -325,9 +363,9 @@ namespace SpaceProject
         }
 
         //Sets the state of the mission sent in to FAILED
-        public static void MarkMissionAsFailed(string missionName)
+        public static void MarkMissionAsFailed(MissionID missionID)
         {
-            Mission tempMission = ReturnSpecifiedMission(missionName);
+            Mission tempMission = GetMission(missionID);
             tempMission.CurrentObjectiveDescription = tempMission.ObjectiveFailed;
 
             if (tempMission.MissionState.Equals(StateOfMission.Failed))
@@ -343,9 +381,9 @@ namespace SpaceProject
             RefreshLists();
         }
 
-        public static void MarkFailedMissionAsDead(string missionName)
+        public static void MarkFailedMissionAsDead(MissionID missionID)
         {
-            Mission tempMission = ReturnSpecifiedMission(missionName);
+            Mission tempMission = GetMission(missionID);
 
             if (tempMission.MissionState.Equals(StateOfMission.FailedDead))
                 return;
@@ -358,7 +396,7 @@ namespace SpaceProject
                 }
                 else
                 {
-                    ResetMission(tempMission.MissionName);
+                    ResetMission(tempMission.MissionID);
                 }
             }
 
@@ -543,17 +581,6 @@ namespace SpaceProject
             }
         }
 
-        private static Mission ReturnSpecifiedMission(string missionName)
-        {
-            foreach (Mission mission in missions)
-            {
-                if (mission.MissionName.ToLower().Equals(missionName.ToLower()))
-                    return mission;
-            }
-
-            throw new ArgumentException("Mission not found");
-        }
-
         public void Update(GameTime gameTime)
         {
             foreach (Mission mission in activeMissions)
@@ -603,14 +630,14 @@ namespace SpaceProject
             if (mainNewFirstMission.MissionState == StateOfMission.CompletedDead &&
                 mainHighfence.MissionState == StateOfMission.Unavailable)
             {
-                UnlockMission("Main - Highfence");
-                UnlockMission("Flight Training");
+                UnlockMission(MissionID.Main1_2_ToHighfence);
+                UnlockMission(MissionID.Side_FlightTraining);
             }
 
             if (mainHighfence.MissionState == StateOfMission.CompletedDead &&
                 mainRebels.MissionState == StateOfMission.Unavailable)
             {
-                UnlockMission("Main - Rebels");
+                UnlockMission(MissionID.Main2_1_TheConvoy);
                 askRebelMission = true;
             }
 
@@ -627,49 +654,49 @@ namespace SpaceProject
             if (mainRebels.MissionState == StateOfMission.CompletedDead
                 && mainToPhaseTwo.MissionState == StateOfMission.Unavailable)
             {
-                UnlockMission("Main - To Phase Two");
-                MarkMissionAsActive("Main - To Phase Two");
+                UnlockMission(MissionID.Main2_2_ToFortrun);
+                MarkMissionAsActive(MissionID.Main2_2_ToFortrun);
             }
 
             if (mainToPhaseTwo.MissionState == StateOfMission.CompletedDead
                 && mainDefendColony.MissionState == StateOfMission.Unavailable)
             {
-                UnlockMission("Main - Defend Colony");
-                MarkMissionAsActive("Main - Defend Colony");
+                UnlockMission(MissionID.Main3_DefendColony);
+                MarkMissionAsActive(MissionID.Main3_DefendColony);
             }
 
             if (mainDefendColony.MissionState == StateOfMission.CompletedDead
                 && mainInfiltration.MissionState == StateOfMission.Unavailable)
             {
-                UnlockMission("Main - Infiltration");
+                UnlockMission(MissionID.Main4_Infiltration);
             }
 
             if (mainInfiltration.MissionState == StateOfMission.CompletedDead
                 && mainRetaliation.MissionState == StateOfMission.Unavailable)
             {
-                UnlockMission("Main - Retaliation");
-                MarkMissionAsActive("Main - Retaliation");
+                UnlockMission(MissionID.Main5_Retribution);
+                MarkMissionAsActive(MissionID.Main5_Retribution);
             }
 
             if (mainRetaliation.MissionState == StateOfMission.CompletedDead
                 && mainInTheNameOfScience.MissionState == StateOfMission.Unavailable)
             {
-                UnlockMission("Main - In the name of Science");
+                UnlockMission(MissionID.Main6_InTheNameOfScience);
             }
 
             if (mainInTheNameOfScience.MissionState == StateOfMission.CompletedDead
                 && mainInformation.MissionState == StateOfMission.Unavailable)
             {
-                UnlockMission("Main - Information");
-                MarkMissionAsActive("Main - Information");
+                UnlockMission(MissionID.Main7_Information);
+                MarkMissionAsActive(MissionID.Main7_Information);
             }
 
             if (mainInformation.MissionState == StateOfMission.Completed
                 && mainBeginningOfTheEnd.MissionState == StateOfMission.Unavailable)
             {
                 mainInformation.MissionState = StateOfMission.CompletedDead;
-                UnlockMission("Main - Beginning of the End");
-                MarkMissionAsActive("Main - Beginning of the End");
+                UnlockMission(MissionID.Main8_1_BeginningOfTheEnd);
+                MarkMissionAsActive(MissionID.Main8_1_BeginningOfTheEnd);
             }
 
             // Start second mission after first is completed
@@ -677,7 +704,7 @@ namespace SpaceProject
                 mainHighfence.MissionState == StateOfMission.Available &&
                 mainHighfence.MissionHelper.IsPlayerOnStation("Border Station"))
             {
-                MarkMissionAsActive("Main - Highfence");
+                MarkMissionAsActive(MissionID.Main1_2_ToHighfence);
             }
 
             // Start part 2 of final mission
@@ -685,8 +712,8 @@ namespace SpaceProject
                 && mainTheEnd.MissionState == StateOfMission.Unavailable)
             {
                 mainBeginningOfTheEnd.MissionState = StateOfMission.CompletedDead;
-                UnlockMission(mainTheEnd.MissionName);
-                MarkMissionAsActive(mainTheEnd.MissionName);
+                UnlockMission(MissionID.Main8_2_TheEnd);
+                MarkMissionAsActive(MissionID.Main8_2_TheEnd);
             }
 
             // Final mission stuff
@@ -695,7 +722,7 @@ namespace SpaceProject
                         && !RebelFleet.IsShown))
                 && GameStateManager.currentState.Equals("OverworldState"))
             {
-                UnlockMission(mainOnYourOwnArc.MissionName);
+                UnlockMission(MissionID.Main9_C_OnYourOwnArc);
                 mainTheEnd.MissionState = StateOfMission.CompletedDead;
 
                 RebelFleet rebelFleet = new RebelFleet(game,
@@ -740,17 +767,15 @@ namespace SpaceProject
             }
         }
 
-        public static Mission GetMission(String missionName)
+        public static Mission GetMission(MissionID missionID)
         {
-            for (int i = 0; i < missions.Count; i++)
+            foreach (Mission mission in missions)
             {
-                if (missions[i].MissionName.ToLower().Equals(missionName.ToLower()))
-                {
-                    return missions[i];
-                }
+                if (mission.MissionID.Equals(missionID))
+                    return mission;
             }
 
-            throw new ArgumentException(String.Format("No mission by the name of '%s'.", missionName)); 
+            throw new ArgumentException("Mission not found");
         }
 
         //Loops through the missions-list and adds the name and state of each mission into the sorted dictonary "StateOfMissions"

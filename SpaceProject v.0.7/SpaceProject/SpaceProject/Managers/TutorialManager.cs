@@ -131,7 +131,7 @@ namespace SpaceProject
             }
 
             if (!hasEnteredSectorX &&
-                    MissionManager.GetMission("Main - New First Mission").MissionState == StateOfMission.CompletedDead)
+                    MissionManager.GetMission(MissionID.Main1_1_RebelsInTheAsteroids).MissionState == StateOfMission.CompletedDead)
             {
                 if (CollisionDetection.IsRectInRect(game.player.Bounds,
                     game.stateManager.overworldState.GetSectorX.SpaceRegionArea) &&

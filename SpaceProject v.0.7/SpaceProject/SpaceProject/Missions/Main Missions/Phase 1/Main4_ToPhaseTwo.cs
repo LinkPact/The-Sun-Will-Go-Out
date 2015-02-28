@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
-    public class Main4_ToPhaseTwo : Mission
+    public class Main2_2_ToFortrun : Mission
     {
         private enum EventID
         {
@@ -18,8 +18,8 @@ namespace SpaceProject
             ToFortrun
         }
 
-        public Main4_ToPhaseTwo(Game1 Game, string section, Sprite spriteSheet) :
-            base(Game, section, spriteSheet)
+        public Main2_2_ToFortrun(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
+            base(Game, section, spriteSheet, missionID)
         {
             isMainMission = true;
         }

@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
-    public class Main2_Highfence : Mission
+    public class Main1_2_ToHighfence : Mission
     {
         private enum EventID
         {
@@ -17,8 +17,8 @@ namespace SpaceProject
 
         private readonly string ActionKeyID = "[ACTIONKEY2]";
 
-        public Main2_Highfence(Game1 Game, string section, Sprite spriteSheet) :
-            base(Game, section, spriteSheet)
+        public Main1_2_ToHighfence(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
+            base(Game, section, spriteSheet, missionID)
         {
             isMainMission = true;
         }

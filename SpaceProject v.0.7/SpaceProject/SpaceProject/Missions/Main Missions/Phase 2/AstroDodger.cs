@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
-    public class AstroDodger: Mission
+    public class Side_AstroDodger: Mission
     {
         private enum EventID
         {
@@ -18,8 +18,8 @@ namespace SpaceProject
 
         private DestroyedShip destroyedShip;
 
-        public AstroDodger(Game1 Game, string section, Sprite spriteSheet) :
-            base(Game, section, spriteSheet)
+        public Side_AstroDodger(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
+            base(Game, section, spriteSheet, missionID)
         {
         }
 

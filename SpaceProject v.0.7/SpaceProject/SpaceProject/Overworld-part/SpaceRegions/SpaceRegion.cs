@@ -86,7 +86,7 @@ namespace SpaceProject
                     {
                         if (gameObjects[i].name.Equals("Highfence"))
                         {
-                            Mission mission = MissionManager.GetMission("Main - Beginning Of The End");
+                            Mission mission = MissionManager.GetMission(MissionID.Main8_1_BeginningOfTheEnd);
 
                             if (mission.MissionState == StateOfMission.Active)
                             {

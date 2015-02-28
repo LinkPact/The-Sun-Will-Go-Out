@@ -277,7 +277,21 @@ namespace SpaceProject
             }
 
             foreach (TextBox txtBox in textBoxes)
-                txtBox.Draw(spriteBatch, Game.fontManager.FontColor, Game.fontManager.FontOffset);
+            {
+                Color color = Game.fontManager.FontColor;
+
+                if (txtBox.GetText().Contains("Main - "))
+                {
+                    color = MissionManager.MainMissionColor;
+                }
+
+                else if (txtBox.GetText().Contains("Secondary - "))
+                {
+                    color = MissionManager.SideMissionColor;
+                }
+
+                txtBox.Draw(spriteBatch, color, Game.fontManager.FontOffset);
+            }
         }
     }
 }

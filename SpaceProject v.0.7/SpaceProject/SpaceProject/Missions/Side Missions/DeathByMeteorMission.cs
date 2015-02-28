@@ -7,15 +7,15 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
-    public class DeathByMeteorMission : Mission
+    public class Side_DeathByMeteor : Mission
     {
         private enum EventID
         {
             LevelCleared = 0,
         }
 
-        public DeathByMeteorMission(Game1 Game, string section, Sprite spriteSheet) :
-            base(Game, section, spriteSheet)
+        public Side_DeathByMeteor(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
+            base(Game, section, spriteSheet, missionID)
         {
         }
 

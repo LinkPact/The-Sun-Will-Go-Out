@@ -221,7 +221,7 @@ namespace SpaceProject
 
             if (GameStateManager.previousState.Equals("IntroSecondState") || GameStateManager.previousState.Equals("StartGameState"))
             {
-                MissionManager.MarkMissionAsActive("Main - New First Mission");
+                MissionManager.MarkMissionAsActive(MissionID.Main1_1_RebelsInTheAsteroids);
                 Game.stateManager.GotoStationSubScreen("Border Station", "Mission");
             }
 

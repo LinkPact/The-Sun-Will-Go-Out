@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace SpaceProject
 {
-    public class ColonyAid : Mission
+    public class Side_ColonyAid : Mission
     {
         private enum EventID
         {
@@ -20,8 +20,8 @@ namespace SpaceProject
         MultipleShotWeapon regularPoweredWeapon;
         RegularEnergyCell regularCell;
 
-        public ColonyAid(Game1 Game, string section, Sprite spriteSheet) :
-            base(Game, section, spriteSheet)
+        public Side_ColonyAid(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
+            base(Game, section, spriteSheet, missionID)
         {
         }
 

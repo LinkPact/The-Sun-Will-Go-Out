@@ -156,8 +156,8 @@ namespace SpaceProject
 
             spriteBatch.DrawString(spriteFont,
                                    TextUtils.WordWrap(spriteFont,
-                                                            textBuffer,
-                                                            textBoxRect.Width),
+                                                      textBuffer,
+                                                      textBoxRect.Width),
                                    textBoxPosition + fontOffset,
                                    textColor,
                                    0f,
@@ -178,8 +178,8 @@ namespace SpaceProject
 
             spriteBatch.DrawString(spriteFont,
                                    TextUtils.WordWrap(spriteFont,
-                                                            textBuffer,
-                                                            textBoxRect.Width),
+                                                      textBuffer,
+                                                      textBoxRect.Width),
                                    textBoxPosition + fontOffset,
                                    textColor,
                                    0f,
