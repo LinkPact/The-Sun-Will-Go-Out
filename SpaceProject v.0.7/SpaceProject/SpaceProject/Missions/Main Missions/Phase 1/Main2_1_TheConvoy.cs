@@ -123,7 +123,7 @@ namespace SpaceProject
 
             Station soelaraStation = Game.stateManager.overworldState.GetStation("Soelara Station");
 
-            destinations.Add(soelaraStation);
+            AddDestination(soelaraStation);
         }
 
         protected override void SetupObjectives()
@@ -133,7 +133,6 @@ namespace SpaceProject
             objectives.Add(new EscortObjective(Game,
                this,
                new List<String> { ObjectiveDescriptions[0], ObjectiveDescriptions[1], ObjectiveDescriptions[2] },
-               Game.stateManager.overworldState.GetStation("Soelara Station"),
                new EscortDataCapsule(freighter1,
                    GetEvent((int)EventID.CaptainIntro).Text,
                    enemies,

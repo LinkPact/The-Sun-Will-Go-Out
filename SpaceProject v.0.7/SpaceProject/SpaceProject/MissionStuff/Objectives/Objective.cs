@@ -32,12 +32,12 @@ namespace SpaceProject
 
         protected bool isOnCompletedCalled;
 
-        protected Objective(Game1 game, Mission mission, String description, GameObjectOverworld destination)
+        protected Objective(Game1 game, Mission mission, String description)
         {
             this.game = game;
             this.mission = mission;
             this.description = description;
-            this.destination = destination;
+            destination = mission.Destinations[mission.Objectives.Count];
         }
 
         public virtual void Initialize() { }

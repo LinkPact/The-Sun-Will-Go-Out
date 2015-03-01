@@ -37,8 +37,8 @@ namespace SpaceProject
         private bool showInventoryTutorial = true;
 
         public EscortObjective(Game1 game, Mission mission, List<String> descriptions,
-            GameObjectOverworld destination, EscortDataCapsule escortDataCapsule, bool autofollow = false) :
-            base(game, mission, descriptions[0], destination)
+            EscortDataCapsule escortDataCapsule, bool autofollow = false) :
+            base(game, mission, descriptions[0])
         {
             descriptions.RemoveAt(0);
             this.descriptions = descriptions;
@@ -48,9 +48,8 @@ namespace SpaceProject
         }
 
         public EscortObjective(Game1 game, Mission mission, String description,
-            GameObjectOverworld destination, EscortDataCapsule escortDataCapsule,
-            EventTextCapsule eventTextCapsule) :
-            base(game, mission, description, destination)
+            EscortDataCapsule escortDataCapsule, EventTextCapsule eventTextCapsule) :
+            base(game, mission, description)
         {
             Setup(escortDataCapsule);
 

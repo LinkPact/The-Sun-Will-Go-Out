@@ -28,18 +28,18 @@ namespace SpaceProject
         private int outOfRangeTimer;
 
         public FollowObjective(Game1 game, Mission mission, String description,
-                GameObjectOverworld destination, EventTextCapsule eventTextCapsule, String startMessage,
+            EventTextCapsule eventTextCapsule, String startMessage,
                 Vector2 startingPosition, Vector2 shipSpacing, params OverworldShip[] ships) :
-            base(game, mission, description, destination)
+            base(game, mission, description)
         {
             Setup(eventTextCapsule, startMessage, startingPosition, shipSpacing, ships);
         }
 
         public FollowObjective(Game1 game, Mission mission, String description,
-                GameObjectOverworld destination, EventTextCapsule eventTextCapsule, String startMessage,
+            EventTextCapsule eventTextCapsule, String startMessage,
                 Vector2 startingPosition, Vector2 shipSpacing, int deviationRadius, String deviationMessage,
                 params OverworldShip[] ships) :
-            base(game, mission, description, destination)
+            base(game, mission, description)
         {
             Setup(eventTextCapsule, startMessage, startingPosition, shipSpacing, ships);
 

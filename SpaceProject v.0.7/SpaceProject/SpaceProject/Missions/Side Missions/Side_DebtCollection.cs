@@ -63,11 +63,9 @@ namespace SpaceProject
             objectives.Clear();
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                destinations[0],
                 new EventTextCapsule(GetEvent(0), null, EventTextCanvas.BaseState)));
 
             objectives.Add(new ResponseObjective(Game, this, ObjectiveDescriptions[1],
-                destinations[1],
                 new ResponseTextCapsule(GetEvent(1), GetAllResponses(1),
                     new List<System.Action>()
                     {

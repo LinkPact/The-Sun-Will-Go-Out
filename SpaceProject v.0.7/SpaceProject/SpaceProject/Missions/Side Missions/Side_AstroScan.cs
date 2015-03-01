@@ -66,11 +66,9 @@ namespace SpaceProject
         {
             objectives.Clear();
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                destinations[0]));
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0]));
 
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
-                destinations[1], "AstroScan", LevelStartCondition.Immediately,
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1], "AstroScan", LevelStartCondition.Immediately,
                 new EventTextCapsule(GetEvent((int)EventID.FlyBack), null, EventTextCanvas.MessageBox)));
         }
     }

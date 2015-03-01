@@ -81,9 +81,8 @@ namespace SpaceProject
             GameObjectOverworld fortrunStation1 =
                 Game.stateManager.overworldState.GetStation("Fortrun Station I");
 
-            destinations.Add(destroyedShip);
-            destinations.Add(destroyedShip);
-            destinations.Add(fortrunStation1);
+            AddDestination(destroyedShip, 2);
+            AddDestination(fortrunStation1);
         }
 
         protected override void SetupObjectives()
@@ -94,7 +93,6 @@ namespace SpaceProject
                 Game,
                 this,
                 ObjectiveDescriptions[0],
-                destinations[0],
                 new EventTextCapsule(
                     GetEvent((int)EventID.ShipFound),
                     null, EventTextCanvas.MessageBox)));
@@ -103,7 +101,6 @@ namespace SpaceProject
                 Game,
                 this,
                 ObjectiveDescriptions[0],
-                destinations[1],
                 "AstroDodger",
                 LevelStartCondition.Immediately,
                 new EventTextCapsule(
@@ -114,8 +111,7 @@ namespace SpaceProject
             objectives.Add(new ArriveAtLocationObjective(
                 Game,
                 this,
-                ObjectiveDescriptions[1],
-                destinations[2]));
+                ObjectiveDescriptions[1]));
         }
     }
 }

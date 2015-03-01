@@ -68,8 +68,7 @@ namespace SpaceProject
         {
             objectives.Clear();
 
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
-                destinations[0], "DeathByMeteor", LevelStartCondition.TextCleared,
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], "DeathByMeteor", LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.LevelCleared), null, EventTextCanvas.BaseState)));
         }
     }

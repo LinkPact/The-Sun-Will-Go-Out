@@ -134,6 +134,8 @@ namespace SpaceProject
         private void DrawVisibleGameObjects(SpriteBatch spriteBatch)
         {
             float drawDistance = 0.91f;
+            colorSwapCounter++;
+
             foreach (GameObjectOverworld obj in objectsVisibleOnRadar)
             {
                 Color color = Color.Gray;
@@ -143,7 +145,6 @@ namespace SpaceProject
 
                 if (MissionManager.IsCurrentObjectiveDestination(obj))
                 {
-                    drawDistance += 0.01f;
                     if (colorSwapCounter <= 25)
                     {
                         color = Color.DarkOrange;
@@ -157,7 +158,6 @@ namespace SpaceProject
                         scale = 1f;
                     }
 
-                    colorSwapCounter++;
                     if (colorSwapCounter >= 50)
                     {
                         colorSwapCounter = 0;

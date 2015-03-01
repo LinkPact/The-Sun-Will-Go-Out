@@ -14,16 +14,15 @@ namespace SpaceProject
         private EventTextCanvas canvas;
         private bool delayResponse;
 
-        public ResponseObjective(Game1 game, Mission mission, String description, GameObjectOverworld destination,
-            ResponseTextCapsule responseTextCapsule) :
-            base(game, mission, description, destination)
+        public ResponseObjective(Game1 game, Mission mission, String description, ResponseTextCapsule responseTextCapsule) :
+            base(game, mission, description)
         {
             Setup(responseTextCapsule);
         }
 
-        public ResponseObjective(Game1 game, Mission mission, String description, GameObjectOverworld destination,
+        public ResponseObjective(Game1 game, Mission mission, String description, 
             ResponseTextCapsule responseTextCapsule, EventTextCapsule eventTextCapsule) :
-            base(game, mission, description, destination)
+            base(game, mission, description)
         {
             Setup(responseTextCapsule);
 

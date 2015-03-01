@@ -214,54 +214,46 @@ namespace SpaceProject
 
             GameObjectOverworld rebelBase = Game.stateManager.overworldState.GetStation("Rebel Base");
 
-            destinations.Add(rebelShips1[1]);
-            destinations.Add(rebelShips1[1]);
-            destinations.Add(rebelShips1[1]);
-            destinations.Add(allianceShips[1]);
-            destinations.Add(allianceShips[1]);
-            destinations.Add(allianceShips[1]);
-            destinations.Add(allianceShips[1]);
-            destinations.Add(allianceShips[1]);
-            destinations.Add(rebelBase);
-            destinations.Add(rebelBase);
-            destinations.Add(rebelBase);
+            AddDestination(rebelShips1[1], 3);
+            AddDestination(allianceShips[1], 5);
+            AddDestination(rebelBase, 3);
         }
 
         protected override void SetupObjectives()
         {
             objectives.Clear();
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[0],
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun), null, EventTextCanvas.MessageBox),
                 delegate { },
                 delegate { },
                 delegate { return GameStateManager.currentState.ToLower().Equals("overworldstate"); },
                 delegate { return false; }));
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[1],
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
                 GetEvent((int)EventID.ToMeetingPoint).Text, 3000, 6000));
 
-            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[2],
+            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
                 300, new EventTextCapsule(GetEvent((int)EventID.AtMeeting), null, EventTextCanvas.MessageBox)));
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1], destinations[3],
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
                 GetEvent((int)EventID.AfterMeeting1).Text, 3000, 5000,
                 new EventTextCapsule(GetEvent((int)EventID.AfterMeeting2), null, EventTextCanvas.MessageBox)));
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1], destinations[4],
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
                 GetEvent((int)EventID.ToLavis).Text, 3000, 5000));
 
-            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[1], destinations[5],
+            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[1],
                 300, new EventTextCapsule(GetEvent((int)EventID.Level1Begins), null, EventTextCanvas.MessageBox)));
 
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1], destinations[6],
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
                 "Infiltration1", LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.Level2Begins), null, EventTextCanvas.MessageBox)));
 
-            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1], destinations[7],
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
                 "Infiltration2", LevelStartCondition.Immediately));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[2], destinations[8],
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[2],
                 new EventTextCapsule(GetEvent((int)EventID.AfterLevel2), null, EventTextCanvas.MessageBox),
                 delegate
                 {
@@ -272,7 +264,7 @@ namespace SpaceProject
                 delegate { return true; },
                 delegate { return false; }));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[9],
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.ToRebelBase), null, EventTextCanvas.MessageBox),
                 delegate
                 {
@@ -282,7 +274,7 @@ namespace SpaceProject
                 delegate { return StatsManager.PlayTime.HasOverworldTimePassed(time); },
                 delegate { return false; }));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2], destinations[10]));
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2]));
         }
     }
 }

@@ -46,13 +46,6 @@ namespace SpaceProject
         public override void OnReset()
         {
             base.OnReset();
-
-            ObjectiveIndex = 0;
-
-            for (int i = 0; i < objectives.Count; i++)
-            {
-                objectives[i].Reset();
-            }
         }
 
         public override void MissionLogic()
@@ -83,22 +76,19 @@ namespace SpaceProject
             GameObjectOverworld highfence = Game.stateManager.overworldState.GetPlanet("Highfence");
             GameObjectOverworld fortrunStation1 = Game.stateManager.overworldState.GetStation("Fortrun Station I");
 
-            destinations.Add(soelaraBeacon);
-            destinations.Add(soelaraBeacon);
-            destinations.Add(soelaraBeacon);
-            destinations.Add(highfence);
-            destinations.Add(fortrunStation1);
-            destinations.Add(fortrunStation1);
+            AddDestination(soelaraBeacon, 3);
+            AddDestination(highfence);
+            AddDestination(fortrunStation1, 2);
         }
 
         protected override void SetupObjectives()
         {
             objectives.Clear();
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[0],
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
                 GetEvent((int)EventID.Beacon1).Text, 3000, 1000));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0], destinations[1],
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 delegate
                 {
                     if (!Game.stateManager.overworldState.GetBeacon("Highfence Beacon").IsActivated)
@@ -116,16 +106,16 @@ namespace SpaceProject
                 delegate { return false; }
                 ));
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], destinations[2],
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
                 GetEvent((int)EventID.Beacon2).Text, 3000, 2500));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], destinations[3],
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.ArriveAtHighfence), null, EventTextCanvas.BaseState)));
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1], destinations[4],
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
                 GetEvent((int)EventID.ToFortrun).Text, 3000, 2500));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1], destinations[5]));
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1]));
         }
     }
 }
