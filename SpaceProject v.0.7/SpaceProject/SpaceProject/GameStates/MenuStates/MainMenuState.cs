@@ -268,29 +268,27 @@ namespace SpaceProject
                 switch (buttonIndex)
                 {
                     case 0:
-                        /*MediaPlayer.Stop();
-                        loadedOrNewGame = LoadedOrNewGame.New;
-
-                        KeyboardState current = Keyboard.GetState();
-
-                        //TODO Remove!!!
-                        if (current.IsKeyDown(Keys.H))
+                        if (SaveFile.CheckIfFileExists("save.ini"))
                         {
-                            Game.statsManager.SetHardcoreStats();
+                            Game.messageBox.DisplaySelectionMenu("If you start a new game, you're previously saved game will be lost. Is this okay?",
+                                new List<string>() { "yes", "no"}, 
+                                new List<System.Action>()
+                                {
+                                    delegate 
+                                    {
+                                        Game.menuBGController.SetPreferredBackdropPosition(new Vector2(-201, -101), "StartGameState");
+                                        PlaySelectSound();
+                                    },
+                                    delegate { }
+                                });
                         }
+                        else
+                        {
+                            Game.menuBGController.SetPreferredBackdropPosition(new Vector2(-201, -101), "StartGameState");
 
-                        Game.stateManager.ChangeState("IntroFirstState");*/
-                        Game.menuBGController.SetPreferredBackdropPosition(new Vector2(-201, -101), "StartGameState");
-
-                        PlaySelectSound();
+                            PlaySelectSound();
+                        }
                         break;
-                    
-                    //case 1:
-                    //    MediaPlayer.Stop();
-                    //    loadedOrNewGame = LoadedOrNewGame.New;
-                    //    Game.statsManager.SetCasualStats();
-                    //    Game.stateManager.ChangeState("IntroFirstState");
-                    //    break;
 
                     // LOADGAMELOGIC
                     case 1:

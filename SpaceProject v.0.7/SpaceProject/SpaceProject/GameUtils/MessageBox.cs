@@ -1516,7 +1516,7 @@ namespace SpaceProject
 
                         text = TextUtils.WordWrap(Game.fontManager.GetFont(14),
                                                     TextUtils.ScrollText(textBuffer[0], flushScrollText, out scrollingFinished),
-                                                    (int)Math.Round((messageCanvas.SourceRectangle.Value.Width * 1.45) - 25, 0));
+                                                    (int)Math.Round(((float)messageCanvas.SourceRectangle.Value.Width), 0));
 
                         spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                                 text,
