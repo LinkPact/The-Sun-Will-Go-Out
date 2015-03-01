@@ -66,20 +66,23 @@ namespace SpaceProject
 
         public override void OnLoad()
         {
-            switch (ObjectiveIndex)
+            if (this.MissionState != StateOfMission.CompletedDead)
             {
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                    AddShips(rebelShips1);
-                    AddShips(allianceShips);
-                    break;
+                switch (ObjectiveIndex)
+                {
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                        AddShips(rebelShips1);
+                        AddShips(allianceShips);
+                        break;
 
-                default:
-                    break;
+                    default:
+                        break;
+                }
             }
         }
 

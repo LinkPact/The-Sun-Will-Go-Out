@@ -103,6 +103,14 @@ namespace SpaceProject
         public override void MissionLogic()
         {
             base.MissionLogic();
+
+            if (ObjectiveIndex > 2
+                && ObjectiveIndex < 7
+                && !Game.player.HyperspeedOn
+                && Vector2.Distance(Game.player.position, rebelShips[1].position) > 500)
+            {
+                Game.player.InitializeHyperSpeedJump(rebelShips[1].position, false);
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -168,10 +176,10 @@ namespace SpaceProject
                 delegate { return false; }));
 
             Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                GetEvent((int)EventID.AtMeetingPoint2).Text, 2000, 10000));
+                GetEvent((int)EventID.AtMeetingPoint2).Text, 3000, 10000));
 
             Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                GetEvent((int)EventID.AtMeetingPoint3).Text, 2000, 10000,
+                GetEvent((int)EventID.AtMeetingPoint3).Text, 3000, 10000,
                 new EventTextCapsule(GetEvent((int)EventID.AtMeetingPoint4), null, EventTextCanvas.MessageBox)));
 
             Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
@@ -202,7 +210,7 @@ namespace SpaceProject
                 {
                     freighter.Destroy();
                     Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
-                        alliance1, Game.player.position + new Vector2(-300, 0), "Retribution2", Game.player);
+                        alliance1, Game.player.position + new Vector2(-900, 0), "Retribution2", Game.player);
                     OverworldShip.FollowPlayer = true;
                 },
                 delegate { }, delegate { return true; }, delegate { return false; }));
@@ -252,6 +260,7 @@ namespace SpaceProject
             alliance1 = new AllianceShip(Game, Game.stateManager.shooterState.spriteSheet);
             alliance1.SaveShip = false;
             alliance1.Initialize(Game.stateManager.overworldState.GetSectorX);
+            alliance1.speed = 0.65f;
 
             rebelShips = new List<RebelShip>();
 
