@@ -144,7 +144,7 @@ namespace SpaceProject
                 && timedMessageCount < escortDataCapsule.TimedMessages.Count
                 && StatsManager.PlayTime.HasOverworldTimePassed(timedMessageTimes[timedMessageCount]))
             {
-                game.messageBox.DisplayRealtimeMessage(escortDataCapsule.TimedMessages[timedMessageCount], 2000);
+                game.messageBox.DisplayRealtimeMessage(escortDataCapsule.TimedMessages[timedMessageCount], 3000);
                 timedMessageCount++;
             }
 
@@ -337,31 +337,6 @@ namespace SpaceProject
                         enemies.RemoveAt(i);
                     }
                 }
-            }
-
-            if (started 
-                && !CollisionDetection.IsPointInsideCircle(game.player.position, escortDataCapsule.ShipToDefend.position, 600) &&
-                messageTimer <= 0)
-            {
-                game.messageBox.DisplayMessage("\"Don't stray too far from the freighter, get back here!\"", false);
-                messageTimer = 200;
-            }
-
-            if (started
-                && CollisionDetection.IsPointInsideCircle(game.player.position, escortDataCapsule.ShipToDefend.position, 600) &&
-                messageTimer > 0)
-            {
-                game.messageBox.DisplayMessage("\"Good! Now keep the freighter in sight at all times!\"", false);
-                messageTimer = 0;
-            }
-
-            if (started
-                && messageTimer == 1)
-            {
-                mission.OnReset();
-                game.stateManager.overworldState.RemoveOverworldObject(escortDataCapsule.ShipToDefend);
-                mission.MissionState = StateOfMission.Failed;
-                game.messageBox.DisplayMessage("\"What are you doing?! You compromised our entire mission. Get out of my sight, you moron!\"", false);
             }
         }
     }

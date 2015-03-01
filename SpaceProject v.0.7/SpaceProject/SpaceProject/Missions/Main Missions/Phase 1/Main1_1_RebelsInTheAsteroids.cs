@@ -120,7 +120,7 @@ namespace SpaceProject
                 GetEvent((int)EventID.TravelingToAsteroids).Text, 3000, 3000));
 
             Objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
-                500, new EventTextCapsule(GetEvent((int)EventID.TalkWithCaptain1), null, EventTextCanvas.MessageBox)));
+                250, new EventTextCapsule(GetEvent((int)EventID.TalkWithCaptain1), null, EventTextCanvas.MessageBox)));
 
             ArriveAtLocationObjective talkToCaptainObjective = new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.TalkWithCaptain2), null, EventTextCanvas.MessageBox));

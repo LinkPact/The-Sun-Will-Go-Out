@@ -18,6 +18,8 @@ namespace SpaceProject
             ToFortrun
         }
 
+        private float time;
+
         public Main2_2_ToFortrun(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
             base(Game, section, spriteSheet, missionID)
         {
@@ -85,8 +87,15 @@ namespace SpaceProject
         {
             objectives.Clear();
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                GetEvent((int)EventID.Beacon1).Text, 3000, 1000));
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                new EventTextCapsule(GetEvent((int)EventID.Beacon1), null, EventTextCanvas.MessageBox),
+                delegate 
+                {
+                    time = StatsManager.PlayTime.GetFutureOverworldTime(500);
+                },
+                delegate { },
+                delegate { return StatsManager.PlayTime.HasOverworldTimePassed(time); },
+                delegate { return false; }));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 delegate

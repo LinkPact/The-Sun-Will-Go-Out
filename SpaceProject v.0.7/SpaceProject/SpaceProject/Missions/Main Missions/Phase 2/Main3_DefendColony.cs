@@ -16,15 +16,16 @@ namespace SpaceProject
             OutsideFortrun2,
             ToNewNorrland1,
             ToNewNorrland2,
-            ToNewNorrland3,
             OutsideNewNorrland,
             FirstLevelCompleted,
             SecondLevelCompleted,
             ToFortrun1,
-            ToFortrun2
+            ToFortrun2,
+            ToFortrun3
         }
 
-        private readonly float AutoPilotSpeed = 0.5f;
+        private readonly float AutoPilotSpeed = 0.4f;
+        private readonly float AutoPilotSpeed2 = 0.6f;
 
         private readonly int numberOfAllies = 4;
         private List<OverworldShip> allyShips1;
@@ -132,6 +133,8 @@ namespace SpaceProject
 
         protected override void SetupObjectives()
         {
+            float time = 0;
+
             objectives.Clear();
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
@@ -140,8 +143,15 @@ namespace SpaceProject
                 delegate { return true; },
                 delegate { return false; }));
 
-            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
-                200, new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun1), null, EventTextCanvas.MessageBox)));
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun1), null, EventTextCanvas.MessageBox),
+                delegate
+                {
+                    time = StatsManager.PlayTime.GetFutureOverworldTime(500);
+                },
+                delegate { },
+                delegate { return StatsManager.PlayTime.HasOverworldTimePassed(time); },
+                delegate { return false; }));
 
             objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
                 100, new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun2), null, EventTextCanvas.MessageBox)));
@@ -150,9 +160,8 @@ namespace SpaceProject
                 allyShips1, fortrunStation.position,
                 new Dictionary<string, List<float>>
                 { 
-                    { GetEvent((int)EventID.ToNewNorrland1).Text, new List<float> { 5000, 3000 } },
-                    { GetEvent((int)EventID.ToNewNorrland2).Text, new List<float> { 8000, 3000 } },
-                    { GetEvent((int)EventID.ToNewNorrland3).Text, new List<float> { 20000, 3000 } }
+                    { GetEvent((int)EventID.ToNewNorrland1).Text, new List<float> { 3000, 3000 } },
+                    { GetEvent((int)EventID.ToNewNorrland2).Text, new List<float> { 20000, 3000 } }
                 },
                 new EventTextCapsule(GetEvent((int)EventID.OutsideNewNorrland), null, EventTextCanvas.MessageBox)));
 
@@ -185,13 +194,14 @@ namespace SpaceProject
             objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[1], 200,
                 new EventTextCapsule(new EventText("[Ai] \"Let's go\""), null, EventTextCanvas.MessageBox)));
 
-            objectives.Add(new AutoPilotObjective(Game, this, ObjectiveDescriptions[2], AutoPilotSpeed,
+            objectives.Add(new AutoPilotObjective(Game, this, ObjectiveDescriptions[2], AutoPilotSpeed2,
                 allyShips2, newNorrland.position,
                 new Dictionary<string, List<float>>
                 { 
-                    { GetEvent((int)EventID.ToFortrun1).Text, new List<float> { 5000, 3000 } },
-                    { GetEvent((int)EventID.ToFortrun2).Text, new List<float> { 8000, 3000 } }
-                }));
+                    { GetEvent((int)EventID.ToFortrun1).Text, new List<float> { 7000, 3000 } },
+                    { GetEvent((int)EventID.ToFortrun2).Text, new List<float> { 1000, 3000 } },
+                    { GetEvent((int)EventID.ToFortrun3).Text, new List<float> { 4000, 3000 } },
+                }, false));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[2],
                 delegate

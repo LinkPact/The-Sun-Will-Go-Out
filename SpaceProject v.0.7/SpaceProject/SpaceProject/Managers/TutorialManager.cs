@@ -130,19 +130,19 @@ namespace SpaceProject
                 //DisplayTutorialMessage("This is the planet menu. If the planet has a colony, you can buy/sell items there, accept missions and listen to rumors from it's inhabitants. Not all planets are inhabited though.");
             }
 
-            if (!hasEnteredSectorX &&
-                    MissionManager.GetMission(MissionID.Main1_1_RebelsInTheAsteroids).MissionState == StateOfMission.CompletedDead)
-            {
-                if (CollisionDetection.IsRectInRect(game.player.Bounds,
-                    game.stateManager.overworldState.GetSectorX.SpaceRegionArea) &&
-                    game.messageBox.MessageState == MessageState.Invisible)
-                {
-                    hasEnteredSectorX = true;
-
-                    DisplayTutorialMessage(new List<string> {"Welcome to the Sector X. You are now free to explore the sector's planets and stations. Some stations or colonies on planets have missions you can take on to earn money and learn more about the people living here.",
-                        "You will also encounter ships traveling between destinations. Some are friendly and some are not so friendly. You can use the minimap to determine the allegiance of the ships: blue is neutral and red is hostile. Be careful!"});
-                }
-            }
+            //if (!hasEnteredSectorX &&
+            //        MissionManager.GetMission(MissionID.Main1_1_RebelsInTheAsteroids).MissionState == StateOfMission.CompletedDead)
+            //{
+            //    if (CollisionDetection.IsRectInRect(game.player.Bounds,
+            //        game.stateManager.overworldState.GetSectorX.SpaceRegionArea) &&
+            //        game.messageBox.MessageState == MessageState.Invisible)
+            //    {
+            //        hasEnteredSectorX = true;
+            //
+            //        DisplayTutorialMessage(new List<string> {"Welcome to the Sector X. You are now free to explore the sector's planets and stations. Some stations or colonies on planets have missions you can take on to earn money and learn more about the people living here.",
+            //            "You will also encounter ships traveling between destinations. Some are friendly and some are not so friendly. You can use the minimap to determine the allegiance of the ships: blue is neutral and red is hostile. Be careful!"});
+            //    }
+            //}
 
             Vector2 highfenceBeaconPosition = game.stateManager.overworldState.GetBeacon("Highfence Beacon").position; 
 

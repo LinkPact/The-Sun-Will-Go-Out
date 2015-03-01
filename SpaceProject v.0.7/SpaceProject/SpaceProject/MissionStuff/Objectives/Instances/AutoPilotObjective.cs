@@ -21,6 +21,8 @@ namespace SpaceProject
         private Vector2 companionStartingPos;
         private Dictionary<string, List<float>> timedMessages;
         private float nextMessageTime;
+        private bool realTime;
+        private int realTimeSwitchIndex;
 
         public AutoPilotObjective(Game1 game, Mission mission, String description, float speed) :
             base(game, mission, description)
@@ -30,13 +32,14 @@ namespace SpaceProject
         public AutoPilotObjective(Game1 game, Mission mission, String description,
             float speed, List<OverworldShip> companions,
             Vector2 companionStartingPos, Dictionary<string, List<float>> timedMessages,
-            EventTextCapsule eventTextCapsule) :
+            EventTextCapsule eventTextCapsule, bool realTime = true) :
             base(game, mission, description)
         {
             this.speed = speed;
             ships = companions;
             this.companionStartingPos = companionStartingPos;
             this.timedMessages = timedMessages;
+            this.realTime = realTime;
 
             objectiveCompletedEventText = eventTextCapsule.CompletedText;
             eventTextCanvas = eventTextCapsule.EventTextCanvas;
@@ -45,14 +48,14 @@ namespace SpaceProject
 
         public AutoPilotObjective(Game1 game, Mission mission, String description,
             float speed, List<OverworldShip> companions,
-            Vector2 companionStartingPos, Dictionary<string, List<float>> timedMessages) :
+            Vector2 companionStartingPos, Dictionary<string, List<float>> timedMessages, bool realTime = true) :
             base(game, mission, description)
         {
             this.speed = speed;
             ships = companions;
             this.companionStartingPos = companionStartingPos;
             this.timedMessages = timedMessages;
-
+            this.realTime = realTime;
         }
 
         public override void Initialize()
@@ -98,7 +101,19 @@ namespace SpaceProject
             if (timedMessages.Keys.Count > 0
                 && StatsManager.PlayTime.HasOverworldTimePassed(nextMessageTime))
             {
-                game.messageBox.DisplayRealtimeMessage(timedMessages.Keys.First(), GetNextMessageDuration());
+                if (realTime)
+                {
+                    game.messageBox.DisplayRealtimeMessage(timedMessages.Keys.First(), GetNextMessageDuration());
+                }
+                else
+                {
+                    realTimeSwitchIndex++;
+                    game.messageBox.DisplayMessage(timedMessages.Keys.First(), false);
+                    if (realTimeSwitchIndex >= 2)
+                    {
+                        realTime = true;
+                    }
+                }
                 timedMessages.Remove(timedMessages.Keys.First());
 
                 if (timedMessages.Keys.Count > 0)

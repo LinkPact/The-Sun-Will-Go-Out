@@ -271,7 +271,7 @@ namespace SpaceProject
                         if (SaveFile.CheckIfFileExists("save.ini"))
                         {
                             Game.messageBox.DisplaySelectionMenu("If you start a new game, you're previously saved game will be lost. Is this okay?",
-                                new List<string>() { "yes", "no"}, 
+                                new List<string>() { "Yes", "No"}, 
                                 new List<System.Action>()
                                 {
                                     delegate 

@@ -143,12 +143,12 @@ namespace SpaceProject
                                                               GetEvent((int)EventID.RebelsAttack2).Text },
                    28500,
                    4000,
-                   2000,
+                   1000,
                    new List<String> { "FreighterEscort1", "FreighterEscort2" },
                    new List<String> { GetEvent((int)EventID.AfterRebelAttack1).Text, GetEvent((int)EventID.AfterRebelAttack2).Text },
                    new List<String> { GetEvent((int)EventID.CaptainChitChat1).Text, GetEvent((int)EventID.CaptainChitChat2).Text,
                                                               GetEvent((int)EventID.AlmostThere).Text },
-                   new List<int> { 4000, 20000, 35000 }, 0.4f),
+                   new List<int> { 4000, 18000, 34500 }, 0.4f),
                true));
         }
     }
