@@ -23,8 +23,9 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            FlameShotWeapon flameShot = new FlameShotWeapon(Game, ItemVariety.high);
-            RewardItems.Add(flameShot);
+            AdvancedPlating plating = new AdvancedPlating(Game, ItemVariety.high);
+            BursterWeapon burster = new BursterWeapon(Game, ItemVariety.high);
+            RewardItems.Add(plating);
 
             RestartAfterFail();
 

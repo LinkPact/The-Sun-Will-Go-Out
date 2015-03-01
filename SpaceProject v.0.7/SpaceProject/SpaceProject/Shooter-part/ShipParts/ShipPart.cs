@@ -69,7 +69,7 @@ namespace SpaceProject
                     }
                 case ItemVariety.high:
                     {
-                        SetShipPartVariety(ShipPart.regularItemSpreadFactor, ShipPart.goodQuality);
+                        SetShipPartVariety(ShipPart.regularItemSpreadFactor, ShipPart.greatQuality);
                         break;
                     }
                 case ItemVariety.random:
