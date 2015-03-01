@@ -9,6 +9,9 @@ namespace SpaceProject
 {
     public class FortrunStation2 : SubInteractiveObject
     {
+        private List<Item> randomItems;
+        private Item item;
+
         public FortrunStation2(Game1 Game, Sprite spriteSheet, MessageBox messageBox) :
             base(Game, spriteSheet, messageBox)
         {
@@ -23,16 +26,18 @@ namespace SpaceProject
 
             base.Initialize();
 
-            SetupFuelShop("Do you want to refuel? It costs 100 rupees!",
-                "Thanks anyway, sir!",
-                "Thank you! Your fuel has been refilled!",
-                "I'm afraid you do not have enough money, sir.",
-                "Your tank is already full! How silly of you, sir!", 100);
+            Setup();
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            if (itemBought)
+            {
+                Setup();
+                itemBought = false;
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -43,6 +48,33 @@ namespace SpaceProject
         public override void Interact()
         {
             base.Interact();
+        }
+
+        private Item SelectRandomItem()
+        {
+            Random random = new Random(DateTime.Now.Millisecond);
+            randomItems = new List<Item>();
+
+            randomItems.Add(new BasicLaserWeapon(Game, ItemVariety.random));
+            randomItems.Add(new DualLaserWeapon(Game, ItemVariety.random));
+            randomItems.Add(new SpreadBulletWeapon(Game, ItemVariety.random));
+            randomItems.Add(new WaveBeamWeapon(Game, ItemVariety.random));
+            randomItems.Add(new BasicShield(Game, ItemVariety.random));
+            randomItems.Add(new BasicEnergyCell(Game, ItemVariety.random));
+            randomItems.Add(new BasicPlating(Game, ItemVariety.random));
+
+            return randomItems[random.Next(0, randomItems.Count - 1)];
+        }
+
+        private void Setup()
+        {
+            item = SelectRandomItem();
+
+            SetupItemShop(item, "Do you want to buy this one-of-a-kind " + item.Name + "? Only 1000 rupees!",
+                "Thanks anyway, sir!",
+                "Thank you! Have a lovely day, sir!",
+                "I'm afraid you do not have enough money, sir.",
+                "Your inventory is full! How silly of you, sir!", 1000, false);
         }
     }
 }

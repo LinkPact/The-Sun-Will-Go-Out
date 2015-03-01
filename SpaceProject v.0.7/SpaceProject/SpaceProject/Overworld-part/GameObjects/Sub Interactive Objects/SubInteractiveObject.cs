@@ -23,6 +23,7 @@ namespace SpaceProject
         private static int count;
         private int id;
 
+        private bool oneTimeOnly;
         private bool cleared;
         private string clearedText = "EMPTY";
 
@@ -49,6 +50,7 @@ namespace SpaceProject
         private string levelFailedText;
 
         // item shop stuff
+        protected bool itemBought;
         private Item itemShopItem;
         private string inventoryFullText;
 
@@ -197,10 +199,14 @@ namespace SpaceProject
 
                                 else if (StatsManager.Rupees >= price)
                                 {
+                                    itemBought = true;
                                     messageBox.DisplayMessage(purchaseText, false, 50);
                                     StatsManager.Rupees -= price;
                                     ShipInventoryManager.AddItem(itemShopItem);
-                                    cleared = true;
+                                    if (oneTimeOnly)
+                                    {
+                                        cleared = true;
+                                    }
                                 }
 
                                 else
@@ -263,16 +269,18 @@ namespace SpaceProject
         }
 
         protected void SetupItemShop(Item item, String welcomeText, String declinePurchaseText, String itemBoughtText,
-            String notEnoughMoneyText, String inventoryFullText, int price)
+            String notEnoughMoneyText, String inventoryFullText, int price, bool oneTimeOnly = true)
         {
             interactionType = InteractionType.ItemShop;
             itemShopItem = item;
+            text.Clear();
             text.Add(welcomeText);
             this.declinePurchaseText = declinePurchaseText;
             purchaseText = itemBoughtText;
             this.notEnoughMoneyText = notEnoughMoneyText;
             this.inventoryFullText = inventoryFullText;
             this.price = price;
+            this.oneTimeOnly = oneTimeOnly;
         }
 
         protected void SetupLevel(String interactText, String level, int moneyReward, List<Item> itemReward,
