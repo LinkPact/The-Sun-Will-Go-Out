@@ -446,7 +446,7 @@ namespace SpaceProject
             {
                 throw new Exception("Type " + classname + " not found.");
             }
-            Item i = (Item)Activator.CreateInstance(t, new object[] { Game });
+            Item i = (Item)Activator.CreateInstance(t, new object[] { Game, null });
             return i;
         }
     }

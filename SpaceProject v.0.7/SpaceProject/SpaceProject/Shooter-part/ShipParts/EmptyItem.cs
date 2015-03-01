@@ -10,7 +10,7 @@ namespace SpaceProject
     public class EmptyItem : Item
     {
 
-        public EmptyItem(Game1 Game) :
+        public EmptyItem(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game)
         {
             Name = "---";
