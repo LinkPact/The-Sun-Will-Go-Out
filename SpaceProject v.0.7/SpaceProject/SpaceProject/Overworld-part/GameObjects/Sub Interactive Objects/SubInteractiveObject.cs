@@ -79,7 +79,7 @@ namespace SpaceProject
         public override void Update(GameTime gameTime)
         {
             if (startLevelWhenTextCleared
-                && Game.messageBox.MessageState == MessageState.Invisible)
+                && Game.messageBox.TextBufferEmpty)
             {
                 Game.stateManager.shooterState.BeginLevel(level);
                 startLevelWhenTextCleared = false;

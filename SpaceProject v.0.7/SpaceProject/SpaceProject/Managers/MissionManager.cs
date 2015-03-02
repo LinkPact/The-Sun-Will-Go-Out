@@ -588,7 +588,7 @@ namespace SpaceProject
                 {
                     if (CollisionDetection.IsRectInRect(game.player.Bounds,
                         game.stateManager.overworldState.GetSectorX.SpaceRegionArea) &&
-                        game.messageBox.MessageState == MessageState.Invisible)
+                        game.messageBox.TextBufferEmpty)
                     {
                         game.messageBox.DisplayMessage(0, "You do not have the proper papers to enter Sector X. Please finish mission 'A Cold Welcome' first.");
                         game.player.Direction.SetDirection(new Vector2(game.player.position.X - game.stateManager.overworldState.GetSectorX.SectorXStar.position.X,

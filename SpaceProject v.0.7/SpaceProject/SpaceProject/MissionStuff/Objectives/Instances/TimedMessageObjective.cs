@@ -78,7 +78,7 @@ namespace SpaceProject
         public override bool Completed()
         {
             return (messageTime == -1
-                && game.messageBox.MessageState == MessageState.Invisible);
+                && game.messageBox.TextBufferEmpty);
         }
 
         public override void OnCompleted()

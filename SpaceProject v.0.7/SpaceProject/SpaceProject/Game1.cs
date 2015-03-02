@@ -276,7 +276,7 @@ namespace SpaceProject
             missionManager.Draw(spriteBatch);
             tutorialManager.Draw(spriteBatch);
 
-            if (messageBox.MessageState != MessageState.Invisible
+            if (messageBox.TextBufferEmpty
                 && !ZoomMap.IsMapOn)
             {
                 messageBox.Draw(spriteBatch);

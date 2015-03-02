@@ -67,5 +67,64 @@ namespace SpaceProject
         {
             imageBuffer = images.ToList<Sprite>();
         }
+
+        protected override void Hide()
+        {
+            TextToSpeech.Stop();
+            TextUtils.RefreshTextScrollBuffer();
+
+            if (useScrolling
+                && scrollingFinished
+                && tempTimer < 0)
+            {
+                if ((!UpdateTextBuffer()
+                    || !UpdateImageBuffer())
+                    && usePause)
+                {
+                    Game1.Paused = false;
+                }
+            }
+            else if (!useScrolling
+                && tempTimer < 0)
+            {
+                if ((!UpdateTextBuffer()
+                    || !UpdateImageBuffer())
+                    && usePause)
+                {
+                    Game1.Paused = false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Return true if more text is available to display, returns false otherwise
+        /// </summary>
+        /// <returns></returns>
+        private bool UpdateImageBuffer()
+        {
+            if (imageBuffer.Count > 0)
+            {
+                imageBuffer.Remove(imageBuffer[0]);
+            }
+
+            if (imageBuffer.Count <= 0)
+            {
+                return false;
+            }
+
+            else
+            {
+                imageTriggerIndex++;
+                
+                if (imageTriggers.Count > 0 &&
+                    imageTriggerIndex == imageTriggers[0])
+                {
+                    imageTriggers.RemoveAt(0);
+                    imageBuffer.RemoveAt(0);
+                }
+            }
+
+            return true;
+        }
     }
 }

@@ -25,28 +25,6 @@ namespace SpaceProject
             canvas = spriteSheet.GetSubSprite(new Rectangle(0, 56, 269, 184));
         }
 
-        public override void Initialize()
-        {
-            base.Initialize();
-
-            menuOptions = new List<string>();
-            menuActions = new List<System.Action>();
-
-            holdTimer = game.HoldKeyTreshold;
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-
-            ButtonControls();
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            base.Draw(spriteBatch);
-        }
-
         public virtual void SetMenuOptions(params string[] menuOptions)
         {
             this.menuOptions.Clear();
@@ -69,34 +47,28 @@ namespace SpaceProject
             }
         }
 
-        private void ButtonControls()
+        public override void Initialize()
         {
-            if (ControlManager.CheckPress(RebindableKeys.Action1)
-                || ControlManager.CheckKeypress(Keys.Enter))
-            {
-                OnPress(RebindableKeys.Action1);
-            }
-            else if (ControlManager.CheckPress(RebindableKeys.Pause)
-                || ControlManager.CheckKeypress(Keys.Escape))
-            {
-                OnPress(RebindableKeys.Pause);
-            }
-            else if (ControlManager.CheckPress(RebindableKeys.Right))
-            {
-                OnPress(RebindableKeys.Right);
-            }
-            else if (ControlManager.CheckPress(RebindableKeys.Left))
-            {
-                OnPress(RebindableKeys.Left);
-            }
-            else if (ControlManager.CheckPress(RebindableKeys.Up))
-            {
-                OnPress(RebindableKeys.Up);
-            }
-            else if (ControlManager.CheckPress(RebindableKeys.Down))
-            {
-                OnPress(RebindableKeys.Down);
-            }
+            base.Initialize();
+
+            menuOptions = new List<string>();
+            menuActions = new List<System.Action>();
+
+            holdTimer = game.HoldKeyTreshold;
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+
+            ButtonControls();
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+
+            DrawMenuOptions(spriteBatch);
         }
 
         public override void OnPress(RebindableKeys key)
@@ -209,6 +181,46 @@ namespace SpaceProject
             }
         }
 
+        protected virtual void DrawMenuOptions(SpriteBatch spriteBatch)
+        {
+            Vector2 pos;
+            Color color;
+            float XposAcc = 5;
+
+            if (GameStateManager.currentState == "OverworldState")
+            {
+                pos = new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2,
+                                  game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 4);
+            }
+            else
+            {
+                pos = new Vector2(0, 4);
+            }
+
+            //loops through the menu options and colors the selected one red
+            for (int i = 0; i < menuOptions.Count; i++)
+            {
+                color = game.fontManager.FontColor;
+
+                if (i == cursorIndex)
+                {
+                    color = Color.LightBlue;
+                }
+
+                spriteBatch.DrawString(game.fontManager.GetFont(14),
+                     menuOptions[i],
+                     new Vector2(pos.X + XposAcc, pos.Y) + game.fontManager.FontOffset,
+                     color,
+                     0f,
+                     Vector2.Zero,
+                     1f,
+                     SpriteEffects.None,
+                     1f);
+
+                XposAcc += game.fontManager.GetFont(14).MeasureString(menuOptions[i]).X + 15;
+            }
+        }
+
         protected void CheckCursorIndex()
         {
             if (cursorIndex < 0)
@@ -219,6 +231,36 @@ namespace SpaceProject
             else if (cursorIndex > currentIndexMax)
             {
                 cursorIndex = 0;
+            }
+        }
+
+        private void ButtonControls()
+        {
+            if (ControlManager.CheckPress(RebindableKeys.Action1)
+                || ControlManager.CheckKeypress(Keys.Enter))
+            {
+                OnPress(RebindableKeys.Action1);
+            }
+            else if (ControlManager.CheckPress(RebindableKeys.Pause)
+                || ControlManager.CheckKeypress(Keys.Escape))
+            {
+                OnPress(RebindableKeys.Pause);
+            }
+            else if (ControlManager.CheckPress(RebindableKeys.Right))
+            {
+                OnPress(RebindableKeys.Right);
+            }
+            else if (ControlManager.CheckPress(RebindableKeys.Left))
+            {
+                OnPress(RebindableKeys.Left);
+            }
+            else if (ControlManager.CheckPress(RebindableKeys.Up))
+            {
+                OnPress(RebindableKeys.Up);
+            }
+            else if (ControlManager.CheckPress(RebindableKeys.Down))
+            {
+                OnPress(RebindableKeys.Down);
             }
         }
 

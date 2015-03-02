@@ -109,7 +109,7 @@ namespace SpaceProject
 
             else if (!coordinatesDisplayed 
                 && hasEnteredOverworld 
-                && game.messageBox.MessageState == MessageState.Invisible)
+                && game.messageBox.TextBufferEmpty)
             {
                 coordinatesDisplayed = true;
 
@@ -132,7 +132,7 @@ namespace SpaceProject
             {
                 if (CollisionDetection.IsRectInRect(game.player.Bounds,
                     game.stateManager.overworldState.GetSectorX.SpaceRegionArea) &&
-                    game.messageBox.MessageState == MessageState.Invisible)
+                    game.messageBox.TextBufferEmpty)
                 {
                     hasEnteredSectorX = true;
 

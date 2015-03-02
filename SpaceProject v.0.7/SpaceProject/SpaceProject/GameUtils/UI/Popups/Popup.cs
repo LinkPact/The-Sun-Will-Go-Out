@@ -26,25 +26,31 @@ namespace SpaceProject
         protected List<String> textBuffer;
 
         private float popupTime;
-        private Sprite unselectedButton;
         private Sprite selectedButton;
 
-        private int tempTimer;
+        protected int tempTimer;
         protected bool useScrolling;
-        private bool scrollingFinished;
+        protected bool scrollingFinished;
         private bool flushScrollText;
 
-        protected bool pauseGame;
+        protected bool usePause;
+
+        private bool finished;
+        public bool Finished { get { return finished; } private set { ; } }
 
         protected Popup(Game1 game, Sprite spriteSheet)
         {
             this.game = game;
-            unselectedButton = spriteSheet.GetSubSprite(new Rectangle(112, 0, 66, 21));
             selectedButton = spriteSheet.GetSubSprite(new Rectangle(180, 0, 66, 21));
         }
 
         public virtual void Initialize()
         {
+            if (!(this is RealTimeMessage))
+            {
+                usePause = true;
+            }
+
             textBuffer = new List<String>();
 
             // Sets position of canvas and text
@@ -87,6 +93,57 @@ namespace SpaceProject
                  canvasScale,
                  SpriteEffects.None,
                  LayerDepth);
+
+            // Draws "okay"-button
+            spriteBatch.Draw(selectedButton.Texture,
+                new Vector2(canvasPosition.X, canvasPosition.Y),
+                selectedButton.SourceRectangle,
+                Color.White,
+                0f,
+                new Vector2(selectedButton.SourceRectangle.Value.Width / 2,
+                    selectedButton.SourceRectangle.Value.Height / 2),
+                1f,
+                SpriteEffects.None,
+                0.975f);
+
+            // Draws "okay"-text
+            spriteBatch.DrawString(game.fontManager.GetFont(14),
+                 "Okay",
+                 new Vector2(canvasPosition.X,
+                         canvasPosition.Y) + game.fontManager.FontOffset,
+                 Color.LightBlue,
+                 0f,
+                 game.fontManager.GetFont(14).MeasureString("Okay") / 2,
+                 1f,
+                 SpriteEffects.None,
+                 1f);
+        }
+
+        public virtual void Show()
+        {
+            if (usePause)
+            {
+                Game1.Paused = true;
+
+                TextToSpeech.Speak(textBuffer[0], TextToSpeech.DefaultRate);
+            }
+        }
+
+        public virtual void OnPress(RebindableKeys key)
+        {
+            if (tempTimer > 0)
+            {
+                return;
+            }
+
+            else if (key == RebindableKeys.Action1)
+            {
+                if (useScrolling
+                    && !scrollingFinished)
+                {
+                    flushScrollText = true;
+                }
+            }
         }
 
         public void SetMessage(params string[] text)
@@ -108,55 +165,64 @@ namespace SpaceProject
             }
         }
 
-        public virtual void Show()
-        {
-            if (pauseGame)
-            {
-                Game1.Paused = true;
-
-                TextToSpeech.Speak(textBuffer[0], TextToSpeech.DefaultRate);
-            }
-        }
-
         public void SetDelay(float milliseconds)
         {
             popupTime = StatsManager.PlayTime.GetFuturePlayTime(milliseconds);
         }
 
-        public virtual void OnPress(RebindableKeys key)
-        {
-            if (tempTimer > 0)
-            {
-                return;
-            }
-        }
-
         protected virtual void Hide()
         {
+            TextToSpeech.Stop();
             TextUtils.RefreshTextScrollBuffer();
 
             if (useScrolling
                 && scrollingFinished
                 && tempTimer < 0)
             {
-                textBuffer.Remove(textBuffer[0]);
-
-                if (textBuffer.Count <= 0)
+                if (!UpdateTextBuffer()
+                    && usePause)
                 {
-                    if (pauseGame)
-                    {
-                        Game1.Paused = false;
-                    }
+                    Game1.Paused = false;
+                    finished = true;
                 }
-
-                else
-                {
-                    TextToSpeech.Speak(textBuffer[0]);
-                }
-
-                scrollingFinished = false;
-                flushScrollText = false;
             }
+            else if (!useScrolling
+                && tempTimer < 0)
+            {
+                if (!UpdateTextBuffer()
+                    && usePause)
+                {
+                    Game1.Paused = false;
+                    finished = true;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Return true if more text is available to display, returns false otherwise
+        /// </summary>
+        /// <returns></returns>
+        protected bool UpdateTextBuffer()
+        {
+            if (textBuffer.Count > 0)
+            {
+                textBuffer.Remove(textBuffer[0]);
+            }
+
+            if (textBuffer.Count <= 0)
+            {
+                return false;
+            }
+
+            else
+            {
+                TextToSpeech.Speak(textBuffer[0]);
+            }
+
+            scrollingFinished = false;
+            flushScrollText = false;
+
+            return true;
         }
     }
 }

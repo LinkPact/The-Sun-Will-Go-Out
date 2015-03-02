@@ -392,10 +392,15 @@ namespace SpaceProject
 
             else if (ControlManager.CheckPress(RebindableKeys.Pause))
             {
-                if (Game.messageBox.MessageState == MessageState.Invisible)
+                if (Game.messageBox.TextBufferEmpty)
                 {
                     Game.messageBox.DisplayMenu();
                 }
+            }
+
+            else if (ControlManager.CheckKeypress(Keys.Y))
+            {
+                Game.messageBox.DisplayMessage(0, "Hello world!");
             }
 
             else if (ControlManager.CheckKeypress(Keys.M))

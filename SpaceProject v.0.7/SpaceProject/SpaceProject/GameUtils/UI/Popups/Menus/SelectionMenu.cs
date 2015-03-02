@@ -98,5 +98,29 @@ namespace SpaceProject
                     break;
             }
         }
+
+        protected override void DrawMenuOptions(SpriteBatch spriteBatch)
+        {
+            for (int i = 0; i < menuOptions.Count; i++)
+            {
+                Color color = Color.White;
+
+                if (cursorIndex == i)
+                {
+                    color = Color.LightBlue;
+                }
+
+                spriteBatch.DrawString(game.fontManager.GetFont(14),
+                    menuOptions[i],
+                    new Vector2(canvasPosition.X + (i * 140),
+                            canvasPosition.Y) + game.fontManager.FontOffset,
+                    color,
+                    0f,
+                    game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
+                    1f,
+                    SpriteEffects.None,
+                    1f);
+            }
+        }
     }
 }
