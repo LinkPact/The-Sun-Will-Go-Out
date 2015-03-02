@@ -33,9 +33,26 @@ namespace SpaceProject
             base.Draw(spriteBatch);
         }
 
-        public override void OnPress()
+        public override void OnPress(RebindableKeys key)
         {
-            base.OnPress();
+            base.OnPress(key);
+
+            switch (key)
+            {
+                case RebindableKeys.Up:
+                    {
+                        cursorIndex--;
+                        CheckCursorIndex();
+                        break;
+                    }
+
+                case RebindableKeys.Down:
+                    {
+                        cursorIndex++;
+                        CheckCursorIndex();
+                        break;
+                    }
+            }
         }
 
         protected override void DefaultOnPressActions()

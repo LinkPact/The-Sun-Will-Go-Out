@@ -17,6 +17,8 @@ namespace SpaceProject
         protected int cursorIndex;
         protected int currentIndexMax;
 
+        private int holdTimer;
+
         public Menu(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
         {
@@ -29,11 +31,15 @@ namespace SpaceProject
 
             menuOptions = new List<string>();
             menuActions = new List<System.Action>();
+
+            holdTimer = game.HoldKeyTreshold;
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            ButtonControls();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -63,17 +69,74 @@ namespace SpaceProject
             }
         }
 
-        public override void OnPress()
+        private void ButtonControls()
         {
-            base.OnPress();
-
-            if (menuActions.Count <= 0)
+            if (ControlManager.CheckPress(RebindableKeys.Action1)
+                || ControlManager.CheckKeypress(Keys.Enter))
             {
-                DefaultOnPressActions();
+                OnPress(RebindableKeys.Action1);
             }
-            else
+            else if (ControlManager.CheckPress(RebindableKeys.Pause)
+                || ControlManager.CheckKeypress(Keys.Escape))
             {
-                InvokeCustomOnPressActions();
+                OnPress(RebindableKeys.Pause);
+            }
+            else if (ControlManager.CheckPress(RebindableKeys.Right))
+            {
+                OnPress(RebindableKeys.Right);
+            }
+            else if (ControlManager.CheckPress(RebindableKeys.Left))
+            {
+                OnPress(RebindableKeys.Left);
+            }
+            else if (ControlManager.CheckPress(RebindableKeys.Up))
+            {
+                OnPress(RebindableKeys.Up);
+            }
+            else if (ControlManager.CheckPress(RebindableKeys.Down))
+            {
+                OnPress(RebindableKeys.Down);
+            }
+        }
+
+        public override void OnPress(RebindableKeys key)
+        {
+            base.OnPress(key);
+
+            switch (key)
+            {
+                case RebindableKeys.Action1:
+                    {
+                        if (menuActions.Count <= 0)
+                        {
+                            DefaultOnPressActions();
+                        }
+                        else
+                        {
+                            InvokeCustomOnPressActions();
+                        }
+                        break;
+                    }
+
+                case RebindableKeys.Pause:
+                    {
+                        Hide();
+                        break;
+                    }
+
+                case RebindableKeys.Right:
+                    {
+                        cursorIndex++;
+                        CheckCursorIndex();
+                        break;
+                    }
+
+                case RebindableKeys.Left:
+                    {
+                        cursorIndex--;
+                        CheckCursorIndex();
+                        break;
+                    }
             }
         }
 
@@ -96,13 +159,15 @@ namespace SpaceProject
                     {
                         game.messageBox.DisplaySelectionMenu("What do you want to do?",
                             new List<string> { "Save and exit to menu", "Save and exit to desktop", "Exit to menu without saving",
-                        "Exit to desktop without saving", "Cancel"});
+                        "Exit to desktop without saving", "Cancel"},
+                        new List<System.Action>());
                     }
 
                     else if (GameStateManager.currentState.Equals("ShooterState"))
                     {
                         game.messageBox.DisplaySelectionMenu("What do you want to do? You cannot save during combat.",
-                            new List<string> { "Exit to menu without saving", "Exit to desktop without saving", "Cancel" });
+                            new List<string> { "Exit to menu without saving", "Exit to desktop without saving", "Cancel" },
+                            new List<System.Action>());
                     }
                     break;
 
@@ -141,6 +206,19 @@ namespace SpaceProject
                     game.stateManager.shooterState.CurrentLevel.LeaveLevel();
                     Hide();
                     break;
+            }
+        }
+
+        protected void CheckCursorIndex()
+        {
+            if (cursorIndex < 0)
+            {
+                cursorIndex = currentIndexMax;
+            }
+
+            else if (cursorIndex > currentIndexMax)
+            {
+                cursorIndex = 0;
             }
         }
 

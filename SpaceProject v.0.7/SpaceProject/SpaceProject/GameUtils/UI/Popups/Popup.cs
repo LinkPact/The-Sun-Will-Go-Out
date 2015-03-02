@@ -30,6 +30,9 @@ namespace SpaceProject
         private Sprite selectedButton;
 
         private int tempTimer;
+        protected bool useScrolling;
+        private bool scrollingFinished;
+        private bool flushScrollText;
 
         protected bool pauseGame;
 
@@ -105,7 +108,7 @@ namespace SpaceProject
             }
         }
 
-        public void Show()
+        public virtual void Show()
         {
             if (pauseGame)
             {
@@ -120,7 +123,7 @@ namespace SpaceProject
             popupTime = StatsManager.PlayTime.GetFuturePlayTime(milliseconds);
         }
 
-        public virtual void OnPress()
+        public virtual void OnPress(RebindableKeys key)
         {
             if (tempTimer > 0)
             {
@@ -130,9 +133,29 @@ namespace SpaceProject
 
         protected virtual void Hide()
         {
-            if (pauseGame)
+            TextUtils.RefreshTextScrollBuffer();
+
+            if (useScrolling
+                && scrollingFinished
+                && tempTimer < 0)
             {
-                Game1.Paused = false;
+                textBuffer.Remove(textBuffer[0]);
+
+                if (textBuffer.Count <= 0)
+                {
+                    if (pauseGame)
+                    {
+                        Game1.Paused = false;
+                    }
+                }
+
+                else
+                {
+                    TextToSpeech.Speak(textBuffer[0]);
+                }
+
+                scrollingFinished = false;
+                flushScrollText = false;
             }
         }
     }
