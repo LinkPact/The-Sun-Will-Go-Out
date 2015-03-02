@@ -184,7 +184,9 @@
     <Compile Include="GameUtils\UI\Popups\Instances\ImageMessage.cs" />
     <Compile Include="GameUtils\UI\Popups\Instances\ImagePopup.cs" />
     <Compile Include="GameUtils\UI\Popups\Instances\ImageTutorialMessage.cs" />
+    <Compile Include="GameUtils\UI\Popups\Instances\SelectionMenu.cs" />
     <Compile Include="GameUtils\UI\Popups\Instances\RealTimeMessage.cs" />
+    <Compile Include="GameUtils\UI\Popups\Instances\Menu.cs" />
     <Compile Include="GameUtils\UI\Popups\Popup.cs" />
     <Compile Include="GameUtils\UI\Popups\Instances\PortraitMessage.cs" />
     <Compile Include="GameUtils\UI\Popups\Instances\TextMessage.cs" />

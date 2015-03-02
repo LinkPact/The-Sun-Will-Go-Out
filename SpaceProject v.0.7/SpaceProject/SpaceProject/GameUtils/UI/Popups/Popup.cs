@@ -29,6 +29,8 @@ namespace SpaceProject
         private Sprite unselectedButton;
         private Sprite selectedButton;
 
+        private int tempTimer;
+
         protected bool pauseGame;
 
         protected Popup(Game1 game, Sprite spriteSheet)
@@ -55,6 +57,8 @@ namespace SpaceProject
                 textPosition = new Vector2(game.Window.ClientBounds.Width / 2 - canvas.SourceRectangle.Value.Width / 2,
                                            game.Window.ClientBounds.Height / 2 - canvas.SourceRectangle.Value.Height / 2 - 5);
             }
+
+            tempTimer = 5;
         }
 
         public virtual void Update(GameTime gameTime)
@@ -114,6 +118,14 @@ namespace SpaceProject
         public void SetDelay(float milliseconds)
         {
             popupTime = StatsManager.PlayTime.GetFuturePlayTime(milliseconds);
+        }
+
+        public virtual void OnPress()
+        {
+            if (tempTimer > 0)
+            {
+                return;
+            }
         }
 
         protected virtual void Hide()

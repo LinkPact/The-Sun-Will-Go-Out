@@ -36,11 +36,6 @@ namespace SpaceProject
         private Vector2 textBoxPosition;
         private Vector2 textPosition;
 
-        private List<string> menuOptions;
-        private List<System.Action> menuActions;
-        private int cursorIndex;
-        private int currentIndexMax;
-
         private List<String> textStorage;
         private List<String> optionStorage;
         private List<System.Action> actionStorage;
@@ -55,7 +50,6 @@ namespace SpaceProject
         bool scrollingFinished;
         bool flushScrollText;
         private int holdTimer;
-        int tempTimer;
         bool displayOnReturn = false;
 
         #endregion
@@ -99,8 +93,6 @@ namespace SpaceProject
             realTimeMessage.SetDelay(delay);
 
             popupQueue.Add(realTimeMessage);
-
-            menuOptions.Clear();
         }
 
         //Call this method, feed in a string and the message will appear on screen 
@@ -113,10 +105,6 @@ namespace SpaceProject
             textMessage.SetDelay(delay);
 
             popupQueue.Add(textMessage);
-
-            tempTimer = 5;
-
-            menuOptions.Clear();
         }
 
         public void DisplayMessageWithImage(List<Sprite> images, List<int> imageTriggers, params string[] messages)
@@ -136,10 +124,6 @@ namespace SpaceProject
             imageMessage.Initialize();
             imageMessage.SetMessage(messages);
             imageMessage.SetImages(images, imageTriggers);
-
-            tempTimer = 5;
-
-            menuOptions.Clear();
         }
 
         public void DisplayImage(params Sprite[] images)
@@ -148,46 +132,23 @@ namespace SpaceProject
 
             imagePopup.Initialize();
             imagePopup.SetImages(images);
-
-            tempTimer = 5;
-
-            menuOptions.Clear();
         }
 
         //Displays the "overmenu"
         public void DisplayMenu()
         {
-            if (!displayOnReturn)
-                cursorIndex = 0;
-
-            messageState = MessageState.Menu;
-
-            Game1.Paused = true;
-
-            menuOptions.Clear();
+            Menu menu = new Menu(game, spriteSheet);
+            menu.Initialize();
 
             if (GameStateManager.currentState != "ShooterState")
             {
-                menuOptions.Add("Help");
-                menuOptions.Add("Ship Inventory");
-                menuOptions.Add("Missions Screen");
-                menuOptions.Add("Options");
-                menuOptions.Add("Save");
-                menuOptions.Add("Exit Game");
-                menuOptions.Add("Return To Game");
+                menu.SetMenuOptions("Help", "Ship Inventory", "Mission Screen", "Options",
+                    "Save", "Exit Game", "Return To Game");
             }
-
             else
             {
-                menuOptions.Add("Restart Level");
-                menuOptions.Add("Give Up Level");
-                menuOptions.Add("Exit Game");
-                menuOptions.Add("Return To Game");
+                menu.SetMenuOptions("Restart Level", "Give Up Level", "Exit Game", "Return To Game");
             }
-
-            currentIndexMax = menuOptions.Count;
-
-            tempTimer = 5;
         }
 
         public void DisplaySelectionMenu(string message, List<String> options)
@@ -708,10 +669,9 @@ namespace SpaceProject
         private void ButtonActions()
         {
             //Makes the messagebox invisible when pressing the actionkey if it's displaying a message
-            if ((messageState == MessageState.Message
+            if (messageState == MessageState.Message
                 || messageState == MessageState.MessageWithImage
                 || messageState == MessageState.Image)
-                && tempTimer < 0)
             {
                 TextToSpeech.Stop();
 
@@ -745,144 +705,6 @@ namespace SpaceProject
                 //}
             }
 
-            //checks which option the user selects and executes it.  
-            else if (messageState == MessageState.Menu && tempTimer < 0)
-            {
-                switch (menuOptions[cursorIndex])
-                {
-                    case "Ship Inventory":
-                        game.stateManager.ChangeState("ShipManagerState");
-                        messageState = MessageState.Invisible;
-                        Game1.Paused = false;
-                        displayOnReturn = true;
-                        break;
-
-                    case "Missions Screen":
-                        game.stateManager.ChangeState("MissionScreenState");
-                        messageState = MessageState.Invisible;
-                        Game1.Paused = false;
-                        displayOnReturn = true;
-                        break;
-
-                    case "Exit Game":
-                        if (GameStateManager.currentState.Equals("OverworldState"))
-                        {
-                            DisplaySelectionMenu("What do you want to do?",
-                                new List<string> { "Save and exit to menu", "Save and exit to desktop", "Exit to menu without saving",
-                                "Exit to desktop without saving", "Cancel"});
-                        }
-
-                        else if (GameStateManager.currentState.Equals("ShooterState"))
-                        {
-                            DisplaySelectionMenu("What do you want to do? You cannot save during combat.",
-                                new List<string> { "Exit to menu without saving", "Exit to desktop without saving", "Cancel" });
-                        }
-                        break;
-
-                    case "Options":
-                        game.stateManager.ChangeState("OptionsMenuState");
-                        game.menuBGController.SetBackdropPosition(new Vector2(-903, -101));
-                        messageState = MessageState.Invisible;
-                        Game1.Paused = false;
-                        displayOnReturn = true;
-                        break;
-
-                    case "Save":
-                        game.Save();
-                        break;
-
-                    case "Help":
-                        game.stateManager.ChangeState("HelpScreenState");
-                        messageState = MessageState.Invisible;
-                        Game1.Paused = false;
-                        displayOnReturn = true;
-                        break;
-
-                    case "Return To Game":
-                        messageState = MessageState.Invisible;
-                        Game1.Paused = false;
-                        break;
-
-                    case "Restart Level":
-                        game.stateManager.shooterState.CurrentLevel.ResetLevel();
-                        game.stateManager.shooterState.Initialize();
-                        game.stateManager.shooterState.CurrentLevel.Initialize();
-                        messageState = SpaceProject.MessageState.Invisible;
-                        Game1.Paused = false;
-                        break;
-
-                    case "Give Up Level":
-                        game.stateManager.shooterState.CurrentLevel.GiveUpLevel();
-                        messageState = SpaceProject.MessageState.Invisible;
-                        Game1.Paused = false;
-                        break;
-
-                    case "Exit Level":
-                        game.stateManager.shooterState.CurrentLevel.LeaveLevel();
-                        messageState = SpaceProject.MessageState.Invisible;
-                        Game1.Paused = false;
-                        break;
-                }
-            }
-
-            else if (messageState == MessageState.SelectionMenu && tempTimer < 0)
-            {
-                if (menuActions.Count <= 0)
-                {
-                    switch (menuOptions[cursorIndex].ToLower())
-                    {
-                        case "save and exit to menu":
-                        case "save and restart":
-                            game.GameStarted = false;
-                            textBuffer.Remove(textBuffer[0]);
-                            messageState = MessageState.Invisible;
-                            Game1.Paused = false;
-                            game.Save();
-                            game.Restart();
-                            break;
-
-                        case "save and exit to desktop":
-                            game.Save();
-                            game.Exit();
-                            break;
-
-                        case "exit to menu without saving":
-                        case "restart":
-                            game.GameStarted = false;
-                            textBuffer.Remove(textBuffer[0]);
-                            messageState = MessageState.Invisible;
-                            Game1.Paused = false;
-                            game.Restart();
-                            break;
-
-                        case "exit to desktop without saving":
-                            game.Exit();
-                            break;
-
-                        case "cancel":
-                            textBuffer.Remove(textBuffer[0]);
-                            Game1.Paused = false;
-                            messageState = MessageState.Invisible;
-
-                            if (GameStateManager.currentState.Equals("OverworldState"))
-                            {
-                                DisplayMenu();
-                                cursorIndex = 5;
-                            }
-                            break;
-
-                    }
-                }
-
-                else
-                {
-                    menuActions[cursorIndex].Invoke();
-                    textBuffer.Remove(textBuffer[0]);
-                    Game1.Paused = false;
-                    messageState = MessageState.Invisible;
-                    menuActions.Clear();
-                }
-            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
