@@ -9,7 +9,7 @@ namespace SpaceProject
 {
     class TextMessage : Popup
     {
-        private readonly float TextLayerDepth = 1f;
+        protected TextContainer textContainer;
 
         public TextMessage(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
@@ -21,39 +21,45 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            useScrolling = true;
+            textContainer = new TextContainer(game, canvas.SourceRectangle.Value);
+
+            textContainer.UseScrolling = true;
             usePause = true;
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-
-            if (textBuffer.Count > 0)
-            {
-                text = TextUtils.WordWrap(game.fontManager.GetFont(14),
-                                          TextUtils.ScrollText(textBuffer[0],
-                                                               flushScrollingText,
-                                                               out textScrollingFinished),
-                                          (int)Math.Round(((float)canvas.SourceRectangle.Value.Width),
-                                          0));
-            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
 
-            spriteBatch.DrawString(game.fontManager.GetFont(14),
-                                   text,
-                                   new Vector2(textPosition.X,
-                                               textPosition.Y) + game.fontManager.FontOffset,
-                                   game.fontManager.FontColor,
-                                   0f,
-                                   Vector2.Zero,
-                                   1f,
-                                   SpriteEffects.None,
-                                   TextLayerDepth);
+            textContainer.Draw(spriteBatch);
+        }
+
+        public virtual void SetMessage(params string[] messages)
+        {
+            textContainer.SetMessage(messages);
+        }
+
+        protected override void Hide()
+        {
+            // Has all text finished scrolling?
+            if (((textContainer.UseScrolling 
+                && textContainer.ScrollingFinished())
+                || !textContainer.UseScrolling)
+                && textContainer.IsTextBufferEmpty())
+            {
+                base.Hide();
+            }
+            // Has all text NOT finished scrolling?
+            else if (textContainer.UseScrolling
+                && !textContainer.ScrollingFinished())
+            {
+                textContainer.FlushText();
+            }
         }
     }
 }

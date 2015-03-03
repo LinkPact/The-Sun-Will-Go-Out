@@ -7,10 +7,8 @@ using System.Text;
 
 namespace SpaceProject
 {
-    class RealTimeMessage : Popup
+    class RealTimeMessage : TextMessage
     {
-        private readonly float TextLayerDepth = 1f;
-
         private float showInTime;       // How many seconds in the future this message will be shown
         private float displayTime;      // Time when this message will be shown
         private float timeShown;        // How many milliseconds this message is shown
@@ -24,9 +22,11 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            base.Initialize();
             displayTime = -1;
-            useScrolling = true;
+
+            textContainer = new TextContainer(game, canvas.SourceRectangle.Value);
+
+            textContainer.UseScrolling = true;
             usePause = false;
         }
 
@@ -37,15 +37,7 @@ namespace SpaceProject
             canvasPosition = new Vector2(game.camera.cameraPos.X,
                                          game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 4);
 
-            textPosition = new Vector2(canvasPosition.X - canvas.Width / 2 + 30,
-                                       canvasPosition.Y - canvas.Height / 2 + 30);
-
-            text = TextUtils.WordWrap(game.fontManager.GetFont(14),
-                                      TextUtils.ScrollText(textBuffer[0],
-                                                           flushScrollingText,
-                                                           out textScrollingFinished),
-                                      (int)Math.Round(((float)canvas.SourceRectangle.Value.Width),
-                                      0));
+            textContainer.Update(gameTime);
 
             if (displayTime == -1)
             {
@@ -69,16 +61,7 @@ namespace SpaceProject
         {
             base.Draw(spriteBatch);
 
-            spriteBatch.DrawString(game.fontManager.GetFont(14),
-                                   text,
-                                   new Vector2(textPosition.X,
-                                               textPosition.Y) + game.fontManager.FontOffset,
-                                   game.fontManager.FontColor,
-                                   0f,
-                                   Vector2.Zero,
-                                   1f,
-                                   SpriteEffects.None,
-                                   TextLayerDepth);
+            textContainer.Draw(spriteBatch);
         }
 
         public override void Show()

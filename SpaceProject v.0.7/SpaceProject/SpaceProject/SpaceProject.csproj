@@ -181,6 +181,9 @@
     <Compile Include="GameStates\PlanetAndStationStates\StationState.cs" />
     <Compile Include="GameStates\PlanetAndStationStates\StationStateManager.cs" />
     <Compile Include="GameUtils\MenuDisplay\ShipInventoryDisplayObject.cs" />
+    <Compile Include="GameUtils\UI\Popups\Containers\Container.cs" />
+    <Compile Include="GameUtils\UI\Popups\Containers\ImageContainer.cs" />
+    <Compile Include="GameUtils\UI\Popups\Containers\TextContainer.cs" />
     <Compile Include="GameUtils\UI\Popups\Messages\ImageMessage.cs" />
     <Compile Include="GameUtils\UI\Popups\ImagePopup.cs" />
     <Compile Include="GameUtils\UI\Popups\Menus\SelectionMenu.cs" />

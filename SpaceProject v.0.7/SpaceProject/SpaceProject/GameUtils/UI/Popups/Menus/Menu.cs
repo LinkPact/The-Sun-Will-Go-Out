@@ -10,8 +10,6 @@ namespace SpaceProject
 {
     class Menu : Popup
     {
-        private readonly float TextLayerDepth = 1f;
-
         protected List<string> menuOptions;
         protected List<System.Action> menuActions;
         protected int cursorIndex;
@@ -56,7 +54,6 @@ namespace SpaceProject
 
             holdTimer = game.HoldKeyTreshold;
 
-            useScrolling = false;
             usePause = true;
         }
 
@@ -199,20 +196,20 @@ namespace SpaceProject
 
             for (int i = 0; i < menuOptions.Count; i++)
             {
-                color = fontColor;
+                color = FontManager.FontColorStatic;
 
                 if (cursorIndex == i)
                 {
                     color = Color.LightBlue;
                 }
 
-                spriteBatch.DrawString(font,
+                spriteBatch.DrawString(FontManager.GetFontStatic(14),
                     menuOptions[i],
                     new Vector2(pos.X + (i * 140),
-                                pos.Y) + fontOffset,
+                                pos.Y) + FontManager.FontOffsetStatic,
                     color,
                     0f,
-                    font.MeasureString(menuOptions[i]) / 2,
+                    FontManager.GetFontStatic(14).MeasureString(menuOptions[i]) / 2,
                     1f,
                     SpriteEffects.None,
                     1f);
@@ -235,9 +232,7 @@ namespace SpaceProject
         private void InvokeCustomOnPressActions()
         {
             menuActions[cursorIndex].Invoke();
-            textBuffer.Remove(textBuffer[0]);
             Hide();
-            menuActions.Clear();
         }
     }
 }

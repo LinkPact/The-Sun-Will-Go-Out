@@ -10,7 +10,7 @@ namespace SpaceProject
 {
     class SelectionMenu : Menu
     {
-        private readonly float TextLayerDepth = 1f;
+        protected TextContainer textContainer;
 
         public SelectionMenu(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
@@ -22,18 +22,21 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            useScrolling = false;
-            usePause = true;
+            textContainer = new TextContainer(game, canvas.SourceRectangle.Value);
+            textContainer.Initialize();
+            textContainer.UseScrolling = false;
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+            textContainer.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
+            textContainer.Draw(spriteBatch);
             DrawMenuOptions(spriteBatch);
         }
 
@@ -66,7 +69,6 @@ namespace SpaceProject
                 case "save and exit to menu":
                 case "save and restart":
                     game.GameStarted = false;
-                    textBuffer.Remove(textBuffer[0]);
                     Hide();
                     game.Save();
                     game.Restart();
@@ -80,7 +82,6 @@ namespace SpaceProject
                 case "exit to menu without saving":
                 case "restart":
                     game.GameStarted = false;
-                    textBuffer.Remove(textBuffer[0]);
                     Hide();
                     game.Restart();
                     break;
@@ -90,8 +91,6 @@ namespace SpaceProject
                     break;
 
                 case "cancel":
-                    textBuffer.Remove(textBuffer[0]);
-                    Game1.Paused = false;
                     Hide();
 
                     if (GameStateManager.currentState.Equals("OverworldState"))
@@ -107,24 +106,29 @@ namespace SpaceProject
         {
             for (int i = 0; i < menuOptions.Count; i++)
             {
-                Color color = fontColor;
+                Color color = FontManager.FontColorStatic;
 
                 if (cursorIndex == i)
                 {
                     color = Color.LightBlue;
                 }
 
-                spriteBatch.DrawString(font,
+                spriteBatch.DrawString(FontManager.GetFontStatic(14),
                     menuOptions[i],
                     new Vector2(canvasPosition.X,
-                                canvasPosition.Y + (i * 140)) + fontOffset,
+                                canvasPosition.Y + (i * 140)) + FontManager.FontOffsetStatic,
                     color,
                     0f,
-                    font.MeasureString(menuOptions[i]) / 2,
+                    FontManager.GetFontStatic(14).MeasureString(menuOptions[i]) / 2,
                     1f,
                     SpriteEffects.None,
                     1f);
             }
+        }
+
+        public void SetMessage(params string[] messages)
+        {
+            textContainer.SetMessage(messages);
         }
     }
 }

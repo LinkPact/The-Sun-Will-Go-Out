@@ -9,7 +9,7 @@ namespace SpaceProject
 {
     class ImageMessage : ImagePopup
     {
-        private readonly float TextLayerDepth = 1f;
+        TextContainer textContainer;
 
         public ImageMessage(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
@@ -21,36 +21,28 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            useScrolling = true;
-            usePause = true;
+            textContainer = new TextContainer(game, canvas.SourceRectangle.Value);
+            textContainer.Initialize();
+            textContainer.UseScrolling = true;
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
 
-            text = TextUtils.WordWrap(game.fontManager.GetFont(14),
-                                      TextUtils.ScrollText(textBuffer[0],
-                                                           flushScrollingText,
-                                                           out textScrollingFinished),
-                                      (int)Math.Round(((float)canvas.SourceRectangle.Value.Width - 60),
-                                      0));
+            textContainer.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
 
-            spriteBatch.DrawString(game.fontManager.GetFont(14),
-                        text,
-                        new Vector2(textPosition.X,
-                                    textPosition.Y) + game.fontManager.FontOffset,
-                        game.fontManager.FontColor,
-                        0f,
-                        Vector2.Zero,
-                        1f,
-                        SpriteEffects.None,
-                        TextLayerDepth);
+            textContainer.Draw(spriteBatch);
+        }
+
+        public void SetMessage(params string[] messages)
+        {
+            textContainer.SetMessage(messages);
         }
     }
 }

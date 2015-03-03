@@ -28,18 +28,6 @@ namespace SpaceProject
         protected Vector2 canvasPosition;
         protected float canvasScale;
 
-        protected SpriteFont font;
-        protected Vector2 fontOffset;
-        protected Color fontColor;
-        protected String text;
-        protected Vector2 textPosition;
-
-        protected bool useScrolling;
-        protected bool flushScrollingText;
-        protected bool textScrollingFinished;
-
-        protected List<String> textBuffer;
-
         private float popupTime;
         private Sprite selectedButton;
 
@@ -55,28 +43,16 @@ namespace SpaceProject
 
         public virtual void Initialize()
         {
-            font = FontManager.GetFontStatic(14);
-            fontOffset = FontManager.FontOffsetStatic;
-            fontColor = FontManager.FontColorStatic;
-
-            textBuffer = new List<String>();
-
             // Sets position of canvas and text
             if (GameStateManager.currentState == "OverworldState")
             {
                 canvasPosition = new Vector2(game.camera.cameraPos.X, game.camera.cameraPos.Y);
-                textPosition = new Vector2(game.camera.cameraPos.X - canvas.SourceRectangle.Value.Width / 2,
-                                           game.camera.cameraPos.Y - canvas.SourceRectangle.Value.Height / 2 - 5);
             }
             else
             {
                 canvasPosition = new Vector2(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
-                textPosition = new Vector2(game.Window.ClientBounds.Width / 2 - canvas.SourceRectangle.Value.Width / 2,
-                                           game.Window.ClientBounds.Height / 2 - canvas.SourceRectangle.Value.Height / 2 - 5);
             }
-
             canvasScale = 1;
-
             tempTimer = 50;
             popupState = PopupState.Hidden;
         }
@@ -107,11 +83,10 @@ namespace SpaceProject
         public virtual void Show()
         {
             popupState = PopupState.Showing;
+
             if (usePause)
             {
                 Game1.Paused = true;
-
-                TextToSpeech.Speak(textBuffer[0], TextToSpeech.DefaultRate);
             }
         }
 
@@ -119,39 +94,7 @@ namespace SpaceProject
         {
             if (key == RebindableKeys.Action1)
             {
-                if (tempTimer > 0)
-                {
-                    if (useScrolling
-                    && !textScrollingFinished)
-                    {
-                        flushScrollingText = true;
-                    }
-                    return;
-                }
-
-                else
-                {
-                    Hide();
-                }
-            }
-        }
-
-        public void SetMessage(params string[] text)
-        {
-            foreach (string str in text)
-            {
-                if (!str.Contains('#'))
-                {
-                    textBuffer.Add(str);
-                }
-                else
-                {
-                    List<String> tempList = TextUtils.SplitHashTagText(str);
-                    foreach (string str2 in tempList)
-                    {
-                        textBuffer.Add(str2);
-                    }
-                }
+                Hide();
             }
         }
 
@@ -160,7 +103,7 @@ namespace SpaceProject
             popupTime = StatsManager.PlayTime.GetFuturePlayTime(milliseconds);
         }
 
-        protected void DrawCanvas(SpriteBatch spriteBatch)
+        private void DrawCanvas(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(canvas.Texture,
                  canvasPosition,
@@ -174,7 +117,7 @@ namespace SpaceProject
                  LayerDepth);
         }
 
-        protected void DrawOkayButton(SpriteBatch spriteBatch)
+        private void DrawOkayButton(SpriteBatch spriteBatch)
         {
             // Draws "okay"-button
             spriteBatch.Draw(selectedButton.Texture,
@@ -203,64 +146,11 @@ namespace SpaceProject
 
         protected virtual void Hide()
         {
-            TextUtils.RefreshTextScrollBuffer();
-
-            // Has all text finished scrolling?
-            if (useScrolling
-                && textScrollingFinished)
+            if (usePause)
             {
-                if (!UpdateTextBuffer()
-                    && usePause)
-                {
-                    Game1.Paused = false;
-                    popupState = PopupState.Finished;
-                }
+                Game1.Paused = false;
+                popupState = PopupState.Finished;
             }
-            // Has all text NOT finished scrolling?
-            else if (useScrolling
-                && !textScrollingFinished)
-            {
-                flushScrollingText = true;
-            }
-            // Is text scrolling not used?
-            else if (!useScrolling)
-            {
-                if (!UpdateTextBuffer()
-                    && usePause)
-                {
-                    Game1.Paused = false;
-                    popupState = PopupState.Finished;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Return true if more text is available to display, returns false otherwise
-        /// </summary>
-        /// <returns></returns>
-        protected bool UpdateTextBuffer()
-        {
-            TextToSpeech.Stop();
-
-            if (textBuffer.Count > 0)
-            {
-                textBuffer.Remove(textBuffer[0]);
-            }
-
-            if (textBuffer.Count <= 0)
-            {
-                return false;
-            }
-
-            else
-            {
-                TextToSpeech.Speak(textBuffer[0]);
-            }
-
-            textScrollingFinished = false;
-            flushScrollingText = false;
-
-            return true;
         }
 
         private void ButtonControls()
