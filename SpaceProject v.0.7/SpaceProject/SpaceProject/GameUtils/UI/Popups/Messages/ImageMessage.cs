@@ -9,7 +9,7 @@ namespace SpaceProject
 {
     class ImageMessage : ImagePopup
     {
-        TextContainer textContainer;
+        protected TextContainer textContainer;
 
         public ImageMessage(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)

@@ -10,7 +10,7 @@ namespace SpaceProject
     class RealTimeMessage : TextMessage
     {
         private float showInTime;       // How many seconds in the future this message will be shown
-        private float displayTime;      // Time when this message will be shown
+        protected float displayTime;      // Time when this message will be shown
         private float timeShown;        // How many milliseconds this message is shown
         private float hideTime;         // Time when this message will be hidden
 
@@ -22,11 +22,9 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            displayTime = -1;
+            base.Initialize();
 
-            textContainer = new TextContainer(game, canvas.SourceRectangle.Value);
-            textContainer.Initialize();
-            textContainer.UseScrolling = true;
+            displayTime = -1;
             usePause = false;
         }
 

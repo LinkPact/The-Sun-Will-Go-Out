@@ -7,14 +7,14 @@ using System.Text;
 
 namespace SpaceProject
 {
-    class PortraitMessage : TextMessage
+    class RealTimePortraitMessage : RealTimeMessage
     {
-        ImageContainer portraitContainer;
+        private ImageContainer portraitContainer;
 
-        public PortraitMessage(Game1 game, Sprite spriteSheet) :
+        public RealTimePortraitMessage(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
         {
-            canvas = spriteSheet.GetSubSprite(new Rectangle(0, 0, 0, 0));
+            canvas = spriteSheet.GetSubSprite(new Rectangle(354, 0, 400, 128));
         }
 
         public override void Initialize()
@@ -38,6 +38,11 @@ namespace SpaceProject
             base.Draw(spriteBatch);
 
             portraitContainer.Draw(spriteBatch);
+        }
+
+        public void SetPortrait(Sprite portrait)
+        {
+            portraitContainer.SetImages(portrait);
         }
     }
 }

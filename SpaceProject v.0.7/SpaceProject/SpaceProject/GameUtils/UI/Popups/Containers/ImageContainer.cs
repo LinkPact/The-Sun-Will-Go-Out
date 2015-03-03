@@ -7,6 +7,12 @@ using System.Text;
 
 namespace SpaceProject
 {
+    enum ImageType
+    {
+        Regular,
+        Portrait
+    }
+
     class ImageContainer : Container
     {
         // constants
@@ -17,6 +23,7 @@ namespace SpaceProject
         private List<Sprite> imageBuffer;
         private int imageTriggerIndex;
         private List<int> imageTriggers;
+        private ImageType imageType;
         private Vector2 imagePosition;
 
         private Rectangle canvasSize;
@@ -35,8 +42,16 @@ namespace SpaceProject
 
             imageBuffer = new List<Sprite>();
 
-            imagePosition = new Vector2(canvasPosition.X - canvasSize.Width / 2 + ImagePositionOffset.X,
-                                        canvasPosition.Y - canvasSize.Height / 2 + ImagePositionOffset.Y);
+            if (imageType == ImageType.Regular)
+            {
+                imagePosition = new Vector2(canvasPosition.X - canvasSize.Width / 2 + ImagePositionOffset.X,
+                                            canvasPosition.Y - canvasSize.Height / 2 + ImagePositionOffset.Y);
+            }
+            else
+            {
+                imagePosition = new Vector2(canvasPosition.X - canvasSize.Width / 2 + ImagePositionOffset.X,
+                                            canvasPosition.Y - canvasSize.Height / 2 + ImagePositionOffset.Y);
+            }
         }
 
         public override void Update(GameTime gameTime)
@@ -84,6 +99,11 @@ namespace SpaceProject
                 return true;
             }
             return false;
+        }
+
+        public void SetImageType(ImageType imageType)
+        {
+            this.imageType = imageType;
         }
 
         private void UpdateImageBuffer()
