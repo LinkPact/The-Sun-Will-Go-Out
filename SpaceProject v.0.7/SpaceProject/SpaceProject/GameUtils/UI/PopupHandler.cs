@@ -42,12 +42,12 @@ namespace SpaceProject
 
         public static void DisplayRealtimeMessage(float delay, params string[] messages)
         {
-            RealTimeMessage realTimeMessage = new RealTimeMessage(game, spriteSheet);
-
-            realTimeMessage.Initialize();
-            realTimeMessage.SetMessage(messages);
-            realTimeMessage.SetDelay(delay);
-
+            //RealTimeMessage realTimeMessage = new RealTimeMessage(game, spriteSheet);
+            //
+            //realTimeMessage.Initialize();
+            //realTimeMessage.SetMessage(messages);
+            //realTimeMessage.SetDelay(delay);
+            //
             //popupQueue.Add(realTimeMessage);
         }
 

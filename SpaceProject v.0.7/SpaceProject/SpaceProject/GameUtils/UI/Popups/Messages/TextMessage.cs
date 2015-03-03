@@ -22,14 +22,17 @@ namespace SpaceProject
             base.Initialize();
 
             textContainer = new TextContainer(game, canvas.SourceRectangle.Value);
-
+            textContainer.Initialize();
             textContainer.UseScrolling = true;
+
             usePause = true;
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            textContainer.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -56,7 +59,8 @@ namespace SpaceProject
             }
             // Has all text NOT finished scrolling?
             else if (textContainer.UseScrolling
-                && !textContainer.ScrollingFinished())
+                && !textContainer.ScrollingFinished()
+                && delayTimer < 0)
             {
                 textContainer.FlushText();
             }

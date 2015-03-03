@@ -42,6 +42,7 @@ namespace SpaceProject
             base.Initialize();
 
             textBuffer = new List<String>();
+
             font = FontManager.GetFontStatic(14);
             fontOffset = FontManager.FontOffsetStatic;
             fontColor = FontManager.FontColorStatic;
@@ -57,6 +58,7 @@ namespace SpaceProject
                 textPosition = new Vector2(game.Window.ClientBounds.Width / 2 - canvasSize.Width / 2,
                                            game.Window.ClientBounds.Height / 2 - canvasSize.Height / 2 - 5);
             }
+            containerWidth = canvasSize.Width - 20;   
         }
 
         public override void Update(GameTime gameTime)
@@ -109,9 +111,8 @@ namespace SpaceProject
             if (textBuffer.Count > 0)
             {
                 TextToSpeech.Speak(textBuffer[0]);
-                textScrollingFinished = false;
-                flushScrollingText = false;
             }
+            textScrollingFinished = false;
         }
 
         public bool ScrollingFinished()

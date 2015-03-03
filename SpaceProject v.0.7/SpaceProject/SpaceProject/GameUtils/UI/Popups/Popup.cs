@@ -19,6 +19,7 @@ namespace SpaceProject
     {
         private readonly int Opacity = 230;
         private readonly float LayerDepth = 0.95f;
+        protected readonly int PressDelay = 50;
 
         protected Game1 game;
         protected PopupState popupState;
@@ -31,7 +32,7 @@ namespace SpaceProject
         private float popupTime;
         private Sprite selectedButton;
 
-        protected int tempTimer;
+        protected int delayTimer;
 
         protected bool usePause;
 
@@ -53,13 +54,13 @@ namespace SpaceProject
                 canvasPosition = new Vector2(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
             }
             canvasScale = 1;
-            tempTimer = 50;
+            delayTimer = PressDelay;
             popupState = PopupState.Hidden;
         }
 
         public virtual void Update(GameTime gameTime)
         {
-            tempTimer -= gameTime.ElapsedGameTime.Milliseconds;
+            delayTimer -= gameTime.ElapsedGameTime.Milliseconds;
 
             if (popupTime != -1
                 && StatsManager.PlayTime.HasPlayTimePassed(popupTime))
@@ -68,7 +69,7 @@ namespace SpaceProject
                 popupTime = -1;
             }
 
-            if (tempTimer < 0)
+            if (delayTimer < 0)
             {
                 ButtonControls();
             }

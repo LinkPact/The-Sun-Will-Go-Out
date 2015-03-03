@@ -25,15 +25,13 @@ namespace SpaceProject
             displayTime = -1;
 
             textContainer = new TextContainer(game, canvas.SourceRectangle.Value);
-
+            textContainer.Initialize();
             textContainer.UseScrolling = true;
             usePause = false;
         }
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
-
             canvasPosition = new Vector2(game.camera.cameraPos.X,
                                          game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 4);
 
