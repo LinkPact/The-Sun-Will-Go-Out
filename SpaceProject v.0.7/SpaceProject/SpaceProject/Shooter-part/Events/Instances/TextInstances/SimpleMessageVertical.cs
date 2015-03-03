@@ -25,7 +25,7 @@ namespace SpaceProject
         //Check "Swarm"-class to see how lasting events can look.
         public override void Run(GameTime gameTime)
         {
-            Game.messageBox.DisplayMessage(0, message);
+            PopupHandler.DisplayMessage(message);
             TriggerStatus = Trigger.Completed;
         }
 

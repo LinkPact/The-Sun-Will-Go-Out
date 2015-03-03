@@ -109,7 +109,7 @@ namespace SpaceProject
 
             else if (!coordinatesDisplayed 
                 && hasEnteredOverworld 
-                && game.messageBox.TextBufferEmpty)
+                && PopupHandler.TextBufferEmpty)
             {
                 coordinatesDisplayed = true;
 
@@ -132,7 +132,7 @@ namespace SpaceProject
             {
                 if (CollisionDetection.IsRectInRect(game.player.Bounds,
                     game.stateManager.overworldState.GetSectorX.SpaceRegionArea) &&
-                    game.messageBox.TextBufferEmpty)
+                    PopupHandler.TextBufferEmpty)
                 {
                     hasEnteredSectorX = true;
 
@@ -210,7 +210,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessage(0, message);
+                PopupHandler.DisplayMessage(message);
             }
         }
 
@@ -218,7 +218,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessage(0, messages.ToArray());
+                PopupHandler.DisplayMessage(messages.ToArray());
             }
         }
 
@@ -226,7 +226,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessageWithImage(new List<Sprite>(){GetImageFromEnum(imageID)}, new List<int>(){0}, message);
+                PopupHandler.DisplayMessageWithImage(new List<Sprite>(){GetImageFromEnum(imageID)}, new List<int>(){0}, message);
             }
         }
 

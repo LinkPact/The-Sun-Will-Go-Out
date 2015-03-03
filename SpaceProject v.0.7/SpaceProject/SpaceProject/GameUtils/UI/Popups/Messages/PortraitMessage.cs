@@ -18,6 +18,9 @@ namespace SpaceProject
         public override void Initialize()
         {
             base.Initialize();
+
+            useScrolling = true;
+            usePause = true;
         }
 
         public override void Update(GameTime gameTime)

@@ -9,8 +9,8 @@ namespace SpaceProject
 {
     public class FortrunStation2 : SubInteractiveObject
     {
-        public FortrunStation2(Game1 Game, Sprite spriteSheet, MessageBox messageBox) :
-            base(Game, spriteSheet, messageBox)
+        public FortrunStation2(Game1 Game, Sprite spriteSheet) :
+            base(Game, spriteSheet)
         {
             
         }

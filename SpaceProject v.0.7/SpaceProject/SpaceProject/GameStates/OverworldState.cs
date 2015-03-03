@@ -292,7 +292,6 @@ namespace SpaceProject
 
         private void UpdateDeepSpaceObjects(GameTime gameTime)
         {
-            
             foreach (GameObjectOverworld obj in deepSpaceGameObjects)
             {
                 obj.Update(gameTime);
@@ -347,12 +346,6 @@ namespace SpaceProject
                 if (obj.IsDead)
                     RemoveEffectsObject(obj);
             }
-
-            //if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeypress(Keys.Enter))))
-            //{
-            //    if (!Game.player.HyperspeedOn)
-            //        EnterCheck();
-            //}
         }
 
         private void EdgeCollisionCheck()
@@ -392,15 +385,17 @@ namespace SpaceProject
 
             else if (ControlManager.CheckPress(RebindableKeys.Pause))
             {
-                if (Game.messageBox.TextBufferEmpty)
+                if (PopupHandler.TextBufferEmpty)
                 {
-                    Game.messageBox.DisplayMenu();
+                    PopupHandler.DisplayMenu();
                 }
             }
 
             else if (ControlManager.CheckKeypress(Keys.Y))
             {
-                Game.messageBox.DisplayMessage(0, "Hello world!");
+                PopupHandler.DisplaySelectionMenu("What do you want to do?",
+                    new List<string>() { "Nothing", "I dunno" },
+                    new List<System.Action> { });
             }
 
             else if (ControlManager.CheckKeypress(Keys.M))
@@ -469,7 +464,7 @@ namespace SpaceProject
 
         private void DevelopCommands()
         {
-            Game.messageBox.DisplayMessage(0, "Gameshops updated");
+            PopupHandler.DisplayMessage("Gameshops updated");
             ShopManager.ShopUpdateTime = 0;
         }
 

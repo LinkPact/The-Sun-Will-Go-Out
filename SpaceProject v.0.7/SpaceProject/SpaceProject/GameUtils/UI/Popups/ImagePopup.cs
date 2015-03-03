@@ -74,7 +74,7 @@ namespace SpaceProject
             TextUtils.RefreshTextScrollBuffer();
 
             if (useScrolling
-                && scrollingFinished
+                && textScrollingFinished
                 && tempTimer < 0)
             {
                 if ((!UpdateTextBuffer()

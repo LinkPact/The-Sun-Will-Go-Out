@@ -579,7 +579,7 @@ namespace SpaceProject
                 ControlManager.CheckKeypress(Keys.Y) && !game.player.IsHyperSpeedUnlocked)
             {
                 game.player.UnlockHyperSpeed();
-                game.messageBox.DisplayMessage(0, "Hyper speed unlocked! Hold down '" + ControlManager.GetKeyName(RebindableKeys.Action3) + "' to use.");
+                PopupHandler.DisplayMessage("Hyper speed unlocked! Hold down '" + ControlManager.GetKeyName(RebindableKeys.Action3) + "' to use.");
             }
 
             if (mainNewFirstMission.MissionState != StateOfMission.CompletedDead)
@@ -588,9 +588,9 @@ namespace SpaceProject
                 {
                     if (CollisionDetection.IsRectInRect(game.player.Bounds,
                         game.stateManager.overworldState.GetSectorX.SpaceRegionArea) &&
-                        game.messageBox.TextBufferEmpty)
+                        PopupHandler.TextBufferEmpty)
                     {
-                        game.messageBox.DisplayMessage(0, "You do not have the proper papers to enter Sector X. Please finish mission 'A Cold Welcome' first.");
+                        PopupHandler.DisplayMessage("You do not have the proper papers to enter Sector X. Please finish mission 'A Cold Welcome' first.");
                         game.player.Direction.SetDirection(new Vector2(game.player.position.X - game.stateManager.overworldState.GetSectorX.SectorXStar.position.X,
                             game.player.position.Y - game.stateManager.overworldState.GetSectorX.SectorXStar.position.Y));
                     }

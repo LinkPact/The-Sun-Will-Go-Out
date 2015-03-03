@@ -26,6 +26,8 @@ namespace SpaceProject
         {
             base.Initialize();
             displayTime = -1;
+            useScrolling = true;
+            usePause = false;
         }
 
         public override void Update(GameTime gameTime)

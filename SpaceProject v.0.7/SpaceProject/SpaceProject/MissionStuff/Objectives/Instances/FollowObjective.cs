@@ -117,7 +117,7 @@ namespace SpaceProject
                 && !startMessageDisplayed)
             {
                 startMessageDisplayed = true;
-                game.messageBox.DisplayMessage(100, startMessage);
+                PopupHandler.DisplayMessage(startMessage);
             }
 
             if (!deviationAllowed
@@ -125,7 +125,7 @@ namespace SpaceProject
                 && outOfRangeTimer <= 0)
             {
                 outOfRangeTimer = 150;
-                game.messageBox.DisplayMessage(0, deviationMessage);
+                PopupHandler.DisplayMessage(deviationMessage);
 
                 foreach (OverworldShip ship in shipsToFollow)
                 {

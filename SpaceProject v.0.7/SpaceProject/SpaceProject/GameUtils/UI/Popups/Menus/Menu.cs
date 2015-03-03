@@ -34,7 +34,7 @@ namespace SpaceProject
                 this.menuOptions.Add(str);
             }
 
-            currentIndexMax = menuOptions.Length;
+            currentIndexMax = menuOptions.Length - 1;
         }
 
         public virtual void SetMenuActions(params System.Action[] menuActions)
@@ -55,13 +55,14 @@ namespace SpaceProject
             menuActions = new List<System.Action>();
 
             holdTimer = game.HoldKeyTreshold;
+
+            useScrolling = false;
+            usePause = true;
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-
-            ButtonControls();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -129,7 +130,7 @@ namespace SpaceProject
                 case "Exit Game":
                     if (GameStateManager.currentState.Equals("OverworldState"))
                     {
-                        game.messageBox.DisplaySelectionMenu("What do you want to do?",
+                        PopupHandler.DisplaySelectionMenu("What do you want to do?",
                             new List<string> { "Save and exit to menu", "Save and exit to desktop", "Exit to menu without saving",
                         "Exit to desktop without saving", "Cancel"},
                         new List<System.Action>());
@@ -137,7 +138,7 @@ namespace SpaceProject
 
                     else if (GameStateManager.currentState.Equals("ShooterState"))
                     {
-                        game.messageBox.DisplaySelectionMenu("What do you want to do? You cannot save during combat.",
+                        PopupHandler.DisplaySelectionMenu("What do you want to do? You cannot save during combat.",
                             new List<string> { "Exit to menu without saving", "Exit to desktop without saving", "Cancel" },
                             new List<System.Action>());
                     }
@@ -185,7 +186,6 @@ namespace SpaceProject
         {
             Vector2 pos;
             Color color;
-            float XposAcc = 5;
 
             if (GameStateManager.currentState == "OverworldState")
             {
@@ -197,27 +197,25 @@ namespace SpaceProject
                 pos = new Vector2(0, 4);
             }
 
-            //loops through the menu options and colors the selected one red
             for (int i = 0; i < menuOptions.Count; i++)
             {
-                color = game.fontManager.FontColor;
+                color = fontColor;
 
-                if (i == cursorIndex)
+                if (cursorIndex == i)
                 {
                     color = Color.LightBlue;
                 }
 
-                spriteBatch.DrawString(game.fontManager.GetFont(14),
-                     menuOptions[i],
-                     new Vector2(pos.X + XposAcc, pos.Y) + game.fontManager.FontOffset,
-                     color,
-                     0f,
-                     Vector2.Zero,
-                     1f,
-                     SpriteEffects.None,
-                     1f);
-
-                XposAcc += game.fontManager.GetFont(14).MeasureString(menuOptions[i]).X + 15;
+                spriteBatch.DrawString(font,
+                    menuOptions[i],
+                    new Vector2(pos.X + (i * 140),
+                                pos.Y) + fontOffset,
+                    color,
+                    0f,
+                    font.MeasureString(menuOptions[i]) / 2,
+                    1f,
+                    SpriteEffects.None,
+                    1f);
             }
         }
 
@@ -231,36 +229,6 @@ namespace SpaceProject
             else if (cursorIndex > currentIndexMax)
             {
                 cursorIndex = 0;
-            }
-        }
-
-        private void ButtonControls()
-        {
-            if (ControlManager.CheckPress(RebindableKeys.Action1)
-                || ControlManager.CheckKeypress(Keys.Enter))
-            {
-                OnPress(RebindableKeys.Action1);
-            }
-            else if (ControlManager.CheckPress(RebindableKeys.Pause)
-                || ControlManager.CheckKeypress(Keys.Escape))
-            {
-                OnPress(RebindableKeys.Pause);
-            }
-            else if (ControlManager.CheckPress(RebindableKeys.Right))
-            {
-                OnPress(RebindableKeys.Right);
-            }
-            else if (ControlManager.CheckPress(RebindableKeys.Left))
-            {
-                OnPress(RebindableKeys.Left);
-            }
-            else if (ControlManager.CheckPress(RebindableKeys.Up))
-            {
-                OnPress(RebindableKeys.Up);
-            }
-            else if (ControlManager.CheckPress(RebindableKeys.Down))
-            {
-                OnPress(RebindableKeys.Down);
             }
         }
 

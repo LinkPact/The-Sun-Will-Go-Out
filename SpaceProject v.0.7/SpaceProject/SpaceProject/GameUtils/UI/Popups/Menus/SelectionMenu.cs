@@ -21,6 +21,9 @@ namespace SpaceProject
         public override void Initialize()
         {
             base.Initialize();
+
+            useScrolling = false;
+            usePause = true;
         }
 
         public override void Update(GameTime gameTime)
@@ -31,6 +34,7 @@ namespace SpaceProject
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
+            DrawMenuOptions(spriteBatch);
         }
 
         public override void OnPress(RebindableKeys key)
@@ -92,7 +96,7 @@ namespace SpaceProject
 
                     if (GameStateManager.currentState.Equals("OverworldState"))
                     {
-                        game.messageBox.DisplayMenu();
+                        PopupHandler.DisplayMenu();
                         cursorIndex = 5;
                     }
                     break;
@@ -103,20 +107,20 @@ namespace SpaceProject
         {
             for (int i = 0; i < menuOptions.Count; i++)
             {
-                Color color = Color.White;
+                Color color = fontColor;
 
                 if (cursorIndex == i)
                 {
                     color = Color.LightBlue;
                 }
 
-                spriteBatch.DrawString(game.fontManager.GetFont(14),
+                spriteBatch.DrawString(font,
                     menuOptions[i],
-                    new Vector2(canvasPosition.X + (i * 140),
-                            canvasPosition.Y) + game.fontManager.FontOffset,
+                    new Vector2(canvasPosition.X,
+                                canvasPosition.Y + (i * 140)) + fontOffset,
                     color,
                     0f,
-                    game.fontManager.GetFont(14).MeasureString(menuOptions[i]) / 2,
+                    font.MeasureString(menuOptions[i]) / 2,
                     1f,
                     SpriteEffects.None,
                     1f);

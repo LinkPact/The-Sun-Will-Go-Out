@@ -9,28 +9,28 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
-    public class MessageBox
+    public class PopupHandler
     {
         #region variables
 
-        private Game1 game;
-        private Sprite spriteSheet;
+        private static Game1 game;
+        private static Sprite spriteSheet;
 
-        private List<Popup> popupQueue;
+        private static List<Popup> popupQueue;
         private bool displayOnReturn = false;
 
         #endregion
 
         #region Properties
 
-        public bool TextBufferEmpty { get { return popupQueue.Count <= 0; } }
+        public static bool TextBufferEmpty { get { return popupQueue.Count <= 0; } }
 
         #endregion
 
-        public MessageBox(Game1 game, Sprite spriteSheet)
+        public PopupHandler(Game1 game, Sprite spriteSheet)
         {
-            this.game = game;
-            this.spriteSheet = spriteSheet;
+            PopupHandler.game = game;
+            PopupHandler.spriteSheet = spriteSheet;
         }
 
         public void Initialize()
@@ -40,7 +40,7 @@ namespace SpaceProject
             displayOnReturn = false;
         }
 
-        public void DisplayRealtimeMessage(float delay, params string[] messages)
+        public static void DisplayRealtimeMessage(float delay, params string[] messages)
         {
             RealTimeMessage realTimeMessage = new RealTimeMessage(game, spriteSheet);
 
@@ -48,23 +48,22 @@ namespace SpaceProject
             realTimeMessage.SetMessage(messages);
             realTimeMessage.SetDelay(delay);
 
-            popupQueue.Add(realTimeMessage);
+            //popupQueue.Add(realTimeMessage);
         }
 
         //Call this method, feed in a string and the message will appear on screen 
-        public void DisplayMessage(int delay = 0, params string[] messages)
+        public static void DisplayMessage(params string[] messages)
         {
             TextMessage textMessage = new TextMessage(game, spriteSheet);
 
             textMessage.Initialize();
             textMessage.SetMessage(messages);
-            textMessage.SetDelay(delay);
             textMessage.Show();
 
             popupQueue.Add(textMessage);
         }
 
-        public void DisplayMessageWithImage(List<Sprite> images, List<int> imageTriggers, params string[] messages)
+        public static void DisplayMessageWithImage(List<Sprite> images, List<int> imageTriggers, params string[] messages)
         {
             if (messages.Length < images.Count)
             {
@@ -85,7 +84,7 @@ namespace SpaceProject
             popupQueue.Add(imageMessage);
         }
 
-        public void DisplayImage(params Sprite[] images)
+        public static void DisplayImage(params Sprite[] images)
         {
             ImagePopup imagePopup = new ImagePopup(game, spriteSheet);
 
@@ -96,7 +95,7 @@ namespace SpaceProject
         }
 
         //Displays the "overmenu"
-        public void DisplayMenu()
+        public static void DisplayMenu()
         {
             Menu menu = new Menu(game, spriteSheet);
             menu.Initialize();
@@ -114,7 +113,7 @@ namespace SpaceProject
             popupQueue.Add(menu);
         }
 
-        public void DisplaySelectionMenu(string message, List<String> options, List<System.Action> actions)
+        public static void DisplaySelectionMenu(string message, List<String> options, List<System.Action> actions)
         {
             //// TODO: Make more general
             //if (MissionManager.MissionEventBuffer.Count > 0)
@@ -145,7 +144,7 @@ namespace SpaceProject
         public void Update(GameTime gameTime)
         {
             if (popupQueue.Count > 0
-                && popupQueue[0].Finished)
+                && popupQueue[0].PopupState == PopupState.Finished)
             {
                 popupQueue.RemoveAt(0);
             }

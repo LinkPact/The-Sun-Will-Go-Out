@@ -29,7 +29,6 @@ namespace SpaceProject
         protected InteractionType interactionType;
         protected List<string> text;
         protected List<string> options;
-        protected MessageBox messageBox;
 
         private string purchaseText;
         private string declinePurchaseText;
@@ -55,13 +54,11 @@ namespace SpaceProject
         // Random Item Get
         private Item getItemItem;
 
-        protected SubInteractiveObject(Game1 game, Sprite spriteSheet, MessageBox messageBox) :
+        protected SubInteractiveObject(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
         {
             SubInteractiveObject.count++;
             id = count;
-
-            this.messageBox = messageBox;
         }
 
         public override void Initialize()
@@ -79,7 +76,7 @@ namespace SpaceProject
         public override void Update(GameTime gameTime)
         {
             if (startLevelWhenTextCleared
-                && Game.messageBox.TextBufferEmpty)
+                && PopupHandler.TextBufferEmpty)
             {
                 Game.stateManager.shooterState.BeginLevel(level);
                 startLevelWhenTextCleared = false;
@@ -94,7 +91,7 @@ namespace SpaceProject
                     && Game.stateManager.shooterState.CurrentLevel.IsObjectiveFailed
                     && GameStateManager.currentState.ToLower().Equals("overworldstate"))
                 {
-                    Game.messageBox.DisplayMessage(0, levelFailedText);
+                    PopupHandler.DisplayMessage(levelFailedText);
                     Game.stateManager.shooterState.GetLevel(level).Initialize();
                 }
 
@@ -104,7 +101,7 @@ namespace SpaceProject
                     && GameStateManager.currentState.ToLower().Equals("overworldstate"))
                 {
                     levelCleared = true;
-                    Game.messageBox.DisplayMessage(0, levelCompletedText.ToArray());
+                    PopupHandler.DisplayMessage(levelCompletedText.ToArray());
                     foreach (Item item in levelItemReward)
                     {
                         ShipInventoryManager.AddItem(item);
@@ -128,7 +125,7 @@ namespace SpaceProject
             {
                 if (cleared)
                 {
-                    messageBox.DisplayMessage(0, clearedText);
+                    PopupHandler.DisplayMessage(clearedText);
 
                     return;
                 }
@@ -136,14 +133,14 @@ namespace SpaceProject
                 switch (interactionType)
                 {
                     case InteractionType.Text:
-                        Game.messageBox.DisplayMessage(0, text.ToArray());
+                        PopupHandler.DisplayMessage(text.ToArray());
                         break;
 
                     case InteractionType.LevelWithReward:
                         {
                             if (!levelCleared)
                             {
-                                Game.messageBox.DisplayMessage(0, text.ToArray());
+                                PopupHandler.DisplayMessage(text.ToArray());
                                 startLevelWhenTextCleared = true;
                             }
                             break;
@@ -151,32 +148,32 @@ namespace SpaceProject
 
                     case InteractionType.FuelShop:
                         {
-                            messageBox.DisplaySelectionMenu(text[0], new List<String>() { "Yes", "No" }
+                            PopupHandler.DisplaySelectionMenu(text[0], new List<String>() { "Yes", "No" }
                                 , new List<System.Action>()
                         {
                             delegate 
                             {
                                 if (StatsManager.Fuel == StatsManager.MaxFuel)
                                 {
-                                    messageBox.DisplayMessage(50, fuelAlreadyFullText);
+                                    PopupHandler.DisplayMessage(fuelAlreadyFullText);
                                 }
 
                                 else if (StatsManager.Rupees >= price)
                                 {
-                                    messageBox.DisplayMessage(50, purchaseText);
+                                    PopupHandler.DisplayMessage(purchaseText);
                                     StatsManager.Rupees -= price;
                                     StatsManager.Fuel = StatsManager.MaxFuel;
                                 }
 
                                 else
                                 {
-                                    messageBox.DisplayMessage(50, notEnoughMoneyText);
+                                    PopupHandler.DisplayMessage(notEnoughMoneyText);
                                 }
                             }, 
 
                             delegate 
                             {
-                                messageBox.DisplayMessage(50, declinePurchaseText);
+                                PopupHandler.DisplayMessage(declinePurchaseText);
                             }
                         });
 
@@ -185,19 +182,19 @@ namespace SpaceProject
 
                     case InteractionType.ItemShop:
                         {
-                            messageBox.DisplaySelectionMenu(text[0], new List<String>() { "Yes", "No" }
+                            PopupHandler.DisplaySelectionMenu(text[0], new List<String>() { "Yes", "No" }
                                 , new List<System.Action>()
                         {
                             delegate 
                             {
                                 if (!ShipInventoryManager.HasAvailableSlot())
                                 {
-                                    messageBox.DisplayMessage(50, inventoryFullText);
+                                    PopupHandler.DisplayMessage(inventoryFullText);
                                 }
 
                                 else if (StatsManager.Rupees >= price)
                                 {
-                                    messageBox.DisplayMessage(50, purchaseText);
+                                    PopupHandler.DisplayMessage(purchaseText);
                                     StatsManager.Rupees -= price;
                                     ShipInventoryManager.AddItem(itemShopItem);
                                     cleared = true;
@@ -205,13 +202,13 @@ namespace SpaceProject
 
                                 else
                                 {
-                                    messageBox.DisplayMessage(50, notEnoughMoneyText);
+                                    PopupHandler.DisplayMessage(notEnoughMoneyText);
                                 }
                             }, 
 
                             delegate 
                             {
-                                messageBox.DisplayMessage(50, declinePurchaseText);
+                                PopupHandler.DisplayMessage(declinePurchaseText);
                             }
                         });
 
@@ -228,7 +225,7 @@ namespace SpaceProject
                         {
                             text.Add(inventoryFullText);
                         }
-                        messageBox.DisplayMessage(0, text.ToArray());
+                        PopupHandler.DisplayMessage(text.ToArray());
                         break;
 
                     case InteractionType.Custom:

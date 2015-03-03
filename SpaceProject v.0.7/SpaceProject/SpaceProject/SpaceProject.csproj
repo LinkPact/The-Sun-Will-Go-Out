@@ -423,7 +423,7 @@
     <Compile Include="Overworld-part\GameObjects\Stations\Station.cs" />
     <Compile Include="Overworld-part\Interface\HelperBox.cs" />
     <Compile Include="Overworld-part\Interface\ItemComparison.cs" />
-    <Compile Include="GameUtils\UI\MessageBox.cs" />
+    <Compile Include="GameUtils\UI\PopupHandler.cs" />
     <Compile Include="Overworld-part\SpaceRegions\SpaceRegion.cs" />
     <Compile Include="GameUtils\StaticFunctions.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\SubInteractiveObject.cs" />
@@ -1095,7 +1095,6 @@
     <Content Include="Levels\testlevels\XDefendColony.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="SpaceProject_TemporaryKey.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

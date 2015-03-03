@@ -305,7 +305,7 @@ namespace SpaceProject
                             PlaySelectSound();
                         }
                         else
-                            Game.messageBox.DisplayMessage(0, "No save-file!");
+                            PopupHandler.DisplayMessage("No save-file!");
                         break;
 
                     case 2:

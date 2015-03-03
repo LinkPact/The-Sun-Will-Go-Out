@@ -14,7 +14,6 @@ namespace SpaceProject
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         #region declaration
-        //public static bool OkayToExit = false;
         public SaveFile settingsFile;
 
         public Sprite spriteSheetVerticalShooter;
@@ -38,7 +37,7 @@ namespace SpaceProject
         public TutorialManager tutorialManager;
         public ShopManager shopManager;
 
-        public MessageBox messageBox;
+        private PopupHandler popupHandler;
         public HelperBox helper;
         private BeaconMenu beaconMenu;
         public BeaconMenu GetBeaconMenu { get { return beaconMenu; } private set { ; } }
@@ -156,8 +155,8 @@ namespace SpaceProject
 
             saveFile = new SaveFile(this);
 
-            messageBox = new MessageBox(this, messageBoxSpriteSheet);
-            messageBox.Initialize();
+            popupHandler = new PopupHandler(this, messageBoxSpriteSheet);
+            popupHandler.Initialize();
 
             helper = new HelperBox(this);
 
@@ -223,7 +222,7 @@ namespace SpaceProject
                     ZoomMap.Update(gameTime, stateManager.overworldState.GetZoomObjects, camera);
                 }
 
-                messageBox.Update(gameTime);
+                popupHandler.Update(gameTime);
                 helper.Update(gameTime);
                 beaconMenu.Update(gameTime);
 
@@ -276,10 +275,10 @@ namespace SpaceProject
             missionManager.Draw(spriteBatch);
             tutorialManager.Draw(spriteBatch);
 
-            if (messageBox.TextBufferEmpty
+            if (!PopupHandler.TextBufferEmpty
                 && !ZoomMap.IsMapOn)
             {
-                messageBox.Draw(spriteBatch);
+                popupHandler.Draw(spriteBatch);
             }
             else if (ZoomMap.IsMapOn)
             {
@@ -359,7 +358,7 @@ namespace SpaceProject
             tutorialManager.Initialize();
             beaconMenu.Initialize();
             stateManager.Initialize();
-            messageBox.Initialize();
+            popupHandler.Initialize();
         }
 
         public void ChangeResolution(Vector2 newResolution)

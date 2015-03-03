@@ -103,7 +103,7 @@ namespace SpaceProject
         {
             if (GameStateManager.currentState.Equals("OverworldState"))
             {
-                return (game.messageBox.TextBufferEmpty);
+                return (PopupHandler.TextBufferEmpty);
             }
 
             else

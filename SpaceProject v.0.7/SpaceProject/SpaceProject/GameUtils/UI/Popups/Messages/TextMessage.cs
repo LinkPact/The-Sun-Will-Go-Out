@@ -20,18 +20,24 @@ namespace SpaceProject
         public override void Initialize()
         {
             base.Initialize();
+
+            useScrolling = true;
+            usePause = true;
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
 
-            text = TextUtils.WordWrap(game.fontManager.GetFont(14),
-                                      TextUtils.ScrollText(textBuffer[0],
-                                                           flushScrollingText,
-                                                           out textScrollingFinished),
-                                      (int)Math.Round(((float)canvas.SourceRectangle.Value.Width),
-                                      0));
+            if (textBuffer.Count > 0)
+            {
+                text = TextUtils.WordWrap(game.fontManager.GetFont(14),
+                                          TextUtils.ScrollText(textBuffer[0],
+                                                               flushScrollingText,
+                                                               out textScrollingFinished),
+                                          (int)Math.Round(((float)canvas.SourceRectangle.Value.Width),
+                                          0));
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
