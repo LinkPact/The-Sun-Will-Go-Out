@@ -16,7 +16,7 @@ namespace SpaceProject
         {
             if (!(this is ImageMessage))
             {
-                canvas = spriteSheet.GetSubSprite(new Rectangle(405, 245, 400, 257));
+                canvas = spriteSheet.GetSubSprite(new Rectangle(405, 0, 400, 257));
             }
         }
 

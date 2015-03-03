@@ -14,7 +14,7 @@ namespace SpaceProject
         public RealTimePortraitMessage(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
         {
-            canvas = spriteSheet.GetSubSprite(new Rectangle(354, 0, 400, 128));
+            canvas = spriteSheet.GetSubSprite(new Rectangle(0, 645, 567, 234));
         }
 
         public override void Initialize()

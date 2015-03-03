@@ -17,7 +17,7 @@ namespace SpaceProject
         public RealTimeMessage(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
         {
-            canvas = spriteSheet.GetSubSprite(new Rectangle(354, 0, 400, 128));
+            canvas = spriteSheet.GetSubSprite(new Rectangle(572, 645, 400, 128));
         }
 
         public override void Initialize()

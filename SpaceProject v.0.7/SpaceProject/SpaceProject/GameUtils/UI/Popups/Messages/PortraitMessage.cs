@@ -14,7 +14,7 @@ namespace SpaceProject
         public PortraitMessage(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
         {
-            canvas = spriteSheet.GetSubSprite(new Rectangle(0, 0, 0, 0));
+            canvas = spriteSheet.GetSubSprite(new Rectangle(0, 406, 567, 234));
         }
 
         public override void Initialize()

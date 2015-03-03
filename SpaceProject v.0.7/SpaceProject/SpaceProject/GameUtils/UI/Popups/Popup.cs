@@ -39,7 +39,7 @@ namespace SpaceProject
         protected Popup(Game1 game, Sprite spriteSheet)
         {
             this.game = game;
-            selectedButton = spriteSheet.GetSubSprite(new Rectangle(180, 0, 66, 21));
+            selectedButton = spriteSheet.GetSubSprite(new Rectangle(473, 262, 66, 21));
         }
 
         public virtual void Initialize()

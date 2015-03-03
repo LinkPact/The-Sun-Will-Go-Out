@@ -84,6 +84,16 @@ namespace SpaceProject
             popupQueue.Add(imageMessage);
         }
 
+        public static void DisplayPortraitMessage(params string[] messages)
+        {
+            PortraitMessage portraitMessage = new PortraitMessage(game, spriteSheet);
+            portraitMessage.Initialize();
+            portraitMessage.SetMessage(messages);
+
+            popupQueue.Add(portraitMessage);
+            portraitMessage.Show();
+        }
+
         public static void DisplayImage(params Sprite[] images)
         {
             ImagePopup imagePopup = new ImagePopup(game, spriteSheet);

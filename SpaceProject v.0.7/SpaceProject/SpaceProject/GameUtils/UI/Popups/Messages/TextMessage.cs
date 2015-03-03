@@ -14,7 +14,7 @@ namespace SpaceProject
         public TextMessage(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
         {
-            canvas = spriteSheet.GetSubSprite(new Rectangle(0, 56, 269, 184));
+            canvas = spriteSheet.GetSubSprite(new Rectangle(572, 406, 400, 183));
         }
 
         public override void Initialize()
