@@ -25,6 +25,7 @@ namespace SpaceProject
             base.Initialize();
 
             imageContainer = new ImageContainer(game, canvas.SourceRectangle.Value, canvasPosition);
+            imageContainer.Initialize();
             usePause = true;
         }
 

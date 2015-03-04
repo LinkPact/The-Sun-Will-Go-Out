@@ -393,11 +393,10 @@ namespace SpaceProject
 
             else if (ControlManager.CheckKeypress(Keys.Y))
             {
-                PopupHandler.DisplayPortraitMessage(PortraitID.Berr, "Hello there! How are you? I'm fine thanks what is your name my name is Bert-Ove im twenty nine years old how old are you? 1",
-                    "GDFGD sdoaskd dfds hkoktr dfnivnr diusdji iefh plwpd fiefi vkeovmoe");
                 //PopupHandler.DisplaySelectionMenu("What do you want to do?",
                 //    new List<string>() { "Nothing", "I dunno" },
                 //    new List<System.Action> { });
+                PopupHandler.DisplayImage(Game.tutorialManager.GetImageFromEnum(TutorialImage.CombatBars));
             }
 
             else if (ControlManager.CheckKeypress(Keys.M))

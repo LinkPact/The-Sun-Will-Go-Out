@@ -28,9 +28,12 @@ namespace SpaceProject
 
         protected Sprite canvas;
         protected Vector2 canvasPosition;
-        protected float canvasScale;
+        protected Vector2 canvasScale;
+        protected Vector2 canvasOrigin;
 
         private float popupTime;
+
+        protected bool useOkayButton;
         private Sprite okayButton;
         private Vector2 okayButtonPosition;
 
@@ -47,9 +50,12 @@ namespace SpaceProject
         public virtual void Initialize()
         {
             InitializePositions();
-            canvasScale = 1;
+            useOkayButton = true;
+            canvasScale = new Vector2(1, 1);
             delayTimer = PressDelay;
             popupState = PopupState.Hidden;
+            canvasOrigin = new Vector2(canvas.SourceRectangle.Value.Width / 2,
+                                       canvas.SourceRectangle.Value.Height / 2);
         }
 
         public virtual void Update(GameTime gameTime)
@@ -72,7 +78,9 @@ namespace SpaceProject
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             DrawCanvas(spriteBatch);
-            DrawOkayButton(spriteBatch);
+
+            if (useOkayButton)
+                DrawOkayButton(spriteBatch);
         }
 
         public virtual void Show()
@@ -114,8 +122,7 @@ namespace SpaceProject
                  canvas.SourceRectangle,
                  new Color(255, 255, 255, Opacity),
                  0.0f,
-                 new Vector2(canvas.SourceRectangle.Value.Width / 2,
-                             canvas.SourceRectangle.Value.Height / 2),
+                 canvasOrigin,
                  canvasScale,
                  SpriteEffects.None,
                  LayerDepth);

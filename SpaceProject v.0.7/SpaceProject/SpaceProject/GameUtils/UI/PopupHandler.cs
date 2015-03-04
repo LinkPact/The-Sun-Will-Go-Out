@@ -224,7 +224,6 @@ namespace SpaceProject
 
             switch (portrait)
             {
-
                 case PortraitID.Sair:
                     sourceRect = new Rectangle(0, 0, 149, 192);
                     break;

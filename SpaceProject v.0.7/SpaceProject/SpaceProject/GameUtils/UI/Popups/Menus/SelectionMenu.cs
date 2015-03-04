@@ -10,12 +10,14 @@ namespace SpaceProject
 {
     class SelectionMenu : Menu
     {
+        private readonly float MenuOptionYDistance = 30f;
+
         protected TextContainer textContainer;
 
         public SelectionMenu(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
         {
-            canvas = spriteSheet.GetSubSprite(new Rectangle(0, 56, 269, 184));
+            canvas = spriteSheet.GetSubSprite(new Rectangle(0, 884, 400, 309));
         }
 
         public override void Initialize()
@@ -116,7 +118,7 @@ namespace SpaceProject
                 spriteBatch.DrawString(FontManager.GetFontStatic(14),
                     menuOptions[i],
                     new Vector2(canvasPosition.X,
-                                canvasPosition.Y + (i * 140)) + FontManager.FontOffsetStatic,
+                                canvasPosition.Y + (i * MenuOptionYDistance)) + FontManager.FontOffsetStatic,
                     color,
                     0f,
                     FontManager.GetFontStatic(14).MeasureString(menuOptions[i]) / 2,

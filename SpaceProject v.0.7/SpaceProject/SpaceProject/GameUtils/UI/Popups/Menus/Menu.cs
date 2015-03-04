@@ -10,6 +10,8 @@ namespace SpaceProject
 {
     class Menu : Popup
     {
+        private readonly float MenuOptionXDistance = 140f;
+
         protected List<string> menuOptions;
         protected List<System.Action> menuActions;
         protected int cursorIndex;
@@ -20,7 +22,7 @@ namespace SpaceProject
         public Menu(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
         {
-            canvas = spriteSheet.GetSubSprite(new Rectangle(0, 56, 269, 184));
+            canvas = spriteSheet.GetSubSprite(new Rectangle(405, 288, 100, 25));
         }
 
         public virtual void SetMenuOptions(params string[] menuOptions)
@@ -55,6 +57,15 @@ namespace SpaceProject
             holdTimer = game.HoldKeyTreshold;
 
             usePause = true;
+            useOkayButton = false;
+
+            if (!(this is SelectionMenu))
+            {
+                canvasScale = new Vector2((float)game.Window.ClientBounds.Width / canvas.SourceRectangle.Value.Width, 1);
+                canvasPosition = new Vector2(game.camera.cameraPos.X - game.ScreenCenter.X,
+                    game.camera.cameraPos.Y - game.ScreenCenter.Y);
+                canvasOrigin = Vector2.Zero;
+            }
         }
 
         public override void Update(GameTime gameTime)
@@ -119,7 +130,7 @@ namespace SpaceProject
                     Hide();
                     break;
 
-                case "Missions Screen":
+                case "Mission Screen":
                     game.stateManager.ChangeState("MissionScreenState");
                     Hide();
                     break;
@@ -205,11 +216,11 @@ namespace SpaceProject
 
                 spriteBatch.DrawString(FontManager.GetFontStatic(14),
                     menuOptions[i],
-                    new Vector2(pos.X + (i * 140),
+                    new Vector2(pos.X + (i * MenuOptionXDistance),
                                 pos.Y) + FontManager.FontOffsetStatic,
                     color,
                     0f,
-                    FontManager.GetFontStatic(14).MeasureString(menuOptions[i]) / 2,
+                    Vector2.Zero,
                     1f,
                     SpriteEffects.None,
                     1f);
