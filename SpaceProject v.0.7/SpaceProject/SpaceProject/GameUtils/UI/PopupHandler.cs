@@ -9,12 +9,32 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
+    public enum PortraitID
+    {
+        // Central characters
+        Sair,
+        Ai,
+        Rok,
+        Ente,
+        Berr,
+        RebelLeader,
+        AllianceCommander,
+
+        // Generic characters
+        AllianceCaptain,
+        RebelTroopLeader,
+        AlliancePilot,
+        RebelPilot,
+        CommonCitizen
+    }
+
     public class PopupHandler
     {
         #region variables
 
         private static Game1 game;
         private static Sprite spriteSheet;
+        private static Sprite portraitSpriteSheet;
 
         private static List<Popup> popupQueue;
         private bool displayOnReturn = false;
@@ -35,6 +55,7 @@ namespace SpaceProject
 
         public void Initialize()
         {
+            portraitSpriteSheet = new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites\\PortraitSpriteSheet"), null);
             popupQueue = new List<Popup>();
 
             displayOnReturn = false;
@@ -84,11 +105,12 @@ namespace SpaceProject
             popupQueue.Add(imageMessage);
         }
 
-        public static void DisplayPortraitMessage(params string[] messages)
+        public static void DisplayPortraitMessage(PortraitID portrait, params string[] messages)
         {
             PortraitMessage portraitMessage = new PortraitMessage(game, spriteSheet);
             portraitMessage.Initialize();
             portraitMessage.SetMessage(messages);
+            portraitMessage.SetPortrait(PopupHandler.GetPortrait(portrait));
 
             popupQueue.Add(portraitMessage);
             portraitMessage.Show();
@@ -194,6 +216,68 @@ namespace SpaceProject
             {
                 popupQueue[0].Draw(spriteBatch);
             }
+        }
+
+        private static Sprite GetPortrait(PortraitID portrait)
+        {
+            Rectangle sourceRect;
+
+            switch (portrait)
+            {
+
+                case PortraitID.Sair:
+                    sourceRect = new Rectangle(0, 0, 149, 192);
+                    break;
+
+                case PortraitID.Ai:
+                    sourceRect = new Rectangle(154, 0, 149, 192);
+                    break;
+
+                case PortraitID.Rok:
+                    sourceRect = new Rectangle(308, 0, 149, 192);
+                    break;
+
+                case PortraitID.Ente:
+                    sourceRect = new Rectangle(462, 0, 149, 192);
+                    break;
+
+                case PortraitID.Berr:
+                    sourceRect = new Rectangle(0, 197, 149, 192);
+                    break;
+
+                case PortraitID.RebelLeader:
+                    sourceRect = new Rectangle(154, 197, 149, 192);
+                    break;
+
+                case PortraitID.AllianceCommander:
+                    sourceRect = new Rectangle(308, 197, 149, 192);
+                    break;
+
+                case PortraitID.AllianceCaptain:
+                    sourceRect = new Rectangle(462, 197, 149, 192);
+                    break;
+
+                case PortraitID.RebelTroopLeader:
+                    sourceRect = new Rectangle(0, 394, 149, 192);
+                    break;
+
+                case PortraitID.AlliancePilot:
+                    sourceRect = new Rectangle(154, 394, 149, 192);
+                    break;
+
+                case PortraitID.RebelPilot:
+                    sourceRect = new Rectangle(308, 394, 149, 192);
+                    break;
+
+                case PortraitID.CommonCitizen:
+                    sourceRect = new Rectangle(462, 394, 149, 192);
+                    break;
+
+                default:
+                    throw new ArgumentException("Invalid Portrait ID.");
+            }
+
+            return new Sprite(portraitSpriteSheet.Texture, sourceRect);
         }
     }
 }

@@ -39,5 +39,10 @@ namespace SpaceProject
 
             portraitContainer.Draw(spriteBatch);
         }
+
+        public void SetPortrait(Sprite portrait)
+        {
+            portraitContainer.SetImages(portrait);
+        }
     }
 }

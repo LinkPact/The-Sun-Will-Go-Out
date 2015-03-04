@@ -20,6 +20,7 @@ namespace SpaceProject
         private readonly int Opacity = 230;
         private readonly float LayerDepth = 0.95f;
         protected readonly int PressDelay = 50;
+        private readonly float OkayButtonYArea = 41;
 
         protected Game1 game;
         protected PopupState popupState;
@@ -30,7 +31,8 @@ namespace SpaceProject
         protected float canvasScale;
 
         private float popupTime;
-        private Sprite selectedButton;
+        private Sprite okayButton;
+        private Vector2 okayButtonPosition;
 
         protected int delayTimer;
 
@@ -39,20 +41,12 @@ namespace SpaceProject
         protected Popup(Game1 game, Sprite spriteSheet)
         {
             this.game = game;
-            selectedButton = spriteSheet.GetSubSprite(new Rectangle(473, 262, 66, 21));
+            okayButton = spriteSheet.GetSubSprite(new Rectangle(473, 262, 66, 21));
         }
 
         public virtual void Initialize()
         {
-            // Sets position of canvas and text
-            if (GameStateManager.currentState == "OverworldState")
-            {
-                canvasPosition = new Vector2(game.camera.cameraPos.X, game.camera.cameraPos.Y);
-            }
-            else
-            {
-                canvasPosition = new Vector2(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
-            }
+            InitializePositions();
             canvasScale = 1;
             delayTimer = PressDelay;
             popupState = PopupState.Hidden;
@@ -104,6 +98,15 @@ namespace SpaceProject
             popupTime = StatsManager.PlayTime.GetFuturePlayTime(milliseconds);
         }
 
+        protected virtual void Hide()
+        {
+            if (usePause)
+            {
+                Game1.Paused = false;
+                popupState = PopupState.Finished;
+            }
+        }
+
         private void DrawCanvas(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(canvas.Texture,
@@ -121,37 +124,27 @@ namespace SpaceProject
         private void DrawOkayButton(SpriteBatch spriteBatch)
         {
             // Draws "okay"-button
-            spriteBatch.Draw(selectedButton.Texture,
-                new Vector2(canvasPosition.X, canvasPosition.Y),
-                selectedButton.SourceRectangle,
+            spriteBatch.Draw(okayButton.Texture,
+                okayButtonPosition,
+                okayButton.SourceRectangle,
                 Color.White,
                 0f,
-                new Vector2(selectedButton.SourceRectangle.Value.Width / 2,
-                    selectedButton.SourceRectangle.Value.Height / 2),
+                new Vector2(okayButton.SourceRectangle.Value.Width / 2,
+                    okayButton.SourceRectangle.Value.Height / 2),
                 1f,
                 SpriteEffects.None,
                 0.975f);
 
             // Draws "okay"-text
-            spriteBatch.DrawString(game.fontManager.GetFont(14),
+            spriteBatch.DrawString(FontManager.GetFontStatic(14),
                  "Okay",
-                 new Vector2(canvasPosition.X,
-                         canvasPosition.Y) + game.fontManager.FontOffset,
+                 okayButtonPosition + FontManager.FontOffsetStatic,
                  Color.LightBlue,
                  0f,
-                 game.fontManager.GetFont(14).MeasureString("Okay") / 2,
+                 FontManager.GetFontStatic(14).MeasureString("Okay") / 2,
                  1f,
                  SpriteEffects.None,
                  1f);
-        }
-
-        protected virtual void Hide()
-        {
-            if (usePause)
-            {
-                Game1.Paused = false;
-                popupState = PopupState.Finished;
-            }
         }
 
         private void ButtonControls()
@@ -182,6 +175,24 @@ namespace SpaceProject
             {
                 OnPress(RebindableKeys.Down);
             }
+        }
+
+        private void InitializePositions()
+        {
+            // Sets position of canvas
+            if (GameStateManager.currentState == "OverworldState")
+            {
+                canvasPosition = new Vector2(game.camera.cameraPos.X, game.camera.cameraPos.Y);
+            }
+            else
+            {
+                canvasPosition = new Vector2(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
+            }
+
+            // Sets position of button
+            okayButtonPosition = new Vector2(canvasPosition.X,
+                canvasPosition.Y + canvas.SourceRectangle.Value.Height / 2 
+                - OkayButtonYArea / 2);
         }
     }
 }
