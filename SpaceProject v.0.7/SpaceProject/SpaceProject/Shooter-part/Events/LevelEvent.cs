@@ -168,14 +168,19 @@ namespace SpaceProject
             switch (identifier)
             {
                 // Allies
-                case EnemyType.fighterAlly:
+                case EnemyType.allianceFighterAlly:
                     {
-                        creature = new FighterAlly(Game, spriteSheet, player);
+                        creature = new AllianceFighterAlly(Game, spriteSheet, player);
                         break;
                     }
                 case EnemyType.freighterAlly:
                     {
                         creature = new FreighterAlly(Game, spriteSheet, player);
+                        break;
+                    }
+                case EnemyType.rebelFighterAlly:
+                    {
+                        creature = new RebelFighterAlly(Game, spriteSheet, player);
                         break;
                     }
 
@@ -510,7 +515,7 @@ namespace SpaceProject
             {
                 ((AlliedShip)creature).SetFormationArea(new Rectangle((int)(creature.PositionX), 500, 1, 7));
 
-                if (creature is FighterAlly)
+                if (creature is AllianceFighterAlly || creature is RebelFighterAlly)
                     ((AlliedShip)creature).CreateAI(AIBehaviour.Standard);
                 else if (creature is FreighterAlly)
                     ((AlliedShip)creature).CreateAI(AIBehaviour.NoWeapon);

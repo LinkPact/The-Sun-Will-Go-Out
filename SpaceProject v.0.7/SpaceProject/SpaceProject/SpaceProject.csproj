@@ -419,6 +419,7 @@
     <Compile Include="Shooter-part\Events\BossLevelEvent.cs" />
     <Compile Include="Shooter-part\Events\Instances\PointInstances\SingleHorizontalEnemy.cs" />
     <Compile Include="Shooter-part\Events\Instances\TextInstances\SimpleMessageVertical.cs" />
+    <Compile Include="Shooter-part\GameObjects\Allies\Ships\AllianceFighterAlly.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Meteorites\Meteorite.cs" />
     <Compile Include="Shooter-part\Events\Instances\WaveInstances\HangarBoss.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\Hangar\AllianceHangarAttackShip.cs" />
@@ -432,7 +433,7 @@
     <Compile Include="Shooter-part\Modules\BeamModule\FriendlyBeamModule.cs" />
     <Compile Include="Shooter-part\Modules\BeamModule\HostileBeamModule.cs" />
     <Compile Include="Shooter-part\GameObjects\Allies\AlliedShip.cs" />
-    <Compile Include="Shooter-part\GameObjects\Allies\Ships\FighterAlly.cs" />
+    <Compile Include="Shooter-part\GameObjects\Allies\Ships\RebelFighterAlly.cs" />
     <Compile Include="Shooter-part\GameObjects\Allies\Ships\FreighterAlly.cs" />
     <Compile Include="Shooter-part\GameObjects\Bullets\Bullet.cs" />
     <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\EnemyMissileBullet.cs" />

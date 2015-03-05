@@ -42,8 +42,9 @@ namespace SpaceProject
             enemyLibrary.Add(EnemyType.medium, "M");
 
             // Allies
-            enemyLibrary.Add(EnemyType.fighterAlly, "A");
+            enemyLibrary.Add(EnemyType.allianceFighterAlly, "A");
             enemyLibrary.Add(EnemyType.freighterAlly, "F");
+            enemyLibrary.Add(EnemyType.rebelFighterAlly, "r");
 
             // Rebels
             enemyLibrary.Add(EnemyType.R_mosquito, "G");
@@ -198,8 +199,9 @@ namespace SpaceProject
                 case EnemyType.smallShooter_R:      return Color.Black;
 
                 // Allies
-                case EnemyType.fighterAlly:         return new Color(200, 200, 255);
+                case EnemyType.allianceFighterAlly: return new Color(200, 200, 255);
                 case EnemyType.freighterAlly:       return new Color(100, 100, 255);
+                case EnemyType.rebelFighterAlly:    return new Color(255, 200, 200);
 
                 // Rebels
                 case EnemyType.R_mosquito:          return new Color(255, 255, 102);

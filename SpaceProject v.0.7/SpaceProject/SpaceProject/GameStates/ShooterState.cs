@@ -161,8 +161,8 @@ namespace SpaceProject
             entryDict.Add("8o_2", new LevelEntry("OnYourOwn_2",         "mainlevels/m8a_OYO_lv2",               MissionType.goingout));
             entryDict.Add("8r_1", new LevelEntry("RebelBranch_1",       "mainlevels/m8b_rebels_lv1",            MissionType.regularrebel));
             entryDict.Add("8r_2", new LevelEntry("RebelBranch_2",       "mainlevels/m8b_rebels_lv2",            MissionType.regularrebel));
-            entryDict.Add("8a_1", new LevelEntry("AllianceBranch_1",    "mainlevels/m8c_alliance_lv1",          MissionType.power));
-            entryDict.Add("8a_2", new LevelEntry("AllianceBranch_2",    "mainlevels/m8c_alliance_lv2",          MissionType.power));
+            entryDict.Add("8a_1", new LevelEntry("AllianceBranch_1",    "mainlevels/m8c_alliance_lv1",          MissionType.regularrebel));
+            entryDict.Add("8a_2", new LevelEntry("AllianceBranch_2",    "mainlevels/m8c_alliance_lv2",          MissionType.regularrebel));
 
             entryDict.Add("rp1", new LevelEntry("RebelPirate1",         "pirates/RebelPirate1",                 MissionType.rebelpirate));
             entryDict.Add("rp2", new LevelEntry("RebelPirate2",         "pirates/RebelPirate2",                 MissionType.rebelpirate));

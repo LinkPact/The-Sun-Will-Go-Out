@@ -1,6 +1,6 @@
 Header :duration 45:width 400:durGridWidth 3:levelObjective CountMayNotPass|X5:
 Point
-T: 0:E: 0nn0 0nn0 Ann0 0nn0 0nn0 0nn0 Ann0 0nn0 0nn0:end
+T: 0:E: 0nn0 0nn0 rnn0 0nn0 0nn0 0nn0 rnn0 0nn0 0nn0:end
 T: 1:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 2:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 3:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end

@@ -53,8 +53,9 @@ public enum EnemyType
     smallShooter_R      = 9,
 
     
-    fighterAlly         = 10,
+    allianceFighterAlly = 10,
     freighterAlly       = 11,
+    rebelFighterAlly    = 12,
     
     R_mosquito          = 100,
     R_smallAttack       = 101,
