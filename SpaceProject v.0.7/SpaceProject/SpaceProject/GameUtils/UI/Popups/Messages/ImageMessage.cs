@@ -44,5 +44,18 @@ namespace SpaceProject
         {
             textContainer.SetMessage(messages);
         }
+
+        protected override void Hide()
+        {
+            textContainer.UpdateTextBuffer();
+            imageContainer.UpdateImageBuffer();
+
+            // Has all text finished scrolling?
+            if (textContainer.IsTextBufferEmpty()
+                && imageContainer.IsImageBufferEmpty())
+            {
+                base.Hide();
+            }
+        }
     }
 }

@@ -49,20 +49,12 @@ namespace SpaceProject
 
         protected override void Hide()
         {
+            textContainer.UpdateTextBuffer();
+
             // Has all text finished scrolling?
-            if (((textContainer.UseScrolling 
-                && textContainer.ScrollingFinished())
-                || !textContainer.UseScrolling)
-                && textContainer.IsTextBufferEmpty())
+            if (textContainer.IsTextBufferEmpty())
             {
                 base.Hide();
-            }
-            // Has all text NOT finished scrolling?
-            else if (textContainer.UseScrolling
-                && !textContainer.ScrollingFinished()
-                && delayTimer < 0)
-            {
-                textContainer.FlushText();
             }
         }
     }

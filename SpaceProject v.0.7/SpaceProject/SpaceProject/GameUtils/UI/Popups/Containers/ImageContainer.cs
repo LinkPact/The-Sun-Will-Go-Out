@@ -21,10 +21,13 @@ namespace SpaceProject
 
         // variables
         private List<Sprite> imageBuffer;
-        private int imageTriggerIndex;
-        private List<int> imageTriggers;
         private ImageType imageType;
         private Vector2 imagePosition;
+
+        private bool useImageTriggers;
+        private int imageTriggerIndex;
+        private List<int> imageTriggers;
+        private int messageCount;
 
         private Rectangle canvasSize;
         private Vector2 canvasPosition;
@@ -41,6 +44,7 @@ namespace SpaceProject
             base.Initialize();
 
             imageBuffer = new List<Sprite>();
+            imageTriggers = new List<int>();
 
             if (imageType == ImageType.Regular)
             {
@@ -61,15 +65,18 @@ namespace SpaceProject
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(imageBuffer[0].Texture,
-                             imagePosition,
-                             imageBuffer[0].SourceRectangle,
-                             Color.White,
-                             0f,
-                             Vector2.Zero,
-                             1f,
-                             SpriteEffects.None,
-                             ImageLayerDepth);
+            if (imageBuffer.Count > 0)
+            {
+                spriteBatch.Draw(imageBuffer[0].Texture,
+                                 imagePosition,
+                                 imageBuffer[0].SourceRectangle,
+                                 Color.White,
+                                 0f,
+                                 Vector2.Zero,
+                                 1f,
+                                 SpriteEffects.None,
+                                 ImageLayerDepth);
+            }
         }
 
         public void SetImages(params Sprite[] images)
@@ -80,8 +87,11 @@ namespace SpaceProject
             }
         }
 
-        public void SetImageTriggers(params int[] imageTriggers)
+        public void SetImageTriggers(int numberOfMessages, params int[] imageTriggers)
         {
+            messageCount = numberOfMessages;
+            useImageTriggers = true;
+
             foreach (int trigger in imageTriggers)
             {
                 this.imageTriggers.Add(trigger);
@@ -92,13 +102,7 @@ namespace SpaceProject
 
         public bool IsImageBufferEmpty()
         {
-            UpdateImageBuffer();
-
-            if (imageBuffer.Count <= 0)
-            {
-                return true;
-            }
-            return false;
+            return imageBuffer.Count <= 0;
         }
 
         public void SetImageType(ImageType imageType)
@@ -106,22 +110,28 @@ namespace SpaceProject
             this.imageType = imageType;
         }
 
-        private void UpdateImageBuffer()
+        public void UpdateImageBuffer()
         {
             if (imageBuffer.Count > 0)
             {
-                imageBuffer.Remove(imageBuffer[0]);
-            }
-
-            if (imageBuffer.Count > 0)
-            {
-                imageTriggerIndex++;
-
-                if (imageTriggers.Count > 0 &&
-                    imageTriggerIndex == imageTriggers[0])
+                if (useImageTriggers)
                 {
-                    imageTriggers.RemoveAt(0);
-                    imageBuffer.RemoveAt(0);
+                    imageTriggerIndex++;
+
+                    if (imageTriggers.Count > 0 &&
+                        imageTriggerIndex == imageTriggers[0])
+                    {
+                        imageTriggers.RemoveAt(0);
+                        imageBuffer.RemoveAt(0);
+                    }
+                    else if (imageTriggerIndex >= messageCount)
+                    {
+                        imageBuffer.RemoveAt(0);
+                    }
+                }
+                else
+                {
+                    imageBuffer.Remove(imageBuffer[0]);
                 }
             }
         }

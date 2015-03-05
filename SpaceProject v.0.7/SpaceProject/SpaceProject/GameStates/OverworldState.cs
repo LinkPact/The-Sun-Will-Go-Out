@@ -396,7 +396,14 @@ namespace SpaceProject
                 //PopupHandler.DisplaySelectionMenu("What do you want to do?",
                 //    new List<string>() { "Nothing", "I dunno" },
                 //    new List<System.Action> { });
-                PopupHandler.DisplayImage(Game.tutorialManager.GetImageFromEnum(TutorialImage.CombatBars));
+                //PopupHandler.DisplayImage(Game.tutorialManager.GetImageFromEnum(TutorialImage.Coordinates));
+                //PopupHandler.DisplayMessage("Hellod dfdfd dfdfdf dfdfdf dfdfdf ",
+                //    "Hello again!bvcbcvb cvbcvb  cvbcvb cvbcvb cvbcvb",
+                //    "hello yet again! hello yet again! hello yet again! hello yet again!");
+                PopupHandler.DisplayMessageWithImage(new List<Sprite>(){Game.tutorialManager.GetImageFromEnum(TutorialImage.CombatBars),
+                                                                        Game.tutorialManager.GetImageFromEnum(TutorialImage.CombatControls) },
+                new List<int>(){ 1 },
+                "Hello", "hello again", "hello yet again");
             }
 
             else if (ControlManager.CheckKeypress(Keys.M))

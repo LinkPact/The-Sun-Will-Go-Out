@@ -9,8 +9,6 @@ namespace SpaceProject
 {
     class RealTimeMessage : TextMessage
     {
-        private float showInTime;       // How many seconds in the future this message will be shown
-        protected float displayTime;      // Time when this message will be shown
         private float timeShown;        // How many milliseconds this message is shown
         private float hideTime;         // Time when this message will be hidden
 
@@ -24,8 +22,8 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            displayTime = -1;
             usePause = false;
+            useOkayButton = false;
         }
 
         public override void Update(GameTime gameTime)
@@ -34,20 +32,9 @@ namespace SpaceProject
                                          game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 4);
 
             textContainer.Update(gameTime);
+            textContainer.UpdatePosition(game.camera.cameraPos);
 
-            if (displayTime == -1)
-            {
-                displayTime = StatsManager.PlayTime.GetFutureOverworldTime(showInTime);
-            }
-
-            else if (displayTime != -2
-                && StatsManager.PlayTime.HasOverworldTimePassed(displayTime))
-            {
-                Show();
-                displayTime = -2;
-            }
-
-            else if (StatsManager.PlayTime.HasOverworldTimePassed(hideTime))
+            if (StatsManager.PlayTime.HasOverworldTimePassed(hideTime))
             {
                 Hide();
             }
@@ -56,8 +43,11 @@ namespace SpaceProject
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
+        }
 
-            textContainer.Draw(spriteBatch);
+        public override void SetDelay(float milliseconds)
+        {
+            timeShown = milliseconds;   
         }
 
         public override void Show()
@@ -70,11 +60,6 @@ namespace SpaceProject
         public void SetTimeShown(float milliseconds)
         {
             timeShown = milliseconds;
-        }
-
-        public void SetDisplayTime(float milliseconds)
-        {
-            showInTime = milliseconds;
         }
     }
 }

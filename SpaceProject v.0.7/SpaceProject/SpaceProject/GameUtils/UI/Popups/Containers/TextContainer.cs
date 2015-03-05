@@ -73,6 +73,12 @@ namespace SpaceProject
             }
         }
 
+        public void UpdatePosition(Vector2 cameraPos)
+        {
+            textPosition = new Vector2(cameraPos.X - canvasSize.Width / 2,
+                                           cameraPos.Y - canvasSize.Height / 2 - 5);
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(font,
@@ -89,40 +95,32 @@ namespace SpaceProject
 
         public bool IsTextBufferEmpty()
         {
-            UpdateTextBuffer();
-
-            if (textBuffer.Count <= 0)
-            {
-                return true;
-            }
-            return false;
+            return textBuffer.Count <= 0;
         }
 
-        private void UpdateTextBuffer()
+        public void UpdateTextBuffer()
         {
-            TextUtils.RefreshTextScrollBuffer();
-            TextToSpeech.Stop();
-
-            if (textBuffer.Count > 0)
+            if (textScrollingFinished)
             {
-                textBuffer.Remove(textBuffer[0]);
-            }
+                TextUtils.RefreshTextScrollBuffer();
+                TextToSpeech.Stop();
 
-            if (textBuffer.Count > 0)
+                if (textBuffer.Count > 0)
+                {
+                    textBuffer.Remove(textBuffer[0]);
+                }
+
+                if (textBuffer.Count > 0)
+                {
+                    TextToSpeech.Speak(textBuffer[0]);
+                }
+
+                flushScrollingText = false;
+            }
+            else
             {
-                TextToSpeech.Speak(textBuffer[0]);
+                flushScrollingText = true;
             }
-            textScrollingFinished = false;
-        }
-
-        public bool ScrollingFinished()
-        {
-            return textScrollingFinished;
-        }
-
-        public void FlushText()
-        {
-            flushScrollingText = true;
         }
 
         public void SetMessage(params string[] text)

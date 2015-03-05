@@ -41,10 +41,10 @@ namespace SpaceProject
             imageContainer.Draw(spriteBatch);
         }
 
-        public void SetImages(List<Sprite> images, List<int> imageTriggers)
+        public void SetImages(List<Sprite> images, int numberOfMessages, List<int> imageTriggers)
         {
             SetImages(images.ToArray<Sprite>());
-            imageContainer.SetImageTriggers(imageTriggers.ToArray<int>());
+            imageContainer.SetImageTriggers(numberOfMessages, imageTriggers.ToArray<int>());
         }
 
         public void SetImages(params Sprite[] images)
@@ -54,7 +54,10 @@ namespace SpaceProject
 
         protected override void Hide()
         {
-            base.Hide();
+            if (imageContainer.IsImageBufferEmpty())
+            {
+                base.Hide();
+            }
         }
     }
 }

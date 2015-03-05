@@ -63,23 +63,21 @@ namespace SpaceProject
 
         public static void DisplayRealtimeMessage(float delay, params string[] messages)
         {
-            //RealTimeMessage realTimeMessage = new RealTimeMessage(game, spriteSheet);
-            //
-            //realTimeMessage.Initialize();
-            //realTimeMessage.SetMessage(messages);
-            //realTimeMessage.SetDelay(delay);
-            //
-            //popupQueue.Add(realTimeMessage);
+            RealTimeMessage realTimeMessage = new RealTimeMessage(game, spriteSheet);
+            
+            realTimeMessage.Initialize();
+            realTimeMessage.SetMessage(messages);
+            realTimeMessage.SetDelay(delay);
+            
+            popupQueue.Add(realTimeMessage);
         }
 
-        //Call this method, feed in a string and the message will appear on screen 
         public static void DisplayMessage(params string[] messages)
         {
             TextMessage textMessage = new TextMessage(game, spriteSheet);
 
             textMessage.Initialize();
             textMessage.SetMessage(messages);
-            textMessage.Show();
 
             popupQueue.Add(textMessage);
         }
@@ -100,7 +98,7 @@ namespace SpaceProject
 
             imageMessage.Initialize();
             imageMessage.SetMessage(messages);
-            imageMessage.SetImages(images, imageTriggers);
+            imageMessage.SetImages(images, messages.Length, imageTriggers);
 
             popupQueue.Add(imageMessage);
         }
@@ -113,7 +111,6 @@ namespace SpaceProject
             portraitMessage.SetPortrait(PopupHandler.GetPortrait(portrait));
 
             popupQueue.Add(portraitMessage);
-            portraitMessage.Show();
         }
 
         public static void DisplayImage(params Sprite[] images)
@@ -126,7 +123,6 @@ namespace SpaceProject
             popupQueue.Add(imagePopup);
         }
 
-        //Displays the "overmenu"
         public static void DisplayMenu()
         {
             Menu menu = new Menu(game, spriteSheet);
@@ -175,15 +171,22 @@ namespace SpaceProject
 
         public void Update(GameTime gameTime)
         {
-            if (popupQueue.Count > 0
-                && popupQueue[0].PopupState == PopupState.Finished)
-            {
-                popupQueue.RemoveAt(0);
-            }
-
             if (popupQueue.Count > 0)
             {
-                popupQueue[0].Update(gameTime);
+                if (popupQueue[0].PopupState == PopupState.Hidden)
+                {
+                    popupQueue[0].Show();
+                }
+
+                else if (popupQueue[0].PopupState == PopupState.Showing)
+                {
+                    popupQueue[0].Update(gameTime);
+                }
+
+                else
+                {
+                    popupQueue.RemoveAt(0);
+                }
             }
 
             //if (actionStorage.Count > 0)
@@ -212,7 +215,8 @@ namespace SpaceProject
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (popupQueue.Count > 0)
+            if (popupQueue.Count > 0
+                && popupQueue[0].PopupState == PopupState.Showing)
             {
                 popupQueue[0].Draw(spriteBatch);
             }

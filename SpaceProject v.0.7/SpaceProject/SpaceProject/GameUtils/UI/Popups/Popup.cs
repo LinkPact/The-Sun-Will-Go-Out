@@ -20,7 +20,7 @@ namespace SpaceProject
         private readonly int Opacity = 230;
         private readonly float LayerDepth = 0.95f;
         protected readonly int PressDelay = 50;
-        private readonly float OkayButtonYArea = 41;
+        protected readonly float OkayButtonYArea = 41;
 
         protected Game1 game;
         protected PopupState popupState;
@@ -35,7 +35,7 @@ namespace SpaceProject
 
         protected bool useOkayButton;
         private Sprite okayButton;
-        private Vector2 okayButtonPosition;
+        protected Vector2 okayButtonPosition;
 
         protected int delayTimer;
 
@@ -101,7 +101,7 @@ namespace SpaceProject
             }
         }
 
-        public void SetDelay(float milliseconds)
+        public virtual void SetDelay(float milliseconds)
         {
             popupTime = StatsManager.PlayTime.GetFuturePlayTime(milliseconds);
         }
