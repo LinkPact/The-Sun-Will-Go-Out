@@ -31,6 +31,7 @@ namespace SpaceProject
             base.Update(gameTime);
 
             portraitContainer.Update(gameTime);
+            portraitContainer.UpdatePosition(game.camera.cameraPos);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -40,9 +41,22 @@ namespace SpaceProject
             portraitContainer.Draw(spriteBatch);
         }
 
-        public void SetPortrait(Sprite portrait)
+        protected override void Hide()
         {
-            portraitContainer.SetImages(portrait);
+            base.Hide();
+
+            portraitContainer.UpdateImageBuffer();
+        }
+
+        public void SetPortrait(params Sprite[] portraits)
+        {
+            portraitContainer.SetImages(portraits);
+        }
+
+        public void SetPortrait(List<Sprite> portraits, int numberOfMessages, List<int> portraitTriggers)
+        {
+            SetPortrait(portraits.ToArray<Sprite>());
+            portraitContainer.SetImageTriggers(numberOfMessages, portraitTriggers.ToArray<int>());
         }
     }
 }

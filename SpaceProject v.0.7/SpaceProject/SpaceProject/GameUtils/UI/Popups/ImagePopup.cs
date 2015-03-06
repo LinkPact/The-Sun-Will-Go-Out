@@ -41,10 +41,10 @@ namespace SpaceProject
             imageContainer.Draw(spriteBatch);
         }
 
-        public void SetImages(List<Sprite> images, int numberOfMessages, List<int> imageTriggers)
+        public void SetImages(int numberOfMessages, int[] imageTriggers, params Sprite[] images)
         {
-            SetImages(images.ToArray<Sprite>());
-            imageContainer.SetImageTriggers(numberOfMessages, imageTriggers.ToArray<int>());
+            SetImages(images);
+            imageContainer.SetImageTriggers(numberOfMessages, imageTriggers);
         }
 
         public void SetImages(params Sprite[] images)

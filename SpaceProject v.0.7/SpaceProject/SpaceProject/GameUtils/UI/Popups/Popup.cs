@@ -17,29 +17,31 @@ namespace SpaceProject
 
     class Popup
     {
-        private readonly int Opacity = 230;
+        // constants
+        private readonly int CanvasOpacity = 230;
         private readonly float LayerDepth = 0.95f;
         protected readonly int PressDelay = 50;
         protected readonly float OkayButtonYArea = 41;
 
+        // variables
         protected Game1 game;
         protected PopupState popupState;
-        public PopupState PopupState { get { return popupState; } protected set { ;} }
 
         protected Sprite canvas;
         protected Vector2 canvasPosition;
         protected Vector2 canvasScale;
         protected Vector2 canvasOrigin;
 
+        protected bool usePause;
+        protected int delayTimer;
         private float popupTime;
 
         protected bool useOkayButton;
         private Sprite okayButton;
         protected Vector2 okayButtonPosition;
 
-        protected int delayTimer;
-
-        protected bool usePause;
+        // properties
+        public PopupState PopupState { get { return popupState; } protected set { ;} }
 
         protected Popup(Game1 game, Sprite spriteSheet)
         {
@@ -93,7 +95,12 @@ namespace SpaceProject
             }
         }
 
-        public virtual void OnPress(RebindableKeys key)
+        public virtual void SetDelay(float milliseconds)
+        {
+            popupTime = StatsManager.PlayTime.GetFuturePlayTime(milliseconds);
+        }
+
+        protected virtual void OnPress(RebindableKeys key)
         {
             if (key == RebindableKeys.Action1)
             {
@@ -101,18 +108,32 @@ namespace SpaceProject
             }
         }
 
-        public virtual void SetDelay(float milliseconds)
-        {
-            popupTime = StatsManager.PlayTime.GetFuturePlayTime(milliseconds);
-        }
-
         protected virtual void Hide()
         {
             if (usePause)
             {
                 Game1.Paused = false;
-                popupState = PopupState.Finished;
             }
+
+            popupState = PopupState.Finished;
+        }
+
+        protected virtual void InitializePositions()
+        {
+            // Sets position of canvas
+            if (GameStateManager.currentState == "OverworldState")
+            {
+                canvasPosition = new Vector2(game.camera.cameraPos.X, game.camera.cameraPos.Y);
+            }
+            else
+            {
+                canvasPosition = new Vector2(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
+            }
+
+            // Sets position of button
+            okayButtonPosition = new Vector2(canvasPosition.X,
+                canvasPosition.Y + canvas.SourceRectangle.Value.Height / 2
+                - OkayButtonYArea / 2);
         }
 
         private void DrawCanvas(SpriteBatch spriteBatch)
@@ -120,7 +141,7 @@ namespace SpaceProject
             spriteBatch.Draw(canvas.Texture,
                  canvasPosition,
                  canvas.SourceRectangle,
-                 new Color(255, 255, 255, Opacity),
+                 new Color(255, 255, 255, CanvasOpacity),
                  0.0f,
                  canvasOrigin,
                  canvasScale,
@@ -182,24 +203,6 @@ namespace SpaceProject
             {
                 OnPress(RebindableKeys.Down);
             }
-        }
-
-        private void InitializePositions()
-        {
-            // Sets position of canvas
-            if (GameStateManager.currentState == "OverworldState")
-            {
-                canvasPosition = new Vector2(game.camera.cameraPos.X, game.camera.cameraPos.Y);
-            }
-            else
-            {
-                canvasPosition = new Vector2(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
-            }
-
-            // Sets position of button
-            okayButtonPosition = new Vector2(canvasPosition.X,
-                canvasPosition.Y + canvas.SourceRectangle.Value.Height / 2 
-                - OkayButtonYArea / 2);
         }
     }
 }

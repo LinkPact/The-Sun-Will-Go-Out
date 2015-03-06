@@ -400,10 +400,14 @@ namespace SpaceProject
                 //PopupHandler.DisplayMessage("Hellod dfdfd dfdfdf dfdfdf dfdfdf ",
                 //    "Hello again!bvcbcvb cvbcvb  cvbcvb cvbcvb cvbcvb",
                 //    "hello yet again! hello yet again! hello yet again! hello yet again!");
-                PopupHandler.DisplayMessageWithImage(new List<Sprite>(){Game.tutorialManager.GetImageFromEnum(TutorialImage.CombatBars),
-                                                                        Game.tutorialManager.GetImageFromEnum(TutorialImage.CombatControls) },
-                new List<int>(){ 1 },
-                "Hello", "hello again", "hello yet again");
+                //PopupHandler.DisplayMessageWithImage(new List<Sprite>(){Game.tutorialManager.GetImageFromEnum(TutorialImage.CombatBars),
+                //                                                        Game.tutorialManager.GetImageFromEnum(TutorialImage.CombatControls) },
+                //new List<int>(){ 1 },
+                //"Hello", "hello again", "hello yet again");
+
+                PopupHandler.DisplayRealtimePortraitMessage(3000,
+                    new [] { PortraitID.Ai, PortraitID.Ente, PortraitID.RebelLeader },
+                new List<int> { 2, 3 }, "hello!", "hello!", "hello!", "How are you?");
             }
 
             else if (ControlManager.CheckKeypress(Keys.M))

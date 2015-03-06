@@ -11,6 +11,7 @@ namespace SpaceProject
     {
         private float timeShown;        // How many milliseconds this message is shown
         private float hideTime;         // Time when this message will be hidden
+        private bool hideTimeSet;
 
         public RealTimeMessage(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
@@ -28,13 +29,21 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
+            base.Update(gameTime);
+
             canvasPosition = new Vector2(game.camera.cameraPos.X,
                                          game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 4);
 
-            textContainer.Update(gameTime);
             textContainer.UpdatePosition(game.camera.cameraPos);
 
-            if (StatsManager.PlayTime.HasOverworldTimePassed(hideTime))
+            if (!hideTimeSet
+                && textContainer.HasScrollingFinished())
+            {
+                SetHideTime();
+            }
+
+            if (hideTimeSet
+                && StatsManager.PlayTime.HasOverworldTimePassed(hideTime))
             {
                 Hide();
             }
@@ -57,9 +66,30 @@ namespace SpaceProject
             hideTime = StatsManager.PlayTime.GetFutureOverworldTime(timeShown);
         }
 
-        public void SetTimeShown(float milliseconds)
+        protected override void InitializePositions()
         {
-            timeShown = milliseconds;
+            canvasPosition = new Vector2(game.camera.cameraPos.X,
+                             game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 4);
+        }
+
+        protected override void Hide()
+        {
+            string previousMessage = textContainer.GetCurrentMessage();
+            hideTimeSet = false;
+
+            base.Hide();
+
+            // Is a new message displayed?
+            if (!previousMessage.Equals(textContainer.GetCurrentMessage()))
+            {
+                SetHideTime();
+            }
+        }
+
+        private void SetHideTime()
+        {
+            hideTime = StatsManager.PlayTime.GetFutureOverworldTime(timeShown);
+            hideTimeSet = true;
         }
     }
 }

@@ -81,21 +81,19 @@ namespace SpaceProject
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(font,
-                        text,
-                        new Vector2(textPosition.X,
-                                    textPosition.Y) + fontOffset,
-                        fontColor,
-                        0f,
-                        Vector2.Zero,
-                        1f,
-                        SpriteEffects.None,
-                        TextLayerDepth);
-        }
-
-        public bool IsTextBufferEmpty()
-        {
-            return textBuffer.Count <= 0;
+            if (text != null)
+            {
+                spriteBatch.DrawString(font,
+                            text,
+                            new Vector2(textPosition.X,
+                                        textPosition.Y) + fontOffset,
+                            fontColor,
+                            0f,
+                            Vector2.Zero,
+                            1f,
+                            SpriteEffects.None,
+                            TextLayerDepth);
+            }
         }
 
         public void UpdateTextBuffer()
@@ -140,6 +138,25 @@ namespace SpaceProject
                     }
                 }
             }
+        }
+
+        public string GetCurrentMessage()
+        {
+            if (textBuffer.Count > 0)
+            {
+                return textBuffer[0];
+            }
+            return "EMPTY";
+        }
+
+        public bool IsTextBufferEmpty()
+        {
+            return textBuffer.Count <= 0;
+        }
+
+        public bool HasScrollingFinished()
+        {
+            return textScrollingFinished;
         }
     }
 }

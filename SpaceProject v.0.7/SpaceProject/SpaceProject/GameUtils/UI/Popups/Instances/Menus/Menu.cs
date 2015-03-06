@@ -80,7 +80,7 @@ namespace SpaceProject
             DrawMenuOptions(spriteBatch);
         }
 
-        public override void OnPress(RebindableKeys key)
+        protected override void OnPress(RebindableKeys key)
         {
             base.OnPress(key);
 

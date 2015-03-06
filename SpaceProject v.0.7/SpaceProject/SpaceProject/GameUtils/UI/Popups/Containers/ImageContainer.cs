@@ -63,6 +63,12 @@ namespace SpaceProject
             base.Update(gameTime);
         }
 
+        public void UpdatePosition(Vector2 cameraPosition)
+        {
+            imagePosition = new Vector2(cameraPosition.X - canvasSize.Width / 2,
+                                           cameraPosition.Y - canvasSize.Height / 2 - 5);
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             if (imageBuffer.Count > 0)

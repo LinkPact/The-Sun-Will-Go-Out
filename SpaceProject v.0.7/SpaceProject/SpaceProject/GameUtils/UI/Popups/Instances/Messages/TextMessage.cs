@@ -51,7 +51,6 @@ namespace SpaceProject
         {
             textContainer.UpdateTextBuffer();
 
-            // Has all text finished scrolling?
             if (textContainer.IsTextBufferEmpty())
             {
                 base.Hide();
