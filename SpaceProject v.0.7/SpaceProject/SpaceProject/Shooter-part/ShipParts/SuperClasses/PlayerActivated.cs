@@ -23,7 +23,18 @@ namespace SpaceProject
         protected Boolean isBeam = false;
 
         protected float delay;
-        public float Delay { get { return delay; } private set { } }
+        public float Delay { 
+            get {
+                if (!shootsInBatches)
+                {
+                    return delay;
+                }
+                else 
+                {
+                    return ShootCycleTime / batchSize;
+                }
+            } 
+        }
         
         public float EnergyCost { 
             get 
@@ -35,7 +46,7 @@ namespace SpaceProject
             } 
         }
 
-        private float ShootCycleTime
+        protected float ShootCycleTime
         {
             get
             {
@@ -45,8 +56,13 @@ namespace SpaceProject
 
         // Batch-variables
         private Boolean shootsInBatches = false;
+        protected Boolean ShootsInBatches { get { return shootsInBatches; } }
+
         private int shotsLeftInBatch;
+        
         private int batchSize;
+        protected int BatchSize { get { return batchSize; } }
+
         private int interBatchDelay;
         private int currentInterBatchDelay;
 

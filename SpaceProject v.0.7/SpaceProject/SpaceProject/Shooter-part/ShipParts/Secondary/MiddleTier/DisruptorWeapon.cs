@@ -31,12 +31,7 @@ namespace SpaceProject
             ActivatedSoundID = SoundEffects.MuffledExplosion;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(100, 100, 100, 100));
 
-            bullet = new Mine(Game, spriteSheet);
-            bullet.Initialize();
-
-            damage = Bullet.Damage;
-            duration = Bullet.Duration;
-            speed = Bullet.Speed;
+            damage = 0;
 
             Value = 600;
 

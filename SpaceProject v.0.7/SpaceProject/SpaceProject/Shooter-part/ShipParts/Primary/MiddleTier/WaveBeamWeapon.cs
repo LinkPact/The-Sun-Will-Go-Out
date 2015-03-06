@@ -41,6 +41,7 @@ namespace SpaceProject
             int shotsPerBatch = 2;
             int timeBetweenBatches = 250;
             ShootsInBatchesSetup(shotsPerBatch, timeBetweenBatches);
+            numberOfShots = 1;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)

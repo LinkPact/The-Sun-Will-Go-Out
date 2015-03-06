@@ -8,6 +8,8 @@ namespace SpaceProject
 {
     class ProximityLaserWeapon : PlayerWeapon
     {
+        private int sideShots = 3;
+
         public ProximityLaserWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular)
             : base(Game, variety)
         {
@@ -39,15 +41,16 @@ namespace SpaceProject
             ShootsInBatchesSetup(3, 500);
 
             Value = 2000;
+            
+            numberOfShots = sideShots * 2 + 1;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
             float speedFactor = 0.5f;
             float durationFactor = 1f;
-            float damageFactor = 1f;
 
-            for (int dir = -3; dir <= 3; dir++)
+            for (int dir = -sideShots; dir <= sideShots; dir++)
             {
                 AdvancedLaser shot1 = new AdvancedLaser(Game, spriteSheet);
                 shot1.PositionX = player.PositionX;
@@ -57,7 +60,6 @@ namespace SpaceProject
                 shot1.Direction = MathFunctions.DirFromRadians(shot1.Radians);
                 shot1.Speed *= speedFactor;
                 shot1.Duration *= durationFactor;
-                shot1.Damage *= damageFactor;
 
                 Game.stateManager.shooterState.gameObjects.Add(shot1);
             }

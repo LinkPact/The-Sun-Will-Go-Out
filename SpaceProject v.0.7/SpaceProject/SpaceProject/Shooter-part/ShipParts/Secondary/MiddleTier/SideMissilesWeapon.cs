@@ -32,11 +32,12 @@ namespace SpaceProject
             bullet = new RegularMissile(Game, spriteSheet);
             bullet.Initialize();
 
-            damage = Bullet.Damage;
+            damage = Bullet.Damage * 1.6f;
             duration = Bullet.Duration;
             speed = Bullet.Speed;
 
             Value = 600;
+            numberOfShots = 4;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
@@ -50,8 +51,8 @@ namespace SpaceProject
 
             //CreateMissile(player, -4, dir1);
             CreateMissile(player, -3, dir2, speedFactor: 0.8f);
-            CreateMissile(player, -2, dir3, speedFactor: 1.5f, damageFactor: 2f);
-            CreateMissile(player, 2, dir4, speedFactor: 1.5f, damageFactor: 2f);
+            CreateMissile(player, -2, dir3, speedFactor: 1.5f);
+            CreateMissile(player, 2, dir4, speedFactor: 1.5f);
             CreateMissile(player, 3, dir5, speedFactor: 0.8f);
             //CreateMissile(player, 4, dir6);
 
@@ -59,7 +60,7 @@ namespace SpaceProject
         }
 
         // Used to create a missile according to given parameters, and add it to the game
-        private void CreateMissile(PlayerVerticalShooter player, float xDiff, Vector2 direction, float speedFactor = 1, float damageFactor = 1)
+        private void CreateMissile(PlayerVerticalShooter player, float xDiff, Vector2 direction, float speedFactor = 1)
         {
             RegularMissile missile = new RegularMissile(Game, spriteSheet);
             missile.PositionX = player.PositionX + xDiff;
@@ -68,8 +69,7 @@ namespace SpaceProject
             missile.Radians = MathFunctions.RadiansFromDir(missile.Direction);
             missile.Initialize();
             missile.Speed *= speedFactor;
-            missile.Damage *= damageFactor;
-            //missile.Duration *= 0.3f;
+            missile.Damage *= damage;
 
             Game.stateManager.shooterState.gameObjects.Add(missile);
         }

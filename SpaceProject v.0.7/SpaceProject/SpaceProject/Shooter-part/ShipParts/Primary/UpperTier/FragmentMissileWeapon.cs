@@ -32,16 +32,19 @@ namespace SpaceProject
             bullet = new RegularMissile(Game, spriteSheet);
             bullet.Initialize();
 
-            damage = Bullet.Damage;
+            MissileFragment fragment = new MissileFragment(Game, spriteSheet);
+
+            damage = fragment.Damage;
             duration = Bullet.Duration;
             speed = Bullet.Speed;
 
             Value = 1000;
+            numberOfShots = 40;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
-            FragmentMissile missile1 = new FragmentMissile(Game, spriteSheet);
+            FragmentMissile missile1 = new FragmentMissile(Game, spriteSheet, numberOfShots);
             missile1.PositionX = player.PositionX;
             missile1.PositionY = player.PositionY;
 

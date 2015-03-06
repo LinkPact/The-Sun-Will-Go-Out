@@ -19,6 +19,19 @@ namespace SpaceProject
         protected float speed;
         public float Speed { get { return speed; } private set { } }
 
+        protected int numberOfShots;
+
+        public float DamagePerSecond
+        {
+            get
+            {
+                if (!ShootsInBatches)
+                    return numberOfShots * damage / delay * 1000;
+                else
+                    return (numberOfShots * damage / ShootCycleTime) * (1000 * BatchSize);
+            }
+        }
+
         protected GameObjectVertical bullet;
         public GameObjectVertical Bullet { get { return bullet; } private set { } }
 
@@ -57,7 +70,7 @@ namespace SpaceProject
 
             infoText.Add(Name);
             infoText.Add("Type: " + Kind + " Weapon");
-            infoText.Add("Damage: " + Math.Round((double)Damage, 1).ToString() + " units");
+            infoText.Add("Damage: " + Math.Round((double)DamagePerSecond, 1).ToString() + "/second");
             infoText.Add("Rate: " + Math.Round((double)1000 / Delay, 1).ToString() + " shots/second");
             infoText.Add("Range: " + Math.Round((double)Speed * Duration, 1).ToString() + " units");
             infoText.Add("Energy: " + Math.Round((double)energyCostPerSecond, 1).ToString() + " energy/second");

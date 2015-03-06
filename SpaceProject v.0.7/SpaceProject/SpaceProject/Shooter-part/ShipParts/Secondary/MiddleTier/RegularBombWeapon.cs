@@ -36,6 +36,7 @@ namespace SpaceProject
             speed = Bullet.Speed;
 
             Value = 200;
+            numberOfShots = 1;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
@@ -48,6 +49,7 @@ namespace SpaceProject
             bomb.Position = player.Position;
             bomb.Direction = MathFunctions.DirFromRadians(dirRadians);
             bomb.Initialize();
+            bomb.Damage = damage;
 
             Game.stateManager.shooterState.gameObjects.Add(bomb);
             return true;

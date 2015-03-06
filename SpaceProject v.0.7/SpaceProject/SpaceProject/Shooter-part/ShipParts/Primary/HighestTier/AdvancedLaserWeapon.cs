@@ -38,6 +38,7 @@ namespace SpaceProject
             speed = Bullet.Speed;
 
             Value = 1800;
+            numberOfShots = 2;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
