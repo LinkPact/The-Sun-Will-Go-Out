@@ -37,15 +37,15 @@ namespace SpaceProject
             speed = Bullet.Speed;
 
             Value = 900;
+            numberOfShots = 12;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
             Vector2 centerDir = new Vector2(0, -1.0f);
-            int nbrOfShots = 12;
             double spread = Math.PI / 8;
 
-            for (int n = 0; n < nbrOfShots; n++)
+            for (int n = 0; n < numberOfShots; n++)
             {
                 BasicLaser bullet = new BasicLaser(Game, spriteSheet);
                 bullet.PositionX = player.PositionX;

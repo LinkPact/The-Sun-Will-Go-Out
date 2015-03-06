@@ -9,9 +9,13 @@ namespace SpaceProject
 {
     class FragmentMissile : PlayerBullet
     {
-        public FragmentMissile(Game1 Game, Sprite spriteSheet) :
+        private int fragments;
+
+        public FragmentMissile(Game1 Game, Sprite spriteSheet, int fragments) :
             base(Game, spriteSheet)
-        { }
+        {
+            this.fragments = fragments;
+        }
 
         public override void Initialize()
         {
@@ -49,9 +53,7 @@ namespace SpaceProject
 
         private void Explode()
         {
-            int fragmentCount = 30;
-
-            for (int n = 0; n < fragmentCount; n++)
+            for (int n = 0; n < fragments; n++)
             {
                 MissileFragment fragment = new MissileFragment(Game, spriteSheet);
                 fragment.Initialize();

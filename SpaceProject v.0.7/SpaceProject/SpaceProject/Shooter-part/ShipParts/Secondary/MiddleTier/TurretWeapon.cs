@@ -33,11 +33,12 @@ namespace SpaceProject
             bullet = new BallisticLaser(Game, spriteSheet);
             bullet.Initialize();
 
-            damage = Bullet.Damage;
+            damage = Bullet.Damage * 0.3f;
             duration = Bullet.Duration;
-            speed = Bullet.Speed;
+            speed = Bullet.Speed * 0.7f;
 
             Value = 500;
+            numberOfShots = 1;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
@@ -54,8 +55,8 @@ namespace SpaceProject
             bullet.PositionY = player.PositionY;
             BasicBulletSetup(bullet);
             bullet.Direction = scaledDir;
-            bullet.Speed *= 0.7f;
-            bullet.Damage *= 0.3f;
+            bullet.Speed = speed;
+            bullet.Damage = damage;
 
             Game.stateManager.shooterState.gameObjects.Add(bullet);
             return true;

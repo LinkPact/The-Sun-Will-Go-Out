@@ -37,6 +37,7 @@ namespace SpaceProject
             Color color = new Color(0, 0, 128);
             beamModule = new FriendlyBeamModule(Game, spriteSheet, damage, color);
             isBeam = true;
+            numberOfShots = 1;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)

@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class FighterAlly : AlliedShip
+    public class RebelFighterAlly : AlliedShip
     {
         #region Standard values
         private const float StandardHP = 2000;
@@ -18,7 +18,7 @@ namespace SpaceProject
         private const float StandardAvoidRadius = 150;
         #endregion
 
-        public FighterAlly(Game1 Game, Sprite SpriteSheet, PlayerVerticalShooter player) :
+        public RebelFighterAlly(Game1 Game, Sprite SpriteSheet, PlayerVerticalShooter player) :
             base(Game, SpriteSheet, player)
         {
             HPmax = StandardHP;
@@ -29,11 +29,11 @@ namespace SpaceProject
             MaxSpeed = StandardMaxSpeed;
 
             Weapon = StandardWeapon;
-            FormationArea = new Rectangle(-1, 0, 0, 0);
             AvoidRadius = StandardAvoidRadius;
+            FormationArea = new Rectangle(-1, 0, 0, 0);
         }
 
-        public FighterAlly(Game1 Game, Sprite SpriteSheet, PlayerVerticalShooter player, Rectangle FormationArea) :
+        public RebelFighterAlly(Game1 Game, Sprite SpriteSheet, PlayerVerticalShooter player, Rectangle FormationArea) :
             base(Game, SpriteSheet, player)
         {
             this.FormationArea = FormationArea;
@@ -49,7 +49,7 @@ namespace SpaceProject
             AvoidRadius = StandardAvoidRadius;
         }
 
-        public FighterAlly(Game1 Game, Sprite SpriteSheet, PlayerVerticalShooter player, Rectangle? FormationArea, string Weapon, float AvoidRadius, float HP,
+        public RebelFighterAlly(Game1 Game, Sprite SpriteSheet, PlayerVerticalShooter player, Rectangle? FormationArea, string Weapon, float AvoidRadius, float HP,
             float SightRange, float ShootingDelay, float MaxSpeed) :
             base(Game, SpriteSheet, player)
         {
@@ -82,14 +82,9 @@ namespace SpaceProject
             DirectionX = 1;
             DirectionY = 1;
 
-            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(48, 201, 22, 26)));
+            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(50, 230, 23, 26)));
             CenterPoint = new Vector2(anim.CurrentFrame.SourceRectangle.Value.Width / 2,
                                       anim.CurrentFrame.SourceRectangle.Value.Height / 2);
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

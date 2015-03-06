@@ -38,6 +38,7 @@ namespace SpaceProject
 
             Value = 75;
             ShootsInBatchesSetup(3, 1500);
+            numberOfShots = 1;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)

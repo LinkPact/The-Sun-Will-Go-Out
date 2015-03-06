@@ -174,8 +174,8 @@ namespace SpaceProject
             //Die without HP
             if (hp <= 0)
             {
-                if (this is FighterAlly)
-                    ((FighterAlly)this).OnKilled();
+                if (this is AllianceFighterAlly)
+                    ((AllianceFighterAlly)this).OnKilled();
 
                 IsKilled = true;
             }

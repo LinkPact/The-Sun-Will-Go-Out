@@ -9,7 +9,6 @@ namespace SpaceProject
     public class FieldDamageWeapon : PlayerWeapon
     {
         private float blastRadius = 200;
-        private float fieldDamage = 75;
 
         public FieldDamageWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
@@ -32,19 +31,15 @@ namespace SpaceProject
             ActivatedSoundID = SoundEffects.MuffledExplosion;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(200, 100, 100, 100));
 
-            bullet = new Mine(Game, spriteSheet);
-            bullet.Initialize();
-
-            damage = Bullet.Damage;
-            duration = Bullet.Duration;
-            speed = Bullet.Speed;
+            damage = 75;
 
             Value = 500;
+            numberOfShots = 1;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
-            CircularAreaDamage areaExpl = new CircularAreaDamage(Game, AreaDamageType.player, player.Position, fieldDamage, blastRadius);
+            CircularAreaDamage areaExpl = new CircularAreaDamage(Game, AreaDamageType.player, player.Position, damage, blastRadius);
             areaExpl.Initialize();
 
             Game.stateManager.shooterState.gameObjects.Add(areaExpl);
