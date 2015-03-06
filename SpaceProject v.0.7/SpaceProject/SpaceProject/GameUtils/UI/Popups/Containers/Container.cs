@@ -7,23 +7,32 @@ using System.Text;
 
 namespace SpaceProject
 {
-    class Container
+    abstract class Container
     {
-        protected Game1 game;
+        // variables
+        protected Vector2 offset;
+        protected Vector2 canvasPosition;
+        protected Rectangle canvasRectangle;
+        protected Vector2 position;
 
-        protected Container(Game1 game)
+        protected Container(Vector2 canvasPosition, Rectangle canvasRectangle)
         {
-            this.game = game;
+            this.canvasPosition = canvasPosition;
+            this.canvasRectangle = canvasRectangle;
         }
 
-        public virtual void Initialize()
+        public virtual void Update(GameTime gameTime, Vector2 canvasPosition)
         {
-
+            this.canvasPosition = canvasPosition;
+            SetPosition();
         }
 
-        public virtual void Update(GameTime gameTime)
-        { 
-        
+        public abstract void SetDefaultPosition(Type type);
+
+        protected void SetPosition()
+        {
+            position = new Vector2(canvasPosition.X - canvasRectangle.Width / 2 + offset.X,
+                                   canvasPosition.Y - canvasRectangle.Height / 2 + offset.Y);
         }
     }
 }

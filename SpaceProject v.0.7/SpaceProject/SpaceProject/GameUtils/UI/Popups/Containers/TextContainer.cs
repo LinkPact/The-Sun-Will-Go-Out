@@ -11,6 +11,12 @@ namespace SpaceProject
     {
         // Constants
         private readonly float TextLayerDepth = 1f;
+        private readonly Vector2 CanvasTextAreaSize = new Vector2(352, 114);
+
+        private readonly Vector2 TextMessageTextOffset = new Vector2(26, 26);
+        private readonly Vector2 RealTimePortraitTextOffset = new Vector2(192, 78);
+        private readonly Vector2 PortraitTextOffset = new Vector2(192, 64);
+        private readonly Vector2 ImageMessageTextOffset = new Vector2(26, 242);
 
         // Variables
         private List<string> textBuffer;
@@ -19,9 +25,7 @@ namespace SpaceProject
         private Vector2 fontOffset;
         private Color fontColor;
         private String text;
-        private Vector2 textPosition;
 
-        private Rectangle canvasSize;
         private int containerWidth;
 
         private bool useScrolling;
@@ -31,38 +35,24 @@ namespace SpaceProject
         // Properties
         public bool UseScrolling { get { return useScrolling; } set { useScrolling = value; } }
 
-        public TextContainer(Game1 game, Rectangle canvasSize):
-            base(game)
-        {
-            this.canvasSize = canvasSize;
-        }
+        public TextContainer(Vector2 canvasPosition, Rectangle canvasRectangle):
+            base(canvasPosition, canvasRectangle) { }
 
-        public override void Initialize()
+        public void Initialize()
         {
-            base.Initialize();
-
             textBuffer = new List<String>();
 
             font = FontManager.GetFontStatic(14);
             fontOffset = FontManager.FontOffsetStatic;
             fontColor = FontManager.FontColorStatic;
 
-            // Sets position of text
-            if (GameStateManager.currentState == "OverworldState")
-            {
-                textPosition = new Vector2(game.camera.cameraPos.X - canvasSize.Width / 2,
-                                           game.camera.cameraPos.Y - canvasSize.Height / 2 - 5);
-            }
-            else
-            {
-                textPosition = new Vector2(game.Window.ClientBounds.Width / 2 - canvasSize.Width / 2,
-                                           game.Window.ClientBounds.Height / 2 - canvasSize.Height / 2 - 5);
-            }
-            containerWidth = canvasSize.Width - 20;   
+            containerWidth = (int)CanvasTextAreaSize.X;   
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime, Vector2 canvasPosition)
         {
+            base.Update(gameTime, canvasPosition);
+
             if (textBuffer.Count > 0)
             {
                 text = TextUtils.WordWrap(font,
@@ -73,20 +63,13 @@ namespace SpaceProject
             }
         }
 
-        public void UpdatePosition(Vector2 cameraPos)
-        {
-            textPosition = new Vector2(cameraPos.X - canvasSize.Width / 2,
-                                           cameraPos.Y - canvasSize.Height / 2 - 5);
-        }
-
         public void Draw(SpriteBatch spriteBatch)
         {
             if (text != null)
             {
                 spriteBatch.DrawString(font,
                             text,
-                            new Vector2(textPosition.X,
-                                        textPosition.Y) + fontOffset,
+                            new Vector2(position.X, position.Y) + fontOffset,
                             fontColor,
                             0f,
                             Vector2.Zero,
@@ -157,6 +140,34 @@ namespace SpaceProject
         public bool HasScrollingFinished()
         {
             return textScrollingFinished;
+        }
+
+        public override void SetDefaultPosition(Type type)
+        {
+            if (type == typeof(ImageMessage))
+            {
+                offset = ImageMessageTextOffset;
+            }
+            else if (type == typeof(PortraitMessage))
+            {
+                offset = PortraitTextOffset;
+            }
+            else if (type == typeof(RealTimePortraitMessage))
+            {
+                offset = RealTimePortraitTextOffset;
+            }
+            else if (type == typeof(RealTimeMessage)
+                || type == typeof(TextMessage)
+                || type == typeof(SelectionMenu))
+            {
+                offset = TextMessageTextOffset;
+            }
+            else
+            {
+                throw new ArgumentException("Invalid type.");
+            }
+
+            SetPosition();
         }
     }
 }

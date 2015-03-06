@@ -21,16 +21,9 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            portraitContainer = new ImageContainer(game, canvas.SourceRectangle.Value, canvasPosition);
+            portraitContainer = new ImageContainer(canvasPosition, canvas.SourceRectangle.Value);
             portraitContainer.Initialize();
-            portraitContainer.SetImageType(ImageType.Portrait);
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-
-            portraitContainer.Update(gameTime);
+            portraitContainer.SetDefaultPosition(this.GetType());
         }
 
         public override void Draw(SpriteBatch spriteBatch)

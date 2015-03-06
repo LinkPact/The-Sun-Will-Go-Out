@@ -24,15 +24,10 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            imageContainer = new ImageContainer(game, canvas.SourceRectangle.Value, canvasPosition);
+            imageContainer = new ImageContainer(canvasPosition, canvas.SourceRectangle.Value);
             imageContainer.Initialize();
+            imageContainer.SetDefaultPosition(this.GetType());
             usePause = true;
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-            imageContainer.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -54,6 +49,8 @@ namespace SpaceProject
 
         protected override void Hide()
         {
+            imageContainer.UpdateImageBuffer();
+
             if (imageContainer.IsImageBufferEmpty())
             {
                 base.Hide();

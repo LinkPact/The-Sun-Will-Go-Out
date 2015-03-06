@@ -24,15 +24,16 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            textContainer = new TextContainer(game, canvas.SourceRectangle.Value);
+            textContainer = new TextContainer(canvasPosition, canvas.SourceRectangle.Value);
             textContainer.Initialize();
+            textContainer.SetDefaultPosition(this.GetType());
             textContainer.UseScrolling = false;
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            textContainer.Update(gameTime);
+            textContainer.Update(gameTime, canvasPosition);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

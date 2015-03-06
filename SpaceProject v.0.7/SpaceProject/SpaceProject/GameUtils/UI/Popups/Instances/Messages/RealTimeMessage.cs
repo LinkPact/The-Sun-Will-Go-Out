@@ -29,12 +29,10 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
-
             canvasPosition = new Vector2(game.camera.cameraPos.X,
-                                         game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 4);
+                             game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 4);
 
-            textContainer.UpdatePosition(game.camera.cameraPos);
+            base.Update(gameTime);
 
             if (!hideTimeSet
                 && textContainer.HasScrollingFinished())

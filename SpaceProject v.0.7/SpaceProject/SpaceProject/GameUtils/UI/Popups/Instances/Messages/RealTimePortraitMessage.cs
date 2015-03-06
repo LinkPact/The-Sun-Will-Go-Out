@@ -9,6 +9,7 @@ namespace SpaceProject
 {
     class RealTimePortraitMessage : RealTimeMessage
     {
+        private readonly Point ImagePositionOffset = new Point(16, 18);
         private ImageContainer portraitContainer;
 
         public RealTimePortraitMessage(Game1 game, Sprite spriteSheet) :
@@ -21,17 +22,16 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            portraitContainer = new ImageContainer(game, canvas.SourceRectangle.Value, canvasPosition);
+            portraitContainer = new ImageContainer(canvasPosition, canvas.SourceRectangle.Value);
+            portraitContainer.SetDefaultPosition(this.GetType());
             portraitContainer.Initialize();
-            portraitContainer.SetImageType(ImageType.Portrait);
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
 
-            portraitContainer.Update(gameTime);
-            portraitContainer.UpdatePosition(game.camera.cameraPos);
+            portraitContainer.Update(gameTime, canvasPosition);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

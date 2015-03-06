@@ -7,66 +7,29 @@ using System.Text;
 
 namespace SpaceProject
 {
-    enum ImageType
-    {
-        Regular,
-        Portrait
-    }
-
     class ImageContainer : Container
     {
         // constants
-        private readonly Point ImagePositionOffset = new Point(16, 18);
         private readonly float ImageLayerDepth = 0.96f;
+
+        private readonly Vector2 PortraitOffset = new Vector2(18, 21);
+        private readonly Vector2 ImageOffset = new Vector2(16, 15);
 
         // variables
         private List<Sprite> imageBuffer;
-        private ImageType imageType;
-        private Vector2 imagePosition;
 
         private bool useImageTriggers;
         private int imageTriggerIndex;
         private List<int> imageTriggers;
         private int messageCount;
 
-        private Rectangle canvasSize;
-        private Vector2 canvasPosition;
+        public ImageContainer(Vector2 canvasPosition, Rectangle canvasRectangle) :
+            base(canvasPosition, canvasRectangle) { }
 
-        public ImageContainer(Game1 game, Rectangle canvasSize, Vector2 canvasPosition) :
-            base(game)
+        public void Initialize()
         {
-            this.canvasSize = canvasSize;
-            this.canvasPosition = canvasPosition;
-        }
-
-        public override void Initialize()
-        {
-            base.Initialize();
-
             imageBuffer = new List<Sprite>();
             imageTriggers = new List<int>();
-
-            if (imageType == ImageType.Regular)
-            {
-                imagePosition = new Vector2(canvasPosition.X - canvasSize.Width / 2 + ImagePositionOffset.X,
-                                            canvasPosition.Y - canvasSize.Height / 2 + ImagePositionOffset.Y);
-            }
-            else
-            {
-                imagePosition = new Vector2(canvasPosition.X - canvasSize.Width / 2 + ImagePositionOffset.X,
-                                            canvasPosition.Y - canvasSize.Height / 2 + ImagePositionOffset.Y);
-            }
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-        }
-
-        public void UpdatePosition(Vector2 cameraPosition)
-        {
-            imagePosition = new Vector2(cameraPosition.X - canvasSize.Width / 2,
-                                           cameraPosition.Y - canvasSize.Height / 2 - 5);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -74,7 +37,7 @@ namespace SpaceProject
             if (imageBuffer.Count > 0)
             {
                 spriteBatch.Draw(imageBuffer[0].Texture,
-                                 imagePosition,
+                                 position,
                                  imageBuffer[0].SourceRectangle,
                                  Color.White,
                                  0f,
@@ -111,11 +74,6 @@ namespace SpaceProject
             return imageBuffer.Count <= 0;
         }
 
-        public void SetImageType(ImageType imageType)
-        {
-            this.imageType = imageType;
-        }
-
         public void UpdateImageBuffer()
         {
             if (imageBuffer.Count > 0)
@@ -140,6 +98,26 @@ namespace SpaceProject
                     imageBuffer.Remove(imageBuffer[0]);
                 }
             }
+        }
+
+        public override void SetDefaultPosition(Type type)
+        {
+            if (type == typeof(ImageMessage)
+                || type == typeof(ImagePopup))
+            {
+                offset = ImageOffset;
+            }
+            else if (type == typeof(RealTimePortraitMessage)
+                || type == typeof(PortraitMessage))
+            {
+                offset = PortraitOffset;
+            }
+            else
+            {
+                throw new ArgumentException("Invalid type.");
+            }
+
+            SetPosition();
         }
     }
 }

@@ -29,8 +29,8 @@ namespace SpaceProject
 
         protected Sprite canvas;
         protected Vector2 canvasPosition;
-        protected Vector2 canvasScale;
         protected Vector2 canvasOrigin;
+        protected Vector2 canvasScale;
 
         protected bool usePause;
         protected int delayTimer;
@@ -53,11 +53,11 @@ namespace SpaceProject
         {
             InitializePositions();
             useOkayButton = true;
-            canvasScale = new Vector2(1, 1);
             delayTimer = PressDelay;
             popupState = PopupState.Hidden;
             canvasOrigin = new Vector2(canvas.SourceRectangle.Value.Width / 2,
                                        canvas.SourceRectangle.Value.Height / 2);
+            canvasScale = new Vector2(1, 1);
         }
 
         public virtual void Update(GameTime gameTime)
