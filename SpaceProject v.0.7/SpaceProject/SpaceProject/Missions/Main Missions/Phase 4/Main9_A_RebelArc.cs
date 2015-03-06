@@ -59,7 +59,7 @@ namespace SpaceProject
         {
             base.OnFailed();
 
-            Game.messageBox.DisplayMessage("You could not defend the Murt from the Alliance, return to the rebel fleet outside Telmun to try again.", false);
+            PopupHandler.DisplayMessage("You could not defend the Murt from the Alliance, return to the rebel fleet outside Telmun to try again.");
         }
 
         public override void MissionLogic()

@@ -65,7 +65,7 @@ namespace SpaceProject
                 && StatsManager.PlayTime.HasOverworldTimePassed(messageTime))
             {
                 messageTime = -1;
-                game.messageBox.DisplayRealtimeMessage(messages, messageDelay);
+                PopupHandler.DisplayRealtimeMessage(messageDelay, messages.ToArray());
             }
             base.Update(playTime);
         }
@@ -78,7 +78,7 @@ namespace SpaceProject
         public override bool Completed()
         {
             return (messageTime == -1
-                && game.messageBox.MessageState == MessageState.Invisible);
+                && PopupHandler.TextBufferEmpty);
         }
 
         public override void OnCompleted()

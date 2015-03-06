@@ -103,17 +103,18 @@ namespace SpaceProject
             {
                 if (realTime)
                 {
-                    game.messageBox.DisplayRealtimeMessage(timedMessages.Keys.First(), GetNextMessageDuration());
+                    PopupHandler.DisplayRealtimeMessage(GetNextMessageDuration(), timedMessages.Keys.First());
                 }
                 else
                 {
                     realTimeSwitchIndex++;
-                    game.messageBox.DisplayMessage(timedMessages.Keys.First(), false);
+                    PopupHandler.DisplayMessage(timedMessages.Keys.First());
                     if (realTimeSwitchIndex >= 2)
                     {
                         realTime = true;
                     }
                 }
+
                 timedMessages.Remove(timedMessages.Keys.First());
 
                 if (timedMessages.Keys.Count > 0)

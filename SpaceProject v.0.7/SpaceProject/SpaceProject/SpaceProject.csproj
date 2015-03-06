@@ -169,11 +169,23 @@
     <Compile Include="GameStates\PlanetAndStationStates\StationState.cs" />
     <Compile Include="GameStates\PlanetAndStationStates\StationStateManager.cs" />
     <Compile Include="GameUtils\MenuDisplay\ShipInventoryDisplayObject.cs" />
+    <Compile Include="GameUtils\UI\Popups\Containers\Container.cs" />
+    <Compile Include="GameUtils\UI\Popups\Containers\ImageContainer.cs" />
+    <Compile Include="GameUtils\UI\Popups\Containers\TextContainer.cs" />
+    <Compile Include="GameUtils\UI\Popups\Instances\Messages\ImageMessage.cs" />
+    <Compile Include="GameUtils\UI\Popups\ImagePopup.cs" />
+    <Compile Include="GameUtils\UI\Popups\Instances\Menus\SelectionMenu.cs" />
+    <Compile Include="GameUtils\UI\Popups\Instances\Messages\RealTimePortraitMessage.cs" />
+    <Compile Include="GameUtils\UI\Popups\Instances\Messages\RealTimeMessage.cs" />
+    <Compile Include="GameUtils\UI\Popups\Instances\Menus\Menu.cs" />
+    <Compile Include="GameUtils\UI\Popups\Popup.cs" />
+    <Compile Include="GameUtils\UI\Popups\Instances\Messages\PortraitMessage.cs" />
+    <Compile Include="GameUtils\UI\Popups\Instances\Messages\TextMessage.cs" />
     <Compile Include="GameUtils\PlayTime.cs" />
     <Compile Include="GameUtils\TextToSpeech.cs" />
-    <Compile Include="GameUtils\ZoomMap.cs" />
     <Compile Include="LevelHelpClasses\LevelEntry.cs" />
     <Compile Include="LevelHelpClasses\LevelTesterEntry.cs" />
+    <Compile Include="GameUtils\UI\ZoomMap.cs" />
     <Compile Include="MissionStuff\EventText.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\CloseInOnLocationObjective.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\AutoPilotObjective.cs" />
@@ -398,7 +410,7 @@
     <Compile Include="Overworld-part\GameObjects\Stations\Station.cs" />
     <Compile Include="Overworld-part\Interface\HelperBox.cs" />
     <Compile Include="Overworld-part\Interface\ItemComparison.cs" />
-    <Compile Include="GameUtils\MessageBox.cs" />
+    <Compile Include="GameUtils\UI\PopupHandler.cs" />
     <Compile Include="Overworld-part\SpaceRegions\SpaceRegion.cs" />
     <Compile Include="GameUtils\StaticFunctions.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\SubInteractiveObject.cs" />
@@ -685,6 +697,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Levels\unsorted\" />
+    <Folder Include="LevelTester\" />
     <Folder Include="Overworld-part\GameObjects\Stations\SectorZ\" />
     <Folder Include="Shooter-part\Levels\Oldlevels\" />
   </ItemGroup>

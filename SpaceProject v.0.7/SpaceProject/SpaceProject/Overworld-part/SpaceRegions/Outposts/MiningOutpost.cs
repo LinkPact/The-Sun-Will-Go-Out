@@ -29,7 +29,7 @@ namespace SpaceProject
             station.Initialize();
             AddGameObject(station);
 
-            asteroids = new MiningAsteroids(game, spriteSheet, game.messageBox);
+            asteroids = new MiningAsteroids(game, spriteSheet);
             asteroids.Initialize();
             AddGameObject(asteroids);
         }

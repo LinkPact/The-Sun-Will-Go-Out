@@ -144,7 +144,7 @@ namespace SpaceProject
                 && timedMessageCount < escortDataCapsule.TimedMessages.Count
                 && StatsManager.PlayTime.HasOverworldTimePassed(timedMessageTimes[timedMessageCount]))
             {
-                game.messageBox.DisplayRealtimeMessage(escortDataCapsule.TimedMessages[timedMessageCount], 3000);
+                PopupHandler.DisplayRealtimeMessage(3000, escortDataCapsule.TimedMessages[timedMessageCount]);
                 timedMessageCount++;
             }
 
@@ -154,18 +154,19 @@ namespace SpaceProject
                 && CollisionDetection.IsRectInRect(game.player.Bounds, escortDataCapsule.ShipToDefend.Bounds)
                 && ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter))))
             {
+                PopupHandler.DisplayMessage(escortDataCapsule.ShipIntroductionText);
 
                 if (game.tutorialManager.TutorialsUsed
                     && showInventoryTutorial
                     && ShipInventoryManager.equippedShield is EmptyShield)
                 {
-                    game.messageBox.DisplayMessage("[Captain] \"You need to equip a shield before we leave. Buy one in the Highfence shop and equip it in your inventory.\"", false);
+                    PopupHandler.DisplayMessage("[Captain] \"You need to equip a shield before we leave. Buy one in the Highfence shop and equip it in your inventory.\"");
                     game.tutorialManager.EnableEquipTutorial();
                 }
 
                 else
                 {
-                    game.messageBox.DisplayMessage(escortDataCapsule.ShipIntroductionText, false);
+                    PopupHandler.DisplayMessage(escortDataCapsule.ShipIntroductionText);
 
                     ((FreighterShip)escortDataCapsule.ShipToDefend).Start();
                     escortDataCapsule.ShipToDefend.speed = escortDataCapsule.FreighterSpeed;
@@ -210,7 +211,7 @@ namespace SpaceProject
                         this.Description = descriptions[0];
                     }
                     
-                    game.messageBox.DisplayMessage(escortDataCapsule.AttackStartText[i], false);
+                    PopupHandler.DisplayMessage(escortDataCapsule.AttackStartText[i]);
 
                     game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
                         enemies[0],
@@ -235,7 +236,7 @@ namespace SpaceProject
                     && game.stateManager.shooterState.GetLevel(levels[i]).IsObjectiveCompleted)
                 {
                     shipToDefendHP = game.stateManager.shooterState.CurrentLevel.GetFreighterHP();
-                    game.messageBox.DisplayMessage(escortDataCapsule.AfterAttackMessages[i], false, 200);
+                    PopupHandler.DisplayMessage(escortDataCapsule.AfterAttackMessages[i]);
                 }
             }
 
@@ -311,6 +312,7 @@ namespace SpaceProject
             OverworldShip.FollowPlayer = true;
 
             game.stateManager.overworldState.RemoveOverworldObject(escortDataCapsule.ShipToDefend);
+            PopupHandler.DisplayMessage("Noooo! The freighter was destroyed. We failed.");
             game.stateManager.ChangeState("OverworldState");
         }
 
@@ -326,7 +328,7 @@ namespace SpaceProject
                     {
                         if (enemyMessages.Count > 0)
                         {
-                            game.messageBox.DisplayMessage(enemyMessages[0], false);
+                            PopupHandler.DisplayMessage(enemyMessages[0]);
                             enemyMessages.RemoveAt(0);
                         }
 

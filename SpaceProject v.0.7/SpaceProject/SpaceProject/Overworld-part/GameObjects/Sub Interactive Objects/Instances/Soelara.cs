@@ -7,8 +7,8 @@ namespace SpaceProject
 {
     public class Soelara : SubInteractiveObject
     {
-        public Soelara(Game1 Game, Sprite spriteSheet, MessageBox messageBox) :
-            base(Game, spriteSheet, messageBox)
+        public Soelara(Game1 Game, Sprite spriteSheet) :
+            base(Game, spriteSheet)
         {
 
         }

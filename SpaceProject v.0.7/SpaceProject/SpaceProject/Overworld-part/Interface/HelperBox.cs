@@ -55,8 +55,7 @@ namespace SpaceProject
             {
                 case false:
                     {
-                        if (visible && text != "" && (Game.messageBox.MessageState.Equals(MessageState.Invisible)
-                            || Game.messageBox.MessageState.Equals(MessageState.Menu)))
+                        if (visible && text != "")
                         {
                             spriteBatch.DrawString(Game.fontManager.GetFont(14), text, position + Game.fontManager.FontOffset, Game.fontManager.FontColor, 0f, origin, 1f, SpriteEffects.None, 1f);
                         }
@@ -65,8 +64,7 @@ namespace SpaceProject
 
                 case true:
                     {
-                        if (visible && text != "" && timeToShowText > 0 && (Game.messageBox.MessageState.Equals(MessageState.Invisible)
-                        || Game.messageBox.MessageState.Equals(MessageState.Menu)))
+                        if (visible && text != "" && timeToShowText > 0)
                         {
                             spriteBatch.DrawString(Game.fontManager.GetFont(14), text, position + Game.fontManager.FontOffset, Game.fontManager.FontColor, 0f, origin, 1f, SpriteEffects.None, 1f);
                         }

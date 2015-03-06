@@ -112,7 +112,7 @@ namespace SpaceProject
 
             else if (!coordinatesDisplayed 
                 && hasEnteredOverworld 
-                && game.messageBox.MessageState == MessageState.Invisible)
+                && PopupHandler.TextBufferEmpty)
             {
                 coordinatesDisplayed = true;
 
@@ -283,7 +283,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessage(message, true);
+                PopupHandler.DisplayMessage(message);
             }
         }
 
@@ -291,7 +291,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessage(messages, true);
+                PopupHandler.DisplayMessage(messages.ToArray());
             }
         }
 
@@ -299,7 +299,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessageWithImage(message, GetImageFromEnum(imageID), true);
+                PopupHandler.DisplayMessageWithImage(new List<Sprite>(){GetImageFromEnum(imageID)}, new List<int>(){0}, message);
             }
         }
 
@@ -307,7 +307,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayMessageWithImage(messages, GetImageFromEnum(imageID), true);
+                //game.messageBox.DisplayMessageWithImage(messages, GetImageFromEnum(imageID), true);
             }
         }
 
@@ -322,7 +322,7 @@ namespace SpaceProject
                     sprites.Add(GetImageFromEnum(imgID));
                 }
 
-                game.messageBox.DisplayMessageWithImage(messages, sprites,  true, imageTriggers);
+                //game.messageBox.DisplayMessageWithImage(messages, sprites,  true, imageTriggers);
             }
         }
 
@@ -330,7 +330,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                game.messageBox.DisplayImage(GetImageFromEnum(imageID), true);
+                //game.messageBox.DisplayImage(GetImageFromEnum(imageID), true);
             }
         }
 
@@ -345,7 +345,7 @@ namespace SpaceProject
                     sprites.Add(GetImageFromEnum(imgID));
                 }
 
-                game.messageBox.DisplayImages(sprites, true);
+                //game.messageBox.DisplayImages(sprites, true);
             }
         }
 

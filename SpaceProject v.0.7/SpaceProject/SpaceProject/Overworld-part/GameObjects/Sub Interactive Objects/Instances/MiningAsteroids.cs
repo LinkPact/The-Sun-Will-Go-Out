@@ -9,8 +9,8 @@ namespace SpaceProject
 {
     public class MiningAsteroids : SubInteractiveObject
     {
-        public MiningAsteroids(Game1 Game, Sprite spriteSheet, MessageBox messageBox) :
-            base(Game, spriteSheet, messageBox)
+        public MiningAsteroids(Game1 Game, Sprite spriteSheet) :
+            base(Game, spriteSheet)
         {
             
         }

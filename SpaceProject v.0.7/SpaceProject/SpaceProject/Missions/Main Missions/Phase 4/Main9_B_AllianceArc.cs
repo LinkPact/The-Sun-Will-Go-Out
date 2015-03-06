@@ -59,7 +59,7 @@ namespace SpaceProject
         {
             base.OnFailed();
 
-            Game.messageBox.DisplayMessage("You could not gain control of the Murt, return to the Alliance fleet outside Telmun to try again.", false);
+            PopupHandler.DisplayMessage("You could not gain control of the Murt, return to the Alliance fleet outside Telmun to try again.");
         }
 
         public override void MissionLogic()

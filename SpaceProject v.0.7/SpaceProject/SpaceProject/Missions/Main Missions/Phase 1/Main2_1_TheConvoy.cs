@@ -72,7 +72,7 @@ namespace SpaceProject
         {
             base.OnFailed();
 
-            Game.messageBox.DisplayMessage("The freighter was destroyed and the mission failed. Return to Highfence to try again.", false);
+            PopupHandler.DisplayMessage("The freighter was destroyed and the mission failed. Return to Highfence to try again.");
         }
 
         public override void MissionLogic()

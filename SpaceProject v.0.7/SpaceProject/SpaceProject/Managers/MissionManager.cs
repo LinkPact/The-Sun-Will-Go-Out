@@ -605,7 +605,7 @@ namespace SpaceProject
                 ControlManager.CheckKeyPress(Keys.Y) && !game.player.IsHyperSpeedUnlocked)
             {
                 game.player.UnlockHyperSpeed();
-                game.messageBox.DisplayMessage("Hyper speed unlocked! Hold down '" + ControlManager.GetKeyName(RebindableKeys.Action3) + "' to use.", false);
+                PopupHandler.DisplayMessage("Hyper speed unlocked! Hold down '" + ControlManager.GetKeyName(RebindableKeys.Action3) + "' to use.");
             }
 
             // Screening off player from certain locations
@@ -617,9 +617,9 @@ namespace SpaceProject
                 {
                     if (CollisionDetection.IsRectInRect(game.player.Bounds,
                         game.stateManager.overworldState.GetRebelOutpost.SpaceRegionArea) &&
-                        game.messageBox.MessageState != MessageState.Message)
+                        PopupHandler.TextBufferEmpty)
                     {
-                        game.messageBox.DisplayMessage("A large group of rebels prevents you from entering this area.", false);
+                        PopupHandler.DisplayMessage("A large group of rebels prevents you from entering this area.");
                         game.player.InitializeHyperSpeedJump(new Vector2(game.player.position.X + (100 * -game.player.Direction.GetDirectionAsVector().X),
                             game.player.position.Y + (100 * -game.player.Direction.GetDirectionAsVector().Y)), false);
                     }

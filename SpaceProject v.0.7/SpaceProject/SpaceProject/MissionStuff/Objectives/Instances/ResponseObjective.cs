@@ -80,7 +80,7 @@ namespace SpaceProject
                     }
 
 
-                    game.messageBox.DisplaySelectionMenu(responseEventText.Text, responses, a);
+                    PopupHandler.DisplaySelectionMenu(responseEventText.Text, responses, a);
                 }
 
                 else
@@ -127,7 +127,7 @@ namespace SpaceProject
                 }
 
 
-                game.messageBox.DisplaySelectionMenu(responseEventText.Text, responses, a);
+                PopupHandler.DisplaySelectionMenu(responseEventText.Text, responses, a);
 
                 delayResponse = false;
             }

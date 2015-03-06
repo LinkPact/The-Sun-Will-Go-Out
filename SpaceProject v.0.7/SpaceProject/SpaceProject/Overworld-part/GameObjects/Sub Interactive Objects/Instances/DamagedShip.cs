@@ -7,8 +7,8 @@ namespace SpaceProject
 {
     class DamagedShip : SubInteractiveObject
     {
-        public DamagedShip(Game1 Game, Sprite spriteSheet, MessageBox messageBox) :
-            base(Game, spriteSheet, messageBox)
+        public DamagedShip(Game1 Game, Sprite spriteSheet) :
+            base(Game, spriteSheet)
         {}
 
         public override void Initialize()

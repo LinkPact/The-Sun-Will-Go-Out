@@ -86,7 +86,7 @@ namespace SpaceProject
             base.OnFailed();
 
             RemoveShips();
-            Game.messageBox.DisplayMessage("You were unsuccessful in retrieving Ente. Return to the rebel base to try again.", false);
+            PopupHandler.DisplayMessage("You were unsuccessful in retrieving Ente. Return to the rebel base to try again.");
         }
 
         public override void MissionLogic()

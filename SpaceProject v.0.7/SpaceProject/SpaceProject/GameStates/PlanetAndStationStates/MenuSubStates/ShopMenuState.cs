@@ -1076,14 +1076,14 @@ namespace SpaceProject
                 if (ShipInventoryManager.IsEquipped(itemToSell) 
                     && itemToSell is PlayerEnergyCell)
                 {
-                    Game.messageBox.DisplayMessage("You can't sell your equipped energy cells!", false);
+                    PopupHandler.DisplayMessage("You can't sell equipped energy cells!");
                 }
 
                 else if (ShipInventoryManager.IsEquipped(itemToSell) 
                     && itemToSell is PlayerPlating
                     && ShipInventoryManager.IsLastEquipped(itemToSell))
                 {
-                    Game.messageBox.DisplayMessage("You can't sell your last plating!", false);
+                    PopupHandler.DisplayMessage("You can't sell your last plating!");
                 }
                 else
                 {
@@ -1290,13 +1290,13 @@ namespace SpaceProject
         {
             if (!ShipInventoryManager.HasAvailableSlot())
             {
-                Game.messageBox.DisplayMessage("You do not have any free inventory slots. Sell something first!", false);
+                PopupHandler.DisplayMessage("You do not have any free inventory slots. Sell something first!");
                 return false;
             }
 
             else if (StatsManager.Rupees < Math.Round(item.Value * quantity, 0))
             {
-                Game.messageBox.DisplayMessage("You do not have enough rupees!", false);
+                PopupHandler.DisplayMessage("You do not have enough rupees!");
                 return false;
             }
 
@@ -1327,13 +1327,13 @@ namespace SpaceProject
         {
             if (!ShipInventoryManager.HasAvailableSlot())
             {
-                Game.messageBox.DisplayMessage("You do not have any free inventory slots. Sell something first!", false);
+                PopupHandler.DisplayMessage("You do not have any free inventory slots. Sell something first!");
                 return false;
             }
 
             else if (StatsManager.Rupees < item.Value)
             {
-                Game.messageBox.DisplayMessage("You do not have enough rupees!", false);
+                PopupHandler.DisplayMessage("You do not have enough rupees!");
                 return false;
             }
 

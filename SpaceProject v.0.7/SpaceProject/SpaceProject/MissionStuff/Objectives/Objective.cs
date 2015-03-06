@@ -98,7 +98,7 @@ namespace SpaceProject
                 }
                 else if (eventTextCanvas.Equals(EventTextCanvas.MessageBox))
                 {
-                    game.messageBox.DisplayMessage(objectiveCompletedEventText.Text, false, 200);
+                    PopupHandler.DisplayMessage(objectiveCompletedEventText.Text);
                 }
             }
         }
@@ -122,8 +122,9 @@ namespace SpaceProject
                     }
                     else if (eventTextCanvas.Equals(EventTextCanvas.MessageBox))
                     {
-                        game.messageBox.DisplayMessage(objectiveFailedEventText.Text, false);
+                        PopupHandler.DisplayMessage(objectiveFailedEventText.Text);
                     }
+                    PopupHandler.DisplayMessage(objectiveFailedEventText.Text);
                 }
 
                 MissionManager.MarkMissionAsFailed(mission.MissionID);

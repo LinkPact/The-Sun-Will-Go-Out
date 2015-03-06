@@ -58,7 +58,7 @@ namespace SpaceProject
         {
             base.OnFailed();
 
-            Game.messageBox.DisplayMessage("You could not reach the Murt before the Alliance and the rebels. Go to Telmun to try again.", false);
+            PopupHandler.DisplayMessage("You could not reach the Murt before the Alliance and the rebels. Go to Telmun to try again.");
         }
 
         public override void MissionLogic()

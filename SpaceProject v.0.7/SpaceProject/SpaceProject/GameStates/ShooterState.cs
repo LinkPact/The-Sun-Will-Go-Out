@@ -335,7 +335,7 @@ namespace SpaceProject
         private void CheckKeyboard()
         {
             if (ControlManager.CheckPress(RebindableKeys.Pause) && timeSinceStarted > 200)
-                Game.messageBox.DisplayMenu();
+                PopupHandler.DisplayMenu();
 
             if (ControlManager.CheckKeyPress(Keys.Y))
             {

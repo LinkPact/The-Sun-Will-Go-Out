@@ -54,10 +54,10 @@ namespace SpaceProject
             sectorXStar.Initialize();
 
             // Sub-interactive objects
-            soelara = new Soelara(game, spriteSheet, game.messageBox);
-            fortrunStation2 = new FortrunStation2(game, spriteSheet, game.messageBox);
-            lonelyAsteroid = new LonelyAsteroid(game, spriteSheet, game.messageBox);
-            damagedShip = new DamagedShip(game, new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/MissionObjectSpriteSheet"), null), game.messageBox);
+            soelara = new Soelara(game, spriteSheet);
+            fortrunStation2 = new FortrunStation2(game, spriteSheet);
+            lonelyAsteroid = new LonelyAsteroid(game, spriteSheet);
+            damagedShip = new DamagedShip(game, new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/MissionObjectSpriteSheet"), null));
 
             soelara.Initialize();
             fortrunStation2.Initialize();

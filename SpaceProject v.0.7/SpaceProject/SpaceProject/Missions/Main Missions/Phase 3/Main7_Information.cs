@@ -59,7 +59,7 @@ namespace SpaceProject
         {
             base.OnFailed();
 
-            Game.messageBox.DisplayMessage("You did not manage to shake off the suspicious rebels. Go back to the rebel base to try again.", false);
+            PopupHandler.DisplayMessage("You did not manage to shake off the suspicious rebels. Go back to the rebel base to try again.");
         }
 
         public override void MissionLogic()

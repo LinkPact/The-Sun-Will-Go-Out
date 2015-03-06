@@ -381,9 +381,9 @@ namespace SpaceProject
 
             else if (ControlManager.CheckPress(RebindableKeys.Pause))
             {
-                if (Game.messageBox.MessageState == MessageState.Invisible)
+                if (PopupHandler.TextBufferEmpty)
                 {
-                    Game.messageBox.DisplayMenu();
+                    PopupHandler.DisplayMenu();
                 }
             }
 
@@ -453,7 +453,7 @@ namespace SpaceProject
 
         private void DevelopCommands()
         {
-            Game.messageBox.DisplayMessage("Gameshops updated", false);
+            PopupHandler.DisplayMessage("Gameshops updated");
             ShopManager.ShopUpdateTime = 0;
         }
 

@@ -12,8 +12,8 @@ namespace SpaceProject
         private List<Item> randomItems;
         private Item item;
 
-        public FortrunStation2(Game1 Game, Sprite spriteSheet, MessageBox messageBox) :
-            base(Game, spriteSheet, messageBox)
+        public FortrunStation2(Game1 Game, Sprite spriteSheet) :
+            base(Game, spriteSheet)
         {
             
         }

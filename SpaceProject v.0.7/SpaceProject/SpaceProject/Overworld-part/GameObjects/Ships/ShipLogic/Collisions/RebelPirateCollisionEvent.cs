@@ -21,7 +21,7 @@ namespace SpaceProject
             if (StatsManager.reputation >= 0)
             {
                 game.stateManager.overworldState.RemoveOverworldObject(ship);
-                game.messageBox.DisplayMessage(GetMessage(), false);
+                PopupHandler.DisplayMessage(GetMessage());
                 game.stateManager.shooterState.BeginRebelPirateLevel();
             }
         }

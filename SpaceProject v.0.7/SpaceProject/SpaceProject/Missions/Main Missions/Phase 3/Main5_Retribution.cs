@@ -97,7 +97,7 @@ namespace SpaceProject
             base.OnFailed();
 
             RemoveShips();
-            Game.messageBox.DisplayMessage("The attack on the alliance freighter failed. Return to the rebel base to try again.", false);
+            PopupHandler.DisplayMessage("The attack on the alliance freighter failed. Return to the rebel base to try again.");
         }
 
         public override void MissionLogic()

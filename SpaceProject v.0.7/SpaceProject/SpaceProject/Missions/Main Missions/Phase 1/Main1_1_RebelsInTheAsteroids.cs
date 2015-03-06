@@ -137,7 +137,7 @@ namespace SpaceProject
                 delegate
                 {
                     Game.player.position = Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("mining asteroids").position;
-                    Game.messageBox.DisplayMessage("Too bad. Talk to me to try again.", false);
+                    PopupHandler.DisplayMessage("Too bad. Talk to me to try again.");
                     talkToCaptainObjective.Reset();
                     shootingLevelObjective.Reset();
                     ObjectiveIndex = 2;

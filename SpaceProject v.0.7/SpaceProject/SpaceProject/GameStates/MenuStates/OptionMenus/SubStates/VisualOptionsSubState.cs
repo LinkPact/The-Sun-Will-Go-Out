@@ -196,14 +196,16 @@ namespace SpaceProject
                     {
                         if (game.GameStarted)
                         {
-                            game.messageBox.DisplaySelectionMenu("The game needs to be restarted for this to take effect. Do you want to save your game and restart now?", 
-                                new List<string> { "Save and restart", "Cancel"});
+                            PopupHandler.DisplaySelectionMenu("The game needs to be restarted for this to take effect. Do you want to save your game and restart now?", 
+                                new List<string> { "Save and restart", "Cancel"},
+                                new List<System.Action>());
                         }
 
                         else
                         {
-                            game.messageBox.DisplaySelectionMenu("The game needs to be restarted for this to take effect. Do you want to restart now?",
-                                new List<string> { "Restart", "Cancel" });
+                            PopupHandler.DisplaySelectionMenu("The game needs to be restarted for this to take effect. Do you want to restart now?",
+                                new List<string> { "Restart", "Cancel" },
+                                new List<System.Action>());
                         }
 
                         UpdateText();
@@ -232,14 +234,16 @@ namespace SpaceProject
 
                         if (game.GameStarted)
                         {
-                            game.messageBox.DisplaySelectionMenu("The game needs to be restarted for this to take effect. Do you want to save your game and restart now?",
-                                new List<string> { "Save and restart", "Cancel" });
+                            PopupHandler.DisplaySelectionMenu("The game needs to be restarted for this to take effect. Do you want to save your game and restart now?",
+                                new List<string> { "Save and restart", "Cancel" },
+                                new List<System.Action>());
                         }
 
                         else
                         {
-                            game.messageBox.DisplaySelectionMenu("The game needs to be restarted for this to take effect. Do you want to restart now?",
-                                new List<string> { "Restart", "Cancel" });
+                            PopupHandler.DisplaySelectionMenu("The game needs to be restarted for this to take effect. Do you want to restart now?",
+                                new List<string> { "Restart", "Cancel" },
+                                new List<System.Action>());
                         }
 
                         UpdateText();
