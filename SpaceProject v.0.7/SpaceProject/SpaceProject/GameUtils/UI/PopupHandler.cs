@@ -190,7 +190,7 @@ namespace SpaceProject
             realTimeMessage.SetMessage(messages);
             realTimeMessage.SetDelay(delay);
 
-            realTimeMessage.SetPortrait(portraitList, portraitList.Count, portraitTriggers);
+            realTimeMessage.SetPortrait(portraitList, messages.Length, portraitTriggers);
 
             popupQueue.Add(realTimeMessage);
         }
