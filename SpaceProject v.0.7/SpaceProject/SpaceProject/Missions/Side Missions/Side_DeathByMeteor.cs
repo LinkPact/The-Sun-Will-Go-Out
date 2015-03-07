@@ -23,9 +23,8 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            AdvancedPlating plating = new AdvancedPlating(Game, ItemVariety.high);
-            BursterWeapon burster = new BursterWeapon(Game, ItemVariety.high);
-            RewardItems.Add(plating);
+            AdvancedBeamWeapon advancedBeam = new AdvancedBeamWeapon(Game, ItemVariety.high);
+            RewardItems.Add(advancedBeam);
 
             RestartAfterFail();
 

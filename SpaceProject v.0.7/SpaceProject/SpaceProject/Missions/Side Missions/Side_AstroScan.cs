@@ -22,7 +22,7 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            RewardItems.Add(new BasicLaserWeapon(Game, ItemVariety.high));
+            RewardItems.Add(new BeamWeapon(Game, ItemVariety.regular));
         }
 
         public override void StartMission()

@@ -1,4 +1,4 @@
-Header :duration 45:width 400:durGridWidth 3:levelObjective CountMayNotPass|X10:
+Header :duration 45:width 400:durGridWidth 3:levelObjective Finish|X0:
 Point
 T: 0:E: 0nn0 0nn0 Ann0 0nn0 0nn0 0nn0 0nn0 0nn0 Ann0 0nn0 0nn0:end
 T: 1.3:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
@@ -34,5 +34,5 @@ T: 38.6:E: 0nn0 0nn0 0st0 0nn0 0st0 0st0 0st0 0nn0 0st0 0nn0 0nn0:end
 T: 39.9:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 41.1:E: 0nn0 Rnn0 0nn0 Rnn0 0nn0 0nn0 0nn0 Rnn0 0nn0 Rnn0 0nn0:end
 T: 42.4:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
-T: 43.7:E: 0nn0 0nn0 tnn0 0nn0 0nn0 0st0 0nn0 0nn0 tnn0 0nn0 0nn0:end
+T: 43.7:E: 0nn0 0nn0 0nn0 0nn0 0nn0 onn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 Duration
