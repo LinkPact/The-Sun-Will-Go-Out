@@ -311,7 +311,7 @@ namespace SpaceProject
             }
             else
             {
-                HPdamage = obj.Damage - Shield;
+                HPdamage = damage - Shield;
                 shieldDamage = Shield;
                 HP -= HPdamage;
                 Shield = 0;

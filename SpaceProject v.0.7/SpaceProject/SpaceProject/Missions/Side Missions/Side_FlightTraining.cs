@@ -24,8 +24,8 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            BasicEnergyCell cell = new BasicEnergyCell(Game, ItemVariety.high);
-            RewardItems.Add(cell);
+            DualLaserWeapon weapon = new DualLaserWeapon(Game, ItemVariety.high);
+            RewardItems.Add(weapon);
 
             RestartAfterFail();
 

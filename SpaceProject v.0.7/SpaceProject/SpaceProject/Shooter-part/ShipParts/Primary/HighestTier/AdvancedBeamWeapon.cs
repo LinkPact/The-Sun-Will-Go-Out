@@ -28,13 +28,13 @@ namespace SpaceProject
         {
             Name = "Advanced Beam";
             Kind = "Primary";
-            energyCostPerSecond = 15f;
+            energyCostPerSecond = 14f;
             delay = 10;
             Weight = 200;
             damage = 9.0f;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(1100, 0, 100, 100));
 
-            Value = 2200;
+            Value = 3200;
             Color color = new Color(79, 255, 73);
             beamModule1 = new FriendlyBeamModule(Game, spriteSheet, damage, color);
             beamModule2 = new FriendlyBeamModule(Game, spriteSheet, damage, color);
