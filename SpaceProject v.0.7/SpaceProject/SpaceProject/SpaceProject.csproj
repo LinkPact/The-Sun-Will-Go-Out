@@ -697,7 +697,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Levels\unsorted\" />
     <Folder Include="LevelTester\" />
     <Folder Include="Overworld-part\GameObjects\Stations\SectorZ\" />
     <Folder Include="Shooter-part\Levels\Oldlevels\" />
@@ -721,46 +720,46 @@
     <Content Include="Data\verticaldata.dat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\HardLevel.lvl">
+    <Content Include="Levels\unsorted\HardLevel.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\XAstroDodger.lvl">
+    <Content Include="Levels\sidelevels\AstroDodger.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\XAstroscan.lvl">
+    <Content Include="Levels\sidelevels\Astroscan.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\XDeathByMeteor.lvl">
+    <Content Include="Levels\sidelevels\DeathByMeteor.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\XDefendColony.lvl">
+    <Content Include="Levels\unsorted\XDefendColony.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\XFirstMission.lvl">
+    <Content Include="Levels\unsorted\XFirstMission.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\XFlightTraining_1.lvl">
+    <Content Include="Levels\sidelevels\FlightTraining_1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\XFlightTraining_2.lvl">
+    <Content Include="Levels\sidelevels\FlightTraining_2.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\XFlightTraining_3.lvl">
+    <Content Include="Levels\sidelevels\FlightTraining_3.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\XHardLevel.lvl">
+    <Content Include="Levels\unsorted\XHardLevel.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\XMain_TheAlliance.lvl">
+    <Content Include="Levels\unsorted\XMain_TheAlliance.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\XSecondMissionlvl1.lvl">
+    <Content Include="Levels\unsorted\XSecondMissionlvl1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\XSecondMissionlvl2.lvl">
+    <Content Include="Levels\unsorted\XSecondMissionlvl2.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\XSecondMissionlvl3.lvl">
+    <Content Include="Levels\unsorted\XSecondMissionlvl3.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Levels\mainlevels\m8a_OYO_lv1.lvl">
@@ -817,10 +816,10 @@
     <Content Include="Levels\mainlevels\m7_Information.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\XScoutingLevel.lvl">
+    <Content Include="Levels\unsorted\XScoutingLevel.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\XMain10_level1.lvl">
+    <Content Include="Levels\unsorted\XMain10_level1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Levels\LonelyAsteroidLevel.lvl">
@@ -829,13 +828,13 @@
     <None Include="Data\missiondata.dat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Levels\hangar1.lvl">
+    <None Include="Levels\pirates\hangar1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Levels\hangar2.lvl">
+    <None Include="Levels\pirates\hangar2.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Levels\hangar3.lvl">
+    <None Include="Levels\pirates\hangar3.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Levels\pirates\AlliancePirate1.lvl">
@@ -868,9 +867,9 @@
     <None Include="Levels\pirates\RebelPirate5.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Levels\P2AttackOnRebelStation.lvl" />
-    <None Include="Levels\P2RebelAmbush.lvl" />
-    <Content Include="Levels\XCoverBlown.lvl">
+    <None Include="Levels\unsorted\P2AttackOnRebelStation.lvl" />
+    <None Include="Levels\unsorted\P2RebelAmbush.lvl" />
+    <Content Include="Levels\unsorted\XCoverBlown.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Levels\testlevels\test_lv1.lvl">
@@ -1044,10 +1043,10 @@
     <None Include="Levels\testlevels\test_lv3.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Levels\XPirateAmbush.lvl">
+    <Content Include="Levels\unsorted\XPirateAmbush.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\XPirateAnnihilation.lvl">
+    <Content Include="Levels\unsorted\XPirateAnnihilation.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Levels\testlevels\XDefendColony.lvl">

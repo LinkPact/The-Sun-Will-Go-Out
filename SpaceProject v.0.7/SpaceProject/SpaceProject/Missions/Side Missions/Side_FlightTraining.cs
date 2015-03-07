@@ -24,8 +24,8 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            SideMissilesWeapon sideMissiles = new SideMissilesWeapon(Game, ItemVariety.regular);
-            RewardItems.Add(sideMissiles);
+            BasicEnergyCell cell = new BasicEnergyCell(Game, ItemVariety.high);
+            RewardItems.Add(cell);
 
             RestartAfterFail();
 

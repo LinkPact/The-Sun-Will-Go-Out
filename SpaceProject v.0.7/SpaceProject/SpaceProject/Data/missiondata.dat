@@ -374,29 +374,10 @@ Progress = 2
 Reputation = 0
 State = 0
 
-[Side_DeathByMeteor]
-Location = Peye
-Name = Death By Meteor
-Introduction = "Welcome soon-to-be-dead pilot! Our insane map-engineer has engineered a killer-fleet simulation meant to be able to bring down the most skilled of pilots. Many brave pilots have tried, few have survived, even fewer are fit enough to tell the tale. Are you ready to take on the challenge?"
-ObjectiveText1 = 1
-ObjectiveText2 = 2
-PosResponse = Let's drop meteors on our heads!
-NegResponse = Maybe tomorrow...
-Accept = "Your face will be smashed against a meteorite!"
-ObjectiveCompleted = ""
-Success = "Come back later. You won't be as lucky next time. Until then, make good use of this quite rare weapon! From here on you will be known by the name MeteorMan, and everyone will be a bit uncomfortable in your presence due to your crazed lack of caution..."
-FailText = "FAIL"
-EventText1 = "You managed to beat the level, you bastard! You get promotion! You are hereby enlisted as our future test-pilot!"
-Fail = "Haha! Oh, I mean, sorry. Look what a mess you are. Of course you weren't able to make it through the level. But you are welcome to try again. If you do, maybe you too will be a legend one day."
-Reward = 1000
-Progress = 1
-Reputation = 0
-State = 1
-
 [Side_FlightTraining]
 Location = Border Station
 Name = Flight Training
-Introduction = "What do we have here, a rookie! You are my favourites. So soft and brave. You know so little about the world, and still you are brimming with visions.#"You just want to do some honest work, you say? I don't believe you. But I like that. I will give you a head start to those other rookies. I have a three-mission-program which will make you a full fledged slightly-less-rookie.#"What do you say? If you bear with me the whole way through, I might even give you something useful!"
+Introduction = "Welcome to the training space, rookie! Here, you have the opportunity to refresh your piloting basics in a safe environment. If you bear with me the whole way through, I might even give you something useful!"
 ObjectiveText1 = Return to the Border Station at coordinates (1840, 130) for further information.
 PosResponse = You decide to try, despite his condesending tone.
 NegResponse = Put off by this weird and slightly annoying man you leave silently.
@@ -500,3 +481,23 @@ Reward = 200
 Progress = 2
 Reputation = 0
 State = 1
+
+[Side_DeathByMeteor]
+Location = Peye
+Name = Death By Meteor
+Introduction = "Welcome soon-to-be-dead pilot! Our insane map-engineer has engineered a killer-fleet simulation meant to be able to bring down the most skilled of pilots. Many brave pilots have tried, few have survived, even fewer are fit enough to tell the tale. Are you ready to take on the challenge?"
+ObjectiveText1 = 1
+ObjectiveText2 = 2
+PosResponse = Let's drop meteors on our heads!
+NegResponse = Maybe tomorrow...
+Accept = "Your face will be smashed against a meteorite!"
+ObjectiveCompleted = ""
+Success = "Come back later. You won't be as lucky next time. Until then, make good use of this quite rare weapon! From here on you will be known by the name MeteorMan, and everyone will be a bit uncomfortable in your presence due to your crazed lack of caution..."
+FailText = "FAIL"
+EventText1 = "You managed to beat the level, you bastard! You get promotion! You are hereby enlisted as our future test-pilot!"
+Fail = "Haha! Oh, I mean, sorry. Look what a mess you are. Of course you weren't able to make it through the level. But you are welcome to try again. If you do, maybe you too will be a legend one day."
+Reward = 1000
+Progress = 1
+Reputation = 0
+State = 1
+
