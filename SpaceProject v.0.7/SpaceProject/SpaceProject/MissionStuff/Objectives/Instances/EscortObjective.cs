@@ -11,9 +11,7 @@ namespace SpaceProject
     public class EscortObjective : Objective
     {
         private EscortDataCapsule escortDataCapsule;
-
         private List<OverworldShip> enemies;
-
         private List<String> descriptions;
 
         private int startingNumberOfEnemyShips;
@@ -22,8 +20,22 @@ namespace SpaceProject
         private float enemyAttackStartTime;
         private float enemyNextWaveTime;
 
-        private List<String> levels;
-        private List<String> enemyMessages;
+        private string introductionText;
+        private PortraitID introductionPortrait;
+
+        private List<string> enemyMessages;
+        private List<PortraitID> enemyPortraits;
+
+        private List<string> attackStartText;
+        private List<PortraitID> attackStartPortraits;
+
+        private List<string> afterAttackMessages;
+        private List<PortraitID> afterAttackPortraits;
+
+        private List<String> timedMessages;
+        private List<PortraitID> timedMessagePortraits;
+
+        private List<string> levels;
 
         private float shipToDefendHP;
         private float shipToDefendMaxHP;
@@ -67,7 +79,6 @@ namespace SpaceProject
             levels = escortDataCapsule.Levels;
             shipToDefendMaxHP = escortDataCapsule.ShipToDefendHP;
             shipToDefendHP = escortDataCapsule.ShipToDefendHP;
-            enemyMessages = escortDataCapsule.EnemyMessages;
             enemies = new List<OverworldShip>();
             timedMessageCount = -1;
             timedMessageTimes = new List<float>();
@@ -75,17 +86,6 @@ namespace SpaceProject
             for (int i = 0; i < escortDataCapsule.EnemyShips.Count; i++)
             {
                 enemies.Add(escortDataCapsule.EnemyShips[i]);
-            }
-
-            if (enemyMessages.Count < escortDataCapsule.EnemyShips.Count)
-            {
-                for (int i = enemyMessages.Count; i < escortDataCapsule.EnemyShips.Count; i++)
-                {
-                    if (enemyMessages.Count > 0)
-                    {
-                        enemyMessages.Add(enemyMessages[0]);
-                    }
-                }
             }
         }
 
@@ -141,10 +141,18 @@ namespace SpaceProject
             }
 
             if (timedMessageCount >= 0
-                && timedMessageCount < escortDataCapsule.TimedMessages.Count
+                && timedMessageCount < timedMessages.Count
                 && StatsManager.PlayTime.HasOverworldTimePassed(timedMessageTimes[timedMessageCount]))
             {
-                PopupHandler.DisplayRealtimeMessage(3000, escortDataCapsule.TimedMessages[timedMessageCount]);
+                if (timedMessagePortraits[timedMessageCount] != PortraitID.None)
+                {
+                    PopupHandler.DisplayRealtimePortraitMessage(3000, new [] {timedMessagePortraits[timedMessageCount]},
+                        new List<int>(), timedMessages[timedMessageCount]);
+                }
+                else
+                {
+                    PopupHandler.DisplayRealtimeMessage(3000, timedMessages[timedMessageCount]);
+                }
                 timedMessageCount++;
             }
 
@@ -154,8 +162,6 @@ namespace SpaceProject
                 && CollisionDetection.IsRectInRect(game.player.Bounds, escortDataCapsule.ShipToDefend.Bounds)
                 && ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter))))
             {
-                PopupHandler.DisplayMessage(escortDataCapsule.ShipIntroductionText);
-
                 if (game.tutorialManager.TutorialsUsed
                     && showInventoryTutorial
                     && ShipInventoryManager.equippedShield is EmptyShield)
@@ -166,7 +172,14 @@ namespace SpaceProject
 
                 else
                 {
-                    PopupHandler.DisplayMessage(escortDataCapsule.ShipIntroductionText);
+                    if (introductionPortrait != PortraitID.None)
+                    {
+                        PopupHandler.DisplayPortraitMessage(introductionPortrait, introductionText);
+                    }
+                    else
+                    {
+                        PopupHandler.DisplayMessage(introductionText);
+                    }
 
                     ((FreighterShip)escortDataCapsule.ShipToDefend).Start();
                     escortDataCapsule.ShipToDefend.speed = escortDataCapsule.FreighterSpeed;
@@ -182,7 +195,7 @@ namespace SpaceProject
 
                     enemyAttackStartTime = StatsManager.PlayTime.GetFutureOverworldTime(escortDataCapsule.EnemyAttackStartTime);
 
-                    for (int i = 0; i < escortDataCapsule.TimedMessages.Count; i++)
+                    for (int i = 0; i < timedMessages.Count; i++)
                     {
                         timedMessageTimes.Add(StatsManager.PlayTime.GetFutureOverworldTime(escortDataCapsule.TimedMessageTriggers[i]));
                     }
@@ -210,8 +223,15 @@ namespace SpaceProject
 
                         this.Description = descriptions[0];
                     }
-                    
-                    PopupHandler.DisplayMessage(escortDataCapsule.AttackStartText[i]);
+
+                    if (attackStartPortraits[i] != PortraitID.None)
+                    {
+                        PopupHandler.DisplayPortraitMessage(attackStartPortraits[i], attackStartText[i]);
+                    }
+                    else
+                    {
+                        PopupHandler.DisplayMessage(attackStartText[i]);
+                    }
 
                     game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
                         enemies[0],
@@ -236,7 +256,17 @@ namespace SpaceProject
                     && game.stateManager.shooterState.GetLevel(levels[i]).IsObjectiveCompleted)
                 {
                     shipToDefendHP = game.stateManager.shooterState.CurrentLevel.GetFreighterHP();
-                    PopupHandler.DisplayMessage(escortDataCapsule.AfterAttackMessages[i]);
+
+                    game.stateManager.ChangeState("OverworldState");
+
+                    if (afterAttackPortraits[i] != PortraitID.None)
+                    {
+                        PopupHandler.DisplayPortraitMessage(afterAttackPortraits[i], afterAttackMessages[i]);
+                    }
+                    else
+                    {
+                        PopupHandler.DisplayMessage(afterAttackMessages[i]);
+                    }
                 }
             }
 
@@ -326,19 +356,112 @@ namespace SpaceProject
                 {
                     if (CollisionDetection.IsRectInRect(escortDataCapsule.ShipToDefend.Bounds, enemies[i].Bounds))
                     {
-                        if (enemyMessages.Count > 0)
-                        {
-                            PopupHandler.DisplayMessage(enemyMessages[0]);
-                            enemyMessages.RemoveAt(0);
-                        }
-
                         game.stateManager.overworldState.RemoveOverworldObject(enemies[i]);
                         game.stateManager.shooterState.BeginLevel(enemies[i].Level);
                         game.stateManager.shooterState.CurrentLevel.SetFreighterMaxHP(shipToDefendMaxHP);
                         game.stateManager.shooterState.CurrentLevel.SetFreighterHP(shipToDefendHP);
                         enemies.RemoveAt(i);
+
+                        if (enemyMessages.Count > 0)
+                        {
+                            if (enemyPortraits[0] != PortraitID.None)
+                            {
+                                PopupHandler.DisplayPortraitMessage(enemyPortraits[0], enemyMessages[0]);
+                            }
+                            else
+                            {
+                                PopupHandler.DisplayMessage(enemyMessages[0]);
+                            }
+                            enemyMessages.RemoveAt(0);
+                            enemyPortraits.RemoveAt(0);
+                        }
                     }
                 }
+            }
+        }
+
+        public void SetIntroductionMessage(String message, PortraitID portrait = PortraitID.None)
+        {
+            introductionText = message;
+            introductionPortrait = portrait;
+        }
+
+        public void SetEnemyMessage(List<PortraitID> portraits, params string[] messages)
+        {
+            enemyMessages = new List<string>();
+            enemyPortraits = new List<PortraitID>();
+
+            for (int i = 0; i < messages.Length; i++ )
+            {
+                if (portraits != null)
+                {
+                    enemyPortraits.Add(portraits[i]);
+                }
+                else
+                {
+                    enemyPortraits.Add(PortraitID.None);
+                }
+                enemyMessages.Add(messages[i]);
+            }
+        }
+
+        public void SetAttackStartText(List<PortraitID> portraits, params string[] messages)
+        {
+            attackStartText = new List<string>();
+            attackStartPortraits = new List<PortraitID>();
+
+            for (int i = 0; i < messages.Length; i++)
+            {
+                if (portraits != null)
+                {
+                    attackStartPortraits.Add(portraits[i]);
+                }
+                else
+                {
+                    attackStartPortraits.Add(PortraitID.None);
+                }
+
+                attackStartText.Add(messages[i]);
+            }
+        }
+
+        public void SetAfterAttackMessages(List<PortraitID> portraits, params string[] messages)
+        {
+            afterAttackMessages = new List<string>();
+            afterAttackPortraits = new List<PortraitID>();
+
+            for (int i = 0; i < messages.Length; i++)
+            {
+                if (portraits != null)
+                {
+                    afterAttackPortraits.Add(portraits[i]);
+                }
+                else
+                {
+                    afterAttackPortraits.Add(PortraitID.None);
+                }
+
+                afterAttackMessages.Add(messages[i]);
+            }
+        }
+
+        public void SetTimedMessages(List<PortraitID> portraits, params string[] messages)
+        {
+            timedMessages = new List<string>();
+            timedMessagePortraits = new List<PortraitID>();
+
+            for (int i = 0; i < messages.Length; i++)
+            {
+                if (portraits != null)
+                {
+                    timedMessagePortraits.Add(portraits[i]);
+                }
+                else
+                {
+                    timedMessagePortraits.Add(PortraitID.None);
+                }
+
+                timedMessages.Add(messages[i]);
             }
         }
     }

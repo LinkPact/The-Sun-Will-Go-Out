@@ -129,27 +129,38 @@ namespace SpaceProject
         protected override void SetupObjectives()
         {
             objectives.Clear();
-
-            objectives.Add(new EscortObjective(Game,
+            
+            EscortObjective escortObjective = new EscortObjective(Game,
                this,
                new List<String> { ObjectiveDescriptions[0], ObjectiveDescriptions[1], ObjectiveDescriptions[2] },
-               new EscortDataCapsule(freighter1,
-                   GetEvent((int)EventID.CaptainIntro).Text,
-                   enemies,
-                   new List<String> { GetEvent((int)EventID.RebelMessage1).Text, GetEvent((int)EventID.RebelMessage2).Text },
+               new EscortDataCapsule(freighter1, enemies,
                    null,
                    Game.stateManager.overworldState.GetPlanet("Highfence").position + new Vector2(-200, 0),
-                   new List<String> { GetEvent((int)EventID.RebelsAttack1).Text,
-                                                              GetEvent((int)EventID.RebelsAttack2).Text },
                    28500,
                    4000,
                    1000,
                    new List<String> { "FreighterEscort1", "FreighterEscort2" },
-                   new List<String> { GetEvent((int)EventID.AfterRebelAttack1).Text, GetEvent((int)EventID.AfterRebelAttack2).Text },
-                   new List<String> { GetEvent((int)EventID.CaptainChitChat1).Text, GetEvent((int)EventID.CaptainChitChat2).Text,
-                                                              GetEvent((int)EventID.AlmostThere).Text },
                    new List<int> { 4000, 18000, 34500 }, 0.4f),
-               true));
+               true);
+
+            escortObjective.SetIntroductionMessage(GetEvent((int)EventID.CaptainIntro).Text, PortraitID.AllianceCaptain);
+
+            escortObjective.SetEnemyMessage(null,
+                GetEvent((int)EventID.RebelMessage1).Text, GetEvent((int)EventID.RebelMessage2).Text);
+
+            escortObjective.SetAttackStartText(new List<PortraitID> { PortraitID.None, PortraitID.Sair },
+                GetEvent((int)EventID.RebelsAttack1).Text, GetEvent((int)EventID.RebelsAttack2).Text);
+
+            escortObjective.SetAfterAttackMessages(new List<PortraitID>() 
+                { PortraitID.AllianceCaptain, PortraitID.AllianceCaptain},
+                GetEvent((int)EventID.AfterRebelAttack1).Text, GetEvent((int)EventID.AfterRebelAttack2).Text);
+
+            escortObjective.SetTimedMessages(new List<PortraitID>() 
+                { PortraitID.AllianceCaptain, PortraitID.AllianceCaptain, PortraitID.AllianceCaptain },
+                GetEvent((int)EventID.CaptainChitChat1).Text, GetEvent((int)EventID.CaptainChitChat2).Text,
+                GetEvent((int)EventID.AlmostThere).Text);
+
+            objectives.Add(escortObjective);
         }
     }
 }

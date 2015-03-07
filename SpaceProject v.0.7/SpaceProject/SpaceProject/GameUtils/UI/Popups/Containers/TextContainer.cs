@@ -55,11 +55,20 @@ namespace SpaceProject
 
             if (textBuffer.Count > 0)
             {
-                text = TextUtils.WordWrap(font,
-                                          TextUtils.ScrollText(textBuffer[0],
-                                                               flushScrollingText,
-                                                               out textScrollingFinished),
-                                          containerWidth);
+                if (useScrolling)
+                {
+                    text = TextUtils.WordWrap(font,
+                          TextUtils.ScrollText(textBuffer[0],
+                                               flushScrollingText,
+                                               out textScrollingFinished),
+                          containerWidth);
+                }
+                else
+                {
+                    text = TextUtils.WordWrap(font,
+                                              textBuffer[0],
+                                              containerWidth);
+                }
             }
         }
 
