@@ -43,9 +43,14 @@ namespace SpaceProject
 
         protected override void Hide()
         {
+            string previousMessage = textContainer.GetCurrentMessage();
+
             base.Hide();
 
-            portraitContainer.UpdateImageBuffer();
+            if (previousMessage != textContainer.GetCurrentMessage())
+            {
+                portraitContainer.UpdateImageBuffer();
+            }
         }
 
         public void SetPortrait(params Sprite[] portraits)

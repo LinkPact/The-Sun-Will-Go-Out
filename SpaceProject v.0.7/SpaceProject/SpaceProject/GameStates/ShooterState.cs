@@ -141,7 +141,7 @@ namespace SpaceProject
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["8a_2"]));
             
         }
-
+        
         // Creates and returns a dictionary linking level names to string paths
         public static Dictionary<String, LevelEntry> GetMissionPathDict()
         {

@@ -33,9 +33,28 @@ namespace SpaceProject
             portraitContainer.Draw(spriteBatch);
         }
 
+        protected override void Hide()
+        {
+            string previousMessage = textContainer.GetCurrentMessage();
+
+            base.Hide();
+
+            if (previousMessage != textContainer.GetCurrentMessage()
+                && portraitContainer.ImageBufferCount > 1)
+            {
+                portraitContainer.UpdateImageBuffer();
+            }
+        }
+
         public void SetPortrait(Sprite portrait)
         {
             portraitContainer.SetImages(portrait);
+        }
+
+        public void SetPortraits(List<Sprite> portraits, List<int> imageTriggers, int numberOfMessages)
+        {
+            portraitContainer.SetImages(portraits.ToArray<Sprite>());
+            portraitContainer.SetImageTriggers(numberOfMessages, imageTriggers.ToArray<int>());
         }
     }
 }

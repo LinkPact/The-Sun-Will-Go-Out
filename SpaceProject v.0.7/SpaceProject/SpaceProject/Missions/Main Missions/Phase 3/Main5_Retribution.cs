@@ -176,11 +176,12 @@ namespace SpaceProject
                 delegate { return false; }));
 
             Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                GetEvent((int)EventID.AtMeetingPoint2).Text, 3000, 10000));
+                3000, 10000, GetEvent((int)EventID.AtMeetingPoint2).Text));
 
-            Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                GetEvent((int)EventID.AtMeetingPoint3).Text, 3000, 10000,
-                new EventTextCapsule(GetEvent((int)EventID.AtMeetingPoint4), null, EventTextCanvas.MessageBox)));
+            TimedMessageObjective timedMessageObjective = new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
+                3000, 10000, GetEvent((int)EventID.AtMeetingPoint3).Text);
+            timedMessageObjective.SetEventText(new EventTextCapsule(GetEvent((int)EventID.AtMeetingPoint4), null, EventTextCanvas.MessageBox));
+            Objectives.Add(timedMessageObjective);
 
             Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.AttackFreighter), null, EventTextCanvas.MessageBox),

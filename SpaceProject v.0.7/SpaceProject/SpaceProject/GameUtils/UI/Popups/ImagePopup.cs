@@ -51,7 +51,7 @@ namespace SpaceProject
         {
             imageContainer.UpdateImageBuffer();
 
-            if (imageContainer.IsImageBufferEmpty())
+            if (imageContainer.ImageBufferCount <= 0)
             {
                 base.Hide();
             }

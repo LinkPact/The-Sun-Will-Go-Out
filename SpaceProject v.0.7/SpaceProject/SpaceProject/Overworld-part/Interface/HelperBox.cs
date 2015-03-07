@@ -10,7 +10,6 @@ namespace SpaceProject
     public class HelperBox
     {
         private Game1 Game;
-        //private SpriteFont font;
 
         private Vector2 position;
         private Vector2 origin;
@@ -27,7 +26,6 @@ namespace SpaceProject
         public HelperBox(Game1 Game)
         {
             this.Game = Game;
-            //font = Game.fontManager.GetFont(14);
             visible = false;
             text = "";
             timedText = false;
@@ -51,24 +49,16 @@ namespace SpaceProject
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            switch (timedText)
+            if (visible && text != "")
             {
-                case false:
-                    {
-                        if (visible && text != "")
-                        {
-                            spriteBatch.DrawString(Game.fontManager.GetFont(14), text, position + Game.fontManager.FontOffset, Game.fontManager.FontColor, 0f, origin, 1f, SpriteEffects.None, 1f);
-                        }
-                        break;
-                    }
-
-                case true:
-                    {
-                        if (visible && text != "" && timeToShowText > 0)
-                        {
-                            spriteBatch.DrawString(Game.fontManager.GetFont(14), text, position + Game.fontManager.FontOffset, Game.fontManager.FontColor, 0f, origin, 1f, SpriteEffects.None, 1f);
-                        }
-                    break;
+                if (timedText 
+                    && timeToShowText > 0)
+                {
+                    spriteBatch.DrawString(Game.fontManager.GetFont(14), text, position + Game.fontManager.FontOffset, Game.fontManager.FontColor, 0f, origin, 1f, SpriteEffects.None, 1f);
+                }
+                else
+                {
+                    spriteBatch.DrawString(Game.fontManager.GetFont(14), text, position + Game.fontManager.FontOffset, Game.fontManager.FontColor, 0f, origin, 1f, SpriteEffects.None, 1f);
                 }
             }
 

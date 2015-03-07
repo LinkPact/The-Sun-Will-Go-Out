@@ -117,13 +117,15 @@ namespace SpaceProject
             objectives.Clear();
 
             Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                GetEvent((int)EventID.TravelingToAsteroids).Text, 3000, 3000));
+                3000, 3000, PortraitID.Sair, GetEvent((int)EventID.TravelingToAsteroids).Text));
 
             Objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
-                250, new EventTextCapsule(GetEvent((int)EventID.TalkWithCaptain1), null, EventTextCanvas.MessageBox)));
+                250, new EventTextCapsule(GetEvent((int)EventID.TalkWithCaptain1), null, EventTextCanvas.MessageBox,
+                    new List<PortraitID>() { PortraitID.AlliancePilot, PortraitID.Sair, PortraitID.AllianceCaptain },
+                    new List<int> { 2, 3 })));
 
             ArriveAtLocationObjective talkToCaptainObjective = new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                new EventTextCapsule(GetEvent((int)EventID.TalkWithCaptain2), null, EventTextCanvas.MessageBox));
+                new EventTextCapsule(GetEvent((int)EventID.TalkWithCaptain2), null, EventTextCanvas.MessageBox, PortraitID.AllianceCaptain));
 
             Objectives.Add(talkToCaptainObjective);
 
@@ -131,13 +133,14 @@ namespace SpaceProject
                 "RebelsInTheMeteors", LevelStartCondition.Immediately,
                 new EventTextCapsule(GetEvent((int)EventID.AfterCombat),
                     null,
-                    EventTextCanvas.MessageBox));
+                    EventTextCanvas.MessageBox,
+                    PortraitID.AllianceCaptain));
 
             shootingLevelObjective.SetFailLogic(
                 delegate
                 {
                     Game.player.position = Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("mining asteroids").position;
-                    PopupHandler.DisplayMessage("Too bad. Talk to me to try again.");
+                    PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "Too bad. Talk to me to try again.");
                     talkToCaptainObjective.Reset();
                     shootingLevelObjective.Reset();
                     ObjectiveIndex = 2;
@@ -147,7 +150,7 @@ namespace SpaceProject
             Objectives.Add(shootingLevelObjective);
 
             Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
-                GetEvent((int)EventID.TravelingBack).Text, 3000, 3000));
+                3000, 3000, PortraitID.Sair, GetEvent((int)EventID.TravelingBack).Text));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1]));
         }

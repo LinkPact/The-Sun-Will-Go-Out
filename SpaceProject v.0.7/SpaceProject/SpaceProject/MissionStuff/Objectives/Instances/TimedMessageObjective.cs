@@ -13,31 +13,11 @@ namespace SpaceProject
         private float messageDelay;
         private float messageTime;
 
+        private List<PortraitID> portraits;
+        private List<int> portraitTriggers;
+
         public TimedMessageObjective(Game1 game, Mission mission, String description, 
-            String message, float messageDelay, float startTime) :
-            base(game, mission, description)
-        {
-            messages.Add(message);
-            this.messageDelay = messageDelay;
-            messageTime = startTime;
-        }
-
-        public TimedMessageObjective(Game1 game, Mission mission, String description,
-            String message, float messageDelay, float startTime,
-            EventTextCapsule eventTextCapsule) :
-            base(game, mission, description)
-        {
-            messages.Add(message);
-            this.messageDelay = messageDelay;
-            messageTime = startTime;
-
-            objectiveCompletedEventText = eventTextCapsule.CompletedText;
-            eventTextCanvas = eventTextCapsule.EventTextCanvas;
-            objectiveFailedEventText = eventTextCapsule.FailedText;
-        }
-
-        public TimedMessageObjective(Game1 game, Mission mission, String description,
-            List<String> messages, float messageDelay, float startTime) :
+            float messageDelay, float startTime, params string[] messages) :
             base(game, mission, description)
         {
             foreach (string str in messages)
@@ -46,6 +26,24 @@ namespace SpaceProject
             }
             this.messageDelay = messageDelay;
             messageTime = startTime;
+        }
+
+        public TimedMessageObjective(Game1 game, Mission mission, String description,
+            float messageDelay, float startTime, PortraitID portrait, params string[] messages) :
+            this(game, mission, description, messageDelay, startTime, messages)
+        {
+            portraitTriggers = new List<int>();
+            portraits = new List<PortraitID>();
+            portraits.Add(portrait);
+        }
+
+        public TimedMessageObjective(Game1 game, Mission mission, String description,
+            float messageDelay, float startTime, List<PortraitID> portraits,
+            List<int> portraitTriggers, params string[] messages) :
+            this(game, mission, description, messageDelay, startTime, messages)
+        {
+            this.portraits = portraits;
+            this.portraitTriggers = portraitTriggers;
         }
 
         public override void OnActivate()
@@ -65,7 +63,15 @@ namespace SpaceProject
                 && StatsManager.PlayTime.HasOverworldTimePassed(messageTime))
             {
                 messageTime = -1;
-                PopupHandler.DisplayRealtimeMessage(messageDelay, messages.ToArray());
+                if (portraits.Count > 0)
+                {
+                    PopupHandler.DisplayRealtimePortraitMessage(messageDelay, portraits.ToArray(),
+                        portraitTriggers, messages.ToArray());
+                }
+                else
+                {
+                    PopupHandler.DisplayRealtimeMessage(messageDelay, messages.ToArray());
+                }
             }
             base.Update(playTime);
         }
@@ -94,6 +100,13 @@ namespace SpaceProject
         public override void OnFailed()
         {
             base.OnFailed();
+        }
+
+        public void SetEventText(EventTextCapsule eventTextCapsule)
+        {
+            objectiveCompletedEventText = eventTextCapsule.CompletedText;
+            eventTextCanvas = eventTextCapsule.EventTextCanvas;
+            objectiveFailedEventText = eventTextCapsule.FailedText;
         }
     }
 }

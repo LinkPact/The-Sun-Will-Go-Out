@@ -17,6 +17,7 @@ namespace SpaceProject
 
         // variables
         private List<Sprite> imageBuffer;
+        public int ImageBufferCount { get { return imageBuffer.Count; } }
 
         private bool useImageTriggers;
         private int imageTriggerIndex;
@@ -67,11 +68,6 @@ namespace SpaceProject
             }
 
             imageTriggerIndex = 0;
-        }
-
-        public bool IsImageBufferEmpty()
-        {
-            return imageBuffer.Count <= 0;
         }
 
         public void UpdateImageBuffer()

@@ -93,13 +93,13 @@ namespace SpaceProject
             objectives.Clear();
 
             objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                GetEvent((int)EventID.TravellingToCoordinate).Text, 3000, 2000));
+                3000, 2000, GetEvent((int)EventID.TravellingToCoordinate).Text));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.AtCoordinate), null, EventTextCanvas.MessageBox)));
 
             objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                GetEvent((int)EventID.IncomingMessage1).Text, 3000, 3000));
+                3000, 3000, GetEvent((int)EventID.IncomingMessage1).Text));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.AllianceMessage), null, EventTextCanvas.MessageBox),
@@ -109,10 +109,10 @@ namespace SpaceProject
                 delegate { return false; }));
 
             objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
-                GetEvent((int)EventID.SairCommentingOnMessage1).Text, 3000, 3000));
+                3000, 3000, GetEvent((int)EventID.SairCommentingOnMessage1).Text));
 
             objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
-                GetEvent((int)EventID.IncomingMessage2).Text, 3000, 2000));
+                3000, 2000, GetEvent((int)EventID.IncomingMessage2).Text));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1],
                 new EventTextCapsule(GetEvent((int)EventID.RebelMessage), null, EventTextCanvas.MessageBox),
@@ -122,7 +122,7 @@ namespace SpaceProject
                 delegate { return false; }));
 
             objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
-                GetEvent((int)EventID.SairCommentingOnMessage2).Text, 3000, 2000));
+                3000, 2000, GetEvent((int)EventID.SairCommentingOnMessage2).Text));
         }
     }
 }

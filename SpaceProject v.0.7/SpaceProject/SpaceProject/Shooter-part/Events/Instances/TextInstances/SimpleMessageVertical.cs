@@ -11,12 +11,14 @@ namespace SpaceProject
     class SimpleMessageVertical : LevelEvent
     {
         private String message;
+        private PortraitID portrait;
 
         public SimpleMessageVertical(Game1 Game, PlayerVerticalShooter player, Sprite spriteSheet, Level level, 
-            float startTime, String message)
+            float startTime, String message, PortraitID portrait = PortraitID.None)
             : base(Game, player, spriteSheet, level, startTime)
         {
             this.message = message;
+            this.portrait = portrait;
         }
 
         //The function called when the class is activated.
@@ -25,7 +27,14 @@ namespace SpaceProject
         //Check "Swarm"-class to see how lasting events can look.
         public override void Run(GameTime gameTime)
         {
-            PopupHandler.DisplayMessage(message);
+            if (portrait != PortraitID.None)
+            {
+                PopupHandler.DisplayPortraitMessage(portrait, message);
+            }
+            else
+            {
+                PopupHandler.DisplayMessage(message);
+            }
             TriggerStatus = Trigger.Completed;
         }
 

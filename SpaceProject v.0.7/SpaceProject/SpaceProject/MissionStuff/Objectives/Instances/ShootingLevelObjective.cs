@@ -29,6 +29,11 @@ namespace SpaceProject
             eventTextCanvas = eventTextCapsule.EventTextCanvas;
             objectiveCompletedEventText = eventTextCapsule.CompletedText;
             objectiveFailedEventText = eventTextCapsule.FailedText;
+
+            if (eventTextCapsule.Portraits.Count > 0)
+            {
+                SetupPortraits(eventTextCapsule.Portraits, eventTextCapsule.PortraitTriggers);
+            }
         }
 
         private void Setup(String level, LevelStartCondition levelStartCondition)

@@ -11,6 +11,7 @@ namespace SpaceProject
 {
     public enum PortraitID
     {
+        None,
         // Central characters
         Sair,
         Ai,
@@ -73,6 +74,7 @@ namespace SpaceProject
                 else if (popupQueue[0].PopupState == PopupState.Showing)
                 {
                     popupQueue[0].Update(gameTime);
+                    game.helper.Visible = false;
                 }
 
                 else
@@ -134,6 +136,23 @@ namespace SpaceProject
             popupQueue.Add(portraitMessage);
         }
 
+        public static void DisplayPortraitMessage(List<PortraitID> portraits, List<int> portraitTriggers, params string[] messages)
+        {
+            List<Sprite> portraitList = new List<Sprite>();
+
+            foreach (PortraitID id in portraits)
+            {
+                portraitList.Add(GetPortrait(id));
+            }
+
+            PortraitMessage portraitMessage = new PortraitMessage(game, spriteSheet);
+            portraitMessage.Initialize();
+            portraitMessage.SetMessage(messages);
+            portraitMessage.SetPortraits(portraitList, portraitTriggers, TextUtils.GetSplitCount(messages));
+
+            popupQueue.Add(portraitMessage);
+        }
+
         public static void DisplayImage(params Sprite[] images)
         {
             ImagePopup imagePopup = new ImagePopup(game, spriteSheet);
@@ -160,7 +179,7 @@ namespace SpaceProject
 
             imageMessage.Initialize();
             imageMessage.SetMessage(messages);
-            imageMessage.SetImages(messages.Length, imageTriggers.ToArray<int>(), images.ToArray<Sprite>());
+            imageMessage.SetImages(TextUtils.GetSplitCount(messages), imageTriggers.ToArray<int>(), images.ToArray<Sprite>());
 
             popupQueue.Add(imageMessage);
         }
@@ -190,7 +209,7 @@ namespace SpaceProject
             realTimeMessage.SetMessage(messages);
             realTimeMessage.SetDelay(delay);
 
-            realTimeMessage.SetPortrait(portraitList, messages.Length, portraitTriggers);
+            realTimeMessage.SetPortrait(portraitList, TextUtils.GetSplitCount(messages), portraitTriggers);
 
             popupQueue.Add(realTimeMessage);
         }

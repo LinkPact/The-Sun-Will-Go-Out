@@ -103,8 +103,7 @@ namespace SpaceProject
                 delegate { return false; }));
 
             objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                GetEvent((int)EventID.Followed).Text,
-                4000, 5000));
+                4000, 5000, GetEvent((int)EventID.Followed).Text));
 
             objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], 3000,
                 new EventTextCapsule(GetEvent((int)EventID.Followed2), null, EventTextCanvas.MessageBox)));

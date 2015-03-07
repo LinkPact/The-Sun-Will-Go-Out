@@ -280,5 +280,23 @@ namespace SpaceProject
 
             return tempList;
         }
+
+        public static int GetSplitCount(params string[] text)
+        {
+            int count = 0;
+
+            foreach (string str in text)
+            {
+                String[] split = str.Split('#');
+
+                for (int i = 0; i < split.Length; i++)
+                {
+                    split[i] = split[i].Trim();
+                    count++;
+                }
+            }
+
+            return count;
+        }
     }
 }

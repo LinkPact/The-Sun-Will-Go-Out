@@ -32,6 +32,10 @@ namespace SpaceProject
 
         protected bool isOnCompletedCalled;
 
+        private bool usePortraits;
+        private List<PortraitID> portraits;
+        private List<int> portraitTriggers;
+
         protected Objective(Game1 game, Mission mission, String description)
         {
             this.game = game;
@@ -98,7 +102,21 @@ namespace SpaceProject
                 }
                 else if (eventTextCanvas.Equals(EventTextCanvas.MessageBox))
                 {
-                    PopupHandler.DisplayMessage(objectiveCompletedEventText.Text);
+                    if (usePortraits)
+                    {
+                        if (portraits.Count > 0)
+                        {
+                            PopupHandler.DisplayPortraitMessage(portraits, portraitTriggers, objectiveCompletedEventText.Text);
+                        }
+                        else
+                        {
+                            PopupHandler.DisplayPortraitMessage(portraits[0], objectiveCompletedEventText.Text);
+                        }
+                    }
+                    else
+                    {
+                        PopupHandler.DisplayMessage(objectiveCompletedEventText.Text);
+                    }
                 }
             }
         }
@@ -141,6 +159,13 @@ namespace SpaceProject
             {
                 MissionManager.ResetMission(mission.MissionID);
             }
+        }
+
+        public void SetupPortraits(List<PortraitID> portraits, List<int> portraitTriggers)
+        {
+            usePortraits = true;
+            this.portraits = portraits;
+            this.portraitTriggers = portraitTriggers;
         }
     }
 }
