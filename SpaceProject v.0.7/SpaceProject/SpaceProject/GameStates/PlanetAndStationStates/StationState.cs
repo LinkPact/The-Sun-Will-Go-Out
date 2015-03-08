@@ -11,7 +11,6 @@ namespace SpaceProject
 
     public class StationState : BaseState
     {
-        private Random random;
         public static string PreviousStation;
         private StationStateManager subStateManager;
 
@@ -63,8 +62,6 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            random = new Random();
-
             #region Initailize Strings
 
             //fontBig = Game.Content.Load<SpriteFont>("Overworld-Sprites/bigFont");

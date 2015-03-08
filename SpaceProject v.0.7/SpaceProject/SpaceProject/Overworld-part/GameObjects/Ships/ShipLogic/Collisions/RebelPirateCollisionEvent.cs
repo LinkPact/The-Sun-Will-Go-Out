@@ -28,8 +28,7 @@ namespace SpaceProject
 
         private string GetMessage()
         {
-            Random r = new Random(DateTime.Now.Millisecond);
-            return messages[r.Next(0, messages.Count)];
+            return messages[game.random.Next(0, messages.Count)];
         }
     }
 }

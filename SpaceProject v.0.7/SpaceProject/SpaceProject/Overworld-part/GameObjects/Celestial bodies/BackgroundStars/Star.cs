@@ -21,7 +21,6 @@ namespace SpaceProject
         protected float speedMod;
         #endregion
 
-        private static Random rand = new Random();
         public Star(Game1 Game, Sprite spriteSheet) :
             base(Game, spriteSheet)
         {          
@@ -36,22 +35,22 @@ namespace SpaceProject
             if (Game.camera != null)
             {
                 //Initialize star at a random position relative to camera position.
-                position = new Vector2((float)rand.Next(((int)Game.camera.cameraPos.X - Game.Window.ClientBounds.Width / 2),
-                (int)(Game.camera.cameraPos.X) + (Game.Window.ClientBounds.Width) / 2), (float)rand.Next((int)Game.camera.cameraPos.Y
+                position = new Vector2((float)Game.random.Next(((int)Game.camera.cameraPos.X - Game.Window.ClientBounds.Width / 2),
+                (int)(Game.camera.cameraPos.X) + (Game.Window.ClientBounds.Width) / 2), (float)Game.random.Next((int)Game.camera.cameraPos.Y
                 - (Game.Window.ClientBounds.Height) / 2, (int)(Game.camera.cameraPos.Y + (Game.Window.ClientBounds.Height / 2))));
             }
 
             else
             {
                 //Initialize star at a random position relative to window position.
-                position = new Vector2((float)rand.Next(0,
-                Game.Window.ClientBounds.Width), (float)rand.Next(0, Game.Window.ClientBounds.Height));
+                position = new Vector2((float)Game.random.Next(0,
+                Game.Window.ClientBounds.Width), (float)Game.random.Next(0, Game.Window.ClientBounds.Height));
             }
 
             sprite = spriteSheet.GetSubSprite(new Rectangle(4, 4, 2, 2));
-            color = new Color(rand.Next(200,255), rand.Next(155,255) , rand.Next(200,255), 255);
-            scale = (float)(rand.NextDouble() * 1.5);
-            speedMod = rand.Next(4, 10) / 10f;
+            color = new Color(Game.random.Next(200, 255), Game.random.Next(155, 255), Game.random.Next(200, 255), 255);
+            scale = (float)(Game.random.NextDouble() * 1.5);
+            speedMod = Game.random.Next(4, 10) / 10f;
 
             base.Initialize();
         }
@@ -111,7 +110,7 @@ namespace SpaceProject
             if (StaticFunctions.IsPositionOutsideScreenX(position, Game) == 1)
             {
                 position = new Vector2(position.X + Game.Window.ClientBounds.Width,
-                (float)rand.Next((int)Game.camera.cameraPos.Y - (Game.Window.ClientBounds.Height) / 2,
+                (float)Game.random.Next((int)Game.camera.cameraPos.Y - (Game.Window.ClientBounds.Height) / 2,
                 (int)(Game.camera.cameraPos.Y + (Game.Window.ClientBounds.Height / 2))));
             }
             
@@ -119,14 +118,14 @@ namespace SpaceProject
             else if (StaticFunctions.IsPositionOutsideScreenX(position, Game) == 2)
             {
                 position = new Vector2(position.X - Game.Window.ClientBounds.Width,
-                (float)rand.Next((int)Game.camera.cameraPos.Y - (Game.Window.ClientBounds.Height / 2),
+                (float)Game.random.Next((int)Game.camera.cameraPos.Y - (Game.Window.ClientBounds.Height / 2),
                 (int)(Game.camera.cameraPos.Y + (Game.Window.ClientBounds.Height / 2))));
             
             }
             //Star moves outside top edges of screen
             if (StaticFunctions.IsPositionOutsideScreenY(position, Game) == 1)
             {
-                position = new Vector2((float)rand.Next((int)Game.camera.cameraPos.X
+                position = new Vector2((float)Game.random.Next((int)Game.camera.cameraPos.X
                 - (Game.Window.ClientBounds.Width / 2), (int)Game.camera.cameraPos.X + (Game.Window.ClientBounds.Width / 2)),
                 position.Y + Game.Window.ClientBounds.Height);
             }
@@ -134,7 +133,7 @@ namespace SpaceProject
             //Star moves outside bottom edges of screen
             else if (StaticFunctions.IsPositionOutsideScreenY(position, Game) == 2)
             {
-                position = new Vector2((float)rand.Next((int)Game.camera.cameraPos.X
+                position = new Vector2((float)Game.random.Next((int)Game.camera.cameraPos.X
             - (Game.Window.ClientBounds.Width / 2), (int)Game.camera.cameraPos.X + (Game.Window.ClientBounds.Width / 2)),
             position.Y - Game.Window.ClientBounds.Height);
             }

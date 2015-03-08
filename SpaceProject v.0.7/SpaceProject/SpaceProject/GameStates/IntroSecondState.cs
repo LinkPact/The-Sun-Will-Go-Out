@@ -12,7 +12,6 @@ namespace SpaceProject
     {
         private readonly int NumberOfStars = 100;
 
-        private Random random;
         private TextBox textBox;
         private SpriteFont spriteFont;
         private Sprite contrastBackdrop;
@@ -57,15 +56,14 @@ namespace SpaceProject
             starAngle = (float)((Math.PI * 90) / 180) ;
             starScale = new Vector2(1f, 40f);
             starSpeed = 3;
-            random = new Random();
 
             starPositions = new Vector2[100];
             starSpeedModifiers = new List<float>();
             for (int i = 0; i < NumberOfStars; i++)
             {
-                starPositions[i] = new Vector2(random.Next(0, Game.Window.ClientBounds.Width),
-                                               random.Next(0, Game.Window.ClientBounds.Height));
-                starSpeedModifiers.Add(random.Next(4, 10) / 10f);
+                starPositions[i] = new Vector2(Game.random.Next(0, Game.Window.ClientBounds.Width),
+                                               Game.random.Next(0, Game.Window.ClientBounds.Height));
+                starSpeedModifiers.Add(Game.random.Next(4, 10) / 10f);
             }
 
 
@@ -139,7 +137,7 @@ namespace SpaceProject
 
                 if (returnValue == 2)
                 {
-                    starPositions[i] = new Vector2(-30, (float)random.Next(0, Game.Window.ClientBounds.Height));
+                    starPositions[i] = new Vector2(-30, (float)Game.random.Next(0, Game.Window.ClientBounds.Height));
                 }
             }
 

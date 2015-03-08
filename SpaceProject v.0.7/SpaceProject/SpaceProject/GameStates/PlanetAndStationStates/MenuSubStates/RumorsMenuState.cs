@@ -83,7 +83,7 @@ namespace SpaceProject
             }
 
             if (rumorStrings.Count > 0)
-                rumorString = rumorStrings[Random.Next(rumorStrings.Count)];
+                rumorString = rumorStrings[Game.random.Next(rumorStrings.Count)];
             else
                 rumorString = "";
 

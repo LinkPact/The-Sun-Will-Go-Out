@@ -19,7 +19,7 @@ namespace SpaceProject
 
         private void SetRandomDest()
         {
-            Random r = new Random(DateTime.Now.Millisecond);
+            Random r = new Random(Guid.NewGuid().GetHashCode());
             dest = new Vector2(
                 r.Next(sector.SpaceRegionArea.Left, sector.SpaceRegionArea.Right),
                 r.Next(sector.SpaceRegionArea.Top, sector.SpaceRegionArea.Bottom));

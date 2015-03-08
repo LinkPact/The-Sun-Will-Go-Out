@@ -402,7 +402,6 @@ namespace SpaceProject
                         {
                             if (BaseState.GetBase() is Planet)
                             {
-                                Random random = new Random();
                                 List<string> tempStrList = new List<string>();
                                 List<int> tempIntList = new List<int>();
 
@@ -418,7 +417,7 @@ namespace SpaceProject
 
                                     if (enter)
                                     {
-                                        int val = random.Next(3);
+                                        int val = Game.random.Next(3);
 
                                         switch (val)
                                         {

@@ -19,7 +19,6 @@ namespace SpaceProject
     {
         private Game1 Game;
         private String identifyer;
-        protected Random random;
         private Boolean inventoryIsFixed = true;
 
         protected List<Item> shopInventory;
@@ -63,8 +62,6 @@ namespace SpaceProject
 
             // Set to none if not updated in Initialize-method
             shopFilling = ShopFilling.none;
-
-            random = new Random();
         }
 
         private void CompressShopInventory()
@@ -116,8 +113,8 @@ namespace SpaceProject
             }
 
             // Logic for controlling shopinventory-numbers
-            int removeCount = random.Next(0, 2);
-            int addCount = random.Next(0, 2);
+            int removeCount = Game.random.Next(0, 2);
+            int addCount = Game.random.Next(0, 2);
 
             int currentItemCount = GetCurrentShipPartCount();
             int lowerThres = GetLowerFillLimit(shopFilling);
@@ -153,7 +150,7 @@ namespace SpaceProject
 
             while (!foundTarget)
             {
-                int pos = random.Next(shopInventory.Count);
+                int pos = Game.random.Next(shopInventory.Count);
                 if (!(shopInventory[pos] is EmptyItem))
                 {
                     RemovePartAt(pos);
@@ -175,7 +172,7 @@ namespace SpaceProject
 
             while (!foundTarget)
             {
-                int pos = random.Next(shopInventory.Count);
+                int pos = Game.random.Next(shopInventory.Count);
                 if (shopInventory[pos] is EmptyItem)
                 {
                     ShipPart part = ExtractShipPartFromItemFrequencies();
@@ -195,7 +192,7 @@ namespace SpaceProject
         {
             FillShopInventoryWithEmptyItem();
 
-            int items = random.Next(GetLowerFillLimit(filling), GetUpperFillLimit(filling));
+            int items = Game.random.Next(GetLowerFillLimit(filling), GetUpperFillLimit(filling));
 
             for (int n = 0; n < items; n++)
             {
@@ -274,7 +271,7 @@ namespace SpaceProject
                 }
             }
 
-            int randItemValue = random.Next(summedItemFrequency);
+            int randItemValue = Game.random.Next(summedItemFrequency);
 
             foreach (KeyValuePair<String, int> pair in probabilityTable.OrderBy(key => key.Value))
             {
