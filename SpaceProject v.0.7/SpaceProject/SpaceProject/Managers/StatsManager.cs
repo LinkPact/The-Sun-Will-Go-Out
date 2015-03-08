@@ -94,6 +94,20 @@ namespace SpaceProject
             discoveredBeacons = new List<Beacon>();
         }
 
+        public static void SetStats()
+        {
+            if (gameMode.Equals(GameMode.easy))
+                SetEasyStats();
+            else if (gameMode.Equals(GameMode.normal))
+                SetNormalStats();
+            else if (gameMode.Equals(GameMode.hard))
+                SetHardStats();
+            else if (gameMode.Equals(GameMode.hardcore))
+                SetHardcoreStats();
+            else if (gameMode.Equals(GameMode.develop))
+                SetDevelopStats();
+        }
+
         public static void SetEasyStats()
         {
             moneyFactor = 1.50f;
@@ -282,6 +296,7 @@ namespace SpaceProject
             Fuel = Game.saveFile.GetPropertyAsFloat("statsmanager", "shipfuel", 0);
 
             gameMode = MathFunctions.ParseEnum<GameMode>(Game.saveFile.GetPropertyAsString("statsmanager", "gamemode", ""));
+            SetStats();
 
             String beaconLine = Game.saveFile.GetPropertyAsString("statsmanager", "beacons", "");
 
