@@ -12,7 +12,6 @@ namespace SpaceProject
         protected Game1 Game;
         protected string name;
         public string Name { get { return name; } private set { ;} }
-        protected Random Random;
 
         protected BaseState BaseState;
         protected BaseStateManager BaseStateManager;
@@ -28,7 +27,6 @@ namespace SpaceProject
 
         protected MenuState(Game1 game, String name, BaseStateManager manager, BaseState baseState)
         {
-            this.Random = new Random();
             this.Game = game;
             this.name = name;
             this.BaseState = baseState;

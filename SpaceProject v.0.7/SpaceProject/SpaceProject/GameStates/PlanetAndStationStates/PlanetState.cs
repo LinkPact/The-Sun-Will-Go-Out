@@ -11,8 +11,6 @@ namespace SpaceProject
 
     public class PlanetState : BaseState
     {
-        private Random random;
-
         public static string PreviousPlanet;
 
         private PlanetStateManager subStateManager;
@@ -52,8 +50,6 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            random = new Random();
-
             #region Initailize Strings
 
             nameStringPosition = new Vector2(Game.Window.ClientBounds.Width * 3/4, 15);

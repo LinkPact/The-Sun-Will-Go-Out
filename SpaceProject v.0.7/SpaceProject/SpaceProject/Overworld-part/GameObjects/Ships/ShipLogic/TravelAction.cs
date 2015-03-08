@@ -41,7 +41,7 @@ namespace SpaceProject
             List<GameObjectOverworld> tempList = new List<GameObjectOverworld>();
             tempList.AddRange(sector.GetGameObjects());
 
-            Random r = new Random(DateTime.Now.Millisecond);
+            Random r = new Random(Guid.NewGuid().GetHashCode());
             return tempList[(int)r.Next(0, tempList.Count - 1)];
         }
     }

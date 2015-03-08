@@ -13,7 +13,6 @@ namespace SpaceProject
     {
         #region declaration
 
-        private Random random;
         public Sprite spriteSheet;
         private float timeSinceStarted;
 
@@ -208,8 +207,6 @@ namespace SpaceProject
             {
                 windowHeightOffset = ((float)Game.Window.ClientBounds.Height - 600) / 2;
             }
-
-            random = new Random();
 
             gameObjects.Clear();
             backgroundObjects.Clear();
@@ -594,29 +591,25 @@ namespace SpaceProject
 
         public void BeginPirateLevel()
         {
-            Random r = new Random(DateTime.Now.Millisecond);
-            String levelName = "PirateLevel" + r.Next(1, 9);
+            String levelName = "PirateLevel" + Game.random.Next(1, 9);
             BeginLevel(levelName);
         }
 
         public void BeginHangarLevel()
         {
-            Random r = new Random(DateTime.Now.Millisecond);
-            String levelName = "hangar" + r.Next(1, 4);
+            String levelName = "hangar" + Game.random.Next(1, 4);
             BeginLevel(levelName);
         }
 
         public void BeginRebelPirateLevel()
         {
-            Random r = new Random(DateTime.Now.Millisecond);
-            String levelName = "RebelPirate" + r.Next(1, 4);
+            String levelName = "RebelPirate" + Game.random.Next(1, 4);
             BeginLevel(levelName);
         }
 
         public void BeginAlliancePirateLevel()
         {
-            Random r = new Random(DateTime.Now.Millisecond);
-            String levelName = "AlliancePirate" + r.Next(1, 4);
+            String levelName = "AlliancePirate" + Game.random.Next(1, 4);
             BeginLevel(levelName);
         }
 
