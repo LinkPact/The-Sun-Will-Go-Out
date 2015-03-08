@@ -23,6 +23,8 @@ namespace SpaceProject
         private float nextMessageTime;
         private bool realTime;
         private int realTimeSwitchIndex;
+        private List<List<PortraitID>> portraits;
+        private List<List<int>> portraitTriggers;
 
         public AutoPilotObjective(Game1 game, Mission mission, String description, float speed) :
             base(game, mission, description)
@@ -31,36 +33,42 @@ namespace SpaceProject
 
         public AutoPilotObjective(Game1 game, Mission mission, String description,
             float speed, List<OverworldShip> companions,
-            Vector2 companionStartingPos, Dictionary<string, List<float>> timedMessages,
+            Vector2 companionStartingPos,
             EventTextCapsule eventTextCapsule, bool realTime = true) :
             base(game, mission, description)
         {
             this.speed = speed;
             ships = companions;
             this.companionStartingPos = companionStartingPos;
-            this.timedMessages = timedMessages;
             this.realTime = realTime;
 
             objectiveCompletedEventText = eventTextCapsule.CompletedText;
             eventTextCanvas = eventTextCapsule.EventTextCanvas;
             objectiveFailedEventText = eventTextCapsule.FailedText;
+
+            if (eventTextCapsule.Portraits.Count > 0)
+            {
+                SetupPortraits(eventTextCapsule.Portraits, eventTextCapsule.PortraitTriggers);
+            }
         }
 
         public AutoPilotObjective(Game1 game, Mission mission, String description,
             float speed, List<OverworldShip> companions,
-            Vector2 companionStartingPos, Dictionary<string, List<float>> timedMessages, bool realTime = true) :
+            Vector2 companionStartingPos, bool realTime = true) :
             base(game, mission, description)
         {
             this.speed = speed;
             ships = companions;
             this.companionStartingPos = companionStartingPos;
-            this.timedMessages = timedMessages;
             this.realTime = realTime;
         }
 
         public override void Initialize()
         {
             base.Initialize();
+
+            portraits = new List<List<PortraitID>>();
+            portraitTriggers = new List<List<int>>();
         }
 
         public override void OnMissionStart()
@@ -101,17 +109,40 @@ namespace SpaceProject
             if (timedMessages.Keys.Count > 0
                 && StatsManager.PlayTime.HasOverworldTimePassed(nextMessageTime))
             {
-                if (realTime)
+                if (portraits.Count > 0)
                 {
-                    PopupHandler.DisplayRealtimeMessage(GetNextMessageDuration(), timedMessages.Keys.First());
+                    if (realTime)
+                    {
+                        PopupHandler.DisplayRealtimePortraitMessage(GetNextMessageDuration(), portraits[0].ToArray(), 
+                            portraitTriggers[0], timedMessages.Keys.First());
+                    }
+                    else
+                    {
+                        realTimeSwitchIndex++;
+                        PopupHandler.DisplayPortraitMessage(portraits[0], portraitTriggers[0], timedMessages.Keys.First());
+                        if (realTimeSwitchIndex >= 2)
+                        {
+                            realTime = true;
+                        }
+                    }
+
+                    portraits.RemoveAt(0);
+                    portraitTriggers.RemoveAt(0);
                 }
                 else
                 {
-                    realTimeSwitchIndex++;
-                    PopupHandler.DisplayMessage(timedMessages.Keys.First());
-                    if (realTimeSwitchIndex >= 2)
+                    if (realTime)
                     {
-                        realTime = true;
+                        PopupHandler.DisplayRealtimeMessage(GetNextMessageDuration(), timedMessages.Keys.First());
+                    }
+                    else
+                    {
+                        realTimeSwitchIndex++;
+                        PopupHandler.DisplayMessage(timedMessages.Keys.First());
+                        if (realTimeSwitchIndex >= 2)
+                        {
+                            realTime = true;
+                        }
                     }
                 }
 
@@ -180,6 +211,18 @@ namespace SpaceProject
             timedMessages.TryGetValue(timedMessages.Keys.First(), out value);
 
             return value[1];
+        }
+
+        public void SetTimedMessages(Dictionary<string, List<float>> timedMessages,
+            List<List<PortraitID>> portraits, List<List<int>> portraitTriggers)
+        {
+            if (portraits != null)
+            {
+                this.portraits = portraits;
+                this.portraitTriggers = portraitTriggers;
+            }
+
+            this.timedMessages = timedMessages;
         }
     }
 }

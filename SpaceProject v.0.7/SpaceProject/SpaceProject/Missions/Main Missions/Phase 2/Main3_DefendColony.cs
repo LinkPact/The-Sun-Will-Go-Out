@@ -144,7 +144,7 @@ namespace SpaceProject
                 delegate { return false; }));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun1), null, EventTextCanvas.MessageBox),
+                new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun1), null, EventTextCanvas.MessageBox, PortraitID.Sair),
                 delegate
                 {
                     time = StatsManager.PlayTime.GetFutureOverworldTime(500);
@@ -154,22 +154,27 @@ namespace SpaceProject
                 delegate { return false; }));
 
             objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
-                100, new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun2), null, EventTextCanvas.MessageBox)));
+                100, new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun2), null, EventTextCanvas.MessageBox, PortraitID.Ai)));
 
-            objectives.Add(new AutoPilotObjective(Game, this, ObjectiveDescriptions[1], AutoPilotSpeed,
+            AutoPilotObjective autoPilotObjective1 = new AutoPilotObjective(Game, this, ObjectiveDescriptions[1], AutoPilotSpeed,
                 allyShips1, fortrunStation.position,
-                new Dictionary<string, List<float>>
+                new EventTextCapsule(GetEvent((int)EventID.OutsideNewNorrland), null, EventTextCanvas.MessageBox, PortraitID.Ai));
+
+            autoPilotObjective1.Initialize();
+            autoPilotObjective1.SetTimedMessages(new Dictionary<string, List<float>>
                 { 
                     { GetEvent((int)EventID.ToNewNorrland1).Text, new List<float> { 3000, 3000 } },
                     { GetEvent((int)EventID.ToNewNorrland2).Text, new List<float> { 20000, 3000 } }
                 },
-                new EventTextCapsule(GetEvent((int)EventID.OutsideNewNorrland), null, EventTextCanvas.MessageBox)));
+                null, null);
+
+            objectives.Add(autoPilotObjective1);
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
                 "DefendColonyBreak", LevelStartCondition.TextCleared));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                new EventTextCapsule(GetEvent((int)EventID.FirstLevelCompleted), null, EventTextCanvas.BaseState),
+                new EventTextCapsule(GetEvent((int)EventID.FirstLevelCompleted), null, EventTextCanvas.MessageBox, PortraitID.Ai),
                 delegate { Game.stateManager.GotoPlanetSubScreen("New Norrland", "Mission"); },
                 delegate { },
                 delegate { return true; },
@@ -177,7 +182,7 @@ namespace SpaceProject
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
                 "DefendColonyHold", LevelStartCondition.TextCleared,
-                new EventTextCapsule(GetEvent((int)EventID.SecondLevelCompleted), null, EventTextCanvas.BaseState)));
+                new EventTextCapsule(GetEvent((int)EventID.SecondLevelCompleted), null, EventTextCanvas.MessageBox, PortraitID.Ai)));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1],
                 delegate
@@ -192,16 +197,28 @@ namespace SpaceProject
                 delegate { return false; }));
 
             objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[1], 200,
-                new EventTextCapsule(new EventText("[Ai] \"Let's go\""), null, EventTextCanvas.MessageBox)));
+                new EventTextCapsule(new EventText("[Ai] \"Let's go\""), null, EventTextCanvas.MessageBox, PortraitID.Ai)));
 
-            objectives.Add(new AutoPilotObjective(Game, this, ObjectiveDescriptions[2], AutoPilotSpeed2,
-                allyShips2, newNorrland.position,
+            AutoPilotObjective autoPilotObjective = new AutoPilotObjective(Game, this, ObjectiveDescriptions[2], AutoPilotSpeed2,
+                allyShips2, newNorrland.position, false);
+
+            autoPilotObjective.Initialize();
+
+            autoPilotObjective.SetTimedMessages(
                 new Dictionary<string, List<float>>
                 { 
                     { GetEvent((int)EventID.ToFortrun1).Text, new List<float> { 7000, 3000 } },
                     { GetEvent((int)EventID.ToFortrun2).Text, new List<float> { 1000, 3000 } },
                     { GetEvent((int)EventID.ToFortrun3).Text, new List<float> { 4000, 3000 } },
-                }, false));
+                },
+                new List<List<PortraitID>>() {
+                    new List<PortraitID> { PortraitID.Sair, PortraitID.CommonCitizen},
+                    new List<PortraitID> { PortraitID.Ai},
+                    new List<PortraitID> { PortraitID.Sair} },
+                new List<List<int>> {
+                    new List<int> { 1 }, new List<int> { },new List<int> { } });
+
+            objectives.Add(autoPilotObjective);
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[2],
                 delegate

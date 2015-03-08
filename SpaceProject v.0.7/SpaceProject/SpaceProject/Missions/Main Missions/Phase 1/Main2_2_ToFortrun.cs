@@ -88,7 +88,7 @@ namespace SpaceProject
             objectives.Clear();
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                new EventTextCapsule(GetEvent((int)EventID.Beacon1), null, EventTextCanvas.MessageBox),
+                new EventTextCapsule(GetEvent((int)EventID.Beacon1), null, EventTextCanvas.MessageBox, PortraitID.Sair),
                 delegate 
                 {
                     time = StatsManager.PlayTime.GetFutureOverworldTime(500);
@@ -116,13 +116,13 @@ namespace SpaceProject
                 ));
 
             objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                3000, 2500, GetEvent((int)EventID.Beacon2).Text));
+                3000, 2500, PortraitID.Sair, GetEvent((int)EventID.Beacon2).Text));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.ArriveAtHighfence), null, EventTextCanvas.BaseState)));
 
             objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
-                3000, 2500, GetEvent((int)EventID.ToFortrun).Text));
+                3000, 2500, PortraitID.Sair, GetEvent((int)EventID.ToFortrun).Text));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1]));
         }

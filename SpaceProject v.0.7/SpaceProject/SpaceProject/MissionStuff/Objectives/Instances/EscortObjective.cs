@@ -289,8 +289,7 @@ namespace SpaceProject
         public override bool Completed()
         {
             return (escortDataCapsule.ShipToDefend.AIManager.Finished 
-                || escortDataCapsule.ShipToDefend.IsDead
-                || ControlManager.CheckKeyPress(Keys.V));
+                || escortDataCapsule.ShipToDefend.IsDead);
         }
 
         public override void OnCompleted()

@@ -104,7 +104,8 @@ namespace SpaceProject
                 {
                     if (usePortraits)
                     {
-                        if (portraits.Count > 0)
+                        if (portraits != null
+                            && portraits.Count > 0)
                         {
                             PopupHandler.DisplayPortraitMessage(portraits, portraitTriggers, objectiveCompletedEventText.Text);
                         }

@@ -143,15 +143,19 @@ namespace SpaceProject
             objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
                 200, new EventTextCapsule(new EventText("[Rebel] \"Let's go!\""), null, EventTextCanvas.MessageBox)));
 
-            objectives.Add(new AutoPilotObjective(Game, this, ObjectiveDescriptions[0], autoPilotSpeed,
-                allyShips1, destinations[3].position,
-                new Dictionary<string, List<float>>
-                            { 
-                                { GetEvent((int)EventID.TravelToScienceStation1).Text, new List<float> { 5000, 3000 } },
-                                { GetEvent((int)EventID.TravelToScienceStation2).Text, new List<float> { 23000, 3000 } },
-                                { GetEvent((int)EventID.TravelToScienceStation3).Text, new List<float> { 9000, 3000 } }
-                            },
-                new EventTextCapsule(GetEvent((int)EventID.ArriveAtScienceStation), null, EventTextCanvas.MessageBox)));
+            AutoPilotObjective autoPilotObjective = new AutoPilotObjective(Game, this, ObjectiveDescriptions[0], autoPilotSpeed,
+                allyShips1, destinations[3].position, new EventTextCapsule(GetEvent((int)EventID.ArriveAtScienceStation), null, EventTextCanvas.MessageBox));
+
+            autoPilotObjective.Initialize();
+            autoPilotObjective.SetTimedMessages(new Dictionary<string, List<float>>
+                { 
+                    { GetEvent((int)EventID.TravelToScienceStation1).Text, new List<float> { 5000, 3000 } },
+                    { GetEvent((int)EventID.TravelToScienceStation2).Text, new List<float> { 23000, 3000 } },
+                    { GetEvent((int)EventID.TravelToScienceStation3).Text, new List<float> { 9000, 3000 } }
+                }
+                , null, null);
+
+            objectives.Add(autoPilotObjective);
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 "Itnos_1", LevelStartCondition.TextCleared,

@@ -63,7 +63,9 @@ namespace SpaceProject
                 && StatsManager.PlayTime.HasOverworldTimePassed(messageTime))
             {
                 messageTime = -1;
-                if (portraits.Count > 0)
+
+                if (portraits != null
+                    && portraits.Count > 0)
                 {
                     PopupHandler.DisplayRealtimePortraitMessage(messageDelay, portraits.ToArray(),
                         portraitTriggers, messages.ToArray());
