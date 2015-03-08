@@ -169,15 +169,19 @@ namespace SpaceProject
 
         private bool Parse(String line)
         {
+            // Remove trailing whitespace
             line = line.TrimStart(new char[] { ' ', '\t' });
             line = line.TrimEnd(new char[] { ' ', '\t' });
 
+            // Line is empty
             if (line.Count() == 0)
                 return true;
 
+            // Line is comment
             if (line[0] == ';')
                 return true;
 
+            // Section
             if (line[0] == '[')
             {
                 String sectionName = line.Substring(1, line.LastIndexOf(']') - 1);

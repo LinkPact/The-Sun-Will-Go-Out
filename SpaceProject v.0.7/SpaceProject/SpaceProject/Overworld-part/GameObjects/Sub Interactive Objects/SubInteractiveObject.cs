@@ -331,7 +331,8 @@ namespace SpaceProject
 
             saveData.Clear();
             saveData.Add("disabled", cleared.ToString());
-            saveData.Add("disabledText", clearedText);
+            if (clearedText.Count() != 0)
+                saveData.Add("disabledText", clearedText);
 
             Game.saveFile.Save("save.ini", "subobject" + id, saveData);
         }

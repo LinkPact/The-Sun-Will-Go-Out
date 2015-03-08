@@ -764,7 +764,8 @@ namespace SpaceProject
                     saveData.Add("posy", Convert.ToString(deepSpaceGameObjects[i].position.Y, CultureInfo.InvariantCulture));
                     if (deepSpaceGameObjects[i] is RebelShip)
                     {
-                        saveData.Add("level", ((RebelShip)deepSpaceGameObjects[i]).Level);
+                        if (((RebelShip)deepSpaceGameObjects[i]).Level != null)
+                            saveData.Add("level", ((RebelShip)deepSpaceGameObjects[i]).Level);
                     }
                     if (deepSpaceGameObjects[i] is FreighterShip)
                     {
@@ -813,7 +814,7 @@ namespace SpaceProject
                 switch (Game.saveFile.GetPropertyAsString("spaceobj" + i, "name", "error"))
                 {
                     case "Rebel Ship":
-                        string levelName = Game.saveFile.GetPropertyAsString("spaceobj" + i, "level", "error");
+                        string levelName = Game.saveFile.GetPropertyAsString("spaceobj" + i, "level", "");
                         sectorX.shipSpawner.AddRebelShip(new Vector2(posx, posy), levelName);
                         break;
                     case "Freighter Ship":
