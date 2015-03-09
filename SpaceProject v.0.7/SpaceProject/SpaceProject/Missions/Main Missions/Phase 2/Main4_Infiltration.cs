@@ -20,7 +20,9 @@ namespace SpaceProject
             Level1Begins,
             DuringLevel1,
             Level2Begins,
-            DuringLevel2,
+            DuringLevel2_1,
+            DuringLevel2_2,
+            DuringLevel2_3,
             AfterLevel2,
             ToRebelBase
         }
@@ -227,38 +229,39 @@ namespace SpaceProject
             objectives.Clear();
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun), null, EventTextCanvas.MessageBox),
+                new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun), null, EventTextCanvas.MessageBox, PortraitID.Sair),
                 delegate { },
                 delegate { },
                 delegate { return GameStateManager.currentState.ToLower().Equals("overworldstate"); },
                 delegate { return false; }));
 
             objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                3000, 6000, GetEvent((int)EventID.ToMeetingPoint).Text));
+                3000, 6000, PortraitID.Sair, GetEvent((int)EventID.ToMeetingPoint).Text));
 
             objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
-                300, new EventTextCapsule(GetEvent((int)EventID.AtMeeting), null, EventTextCanvas.MessageBox)));
+                300, new EventTextCapsule(GetEvent((int)EventID.AtMeeting), null, EventTextCanvas.MessageBox, PortraitID.Rok)));
 
-            TimedMessageObjective timedMessageObjective = new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
-                3000, 5000, GetEvent((int)EventID.AfterMeeting1).Text);
-            timedMessageObjective.SetEventText(new EventTextCapsule(GetEvent((int)EventID.AfterMeeting2), null, EventTextCanvas.MessageBox));
-            objectives.Add(timedMessageObjective);
+            TimedMessageObjective objective4 = new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
+                3000, 5000, PortraitID.Sair, GetEvent((int)EventID.AfterMeeting1).Text);
+            objective4.SetEventText(new EventTextCapsule(GetEvent((int)EventID.AfterMeeting2), null, EventTextCanvas.MessageBox, PortraitID.Ai));
+            objectives.Add(objective4);
 
             objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
-                3000, 5000, GetEvent((int)EventID.ToLavis).Text));
+                3000, 5000, PortraitID.Sair, GetEvent((int)EventID.ToLavis).Text));
 
             objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[1],
-                300, new EventTextCapsule(GetEvent((int)EventID.Level1Begins), null, EventTextCanvas.MessageBox)));
+                300, new EventTextCapsule(GetEvent((int)EventID.Level1Begins), null, EventTextCanvas.MessageBox, PortraitID.AlliancePilot)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
                 "Infiltration1", LevelStartCondition.TextCleared,
-                new EventTextCapsule(GetEvent((int)EventID.Level2Begins), null, EventTextCanvas.MessageBox)));
+                new EventTextCapsule(GetEvent((int)EventID.Level2Begins), null, EventTextCanvas.MessageBox,
+                    new List<PortraitID>() {PortraitID.AlliancePilot, PortraitID.Rok, PortraitID.Sair }, new List<int>() {3, 4})));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
                 "Infiltration2", LevelStartCondition.Immediately));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[2],
-                new EventTextCapsule(GetEvent((int)EventID.AfterLevel2), null, EventTextCanvas.MessageBox),
+                new EventTextCapsule(GetEvent((int)EventID.AfterLevel2), null, EventTextCanvas.MessageBox, PortraitID.Rok),
                 delegate
                 {
                     RemoveShips(allianceShips);
@@ -269,7 +272,7 @@ namespace SpaceProject
                 delegate { return false; }));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                new EventTextCapsule(GetEvent((int)EventID.ToRebelBase), null, EventTextCanvas.MessageBox),
+                new EventTextCapsule(GetEvent((int)EventID.ToRebelBase), null, EventTextCanvas.MessageBox, PortraitID.Ai),
                 delegate
                 {
                     time = StatsManager.PlayTime.GetFutureOverworldTime(2000);

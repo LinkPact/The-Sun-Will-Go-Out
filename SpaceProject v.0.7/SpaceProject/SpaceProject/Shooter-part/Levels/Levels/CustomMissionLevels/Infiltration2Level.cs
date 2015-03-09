@@ -5,7 +5,9 @@ namespace SpaceProject
 {
     class Infiltration2Level : MapCreatorLevel
     {
-        private static readonly int MessageIndex = 10;
+        private static readonly int Message1Index = 10;
+        private static readonly int Message2Index = 11;
+        private static readonly int Message3Index = 12;
         private static readonly int Message1Time = 4000;
 
         public Infiltration2Level(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player1, LevelEntry levelEntry)
@@ -17,7 +19,9 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            untriggeredEvents.Add(new SimpleMessageVertical(Game, player, spriteSheet, this, Message1Time, MissionManager.GetMission(MissionID.Main4_Infiltration).GetEvent(MessageIndex).Text));
+            untriggeredEvents.Add(new SimpleMessageVertical(Game, player, spriteSheet, this, Message1Time, MissionManager.GetMission(MissionID.Main4_Infiltration).GetEvent(Message1Index).Text, PortraitID.AlliancePilot));
+            untriggeredEvents.Add(new SimpleMessageVertical(Game, player, spriteSheet, this, Message1Time, MissionManager.GetMission(MissionID.Main4_Infiltration).GetEvent(Message2Index).Text));
+            untriggeredEvents.Add(new SimpleMessageVertical(Game, player, spriteSheet, this, Message1Time, MissionManager.GetMission(MissionID.Main4_Infiltration).GetEvent(Message3Index).Text, PortraitID.Rok));
         }
     }
 }

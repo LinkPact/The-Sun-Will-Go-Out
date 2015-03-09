@@ -109,6 +109,11 @@ namespace SpaceProject
             objectiveCompletedEventText = eventTextCapsule.CompletedText;
             eventTextCanvas = eventTextCapsule.EventTextCanvas;
             objectiveFailedEventText = eventTextCapsule.FailedText;
+
+            if (eventTextCapsule.Portraits.Count > 0)
+            {
+                SetupPortraits(eventTextCapsule.Portraits, eventTextCapsule.PortraitTriggers);
+            }
         }
     }
 }
