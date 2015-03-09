@@ -435,6 +435,7 @@
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Meteorites\Meteorite.cs" />
     <Compile Include="Shooter-part\Events\Instances\WaveInstances\HangarBoss.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\Hangar\AllianceHangarAttackShip.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\CustomMissionLevels\InTheNameOfScienceLevel2.cs" />
     <Compile Include="Shooter-part\Levels\Levels\CustomMissionLevels\Information1Level.cs" />
     <Compile Include="Shooter-part\Levels\Levels\CustomMissionLevels\Retaliation1Level.cs" />
     <Compile Include="Shooter-part\Levels\Levels\CustomMissionLevels\Infiltration2Level.cs" />

@@ -11,8 +11,8 @@ namespace SpaceProject
         public override void Invoke()
         {
             game.stateManager.overworldState.RemoveOverworldObject(ship);
-            PopupHandler.DisplayMessage("You should have stayed in the warm comfort of you home planet. Surrender your cargo peacefully or take the consequences.");
             game.stateManager.shooterState.BeginPirateLevel();
+            PopupHandler.DisplayMessage("You should have stayed in the warm comfort of you home planet. Surrender your cargo peacefully or take the consequences.");
         }
     }
 }

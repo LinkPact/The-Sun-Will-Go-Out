@@ -20,9 +20,12 @@ namespace SpaceProject
             TravelToScienceStation3,
             ArriveAtScienceStation,
             AfterLevel1,
-            InsideScienceStation,
+            InsideScienceStation1,
+            InsideScienceStation2,
+            InsideScienceStation3,
             OutsideScienceStation,
             BreakThroughLevel,
+            DuringLevel2,
             AfterLevel2,
             OutsideRebelStation2
         }
@@ -119,8 +122,8 @@ namespace SpaceProject
             AddDestination(rebelBase);
             AddDestination(peyeScienceStation);
             AddDestination(allyShips1[1]);
-            AddDestination(peyeScienceStation, 3);
-            AddDestination(rebelBase, 4);
+            AddDestination(peyeScienceStation, 5);
+            AddDestination(rebelBase, 5);
         }
 
         protected override void SetupObjectives()
@@ -134,39 +137,56 @@ namespace SpaceProject
                 delegate { return false; }));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                new EventTextCapsule(GetEvent((int)EventID.OutsideRebelStation1), null, EventTextCanvas.MessageBox),
+                new EventTextCapsule(GetEvent((int)EventID.OutsideRebelStation1), null, EventTextCanvas.MessageBox, PortraitID.Sair),
                 delegate { },
                 delegate { },
                 delegate { return (GameStateManager.currentState.ToLower().Equals("overworldstate")); },
                 delegate { return false; }));
 
             objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
-                200, new EventTextCapsule(new EventText("[Rebel] \"Let's go!\""), null, EventTextCanvas.MessageBox)));
+                200, new EventTextCapsule(GetEvent((int)EventID.AtRebelRendezvous), null, EventTextCanvas.MessageBox, PortraitID.RebelPilot)));
 
             AutoPilotObjective autoPilotObjective = new AutoPilotObjective(Game, this, ObjectiveDescriptions[0], autoPilotSpeed,
-                allyShips1, destinations[3].position, new EventTextCapsule(GetEvent((int)EventID.ArriveAtScienceStation), null, EventTextCanvas.MessageBox));
+                allyShips1, destinations[3].position,
+                new EventTextCapsule(GetEvent((int)EventID.ArriveAtScienceStation),
+                    null,
+                    EventTextCanvas.MessageBox, PortraitID.RebelPilot), false);
 
             autoPilotObjective.Initialize();
             autoPilotObjective.SetTimedMessages(new Dictionary<string, List<float>>
                 { 
                     { GetEvent((int)EventID.TravelToScienceStation1).Text, new List<float> { 5000, 3000 } },
-                    { GetEvent((int)EventID.TravelToScienceStation2).Text, new List<float> { 23000, 3000 } },
-                    { GetEvent((int)EventID.TravelToScienceStation3).Text, new List<float> { 9000, 3000 } }
+                    { GetEvent((int)EventID.TravelToScienceStation2).Text, new List<float> { 1000, 3000 } },
+                    { GetEvent((int)EventID.TravelToScienceStation3).Text, new List<float> { 13000, 3000 } }
                 }
-                , null, null);
+                , new List<List<PortraitID>>()
+                {
+                    new List<PortraitID> {PortraitID.Ai},
+                    new List<PortraitID> {PortraitID.Sair},
+                    new List<PortraitID> {PortraitID.Ai}
+                }
+                , new List<List<int>> { new List<int> { }, new List<int> { }, new List<int> { } });
 
             objectives.Add(autoPilotObjective);
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 "Itnos_1", LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.AfterLevel1),
-                    null, EventTextCanvas.MessageBox)));
+                    null, EventTextCanvas.MessageBox, PortraitID.RebelPilot)));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                new EventTextCapsule(GetEvent((int)EventID.InsideScienceStation), null, EventTextCanvas.BaseState)));
+                new EventTextCapsule(GetEvent((int)EventID.InsideScienceStation1), null, EventTextCanvas.MessageBox, PortraitID.Sair)));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                new EventTextCapsule(GetEvent((int)EventID.InsideScienceStation2), null, EventTextCanvas.MessageBox),
+                delegate { }, delegate { }, delegate { return true; }, delegate { return false; }));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                new EventTextCapsule(GetEvent((int)EventID.InsideScienceStation3), null, EventTextCanvas.MessageBox, PortraitID.Ente),
+                delegate { }, delegate { }, delegate { return true; }, delegate { return false; }));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1],
-                new EventTextCapsule(GetEvent((int)EventID.OutsideScienceStation), null, EventTextCanvas.MessageBox),
+                new EventTextCapsule(GetEvent((int)EventID.OutsideScienceStation), null, EventTextCanvas.MessageBox, PortraitID.Sair),
                 delegate 
                 {
                     RemoveShips();
@@ -178,7 +198,7 @@ namespace SpaceProject
                 delegate { return false; }));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1],
-                new EventTextCapsule(GetEvent((int)EventID.BreakThroughLevel), null, EventTextCanvas.MessageBox),
+                new EventTextCapsule(GetEvent((int)EventID.BreakThroughLevel), null, EventTextCanvas.MessageBox, PortraitID.Sair),
                 delegate
                 {
                     hangarAttackTime = StatsManager.PlayTime.GetFutureOverworldTime(2000);
@@ -191,7 +211,11 @@ namespace SpaceProject
                 delegate { return false; }));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
-                "Itnos_2", LevelStartCondition.TextCleared, new EventTextCapsule(GetEvent((int)EventID.AfterLevel2), null, EventTextCanvas.MessageBox)));
+                "Itnos_2", LevelStartCondition.TextCleared, 
+                new EventTextCapsule(GetEvent((int)EventID.AfterLevel2), null, EventTextCanvas.MessageBox, PortraitID.RebelPilot)));
+
+            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[1], 200,
+                new EventTextCapsule(GetEvent((int)EventID.OutsideRebelStation2), null, EventTextCanvas.MessageBox, PortraitID.Ente)));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1]));
         }

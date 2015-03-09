@@ -19,7 +19,8 @@ namespace SpaceProject
             AtMeetingPoint3,
             AtMeetingPoint4,
             AttackFreighter,
-            Level,
+            DuringLevel_1,
+            DuringLevel_2,
             AfterLevel,
             BackToRebelBase
         }
@@ -144,7 +145,7 @@ namespace SpaceProject
             objectives.Clear();
 
             Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                new EventTextCapsule(GetEvent((int)EventID.ToMeetingPoint), null, EventTextCanvas.MessageBox),
+                new EventTextCapsule(GetEvent((int)EventID.ToMeetingPoint), null, EventTextCanvas.MessageBox, PortraitID.Ai),
                 delegate { },
                 delegate { },
                 delegate { return (GameStateManager.currentState.ToLower().Equals("overworldstate")); },
@@ -165,7 +166,7 @@ namespace SpaceProject
             Objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], 400));
 
             Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                new EventTextCapsule(GetEvent((int)EventID.AtMeetingPoint1), null, EventTextCanvas.MessageBox),
+                new EventTextCapsule(GetEvent((int)EventID.AtMeetingPoint1), null, EventTextCanvas.MessageBox, PortraitID.RebelPilot),
                 delegate
                 {
                     OverworldShip.FollowPlayer = false;
@@ -176,15 +177,16 @@ namespace SpaceProject
                 delegate { return false; }));
 
             Objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                3000, 10000, GetEvent((int)EventID.AtMeetingPoint2).Text));
+                3000, 10000, PortraitID.RebelPilot, GetEvent((int)EventID.AtMeetingPoint2).Text));
 
             TimedMessageObjective timedMessageObjective = new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                3000, 10000, GetEvent((int)EventID.AtMeetingPoint3).Text);
-            timedMessageObjective.SetEventText(new EventTextCapsule(GetEvent((int)EventID.AtMeetingPoint4), null, EventTextCanvas.MessageBox));
+                3000, 10000, PortraitID.RebelPilot, GetEvent((int)EventID.AtMeetingPoint3).Text);
+            timedMessageObjective.SetEventText(
+                new EventTextCapsule(GetEvent((int)EventID.AtMeetingPoint4), null, EventTextCanvas.MessageBox, PortraitID.RebelPilot));
             Objectives.Add(timedMessageObjective);
 
             Objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                new EventTextCapsule(GetEvent((int)EventID.AttackFreighter), null, EventTextCanvas.MessageBox),
+                new EventTextCapsule(GetEvent((int)EventID.AttackFreighter), null, EventTextCanvas.MessageBox, PortraitID.RebelPilot),
                 delegate { },
                 delegate { },
                 delegate
@@ -204,7 +206,7 @@ namespace SpaceProject
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 "Retribution1", LevelStartCondition.Immediately,
-                new EventTextCapsule(GetEvent((int)EventID.AfterLevel), null, EventTextCanvas.MessageBox)));
+                new EventTextCapsule(GetEvent((int)EventID.AfterLevel), null, EventTextCanvas.MessageBox, PortraitID.RebelPilot)));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1],
                 delegate

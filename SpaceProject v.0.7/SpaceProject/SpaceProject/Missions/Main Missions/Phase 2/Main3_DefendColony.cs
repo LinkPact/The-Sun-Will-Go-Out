@@ -203,7 +203,7 @@ namespace SpaceProject
                 allyShips2, newNorrland.position, false);
 
             autoPilotObjective.Initialize();
-
+            autoPilotObjective.SetActivateRealTimeIndex(2);
             autoPilotObjective.SetTimedMessages(
                 new Dictionary<string, List<float>>
                 { 

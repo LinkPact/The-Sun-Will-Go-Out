@@ -22,7 +22,9 @@ namespace SpaceProject
         private Dictionary<string, List<float>> timedMessages;
         private float nextMessageTime;
         private bool realTime;
+        private bool useRealTimeSwitch;
         private int realTimeSwitchIndex;
+        private int activateRealTimeSwitchIndex;
         private List<List<PortraitID>> portraits;
         private List<List<int>> portraitTriggers;
 
@@ -120,7 +122,8 @@ namespace SpaceProject
                     {
                         realTimeSwitchIndex++;
                         PopupHandler.DisplayPortraitMessage(portraits[0], portraitTriggers[0], timedMessages.Keys.First());
-                        if (realTimeSwitchIndex >= 2)
+                        if (useRealTimeSwitch
+                            && realTimeSwitchIndex >= activateRealTimeSwitchIndex)
                         {
                             realTime = true;
                         }
@@ -139,7 +142,8 @@ namespace SpaceProject
                     {
                         realTimeSwitchIndex++;
                         PopupHandler.DisplayMessage(timedMessages.Keys.First());
-                        if (realTimeSwitchIndex >= 2)
+                        if (useRealTimeSwitch
+                            && realTimeSwitchIndex >= activateRealTimeSwitchIndex)
                         {
                             realTime = true;
                         }
@@ -223,6 +227,12 @@ namespace SpaceProject
             }
 
             this.timedMessages = timedMessages;
+        }
+
+        public void SetActivateRealTimeIndex(int index)
+        {
+            useRealTimeSwitch = true;
+            activateRealTimeSwitchIndex = index;
         }
     }
 }

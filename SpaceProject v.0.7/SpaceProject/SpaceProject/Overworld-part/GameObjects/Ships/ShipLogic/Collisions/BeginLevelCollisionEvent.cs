@@ -19,8 +19,8 @@ namespace SpaceProject
         public override void Invoke()
         {
             game.stateManager.overworldState.RemoveOverworldObject(ship);
-            PopupHandler.DisplayMessage(encounterMessage);
             game.stateManager.shooterState.BeginLevel(level);
+            PopupHandler.DisplayMessage(encounterMessage);
         }
     }
 }

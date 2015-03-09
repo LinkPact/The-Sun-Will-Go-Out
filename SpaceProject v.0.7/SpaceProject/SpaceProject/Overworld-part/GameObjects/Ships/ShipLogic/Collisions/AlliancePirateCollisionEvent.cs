@@ -21,7 +21,6 @@ namespace SpaceProject
             if (StatsManager.reputation < 0)
             {
                 game.stateManager.overworldState.RemoveOverworldObject(ship);
-                PopupHandler.DisplayMessage(GetMessage());
 
                 if (ship.Level == null 
                     || ship.Level.Equals(""))
@@ -32,6 +31,8 @@ namespace SpaceProject
                 {
                     game.stateManager.shooterState.BeginLevel(ship.Level);
                 }
+
+                PopupHandler.DisplayMessage(GetMessage());
             }
         }
 
