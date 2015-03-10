@@ -48,8 +48,13 @@ namespace SpaceProject
 
         protected override void Hide()
         {
+            string previousMessage = textContainer.GetCurrentMessage();
             textContainer.UpdateTextBuffer();
-            imageContainer.UpdateImageBuffer();
+
+            if (!previousMessage.Equals(textContainer.GetCurrentMessage()))
+            {
+                imageContainer.UpdateImageBuffer();
+            }
 
             if (textContainer.IsTextBufferEmpty()
                 && imageContainer.ImageBufferCount <= 0)

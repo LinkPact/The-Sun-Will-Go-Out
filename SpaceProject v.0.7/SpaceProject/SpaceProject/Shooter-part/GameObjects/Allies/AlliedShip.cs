@@ -42,6 +42,8 @@ namespace SpaceProject
 
             SightRangeSprite = new Sprite(spriteSheet.Texture, new Rectangle(2, 272, 100, 100));
             SightRangeScale = SightRange / (SightRangeSprite.SourceRectangle.Value.Width / 2);
+
+            angle = (float)(Math.PI / 180) * 180;
         }
 
         public override void Update(GameTime gameTime)

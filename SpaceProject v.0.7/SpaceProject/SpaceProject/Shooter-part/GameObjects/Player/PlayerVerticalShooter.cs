@@ -112,11 +112,12 @@ namespace SpaceProject
 
             //Animation
             anim.LoopTime = 1000;
-            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(213, 0, 23, 27)));
-
+            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(216, 1, 23, 27)));
+            
             BoundingSpace = 10;
 
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
+            angle = (float)(Math.PI / 180) * 180;
         }
 
         public override void Update(GameTime gameTime)
@@ -140,7 +141,7 @@ namespace SpaceProject
 
             if (IsKilled == false)
             {
-                spriteBatch.Draw(anim.CurrentFrame.Texture, Position, anim.CurrentFrame.SourceRectangle, Color.White, 0.0f, CenterPoint, 1.0f, SpriteEffects.None, DrawLayer);
+                spriteBatch.Draw(anim.CurrentFrame.Texture, Position, anim.CurrentFrame.SourceRectangle, Color.White, angle, CenterPoint, 1.0f, SpriteEffects.None, DrawLayer);
             }
         }
         

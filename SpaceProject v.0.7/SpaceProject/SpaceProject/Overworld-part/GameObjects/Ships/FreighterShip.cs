@@ -104,7 +104,7 @@ namespace SpaceProject
         public override void Update(GameTime gameTime)
         {
             angle = (float)(MathFunctions.RadiansFromDir(new Vector2(
-                Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI) / 2);
+                Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + +(Math.PI / 180) * 270);
 
            base.Update(gameTime);
         }

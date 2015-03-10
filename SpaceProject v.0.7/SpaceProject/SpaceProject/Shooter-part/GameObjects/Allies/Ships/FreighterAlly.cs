@@ -84,7 +84,7 @@ namespace SpaceProject
             DirectionX = 1;
             DirectionY = 0;
 
-            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(2, 201, 43, 68)));
+            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(4, 201, 43, 68)));
             CenterPoint = new Vector2(anim.CurrentFrame.SourceRectangle.Value.Width / 2,
                                       anim.CurrentFrame.SourceRectangle.Value.Height / 2);
         }

@@ -32,11 +32,11 @@ namespace SpaceProject
 
             if (type == ShipType.Alliance)
             {
-                sprite = spriteSheet.GetSubSprite(new Rectangle(48, 200, 23, 28));
+                sprite = spriteSheet.GetSubSprite(new Rectangle(49, 201, 23, 27));
             }
             else if (type == ShipType.Rebel)
             {
-                sprite = spriteSheet.GetSubSprite(new Rectangle(484, 0, 23, 34));
+                sprite = spriteSheet.GetSubSprite(new Rectangle(49, 230, 23, 27));
             }
             viewRadius = 300;
             position = new Vector2(0,0);
@@ -156,7 +156,7 @@ namespace SpaceProject
 
             // Rotate ship
             angle = (float)(MathFunctions.RadiansFromDir(new Vector2(
-                Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI) / 2);
+                Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI / 180) * 270);
             base.Update(gameTime);
         }
 
