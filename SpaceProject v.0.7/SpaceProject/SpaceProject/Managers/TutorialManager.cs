@@ -35,9 +35,7 @@ namespace SpaceProject
         private int tempTimer2 = 200;
 
         // progress flags
-        private bool hasEnteredSectorX;
         private bool hasEnteredStation;
-        private bool hasEnteredPlanet;
         private bool hasEnteredOverworld;
         private bool hasEnteredVerticalShooter;
         private bool hasEnteredShop;
@@ -69,9 +67,7 @@ namespace SpaceProject
             tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(1, 397, 366, 197)));
             tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(368, 397, 366, 197)));
 
-            hasEnteredSectorX = false;
             hasEnteredStation = false;
-            hasEnteredPlanet = false;
             hasEnteredOverworld = false;
             hasEnteredVerticalShooter = false;
             hasEnteredShop = false;
@@ -120,15 +116,15 @@ namespace SpaceProject
                 "If you forget where you need to go you can at any time check your current mission objectives in the mission log. Press 'M' to bring up the mission screen."}, TutorialImage.Coordinates);
             }
 
-            if (!hasEnteredPlanet && GameStateManager.currentState.Equals("PlanetState") &&
-                game.stateManager.planetState.SubStateManager.ActiveMenuState ==
-                game.stateManager.planetState.SubStateManager.OverviewMenuState &&
-                game.stateManager.planetState.SubStateManager.ButtonControl != ButtonControl.Confirm)
-            {
-                hasEnteredPlanet = true;
-
-                //DisplayTutorialMessage("This is the planet menu. If the planet has a colony, you can buy/sell items there, accept missions and listen to rumors from it's inhabitants. Not all planets are inhabited though.");
-            }
+            //if (!hasEnteredPlanet && GameStateManager.currentState.Equals("PlanetState") &&
+            //    game.stateManager.planetState.SubStateManager.ActiveMenuState ==
+            //    game.stateManager.planetState.SubStateManager.OverviewMenuState &&
+            //    game.stateManager.planetState.SubStateManager.ButtonControl != ButtonControl.Confirm)
+            //{
+            //    hasEnteredPlanet = true;
+            //
+            //    DisplayTutorialMessage("This is the planet menu. If the planet has a colony, you can buy/sell items there, accept missions and listen to rumors from it's inhabitants. Not all planets are inhabited though.");
+            //}
 
             //if (!hasEnteredSectorX &&
             //        MissionManager.GetMission(MissionID.Main1_1_RebelsInTheAsteroids).MissionState == StateOfMission.CompletedDead)
@@ -307,11 +303,12 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                //game.messageBox.DisplayMessageWithImage(messages, GetImageFromEnum(imageID), true);
+                PopupHandler.DisplayMessageWithImage(new List<Sprite> { GetImageFromEnum(imageID) },
+                    new List<int>(), messages.ToArray());
             }
         }
 
-        private void DisplayTutorialMessage(List<String> messages, List<TutorialImage> imageID, List<int>imageTriggers)
+        private void DisplayTutorialMessage(List<String> messages, List<TutorialImage> imageID, List<int> imageTriggers)
         {
             if (tutorialsUsed)
             {
@@ -322,7 +319,7 @@ namespace SpaceProject
                     sprites.Add(GetImageFromEnum(imgID));
                 }
 
-                //game.messageBox.DisplayMessageWithImage(messages, sprites,  true, imageTriggers);
+                PopupHandler.DisplayMessageWithImage(sprites, imageTriggers, messages.ToArray());
             }
         }
 
@@ -330,7 +327,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                //game.messageBox.DisplayImage(GetImageFromEnum(imageID), true);
+                PopupHandler.DisplayImage(GetImageFromEnum(imageID));
             }
         }
 
@@ -345,7 +342,7 @@ namespace SpaceProject
                     sprites.Add(GetImageFromEnum(imgID));
                 }
 
-                //game.messageBox.DisplayImages(sprites, true);
+                PopupHandler.DisplayImage(sprites.ToArray());
             }
         }
 
@@ -353,9 +350,7 @@ namespace SpaceProject
         {
             SortedDictionary<string, string> tutorialProgress = new SortedDictionary<string, string>();
 
-            tutorialProgress.Add("hasEnteredSectorX", hasEnteredSectorX.ToString());
             tutorialProgress.Add("hasEnteredStation", hasEnteredStation.ToString());
-            tutorialProgress.Add("hasEnteredPlanet", hasEnteredPlanet.ToString());
             tutorialProgress.Add("hasEnteredOverworld", hasEnteredOverworld.ToString());
             tutorialProgress.Add("hasEnteredVerticalShooter", hasEnteredVerticalShooter.ToString());
             tutorialProgress.Add("hasEnteredShop", hasEnteredShop.ToString());
@@ -370,9 +365,7 @@ namespace SpaceProject
 
         public void Load()
         {
-            hasEnteredSectorX = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredsectorx", false);
             hasEnteredStation = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredstation", false);
-            hasEnteredPlanet = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredplanet", false);
             hasEnteredOverworld = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredoverworld", false);
             hasEnteredVerticalShooter = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredverticalshooter", false);
             hasEnteredShop = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredshop", false);
