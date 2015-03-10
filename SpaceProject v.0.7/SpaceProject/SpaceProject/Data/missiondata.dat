@@ -371,7 +371,7 @@ Accept = [SAIR] "Well then, it is decided. Let's go!"#[Alliance] "Identify yours
 FailText = ""
 EventText1 = [Sair] "Well done. The area seems to be swarmed by both Alliance and rebel scouts. Stay alert."#"A rebel scout fleet is incoming. Let's try to slip through!"
 EventText2 = Text displayed when killed on level?
-EventText3 = [Sair] "Finally, we made it through! It appears we managed to make it here before the others."#"To end this, just open re. Hit the asteroid until it takes re. Burning it. Burning it all."#"Are you ready to do it? Is this the way to go? I still don't know."#"Maybe we are removing the system's last hope in vain."#"Or maybe this will prevent further war and chaos."#"No backing down now, I guess. Let's open fire!"
+EventText3 = [Sair] "Finally, we made it through! It appears we managed to make it here before the others."#"To end this, just open fire. Hit the asteroid until it takes re. Burning it. Burning it all."#"Are you ready to do it? Is this the way to go? I still don't know."#"Maybe we are removing the system's last hope in vain."#"Or maybe this will prevent further war and chaos."#"No backing down now, I guess. Let's open fire!"
 ObjectiveCompleted = ""
 Fail = ""
 Success = "Good job!"

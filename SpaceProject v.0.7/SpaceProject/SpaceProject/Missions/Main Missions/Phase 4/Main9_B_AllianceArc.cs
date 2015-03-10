@@ -97,26 +97,26 @@ namespace SpaceProject
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                  new EventTextCapsule(
-                    GetEvent((int)EventID.ArriveAtTelmun), null, EventTextCanvas.BaseState)));
+                    GetEvent((int)EventID.ArriveAtTelmun), null, EventTextCanvas.MessageBox, PortraitID.Ai)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
                      FirstAttack,
                 LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.BetweenAttacks),
-                    null, EventTextCanvas.BaseState)));
+                    null, EventTextCanvas.MessageBox, PortraitID.Ai)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[2],
                 SecondAttack,
                 LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.AfterAttacks), null,
-                    EventTextCanvas.BaseState)));
+                    EventTextCanvas.MessageBox, PortraitID.Ai)));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 delegate { },
                 delegate { },
                 delegate
                 {
-                    return missionHelper.IsTextCleared();
+                    return PopupHandler.TextBufferEmpty;
                 },
                 delegate { return false; }));
 

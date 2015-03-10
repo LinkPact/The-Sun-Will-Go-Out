@@ -90,39 +90,51 @@ namespace SpaceProject
 
         protected override void SetupObjectives()
         {
+            float time = -1;
+
             objectives.Clear();
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                3000, 2000, GetEvent((int)EventID.TravellingToCoordinate).Text));
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                new EventTextCapsule(GetEvent((int)EventID.TravellingToCoordinate), null, EventTextCanvas.MessageBox, PortraitID.Sair),
+                delegate { }, delegate { }, 
+                delegate { return GameStateManager.currentState.Equals("OverworldState"); }, 
+                delegate { return false; }));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                new EventTextCapsule(GetEvent((int)EventID.AtCoordinate), null, EventTextCanvas.MessageBox)));
+                new EventTextCapsule(GetEvent((int)EventID.AtCoordinate), null, EventTextCanvas.MessageBox, PortraitID.Sair)));
 
             objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                3000, 3000, GetEvent((int)EventID.IncomingMessage1).Text));
+                3000, 3000, PortraitID.Sair, GetEvent((int)EventID.IncomingMessage1).Text));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                new EventTextCapsule(GetEvent((int)EventID.AllianceMessage), null, EventTextCanvas.MessageBox),
+                new EventTextCapsule(GetEvent((int)EventID.AllianceMessage), null, EventTextCanvas.MessageBox, PortraitID.Ai),
                 delegate { },
                 delegate { },
                 delegate { return true; },
                 delegate { return false; }));
-
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
-                3000, 3000, GetEvent((int)EventID.SairCommentingOnMessage1).Text));
-
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
-                3000, 2000, GetEvent((int)EventID.IncomingMessage2).Text));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1],
-                new EventTextCapsule(GetEvent((int)EventID.RebelMessage), null, EventTextCanvas.MessageBox),
+                new EventTextCapsule(GetEvent((int)EventID.SairCommentingOnMessage1), null, EventTextCanvas.MessageBox, PortraitID.Sair),
+                delegate 
+                {
+                    time = StatsManager.PlayTime.GetFutureOverworldTime(1000);
+                },
+                delegate { },
+                delegate { return StatsManager.PlayTime.HasOverworldTimePassed(time); },
+                delegate { return false; }));
+
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
+                3000, 2000, PortraitID.Sair, GetEvent((int)EventID.IncomingMessage2).Text));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1],
+                new EventTextCapsule(GetEvent((int)EventID.RebelMessage), null, EventTextCanvas.MessageBox, PortraitID.Rok),
                 delegate { },
                 delegate { },
                 delegate { return true; },
                 delegate { return false; }));
 
             objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[1],
-                3000, 2000, GetEvent((int)EventID.SairCommentingOnMessage2).Text));
+                3000, 2000, PortraitID.Sair, GetEvent((int)EventID.SairCommentingOnMessage2).Text));
         }
     }
 }

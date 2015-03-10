@@ -97,19 +97,19 @@ namespace SpaceProject
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 AvoidAllianceLevel, LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.AfterAllianceAttack), null,
-                    EventTextCanvas.BaseState)));
+                    EventTextCanvas.MessageBox, PortraitID.Sair)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
                 AvoidRebelsLevel, LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.SettingExplosions), null,
-                    EventTextCanvas.BaseState)));
+                    EventTextCanvas.MessageBox, PortraitID.Sair)));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 delegate { },
                 delegate { },
                 delegate
                 {
-                    return missionHelper.IsTextCleared();
+                    return PopupHandler.TextBufferEmpty;
                 },
                 delegate { return false; }));
 
