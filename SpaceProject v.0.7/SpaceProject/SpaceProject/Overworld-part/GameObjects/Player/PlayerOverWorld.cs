@@ -134,8 +134,12 @@ namespace SpaceProject
         {
             damageTimer -= gameTime.ElapsedGameTime.Milliseconds;
 
-            if (StatsManager.GetShipLife() <= 0)
+            if (StatsManager.GetShipLife() <= 0
+                && GameStateManager.currentState == "OverworldState")
+            {
+                Game.stateManager.outroState.SetOutroType(OutroType.GameOver);
                 Game.stateManager.ChangeState("OutroState");
+            }
 
             foreach (Particle par in particles)
             {

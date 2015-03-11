@@ -8,24 +8,34 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
+    public enum OutroType
+    {
+        GameOver,
+        RebelEnd,
+        AllianceEnd,
+        OnYourOwnEnd
+    }
+
     public class OutroState : GameState
     {
+        private readonly int TextBoxWidth = 600;
+
         private TextBox textBox;
         private SpriteFont spriteFont;
 
         private float txtSpeed;
         private const float txtMaxSpeed = 0.75f;
         private const float txtMinSpeed = 0.15f;
-        private Texture2D backdrop;  
+        private Texture2D backdrop;
 
         public OutroState(Game1 Game, string name) :
             base(Game, name)
         {
-            spriteFont = Game.fontManager.GetFont(14);
+            spriteFont = Game.fontManager.GetFont(16);
             textBox = TextUtils.CreateTextBoxConfig(spriteFont,
-                                                    new Rectangle(10,
+                                                    new Rectangle((Game.Window.ClientBounds.Width - TextBoxWidth) / 2,
                                                                   Game.Window.ClientBounds.Height,
-                                                                  Game.Window.ClientBounds.Width - 20,
+                                                                  TextBoxWidth,
                                                                   Game.Window.ClientBounds.Height - 20),
                                                     "Data/storydata.dat",
                                                     false);
@@ -36,28 +46,10 @@ namespace SpaceProject
             txtSpeed = 0.15f;
             base.Initialize();
             backdrop = Game.Content.Load<Texture2D>("Overworld-Sprites/introBackdrop");
-
-            List<string> tempList = new List<string>();
-
-            tempList.Add("Outro1");
-
-            textBox.LoadFormattedText("Outro",
-                                     tempList,
-                                     null);
-        }
-
-        public override void OnEnter()
-        {
-        }
-
-        public override void OnLeave()
-        {          
         }
 
         public override void Update(GameTime gameTime)
         {
-            //Game.Window.Title = ("SpaceExplorationGame - " + "Outro");
-
             #region Input
 
             if (ControlManager.CheckHold(RebindableKeys.Up))
@@ -70,7 +62,6 @@ namespace SpaceProject
 
             if (ControlManager.GamepadReady == false)
             {
-
                 if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)))
                 {
                     Game.Restart();
@@ -79,7 +70,6 @@ namespace SpaceProject
 
             if (ControlManager.GamepadReady == true)
             {
-
                 if (ControlManager.CurrentGamepadState.IsButtonDown(ControlManager.GamepadAction))
                 {
                     Game.Restart();
@@ -100,7 +90,6 @@ namespace SpaceProject
             {
                 Game.Restart();
             }
-
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -119,5 +108,47 @@ namespace SpaceProject
             textBox.Draw(spriteBatch, Game.fontManager.FontColor, Game.fontManager.FontOffset);
         }
 
+        public void SetOutroType(OutroType outroType)
+        {
+            string section = "";
+            int paragraphs = 0;
+            List<string> tempList = new List<string>();
+
+            switch (outroType)
+            {
+                case OutroType.GameOver:
+                    section = "gameover";
+                    paragraphs = 1;
+                    ActiveSong = Music.none;
+                    break;
+
+                case OutroType.RebelEnd:
+                    section = "rebelending";
+                    paragraphs = 5;
+                    ActiveSong = Music.Outro;
+                    break;
+
+                case OutroType.AllianceEnd:
+                    section = "allianceending";
+                    paragraphs = 7;
+                    ActiveSong = Music.Outro;
+                    break;
+
+                case OutroType.OnYourOwnEnd:
+                    section = "onyourownending";
+                    paragraphs = 8;
+                    ActiveSong = Music.GoingOut;
+                    break;
+            }
+
+            for (int i = 1; i <= paragraphs; i++ )
+            {
+                tempList.Add(section + i.ToString());
+            }
+                
+            textBox.LoadFormattedText(section,
+                                     tempList,
+                                     null);
+        }
     }
 }

@@ -261,8 +261,10 @@ namespace SpaceProject
 
             Inputhandling();
 
-            if (burnOutEnding.Finished)
+            if (burnOutEnding.Finished
+                && GameStateManager.currentState.Equals("OverworldState"))
             {
+                Game.stateManager.outroState.SetOutroType(OutroType.OnYourOwnEnd);
                 Game.stateManager.ChangeState("OutroState");
                 Game.player.EnableControls();
             }

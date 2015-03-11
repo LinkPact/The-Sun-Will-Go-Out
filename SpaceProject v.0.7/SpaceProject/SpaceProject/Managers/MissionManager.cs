@@ -740,14 +740,16 @@ namespace SpaceProject
 
             if (mainRebelArc.MissionState == StateOfMission.Completed)
             {
+                mainRebelArc.MissionState = StateOfMission.CompletedDead;
+                game.stateManager.outroState.SetOutroType(OutroType.RebelEnd);
                 game.stateManager.ChangeState("OutroState");
-                // TODO: Ending 1
             }
 
             else if (mainAllianceArc.MissionState == StateOfMission.Completed)
             {
+                mainAllianceArc.MissionState = StateOfMission.CompletedDead;
+                game.stateManager.outroState.SetOutroType(OutroType.AllianceEnd);
                 game.stateManager.ChangeState("OutroState");
-                // TODO: Ending 2
             }
 
             else if (mainOnYourOwnArc.MissionState == StateOfMission.Completed)
