@@ -33,18 +33,29 @@ namespace SpaceProject
     {
         #region variables
 
+        public static bool DisplayMenuOnReturn;
+
         private static Game1 game;
         private static Sprite spriteSheet;
         private static Sprite portraitSpriteSheet;
 
-        private static List<Popup> popupQueue;
-        private bool displayOnReturn = false;
+        private static List<Popup> messageQueue;
+        private static List<Popup> menuQueue;
+        private static List<Popup> realTimeMessageQueue;
 
         #endregion
 
         #region Properties
 
-        public static bool TextBufferEmpty { get { return popupQueue.Count <= 0; } }
+        public static bool TextBufferEmpty
+        { 
+            get 
+            { 
+                return messageQueue.Count <= 0 
+                    && menuQueue.Count <= 0
+                    && realTimeMessageQueue.Count <= 0;
+            } 
+        }
 
         #endregion
 
@@ -57,63 +68,44 @@ namespace SpaceProject
         public void Initialize()
         {
             portraitSpriteSheet = new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites\\PortraitSpriteSheet"), null);
-            popupQueue = new List<Popup>();
-
-            displayOnReturn = false;
+            messageQueue = new List<Popup>();
+            menuQueue = new List<Popup>();
+            realTimeMessageQueue = new List<Popup>();
         }
 
         public void Update(GameTime gameTime)
         {
-            if (popupQueue.Count > 0)
-            {
-                if (popupQueue[0].PopupState == PopupState.Hidden)
-                {
-                    popupQueue[0].Show();
-                }
-
-                else if (popupQueue[0].PopupState == PopupState.Showing)
-                {
-                    popupQueue[0].Update(gameTime);
-                    game.helper.Visible = false;
-                }
-
-                else
-                {
-                    popupQueue.RemoveAt(0);
-                }
-            }
-
-            //if (actionStorage.Count > 0)
-            //{
-            //    if (MissionManager.MissionEventBuffer.Count <= 0
-            //        && game.stateManager.planetState.SubStateManager.ButtonControl != ButtonControl.Confirm)
-            //    {
-            //        DisplaySelectionMenu(textStorage[0], optionStorage, actionStorage);
-            //
-            //        textStorage.Clear();
-            //        optionStorage.Clear();
-            //        actionStorage.Clear();
-            //    }
-            //}
-
             //displays the overmenu automaticly when returning from the inventory or mission screen 
-            if (displayOnReturn == true)
+            if (PopupHandler.DisplayMenuOnReturn)
             {
                 if (GameStateManager.currentState.Equals("OverworldState"))
                 {
                     DisplayMenu();
-                    displayOnReturn = false;
+                    PopupHandler.DisplayMenuOnReturn = false;
                 }
             }
+
+            UpdateQueue(gameTime, messageQueue);
+            UpdateQueue(gameTime, menuQueue);
+            UpdateQueue(gameTime, realTimeMessageQueue);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (popupQueue.Count > 0
-                && popupQueue[0].PopupState == PopupState.Showing)
+            if (realTimeMessageQueue.Count > 0
+                && GameStateManager.currentState.Equals("OverworldState")
+                && realTimeMessageQueue[0].PopupState == PopupState.Showing)
             {
-                popupQueue[0].Draw(spriteBatch);
+                if (menuQueue.Count <= 0 
+                    || !(menuQueue[0] is SelectionMenu)
+                    || menuQueue[0].PopupState != PopupState.Showing)
+                {
+                    realTimeMessageQueue[0].Draw(spriteBatch);
+                }
             }
+
+            DrawQueue(spriteBatch, messageQueue);
+            DrawQueue(spriteBatch, menuQueue);
         }
 
         public static void DisplayMessage(params string[] messages)
@@ -123,7 +115,7 @@ namespace SpaceProject
             textMessage.Initialize();
             textMessage.SetMessage(messages);
 
-            popupQueue.Add(textMessage);
+            messageQueue.Add(textMessage);
         }
 
         public static void DisplayPortraitMessage(PortraitID portrait, params string[] messages)
@@ -133,7 +125,7 @@ namespace SpaceProject
             portraitMessage.SetMessage(messages);
             portraitMessage.SetPortrait(PopupHandler.GetPortrait(portrait));
 
-            popupQueue.Add(portraitMessage);
+            messageQueue.Add(portraitMessage);
         }
 
         public static void DisplayPortraitMessage(List<PortraitID> portraits, List<int> portraitTriggers, params string[] messages)
@@ -150,7 +142,7 @@ namespace SpaceProject
             portraitMessage.SetMessage(messages);
             portraitMessage.SetPortraits(portraitList, portraitTriggers, TextUtils.GetSplitCount(messages));
 
-            popupQueue.Add(portraitMessage);
+            messageQueue.Add(portraitMessage);
         }
 
         public static void DisplayImage(params Sprite[] images)
@@ -160,7 +152,7 @@ namespace SpaceProject
             imagePopup.Initialize();
             imagePopup.SetImages(images);
 
-            popupQueue.Add(imagePopup);
+            messageQueue.Add(imagePopup);
         }
 
         public static void DisplayMessageWithImage(List<Sprite> images, List<int> imageTriggers, params string[] messages)
@@ -181,7 +173,7 @@ namespace SpaceProject
             imageMessage.SetMessage(messages);
             imageMessage.SetImages(TextUtils.GetSplitCount(messages), imageTriggers.ToArray<int>(), images.ToArray<Sprite>());
 
-            popupQueue.Add(imageMessage);
+            messageQueue.Add(imageMessage);
         }
 
         public static void DisplayRealtimePortraitMessage(float delay, PortraitID[] portraits,
@@ -211,7 +203,7 @@ namespace SpaceProject
 
             realTimeMessage.SetPortrait(portraitList, TextUtils.GetSplitCount(messages), portraitTriggers);
 
-            popupQueue.Add(realTimeMessage);
+            realTimeMessageQueue.Add(realTimeMessage);
         }
 
         public static void DisplayRealtimeMessage(float delay, params string[] messages)
@@ -221,7 +213,7 @@ namespace SpaceProject
             realTimeMessage.SetMessage(messages);
             realTimeMessage.SetDelay(delay);
 
-            popupQueue.Add(realTimeMessage);
+            realTimeMessageQueue.Add(realTimeMessage);
         }
 
         public static void DisplayMenu()
@@ -239,21 +231,11 @@ namespace SpaceProject
                 menu.SetMenuOptions("Restart Level", "Give Up Level", "Exit Game", "Return To Game");
             }
 
-            popupQueue.Add(menu);
+            menuQueue.Add(menu);
         }
 
         public static void DisplaySelectionMenu(string message, List<String> options, List<System.Action> actions)
         {
-            //// TODO: Make more general
-            //if (MissionManager.MissionEventBuffer.Count > 0)
-            //{
-            //    textStorage.Clear();
-            //    textStorage.Add(message);
-            //    optionStorage = options;
-            //    actionStorage = actions;
-            //    return;
-            //}
-
             if (actions.Count > 0
                 && options.Count != actions.Count)
             {
@@ -267,7 +249,7 @@ namespace SpaceProject
             selectionMenu.SetMenuOptions(options.ToArray());
             selectionMenu.SetMenuActions(actions.ToArray());
 
-            popupQueue.Add(selectionMenu);
+            menuQueue.Add(selectionMenu);
         }
 
         private static Sprite GetPortrait(PortraitID portrait)
@@ -329,6 +311,42 @@ namespace SpaceProject
             }
 
             return new Sprite(portraitSpriteSheet.Texture, sourceRect);
+        }
+
+        private static void UpdateQueue(GameTime gameTime, List<Popup> queue)
+        {
+            if (queue.Count > 0)
+            {
+                if (queue[0].PopupState == PopupState.Hidden)
+                {
+                    queue[0].Show();
+                }
+
+                else if (queue[0].PopupState == PopupState.Showing)
+                {
+                    if ((queue[0] is RealTimeMessage
+                        && GameStateManager.currentState.Equals("OverworldState"))
+                        || !(queue[0] is RealTimeMessage))
+                    {
+                        queue[0].Update(gameTime);
+                        game.helper.Visible = false;
+                    }
+                }
+
+                else if (queue[0].PopupState == PopupState.Finished)
+                {
+                    queue.RemoveAt(0);
+                }
+            }
+        }
+
+        private static void DrawQueue(SpriteBatch spriteBatch, List<Popup> queue)
+        {
+            if (queue.Count > 0
+                && queue[0].PopupState == PopupState.Showing)
+            {
+                queue[0].Draw(spriteBatch);
+            }
         }
     }
 }

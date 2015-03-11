@@ -17,6 +17,8 @@ namespace SpaceProject
 
     class Popup
     {
+        public static int delayTimer;
+
         // constants
         private readonly int CanvasOpacity = 230;
         private readonly float LayerDepth = 0.95f;
@@ -33,8 +35,7 @@ namespace SpaceProject
         protected Vector2 canvasScale;
 
         protected bool usePause;
-        protected int delayTimer;
-        private float popupTime;
+        protected float popupTime;
 
         protected bool useOkayButton;
         private Sprite okayButton;
@@ -53,7 +54,6 @@ namespace SpaceProject
         {
             InitializePositions();
             useOkayButton = true;
-            delayTimer = PressDelay;
             popupState = PopupState.Hidden;
             canvasOrigin = new Vector2(canvas.SourceRectangle.Value.Width / 2,
                                        canvas.SourceRectangle.Value.Height / 2);

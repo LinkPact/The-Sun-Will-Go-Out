@@ -19,6 +19,8 @@ namespace SpaceProject
 
         private int holdTimer;
 
+        private static int lastIndex;
+
         public Menu(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
         {
@@ -50,6 +52,12 @@ namespace SpaceProject
         public override void Initialize()
         {
             base.Initialize();
+
+            if (Menu.lastIndex != -1)
+            {
+                cursorIndex = Menu.lastIndex;
+                Menu.lastIndex = -1;
+            }
 
             menuOptions = new List<string>();
             menuActions = new List<System.Action>();
@@ -123,16 +131,37 @@ namespace SpaceProject
 
         protected virtual void DefaultOnPressActions()
         {
+            Popup.delayTimer = PressDelay;
+
             switch (menuOptions[cursorIndex])
             {
+                case "Help":
+                    game.stateManager.ChangeState("HelpScreenState");
+                    DisplayMenuOnReturn(0);
+                    Hide();
+                    break;
+
                 case "Ship Inventory":
                     game.stateManager.ChangeState("ShipManagerState");
+                    DisplayMenuOnReturn(1);
                     Hide();
                     break;
 
                 case "Mission Screen":
                     game.stateManager.ChangeState("MissionScreenState");
+                    DisplayMenuOnReturn(2);
                     Hide();
+                    break;
+
+                case "Options":
+                    game.stateManager.ChangeState("OptionsMenuState");
+                    game.menuBGController.SetBackdropPosition(new Vector2(-903, -101));
+                    DisplayMenuOnReturn(3);
+                    Hide();
+                    break;
+
+                case "Save":
+                    game.Save();
                     break;
 
                 case "Exit Game":
@@ -152,25 +181,11 @@ namespace SpaceProject
                     }
                     break;
 
-                case "Options":
-                    game.stateManager.ChangeState("OptionsMenuState");
-                    game.menuBGController.SetBackdropPosition(new Vector2(-903, -101));
-                    Hide();
-                    break;
-
-                case "Save":
-                    game.Save();
-                    break;
-
-                case "Help":
-                    game.stateManager.ChangeState("HelpScreenState");
-                    Hide();
-                    break;
-
                 case "Return To Game":
                     Hide();
                     break;
 
+                // Shooter state only 
                 case "Restart Level":
                     game.stateManager.shooterState.CurrentLevel.ResetLevel();
                     game.stateManager.shooterState.Initialize();
@@ -244,6 +259,12 @@ namespace SpaceProject
         {
             menuActions[cursorIndex].Invoke();
             Hide();
+        }
+
+        protected void DisplayMenuOnReturn(int currentIndex)
+        {
+            PopupHandler.DisplayMenuOnReturn = true;
+            Menu.lastIndex = currentIndex;
         }
     }
 }

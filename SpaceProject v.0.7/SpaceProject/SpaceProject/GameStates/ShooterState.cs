@@ -299,6 +299,7 @@ namespace SpaceProject
             gameObjects.Clear();
 
             MediaPlayer.Stop();
+            Popup.delayTimer = 50;
         }
 
         public override void Update(GameTime gameTime)

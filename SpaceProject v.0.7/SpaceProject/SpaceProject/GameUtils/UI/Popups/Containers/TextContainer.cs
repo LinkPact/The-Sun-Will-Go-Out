@@ -72,6 +72,11 @@ namespace SpaceProject
             }
         }
 
+        public void UpdatePosition(GameTime gameTime, Vector2 canvasPosition)
+        {
+            base.Update(gameTime, canvasPosition);
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             if (text != null)

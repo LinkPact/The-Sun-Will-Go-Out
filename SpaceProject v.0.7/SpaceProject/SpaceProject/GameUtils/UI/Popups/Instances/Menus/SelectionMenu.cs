@@ -95,12 +95,7 @@ namespace SpaceProject
 
                 case "cancel":
                     Hide();
-
-                    if (GameStateManager.currentState.Equals("OverworldState"))
-                    {
-                        PopupHandler.DisplayMenu();
-                        cursorIndex = 5;
-                    }
+                    DisplayMenuOnReturn(5);
                     break;
             }
         }

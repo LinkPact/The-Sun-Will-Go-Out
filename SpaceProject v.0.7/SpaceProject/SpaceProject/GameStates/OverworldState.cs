@@ -381,10 +381,7 @@ namespace SpaceProject
 
             else if (ControlManager.CheckPress(RebindableKeys.Pause))
             {
-                if (PopupHandler.TextBufferEmpty)
-                {
-                    PopupHandler.DisplayMenu();
-                }
+                PopupHandler.DisplayMenu();
             }
 
             else if (ControlManager.CheckKeyPress(Keys.M))

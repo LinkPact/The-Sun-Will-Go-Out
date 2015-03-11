@@ -32,7 +32,14 @@ namespace SpaceProject
             canvasPosition = new Vector2(game.camera.cameraPos.X,
                              game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 4);
 
-            base.Update(gameTime);
+            if (Game1.Paused)
+            {
+                textContainer.UpdatePosition(gameTime, canvasPosition);
+            }
+            else
+            {
+                base.Update(gameTime);
+            }
 
             if (!hideTimeSet
                 && textContainer.HasScrollingFinished())
