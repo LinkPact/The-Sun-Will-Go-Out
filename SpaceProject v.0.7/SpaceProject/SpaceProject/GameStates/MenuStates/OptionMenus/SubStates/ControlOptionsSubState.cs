@@ -596,42 +596,34 @@ namespace SpaceProject
                     {
                         case RebindableKeys.Action1:
                             menuOptions[1, 1] = tempKey;
-                            optionsMenuState.SaveSettings();
                             break;
                     
                         case RebindableKeys.Action2:
                             menuOptions[2, 1] = tempKey;
-                            optionsMenuState.SaveSettings();
                             break;
                     
                         case RebindableKeys.Action3:
                             menuOptions[3, 1] = tempKey;
-                            optionsMenuState.SaveSettings();
                             break;
                     
                         case RebindableKeys.Up:
                             menuOptions[4, 1] = tempKey;
-                            optionsMenuState.SaveSettings();
                             break;
                     
                         case RebindableKeys.Down:
                             menuOptions[5, 1] = tempKey;
-                            optionsMenuState.SaveSettings();
                             break;
                     
                         case RebindableKeys.Left:
                             menuOptions[6, 1] = tempKey;
-                            optionsMenuState.SaveSettings();
                             break;
                     
                         case RebindableKeys.Right:
                             menuOptions[7, 1] = tempKey;
-                            optionsMenuState.SaveSettings();
                             break;
                     
                         case RebindableKeys.Pause:
                             menuOptions[8, 1] = tempKey;
-                            optionsMenuState.SaveSettings();
                             break;
                     }
                     

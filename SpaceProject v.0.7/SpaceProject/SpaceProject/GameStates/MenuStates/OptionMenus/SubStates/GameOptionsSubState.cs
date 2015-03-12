@@ -77,7 +77,6 @@ namespace SpaceProject
                 case "tutorials":
                     game.tutorialManager.TutorialsUsed = !game.tutorialManager.TutorialsUsed;
                     UpdateText();
-                    optionsMenuState.SaveSettings();
 
                     PlaySelectSound();
                     break;

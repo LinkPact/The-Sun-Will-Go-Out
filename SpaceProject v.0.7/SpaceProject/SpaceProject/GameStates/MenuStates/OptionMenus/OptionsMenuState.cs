@@ -137,7 +137,7 @@ namespace SpaceProject
 
         public override void OnLeave()
         {
-            
+            SaveSettings();
         }
 
         public override void Update(GameTime gameTime)
@@ -385,11 +385,10 @@ namespace SpaceProject
 
         public void LeaveSubState()
         {
-            SaveSettings();
             activeOptionState = null;
         }
 
-        public void SaveSettings()
+        private void SaveSettings()
         {
             Game.settingsFile.EmptySaveFile("settings.ini");
 

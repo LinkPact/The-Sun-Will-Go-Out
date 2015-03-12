@@ -213,7 +213,6 @@ namespace SpaceProject
                         game.musicManager.SetMusicVolume(game.musicManager.GetMusicVolume() + 0.1f);
                     else
                         game.musicManager.SetMusicVolume(game.musicManager.GetMusicVolume() - 0.1f);
-                    optionsMenuState.SaveSettings();
                     break;
             
                 case "sound volume":
@@ -225,7 +224,6 @@ namespace SpaceProject
                             game.soundEffectsManager.GetSoundVolume() - 0.1f);
                 
                     game.soundEffectsManager.PlaySoundEffect(SoundEffects.SmallLaser, 0f);
-                    optionsMenuState.SaveSettings();
                     break;
             }
 

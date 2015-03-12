@@ -173,7 +173,6 @@ namespace SpaceProject
                 case "fullscreen":
                     game.graphics.ToggleFullScreen();
                     game.graphics.ApplyChanges();
-                    optionsMenuState.SaveSettings();
                     UpdateText();
 
                     PlaySelectSound();
@@ -181,7 +180,6 @@ namespace SpaceProject
             
                 case "show fps":
                     game.ShowFPS = !game.ShowFPS;
-                    optionsMenuState.SaveSettings();
                     UpdateText();
 
                     PlaySelectSound();
@@ -189,7 +187,6 @@ namespace SpaceProject
 
                 case "resolution":
                     game.ChangeResolution(Game1.ResolutionOptions[resIndex]);
-                    optionsMenuState.SaveSettings();
                     if (!Game1.ResolutionOptions[resIndex].Equals(new Vector2(
                         game.settingsFile.GetPropertyAsFloat("visual", "resolutionx", 800),
                         game.settingsFile.GetPropertyAsFloat("visual", "resolutiony", 600))))
@@ -230,7 +227,6 @@ namespace SpaceProject
                     if (SettingsHasChanged())
                     {
                         game.ChangeResolution(Game1.ResolutionOptions[resIndex]);
-                        optionsMenuState.SaveSettings();
 
                         if (game.GameStarted)
                         {
