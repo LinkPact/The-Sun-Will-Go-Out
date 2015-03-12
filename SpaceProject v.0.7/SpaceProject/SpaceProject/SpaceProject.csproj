@@ -590,7 +590,6 @@
     <Compile Include="Shooter-part\Visual and Music\BackgroundObjects\Stars\BackgroundStar.cs" />
     <Compile Include="Shooter-part\Levels\CheckPoint.cs" />
     <Compile Include="Shooter-part\Levels\Level.cs" />
-    <Compile Include="Shooter-part\Levels\Levels\FirstMissionLevel.cs" />
     <Compile Include="Shooter-part\Levels\Levels\CustomMissionLevels\SecondMissionLevel.cs" />
     <Compile Include="Shooter-part\Levels\MapCreatorLevel.cs" />
     <Compile Include="Shooter-part\GameObjects\Misc GameObjects\Supplies.cs" />

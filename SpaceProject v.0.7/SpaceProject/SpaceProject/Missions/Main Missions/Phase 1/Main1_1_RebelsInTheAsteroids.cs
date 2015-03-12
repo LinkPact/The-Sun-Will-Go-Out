@@ -24,6 +24,7 @@ namespace SpaceProject
 
         private readonly string MoneyID = "[MONEY]";
         private readonly string BonusID = "[BONUS]";
+        private readonly string ActionKeyID = "[ACTIONKEY1]";
 
         private readonly int DownedShipsMultiplier = 10;
 
@@ -107,7 +108,7 @@ namespace SpaceProject
 
             destinations = new List<GameObjectOverworld>();
 
-            AddDestination(ally1, 3);
+            AddDestination(ally1, 4);
             AddDestination(miningAsteroids);
             AddDestination(borderStation, 2);
         }
@@ -128,6 +129,16 @@ namespace SpaceProject
                 new EventTextCapsule(GetEvent((int)EventID.TalkWithCaptain2), null, EventTextCanvas.MessageBox, PortraitID.AlliancePilot));
 
             Objectives.Add(talkToCaptainObjective);
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                delegate 
+                {
+                    ReplaceObjectiveText(TextType.Event, ActionKeyID,
+                        "'" + ControlManager.GetKeyName(RebindableKeys.Action1) + "'-key", (int)EventID.InLevel2);
+                },
+                delegate { },
+                delegate { return true; },
+                delegate { return false;}));
 
             ShootingLevelObjective shootingLevelObjective = new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 "RebelsInTheMeteors", LevelStartCondition.Immediately,

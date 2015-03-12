@@ -48,6 +48,10 @@ namespace SpaceProject
         private bool autofollow;
         private bool showInventoryTutorial = true;
 
+        private bool levelCompleted;
+        private int lastLevelCompletedIndex = -1;
+        private int levelCompletedIndex;
+
         public EscortObjective(Game1 game, Mission mission, List<String> descriptions,
             EscortDataCapsule escortDataCapsule, bool autofollow = false) :
             base(game, mission, descriptions[0])
@@ -257,18 +261,35 @@ namespace SpaceProject
                 {
                     shipToDefendHP = game.stateManager.shooterState.CurrentLevel.GetFreighterHP();
 
-                    game.stateManager.ChangeState("OverworldState");
+                    levelCompleted = true;
+                    levelCompletedIndex = i;
+                }
+            }
 
-                    if (afterAttackPortraits[i] != PortraitID.None)
+            if (GameStateManager.currentState.Equals("OverworldState"))
+            {
+                if (levelCompleted
+                && levelCompletedIndex > lastLevelCompletedIndex)
+                {
+                    levelCompleted = false;
+                    lastLevelCompletedIndex = levelCompletedIndex;
+
+                    if (afterAttackPortraits[levelCompletedIndex] != PortraitID.None)
                     {
-                        PopupHandler.DisplayPortraitMessage(afterAttackPortraits[i], afterAttackMessages[i]);
+                        PopupHandler.DisplayPortraitMessage(afterAttackPortraits[levelCompletedIndex],
+                            afterAttackMessages[levelCompletedIndex]);
                     }
                     else
                     {
-                        PopupHandler.DisplayMessage(afterAttackMessages[i]);
+                        PopupHandler.DisplayMessage(afterAttackMessages[levelCompletedIndex]);
                     }
                 }
+                else
+                {
+                    levelCompleted = false;
+                }
             }
+                
 
             Collision();
         }

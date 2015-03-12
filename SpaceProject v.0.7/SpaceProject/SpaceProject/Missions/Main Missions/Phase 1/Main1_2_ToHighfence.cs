@@ -29,8 +29,6 @@ namespace SpaceProject
 
             SetDestinations();
             SetupObjectives();
-
-            ReplaceObjectiveText(TextType.Event, ActionKeyID, ControlManager.GetKeyName(RebindableKeys.Action2), 0);
         }
 
         public override void StartMission()
@@ -81,12 +79,22 @@ namespace SpaceProject
 
             GameObjectOverworld highfence = Game.stateManager.overworldState.GetPlanet("Highfence");
 
-            AddDestination(highfence);
+            AddDestination(highfence, 2);
         }
 
         protected override void SetupObjectives()
         {
             objectives.Clear();
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                delegate
+                {
+                    ReplaceObjectiveText(TextType.Event, ActionKeyID,
+                        "'" + ControlManager.GetKeyName(RebindableKeys.Action2) + "'");
+                },
+                delegate { },
+                delegate { return true; },
+                delegate { return false; }));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0]));
         }
