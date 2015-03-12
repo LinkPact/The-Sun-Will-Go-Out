@@ -89,7 +89,7 @@ Fail = ""
 Reward = 300
 Progress = 2
 Reputation = 0
-State = 1
+State = 0
 
 [Main2_2_ToFortrun]
 Location = Highfence
