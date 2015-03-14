@@ -9,6 +9,13 @@ namespace SpaceProject
 {
     public class CollisionHandlingOverWorld
     {
+        private static Texture2D lineTexture;
+
+        public static void LoadLineTexture(Game1 Game)
+        {
+            lineTexture = Game.Content.Load<Texture2D>("Overworld-Sprites/lineTexture");
+        }
+
         //If called: allows player to enter system depending of the system name the player is currently over.
         public static void PlayerOverSystem(GameStateManager stateManager, GameObjectOverworld playerObject, GameObjectOverworld systemObject)
         { 
@@ -34,70 +41,52 @@ namespace SpaceProject
             }
         }
 
-
-        //If called: allows player to enter planet depending of the planet name the player is currently over.
-        public static void PlayerOverPlanet(GameStateManager stateManager,    
-                                            PlayerOverworld player,
-                                            Planet planet)
-        {
-           
-        }
-
-        //If called: draws a rectangle around the GameObject sent into the method
-        public static void DrawRectAroundObject(Game1 Game, SpriteBatch spriteBatch, GameObjectOverworld obj)
+        public static void DrawRectAroundObject(Game1 Game, SpriteBatch spriteBatch, Rectangle objectBounds)
         {
             //Draws the upper horizontal line above the object
-            spriteBatch.Draw(obj.sprite.Texture, new Vector2(obj.position.X 
-            - obj.sprite.SourceRectangle.Value.Width / 2 , obj.position.Y 
-            - (obj.sprite.SourceRectangle.Value.Height / 2) -2), new Rectangle(0,0, 
-            obj.sprite.SourceRectangle.Value.Width, 2),Color.Green, 0, Vector2.Zero, 1, SpriteEffects.None, 0);
+            spriteBatch.Draw(lineTexture,
+                 new Vector2(objectBounds.Left, objectBounds.Top),
+                 null,
+                 Color.Green,
+                 0,
+                 Vector2.Zero,
+                 new Vector2(objectBounds.Width, 2), 
+                 SpriteEffects.None,
+                 0);
 
             //Draws the lower horizontal line below the object
-            spriteBatch.Draw(obj.sprite.Texture, new Vector2(obj.position.X 
-            - obj.sprite.SourceRectangle.Value.Width / 2, obj.position.Y 
-            - (obj.sprite.SourceRectangle.Value.Height / 2) + obj.sprite.SourceRectangle.Value.Height),
-            new Rectangle(0, 0, obj.sprite.SourceRectangle.Value.Width, 2), Color.Green, 0, Vector2.Zero, 1, SpriteEffects.None, 0);
-            
-            //Draws the left vertical line left of the object
-            spriteBatch.Draw(obj.sprite.Texture, new Vector2(obj.position.X
-            - obj.sprite.SourceRectangle.Value.Width / 2, obj.position.Y
-            - obj.sprite.SourceRectangle.Value.Height / 2), new Rectangle(0,0, obj.sprite.SourceRectangle.Value.Height, 2), Color.Green,
-            ((float)(Math.PI * 90) / 180), Vector2.Zero, 1, SpriteEffects.None, 0);
-
-            //Draws the right vertical line right of the object
-            spriteBatch.Draw(obj.sprite.Texture, new Vector2(obj.position.X
-            - obj.sprite.SourceRectangle.Value.Width / 2 + obj.sprite.SourceRectangle.Value.Width +2
-            , obj.position.Y - obj.sprite.SourceRectangle.Value.Height / 2), new Rectangle(0,0, obj.sprite.SourceRectangle.Value.Height, 2),
-            Color.Green, ((float)(Math.PI * 90) / 180), Vector2.Zero, 1, SpriteEffects.None, 0);
-  
-        }
-
-        //If called: draws a rectangle around the GameObject sent into the method
-        public static void DrawRectAroundObject(Game1 Game, SpriteBatch spriteBatch, GameObjectOverworld obj, Rectangle spriteRect)
-        {
-            //Draws the upper horizontal line above the object
-            spriteBatch.Draw(obj.sprite.Texture, new Vector2(obj.position.X
-            - obj.sprite.SourceRectangle.Value.Width / 2, obj.position.Y
-            - (obj.sprite.SourceRectangle.Value.Height / 2) - 2), new Rectangle(spriteRect.X, spriteRect.Y,
-            obj.sprite.SourceRectangle.Value.Width, 2), Color.Green, 0, Vector2.Zero, 1, SpriteEffects.None, 0);
-
-            //Draws the lower horizontal line below the object
-            spriteBatch.Draw(obj.sprite.Texture, new Vector2(obj.position.X
-            - obj.sprite.SourceRectangle.Value.Width / 2, obj.position.Y
-            - (obj.sprite.SourceRectangle.Value.Height / 2) + obj.sprite.SourceRectangle.Value.Height),
-            new Rectangle(spriteRect.X, spriteRect.Y, obj.sprite.SourceRectangle.Value.Width, 2), Color.Green, 0, Vector2.Zero, 1, SpriteEffects.None, 0);
+            spriteBatch.Draw(lineTexture,
+                new Vector2(objectBounds.Left,
+                            objectBounds.Bottom),
+                null, 
+                Color.Green, 
+                0, 
+                Vector2.Zero,
+                new Vector2(objectBounds.Width, 2), 
+                SpriteEffects.None, 
+                0);
 
             //Draws the left vertical line left of the object
-            spriteBatch.Draw(obj.sprite.Texture, new Vector2(obj.position.X
-            - obj.sprite.SourceRectangle.Value.Width / 2, obj.position.Y
-            - obj.sprite.SourceRectangle.Value.Height / 2), new Rectangle(spriteRect.X, spriteRect.Y, obj.sprite.SourceRectangle.Value.Height, 2), Color.Green,
-            ((float)(Math.PI * 90) / 180), Vector2.Zero, 1, SpriteEffects.None, 0);
+            spriteBatch.Draw(lineTexture,
+                new Vector2(objectBounds.Left, objectBounds.Top), 
+                null, 
+                Color.Green,
+                0, 
+                Vector2.Zero,
+                new Vector2(2, objectBounds.Height), 
+                SpriteEffects.None, 
+                0);
 
             //Draws the right vertical line right of the object
-            spriteBatch.Draw(obj.sprite.Texture, new Vector2(obj.position.X
-            - obj.sprite.SourceRectangle.Value.Width / 2 + obj.sprite.SourceRectangle.Value.Width + 2
-            , obj.position.Y - obj.sprite.SourceRectangle.Value.Height / 2), new Rectangle(spriteRect.X, spriteRect.Y, obj.sprite.SourceRectangle.Value.Height, 2),
-            Color.Green, ((float)(Math.PI * 90) / 180), Vector2.Zero, 1, SpriteEffects.None, 0);
+            spriteBatch.Draw(lineTexture,
+                new Vector2(objectBounds.Right, objectBounds.Top), 
+                null,
+                Color.Green, 
+                0, 
+                Vector2.Zero,
+                new Vector2(2, objectBounds.Height), 
+                SpriteEffects.None, 
+                0);
 
         }
     }

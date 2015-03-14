@@ -143,25 +143,25 @@ namespace SpaceProject
                 {
                     if (gameObjects[i].Class == "Planet")
                     {
-                        CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i]);
+                        CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i].Bounds);
                         game.helper.DisplayText("Press 'Enter' to enter planetary orbit.");
                     }
 
                     else if (gameObjects[i].Class == "Station")
                     {
-                        CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i]);
+                        CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i].Bounds);
                         game.helper.DisplayText("Press 'Enter' to dock with station.");
                     }
 
                     else if (gameObjects[i].Class == "MotherShip")
                     {
-                        CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i]);
+                        CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i].Bounds);
                         game.helper.DisplayText("Press 'Enter' to dock with mothership.");
                     }
 
                     else if (gameObjects[i] is Beacon && !game.player.HyperspeedOn)
                     {
-                        CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i]);
+                        CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i].Bounds);
                         if (!((Beacon)gameObjects[i]).IsActivated)
                         {
                             game.helper.DisplayText("Press 'Enter' to activate beacon.");
@@ -175,7 +175,7 @@ namespace SpaceProject
 
                     else if (gameObjects[i] is SubInteractiveObject)
                     {
-                        CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i]);
+                        CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i].Bounds);
                         game.helper.DisplayText("Press 'Enter' to investigate.");
                     }
                 }

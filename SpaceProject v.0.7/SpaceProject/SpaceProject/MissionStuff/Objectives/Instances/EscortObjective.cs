@@ -302,7 +302,7 @@ namespace SpaceProject
                 && GameStateManager.currentState.Equals("OverworldState") 
                 && CollisionDetection.IsRectInRect(game.player.Bounds, escortDataCapsule.ShipToDefend.Bounds))
             {
-                CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, escortDataCapsule.ShipToDefend, new Rectangle(2, 374, 0, 0));
+                CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, escortDataCapsule.ShipToDefend.Bounds);
                 game.helper.DisplayText("Press 'Enter' to talk to freighter captain..");
             }
         }

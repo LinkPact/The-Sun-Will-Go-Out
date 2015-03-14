@@ -80,7 +80,6 @@ namespace SpaceProject
         protected override void Hide()
         {
             string previousMessage = textContainer.GetCurrentMessage();
-            hideTimeSet = false;
 
             base.Hide();
 

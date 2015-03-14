@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
@@ -32,6 +33,8 @@ namespace SpaceProject
         private List<OverworldShip> allyShips2;
         Planet newNorrland;
         Station fortrunStation;
+        private bool readyToLeave;
+        private Rectangle allyShipRectangle;
 
         public Main3_DefendColony(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
             base(Game, section, spriteSheet, missionID)
@@ -153,8 +156,35 @@ namespace SpaceProject
                 delegate { return StatsManager.PlayTime.HasOverworldTimePassed(time); },
                 delegate { return false; }));
 
-            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
-                100, new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun2), null, EventTextCanvas.MessageBox, PortraitID.Ai)));
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun2), null, EventTextCanvas.MessageBox, PortraitID.Ai),
+                delegate 
+                {
+                    allyShipRectangle = new Rectangle(
+                        (int)allyShips1[0].position.X - 20,
+                        (int)allyShips1[0].position.Y - 20,
+                        200, 100);
+                },
+                delegate 
+                {
+                    if (CollisionDetection.IsRectInRect(Game.player.Bounds, allyShipRectangle)
+                        && (ControlManager.CheckPress(RebindableKeys.Action1)
+                            || ControlManager.CheckKeyPress(Keys.Enter)))
+                    {
+                        PopupHandler.DisplaySelectionMenu("[Ai] Ready to go?",
+                            new List<string>() { "Yes", "No" },
+                            new List<System.Action>()
+                            {
+                                delegate { readyToLeave = true; },
+                                delegate { readyToLeave = false; }
+                            });
+                    }
+                },
+                delegate { return readyToLeave;},
+                delegate { return false; }));
+
+            //objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
+            //    100, new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun2), null, EventTextCanvas.MessageBox, PortraitID.Ai)));
 
             AutoPilotObjective autoPilotObjective1 = new AutoPilotObjective(Game, this, ObjectiveDescriptions[1], AutoPilotSpeed,
                 allyShips1, fortrunStation.position,
@@ -273,6 +303,18 @@ namespace SpaceProject
                 ships[i].Wait();
 
                 modifier *= -1;
+            }
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+
+            if (ObjectiveIndex == 2
+                && CollisionDetection.IsRectInRect(Game.player.Bounds, allyShipRectangle))
+            {
+                CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, allyShipRectangle);
+                Game.helper.DisplayText("Press 'Enter' to speak with Alliance fleet");
             }
         }
     }

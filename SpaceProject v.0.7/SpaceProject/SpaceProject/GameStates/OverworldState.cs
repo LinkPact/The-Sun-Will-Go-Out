@@ -583,19 +583,19 @@ namespace SpaceProject
                 {
                     if (deepSpaceGameObjects[i].Class == "Planet")
                     {
-                        CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, deepSpaceGameObjects[i]);
+                        CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, deepSpaceGameObjects[i].Bounds);
                         Game.helper.DisplayText("Press 'Enter' to enter planetary orbit.");
                     }
 
                     else if (deepSpaceGameObjects[i].Class == "Station")
                     {
-                        CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, deepSpaceGameObjects[i]);
+                        CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, deepSpaceGameObjects[i].Bounds);
                         Game.helper.DisplayText("Press 'Enter' to dock with station.");
                     }
 
                     else if (deepSpaceGameObjects[i].Class == "MotherShip")
                     {
-                        CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, deepSpaceGameObjects[i]);
+                        CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, deepSpaceGameObjects[i].Bounds);
                         Game.helper.DisplayText("Press 'Enter' to dock with mothership.");
                     }
 

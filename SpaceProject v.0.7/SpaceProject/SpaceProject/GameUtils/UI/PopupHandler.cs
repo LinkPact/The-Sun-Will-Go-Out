@@ -71,6 +71,7 @@ namespace SpaceProject
             messageQueue = new List<Popup>();
             menuQueue = new List<Popup>();
             realTimeMessageQueue = new List<Popup>();
+            PopupHandler.DisplayMenuOnReturn = false;
         }
 
         public void Update(GameTime gameTime)

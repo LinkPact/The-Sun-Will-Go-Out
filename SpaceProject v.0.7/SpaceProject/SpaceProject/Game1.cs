@@ -130,6 +130,7 @@ namespace SpaceProject
             spriteSheetVerticalShooter = new Sprite(Content.Load<Texture2D>("Vertical-Sprites/shooterSheet"));
             messageBoxSpriteSheet = new Sprite(Content.Load<Texture2D>("Overworld-Sprites/messageBoxSpriteSheet"));
             spriteSheetItemDisplay = new Sprite(Content.Load<Texture2D>("itemVisualSheet"));
+            CollisionHandlingOverWorld.LoadLineTexture(this);
 
             shipInventoryManager = new ShipInventoryManager(this);
             shipInventoryManager.Initialize();
@@ -397,8 +398,6 @@ namespace SpaceProject
         {
             ResolutionOptions = new List<Vector2>();
 
-            ResolutionOptions.Add(new Vector2(800, 600));
-            ResolutionOptions.Add(new Vector2(1024, 576));
             ResolutionOptions.Add(new Vector2(1024, 768));
             ResolutionOptions.Add(new Vector2(1280, 720));
         }

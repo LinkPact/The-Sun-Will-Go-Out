@@ -19,7 +19,7 @@ namespace SpaceProject
 
         private int holdTimer;
 
-        private static int lastIndex;
+        private static int lastIndex = -1;
 
         public Menu(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
@@ -57,6 +57,11 @@ namespace SpaceProject
             {
                 cursorIndex = Menu.lastIndex;
                 Menu.lastIndex = -1;
+
+                if (cursorIndex > currentIndexMax)
+                {
+                    cursorIndex = currentIndexMax;
+                }
             }
 
             menuOptions = new List<string>();
