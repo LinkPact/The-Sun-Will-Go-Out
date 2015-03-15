@@ -111,6 +111,11 @@ namespace SpaceProject
                 SetRandomEndPlanet();
         }
 
+        public void SetSpriteRect(Rectangle rect)
+        {
+            sprite = spriteSheet.GetSubSprite(rect);
+        }
+
         public override void FinalGoodbye()
         {
             IsDead = true;

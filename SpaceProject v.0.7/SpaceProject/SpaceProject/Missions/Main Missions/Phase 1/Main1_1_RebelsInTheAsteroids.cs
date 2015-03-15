@@ -122,7 +122,7 @@ namespace SpaceProject
 
             Objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
                 250, new EventTextCapsule(GetEvent((int)EventID.TalkWithCaptain1), null, EventTextCanvas.MessageBox,
-                    new List<PortraitID>() { PortraitID.AlliancePilot, PortraitID.Sair, PortraitID.AllianceCaptain },
+                    new List<PortraitID>() { PortraitID.AlliancePilot, PortraitID.Sair, PortraitID.AlliancePilot },
                     new List<int> { 2, 3 })));
 
             ArriveAtLocationObjective talkToCaptainObjective = new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
@@ -173,6 +173,7 @@ namespace SpaceProject
                 new Vector2(Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids").position.X - 200,
                     Game.stateManager.overworldState.GetMiningOutpost.GetGameObject("Mining Asteroids").position.Y + 200),
                     Vector2.Zero);
+            ally1.SetSpriteRect(new Rectangle(217, 315, 38, 53));
             ally1.AIManager = new WaitAction(ally1, delegate { return false; });
         }
     }
