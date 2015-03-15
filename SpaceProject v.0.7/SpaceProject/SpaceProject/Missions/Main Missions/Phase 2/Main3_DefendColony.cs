@@ -28,6 +28,10 @@ namespace SpaceProject
         private readonly float AutoPilotSpeed = 0.4f;
         private readonly float AutoPilotSpeed2 = 0.6f;
 
+        private readonly int AllyShipRectOffset = 20;
+        private readonly int AllyShipRectWidth = 190;
+        private readonly int AllyShipRectHeight = 90;
+
         private readonly int numberOfAllies = 4;
         private List<OverworldShip> allyShips1;
         private List<OverworldShip> allyShips2;
@@ -161,9 +165,11 @@ namespace SpaceProject
                 delegate 
                 {
                     allyShipRectangle = new Rectangle(
-                        (int)allyShips1[0].position.X - 20,
-                        (int)allyShips1[0].position.Y - 20,
-                        200, 100);
+                        (int)allyShips1[0].position.X - AllyShipRectOffset,
+                        (int)allyShips1[0].position.Y - AllyShipRectOffset,
+                        AllyShipRectWidth, AllyShipRectHeight);
+
+                    PopupHandler.DisplayPortraitMessage(PortraitID.Ai, "[Ai] \"Talk to the alliance ships waiting outside Fortrun when you're ready to leave.\"");
                 },
                 delegate 
                 {
@@ -219,15 +225,42 @@ namespace SpaceProject
                 {
                     RemoveShips(allyShips1);
                     SetupAllyShips(allyShips2,
-                        new Vector2(newNorrland.position.X + 50, newNorrland.position.Y - 325),
+                        new Vector2(newNorrland.position.X + 0, newNorrland.position.Y - 625),
                         fortrunStation);
                 },
                 delegate { },
                 delegate { return true; },
                 delegate { return false; }));
 
-            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[1], 200,
-                new EventTextCapsule(new EventText("[Ai] \"Let's go\""), null, EventTextCanvas.MessageBox, PortraitID.Ai)));
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1],
+                new EventTextCapsule(new EventText("[Ai] \"Let's go\""), null, EventTextCanvas.MessageBox, PortraitID.Ai),
+                delegate 
+                {
+                    allyShipRectangle = new Rectangle(
+                        (int)allyShips2[0].position.X - AllyShipRectOffset,
+                        (int)allyShips2[0].position.Y - AllyShipRectOffset,
+                        AllyShipRectWidth, AllyShipRectHeight);
+                    readyToLeave = false;
+
+                    PopupHandler.DisplayPortraitMessage(PortraitID.Ai, "[Ai] \"Talk to the alliance ships waiting outside New Norrland when you're ready to leave.\"");
+                },
+                delegate 
+                {
+                    if (CollisionDetection.IsRectInRect(Game.player.Bounds, allyShipRectangle)
+                        && (ControlManager.CheckPress(RebindableKeys.Action1)
+                            || ControlManager.CheckKeyPress(Keys.Enter)))
+                    {
+                        PopupHandler.DisplaySelectionMenu("[Ai] Ready to head back?",
+                                new List<string>() { "Yes", "No" },
+                                new List<System.Action>()
+                                {
+                                    delegate { readyToLeave = true; },
+                                    delegate { readyToLeave = false; }
+                                });
+                    }
+                },
+                delegate { return readyToLeave; },
+                delegate { return false; }));
 
             AutoPilotObjective autoPilotObjective = new AutoPilotObjective(Game, this, ObjectiveDescriptions[2], AutoPilotSpeed2,
                 allyShips2, newNorrland.position, false);
@@ -310,7 +343,8 @@ namespace SpaceProject
         {
             base.Draw(spriteBatch);
 
-            if (ObjectiveIndex == 2
+            if ((ObjectiveIndex == 2
+                || ObjectiveIndex == 8)
                 && CollisionDetection.IsRectInRect(Game.player.Bounds, allyShipRectangle))
             {
                 CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, allyShipRectangle);
