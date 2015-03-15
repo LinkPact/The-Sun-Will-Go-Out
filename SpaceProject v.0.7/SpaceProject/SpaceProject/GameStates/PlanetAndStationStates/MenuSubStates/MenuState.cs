@@ -49,7 +49,7 @@ namespace SpaceProject
         public virtual void Update(GameTime gameTime)
         {
             if (ControlManager.CheckPress(RebindableKeys.Pause) ||
-                ControlManager.CheckPress(RebindableKeys.Action2) || ControlManager.IsRightMouseButtonClicked())
+                ControlManager.CheckPress(RebindableKeys.Action2))
             {
                 if (BaseStateManager.ButtonControl != ButtonControl.Confirm &&
                     BaseStateManager.ButtonControl != ButtonControl.Response)

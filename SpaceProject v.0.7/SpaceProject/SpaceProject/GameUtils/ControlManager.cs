@@ -557,34 +557,40 @@ namespace SpaceProject
 
         public static Vector2 GetMousePosition()
         {
-            return new Vector2(currentMouseState.X, currentMouseState.Y);
+            throw new NotSupportedException("Mouse control not supported!");
+            //return new Vector2(currentMouseState.X, currentMouseState.Y);
         }
 
         public static Vector2 GetPreviousMousePosition()
         {
-            return new Vector2(previouseMouseState.X, previouseMouseState.Y);
+            throw new NotSupportedException("Mouse control not supported!");
+            //return new Vector2(previouseMouseState.X, previouseMouseState.Y);
         }
 
         public static bool IsLeftMouseButtonPressed()
         {
-            return currentMouseState.LeftButton == ButtonState.Pressed;
+            throw new NotSupportedException("Mouse control not supported!");
+            //return currentMouseState.LeftButton == ButtonState.Pressed;
         }
 
         public static bool IsLeftMouseButtonClicked()
         {
-            return (previouseMouseState.LeftButton == ButtonState.Pressed &&
-                !IsLeftMouseButtonPressed());
+            throw new NotSupportedException("Mouse control not supported!");
+            //return (previouseMouseState.LeftButton == ButtonState.Pressed &&
+            //    !IsLeftMouseButtonPressed());
         }
 
         public static bool IsRightMouseButtonPressed()
         {
-            return currentMouseState.RightButton == ButtonState.Pressed;
+            throw new NotSupportedException("Mouse control not supported!");
+            //return currentMouseState.RightButton == ButtonState.Pressed;
         }
 
         public static bool IsRightMouseButtonClicked()
         {
-            return (previouseMouseState.RightButton == ButtonState.Pressed &&
-                !IsRightMouseButtonPressed());
+            throw new NotSupportedException("Mouse control not supported!");
+            //return (previouseMouseState.RightButton == ButtonState.Pressed &&
+            //    !IsRightMouseButtonPressed());
         }
     }
 }

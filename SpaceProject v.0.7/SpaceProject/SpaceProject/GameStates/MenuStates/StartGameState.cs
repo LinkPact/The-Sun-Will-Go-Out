@@ -128,7 +128,7 @@ namespace SpaceProject
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             ButtonControls(gameTime);
-            MouseControls();
+            //MouseControls();
 
             if ((ControlManager.CheckPress(RebindableKeys.Action2) ||
                 ControlManager.CheckPress(RebindableKeys.Pause)) && Game.menuBGController.backdropSpeed.Equals(0))

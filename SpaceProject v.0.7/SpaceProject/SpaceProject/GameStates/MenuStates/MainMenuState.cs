@@ -142,7 +142,7 @@ namespace SpaceProject
             //Game.Window.Title = ("The Sun Will Go Out - " + "Main Menu") + ControlManager.IsGamepadConnected.ToString();
 
             ButtonControls(gameTime);
-            MouseControls();
+            //MouseControls();
         }
 
         private void ButtonControls(GameTime gameTime)
