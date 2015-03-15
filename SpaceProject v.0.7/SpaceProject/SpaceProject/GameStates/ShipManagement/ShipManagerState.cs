@@ -179,15 +179,19 @@ namespace SpaceProject
                                 break;
             
                             case 4:
-                                itemComp.SetItem2(ShipInventoryManager.OwnedPrimaryWeapons[cursorLevel2Position]);
-                                itemComp.SetItem1(ShipInventoryManager.equippedPrimaryWeapons[0]);
-                                itemComp.ShowSymbols = true;
-                                break;
+                                if (cursorCoordLv1.Y == 0)
+                                {
+                                    itemComp.SetItem2(ShipInventoryManager.GetAvailablePrimaryWeapons(1)[cursorLevel2Position]);
+                                    itemComp.SetItem1(ShipInventoryManager.equippedPrimaryWeapons[0]);
+                                    itemComp.ShowSymbols = true;
+                                }
 
-                            case 5:
-                                itemComp.SetItem2(ShipInventoryManager.OwnedPrimaryWeapons[cursorLevel2Position]);
-                                itemComp.SetItem1(ShipInventoryManager.equippedPrimaryWeapons[1]);
-                                itemComp.ShowSymbols = true;
+                                else if (cursorCoordLv1.Y == 1)
+                                {
+                                    itemComp.SetItem2(ShipInventoryManager.GetAvailablePrimaryWeapons(2)[cursorLevel2Position]);
+                                    itemComp.SetItem1(ShipInventoryManager.equippedPrimaryWeapons[1]);
+                                    itemComp.ShowSymbols = true;
+                                }
                                 break;
                         }
                         break;
@@ -288,24 +292,14 @@ namespace SpaceProject
             fontManager.Draw(spriteBatch);
             informationManager.Draw(spriteBatch);
 
-            if (Game.Window.ClientBounds.Height.Equals(600))
+            if (Game.Window.ClientBounds.Height.Equals(768))
             {
-                itemComp.Draw(spriteBatch, new Vector2(7, 247), 15); 
-            }
-
-            else if (Game.Window.ClientBounds.Height.Equals(768))
-            {
-                itemComp.Draw(spriteBatch, new Vector2(7, 303), 15); 
-            }
-
-            else if (Game.Window.ClientBounds.Height.Equals(576))
-            {
-                itemComp.Draw(spriteBatch, new Vector2(7, 239), 15); 
+                itemComp.Draw(spriteBatch, new Vector2(34, 481), 15); 
             }
 
             else if (Game.Window.ClientBounds.Height.Equals(720))
             {
-                itemComp.Draw(spriteBatch, new Vector2(7, 287), 15); 
+                itemComp.Draw(spriteBatch, new Vector2(34, 456), 15); 
             }
         }
         
@@ -703,27 +697,5 @@ namespace SpaceProject
                     }
             }
         }
-        
-        //private void SwitchComponents()
-        //{
-        //    if (cursorCoordLv1.Position == inventoryPos)
-        //    {
-        //        ShipInventoryManager.SwitchItems(cursorLevel2Position, cursorLevel3Position);
-        //    }
-        //}
-        
-        //private void EraseComponent()
-        //{
-        //    if (cursorCoordLv1.Position == inventoryPos)
-        //    {
-        //        Item erasedItem = new EmptyItem(Game);
-        //
-        //        if (ShipInventoryManager.ShipItems[cursorLevel2Position] != ShipInventoryManager.equippedEnergyCell && ShipInventoryManager.ShipItems[cursorLevel2Position] != ShipInventoryManager.equippedPlating)
-        //        {
-        //            ShipInventoryManager.RemoveItemAt(cursorLevel2Position);
-        //            ShipInventoryManager.InsertItem(cursorLevel2Position, erasedItem);
-        //        }
-        //    }
-        //}
     }
 }

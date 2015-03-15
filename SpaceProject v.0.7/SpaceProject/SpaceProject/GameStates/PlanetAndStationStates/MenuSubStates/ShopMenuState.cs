@@ -807,7 +807,7 @@ namespace SpaceProject
                                                                            Game.fontManager.FontColor,
                                                                             Game.Window.ClientBounds.Width / 2 - 10);
 
-            itemComp.Draw(spriteBatch, new Vector2(1, 76), 15);
+            itemComp.Draw(spriteBatch, new Vector2(1, 91), 15);
 
             spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                    "Rupees: " + StatsManager.Rupees,

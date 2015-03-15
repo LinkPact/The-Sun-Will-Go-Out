@@ -283,7 +283,7 @@ namespace SpaceProject
                     presetCount = 4;
                     item1Kind = "Primary";
 
-                    item1Stats.Add(Math.Round((double)((PlayerWeapon)item1).Damage, 1));
+                    item1Stats.Add(Math.Round((double)((PlayerWeapon)item1).DamagePerSecond, 1));
                     item1HighIsBest.Add(true);
 
                     item1Stats.Add(Math.Round((double)1000 / ((PlayerWeapon)item1).Delay, 1));
@@ -300,7 +300,7 @@ namespace SpaceProject
                     presetCount = 4;
                     item1Kind = "Secondary";
 
-                    item1Stats.Add(Math.Round((double)((PlayerWeapon)item1).Damage, 1));
+                    item1Stats.Add(Math.Round((double)((PlayerWeapon)item1).DamagePerSecond, 1));
                     item1HighIsBest.Add(true);
 
                     item1Stats.Add(Math.Round((double)1000 / ((PlayerWeapon)item1).Delay, 1));
@@ -395,7 +395,7 @@ namespace SpaceProject
                 case "Primary":
                     item2Kind = "Primary";
 
-                    item2Stats.Add(Math.Round((double)((PlayerWeapon)item2).Damage, 1));
+                    item2Stats.Add(Math.Round((double)((PlayerWeapon)item2).DamagePerSecond, 1));
                     item2HighIsBest.Add(true);
                         
                     item2Stats.Add(Math.Round((double)1000 / ((PlayerWeapon)item2).Delay, 1));
@@ -412,7 +412,7 @@ namespace SpaceProject
                 case "Secondary":
                     item2Kind = "Secondary";
 
-                    item2Stats.Add(Math.Round((double)((PlayerWeapon)item2).Damage, 1));
+                    item2Stats.Add(Math.Round((double)((PlayerWeapon)item2).DamagePerSecond, 1));
                     item2HighIsBest.Add(true);
                         
                     item2Stats.Add(Math.Round((double)1000 / ((PlayerWeapon)item2).Delay, 1));

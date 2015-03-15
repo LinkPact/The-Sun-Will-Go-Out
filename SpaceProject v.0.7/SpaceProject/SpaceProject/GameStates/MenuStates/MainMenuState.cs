@@ -350,7 +350,7 @@ namespace SpaceProject
                     Game.fontManager.FontColor, 0f, fontHeading.MeasureString("The sun will go out") / 2,
                     1f, SpriteEffects.None, 1f);
 
-                spriteBatch.DrawString(fontButtons, "Alpha Release 2", new Vector2(10,
+                spriteBatch.DrawString(fontButtons, "Beta Release 1", new Vector2(10,
                     5) + Game.fontManager.FontOffset,
                     Game.fontManager.FontColor, 0f, Vector2.Zero,
                     1f, SpriteEffects.None, 1f);
