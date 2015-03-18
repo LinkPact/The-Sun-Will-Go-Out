@@ -4,9 +4,9 @@ introfirst2 = Knowing, One Day, the sun will go out.
 
 [introsecond]
 introsecond1 = The glory days of the human empire is long gone. Life is not simple in this part of the galaxy. Much of the population is poor and resources are sparse. 
-introsecond2 = This is your chance. To prove yourself and make a name of yourself in this world. 
-introsecond3 = You are traveling to Sector X to work for the organisation called the Crimson Cross and take part in their work to help this sector out of poverty. 
-introsecond4 = However not everyone approves of your presence here. 
+introsecond2 = This is your chance. To prove yourself and make a name in this world. 
+introsecond3 = You are traveling to Sector X to work for an organisation called the Alliance. You will take part in their work to protect and help the people in the sector. 
+introsecond4 = However, not everyone in the sector approves of the Alliance...
 
 [gameover]
 gameover = The end, You died!
@@ -28,11 +28,11 @@ allianceending6 = But you know that you did what you could.
 allianceending7 = The End
 
 [onyourownending]
-onyourownending1 = [Sair] "Do you see anything? Do you feel anything?"
-onyourownending2 = [Sair] "I think this is the end. I'm going out soon."
-onyourownending3 = [Sair] "Do you think we made the right choice?"
-onyourownending4 = [Sair] "..."
-onyourownending5 = [Sair] "I guess we'll never know."
-onyourownending6 = [Sair] "But we did what we could."
-onyourownending7 = [Sair] "..."
-onyourownending8 = [Sair] "Goodbye. It was nice travelling with you."
+onyourownending1 = [SAIR] "Do you see anything? Do you feel anything?"
+onyourownending2 = [SAIR] "I think this is the end. I'm going out soon."
+onyourownending3 = [SAIR] "Do you think we made the right choice?"
+onyourownending4 = [SAIR] "..."
+onyourownending5 = [SAIR] "I guess we'll never know."
+onyourownending6 = [SAIR] "But we did what we could."
+onyourownending7 = [SAIR] "..."
+onyourownending8 = [SAIR] "Goodbye. It was nice travelling with you."
