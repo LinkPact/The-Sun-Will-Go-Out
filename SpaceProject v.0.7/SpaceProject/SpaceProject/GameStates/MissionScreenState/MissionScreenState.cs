@@ -116,8 +116,6 @@ namespace SpaceProject
             fontManager.Draw(spriteBatch);
             informationManager.Draw(spriteBatch);
 
-            //Game.Window.Title = "Layer: " + cursorLevel.ToString() + " Pos1: " + cursorLevel1Position.ToString() +
-            //    " Pos2: " + cursorLevel2Position.ToString();
         }
 
         private void DrawBackground(SpriteBatch spriteBatch)

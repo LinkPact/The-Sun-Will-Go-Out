@@ -142,7 +142,6 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            //Game.Window.Title = "Space Project - Options Menu";
             //MouseControls();
 
             if (activeOptionState != null && Game.menuBGController.DisplayButtons)

@@ -110,8 +110,8 @@ namespace SpaceProject
                                       new Vector2(buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                                       buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
 
-           mapCreatorButton.name = "Create Level";
-           //mapCreatorButton.name = "Credits";
+           //mapCreatorButton.name = "Create Level";
+           mapCreatorButton.name = "Credits";
 
             buttons.Add(mapCreatorButton);
 
@@ -139,8 +139,6 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            //Game.Window.Title = ("The Sun Will Go Out - " + "Main Menu") + ControlManager.IsGamepadConnected.ToString();
-
             ButtonControls(gameTime);
             //MouseControls();
         }
@@ -313,10 +311,10 @@ namespace SpaceProject
                         break;
 
                     case 3:
-                        Game.stateManager.ChangeState("MapCreatorState");
+                        //Game.stateManager.ChangeState("MapCreatorState");
 
                         PlaySelectSound();
-                        //Game.stateManager.ChangeState("CreditState");
+                        Game.stateManager.ChangeState("CreditState");
                         break;
 
                     case 4:

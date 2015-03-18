@@ -238,9 +238,6 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            Game.Window.Title = "The Sun Will Go Out" + " || " +
-            "Pos: " + Game.player.position;
-
             StaticFunctions.CheckObjectUsage(Game, deepSpaceGameObjects);
 
             camera.CameraUpdate(gameTime, Game.player);

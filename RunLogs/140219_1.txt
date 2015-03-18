@@ -1,0 +1,272 @@
+------------------------
+Level	testRun
+LoggingTime	14:34:50 
+LevelRuntime	59814
+ObjectiveCompleted	True
+
+Ship damage	30
+Shield damage	0
+Consumed energy	83.70007
+
+Primary1	SpaceProject.BasicLaserWeapon
+Primary2	SpaceProject.DualLaserWeapon
+Secondary	SpaceProject.EmptyWeapon
+Cell	SpaceProject.BasicEnergyCell
+Shield	SpaceProject.EmptyShield
+Hull	SpaceProject.BasicPlating
+------------------------
+Level	testRun
+LoggingTime	14:35:40 
+LevelRuntime	46566
+ObjectiveCompleted	True
+
+Ship damage	200
+Shield damage	0
+Consumed energy	141.4801
+
+Primary1	SpaceProject.BasicLaserWeapon
+Primary2	SpaceProject.DualLaserWeapon
+Secondary	SpaceProject.EmptyWeapon
+Cell	SpaceProject.BasicEnergyCell
+Shield	SpaceProject.EmptyShield
+Hull	SpaceProject.BasicPlating
+------------------------
+Level	testRun
+LoggingTime	14:36:35 
+LevelRuntime	53056
+ObjectiveCompleted	True
+
+Ship damage	160
+Shield damage	0
+Consumed energy	175.1799
+
+Primary1	SpaceProject.BasicLaserWeapon
+Primary2	SpaceProject.DualLaserWeapon
+Secondary	SpaceProject.EmptyWeapon
+Cell	SpaceProject.BasicEnergyCell
+Shield	SpaceProject.EmptyShield
+Hull	SpaceProject.BasicPlating
+------------------------
+Level	testRun
+LoggingTime	14:37:54 
+LevelRuntime	48080
+ObjectiveCompleted	True
+
+Ship damage	20
+Shield damage	130
+Consumed energy	184.8399
+
+Primary1	SpaceProject.BasicLaserWeapon
+Primary2	SpaceProject.DualLaserWeapon
+Secondary	SpaceProject.EmptyWeapon
+Cell	SpaceProject.BasicEnergyCell
+Shield	SpaceProject.RegularShield
+Hull	SpaceProject.BasicPlating
+------------------------
+Level	testRun
+LoggingTime	14:39:38 
+LevelRuntime	90293
+ObjectiveCompleted	True
+
+Ship damage	48.39999
+Shield damage	361.6
+Consumed energy	331.5796
+
+Primary1	SpaceProject.BasicLaserWeapon
+Primary2	SpaceProject.DualLaserWeapon
+Secondary	SpaceProject.TurretWeapon
+Cell	SpaceProject.BasicEnergyCell
+Shield	SpaceProject.RegularShield
+Hull	SpaceProject.BasicPlating
+------------------------
+Level	testRun
+LoggingTime	14:40:41 
+LevelRuntime	51788
+ObjectiveCompleted	True
+
+Ship damage	156.3999
+Shield damage	325.6
+Consumed energy	210.6598
+
+Primary1	SpaceProject.BasicLaserWeapon
+Primary2	SpaceProject.DualLaserWeapon
+Secondary	SpaceProject.TurretWeapon
+Cell	SpaceProject.BasicEnergyCell
+Shield	SpaceProject.RegularShield
+Hull	SpaceProject.BasicPlating
+------------------------
+Level	testRun
+LoggingTime	14:43:04 
+LevelRuntime	94335
+ObjectiveCompleted	True
+
+Ship damage	180
+Shield damage	612
+Consumed energy	440.9805
+
+Primary1	SpaceProject.BasicLaserWeapon
+Primary2	SpaceProject.DualLaserWeapon
+Secondary	SpaceProject.TurretWeapon
+Cell	SpaceProject.RegularEnergyCell
+Shield	SpaceProject.RegularShield
+Hull	SpaceProject.BasicPlating
+------------------------
+Level	testRun
+LoggingTime	14:44:15 
+LevelRuntime	41108
+ObjectiveCompleted	False
+
+Ship damage	354.9994
+Shield damage	495.0006
+Consumed energy	237.9198
+
+Primary1	SpaceProject.EmptyWeapon
+Primary2	SpaceProject.DualLaserWeapon
+Secondary	SpaceProject.SideMissilesWeapon
+Cell	SpaceProject.RegularEnergyCell
+Shield	SpaceProject.RegularShield
+Hull	SpaceProject.BasicPlating
+------------------------
+Level	testRun
+LoggingTime	14:45:30 
+LevelRuntime	56018
+ObjectiveCompleted	False
+
+Ship damage	351.9996
+Shield damage	542.0004
+Consumed energy	311.5998
+
+Primary1	SpaceProject.BursterWeapon
+Primary2	SpaceProject.EmptyWeapon
+Secondary	SpaceProject.SideMissilesWeapon
+Cell	SpaceProject.RegularEnergyCell
+Shield	SpaceProject.RegularShield
+Hull	SpaceProject.BasicPlating
+------------------------
+Level	testRun
+LoggingTime	14:46:43 
+LevelRuntime	28786
+ObjectiveCompleted	False
+
+Ship damage	350.7999
+Shield damage	169.2001
+Consumed energy	216.7999
+
+Primary1	SpaceProject.BursterWeapon
+Primary2	SpaceProject.EmptyWeapon
+Secondary	SpaceProject.SideMissilesWeapon
+Cell	SpaceProject.RegularEnergyCell
+Shield	SpaceProject.RegularShield
+Hull	SpaceProject.BasicPlating
+------------------------
+Level	testRun
+LoggingTime	14:48:29 
+LevelRuntime	75375
+ObjectiveCompleted	True
+
+Ship damage	105
+Shield damage	385
+Consumed energy	446.6805
+
+Primary1	SpaceProject.BursterWeapon
+Primary2	SpaceProject.BeamWeapon
+Secondary	SpaceProject.SideMissilesWeapon
+Cell	SpaceProject.RegularEnergyCell
+Shield	SpaceProject.RegularShield
+Hull	SpaceProject.BasicPlating
+------------------------
+Level	testRun
+LoggingTime	14:51:19 
+LevelRuntime	82457
+ObjectiveCompleted	False
+
+Ship damage	366.3999
+Shield damage	549.6002
+Consumed energy	623.4694
+
+Primary1	SpaceProject.BursterWeapon
+Primary2	SpaceProject.BeamWeapon
+Secondary	SpaceProject.SideMissilesWeapon
+Cell	SpaceProject.AdvancedEnergyCell
+Shield	SpaceProject.RegularShield
+Hull	SpaceProject.BasicPlating
+------------------------
+Level	testRun
+LoggingTime	14:53:57 
+LevelRuntime	137668
+ObjectiveCompleted	False
+
+Ship damage	372.9997
+Shield damage	757.0002
+Consumed energy	1072.32
+
+Primary1	SpaceProject.BursterWeapon
+Primary2	SpaceProject.BeamWeapon
+Secondary	SpaceProject.SideMissilesWeapon
+Cell	SpaceProject.AdvancedEnergyCell
+Shield	SpaceProject.RegularShield
+Hull	SpaceProject.BasicPlating
+------------------------
+Level	testRun
+LoggingTime	14:55:02 
+LevelRuntime	50519
+ObjectiveCompleted	False
+
+Ship damage	352.5999
+Shield damage	361.4001
+Consumed energy	495.6108
+
+Primary1	SpaceProject.BursterWeapon
+Primary2	SpaceProject.BeamWeapon
+Secondary	SpaceProject.SideMissilesWeapon
+Cell	SpaceProject.AdvancedEnergyCell
+Shield	SpaceProject.RegularShield
+Hull	SpaceProject.BasicPlating
+------------------------
+Level	testRun
+LoggingTime	14:56:49 
+LevelRuntime	89085
+ObjectiveCompleted	False
+
+Ship damage	414.3997
+Shield damage	495.6003
+Consumed energy	551.8507
+
+Primary1	SpaceProject.BeamWeapon
+Primary2	SpaceProject.AdvancedLaserWeapon
+Secondary	SpaceProject.SideMissilesWeapon
+Cell	SpaceProject.AdvancedEnergyCell
+Shield	SpaceProject.RegularShield
+Hull	SpaceProject.BasicPlating
+------------------------
+Level	testRun
+LoggingTime	14:57:53 
+LevelRuntime	61398
+ObjectiveCompleted	True
+
+Ship damage	192
+Shield damage	228
+Consumed energy	441.5609
+
+Primary1	SpaceProject.BeamWeapon
+Primary2	SpaceProject.AdvancedLaserWeapon
+Secondary	SpaceProject.SideMissilesWeapon
+Cell	SpaceProject.AdvancedEnergyCell
+Shield	SpaceProject.RegularShield
+Hull	SpaceProject.BasicPlating
+------------------------
+Level	testRun
+LoggingTime	14:59:42 
+LevelRuntime	93160
+ObjectiveCompleted	True
+
+Ship damage	0
+Shield damage	320
+Consumed energy	775.0188
+
+Primary1	SpaceProject.BeamWeapon
+Primary2	SpaceProject.AdvancedLaserWeapon
+Secondary	SpaceProject.SideMissilesWeapon
+Cell	SpaceProject.AdvancedEnergyCell
+Shield	SpaceProject.AdvancedShield
+Hull	SpaceProject.AdvancedPlating

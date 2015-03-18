@@ -55,8 +55,6 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            //Game.Window.Title = ("SpaceExplorationGame - " + "IntroFirst");
-
             #region Input
 
             if (ControlManager.GamepadReady == false)

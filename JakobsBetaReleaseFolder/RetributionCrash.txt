@@ -1,0 +1,21 @@
+Krasch i "Game1.cs", rad 357 ("graphics.ApplyChanges()")
+
+An exception of type 'Microsoft.Xna.Framework.Graphics.NoSuitableGraphicsDeviceException' occurred in Microsoft.Xna.Framework.Game.dll but was not handled in user code
+
+Additional information: Could not find a Direct3D device that supports the XNA Framework Reach profile.
+
+
+
+Verify that a suitable graphics device is installed.
+
+
+
+Make sure the desktop is not locked, and that no other application is running in full screen mode.
+
+
+
+Avoid running under Remote Desktop or as a Windows service.
+
+
+
+Check the display properties to make sure hardware acceleration is set to Full.

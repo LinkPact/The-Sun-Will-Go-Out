@@ -69,7 +69,7 @@ namespace SpaceProject
             missile.Radians = MathFunctions.RadiansFromDir(missile.Direction);
             missile.Initialize();
             missile.Speed *= speedFactor;
-            missile.Damage *= damage;
+            missile.Damage = damage;
 
             Game.stateManager.shooterState.gameObjects.Add(missile);
         }
