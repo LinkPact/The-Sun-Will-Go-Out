@@ -463,8 +463,6 @@ namespace SpaceProject
             return currentMissions;
         }
 
-        /////////////////
-
         //Returns a list of Missions of completed missions on a specified planet or station
         public static List<Mission> ReturnCompletedMissions(string planetOrStationName)
         {
@@ -872,6 +870,35 @@ namespace SpaceProject
             }
 
             return null;
+        }
+
+        public static List<String> GetAvailableMainMissionLocationNames()
+        {
+            List<String> missionLocationNames = new List<String>();
+
+            foreach (Mission mission in MissionManager.missions)
+            {
+                if (mission.MissionState == StateOfMission.Available
+                    && mission.IsMainMission)
+                {
+                    missionLocationNames.Add(mission.LocationName);
+                }
+            }
+
+            return missionLocationNames;
+        }
+
+        public static bool IsNoMainMissionActive()
+        {
+            foreach (Mission mission in activeMissions)
+            {
+                if (mission.IsMainMission)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

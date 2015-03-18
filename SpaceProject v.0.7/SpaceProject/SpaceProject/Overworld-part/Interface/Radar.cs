@@ -38,6 +38,8 @@ namespace SpaceProject
         protected Sprite background;
 
         private List<DirectionArrow> missionArrows;
+        private List<DirectionArrow> availableMainMissionArrows;
+        private List<String> availableMainMissionLocationNames;
 
         private static int colorSwapCounter = 0;
         
@@ -70,13 +72,19 @@ namespace SpaceProject
             background = new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/radar"), new Rectangle(0, 0, 198, 198));
 
             missionArrows = new List<DirectionArrow>();
+            availableMainMissionArrows = new List<DirectionArrow>();
+            availableMainMissionLocationNames = new List<String>();
         }
 
         public void Update(GameTime gameTime, List<GameObjectOverworld> objectsInOverworld, Vector2 cameraPos)
         {
-
             objectsVisibleOnRadar.Clear();
             missionArrows.Clear();
+            availableMainMissionArrows.Clear();
+            availableMainMissionLocationNames.Clear();
+
+            availableMainMissionLocationNames = MissionManager.GetAvailableMainMissionLocationNames();
+
             foreach (GameObjectOverworld obj in objectsInOverworld)
             {
                 // Adds visible game objects
@@ -90,6 +98,18 @@ namespace SpaceProject
                 {
                     Boolean isMain = MissionManager.IsMainMissionDestination(obj);
                     missionArrows.Add(new DirectionArrow(spriteSheet, obj.position, playerpos, isMain));
+                }
+
+                else if (MissionManager.IsNoMainMissionActive())
+                {
+                    foreach (String str in availableMainMissionLocationNames)
+                    {
+                        if (obj.name.ToLower().Equals(str.ToLower()))
+                        {
+                            availableMainMissionArrows.Add(new DirectionArrow(spriteSheet, obj.position, playerpos, true));
+                            break;
+                        }
+                    }
                 }
             }
 
@@ -114,6 +134,11 @@ namespace SpaceProject
             DrawVisibleGameObjects(spriteBatch);
 
             foreach (DirectionArrow arrow in missionArrows)
+            {
+                arrow.Draw(spriteBatch, RadarCenterPos);
+            }
+
+            foreach (DirectionArrow arrow in availableMainMissionArrows)
             {
                 arrow.Draw(spriteBatch, RadarCenterPos);
             }
@@ -143,8 +168,10 @@ namespace SpaceProject
                 ActiveSprite = ObjectSprite;
                 drawDistance = 0.91f;
 
-                if (MissionManager.IsCurrentObjectiveDestination(obj))
+                if (MissionManager.IsCurrentObjectiveDestination(obj)
+                    || IsObjectAvailableMainMissionLocation(obj))
                 {
+                    drawDistance = 0.92f;
                     if (colorSwapCounter <= 25)
                     {
                         color = Color.DarkOrange;
@@ -192,6 +219,19 @@ namespace SpaceProject
                         drawDistance
                         );
             }
+        }
+
+        private bool IsObjectAvailableMainMissionLocation(GameObjectOverworld obj)
+        {
+            foreach (String str in availableMainMissionLocationNames)
+            {
+                if (obj.name.ToLower().Equals(str.ToLower()))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
