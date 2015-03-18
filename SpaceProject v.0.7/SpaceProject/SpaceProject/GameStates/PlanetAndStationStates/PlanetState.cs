@@ -149,8 +149,6 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            //Game.Window.Title = ("SpaceExplorationGame - " + "PlanetOverview" + " activemission: " + Game.stateManager.planetState.SubStateManager.MissionMenuState.ActiveMission);
-
             subStateManager.Update(gameTime);        
 
             if (subStateManager.ActiveButton != null)

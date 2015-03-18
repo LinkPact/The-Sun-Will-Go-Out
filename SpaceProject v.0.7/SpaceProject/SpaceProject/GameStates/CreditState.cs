@@ -24,7 +24,11 @@ namespace SpaceProject
             spriteFont = Game.fontManager.GetFont(14);
             textBox = TextUtils.CreateTextBox(spriteFont, new Rectangle(10, 300, Game.Window.ClientBounds.Width - 20,
                                         Game.Window.ClientBounds.Height - 20), false, 
-                                        "This game was developed by:\n\nDaniel Alm Grundstrom\n\nJakob Willforss\n\nJohan Philipsson");
+                                        "This game was developed by:\n\nDaniel Alm Grundstrom\n\nJakob Willforss\n\nJohan Philipsson\n\n"+
+                                        "Portraits: Josefin Voigt (many thanks!)\n\n" +
+                                        "Font: ICEFONT by WHATNAME?\n\n" +
+                                        "Space sounds: By who?" +
+                                        "..and many thanks to all our testers, you are invaluable.");
         }
 
         public override void Initialize()
@@ -44,43 +48,30 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            //Game.Window.Title = ("SpaceExplorationGame - " + "Outro");
-
-            #region Input
-            
-            //if (ControlManager.CheckHold(RebindableKeys.Up))
-            //{
-            //    txtSpeed += 0.01f;
-            //}
-            //
-            //else
-            //    txtSpeed -= 0.01f;
-            //
             if (ControlManager.GamepadReady == false)
             {
-            
-                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)))
+                if (ControlManager.CheckPress(RebindableKeys.Action1) 
+                    || ControlManager.CheckKeyPress(Keys.Enter)
+                    || ControlManager.CheckPress(RebindableKeys.Action2)
+                    || ControlManager.CheckKeyPress(Keys.Escape))
                 {
                     Game.stateManager.ChangeState("MainMenuState");
                 }
             }
 
             if (ControlManager.GamepadReady == true)
-            {
-            
+            {            
                 if (ControlManager.CurrentGamepadState.IsButtonDown(ControlManager.GamepadAction))
                 {
                     Game.stateManager.ChangeState("MainMenuState");
                 }
             }
 
-            if (ControlManager.IsLeftMouseButtonClicked())
-            {
-                Game.stateManager.ChangeState("MainMenuState");
-            }
+            //if (ControlManager.IsLeftMouseButtonClicked())
+            //{
+            //    Game.stateManager.ChangeState("MainMenuState");
+            //}
             
-            #endregion
-
             textBox.TextBoxPosY -= txtSpeed;
 
             if (txtSpeed > txtMaxSpeed)

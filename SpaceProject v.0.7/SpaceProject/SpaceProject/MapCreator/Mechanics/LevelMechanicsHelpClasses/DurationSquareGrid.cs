@@ -115,8 +115,6 @@ namespace SpaceProject
         {
             UpdateMouse();
 
-            game.Window.Title = "isSquareMarked?: " + (markedClick != null).ToString() + " Number of added chains?: " + durationDataChains.Count;
-
             SquareClick squareClick = null;
 
             for (int n = 0; n < GetWidth(); n++)

@@ -1,0 +1,336 @@
+------------------------
+Level	mainlevels/m1_RebelsAsteroids
+LoggingTime	20:25:59 
+LevelRuntime	58973
+ObjectiveCompleted	True
+
+Ship damage	80
+Shield damage	0
+Consumed energy	186.2998
+
+Primary1	Basic Laser
+Primary2	Basic Laser
+Secondary	---
+Cell	Basic Cell
+Shield	---
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m2_FreighterEscort_lv1
+LoggingTime	20:26:57 
+LevelRuntime	46403
+ObjectiveCompleted	True
+
+Ship damage	30
+Shield damage	0
+Consumed energy	165.5599
+
+Primary1	Basic Laser
+Primary2	Dual Laser
+Secondary	---
+Cell	Basic Cell
+Shield	---
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m2_FreighterEscort_lv2
+LoggingTime	20:27:52 
+LevelRuntime	50872
+ObjectiveCompleted	True
+
+Ship damage	30
+Shield damage	0
+Consumed energy	141.74
+
+Primary1	Basic Laser
+Primary2	Dual Laser
+Secondary	---
+Cell	Basic Cell
+Shield	---
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m3_DefendColony_lv1
+LoggingTime	20:29:06 
+LevelRuntime	49446
+ObjectiveCompleted	True
+
+Ship damage	80
+Shield damage	0
+Consumed energy	192.7798
+
+Primary1	Basic Laser
+Primary2	Dual Laser
+Secondary	---
+Cell	Basic Cell
+Shield	---
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m3_DefendColony_lv2
+LoggingTime	20:30:56 
+LevelRuntime	96467
+ObjectiveCompleted	True
+
+Ship damage	250
+Shield damage	0
+Consumed energy	386.08
+
+Primary1	Dual Laser
+Primary2	Ballistic Laser
+Secondary	---
+Cell	Basic Cell
+Shield	---
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m4_infiltration_lv2
+LoggingTime	20:31:39 
+LevelRuntime	26076
+ObjectiveCompleted	False
+
+Ship damage	0
+Shield damage	30
+Consumed energy	120
+
+Primary1	---
+Primary2	Ballistic Laser
+Secondary	---
+Cell	Basic Cell
+Shield	Regular Shield
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m4_infiltration_lv2
+LoggingTime	20:32:50 
+LevelRuntime	51369
+ObjectiveCompleted	True
+
+Ship damage	81.99978
+Shield damage	340.0002
+Consumed energy	210.9235
+
+Primary1	Spread Bullet
+Primary2	Ballistic Laser
+Secondary	---
+Cell	Basic Cell
+Shield	Regular Shield
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m5_retribution_lv1
+LoggingTime	20:34:39 
+LevelRuntime	96540
+ObjectiveCompleted	True
+
+Ship damage	183.5998
+Shield damage	366.4001
+Consumed energy	374.4778
+
+Primary1	Spread Bullet
+Primary2	Ballistic Laser
+Secondary	---
+Cell	Basic Cell
+Shield	Regular Shield
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m5_retribution_lv2
+LoggingTime	20:35:56 
+LevelRuntime	59632
+ObjectiveCompleted	True
+
+Ship damage	237.7999
+Shield damage	396.2
+Consumed energy	337.5283
+
+Primary1	Spread Bullet
+Primary2	Ballistic Laser
+Secondary	---
+Cell	Regular Cell
+Shield	Regular Shield
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m6_itnos_lv1
+LoggingTime	20:37:29 
+LevelRuntime	80224
+ObjectiveCompleted	True
+
+Ship damage	298.7997
+Shield damage	545.2002
+Consumed energy	345.0472
+
+Primary1	Spread Bullet
+Primary2	Ballistic Laser
+Secondary	---
+Cell	Regular Cell
+Shield	Regular Shield
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m6_itnos_lv2
+LoggingTime	20:39:12 
+LevelRuntime	63519
+ObjectiveCompleted	False
+
+Ship damage	360.3998
+Shield damage	519.6002
+Consumed energy	302.2271
+
+Primary1	Spread Bullet
+Primary2	Ballistic Laser
+Secondary	---
+Cell	Advanced Cell
+Shield	Regular Shield
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m6_itnos_lv2
+LoggingTime	20:40:03 
+LevelRuntime	36017
+ObjectiveCompleted	False
+
+Ship damage	362.5999
+Shield damage	297.4001
+Consumed energy	251.1001
+
+Primary1	Fragment Missile
+Primary2	Ballistic Laser
+Secondary	---
+Cell	Advanced Cell
+Shield	Regular Shield
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m6_itnos_lv2
+LoggingTime	20:41:05 
+LevelRuntime	41688
+ObjectiveCompleted	True
+
+Ship damage	271.6002
+Shield damage	238.3999
+Consumed energy	291.3001
+
+Primary1	Fragment Missile
+Primary2	Ballistic Laser
+Secondary	---
+Cell	Advanced Cell
+Shield	Advanced Shield
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m7_information
+LoggingTime	20:42:37 
+LevelRuntime	77523
+ObjectiveCompleted	True
+
+Ship damage	139.0002
+Shield damage	550.9998
+Consumed energy	553.6495
+
+Primary1	Fragment Missile
+Primary2	Ballistic Laser
+Secondary	---
+Cell	Advanced Cell
+Shield	Advanced Shield
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m8a_OYO_lv1
+LoggingTime	20:44:43 
+LevelRuntime	106598
+ObjectiveCompleted	True
+
+Ship damage	292.7001
+Shield damage	585.3
+Consumed energy	563.9394
+
+Primary1	Fragment Missile
+Primary2	Advanced Laser
+Secondary	---
+Cell	Advanced Cell
+Shield	Advanced Shield
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m8a_OYO_lv2
+LoggingTime	20:46:57 
+LevelRuntime	102597
+ObjectiveCompleted	True
+
+Ship damage	212.4003
+Shield damage	777.5997
+Consumed energy	834.5683
+
+Primary1	Fragment Missile
+Primary2	Advanced Laser
+Secondary	---
+Cell	Advanced Cell
+Shield	Advanced Shield
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m8b_rebels_lv1
+LoggingTime	20:47:50 
+LevelRuntime	49372
+ObjectiveCompleted	False
+
+Ship damage	389.6001
+Shield damage	414.3999
+Consumed energy	468.7201
+
+Primary1	Fragment Missile
+Primary2	Advanced Laser
+Secondary	---
+Cell	Advanced Cell
+Shield	Advanced Shield
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m8b_rebels_lv1
+LoggingTime	20:49:14 
+LevelRuntime	69874
+ObjectiveCompleted	True
+
+Ship damage	92.49999
+Shield damage	381.5001
+Consumed energy	590.2205
+
+Primary1	Fragment Missile
+Primary2	Advanced Laser
+Secondary	---
+Cell	Advanced Cell
+Shield	Advanced Shield
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m8b_rebels_lv2
+LoggingTime	20:50:57 
+LevelRuntime	92299
+ObjectiveCompleted	True
+
+Ship damage	64.10003
+Shield damage	305.8999
+Consumed energy	725.7501
+
+Primary1	Advanced Beam
+Primary2	Advanced Laser
+Secondary	---
+Cell	Advanced Cell
+Shield	Advanced Shield
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m8c_alliance_lv1
+LoggingTime	20:52:15 
+LevelRuntime	74969
+ObjectiveCompleted	True
+
+Ship damage	0
+Shield damage	220
+Consumed energy	511.4539
+
+Primary1	Advanced Beam
+Primary2	Advanced Laser
+Secondary	---
+Cell	Advanced Cell
+Shield	Advanced Shield
+Hull	Basic Plating
+------------------------
+Level	mainlevels/m8c_alliance_lv2
+LoggingTime	20:53:53 
+LevelRuntime	93086
+ObjectiveCompleted	True
+
+Ship damage	148.4002
+Shield damage	571.5997
+Consumed energy	673.0867
+
+Primary1	Advanced Beam
+Primary2	Advanced Laser
+Secondary	---
+Cell	Advanced Cell
+Shield	Advanced Shield
+Hull	Basic Plating

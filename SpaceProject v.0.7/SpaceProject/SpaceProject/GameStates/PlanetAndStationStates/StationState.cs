@@ -180,8 +180,6 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            //Game.Window.Title = ("SpaceExplorationGame - " + "StationOverview" + " " + subStateManager.ButtonControl.ToString() + " " + subStateManager.OverviewMenuState.ButtonShop.isSelected + subStateManager.OverviewMenuState.ButtonShop.isActive);
-
             subStateManager.Update(gameTime);        
 
             if (subStateManager.ActiveButton != null)
