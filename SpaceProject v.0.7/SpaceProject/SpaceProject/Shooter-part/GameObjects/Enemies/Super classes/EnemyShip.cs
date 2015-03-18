@@ -13,6 +13,15 @@ namespace SpaceProject
         other
     }
 
+    public enum CollisionDamage
+    {
+        veryLow = 75,
+        low = 125,
+        medium = 175,
+        high = 250,
+        extreme = 1000
+    }
+
     public class EnemyShip : VerticalShooterShip
     {
         protected Fraction fraction;

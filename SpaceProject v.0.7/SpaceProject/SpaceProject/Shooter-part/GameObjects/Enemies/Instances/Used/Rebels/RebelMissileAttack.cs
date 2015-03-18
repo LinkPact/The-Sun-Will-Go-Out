@@ -32,7 +32,7 @@ namespace SpaceProject
             AddSecondaryModule(1000, ShootingMode.Regular);
             secondaryModule.SetFullCharge();
 
-            Damage = 100;
+            Damage = (float)CollisionDamage.medium;
             Speed = 0.04f;
             HP = 1500;
             TurningSpeed = 2;

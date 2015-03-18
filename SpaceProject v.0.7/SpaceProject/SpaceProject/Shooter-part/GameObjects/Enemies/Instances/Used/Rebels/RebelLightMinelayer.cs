@@ -41,7 +41,7 @@ namespace SpaceProject
             //Egenskaper
             SightRange = 4000;
             HP = 400;
-            Damage = 40;
+            Damage = (float)CollisionDamage.medium;
             Speed = 0.10f;
 
             movement = Movement.SlantingLine;

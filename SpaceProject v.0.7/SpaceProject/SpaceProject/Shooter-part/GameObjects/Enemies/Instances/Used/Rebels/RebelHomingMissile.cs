@@ -38,7 +38,7 @@ namespace SpaceProject
             //Egenskaper
             SightRange = 500;
             HP = 400f;
-            Damage = 50;
+            Damage = (float)CollisionDamage.medium;
             Speed = 0.02f;
 
             movement = Movement.Stopping;

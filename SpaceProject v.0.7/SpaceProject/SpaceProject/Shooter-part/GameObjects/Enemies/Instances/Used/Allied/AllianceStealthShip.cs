@@ -55,7 +55,7 @@ namespace SpaceProject
             //Egenskaper
             SightRange = 4000;
             HP = 400.0f;
-            Damage = 150;
+            Damage = (float)CollisionDamage.high;
             Speed = 0.03f;
             movement = Movement.Line;
             PrimaryShootSoundID = SoundEffects.SmallLaser;
