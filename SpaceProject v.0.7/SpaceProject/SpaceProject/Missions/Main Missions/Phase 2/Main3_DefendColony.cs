@@ -164,6 +164,7 @@ namespace SpaceProject
                 new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun2), null, EventTextCanvas.MessageBox, PortraitID.Ai),
                 delegate 
                 {
+                    readyToLeave = false;
                     allyShipRectangle = new Rectangle(
                         (int)allyShips1[0].position.X - AllyShipRectOffset,
                         (int)allyShips1[0].position.Y - AllyShipRectOffset,
