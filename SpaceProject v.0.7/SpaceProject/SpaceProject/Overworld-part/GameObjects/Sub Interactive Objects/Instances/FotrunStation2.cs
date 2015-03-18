@@ -76,5 +76,10 @@ namespace SpaceProject
                 "I'm afraid you do not have enough money, sir.",
                 "Your inventory is full! How silly of you, sir!", 1000, false);
         }
+
+        protected override void SetClearedText()
+        {
+            clearedText = "EMPTY";
+        }
     }
 }

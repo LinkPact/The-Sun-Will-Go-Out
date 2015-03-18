@@ -32,7 +32,8 @@ namespace SpaceProject
             canvasPosition = new Vector2(game.camera.cameraPos.X,
                              game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 4);
 
-            if (Game1.Paused)
+            if (Game1.Paused
+                || ZoomMap.MapState != MapState.Off)
             {
                 textContainer.UpdatePosition(gameTime, canvasPosition);
             }

@@ -117,6 +117,8 @@ namespace SpaceProject
             textMessage.SetMessage(messages);
 
             messageQueue.Add(textMessage);
+
+            game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public static void DisplayPortraitMessage(PortraitID portrait, params string[] messages)
@@ -127,6 +129,8 @@ namespace SpaceProject
             portraitMessage.SetPortrait(PopupHandler.GetPortrait(portrait));
 
             messageQueue.Add(portraitMessage);
+
+            game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public static void DisplayPortraitMessage(List<PortraitID> portraits, List<int> portraitTriggers, params string[] messages)
@@ -144,6 +148,8 @@ namespace SpaceProject
             portraitMessage.SetPortraits(portraitList, portraitTriggers, TextUtils.GetSplitCount(messages));
 
             messageQueue.Add(portraitMessage);
+
+            game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public static void DisplayImage(params Sprite[] images)
@@ -154,6 +160,8 @@ namespace SpaceProject
             imagePopup.SetImages(images);
 
             messageQueue.Add(imagePopup);
+
+            game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public static void DisplayMessageWithImage(List<Sprite> images, List<int> imageTriggers, params string[] messages)
@@ -175,6 +183,8 @@ namespace SpaceProject
             imageMessage.SetImages(TextUtils.GetSplitCount(messages), imageTriggers.ToArray<int>(), images.ToArray<Sprite>());
 
             messageQueue.Add(imageMessage);
+
+            game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public static void DisplayRealtimePortraitMessage(float delay, PortraitID[] portraits,
@@ -233,6 +243,8 @@ namespace SpaceProject
             }
 
             menuQueue.Add(menu);
+
+            game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public static void DisplaySelectionMenu(string message, List<String> options, List<System.Action> actions)
@@ -251,6 +263,8 @@ namespace SpaceProject
             selectionMenu.SetMenuActions(actions.ToArray());
 
             menuQueue.Add(selectionMenu);
+
+            game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         private static Sprite GetPortrait(PortraitID portrait)

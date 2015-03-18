@@ -167,6 +167,7 @@ namespace SpaceProject
 
                 case "Save":
                     game.Save();
+                    PopupHandler.DisplayMessage("The game has been saved!");
                     break;
 
                 case "Exit Game":

@@ -18,14 +18,14 @@ namespace SpaceProject
         Nothing
     }
 
-    public class SubInteractiveObject : GameObjectOverworld
+    public abstract class SubInteractiveObject : GameObjectOverworld
     {
         private static int count;
         private int id;
 
         private bool oneTimeOnly;
         private bool cleared;
-        private string clearedText = "EMPTY";
+        protected string clearedText = "EMPTY";
 
         protected InteractionType interactionType;
         protected List<string> text;
@@ -320,10 +320,7 @@ namespace SpaceProject
             getItemItem = item;
         }
 
-        protected void SetClearedText(string text)
-        {
-            this.clearedText = text;
-        }
+        protected abstract void SetClearedText();
 
         public void Save()
         {
@@ -331,16 +328,17 @@ namespace SpaceProject
 
             saveData.Clear();
             saveData.Add("disabled", cleared.ToString());
-            if (clearedText.Count() != 0)
-                saveData.Add("disabledText", clearedText);
 
             Game.saveFile.Save("save.ini", "subobject" + id, saveData);
         }
 
         public void Load()
         {
-            cleared = Game.saveFile.GetPropertyAsBool("subobject" + id, "disabled", true);
-            clearedText = Game.saveFile.GetPropertyAsString("subobject" + id, "disabledText", "");
+            cleared = Game.saveFile.GetPropertyAsBool("subobject" + id, "disabled", false);
+            if (cleared)
+            {
+                SetClearedText();
+            }
         }
     }
 }

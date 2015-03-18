@@ -34,7 +34,7 @@ namespace SpaceProject
             SetupGetItem("Holy crap! A weapon is just floating in space!", "..But unfortunately, your inventory is full.",
                 new BasicLaserWeapon(Game, ItemVariety.low));
 
-            SetClearedText("No more weapons here!");
+            SetClearedText();
         }
 
         public override void Update(GameTime gameTime)
@@ -50,6 +50,11 @@ namespace SpaceProject
         public override void Interact()
         {
             base.Interact();
+        }
+
+        protected override void SetClearedText()
+        {
+            clearedText = "No more weapons here!";
         }
     }
 }

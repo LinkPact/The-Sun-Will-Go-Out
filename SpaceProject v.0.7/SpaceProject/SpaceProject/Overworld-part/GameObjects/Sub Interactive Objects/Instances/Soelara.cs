@@ -38,5 +38,10 @@ namespace SpaceProject
         {
             base.Interact();
         }
+
+        protected override void SetClearedText()
+        {
+            clearedText = "EMPTY";
+        }
     }
 }
