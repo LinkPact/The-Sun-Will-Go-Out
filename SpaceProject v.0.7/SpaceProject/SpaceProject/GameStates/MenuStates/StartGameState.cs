@@ -353,9 +353,9 @@ namespace SpaceProject
             if (Game.menuBGController.DisplayButtons && buttonIndex < descriptions.Count)
             {
                 spriteBatch.DrawString(Game.fontManager.GetFont(14), descriptions[buttonIndex],
-                    buttons[buttonIndex].Position + Game.fontManager.FontOffset + new Vector2(Game.Window.ClientBounds.Width / 2, 0),
+                    buttons[buttonIndex].Position + Game.fontManager.FontOffset + new Vector2(Game.Window.ClientBounds.Width / 4, 0),
                     Color.White, 0f,
-                    Game.fontManager.GetFont(14).MeasureString(descriptions[buttonIndex]) / 2,
+                    Vector2.Zero,
                     1f, SpriteEffects.None, 1f);
             }
 

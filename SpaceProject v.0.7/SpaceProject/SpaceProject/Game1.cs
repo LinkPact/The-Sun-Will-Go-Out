@@ -158,6 +158,7 @@ namespace SpaceProject
 
             saveFile = new SaveFile(this);
 
+            Portrait.InitializePortraitSpriteSheet(this);
             popupHandler = new PopupHandler(this, messageBoxSpriteSheet);
             popupHandler.Initialize();
 

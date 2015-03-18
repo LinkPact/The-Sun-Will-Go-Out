@@ -9,26 +9,6 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
-    public enum PortraitID
-    {
-        None,
-        // Central characters
-        Sair,
-        Ai,
-        Rok,
-        Ente,
-        Berr,
-        RebelLeader,
-        AllianceCommander,
-
-        // Generic characters
-        AllianceCaptain,
-        RebelTroopLeader,
-        AlliancePilot,
-        RebelPilot,
-        CommonCitizen
-    }
-
     public class PopupHandler
     {
         #region variables
@@ -37,7 +17,6 @@ namespace SpaceProject
 
         private static Game1 game;
         private static Sprite spriteSheet;
-        private static Sprite portraitSpriteSheet;
 
         private static List<Popup> messageQueue;
         private static List<Popup> menuQueue;
@@ -67,7 +46,6 @@ namespace SpaceProject
 
         public void Initialize()
         {
-            portraitSpriteSheet = new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites\\PortraitSpriteSheet"), null);
             messageQueue = new List<Popup>();
             menuQueue = new List<Popup>();
             realTimeMessageQueue = new List<Popup>();
@@ -126,7 +104,7 @@ namespace SpaceProject
             PortraitMessage portraitMessage = new PortraitMessage(game, spriteSheet);
             portraitMessage.Initialize();
             portraitMessage.SetMessage(messages);
-            portraitMessage.SetPortrait(PopupHandler.GetPortrait(portrait));
+            portraitMessage.SetPortrait(new Portrait(portrait).Sprite);
 
             messageQueue.Add(portraitMessage);
 
@@ -139,7 +117,7 @@ namespace SpaceProject
 
             foreach (PortraitID id in portraits)
             {
-                portraitList.Add(GetPortrait(id));
+                portraitList.Add(new Portrait(id).Sprite);
             }
 
             PortraitMessage portraitMessage = new PortraitMessage(game, spriteSheet);
@@ -204,7 +182,7 @@ namespace SpaceProject
 
             foreach (PortraitID id in portraits)
             {
-                portraitList.Add(GetPortrait(id));
+                portraitList.Add(new Portrait(id).Sprite);
             }
 
             RealTimePortraitMessage realTimeMessage = new RealTimePortraitMessage(game, spriteSheet);
@@ -265,67 +243,6 @@ namespace SpaceProject
             menuQueue.Add(selectionMenu);
 
             game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
-        }
-
-        private static Sprite GetPortrait(PortraitID portrait)
-        {
-            Rectangle sourceRect;
-
-            switch (portrait)
-            {
-                case PortraitID.Sair:
-                    sourceRect = new Rectangle(0, 0, 149, 192);
-                    break;
-
-                case PortraitID.Ai:
-                    sourceRect = new Rectangle(154, 0, 149, 192);
-                    break;
-
-                case PortraitID.Rok:
-                    sourceRect = new Rectangle(308, 0, 149, 192);
-                    break;
-
-                case PortraitID.Ente:
-                    sourceRect = new Rectangle(462, 0, 149, 192);
-                    break;
-
-                case PortraitID.Berr:
-                    sourceRect = new Rectangle(0, 197, 149, 192);
-                    break;
-
-                case PortraitID.RebelLeader:
-                    sourceRect = new Rectangle(154, 197, 149, 192);
-                    break;
-
-                case PortraitID.AllianceCommander:
-                    sourceRect = new Rectangle(308, 197, 149, 192);
-                    break;
-
-                case PortraitID.AllianceCaptain:
-                    sourceRect = new Rectangle(462, 197, 149, 192);
-                    break;
-
-                case PortraitID.RebelTroopLeader:
-                    sourceRect = new Rectangle(0, 394, 149, 192);
-                    break;
-
-                case PortraitID.AlliancePilot:
-                    sourceRect = new Rectangle(154, 394, 149, 192);
-                    break;
-
-                case PortraitID.RebelPilot:
-                    sourceRect = new Rectangle(308, 394, 149, 192);
-                    break;
-
-                case PortraitID.CommonCitizen:
-                    sourceRect = new Rectangle(462, 394, 149, 192);
-                    break;
-
-                default:
-                    throw new ArgumentException("Invalid Portrait ID.");
-            }
-
-            return new Sprite(portraitSpriteSheet.Texture, sourceRect);
         }
 
         private static void UpdateQueue(GameTime gameTime, List<Popup> queue)

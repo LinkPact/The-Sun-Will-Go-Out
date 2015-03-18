@@ -29,9 +29,9 @@ namespace SpaceProject
             tempTextList = new List<string>();
             tempVariableList = new List<string>();
 
-            lowerScreenRectangle = new Rectangle(Game.Window.ClientBounds.Width / 3 + 10,
+            lowerScreenRectangle = new Rectangle(Game.Window.ClientBounds.Width / 2 + 10,
                                                 (Game.Window.ClientBounds.Height / 2) + 10,
-                                                 (Game.Window.ClientBounds.Width * 2 / 3) - 20,
+                                                 (Game.Window.ClientBounds.Width / 2) - 20,
                                                 (Game.Window.ClientBounds.Height / 2) - 20);
 
             responseRectangles = new List<Rectangle>();

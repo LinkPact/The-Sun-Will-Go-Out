@@ -9,7 +9,6 @@ namespace SpaceProject
 {
     public class MissionMenuState : MenuState
     {
-
         #region Mission Fields
 
         private List<Mission> availableMissions;
@@ -35,6 +34,8 @@ namespace SpaceProject
         public int ResponseCursorIndex { get { return responseCursorIndex; } set { responseCursorIndex = value; } }
 
         #endregion
+
+        private Portrait portrait;
 
         public MissionMenuState(Game1 game, String name, BaseStateManager manager, BaseState baseState) :
             base(game, name, manager, baseState)
@@ -348,6 +349,15 @@ namespace SpaceProject
                                        SpriteEffects.None,
                                        .75f);
             }
+
+            // Draws portrait
+            if (portrait != null
+                && BaseStateManager.ButtonControl != ButtonControl.Mission)
+            {
+                spriteBatch.Draw(portrait.Sprite.Texture, new Vector2(Game.Window.ClientBounds.Width / 3 + 10,
+                        Game.Window.ClientBounds.Height / 2 + 10),
+                    portrait.Sprite.SourceRectangle, Color.White);
+            }
         }
 
         public void MissionEvent()
@@ -356,10 +366,14 @@ namespace SpaceProject
 
             if (MissionManager.MissionEventBuffer.Count > 0)
             {
+                SetPortraitFromText(MissionManager.MissionEventBuffer[0]);
+
                 BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                                   BaseStateManager.LowerScreenRectangle,
                                                                   false,
                                                                   MissionManager.MissionEventBuffer[0]));
+
+
 
                 TextToSpeech.Speak(MissionManager.MissionEventBuffer[0]);
 
@@ -394,6 +408,8 @@ namespace SpaceProject
         {
             BaseStateManager.TextBoxes.Clear();
 
+            SetPortraitFromText(MissionManager.MissionStartBuffer[0]);
+
             BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                               BaseStateManager.LowerScreenRectangle,
                                                               false,
@@ -408,6 +424,7 @@ namespace SpaceProject
 
             if (MissionManager.MissionStartBuffer.Count == 0)
             {
+
                 BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                       BaseStateManager.ResponseRectangle1,
                                                       true,
@@ -451,6 +468,8 @@ namespace SpaceProject
             if (SelectedMission != null)
             {
                 String[] temp = SelectedMission.IntroductionText.Split('#');
+
+                SetPortraitFromText(temp[0]);
 
                 BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                                   BaseStateManager.LowerScreenRectangle,
@@ -533,6 +552,8 @@ namespace SpaceProject
                 {
                     String[] temp = SelectedMission.AcceptText[selectedMission.AcceptIndex].Split('#');
 
+                    SetPortraitFromText(temp[0]);
+
                     BaseStateManager.TextBoxes.Clear();
 
                     MissionManager.MarkMissionAsActive(selectedMission.MissionID);
@@ -570,6 +591,8 @@ namespace SpaceProject
             {
                 String[] temp = SelectedMission.AcceptText[selectedMission.AcceptIndex].Split('#');
 
+                SetPortraitFromText(temp[0]);
+
                 BaseStateManager.TextBoxes.Clear();
 
                 MissionManager.MarkMissionAsActive(selectedMission.MissionID);
@@ -602,6 +625,8 @@ namespace SpaceProject
         {
             BaseStateManager.TextBoxes.Clear();
 
+            SetPortraitFromText(selectedMission.AcceptFailedText);
+
             BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                               BaseStateManager.LowerScreenRectangle,
                                                               false,
@@ -625,6 +650,8 @@ namespace SpaceProject
                 List<Mission> completedMissions = MissionManager.ReturnCompletedMissions(BaseState.GetBase().name);
 
                 String[] temp = completedMissions[0].CompletedText.Split('#');
+
+                SetPortraitFromText(temp[0]);
 
                 if (temp.Length > 1)
                 {
@@ -716,6 +743,8 @@ namespace SpaceProject
 
             String[] temp = failedMissions[0].FailedText.Split('#');
 
+            SetPortraitFromText(temp[0]);
+
             BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                               BaseStateManager.LowerScreenRectangle,
                                                               false,
@@ -732,6 +761,19 @@ namespace SpaceProject
             MissionManager.MarkFailedMissionAsDead(failedMissions[0].MissionID);
 
             BaseStateManager.ButtonControl = ButtonControl.Confirm;
+        }
+
+        private void SetPortraitFromText(String text)
+        {
+            PortraitID id = Portrait.GetPortraitIDFromString(text);
+            if (id != PortraitID.None)
+            {
+                portrait = new Portrait(id);
+            }
+            else
+            {
+                portrait = null;
+            }
         }
     }
 }
