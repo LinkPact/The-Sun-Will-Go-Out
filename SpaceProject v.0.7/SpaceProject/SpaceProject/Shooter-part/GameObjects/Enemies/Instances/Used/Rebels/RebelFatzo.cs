@@ -36,7 +36,7 @@ namespace SpaceProject
             //Egenskaper
             SightRange = 4000;
             HP = 2000f;
-            Damage = 150;
+            Damage = (float)CollisionDamage.extreme;
             Speed = 0.02f;
 
             AddPrimaryModule(700, ShootingMode.Regular);

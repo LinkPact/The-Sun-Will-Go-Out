@@ -34,7 +34,7 @@ namespace SpaceProject
             primaryModule.SetRandomCharge(random);
             primaryModule.ShootsInBatchesSetup(2, 1000);
 
-            Damage = 100;
+            Damage = (float)CollisionDamage.low;
             Speed = 0.17f;
             HP = 200;
             TurningSpeed = 2;

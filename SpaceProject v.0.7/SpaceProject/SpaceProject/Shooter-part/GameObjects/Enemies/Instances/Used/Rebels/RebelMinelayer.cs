@@ -41,7 +41,7 @@ namespace SpaceProject
             //Egenskaper
             SightRange = 1000;
             HP = 700.0f;
-            Damage = 130;
+            Damage = (float)CollisionDamage.high;
             Speed = 0.05f;
 
             movement = Movement.SmallZigzag;

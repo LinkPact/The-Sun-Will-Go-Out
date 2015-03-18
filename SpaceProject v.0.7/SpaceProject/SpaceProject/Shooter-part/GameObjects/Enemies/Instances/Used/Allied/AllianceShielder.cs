@@ -37,7 +37,7 @@ namespace SpaceProject
             AddPrimaryModule(3000, ShootingMode.Regular);
             primaryModule.SetRandomCharge(random);
 
-            Damage = 100;
+            Damage = (float)CollisionDamage.high;
             Speed = 0.035f;
             HP = 400;
             TurningSpeed = 2;

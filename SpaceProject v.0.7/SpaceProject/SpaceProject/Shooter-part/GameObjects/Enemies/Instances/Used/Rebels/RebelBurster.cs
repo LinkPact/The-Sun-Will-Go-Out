@@ -28,7 +28,7 @@ namespace SpaceProject
             //Egenskaper
             SightRange = 300;
             HP = 275;
-            Damage = 60;
+            Damage = (float)CollisionDamage.medium;
             Speed = 0.07f;
 
             //Animationer

@@ -43,7 +43,7 @@ namespace SpaceProject
 
             SightRange = 1000;
             HP = 4000.0f;
-            Damage = 10000;
+            Damage = (float)CollisionDamage.extreme;
             Speed = 0.01f;
             movement = Movement.Line;
             PrimaryShootSoundID = SoundEffects.BigLaser;
