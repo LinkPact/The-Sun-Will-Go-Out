@@ -9,6 +9,14 @@ namespace SpaceProject
 {
     public class MissionMenuState : MenuState
     {
+        private readonly float PortraitWidth = 149;
+        private readonly float PortraitHeight = 192;
+
+        private Portrait portrait;
+        private Vector2 portraitPosition;
+        private Vector2 portraitBorderPosition;
+        private float portraitOffset;
+
         #region Mission Fields
 
         private List<Mission> availableMissions;
@@ -35,8 +43,6 @@ namespace SpaceProject
 
         #endregion
 
-        private Portrait portrait;
-
         public MissionMenuState(Game1 game, String name, BaseStateManager manager, BaseState baseState) :
             base(game, name, manager, baseState)
         {
@@ -62,6 +68,11 @@ namespace SpaceProject
                                             Game.Window.ClientBounds.Height - BaseState.Game.fontManager.GetFont(14).MeasureString(confirmString).Y - 10);
 
             confirmStringOrigin = BaseState.Game.fontManager.GetFont(14).MeasureString(confirmString) / 2;
+
+            portraitOffset = (Game.Window.ClientBounds.Width / 2 - Game.Window.ClientBounds.Width / 3 - PortraitWidth) / 2;
+            portraitPosition = new Vector2(Game.Window.ClientBounds.Width / 3 + portraitOffset, 
+                Game.Window.ClientBounds.Height / 2 + portraitOffset);
+            portraitBorderPosition = new Vector2(Game.Window.ClientBounds.Width / 3, Game.Window.ClientBounds.Height / 2);
         }
 
         public override void OnEnter()
@@ -350,12 +361,15 @@ namespace SpaceProject
                                        .75f);
             }
 
-            // Draws portrait
             if (portrait != null
                 && BaseStateManager.ButtonControl != ButtonControl.Mission)
             {
-                spriteBatch.Draw(portrait.Sprite.Texture, new Vector2(Game.Window.ClientBounds.Width / 3 + 10,
-                        Game.Window.ClientBounds.Height / 2 + 10),
+                // Draws portrait border
+                spriteBatch.Draw(SpriteSheet.Texture, portraitBorderPosition, new Rectangle(203, 152, 1, 1), Color.White,
+                    0f, Vector2.Zero, new Vector2(portraitOffset * 2 + PortraitWidth, portraitOffset * 2 + PortraitHeight), SpriteEffects.None, 1f);
+
+                // Draws portrait
+                spriteBatch.Draw(portrait.Sprite.Texture, portraitPosition,
                     portrait.Sprite.SourceRectangle, Color.White);
             }
         }
