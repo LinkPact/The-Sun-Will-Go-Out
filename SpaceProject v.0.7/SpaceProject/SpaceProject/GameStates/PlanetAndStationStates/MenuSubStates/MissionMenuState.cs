@@ -560,6 +560,15 @@ namespace SpaceProject
 
         public void DisplayMissionAcceptText()
         {
+            if (SelectedMission.AcceptText[0].ToLower().Equals("empty"))
+            {
+                MissionManager.MarkMissionAsActive(selectedMission.MissionID);
+                BaseStateManager.ChangeMenuSubState("Overview");
+                BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexX, BaseStateManager.ActiveButtonIndexY];
+                selectedMission.IntroductionText += "/ok";
+                
+                return;
+            }
             if (selectedMission.RequiresAvailableSlot)
             {
                 if (ShipInventoryManager.HasAvailableSlot())
