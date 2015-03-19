@@ -212,7 +212,7 @@ namespace SpaceProject
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.FirstLevelCompleted), null, EventTextCanvas.MessageBox, PortraitID.Ai),
-                delegate { Game.stateManager.GotoPlanetSubScreen("New Norrland", "Mission"); },
+                delegate { Game.stateManager.GotoPlanetSubScreen("New Norrland", "Overview"); },
                 delegate { },
                 delegate { return true; },
                 delegate { return false; }));

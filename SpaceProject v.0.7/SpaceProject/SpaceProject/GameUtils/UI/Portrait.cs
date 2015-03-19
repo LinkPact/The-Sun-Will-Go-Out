@@ -138,6 +138,12 @@ namespace SpaceProject
                 return PortraitID.AllianceCommander;
             }
 
+            else if (str.Contains("[Rebel Pilot]"))
+            {
+                lastPortraitID = PortraitID.RebelTroopLeader;
+                return PortraitID.RebelTroopLeader;
+            }
+
             else if (str.Contains("[Rok]"))
             {
                 lastPortraitID = PortraitID.Rok;
@@ -146,8 +152,50 @@ namespace SpaceProject
 
             else if (str.Contains("[Trainer]"))
             {
+                lastPortraitID = PortraitID.AllianceCommander;
+                return PortraitID.AllianceCommander;
+            }
+
+            else if (str.Contains("Alliance man"))
+            {
                 lastPortraitID = PortraitID.AllianceCaptain;
                 return PortraitID.AllianceCaptain;
+            }
+
+            else if (str.Contains("Debt collector"))
+            {
+                lastPortraitID = PortraitID.Berr;
+                return PortraitID.Berr;
+            }
+
+            else if (str.Contains("Desperate man"))
+            {
+                lastPortraitID = PortraitID.CommonCitizen;
+                return PortraitID.CommonCitizen;
+            }
+
+            else if (str.Contains("[Mineral researcher]"))
+            {
+                lastPortraitID = PortraitID.RebelTroopLeader;
+                return PortraitID.RebelTroopLeader;
+            }
+
+            else if (str.Contains("[Concerned citizen]"))
+            {
+                lastPortraitID = PortraitID.CommonCitizen;
+                return PortraitID.CommonCitizen;
+            }
+
+            else if (str.Contains("[Colony doctor]"))
+            {
+                lastPortraitID = PortraitID.Ente;
+                return PortraitID.Ente;
+            }
+
+            else if (str.Contains("[Crazy scientist]"))
+            {
+                lastPortraitID = PortraitID.Ente;
+                return PortraitID.Ente;
             }
 
             else if (str.Contains("\""))

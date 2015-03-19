@@ -19,7 +19,7 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            untriggeredEvents.Add(new SimpleMessageVertical(Game, player, spriteSheet, this, Message1Time, MissionManager.GetMission(MissionID.Main4_Infiltration).GetEvent(Message1Index).Text, PortraitID.AlliancePilot));
+            untriggeredEvents.Add(new SimpleMessageVertical(Game, player, spriteSheet, this, Message1Time, MissionManager.GetMission(MissionID.Main4_Infiltration).GetEvent(Message1Index).Text, PortraitID.AllianceCaptain));
             untriggeredEvents.Add(new SimpleMessageVertical(Game, player, spriteSheet, this, Message1Time, MissionManager.GetMission(MissionID.Main4_Infiltration).GetEvent(Message2Index).Text));
             untriggeredEvents.Add(new SimpleMessageVertical(Game, player, spriteSheet, this, Message1Time, MissionManager.GetMission(MissionID.Main4_Infiltration).GetEvent(Message3Index).Text, PortraitID.Rok));
         }

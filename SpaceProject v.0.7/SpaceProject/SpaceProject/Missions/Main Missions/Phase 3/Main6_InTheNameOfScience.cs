@@ -144,13 +144,13 @@ namespace SpaceProject
                 delegate { return false; }));
 
             objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
-                200, new EventTextCapsule(GetEvent((int)EventID.AtRebelRendezvous), null, EventTextCanvas.MessageBox, PortraitID.RebelPilot)));
+                200, new EventTextCapsule(GetEvent((int)EventID.AtRebelRendezvous), null, EventTextCanvas.MessageBox, PortraitID.RebelTroopLeader)));
 
             AutoPilotObjective autoPilotObjective = new AutoPilotObjective(Game, this, ObjectiveDescriptions[0], autoPilotSpeed,
                 allyShips1, destinations[3].position,
                 new EventTextCapsule(GetEvent((int)EventID.ArriveAtScienceStation),
                     null,
-                    EventTextCanvas.MessageBox, PortraitID.RebelPilot), false);
+                    EventTextCanvas.MessageBox, PortraitID.RebelTroopLeader), false);
 
             autoPilotObjective.Initialize();
             autoPilotObjective.SetTimedMessages(new Dictionary<string, List<float>>
@@ -172,7 +172,7 @@ namespace SpaceProject
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 "Itnos_1", LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.AfterLevel1),
-                    null, EventTextCanvas.MessageBox, PortraitID.RebelPilot)));
+                    null, EventTextCanvas.MessageBox, PortraitID.RebelTroopLeader)));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.InsideScienceStation1), null, EventTextCanvas.MessageBox, PortraitID.Sair)));
@@ -211,8 +211,8 @@ namespace SpaceProject
                 delegate { return false; }));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
-                "Itnos_2", LevelStartCondition.TextCleared, 
-                new EventTextCapsule(GetEvent((int)EventID.AfterLevel2), null, EventTextCanvas.MessageBox, PortraitID.RebelPilot)));
+                "Itnos_2", LevelStartCondition.TextCleared,
+                new EventTextCapsule(GetEvent((int)EventID.AfterLevel2), null, EventTextCanvas.MessageBox, PortraitID.RebelTroopLeader)));
 
             objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[1], 200,
                 new EventTextCapsule(GetEvent((int)EventID.OutsideRebelStation2), null, EventTextCanvas.MessageBox, PortraitID.Ente)));

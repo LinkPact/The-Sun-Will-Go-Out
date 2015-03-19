@@ -17,7 +17,7 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            untriggeredEvents.Add(new SimpleMessageVertical(Game, player, spriteSheet, this, MessageTime, MissionManager.GetMission(MissionID.Main6_InTheNameOfScience).GetEvent(MessageIndex).Text, PortraitID.RebelPilot));
+            untriggeredEvents.Add(new SimpleMessageVertical(Game, player, spriteSheet, this, MessageTime, MissionManager.GetMission(MissionID.Main6_InTheNameOfScience).GetEvent(MessageIndex).Text, PortraitID.RebelTroopLeader));
         }
     }
 }

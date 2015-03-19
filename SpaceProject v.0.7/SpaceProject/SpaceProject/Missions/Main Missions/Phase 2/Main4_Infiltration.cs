@@ -250,12 +250,12 @@ namespace SpaceProject
                 3000, 5000, PortraitID.Sair, GetEvent((int)EventID.ToLavis).Text));
 
             objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[1],
-                300, new EventTextCapsule(GetEvent((int)EventID.Level1Begins), null, EventTextCanvas.MessageBox, PortraitID.AlliancePilot)));
+                300, new EventTextCapsule(GetEvent((int)EventID.Level1Begins), null, EventTextCanvas.MessageBox, PortraitID.AllianceCaptain)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
                 "Infiltration1", LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.Level2Begins), null, EventTextCanvas.MessageBox,
-                    new List<PortraitID>() {PortraitID.AlliancePilot, PortraitID.Rok, PortraitID.Sair }, new List<int>() {3, 4})));
+                    new List<PortraitID>() { PortraitID.AllianceCaptain, PortraitID.Rok, PortraitID.Sair }, new List<int>() { 3, 4 })));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
                 "Infiltration2", LevelStartCondition.Immediately));
