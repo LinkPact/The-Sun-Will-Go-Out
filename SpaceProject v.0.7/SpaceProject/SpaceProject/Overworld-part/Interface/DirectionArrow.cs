@@ -49,11 +49,11 @@ namespace SpaceProject
         {
             if (!isMain)
             {
-                return Color.White;
+                return Color.Silver;
             }
             else
             {
-                return Color.Green;
+                return Color.Gold;
             }
         }
     }
