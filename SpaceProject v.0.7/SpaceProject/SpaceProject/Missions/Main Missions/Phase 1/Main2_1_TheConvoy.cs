@@ -42,7 +42,6 @@ namespace SpaceProject
 
             RestartAfterFail();
             Station soelaraStation = Game.stateManager.overworldState.GetStation("Soelara Station");
-            moneyReward = 500;
 
             freighterHP = 2000;
 
