@@ -59,6 +59,8 @@ namespace SpaceProject
             SetDestinations();
             SetupObjectives();
             RestartAfterFail();
+
+            moneyReward = 400;
         }
 
         public override void StartMission()

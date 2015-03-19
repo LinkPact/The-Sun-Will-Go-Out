@@ -21,14 +21,19 @@ namespace SpaceProject
         public CreditState(Game1 Game, string name) :
             base(Game, name)
         {
+            int xOffset = 10;
+            int yOffset = 150;
+
             spriteFont = Game.fontManager.GetFont(14);
-            textBox = TextUtils.CreateTextBox(spriteFont, new Rectangle(10, 300, Game.Window.ClientBounds.Width - 20,
+            textBox = TextUtils.CreateTextBox(spriteFont, new Rectangle(xOffset, yOffset, Game.Window.ClientBounds.Width - 20,
                                         Game.Window.ClientBounds.Height - 20), false, 
-                                        "This game was developed by:\n\nDaniel Alm Grundstrom\n\nJakob Willforss\n\nJohan Philipsson\n\n"+
-                                        "Portraits: Josefin Voigt (many thanks!)\n\n" +
-                                        "Font: ICEFONT by WHATNAME?\n\n" +
-                                        "Space sounds: By who?" +
-                                        "..and many thanks to all our testers, you are invaluable.");
+                                        "Design and development:\nDaniel Alm Grundstrom\nJakob Willforss\nJohan Philipsson\n\n"+
+                                        "Visuals:\nDaniel Alm Grunstrom\n\n" +
+                                        "Music:\nDaniel Alm Grunstrom\nJakob Willforss\n\n" +
+                                        "Portraits:\nJosefin Voigt (many thanks!)\n\n" +
+                                        "Fonts:\nIceland by Cyreal\nISL Jupiter by Isurus Labs\n\n" +
+                                        "Space sounds:\nSpace Music Ambient by evanjones4\n\n" +
+                                        "..and many thanks to all our testers, we really appreciate it.\nTell us, and your name will be here in the final version!");
         }
 
         public override void Initialize()

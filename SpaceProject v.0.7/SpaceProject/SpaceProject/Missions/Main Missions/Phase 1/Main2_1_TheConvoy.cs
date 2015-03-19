@@ -42,7 +42,7 @@ namespace SpaceProject
 
             RestartAfterFail();
             Station soelaraStation = Game.stateManager.overworldState.GetStation("Soelara Station");
-            RewardItems.Add(new BasicShield(Game, ItemVariety.regular));
+            moneyReward = 500;
 
             freighterHP = 2000;
 
