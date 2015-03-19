@@ -21,7 +21,7 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "Shoots two solid beams at great range";
+            return "Shoots two solid high-damage beams at great range";
         }
 
         private void Setup()

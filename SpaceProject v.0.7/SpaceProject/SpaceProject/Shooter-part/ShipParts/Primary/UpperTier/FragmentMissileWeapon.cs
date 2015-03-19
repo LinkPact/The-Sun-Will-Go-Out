@@ -16,7 +16,7 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "Shoots a single missile which shatters and impacts high damage to a medium area";
+            return "Shoots a single missile which shatters into high-damaging fragments";
         }
 
         private void Setup()

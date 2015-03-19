@@ -24,7 +24,8 @@ namespace SpaceProject
 
         protected float delay;
         public float Delay { 
-            get {
+            get 
+            {
                 if (!shootsInBatches)
                 {
                     return delay;

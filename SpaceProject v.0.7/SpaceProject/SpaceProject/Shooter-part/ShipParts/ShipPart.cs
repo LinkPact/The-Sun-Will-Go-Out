@@ -22,11 +22,11 @@ namespace SpaceProject
         public static float highItemSpreadFactor = 0.3f;
         public static float veryHighItemSpreadFactor = 0.4f;
 
-        public static float poorQuality = 0.6f;
+        public static float poorQuality = 0.7f;
         public static float lowQuality = 0.8f;
         public static float regularQuality = 1;
         public static float goodQuality = 1.2f;
-        public static float greatQuality = 1.4f;
+        public static float greatQuality = 1.3f;
 
         private static float greatQualThres = 0.05f;
         private static float goodQualThres = 0.25f;
@@ -36,12 +36,14 @@ namespace SpaceProject
         private ItemVariety variety;
         public ItemVariety Variety { get { return variety; } }
 
+        private Boolean isVarietySet = false;
+
         public Boolean needExternalRandomization = false;
 
         protected ShipPart(Game1 Game, ItemVariety variety)
             : base(Game)
         {
-            SetShipPartVariety(variety);
+            this.variety = variety;
         }
 
         public virtual ItemVariety GetShipPartVariety()
@@ -51,10 +53,26 @@ namespace SpaceProject
 
         protected abstract void SetShipPartVariety(double variation, double quality);
 
-        public void SetShipPartVariety(ItemVariety variety)
+        public void SetShipPartVariety(ItemVariety new_variety = ItemVariety.none)
         {
-            this.variety = variety;
-        
+            // Hack-around here to not break the parts of the code that directly
+            // applies item variety to the ship part. I hope to rebuild the system
+            // further later on so that variety only is set in the constructor. // Jakob 150319
+
+            if (new_variety != ItemVariety.none)
+            {
+                this.variety = new_variety;
+            }
+
+            if (!isVarietySet)
+            {
+                isVarietySet = true;
+            }
+            else
+            {
+                return;
+            }
+
             switch (variety)
             { 
                 case ItemVariety.regular:

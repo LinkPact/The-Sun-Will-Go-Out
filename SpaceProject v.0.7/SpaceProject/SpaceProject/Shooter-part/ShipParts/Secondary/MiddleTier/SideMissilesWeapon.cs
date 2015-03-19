@@ -16,7 +16,7 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "Shoots six short range missiles protecting the flanks of the ship";
+            return "Shoots four short range missiles protecting the flanks of the ship";
         }
 
         private void Setup()

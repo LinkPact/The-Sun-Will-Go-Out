@@ -12,19 +12,13 @@ namespace SpaceProject
         public DualLaserWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
         {
-            bullet = new BasicLaser(Game, spriteSheet);
-            bullet.Initialize();
-
-            damage = Bullet.Damage;
-            duration = Bullet.Duration;
-            speed = Bullet.Speed;
-
             Setup();
+            SetShipPartVariety();
         }
 
         protected override String GetDescription()
         {
-            return "Allround weapon with decent damage and range that shoots two beams straight forward";
+            return "Basic weapon with decent damage and range that shoots two beams straight forward";
         }
 
         private void Setup()
@@ -36,6 +30,13 @@ namespace SpaceProject
             Weight = 200;
             ActivatedSoundID = SoundEffects.SmallLaser;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(100, 0, 100, 100));
+
+            bullet = new BasicLaser(Game, spriteSheet);
+            bullet.Initialize();
+
+            damage = Bullet.Damage;
+            duration = Bullet.Duration;
+            speed = Bullet.Speed;
 
             Value = 200;
             numberOfShots = 2;
