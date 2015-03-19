@@ -18,7 +18,7 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "Emits a field disabling weapons, shields and stealth-technology";
+            return "Emits a field disrupting shields and weapons for a short period of time";
         }
 
         private void Setup()

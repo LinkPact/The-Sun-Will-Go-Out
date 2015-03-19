@@ -17,7 +17,7 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "A high-level energy cell";
+            return "A high-level energy cell able to keep high-level weapons firing most of the time";
         }
 
         private void Setup()

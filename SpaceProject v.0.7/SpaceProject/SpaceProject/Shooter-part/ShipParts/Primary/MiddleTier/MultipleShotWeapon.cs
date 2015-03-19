@@ -16,7 +16,7 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "Shoots bullets over a wide arc, effective again swarms of weak enemies";
+            return "Shoots a high number of weak bullets over a wide arc";
         }
 
         private void Setup()

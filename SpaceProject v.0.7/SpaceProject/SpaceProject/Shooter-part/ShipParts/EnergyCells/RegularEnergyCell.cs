@@ -18,7 +18,7 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "Mid-range energy cell";
+            return "Mid-range energy cell able to keep mid-range weapons firing most of the time";
         }
 
         private void Setup()

@@ -17,7 +17,7 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "Powerful turret that aims and shoots at enemies";
+            return "Powerful turret that aims and shoots at close enemies";
         }
 
         private void Setup()

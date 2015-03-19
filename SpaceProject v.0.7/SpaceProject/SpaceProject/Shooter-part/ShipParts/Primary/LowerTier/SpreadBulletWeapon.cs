@@ -16,7 +16,7 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "Shoot cascades of small bullets at a wide arc and a close range";
+            return "Shoots cascades of small bullets at a wide arc and a close range";
         }
 
         private void Setup()
