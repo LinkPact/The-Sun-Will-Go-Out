@@ -43,7 +43,8 @@ namespace SpaceProject
         protected List<string> tempTextList;
         protected List<string> tempVariableList;
 
-        protected Rectangle lowerScreenRectangle;
+        protected Rectangle portraitTextRectangle;
+        protected Rectangle normalTextRectangle;
 
         protected List<Rectangle> responseRectangles;
 
@@ -78,7 +79,8 @@ namespace SpaceProject
         public List<string> TempTextList { get { return tempTextList; } set { tempTextList = value; } }
         public List<string> TempVariableList { get { return tempVariableList; } set { tempVariableList = value; } }
 
-        public Rectangle LowerScreenRectangle { get { return lowerScreenRectangle; } set { lowerScreenRectangle = value; } }
+        public Rectangle PortraitTextRectangle { get { return portraitTextRectangle; } set { portraitTextRectangle = value; } }
+        public Rectangle NormalTextRectangle { get { return normalTextRectangle; } set { normalTextRectangle = value; } }
 
         public List<Rectangle> ResponseRectangles { get { return responseRectangles; } set { responseRectangles = value; } }
 

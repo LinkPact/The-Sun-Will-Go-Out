@@ -93,7 +93,7 @@ namespace SpaceProject
         public void DisplayRumors()
         {
             BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                      BaseStateManager.LowerScreenRectangle,
+                                                                      BaseStateManager.NormalTextRectangle,
                                                                       false,
                                                                       rumorString));
         }

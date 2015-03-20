@@ -17,6 +17,8 @@ namespace SpaceProject
         private Vector2 portraitBorderPosition;
         private float portraitOffset;
 
+        private Rectangle tempRect;
+
         #region Mission Fields
 
         private List<Mission> availableMissions;
@@ -382,8 +384,10 @@ namespace SpaceProject
             {
                 SetPortraitFromText(MissionManager.MissionEventBuffer[0]);
 
+                SetTextRectangle();
+
                 BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                  BaseStateManager.LowerScreenRectangle,
+                                                                  tempRect,
                                                                   false,
                                                                   MissionManager.MissionEventBuffer[0]));
 
@@ -424,8 +428,10 @@ namespace SpaceProject
 
             SetPortraitFromText(MissionManager.MissionStartBuffer[0]);
 
+            SetTextRectangle();
+
             BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                              BaseStateManager.LowerScreenRectangle,
+                                                              tempRect,
                                                               false,
                                                               MissionManager.MissionStartBuffer[0]));
 
@@ -485,8 +491,10 @@ namespace SpaceProject
 
                 SetPortraitFromText(temp[0]);
 
+                SetTextRectangle();
+
                 BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                  BaseStateManager.LowerScreenRectangle,
+                                                                  tempRect,
                                                                   false,
                                                                   temp[0]));
 
@@ -581,11 +589,10 @@ namespace SpaceProject
 
                     MissionManager.MarkMissionAsActive(selectedMission.MissionID);
 
-                    //BaseStateManager.TextBoxes.AddRange(TextUtils.CreateFormattedTextBoxes(BaseState.Game.fontManager.GetFont(14),
-                    //    BaseStateManager.LowerScreenRectangle, false, selectedMission.AcceptText[selectedMission.AcceptIndex]));
+                    SetTextRectangle();
 
                     BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                        BaseStateManager.LowerScreenRectangle, false, temp[0]));
+                        tempRect, false, temp[0]));
 
                     if (temp.Length > 1)
                     {
@@ -620,11 +627,10 @@ namespace SpaceProject
 
                 MissionManager.MarkMissionAsActive(selectedMission.MissionID);
 
-                //BaseStateManager.TextBoxes.AddRange(TextUtils.CreateFormattedTextBoxes(BaseState.Game.fontManager.GetFont(14),
-                //    BaseStateManager.LowerScreenRectangle, false, selectedMission.AcceptText[selectedMission.AcceptIndex]));
+                SetTextRectangle();
 
                 BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                        BaseStateManager.LowerScreenRectangle, false, temp[0]));
+                        tempRect, false, temp[0]));
 
                 if (temp.Length > 1)
                 {
@@ -650,8 +656,10 @@ namespace SpaceProject
 
             SetPortraitFromText(selectedMission.AcceptFailedText);
 
+            SetTextRectangle();
+
             BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                              BaseStateManager.LowerScreenRectangle,
+                                                              tempRect,
                                                               false,
                                                               selectedMission.AcceptFailedText));
 
@@ -675,6 +683,8 @@ namespace SpaceProject
                 String[] temp = completedMissions[0].CompletedText.Split('#');
 
                 SetPortraitFromText(temp[0]);
+
+                SetTextRectangle();
 
                 if (temp.Length > 1)
                 {
@@ -700,7 +710,7 @@ namespace SpaceProject
                     }
 
                     BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                          BaseStateManager.LowerScreenRectangle,
+                                                                          tempRect,
                                                                           false,
                                                                           temp[0]));
 
@@ -729,7 +739,7 @@ namespace SpaceProject
                         }
 
                         BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                          BaseStateManager.LowerScreenRectangle,
+                                                                          tempRect,
                                                                           false,
                                                                           temp[0] +
                                                                           "\n\n" +
@@ -741,7 +751,7 @@ namespace SpaceProject
                     else
                     {
                         BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                          BaseStateManager.LowerScreenRectangle,
+                                                                          tempRect,
                                                                           false,
                                                                           temp[0] +
                                                                           "\n\n" +
@@ -768,8 +778,10 @@ namespace SpaceProject
 
             SetPortraitFromText(temp[0]);
 
+            SetTextRectangle();
+
             BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                              BaseStateManager.LowerScreenRectangle,
+                                                              tempRect,
                                                               false,
                                                               temp[0]));
 
@@ -796,6 +808,18 @@ namespace SpaceProject
             else
             {
                 portrait = null;
+            }
+        }
+
+        private void SetTextRectangle()
+        {
+            if (portrait != null)
+            {
+                tempRect = BaseStateManager.PortraitTextRectangle;
+            }
+            else
+            {
+                tempRect = BaseStateManager.NormalTextRectangle;
             }
         }
     }

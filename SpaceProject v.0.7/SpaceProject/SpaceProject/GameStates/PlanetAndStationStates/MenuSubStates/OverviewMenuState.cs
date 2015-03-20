@@ -562,6 +562,11 @@ namespace SpaceProject
                                 BaseStateManager.ActiveButtonIndexX = 0;
                                 CursorActions();
                             }
+                            else if (BaseStateManager.PreviousButton == buttonMission)
+                            {
+                                BaseStateManager.ActiveButtonIndexX = 1;
+                                CursorActions();
+                            }
                             else if (BaseStateManager.PreviousButton == buttonBack)
                             {
                                 BaseStateManager.ActiveButtonIndexX = 2;
@@ -598,7 +603,7 @@ namespace SpaceProject
                                 tempString += "\n\nNo resources to mine.";
 
                             BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                BaseStateManager.LowerScreenRectangle,
+                                BaseStateManager.NormalTextRectangle,
                                 false,
                                 tempString));
                         }
@@ -610,7 +615,7 @@ namespace SpaceProject
                         if (BaseState.GetBase() is Planet)
                         {
                             BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBoxAndGetText(BaseState.Game.fontManager.GetFont(14),
-                                                                                        BaseStateManager.LowerScreenRectangle,
+                                                                                        BaseStateManager.NormalTextRectangle,
                                                                                         "Data/planetdata.dat",
                                                                                         ((Planet)BaseState.GetBase()).PlanetCodeName,
                                                                                         "Info",
