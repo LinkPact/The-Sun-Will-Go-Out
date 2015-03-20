@@ -52,7 +52,6 @@ namespace SpaceProject
 
         private Item SelectRandomItem()
         {
-            Random random = new Random(DateTime.Now.Millisecond);
             randomItems = new List<Item>();
 
             randomItems.Add(new BasicLaserWeapon(Game, GetRandomItemVariety()));
@@ -63,18 +62,18 @@ namespace SpaceProject
             randomItems.Add(new BasicEnergyCell(Game, GetRandomItemVariety()));
             randomItems.Add(new BasicPlating(Game, GetRandomItemVariety()));
 
-            return randomItems[random.Next(0, randomItems.Count - 1)];
+            return randomItems[Game.random.Next(0, randomItems.Count - 1)];
         }
 
         private void Setup()
         {
             item = SelectRandomItem();
 
-            SetupItemShop(item, "Do you want to buy this one-of-a-kind " + item.Name + "? Only 1000 rupees!",
+            SetupItemShop(item, "Do you want to buy this one-of-a-kind " + item.Name + "? Only 300 rupees!",
                 "Thanks anyway, sir!",
                 "Thank you! Have a lovely day, sir!",
                 "I'm afraid you do not have enough money, sir.",
-                "Your inventory is full! How silly of you, sir!", 1000, false);
+                "Your inventory is full! How silly of you, sir!", 300, false);
         }
 
         protected override void SetClearedText()
@@ -84,9 +83,7 @@ namespace SpaceProject
 
         private ItemVariety GetRandomItemVariety()
         {
-            Random random = new Random(DateTime.Now.Millisecond);
-
-            var val = random.Next(3);
+            var val = Game.random.Next(3);
 
             switch (val)
             {

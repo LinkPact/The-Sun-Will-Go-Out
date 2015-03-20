@@ -25,7 +25,7 @@ namespace SpaceProject
         private MenuDisplayObject easyButton;
         private MenuDisplayObject normalButton;
         private MenuDisplayObject hardButton;
-        private MenuDisplayObject hardCoreButton;
+        //private MenuDisplayObject hardCoreButton;
         private MenuDisplayObject backButton;
 
         private List<string> descriptions;

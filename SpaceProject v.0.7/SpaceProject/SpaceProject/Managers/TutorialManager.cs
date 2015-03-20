@@ -90,7 +90,7 @@ namespace SpaceProject
             {
                 hasEnteredStation = true;
 
-                DisplayTutorialImage(TutorialImage.MenuControls);
+                DisplayTutorialMessage("You can disable tutorial messages in the options menu.", TutorialImage.MenuControls);
             }
 
             if (!hasEnteredOverworld && GameStateManager.currentState.Equals("OverworldState"))
@@ -114,8 +114,8 @@ namespace SpaceProject
             {
                 coordinatesDisplayed = true;
 
-                DisplayTutorialMessage(new List<String>{"Your current objective is to go to coordinates (2635, 940). To find out where that is, look at the coordinates at the bottom right of the screen, just above the minimap.",
-                "If you forget where you need to go you can at any time check your current mission objectives in the mission log. Press 'M' to bring up the mission screen."}, TutorialImage.Coordinates);
+                DisplayTutorialMessage("Your current objective is to go to coordinates (2635, 940). To find that location, just follow the blinking dot on your radar. Main missions are represented by gold colored dots and secondary missions by silver colored dots.",
+                    TutorialImage.Radar);
             }
 
             //if (!hasEnteredPlanet && GameStateManager.currentState.Equals("PlanetState") &&
@@ -126,20 +126,6 @@ namespace SpaceProject
             //    hasEnteredPlanet = true;
             //
             //    DisplayTutorialMessage("This is the planet menu. If the planet has a colony, you can buy/sell items there, accept missions and listen to rumors from it's inhabitants. Not all planets are inhabited though.");
-            //}
-
-            //if (!hasEnteredSectorX &&
-            //        MissionManager.GetMission(MissionID.Main1_1_RebelsInTheAsteroids).MissionState == StateOfMission.CompletedDead)
-            //{
-            //    if (CollisionDetection.IsRectInRect(game.player.Bounds,
-            //        game.stateManager.overworldState.GetSectorX.SpaceRegionArea) &&
-            //        game.messageBox.MessageState == MessageState.Invisible)
-            //    {
-            //        hasEnteredSectorX = true;
-            //
-            //        DisplayTutorialMessage(new List<string> {"Welcome to the Sector X. You are now free to explore the sector's planets and stations. Some stations or colonies on planets have missions you can take on to earn money and learn more about the people living here.",
-            //            "You will also encounter ships traveling between destinations. Some are friendly and some are not so friendly. You can use the minimap to determine the allegiance of the ships: blue is neutral and red is hostile. Be careful!"});
-            //    }
             //}
 
             Vector2 highfenceBeaconPosition = game.stateManager.overworldState.GetBeacon("Highfence Beacon").position; 
@@ -156,7 +142,7 @@ namespace SpaceProject
                 && game.stateManager.overworldState.GetBeacon("Highfence Beacon").IsActivated)
             {
                 hasActivatedHighfenceBeacon = true;
-                DisplayTutorialMessage("Good! This beacon is now activated and you can press 'Enter' above it to open the beacon menu. However, you won't be able to use it until you activate more beacons. All planets in the sector have a beacon orbiting it. Don't forget to activate them when you see them!");
+                DisplayTutorialMessage("Good! This beacon is now activated and you can press 'Enter' above it to access it. All planets in the sector have a beacon orbiting it. Don't forget to activate them when you see them!");
             }
 
             if (!hasEnteredVerticalShooter && GameStateManager.currentState.Equals("ShooterState"))
@@ -169,7 +155,7 @@ namespace SpaceProject
 
                     hasEnteredVerticalShooter = true;
                     DisplayTutorialMessage(new List<String>{"You can rebind the keys in the options menu.",
-                    "Down at the bottom-left is some information and three bars:\n\nYour objective - Displays condition to complete level.", "Your currently active primary weapon - Toggle between your equipped primary weapons with 'Shift'.\n\nYour health - when this runs out you fail the level and your overall health is reduced a bit.", "Your energy - weapons use energy to fire.\n\nYour shield - protects your ship from damage. Recharges over time."},
+                    "Down at the bottom-left is some information and three bars:\n\nObjective - Displays condition to complete level.", "Primary - your selected primary weapon. Toggle between equipped weapons with '" + ControlManager.GetKeyName(RebindableKeys.Action2) + "'.\n\nSecondary - Your currently equipped secondary weapon. Turn it on/off with '" + ControlManager.GetKeyName(RebindableKeys.Action3) + "'", "Health - Your ship's armor, when it's reduced to zero, the current level is failed.\n\nEnergy - weapons use energy to fire.", "Shield - protects your ship from damage. Recharges over time."},
                     new List<TutorialImage> { TutorialImage.CombatControls, TutorialImage.CombatBars},
                         new List<int> {1});
                 }
@@ -204,54 +190,64 @@ namespace SpaceProject
                 {
                     case 0:
                         if (GameStateManager.currentState.Equals("PlanetState") &&
-                            game.stateManager.planetState.Planet.name.Equals("Highfence")
-                            && game.stateManager.planetState.SubStateManager.ActiveMenuState.Equals(game.stateManager.planetState.SubStateManager.ShopMenuState))
+                            game.stateManager.planetState.Planet.name.Equals("Highfence"))
                         {
-                            DisplayTutorialMessage("[Captain] \"Select the 'Basic shield' in the shop and select 'Buy'.\"");
+                            PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"Start by entering the shop and selecting 'Buy & Sell Items'.\"");
                             equipShieldProgress = 1;
+                            StatsManager.Rupees += 200;
                         }
                         break;
 
                     case 1:
                         if (GameStateManager.currentState.Equals("PlanetState") &&
                             game.stateManager.planetState.Planet.name.Equals("Highfence")
-                            && game.stateManager.planetState.SubStateManager.ActiveMenuState.Equals(game.stateManager.planetState.SubStateManager.ShopMenuState)
-                            && ShipInventoryManager.ownedShields.Count > 0)
+                            && game.stateManager.planetState.SubStateManager.ActiveMenuState.Equals(game.stateManager.planetState.SubStateManager.ShopMenuState))
                         {
-                            DisplayTutorialMessage("[Captain] \"Good! Now exit the shop with 'Escape' and return to the overworld!\"");
+                            PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"Select the 'Basic shield' in the column to the right and select 'Buy'.\"");
                             equipShieldProgress = 2;
                         }
                         break;
 
                     case 2:
-                        if (GameStateManager.currentState.Equals("OverworldState"))
+                        if (GameStateManager.currentState.Equals("PlanetState") &&
+                            game.stateManager.planetState.Planet.name.Equals("Highfence")
+                            && game.stateManager.planetState.SubStateManager.ActiveMenuState.Equals(game.stateManager.planetState.SubStateManager.ShopMenuState)
+                            && ShipInventoryManager.ownedShields.Count > 0)
                         {
-                            DisplayTutorialMessage("[Captain] \"Now, press 'I' to access your inventory.\"");
+                            PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"Good! Now exit the shop with 'Escape' and return to the overworld!\"");
                             equipShieldProgress = 3;
                         }
                         break;
 
                     case 3:
-                        if (GameStateManager.currentState.Equals("ShipManagerState"))
+                        if (GameStateManager.currentState.Equals("OverworldState"))
                         {
-                            DisplayTutorialMessage("[Captain] \"To equip your shield, select the shield slot and press 'Enter' to select from your list of available shields.\"");
+                            PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"Now, press 'I' to access your inventory.\"");
                             equipShieldProgress = 4;
                         }
                         break;
 
                     case 4:
-                        if (GameStateManager.currentState.Equals("ShipManagerState")
-                            && game.stateManager.shipManagerState.IsShieldSlotSelected)
+                        if (GameStateManager.currentState.Equals("ShipManagerState"))
                         {
-                            DisplayTutorialMessage("[Captain] \"Now, press 'Enter' again to equip the selected shield.\"");
+                            PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"To equip your shield, select the shield slot and press 'Enter' to select from your list of available shields.\"");
                             equipShieldProgress = 5;
                         }
                         break;
 
                     case 5:
+                        if (GameStateManager.currentState.Equals("ShipManagerState")
+                            && game.stateManager.shipManagerState.IsShieldSlotSelected)
+                        {
+                            PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"Now, press 'Enter' again to equip the selected shield.\"");
+                            equipShieldProgress = 6;
+                        }
+                        break;
+
+                    case 6:
                         if (!(ShipInventoryManager.equippedShield is EmptyShield))
                         {
-                            DisplayTutorialMessage("[Captain] \"Good! Now your shield is equipped! Exit the inventory by pressing 'Escape' and return to me!\"");
+                            PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"Good! Now your shield is equipped! What parts you have equipped is crucial for your success. Come back here often and try different combinations of ship parts.\"#\"Now, exit the inventory by pressing 'Escape' and return to me!\"");
                             equipShieldTutorialFinished = true;
                         }
                         break;
@@ -260,8 +256,8 @@ namespace SpaceProject
                 if (equipShieldProgress < 2
                     && ShipInventoryManager.OwnedShields.Count > 0)
                 {
-                    DisplayTutorialMessage("You already bought a shield? Okay, then press 'I' to access your inventory.");
-                    equipShieldProgress = 3;
+                    PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "You already bought a shield? Okay, let me tell you how to equip it! Start by pressing 'I' to access your inventory.");
+                    equipShieldProgress = 4;
                 }
             }
 
@@ -297,7 +293,7 @@ namespace SpaceProject
         {
             if (tutorialsUsed)
             {
-                PopupHandler.DisplayMessageWithImage(new List<Sprite>(){GetImageFromEnum(imageID)}, new List<int>(){0}, message);
+                PopupHandler.DisplayMessageWithImage(new List<Sprite>(){GetImageFromEnum(imageID)}, new List<int>(){}, message);
             }
         }
 

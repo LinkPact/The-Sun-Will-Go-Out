@@ -139,21 +139,15 @@ namespace SpaceProject
 
         private void DrawMenuInfo(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(game.fontManager.GetFont(12), "Press 'M' to open mission screen",
+            spriteBatch.DrawString(game.fontManager.GetFont(12), "Press 'ESC' to open menu",
                 new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
                     game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 20) +
                     game.fontManager.FontOffset,
                 game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, 0.92f);
 
-            spriteBatch.DrawString(game.fontManager.GetFont(12), "Press 'I' to open inventory",
-                new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
-                    game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 40) +
-                    game.fontManager.FontOffset,
-                game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, 0.92f);
-
             spriteBatch.DrawString(game.fontManager.GetFont(12), "Press 'N' to show map",
                 new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
-                    game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 60) +
+                    game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 40) +
                     game.fontManager.FontOffset,
                 game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, 0.92f);
         }

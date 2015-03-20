@@ -166,11 +166,10 @@ namespace SpaceProject
                 && CollisionDetection.IsRectInRect(game.player.Bounds, escortDataCapsule.ShipToDefend.Bounds)
                 && ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter))))
             {
-                if (game.tutorialManager.TutorialsUsed
-                    && showInventoryTutorial
+                if (showInventoryTutorial
                     && ShipInventoryManager.equippedShield is EmptyShield)
                 {
-                    PopupHandler.DisplayMessage("[Captain] \"You need to equip a shield before we leave. Buy one in the Highfence shop and equip it in your inventory.\"");
+                    PopupHandler.DisplayPortraitMessage(introductionPortrait, "[Captain] \"You need to equip a shield before we leave. Go back to Highfence and I will tell you what to do.\"");
                     game.tutorialManager.EnableEquipTutorial();
                 }
 
