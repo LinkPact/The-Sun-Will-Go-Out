@@ -321,8 +321,6 @@ namespace SpaceProject
                 Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI * 90) / 180);
         }
 
-        #region HyperSpeedMethods
-
         public void InitializeHyperSpeedJump(Vector2 coordinates, bool useDistanceCheck)
         {
             // DON'T DELETE
@@ -397,9 +395,6 @@ namespace SpaceProject
                 }
             }
         }
-        #endregion
-
-        #region ParticleMethods
 
         private void AddParticle()
         {
@@ -417,10 +412,6 @@ namespace SpaceProject
 
             deadParticles.Clear();
         }
-
-        #endregion
-
-        #region HeatWarningMethods
 
         public void InitializeHeatWarning()
         {
@@ -470,8 +461,6 @@ namespace SpaceProject
             }
 
         }
-
-        #endregion
 
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -537,27 +526,26 @@ namespace SpaceProject
             }
         }
 
-        public void OnDamage(GameObjectOverworld obj)
-        {
-
-            if (obj is SystemStar)
-            {
-                InitializeHeatWarning();
-
-                if (CollisionDetection.IsPointInsideCircle(Game.player.position, obj.position, obj.sprite.SourceRectangle.Value.Width / 2)
-                    && damageTimer < 0)
-                {
-                    damageTimer = 20;
-                    StatsManager.ReduceShipLife(3);
-                }
-
-                else if (damageTimer < 0)
-                {
-                    damageTimer = 20;
-                    StatsManager.ReduceShipLife(1);
-                }
-            }
-        }
+        //public void OnDamage(GameObjectOverworld obj)
+        //{
+        //    if (obj is SystemStar)
+        //    {
+        //        InitializeHeatWarning();
+        //
+        //        if (CollisionDetection.IsPointInsideCircle(Game.player.position, obj.position, obj.sprite.SourceRectangle.Value.Width / 2)
+        //            && damageTimer < 0)
+        //        {
+        //            damageTimer = 20;
+        //            StatsManager.ReduceShipLife(3);
+        //        }
+        //
+        //        else if (damageTimer < 0)
+        //        {
+        //            damageTimer = 20;
+        //            StatsManager.ReduceShipLife(1);
+        //        }
+        //    }
+        //}
 
         public void DisableControls()
         {

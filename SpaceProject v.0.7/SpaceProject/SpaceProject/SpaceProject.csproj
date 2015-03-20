@@ -387,7 +387,7 @@
     <Compile Include="Overworld-part\BackgroundManagerOverworld.cs" />
     <Compile Include="Overworld-part\Interface\Bar.cs" />
     <Compile Include="Overworld-part\CollisionHandlingOverworld.cs" />
-    <Compile Include="Overworld-part\GameObjects\Player\Camera.cs" />
+    <Compile Include="Overworld-part\Camera.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\MisicSpaceObject.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\Planet.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\BackgroundStars\Star.cs" />

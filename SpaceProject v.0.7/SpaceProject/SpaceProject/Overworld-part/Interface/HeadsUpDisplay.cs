@@ -69,7 +69,7 @@ namespace SpaceProject
         public void Draw(SpriteBatch spriteBatch)
         {
             radar.Draw(spriteBatch);
-            DrawLife(spriteBatch);
+            //DrawLife(spriteBatch);
             DrawPosition(spriteBatch);
             // DON'T DELETE
             //DrawFusionCells(spriteBatch);
