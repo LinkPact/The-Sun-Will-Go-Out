@@ -10,6 +10,12 @@ namespace SpaceProject
     /// </summary>
     public class Radar
     {
+        private readonly Color ImmovableObjectColor = new Color(85, 85, 85);
+        private readonly Color HostileShipColor = Color.Red;
+        private readonly Color FriendlyShipColor = Color.Green;
+        private readonly Color MainMissionColor = Color.Gold;
+        private readonly Color SecondaryMissionColor = new Color(172, 172, 172);
+
         private Game1 game;
 
         public Vector2 Origin;
@@ -163,18 +169,24 @@ namespace SpaceProject
 
             foreach (GameObjectOverworld obj in objectsVisibleOnRadar)
             {
-                Color color = Color.Gray;
+                Color color = ImmovableObjectColor;
                 float scale = 1f;
                 ActiveSprite = ObjectSprite;
                 drawDistance = 0.91f;
 
-                if (MissionManager.IsCurrentObjectiveDestination(obj)
-                    || IsObjectAvailableMainMissionLocation(obj))
+                if (MissionManager.IsCurrentObjectiveDestination(obj))
                 {
                     drawDistance = 0.92f;
                     if (colorSwapCounter <= 25)
                     {
-                        color = Color.DarkOrange;
+                        if (MissionManager.IsMainMissionDestination(obj))
+                        {
+                            color = MainMissionColor;
+                        }
+                        else
+                        {
+                            color = SecondaryMissionColor;
+                        }
                         ActiveSprite = BlinkingSprite;
                         scale = 1.25f;
                     }
@@ -190,17 +202,53 @@ namespace SpaceProject
                         colorSwapCounter = 0;
                     }
                 }
+                else if (IsObjectAvailableMainMissionLocation(obj))
+                {
+                    drawDistance = 0.92f;
+                    if (colorSwapCounter <= 25)
+                    {
+                        color = MainMissionColor;
+                        ActiveSprite = BlinkingSprite;
+                        scale = 1.25f;
+                    }
+
+                    else
+                    {
+                        color = Color.White;
+                        scale = 1f;
+                    }
+
+                    if (colorSwapCounter >= 50)
+                    {
+                        colorSwapCounter = 0;
+                    }
+                }
+                else if (obj is FreighterShip)
+                {
+                    color = FriendlyShipColor;
+                }
                 else if (obj is RebelShip)
                 {
-                    color = Color.Red;
+                    if (StatsManager.reputation >= 0)
+                    {
+                        color = HostileShipColor;
+                    }
+                    else
+                    {
+                        color = FriendlyShipColor;
+                    }
                 }
-                else if (obj is FreighterShip || obj is AllianceShip || obj is HangarShip)
+                else if (obj is AllianceShip
+                    || obj is HangarShip)
                 {
-                    color = Color.Blue;
-                }
-                else if (obj is Station || obj is Planet)
-                {
-                    color = Color.Yellow;
+                    if (StatsManager.reputation < 0)
+                    {
+                        color = HostileShipColor;
+                    }
+                    else
+                    {
+                        color = FriendlyShipColor;
+                    }
                 }
                 else if (obj is SystemStar)
                 {

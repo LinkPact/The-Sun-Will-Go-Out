@@ -23,6 +23,9 @@ namespace SpaceProject
             base.Initialize();
 
             RewardItems.Add(new BeamWeapon(Game, ItemVariety.regular));
+
+            SetDestinations();
+            SetupObjectives();
         }
 
         public override void StartMission()

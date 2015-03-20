@@ -17,7 +17,6 @@ namespace SpaceProject
 
         private MedicalSupplies medicalSupplies;
 
-        MultipleShotWeapon regularPoweredWeapon;
         RegularEnergyCell regularCell;
 
         public Side_ColonyAid(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
@@ -31,14 +30,13 @@ namespace SpaceProject
 
             medicalSupplies = new MedicalSupplies(this.Game);
 
-            regularPoweredWeapon = new MultipleShotWeapon(Game, ItemVariety.high);
-            RewardItems.Add(regularPoweredWeapon);
-
-            regularCell = new RegularEnergyCell(Game, ItemVariety.high);
+            regularCell = new RegularEnergyCell(Game, ItemVariety.regular);
             RewardItems.Add(regularCell);
 
-
             requiresAvailableSlot = true;
+
+            SetDestinations();
+            SetupObjectives();
         }
 
         public override void StartMission()
@@ -71,7 +69,7 @@ namespace SpaceProject
             destinations = new List<GameObjectOverworld>();
 
             destinations.Add(Game.stateManager.overworldState.GetStation("Lavis Station"));
-            destinations.Add(Game.stateManager.overworldState.GetStation("Fortrun Station I"));
+            destinations.Add(Game.stateManager.overworldState.GetPlanet("Highfence"));
         }
 
         protected override void SetupObjectives()

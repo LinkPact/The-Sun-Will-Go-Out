@@ -55,13 +55,13 @@ namespace SpaceProject
             Random random = new Random(DateTime.Now.Millisecond);
             randomItems = new List<Item>();
 
-            randomItems.Add(new BasicLaserWeapon(Game, ItemVariety.random));
-            randomItems.Add(new DualLaserWeapon(Game, ItemVariety.random));
-            randomItems.Add(new SpreadBulletWeapon(Game, ItemVariety.random));
-            randomItems.Add(new WaveBeamWeapon(Game, ItemVariety.random));
-            randomItems.Add(new BasicShield(Game, ItemVariety.random));
-            randomItems.Add(new BasicEnergyCell(Game, ItemVariety.random));
-            randomItems.Add(new BasicPlating(Game, ItemVariety.random));
+            randomItems.Add(new BasicLaserWeapon(Game, GetRandomItemVariety()));
+            randomItems.Add(new DualLaserWeapon(Game, GetRandomItemVariety()));
+            randomItems.Add(new SpreadBulletWeapon(Game, GetRandomItemVariety()));
+            randomItems.Add(new WaveBeamWeapon(Game, GetRandomItemVariety()));
+            randomItems.Add(new BasicShield(Game, GetRandomItemVariety()));
+            randomItems.Add(new BasicEnergyCell(Game, GetRandomItemVariety()));
+            randomItems.Add(new BasicPlating(Game, GetRandomItemVariety()));
 
             return randomItems[random.Next(0, randomItems.Count - 1)];
         }
@@ -80,6 +80,28 @@ namespace SpaceProject
         protected override void SetClearedText()
         {
             clearedText = "EMPTY";
+        }
+
+        private ItemVariety GetRandomItemVariety()
+        {
+            Random random = new Random(DateTime.Now.Millisecond);
+
+            var val = random.Next(3);
+
+            switch (val)
+            {
+                case 0:
+                    return ItemVariety.low;
+
+                case 1:
+                    return ItemVariety.regular;
+
+                case 2:
+                    return ItemVariety.high;
+
+                default:
+                    throw new ArgumentException("Invalid number of cases.");
+            }
         }
     }
 }

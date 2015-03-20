@@ -94,7 +94,17 @@ namespace SpaceProject
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(backdrop, Vector2.Zero, Color.White);
+            spriteBatch.Draw(backdrop,
+                             Vector2.Zero,
+                             null,
+                             Color.White,
+                             0.0f,
+                             Vector2.Zero,
+                             new Vector2(Game.Window.ClientBounds.Width / Game.DefaultResolution.X,
+                                         Game.Window.ClientBounds.Height / Game.DefaultResolution.Y),
+                             SpriteEffects.None,
+                             0.5f);
+
             textBox.Draw(spriteBatch, Game.fontManager.FontColor, Game.fontManager.FontOffset);
         }
 
