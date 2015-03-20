@@ -20,6 +20,7 @@ namespace SpaceProject
         protected Nullable<Rectangle> tempRectPassive;
         protected Nullable<Rectangle> tempRectActive;
         protected Nullable<Rectangle> tempRectSelected;
+        protected Nullable<Rectangle> tempRectDisabled;
 
         protected string confirmString;
         protected Vector2 confirmStringPos;

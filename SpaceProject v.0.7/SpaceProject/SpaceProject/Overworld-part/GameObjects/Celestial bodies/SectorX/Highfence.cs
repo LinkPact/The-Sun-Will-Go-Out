@@ -28,6 +28,8 @@ namespace SpaceProject
 
         private void ShopSetup()
         {
+            hasShop = true;
+
             AddMandatoryItem(new ShopInventoryEntry(ShipPartType.DualLaser, ShipPartAvailability.common, ItemVariety.regular));
 
             AddMandatoryItem(new ShopInventoryEntry(ShipPartType.BasicLaser, ShipPartAvailability.common, ItemVariety.regular));

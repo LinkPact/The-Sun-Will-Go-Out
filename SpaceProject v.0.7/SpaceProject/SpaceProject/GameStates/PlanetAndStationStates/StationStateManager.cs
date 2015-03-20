@@ -180,6 +180,7 @@ namespace SpaceProject
 
             if (buttonControl.Equals(ButtonControl.Menu))
             {
+                previousButton = activeButton;
                 activeButton = allButtons[activeButtonIndexX, activeButtonIndexY];
             }
 
@@ -192,7 +193,9 @@ namespace SpaceProject
             if (buttonControl.Equals(ButtonControl.Mission) ||
                 buttonControl.Equals(ButtonControl.Response) ||
                 buttonControl.Equals(ButtonControl.Confirm))
+            {
                 activeButton = null;
+            }
 
             foreach (MenuDisplayObject button in allButtons)
             {

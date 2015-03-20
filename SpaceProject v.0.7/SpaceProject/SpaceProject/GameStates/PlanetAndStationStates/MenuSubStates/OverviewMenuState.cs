@@ -44,12 +44,15 @@ namespace SpaceProject
                 tempRectPassive = new Rectangle(80, 0, 40, 40);
                 tempRectActive = new Rectangle(80, 40, 40, 40);
                 tempRectSelected = new Rectangle(80, 80, 40, 40);
+                tempRectDisabled = new Rectangle(134, 241, 40, 40);
                 buttonMission = new MenuDisplayObject(this.Game,
                                         SpriteSheet.GetSubSprite(tempRectPassive),
                                         SpriteSheet.GetSubSprite(tempRectActive),
                                         SpriteSheet.GetSubSprite(tempRectSelected),
+                                        SpriteSheet.GetSubSprite(tempRectDisabled),
                                         new Vector2(Game.Window.ClientBounds.Width / 7 - Game.Window.ClientBounds.Width / 12,
-                                            (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7));
+                                            (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7),
+                                        Vector2.Zero);
                 buttonMission.name = "Missions";
                 buttonMission.isVisible = true;
 
@@ -57,12 +60,15 @@ namespace SpaceProject
                 tempRectPassive = new Rectangle(120, 0, 40, 40);
                 tempRectActive = new Rectangle(120, 40, 40, 40);
                 tempRectSelected = new Rectangle(120, 80, 40, 40);
+                tempRectDisabled = new Rectangle(175, 241, 40, 40);
                 buttonRumors = new MenuDisplayObject(this.Game,
                                                 SpriteSheet.GetSubSprite(tempRectPassive),
                                                 SpriteSheet.GetSubSprite(tempRectActive),
                                                 SpriteSheet.GetSubSprite(tempRectSelected),
+                                                SpriteSheet.GetSubSprite(tempRectDisabled),
                                                 new Vector2(Game.Window.ClientBounds.Width / 7,
-                                                    (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7));
+                                                    (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7),
+                                                Vector2.Zero);
                 buttonRumors.name = "Rumors";
                 buttonRumors.isVisible = true;
 
@@ -70,12 +76,15 @@ namespace SpaceProject
                 tempRectPassive = new Rectangle(80, 120, 40, 40);
                 tempRectActive = new Rectangle(80, 160, 40, 40);
                 tempRectSelected = new Rectangle(80, 200, 40, 40);
+                tempRectDisabled = new Rectangle(93, 282, 40, 40);
                 buttonShop = new MenuDisplayObject(this.Game,
                                                 SpriteSheet.GetSubSprite(tempRectPassive),
                                                 SpriteSheet.GetSubSprite(tempRectActive),
                                                 SpriteSheet.GetSubSprite(tempRectSelected),
+                                                SpriteSheet.GetSubSprite(tempRectDisabled),
                                                 new Vector2(Game.Window.ClientBounds.Width / 7 + Game.Window.ClientBounds.Width / 12,
-                                                    (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7));
+                                                    (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7),
+                                                Vector2.Zero);
                 buttonShop.name = "Buy/Sell";
                 buttonShop.isVisible = true;
 
@@ -83,12 +92,15 @@ namespace SpaceProject
                 tempRectPassive = new Rectangle(40, 0, 40, 40);
                 tempRectActive = new Rectangle(40, 40, 40, 40);
                 tempRectSelected = new Rectangle(40, 80, 40, 40);
+                tempRectDisabled = new Rectangle(93, 241, 40, 40);
                 buttonMining = new MenuDisplayObject(this.Game,
                                                 SpriteSheet.GetSubSprite(tempRectPassive),
                                                 SpriteSheet.GetSubSprite(tempRectActive),
                                                 SpriteSheet.GetSubSprite(tempRectSelected),
+                                                SpriteSheet.GetSubSprite(tempRectDisabled),
                                                 new Vector2(Game.Window.ClientBounds.Width / 7 - Game.Window.ClientBounds.Width / 12,
-                                                    (Game.Window.ClientBounds.Height / 2) + (Game.Window.ClientBounds.Height / 7) * 2));
+                                                    (Game.Window.ClientBounds.Height / 2) + (Game.Window.ClientBounds.Height / 7) * 2),
+                                                Vector2.Zero);
                 buttonMining.name = "Mining";
                 buttonMining.isVisible = true;
 
@@ -166,12 +178,15 @@ namespace SpaceProject
                 tempRectPassive = new Rectangle(80, 120, 40, 40);
                 tempRectActive = new Rectangle(80, 160, 40, 40);
                 tempRectSelected = new Rectangle(80, 200, 40, 40);
+                tempRectDisabled = new Rectangle(93, 282, 40, 40);
                 buttonShop = new MenuDisplayObject(this.Game,
                                                 SpriteSheet.GetSubSprite(tempRectPassive),
                                                 SpriteSheet.GetSubSprite(tempRectActive),
                                                 SpriteSheet.GetSubSprite(tempRectSelected),
+                                                SpriteSheet.GetSubSprite(tempRectDisabled),
                                                 new Vector2(Game.Window.ClientBounds.Width / 7 + Game.Window.ClientBounds.Width / 12,
-                                                    (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7));
+                                                    (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7),
+                                                Vector2.Zero);
                 buttonShop.name = "Buy/Sell";
                 buttonShop.isVisible = true;
 
@@ -223,11 +238,15 @@ namespace SpaceProject
         {
             BaseState.DataHead = "Planet Data:";
 
-            if (BaseState.GetBase() != null && BaseState.GetBase() is Planet)
+            if (BaseState.GetBase() != null)
             {
-                buttonMission.isDeactivated = !((Planet)BaseState.GetBase()).HasColony;
-                buttonRumors.isDeactivated = !((Planet)BaseState.GetBase()).HasColony;
-                buttonShop.isDeactivated = !((Planet)BaseState.GetBase()).HasColony;
+                buttonShop.isDeactivated = !BaseState.GetBase().HasShop;
+
+                if (BaseState.GetBase() is Planet)
+                {
+                    buttonMission.isDeactivated = !((Planet)BaseState.GetBase()).HasColony;
+                    buttonRumors.isDeactivated = !((Planet)BaseState.GetBase()).HasColony;
+                }
             }
 
             BaseStateManager.ButtonControl = ButtonControl.Menu;
@@ -382,19 +401,22 @@ namespace SpaceProject
 
                     case "Buy/Sell":
                         {
-                            BaseStateManager.TextBoxes.Clear();
+                            if (BaseState.GetBase().HasShop)
+                            {
+                                BaseStateManager.TextBoxes.Clear();
 
-                            BaseStateManager.ButtonControl = ButtonControl.SelectShop;
+                                BaseStateManager.ButtonControl = ButtonControl.SelectShop;
 
-                            BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
-                                                                                  shopSelectRectangle1,
-                                                                                  true,
-                                                                                  "Buy/Sell Items"));
+                                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
+                                                                                      shopSelectRectangle1,
+                                                                                      true,
+                                                                                      "Buy/Sell Items"));
 
-                            BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
-                                                                                  shopSelectRectangle3,
-                                                                                  true,
-                                                                                  "Back"));
+                                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
+                                                                                      shopSelectRectangle3,
+                                                                                      true,
+                                                                                      "Back"));
+                            }
                             break;
                         }
 
@@ -523,14 +545,30 @@ namespace SpaceProject
 
                 case "Buy/Sell":
                     {
-                        BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                      new Rectangle(Game.Window.ClientBounds.Width * 2 / 3,
-                                                                                    (int)(Game.Window.ClientBounds.Height - (int)BaseState.Game.fontManager.GetFont(14).MeasureString("Press 'Enter' to access shop..").Y) - 20,
-                                                                                    (Game.Window.ClientBounds.Width * 2/3) / 2, 
-                                                                                    10),
-                                                                      true,
-                                                                      "Press 'Enter' to access shop.."));
-
+                        if (BaseState.GetBase().HasShop)
+                        {
+                            BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                                        new Rectangle(Game.Window.ClientBounds.Width * 2 / 3,
+                                                      (int)(Game.Window.ClientBounds.Height - (int)BaseState.Game.fontManager.GetFont(14).MeasureString("Press 'Enter' to access shop..").Y) - 20,
+                                                      (Game.Window.ClientBounds.Width * 2 / 3) / 2,
+                                                      10),
+                                        true,
+                                        "Press 'Enter' to access shop.."));
+                        }
+                        else
+                        {
+                            if (BaseStateManager.PreviousButton == buttonRumors)
+                            {
+                                BaseStateManager.ActiveButtonIndexX = 0;
+                                CursorActions();
+                            }
+                            else if (BaseStateManager.PreviousButton == buttonBack)
+                            {
+                                BaseStateManager.ActiveButtonIndexX = 2;
+                                BaseStateManager.ActiveButtonIndexY = 1;
+                                CursorActions();
+                            }
+                        }
                         break;
                     }
 

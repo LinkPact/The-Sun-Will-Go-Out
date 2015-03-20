@@ -25,6 +25,8 @@ namespace SpaceProject
 
         private void ShopSetup()
         {
+            hasShop = true;
+
             AddMandatoryItem(new ShopInventoryEntry(ShipPartType.RegularEnergyCell, ShipPartAvailability.common, ItemVariety.regular));
             AddMandatoryItem(new ShopInventoryEntry(ShipPartType.RegularShield, ShipPartAvailability.common, ItemVariety.regular));
             AddMandatoryItem(new ShopInventoryEntry(ShipPartType.Turret, ShipPartAvailability.common, ItemVariety.regular));

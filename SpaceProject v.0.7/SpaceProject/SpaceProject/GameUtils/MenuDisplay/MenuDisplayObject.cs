@@ -16,6 +16,7 @@ namespace SpaceProject
         private Game1 Game;
         private Sprite passive;
         private Sprite active;
+        private Sprite disabled;
         private Vector2 position;
         public bool isActive;
 
@@ -54,6 +55,7 @@ namespace SpaceProject
             this.passive = passive;
             this.active = active;
             this.position = position;
+            origin = Vector2.Zero;
         }
 
         public MenuDisplayObject(Game1 Game, Sprite passive, Sprite active, Vector2 position, Vector2 origin)
@@ -72,6 +74,7 @@ namespace SpaceProject
             this.active = active;
             this.position = position;
             this.selected = selected;
+            origin = Vector2.Zero;
         }
 
         public MenuDisplayObject(Game1 Game, Sprite passive, Sprite active, Sprite selected, Vector2 position, Vector2 origin)
@@ -79,6 +82,17 @@ namespace SpaceProject
             this.Game = Game;
             this.passive = passive;
             this.active = active;
+            this.selected = selected;
+            this.position = position;
+            this.origin = origin;
+        }
+
+        public MenuDisplayObject(Game1 Game, Sprite passive, Sprite active, Sprite selected, Sprite disabled, Vector2 position, Vector2 origin)
+        {
+            this.Game = Game;
+            this.passive = passive;
+            this.active = active;
+            this.disabled = disabled;
             this.selected = selected;
             this.position = position;
             this.origin = origin;
@@ -97,76 +111,34 @@ namespace SpaceProject
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (origin == null)
+            Sprite sprite;
+
+            if (isDeactivated)
             {
-                if (isActive)
-                {                    
-                    spriteBatch.Draw(active.Texture, position, active.SourceRectangle, Color.White);
-                }
-                else
-                {
-                    if (isSelected)
-                        spriteBatch.Draw(selected.Texture, position, selected.SourceRectangle, Color.White);
-
-                    else if (isDeactivated)
-                        spriteBatch.Draw(passive.Texture, position, passive.SourceRectangle, Color.DarkGray);
-
-                    else
-                        spriteBatch.Draw(passive.Texture, position, passive.SourceRectangle, Color.White);
-                }
+                sprite = disabled;
             }
-
+            else if (isActive)
+            {
+                sprite = active;
+            }
+            else if (isSelected)
+            {
+                sprite = selected;
+            }
             else
             {
-                if (isActive)
-                {                   
-                    spriteBatch.Draw(active.Texture,
-                                     position,
-                                     active.SourceRectangle,
-                                     Color.White,
-                                     0.0f,
-                                     origin,
-                                     1.0f,
-                                     SpriteEffects.None,
-                                     1.0f);
-                }
-                else
-                {
-                    if (isSelected)
-                        spriteBatch.Draw(selected.Texture,
-                                     position,
-                                     selected.SourceRectangle,
-                                     Color.White,
-                                     0.0f,
-                                     origin,
-                                     1.0f,
-                                     SpriteEffects.None,
-                                     1.0f);
-
-
-                    else if (isDeactivated)
-                        spriteBatch.Draw(passive.Texture,
-                                         position,
-                                         passive.SourceRectangle,
-                                         Color.DarkGray,
-                                         0.0f,
-                                         origin,
-                                         1.0f,
-                                         SpriteEffects.None,
-                                         1.0f);
-
-                    else
-                        spriteBatch.Draw(passive.Texture,
-                                     position,
-                                     passive.SourceRectangle,
-                                     Color.White,
-                                     0.0f,
-                                     origin,
-                                     1.0f,
-                                     SpriteEffects.None,
-                                     1.0f);
-                }
+                sprite = passive;
             }
+
+            spriteBatch.Draw(sprite.Texture,
+                             position,
+                             sprite.SourceRectangle,
+                             Color.White,
+                             0.0f,
+                             origin,
+                             1.0f,
+                             SpriteEffects.None,
+                             1.0f);
         }
     }
 }

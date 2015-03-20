@@ -36,7 +36,6 @@ namespace SpaceProject
         protected FuelShopMenuState fuelShopMenuState;
         protected RumorsMenuState rumorsMenuState;
 
-
         #region TextBox Fields
 
         protected List<TextBox> textBoxes;
@@ -65,6 +64,7 @@ namespace SpaceProject
         protected int activeButtonIndexX;
         protected int activeButtonIndexY;
         protected MenuDisplayObject activeButton;
+        protected MenuDisplayObject previousButton;
         protected ButtonControl buttonControl;
 
         #endregion
@@ -99,6 +99,7 @@ namespace SpaceProject
         public int ActiveButtonIndexX { get { return activeButtonIndexX; } set { activeButtonIndexX = value; } }
         public int ActiveButtonIndexY { get { return activeButtonIndexY; } set { activeButtonIndexY = value; } }
         public MenuDisplayObject ActiveButton { get { return activeButton; } set { activeButton = value; } }
+        public MenuDisplayObject PreviousButton { get { return previousButton; } set { previousButton = value; } }
         public ButtonControl ButtonControl { get { return buttonControl; } set { buttonControl = value; } }
 
         #endregion

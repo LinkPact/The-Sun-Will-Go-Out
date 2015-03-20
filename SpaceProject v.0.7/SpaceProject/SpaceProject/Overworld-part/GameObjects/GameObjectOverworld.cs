@@ -18,6 +18,9 @@ namespace SpaceProject
         public string Class;
         public string name;
 
+        protected bool hasShop = false;
+        public bool HasShop { get { return hasShop; } }
+
         public Vector2 position;
         public float speed;
         private Direction direction;
