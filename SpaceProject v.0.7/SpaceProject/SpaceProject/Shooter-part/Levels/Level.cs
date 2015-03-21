@@ -391,7 +391,7 @@ namespace SpaceProject
         private void MapCompletionLogic()
         {
             EndText = "";
-            if (missionType.Equals(MissionType.alliancepirate))
+            if (missionType.Equals(MissionType.alliancepirate) || missionType.Equals(MissionType.rebelpirate))
                 EndText = "You earned: " + (int)(LevelLoot * StatsManager.moneyFactor) + " rupees. \n";
             EndText += "Press 'Enter' to continue..";
 
@@ -637,7 +637,7 @@ namespace SpaceProject
         {
             WriteLogEntry();
 
-            if (missionType.Equals(MissionType.alliancepirate))
+            if (missionType.Equals(MissionType.alliancepirate) || missionType.Equals(MissionType.rebelpirate))
                 StatsManager.AddLoot((int)(LevelLoot * StatsManager.moneyFactor));
 
             if (GameStateManager.previousState.Equals("StationState"))

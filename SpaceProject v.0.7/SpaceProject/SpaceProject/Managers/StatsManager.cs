@@ -124,8 +124,8 @@ namespace SpaceProject
 
         public static void SetHardStats()
         {
-            moneyFactor = 0.7f;
-            damageFactor = 1.5f;
+            moneyFactor = 1.0f;
+            damageFactor = 2.0f;
             gameMode = GameMode.hard;
         }
 
