@@ -36,6 +36,8 @@ namespace SpaceProject
             } 
         }
 
+        public static int MessageQueueCount { get { return messageQueue.Count; } }
+
         #endregion
 
         public PopupHandler(Game1 game, Sprite spriteSheet)

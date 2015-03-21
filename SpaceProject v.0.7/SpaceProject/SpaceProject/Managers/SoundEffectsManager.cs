@@ -31,7 +31,7 @@ namespace SpaceProject
 
     public class SoundEffectsManager
     {
-        private readonly int SoundEffectBufferMaxCount = 64;
+        private readonly int SoundEffectBufferMaxCount = 128;
 
         public static bool LoadSoundEffects;
 
@@ -79,12 +79,12 @@ namespace SpaceProject
 
             if (LoadSoundEffects)
             {
-                smallLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/basic_laser"), 10);
-                bigLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/distorted_laser"), 10);
-                clickLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/click_laser_noiseReduced"), 10);
+                smallLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/basic_laser"), 12);
+                bigLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/distorted_laser"), 12);
+                clickLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/click_laser_noiseReduced"), 12);
 
-                muffledExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom6"), 10);
-                smallExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom9"), 10);
+                muffledExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom6"), 12);
+                smallExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom9"), 12);
 
                 soundEffects.Add(smallLaser);
                 soundEffects.Add(bigLaser);

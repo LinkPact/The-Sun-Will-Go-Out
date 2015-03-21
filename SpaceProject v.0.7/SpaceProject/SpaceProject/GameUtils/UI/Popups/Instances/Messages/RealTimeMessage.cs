@@ -57,7 +57,10 @@ namespace SpaceProject
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
+            if (PopupHandler.MessageQueueCount <= 0)
+            {
+                base.Draw(spriteBatch);
+            }
         }
 
         public override void SetDelay(float milliseconds)

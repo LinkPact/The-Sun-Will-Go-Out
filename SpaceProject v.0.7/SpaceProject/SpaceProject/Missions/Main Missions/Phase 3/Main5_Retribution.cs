@@ -110,6 +110,7 @@ namespace SpaceProject
                 && !Game.player.HyperspeedOn
                 && Vector2.Distance(Game.player.position, rebelShips[1].position) > 500)
             {
+                PopupHandler.DisplayPortraitMessage(PortraitID.RebelPilot, "Hey! Where are you going? The freighter will be here any minute now.");
                 Game.player.InitializeHyperSpeedJump(rebelShips[1].position, false);
             }
         }
