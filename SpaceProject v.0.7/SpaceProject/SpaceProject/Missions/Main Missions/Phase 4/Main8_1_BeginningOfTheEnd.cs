@@ -81,10 +81,10 @@ namespace SpaceProject
         {
             destinations = new List<GameObjectOverworld>();
 
-            Planet peye = Game.stateManager.overworldState.GetPlanet("Peye");
+            Station peyeStation = Game.stateManager.overworldState.GetStation("Peye Science Station");
             Planet telmun = Game.stateManager.overworldState.GetPlanet("Telmun");
 
-            AddDestination(peye, 2);
+            AddDestination(peyeStation, 2);
             AddDestination(telmun, 6);
         }
 

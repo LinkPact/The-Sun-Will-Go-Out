@@ -13,17 +13,41 @@ namespace SpaceProject
         private Func<Boolean> completedCondition;
         private Func<Boolean> failedCondition;
 
+        public CustomObjective(Game1 game, Mission mission, String description, EventTextCapsule eventTextCapsule):
+            base(game, mission, description)
+        {
+            SetupEventText(eventTextCapsule);
+            SetupLogic(delegate { }, delegate { },
+                delegate { return GameStateManager.currentState.Equals("OverworldState"); },
+                delegate { return false; });
+        }
+
         public CustomObjective(Game1 game, Mission mission, String description, System.Action activateLogic,
             System.Action updateLogic, Func<Boolean> completedCondition, Func<Boolean> failedCondition) :
             base(game, mission, description)
         {
-            Setup(activateLogic, updateLogic, completedCondition, failedCondition);
+            SetupLogic(activateLogic, updateLogic, completedCondition, failedCondition);
         }
 
         public CustomObjective(Game1 game, Mission mission, String description,
             EventTextCapsule eventTextCapsule, System.Action activateLogic,
             System.Action updateLogic, Func<Boolean> completedCondition, Func<Boolean> failedCondition) :
             base(game, mission, description)
+        {
+            SetupEventText(eventTextCapsule);
+            SetupLogic(activateLogic, updateLogic, completedCondition, failedCondition);
+        }
+
+        private void SetupLogic(System.Action activateLogic, System.Action updateLogic,
+            Func<Boolean> completedConditions, Func<Boolean> failedCondition)
+        {
+            this.activateAction = activateLogic;
+            this.updateAction = updateLogic;
+            this.completedCondition = completedConditions;
+            this.failedCondition = failedCondition;
+        }
+
+        private void SetupEventText(EventTextCapsule eventTextCapsule)
         {
             objectiveCompletedEventText = eventTextCapsule.CompletedText;
             eventTextCanvas = eventTextCapsule.EventTextCanvas;
@@ -33,17 +57,6 @@ namespace SpaceProject
             {
                 SetupPortraits(eventTextCapsule.Portraits, eventTextCapsule.PortraitTriggers);
             }
-
-            Setup(activateLogic, updateLogic, completedCondition, failedCondition);
-        }
-
-        private void Setup(System.Action activateLogic, System.Action updateLogic,
-            Func<Boolean> completedConditions, Func<Boolean> failedCondition)
-        {
-            this.activateAction = activateLogic;
-            this.updateAction = updateLogic;
-            this.completedCondition = completedConditions;
-            this.failedCondition = failedCondition;
         }
 
         public override void OnActivate()

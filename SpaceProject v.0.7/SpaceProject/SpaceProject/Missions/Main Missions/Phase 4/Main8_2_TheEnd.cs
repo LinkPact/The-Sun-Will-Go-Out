@@ -19,6 +19,11 @@ namespace SpaceProject
             AtAsteroidBelt
         }
 
+        private readonly int Delay1 = 2000;
+        private readonly int Delay2 = 1500;
+
+        private float completeObjectiveTime;
+
         public Main8_2_TheEnd(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
             base(Game, section, spriteSheet, missionID)
         {
@@ -88,16 +93,36 @@ namespace SpaceProject
             objectives.Clear();
 
             objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                3000, 3000, PortraitID.Sair, GetEvent((int)EventID.ToAsteroidBelt1).Text));
+                3000, 1000, PortraitID.Sair, GetEvent((int)EventID.ToAsteroidBelt1).Text));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                new EventTextCapsule(GetEvent((int)EventID.ToAsteroidBelt2), null, EventTextCanvas.MessageBox, PortraitID.Sair),
+                delegate
+                {
+                    completeObjectiveTime = StatsManager.PlayTime.GetFutureOverworldTime(Delay1);
+                },
+                delegate { },
+                delegate
+                {
+                    return StatsManager.PlayTime.HasOverworldTimePassed(completeObjectiveTime);
+                },
+                delegate { return false; }));
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                new EventTextCapsule(GetEvent((int)EventID.ToAsteroidBelt3), null, EventTextCanvas.MessageBox, PortraitID.Sair),
+                delegate
+                {
+                    completeObjectiveTime = StatsManager.PlayTime.GetFutureOverworldTime(Delay2);
+                },
+                delegate { },
+                delegate
+                {
+                    return StatsManager.PlayTime.HasOverworldTimePassed(completeObjectiveTime);
+                },
+                delegate { return false; }));
 
             objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                3000, 3000, PortraitID.Sair, GetEvent((int)EventID.ToAsteroidBelt2).Text));
-
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                3000, 3000, PortraitID.Sair, GetEvent((int)EventID.ToAsteroidBelt3).Text));
-
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                3000, 3000, PortraitID.Sair, GetEvent((int)EventID.ToAsteroidBelt4).Text));
+                2000, 3000, PortraitID.Sair, GetEvent((int)EventID.ToAsteroidBelt4).Text));
 
             objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], 1200,
                 new EventTextCapsule(GetEvent((int)EventID.AtAsteroidBelt), null, EventTextCanvas.MessageBox, PortraitID.Sair)));

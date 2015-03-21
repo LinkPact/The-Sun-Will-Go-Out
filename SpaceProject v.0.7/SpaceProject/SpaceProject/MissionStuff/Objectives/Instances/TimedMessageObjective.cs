@@ -86,7 +86,7 @@ namespace SpaceProject
         public override bool Completed()
         {
             return (messageTime == -1
-                && PopupHandler.TextBufferEmpty);
+                && PopupHandler.RealTimeTextBufferEmpty);
         }
 
         public override void OnCompleted()

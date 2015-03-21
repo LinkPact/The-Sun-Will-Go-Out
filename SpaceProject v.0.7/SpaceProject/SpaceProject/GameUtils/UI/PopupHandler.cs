@@ -38,6 +38,7 @@ namespace SpaceProject
                     && realTimeMessageQueue.Count <= 0;
             } 
         }
+        public static bool RealTimeTextBufferEmpty { get { return realTimeMessageQueue.Count <= 0; } }
 
         public static int MessageQueueCount { get { return messageQueue.Count; } }
 
