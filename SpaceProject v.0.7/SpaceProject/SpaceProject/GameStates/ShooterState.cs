@@ -235,7 +235,7 @@ namespace SpaceProject
             {
                 case MissionType.rebelpirate:
                     {
-                        ActiveSong = Music.Stars;
+                        ActiveSong = Music.PowerSong;
                         break;
                     }
                 case MissionType.alliancepirate:

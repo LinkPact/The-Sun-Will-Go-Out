@@ -17,6 +17,7 @@ namespace SpaceProject
             base(Game, variety)
         {
             Setup();
+            SetShipPartVariety();
         }
 
         protected override String GetDescription()

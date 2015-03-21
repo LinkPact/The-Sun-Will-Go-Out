@@ -427,14 +427,16 @@ namespace SpaceProject
                 case ShipParts.Primary1:
                     {
                         availablePrimaryWeapons = ShipInventoryManager.GetAvailablePrimaryWeapons(1);
-                        ShipInventoryManager.equippedPrimaryWeapons.RemoveAt(0);
+                        if (equippedPrimaryWeapons.Count() < 0)
+                            ShipInventoryManager.equippedPrimaryWeapons.RemoveAt(0);
                         ShipInventoryManager.equippedPrimaryWeapons.Insert(0, (PlayerWeapon)availablePrimaryWeapons[invPos]);
                         break;
                     }
                 case ShipParts.Primary2:
                     {
                         availablePrimaryWeapons = ShipInventoryManager.GetAvailablePrimaryWeapons(2);
-                        ShipInventoryManager.equippedPrimaryWeapons.RemoveAt(1);
+                        if (equippedPrimaryWeapons.Count() < 1)
+                            ShipInventoryManager.equippedPrimaryWeapons.RemoveAt(1);
                         ShipInventoryManager.equippedPrimaryWeapons.Insert(1, (PlayerWeapon)availablePrimaryWeapons[invPos]);
                         break;
                     }
@@ -759,12 +761,15 @@ namespace SpaceProject
 
             // Equip Items
             int pos;
-            for (int i = 0; i < equippedPrimaryWeapons.Count; i++)
-            {
-                pos = Game.saveFile.GetPropertyAsInt("shipequipped", "primaryinvpos" + i, -1);
-                if (pos != -1)
-                    EquipItemFromSublist(ShipParts.Primary1, i, pos);
-            }
+            ShipInventoryManager.equippedPrimaryWeapons.Clear();
+
+            pos = Game.saveFile.GetPropertyAsInt("shipequipped", "primaryinvpos0", -1);
+            if (pos != -1)
+                ShipInventoryManager.equippedPrimaryWeapons.Insert(0, (PlayerWeapon)ownedPrimaryWeapons[pos]);
+
+            pos = Game.saveFile.GetPropertyAsInt("shipequipped", "primaryinvpos1", -1);
+            if (pos != -1)
+                ShipInventoryManager.equippedPrimaryWeapons.Insert(1, (PlayerWeapon)ownedPrimaryWeapons[pos]);
 
             pos = Game.saveFile.GetPropertyAsInt("shipequipped", "secondaryinvpos", -1);
             if (pos != -1)
