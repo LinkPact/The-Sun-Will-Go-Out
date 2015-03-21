@@ -113,6 +113,7 @@ namespace SpaceProject
                     }
 
                 case RebindableKeys.Pause:
+                case RebindableKeys.Action2:
                     {
                         Hide();
                         break;

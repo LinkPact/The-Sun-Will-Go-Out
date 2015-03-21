@@ -9,7 +9,9 @@ namespace SpaceProject
 {
     class PortraitMessage : TextMessage
     {
-        ImageContainer portraitContainer;
+        private readonly Point PortraitButtonOffset = new Point(86, -10);
+
+        private ImageContainer portraitContainer;
 
         public PortraitMessage(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
@@ -24,6 +26,10 @@ namespace SpaceProject
             portraitContainer = new ImageContainer(canvasPosition, canvas.SourceRectangle.Value);
             portraitContainer.Initialize();
             portraitContainer.SetDefaultPosition(this.GetType());
+
+            okayButtonPosition = new Vector2(canvasPosition.X + PortraitButtonOffset.X,
+                canvasPosition.Y + canvas.SourceRectangle.Value.Height / 2
+                - OkayButtonYArea / 2 + PortraitButtonOffset.Y);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

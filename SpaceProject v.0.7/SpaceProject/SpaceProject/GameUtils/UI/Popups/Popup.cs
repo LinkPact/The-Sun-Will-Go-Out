@@ -182,6 +182,10 @@ namespace SpaceProject
             {
                 OnPress(RebindableKeys.Action1);
             }
+            else if (ControlManager.CheckPress(RebindableKeys.Action2))
+            {
+                OnPress(RebindableKeys.Action2);
+            }
             else if (ControlManager.CheckPress(RebindableKeys.Pause)
                 || ControlManager.CheckKeyPress(Keys.Escape))
             {
