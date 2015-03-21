@@ -94,15 +94,16 @@ namespace SpaceProject
 
         public SoundEffectInstance CreateInstance()
         {
-            if (OkayToCreateNewInstance())
+            if (maxInstances == 1
+                && IsSoundEffectPlaying())
             {
-                SoundEffectInstance instance = soundEffect.CreateInstance();
-                instances.Add(instance);
-
-                return instance;
+                return null;
             }
 
-            return null;
+            SoundEffectInstance instance = soundEffect.CreateInstance();
+            instances.Insert(0, instance);
+
+            return instance;
         }
 
         public void Dispose()
@@ -112,14 +113,6 @@ namespace SpaceProject
 
         public void Update()
         {
-            foreach (SoundEffectInstance instance in playingInstances)
-            {
-                if (instance.IsDisposed)
-                {
-                    stoppedInstances.Add(instance);
-                }
-            }
-
             if (fadeOut)
             {
                 foreach (SoundEffectInstance instance in playingInstances)
@@ -146,9 +139,11 @@ namespace SpaceProject
                 }
             }
 
-            foreach (SoundEffectInstance instance in stoppedInstances)
+            CheckInstanceCount();
+
+            foreach (SoundEffectInstance ins in stoppedInstances)
             {
-                instances.Remove(instance);
+                instances.Remove(ins);
             }
 
             stoppedInstances.Clear();
@@ -168,39 +163,42 @@ namespace SpaceProject
             stoppedInstances.Clear();
         }
 
-        // Checks if number of playing instances does not exceed maximum allowed instances.
-        private bool OkayToCreateNewInstance()
+        private void CheckInstanceCount()
         {
             playingInstances.Clear();
 
             for (int i = 0; i < instances.Count; i++)
             {
-                if (instances[i].State == SoundState.Playing)
-                {
-                    playingInstances.Add(instances[i]);
-                }
-
-                else if (instances[i].State == SoundState.Stopped)
+                if (instances[i].IsDisposed
+                    || instances[i].State == SoundState.Stopped)
                 {
                     stoppedInstances.Add(instances[i]);
                 }
+
+                else if (instances[i].State == SoundState.Playing)
+                {
+                    playingInstances.Add(instances[i]);
+                }
             }
 
-            for (int i = 0; i < stoppedInstances.Count; i++)
+            if (playingInstances.Count > maxInstances)
             {
-                instances.Remove(stoppedInstances[i]);
-                stoppedInstances[i].Dispose();
+                instances[playingInstances.Count - 1].Volume = 0f;
+                instances[playingInstances.Count - 1].Stop(true);
             }
-
-            stoppedInstances.Clear();
-
-            if (playingInstances.Count >= maxInstances)
-            {
-                return false;
-            }
-
-            return true;
         }
 
+        private bool IsSoundEffectPlaying()
+        {
+            foreach (SoundEffectInstance instance in instances)
+            {
+                if (instance.State == SoundState.Playing)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

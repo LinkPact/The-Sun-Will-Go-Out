@@ -31,7 +31,7 @@ namespace SpaceProject
 
     public class SoundEffectsManager
     {
-        private readonly int SoundEffectBufferMaxCount = 128;
+        private readonly int SoundEffectBufferMaxCount = 32;
 
         public static bool LoadSoundEffects;
 
@@ -79,12 +79,12 @@ namespace SpaceProject
 
             if (LoadSoundEffects)
             {
-                smallLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/basic_laser"), 12);
-                bigLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/distorted_laser"), 12);
-                clickLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/click_laser_noiseReduced"), 12);
+                smallLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/basic_laser"), 3);
+                bigLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/distorted_laser"), 3);
+                clickLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/click_laser_noiseReduced"), 1);
 
-                muffledExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom6"), 12);
-                smallExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom9"), 12);
+                muffledExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom6"), 1);
+                smallExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom9"), 4);
 
                 soundEffects.Add(smallLaser);
                 soundEffects.Add(bigLaser);
@@ -101,7 +101,7 @@ namespace SpaceProject
                 soundEffects.Add(crowd);
 
                 menuHover = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/menu_hover"), 1);
-                menuSelect = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/menu_select"), 8);
+                menuSelect = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/menu_select"), 4);
 
                 soundEffects.Add(menuHover);
                 soundEffects.Add(menuSelect);
@@ -137,7 +137,8 @@ namespace SpaceProject
 
         public void PlaySoundEffect(SoundEffects identifier, float pan = 0, float pitch = 0, Boolean isLooped = false)
         {
-            if (!muted && LoadSoundEffects && soundEffectBuffer.Count < SoundEffectBufferMaxCount)
+            if (!muted 
+                && LoadSoundEffects)
             {
                 int i = (int)identifier;
 
@@ -161,7 +162,9 @@ namespace SpaceProject
                     instance.IsLooped = isLooped;
                     instance.Play();
 
-                    soundEffectBuffer.Add(instance);
+                    soundEffectBuffer.Insert(0, instance);
+
+                    CheckInstanceCount();
                 }
             }
         }
@@ -223,7 +226,6 @@ namespace SpaceProject
                 else if (soundEffectBuffer[0].State == SoundState.Stopped)
                 {
                     stoppedSoundEffects.Add(soundEffectBuffer[0]);
-                    soundEffectBuffer.Remove(soundEffectBuffer[0]);
                 }
             }
         }
@@ -287,6 +289,21 @@ namespace SpaceProject
 
             soundEffects.Clear();
             stoppedSoundEffects.Clear();
+        }
+
+        private void CheckInstanceCount()
+        {
+            if (soundEffectBuffer.Count > SoundEffectBufferMaxCount)
+            {
+                soundEffectBuffer[soundEffectBuffer.Count - 1].Volume = 0f;
+                soundEffectBuffer[soundEffectBuffer.Count - 1].Stop(true);
+                stoppedSoundEffects.Add(soundEffectBuffer[soundEffectBuffer.Count - 1]);
+            }
+
+            foreach (SoundEffectInstance ins in stoppedSoundEffects)
+            {
+                soundEffectBuffer.Remove(ins);
+            }
         }
     }
 }

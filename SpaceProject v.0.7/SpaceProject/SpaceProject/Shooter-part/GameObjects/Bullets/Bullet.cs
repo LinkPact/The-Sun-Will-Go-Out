@@ -15,6 +15,7 @@ namespace SpaceProject
             : base (Game, spriteSheet)
         {
             DrawLayer = 0.4f;
+            deathSoundID = SoundEffects.MuffledExplosion;
         }
 
         public override void InflictDamage(GameObjectVertical obj)
