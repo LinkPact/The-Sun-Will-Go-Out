@@ -142,7 +142,12 @@ namespace SpaceProject
                 && game.stateManager.overworldState.GetBeacon("Highfence Beacon").IsActivated)
             {
                 hasActivatedHighfenceBeacon = true;
-                DisplayTutorialMessage("Good! This beacon is now activated and you can press 'Enter' above it to access it. All planets in the sector have a beacon orbiting it. Don't forget to activate them when you see them!");
+
+                if (MissionManager.GetMission(MissionID.Main2_1_TheConvoy).MissionState != StateOfMission.Active
+                    || !((EscortObjective)MissionManager.GetMission(MissionID.Main2_1_TheConvoy).CurrentObjective).Started)
+                {
+                    DisplayTutorialMessage("Good! This beacon is now activated and you can press 'Enter' above it to access it. All planets in the sector have a beacon orbiting it. Don't forget to activate them when you see them!");
+                }
             }
 
             if (!hasEnteredVerticalShooter && GameStateManager.currentState.Equals("ShooterState"))

@@ -42,6 +42,7 @@ namespace SpaceProject
 
         private int messageTimer;
         private bool started;
+        public bool Started { get { return started; } }
         private List<float> timedMessageTimes;
         private int timedMessageCount;
 

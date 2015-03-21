@@ -12,6 +12,7 @@ namespace SpaceProject
     public class PopupHandler
     {
         #region variables
+        private const int PopupDelay = 20;
 
         public static bool DisplayMenuOnReturn;
 
@@ -21,6 +22,8 @@ namespace SpaceProject
         private static List<Popup> messageQueue;
         private static List<Popup> menuQueue;
         private static List<Popup> realTimeMessageQueue;
+
+        private static int popupDelayTimer;
 
         #endregion
 
@@ -56,6 +59,8 @@ namespace SpaceProject
 
         public void Update(GameTime gameTime)
         {
+            popupDelayTimer -= gameTime.ElapsedGameTime.Milliseconds;
+
             //displays the overmenu automaticly when returning from the inventory or mission screen 
             if (PopupHandler.DisplayMenuOnReturn)
             {
@@ -66,7 +71,10 @@ namespace SpaceProject
                 }
             }
 
-            UpdateQueue(gameTime, messageQueue);
+            if (popupDelayTimer <= 0)
+            {
+                UpdateQueue(gameTime, messageQueue);
+            }
             UpdateQueue(gameTime, menuQueue);
             UpdateQueue(gameTime, realTimeMessageQueue);
         }
@@ -96,6 +104,7 @@ namespace SpaceProject
             textMessage.Initialize();
             textMessage.SetMessage(messages);
 
+            popupDelayTimer = PopupDelay;
             messageQueue.Add(textMessage);
 
             game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
@@ -108,6 +117,7 @@ namespace SpaceProject
             portraitMessage.SetMessage(messages);
             portraitMessage.SetPortrait(new Portrait(portrait).Sprite);
 
+            popupDelayTimer = PopupDelay;
             messageQueue.Add(portraitMessage);
 
             game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
@@ -127,6 +137,7 @@ namespace SpaceProject
             portraitMessage.SetMessage(messages);
             portraitMessage.SetPortraits(portraitList, portraitTriggers, TextUtils.GetSplitCount(messages));
 
+            popupDelayTimer = PopupDelay;
             messageQueue.Add(portraitMessage);
 
             game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
@@ -139,6 +150,7 @@ namespace SpaceProject
             imagePopup.Initialize();
             imagePopup.SetImages(images);
 
+            popupDelayTimer = PopupDelay;
             messageQueue.Add(imagePopup);
 
             game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
@@ -162,6 +174,7 @@ namespace SpaceProject
             imageMessage.SetMessage(messages);
             imageMessage.SetImages(TextUtils.GetSplitCount(messages), imageTriggers.ToArray<int>(), images.ToArray<Sprite>());
 
+            popupDelayTimer = PopupDelay;
             messageQueue.Add(imageMessage);
 
             game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
@@ -194,6 +207,7 @@ namespace SpaceProject
 
             realTimeMessage.SetPortrait(portraitList, TextUtils.GetSplitCount(messages), portraitTriggers);
 
+            popupDelayTimer = PopupDelay;
             realTimeMessageQueue.Add(realTimeMessage);
         }
 
@@ -204,6 +218,7 @@ namespace SpaceProject
             realTimeMessage.SetMessage(messages);
             realTimeMessage.SetDelay(delay);
 
+            popupDelayTimer = PopupDelay;
             realTimeMessageQueue.Add(realTimeMessage);
         }
 
@@ -222,6 +237,7 @@ namespace SpaceProject
                 menu.SetMenuOptions("Restart Level", "Give Up Level", "Exit Game", "Return To Game");
             }
 
+            popupDelayTimer = PopupDelay;
             menuQueue.Add(menu);
 
             game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
@@ -242,6 +258,7 @@ namespace SpaceProject
             selectionMenu.SetMenuOptions(options.ToArray());
             selectionMenu.SetMenuActions(actions.ToArray());
 
+            popupDelayTimer = PopupDelay;
             menuQueue.Add(selectionMenu);
 
             game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
