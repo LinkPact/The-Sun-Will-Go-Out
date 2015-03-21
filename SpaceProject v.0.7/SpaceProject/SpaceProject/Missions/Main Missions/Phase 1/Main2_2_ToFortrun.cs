@@ -116,7 +116,7 @@ namespace SpaceProject
                 ));
 
             objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                3000, 2500, PortraitID.Sair, GetEvent((int)EventID.Beacon2).Text));
+                3000, 100, PortraitID.Sair, GetEvent((int)EventID.Beacon2).Text));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.ArriveAtHighfence), null, EventTextCanvas.BaseState)));

@@ -54,8 +54,8 @@ namespace SpaceProject
         private double totalHyperspeedDistance;
         private double currentHyperspeedDistance;
 
-        private const float HYPERSPEED_ACC = 0.0004f;
-        private const float HYPERSPEED_MAX_SPEED = 4f;
+        private const float HYPERSPEED_ACC = 0.0016f;
+        private const float HYPERSPEED_MAX_SPEED = 5f;
         private const double DEACCELERATION_DISTANCE = HYPERSPEED_MAX_SPEED * HYPERSPEED_MAX_SPEED /(2 * HYPERSPEED_ACC);
 
         #endregion

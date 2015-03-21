@@ -360,7 +360,7 @@ Success = "Good job!"
 Reward = 100
 Progress = 2
 Reputation = 0
-State = 1
+State = 0
 
 [Side_FlightTraining]
 Location = Border Station
