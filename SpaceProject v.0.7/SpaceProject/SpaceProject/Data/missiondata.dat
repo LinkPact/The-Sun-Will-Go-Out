@@ -159,7 +159,7 @@ ObjectiveFailed = You chose to hide the man instead, getting no reward.
 Reward = 300
 Progress = 2
 Reputation = -5
-State = 0
+State = 1
 
 [Main5_Retribution]
 Location = Rebel Base
