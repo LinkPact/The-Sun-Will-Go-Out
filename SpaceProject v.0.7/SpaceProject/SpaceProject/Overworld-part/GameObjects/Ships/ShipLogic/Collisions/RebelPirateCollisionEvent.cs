@@ -20,6 +20,7 @@ namespace SpaceProject
         {
             if (StatsManager.reputation >= 0)
             {
+                ship.Explode();
                 game.stateManager.overworldState.RemoveOverworldObject(ship);
                 game.stateManager.shooterState.BeginRebelPirateLevel();
                 PopupHandler.DisplayMessage(GetMessage());
