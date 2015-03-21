@@ -5,10 +5,22 @@ using System.Text;
 
 namespace SpaceProject
 {
-    class MedicalSupplies : StoryItem
+    public class MedicalSupplies : StoryItem
     {
         public MedicalSupplies(Game1 Game) :
             base(Game)
+        {
+            Setup();
+        }
+
+        // Quick hack to make this class Savefile compatable. Please ignore. 
+        public MedicalSupplies(Game1 Game, int foo) :
+            base(Game)
+        {
+            Setup();
+        }
+
+        private void Setup()
         {
             Name = "Medical Supplies";
             Kind = "StoryItems";
