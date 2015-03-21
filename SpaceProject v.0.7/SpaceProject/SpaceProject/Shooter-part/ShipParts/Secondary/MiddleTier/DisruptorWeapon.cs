@@ -26,7 +26,7 @@ namespace SpaceProject
             Name = "Disruptor";
             Kind = "Secondary";
             energyCostPerSecond = 2f;
-            delay = 1200;
+            delay = 2000;
             Weight = 400;
             ActivatedSoundID = SoundEffects.MuffledExplosion;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(100, 100, 100, 100));

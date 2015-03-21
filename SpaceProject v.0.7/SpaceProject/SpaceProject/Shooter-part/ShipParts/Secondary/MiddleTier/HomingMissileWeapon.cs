@@ -23,7 +23,7 @@ namespace SpaceProject
         {
             Name = "HomingMissile";
             Kind = "Secondary";
-            energyCostPerSecond = 2f;
+            energyCostPerSecond = 1.5f;
             delay = 800;
             Weight = 500;
             ActivatedSoundID = SoundEffects.ClickLaser;

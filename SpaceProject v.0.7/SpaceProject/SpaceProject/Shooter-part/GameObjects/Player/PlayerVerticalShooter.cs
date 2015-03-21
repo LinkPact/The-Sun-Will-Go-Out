@@ -305,11 +305,6 @@ namespace SpaceProject
                 Shield -= shieldDamage;
                 Game.AddGameObjToShooter(ShieldEffectGenerator.GenerateStandardShieldEffect(Game, spriteSheet, this));
             }
-            else if (Shield > obj.Damage)
-            {
-                Shield = 0;
-                throw new ArgumentException("Trying if this ever gets called, if so, tell Jakob");
-            }
             else
             {
                 HPdamage = damage - Shield;
