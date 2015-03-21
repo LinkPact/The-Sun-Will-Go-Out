@@ -29,10 +29,10 @@ allianceending7 = The End
 
 [onyourownending]
 onyourownending1 = [SAIR] "Do you see anything? Do you feel anything?"
-onyourownending2 = [SAIR] "I think this is the end. I'm going out soon."
-onyourownending3 = [SAIR] "Do you think we made the right choice?"
-onyourownending4 = [SAIR] "..."
-onyourownending5 = [SAIR] "I guess we'll never know."
-onyourownending6 = [SAIR] "But we did what we could."
-onyourownending7 = [SAIR] "..."
-onyourownending8 = [SAIR] "Goodbye. It was nice travelling with you."
+onyourownending2 = "I think this is the end. I'm going out soon."
+onyourownending3 = "Do you think we made the right choice?"
+onyourownending4 = "..."
+onyourownending5 = "I guess we'll never know."
+onyourownending6 = "But we did what we could."
+onyourownending7 = "..."
+onyourownending8 = "Goodbye. It was nice travelling with you."

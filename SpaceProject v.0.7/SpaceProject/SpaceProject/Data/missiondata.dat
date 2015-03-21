@@ -344,23 +344,23 @@ State = 1
 [Main9_C_OnYourOwnArc]
 Location = Telmun
 Name = On Your Own
-Introduction = [Sair] "It is possible that we could manage to destroy the entire Murt asteroid before anyone else reaches the location."#"It would mean that we keep Murt out of the hands of both the Alliance and the rebels."#"It would also mean that we destroy what rightfully belongs to the people of this sector."#"Something that could transform their life to the better."#"It would kill the entire Alliance- and rebels fleets that are here, and likely burn away this side of New Norrland."#"It would be the end for us."#"We wouldn't be thanked for that. It wouldn't end the conflict."#"But it would prevent the Murt from being misused to kill and control."#"Should we go ahead and do it?"
+Introduction = [SAIR] "It is possible that we could manage to destroy the entire Murt asteroid before anyone else reaches the location."#"It would mean that we keep Murt out of the hands of both the Alliance and the rebels."#"It would also mean that we destroy what rightfully belongs to the people of this sector."#"Something that could transform their life to the better."#"It would kill the entire Alliance- and rebels fleets that are here, and likely burn away this side of New Norrland."#"It would be the end for us."#"We wouldn't be thanked for that. It wouldn't end the conflict."#"But it would prevent the Murt from being misused to kill and control."#"Should we go ahead and do it?"
 ObjectiveText1 = 1
 ObjectiveText2 = 2
 PosResponse = Yes. Let's go ahead and destroy the Murt.
 NegResponse = I have to think a bit more about this.
 Accept = [SAIR] "Well then, it is decided. Let's go!"#[Alliance] "Identify yourself! Are you a rebel ship? I'm sorry. We can't let you continue."
 FailText = ""
-EventText1 = [Sair] "Well done. The area seems to be swarmed by both Alliance and rebel scouts. Stay alert."#"A rebel scout fleet is incoming. Let's try to slip through!"
+EventText1 = [SAIR] "Well done. The area seems to be swarmed by both Alliance and rebel scouts. Stay alert."#"A rebel scout fleet is incoming. Let's try to slip through!"
 EventText2 = Text displayed when killed on level?
-EventText3 = [Sair] "Finally, we made it through! It appears we managed to make it here before the others."#"To end this, just open fire. Hit the asteroid until it takes re. Burning it. Burning it all."#"Are you ready to do it? Is this the way to go? I still don't know."#"Maybe we are removing the system's last hope in vain."#"Or maybe this will prevent further war and chaos."#"No backing down now, I guess. Let's open fire!"
+EventText3 = [SAIR] "Finally, we made it through! It appears we managed to make it here before the others."#"To end this, just open fire. Hit the asteroid until it takes fire. Burning it. Burning it all."#"Are you ready to do it? Is this the way to go? I still don't know."#"Maybe we are removing the system's last hope in vain."#"Or maybe this will prevent further war and chaos."#"No backing down now, I guess. Let's open fire!"
 ObjectiveCompleted = ""
 Fail = ""
 Success = "Good job!"
 Reward = 100
 Progress = 2
 Reputation = 0
-State = 0
+State = 1
 
 [Side_FlightTraining]
 Location = Border Station
@@ -463,8 +463,8 @@ EventText1 = You dock at the small colony orbiting the planet and is greeted by 
 EventText2 = [Colony doctor] "You lost the medical supplies!? You have doomed us all!"
 Success = [Concerned citizen] "You have done my colony a great service! Thank you! It's not much, I know, but please accept this."#"I also salvaged this energy cell off a ship wreck recently. Take it, it could be of use to you!"
 ObjectiveCompleted = You returned to the colony orbiting Lavis with the supplies and got your reward at the colony on Fortrun.
-ObjectiveFailed = You lost the medical supplies! The colony will now surely succumb to the dicease.
-Fail = "You suck!"
+ObjectiveFailed = You lost the medical supplies! The colony will now surely succumb to the disease.
+Fail = [Concerned citizen] "You SOLD the supplies?! Why would you do that?"
 Reward = 0
 Progress = 2
 Reputation = 0

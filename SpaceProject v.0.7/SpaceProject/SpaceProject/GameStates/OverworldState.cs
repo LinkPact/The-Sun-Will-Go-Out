@@ -110,9 +110,7 @@ namespace SpaceProject
         #region Other Objects
 
         private PeyeScienceStation peyeScienceStation;
-
         public HeadsUpDisplay HUD;
-
         public BackgroundManagerOverworld bGManagerOverworld;
 
         #endregion
@@ -121,6 +119,7 @@ namespace SpaceProject
         public Sprite spriteSheet;
 
         private BurnOutEnding burnOutEnding;
+        public bool IsBurnOutEndingActivated { get { return burnOutEnding.Activated; } }
 
         public Sprite shooterSheet;
         private Sprite outpostSpriteSheet;
@@ -265,7 +264,7 @@ namespace SpaceProject
                 Game.stateManager.ChangeState("OutroState");
                 Game.player.EnableControls();
             }
-            //InputhandlingDebug();
+            InputhandlingDebug();
 
             EdgeCollisionCheck();
 
@@ -445,6 +444,12 @@ namespace SpaceProject
             {
                 Game.stateManager.shooterState.BeginLevel("EscortLevel");
             }
+
+            if (ControlManager.CheckKeyPress(Keys.Y))
+            {
+                Game.stateManager.outroState.SetOutroType(OutroType.OnYourOwnEnd);
+                Game.stateManager.ChangeState("OutroState");
+            }
         }
 
         private void DevelopCommands()
@@ -559,7 +564,11 @@ namespace SpaceProject
             if (!ZoomMap.IsMapOn)
             {
                 bGManagerOverworld.Draw(spriteBatch);
-                HUD.Draw(spriteBatch);
+
+                if (!IsBurnOutEndingActivated)
+                {
+                    HUD.Draw(spriteBatch);
+                }
             }
 
             burnOutEnding.Draw(spriteBatch);
@@ -578,30 +587,20 @@ namespace SpaceProject
             {
                 if (CollisionDetection.IsRectInRect(Game.player.Bounds, deepSpaceGameObjects[i].Bounds))
                 {
-                    if (deepSpaceGameObjects[i].Class == "Planet")
+                    if (!burnOutEnding.Activated)
                     {
-                        CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, deepSpaceGameObjects[i].Bounds);
-                        Game.helper.DisplayText("Press 'Enter' to enter planetary orbit.");
+                        if (deepSpaceGameObjects[i].Class == "Planet")
+                        {
+                            CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, deepSpaceGameObjects[i].Bounds);
+                            Game.helper.DisplayText("Press 'Enter' to enter planetary orbit.");
+                        }
+                
+                        else if (deepSpaceGameObjects[i].Class == "Station")
+                        {
+                            CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, deepSpaceGameObjects[i].Bounds);
+                            Game.helper.DisplayText("Press 'Enter' to dock with station.");
+                        }
                     }
-
-                    else if (deepSpaceGameObjects[i].Class == "Station")
-                    {
-                        CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, deepSpaceGameObjects[i].Bounds);
-                        Game.helper.DisplayText("Press 'Enter' to dock with station.");
-                    }
-
-                    else if (deepSpaceGameObjects[i].Class == "MotherShip")
-                    {
-                        CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, deepSpaceGameObjects[i].Bounds);
-                        Game.helper.DisplayText("Press 'Enter' to dock with mothership.");
-                    }
-
-                    //else if (deepSpaceGameObjects[i] is Battlefield &&
-                    //    MissionManager.GetMission("Main - A Cold Welcome").GetProgress().Equals(2))
-                    //{
-                    //    CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, deepSpaceGameObjects[i]);
-                    //    Game.helper.DisplayText("Press 'Enter' to investigate battlefield.");
-                    //}
                 }
 
                 foreach (GameObjectOverworld obj in effectsObjects)

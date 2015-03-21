@@ -156,19 +156,25 @@ namespace SpaceProject
                 return PortraitID.AllianceCommander;
             }
 
-            else if (str.Contains("Alliance man"))
+            else if (str.Contains("[Alliance man]"))
             {
                 lastPortraitID = PortraitID.AllianceCaptain;
                 return PortraitID.AllianceCaptain;
             }
 
-            else if (str.Contains("Debt collector"))
+            else if (str.Contains("[Alliance]"))
+            {
+                lastPortraitID = PortraitID.AlliancePilot;
+                return PortraitID.AlliancePilot;
+            }
+
+            else if (str.Contains("[Debt collector]"))
             {
                 lastPortraitID = PortraitID.Berr;
                 return PortraitID.Berr;
             }
 
-            else if (str.Contains("Desperate man"))
+            else if (str.Contains("[Desperate man]"))
             {
                 lastPortraitID = PortraitID.CommonCitizen;
                 return PortraitID.CommonCitizen;

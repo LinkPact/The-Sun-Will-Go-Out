@@ -9,12 +9,18 @@ namespace SpaceProject
 {
     class Ending
     {
+        // Variables
         protected Game1 game;
         protected Sprite spriteSheet;
 
         protected bool activated;
         protected bool finished;
-        public bool Finished { get { return finished; } private set { ;} }
+        // ----
+
+        // Properties
+        public bool Activated { get { return activated; } }
+        public bool Finished { get { return finished; } }
+        // ----
 
         public Ending(Game1 game, Sprite spriteSheet)
         {

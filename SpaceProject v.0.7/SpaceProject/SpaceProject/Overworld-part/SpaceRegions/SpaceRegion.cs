@@ -141,42 +141,39 @@ namespace SpaceProject
             {
                 if (CollisionDetection.IsRectInRect(game.player.Bounds, gameObjects[i].Bounds))
                 {
-                    if (gameObjects[i].Class == "Planet")
+                    if (!game.stateManager.overworldState.IsBurnOutEndingActivated)
                     {
-                        CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i].Bounds);
-                        game.helper.DisplayText("Press 'Enter' to enter planetary orbit.");
-                    }
-
-                    else if (gameObjects[i].Class == "Station")
-                    {
-                        CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i].Bounds);
-                        game.helper.DisplayText("Press 'Enter' to dock with station.");
-                    }
-
-                    else if (gameObjects[i].Class == "MotherShip")
-                    {
-                        CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i].Bounds);
-                        game.helper.DisplayText("Press 'Enter' to dock with mothership.");
-                    }
-
-                    else if (gameObjects[i] is Beacon && !game.player.HyperspeedOn)
-                    {
-                        CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i].Bounds);
-                        if (!((Beacon)gameObjects[i]).IsActivated)
+                        if (gameObjects[i].Class == "Planet")
                         {
-                            game.helper.DisplayText("Press 'Enter' to activate beacon.");
+                            CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i].Bounds);
+                            game.helper.DisplayText("Press 'Enter' to enter planetary orbit.");
                         }
 
-                        else
+                        else if (gameObjects[i].Class == "Station")
                         {
-                            game.helper.DisplayText("Press 'Enter' to interact with beacon.");
+                            CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i].Bounds);
+                            game.helper.DisplayText("Press 'Enter' to dock with station.");
                         }
-                    }
 
-                    else if (gameObjects[i] is SubInteractiveObject)
-                    {
-                        CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i].Bounds);
-                        game.helper.DisplayText("Press 'Enter' to investigate.");
+                        else if (gameObjects[i] is Beacon && !game.player.HyperspeedOn)
+                        {
+                            CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i].Bounds);
+                            if (!((Beacon)gameObjects[i]).IsActivated)
+                            {
+                                game.helper.DisplayText("Press 'Enter' to activate beacon.");
+                            }
+
+                            else
+                            {
+                                game.helper.DisplayText("Press 'Enter' to interact with beacon.");
+                            }
+                        }
+
+                        else if (gameObjects[i] is SubInteractiveObject)
+                        {
+                            CollisionHandlingOverWorld.DrawRectAroundObject(game, spriteBatch, gameObjects[i].Bounds);
+                            game.helper.DisplayText("Press 'Enter' to investigate.");
+                        }
                     }
                 }
             }

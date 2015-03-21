@@ -33,6 +33,9 @@ namespace SpaceProject
         private int explosionWaveTimer;
         // ----
 
+        // Properties
+        // ----
+
         public BurnOutEnding(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
         {
@@ -46,6 +49,7 @@ namespace SpaceProject
             filter = spriteSheet.GetSubSprite(new Rectangle(164, 43, 163, 163));
             filterColor = INIT_FILTER_COLOR;
             filterScale = INIT_FILTER_SCALE;
+            activated = false;
         }
 
         public void Activate(Vector2 screenCenter, int waves)
@@ -53,6 +57,7 @@ namespace SpaceProject
             base.Activate();
 
             this.screenCenter = screenCenter;
+            activated = true;
             explosionWaves = waves;
 
             AddParticles();
