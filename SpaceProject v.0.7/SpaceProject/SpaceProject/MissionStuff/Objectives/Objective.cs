@@ -143,7 +143,6 @@ namespace SpaceProject
                     {
                         PopupHandler.DisplayMessage(objectiveFailedEventText.Text);
                     }
-                    PopupHandler.DisplayMessage(objectiveFailedEventText.Text);
                 }
 
                 MissionManager.MarkMissionAsFailed(mission.MissionID);

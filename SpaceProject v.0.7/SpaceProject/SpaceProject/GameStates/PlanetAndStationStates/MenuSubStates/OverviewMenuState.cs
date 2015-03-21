@@ -269,40 +269,43 @@ namespace SpaceProject
                 return;
             }
 
-            if (MissionManager.ReturnCompletedMissions(BaseState.GetBase().name).Count <= 0 &&
-                MissionManager.ReturnFailedMissions(BaseState.GetBase().name).Count <= 0)
+            if (BaseState.GetBase() != null)
             {
+                if (MissionManager.ReturnCompletedMissions(BaseState.GetBase().name).Count <= 0 &&
+                    MissionManager.ReturnFailedMissions(BaseState.GetBase().name).Count <= 0)
+                {
 
-                BaseState.DataHead = "Colony Data:";
+                    BaseState.DataHead = "Colony Data:";
 
-                if (BaseState.GetBase() != null && BaseState.GetBase() is Planet)
-                    BaseState.DataBody = "Name: " + BaseState.Padding.PadRight(20, ' ') + ((Planet)BaseState.GetBase()).ColonyName + "\n" +
-                         "Inhabitants: " + BaseState.Padding.PadRight(13, ' ') + ((Planet)BaseState.GetBase()).ColonyInhabitants;
+                    if (BaseState.GetBase() != null && BaseState.GetBase() is Planet)
+                        BaseState.DataBody = "Name: " + BaseState.Padding.PadRight(20, ' ') + ((Planet)BaseState.GetBase()).ColonyName + "\n" +
+                             "Inhabitants: " + BaseState.Padding.PadRight(13, ' ') + ((Planet)BaseState.GetBase()).ColonyInhabitants;
 
 
 
-                //SubStateManager.ButtonControl = ButtonControl.Second;
+                    //SubStateManager.ButtonControl = ButtonControl.Second;
 
-                buttonShop.isSelected = false;
+                    buttonShop.isSelected = false;
 
-                shopSelectCursorIndex = 0;
+                    shopSelectCursorIndex = 0;
 
-                CursorActions();
+                    CursorActions();
 
-                if (StatsManager.EmergencyFusionCell < 1)
-                    StatsManager.EmergencyFusionCell = 1;
-            }
+                    if (StatsManager.EmergencyFusionCell < 1)
+                        StatsManager.EmergencyFusionCell = 1;
+                }
 
-            else if (MissionManager.ReturnCompletedMissions(BaseState.GetBase().name).Count > 0)
-            {
-                BaseStateManager.ChangeMenuSubState("Mission");
-                BaseStateManager.MissionMenuState.DisplayMissionCompletedText();
-            }
+                else if (MissionManager.ReturnCompletedMissions(BaseState.GetBase().name).Count > 0)
+                {
+                    BaseStateManager.ChangeMenuSubState("Mission");
+                    BaseStateManager.MissionMenuState.DisplayMissionCompletedText();
+                }
 
-            else if (MissionManager.ReturnFailedMissions(BaseState.GetBase().name).Count > 0)
-            {
-                BaseStateManager.ChangeMenuSubState("Mission");
-                BaseStateManager.MissionMenuState.DisplayMissionFailedText();
+                else if (MissionManager.ReturnFailedMissions(BaseState.GetBase().name).Count > 0)
+                {
+                    BaseStateManager.ChangeMenuSubState("Mission");
+                    BaseStateManager.MissionMenuState.DisplayMissionFailedText();
+                }
             }
         }
 

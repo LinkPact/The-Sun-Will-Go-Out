@@ -108,7 +108,7 @@ namespace SpaceProject
 
             else
             {
-                return (mission.EventBuffer.Count <= 0 && game.stateManager.planetState.SubStateManager.ButtonControl != ButtonControl.Confirm);
+                return (mission.EventBuffer.Count <= 0 && game.stateManager.stationState.SubStateManager.ButtonControl != ButtonControl.Confirm);
             }
         }
 

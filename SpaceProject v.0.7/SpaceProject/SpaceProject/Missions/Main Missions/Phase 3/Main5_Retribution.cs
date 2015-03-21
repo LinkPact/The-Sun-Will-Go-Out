@@ -98,6 +98,7 @@ namespace SpaceProject
             base.OnFailed();
 
             RemoveShips();
+            OverworldShip.FollowPlayer = true;
             PopupHandler.DisplayMessage("The attack on the alliance freighter failed. Return to the rebel base to try again.");
         }
 
