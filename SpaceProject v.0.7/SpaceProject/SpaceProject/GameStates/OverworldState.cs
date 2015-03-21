@@ -758,7 +758,7 @@ namespace SpaceProject
                     saveData.Add("posy", Convert.ToString(deepSpaceGameObjects[i].position.Y, CultureInfo.InvariantCulture));
                     if (deepSpaceGameObjects[i] is RebelShip)
                     {
-                        if (((RebelShip)deepSpaceGameObjects[i]).Level != null)
+                        if (((RebelShip)deepSpaceGameObjects[i]).Level != null && ((RebelShip)deepSpaceGameObjects[i]).Level != "")
                             saveData.Add("level", ((RebelShip)deepSpaceGameObjects[i]).Level);
                     }
                     if (deepSpaceGameObjects[i] is FreighterShip)
@@ -816,6 +816,8 @@ namespace SpaceProject
                         GameObjectOverworld dest = GetCelestialBodyFromString(destName);
                         FreighterShip tmpShip = new FreighterShip(Game, Game.spriteSheetVerticalShooter);
                         tmpShip.Initialize();
+                        tmpShip.SetSector(Game.stateManager.overworldState.GetSectorX);
+                        tmpShip.SetDefaultBehaviour();
                         tmpShip.SetEndPlanet(dest);
                         sectorX.shipSpawner.AddFreighterToSector(tmpShip, new Vector2(posx, posy));
                         break;

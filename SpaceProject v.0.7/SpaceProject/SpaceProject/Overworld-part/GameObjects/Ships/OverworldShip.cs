@@ -99,8 +99,6 @@ namespace SpaceProject
 
         public override void FinalGoodbye()
         {
-            Game.stateManager.overworldState.AddEffectsObject(ExplosionGenerator.GenerateOverworldExplosion(Game, Game.spriteSheetVerticalShooter, this));
-            Game.stateManager.overworldState.AddEffectsObject(ExplosionGenerator.GenerateOverworldExplosion(Game, Game.spriteSheetVerticalShooter, this));
             base.FinalGoodbye();
         }
 
@@ -114,5 +112,10 @@ namespace SpaceProject
             Game.stateManager.overworldState.RemoveOverworldObject(this);
         }
 
+        public void Explode()
+        {
+            Game.stateManager.overworldState.AddEffectsObject(ExplosionGenerator.GenerateOverworldExplosion(Game, Game.spriteSheetVerticalShooter, this));
+            Game.stateManager.overworldState.AddEffectsObject(ExplosionGenerator.GenerateOverworldExplosion(Game, Game.spriteSheetVerticalShooter, this));
+        }
     }
 }
