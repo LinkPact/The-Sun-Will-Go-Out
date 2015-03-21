@@ -10,6 +10,7 @@ namespace SpaceProject
     public class BorderXOutpost : Outpost
     {
         private BorderStation station;
+        private TrainingArea trainingArea;
 
         public BorderXOutpost(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
@@ -26,7 +27,13 @@ namespace SpaceProject
 
             station = new BorderStation(game, spriteSheet, new Vector2(spaceRegionArea.X, spaceRegionArea.Y));
             station.Initialize();
+
             AddGameObject(station);
+
+            trainingArea = new TrainingArea(game, spriteSheet, new Vector2(spaceRegionArea.X, spaceRegionArea.Y));
+            trainingArea.Initialize();
+
+            AddGameObject(trainingArea);
         }
 
         public override void Update(GameTime gameTime)

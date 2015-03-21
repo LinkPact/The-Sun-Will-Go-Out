@@ -363,7 +363,7 @@ Reputation = 0
 State = 0
 
 [Side_FlightTraining]
-Location = Border Station
+Location = Training Area
 Name = Flight Training
 Introduction = [Trainer] "Welcome to the training space, rookie! Here you have the opportunity to refresh your piloting basics in a safe environment."#"If you bear with me the whole way through, I might even give you something useful!"
 ObjectiveText1 = Return to the Border Station at coordinates (1840, 130) for further information.

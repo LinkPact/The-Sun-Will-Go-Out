@@ -361,6 +361,7 @@
     <Compile Include="Overworld-part\GameObjects\Stations\Fleets\AllianceFleet.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Fleets\RebelFleet.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\AbandonedStation.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\TrainingArea.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\PeyeScienceStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\BorderXOutpost\BorderStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\MiningOutpost\MiningStation.cs" />
@@ -405,7 +406,7 @@
     <Compile Include="Overworld-part\GameObjects\GameObjectOverworld.cs" />
     <Compile Include="Overworld-part\GameObjects\Other\Particle.cs" />
     <Compile Include="Overworld-part\GameObjects\Player\PlayerOverworld.cs" />
-    <Compile Include="Overworld-part\GameObjects\Stations\SectorY\BigStation.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Unused\BigStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\SectorX\LavisStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\SectorX\SoelaraStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Station.cs" />
@@ -698,7 +699,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Overworld-part\GameObjects\Stations\SectorZ\" />
     <Folder Include="Shooter-part\Levels\Oldlevels\" />
   </ItemGroup>
   <ItemGroup>
