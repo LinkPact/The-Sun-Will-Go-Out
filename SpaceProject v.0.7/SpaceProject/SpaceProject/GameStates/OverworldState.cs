@@ -264,7 +264,7 @@ namespace SpaceProject
                 Game.stateManager.ChangeState("OutroState");
                 Game.player.EnableControls();
             }
-            InputhandlingDebug();
+            //InputhandlingDebug();
 
             EdgeCollisionCheck();
 
