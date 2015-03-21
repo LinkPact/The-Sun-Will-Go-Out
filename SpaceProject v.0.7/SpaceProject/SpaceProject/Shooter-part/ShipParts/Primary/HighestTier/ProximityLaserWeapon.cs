@@ -27,7 +27,7 @@ namespace SpaceProject
             Name = "Proximity Laser";
             Kind = "Primary";
             energyCostPerSecond = 11f;
-            delay = 80;
+            delay = 20;
             Weight = 150;
             ActivatedSoundID = SoundEffects.SmallLaser;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(1000, 0, 100, 100));
