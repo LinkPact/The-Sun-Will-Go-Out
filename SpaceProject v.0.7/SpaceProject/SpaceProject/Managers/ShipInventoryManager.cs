@@ -427,16 +427,14 @@ namespace SpaceProject
                 case ShipParts.Primary1:
                     {
                         availablePrimaryWeapons = ShipInventoryManager.GetAvailablePrimaryWeapons(1);
-                        if (equippedPrimaryWeapons.Count() < 0)
-                            ShipInventoryManager.equippedPrimaryWeapons.RemoveAt(0);
+                        ShipInventoryManager.equippedPrimaryWeapons.RemoveAt(0);
                         ShipInventoryManager.equippedPrimaryWeapons.Insert(0, (PlayerWeapon)availablePrimaryWeapons[invPos]);
                         break;
                     }
                 case ShipParts.Primary2:
                     {
                         availablePrimaryWeapons = ShipInventoryManager.GetAvailablePrimaryWeapons(2);
-                        if (equippedPrimaryWeapons.Count() < 1)
-                            ShipInventoryManager.equippedPrimaryWeapons.RemoveAt(1);
+                        ShipInventoryManager.equippedPrimaryWeapons.RemoveAt(1);
                         ShipInventoryManager.equippedPrimaryWeapons.Insert(1, (PlayerWeapon)availablePrimaryWeapons[invPos]);
                         break;
                     }

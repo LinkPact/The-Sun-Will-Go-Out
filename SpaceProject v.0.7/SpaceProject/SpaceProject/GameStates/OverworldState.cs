@@ -264,7 +264,7 @@ namespace SpaceProject
                 Game.stateManager.ChangeState("OutroState");
                 Game.player.EnableControls();
             }
-            InputhandlingDebug();
+            //InputhandlingDebug();
 
             EdgeCollisionCheck();
 
@@ -447,8 +447,7 @@ namespace SpaceProject
 
             if (ControlManager.CheckKeyPress(Keys.Y))
             {
-                Game.stateManager.outroState.SetOutroType(OutroType.OnYourOwnEnd);
-                Game.stateManager.ChangeState("OutroState");
+                PopupHandler.DisplayMessage("Player position: " + Game.player.position.ToString());
             }
         }
 

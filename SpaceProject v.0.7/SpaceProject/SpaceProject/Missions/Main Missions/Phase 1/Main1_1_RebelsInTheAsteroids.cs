@@ -26,10 +26,23 @@ namespace SpaceProject
         private readonly string BonusID = "[BONUS]";
         private readonly string ActionKeyID = "[ACTIONKEY1]";
 
+        private readonly Rectangle MissionArea = new Rectangle(116500, 90000, 10000, 10000); 
+
         private readonly int DownedShipsMultiplier = 10;
 
         private int downedShips = -1;
         private AllyShip ally1;
+
+        private Vector2 borderStationPos;
+
+        private Vector2 PlayerToBorderStationDirection
+        {
+            get
+            {
+                return MathFunctions.ScaleDirection(new Vector2(borderStationPos.X - Game.player.position.X,
+                                                                borderStationPos.Y - Game.player.position.Y));
+            }
+        }
 
         public Main1_1_RebelsInTheAsteroids(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
             base(Game, section, spriteSheet, missionID)
@@ -42,6 +55,8 @@ namespace SpaceProject
             base.Initialize();
 
             RewardItems.Add(new SpreadBulletWeapon(Game, ItemVariety.regular));
+
+            borderStationPos = Game.stateManager.overworldState.GetStation("Border Station").position;
 
             CreateAllyShip();
 
@@ -70,6 +85,16 @@ namespace SpaceProject
         public override void MissionLogic()
         {
             base.MissionLogic();
+
+            if (StatsManager.gameMode != GameMode.develop
+                && !CollisionDetection.IsRectInRect(Game.player.Bounds, MissionArea)
+                && !Game.player.HyperspeedOn)
+            {
+                PopupHandler.DisplayPortraitMessage(PortraitID.Berr, "Where are you going? Follow the blinking gold dot on you radar to get to the mining station.");
+                Game.player.InitializeHyperSpeedJump(new Vector2(Game.player.position.X + (100 * PlayerToBorderStationDirection.X),
+                                                     Game.player.position.Y + (100 * PlayerToBorderStationDirection.Y)),
+                                                     false);
+            }
 
             if (downedShips == -1 
                 && Game.stateManager.shooterState.GetLevel("RebelsInTheMeteors").IsMapCompleted)
