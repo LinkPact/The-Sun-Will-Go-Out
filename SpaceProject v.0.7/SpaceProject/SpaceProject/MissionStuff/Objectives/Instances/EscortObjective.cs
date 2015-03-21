@@ -288,7 +288,6 @@ namespace SpaceProject
                     levelCompleted = false;
                 }
             }
-                
 
             Collision();
         }
@@ -318,14 +317,7 @@ namespace SpaceProject
             game.player.EnableControls();
             OverworldShip.FollowPlayer = true;
 
-            if (Destination is Station)
-            {
-                game.stateManager.GotoStationSubScreen(Destination.name, "Overview");
-            }
-            else if (Destination is Planet)
-            {
-                game.stateManager.GotoPlanetSubScreen(Destination.name, "Overview");
-            }
+            game.stateManager.GotoStationSubScreen("Soelara Station", "Overview");
         }
 
         public override bool Failed()

@@ -447,7 +447,8 @@ namespace SpaceProject
                 {
                     if ((activeMissions[i].ObjectiveDestination is Planet
                         || activeMissions[i].ObjectiveDestination is Station
-                        || activeMissions[i].ObjectiveDestination is SubInteractiveObject)
+                        || activeMissions[i].ObjectiveDestination is SubInteractiveObject
+                        || activeMissions[i].ObjectiveDestination is Beacon)
                         && (obj.name.ToLower() == activeMissions[i].ObjectiveDestination.name.ToLower()))
                     {
                         currentMissions.Add(activeMissions[i]);

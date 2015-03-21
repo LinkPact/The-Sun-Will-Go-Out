@@ -96,14 +96,12 @@ namespace SpaceProject
 
         private void Setup()
         {
-            SetDestinations();
-
             freighter1 = new FreighterShip(Game, Game.stateManager.shooterState.spriteSheet);
             freighter1.Initialize(Game.stateManager.overworldState.GetSectorX,
                 Game.stateManager.overworldState.GetPlanet("Highfence"),
-                destinations[0]);
-            freighter1.AIManager = new TravelAction(freighter1, destinations[0]);
-            freighter1.collisionEvent = new RemoveOnCollisionEvent(Game, freighter1, destinations[0]);
+                Game.stateManager.overworldState.GetStation("Soelara Station"));
+            freighter1.AIManager = new TravelAction(freighter1, Game.stateManager.overworldState.GetStation("Soelara Station"));
+            freighter1.collisionEvent = new RemoveOnCollisionEvent(Game, freighter1, Game.stateManager.overworldState.GetStation("Soelara Station"));
             freighter1.SaveShip = false;
 
             enemies = Game.stateManager.overworldState.GetSectorX.shipSpawner.GetOverworldShips(2, "rebel");
@@ -113,6 +111,7 @@ namespace SpaceProject
                 ship.AIManager = new FollowInViewAction(ship, freighter1);
             }
 
+            SetDestinations();
             SetupObjectives();
         }
 
@@ -120,9 +119,7 @@ namespace SpaceProject
         {
             destinations = new List<GameObjectOverworld>();
 
-            Station soelaraStation = Game.stateManager.overworldState.GetStation("Soelara Station");
-
-            AddDestination(soelaraStation);
+            AddDestination(freighter1);
         }
 
         protected override void SetupObjectives()
