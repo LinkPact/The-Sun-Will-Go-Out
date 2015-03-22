@@ -36,7 +36,7 @@ namespace SpaceProject
 
             Value = 600;
 
-            disruptionRadius = 80;
+            disruptionRadius = 110;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)

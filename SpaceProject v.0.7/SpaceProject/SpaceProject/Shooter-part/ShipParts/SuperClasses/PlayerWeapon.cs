@@ -59,7 +59,7 @@ namespace SpaceProject
 
             damage = (float)quality * Damage;
             duration = (float)quality * Duration;
-            delay = (float)(1/quality) * Delay;
+            //delay = (float)(1/quality) * Delay;
 
             Value = (int)(Value * ((float)quality) * ((float)quality));
         }

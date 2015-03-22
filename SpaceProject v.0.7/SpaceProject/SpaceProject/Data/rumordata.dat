@@ -5,6 +5,11 @@ Rumor3 = Low on rupees? One way to get an income is helping out the people of th
 Rumor4 = Low on rupees? Plunder the plunderer! Shoot down those damn rebels that are sucking the life out of this sector!
 Rumor5 = Have you forgot what you were told to do during a mission? Go to the mission menu. You can often find useful hints there.
 
+[MO_Mining_Station]
+Rumor1 = We should look for rebels in our mining fields, you say? They are always lurking around here, waiting for the Alliance to let their guard down...
+Rumor2 = My favourite mineral to mine is copper. That reddish tint. It looks fabolous!
+Rumor3 = Be careful with the rebels. You think you are safe because of that you have a much stronger ship than most of them. But if you let your guard down for a moment then BAM, they are all over you!
+
 [SX_Highfence]
 Rumor1 = A lot of people around here are whining about the rebel attacks. Shouldn't they be more concerned about the Alliance, slowly sucking out all resources from the sector?
 Rumor2 = My son has gone on a journey to the distant Peye. He heard rumors of a challenge without comparison in this sector. Madness. I hope he will come back alive.
@@ -47,6 +52,11 @@ Rumor3 = I have heard that it is possible to enhance your motors, enabling you t
 Rumor1 = Fusion power is still the leading energy source around here. The alliance are fervently searching for more advanced power sources. Some say that is why they have spread out their prying eyes all over this solar system.
 Rumor2 = Have you done any good yet? I hope you are here to actually help us out. Many are only here for the money. Oh-so-sad for them when they realise that Sector X is a quite bad place to treasure hunt. The Alliance and the rebels came here first.
 Rumor3 = Why is this part of the solar system called Sector X? It once had a name, which is long forgotten. I think the name Sector X is a recognition to that oblivion will reach everything. Everything will be forgotten.
+
+[RO_Rebel_Station_1]
+Rumor1 = As you see, life is not that good here. People are desperate. And the Alliance is sucking out our last resources, gathering them at Fortrun. I hope all their shields fail to recharge.
+Rumor2 = It is getting harder and harder to keep up with the Alliance's technology. First their shields, and now that stealth! I have heard about a weapon though able to suck the energy out of their shields. I wonder if it exists...
+Rumor3 = You think we should stop raiding the Alliance's transports? You know, we don't do it because we want to. We desperately need that food they are stealing from our people.
 
 [SX_Peye]
 Rumor1 = Both the Alliance and the rebels are attempting to get their hands on the science performed here. The scientists seem very hestitant about both rebels and the Alliance though...
