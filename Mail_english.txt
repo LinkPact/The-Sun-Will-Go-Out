@@ -1,0 +1,19 @@
+The sun will go out is a 2D space exploration/shooter game that we have been working on for the last two years. It is being developed as a hobby project on our free time and is and will be completely free. 
+
+To improve on the game we need to know about problems/bugs and potentially bad design decisions we've made. We are also interested in your general impression of the game and how you percieve different aspects of it. As we have stared at this game for far too long we need some critical new eyes to help us move forward, which is where you come in! 
+
+We are very grateful for your interest in the game and your input is invaluable to us.
+
+Download link and installation instructions can be found here:
+
+https://thesunwillgoout.wordpress.com/download-beta/
+
+The game takes a few hours to fully explore. Of course you don't have to play it all the way through, though we would be very happy if you did!
+
+When you are done playing we would be really grateful if you could answer a short survey we've made. We estimate that the form takes around 20 minutes to fill in completely. You are of course free to answer however many or few questions you like. Any feedback you have is greatly appreciated! 
+
+https://docs.google.com/forms/d/1sicO9V4g6L3s372CijlmopZind9w17q8ZDK8UGJI1K4/viewform
+
+If you have any questions or issues with installation or the game itself, please write about it at our forums (LÄNK) or send us an email at thesunwillgoout@gmail.com.
+
+Thank you for testing our game!
