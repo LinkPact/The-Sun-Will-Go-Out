@@ -21,7 +21,7 @@ Gravity = 0.9
 Orbit = 4
 Rotation = 22
 Surface = Gas
-Info = A smaller gasplanet. Not habitable.
+Info = The surface is completly covered in ice. The main source of income is water harvesting.
 HasColony = false
 
 [SX_Fortrun]
@@ -34,7 +34,7 @@ Temp = -93
 Gravity = 0.83
 Orbit = 3.8
 Rotation = 7.2
-Info = The surface is completly covered in ice. A few colonies exists on the surface. The main source of income is water harvesting.
+Info = One of the few truly terraformed planets in the system.
 HasColony = false
 
 [SX_New_Norrland]
@@ -60,7 +60,7 @@ Temp = 345
 Gravity = 0.7
 Orbit = 3.5
 Rotation = 2.4
-Info = A barren and deserted planet. The landscape compose mostly of mountains and deserts. A few mining colonies exists on the surface. 
+Info = A barren and deserted planet. The landscape is composed of mostly mountains and deserts. A few mining colonies exist on the surface. 
 HasColony = true
 
 [SX_Peye]
@@ -99,7 +99,7 @@ Temp = 83
 Gravity = 3.6
 Orbit = 34
 Rotation = 425
-Info = A big planet rich with valuable resources. Heavy exploitation over many years has made the planet's atmosphere extremely hazardous. The Federation outpost on the planet surface has long since been abandoned.
+Info = A big planet rich with valuable resources. Heavy exploitation over many years has made the planet's atmosphere extremely hazardous.
 HasColony = true
 
 [SY_GreyPlanet]

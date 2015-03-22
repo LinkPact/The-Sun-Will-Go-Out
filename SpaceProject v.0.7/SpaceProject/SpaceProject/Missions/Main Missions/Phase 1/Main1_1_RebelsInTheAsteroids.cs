@@ -150,7 +150,7 @@ namespace SpaceProject
                     new List<PortraitID>() { PortraitID.AllianceCaptain, PortraitID.Sair, PortraitID.AllianceCaptain },
                     new List<int> { 2, 3 })));
 
-            ArriveAtLocationObjective talkToCaptainObjective = new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
+            CloseInOnLocationObjective talkToCaptainObjective = new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], 100,
                 new EventTextCapsule(GetEvent((int)EventID.TalkWithCaptain2), null, EventTextCanvas.MessageBox, PortraitID.AllianceCaptain));
 
             Objectives.Add(talkToCaptainObjective);

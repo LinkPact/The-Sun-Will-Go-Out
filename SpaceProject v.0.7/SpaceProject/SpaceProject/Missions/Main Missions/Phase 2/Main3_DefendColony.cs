@@ -170,7 +170,7 @@ namespace SpaceProject
                         (int)allyShips1[0].position.Y - AllyShipRectOffset,
                         AllyShipRectWidth, AllyShipRectHeight);
 
-                    PopupHandler.DisplayPortraitMessage(PortraitID.Ai, "[Ai] \"Talk to the alliance ships waiting outside Fortrun when you're ready to leave.\"");
+                    PopupHandler.DisplayPortraitMessage(PortraitID.Ai, "[Ai] \"Talk to the alliance ships waiting outside Fortrun when you're ready to leave.\"#\"Don't forget to stop by the shop and upgrade your equipment if you havn't done so already!\"");
                 },
                 delegate 
                 {
@@ -212,7 +212,10 @@ namespace SpaceProject
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.FirstLevelCompleted), null, EventTextCanvas.MessageBox, PortraitID.Ai),
-                delegate { Game.stateManager.GotoPlanetSubScreen("New Norrland", "Overview"); },
+                delegate 
+                {
+                    Game.stateManager.GotoPlanetSubScreen("New Norrland", "Overview"); 
+                },
                 delegate { },
                 delegate { return true; },
                 delegate { return false; }));

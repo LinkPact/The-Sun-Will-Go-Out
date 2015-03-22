@@ -90,7 +90,7 @@ namespace SpaceProject
             // Is a new message displayed?
             if (!previousMessage.Equals(textContainer.GetCurrentMessage()))
             {
-                SetHideTime();
+                hideTimeSet = false;
             }
         }
 

@@ -114,7 +114,7 @@ namespace SpaceProject
             {
                 coordinatesDisplayed = true;
 
-                DisplayTutorialMessage("Your current objective is to go to coordinates (2635, 940). To find that location, just follow the blinking dot on your radar. Main missions are represented by gold colored dots and secondary missions by silver colored dots.",
+                DisplayTutorialMessage("Your current objective is to go to coordinates (2635, 940). To find that location, just follow the blinking dot on your radar. Main missions are represented by gold-colored dots and secondary missions by silver-colored dots.",
                     TutorialImage.Radar);
             }
 
@@ -160,7 +160,7 @@ namespace SpaceProject
 
                     hasEnteredVerticalShooter = true;
                     DisplayTutorialMessage(new List<String>{"You can rebind the keys in the options menu.",
-                    "Down at the bottom-left is some information and three bars:\n\nObjective - Displays condition to complete level.", "Primary - your selected primary weapon. Toggle between equipped weapons with '" + ControlManager.GetKeyName(RebindableKeys.Action2) + "'.\n\nSecondary - Your currently equipped secondary weapon. Turn it on/off with '" + ControlManager.GetKeyName(RebindableKeys.Action3) + "'", "Health - Your ship's armor, when it's reduced to zero, the current level is failed.\n\nEnergy - weapons use energy to fire.", "Shield - protects your ship from damage. Recharges over time."},
+                    "Down at the bottom-left is some information and three bars:\n\nObjective - Displays condition to complete the level.", "Primary - your selected primary weapon. Toggle between equipped weapons with '" + ControlManager.GetKeyName(RebindableKeys.Action2) + "'.\n\nSecondary - Your currently equipped secondary weapon. Turn it on/off with '" + ControlManager.GetKeyName(RebindableKeys.Action3) + "'", "Health - Your ship's armor, when it's reduced to zero, the current level is failed.\n\nEnergy - weapons use energy to fire.", "Shield - protects your ship from damage. Recharges over time."},
                     new List<TutorialImage> { TutorialImage.CombatControls, TutorialImage.CombatBars},
                         new List<int> {1});
                 }
