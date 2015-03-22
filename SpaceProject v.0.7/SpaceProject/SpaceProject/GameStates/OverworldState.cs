@@ -255,7 +255,10 @@ namespace SpaceProject
 
             HUD.Update(gameTime, GetAllOverworldGameObjects);
 
-            Inputhandling();
+            if (ZoomMap.MapState == MapState.Off)
+            {
+                Inputhandling();
+            }
 
             if (burnOutEnding.Finished
                 && GameStateManager.currentState.Equals("OverworldState"))

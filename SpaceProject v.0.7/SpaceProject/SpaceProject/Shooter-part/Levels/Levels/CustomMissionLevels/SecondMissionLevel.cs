@@ -82,11 +82,11 @@ namespace SpaceProject
         {
             if (StatsManager.gameMode == GameMode.easy)
             {
-                HP = 2000;
+                HP = 3000;
             }
             else
             {
-                HP = 1000;
+                HP = 2000;
             }
         }
     }
