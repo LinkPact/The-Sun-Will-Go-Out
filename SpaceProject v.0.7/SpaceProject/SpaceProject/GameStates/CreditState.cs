@@ -22,17 +22,19 @@ namespace SpaceProject
             base(Game, name)
         {
             int xOffset = 10;
-            int yOffset = 150;
+            int yOffset = 50;
 
             spriteFont = Game.fontManager.GetFont(14);
             textBox = TextUtils.CreateTextBox(spriteFont, new Rectangle(xOffset, yOffset, Game.Window.ClientBounds.Width - 20,
                                         Game.Window.ClientBounds.Height - 20), false, 
                                         "Design and development:\nDaniel Alm Grundstrom\nJakob Willforss\nJohan Philipsson\n\n"+
-                                        "Visuals:\nDaniel Alm Grunstrom\n\n" +
-                                        "Music:\nDaniel Alm Grunstrom\nJakob Willforss\n\n" +
+                                        "Visuals:\nDaniel Alm Grundstrom\n\n" +
+                                        "Music:\nDaniel Alm Grundstrom\nJakob Willforss\n\n" +
                                         "Portraits:\nJosefin Voigt (many thanks!)\n\n" +
                                         "Fonts:\nIceland by Cyreal\nISL Jupiter by Isurus Labs\n\n" +
                                         "Space sounds:\nSpace Music Ambient by evanjones4\n\n" +
+                                        "Sound effects:\n'menu click' by fins (Creative Commons 0 Licence)\n'Hover 2' by plasterbrain (Creative Commons 0 Licence)\n'" + 
+                                        "ship fire' by Nbs Dark (Creative Commons 0 Licence)\n'Thruster_Level_II' by nathanshadow (Sampling+ Licence)\n\n" +
                                         "..and many thanks to all our testers, we really appreciate it.\nTell us, and your name will be here in the final version!");
         }
 

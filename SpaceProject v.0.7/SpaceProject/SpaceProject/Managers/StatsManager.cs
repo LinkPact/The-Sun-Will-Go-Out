@@ -111,7 +111,7 @@ namespace SpaceProject
         public static void SetEasyStats()
         {
             moneyFactor = 1.50f;
-            damageFactor = 0.60f;
+            damageFactor = 0.50f;
             gameMode = GameMode.easy;
         }
 
