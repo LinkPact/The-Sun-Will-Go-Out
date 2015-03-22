@@ -1,11 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
-MinimumVisualStudioVersion = 10.0.40219.1
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceProject", "SpaceProject\SpaceProject\SpaceProject.csproj", "{826B4F7C-79FE-4918-AF54-05E00B9F0119}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceProjectContent", "SpaceProject\SpaceProjectContent\SpaceProjectContent.contentproj", "{3D75175F-3322-4AE9-BE0B-6F29556845F3}"
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "SpaceProjectContent", "SpaceProject\SpaceProjectContent\SpaceProjectContent.contentproj", "{3D75175F-3322-4AE9-BE0B-6F29556845F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

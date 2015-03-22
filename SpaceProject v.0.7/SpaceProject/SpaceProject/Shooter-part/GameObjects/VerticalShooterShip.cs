@@ -38,7 +38,8 @@ namespace SpaceProject
         low         = 2,
         medium      = 3,
         high        = 5,
-        veryHigh    = 7
+        veryHigh    = 10,
+        hangar      = 50
     }
 
     public abstract class VerticalShooterShip : CombatGameObject

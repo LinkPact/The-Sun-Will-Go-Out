@@ -29,13 +29,11 @@ namespace SpaceProject
 
         private void ShopSetup()
         {
-            //AddShopEntry(new ShopInventoryEntry(ShipPartType.ShieldBoostEnergyCell, ShipPartAvailability.common, ItemVariety.regular));
-            //AddShopEntry(new ShopInventoryEntry(ShipPartType.WeaponBoostEnergyCell, ShipPartAvailability.common, ItemVariety.regular));
-            //AddShopEntry(new ShopInventoryEntry(ShipPartType.CollisionShield, ShipPartAvailability.common, ItemVariety.regular));
-            //AddShopEntry(new ShopInventoryEntry(ShipPartType.BulletShield, ShipPartAvailability.common, ItemVariety.regular));
-            //AddShopEntry(new ShopInventoryEntry(ShipPartType.Beam, ShipPartAvailability.common, ItemVariety.regular));
+            hasShop = true;
 
-            //SetShopFilling(ShopFilling.none);
+            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.Disruptor, ShipPartAvailability.common, ItemVariety.regular));
+            
+            SetShopFilling(ShopFilling.regular);
         }
 
         public override void Update(GameTime gameTime)

@@ -32,7 +32,7 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            lootValue = LootValue.veryHigh;
+            lootValue = LootValue.hangar;
 
             AddPrimaryModule(600, ShootingMode.Regular);
             primaryModule.SetRandomCharge(random);
