@@ -19,7 +19,7 @@
     <ApplicationIcon>TO_ICON.ico</ApplicationIcon>
     <Thumbnail>GameThumbnail.png</Thumbnail>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Daniel\Desktop\XNA\The Sun Will Go Out\</PublishUrl>
+    <PublishUrl>C:\Users\Jakob\Desktop\BetaTest\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -31,7 +31,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>The sun will go out</ProductName>
     <PublisherName>Linkpact Games</PublisherName>
-    <ApplicationRevision>10</ApplicationRevision>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>11</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
