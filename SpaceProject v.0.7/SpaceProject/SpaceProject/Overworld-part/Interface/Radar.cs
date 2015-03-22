@@ -202,7 +202,8 @@ namespace SpaceProject
                         colorSwapCounter = 0;
                     }
                 }
-                else if (IsObjectAvailableMainMissionLocation(obj))
+                else if (IsObjectAvailableMainMissionLocation(obj)
+                    && MissionManager.IsNoMainMissionActive())
                 {
                     drawDistance = 0.92f;
                     if (colorSwapCounter <= 25)

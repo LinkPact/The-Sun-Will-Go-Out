@@ -302,6 +302,7 @@ namespace SpaceProject
 
             foreach (SoundEffectInstance ins in stoppedSoundEffects)
             {
+                ins.Dispose();
                 soundEffectBuffer.Remove(ins);
             }
         }

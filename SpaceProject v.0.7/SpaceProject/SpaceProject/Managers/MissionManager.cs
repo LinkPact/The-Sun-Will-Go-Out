@@ -37,8 +37,8 @@ namespace SpaceProject
 
     public class MissionManager
     {
-        public static readonly Color MainMissionColor = Color.Green;
-        public static readonly Color SideMissionColor = Color.Yellow;
+        public static readonly Color MainMissionColor = Color.Gold;
+        public static readonly Color SideMissionColor = new Color(235, 235, 235);
 
         private Game1 game;
 
