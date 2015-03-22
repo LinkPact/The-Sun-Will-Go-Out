@@ -56,7 +56,7 @@ namespace SpaceProject
 
             // Load settings
             MediaPlayer.IsMuted = game.settingsFile.GetPropertyAsBool("sound", "mutemusic", false);
-            MediaPlayer.Volume = game.settingsFile.GetPropertyAsFloat("sound", "musicvolume", 1);
+            MediaPlayer.Volume = game.settingsFile.GetPropertyAsFloat("sound", "musicvolume", 0.6f);
 
             AddSongToTracks(tracks, "Music/other/GoingOut");
             AddSongToTracks(tracks, "Music/other/MainMenu");

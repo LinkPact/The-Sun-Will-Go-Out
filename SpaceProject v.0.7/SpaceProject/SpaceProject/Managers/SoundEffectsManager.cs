@@ -69,8 +69,8 @@ namespace SpaceProject
         public void Initialize()
         {
             // Load settings
-            muted = game.settingsFile.GetPropertyAsBool("sound", "mutesound", true);
-            volume = game.settingsFile.GetPropertyAsFloat("sound", "soundvolume", 1);
+            muted = game.settingsFile.GetPropertyAsBool("sound", "mutesound", false);
+            volume = game.settingsFile.GetPropertyAsFloat("sound", "soundvolume", 0.3f);
             LoadSoundEffects = game.settingsFile.GetPropertyAsBool("sound", "loadsound", true);
 
             soundEffects = new List<CustomSoundEffect>();

@@ -97,8 +97,8 @@ namespace SpaceProject
 
             TextToSpeech.TTSMode = (TextToSpeechMode)settingsFile.GetPropertyAsInt("sound", "text-to-speech", 2);
 
-            resolution = new Vector2(settingsFile.GetPropertyAsFloat("visual", "resolutionx", 800),
-                                     settingsFile.GetPropertyAsFloat("visual", "resolutiony", 600));
+            resolution = new Vector2(settingsFile.GetPropertyAsFloat("visual", "resolutionx", 1024),
+                                     settingsFile.GetPropertyAsFloat("visual", "resolutiony", 768));
 
             random = new Random();
 
