@@ -616,7 +616,7 @@ namespace SpaceProject
                 {
                     if (CollisionDetection.IsRectInRect(game.player.Bounds,
                         game.stateManager.overworldState.GetRebelOutpost.SpaceRegionArea) &&
-                        PopupHandler.TextBufferEmpty)
+                        PopupHandler.MessageQueueCount <= 0)
                     {
                         PopupHandler.DisplayMessage("A large group of rebels prevents you from entering this area.");
                         game.player.InitializeHyperSpeedJump(new Vector2(game.player.position.X + (100 * -game.player.Direction.GetDirectionAsVector().X),

@@ -107,8 +107,6 @@ namespace SpaceProject
 
             popupDelayTimer = PopupDelay;
             messageQueue.Add(textMessage);
-
-            game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public static void DisplayPortraitMessage(PortraitID portrait, params string[] messages)
@@ -120,8 +118,6 @@ namespace SpaceProject
 
             popupDelayTimer = PopupDelay;
             messageQueue.Add(portraitMessage);
-
-            game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public static void DisplayPortraitMessage(List<PortraitID> portraits, List<int> portraitTriggers, params string[] messages)
@@ -140,8 +136,6 @@ namespace SpaceProject
 
             popupDelayTimer = PopupDelay;
             messageQueue.Add(portraitMessage);
-
-            game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public static void DisplayImage(params Sprite[] images)
@@ -153,8 +147,6 @@ namespace SpaceProject
 
             popupDelayTimer = PopupDelay;
             messageQueue.Add(imagePopup);
-
-            game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public static void DisplayMessageWithImage(List<Sprite> images, List<int> imageTriggers, params string[] messages)
@@ -177,8 +169,6 @@ namespace SpaceProject
 
             popupDelayTimer = PopupDelay;
             messageQueue.Add(imageMessage);
-
-            game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
         public static void DisplayRealtimePortraitMessage(float delay, PortraitID[] portraits,
@@ -271,6 +261,11 @@ namespace SpaceProject
             {
                 if (queue[0].PopupState == PopupState.Hidden)
                 {
+                    if (!(queue[0] is RealTimeMessage))
+                    {
+                        game.soundEffectsManager.FadeOutSoundEffect(SoundEffects.OverworldEngine);
+                    }
+
                     queue[0].Show();
                 }
 
