@@ -35,7 +35,7 @@ namespace SpaceProject
                 List<GameObjectOverworld> tempList = new List<GameObjectOverworld>();
                 tempList.Add(Game.player);
                 tempList.Add(GetSectorX.GetGameObject("Soelara"));
-                tempList.Add(GetSectorX.GetGameObject("system1Star"));
+                tempList.Add(GetSectorX.GetGameObject("Star"));
                 foreach (GameObjectOverworld obj in GetAllOverworldGameObjects)
                 {
                     if (obj is Planet 

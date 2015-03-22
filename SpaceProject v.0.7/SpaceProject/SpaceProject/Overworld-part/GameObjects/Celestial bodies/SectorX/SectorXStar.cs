@@ -16,7 +16,7 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            name = "system1Star";
+            name = "Star";
             position = new Vector2(OverworldState.OVERWORLD_WIDTH / 2,
                                    OverworldState.OVERWORLD_HEIGHT / 2);
             sprite = spriteSheet.GetSubSprite(new Rectangle(761, 384, 739, 690));
