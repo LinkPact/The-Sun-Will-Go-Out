@@ -11,6 +11,7 @@ namespace SpaceProject
     {
         FreighterAlly freighter;
         private Bar freighterHpBar;
+        private float HP;
 
         public SecondMissionLevel(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player1, String identifier, 
             String filePath, MissionType missionType)
@@ -27,9 +28,11 @@ namespace SpaceProject
         {
             base.Initialize();
 
+            SetHP();
+
             freighter = new FreighterAlly(Game, spriteSheet, player,
                 new Rectangle(Game.Window.ClientBounds.Width / 2 - 100, (Game.Window.ClientBounds.Height - 600) / 2 + 425, 200, 50),
-            "none", 200, 1000, 300, 0, 4);
+            "none", 200, HP, 300, 0, 4);
 
             freighter.Initialize();
             freighter.PositionX = Game.Window.ClientBounds.Width / 2;
@@ -73,6 +76,18 @@ namespace SpaceProject
                        0.95f);
 
             freighterHpBar.Draw(spriteBatch);
+        }
+
+        private void SetHP()
+        {
+            if (StatsManager.gameMode == GameMode.easy)
+            {
+                HP = 2000;
+            }
+            else
+            {
+                HP = 1000;
+            }
         }
     }
 }
