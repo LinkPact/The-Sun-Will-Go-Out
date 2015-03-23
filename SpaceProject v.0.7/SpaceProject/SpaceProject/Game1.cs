@@ -14,7 +14,9 @@ namespace SpaceProject
 {
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        public static readonly String SaveFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\LinkPact Games\\The Sun Will Go Out\\";
+        public static readonly String SaveFilePath = 
+            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
+            "\\LinkPact Games\\The Sun Will Go Out\\";
 
         #region declaration
         public SaveFile settingsFile;
@@ -332,7 +334,7 @@ namespace SpaceProject
         {
             helper.DisplayText("The game has been saved!", 2);
 
-            saveFile.EmptySaveFile("save.ini");
+            saveFile.EmptySaveFile(Game1.SaveFilePath, "save.ini");
             statsManager.Save();
             player.Save();
             //baseInventoryManager.Save();

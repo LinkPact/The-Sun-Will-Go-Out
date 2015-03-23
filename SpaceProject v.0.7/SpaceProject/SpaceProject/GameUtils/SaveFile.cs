@@ -23,7 +23,7 @@ namespace SpaceProject
 
         public bool Save(String filePath, String fileName, String className, SortedDictionary<String, String> properties)
         {
-            using (StreamWriter writer = new StreamWriter(filePath + fileName, true))
+            using (StreamWriter writer = new StreamWriter(Path.Combine(filePath, fileName), true))
             {
                 writer.WriteLine("[" + className.ToLower() + "]");
 
@@ -39,19 +39,19 @@ namespace SpaceProject
             return true;
         }
 
-        public void NewSavefile(String filename)
+        public void NewSavefile(String filePath, String filename)
         {
-            File.Create(filename).Dispose();
+            File.Create(Path.Combine(filePath, filename)).Dispose();
         }
 
-        public void EmptySaveFile(String filename)
+        public void EmptySaveFile(String filePath, String filename)
         {
-            File.WriteAllText(filename, "");
+            File.WriteAllText(Path.Combine(filePath, filename), "");
         }
 
-        public static bool CheckIfFileExists(String filename)
+        public static bool CheckIfFileExists(String filePath, String filename)
         {
-            return File.Exists(filename);
+            return File.Exists(Path.Combine(filePath, filename));
         }
 
         public bool Load(String filePath, String fileName)
@@ -62,7 +62,7 @@ namespace SpaceProject
 
             try
             {
-                reader = new StreamReader(filePath + fileName);
+                reader = new StreamReader(Path.Combine(filePath, fileName));
 
                 String currentLine;
 

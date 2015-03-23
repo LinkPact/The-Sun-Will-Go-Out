@@ -389,7 +389,7 @@ namespace SpaceProject
 
         private void SaveSettings()
         {
-            Game.settingsFile.EmptySaveFile("settings.ini");
+            Game.settingsFile.EmptySaveFile(Game1.SaveFilePath, "settings.ini");
 
             SortedDictionary<String, String> keySaveData = new SortedDictionary<string, string>();
             keySaveData.Add("action1", ControlManager.GetKeyName(RebindableKeys.Action1));

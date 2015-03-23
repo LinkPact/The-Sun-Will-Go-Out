@@ -266,7 +266,7 @@ namespace SpaceProject
                 switch (buttonIndex)
                 {
                     case 0:
-                        if (SaveFile.CheckIfFileExists("save.ini"))
+                        if (SaveFile.CheckIfFileExists(Game1.SaveFilePath, "save.ini"))
                         {
                             PopupHandler.DisplaySelectionMenu("If you start a new game, your previously saved game will be lost. Is this okay?",
                                 new List<string>() { "Yes", "No"}, 
@@ -290,7 +290,7 @@ namespace SpaceProject
 
                     // LOADGAMELOGIC
                     case 1:
-                        if (SaveFile.CheckIfFileExists("save.ini"))
+                        if (SaveFile.CheckIfFileExists(Game1.SaveFilePath, "save.ini"))
                         {
                             Game.stateManager.StartGame("OverworldState");
                             Game.Load();
