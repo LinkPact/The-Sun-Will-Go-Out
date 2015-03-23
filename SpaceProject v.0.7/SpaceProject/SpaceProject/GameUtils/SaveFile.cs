@@ -23,11 +23,6 @@ namespace SpaceProject
 
         public bool Save(String filePath, String fileName, String className, SortedDictionary<String, String> properties)
         {
-            if (!Directory.Exists(filePath))
-            {
-                Directory.CreateDirectory(filePath);
-            }
-
             using (StreamWriter writer = new StreamWriter(filePath + fileName, true))
             {
                 writer.WriteLine("[" + className.ToLower() + "]");

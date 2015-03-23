@@ -8,12 +8,13 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System.IO;
 
 namespace SpaceProject
 {
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        public static readonly String SaveFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\LinkPactGames\\The Sun Will Go Out\\";
+        public static readonly String SaveFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\LinkPact Games\\The Sun Will Go Out\\";
 
         #region declaration
         public SaveFile settingsFile;
@@ -90,6 +91,8 @@ namespace SpaceProject
 
         protected override void Initialize()
         {
+            CreateDirectories();   
+
             SetAvailableResolutions();
 
             GameStarted = false;
@@ -404,6 +407,12 @@ namespace SpaceProject
 
             ResolutionOptions.Add(new Vector2(1024, 768));
             ResolutionOptions.Add(new Vector2(1280, 720));
+        }
+
+        private void CreateDirectories()
+        {
+            Directory.CreateDirectory(SaveFilePath);
+            Directory.CreateDirectory(LevelLogger.writeDir);
         }
     }
 }
