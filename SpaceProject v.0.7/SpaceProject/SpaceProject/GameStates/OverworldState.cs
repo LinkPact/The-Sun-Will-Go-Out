@@ -748,7 +748,7 @@ namespace SpaceProject
 
             // Save Ships
             saveData.Add("count", deepSpaceGameObjects.Count.ToString());
-            Game.saveFile.Save("save.ini", "spaceobjects", saveData);
+            Game.saveFile.Save(Game1.SaveFilePath, "save.ini", "spaceobjects", saveData);
 
             for (int i = 0; i < deepSpaceGameObjects.Count; i++)
             {
@@ -768,7 +768,7 @@ namespace SpaceProject
                     {
                         saveData.Add("dest", ((FreighterShip)deepSpaceGameObjects[i]).destinationPlanet.ToString());
                     }
-                    Game.saveFile.Save("save.ini", "spaceobj" + i, saveData);
+                    Game.saveFile.Save(Game1.SaveFilePath, "save.ini", "spaceobj" + i, saveData);
                 }
 
                 else if (deepSpaceGameObjects[i] is SubInteractiveObject)

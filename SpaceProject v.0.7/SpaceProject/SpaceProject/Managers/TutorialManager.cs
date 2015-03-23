@@ -363,7 +363,7 @@ namespace SpaceProject
             tutorialProgress.Add("hasStartedSecondMission", coordinatesDisplayed.ToString());
             tutorialProgress.Add("equipShieldTutorial", equipShieldTutorialFinished.ToString());
 
-            game.saveFile.Save("save.ini", "tutorialprogress", tutorialProgress);
+            game.saveFile.Save(Game1.SaveFilePath, "save.ini", "tutorialprogress", tutorialProgress);
         }
 
         public void Load()

@@ -8,7 +8,7 @@ namespace SpaceProject
 {
     class LevelLogger
     {
-        public static String writeDir = "Log";
+        public static String writeDir = Game1.SaveFilePath + "Log";
         public static String writeFile = "defaultlog.txt";
         private static String currentPath { get { return writeDir + "\\" + writeFile; } }
 

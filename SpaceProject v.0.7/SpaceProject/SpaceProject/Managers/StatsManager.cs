@@ -282,7 +282,7 @@ namespace SpaceProject
                 saveData.Add("beacons", "none");
             }
 
-            Game.saveFile.Save("save.ini", "statsmanager", saveData);
+            Game.saveFile.Save(Game1.SaveFilePath, "save.ini", "statsmanager", saveData);
         }
 
         public void Load()

@@ -13,6 +13,8 @@ namespace SpaceProject
 {
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        public static readonly String SaveFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\LinkPactGames\\The Sun Will Go Out\\";
+
         #region declaration
         public SaveFile settingsFile;
 
@@ -93,7 +95,7 @@ namespace SpaceProject
             GameStarted = false;
 
             settingsFile = new SaveFile(this);
-            settingsFile.Load("settings.ini");
+            settingsFile.Load(SaveFilePath, "settings.ini");
 
             TextToSpeech.TTSMode = (TextToSpeechMode)settingsFile.GetPropertyAsInt("sound", "text-to-speech", 2);
 
@@ -339,7 +341,7 @@ namespace SpaceProject
 
         public void Load()
         {
-            saveFile.Load("save.ini");
+            saveFile.Load(SaveFilePath, "save.ini");
             statsManager.Load();
             player.Load();
             //baseInventoryManager.Load();
@@ -352,7 +354,7 @@ namespace SpaceProject
         public void Restart()
         {
             settingsFile = new SaveFile(this);
-            settingsFile.Load("settings.ini");
+            settingsFile.Load(SaveFilePath, "settings.ini");
 
             graphics.PreferredBackBufferWidth = (int)resolution.X;
             graphics.PreferredBackBufferHeight = (int)resolution.Y;

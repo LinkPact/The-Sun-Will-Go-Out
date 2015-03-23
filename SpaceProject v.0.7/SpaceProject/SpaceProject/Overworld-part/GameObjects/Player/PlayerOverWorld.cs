@@ -478,7 +478,7 @@ namespace SpaceProject
             int y = (int)position.Y;
             saveData.Add("positionx", x.ToString());
             saveData.Add("positiony", y.ToString());
-            Game.saveFile.Save("save.ini", "playeroverworld", saveData);
+            Game.saveFile.Save(Game1.SaveFilePath, "save.ini", "playeroverworld", saveData);
         }
 
         public void Load()

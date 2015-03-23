@@ -683,7 +683,7 @@ namespace SpaceProject
             SortedDictionary<String, String> saveData = new SortedDictionary<string, string>();
 
             saveData.Add("count", shipItems.Count.ToString());
-            Game.saveFile.Save("save.ini", "shipitems", saveData);
+            Game.saveFile.Save(Game1.SaveFilePath, "save.ini", "shipitems", saveData);
 
             for (int i = 0; i < shipItems.Count; i++)
             {
@@ -705,7 +705,7 @@ namespace SpaceProject
                     PlayerPlating plating = (PlayerPlating)shipItems[i];
                     saveData.Add("currenthealth", plating.CurrentOverworldHealth.ToString()); 
                 }
-                Game.saveFile.Save("save.ini", "shipinv" + i, saveData);
+                Game.saveFile.Save(Game1.SaveFilePath, "save.ini", "shipinv" + i, saveData);
             }
 
             saveData.Clear();
@@ -736,7 +736,7 @@ namespace SpaceProject
                 if (equippedPlating == ownedPlatings[i])
                     saveData.Add("platinginvpos", i.ToString());
             }
-            Game.saveFile.Save("save.ini", "shipequipped", saveData);
+            Game.saveFile.Save(Game1.SaveFilePath, "save.ini", "shipequipped", saveData);
 
         }
         

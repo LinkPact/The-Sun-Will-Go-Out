@@ -808,13 +808,13 @@ namespace SpaceProject
 
             }
 
-            game.saveFile.Save("save.ini", "missions", StateOfMissions);
-            game.saveFile.Save("save.ini", "missionprog", ProgressOfMissions);
-            game.saveFile.Save("save.ini", "missionobjs", CurrentMissionObjectives);
+            game.saveFile.Save(Game1.SaveFilePath, "save.ini", "missions", StateOfMissions);
+            game.saveFile.Save(Game1.SaveFilePath, "save.ini", "missionprog", ProgressOfMissions);
+            game.saveFile.Save(Game1.SaveFilePath, "save.ini", "missionobjs", CurrentMissionObjectives);
 
             SortedDictionary<string, string> temp = new SortedDictionary<string, string>();
             temp.Add("isGameCompleted", gameCompleted.ToString());
-            game.saveFile.Save("save.ini", "generalprogress", temp);
+            game.saveFile.Save(Game1.SaveFilePath, "save.ini", "generalprogress", temp);
         }
 
         //Loops through the missions-list and keys in StateOfMission-dictonary, checks if name and key match and then

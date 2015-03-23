@@ -401,7 +401,7 @@ namespace SpaceProject
             keySaveData.Add("right", ControlManager.GetKeyName(RebindableKeys.Right));
             keySaveData.Add("pause", ControlManager.GetKeyName(RebindableKeys.Pause));
 
-            Game.settingsFile.Save("settings.ini", "keys", keySaveData);
+            Game.settingsFile.Save(Game1.SaveFilePath, "settings.ini", "keys", keySaveData);
 
             SortedDictionary<String, String> visualSaveData = new SortedDictionary<string, string>();
             visualSaveData.Add("fullscreen", Game.graphics.IsFullScreen.ToString());
@@ -409,7 +409,7 @@ namespace SpaceProject
             visualSaveData.Add("resolutionx", ((int)Game.Resolution.X).ToString());
             visualSaveData.Add("resolutiony", ((int)Game.Resolution.Y).ToString());
 
-            Game.settingsFile.Save("settings.ini", "visual", visualSaveData);
+            Game.settingsFile.Save(Game1.SaveFilePath, "settings.ini", "visual", visualSaveData);
 
             SortedDictionary<String, String> soundSaveData = new SortedDictionary<string, string>();
             soundSaveData.Add("mutemusic", Game.musicManager.IsMusicMuted().ToString());
@@ -419,12 +419,12 @@ namespace SpaceProject
             soundSaveData.Add("loadsound", SoundEffectsManager.LoadSoundEffects.ToString());
             soundSaveData.Add("text-to-speech", ((int)TextToSpeech.TTSMode).ToString());
 
-            Game.settingsFile.Save("settings.ini", "sound", soundSaveData);
+            Game.settingsFile.Save(Game1.SaveFilePath, "settings.ini", "sound", soundSaveData);
 
             SortedDictionary<String, String> gameOptionsSaveData = new SortedDictionary<string, string>();
             gameOptionsSaveData.Add("tutorials", Game.tutorialManager.TutorialsUsed.ToString());
 
-            Game.settingsFile.Save("settings.ini", "game options", gameOptionsSaveData);
+            Game.settingsFile.Save(Game1.SaveFilePath, "settings.ini", "game options", gameOptionsSaveData);
         }
 
         private void PlayHoverSound()

@@ -21,9 +21,14 @@ namespace SpaceProject
             this.Game = Game;
         }
 
-        public bool Save(String filePath, String className, SortedDictionary<String, String> properties)
+        public bool Save(String filePath, String fileName, String className, SortedDictionary<String, String> properties)
         {
-            using (StreamWriter writer = new StreamWriter(filePath, true))
+            if (!Directory.Exists(filePath))
+            {
+                Directory.CreateDirectory(filePath);
+            }
+
+            using (StreamWriter writer = new StreamWriter(filePath + fileName, true))
             {
                 writer.WriteLine("[" + className.ToLower() + "]");
 
@@ -54,7 +59,7 @@ namespace SpaceProject
             return File.Exists(filename);
         }
 
-        public bool Load(String filePath)
+        public bool Load(String filePath, String fileName)
         {
             TextReader reader;
             bool parsedCorrectly = true;
@@ -62,14 +67,12 @@ namespace SpaceProject
 
             try
             {
-                reader = new StreamReader(filePath);
+                reader = new StreamReader(filePath + fileName);
 
                 String currentLine;
 
                 while ((currentLine = reader.ReadLine()) != null)
                 {
-
-
                     parsedCorrectly = Parse(currentLine);
 
                     if (parsedCorrectly == false)

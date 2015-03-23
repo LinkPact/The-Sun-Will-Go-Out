@@ -404,7 +404,7 @@ namespace SpaceProject
             SortedDictionary<String, String> saveData = new SortedDictionary<string, string>();
 
             saveData.Add("count", shopInventory.Count.ToString());
-            Game.saveFile.Save("save.ini", "shop" + identifyer, saveData);
+            Game.saveFile.Save(Game1.SaveFilePath, "save.ini", "shop" + identifyer, saveData);
 
             for (int i = 0; i < shopInventory.Count; i++)
             {
@@ -421,7 +421,7 @@ namespace SpaceProject
                     QuantityItem foo = (QuantityItem)shopInventory[i];
                     saveData.Add("quantity", foo.Quantity.ToString());
                 }
-                Game.saveFile.Save("save.ini", "shop" + identifyer + i, saveData);
+                Game.saveFile.Save(Game1.SaveFilePath, "save.ini", "shop" + identifyer + i, saveData);
             }
         }
 

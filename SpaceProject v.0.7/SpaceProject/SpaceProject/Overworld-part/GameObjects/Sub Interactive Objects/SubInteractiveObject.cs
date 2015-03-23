@@ -329,7 +329,7 @@ namespace SpaceProject
             saveData.Clear();
             saveData.Add("disabled", cleared.ToString());
 
-            Game.saveFile.Save("save.ini", "subobject" + id, saveData);
+            Game.saveFile.Save(Game1.SaveFilePath, "save.ini", "subobject" + id, saveData);
         }
 
         public void Load()
