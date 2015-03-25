@@ -1,0 +1,37 @@
+Header :duration 40:width 400:durGridWidth 3:levelObjective Finish|X0:
+Point
+T: 0:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 1.2:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 2.4:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 3.6:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 4.8:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 6.1:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 7.3:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 8.5:E: 0nn0 0nn0 ann0 0nn0 ann0 0nn0 ann0 0nn0 0nn0:end
+T: 9.7:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 10.9:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 12.1:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 13.3:E: 0nn0 0nn0 0nn0 0nn0 ann0 0nn0 0nn0 0nn0 0nn0:end
+T: 14.5:E: 0nn0 0nn0 0nn0 ann0 0nn0 ann0 0nn0 0nn0 0nn0:end
+T: 15.8:E: 0nn0 0nn0 ann0 0nn0 0nn0 0nn0 ann0 0nn0 0nn0:end
+T: 17:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 18.2:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 19.4:E: 0nn0 GnnsH3W1X30Y30 Nnn0 0nn0 Nnn0 0nn0 Nnn0 GnnsH3W1X30Y30 0nn0:end
+T: 20.6:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 21.8:E: 0nn0 0nn0 annlW2X30 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 23:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 annlW2X30 0nn0 0nn0:end
+T: 24.2:E: 0nn0 0nn0 0nn0 0nn0 annlW2X30 0nn0 0nn0 0nn0 0nn0:end
+T: 25.5:E: 0nn0 annlW2X30 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 26.7:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 annlW2X30 0nn0:end
+T: 27.9:E: 0nn0 0nn0 0nn0 annlW2X30 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 29.1:E: 0nn0 0nn0 0nn0 0nn0 0nn0 annlW2X30 0nn0 0nn0 0nn0:end
+T: 30.3:E: 0nn0 annlW2X30 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 31.5:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 annlW2X30 0nn0:end
+T: 32.7:E: 0nn0 0nn0 0nn0 annlW2X30 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 33.9:E: annlW2X30 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 35.2:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 annlW2X30:end
+T: 36.4:E: 0nn0 0nn0 annlW2X30 0nn0 0nn0 0nn0 annlW2X30 0nn0 0nn0:end
+T: 37.6:E: 0nn0 0nn0 0nn0 0nn0 annlW2X30 0nn0 0nn0 0nn0 0nn0:end
+T: 38.8:E: 0nn0 annlW2X30 0nn0 0nn0 0nn0 0nn0 0nn0 annlW2X30 0nn0:end
+Duration
+C:0,0 0,16:E: ennED3
