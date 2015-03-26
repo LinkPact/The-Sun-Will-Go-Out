@@ -593,53 +593,58 @@
       <Link>SDL_Mixer.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Music\old\Asteroids.wma">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\old\Rebels.wma">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\GoingOut.wma">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\MainMenu.wma">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\Outro.wma">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\SpaceStation.wma">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\TheOboeSong.wma">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\overworld\DarkPiano.wma">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\overworld\DarkSpace.wma">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\overworld\SpaceAmbience.wma">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\vertical\AllianceBattle.wma">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\vertical\Falling.wma">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\vertical\PowerSong.wma">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\vertical\Stars.wma">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Content\itemVisualSheet.png" />
+    <Content Include="Content\MapCreator\MapCreatorSpriteSheet.png" />
+    <Content Include="Content\Music\old\Asteroids.mp3" />
+    <Content Include="Content\Music\old\Rebels.mp3" />
+    <Content Include="Content\Music\other\GoingOut.mp3" />
+    <Content Include="Content\Music\other\MainMenu.MP3" />
+    <Content Include="Content\Music\other\Outro.mp3" />
+    <Content Include="Content\Music\other\SpaceStation.mp3" />
+    <Content Include="Content\Music\other\TheOboeSong.mp3" />
+    <Content Include="Content\Music\overworld\DarkPiano.mp3" />
+    <Content Include="Content\Music\overworld\DarkSpace.mp3" />
+    <Content Include="Content\Music\overworld\SpaceAmbience.mp3" />
+    <Content Include="Content\Music\vertical\AllianceBattle.mp3" />
+    <Content Include="Content\Music\vertical\Falling.mp3" />
+    <Content Include="Content\Music\vertical\PowerSong.mp3" />
+    <Content Include="Content\Music\vertical\Stars.mp3" />
+    <Content Include="Content\Overworld-Sprites\buttons.png" />
+    <Content Include="Content\Overworld-Sprites\introBackdrop.png" />
+    <Content Include="Content\Overworld-Sprites\lineTexture.png" />
+    <Content Include="Content\Overworld-Sprites\MainMenuBackdrop.png" />
+    <Content Include="Content\Overworld-Sprites\MenuBackdrop.png" />
+    <Content Include="Content\Overworld-Sprites\messageBoxSpriteSheet.png" />
+    <Content Include="Content\Overworld-Sprites\MissionObjectSpriteSheet.png" />
+    <Content Include="Content\Overworld-Sprites\missionScreenSpriteSheet.png" />
+    <Content Include="Content\Overworld-Sprites\OutpostSpriteSheet.png" />
+    <Content Include="Content\Overworld-Sprites\planetarySystemSpritesheet.png" />
+    <Content Include="Content\Overworld-Sprites\PlanetOverviewSpritesheet.png" />
+    <Content Include="Content\Overworld-Sprites\PortraitSpriteSheet.png" />
+    <Content Include="Content\Overworld-Sprites\radar.png" />
+    <Content Include="Content\Overworld-Sprites\SectorXSpriteSheet.png" />
+    <Content Include="Content\Overworld-Sprites\smallObjectSpriteSheet.png" />
+    <Content Include="Content\Overworld-Sprites\StarsSpriteSheet.png" />
+    <Content Include="Content\Overworld-Sprites\tutorial_spritesheet.png" />
+    <Content Include="Content\SoundEffects\basic_laser.wav" />
+    <Content Include="Content\SoundEffects\boom6.wav" />
+    <Content Include="Content\SoundEffects\boom9.wav" />
+    <Content Include="Content\SoundEffects\crowd.wav" />
+    <Content Include="Content\SoundEffects\crowd1.wav" />
+    <Content Include="Content\SoundEffects\engine_overworld_full.wav" />
+    <Content Include="Content\SoundEffects\jakob_test\lasers\click_laser.wav" />
+    <Content Include="Content\SoundEffects\jakob_test\lasers\click_laser_noiseReduced.wav" />
+    <Content Include="Content\SoundEffects\jakob_test\lasers\distorted_laser.wav" />
+    <Content Include="Content\SoundEffects\jakob_test\lasers\distorted_laser_with_noise.wav" />
+    <Content Include="Content\SoundEffects\menu_hover.wav" />
+    <Content Include="Content\SoundEffects\menu_select.wav" />
+    <Content Include="Content\Vertical-Sprites\BorderSprite.png" />
+    <Content Include="Content\Vertical-Sprites\bushImg.png" />
+    <Content Include="Content\Vertical-Sprites\introBackdrop.png" />
+    <Content Include="Content\Vertical-Sprites\MenuSheet.png" />
+    <Content Include="Content\Vertical-Sprites\ShooterSheet.png" />
     <Content Include="Icon.ico" />
     <Content Include="Shooter-part\DrawLayer-Outline.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\colonydata.dat">
@@ -1002,196 +1007,27 @@
     <Folder Include="Shooter-part\Levels\Oldlevels\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Fonts\Iceland_10.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Fonts\Iceland_12.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Fonts\Iceland_14.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Fonts\Iceland_16.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Fonts\Iceland_18.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Fonts\ISL_Jupiter_24.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Fonts\ISL_Jupiter_28.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Fonts\MCfont8.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Fonts\MCSmallFont.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\itemVisualSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\MapCreator\MapCreatorSpriteSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\old\Asteroids.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\old\Rebels.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\GoingOut.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\MainMenu.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\Outro.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\SpaceStation.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\TheOboeSong.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\overworld\DarkPiano.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\overworld\DarkSpace.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\overworld\SpaceAmbience.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\vertical\AllianceBattle.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\vertical\Falling.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\vertical\PowerSong.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\vertical\Stars.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\bigFont.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\buttons.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\introBackdrop.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\lineTexture.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\MainMenuBackdrop.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\MenuBackdrop.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\messageBoxSpriteSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\MissionObjectSpriteSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\missionScreenSpriteSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\OutpostSpriteSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\planetarySystemSpritesheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\PlanetOverviewSpritesheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\PortraitSpriteSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\radar.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\SectorXSpriteSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\smallFont.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\smallObjectSpriteSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\StarsSpriteSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\tutorial_spritesheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\basic_laser.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\boom6.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\boom9.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\crowd1.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\engine_overworld_full.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\jakob_test\lasers\click_laser.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\jakob_test\lasers\click_laser_noiseReduced.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\jakob_test\lasers\distorted_laser.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\jakob_test\lasers\distorted_laser_with_noise.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\menu_hover.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\menu_select.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Vertical-Sprites\BorderSprite.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Vertical-Sprites\bushImg.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Vertical-Sprites\font1.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Vertical-Sprites\font10.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Vertical-Sprites\font12.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Vertical-Sprites\font14.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Vertical-Sprites\introBackdrop.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Vertical-Sprites\MenuSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Vertical-Sprites\ShooterSheet.xnb">
+    <MonoGameContentReference Include="Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Fonts\Iceland_10.spritefont" />
+    <Content Include="Content\Fonts\Iceland_12.spritefont" />
+    <Content Include="Content\Fonts\Iceland_14.spritefont" />
+    <Content Include="Content\Fonts\Iceland_16.spritefont" />
+    <Content Include="Content\Fonts\Iceland_18.spritefont" />
+    <Content Include="Content\Fonts\ISL_Jupiter_24.spritefont" />
+    <Content Include="Content\Fonts\ISL_Jupiter_28.spritefont" />
+    <Content Include="Content\Fonts\MCfont8.spritefont" />
+    <Content Include="Content\Fonts\MCSmallFont.spritefont" />
+    <Content Include="Content\Overworld-Sprites\bigFont.spritefont" />
+    <Content Include="Content\Overworld-Sprites\smallFont.spritefont" />
+    <Content Include="Content\Vertical-Sprites\font1.spritefont" />
+    <Content Include="Content\Vertical-Sprites\font10.spritefont" />
+    <Content Include="Content\Vertical-Sprites\font12.spritefont" />
+    <Content Include="Content\Vertical-Sprites\font14.spritefont" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Tao.Sdl.dll.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

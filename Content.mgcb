@@ -3,10 +3,10 @@
 
 /outputDir:bin
 /intermediateDir:obj
-/platform:Windows
+/platform:Linux
 /config:
 /profile:Reach
-/compress:False
+/compress:True
 
 #-------------------------------- References --------------------------------#
 

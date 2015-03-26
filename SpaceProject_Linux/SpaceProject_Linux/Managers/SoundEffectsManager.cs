@@ -76,7 +76,6 @@ namespace SpaceProject_Linux
             soundEffects = new List<CustomSoundEffect>();
             soundEffectBuffer = new List<SoundEffectInstance>();
             stoppedSoundEffects = new List<SoundEffectInstance>();
-            LoadSoundEffects = false;
 
             if (LoadSoundEffects)
             {
