@@ -413,10 +413,15 @@ namespace SpaceProject_Linux
                     
                     if (pixelCollisionNeedsEvaluation)
                     {
-                        if (CollisionDetection.VisiblePixelsColliding(obj1.Bounding, obj2.Bounding,
-                            ((AnimatedGameObject)(obj1)).CurrentAnim.CurrentFrame,
-                            ((AnimatedGameObject)obj2).CurrentAnim.CurrentFrame, 
-                            obj1.CenterPoint, obj2.CenterPoint))
+                        //if (CollisionDetection.VisiblePixelsColliding(obj1.Bounding, obj2.Bounding,
+                        //    ((AnimatedGameObject)(obj1)).CurrentAnim.CurrentFrame,
+                        //    ((AnimatedGameObject)obj2).CurrentAnim.CurrentFrame, 
+                        //    obj1.CenterPoint, obj2.CenterPoint))
+                        //{
+                        //    CollisionHandlingVerticalShooter.GameObjectsCollision(obj1, obj2);
+                        //}
+
+                        if (CollisionDetection.IsRectInRect(obj1.Bounding, obj2.Bounding))
                         {
                             CollisionHandlingVerticalShooter.GameObjectsCollision(obj1, obj2);
                         }

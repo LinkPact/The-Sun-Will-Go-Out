@@ -217,16 +217,16 @@ namespace SpaceProject_Linux
             }
 
             // TODO: REMOVE FOR RELEASE VERSION
-            //if (ControlManager.CheckKeyPress(Keys.M))
-            //{
-            //    Game.stateManager.ChangeState("LevelTesterState");
-            //}
-            //
-            //if (ControlManager.CheckKeyPress(Keys.C))
-            //{
-            //    Game.stateManager.ChangeState("CampaignState");
-            //}
-            //
+            if (ControlManager.CheckKeyPress(Keys.M))
+            {
+                Game.stateManager.ChangeState("LevelTesterState");
+            }
+            
+            if (ControlManager.CheckKeyPress(Keys.C))
+            {
+                Game.stateManager.ChangeState("CampaignState");
+            }
+            
         }
 
         private void MouseControls()
