@@ -42,7 +42,7 @@ namespace SpaceProject_Linux
 
         public static void InitializePortraitSpriteSheet(Game1 game)
         {
-            portraitSpriteSheet = new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites\\PortraitSpriteSheet"), null);
+            portraitSpriteSheet = new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/PortraitSpriteSheet"), null);
         }
 
         private static Sprite GetPortrait(PortraitID portrait)

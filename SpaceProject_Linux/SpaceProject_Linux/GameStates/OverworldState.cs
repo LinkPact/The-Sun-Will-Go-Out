@@ -139,7 +139,7 @@ namespace SpaceProject_Linux
 
         public override void Initialize()
         {
-            spriteSheet = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/planetarySystemSpriteSheet"));
+            spriteSheet = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/planetarySystemSpritesheet"));
             shooterSheet = new Sprite(Game.Content.Load<Texture2D>("Vertical-Sprites/ShooterSheet"));
             outpostSpriteSheet = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/OutpostSpriteSheet"));
 

@@ -10,7 +10,7 @@ namespace SpaceProject_Linux
     {
         public static String writeDir = Game1.SaveFilePath + "Log";
         public static String writeFile = "defaultlog.txt";
-        private static String currentPath { get { return writeDir + "\\" + writeFile; } }
+        private static String currentPath { get { return writeDir + "/" + writeFile; } }
 
         public static void InitializeNewLogfile()
         {

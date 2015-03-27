@@ -15,7 +15,7 @@ namespace SpaceProject_Linux
     {
         public static readonly String SaveFilePath = 
             Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
-            "\\LinkPact Games\\The Sun Will Go Out\\";
+            "/LinkPact Games/The Sun Will Go Out/";
 
         #region declaration
         public SaveFile settingsFile;
@@ -134,7 +134,7 @@ namespace SpaceProject_Linux
             ControlManager.LoadControls(settingsFile);
 
             spriteSheetOverworld = new Sprite(Content.Load<Texture2D>("Overworld-Sprites/smallObjectSpriteSheet"));
-            spriteSheetVerticalShooter = new Sprite(Content.Load<Texture2D>("Vertical-Sprites/shooterSheet"));
+            spriteSheetVerticalShooter = new Sprite(Content.Load<Texture2D>("Vertical-Sprites/ShooterSheet"));
             messageBoxSpriteSheet = new Sprite(Content.Load<Texture2D>("Overworld-Sprites/messageBoxSpriteSheet"));
             spriteSheetItemDisplay = new Sprite(Content.Load<Texture2D>("itemVisualSheet"));
             CollisionHandlingOverWorld.LoadLineTexture(this);
