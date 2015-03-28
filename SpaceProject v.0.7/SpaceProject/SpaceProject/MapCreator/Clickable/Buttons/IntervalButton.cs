@@ -74,19 +74,20 @@ namespace SpaceProject
 
         private float GetNewTime()
         {
-            String newTimeString =  Microsoft.VisualBasic.Interaction.InputBox("Enter new time:", "Interval: " + 
-                previousTime.ToString() + "-" + subsequentTime.ToString(), displayText, -1, -1);
-
-            Match matchFloat = Regex.Match(newTimeString, @"^\d+(\.d+)?$");
-
-            float inputFloat;
-            if (matchFloat.Success)
-            {
-                inputFloat = (float)(Convert.ToDouble(newTimeString));
-                if (inputFloat > 0)
-                    return inputFloat;
-            }
-                return -1;
+            //String newTimeString =  Microsoft.VisualBasic.Interaction.InputBox("Enter new time:", "Interval: " + 
+            //    previousTime.ToString() + "-" + subsequentTime.ToString(), displayText, -1, -1);
+            //
+            //Match matchFloat = Regex.Match(newTimeString, @"^\d+(\.d+)?$");
+            //
+            //float inputFloat;
+            //if (matchFloat.Success)
+            //{
+            //    inputFloat = (float)(Convert.ToDouble(newTimeString));
+            //    if (inputFloat > 0)
+            //        return inputFloat;
+            //}
+            //    return -1;
+            throw new NotSupportedException("Visual basic reference removed!");
         }
 
         public override String ToString()
