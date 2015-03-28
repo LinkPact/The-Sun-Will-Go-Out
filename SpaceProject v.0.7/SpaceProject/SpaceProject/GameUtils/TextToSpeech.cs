@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Speech.Synthesis;
 
 namespace SpaceProject
 {
@@ -35,7 +34,7 @@ namespace SpaceProject
         #endregion
 
         #region Variables
-        private static SpeechSynthesizer synth = new SpeechSynthesizer();
+        //private static SpeechSynthesizer synth = new SpeechSynthesizer();
         private static string maleVoice;
         private static string femaleVoice;
         private static string sairVoice;
@@ -68,7 +67,7 @@ namespace SpaceProject
             }
         }
 
-        public static int Volume { get { return synth.Volume; } set { synth.Volume = value; } }
+        //public static int Volume { get { return synth.Volume; } set { synth.Volume = value; } }
 
         #endregion
 
@@ -77,8 +76,8 @@ namespace SpaceProject
             if (IsOSSupported())
             {
                 SetVoices();
-                synth.SetOutputToDefaultAudioDevice();
-                synth.SelectVoice(maleVoice);
+                //synth.SetOutputToDefaultAudioDevice();
+                //synth.SelectVoice(maleVoice);
             }
         }
 
@@ -87,11 +86,11 @@ namespace SpaceProject
         /// </summary>
         public static void Stop()
         {
-            if (ttsMode != TextToSpeechMode.Off
-                && synth.State == SynthesizerState.Speaking)
-            {
-                synth.SpeakAsyncCancelAll();
-            }
+            //if (ttsMode != TextToSpeechMode.Off
+            //    && synth.State == SynthesizerState.Speaking)
+            //{
+            //    synth.SpeakAsyncCancelAll();
+            //}
         }
 
         /// <summary>
@@ -103,10 +102,10 @@ namespace SpaceProject
         {
             if (ttsMode != TextToSpeechMode.Off)
             {
-                synth.Rate = rate;
-                SelectVoice(text);
-
-                synth.SpeakAsync(FormatText(text));
+                //synth.Rate = rate;
+                //SelectVoice(text);
+                //
+                //synth.SpeakAsync(FormatText(text));
             }
         }
 
@@ -167,13 +166,13 @@ namespace SpaceProject
         {
             if (s.Contains("[SAIR]"))
             {
-                synth.SelectVoice(sairVoice);
+                //synth.SelectVoice(sairVoice);
             }
 
             else if (s.Contains("[Ai]")
                 || s.Contains("[Squad member 2]"))
             {
-                synth.SelectVoice(femaleVoice);
+                //synth.SelectVoice(femaleVoice);
             }
 
             else if (s.Contains("[Captain]")
@@ -189,7 +188,7 @@ namespace SpaceProject
                 || s.Contains("[Rebel]")
                 || s.Contains("[Civilian]"))
             {
-                synth.SelectVoice(maleVoice);
+                //synth.SelectVoice(maleVoice);
             }
         }
 
