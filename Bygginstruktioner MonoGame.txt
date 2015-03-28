@@ -1,0 +1,21 @@
+LINUX:
+
+1. Gör ett linux monogame projekt
+
+2. Importera klasser från projektet
+
+3. Använd Pipeline.exe och importera .contenproj från xnabygget. 
+- Sätt Platform till Linux (och möjligtvis Compress till true)
+- Spara mgcb-filen och importera den till Content-mappen i monogame-projektet
+
+4. Högerklicka på .mgcb-filen, välj properties och välj "MonoGameContentReference" som Build Action
+
+5. Importera contentfiler från xna-bygget. Sätt Build Action till "Content" och Copy to output till "Do not copy"
+
+6. Kommentera ut visual basic och Speech referenser
+
+NOTIS: Musiken fungerar inte när man bygger till Linux. Kan krascha om OpenAL inte är installerat
+
+7. Importera OpenTK.dll.config och tao.sdl.dll.config och sätt Build Action toll "Content" och Copy if newer
+
+8. Bygg genom att ändra till Release i Configuration Manager och tryck build.
