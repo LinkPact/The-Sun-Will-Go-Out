@@ -492,8 +492,28 @@ namespace SpaceProject_Linux
             }
         }
 
-        public static void RebindKey(bool gamepad, RebindableKeys key, Nullable<Keys> newkey, Nullable<Buttons> newbutton)
+        public static bool RebindKey(bool gamepad, RebindableKeys key)
         {
+            Buttons newbutton = Buttons.A;
+            Keys newkey;
+
+            // Wait for key input
+            if (gamepad)
+            {
+                throw new NotImplementedException("Gamepad support not implemented!");
+            }
+            else
+            {
+                Keys[] pressedKeys = CurrentKeyboardState.GetPressedKeys();
+                if (pressedKeys.Length <= 0
+                    || PreviousKeyboardState.IsKeyDown(pressedKeys[0]))
+                {
+                    return false;
+                }
+
+                newkey = CurrentKeyboardState.GetPressedKeys()[0];
+            }
+
             switch (key)
             {
                 case RebindableKeys.Action1:
@@ -553,6 +573,8 @@ namespace SpaceProject_Linux
                     break;
 
             }
+
+            return true;
         }
 
         public static Vector2 GetMousePosition()
