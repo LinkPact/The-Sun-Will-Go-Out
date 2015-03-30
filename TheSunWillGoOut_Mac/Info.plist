@@ -16,5 +16,7 @@
 	<string>NSApplication</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.games</string>
+	<key>CFBundleIconFile</key>
+	<string>icon</string>
 </dict>
 </plist>

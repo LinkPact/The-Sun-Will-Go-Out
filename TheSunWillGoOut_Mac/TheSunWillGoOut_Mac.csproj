@@ -96,7 +96,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
-    <None Include="TO_ICON.ico" />
     <None Include="Shooter-part\DrawLayer-Outline.txt" />
     <None Include="Tao.Sdl.dll.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -674,294 +673,102 @@
     <Content Include="Data\verticaldata.dat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\mainlevels\m1_RebelsAsteroids.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\mainlevels\m2_FreighterEscort_lv1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\mainlevels\m2_FreighterEscort_lv2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\mainlevels\m3_DefendColony_lv1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\mainlevels\m3_DefendColony_lv2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\mainlevels\m4_Infiltration_lv1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\mainlevels\m4_Infiltration_lv2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\mainlevels\m5_Retribution_lv1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\mainlevels\m5_Retribution_lv2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\mainlevels\m6_ITNOS_lv1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\mainlevels\m6_ITNOS_lv2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\mainlevels\m7_Information.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\mainlevels\m8a_OYO_lv1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\mainlevels\m8a_OYO_lv2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\mainlevels\m8b_rebels_lv1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\mainlevels\m8b_rebels_lv2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\mainlevels\m8c_alliance_lv1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\mainlevels\m8c_alliance_lv2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\pirates\AlliancePirate1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\pirates\AlliancePirate2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\pirates\AlliancePirate3.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\pirates\AlliancePirate4.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\pirates\AlliancePirate5.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\pirates\RebelPirate1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\pirates\RebelPirate2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\pirates\RebelPirate3.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\pirates\RebelPirate4.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\pirates\RebelPirate5.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\pirates\hangar1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\pirates\hangar2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\pirates\hangar3.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\sidelevels\AstroDodger.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\sidelevels\Astroscan.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\sidelevels\DeathByMeteor.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\sidelevels\FlightTraining_1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\sidelevels\FlightTraining_2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\sidelevels\FlightTraining_3.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\P2AttackOnRebelStation.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\P2RebelAmbush.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\P3_Science_1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\P4_hunted1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\P4_hunted2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\P4_hunted3.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\P4_rebel1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\P4_rebel2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\P4_recognizedByAlliance.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\XDefendColony.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\test_lv1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\test_lv2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\test_lv3.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\all_pirates\AlliancePirate1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\all_pirates\AlliancePirate2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\all_pirates\AlliancePirate3.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\all_pirates\AlliancePirate4.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\all_pirates\AlliancePirate5.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\all_pirates\RebelPirate1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\all_pirates\RebelPirate2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\all_pirates\RebelPirate3.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\all_pirates\RebelPirate4.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\all_pirates\RebelPirate5.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\4_infiltration\m4_infiltration_lv1_v1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\4_infiltration\m4_infiltration_lv2_v1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\4_infiltration\m4_infiltration_lv2_v2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv1_v1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv1_v2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv2_v1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv2_v2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\6_itnos\m6_itnos_lv1_v1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\6_itnos\m6_itnos_lv1_v2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\6_itnos\m6_itnos_lv2_v1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\7_infiltration\m7_infiltration_lv1_v1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\7_infiltration\m7_infiltration_lv1_v2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv1_v1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv1_v2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv2_v1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv2_v2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv1_v1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv1_v2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv2_v1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv2_v2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv1_v1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv1_v2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv2_v1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv2_v2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_pirate\alliance\J_AP1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_pirate\alliance\J_AP2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_pirate\alliance\J_AP3.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_pirate\rebel\J_RP1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_pirate\rebel\J_RP2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\jakob_pirate\rebel\J_RP3.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\johan_main\DefendColonyBreak.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\johan_main\DefendColonyHold.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\johan_main\FreighterEscortlvl1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\johan_main\FreighterEscortlvl2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\testlevels\johan_main\RebelsAsteroids.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\LonelyAsteroidLevel.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Levels\mainlevels\m1_RebelsAsteroids.lvl" />
+    <Content Include="Levels\mainlevels\m2_FreighterEscort_lv1.lvl" />
+    <Content Include="Levels\mainlevels\m2_FreighterEscort_lv2.lvl" />
+    <Content Include="Levels\mainlevels\m3_DefendColony_lv1.lvl" />
+    <Content Include="Levels\mainlevels\m3_DefendColony_lv2.lvl" />
+    <Content Include="Levels\mainlevels\m4_Infiltration_lv1.lvl" />
+    <Content Include="Levels\mainlevels\m4_Infiltration_lv2.lvl" />
+    <Content Include="Levels\mainlevels\m5_Retribution_lv1.lvl" />
+    <Content Include="Levels\mainlevels\m5_Retribution_lv2.lvl" />
+    <Content Include="Levels\mainlevels\m6_ITNOS_lv1.lvl" />
+    <Content Include="Levels\mainlevels\m6_ITNOS_lv2.lvl" />
+    <Content Include="Levels\mainlevels\m7_Information.lvl" />
+    <Content Include="Levels\mainlevels\m8a_OYO_lv1.lvl" />
+    <Content Include="Levels\mainlevels\m8a_OYO_lv2.lvl" />
+    <Content Include="Levels\mainlevels\m8b_rebels_lv1.lvl" />
+    <Content Include="Levels\mainlevels\m8b_rebels_lv2.lvl" />
+    <Content Include="Levels\mainlevels\m8c_alliance_lv1.lvl" />
+    <Content Include="Levels\mainlevels\m8c_alliance_lv2.lvl" />
+    <Content Include="Levels\pirates\AlliancePirate1.lvl" />
+    <Content Include="Levels\pirates\AlliancePirate2.lvl" />
+    <Content Include="Levels\pirates\AlliancePirate3.lvl" />
+    <Content Include="Levels\pirates\AlliancePirate4.lvl" />
+    <Content Include="Levels\pirates\AlliancePirate5.lvl" />
+    <Content Include="Levels\pirates\RebelPirate1.lvl" />
+    <Content Include="Levels\pirates\RebelPirate2.lvl" />
+    <Content Include="Levels\pirates\RebelPirate3.lvl" />
+    <Content Include="Levels\pirates\RebelPirate4.lvl" />
+    <Content Include="Levels\pirates\RebelPirate5.lvl" />
+    <Content Include="Levels\pirates\hangar1.lvl" />
+    <Content Include="Levels\pirates\hangar2.lvl" />
+    <Content Include="Levels\pirates\hangar3.lvl" />
+    <Content Include="Levels\sidelevels\AstroDodger.lvl" />
+    <Content Include="Levels\sidelevels\Astroscan.lvl" />
+    <Content Include="Levels\sidelevels\DeathByMeteor.lvl" />
+    <Content Include="Levels\sidelevels\FlightTraining_1.lvl" />
+    <Content Include="Levels\sidelevels\FlightTraining_2.lvl" />
+    <Content Include="Levels\sidelevels\FlightTraining_3.lvl" />
+    <Content Include="Levels\testlevels\P2AttackOnRebelStation.lvl" />
+    <Content Include="Levels\testlevels\P2RebelAmbush.lvl" />
+    <Content Include="Levels\testlevels\P3_Science_1.lvl" />
+    <Content Include="Levels\testlevels\P4_hunted1.lvl" />
+    <Content Include="Levels\testlevels\P4_hunted2.lvl" />
+    <Content Include="Levels\testlevels\P4_hunted3.lvl" />
+    <Content Include="Levels\testlevels\P4_rebel1.lvl" />
+    <Content Include="Levels\testlevels\P4_rebel2.lvl" />
+    <Content Include="Levels\testlevels\P4_recognizedByAlliance.lvl" />
+    <Content Include="Levels\testlevels\XDefendColony.lvl" />
+    <Content Include="Levels\testlevels\test_lv1.lvl" />
+    <Content Include="Levels\testlevels\test_lv2.lvl" />
+    <Content Include="Levels\testlevels\test_lv3.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\AlliancePirate1.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\AlliancePirate2.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\AlliancePirate3.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\AlliancePirate4.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\AlliancePirate5.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\RebelPirate1.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\RebelPirate2.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\RebelPirate3.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\RebelPirate4.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\RebelPirate5.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\4_infiltration\m4_infiltration_lv1_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\4_infiltration\m4_infiltration_lv2_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\4_infiltration\m4_infiltration_lv2_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv1_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv1_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv2_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv2_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\6_itnos\m6_itnos_lv1_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\6_itnos\m6_itnos_lv1_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\6_itnos\m6_itnos_lv2_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\7_infiltration\m7_infiltration_lv1_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\7_infiltration\m7_infiltration_lv1_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv1_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv1_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv2_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv2_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv1_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv1_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv2_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv2_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv1_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv1_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv2_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv2_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_pirate\alliance\J_AP1.lvl" />
+    <Content Include="Levels\testlevels\jakob_pirate\alliance\J_AP2.lvl" />
+    <Content Include="Levels\testlevels\jakob_pirate\alliance\J_AP3.lvl" />
+    <Content Include="Levels\testlevels\jakob_pirate\rebel\J_RP1.lvl" />
+    <Content Include="Levels\testlevels\jakob_pirate\rebel\J_RP2.lvl" />
+    <Content Include="Levels\testlevels\jakob_pirate\rebel\J_RP3.lvl" />
+    <Content Include="Levels\testlevels\johan_main\DefendColonyBreak.lvl" />
+    <Content Include="Levels\testlevels\johan_main\DefendColonyHold.lvl" />
+    <Content Include="Levels\testlevels\johan_main\FreighterEscortlvl1.lvl" />
+    <Content Include="Levels\testlevels\johan_main\FreighterEscortlvl2.lvl" />
+    <Content Include="Levels\testlevels\johan_main\RebelsAsteroids.lvl" />
+    <Content Include="Levels\LonelyAsteroidLevel.lvl" />
     <Content Include="Levels\unsorted\HardLevel.lvl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1007,239 +814,86 @@
     <Content Include="Levels\unsorted\XSecondMissionlvl3.lvl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Fonts\ISL_Jupiter_24.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Fonts\ISL_Jupiter_28.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Fonts\Iceland_10.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Fonts\Iceland_12.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Fonts\Iceland_14.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Fonts\Iceland_16.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Fonts\Iceland_18.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Fonts\MCSmallFont.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Fonts\MCfont8.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\MapCreator\MapCreatorSpriteSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\MainMenuBackdrop.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\MenuBackdrop.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\MissionObjectSpriteSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\OutpostSpriteSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\PlanetOverviewSpritesheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\PortraitSpriteSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\SectorXSpriteSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\StarsSpriteSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\bigFont.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\buttons.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\introBackdrop.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\lineTexture.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\messageBoxSpriteSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\missionScreenSpriteSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\planetarySystemSpritesheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\radar.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\smallFont.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\smallObjectSpriteSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Overworld-Sprites\tutorial_spritesheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\jakob_test\lasers\click_laser.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\jakob_test\lasers\click_laser_noiseReduced.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\jakob_test\lasers\distorted_laser.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\jakob_test\lasers\distorted_laser_with_noise.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\basic_laser.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\boom6.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\boom9.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\crowd1.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\engine_overworld_full.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\menu_hover.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SoundEffects\menu_select.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Vertical-Sprites\BorderSprite.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Vertical-Sprites\MenuSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Vertical-Sprites\ShooterSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Vertical-Sprites\bushImg.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Vertical-Sprites\font1.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Vertical-Sprites\font10.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Vertical-Sprites\font12.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Vertical-Sprites\font14.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Vertical-Sprites\introBackdrop.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\itemVisualSheet.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\old\Asteroids.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\old\Asteroids.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\old\Rebels.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\old\Rebels.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\GoingOut.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\GoingOut.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\MainMenu.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\MainMenu.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\Outro.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\Outro.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\SpaceStation.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\SpaceStation.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\TheOboeSong.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\other\TheOboeSong.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\overworld\DarkPiano.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\overworld\DarkPiano.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\overworld\DarkSpace.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\overworld\DarkSpace.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\overworld\SpaceAmbience.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\overworld\SpaceAmbience.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\vertical\AllianceBattle.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\vertical\AllianceBattle.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\vertical\Falling.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\vertical\Falling.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\vertical\PowerSong.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\vertical\PowerSong.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\vertical\Stars.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Music\vertical\Stars.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Content\Fonts\ISL_Jupiter_24.xnb" />
+    <Content Include="Content\Fonts\ISL_Jupiter_28.xnb" />
+    <Content Include="Content\Fonts\Iceland_10.xnb" />
+    <Content Include="Content\Fonts\Iceland_12.xnb" />
+    <Content Include="Content\Fonts\Iceland_14.xnb" />
+    <Content Include="Content\Fonts\Iceland_16.xnb" />
+    <Content Include="Content\Fonts\Iceland_18.xnb" />
+    <Content Include="Content\Fonts\MCSmallFont.xnb" />
+    <Content Include="Content\Fonts\MCfont8.xnb" />
+    <Content Include="Content\MapCreator\MapCreatorSpriteSheet.xnb" />
+    <Content Include="Content\Overworld-Sprites\MainMenuBackdrop.xnb" />
+    <Content Include="Content\Overworld-Sprites\MenuBackdrop.xnb" />
+    <Content Include="Content\Overworld-Sprites\MissionObjectSpriteSheet.xnb" />
+    <Content Include="Content\Overworld-Sprites\OutpostSpriteSheet.xnb" />
+    <Content Include="Content\Overworld-Sprites\PlanetOverviewSpritesheet.xnb" />
+    <Content Include="Content\Overworld-Sprites\PortraitSpriteSheet.xnb" />
+    <Content Include="Content\Overworld-Sprites\SectorXSpriteSheet.xnb" />
+    <Content Include="Content\Overworld-Sprites\StarsSpriteSheet.xnb" />
+    <Content Include="Content\Overworld-Sprites\bigFont.xnb" />
+    <Content Include="Content\Overworld-Sprites\buttons.xnb" />
+    <Content Include="Content\Overworld-Sprites\introBackdrop.xnb" />
+    <Content Include="Content\Overworld-Sprites\lineTexture.xnb" />
+    <Content Include="Content\Overworld-Sprites\messageBoxSpriteSheet.xnb" />
+    <Content Include="Content\Overworld-Sprites\missionScreenSpriteSheet.xnb" />
+    <Content Include="Content\Overworld-Sprites\planetarySystemSpritesheet.xnb" />
+    <Content Include="Content\Overworld-Sprites\radar.xnb" />
+    <Content Include="Content\Overworld-Sprites\smallFont.xnb" />
+    <Content Include="Content\Overworld-Sprites\smallObjectSpriteSheet.xnb" />
+    <Content Include="Content\Overworld-Sprites\tutorial_spritesheet.xnb" />
+    <Content Include="Content\SoundEffects\jakob_test\lasers\click_laser.xnb" />
+    <Content Include="Content\SoundEffects\jakob_test\lasers\click_laser_noiseReduced.xnb" />
+    <Content Include="Content\SoundEffects\jakob_test\lasers\distorted_laser.xnb" />
+    <Content Include="Content\SoundEffects\jakob_test\lasers\distorted_laser_with_noise.xnb" />
+    <Content Include="Content\SoundEffects\basic_laser.xnb" />
+    <Content Include="Content\SoundEffects\boom6.xnb" />
+    <Content Include="Content\SoundEffects\boom9.xnb" />
+    <Content Include="Content\SoundEffects\crowd1.xnb" />
+    <Content Include="Content\SoundEffects\engine_overworld_full.xnb" />
+    <Content Include="Content\SoundEffects\menu_hover.xnb" />
+    <Content Include="Content\SoundEffects\menu_select.xnb" />
+    <Content Include="Content\Vertical-Sprites\BorderSprite.xnb" />
+    <Content Include="Content\Vertical-Sprites\MenuSheet.xnb" />
+    <Content Include="Content\Vertical-Sprites\ShooterSheet.xnb" />
+    <Content Include="Content\Vertical-Sprites\bushImg.xnb" />
+    <Content Include="Content\Vertical-Sprites\font1.xnb" />
+    <Content Include="Content\Vertical-Sprites\font10.xnb" />
+    <Content Include="Content\Vertical-Sprites\font12.xnb" />
+    <Content Include="Content\Vertical-Sprites\font14.xnb" />
+    <Content Include="Content\Vertical-Sprites\introBackdrop.xnb" />
+    <Content Include="Content\itemVisualSheet.xnb" />
+    <Content Include="Content\Music\old\Asteroids.mp4" />
+    <Content Include="Content\Music\old\Asteroids.xnb" />
+    <Content Include="Content\Music\old\Rebels.mp4" />
+    <Content Include="Content\Music\old\Rebels.xnb" />
+    <Content Include="Content\Music\other\GoingOut.mp4" />
+    <Content Include="Content\Music\other\GoingOut.xnb" />
+    <Content Include="Content\Music\other\MainMenu.mp4" />
+    <Content Include="Content\Music\other\MainMenu.xnb" />
+    <Content Include="Content\Music\other\Outro.mp4" />
+    <Content Include="Content\Music\other\Outro.xnb" />
+    <Content Include="Content\Music\other\SpaceStation.mp4" />
+    <Content Include="Content\Music\other\SpaceStation.xnb" />
+    <Content Include="Content\Music\other\TheOboeSong.mp4" />
+    <Content Include="Content\Music\other\TheOboeSong.xnb" />
+    <Content Include="Content\Music\overworld\DarkPiano.mp4" />
+    <Content Include="Content\Music\overworld\DarkPiano.xnb" />
+    <Content Include="Content\Music\overworld\DarkSpace.mp4" />
+    <Content Include="Content\Music\overworld\DarkSpace.xnb" />
+    <Content Include="Content\Music\overworld\SpaceAmbience.mp4" />
+    <Content Include="Content\Music\overworld\SpaceAmbience.xnb" />
+    <Content Include="Content\Music\vertical\AllianceBattle.mp4" />
+    <Content Include="Content\Music\vertical\AllianceBattle.xnb" />
+    <Content Include="Content\Music\vertical\Falling.mp4" />
+    <Content Include="Content\Music\vertical\Falling.xnb" />
+    <Content Include="Content\Music\vertical\PowerSong.mp4" />
+    <Content Include="Content\Music\vertical\PowerSong.xnb" />
+    <Content Include="Content\Music\vertical\Stars.mp4" />
+    <Content Include="Content\Music\vertical\Stars.xnb" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon.icns" />
   </ItemGroup>
 </Project>
