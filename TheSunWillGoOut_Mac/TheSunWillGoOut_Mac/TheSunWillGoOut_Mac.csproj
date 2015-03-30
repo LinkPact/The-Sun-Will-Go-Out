@@ -33,40 +33,34 @@
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <LinkMode>SdkOnly</LinkMode>
     <UseRefCounting>false</UseRefCounting>
     <UseSGen>false</UseSGen>
-    <IncludeMonoRuntime>true</IncludeMonoRuntime>
-    <CreatePackage>true</CreatePackage>
-    <CodeSigningKey>Developer ID Application</CodeSigningKey>
-    <EnableCodeSigning>true</EnableCodeSigning>
+    <IncludeMonoRuntime>false</IncludeMonoRuntime>
+    <CreatePackage>false</CreatePackage>
+    <EnableCodeSigning>false</EnableCodeSigning>
     <EnablePackageSigning>false</EnablePackageSigning>
+    <Externalconsole>true</Externalconsole>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Drawing" />
     <Reference Include="MonoMac">
-      <HintPath>..\..\..\..\MonoGame\MonoMac.dll</HintPath>
-    </Reference>
-    <Reference Include="Tao.Sdl">
-      <HintPath>MonoGame\Tao.Sdl.dll</HintPath>
-    </Reference>
-    <Reference Include="OpenTK">
-      <HintPath>MonoGame\OpenTK.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGame.Framework.Net">
-      <HintPath>MonoGame\MonoGame.Framework.Net.dll</HintPath>
+      <HintPath>MonoGame\MonoMac.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework">
       <HintPath>MonoGame\MonoGame.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="MonoGame.Framework.Net">
+      <HintPath>MonoGame\MonoGame.Framework.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK">
+      <HintPath>MonoGame\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="Tao.Sdl">
+      <HintPath>MonoGame\Tao.Sdl.dll</HintPath>
+    </Reference>
     <Reference Include="Lidgren.Network">
       <HintPath>MonoGame\Lidgren.Network.dll</HintPath>
     </Reference>
+    <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -652,168 +646,9 @@
     <Compile Include="Shooter-part\Visual and Music\Shield\ShieldEffectGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\colonydata.dat">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\missiondata.dat">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\planetdata.dat">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\rumordata.dat">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\stationdata.dat">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\storydata.dat">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\verticaldata.dat">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\mainlevels\m1_RebelsAsteroids.lvl" />
-    <Content Include="Levels\mainlevels\m2_FreighterEscort_lv1.lvl" />
-    <Content Include="Levels\mainlevels\m2_FreighterEscort_lv2.lvl" />
-    <Content Include="Levels\mainlevels\m3_DefendColony_lv1.lvl" />
-    <Content Include="Levels\mainlevels\m3_DefendColony_lv2.lvl" />
-    <Content Include="Levels\mainlevels\m4_Infiltration_lv1.lvl" />
-    <Content Include="Levels\mainlevels\m4_Infiltration_lv2.lvl" />
-    <Content Include="Levels\mainlevels\m5_Retribution_lv1.lvl" />
-    <Content Include="Levels\mainlevels\m5_Retribution_lv2.lvl" />
-    <Content Include="Levels\mainlevels\m6_ITNOS_lv1.lvl" />
-    <Content Include="Levels\mainlevels\m6_ITNOS_lv2.lvl" />
-    <Content Include="Levels\mainlevels\m7_Information.lvl" />
-    <Content Include="Levels\mainlevels\m8a_OYO_lv1.lvl" />
-    <Content Include="Levels\mainlevels\m8a_OYO_lv2.lvl" />
-    <Content Include="Levels\mainlevels\m8b_rebels_lv1.lvl" />
-    <Content Include="Levels\mainlevels\m8b_rebels_lv2.lvl" />
-    <Content Include="Levels\mainlevels\m8c_alliance_lv1.lvl" />
-    <Content Include="Levels\mainlevels\m8c_alliance_lv2.lvl" />
-    <Content Include="Levels\pirates\AlliancePirate1.lvl" />
-    <Content Include="Levels\pirates\AlliancePirate2.lvl" />
-    <Content Include="Levels\pirates\AlliancePirate3.lvl" />
-    <Content Include="Levels\pirates\AlliancePirate4.lvl" />
-    <Content Include="Levels\pirates\AlliancePirate5.lvl" />
-    <Content Include="Levels\pirates\RebelPirate1.lvl" />
-    <Content Include="Levels\pirates\RebelPirate2.lvl" />
-    <Content Include="Levels\pirates\RebelPirate3.lvl" />
-    <Content Include="Levels\pirates\RebelPirate4.lvl" />
-    <Content Include="Levels\pirates\RebelPirate5.lvl" />
-    <Content Include="Levels\pirates\hangar1.lvl" />
-    <Content Include="Levels\pirates\hangar2.lvl" />
-    <Content Include="Levels\pirates\hangar3.lvl" />
-    <Content Include="Levels\sidelevels\AstroDodger.lvl" />
-    <Content Include="Levels\sidelevels\Astroscan.lvl" />
-    <Content Include="Levels\sidelevels\DeathByMeteor.lvl" />
-    <Content Include="Levels\sidelevels\FlightTraining_1.lvl" />
-    <Content Include="Levels\sidelevels\FlightTraining_2.lvl" />
-    <Content Include="Levels\sidelevels\FlightTraining_3.lvl" />
-    <Content Include="Levels\testlevels\P2AttackOnRebelStation.lvl" />
-    <Content Include="Levels\testlevels\P2RebelAmbush.lvl" />
-    <Content Include="Levels\testlevels\P3_Science_1.lvl" />
-    <Content Include="Levels\testlevels\P4_hunted1.lvl" />
-    <Content Include="Levels\testlevels\P4_hunted2.lvl" />
-    <Content Include="Levels\testlevels\P4_hunted3.lvl" />
-    <Content Include="Levels\testlevels\P4_rebel1.lvl" />
-    <Content Include="Levels\testlevels\P4_rebel2.lvl" />
-    <Content Include="Levels\testlevels\P4_recognizedByAlliance.lvl" />
-    <Content Include="Levels\testlevels\XDefendColony.lvl" />
-    <Content Include="Levels\testlevels\test_lv1.lvl" />
-    <Content Include="Levels\testlevels\test_lv2.lvl" />
-    <Content Include="Levels\testlevels\test_lv3.lvl" />
-    <Content Include="Levels\testlevels\all_pirates\AlliancePirate1.lvl" />
-    <Content Include="Levels\testlevels\all_pirates\AlliancePirate2.lvl" />
-    <Content Include="Levels\testlevels\all_pirates\AlliancePirate3.lvl" />
-    <Content Include="Levels\testlevels\all_pirates\AlliancePirate4.lvl" />
-    <Content Include="Levels\testlevels\all_pirates\AlliancePirate5.lvl" />
-    <Content Include="Levels\testlevels\all_pirates\RebelPirate1.lvl" />
-    <Content Include="Levels\testlevels\all_pirates\RebelPirate2.lvl" />
-    <Content Include="Levels\testlevels\all_pirates\RebelPirate3.lvl" />
-    <Content Include="Levels\testlevels\all_pirates\RebelPirate4.lvl" />
-    <Content Include="Levels\testlevels\all_pirates\RebelPirate5.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\4_infiltration\m4_infiltration_lv1_v1.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\4_infiltration\m4_infiltration_lv2_v1.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\4_infiltration\m4_infiltration_lv2_v2.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv1_v1.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv1_v2.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv2_v1.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv2_v2.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\6_itnos\m6_itnos_lv1_v1.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\6_itnos\m6_itnos_lv1_v2.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\6_itnos\m6_itnos_lv2_v1.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\7_infiltration\m7_infiltration_lv1_v1.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\7_infiltration\m7_infiltration_lv1_v2.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv1_v1.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv1_v2.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv2_v1.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv2_v2.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv1_v1.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv1_v2.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv2_v1.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv2_v2.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv1_v1.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv1_v2.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv2_v1.lvl" />
-    <Content Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv2_v2.lvl" />
-    <Content Include="Levels\testlevels\jakob_pirate\alliance\J_AP1.lvl" />
-    <Content Include="Levels\testlevels\jakob_pirate\alliance\J_AP2.lvl" />
-    <Content Include="Levels\testlevels\jakob_pirate\alliance\J_AP3.lvl" />
-    <Content Include="Levels\testlevels\jakob_pirate\rebel\J_RP1.lvl" />
-    <Content Include="Levels\testlevels\jakob_pirate\rebel\J_RP2.lvl" />
-    <Content Include="Levels\testlevels\jakob_pirate\rebel\J_RP3.lvl" />
-    <Content Include="Levels\testlevels\johan_main\DefendColonyBreak.lvl" />
-    <Content Include="Levels\testlevels\johan_main\DefendColonyHold.lvl" />
-    <Content Include="Levels\testlevels\johan_main\FreighterEscortlvl1.lvl" />
-    <Content Include="Levels\testlevels\johan_main\FreighterEscortlvl2.lvl" />
-    <Content Include="Levels\testlevels\johan_main\RebelsAsteroids.lvl" />
-    <Content Include="Levels\LonelyAsteroidLevel.lvl" />
-    <Content Include="Levels\unsorted\HardLevel.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\unsorted\P2AttackOnRebelStation.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\unsorted\P2RebelAmbush.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\unsorted\XCoverBlown.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\unsorted\XDefendColony.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\unsorted\XFirstMission.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\unsorted\XHardLevel.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\unsorted\XMain10_level1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\unsorted\XMain_TheAlliance.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\unsorted\XPirateAmbush.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\unsorted\XPirateAnnihilation.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\unsorted\XScoutingLevel.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\unsorted\XSecondMissionlvl1.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\unsorted\XSecondMissionlvl2.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Levels\unsorted\XSecondMissionlvl3.lvl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <BundleResource Include="Resources\icon.icns" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Content\Fonts\ISL_Jupiter_24.xnb" />
     <Content Include="Content\Fonts\ISL_Jupiter_28.xnb" />
     <Content Include="Content\Fonts\Iceland_10.xnb" />
@@ -892,8 +727,123 @@
     <Content Include="Content\Music\vertical\PowerSong.xnb" />
     <Content Include="Content\Music\vertical\Stars.mp4" />
     <Content Include="Content\Music\vertical\Stars.xnb" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\icon.icns" />
+    <Content Include="Data\colonydata.dat" />
+    <Content Include="Data\missiondata.dat" />
+    <Content Include="Data\planetdata.dat" />
+    <Content Include="Data\rumordata.dat" />
+    <Content Include="Data\stationdata.dat" />
+    <Content Include="Data\storydata.dat" />
+    <Content Include="Data\verticaldata.dat" />
+    <Content Include="Levels\mainlevels\m1_RebelsAsteroids.lvl" />
+    <Content Include="Levels\mainlevels\m2_FreighterEscort_lv1.lvl" />
+    <Content Include="Levels\mainlevels\m2_FreighterEscort_lv2.lvl" />
+    <Content Include="Levels\mainlevels\m3_DefendColony_lv1.lvl" />
+    <Content Include="Levels\mainlevels\m3_DefendColony_lv2.lvl" />
+    <Content Include="Levels\mainlevels\m4_Infiltration_lv1.lvl" />
+    <Content Include="Levels\mainlevels\m4_Infiltration_lv2.lvl" />
+    <Content Include="Levels\mainlevels\m5_Retribution_lv1.lvl" />
+    <Content Include="Levels\mainlevels\m5_Retribution_lv2.lvl" />
+    <Content Include="Levels\mainlevels\m6_ITNOS_lv1.lvl" />
+    <Content Include="Levels\mainlevels\m6_ITNOS_lv2.lvl" />
+    <Content Include="Levels\mainlevels\m7_Information.lvl" />
+    <Content Include="Levels\mainlevels\m8a_OYO_lv1.lvl" />
+    <Content Include="Levels\mainlevels\m8a_OYO_lv2.lvl" />
+    <Content Include="Levels\mainlevels\m8b_rebels_lv1.lvl" />
+    <Content Include="Levels\mainlevels\m8b_rebels_lv2.lvl" />
+    <Content Include="Levels\mainlevels\m8c_alliance_lv1.lvl" />
+    <Content Include="Levels\mainlevels\m8c_alliance_lv2.lvl" />
+    <Content Include="Levels\pirates\AlliancePirate1.lvl" />
+    <Content Include="Levels\pirates\AlliancePirate2.lvl" />
+    <Content Include="Levels\pirates\AlliancePirate3.lvl" />
+    <Content Include="Levels\pirates\AlliancePirate4.lvl" />
+    <Content Include="Levels\pirates\AlliancePirate5.lvl" />
+    <Content Include="Levels\pirates\RebelPirate1.lvl" />
+    <Content Include="Levels\pirates\RebelPirate2.lvl" />
+    <Content Include="Levels\pirates\RebelPirate3.lvl" />
+    <Content Include="Levels\pirates\RebelPirate4.lvl" />
+    <Content Include="Levels\pirates\RebelPirate5.lvl" />
+    <Content Include="Levels\pirates\hangar1.lvl" />
+    <Content Include="Levels\pirates\hangar2.lvl" />
+    <Content Include="Levels\pirates\hangar3.lvl" />
+    <Content Include="Levels\sidelevels\AstroDodger.lvl" />
+    <Content Include="Levels\sidelevels\Astroscan.lvl" />
+    <Content Include="Levels\sidelevels\DeathByMeteor.lvl" />
+    <Content Include="Levels\sidelevels\FlightTraining_1.lvl" />
+    <Content Include="Levels\sidelevels\FlightTraining_2.lvl" />
+    <Content Include="Levels\sidelevels\FlightTraining_3.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\AlliancePirate1.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\AlliancePirate2.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\AlliancePirate3.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\AlliancePirate4.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\AlliancePirate5.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\RebelPirate1.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\RebelPirate2.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\RebelPirate3.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\RebelPirate4.lvl" />
+    <Content Include="Levels\testlevels\all_pirates\RebelPirate5.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\4_infiltration\m4_infiltration_lv1_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\4_infiltration\m4_infiltration_lv2_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\4_infiltration\m4_infiltration_lv2_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv1_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv1_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv2_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv2_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\6_itnos\m6_itnos_lv1_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\6_itnos\m6_itnos_lv1_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\6_itnos\m6_itnos_lv2_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\7_infiltration\m7_infiltration_lv1_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\7_infiltration\m7_infiltration_lv1_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv1_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv1_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv2_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8a_oyo\m10a_OYO_lv2_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv1_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv1_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv2_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv2_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv1_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv1_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv2_v1.lvl" />
+    <Content Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv2_v2.lvl" />
+    <Content Include="Levels\testlevels\jakob_pirate\alliance\J_AP1.lvl" />
+    <Content Include="Levels\testlevels\jakob_pirate\alliance\J_AP2.lvl" />
+    <Content Include="Levels\testlevels\jakob_pirate\alliance\J_AP3.lvl" />
+    <Content Include="Levels\testlevels\jakob_pirate\rebel\J_RP1.lvl" />
+    <Content Include="Levels\testlevels\jakob_pirate\rebel\J_RP2.lvl" />
+    <Content Include="Levels\testlevels\jakob_pirate\rebel\J_RP3.lvl" />
+    <Content Include="Levels\testlevels\P2AttackOnRebelStation.lvl" />
+    <Content Include="Levels\testlevels\P2RebelAmbush.lvl" />
+    <Content Include="Levels\testlevels\P3_Science_1.lvl" />
+    <Content Include="Levels\testlevels\P4_hunted1.lvl" />
+    <Content Include="Levels\testlevels\P4_hunted2.lvl" />
+    <Content Include="Levels\testlevels\P4_hunted3.lvl" />
+    <Content Include="Levels\testlevels\P4_rebel1.lvl" />
+    <Content Include="Levels\testlevels\P4_rebel2.lvl" />
+    <Content Include="Levels\testlevels\P4_recognizedByAlliance.lvl" />
+    <Content Include="Levels\testlevels\XDefendColony.lvl" />
+    <Content Include="Levels\testlevels\test_lv1.lvl" />
+    <Content Include="Levels\testlevels\test_lv2.lvl" />
+    <Content Include="Levels\testlevels\test_lv3.lvl" />
+    <Content Include="Levels\testlevels\johan_main\DefendColonyBreak.lvl" />
+    <Content Include="Levels\testlevels\johan_main\DefendColonyHold.lvl" />
+    <Content Include="Levels\testlevels\johan_main\FreighterEscortlvl1.lvl" />
+    <Content Include="Levels\testlevels\johan_main\FreighterEscortlvl2.lvl" />
+    <Content Include="Levels\testlevels\johan_main\RebelsAsteroids.lvl" />
+    <Content Include="Levels\LonelyAsteroidLevel.lvl" />
+    <Content Include="Levels\unsorted\HardLevel.lvl" />
+    <Content Include="Levels\unsorted\P2AttackOnRebelStation.lvl" />
+    <Content Include="Levels\unsorted\P2RebelAmbush.lvl" />
+    <Content Include="Levels\unsorted\XCoverBlown.lvl" />
+    <Content Include="Levels\unsorted\XDefendColony.lvl" />
+    <Content Include="Levels\unsorted\XFirstMission.lvl" />
+    <Content Include="Levels\unsorted\XHardLevel.lvl" />
+    <Content Include="Levels\unsorted\XMain10_level1.lvl" />
+    <Content Include="Levels\unsorted\XMain_TheAlliance.lvl" />
+    <Content Include="Levels\unsorted\XPirateAmbush.lvl" />
+    <Content Include="Levels\unsorted\XPirateAnnihilation.lvl" />
+    <Content Include="Levels\unsorted\XScoutingLevel.lvl" />
+    <Content Include="Levels\unsorted\XSecondMissionlvl1.lvl" />
+    <Content Include="Levels\unsorted\XSecondMissionlvl2.lvl" />
+    <Content Include="Levels\unsorted\XSecondMissionlvl3.lvl" />
   </ItemGroup>
 </Project>
