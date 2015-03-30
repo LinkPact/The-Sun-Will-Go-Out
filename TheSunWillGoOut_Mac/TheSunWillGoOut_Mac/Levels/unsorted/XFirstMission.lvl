@@ -1,0 +1,24 @@
+Header :duration 60:width 800:durGridWidth 1:levelObjective Finish|X0:
+Point
+T: 0:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 3:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 6:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 9:E: 0nn0 0nn0 0nn0 0nn0 0nn0 Gnn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 12:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 15:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 18:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 21:E: 0nn0 0nn0 Gc10 0nn0 0nn0 0nn0 0nn0 0c10 Gc10 0nn0 0nn0:end
+T: 24:E: 0nn0 0nn0 0nn0 0nn0 0nn0 Gnn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 27:E: 0nn0 0nn0 0nn0 ann0 0nn0 0nn0 0nn0 ann0 0nn0 0nn0 0nn0:end
+T: 30:E: 0nn0 Rzz0 0nn0 0nn0 0c10 0c10 0nn0 0c10 0c10 Rzz0 0nn0:end
+T: 33:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 36:E: 0nn0 0nn0 ann0 0nn0 0nn0 Yst0 0nn0 0nn0 ann0 0nn0 0nn0:end
+T: 39:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 42:E: 0nn0 0nn0 0nn0 Gln0 0nn0 0c10 0c10 Gln0 0nn0 0nn0 0nn0:end
+T: 45:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 48:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 51:E: 0nn0 Gc10 0nn0 Rst0 0nn0 Gc10 0nn0 Rst0 0nn0 Gc10 0nn0:end
+T: 54:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 57:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+Duration
+C:0,0 0,19:E: SslGP10S2T45

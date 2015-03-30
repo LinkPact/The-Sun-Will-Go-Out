@@ -1,0 +1,13 @@
+﻿<Properties MonoDevelop.MonoMac.LastXamMacNagTime="3/30/2015 2:02:27 AM">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="TheSunWillGoOut_Mac/Program.cs">
+    <Files>
+      <File FileName="TheSunWillGoOut_Mac/Game1.cs" Line="1" Column="1" />
+      <File FileName="TheSunWillGoOut_Mac/Program.cs" Line="27" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
