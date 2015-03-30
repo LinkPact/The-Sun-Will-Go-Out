@@ -132,7 +132,6 @@
     <Compile Include="GameStates\MenuStates\StartGameState.cs" />
     <Compile Include="GameStates\MenuStates\OptionMenus\OptionSubState.cs" />
     <Compile Include="GameStates\MenuStates\OptionMenus\OptionsMenuState.cs" />
-    <Compile Include="GameStates\MenuStates\OptionMenus\SubStates\ControlOptionsSubState.cs" />
     <Compile Include="GameStates\MenuStates\OptionMenus\SubStates\GameOptionsSubState.cs" />
     <Compile Include="GameStates\MenuStates\OptionMenus\SubStates\SoundOptionsSubState.cs" />
     <Compile Include="GameStates\MenuStates\OptionMenus\SubStates\VisualOptionsSubState.cs" />
@@ -160,7 +159,6 @@
     <Compile Include="GameStates\ShipManagement\ShipManagerText.cs" />
     <Compile Include="GameUtils\Button.cs" />
     <Compile Include="GameUtils\ConfigFile.cs" />
-    <Compile Include="GameUtils\ControlManager.cs" />
     <Compile Include="GameUtils\CustomSoundEffect.cs" />
     <Compile Include="GameUtils\FontManager.cs" />
     <Compile Include="GameUtils\MathFunctions.cs" />
@@ -644,6 +642,8 @@
     <Compile Include="Shooter-part\Visual and Music\DeathAnims\SmallExplosion.cs" />
     <Compile Include="Shooter-part\Visual and Music\Shield\ShieldEffect.cs" />
     <Compile Include="Shooter-part\Visual and Music\Shield\ShieldEffectGenerator.cs" />
+    <Compile Include="GameUtils\ControlManager.cs" />
+    <Compile Include="GameStates\MenuStates\OptionMenus\SubStates\ControlOptionsSubState.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\icon.icns" />
