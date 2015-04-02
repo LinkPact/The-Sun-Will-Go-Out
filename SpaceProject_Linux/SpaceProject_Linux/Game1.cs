@@ -52,7 +52,8 @@ namespace SpaceProject_Linux
 
         // Screen and resolution
         public Vector2 ScreenCenter { get { return new Vector2(ScreenSize.X / 2, ScreenSize.Y / 2); } }
-        public Point ScreenSize { get { return resolution.ToPoint(); } }
+        private Point screenSize;
+        public Point ScreenSize { get { return screenSize; } }
         private Vector2 resolution;
         public static List<Vector2> ResolutionOptions;
         public Vector2 Resolution { get { return resolution; } }
@@ -98,6 +99,7 @@ namespace SpaceProject_Linux
 
             resolution = new Vector2(settingsFile.GetPropertyAsFloat("visual", "resolutionx", 1024),
                                      settingsFile.GetPropertyAsFloat("visual", "resolutiony", 768));
+            screenSize = new Point((int)resolution.X, (int)resolution.Y);
 
             random = new Random();
 
@@ -108,6 +110,8 @@ namespace SpaceProject_Linux
             graphics.IsFullScreen = settingsFile.GetPropertyAsBool("visual", "fullscreen", false);
             graphics.SynchronizeWithVerticalRetrace = true;
             graphics.ApplyChanges();
+
+            CenterScreenWindow();
 
             IsMouseVisible = true;
 
@@ -357,6 +361,9 @@ namespace SpaceProject_Linux
             graphics.PreferredBackBufferHeight = (int)resolution.Y;
             graphics.ApplyChanges();
 
+            screenSize = new Point((int)resolution.X, (int)resolution.Y);
+            CenterScreenWindow();
+
             menuBGController.Initialize();
             musicManager.Initialize();
             soundEffectsManager.Initialize();
@@ -407,6 +414,15 @@ namespace SpaceProject_Linux
         {
             Directory.CreateDirectory(SaveFilePath);
             Directory.CreateDirectory(LevelLogger.writeDir);
+        }
+
+        private void CenterScreenWindow()
+        {
+            if (!graphics.IsFullScreen)
+            {
+                Window.Position = new Point((GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width - ScreenSize.X) / 2,
+                        (GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height - ScreenSize.Y) / 2);
+            }
         }
     }
 }
