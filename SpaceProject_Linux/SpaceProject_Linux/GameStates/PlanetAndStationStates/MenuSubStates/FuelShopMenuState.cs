@@ -103,7 +103,7 @@ namespace SpaceProject_Linux
             fuelStrings.Add("Rupees: " + StatsManager.Rupees);
 
             fuelBar.Update(gameTime, StatsManager.Fuel + boughtFuel, StatsManager.MaxFuel,
-                new Vector2(Game.Window.ClientBounds.Width * 1 / 3 + 20, Game.Window.ClientBounds.Height / 2 + 24));
+                new Vector2(Game.ScreenSize.X * 1 / 3 + 20, Game.ScreenSize.Y / 2 + 24));
         }
 
         public override void ButtonActions()
@@ -138,8 +138,8 @@ namespace SpaceProject_Linux
             for (int i = 0; i < fuelStrings.Count; i++)
             {
                 spriteBatch.DrawString(Game.fontManager.GetFont(16), fuelStrings[i],
-                    new Vector2(Game.Window.ClientBounds.Width * 2 / 3,
-                                Game.Window.ClientBounds.Height * 2 / 4 + 60 + (i * 20)) + Game.fontManager.FontOffset,
+                    new Vector2(Game.ScreenSize.X * 2 / 3,
+                                Game.ScreenSize.Y * 2 / 4 + 60 + (i * 20)) + Game.fontManager.FontOffset,
                     Game.fontManager.FontColor,
                     0.0f, new Vector2(Game.fontManager.GetFont(16).MeasureString(fuelStrings[i]).X / 2, 0),
                     1f, SpriteEffects.None, 0.5f);
@@ -148,8 +148,8 @@ namespace SpaceProject_Linux
             for (int i = 0; i < helpStrings.Count; i++)
             {
                 spriteBatch.DrawString(Game.fontManager.GetFont(16), helpStrings[i],
-                    new Vector2(Game.Window.ClientBounds.Width * 2 / 3,
-                                Game.Window.ClientBounds.Height * 3 / 4 + 20 + (i * 20)) + Game.fontManager.FontOffset,
+                    new Vector2(Game.ScreenSize.X * 2 / 3,
+                                Game.ScreenSize.Y * 3 / 4 + 20 + (i * 20)) + Game.fontManager.FontOffset,
                     Game.fontManager.FontColor,
                     0.0f, new Vector2(Game.fontManager.GetFont(16).MeasureString(helpStrings[i]).X / 2, 0),
                     1f, SpriteEffects.None, 0.5f);

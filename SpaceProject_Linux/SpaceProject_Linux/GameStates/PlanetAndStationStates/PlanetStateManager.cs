@@ -29,42 +29,42 @@ namespace SpaceProject_Linux
             tempTextList = new List<string>();
             tempVariableList = new List<string>();
 
-            portraitTextRectangle = new Rectangle(Game.Window.ClientBounds.Width / 2 + 10,
-                                                (Game.Window.ClientBounds.Height / 2) + 10,
-                                                 (Game.Window.ClientBounds.Width / 2) - 20,
-                                                (Game.Window.ClientBounds.Height / 2) - 20);
+            portraitTextRectangle = new Rectangle(Game.ScreenSize.X / 2 + 10,
+                                                (Game.ScreenSize.Y / 2) + 10,
+                                                 (Game.ScreenSize.X / 2) - 20,
+                                                (Game.ScreenSize.Y / 2) - 20);
 
-            normalTextRectangle = new Rectangle(Game.Window.ClientBounds.Width / 3 + 10,
-                                    (Game.Window.ClientBounds.Height / 2) + 10,
-                                     (Game.Window.ClientBounds.Width * 2 / 3) - 20,
-                                    (Game.Window.ClientBounds.Height / 2) - 20);
+            normalTextRectangle = new Rectangle(Game.ScreenSize.X / 3 + 10,
+                                    (Game.ScreenSize.Y / 2) + 10,
+                                     (Game.ScreenSize.X * 2 / 3) - 20,
+                                    (Game.ScreenSize.Y / 2) - 20);
 
             responseRectangles = new List<Rectangle>();
 
-            responseRectangle1 = new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
-                                               Game.Window.ClientBounds.Height * 10 / 12,
-                                               Game.Window.ClientBounds.Width - 20,
+            responseRectangle1 = new Rectangle((Game.ScreenSize.X * 2 / 3),
+                                               Game.ScreenSize.Y * 10 / 12,
+                                               Game.ScreenSize.X - 20,
                                                10);
 
             responseRectangles.Add(responseRectangle1);
 
-            responseRectangle2 = new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
-                                               Game.Window.ClientBounds.Height * 10 / 12 + 24,
-                                               Game.Window.ClientBounds.Width - 20,
+            responseRectangle2 = new Rectangle((Game.ScreenSize.X * 2 / 3),
+                                               Game.ScreenSize.Y * 10 / 12 + 24,
+                                               Game.ScreenSize.X - 20,
                                                10);
 
             responseRectangles.Add(responseRectangle2);
 
-            responseRectangle3 = new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
-                                               Game.Window.ClientBounds.Height * 10 / 12 + 48,
-                                               Game.Window.ClientBounds.Width - 20,
+            responseRectangle3 = new Rectangle((Game.ScreenSize.X * 2 / 3),
+                                               Game.ScreenSize.Y * 10 / 12 + 48,
+                                               Game.ScreenSize.X - 20,
                                                10);
 
             responseRectangles.Add(responseRectangle3);
 
-            responseRectangle4 = new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
-                                               Game.Window.ClientBounds.Height * 10 / 12 + 72,
-                                               Game.Window.ClientBounds.Width - 20,
+            responseRectangle4 = new Rectangle((Game.ScreenSize.X * 2 / 3),
+                                               Game.ScreenSize.Y * 10 / 12 + 72,
+                                               Game.ScreenSize.X - 20,
                                                10);
 
             responseRectangles.Add(responseRectangle4);

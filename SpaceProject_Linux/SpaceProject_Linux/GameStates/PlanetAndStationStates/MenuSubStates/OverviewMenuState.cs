@@ -50,8 +50,8 @@ namespace SpaceProject_Linux
                                         SpriteSheet.GetSubSprite(tempRectActive),
                                         SpriteSheet.GetSubSprite(tempRectSelected),
                                         SpriteSheet.GetSubSprite(tempRectDisabled),
-                                        new Vector2(Game.Window.ClientBounds.Width / 7 - Game.Window.ClientBounds.Width / 12,
-                                            (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7),
+                                        new Vector2(Game.ScreenSize.X / 7 - Game.ScreenSize.X / 12,
+                                            (Game.ScreenSize.Y / 2) + Game.ScreenSize.Y / 7),
                                         Vector2.Zero);
                 buttonMission.name = "Missions";
                 buttonMission.isVisible = true;
@@ -66,8 +66,8 @@ namespace SpaceProject_Linux
                                                 SpriteSheet.GetSubSprite(tempRectActive),
                                                 SpriteSheet.GetSubSprite(tempRectSelected),
                                                 SpriteSheet.GetSubSprite(tempRectDisabled),
-                                                new Vector2(Game.Window.ClientBounds.Width / 7,
-                                                    (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7),
+                                                new Vector2(Game.ScreenSize.X / 7,
+                                                    (Game.ScreenSize.Y / 2) + Game.ScreenSize.Y / 7),
                                                 Vector2.Zero);
                 buttonRumors.name = "Rumors";
                 buttonRumors.isVisible = true;
@@ -82,8 +82,8 @@ namespace SpaceProject_Linux
                                                 SpriteSheet.GetSubSprite(tempRectActive),
                                                 SpriteSheet.GetSubSprite(tempRectSelected),
                                                 SpriteSheet.GetSubSprite(tempRectDisabled),
-                                                new Vector2(Game.Window.ClientBounds.Width / 7 + Game.Window.ClientBounds.Width / 12,
-                                                    (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7),
+                                                new Vector2(Game.ScreenSize.X / 7 + Game.ScreenSize.X / 12,
+                                                    (Game.ScreenSize.Y / 2) + Game.ScreenSize.Y / 7),
                                                 Vector2.Zero);
                 buttonShop.name = "Buy/Sell";
                 buttonShop.isVisible = true;
@@ -98,8 +98,8 @@ namespace SpaceProject_Linux
                                                 SpriteSheet.GetSubSprite(tempRectActive),
                                                 SpriteSheet.GetSubSprite(tempRectSelected),
                                                 SpriteSheet.GetSubSprite(tempRectDisabled),
-                                                new Vector2(Game.Window.ClientBounds.Width / 7 - Game.Window.ClientBounds.Width / 12,
-                                                    (Game.Window.ClientBounds.Height / 2) + (Game.Window.ClientBounds.Height / 7) * 2),
+                                                new Vector2(Game.ScreenSize.X / 7 - Game.ScreenSize.X / 12,
+                                                    (Game.ScreenSize.Y / 2) + (Game.ScreenSize.Y / 7) * 2),
                                                 Vector2.Zero);
                 buttonMining.name = "Mining";
                 buttonMining.isVisible = true;
@@ -112,8 +112,8 @@ namespace SpaceProject_Linux
                                                 SpriteSheet.GetSubSprite(tempRectPassive),
                                                 SpriteSheet.GetSubSprite(tempRectActive),
                                                 SpriteSheet.GetSubSprite(tempRectSelected),
-                                                new Vector2(Game.Window.ClientBounds.Width / 7,
-                                                    (Game.Window.ClientBounds.Height / 2) + (Game.Window.ClientBounds.Height / 7) * 2));
+                                                new Vector2(Game.ScreenSize.X / 7,
+                                                    (Game.ScreenSize.Y / 2) + (Game.ScreenSize.Y / 7) * 2));
                 buttonPlanetInfo.name = "Planet Info";
                 buttonPlanetInfo.isVisible = true;
 
@@ -125,8 +125,8 @@ namespace SpaceProject_Linux
                                                 SpriteSheet.GetSubSprite(tempRectPassive),
                                                 SpriteSheet.GetSubSprite(tempRectActive),
                                                 SpriteSheet.GetSubSprite(tempRectSelected),
-                                                new Vector2(Game.Window.ClientBounds.Width / 7 + Game.Window.ClientBounds.Width / 12,
-                                                    (Game.Window.ClientBounds.Height / 2) + (Game.Window.ClientBounds.Height / 7) * 2));
+                                                new Vector2(Game.ScreenSize.X / 7 + Game.ScreenSize.X / 12,
+                                                    (Game.ScreenSize.Y / 2) + (Game.ScreenSize.Y / 7) * 2));
                 buttonBack.name = "Back";
                 buttonBack.isVisible = true;
 
@@ -156,8 +156,8 @@ namespace SpaceProject_Linux
                                         SpriteSheet.GetSubSprite(tempRectPassive),
                                         SpriteSheet.GetSubSprite(tempRectActive),
                                         SpriteSheet.GetSubSprite(tempRectSelected),
-                                        new Vector2(Game.Window.ClientBounds.Width / 7 - Game.Window.ClientBounds.Width / 12,
-                                            (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7));
+                                        new Vector2(Game.ScreenSize.X / 7 - Game.ScreenSize.X / 12,
+                                            (Game.ScreenSize.Y / 2) + Game.ScreenSize.Y / 7));
                 buttonMission.name = "Missions";
                 buttonMission.isVisible = true;
 
@@ -169,8 +169,8 @@ namespace SpaceProject_Linux
                                                 SpriteSheet.GetSubSprite(tempRectPassive),
                                                 SpriteSheet.GetSubSprite(tempRectActive),
                                                 SpriteSheet.GetSubSprite(tempRectSelected),
-                                                new Vector2(Game.Window.ClientBounds.Width / 7,
-                                                    (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7));
+                                                new Vector2(Game.ScreenSize.X / 7,
+                                                    (Game.ScreenSize.Y / 2) + Game.ScreenSize.Y / 7));
                 buttonRumors.name = "Rumors";
                 buttonRumors.isVisible = true;
 
@@ -184,8 +184,8 @@ namespace SpaceProject_Linux
                                                 SpriteSheet.GetSubSprite(tempRectActive),
                                                 SpriteSheet.GetSubSprite(tempRectSelected),
                                                 SpriteSheet.GetSubSprite(tempRectDisabled),
-                                                new Vector2(Game.Window.ClientBounds.Width / 7 + Game.Window.ClientBounds.Width / 12,
-                                                    (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7),
+                                                new Vector2(Game.ScreenSize.X / 7 + Game.ScreenSize.X / 12,
+                                                    (Game.ScreenSize.Y / 2) + Game.ScreenSize.Y / 7),
                                                 Vector2.Zero);
                 buttonShop.name = "Buy/Sell";
                 buttonShop.isVisible = true;
@@ -198,8 +198,8 @@ namespace SpaceProject_Linux
                                                 SpriteSheet.GetSubSprite(tempRectPassive),
                                                 SpriteSheet.GetSubSprite(tempRectActive),
                                                 SpriteSheet.GetSubSprite(tempRectSelected),
-                                                new Vector2(Game.Window.ClientBounds.Width / 7 - Game.Window.ClientBounds.Width / 12,
-                                                    (Game.Window.ClientBounds.Height / 2) + (Game.Window.ClientBounds.Height / 7) * 2));
+                                                new Vector2(Game.ScreenSize.X / 7 - Game.ScreenSize.X / 12,
+                                                    (Game.ScreenSize.Y / 2) + (Game.ScreenSize.Y / 7) * 2));
                 buttonBack.name = "Back";
                 buttonBack.isVisible = true;
 
@@ -218,19 +218,19 @@ namespace SpaceProject_Linux
 
             shopSelectCursor = new Cursor(this.Game, this.SpriteSheet, new Rectangle(201, 121, 14, 14), new Rectangle(201, 134, 14, 14));
 
-            shopSelectRectangle1 = new Rectangle(Game.Window.ClientBounds.Width * 2 / 3,
-                                                Game.Window.ClientBounds.Height / 2 + 100,
-                                                Game.Window.ClientBounds.Width * 2 / 3 - 20,
+            shopSelectRectangle1 = new Rectangle(Game.ScreenSize.X * 2 / 3,
+                                                Game.ScreenSize.Y / 2 + 100,
+                                                Game.ScreenSize.X * 2 / 3 - 20,
                                                 10);
 
-            shopSelectRectangle2 = new Rectangle(Game.Window.ClientBounds.Width * 2 / 3,
-                                                Game.Window.ClientBounds.Height / 2 + 120,
-                                                Game.Window.ClientBounds.Width * 2 / 3 - 20,
+            shopSelectRectangle2 = new Rectangle(Game.ScreenSize.X * 2 / 3,
+                                                Game.ScreenSize.Y / 2 + 120,
+                                                Game.ScreenSize.X * 2 / 3 - 20,
                                                 10);
 
-            shopSelectRectangle3 = new Rectangle(Game.Window.ClientBounds.Width * 2 / 3,
-                                                Game.Window.ClientBounds.Height / 2 + 140,
-                                                Game.Window.ClientBounds.Width * 2 / 3 - 20,
+            shopSelectRectangle3 = new Rectangle(Game.ScreenSize.X * 2 / 3,
+                                                Game.ScreenSize.Y / 2 + 140,
+                                                Game.ScreenSize.X * 2 / 3 - 20,
                                                 10);
         }
 
@@ -388,9 +388,9 @@ namespace SpaceProject_Linux
                                     BaseStateManager.ChangeMenuSubState("Mission");
 
                                     BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
-                                                      new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
-                                                                   ((Game.Window.ClientBounds.Height / 2) + 40) + 20 * (BaseStateManager.MissionMenuState.AvailableMissions.Count + 1),
-                                                                     Game.Window.ClientBounds.Width - 20,
+                                                      new Rectangle((Game.ScreenSize.X * 2 / 3),
+                                                                   ((Game.ScreenSize.Y / 2) + 40) + 20 * (BaseStateManager.MissionMenuState.AvailableMissions.Count + 1),
+                                                                     Game.ScreenSize.X - 20,
                                                       10),
                                                       true,
                                                       "Back"));
@@ -536,9 +536,9 @@ namespace SpaceProject_Linux
                         if (MissionManager.ReturnAvailableMissions(BaseState.GetBase().name).Count > 0)
                         {
                             BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                          new Rectangle(Game.Window.ClientBounds.Width * 2 / 3,
-                                                                                        (int)(Game.Window.ClientBounds.Height - (int)BaseState.Game.fontManager.GetFont(14).MeasureString("Press 'Enter' to go to mission selection..").Y) - 20,
-                                                                                        (Game.Window.ClientBounds.Width * 2 / 3) - 20,
+                                                                          new Rectangle(Game.ScreenSize.X * 2 / 3,
+                                                                                        (int)(Game.ScreenSize.Y - (int)BaseState.Game.fontManager.GetFont(14).MeasureString("Press 'Enter' to go to mission selection..").Y) - 20,
+                                                                                        (Game.ScreenSize.X * 2 / 3) - 20,
                                                                                         10),
                                                                           true,
                                                                           "Press 'Enter' to go to mission selection.."));
@@ -551,9 +551,9 @@ namespace SpaceProject_Linux
                         if (BaseState.GetBase().HasShop)
                         {
                             BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                        new Rectangle(Game.Window.ClientBounds.Width * 2 / 3,
-                                                      (int)(Game.Window.ClientBounds.Height - (int)BaseState.Game.fontManager.GetFont(14).MeasureString("Press 'Enter' to access shop..").Y) - 20,
-                                                      (Game.Window.ClientBounds.Width * 2 / 3) / 2,
+                                        new Rectangle(Game.ScreenSize.X * 2 / 3,
+                                                      (int)(Game.ScreenSize.Y - (int)BaseState.Game.fontManager.GetFont(14).MeasureString("Press 'Enter' to access shop..").Y) - 20,
+                                                      (Game.ScreenSize.X * 2 / 3) / 2,
                                                       10),
                                         true,
                                         "Press 'Enter' to access shop.."));
@@ -633,9 +633,9 @@ namespace SpaceProject_Linux
                 case "Back":
                     {
                         BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                      new Rectangle(Game.Window.ClientBounds.Width * 2 / 3,
-                                                                                    (int)(Game.Window.ClientBounds.Height - (int)BaseState.Game.fontManager.GetFont(14).MeasureString("Press 'Enter' to access shop..").Y) - 20,
-                                                                                    (Game.Window.ClientBounds.Width * 2 / 3) / 2,
+                                                                      new Rectangle(Game.ScreenSize.X * 2 / 3,
+                                                                                    (int)(Game.ScreenSize.Y - (int)BaseState.Game.fontManager.GetFont(14).MeasureString("Press 'Enter' to access shop..").Y) - 20,
+                                                                                    (Game.ScreenSize.X * 2 / 3) / 2,
                                                                                     10),
                                                                       true,
                                                                       "Press 'Enter' to leave.."));

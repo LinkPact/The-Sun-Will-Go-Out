@@ -23,7 +23,7 @@ namespace SpaceProject_Linux
             //waveEvents.Add(new VFormation(Game, player, spriteSheet, level, "big", 1000, 2, 150, 50, Game.ScreenCenter.X));
             //
             //waveEvents.Add(new LineFormation(Game, player, spriteSheet, level, "blue", 2000, 2, 50, Game.ScreenCenter.X / 3));
-            //waveEvents.Add(new LineFormation(Game, player, spriteSheet, level, "blue", 2000, 2, 50, Game.Window.ClientBounds.Width - Game.ScreenCenter.X / 3));
+            //waveEvents.Add(new LineFormation(Game, player, spriteSheet, level, "blue", 2000, 2, 50, Game.ScreenSize.X - Game.ScreenCenter.X / 3));
             
             //waveEvents.Add(new SquareFormation(Game, player, spriteSheet, "green", 1000, 8, 2, 20, 20, 400));
             //PointLevelEvent square2 = new SquareFormation(Game, player, spriteSheet, "red", 1000, 5, 1, 30, 20, 400);

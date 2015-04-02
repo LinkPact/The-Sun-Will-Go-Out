@@ -25,8 +25,8 @@ namespace SpaceProject_Linux
             int yOffset = 50;
 
             spriteFont = Game.fontManager.GetFont(14);
-            textBox = TextUtils.CreateTextBox(spriteFont, new Rectangle(xOffset, yOffset, Game.Window.ClientBounds.Width - 20,
-                                        Game.Window.ClientBounds.Height - 20), false, 
+            textBox = TextUtils.CreateTextBox(spriteFont, new Rectangle(xOffset, yOffset, Game.ScreenSize.X - 20,
+                                        Game.ScreenSize.Y - 20), false, 
                                         "Design and development:\nDaniel Alm Grundstrom\nJakob Willforss\nJohan Philipsson\n\n"+
                                         "Visuals:\nDaniel Alm Grundstrom\n\n" +
                                         "Music:\nDaniel Alm Grundstrom\nJakob Willforss\n\n" +
@@ -102,8 +102,8 @@ namespace SpaceProject_Linux
                              Color.White,
                              0.0f,
                              Vector2.Zero,
-                             new Vector2(Game.Window.ClientBounds.Width / Game.DefaultResolution.X,
-                                         Game.Window.ClientBounds.Height / Game.DefaultResolution.Y),
+                             new Vector2(Game.ScreenSize.X / Game.DefaultResolution.X,
+                                         Game.ScreenSize.Y / Game.DefaultResolution.Y),
                              SpriteEffects.None,
                              0.5f);
 

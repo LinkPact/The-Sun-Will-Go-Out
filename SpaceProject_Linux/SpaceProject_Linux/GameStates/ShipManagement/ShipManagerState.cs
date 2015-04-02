@@ -77,13 +77,13 @@ namespace SpaceProject_Linux
             ship = spriteSheet.GetSubSprite(new Rectangle(0, 771, 212, 185));
 
             upperLeftRectangle = new Rectangle(0, 0,
-                (int)Game.Window.ClientBounds.Width / 2, (int)Game.Window.ClientBounds.Height / 2);
+                (int)Game.ScreenSize.X / 2, (int)Game.ScreenSize.Y / 2);
 
             lowerLeftRectangle = new Rectangle(0, upperLeftRectangle.Height,
                 upperLeftRectangle.Width, upperLeftRectangle.Height);
 
             rightRectangle = new Rectangle(lowerLeftRectangle.Width, 0,
-                lowerLeftRectangle.Width, (int)(Game.Window.ClientBounds.Height));
+                lowerLeftRectangle.Width, (int)(Game.ScreenSize.Y));
 
 
             //Managers for cursor and text.
@@ -292,12 +292,12 @@ namespace SpaceProject_Linux
             fontManager.Draw(spriteBatch);
             informationManager.Draw(spriteBatch);
 
-            if (Game.Window.ClientBounds.Height.Equals(768))
+            if (Game.ScreenSize.Y.Equals(768))
             {
                 itemComp.Draw(spriteBatch, new Vector2(34, 481), 15); 
             }
 
-            else if (Game.Window.ClientBounds.Height.Equals(720))
+            else if (Game.ScreenSize.Y.Equals(720))
             {
                 itemComp.Draw(spriteBatch, new Vector2(34, 456), 15); 
             }

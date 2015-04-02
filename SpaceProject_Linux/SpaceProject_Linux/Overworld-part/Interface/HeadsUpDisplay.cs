@@ -44,21 +44,21 @@ namespace SpaceProject_Linux
             radar.Update(gameTime, visibleGameObjects, game.camera.Position);
 
             lifeBar.Update(gameTime, StatsManager.GetShipLife(), StatsManager.Armor(),
-                new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 10,
-                            game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 2 - 15));
+                new Vector2(game.camera.cameraPos.X - game.ScreenSize.X / 2 + 10,
+                            game.camera.cameraPos.Y + game.ScreenSize.Y / 2 - 15));
 
             int[] fusionCells = StatsManager.FusionCells;
             for (int i = 0; i < StatsManager.MaxFusionCells; i++)
             {
                 fusionCellBars[i].Update(gameTime, fusionCells[i], 1,
-                    new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
-                                game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 2 - 60 -
+                    new Vector2(game.camera.cameraPos.X - game.ScreenSize.X / 2 + 8,
+                                game.camera.cameraPos.Y + game.ScreenSize.Y / 2 - 60 -
                                 (i * 10)));
             }
 
             emergencyFusionCellBar.Update(gameTime, StatsManager.EmergencyFusionCell, 1,
-                new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
-                            game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 2 - 45));
+                new Vector2(game.camera.cameraPos.X - game.ScreenSize.X / 2 + 8,
+                            game.camera.cameraPos.Y + game.ScreenSize.Y / 2 - 45));
         }
 
         private void UpdateZoomMap(GameTime gameTime)
@@ -81,8 +81,8 @@ namespace SpaceProject_Linux
         {
             spriteBatch.DrawString(game.fontManager.GetFont(14),
                        "Life: " + ((int)StatsManager.GetShipLife()).ToString(),
-                       new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 10,
-                                   game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 2 - 31) + game.fontManager.FontOffset,
+                       new Vector2(game.camera.cameraPos.X - game.ScreenSize.X / 2 + 10,
+                                   game.camera.cameraPos.Y + game.ScreenSize.Y / 2 - 31) + game.fontManager.FontOffset,
                        game.fontManager.FontColor,
                        .0f,
                        Vector2.Zero,
@@ -100,8 +100,8 @@ namespace SpaceProject_Linux
             spriteBatch.DrawString(game.fontManager.GetFont(14),
                "(X: " + ((int)(game.player.position.X / 10) - origo.X / 10) + ",Y: " +
                        (-((int)(game.player.position.Y / 10) - origo.Y / 10)) + ")",
-                new Vector2(game.camera.cameraPos.X + game.Window.ClientBounds.Width / 2 - 101,
-                           game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 2 - 221) + game.fontManager.FontOffset,
+                new Vector2(game.camera.cameraPos.X + game.ScreenSize.X / 2 - 101,
+                           game.camera.cameraPos.Y + game.ScreenSize.Y / 2 - 221) + game.fontManager.FontOffset,
                 Color.Red, 0f,
                 new Vector2(game.fontManager.GetFont(14).MeasureString("(X:" +
                     (int)(game.player.position.X / 10) + ",Y:" +
@@ -112,8 +112,8 @@ namespace SpaceProject_Linux
         private void DrawFusionCells(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(game.fontManager.GetFont(14), "Fusion Cells: ",
-                new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
-                game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 2 - 97) +
+                new Vector2(game.camera.cameraPos.X - game.ScreenSize.X / 2 + 8,
+                game.camera.cameraPos.Y + game.ScreenSize.Y / 2 - 97) +
                 game.fontManager.FontOffset,
                 game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, 0.92f);
 
@@ -125,14 +125,14 @@ namespace SpaceProject_Linux
         private void DrawRepAndProgress(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(game.fontManager.GetFont(14), "Reputation: " + StatsManager.reputation,
-                new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
-                    game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 8) +
+                new Vector2(game.camera.cameraPos.X - game.ScreenSize.X / 2 + 8,
+                    game.camera.cameraPos.Y - game.ScreenSize.Y / 2 + 8) +
                     game.fontManager.FontOffset,
                 game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, 0.92f);
 
             spriteBatch.DrawString(game.fontManager.GetFont(14), "Progress: " + StatsManager.progress,
-                new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
-                    game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 24) +
+                new Vector2(game.camera.cameraPos.X - game.ScreenSize.X / 2 + 8,
+                    game.camera.cameraPos.Y - game.ScreenSize.Y / 2 + 24) +
                     game.fontManager.FontOffset,
                 game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, 0.92f);
         }
@@ -140,26 +140,26 @@ namespace SpaceProject_Linux
         private void DrawMenuInfo(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(game.fontManager.GetFont(12), "Press 'ESC' to open menu",
-                new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
-                    game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 20) +
+                new Vector2(game.camera.cameraPos.X - game.ScreenSize.X / 2 + 8,
+                    game.camera.cameraPos.Y - game.ScreenSize.Y / 2 + 20) +
                     game.fontManager.FontOffset,
                 game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, 0.92f);
 
             spriteBatch.DrawString(game.fontManager.GetFont(12), "Press 'I' to open inventory",
-                new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
-                    game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 40) +
+                new Vector2(game.camera.cameraPos.X - game.ScreenSize.X / 2 + 8,
+                    game.camera.cameraPos.Y - game.ScreenSize.Y / 2 + 40) +
                     game.fontManager.FontOffset,
                 game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, 0.92f);
 
             spriteBatch.DrawString(game.fontManager.GetFont(12), "Press 'M' to open mission screen",
-                new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
-                    game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 60) +
+                new Vector2(game.camera.cameraPos.X - game.ScreenSize.X / 2 + 8,
+                    game.camera.cameraPos.Y - game.ScreenSize.Y / 2 + 60) +
                     game.fontManager.FontOffset,
                 game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, 0.92f);
 
             spriteBatch.DrawString(game.fontManager.GetFont(12), "Press 'N' to show map",
-                new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
-                    game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 80) +
+                new Vector2(game.camera.cameraPos.X - game.ScreenSize.X / 2 + 8,
+                    game.camera.cameraPos.Y - game.ScreenSize.Y / 2 + 80) +
                     game.fontManager.FontOffset,
                 game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, 0.92f);
         }

@@ -249,8 +249,8 @@ namespace SpaceProject_Linux
             Game.stateManager.shooterState.gameObjects.Clear();
             CreatePlayer();
 
-            WindowWidth = Game.Window.ClientBounds.Width;
-            WindowHeight = Game.Window.ClientBounds.Height;
+            WindowWidth = Game.ScreenSize.X;
+            WindowHeight = Game.ScreenSize.Y;
 
             isLevelGivenUp = false;
 
@@ -425,12 +425,12 @@ namespace SpaceProject_Linux
                 //left border
                 //spriteBatch.Draw(
                 //    border.Texture,
-                //    new Vector2(((float)Game.Window.ClientBounds.Width - (float)LevelWidth) / 2 - (float)Game.Window.ClientBounds.Width / 8, 0),
+                //    new Vector2(((float)Game.ScreenSize.X - (float)LevelWidth) / 2 - (float)Game.ScreenSize.X / 8, 0),
                 //    border.SourceRectangle,
                 //    Color.Black,
                 //    0.0f,
                 //    new Vector2(0, 0),
-                //    new Vector2((float)Game.Window.ClientBounds.Width / 8, (float)Game.Window.ClientBounds.Height),
+                //    new Vector2((float)Game.ScreenSize.X / 8, (float)Game.ScreenSize.Y),
                 //    SpriteEffects.None,
                 //    DrawLayer);
 
@@ -448,12 +448,12 @@ namespace SpaceProject_Linux
                 // right Border
                 //spriteBatch.Draw(
                 //    border.Texture,
-                //    new Vector2((float)Game.Window.ClientBounds.Width - ((float)Game.Window.ClientBounds.Width - (float)LevelWidth) / 2, 0),
+                //    new Vector2((float)Game.ScreenSize.X - ((float)Game.ScreenSize.X - (float)LevelWidth) / 2, 0),
                 //    border.SourceRectangle,
                 //    Color.Black,
                 //    0.0f,
                 //    new Vector2(0, 0),
-                //    new Vector2((float)Game.Window.ClientBounds.Width / 8, (float)Game.Window.ClientBounds.Height),
+                //    new Vector2((float)Game.ScreenSize.X / 8, (float)Game.ScreenSize.Y),
                 //    SpriteEffects.None,
                 //    DrawLayer);
 
@@ -470,28 +470,28 @@ namespace SpaceProject_Linux
 
             }
             
-            if (Game.Window.ClientBounds.Height > 600)
+            if (Game.ScreenSize.Y > 600)
             {
                 //upper border
-                //spriteBatch.Draw(border.Texture, new Vector2(((float)Game.Window.ClientBounds.Width - (float)LevelWidth) / 2, 0), 
+                //spriteBatch.Draw(border.Texture, new Vector2(((float)Game.ScreenSize.X - (float)LevelWidth) / 2, 0), 
                 //    border.SourceRectangle, Color.Black, 0.0f, Vector2.Zero, 
-                //    new Vector2(LevelWidth, (float)(Game.Window.ClientBounds.Height - 600) / 2),  SpriteEffects.None, DrawLayer + 0.01f);
+                //    new Vector2(LevelWidth, (float)(Game.ScreenSize.Y - 600) / 2),  SpriteEffects.None, DrawLayer + 0.01f);
 
-                spriteBatch.Draw( border.Texture, new Vector2((Game.Window.ClientBounds.Width - LevelWidth) / 2,
+                spriteBatch.Draw( border.Texture, new Vector2((Game.ScreenSize.X - LevelWidth) / 2,
                                                              (float)(WindowHeight - Game.DefaultResolution.Y) / 2),
                     new Rectangle(0, 0, 1, 2), Color.DarkOrange, 0.0f, new Vector2(0, 0), new Vector2(LevelWidth + 1, 1),
                     SpriteEffects.None, 0.8f);
                 
                 // lower border
                 //spriteBatch.Draw(border.Texture,
-                //    new Vector2(((float)Game.Window.ClientBounds.Width - (float)LevelWidth) / 2, (float)Game.Window.ClientBounds.Height - (float)(Game.Window.ClientBounds.Height - 600) / 2),
+                //    new Vector2(((float)Game.ScreenSize.X - (float)LevelWidth) / 2, (float)Game.ScreenSize.Y - (float)(Game.ScreenSize.Y - 600) / 2),
                 //    border.SourceRectangle, Color.Black, 0.0f, Vector2.Zero,
-                //    new Vector2(LevelWidth, (float)(Game.Window.ClientBounds.Height - 600) / 2),
+                //    new Vector2(LevelWidth, (float)(Game.ScreenSize.Y - 600) / 2),
                 //    SpriteEffects.None, DrawLayer);
 
                 spriteBatch.Draw(
                     border.Texture,
-                    new Vector2((float)(Game.Window.ClientBounds.Width - LevelWidth) / 2, WindowHeight - (float)(WindowHeight - Game.DefaultResolution.Y) / 2),
+                    new Vector2((float)(Game.ScreenSize.X - LevelWidth) / 2, WindowHeight - (float)(WindowHeight - Game.DefaultResolution.Y) / 2),
                     new Rectangle(0, 0, 1, 2),
                     Color.DarkOrange,
                     0.0f,
@@ -506,8 +506,8 @@ namespace SpaceProject_Linux
         {
             if(IsObjectiveCompleted)
                 spriteBatch.DrawString(font1, "Level Completed!\n\n" + EndText,
-                                       new Vector2(Game.Window.ClientBounds.Width / 2,
-                                                   Game.Window.ClientBounds.Height / 2) + Game.fontManager.FontOffset,
+                                       new Vector2(Game.ScreenSize.X / 2,
+                                                   Game.ScreenSize.Y / 2) + Game.fontManager.FontOffset,
                                        Game.fontManager.FontColor,
                                        0f,
                                        font1.MeasureString("Level Completed!\n\n" + EndText) / 2,
@@ -517,8 +517,8 @@ namespace SpaceProject_Linux
 
             else if (IsObjectiveFailed)
                 spriteBatch.DrawString(font1, "You are dead!\n\nPress 'R' to try again '" + ControlManager.GetKeyName(RebindableKeys.Action2) + "' to go back.", 
-                                       new Vector2(Game.Window.ClientBounds.Width / 2,
-                                                   Game.Window.ClientBounds.Height / 2) + Game.fontManager.FontOffset,
+                                       new Vector2(Game.ScreenSize.X / 2,
+                                                   Game.ScreenSize.Y / 2) + Game.fontManager.FontOffset,
                                        Game.fontManager.FontColor,
                                        0f,
                                        font1.MeasureString("You are dead!\n\nPress R to try again or '" + ControlManager.GetKeyName(RebindableKeys.Action2) + "' to go back.") / 2,
@@ -528,8 +528,8 @@ namespace SpaceProject_Linux
 
             else if (isLevelGivenUp)
                 spriteBatch.DrawString(font1, "You gave up!\n\nPress 'R' to try again or '" + ControlManager.GetKeyName(RebindableKeys.Action2) + "' to go back.",
-                                       new Vector2(Game.Window.ClientBounds.Width / 2,
-                                                   Game.Window.ClientBounds.Height / 2) + Game.fontManager.FontOffset,
+                                       new Vector2(Game.ScreenSize.X / 2,
+                                                   Game.ScreenSize.Y / 2) + Game.fontManager.FontOffset,
                                        Game.fontManager.FontColor,
                                        0f,
                                        font1.MeasureString("You are dead!\n\nPress R to try again or '" + ControlManager.GetKeyName(RebindableKeys.Action2) + "' to go back.") / 2,

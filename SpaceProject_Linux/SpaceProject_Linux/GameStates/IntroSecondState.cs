@@ -38,9 +38,9 @@ namespace SpaceProject_Linux
             spriteFont = Game.fontManager.GetFont(14);
             textBox = TextUtils.CreateTextBoxConfig(spriteFont,
                                                     new Rectangle(10,
-                                                                  Game.Window.ClientBounds.Height,
-                                                                  Game.Window.ClientBounds.Width - 20,
-                                                                  Game.Window.ClientBounds.Height - 20),
+                                                                  Game.ScreenSize.Y,
+                                                                  Game.ScreenSize.X - 20,
+                                                                  Game.ScreenSize.Y - 20),
                                                     "Data/storydata.dat",
                                                     false);
         }
@@ -61,8 +61,8 @@ namespace SpaceProject_Linux
             starSpeedModifiers = new List<float>();
             for (int i = 0; i < NumberOfStars; i++)
             {
-                starPositions[i] = new Vector2(Game.random.Next(0, Game.Window.ClientBounds.Width),
-                                               Game.random.Next(0, Game.Window.ClientBounds.Height));
+                starPositions[i] = new Vector2(Game.random.Next(0, Game.ScreenSize.X),
+                                               Game.random.Next(0, Game.ScreenSize.Y));
                 starSpeedModifiers.Add(Game.random.Next(4, 10) / 10f);
             }
 
@@ -137,7 +137,7 @@ namespace SpaceProject_Linux
 
                 if (returnValue == 2)
                 {
-                    starPositions[i] = new Vector2(-30, (float)Game.random.Next(0, Game.Window.ClientBounds.Height));
+                    starPositions[i] = new Vector2(-30, (float)Game.random.Next(0, Game.ScreenSize.Y));
                 }
             }
 
@@ -147,7 +147,7 @@ namespace SpaceProject_Linux
         {
             foreach (Vector2 v in starPositions)
             {
-                if (v.Y > Game.Window.ClientBounds.Height * 2 / 3)
+                if (v.Y > Game.ScreenSize.Y * 2 / 3)
                 {
                     spriteBatch.Draw(starSprite.Texture, v, starSprite.SourceRectangle,
                         Color.White, -starAngle, Vector2.Zero, starScale, SpriteEffects.None, 0.2f);
@@ -160,21 +160,21 @@ namespace SpaceProject_Linux
                 }
             }
 
-            spriteBatch.Draw(contrastBackdrop.Texture, new Vector2(5, Game.Window.ClientBounds.Height * 2/3),
+            spriteBatch.Draw(contrastBackdrop.Texture, new Vector2(5, Game.ScreenSize.Y * 2/3),
                 contrastBackdrop.SourceRectangle, Color.Black, 0.0f, Vector2.Zero,
-                new Vector2(Game.Window.ClientBounds.Width - 10, Game.Window.ClientBounds.Height / 3 - 5),
+                new Vector2(Game.ScreenSize.X - 10, Game.ScreenSize.Y / 3 - 5),
                 SpriteEffects.None, 0.25f);
 
             textBox.Draw(spriteBatch, Game.fontManager.FontColor, Game.fontManager.FontOffset, 0.3f);
 
             spriteBatch.Draw(txtBackdrop.Texture, new Vector2(0, 0), txtBackdrop.SourceRectangle, new Color(0, 0, 0, 255),
-                0f, Vector2.Zero, new Vector2(Game.Window.ClientBounds.Width, Game.Window.ClientBounds.Height * 2 / 3),
+                0f, Vector2.Zero, new Vector2(Game.ScreenSize.X, Game.ScreenSize.Y * 2 / 3),
                 SpriteEffects.None, 0.4f);
 
             // Player ship
             spriteBatch.Draw(introMercSprite.Texture,
-                             new Vector2(Game.Window.ClientBounds.Width / 2,
-                                        Game.Window.ClientBounds.Height / 2),
+                             new Vector2(Game.ScreenSize.X / 2,
+                                        Game.ScreenSize.Y / 2),
                              introMercSprite.SourceRectangle, Color.White, (float)(Math.PI / 180 * 270),
                              new Vector2(introMercSprite.SourceRectangle.Value.Width / 2,
                                          introMercSprite.SourceRectangle.Value.Height / 2),
@@ -182,40 +182,40 @@ namespace SpaceProject_Linux
 
             //// Merc ships
             //spriteBatch.Draw(introMercSprite.Texture,
-            //                 new Vector2(Game.Window.ClientBounds.Width * widthMultiplier - 50,
-            //                            Game.Window.ClientBounds.Height / 2 - 40),
+            //                 new Vector2(Game.ScreenSize.X * widthMultiplier - 50,
+            //                            Game.ScreenSize.Y / 2 - 40),
             //                 introMercSprite.SourceRectangle, Color.White, (float)Math.PI / 2,
             //                 new Vector2(introMercSprite.SourceRectangle.Value.Width / 2,
             //                             introMercSprite.SourceRectangle.Value.Height / 2),
             //                 1.0f, SpriteEffects.None, .5f);
             //
             //spriteBatch.Draw(introMercSprite.Texture,
-            //                 new Vector2(Game.Window.ClientBounds.Width * widthMultiplier - 50,
-            //                            Game.Window.ClientBounds.Height / 2 + 40),
+            //                 new Vector2(Game.ScreenSize.X * widthMultiplier - 50,
+            //                            Game.ScreenSize.Y / 2 + 40),
             //                 introMercSprite.SourceRectangle, Color.White, (float)Math.PI / 2,
             //                 new Vector2(introMercSprite.SourceRectangle.Value.Width / 2,
             //                             introMercSprite.SourceRectangle.Value.Height / 2),
             //                 1.0f, SpriteEffects.None, .5f);
             //
             //spriteBatch.Draw(introMercSprite.Texture,
-            //                 new Vector2(Game.Window.ClientBounds.Width * widthMultiplier - 100,
-            //                            Game.Window.ClientBounds.Height / 2 - 80),
+            //                 new Vector2(Game.ScreenSize.X * widthMultiplier - 100,
+            //                            Game.ScreenSize.Y / 2 - 80),
             //                 introMercSprite.SourceRectangle, Color.White, (float)Math.PI / 2,
             //                 new Vector2(introMercSprite.SourceRectangle.Value.Width / 2,
             //                             introMercSprite.SourceRectangle.Value.Height / 2),
             //                 1.0f, SpriteEffects.None, .5f);
             //
             //spriteBatch.Draw(introMercSprite.Texture,
-            //                 new Vector2(Game.Window.ClientBounds.Width * widthMultiplier - 100,
-            //                            Game.Window.ClientBounds.Height / 2),
+            //                 new Vector2(Game.ScreenSize.X * widthMultiplier - 100,
+            //                            Game.ScreenSize.Y / 2),
             //                 introMercSprite.SourceRectangle, Color.White, (float)Math.PI / 2,
             //                 new Vector2(introMercSprite.SourceRectangle.Value.Width / 2,
             //                             introMercSprite.SourceRectangle.Value.Height / 2),
             //                 1.0f, SpriteEffects.None, .5f);
             //
             //spriteBatch.Draw(introMercSprite.Texture,
-            //                 new Vector2(Game.Window.ClientBounds.Width * widthMultiplier - 100,
-            //                            Game.Window.ClientBounds.Height / 2 + 80),
+            //                 new Vector2(Game.ScreenSize.X * widthMultiplier - 100,
+            //                            Game.ScreenSize.Y / 2 + 80),
             //                 introMercSprite.SourceRectangle, Color.White, (float)Math.PI / 2,
             //                 new Vector2(introMercSprite.SourceRectangle.Value.Width / 2,
             //                             introMercSprite.SourceRectangle.Value.Height / 2),

@@ -179,7 +179,7 @@ namespace SpaceProject_Linux
                 BoundingX > Area.X + Area.Width)
                 Move(new Vector2(-1, 0));
 
-            else if (BoundingX + BoundingWidth < Game.Window.ClientBounds.Width - 20 &&
+            else if (BoundingX + BoundingWidth < Game.ScreenSize.X - 20 &&
                 BoundingX + BoundingWidth < Area.X)
                 Move(new Vector2(1, 0));
 
@@ -190,7 +190,7 @@ namespace SpaceProject_Linux
                     BoundingY > Area.Y + Area.Height)
                     Move(new Vector2(0, -1));
 
-                else if (BoundingY + BoundingHeight < Game.Window.ClientBounds.Height - 20 &&
+                else if (BoundingY + BoundingHeight < Game.ScreenSize.Y - 20 &&
                     BoundingY + BoundingHeight < Area.Y)
                     Move(new Vector2(0, 1));
             }
@@ -222,10 +222,10 @@ namespace SpaceProject_Linux
             else if (Speed < -MaxSpeed)
                 Speed = -MaxSpeed;
 
-            if (PositionX + CenterPointX > Game.Window.ClientBounds.Width)
+            if (PositionX + CenterPointX > Game.ScreenSize.X)
             {
                 Speed = 0;
-                PositionX = (Game.Window.ClientBounds.Width - CenterPointX) - 1;
+                PositionX = (Game.ScreenSize.X - CenterPointX) - 1;
             }
 
             else if (PositionX - CenterPointX < 0)
@@ -234,10 +234,10 @@ namespace SpaceProject_Linux
                 PositionX = CenterPointX + 1;
             }
 
-            if (PositionY + CenterPointY > Game.Window.ClientBounds.Height)
+            if (PositionY + CenterPointY > Game.ScreenSize.Y)
             {
                 Speed = 0;
-                PositionY = (Game.Window.ClientBounds.Height - CenterPointY) - 1;
+                PositionY = (Game.ScreenSize.Y - CenterPointY) - 1;
             }
 
             else if (PositionY - CenterPointY < 0)

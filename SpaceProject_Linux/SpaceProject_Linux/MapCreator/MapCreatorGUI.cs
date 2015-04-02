@@ -63,8 +63,8 @@ namespace SpaceProject_Linux
             staticFontExperiment = game.Content.Load<SpriteFont>("Fonts/Iceland_14");
             staticSpriteExperiment = new Sprite(game.Content.Load<Texture2D>("MapCreator/MapCreatorSpriteSheet"));
 
-            screenW = game.Window.ClientBounds.Width;
-            screenH = game.Window.ClientBounds.Height;
+            screenW = game.ScreenSize.X;
+            screenH = game.ScreenSize.Y;
 
             #region regularButtons
             buttons = new List<MapCreatorButton>();

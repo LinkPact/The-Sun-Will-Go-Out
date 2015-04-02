@@ -52,8 +52,8 @@ namespace SpaceProject_Linux
             this.verticalShooterSpriteSheet = Game.spriteSheetVerticalShooter;
             this.player = player;
 
-            windowWidth = Game.Window.ClientBounds.Width;
-            windowHeight = Game.Window.ClientBounds.Height;
+            windowWidth = Game.ScreenSize.X;
+            windowHeight = Game.ScreenSize.Y;
 
             hudSpriteSheet = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/planetarySystemSpriteSheet"));
             verticalShooterSpriteSheet = new Sprite(Game.Content.Load<Texture2D>("Vertical-Sprites/ShooterSheet"));
@@ -71,11 +71,11 @@ namespace SpaceProject_Linux
             float barXSpacing = 70;
 
             healthBar = new Bar(Game, hudSpriteSheet, Color.Red, true);
-            healthPos = new Vector2(barXSpacing, Game.Window.ClientBounds.Height - 44);
+            healthPos = new Vector2(barXSpacing, Game.ScreenSize.Y - 44);
             energyBar = new Bar(Game, hudSpriteSheet, Color.Green, true);
-            energyPos = new Vector2(barXSpacing, Game.Window.ClientBounds.Height - 28);
+            energyPos = new Vector2(barXSpacing, Game.ScreenSize.Y - 28);
             shieldBar = new Bar(Game, hudSpriteSheet, Color.Blue, true);
-            shieldPos = new Vector2(barXSpacing, Game.Window.ClientBounds.Height - 12);
+            shieldPos = new Vector2(barXSpacing, Game.ScreenSize.Y - 12);
 
             InitializeBackground(backgroundType);
         }
@@ -120,20 +120,20 @@ namespace SpaceProject_Linux
         private void DrawInfo(SpriteBatch spriteBatch)
         {
             String objectiveString = level.GetObjectiveString();
-            Vector2 objectiveStringPos = new Vector2(8, Game.Window.ClientBounds.Height - 103) + Game.fontManager.FontOffset;
+            Vector2 objectiveStringPos = new Vector2(8, Game.ScreenSize.Y - 103) + Game.fontManager.FontOffset;
             DrawStandardString(spriteBatch, shipInfoFontSmall, objectiveString, objectiveStringPos);
             
             String primaryString = "Primary: " + ShipInventoryManager.currentPrimaryWeapon.Name;
-            Vector2 primaryStringPos = new Vector2(8, Game.Window.ClientBounds.Height - 83) + Game.fontManager.FontOffset;
+            Vector2 primaryStringPos = new Vector2(8, Game.ScreenSize.Y - 83) + Game.fontManager.FontOffset;
             DrawStandardString(spriteBatch, shipInfoFontSmall, primaryString, primaryStringPos);
 
             String secondaryString = "Secondary: " + ShipInventoryManager.equippedSecondary.Name;
             if (!(ShipInventoryManager.equippedSecondary is EmptyWeapon)) secondaryString = AppendSecondaryActivatedInformation(secondaryString);
-            Vector2 secondaryStringPos = new Vector2(8, Game.Window.ClientBounds.Height - 68) + Game.fontManager.FontOffset;
+            Vector2 secondaryStringPos = new Vector2(8, Game.ScreenSize.Y - 68) + Game.fontManager.FontOffset;
             DrawStandardString(spriteBatch, shipInfoFontSmall, secondaryString, secondaryStringPos);
 
             String shipStatsNamesString = "Health:\nEnergy:\nShield:";
-            Vector2 shipStatsNamesStringPos = new Vector2(8, Game.Window.ClientBounds.Height - 49) + Game.fontManager.FontOffset;
+            Vector2 shipStatsNamesStringPos = new Vector2(8, Game.ScreenSize.Y - 49) + Game.fontManager.FontOffset;
             DrawStandardString(spriteBatch, shipInfoFontSmall, shipStatsNamesString, shipStatsNamesStringPos);
         }
 

@@ -69,9 +69,9 @@ namespace SpaceProject_Linux
             //Game.fontManager.GetFont(14) = Game.fontManager.GetFont(14);
             //Game.fontManager.GetFont(16) = Game.fontManager.GetFont(16);
 
-            nameStringPosition = new Vector2(Game.Window.ClientBounds.Width * 3 / 4, 15);
+            nameStringPosition = new Vector2(Game.ScreenSize.X * 3 / 4, 15);
 
-            dataHeadStringPosition = new Vector2(Game.Window.ClientBounds.Width / 4, 30);
+            dataHeadStringPosition = new Vector2(Game.ScreenSize.X / 4, 30);
 
             dataBodyStringPosition = new Vector2(5, 60);
 
@@ -81,15 +81,15 @@ namespace SpaceProject_Linux
             dataBody = "";
 
             iconExpl = "";
-            iconExplPos = new Vector2(Game.Window.ClientBounds.Width / 6, Game.Window.ClientBounds.Height / 2 + 10);
+            iconExplPos = new Vector2(Game.ScreenSize.X / 6, Game.ScreenSize.Y / 2 + 10);
             iconExplOrigin = Vector2.Zero;            
 
             #endregion
 
             #region Initailize Textures/Sprites
 
-            stationTexturePosition = new Vector2(Game.Window.ClientBounds.Width / 2 + Game.Window.ClientBounds.Width / 4,
-                                         Game.Window.ClientBounds.Height / 4);
+            stationTexturePosition = new Vector2(Game.ScreenSize.X / 2 + Game.ScreenSize.X / 4,
+                                         Game.ScreenSize.Y / 4);
 
             
 
@@ -141,7 +141,7 @@ namespace SpaceProject_Linux
 
         private float ScaleStation(float diameter, float planetScale)
         {
-            int preferredSize = (int)Game.Window.ClientBounds.Width / 4;
+            int preferredSize = (int)Game.ScreenSize.X / 4;
             float maxScale = 2f;
             float scale = planetScale;
 
@@ -202,23 +202,23 @@ namespace SpaceProject_Linux
             int spriteWidth = 92;
             int spriteHeight = 92;
 
-            for (int i = 0; i < (int)((Game.Window.ClientBounds.Width / spriteWidth) + 1); i++)
+            for (int i = 0; i < (int)((Game.ScreenSize.X / spriteWidth) + 1); i++)
             {
-                for (int j = 0; j < (int)((Game.Window.ClientBounds.Height / spriteHeight) + 1); j++)
+                for (int j = 0; j < (int)((Game.ScreenSize.Y / spriteHeight) + 1); j++)
                     spriteBatch.Draw(spriteSheet.Texture, new Vector2(spriteWidth * i, spriteHeight * j),
                     new Rectangle(0, 241, 92, 92), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             }
 
             //Draw Black texture around planet
             spriteBatch.Draw(spriteSheet.Texture,
-                             new Vector2(Game.Window.ClientBounds.Width / 2 - 2,
+                             new Vector2(Game.ScreenSize.X / 2 - 2,
                                            0),
                              new Rectangle(241, 3, 400, 300),
                              Color.White,
                              0f,
                              Vector2.Zero,
-                             new Vector2(Game.Window.ClientBounds.Width / Game.DefaultResolution.X,
-                                 Game.Window.ClientBounds.Height / Game.DefaultResolution.Y),
+                             new Vector2(Game.ScreenSize.X / Game.DefaultResolution.X,
+                                 Game.ScreenSize.Y / Game.DefaultResolution.Y),
                              SpriteEffects.None,
                              0.1f);
 
@@ -236,34 +236,34 @@ namespace SpaceProject_Linux
             //Draw lines
             //Vertical
             spriteBatch.Draw(lineTexture.Texture,
-                             new Vector2(Game.Window.ClientBounds.Width / 2, 0),
+                             new Vector2(Game.ScreenSize.X / 2, 0),
                              lineTexture.SourceRectangle,
                              lineColor,
                              (float)(Math.PI * 90) / 180,
                              Vector2.Zero,
-                             new Vector2(Game.Window.ClientBounds.Height / 2, 2),
+                             new Vector2(Game.ScreenSize.Y / 2, 2),
                              SpriteEffects.None,
                              .8f);
 
             //Vertical
             spriteBatch.Draw(lineTexture.Texture,
-                             new Vector2(Game.Window.ClientBounds.Width / 3, Game.Window.ClientBounds.Height / 2),
+                             new Vector2(Game.ScreenSize.X / 3, Game.ScreenSize.Y / 2),
                              lineTexture.SourceRectangle,
                              lineColor,
                              (float)(Math.PI * 90) / 180,
                              Vector2.Zero,
-                             new Vector2(Game.Window.ClientBounds.Height / 2, 2),
+                             new Vector2(Game.ScreenSize.Y / 2, 2),
                              SpriteEffects.None,
                              .8f);
 
             //Horizontal
             spriteBatch.Draw(lineTexture.Texture,
-                             new Vector2(0, Game.Window.ClientBounds.Height / 2),
+                             new Vector2(0, Game.ScreenSize.Y / 2),
                              lineTexture.SourceRectangle,
                              lineColor,
                              0f,
                              Vector2.Zero,
-                             new Vector2(Game.Window.ClientBounds.Width, 2),
+                             new Vector2(Game.ScreenSize.X, 2),
                              SpriteEffects.None,
                              .8f);
 

@@ -149,7 +149,7 @@ namespace SpaceProject_Linux
                 }
                 else
                 {
-                    beamDrawing.UpdateLocation(gameTime, shooterPosition.X, shooterPosition.Y, game.Window.ClientBounds.Height);
+                    beamDrawing.UpdateLocation(gameTime, shooterPosition.X, shooterPosition.Y, game.ScreenSize.Y);
                 }
             }
         }

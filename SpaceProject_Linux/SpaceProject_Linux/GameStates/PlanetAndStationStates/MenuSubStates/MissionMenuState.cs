@@ -66,15 +66,15 @@ namespace SpaceProject_Linux
 
             confirmString = "Press 'Enter' to continue..";
 
-            confirmStringPos = new Vector2((Game.Window.ClientBounds.Width * 2 / 3),
-                                            Game.Window.ClientBounds.Height - BaseState.Game.fontManager.GetFont(14).MeasureString(confirmString).Y - 10);
+            confirmStringPos = new Vector2((Game.ScreenSize.X * 2 / 3),
+                                            Game.ScreenSize.Y - BaseState.Game.fontManager.GetFont(14).MeasureString(confirmString).Y - 10);
 
             confirmStringOrigin = BaseState.Game.fontManager.GetFont(14).MeasureString(confirmString) / 2;
 
-            portraitOffset = (Game.Window.ClientBounds.Width / 2 - Game.Window.ClientBounds.Width / 3 - PortraitWidth) / 2;
-            portraitPosition = new Vector2(Game.Window.ClientBounds.Width / 3 + portraitOffset, 
-                Game.Window.ClientBounds.Height / 2 + portraitOffset);
-            portraitBorderPosition = new Vector2(Game.Window.ClientBounds.Width / 3, Game.Window.ClientBounds.Height / 2);
+            portraitOffset = (Game.ScreenSize.X / 2 - Game.ScreenSize.X / 3 - PortraitWidth) / 2;
+            portraitPosition = new Vector2(Game.ScreenSize.X / 3 + portraitOffset, 
+                Game.ScreenSize.Y / 2 + portraitOffset);
+            portraitBorderPosition = new Vector2(Game.ScreenSize.X / 3, Game.ScreenSize.Y / 2);
         }
 
         public override void OnEnter()
@@ -294,9 +294,9 @@ namespace SpaceProject_Linux
                         DisplayAvailableMissions(availableMissions);
 
                         BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
-                              new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
-                                           ((Game.Window.ClientBounds.Height / 2) + 40) + 20 * (availableMissions.Count + 1),
-                                             Game.Window.ClientBounds.Width - 20,
+                              new Rectangle((Game.ScreenSize.X * 2 / 3),
+                                           ((Game.ScreenSize.Y / 2) + 40) + 20 * (availableMissions.Count + 1),
+                                             Game.ScreenSize.X - 20,
                               10),
                               true,
                               "Back"));
@@ -412,7 +412,7 @@ namespace SpaceProject_Linux
                                                               true,
                                                               TextUtils.WordWrap(BaseState.Game.fontManager.GetFont(14),
                                                                                  MissionManager.MissionResponseBuffer[i],
-                                                                                 Game.Window.ClientBounds.Width * 2 / 3)
+                                                                                 Game.ScreenSize.X * 2 / 3)
                                                               ));
 
                     }
@@ -535,9 +535,9 @@ namespace SpaceProject_Linux
         {
             BaseStateManager.TextBoxes.Clear();
 
-            BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16), new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
-                                                                       (Game.Window.ClientBounds.Height / 2) + 10,
-                                                                        Game.Window.ClientBounds.Width - 20,
+            BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16), new Rectangle((Game.ScreenSize.X * 2 / 3),
+                                                                       (Game.ScreenSize.Y / 2) + 10,
+                                                                        Game.ScreenSize.X - 20,
                                                                         10),
                                                                         true,
                                                                         "Available Missions:" + "\n\n"));
@@ -546,9 +546,9 @@ namespace SpaceProject_Linux
                 for (int i = 0; i < availableMissions.Count; i++)
                 {
                     BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
-                                                                      new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
-                                                                                   ((Game.Window.ClientBounds.Height / 2) + 40) + 20 * availableMissions.IndexOf(availableMissions[i]) + 1,
-                                                                                     Game.Window.ClientBounds.Width - 20,
+                                                                      new Rectangle((Game.ScreenSize.X * 2 / 3),
+                                                                                   ((Game.ScreenSize.Y / 2) + 40) + 20 * availableMissions.IndexOf(availableMissions[i]) + 1,
+                                                                                     Game.ScreenSize.X - 20,
                                                                       10),
                                                                       true,
                                                                       availableMissions[i].MissionName));
@@ -557,9 +557,9 @@ namespace SpaceProject_Linux
 
             else
             {
-                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16), new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
-                                                            ((Game.Window.ClientBounds.Height / 2) + 60),
-                                                            Game.Window.ClientBounds.Width - 20,
+                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16), new Rectangle((Game.ScreenSize.X * 2 / 3),
+                                                            ((Game.ScreenSize.Y / 2) + 60),
+                                                            Game.ScreenSize.X - 20,
                                                             10),
                                                             true,
                                                             "<None>"));

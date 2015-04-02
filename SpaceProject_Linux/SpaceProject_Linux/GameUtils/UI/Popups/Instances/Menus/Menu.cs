@@ -74,7 +74,7 @@ namespace SpaceProject_Linux
 
             if (!(this is SelectionMenu))
             {
-                canvasScale = new Vector2((float)game.Window.ClientBounds.Width / canvas.SourceRectangle.Value.Width, 1);
+                canvasScale = new Vector2((float)game.ScreenSize.X / canvas.SourceRectangle.Value.Width, 1);
                 canvasPosition = new Vector2(game.camera.cameraPos.X - game.ScreenCenter.X,
                     game.camera.cameraPos.Y - game.ScreenCenter.Y);
                 canvasOrigin = Vector2.Zero;
@@ -219,8 +219,8 @@ namespace SpaceProject_Linux
 
             if (GameStateManager.currentState == "OverworldState")
             {
-                pos = new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2,
-                                  game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 4);
+                pos = new Vector2(game.camera.cameraPos.X - game.ScreenSize.X / 2,
+                                  game.camera.cameraPos.Y - game.ScreenSize.Y / 2 + 4);
             }
             else
             {

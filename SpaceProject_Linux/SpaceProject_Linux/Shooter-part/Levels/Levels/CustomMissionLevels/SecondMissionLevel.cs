@@ -31,12 +31,12 @@ namespace SpaceProject_Linux
             SetHP();
 
             freighter = new FreighterAlly(Game, spriteSheet, player,
-                new Rectangle(Game.Window.ClientBounds.Width / 2 - 100, (Game.Window.ClientBounds.Height - 600) / 2 + 425, 200, 50),
+                new Rectangle(Game.ScreenSize.X / 2 - 100, (Game.ScreenSize.Y - 600) / 2 + 425, 200, 50),
             "none", 200, HP, 300, 0, 4);
 
             freighter.Initialize();
-            freighter.PositionX = Game.Window.ClientBounds.Width / 2;
-            freighter.PositionY = (Game.Window.ClientBounds.Height - 600) / 2 + 450;
+            freighter.PositionX = Game.ScreenSize.X / 2;
+            freighter.PositionY = (Game.ScreenSize.Y - 600) / 2 + 450;
             freighter.CreateAI(AIBehaviour.NoWeapon);
             Game.stateManager.shooterState.gameObjects.Add(freighter);
 

@@ -232,7 +232,7 @@ namespace SpaceProject_Linux
             for (int i = 0; i < menuOptions.Length / 2; i++)
             {
                 if (MathFunctions.IsMouseOverText(menuOptionFont, menuOptions[i, 0],
-                    new Vector2((game.Window.ClientBounds.Width / 9) * 4, game.Window.ClientBounds.Height / 3 + (i * 23)) + fontOffset))
+                    new Vector2((game.ScreenSize.X / 9) * 4, game.ScreenSize.Y / 3 + (i * 23)) + fontOffset))
                 {
                     if (cursorIndex != i)
                     {
@@ -255,7 +255,7 @@ namespace SpaceProject_Linux
                 if (!menuOptions[i, 1].Equals(""))
                 {
                     if (MathFunctions.IsMouseOverText(menuOptionFont, menuOptions[i, 1],
-                        new Vector2(game.Window.ClientBounds.Width - 150, game.Window.ClientBounds.Height / 3 + (i * 23)) + fontOffset))
+                        new Vector2(game.ScreenSize.X - 150, game.ScreenSize.Y / 3 + (i * 23)) + fontOffset))
                     {
                         if (cursorIndex != i)
                         {
@@ -303,9 +303,9 @@ namespace SpaceProject_Linux
                     length++;
                 }
 
-                spriteBatch.Draw(contrastBackDropSprite.Texture, new Vector2((game.Window.ClientBounds.Width / 9) * 4 - 10, game.Window.ClientBounds.Height / 3 - 15),
+                spriteBatch.Draw(contrastBackDropSprite.Texture, new Vector2((game.ScreenSize.X / 9) * 4 - 10, game.ScreenSize.Y / 3 - 15),
                     contrastBackDropSprite.SourceRectangle, Color.Black, 0.0f, Vector2.Zero,
-                    new Vector2(game.Window.ClientBounds.Width - (game.Window.ClientBounds.Width / 9) * 4 - 20, 15 + (20 *length)),
+                    new Vector2(game.ScreenSize.X - (game.ScreenSize.X / 9) * 4 - 20, 15 + (20 *length)),
                     SpriteEffects.None, 0.8f);
             }
 
@@ -314,16 +314,16 @@ namespace SpaceProject_Linux
                 if (i == cursorIndex)
                 {
                     spriteBatch.DrawString(game.fontManager.GetFont(14), menuOptions[i, 0],
-                        new Vector2((game.Window.ClientBounds.Width / 9) * 4  + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 0]).X / 2,
-                                    game.Window.ClientBounds.Height / 3 + (i * 23)) + game.fontManager.FontOffset,
+                        new Vector2((game.ScreenSize.X / 9) * 4  + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 0]).X / 2,
+                                    game.ScreenSize.Y / 3 + (i * 23)) + game.fontManager.FontOffset,
                         Color.LightSkyBlue, 0f,
                         game.fontManager.GetFont(14).MeasureString(menuOptions[i, 0]) / 2,
                         1f, SpriteEffects.None, 1f);
 
 
                     spriteBatch.DrawString(game.fontManager.GetFont(14), menuOptions[i, 1],
-                        new Vector2(game.Window.ClientBounds.Width - 150 + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 1]).X / 2,
-                                    game.Window.ClientBounds.Height / 3 + (i * 23)) + game.fontManager.FontOffset,
+                        new Vector2(game.ScreenSize.X - 150 + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 1]).X / 2,
+                                    game.ScreenSize.Y / 3 + (i * 23)) + game.fontManager.FontOffset,
                         Color.LightSkyBlue, 0f,
                         game.fontManager.GetFont(14).MeasureString(menuOptions[i, 1]) / 2,
                         1f, SpriteEffects.None, 1f);
@@ -332,15 +332,15 @@ namespace SpaceProject_Linux
                 else
                 {
                     spriteBatch.DrawString(game.fontManager.GetFont(14), menuOptions[i, 0],
-                        new Vector2((game.Window.ClientBounds.Width / 9) * 4 + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 0]).X / 2,
-                                    game.Window.ClientBounds.Height / 3 + (i * 23)) + game.fontManager.FontOffset,
+                        new Vector2((game.ScreenSize.X / 9) * 4 + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 0]).X / 2,
+                                    game.ScreenSize.Y / 3 + (i * 23)) + game.fontManager.FontOffset,
                         game.fontManager.FontColor, 0f,
                         game.fontManager.GetFont(14).MeasureString(menuOptions[i, 0]) / 2,
                         1f, SpriteEffects.None, 1f);
 
                     spriteBatch.DrawString(game.fontManager.GetFont(14), menuOptions[i, 1],
-                        new Vector2(game.Window.ClientBounds.Width - 150 + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 1]).X / 2,
-                                    game.Window.ClientBounds.Height / 3 + (i * 23)) + game.fontManager.FontOffset,
+                        new Vector2(game.ScreenSize.X - 150 + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 1]).X / 2,
+                                    game.ScreenSize.Y / 3 + (i * 23)) + game.fontManager.FontOffset,
                         game.fontManager.FontColor, 0f,
                         game.fontManager.GetFont(14).MeasureString(menuOptions[i, 1]) / 2,
                         1f, SpriteEffects.None, 1f);
