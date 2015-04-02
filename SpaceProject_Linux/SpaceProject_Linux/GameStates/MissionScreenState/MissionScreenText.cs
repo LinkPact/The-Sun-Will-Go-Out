@@ -30,7 +30,7 @@ namespace SpaceProject_Linux
 
         public void Initialize()
         {
-            edgePadding = Game.Window.ClientBounds.Width / 16;
+            edgePadding = Game.ScreenSize.X / 16;
 
             txtColor = Game.fontManager.FontColor;
         }

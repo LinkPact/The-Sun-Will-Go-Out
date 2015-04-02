@@ -120,8 +120,8 @@ namespace SpaceProject_Linux
             }
 
             playerpos = game.player.position;
-            Origin = new Vector2(cameraPos.X + game.Window.ClientBounds.Width / 2 - background.SourceRectangle.Value.Width,
-                cameraPos.Y + game.Window.ClientBounds.Height / 2 - background.SourceRectangle.Value.Height);
+            Origin = new Vector2(cameraPos.X + game.ScreenSize.X / 2 - background.SourceRectangle.Value.Width,
+                cameraPos.Y + game.ScreenSize.Y / 2 - background.SourceRectangle.Value.Height);
         }
 
         public void Draw(SpriteBatch spriteBatch)

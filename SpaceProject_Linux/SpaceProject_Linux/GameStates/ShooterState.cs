@@ -203,9 +203,9 @@ namespace SpaceProject_Linux
         public override void Initialize()
         {
             if (windowHeightOffset == 0 
-                && Game.Window.ClientBounds.Height > 600)
+                && Game.ScreenSize.Y > 600)
             {
-                windowHeightOffset = ((float)Game.Window.ClientBounds.Height - 600) / 2;
+                windowHeightOffset = ((float)Game.ScreenSize.Y - 600) / 2;
             }
 
             gameObjects.Clear();

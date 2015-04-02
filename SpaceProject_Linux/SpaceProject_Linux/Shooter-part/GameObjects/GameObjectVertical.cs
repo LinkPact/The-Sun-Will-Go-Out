@@ -130,8 +130,8 @@ namespace SpaceProject_Linux
             DrawLayer = 0.5f;
             
             BoundingSpace = 0;
-            windowWidth = Game.Window.ClientBounds.Width;
-            windowHeight = Game.Window.ClientBounds.Height;
+            windowWidth = Game.ScreenSize.X;
+            windowHeight = Game.ScreenSize.Y;
             SetLevelWidth(800);
 
             config = new ConfigFile();

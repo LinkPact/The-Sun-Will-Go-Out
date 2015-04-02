@@ -164,7 +164,7 @@ namespace SpaceProject_Linux
         {
             #region Move to shooting position
 
-            if (ship.BoundingX + ship.BoundingWidth < Game.Window.ClientBounds.Width - 20 &&
+            if (ship.BoundingX + ship.BoundingWidth < Game.ScreenSize.X - 20 &&
                 targetYDistance > 0 && 
                 ship.PositionX < target.BoundingX)
                 ship.Move(new Vector2(1, ship.DirectionY));
@@ -182,9 +182,9 @@ namespace SpaceProject_Linux
                 ship.BoundingY > 10)
                 ship.Move(new Vector2(ship.DirectionX, -1));
 
-            else if (ship.BoundingY + ship.BoundingHeight < (Game.Window.ClientBounds.Height - 600) / 2 + 600 &&
+            else if (ship.BoundingY + ship.BoundingHeight < (Game.ScreenSize.Y - 600) / 2 + 600 &&
                 targetYDistance > -20 && targetYDistance < 50 &&
-                ship.BoundingY + ship.BoundingHeight < Game.Window.ClientBounds.Height - 10)
+                ship.BoundingY + ship.BoundingHeight < Game.ScreenSize.Y - 10)
                 ship.Move(new Vector2(ship.DirectionX, 1));
 
             else
@@ -230,7 +230,7 @@ namespace SpaceProject_Linux
                 if (objToAvoid.BoundingX + objToAvoid.BoundingWidth >= ship.PositionX &&
                     objToAvoid.BoundingX - 20 < ship.PositionX + ship.CenterPointX)
                 {
-                    if(ship.BoundingX > (Game.Window.ClientBounds.Width - Game.stateManager.shooterState.CurrentLevel.LevelWidth) / 2 + 20)
+                    if(ship.BoundingX > (Game.ScreenSize.X - Game.stateManager.shooterState.CurrentLevel.LevelWidth) / 2 + 20)
                         ship.Move(new Vector2(-1, ship.DirectionY));
                 }
 

@@ -36,11 +36,11 @@ namespace SpaceProject_Linux
         {
             FontManager.FontColorStatic = Game.fontManager.FontColor;
 
-            topDisplayPos = new Vector2(Game.Window.ClientBounds.Width * 3/4, 30);
-            equippedDisplayPos = new Vector2(Game.Window.ClientBounds.Width / 2 + 30, 70);
+            topDisplayPos = new Vector2(Game.ScreenSize.X * 3/4, 30);
+            equippedDisplayPos = new Vector2(Game.ScreenSize.X / 2 + 30, 70);
 
-            equippedStartPos = new Vector2(Game.Window.ClientBounds.Width / 2 + 50, 93);
-            ownedStartPos = new Vector2(Game.Window.ClientBounds.Width / 2 + 30, 150);
+            equippedStartPos = new Vector2(Game.ScreenSize.X / 2 + 50, 93);
+            ownedStartPos = new Vector2(Game.ScreenSize.X / 2 + 30, 150);
         }
 
         public void Update(GameTime gameTime, int layer_, int layer1pos_, int layer3pos_)
@@ -61,7 +61,7 @@ namespace SpaceProject_Linux
             //Money
             spriteBatch.DrawString(FontManager.GetFontStatic(16),
                 "Money: " + (int)StatsManager.Rupees + " Rupees",
-                new Vector2(Game.Window.ClientBounds.Width / 2 + Game.Window.ClientBounds.Width / 4, Game.Window.ClientBounds.Height * 3 / 4 + 30) + FontManager.FontOffsetStatic,
+                new Vector2(Game.ScreenSize.X / 2 + Game.ScreenSize.X / 4, Game.ScreenSize.Y * 3 / 4 + 30) + FontManager.FontOffsetStatic,
                 FontManager.FontColorStatic,
                 0f,
                 FontManager.GetFontStatic(16).MeasureString("Money: " + (int)StatsManager.Rupees + " Rupees") / 2,
@@ -193,7 +193,7 @@ namespace SpaceProject_Linux
 
         private void DisplayHelpText(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(FontManager.GetFontStatic(14), ControlManager.GetKeyName(RebindableKeys.Action2) + " - Go back", new Vector2(10, Game.Window.ClientBounds.Height - FontManager.GetFontStatic(14).MeasureString(ControlManager.GetKeyName(RebindableKeys.Action2) + " - Go back").Y - 10), FontManager.FontColorStatic);
+            spriteBatch.DrawString(FontManager.GetFontStatic(14), ControlManager.GetKeyName(RebindableKeys.Action2) + " - Go back", new Vector2(10, Game.ScreenSize.Y - FontManager.GetFontStatic(14).MeasureString(ControlManager.GetKeyName(RebindableKeys.Action2) + " - Go back").Y - 10), FontManager.FontColorStatic);
         }
         
         private static bool IsEquipped(Item item)

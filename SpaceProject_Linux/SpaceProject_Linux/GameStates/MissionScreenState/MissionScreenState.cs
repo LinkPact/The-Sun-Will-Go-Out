@@ -52,13 +52,13 @@ namespace SpaceProject_Linux
         public override void Initialize() 
         {
             upperLeftRectangle = new Rectangle(0, 0,
-                (int)Game.Window.ClientBounds.Width / 2, (int)Game.Window.ClientBounds.Height / 3);
+                (int)Game.ScreenSize.X / 2, (int)Game.ScreenSize.Y / 3);
 
             lowerLeftRectangle = new Rectangle(0, upperLeftRectangle.Height,
-                upperLeftRectangle.Width, (int)Game.Window.ClientBounds.Width * 2 / 3);
+                upperLeftRectangle.Width, (int)Game.ScreenSize.X * 2 / 3);
 
             rightRectangle = new Rectangle(lowerLeftRectangle.Width, 0,
-                lowerLeftRectangle.Width, (int)Game.Window.ClientBounds.Height);
+                lowerLeftRectangle.Width, (int)Game.ScreenSize.Y);
 
             //Managers for cursor and text.
             cursorManager = new MissionScreenCursor(Game, spriteSheet);
@@ -121,9 +121,9 @@ namespace SpaceProject_Linux
         private void DrawBackground(SpriteBatch spriteBatch)
         {
             //Backdrop
-            for (int i = 0; i < (int)((Game.Window.ClientBounds.Width / BG_WIDTH) + 1); i++)
+            for (int i = 0; i < (int)((Game.ScreenSize.X / BG_WIDTH) + 1); i++)
             {
-                for (int j = 0; j < (int)((Game.Window.ClientBounds.Height / BG_HEIGHT) + 1); j++)
+                for (int j = 0; j < (int)((Game.ScreenSize.Y / BG_HEIGHT) + 1); j++)
                     spriteBatch.Draw(spriteSheet.Texture, new Vector2(BG_WIDTH * i, BG_HEIGHT * j),
                     new Rectangle(0, 122, BG_WIDTH, BG_HEIGHT), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             }

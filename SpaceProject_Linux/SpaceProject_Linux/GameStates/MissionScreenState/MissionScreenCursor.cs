@@ -39,7 +39,7 @@ namespace SpaceProject_Linux
 
         public void Initialize()
         {
-            edgePadding = Game.Window.ClientBounds.Width / 16;
+            edgePadding = Game.ScreenSize.X / 16;
 
             int totalWidth = 320;
             int spacing = 80;

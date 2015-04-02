@@ -45,10 +45,10 @@ namespace SpaceProject_Linux
         {
             spriteFont = Game.fontManager.GetFont(16);
             textBox = TextUtils.CreateTextBoxConfig(spriteFont,
-                                                    new Rectangle((Game.Window.ClientBounds.Width - TextBoxWidth) / 2,
-                                                                  Game.Window.ClientBounds.Height,
+                                                    new Rectangle((Game.ScreenSize.X - TextBoxWidth) / 2,
+                                                                  Game.ScreenSize.Y,
                                                                   TextBoxWidth,
-                                                                  Game.Window.ClientBounds.Height - 20),
+                                                                  Game.ScreenSize.Y - 20),
                                                     "Data/storydata.dat",
                                                     false);
         }
@@ -97,8 +97,8 @@ namespace SpaceProject_Linux
                              Color.White,
                              0.0f,
                              Vector2.Zero,
-                             new Vector2(Game.Window.ClientBounds.Width / Game.DefaultResolution.X,
-                                         Game.Window.ClientBounds.Height / Game.DefaultResolution.Y),
+                             new Vector2(Game.ScreenSize.X / Game.DefaultResolution.X,
+                                         Game.ScreenSize.Y / Game.DefaultResolution.Y),
                              SpriteEffects.None,
                              0.5f);
 

@@ -127,7 +127,7 @@ namespace SpaceProject_Linux
             }
             else
             {
-                canvasPosition = new Vector2(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
+                canvasPosition = new Vector2(game.ScreenSize.X / 2, game.ScreenSize.Y / 2);
             }
 
             // Sets position of button

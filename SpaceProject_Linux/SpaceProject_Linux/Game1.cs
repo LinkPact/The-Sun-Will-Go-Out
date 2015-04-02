@@ -13,25 +13,30 @@ namespace SpaceProject_Linux
 {
     public class Game1 : Game
     {
-        public static readonly String SaveFilePath = 
-            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
-            "/LinkPact Games/The Sun Will Go Out/";
-
         #region declaration
-        public SaveFile settingsFile;
+        // Constants
+        public static readonly String SaveFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/.LinkPact Games/The Sun Will Go Out/";
+        private static readonly int FPSRefreshRate = 250;       // (in milliseconds)
 
+        // Flags
+        public static bool Paused = false;
+        public bool GameStarted;
+
+        // Graphics
+        private SpriteBatch spriteBatch;
+        public GraphicsDeviceManager graphics;
+
+        // Files
+        public SaveFile settingsFile;
+        public SaveFile saveFile;
+
+        // Spritesheets
         public Sprite spriteSheetVerticalShooter;
         public Sprite spriteSheetOverworld;
         private Sprite messageBoxSpriteSheet;
         public Sprite spriteSheetItemDisplay;
 
-        public GraphicsDeviceManager graphics;
-        private SpriteBatch spriteBatch;
-
-        public PlayerOverworld player;
-
-        public MenuBackdropController menuBGController;
-
+        // Managers
         public MusicManager musicManager;
         public SoundEffectsManager soundEffectsManager;
         public FontManager fontManager;
@@ -41,50 +46,40 @@ namespace SpaceProject_Linux
         public MissionManager missionManager;
         public TutorialManager tutorialManager;
         public ShopManager shopManager;
-
+        public MenuBackdropController menuBGController;
         private PopupHandler popupHandler;
         public HelperBox helper;
+
+        // Screen and resolution
+        public Vector2 ScreenCenter { get { return new Vector2(ScreenSize.X / 2, ScreenSize.Y / 2); } }
+        private Point screenSize;
+        public Point ScreenSize { get { return screenSize; } }
+        private Vector2 resolution;
+        public static List<Vector2> ResolutionOptions;
+        public Vector2 Resolution { get { return resolution; } }
+        public Vector2 DefaultResolution { get { return new Vector2(800, 600); } }
+
+        // TODO: These shouldn't be here
+        public PlayerOverworld player;
+        public Camera camera;
         private BeaconMenu beaconMenu;
         public BeaconMenu GetBeaconMenu { get { return beaconMenu; } private set { ; } }
-
-        private bool saveOnEnterOverworld;
-        public bool SaveOnEnterOverworld { get { return saveOnEnterOverworld; } set { saveOnEnterOverworld = value; } }
-
-        public SaveFile saveFile;
-
-        public static bool Paused = false;
-
-        public Vector2 ScreenCenter { get { return new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2); } }
-
-        //Cursor
+        private float fps;
+        private float fpsTimer;
+        private bool showFPS;
+        public bool ShowFPS { get { return showFPS; } set { showFPS = value; } }
         private const int HOLD_KEY_TRESHOLD = 200;
         public int HoldKeyTreshold { get { return HOLD_KEY_TRESHOLD; } }
         private const int SCROLL_SPEED_FAST = 60; //Lower = faster
         private const int SCROLL_SPEED_SLOW = 90;
         public int ScrollSpeedFast { get { return SCROLL_SPEED_FAST; } }
         public int ScrollSpeedSlow { get { return SCROLL_SPEED_SLOW; } }
-
-        public Camera camera;
-
-        //fps
-        private float fps;
-        private float fpsTimer;
-        private bool showFPS;
-        public bool ShowFPS { get { return showFPS; } set { showFPS = value; } }
-
-        public static List<Vector2> ResolutionOptions;
-
-        private Vector2 resolution;
-
+        private bool saveOnEnterOverworld;
+        public bool SaveOnEnterOverworld { get { return saveOnEnterOverworld; } set { saveOnEnterOverworld = value; } }
         public Random random;
- 
-        public Vector2 Resolution { get { return resolution; } }
-        public Vector2 DefaultResolution { get { return new Vector2(800, 600); } }
-
-        public bool GameStarted;
         #endregion
 
-        public Game1():
+        public Game1() :
             base()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -93,10 +88,8 @@ namespace SpaceProject_Linux
 
         protected override void Initialize()
         {
-            CreateDirectories();   
-
+            CreateDirectories();
             SetAvailableResolutions();
-
             GameStarted = false;
 
             settingsFile = new SaveFile(this);
@@ -106,6 +99,7 @@ namespace SpaceProject_Linux
 
             resolution = new Vector2(settingsFile.GetPropertyAsFloat("visual", "resolutionx", 1024),
                                      settingsFile.GetPropertyAsFloat("visual", "resolutiony", 768));
+            screenSize = new Point((int)resolution.X, (int)resolution.Y);
 
             random = new Random();
 
@@ -116,6 +110,8 @@ namespace SpaceProject_Linux
             graphics.IsFullScreen = settingsFile.GetPropertyAsBool("visual", "fullscreen", false);
             graphics.SynchronizeWithVerticalRetrace = true;
             graphics.ApplyChanges();
+
+            CenterScreenWindow();
 
             IsMouseVisible = true;
 
@@ -159,7 +155,7 @@ namespace SpaceProject_Linux
 
             tutorialManager = new TutorialManager(this);
             tutorialManager.Initialize();
-            tutorialManager.TutorialsUsed = settingsFile.GetPropertyAsBool("game options", "tutorials", true);
+            tutorialManager.TutorialsUsed = settingsFile.GetPropertyAsBool("Game options", "tutorials", true);
 
             shopManager = new ShopManager();
 
@@ -188,13 +184,13 @@ namespace SpaceProject_Linux
         {
         }
 
-        protected override void Update(GameTime gameTime) 
+        protected override void Update(GameTime GameTime)
         {
             Window.Title = "The Sun Will Go Out";
 
             if (IsActive)
             {
-                ControlManager.Update(gameTime);
+                ControlManager.Update(GameTime);
 
                 //Toggles fullscreen on/off
                 if (ControlManager.CurrentKeyboardState.IsKeyDown(Keys.LeftAlt) && ControlManager.CheckKeyPress(Keys.F))
@@ -213,20 +209,20 @@ namespace SpaceProject_Linux
                 if (!Paused)
                 {
                     if (player.IsUsed)
-                        player.Update(gameTime);
-                    
-                    stateManager.Update(gameTime);
-                    missionManager.Update(gameTime);
-                    tutorialManager.Update(gameTime);
-                    shopManager.Update(gameTime);
+                        player.Update(GameTime);
+
+                    stateManager.Update(GameTime);
+                    missionManager.Update(GameTime);
+                    tutorialManager.Update(GameTime);
+                    shopManager.Update(GameTime);
                 }
 
                 else if (ZoomMap.IsMapOn)
                 {
-                    camera.CameraUpdate(gameTime, player);
+                    camera.CameraUpdate(GameTime, player);
                 }
 
-                soundEffectsManager.Update(gameTime);
+                soundEffectsManager.Update(GameTime);
 
                 if (ControlManager.CheckKeyPress(Keys.N)
                     && GameStateManager.currentState == "OverworldState")
@@ -237,18 +233,18 @@ namespace SpaceProject_Linux
 
                 if (ZoomMap.IsMapOn)
                 {
-                    ZoomMap.Update(gameTime, stateManager.overworldState.GetZoomObjects, camera);
+                    ZoomMap.Update(GameTime, stateManager.overworldState.GetZoomObjects, camera);
                 }
 
-                popupHandler.Update(gameTime);
-                helper.Update(gameTime);
-                beaconMenu.Update(gameTime);
+                popupHandler.Update(GameTime);
+                helper.Update(GameTime);
+                beaconMenu.Update(GameTime);
 
-                fpsTimer -= gameTime.ElapsedGameTime.Milliseconds;
+                fpsTimer -= GameTime.ElapsedGameTime.Milliseconds;
                 if (fpsTimer <= 0)
                 {
-                    fps = (float)Math.Round((1 / gameTime.ElapsedGameTime.TotalSeconds), 0);
-                    fpsTimer = 250;
+                    fps = (float)Math.Round((1 / GameTime.ElapsedGameTime.TotalSeconds), 0);
+                    fpsTimer = FPSRefreshRate;
                 }
 
                 if (ControlManager.CurrentKeyboardState.IsKeyDown(Keys.LeftAlt) &&
@@ -257,7 +253,7 @@ namespace SpaceProject_Linux
                     musicManager.SwitchMusicMuted();
                 }
 
-                menuBGController.Update(gameTime);
+                menuBGController.Update(GameTime);
 
                 if (saveOnEnterOverworld)
                 {
@@ -265,11 +261,11 @@ namespace SpaceProject_Linux
                     Save();
                 }
 
-                base.Update(gameTime);
+                base.Update(GameTime);
             }
         }
 
-        protected override void Draw(GameTime gameTime)
+        protected override void Draw(GameTime GameTime)
         {
             GraphicsDevice.Clear(Color.Black);
 
@@ -319,7 +315,7 @@ namespace SpaceProject_Linux
                 else
                 {
                     spriteBatch.DrawString(fontManager.GetFont(14), "Fps: " + fps.ToString(),
-                        new Vector2(Window.ClientBounds.Width - fontManager.GetFont(14).MeasureString("Fps: " + fps.ToString()).X,
+                        new Vector2(ScreenSize.X - fontManager.GetFont(14).MeasureString("Fps: " + fps.ToString()).X,
                                     0) + fontManager.FontOffset,
                         fontManager.FontColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
                 }
@@ -327,12 +323,12 @@ namespace SpaceProject_Linux
 
             spriteBatch.End();
 
-            base.Draw(gameTime);
+            base.Draw(GameTime);
         }
 
         public void Save()
         {
-            helper.DisplayText("The game has been saved!", 2);
+            helper.DisplayText("The Game has been saved!", 2);
 
             saveFile.EmptySaveFile(Game1.SaveFilePath, "save.ini");
             statsManager.Save();
@@ -364,6 +360,9 @@ namespace SpaceProject_Linux
             graphics.PreferredBackBufferWidth = (int)resolution.X;
             graphics.PreferredBackBufferHeight = (int)resolution.Y;
             graphics.ApplyChanges();
+
+            screenSize = new Point((int)resolution.X, (int)resolution.Y);
+            CenterScreenWindow();
 
             menuBGController.Initialize();
             musicManager.Initialize();
@@ -415,6 +414,15 @@ namespace SpaceProject_Linux
         {
             Directory.CreateDirectory(SaveFilePath);
             Directory.CreateDirectory(LevelLogger.writeDir);
+        }
+
+        private void CenterScreenWindow()
+        {
+            if (!graphics.IsFullScreen)
+            {
+                Window.Position = new Point((GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width - ScreenSize.X) / 2,
+                        (GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height - ScreenSize.Y) / 2);
+            }
         }
     }
 }

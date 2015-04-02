@@ -30,12 +30,12 @@ namespace SpaceProject_Linux
             base.Initialize();
 
             resLeftButton = new MenuDisplayObject(game, buttonsSprite.GetSubSprite(new Rectangle(20, 135, 12, 11)), buttonsSprite.GetSubSprite(new Rectangle(4, 135, 12, 11)),
-                new Vector2(game.Window.ClientBounds.Width - 168, game.Window.ClientBounds.Height / 3 - 1 + (2 * 22)),
+                new Vector2(game.ScreenSize.X - 168, game.ScreenSize.Y / 3 - 1 + (2 * 22)),
                 new Vector2(6, 5));
             resLeftButton.Initialize();
 
             resRightButton = new MenuDisplayObject(game, buttonsSprite.GetSubSprite(new Rectangle(4, 135, 12, 11)), buttonsSprite.GetSubSprite(new Rectangle(4, 135, 12, 11)),
-                new Vector2(game.Window.ClientBounds.Width - 50, game.Window.ClientBounds.Height / 3 - 1 + (2 * 22)),
+                new Vector2(game.ScreenSize.X - 50, game.ScreenSize.Y / 3 - 1 + (2 * 22)),
                 new Vector2(6, 5));
             resRightButton.Initialize();
 

@@ -15,8 +15,8 @@ namespace SpaceProject_Linux
         public MovementModule(Game1 game)
         {
             random = new Random();
-            windowWidth = game.Window.ClientBounds.Width;
-            windowHeight = game.Window.ClientBounds.Height;
+            windowWidth = game.ScreenSize.X;
+            windowHeight = game.ScreenSize.Y;
         }
 
         public abstract void Setup(GameObjectVertical obj);

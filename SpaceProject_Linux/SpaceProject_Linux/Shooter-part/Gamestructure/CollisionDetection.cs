@@ -10,10 +10,10 @@ namespace SpaceProject_Linux
     {
         public static Nullable<Rectangle> CurrentViewRectangle(Vector2 camPos, Game1 Game)
         {
-            return new Rectangle((int)Game.camera.cameraPos.X - (Game.Window.ClientBounds.Width / 2),
-                (int)Game.camera.cameraPos.Y - (Game.Window.ClientBounds.Height / 2),
-                (int)Game.camera.cameraPos.X - (Game.Window.ClientBounds.Width / 2) + Game.Window.ClientBounds.Width,
-                (int)Game.camera.cameraPos.Y - (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height);
+            return new Rectangle((int)Game.camera.cameraPos.X - (Game.ScreenSize.X / 2),
+                (int)Game.camera.cameraPos.Y - (Game.ScreenSize.Y / 2),
+                (int)Game.camera.cameraPos.X - (Game.ScreenSize.X / 2) + Game.ScreenSize.X,
+                (int)Game.camera.cameraPos.Y - (Game.ScreenSize.Y / 2) + Game.ScreenSize.Y);
         }
         
         public static bool IsPointInsideRectangle(Vector2 point, Rectangle rect)

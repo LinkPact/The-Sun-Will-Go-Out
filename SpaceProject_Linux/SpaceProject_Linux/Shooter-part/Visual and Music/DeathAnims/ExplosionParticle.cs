@@ -74,8 +74,8 @@ namespace SpaceProject_Linux
             startingDirection = startingDir;
             this.startingSpeed = startingSpeed;
 
-            leftRemovalPos = (game.Window.ClientBounds.Width - game.stateManager.shooterState.CurrentLevel.LevelWidth) / 2 - 50;
-            rightRemovalPos = (game.Window.ClientBounds.Width - game.stateManager.shooterState.CurrentLevel.LevelWidth) / 2 + game.stateManager.shooterState.CurrentLevel.LevelWidth + 50;
+            leftRemovalPos = (game.ScreenSize.X - game.stateManager.shooterState.CurrentLevel.LevelWidth) / 2 - 50;
+            rightRemovalPos = (game.ScreenSize.X - game.stateManager.shooterState.CurrentLevel.LevelWidth) / 2 + game.stateManager.shooterState.CurrentLevel.LevelWidth + 50;
 
         }
 
@@ -98,8 +98,8 @@ namespace SpaceProject_Linux
                 lifeTime = 0;
             }
 
-            else if (position.Y < (game.Window.ClientBounds.Height - 600) / 2 ||
-                position.Y > (game.Window.ClientBounds.Height - 600) / 2 + 600)
+            else if (position.Y < (game.ScreenSize.Y - 600) / 2 ||
+                position.Y > (game.ScreenSize.Y - 600) / 2 + 600)
             {
                 lifeTime = 0;
             }

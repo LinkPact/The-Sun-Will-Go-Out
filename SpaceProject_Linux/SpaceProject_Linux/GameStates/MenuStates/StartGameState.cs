@@ -21,7 +21,7 @@ namespace SpaceProject_Linux
         private List<MenuDisplayObject> buttons;
 
         private MenuDisplayObject selectedButton;
-        private MenuDisplayObject devButton;
+        //private MenuDisplayObject devButton;
         private MenuDisplayObject easyButton;
         private MenuDisplayObject normalButton;
         private MenuDisplayObject hardButton;
@@ -37,23 +37,23 @@ namespace SpaceProject_Linux
 
         public override void Initialize()
         {
-            buttonYPosition = Game.Window.ClientBounds.Height / 5;
+            buttonYPosition = Game.ScreenSize.Y / 5;
 
             buttonsSprite = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/buttons"), null);
             buttonsFont = Game.fontManager.GetFont(16);
 
-            devButton = new MenuDisplayObject(Game,
-                    buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
-                    buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                    new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition),
-                    new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
-                            buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
-            devButton.name = "Develop";
+            //devButton = new MenuDisplayObject(Game,
+            //        buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
+            //        buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
+            //        new Vector2(Game.ScreenSize.X / 4, buttonYPosition),
+            //        new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
+            //                buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
+            //devButton.name = "Develop";
 
             easyButton = new MenuDisplayObject(Game,
                     buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                     buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                    new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition + BUTTON_Y_DISTANCE),
+                    new Vector2(Game.ScreenSize.X / 4, buttonYPosition + BUTTON_Y_DISTANCE),
                     new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                             buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             easyButton.name = "Easy";
@@ -61,7 +61,7 @@ namespace SpaceProject_Linux
             normalButton = new MenuDisplayObject(Game,
                     buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                     buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                    new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition + BUTTON_Y_DISTANCE * 2),
+                    new Vector2(Game.ScreenSize.X / 4, buttonYPosition + BUTTON_Y_DISTANCE * 2),
                     new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                             buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             normalButton.name = "Normal";
@@ -69,7 +69,7 @@ namespace SpaceProject_Linux
             hardButton = new MenuDisplayObject(Game,
                     buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                     buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                    new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition + BUTTON_Y_DISTANCE * 3),
+                    new Vector2(Game.ScreenSize.X / 4, buttonYPosition + BUTTON_Y_DISTANCE * 3),
                     new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                         buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             hardButton.name = "Hard";
@@ -77,7 +77,7 @@ namespace SpaceProject_Linux
             //hardCoreButton = new MenuDisplayObject(Game,
             //        buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
             //        buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-            //        new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition + BUTTON_Y_DISTANCE * 4),
+            //        new Vector2(Game.ScreenSize.X / 4, buttonYPosition + BUTTON_Y_DISTANCE * 4),
             //        new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
             //                buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             //hardCoreButton.name = "Hardcore";
@@ -85,14 +85,14 @@ namespace SpaceProject_Linux
             backButton = new MenuDisplayObject(Game,
                     buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                     buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                    new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition + BUTTON_Y_DISTANCE * 4),
+                    new Vector2(Game.ScreenSize.X / 4, buttonYPosition + BUTTON_Y_DISTANCE * 4),
                     new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                             buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             backButton.name = "Back";
 
             buttons = new List<MenuDisplayObject>();
 
-            buttons.Add(devButton);
+            //buttons.Add(devButton);
             buttons.Add(easyButton);
             buttons.Add(normalButton);
             buttons.Add(hardButton);
@@ -104,7 +104,7 @@ namespace SpaceProject_Linux
             buttonIndex = 0;
 
             descriptions = new List<string>();
-            descriptions.Add("Mode for development and testing.");
+            //descriptions.Add("Mode for development and testing.");
             descriptions.Add("Easy mode for inexperienced players.\nYou take less damage from enemy fire and you receive more money.");
             descriptions.Add("Regular difficulty.\n The way the game was intended to be played.");
             descriptions.Add("An extra difficulty for players looking for a real challenge.\nYou take more damage from enemy fire and you recive less money.");
@@ -327,8 +327,8 @@ namespace SpaceProject_Linux
                  Color.White,
                  0.0f,
                  Vector2.Zero,
-                 new Vector2(Game.Window.ClientBounds.Width / Game.DefaultResolution.X,
-                             Game.Window.ClientBounds.Height / Game.DefaultResolution.Y),
+                 new Vector2(Game.ScreenSize.X / Game.DefaultResolution.X,
+                             Game.ScreenSize.Y / Game.DefaultResolution.Y),
                  SpriteEffects.None,
                  0.5f);
 
@@ -354,7 +354,7 @@ namespace SpaceProject_Linux
                 float xOffset = -50;
                 float yOffset = -50;
                 spriteBatch.DrawString(Game.fontManager.GetFont(14), descriptions[buttonIndex],
-                    new Vector2(Game.Window.ClientBounds.Width / 2 + xOffset, Game.Window.ClientBounds.Height / 2 + yOffset),
+                    new Vector2(Game.ScreenSize.X / 2 + xOffset, Game.ScreenSize.Y / 2 + yOffset),
                     Color.White, 0f,
                     new Vector2(0, ((buttonsFont.MeasureString(descriptions[buttonIndex])).Y) / 2),
                     1f, SpriteEffects.None, 1f);

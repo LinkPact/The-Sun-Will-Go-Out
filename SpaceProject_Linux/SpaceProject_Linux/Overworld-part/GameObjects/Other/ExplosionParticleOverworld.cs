@@ -86,8 +86,8 @@ namespace SpaceProject_Linux
             if (b > 5)
                 b -= 5;
 
-            else if (position.Y < (game.Window.ClientBounds.Height - 600) / 2 ||
-                position.Y > (game.Window.ClientBounds.Height - 600) / 2 + 600)
+            else if (position.Y < (game.ScreenSize.Y - 600) / 2 ||
+                position.Y > (game.ScreenSize.Y - 600) / 2 + 600)
             {
                 lifeTime = 0;
             }

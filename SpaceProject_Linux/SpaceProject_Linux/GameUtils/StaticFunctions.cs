@@ -19,10 +19,10 @@ namespace SpaceProject_Linux
         {
             if (GameStateManager.currentState.ToLower().Equals("overworldstate"))
             {
-                if (pos.X < Game.camera.cameraPos.X - (Game.Window.ClientBounds.Width / 2))
+                if (pos.X < Game.camera.cameraPos.X - (Game.ScreenSize.X / 2))
                     return 1;
 
-                else if (pos.X > Game.camera.cameraPos.X + (Game.Window.ClientBounds.Width / 2))
+                else if (pos.X > Game.camera.cameraPos.X + (Game.ScreenSize.X / 2))
                     return 2;
 
                 else
@@ -34,7 +34,7 @@ namespace SpaceProject_Linux
                 if (pos.X < 0)
                     return 1;
 
-                else if (pos.X > Game.Window.ClientBounds.Width )
+                else if (pos.X > Game.ScreenSize.X )
                     return 2;
 
                 else
@@ -49,10 +49,10 @@ namespace SpaceProject_Linux
         {
             if (Game.camera != null)
             {
-                if (pos.Y < Game.camera.cameraPos.Y - (Game.Window.ClientBounds.Height / 2))
+                if (pos.Y < Game.camera.cameraPos.Y - (Game.ScreenSize.Y / 2))
                     return 1;
 
-                else if (pos.Y > Game.camera.cameraPos.Y + (Game.Window.ClientBounds.Height / 2))
+                else if (pos.Y > Game.camera.cameraPos.Y + (Game.ScreenSize.Y / 2))
                     return 2;
 
                 else
@@ -64,7 +64,7 @@ namespace SpaceProject_Linux
                 if (pos.Y < 0)
                     return 1;
 
-                else if (pos.Y > Game.Window.ClientBounds.Height)
+                else if (pos.Y > Game.ScreenSize.Y)
                     return 2;
 
                 else

@@ -51,7 +51,7 @@ namespace SpaceProject_Linux
             buttonsSprite = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/buttons"), null);
             buttonsFont = Game.fontManager.GetFont(16);
 
-            buttonYPosition = Game.Window.ClientBounds.Height / 5;
+            buttonYPosition = Game.ScreenSize.Y / 5;
 
             gameOptionsSubState = new GameOptionsSubState(Game, buttonsSprite, this, "Game Options");
             controlOptionsSubState = new ControlOptionsSubState(Game, buttonsSprite, this, "Control Options");
@@ -74,7 +74,7 @@ namespace SpaceProject_Linux
             gameOptionsButton = new MenuDisplayObject(Game,
                     buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                     buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                    new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition),
+                    new Vector2(Game.ScreenSize.X / 4, buttonYPosition),
                     new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                             buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             gameOptionsButton.name = "Game Options";
@@ -82,7 +82,7 @@ namespace SpaceProject_Linux
             controlOptionsButton = new MenuDisplayObject(Game,
                     buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                     buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                    new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition + BUTTON_Y_DISTANCE),
+                    new Vector2(Game.ScreenSize.X / 4, buttonYPosition + BUTTON_Y_DISTANCE),
                     new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                             buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             controlOptionsButton.name = "Control Options";
@@ -90,7 +90,7 @@ namespace SpaceProject_Linux
             visualOptionsButton = new MenuDisplayObject(Game,
                     buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                     buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                    new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition + BUTTON_Y_DISTANCE * 2),
+                    new Vector2(Game.ScreenSize.X / 4, buttonYPosition + BUTTON_Y_DISTANCE * 2),
                     new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                             buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             visualOptionsButton.name = "Visual Options";
@@ -98,7 +98,7 @@ namespace SpaceProject_Linux
             soundOptionsButton = new MenuDisplayObject(Game,
                     buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                     buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                    new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition + BUTTON_Y_DISTANCE * 3),
+                    new Vector2(Game.ScreenSize.X / 4, buttonYPosition + BUTTON_Y_DISTANCE * 3),
                     new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                             buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             soundOptionsButton.name = "Sound Options";
@@ -106,7 +106,7 @@ namespace SpaceProject_Linux
             backButton = new MenuDisplayObject(Game,
                     buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                     buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                    new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition + BUTTON_Y_DISTANCE * 4),
+                    new Vector2(Game.ScreenSize.X / 4, buttonYPosition + BUTTON_Y_DISTANCE * 4),
                     new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                             buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             backButton.name = "Back";
@@ -339,8 +339,8 @@ namespace SpaceProject_Linux
                              Color.White,
                              0.0f,
                              Vector2.Zero,
-                             new Vector2(Game.Window.ClientBounds.Width / Game.DefaultResolution.X,
-                                         Game.Window.ClientBounds.Height / Game.DefaultResolution.Y),
+                             new Vector2(Game.ScreenSize.X / Game.DefaultResolution.X,
+                                         Game.ScreenSize.Y / Game.DefaultResolution.Y),
                              SpriteEffects.None,
                              0.5f);
 
