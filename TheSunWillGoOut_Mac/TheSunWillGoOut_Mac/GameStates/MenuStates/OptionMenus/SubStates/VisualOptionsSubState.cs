@@ -17,8 +17,8 @@ namespace SpaceProject_Mac
         private int holdTimer;
         private int resIndex;
 
-        private MenuDisplayObject resLeftButton;
-        private MenuDisplayObject resRightButton;
+//        private MenuDisplayObject resLeftButton;
+//        private MenuDisplayObject resRightButton;
 
         public VisualOptionsSubState(Game1 game, Sprite buttonsSprite, OptionsMenuState optionsMenuState, String name) :
             base(game, buttonsSprite, optionsMenuState, name)
@@ -29,65 +29,53 @@ namespace SpaceProject_Mac
         {
             base.Initialize();
 
-            resLeftButton = new MenuDisplayObject(game, buttonsSprite.GetSubSprite(new Rectangle(20, 135, 12, 11)), buttonsSprite.GetSubSprite(new Rectangle(4, 135, 12, 11)),
-                new Vector2(game.Window.ClientBounds.Width - 168, game.Window.ClientBounds.Height / 3 - 1 + (2 * 22)),
-                new Vector2(6, 5));
-            resLeftButton.Initialize();
-
-            resRightButton = new MenuDisplayObject(game, buttonsSprite.GetSubSprite(new Rectangle(4, 135, 12, 11)), buttonsSprite.GetSubSprite(new Rectangle(4, 135, 12, 11)),
-                new Vector2(game.Window.ClientBounds.Width - 50, game.Window.ClientBounds.Height / 3 - 1 + (2 * 22)),
-                new Vector2(6, 5));
-            resRightButton.Initialize();
-
-            resLeftButton.name = "left res";
-            resRightButton.name = "right res";
-
-            directionalButtons.Add(resLeftButton);
-            directionalButtons.Add(resRightButton);
+//            resLeftButton = new MenuDisplayObject(game, buttonsSprite.GetSubSprite(new Rectangle(20, 135, 12, 11)), buttonsSprite.GetSubSprite(new Rectangle(4, 135, 12, 11)),
+//                new Vector2(game.Window.ClientBounds.Width - 168, game.Window.ClientBounds.Height / 3 - 1 + (2 * 22)),
+//                new Vector2(6, 5));
+//            resLeftButton.Initialize();
+//
+//            resRightButton = new MenuDisplayObject(game, buttonsSprite.GetSubSprite(new Rectangle(4, 135, 12, 11)), buttonsSprite.GetSubSprite(new Rectangle(4, 135, 12, 11)),
+//                new Vector2(game.Window.ClientBounds.Width - 50, game.Window.ClientBounds.Height / 3 - 1 + (2 * 22)),
+//                new Vector2(6, 5));
+//            resRightButton.Initialize();
+//
+//            resLeftButton.name = "left res";
+//            resRightButton.name = "right res";
+//
+//            directionalButtons.Add(resLeftButton);
+//            directionalButtons.Add(resRightButton);
 
             holdTimer = game.HoldKeyTreshold;
             cursorIndex = 0;
 
-            menuOptions = new String[5, 2];
+            menuOptions = new String[2, 2];
         }
 
         public override void OnDisplay()
         {
-            resLeftButton.isVisible = true;
-            resRightButton.isVisible = true;
+//            resLeftButton.isVisible = true;
+//            resRightButton.isVisible = true;
 
             resIndex = Game1.ResolutionOptions.IndexOf(game.Resolution);
 
-            menuOptions[0, 0] = "Fullscreen";
-            if (game.graphics.IsFullScreen)
-            {
-                menuOptions[0, 1] = "On";
-                onEnterFullScreen = true;
-            }
-            else
-            {
-                menuOptions[0, 1] = "Off";
-                onEnterFullScreen = false;
-            }
-
-            menuOptions[1, 0] = "Show FPS";
+            menuOptions[0, 0] = "Show FPS";
             if (game.ShowFPS)
             {
-                menuOptions[1, 1] = "On";
+                menuOptions[0, 1] = "On";
                 onEnterShowFPS = true;
             }
             else
             {
-                menuOptions[1, 1] = "Off";
+                menuOptions[0, 1] = "Off";
                 onEnterShowFPS = false;
             }
 
-            menuOptions[2, 0] = "Resolution";
-            menuOptions[2, 1] = game.Resolution.X.ToString() + " x " + game.Resolution.Y.ToString();
-            onEnterResolution = game.Resolution;
-
-            menuOptions[3, 0] = "Apply Changes";
-            menuOptions[3, 1] = "";
+//            menuOptions[1, 0] = "Resolution";
+//            menuOptions[1, 1] = game.Resolution.X.ToString() + " x " + game.Resolution.Y.ToString();
+//            onEnterResolution = game.Resolution;
+//
+//            menuOptions[2, 0] = "Apply Changes";
+//            menuOptions[2, 1] = "";
 
             // DON'T DELETE
             //menuOptions[2, 0] = "Limit FPS";
@@ -112,8 +100,8 @@ namespace SpaceProject_Mac
             //        break;
             //}
 
-            menuOptions[4, 0] = "Back";
-            menuOptions[4, 1] = "";
+            menuOptions[1, 0] = "Back";
+            menuOptions[1, 1] = "";
 
             base.OnDisplay();
         }
@@ -125,8 +113,8 @@ namespace SpaceProject_Mac
 
         public override void OnHide()
         {
-            resLeftButton.isVisible = false;
-            resRightButton.isVisible = false;
+//            resLeftButton.isVisible = false;
+//            resRightButton.isVisible = false;
             base.OnHide();
         }
 
@@ -137,7 +125,7 @@ namespace SpaceProject_Mac
 
         public override void Update(GameTime gameTime)
         {
-            if (cursorIndex == 2)
+            if (cursorIndex == 1)
             {
                 if (ControlManager.CheckPress(RebindableKeys.Left))
                 {
@@ -151,17 +139,17 @@ namespace SpaceProject_Mac
 
             }
 
-            if (resIndex > Game1.ResolutionOptions.Count - 1)
-            {
-                resIndex = 0;
-            }
-
-            else if (resIndex < 0)
-            {
-                resIndex = Game1.ResolutionOptions.Count - 1;
-            }
-
-            menuOptions[2, 1] = Game1.ResolutionOptions[resIndex].X + " x " + Game1.ResolutionOptions[resIndex].Y;
+//            if (resIndex > Game1.ResolutionOptions.Count - 1)
+//            {
+//                resIndex = 0;
+//            }
+//
+//            else if (resIndex < 0)
+//            {
+//                resIndex = Game1.ResolutionOptions.Count - 1;
+//            }
+//
+//            menuOptions[1, 1] = Game1.ResolutionOptions[resIndex].X + " x " + Game1.ResolutionOptions[resIndex].Y;
 
             base.Update(gameTime);
         }
@@ -262,12 +250,12 @@ namespace SpaceProject_Mac
             switch (buttonName.ToLower())
             {
                 case "left res":
-                    cursorIndex = 2;
+                    cursorIndex = 1;
                     resIndex--;
                     break;
 
                 case "right res":
-                    cursorIndex = 2;
+                    cursorIndex = 1;
                     resIndex++;
                     break;
 
@@ -280,17 +268,14 @@ namespace SpaceProject_Mac
 
         private void UpdateText()
         {
-            if (game.graphics.IsFullScreen)
+
+            
+            if (game.ShowFPS)
                 menuOptions[0, 1] = "On";
             else
                 menuOptions[0, 1] = "Off";
-            
-            if (game.ShowFPS)
-                menuOptions[1, 1] = "On";
-            else
-                menuOptions[1, 1] = "Off";
 
-            menuOptions[2, 1] = game.Resolution.X.ToString() + " x " + game.Resolution.Y.ToString();
+            //menuOptions[1, 1] = game.Resolution.X.ToString() + " x " + game.Resolution.Y.ToString();
 
             // DON'T DELETE
             //if (game.graphics.SynchronizeWithVerticalRetrace)
@@ -322,22 +307,18 @@ namespace SpaceProject_Mac
 
         private bool SettingsHasChanged()
         {
-            if ((menuOptions[0, 1].Equals("On") && !onEnterFullScreen) 
-                || (menuOptions[0, 1].Equals("Off") && onEnterFullScreen))
+
+
+            if ((menuOptions[0, 1].Equals("On") && !onEnterShowFPS)
+                || (menuOptions[0, 1].Equals("Off") && onEnterShowFPS))
             {
                 return true;
             }
 
-            if ((menuOptions[1, 1].Equals("On") && !onEnterShowFPS)
-                || (menuOptions[1, 1].Equals("Off") && onEnterShowFPS))
-            {
-                return true;
-            }
-
-            if (!Game1.ResolutionOptions[resIndex].Equals(onEnterResolution))
-            {
-                return true;
-            }
+//            if (!Game1.ResolutionOptions[resIndex].Equals(onEnterResolution))
+//            {
+//                return true;
+//            }
 
             return false;
         }

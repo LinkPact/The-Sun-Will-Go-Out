@@ -10,6 +10,7 @@
     <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
     <AssemblyName>TheSunWillGoOut_Mac</AssemblyName>
     <StartupObject>SpaceProject_Mac.Program</StartupObject>
+    <SuppressXamMacUpsell>True</SuppressXamMacUpsell>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -78,15 +79,11 @@
     <Folder Include="Shooter-part\" />
     <Folder Include="Content\Fonts\" />
     <Folder Include="Content\MapCreator\" />
-    <Folder Include="Content\Music\" />
     <Folder Include="Content\Overworld-Sprites\" />
     <Folder Include="Content\SoundEffects\" />
     <Folder Include="Content\Vertical-Sprites\" />
     <Folder Include="MonoGame\" />
-    <Folder Include="Content\Music\old\" />
-    <Folder Include="Content\Music\other\" />
-    <Folder Include="Content\Music\overworld\" />
-    <Folder Include="Content\Music\vertical\" />
+    <Folder Include="Content\Music\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -699,34 +696,6 @@
     <Content Include="Content\Vertical-Sprites\font14.xnb" />
     <Content Include="Content\Vertical-Sprites\introBackdrop.xnb" />
     <Content Include="Content\itemVisualSheet.xnb" />
-    <Content Include="Content\Music\old\Asteroids.mp4" />
-    <Content Include="Content\Music\old\Asteroids.xnb" />
-    <Content Include="Content\Music\old\Rebels.mp4" />
-    <Content Include="Content\Music\old\Rebels.xnb" />
-    <Content Include="Content\Music\other\GoingOut.mp4" />
-    <Content Include="Content\Music\other\GoingOut.xnb" />
-    <Content Include="Content\Music\other\MainMenu.mp4" />
-    <Content Include="Content\Music\other\MainMenu.xnb" />
-    <Content Include="Content\Music\other\Outro.mp4" />
-    <Content Include="Content\Music\other\Outro.xnb" />
-    <Content Include="Content\Music\other\SpaceStation.mp4" />
-    <Content Include="Content\Music\other\SpaceStation.xnb" />
-    <Content Include="Content\Music\other\TheOboeSong.mp4" />
-    <Content Include="Content\Music\other\TheOboeSong.xnb" />
-    <Content Include="Content\Music\overworld\DarkPiano.mp4" />
-    <Content Include="Content\Music\overworld\DarkPiano.xnb" />
-    <Content Include="Content\Music\overworld\DarkSpace.mp4" />
-    <Content Include="Content\Music\overworld\DarkSpace.xnb" />
-    <Content Include="Content\Music\overworld\SpaceAmbience.mp4" />
-    <Content Include="Content\Music\overworld\SpaceAmbience.xnb" />
-    <Content Include="Content\Music\vertical\AllianceBattle.mp4" />
-    <Content Include="Content\Music\vertical\AllianceBattle.xnb" />
-    <Content Include="Content\Music\vertical\Falling.mp4" />
-    <Content Include="Content\Music\vertical\Falling.xnb" />
-    <Content Include="Content\Music\vertical\PowerSong.mp4" />
-    <Content Include="Content\Music\vertical\PowerSong.xnb" />
-    <Content Include="Content\Music\vertical\Stars.mp4" />
-    <Content Include="Content\Music\vertical\Stars.xnb" />
     <Content Include="Data\colonydata.dat" />
     <Content Include="Data\missiondata.dat" />
     <Content Include="Data\planetdata.dat" />
@@ -845,5 +814,19 @@
     <Content Include="Levels\unsorted\XSecondMissionlvl1.lvl" />
     <Content Include="Levels\unsorted\XSecondMissionlvl2.lvl" />
     <Content Include="Levels\unsorted\XSecondMissionlvl3.lvl" />
+    <Content Include="Content\Music\old\Asteroids.mp3" />
+    <Content Include="Content\Music\old\Rebels.mp3" />
+    <Content Include="Content\Music\other\GoingOut.mp3" />
+    <Content Include="Content\Music\other\MainMenu.MP3" />
+    <Content Include="Content\Music\other\Outro.mp3" />
+    <Content Include="Content\Music\other\SpaceStation.mp3" />
+    <Content Include="Content\Music\other\TheOboeSong.mp3" />
+    <Content Include="Content\Music\overworld\DarkPiano.mp3" />
+    <Content Include="Content\Music\overworld\DarkSpace.mp3" />
+    <Content Include="Content\Music\overworld\SpaceAmbience.mp3" />
+    <Content Include="Content\Music\vertical\AllianceBattle.mp3" />
+    <Content Include="Content\Music\vertical\Falling.mp3" />
+    <Content Include="Content\Music\vertical\PowerSong.mp3" />
+    <Content Include="Content\Music\vertical\Stars.mp3" />
   </ItemGroup>
 </Project>

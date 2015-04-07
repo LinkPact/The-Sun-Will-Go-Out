@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDisplayName</key>
-	<string>TheSunWillGoOut_Mac</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.linkpact_games.TheSunWillGoOut_Mac</string>
 	<key>CFBundleName</key>
@@ -18,5 +16,7 @@
 	<string>public.app-category.games</string>
 	<key>CFBundleIconFile</key>
 	<string>icon</string>
+	<key>CFBundleDisplayName</key>
+	<string>The Sun Will Go Out</string>
 </dict>
 </plist>
