@@ -1,0 +1,19 @@
+﻿<Properties StartupItem="SpaceProject_Mac/The Sun Will Go Out.csproj" MonoDevelop.MonoMac.LastXamMacNagTime="4/13/2015 6:35:31 AM">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SpaceProject_Mac/Info.plist">
+    <Files>
+      <File FileName="SpaceProject_Mac/Game1.cs" Line="1" Column="1" />
+      <File FileName="SpaceProject_Mac/Managers/MusicManager.cs" Line="21" Column="3" />
+      <File FileName="SpaceProject_Mac/Managers/SoundEffectsManager.cs" Line="1" Column="1" />
+      <File FileName="SpaceProject_Mac/GameUtils/FontManager.cs" Line="1" Column="1" />
+      <File FileName="SpaceProject_Mac/GameUtils/ConfigFile.cs" Line="1" Column="1" />
+      <File FileName="SpaceProject_Mac/GameStates/MenuStates/MainMenuState.cs" Line="1" Column="1" />
+      <File FileName="SpaceProject_Mac/Info.plist" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <AuthorInfo Name="The Sun WIll Go Out" Email="thesunwillgoout@gmail.com" Copyright="LinkPact Games 2015" Company="LinkPact Games" Trademark="" />
+</Properties>
