@@ -7,33 +7,29 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class MiningAsteroids : SubInteractiveObject
+    public class TestAsteroid1 : SubInteractiveObject
     {
-        public MiningAsteroids(Game1 Game, Sprite spriteSheet) :
+        public TestAsteroid1(Game1 Game, Sprite spriteSheet) :
             base(Game, spriteSheet)
         {
-            
+
         }
 
         public override void Initialize()
         {
-            sprite = spriteSheet.GetSubSprite(new Rectangle(580, 9, 239, 224));
-
-            name = "Mining Asteroids";
-
-            position = new Vector2(124500, 93000);
-            scale = 1f;
-            color = Color.White;
-            layerDepth = 0.5f;
+            sprite = spriteSheet.GetSubSprite(new Rectangle(724, 1075, 54, 55));
+            
+            
+            position = MathFunctions.CoordinateToPosition(new Vector2(1817, 135));
+            name = "TestAsteroid1";
 
             base.Initialize();
-            SetupText("A group of asteroids used for mining.");
+            SetupText("I think Jakob is experimenting with Space Objects!");
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            Game.Window.Title = "Position x: " + Game.player.position.X + " Position y: " + Game.player.position.Y;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -48,7 +44,7 @@ namespace SpaceProject
 
         protected override void SetClearedText()
         {
-            clearedText = "EMPTY";
+            clearedText = "Not applicable?";
         }
     }
 }

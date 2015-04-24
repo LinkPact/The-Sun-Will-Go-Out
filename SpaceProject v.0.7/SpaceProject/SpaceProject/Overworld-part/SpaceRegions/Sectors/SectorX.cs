@@ -30,9 +30,12 @@ namespace SpaceProject
         private Beacon newNorrlandBeacon;
 
         // Sub interactive objects
+        private List<SubInteractiveObject> subInteractiveObjects = new List<SubInteractiveObject>();
+
         private Soelara soelara;
         private FortrunStation2 fortrunStation2;
         private LonelyAsteroid lonelyAsteroid;
+        private TestAsteroid1 testAsteroid1;
         private DamagedShip damagedShip;
 
         public SectorX(Game1 game) :
@@ -57,12 +60,19 @@ namespace SpaceProject
             soelara = new Soelara(game, spriteSheet);
             fortrunStation2 = new FortrunStation2(game, spriteSheet);
             lonelyAsteroid = new LonelyAsteroid(game, spriteSheet);
+            testAsteroid1 = new TestAsteroid1(game, spriteSheet);
             damagedShip = new DamagedShip(game, new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/MissionObjectSpriteSheet"), null));
+            
+            subInteractiveObjects.Add(soelara);
+            subInteractiveObjects.Add(fortrunStation2);
+            subInteractiveObjects.Add(lonelyAsteroid);
+            subInteractiveObjects.Add(testAsteroid1);
+            subInteractiveObjects.Add(damagedShip);
 
-            soelara.Initialize();
-            fortrunStation2.Initialize();
-            lonelyAsteroid.Initialize();
-            damagedShip.Initialize();
+            foreach (var obj in subInteractiveObjects)
+            {
+                obj.Initialize();
+            }
 
             // Planets
             lavis = new Lavis(game, spriteSheet, offset);
@@ -117,7 +127,6 @@ namespace SpaceProject
 
             AddGameObject(sectorXStar);
 
-            AddGameObject(soelara);
             AddGameObject(lavis);
             AddGameObject(fortrun);
             AddGameObject(highfence);
@@ -126,11 +135,7 @@ namespace SpaceProject
 
             AddGameObject(lavisStation);
             AddGameObject(fortrunStation1);
-
             AddGameObject(soelaraStation);
-            AddGameObject(fortrunStation2);
-            AddGameObject(lonelyAsteroid);
-            AddGameObject(damagedShip);
 
             AddGameObject(highfenceBeacon);
             AddGameObject(fortrunBeacon);
@@ -138,6 +143,11 @@ namespace SpaceProject
             AddGameObject(lavisBeacon);
             AddGameObject(soelaraBeacon);
             AddGameObject(newNorrlandBeacon);
+            
+            foreach (var obj in subInteractiveObjects)
+            {
+                AddGameObject(obj);
+            }
         }
 
         public override void OnEnter()

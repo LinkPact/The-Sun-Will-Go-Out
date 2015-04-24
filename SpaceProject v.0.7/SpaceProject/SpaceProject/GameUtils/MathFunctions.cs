@@ -17,6 +17,13 @@ namespace SpaceProject
             return rand.NextDouble();
         }
 
+        // Convert overworld coordinate to Vector2-position
+        public static Vector2 CoordinateToPosition(Vector2 coordinate)
+        { 
+            var pixelOrigin = new Vector2(OverworldState.OVERWORLD_WIDTH / 2, OverworldState.OVERWORLD_HEIGHT / 2);
+            return new Vector2(pixelOrigin.X + coordinate.X * 10, pixelOrigin.Y - coordinate.Y * 10);
+        }
+
         //Skalar en Vector2 sa att absolutbeloppet av dess x och y blir 1, anvands framst for att se till7
         //att riktningen inte andrar absolutbelopp nar man andrar riktningen.
         public static Vector2 ScaleDirection(Vector2 dir)
