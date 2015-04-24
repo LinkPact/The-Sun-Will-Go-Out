@@ -100,6 +100,8 @@ namespace SpaceProject_Mac
                 MediaPlayer.Stop();
         }
 
+
+
         public void SetMusicVolume(float volume)
         {
             MediaPlayer.Volume = volume;

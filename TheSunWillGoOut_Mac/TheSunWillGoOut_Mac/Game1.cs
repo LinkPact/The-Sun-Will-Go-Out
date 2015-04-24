@@ -112,7 +112,7 @@ namespace SpaceProject_Mac
 
             graphics.PreferredBackBufferWidth = (int)resolution.X;
             graphics.PreferredBackBufferHeight = (int)resolution.Y;
-            graphics.IsFullScreen = settingsFile.GetPropertyAsBool("visual", "fullscreen", false);
+            graphics.IsFullScreen = false;
             graphics.SynchronizeWithVerticalRetrace = true;
             graphics.ApplyChanges();
 
@@ -191,16 +191,9 @@ namespace SpaceProject_Mac
         {
             Window.Title = "The Sun Will Go Out";
 
-            if (IsActive)
+          	if (IsActive)
             {
                 ControlManager.Update(gameTime);
-
-                //Toggles fullscreen on/off
-                if (ControlManager.CurrentKeyboardState.IsKeyDown(Keys.LeftAlt) && ControlManager.CheckKeyPress(Keys.F))
-                {
-                    graphics.ToggleFullScreen();
-                    graphics.ApplyChanges();
-                }
 
                 //Checks if the player should be used
                 if (GameStateManager.currentState == "OverworldState" || GameStateManager.currentState == "System1State"
@@ -359,10 +352,6 @@ namespace SpaceProject_Mac
         {
             settingsFile = new SaveFile(this);
             settingsFile.Load(SaveFilePath, "settings.ini");
-
-            graphics.PreferredBackBufferWidth = (int)resolution.X;
-            graphics.PreferredBackBufferHeight = (int)resolution.Y;
-            graphics.ApplyChanges();
 
             menuBGController.Initialize();
             musicManager.Initialize();
