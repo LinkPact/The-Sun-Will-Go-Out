@@ -21,5 +21,20 @@ namespace SpaceProject
         {
             AddAction(new QuitApplicationAction());
         }
+
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+        }
+
+        public override void SetOffset(Vector2 offset)
+        {
+            base.SetOffset(offset);
+        }
     }
 }

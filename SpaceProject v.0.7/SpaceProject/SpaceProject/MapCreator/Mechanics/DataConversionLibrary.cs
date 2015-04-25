@@ -97,6 +97,7 @@ namespace SpaceProject
             movementLibrary.Add(Movement.BigZigzag, "bz");
             movementLibrary.Add(Movement.FullStop, "fs");
             movementLibrary.Add(Movement.RightHorizontal, "ho");
+            movementLibrary.Add(Movement.LeftHorizontal, "lo");
             movementLibrary.Add(Movement.AI, "ai");
 
             movementLibrary.Add(Movement.BossStop_X, "xx");

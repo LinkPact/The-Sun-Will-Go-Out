@@ -36,6 +36,8 @@ namespace SpaceProject
         private SpriteFont smallFont;
         #endregion
 
+        private Sprite cursorSprite;
+
         public MapCreatorState(Game1 game, string name) :
             base(game, name)
         {
@@ -45,6 +47,8 @@ namespace SpaceProject
             deadActions = new List<Action>();
             smallFont = game.Content.Load<SpriteFont>("Fonts/Iceland_12");
             spriteSheet = new Sprite(game.Content.Load<Texture2D>("MapCreator/MapCreatorSpriteSheet"));
+
+            cursorSprite = spriteSheet.GetSubSprite(new Rectangle(99, 35, 16, 16));
         }
 
         public override void Initialize()
@@ -63,6 +67,7 @@ namespace SpaceProject
 
             String equipInfo = ShipInventoryManager.MapCreatorEquip(1);
             gui.SetEquipInfo(equipInfo);
+
         }
 
         public override void OnEnter()
@@ -73,13 +78,19 @@ namespace SpaceProject
             squarePalethera.Initialize();
 
             StatsManager.gameMode = GameMode.develop;
+            Game.IsMouseVisible = false;
         }
 
         public override void OnLeave()
-        { }
+        {
+            Game.IsMouseVisible = true;
+        }
 
         public override void Update(GameTime gameTime)
         {
+            MouseState mouseState = Mouse.GetState();
+            Game.Window.Title = "Pos x: " + mouseState.X + " Pos y: " + mouseState.Y;
+
             base.Update(gameTime);
 
             levelMechanics.Update(gameTime);
@@ -173,12 +184,15 @@ namespace SpaceProject
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            Game.GraphicsDevice.Clear(Color.LightGray);
+            Game.GraphicsDevice.Clear(new Color(186, 186, 186));
             
             levelMechanics.Draw(spriteBatch);
             gui.Draw(spriteBatch);
 
             squarePalethera.Draw(spriteBatch);
+
+            MouseState mouseState = Mouse.GetState();
+            spriteBatch.Draw(cursorSprite.Texture, new Vector2(mouseState.X, mouseState.Y), cursorSprite.SourceRectangle, Color.White);
         }
     }
 }

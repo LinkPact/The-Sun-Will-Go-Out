@@ -110,8 +110,8 @@ namespace SpaceProject
                                       new Vector2(buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                                       buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
 
-           //mapCreatorButton.name = "Create Level";
-           mapCreatorButton.name = "Credits";
+           mapCreatorButton.name = "Create Level";
+           //mapCreatorButton.name = "Credits";
 
             buttons.Add(mapCreatorButton);
 
@@ -217,16 +217,16 @@ namespace SpaceProject
             }
 
             // TODO: REMOVE FOR RELEASE VERSION
-            //if (ControlManager.CheckKeyPress(Keys.M))
-            //{
-            //    Game.stateManager.ChangeState("LevelTesterState");
-            //}
-            //
-            //if (ControlManager.CheckKeyPress(Keys.C))
-            //{
-            //    Game.stateManager.ChangeState("CampaignState");
-            //}
-            //
+            if (ControlManager.CheckKeyPress(Keys.M))
+            {
+                Game.stateManager.ChangeState("LevelTesterState");
+            }
+            
+            if (ControlManager.CheckKeyPress(Keys.C))
+            {
+                Game.stateManager.ChangeState("CampaignState");
+            }
+            
         }
 
         private void MouseControls()
@@ -311,10 +311,10 @@ namespace SpaceProject
                         break;
 
                     case 3:
-                        //Game.stateManager.ChangeState("MapCreatorState");
+                        Game.stateManager.ChangeState("MapCreatorState");
 
                         PlaySelectSound();
-                        Game.stateManager.ChangeState("CreditState");
+                        //Game.stateManager.ChangeState("CreditState");
                         break;
 
                     case 4:

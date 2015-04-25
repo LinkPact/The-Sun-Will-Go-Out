@@ -20,5 +20,10 @@ namespace SpaceProject
         {
             AddAction(new ClearGridAction());
         }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+        }
     }
 }
