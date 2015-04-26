@@ -81,7 +81,8 @@ namespace SpaceProject
         {
             if (displaySprite != null)
             {
-                spriteBatch.Draw(displaySprite.Texture, position + offset, displaySprite.SourceRectangle, color);
+                spriteBatch.Draw(displaySprite.Texture, new Vector2(position.X + offset.X, position.Y + offset.Y), displaySprite.SourceRectangle, color);
+                //spriteBatch.Draw(displaySprite.Texture, position + offset, displaySprite.SourceRectangle, color);
             }
         }
 
@@ -96,7 +97,7 @@ namespace SpaceProject
             }
         }
 
-        public void SetOffset(Vector2 offset)
+        public virtual void SetOffset(Vector2 offset)
         {
             this.offset = offset;
         }
