@@ -33,7 +33,6 @@ namespace SpaceProject
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            Game.Window.Title = "Position x: " + Game.player.position.X + " Position y: " + Game.player.position.Y;
         }
 
         public override void Draw(SpriteBatch spriteBatch)

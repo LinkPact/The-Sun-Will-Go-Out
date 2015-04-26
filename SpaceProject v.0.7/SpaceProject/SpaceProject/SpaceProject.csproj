@@ -866,6 +866,9 @@
     <None Include="Levels\pirates\RebelPirate5.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Levels\sublevels\rebelAmbush_sub1.lvl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Levels\unsorted\P2AttackOnRebelStation.lvl" />
     <None Include="Levels\unsorted\P2RebelAmbush.lvl" />
     <Content Include="Levels\unsorted\XCoverBlown.lvl">

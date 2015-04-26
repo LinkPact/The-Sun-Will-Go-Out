@@ -93,6 +93,10 @@ namespace SpaceProject
 
             var levelDict = ShooterState.GetMissionPathDict();
 
+            // Subinteractive
+
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["sub1"]));
+            
             //Pirate Levels
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["rp1"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["rp2"]));
@@ -196,6 +200,10 @@ namespace SpaceProject
             entryDict.Add("hangar1", new LevelEntry("hangar1",          "pirates/hangar1",                      MissionType.alliancepirate));
             entryDict.Add("hangar2", new LevelEntry("hangar2",          "pirates/hangar2",                      MissionType.alliancepirate));
             entryDict.Add("hangar3", new LevelEntry("hangar3",          "pirates/hangar3",                      MissionType.alliancepirate));
+
+            // Sub
+
+            entryDict.Add("sub1", new LevelEntry("sub1",                "sublevels/rebelAmbush_sub1",                 MissionType.rebelpirate));
 
             return entryDict;
         }
