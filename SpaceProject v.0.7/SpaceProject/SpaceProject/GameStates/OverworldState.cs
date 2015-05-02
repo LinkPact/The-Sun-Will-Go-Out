@@ -105,6 +105,9 @@ namespace SpaceProject
         private RebelOutpost rebelOutpost;
         public RebelOutpost GetRebelOutpost { get { return rebelOutpost; } private set { ;} }
 
+        private HighFenceOrbit highFenceOrbit;
+        public HighFenceOrbit GethighFenceOrbit { get { return highFenceOrbit; } private set { ;} }
+
         #endregion
 
         #region Other Objects
@@ -179,6 +182,9 @@ namespace SpaceProject
             rebelOutpost = new RebelOutpost(Game, outpostSpriteSheet);
             rebelOutpost.Initialize();
 
+            highFenceOrbit = new HighFenceOrbit(Game, outpostSpriteSheet);
+            highFenceOrbit.Initialize();
+
             currentSpaceRegion = sectorX;
 
             // Misc objects
@@ -248,6 +254,7 @@ namespace SpaceProject
             borderXOutpost.Update(gameTime);
             miningOutpost.Update(gameTime);
             rebelOutpost.Update(gameTime);
+            highFenceOrbit.Update(gameTime);
 
             UpdateDeepSpaceObjects(gameTime);
 
@@ -462,7 +469,17 @@ namespace SpaceProject
 
         private void DetermineCurrentRegion()
         {
-            if (CollisionDetection.IsRectInRect(Game.player.Bounds, sectorX.SpaceRegionArea))
+            if (CollisionDetection.IsRectInRect(Game.player.Bounds, highFenceOrbit.SpaceRegionArea))
+            {
+                if (currentSpaceRegion != highFenceOrbit)
+                {
+                    previousSpaceRegion = currentSpaceRegion;
+                    currentSpaceRegion = highFenceOrbit;
+                    currentSpaceRegion.OnEnter();
+                }
+            }
+
+            else if (CollisionDetection.IsRectInRect(Game.player.Bounds, sectorX.SpaceRegionArea))
             {
                 if (currentSpaceRegion != sectorX)
                 {
@@ -558,6 +575,7 @@ namespace SpaceProject
             borderXOutpost.Draw(spriteBatch);
             miningOutpost.Draw(spriteBatch);
             rebelOutpost.Draw(spriteBatch);
+            highFenceOrbit.Draw(spriteBatch);
 
             DrawDeepSpaceObjects(spriteBatch);
 
