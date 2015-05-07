@@ -9,6 +9,16 @@ namespace SpaceProject
         public virtual void Update(GameTime gameTime) { }
         public virtual void Reset() { }
         public bool Finished = false;
+
+        protected bool InRestrictedSpace(OverworldShip ship, Vector2 point)
+        {
+            foreach (SpaceRegion region in ship.restrictedSpace)
+            {
+                if (CollisionDetection.IsPointInsideRectangle(point, region.SpaceRegionArea))
+                    return true;
+            }
+            return false;
+        }
     }
 
     abstract public class CompositeAction : ShipAction

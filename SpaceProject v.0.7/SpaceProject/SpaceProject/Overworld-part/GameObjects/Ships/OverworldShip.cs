@@ -13,6 +13,7 @@ namespace SpaceProject
 
         // A.I. varriables
         public ShipAction AIManager;
+        public List<SpaceRegion> restrictedSpace = new List<SpaceRegion>();
 
         private bool saveShip = true;
         public bool SaveShip { get { return saveShip; } set { saveShip = value; } }

@@ -108,6 +108,16 @@ namespace SpaceProject
         private HighFenceOrbit highFenceOrbit;
         public HighFenceOrbit GethighFenceOrbit { get { return highFenceOrbit; } private set { ;} }
 
+        public List<SpaceRegion> RestrictedSpaceRebels
+        {
+            get
+            {
+                List<SpaceRegion> tempList = new List<SpaceRegion>();
+                tempList.Add(highFenceOrbit);
+                return tempList;
+            }
+        }
+
         #endregion
 
         #region Other Objects
