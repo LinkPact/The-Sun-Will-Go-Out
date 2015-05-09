@@ -870,6 +870,9 @@
     <None Include="Levels\pirates\RebelPirate5.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Levels\sidelevels\therebeloutpost_1_v1.lvl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Levels\sublevels\rebelAmbush_sub1.lvl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
