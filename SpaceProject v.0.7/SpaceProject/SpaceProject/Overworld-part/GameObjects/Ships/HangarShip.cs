@@ -24,6 +24,7 @@ namespace SpaceProject
             color = Color.White;
             scale = 1.0f;
             layerDepth = 0.61f;
+            restrictedSpace = Game.stateManager.overworldState.RestrictedSpaceAlliance;
             SetDefaultBehavior();
 
             base.Initialize();

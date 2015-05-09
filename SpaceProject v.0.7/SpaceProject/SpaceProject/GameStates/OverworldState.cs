@@ -108,12 +108,46 @@ namespace SpaceProject
         private HighFenceOrbit highFenceOrbit;
         public HighFenceOrbit GethighFenceOrbit { get { return highFenceOrbit; } private set { ;} }
 
+        private FortrunOrbit fortrunOrbit;
+        public FortrunOrbit GetFortrunOrbit { get { return fortrunOrbit; } private set { ;} }
+
+        private NewNorrlandOrbit newNorrlandOrbit;
+        public NewNorrlandOrbit GetNewNorrlandOrbit { get { return newNorrlandOrbit; } private set { ;} }
+
+        private SoelaraOrbit soelaraOrbit;
+        public SoelaraOrbit GetSoelaraOrbit { get { return soelaraOrbit; } private set { ;} }
+
+        private LavisOrbit lavisOrbit;
+        public LavisOrbit GetLavisOrbit { get { return lavisOrbit; } private set { ;} }
+
+        private PeyeOrbit peyeOrbit;
+        public PeyeOrbit GetPeyeOrbit { get { return peyeOrbit; } private set { ;} }
+
         public List<SpaceRegion> RestrictedSpaceRebels
         {
             get
             {
                 List<SpaceRegion> tempList = new List<SpaceRegion>();
                 tempList.Add(highFenceOrbit);
+                tempList.Add(fortrunOrbit);
+                tempList.Add(newNorrlandOrbit);
+                tempList.Add(soelaraOrbit);
+                tempList.Add(lavisOrbit);
+                tempList.Add(peyeOrbit);
+                return tempList;
+            }
+        }
+
+        public List<SpaceRegion> RestrictedSpaceAlliance
+        {
+            get
+            {
+                List<SpaceRegion> tempList = new List<SpaceRegion>();
+                tempList.Add(highFenceOrbit);
+                tempList.Add(newNorrlandOrbit);
+                tempList.Add(soelaraOrbit);
+                tempList.Add(lavisOrbit);
+                tempList.Add(peyeOrbit);
                 return tempList;
             }
         }
@@ -195,6 +229,21 @@ namespace SpaceProject
             highFenceOrbit = new HighFenceOrbit(Game, outpostSpriteSheet);
             highFenceOrbit.Initialize();
 
+            fortrunOrbit = new FortrunOrbit(Game, outpostSpriteSheet);
+            fortrunOrbit.Initialize();
+
+            newNorrlandOrbit = new NewNorrlandOrbit(Game, outpostSpriteSheet);
+            newNorrlandOrbit.Initialize();
+
+            soelaraOrbit = new SoelaraOrbit(Game, outpostSpriteSheet);
+            soelaraOrbit.Initialize();
+
+            lavisOrbit = new LavisOrbit(Game, outpostSpriteSheet);
+            lavisOrbit.Initialize();
+
+            peyeOrbit = new PeyeOrbit(Game, outpostSpriteSheet);
+            peyeOrbit.Initialize();
+
             currentSpaceRegion = sectorX;
 
             // Misc objects
@@ -265,6 +314,11 @@ namespace SpaceProject
             miningOutpost.Update(gameTime);
             rebelOutpost.Update(gameTime);
             highFenceOrbit.Update(gameTime);
+            fortrunOrbit.Update(gameTime);
+            newNorrlandOrbit.Update(gameTime);
+            soelaraOrbit.Update(gameTime);
+            lavisOrbit.Update(gameTime);
+            peyeOrbit.Update(gameTime);
 
             UpdateDeepSpaceObjects(gameTime);
 
@@ -489,6 +543,56 @@ namespace SpaceProject
                 }
             }
 
+            else if (CollisionDetection.IsRectInRect(Game.player.Bounds, fortrunOrbit.SpaceRegionArea))
+            {
+                if (currentSpaceRegion != fortrunOrbit)
+                {
+                    previousSpaceRegion = currentSpaceRegion;
+                    currentSpaceRegion = fortrunOrbit;
+                    currentSpaceRegion.OnEnter();
+                }
+            }
+
+            else if (CollisionDetection.IsRectInRect(Game.player.Bounds, newNorrlandOrbit.SpaceRegionArea))
+            {
+                if (currentSpaceRegion != newNorrlandOrbit)
+                {
+                    previousSpaceRegion = currentSpaceRegion;
+                    currentSpaceRegion = newNorrlandOrbit;
+                    currentSpaceRegion.OnEnter();
+                }
+            }
+
+            else if (CollisionDetection.IsRectInRect(Game.player.Bounds, soelaraOrbit.SpaceRegionArea))
+            {
+                if (currentSpaceRegion != soelaraOrbit)
+                {
+                    previousSpaceRegion = currentSpaceRegion;
+                    currentSpaceRegion = soelaraOrbit;
+                    currentSpaceRegion.OnEnter();
+                }
+            }
+
+            else if (CollisionDetection.IsRectInRect(Game.player.Bounds, lavisOrbit.SpaceRegionArea))
+            {
+                if (currentSpaceRegion != lavisOrbit)
+                {
+                    previousSpaceRegion = currentSpaceRegion;
+                    currentSpaceRegion = lavisOrbit;
+                    currentSpaceRegion.OnEnter();
+                }
+            }
+
+            else if (CollisionDetection.IsRectInRect(Game.player.Bounds, peyeOrbit.SpaceRegionArea))
+            {
+                if (currentSpaceRegion != peyeOrbit)
+                {
+                    previousSpaceRegion = currentSpaceRegion;
+                    currentSpaceRegion = peyeOrbit;
+                    currentSpaceRegion.OnEnter();
+                }
+            }
+
             else if (CollisionDetection.IsRectInRect(Game.player.Bounds, sectorX.SpaceRegionArea))
             {
                 if (currentSpaceRegion != sectorX)
@@ -586,6 +690,11 @@ namespace SpaceProject
             miningOutpost.Draw(spriteBatch);
             rebelOutpost.Draw(spriteBatch);
             highFenceOrbit.Draw(spriteBatch);
+            fortrunOrbit.Draw(spriteBatch);
+            newNorrlandOrbit.Draw(spriteBatch);
+            soelaraOrbit.Draw(spriteBatch);
+            lavisOrbit.Draw(spriteBatch);
+            peyeOrbit.Draw(spriteBatch);
 
             DrawDeepSpaceObjects(spriteBatch);
 

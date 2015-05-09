@@ -14,7 +14,8 @@ namespace SpaceProject
         {
             foreach (SpaceRegion region in ship.restrictedSpace)
             {
-                return CollisionDetection.IsPointInsideRectangle(point, region.SpaceRegionArea);
+                if (CollisionDetection.IsPointInsideRectangle(point, region.SpaceRegionArea))
+                    return true;
             }
             return false;
         }
@@ -23,7 +24,8 @@ namespace SpaceProject
         {
             foreach (SpaceRegion region in ship.restrictedSpace)
             {
-                return CollisionDetection.IsLineInRect(region.SpaceRegionArea, a, b);
+                if (CollisionDetection.IsLineInRect(region.SpaceRegionArea, a, b))
+                    return true;
             }
             return false;
         }
