@@ -365,7 +365,9 @@
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\MiningOutpost\MiningStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\AsteroidField\AsteroidField.cs" />
+    <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\AsteroidField\Instances\RebelOutpostAsteroidField.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\AsteroidField\SimpleAsteroid.cs" />
+    <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\AsteroidField\Instances\SunAsteroidBelt.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\DamagedShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\MiningAsteroids.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\LonelyAsteroid.cs" />
@@ -871,6 +873,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Levels\sidelevels\therebeloutpost_1_v1.lvl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\therebeloutpost_2_v1.lvl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Levels\sublevels\rebelAmbush_sub1.lvl">

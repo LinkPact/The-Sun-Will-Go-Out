@@ -63,15 +63,17 @@ namespace SpaceProject
             testAsteroid1 = new TestAsteroid1(game, spriteSheet);
             damagedShip = new DamagedShip(game, new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/MissionObjectSpriteSheet"), null));
 
-            var asteroidFieldGenerator = new AsteroidField(game, spriteSheet);
+            var rebelAsteroidFieldGenerator = new RebelOutpostAsteroidField(game, spriteSheet);
+            var sunAsteroidBeltGenerator = new SunAsteroidBelt(game, spriteSheet);
+
+            subInteractiveObjects.AddRange(rebelAsteroidFieldGenerator.GetAsteroids());
+            subInteractiveObjects.AddRange(sunAsteroidBeltGenerator.GetAsteroids());
 
             subInteractiveObjects.Add(soelara);
             subInteractiveObjects.Add(fortrunStation2);
             subInteractiveObjects.Add(lonelyAsteroid);
             subInteractiveObjects.Add(testAsteroid1);
             subInteractiveObjects.Add(damagedShip);
-
-            subInteractiveObjects.AddRange(asteroidFieldGenerator.GetAsteroids());
 
             foreach (var obj in subInteractiveObjects)
             {

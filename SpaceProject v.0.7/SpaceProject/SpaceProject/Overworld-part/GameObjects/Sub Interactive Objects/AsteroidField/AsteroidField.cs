@@ -11,36 +11,59 @@ namespace SpaceProject
     /// Can be used to generate a list of generic asteroids around a particular location
     /// </summary>
 
-    class AsteroidField
+    abstract class AsteroidField
     {
+        private Game1 Game;
+        private Sprite spriteSheet;
+
         private List<SubInteractiveObject> overworldObjects = new List<SubInteractiveObject>();
         private Vector2 centerCoordinate;
-        private readonly int RADIUS = 200;
-        private readonly int ASTEROID_COUNT = 100;
-
-        public AsteroidField(Game1 Game, Sprite spriteSheet)
+        public AsteroidField(Game1 Game, Sprite spriteSheet, Vector2 centerCoordinate)
         {
-            this.centerCoordinate = new Vector2(1000, 0);
-            var coordList = GetCoordinateList();
+            this.Game = Game;
+            this.spriteSheet = spriteSheet;
+            this.centerCoordinate = centerCoordinate;
+        }
 
+        /// <summary>
+        /// Retrieves a list of asteroid objects which can be added directly to the overworld
+        /// </summary>
+        public List<SubInteractiveObject> GetAsteroids()
+        {
+            if (overworldObjects.Count == 0)
+            {
+                throw new ArgumentException("No objects assigned to asteroid field!");
+            }
+
+            return overworldObjects;
+        }
+
+        protected void SetupGenericAsteroidField(int count, double radius, double innerRadius = 0)
+        {
+            var coords = GetRandomCoordinateFields(count, radius, innerRadius);
+            AssignGenericAsteroids(coords);
+        }
+
+        private void AssignGenericAsteroids(List<Vector2> coordList)
+        {
             for (int n = 0; n < coordList.Count; n++)
             {
                 overworldObjects.Add(new SimpleAsteroid(Game, spriteSheet, GetAbsCoord(coordList[n]), "asteroid" + n));
             }
         }
 
-        public List<SubInteractiveObject> GetAsteroids()
+        private Vector2 GetAbsCoord(Vector2 relativeCoord)
         {
-            return overworldObjects;
+            return centerCoordinate + relativeCoord;
         }
 
-        private List<Vector2> GetCoordinateList()
+        private List<Vector2> GetRandomCoordinateFields(int count, double radius, double emptyInnerRadius = 0)
         {
             List<Vector2> coordList = new List<Vector2>();
 
-            for (int n = 0; n < ASTEROID_COUNT; n++)
+            for (int n = 0; n < count; n++)
             {
-                double r = MathFunctions.GetExternalRandomDouble() * RADIUS;
+                double r = MathFunctions.GetExternalRandomDouble() * (radius - emptyInnerRadius) + emptyInnerRadius;
                 double rad = MathFunctions.GetExternalRandomDouble() * Math.PI * 2;
 
                 Vector2 coord = new Vector2((float)(MathFunctions.DirFromRadians(rad).X * r),
@@ -50,11 +73,6 @@ namespace SpaceProject
             }
 
             return coordList;
-        }
-
-        private Vector2 GetAbsCoord(Vector2 relativeCoord) 
-        {
-            return centerCoordinate + relativeCoord;
         }
     }
 }
