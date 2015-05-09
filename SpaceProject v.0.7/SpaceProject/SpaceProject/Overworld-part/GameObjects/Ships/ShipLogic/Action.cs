@@ -14,8 +14,16 @@ namespace SpaceProject
         {
             foreach (SpaceRegion region in ship.restrictedSpace)
             {
-                if (CollisionDetection.IsPointInsideRectangle(point, region.SpaceRegionArea))
-                    return true;
+                return CollisionDetection.IsPointInsideRectangle(point, region.SpaceRegionArea);
+            }
+            return false;
+        }
+
+        protected bool PathCrossRestrictedSpace(OverworldShip ship, Vector2 a, Vector2 b)
+        {
+            foreach (SpaceRegion region in ship.restrictedSpace)
+            {
+                return CollisionDetection.IsLineInRect(region.SpaceRegionArea, a, b);
             }
             return false;
         }

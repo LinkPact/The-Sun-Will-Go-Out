@@ -141,6 +141,29 @@ namespace SpaceProject
             return false;
         }
 
+        public static bool IsLinesIntersecting(Vector2 a, Vector2 b, Vector2 c, Vector2 d)
+        {
+            float denominator = ((b.X - a.X) * (d.Y - c.Y)) - ((b.Y - a.Y) * (d.X - c.X));
+            float numerator1 = ((a.Y - c.Y) * (d.X - c.X)) - ((a.X - c.X) * (d.Y - c.Y));
+            float numerator2 = ((a.Y - c.Y) * (b.X - a.X)) - ((a.X - c.X) * (b.Y - a.Y));
+
+            // Detect coincident lines (has a problem, read below)
+            if (denominator == 0) return numerator1 == 0 && numerator2 == 0;
+
+            float r = numerator1 / denominator;
+            float s = numerator2 / denominator;
+
+            return (r >= 0 && r <= 1) && (s >= 0 && s <= 1);
+        }
+
+        public static bool IsLineInRect(Rectangle rect, Vector2 a, Vector2 b)
+        {
+            return IsLinesIntersecting(a, b, new Vector2(rect.X, rect.Y), new Vector2(rect.X + rect.Width, rect.Y)) ||
+                IsLinesIntersecting(a, b, new Vector2(rect.X, rect.Y), new Vector2(rect.X, rect.Y + rect.Width)) ||
+                IsLinesIntersecting(a, b, new Vector2(rect.X, rect.Y + rect.Height), new Vector2(rect.X + rect.Width, rect.Y + rect.Height)) ||
+                IsLinesIntersecting(a, b, new Vector2(rect.X + rect.Width, rect.Y), new Vector2(rect.X + rect.Width, rect.Y + rect.Height));
+        }
+
         #endregion
 
     }
