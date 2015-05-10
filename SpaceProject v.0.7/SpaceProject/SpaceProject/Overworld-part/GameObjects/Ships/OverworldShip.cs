@@ -71,7 +71,7 @@ namespace SpaceProject
             // Adjust course towards target
             if (destination != Vector2.Zero)
             {
-                Direction.RotateTowardsPoint(this.position, destination, 0.2f);
+                Direction.RotateTowardsPoint(this.position, destination, 4f);
                 particleManager.AddParticle();
             }
             else
