@@ -21,6 +21,10 @@ namespace SpaceProject
 
         private void SetRandomDest()
         {
+            dest = new Vector2(
+                r.Next(sector.SpaceRegionArea.Left, sector.SpaceRegionArea.Right),
+                r.Next(sector.SpaceRegionArea.Top, sector.SpaceRegionArea.Bottom));
+
             while (InRestrictedSpace(ship, dest) || PathCrossRestrictedSpace(ship, ship.position, dest) || dest == Vector2.Zero)
             {
                 dest = new Vector2(
