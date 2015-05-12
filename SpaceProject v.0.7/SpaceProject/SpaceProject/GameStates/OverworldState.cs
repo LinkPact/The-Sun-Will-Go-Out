@@ -278,11 +278,6 @@ namespace SpaceProject
         {
             base.OnEnter();
 
-            if (GameStateManager.previousState == "PlanetState" || GameStateManager.previousState == "StationState")
-            {
-                RemoveAllPirates();
-            }
-
             if (GameStateManager.previousState.Equals("IntroSecondState") || GameStateManager.previousState.Equals("StartGameState"))
             {
                 MissionManager.MarkMissionAsActive(MissionID.Main1_1_RebelsInTheAsteroids);
