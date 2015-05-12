@@ -91,6 +91,7 @@ namespace SpaceProject
             activated = true;
             sprite = spriteSheet.GetSubSprite(activeSourceRect);
             Game.statsManager.AddDiscoveredBeacon(this);
+            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BeaconActivate);
         }
 
         public void Interact()

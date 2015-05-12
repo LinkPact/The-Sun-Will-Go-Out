@@ -26,7 +26,10 @@ namespace SpaceProject
 
         // Menu
         MenuHover,
-        MenuSelect
+        MenuSelect,
+
+        // Beacon
+        BeaconActivate
     }
 
     public class SoundEffectsManager
@@ -58,6 +61,8 @@ namespace SpaceProject
 
         private CustomSoundEffect menuHover;
         private CustomSoundEffect menuSelect;
+
+        private CustomSoundEffect activateBeacon;
 
         private List<SoundEffect> laserSounds;
 
@@ -105,6 +110,9 @@ namespace SpaceProject
 
                 soundEffects.Add(menuHover);
                 soundEffects.Add(menuSelect);
+
+                activateBeacon = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/beacon/beacon1"), 1);
+                soundEffects.Add(activateBeacon);
 
                 // Test list for testing purposes
                 laserSounds = GetLaserSoundTestList();
