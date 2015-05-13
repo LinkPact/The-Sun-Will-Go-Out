@@ -19,7 +19,7 @@ namespace SpaceProject
 
             base.Initialize();
 
-            SetupText("You find the remnants of a ship drifting through space. The ship seems to be of civilian origin and the hull shows signs of blast damage. But you are unable to determine who the attacker might have been.");
+            overworldEvent = new DisplayTextOE("You find the remnants of a ship drifting through space. The ship seems to be of civilian origin and the hull shows signs of blast damage. But you are unable to determine who the attacker might have been.");
         }
 
         public override void Update(GameTime gameTime)

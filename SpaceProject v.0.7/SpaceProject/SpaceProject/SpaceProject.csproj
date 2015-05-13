@@ -374,6 +374,11 @@
     <Compile Include="Overworld-part\Interface\DirectionArrow.cs" />
     <Compile Include="Overworld-part\Interface\HeadsUpDisplay.cs" />
     <Compile Include="Overworld-part\Interface\Radar.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\DisplayTextOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\GetItemOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\ItemShopOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\LevelOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\OverworldEvent.cs" />
     <Compile Include="Overworld-part\SpaceRegions\Outposts\BorderXOutpost.cs" />
     <Compile Include="Overworld-part\SpaceRegions\Planets\FortrunOrbit.cs" />
     <Compile Include="Overworld-part\SpaceRegions\Planets\HighFenceOrbit.cs" />

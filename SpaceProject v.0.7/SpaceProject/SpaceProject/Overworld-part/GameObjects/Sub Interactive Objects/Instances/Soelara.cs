@@ -21,7 +21,7 @@ namespace SpaceProject
 
             base.Initialize();
 
-            SetupText("A big gas giant. A space station orbits the planet.");
+            overworldEvent = new DisplayTextOE("A big gas giant. A space station orbits the planet.");
         }
 
         public override void Update(GameTime gameTime)

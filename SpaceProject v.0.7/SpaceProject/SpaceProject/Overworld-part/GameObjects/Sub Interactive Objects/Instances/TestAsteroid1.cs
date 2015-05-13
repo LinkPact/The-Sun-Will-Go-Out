@@ -24,17 +24,17 @@ namespace SpaceProject
             name = "TestAsteroid1";
 
             base.Initialize();
-            //SetupText("I think Jakob is experimenting with Space Objects!");
             String encounterText = "Pirates! Let's root em out!";
             String winText = "We scared them of, for now..";
             String loseText = "They are too strong. Let's come back later.";
             List<Item> rewards = new List<Item>();
             rewards.Add(new BasicLaserWeapon(Game, ItemVariety.regular));
-            SetupLevel(encounterText, "sub1", 100, rewards, winText, loseText);
+            overworldEvent = new LevelOE(encounterText, "sub1", 100, rewards, winText, loseText);
         }
 
         public override void Update(GameTime gameTime)
         {
+            overworldEvent.Update(Game, gameTime);
             base.Update(gameTime);
         }
 

@@ -27,7 +27,7 @@ namespace SpaceProject
             layerDepth = 0.5f;
 
             base.Initialize();
-            SetupText("A group of asteroids used for mining.");
+            overworldEvent = new DisplayTextOE("A group of asteroids used for mining.");
         }
 
         public override void Update(GameTime gameTime)

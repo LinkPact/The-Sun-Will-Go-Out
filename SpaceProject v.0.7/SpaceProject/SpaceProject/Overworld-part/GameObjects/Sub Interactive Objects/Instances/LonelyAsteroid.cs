@@ -31,10 +31,15 @@ namespace SpaceProject
             //SetupItemShop(new MultipleShotWeapon(Game, ItemVariety.high), "Want to buy my Multiple Shot?", "Suit yourself!", "Good choice!",
             //    "Sorry, you don't have enough money..", "Sorry, your inventory is full, sell something and come back!", 300);
 
-            SetupGetItem("Holy crap! A weapon is just floating in space!", "..But unfortunately, your inventory is full.",
-                new BasicLaserWeapon(Game, ItemVariety.low));
+            overworldEvent = new GetItemOE(new BasicLaserWeapon(Game, ItemVariety.low), 
+                "Holy crap! A weapon is just floating in space!", 
+                "..But unfortunately, your inventory is full.",
+                "..no more weapons here.");
 
-            SetClearedText();
+            //SetupGetItem("Holy crap! A weapon is just floating in space!", "..But unfortunately, your inventory is full.",
+            //    new BasicLaserWeapon(Game, ItemVariety.low));
+
+            //SetClearedText();
         }
 
         public override void Update(GameTime gameTime)

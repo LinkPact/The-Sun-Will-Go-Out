@@ -11,11 +11,12 @@ namespace SpaceProject
     {
         private List<Item> randomItems;
         private Item item;
+        private Boolean itemBought;
 
         public FortrunStation2(Game1 Game, Sprite spriteSheet) :
             base(Game, spriteSheet)
         {
-            
+            itemBought = false;
         }
 
         public override void Initialize()
@@ -69,7 +70,7 @@ namespace SpaceProject
         {
             item = SelectRandomItem();
 
-            SetupItemShop(item, "Do you want to buy this one-of-a-kind " + item.Name + "? Only 300 rupees!",
+            overworldEvent = new ItemShopOE(item, "Do you want to buy this one-of-a-kind " + item.Name + "? Only 300 rupees!",
                 "Thanks anyway, sir!",
                 "Thank you! Have a lovely day, sir!",
                 "I'm afraid you do not have enough money, sir.",
