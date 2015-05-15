@@ -378,6 +378,8 @@
     <Compile Include="Overworld-part\OverworldEvents\Instances\GetItemOE.cs" />
     <Compile Include="Overworld-part\OverworldEvents\Instances\ItemShopOE.cs" />
     <Compile Include="Overworld-part\OverworldEvents\Instances\LevelOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\PirateEncounterOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\RandomCommonOE.cs" />
     <Compile Include="Overworld-part\OverworldEvents\OverworldEvent.cs" />
     <Compile Include="Overworld-part\SpaceRegions\Outposts\BorderXOutpost.cs" />
     <Compile Include="Overworld-part\SpaceRegions\Planets\FortrunOrbit.cs" />

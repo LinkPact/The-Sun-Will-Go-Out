@@ -17,6 +17,11 @@ namespace SpaceProject
             return rand.NextDouble();
         }
 
+        public static int GetExternalRandomInt(int lower, int upper)
+        {
+            return rand.Next(lower, upper);
+        }
+
         // Convert overworld coordinate to Vector2-position
         public static Vector2 CoordinateToPosition(Vector2 coordinate)
         { 
