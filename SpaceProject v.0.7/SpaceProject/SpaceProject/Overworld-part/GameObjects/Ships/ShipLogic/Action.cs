@@ -10,7 +10,7 @@ namespace SpaceProject
         public virtual void Reset() { }
         public bool Finished = false;
 
-        protected bool InRestrictedSpace(OverworldShip ship, Vector2 point)
+        public static bool InRestrictedSpace(OverworldShip ship, Vector2 point)
         {
             foreach (SpaceRegion region in ship.restrictedSpace)
             {
@@ -20,7 +20,7 @@ namespace SpaceProject
             return false;
         }
 
-        protected bool PathCrossRestrictedSpace(OverworldShip ship, Vector2 a, Vector2 b)
+        public static bool PathCrossRestrictedSpace(OverworldShip ship, Vector2 a, Vector2 b)
         {
             foreach (SpaceRegion region in ship.restrictedSpace)
             {

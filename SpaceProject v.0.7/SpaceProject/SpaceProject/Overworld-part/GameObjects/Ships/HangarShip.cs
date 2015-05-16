@@ -53,6 +53,13 @@ namespace SpaceProject
             position = new Vector2(
                 (int)Game.random.Next(sector.SpaceRegionArea.Left, sector.SpaceRegionArea.Right),
                 (int)Game.random.Next(sector.SpaceRegionArea.Top, sector.SpaceRegionArea.Bottom));
+
+            while (ShipAction.InRestrictedSpace(this, position))
+            {
+                position = new Vector2(
+                    (int)Game.random.Next(sector.SpaceRegionArea.Left, sector.SpaceRegionArea.Right),
+                    (int)Game.random.Next(sector.SpaceRegionArea.Top, sector.SpaceRegionArea.Bottom));
+            }
         }
         
         public override void FinalGoodbye()

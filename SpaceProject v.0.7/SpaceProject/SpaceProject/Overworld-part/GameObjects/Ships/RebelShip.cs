@@ -50,8 +50,13 @@ namespace SpaceProject
             position = new Vector2(
                 (int)Game.random.Next(sector.SpaceRegionArea.Left, sector.SpaceRegionArea.Right),
                 (int)Game.random.Next(sector.SpaceRegionArea.Top, sector.SpaceRegionArea.Bottom));
-            //if (CollisionDetection.IsPointInsideRectangle(position, Game.stateManager.overWorldState.HUD.radar.View))
-            //    SetPositionInSector();
+
+            while (ShipAction.InRestrictedSpace(this, position))
+            {
+                position = new Vector2(
+                    (int)Game.random.Next(sector.SpaceRegionArea.Left, sector.SpaceRegionArea.Right),
+                    (int)Game.random.Next(sector.SpaceRegionArea.Top, sector.SpaceRegionArea.Bottom));
+            }
         }
 
         public void SetDefaultBehavior()
