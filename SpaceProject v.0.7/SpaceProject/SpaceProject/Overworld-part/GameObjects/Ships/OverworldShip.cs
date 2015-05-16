@@ -47,6 +47,9 @@ namespace SpaceProject
         private string encounterMessage;
         public string EncounterMessage { get { return encounterMessage; } set { encounterMessage = value; } }
 
+        // Overworld event
+        protected OverworldEvent overworldEvent;
+
         public OverworldShip(Game1 game, Sprite SpriteSheet) :
             base(game, SpriteSheet)
         { }
@@ -88,6 +91,14 @@ namespace SpaceProject
             particleManager.Draw(spriteBatch);
 
             base.Draw(spriteBatch);
+        }
+
+        public virtual void Interact()
+        {
+            if (overworldEvent != null)
+            {
+                overworldEvent.Activate();
+            }
         }
 
         public virtual void Wait()

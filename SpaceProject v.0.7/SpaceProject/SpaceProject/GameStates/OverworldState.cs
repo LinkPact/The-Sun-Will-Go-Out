@@ -669,6 +669,11 @@ namespace SpaceProject
                         Game.stateManager.stationState.LoadStationData((Station)deepSpaceGameObjects[i]);
                         Game.stateManager.ChangeState("StationState");
                     }
+
+                    else if (deepSpaceGameObjects[i] is OverworldShip)
+                    {
+                        ((OverworldShip)deepSpaceGameObjects[i]).Interact();
+                    }
                 }
             }
         }

@@ -55,6 +55,7 @@ namespace SpaceProject
             foo.Add(new TravelAction(this, TravelAction.GetRandomPlanet(sector)));
             foo.Add(new WaitTimeAction(this, 7500));
             AIManager = foo;
+            overworldEvent = new DisplayTextOE("ASasdasdada");
         }
 
         public void SetEndPlanet(GameObjectOverworld des) 

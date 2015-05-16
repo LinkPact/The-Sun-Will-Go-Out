@@ -125,6 +125,11 @@ namespace SpaceProject
                     {
                         ((SubInteractiveObject)gameObjects[i]).Interact();
                     }
+
+                    else if (gameObjects[i] is OverworldShip)
+                    {
+                        ((OverworldShip)gameObjects[i]).Interact();
+                    }
                 }
 
             }
