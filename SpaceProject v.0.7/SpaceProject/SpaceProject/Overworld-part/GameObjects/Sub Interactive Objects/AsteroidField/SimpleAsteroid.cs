@@ -23,7 +23,8 @@ namespace SpaceProject
             sprite = spriteSheet.GetSubSprite(new Rectangle(724, 1075, 54, 55));
             position = MathFunctions.CoordinateToPosition(coordinates);
             base.Initialize();
-            SetupText("A simple asteroid floating in space.");
+
+            overworldEvent = new DisplayTextOE("A simple asteroid floating in space.");
         }
 
         public override void Update(GameTime gameTime)

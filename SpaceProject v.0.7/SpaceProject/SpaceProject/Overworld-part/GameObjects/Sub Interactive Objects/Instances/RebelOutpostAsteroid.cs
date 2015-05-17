@@ -27,7 +27,7 @@ namespace SpaceProject
 
             base.Initialize();
 
-            SetupText("The Rebel Outpost Asteroid!");
+            overworldEvent = new DisplayTextOE("The Rebel Outpost Asteroid!");
 
             //SetupText("I think Jakob is experimenting with Space Objects!");
             //String encounterText = "Rebels! Let's root em out!";
