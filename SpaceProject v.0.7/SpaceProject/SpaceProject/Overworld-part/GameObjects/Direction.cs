@@ -72,8 +72,15 @@ namespace SpaceProject
             if (startingPoint.Equals(preferredPoint))
                 return;
 
-            //SetDirection(scaledDirection + (preferredPoint - startingPoint) * rotateSpeed);
             SetDirection(MathFunctions.ChangeDirection(scaledDirection, startingPoint, preferredPoint, rotateSpeed));
+        }
+
+        public void RotateTowardsPointSingleTurn(Vector2 startingPoint, Vector2 preferredPoint, float rotateSpeed)
+        {
+            if (startingPoint.Equals(preferredPoint))
+                return;
+
+            SetDirection(scaledDirection + (preferredPoint - startingPoint) * rotateSpeed);
         }
     }
 }

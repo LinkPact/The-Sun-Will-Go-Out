@@ -67,7 +67,7 @@ namespace SpaceProject
         {
             distance = Math.Abs(Vector2.Distance(preferredBackdropPosition, backdropPosition));
 
-            backdropDirection.RotateTowardsPoint(backdropPosition, preferredBackdropPosition, 1f);
+            backdropDirection.RotateTowardsPointSingleTurn(backdropPosition, preferredBackdropPosition, 1f);
             backdropPosition += (backdropSpeed * backdropDirection.GetDirectionAsVector()) * gameTime.ElapsedGameTime.Milliseconds;
 
             if (distance > totalDistance / 2)
