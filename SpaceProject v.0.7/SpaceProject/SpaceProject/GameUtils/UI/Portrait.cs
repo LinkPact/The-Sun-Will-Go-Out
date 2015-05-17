@@ -108,103 +108,105 @@ namespace SpaceProject
 
         public static PortraitID GetPortraitIDFromString(String str)
         {
-            if (str.Contains("[Berr]"))
+            var lowerCase = str.ToLower();
+
+            if (lowerCase.Contains("[berr]"))
             {
                 lastPortraitID = PortraitID.Berr;
                 return PortraitID.Berr;
             }
 
-            else if (str.Contains("[Ai]"))
+            else if (lowerCase.Contains("[ai]"))
             {
                 lastPortraitID = PortraitID.Ai;
                 return PortraitID.Ai;
             }
 
-            else if (str.Contains("[SAIR]"))
+            else if (lowerCase.Contains("[sair]"))
             {
                 lastPortraitID = PortraitID.Sair;
                 return PortraitID.Sair;
             }
 
-            else if (str.Contains("[Captain]"))
+            else if (lowerCase.Contains("[captain]"))
             {
                 lastPortraitID = PortraitID.AllianceCaptain;
                 return PortraitID.AllianceCaptain;
             }
 
-            else if (str.Contains("[Commander]"))
+            else if (lowerCase.Contains("[commander]"))
             {
                 lastPortraitID = PortraitID.AllianceCommander;
                 return PortraitID.AllianceCommander;
             }
 
-            else if (str.Contains("[Rebel Pilot]"))
+            else if (lowerCase.Contains("[rebel Pilot]"))
             {
                 lastPortraitID = PortraitID.RebelTroopLeader;
                 return PortraitID.RebelTroopLeader;
             }
 
-            else if (str.Contains("[Rok]"))
+            else if (lowerCase.Contains("[rok]"))
             {
                 lastPortraitID = PortraitID.Rok;
                 return PortraitID.Rok;
             }
 
-            else if (str.Contains("[Trainer]"))
+            else if (lowerCase.Contains("[trainer]"))
             {
                 lastPortraitID = PortraitID.AllianceCommander;
                 return PortraitID.AllianceCommander;
             }
 
-            else if (str.Contains("[Alliance man]"))
+            else if (lowerCase.Contains("[alliance man]"))
             {
                 lastPortraitID = PortraitID.AllianceCaptain;
                 return PortraitID.AllianceCaptain;
             }
 
-            else if (str.Contains("[Alliance]"))
+            else if (lowerCase.Contains("[alliance]"))
             {
                 lastPortraitID = PortraitID.AlliancePilot;
                 return PortraitID.AlliancePilot;
             }
 
-            else if (str.Contains("[Debt collector]"))
+            else if (lowerCase.Contains("[debt collector]"))
             {
                 lastPortraitID = PortraitID.Berr;
                 return PortraitID.Berr;
             }
 
-            else if (str.Contains("[Desperate man]"))
+            else if (lowerCase.Contains("[desperate man]"))
             {
                 lastPortraitID = PortraitID.CommonCitizen;
                 return PortraitID.CommonCitizen;
             }
 
-            else if (str.Contains("[Mineral researcher]"))
+            else if (lowerCase.Contains("[mineral researcher]"))
             {
                 lastPortraitID = PortraitID.RebelTroopLeader;
                 return PortraitID.RebelTroopLeader;
             }
 
-            else if (str.Contains("[Concerned citizen]"))
+            else if (lowerCase.Contains("[concerned citizen]"))
             {
                 lastPortraitID = PortraitID.CommonCitizen;
                 return PortraitID.CommonCitizen;
             }
 
-            else if (str.Contains("[Colony doctor]"))
+            else if (lowerCase.Contains("[colony doctor]"))
             {
                 lastPortraitID = PortraitID.Ente;
                 return PortraitID.Ente;
             }
 
-            else if (str.Contains("[Crazy scientist]"))
+            else if (lowerCase.Contains("[crazy scientist]"))
             {
                 lastPortraitID = PortraitID.Ente;
                 return PortraitID.Ente;
             }
 
-            else if (str.Contains("\""))
+            else if (lowerCase.Contains("\""))
             {
                 return lastPortraitID;
             }

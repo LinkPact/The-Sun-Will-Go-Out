@@ -185,6 +185,7 @@
     <Compile Include="LevelHelpClasses\LevelTesterEntry.cs" />
     <Compile Include="GameUtils\UI\ZoomMap.cs" />
     <Compile Include="MissionStuff\EventText.cs" />
+    <Compile Include="MissionStuff\MissionObjects\DummyCoordinateObject.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\CloseInOnLocationObjective.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\AutoPilotObjective.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\TimedMessageObjective.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="GameStates\MissionScreenState\MissionScreenCursor.cs" />
     <Compile Include="GameStates\MissionScreenState\MissionScreenState.cs" />
     <Compile Include="GameStates\MissionScreenState\MissionScreenText.cs" />
+    <Compile Include="Missions\Side Missions\Side_TheRebelOutpost.cs" />
     <Compile Include="Missions\Side Missions\Side_AstroScan.cs" />
     <Compile Include="Missions\Main Missions\Phase 1\Main1_2_ToHighfence.cs" />
     <Compile Include="Missions\Main Missions\Phase 1\Main1_1_RebelsInTheAsteroids.cs" />
@@ -363,12 +365,17 @@
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\BorderXOutpost\BorderStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\MiningOutpost\MiningStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation.cs" />
+    <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\AsteroidField\AsteroidField.cs" />
+    <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\AsteroidField\Instances\RebelOutpostAsteroidField.cs" />
+    <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\AsteroidField\SimpleAsteroid.cs" />
+    <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\AsteroidField\Instances\SunAsteroidBelt.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\DamagedShip.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\MiningAsteroids.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\LonelyAsteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\FotrunStation2.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\SectorX\FortrunStation1.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\ShopInventoryEntry.cs" />
+    <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\RebelOutpostAsteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\TestAsteroid1.cs" />
     <Compile Include="Overworld-part\Interface\BeaconMenu.cs" />
     <Compile Include="Overworld-part\Interface\DirectionArrow.cs" />
@@ -878,6 +885,12 @@
     </None>
     <None Include="Levels\pirates\RebelPirate5.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\therebeloutpost_1.lvl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\therebeloutpost_2.lvl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Levels\sublevels\rebelAmbush_sub1.lvl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

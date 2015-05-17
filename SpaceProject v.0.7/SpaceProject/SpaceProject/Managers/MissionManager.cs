@@ -32,7 +32,8 @@ namespace SpaceProject
         Side_AstroScan,
         Side_DeathByMeteor,
         Side_FlightTraining,
-        Side_ColonyAid
+        Side_ColonyAid,
+        Side_TheRebelOutpost
     }
 
     public class MissionManager
@@ -72,6 +73,7 @@ namespace SpaceProject
         private static Side_DeathByMeteor deathByMeteor;
         private static Side_FlightTraining flightTraining;
         private static Side_ColonyAid colonyAid;
+        private static Side_TheRebelOutpost theRebelOutpost;
 
         private static List<string> missionEventBuffer = new List<string>();
         private static List<string> missionResponseBuffer = new List<string>();
@@ -222,6 +224,13 @@ namespace SpaceProject
 
             astroScan.Initialize();
             missions.Add(astroScan);
+
+            // The Rebel Outpost
+            theRebelOutpost = new Side_TheRebelOutpost(game, "Side_TheRebelOutpost", null,
+                MissionID.Side_TheRebelOutpost);
+
+            theRebelOutpost.Initialize();
+            missions.Add(theRebelOutpost);
 
             // Death by Meteor
             deathByMeteor = new Side_DeathByMeteor(game, "Side_DeathByMeteor", null,

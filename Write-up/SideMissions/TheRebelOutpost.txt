@@ -1,0 +1,58 @@
+The Rebel Outpost - Specs
+
+-> On Fortrun
+
+[Alliance] We have a potentially interesting mission for you. We have got rumours from locals on New Norrland about a group of rebels residing in an asteroid belt outside the solar system. If this is true and we can get rid of them, it could protect Border Station from further rebel attacks. Our intel tells us to investigate the asteroid belt close to the coordinate X, X. There might not be apparent signs of their presence. Be sure to investigate carefully.
+[Alliance] Do you accept the mission? (Yes/No)
+[Alliance] Good. We are counting on you. Go to the asteroid belt at the coordinate, and see if you can find the rebels. If you do, bring them down.
+
+-> Space outside
+
+[Sair] That is close to the Border station. Maybe this could stop the raids against the transports to the station.
+
+-> Close to asteroid belt
+
+[Sair] This must be it. They should be hiding here somewhere. We should make sure to examine the asteroids closely...
+
+> Incorrect asteroid interaction: "An empty asteroid floating in space"
+
+-> Interaction with target asteroid
+
+[Sair] This must be it. There are rebel ships incoming!
+
+-> Level starts
+
+[Rebel] Alliance pest, leave.
+
+-> Target asteroid after level
+
+[Rebel] Please, don't kill us. I have a family at Lavis. We are desperate. We have no choice.
+[Rebel] If you leave, and report that you didn't find us we can give you this ship plating we found during one of our latest raids. It is made with a new material which allows ships to travel faster while almost being as strong as the strongest armor. What about it?
+
+--> We'll let you be
+[Rebel] Thank you, thank you! There is still some good in the Alliance. Here, have this armor.
+
+-> In space
+
+[Sair] Let's report back to Fortrun.
+
+-> At Fortrun
+
+[Alliance] You didn't find them you say? Hmm, maybe you should have looked harder... We will send someone else next. Here is some compensation for your trouble.
+
+END
+
+--> I have to stop you from plundering innocent people!
+[Rebel] You tell yourself that. You are just protecting the Alliance like the rest of them. We won't go down easily. Prepare yourself.
+
+-> Level 2 starts and ends
+
+[Rebel] You.. bastard..
+
+[Sair] Let's report back to Fortrun.
+
+-> At fortrun
+
+[Alliance] That's a job well done! Now the civilians can finally have some peace from those pests. Here, have this reward.
+
+END
