@@ -185,6 +185,7 @@
     <Compile Include="LevelHelpClasses\LevelTesterEntry.cs" />
     <Compile Include="GameUtils\UI\ZoomMap.cs" />
     <Compile Include="MissionStuff\EventText.cs" />
+    <Compile Include="MissionStuff\MissionObjects\DummyCoordinateObject.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\CloseInOnLocationObjective.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\AutoPilotObjective.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\TimedMessageObjective.cs" />

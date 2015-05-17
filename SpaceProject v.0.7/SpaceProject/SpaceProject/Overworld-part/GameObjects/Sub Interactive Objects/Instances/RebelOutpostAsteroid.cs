@@ -9,6 +9,9 @@ namespace SpaceProject
 {
     public class RebelOutpostAsteroid : SubInteractiveObject
     {
+        private bool activated;
+        public bool Activated { get { return activated; } set { activated = value; } }
+
         public RebelOutpostAsteroid(Game1 Game, Sprite spriteSheet) :
             base(Game, spriteSheet)
         {
@@ -19,8 +22,7 @@ namespace SpaceProject
         {
             sprite = spriteSheet.GetSubSprite(new Rectangle(724, 1075, 54, 55));
             
-            
-            position = MathFunctions.CoordinateToPosition(new Vector2(1917, 135));
+            position = MathFunctions.CoordinateToPosition(new Vector2(1028, -20));
             name = "RebelOutpostAsteroid";
 
             base.Initialize();
@@ -48,6 +50,7 @@ namespace SpaceProject
 
         public override void Interact()
         {
+            activated = true;
             base.Interact();
         }
 

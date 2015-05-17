@@ -12,24 +12,54 @@ namespace SpaceProject
     {
         private enum EventID
         {
-            ShipFound = 0,
-            Return = 1
+            SairMessageToOutpost,
+            OutpostFound,  
+            Level1Completed,
+            Level1Failed,
+            BribeAccepted,
+            SairMessageAfterAccept,
+            BeforeLevel2,
+            Level2Completed,
+            Level2Failed,
+            SairMessageAfterDecline,
+            AcceptBribeCompletedText,
+            DeclineBribeCompletedText
         }
 
+        private readonly int SmallReward = 100;
+        private readonly int BigReward = 200;
+
+        private readonly Vector2 DummyCoordinatePosition = MathFunctions.CoordinateToPosition(new Vector2(975, 0));
+
+        private readonly string level1 = "flightTraining_1";
+        private readonly string level2 = "flightTraining_2";
+
+        private Station fortrunStation;
         private RebelOutpostAsteroid rebelOutpost;
-        private Sprite overworldSpriteSheet;
+        private DummyCoordinateObject dummyCoordinateObject;
+
+        private ShipPart rebelBribe;
 
         public Side_TheRebelOutpost(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
             base(Game, section, spriteSheet, missionID)
         {
-            overworldSpriteSheet = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/SectorXSpriteSheet"), null);
         }
 
         public override void Initialize()
         {
             base.Initialize();
 
-            rebelOutpost = new RebelOutpostAsteroid(Game, overworldSpriteSheet);
+            RestartAfterFail();
+
+            rebelBribe = new BasicLaserWeapon(Game, ItemVariety.low);
+
+            fortrunStation = Game.stateManager.overworldState.GetStation("Fortrun Station I");
+
+            dummyCoordinateObject = new DummyCoordinateObject(Game, Game.spriteSheetOverworld);
+            dummyCoordinateObject.Initialize();
+            dummyCoordinateObject.position = DummyCoordinatePosition;
+
+            rebelOutpost = new RebelOutpostAsteroid(Game, Game.stateManager.overworldState.GetSectorX.GetSpriteSheet());
             rebelOutpost.Initialize();
 
             SetDestinations();
@@ -41,19 +71,47 @@ namespace SpaceProject
             progress = 0;
             ObjectiveIndex = 0;
 
-            rebelOutpost.IsUsed = true;
-            Game.stateManager.overworldState.AddOverworldObject(rebelOutpost);
+            Game.stateManager.overworldState.GetSectorX.AddGameObject(rebelOutpost);
+            Game.stateManager.overworldState.GetSectorX.AddGameObject(dummyCoordinateObject);
         }
 
         public override void OnLoad()
         {
-            if (!Game.stateManager.overworldState.ContainsOverworldObject(rebelOutpost) &&
-                (MissionState == StateOfMission.Active || MissionState == StateOfMission.Completed ||
-                MissionState == StateOfMission.Failed))
+            if (MissionState == StateOfMission.Active)
             {
-                rebelOutpost.IsUsed = true;
-                Game.stateManager.overworldState.AddOverworldObject(rebelOutpost);
+                Game.stateManager.overworldState.GetSectorX.AddGameObject(rebelOutpost);
+                Game.stateManager.overworldState.GetSectorX.AddGameObject(dummyCoordinateObject);
+
+                if (progress == 1)
+                {
+                    moneyReward = SmallReward;
+                    CompletedText = GetEvent((int)EventID.AcceptBribeCompletedText).Text;
+                }
+                else if (progress == 2)
+                {
+                    moneyReward = BigReward;
+                    CompletedText = GetEvent((int)EventID.DeclineBribeCompletedText).Text;
+                }
             }
+        }
+
+        public override void OnFailed()
+        {
+            base.OnFailed();
+
+            Game.stateManager.overworldState.GetSectorX.RemoveGameObject(rebelOutpost);
+            Game.stateManager.overworldState.GetSectorX.RemoveGameObject(dummyCoordinateObject);
+        }
+
+        public override void OnReset()
+        {
+            SetDestinations();
+            SetupObjectives();
+
+            base.OnReset();
+
+            ObjectiveIndex = 0;
+            rebelOutpost.Activated = false;
         }
 
         public override void MissionLogic()
@@ -80,40 +138,90 @@ namespace SpaceProject
         {
             destinations = new List<GameObjectOverworld>();
 
-            GameObjectOverworld borderStation =
-                Game.stateManager.overworldState.GetStation("Border Station");
-
-            AddDestination(rebelOutpost, 2);
-            AddDestination(borderStation);
+            AddDestination(dummyCoordinateObject, 4);
+            AddDestination(fortrunStation, 3);
+            AddDestination(rebelOutpost, 3);
+            AddDestination(fortrunStation, 1);
         }
 
         protected override void SetupObjectives()
         {
             objectives.Clear();
 
-            objectives.Add(new ArriveAtLocationObjective(
-                Game,
-                this,
-                ObjectiveDescriptions[0],
-                new EventTextCapsule(
-                    GetEvent((int)EventID.ShipFound),
-                    null, EventTextCanvas.MessageBox)));
+            // Event: Message from Sair on the way to outpost
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], 3000, 3000, PortraitID.Sair,
+                GetEvent((int)EventID.SairMessageToOutpost).Text));
 
-            objectives.Add(new ShootingLevelObjective(
-                Game,
-                this,
-                ObjectiveDescriptions[0],
-                "AstroDodger",
-                LevelStartCondition.Immediately,
-                new EventTextCapsule(
-                    GetEvent((int)EventID.Return),
-                    new EventText("You decide it's best to abandon the ship and return to Fortrun Station. No reward is worth getting crushed by asteroids."),
-                    EventTextCanvas.MessageBox)));
+            // Objective: Find the outpost
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                new EventTextCapsule(GetEvent((int)EventID.OutpostFound), null, EventTextCanvas.MessageBox),
+                delegate { },
+                delegate { },
+                delegate { return rebelOutpost.Activated; },
+                delegate { return false; }));
 
-            objectives.Add(new ArriveAtLocationObjective(
-                Game,
-                this,
-                ObjectiveDescriptions[1]));
+            // Objective: Complete the first level
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], level1, LevelStartCondition.TextCleared, 
+                new EventTextCapsule(GetEvent((int)EventID.Level1Completed), GetEvent((int)EventID.Level1Failed), EventTextCanvas.MessageBox)));
+
+            // Event: Rebels ask for mercy with bribe
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                delegate 
+                {
+                    PopupHandler.DisplaySelectionMenu(String.Format("Accept the {0} from the rebels?", rebelBribe.Name),
+                        new List<String>{"Yes", "No"},
+                        new List<System.Action> { delegate { OnAcceptBribe(); },
+                                                  delegate { OnDeclineBribe(); } });
+                },
+                delegate { },
+                delegate { return true; },
+                delegate { return false; }));
+
+            // Branch 1 Event: Rebel message after accepting bribe
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                new EventTextCapsule(GetEvent((int)EventID.BribeAccepted), null, EventTextCanvas.MessageBox)));
+
+            // Branch 1 Event: Message from Sair on the way back after accepting bribe
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], 3000, 3000, PortraitID.Sair,
+                GetEvent((int)EventID.SairMessageAfterAccept).Text));
+
+            // Branch 1: Jump to final objective
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                delegate { ObjectiveIndex = 10; },
+                delegate { },
+                delegate { return true; },
+                delegate { return false; }));
+
+            // Branch 2 Event: Rebel message after declining bribe
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                new EventTextCapsule(GetEvent((int)EventID.BeforeLevel2), null, EventTextCanvas.MessageBox)));
+
+            // Branch 2 Objective: Complete the second level
+            objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0], level2, LevelStartCondition.TextCleared,
+                new EventTextCapsule(GetEvent((int)EventID.Level2Completed), GetEvent((int)EventID.Level2Failed), EventTextCanvas.MessageBox)));
+
+            // Branch 2 Event: Message from Sair on the way back after accepting bribe
+            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0], 3000, 3000, PortraitID.Sair,
+                GetEvent((int)EventID.SairMessageAfterDecline).Text));
+
+            // Objective: Return to Fortrun
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0]));
+        }
+
+        private void OnAcceptBribe()
+        {
+            ShipInventoryManager.AddItem(rebelBribe);
+            moneyReward = SmallReward;
+            CompletedText = GetEvent((int)EventID.AcceptBribeCompletedText).Text;
+            progress = 1;
+        }
+
+        private void OnDeclineBribe()
+        {
+            ObjectiveIndex = 7;
+            moneyReward = BigReward;
+            CompletedText = GetEvent((int)EventID.DeclineBribeCompletedText).Text;
+            progress = 2;
         }
     }
 }
