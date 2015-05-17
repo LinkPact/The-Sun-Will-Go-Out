@@ -122,6 +122,8 @@ namespace SpaceProject
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["s_deathByMeteor"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["s_astroScan"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["s_astroDodger"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["s_theRebelOutpost_1"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["s_theRebelOutpost_2"]));
 
             // Main mission levels
             levels.Add(new RebelsInTheMeteors(Game, spriteSheet, player, levelDict["1_1"]));
@@ -182,6 +184,9 @@ namespace SpaceProject
             entryDict.Add("s_deathByMeteor",    new LevelEntry("DeathByMeteor",    "sidelevels/DeathByMeteor",      MissionType.regularrebel));
             entryDict.Add("s_astroScan",        new LevelEntry("AstroScan",        "sidelevels/Astroscan",          MissionType.dark));
             entryDict.Add("s_astroDodger",      new LevelEntry("AstroDodger",      "sidelevels/AstroDodger",        MissionType.dark));
+            entryDict.Add("s_theRebelOutpost_1", new LevelEntry("theRebelOutpost_1", "sidelevels/therebeloutpost_1", MissionType.dark));
+            entryDict.Add("s_theRebelOutpost_2", new LevelEntry("theRebelOutpost_2", "sidelevels/therebeloutpost_2", MissionType.dark));
+
 
             // Pirates
 

@@ -26,13 +26,13 @@ namespace SpaceProject
             DeclineBribeCompletedText
         }
 
-        private readonly int SmallReward = 100;
-        private readonly int BigReward = 200;
+        private readonly int SmallReward = 200;
+        private readonly int BigReward = 600;
 
         private readonly Vector2 DummyCoordinatePosition = MathFunctions.CoordinateToPosition(new Vector2(975, 0));
 
-        private readonly string level1 = "flightTraining_1";
-        private readonly string level2 = "flightTraining_2";
+        private readonly string level1 = "theRebelOutpost_1";
+        private readonly string level2 = "theRebelOutpost_2";
 
         private Station fortrunStation;
         private RebelOutpostAsteroid rebelOutpost;
