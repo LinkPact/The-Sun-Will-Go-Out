@@ -16,6 +16,9 @@ namespace SpaceProject
         private Game1 Game;
         private Sprite spriteSheet;
 
+        private double radius;
+        private double innerRadius;
+
         private List<SubInteractiveObject> overworldObjects = new List<SubInteractiveObject>();
         private Vector2 centerCoordinate;
         public AsteroidField(Game1 Game, Sprite spriteSheet, Vector2 centerCoordinate)
@@ -38,10 +41,22 @@ namespace SpaceProject
             return overworldObjects;
         }
 
-        protected void SetupGenericAsteroidField(int count, double radius, double innerRadius = 0)
+        protected void SetupGenericAsteroidFieldParams(double radius, double innerRadius = 0)
         {
-            var coords = GetRandomCoordinateFields(count, radius, innerRadius);
-            AssignGenericAsteroids(coords);
+            this.radius = radius;
+            this.innerRadius = innerRadius;
+        }
+
+        protected void GenerateGenericAsteroids(int numberOfAsteroids)
+        {
+            var coords = GetRandomCoordinateFields(numberOfAsteroids, radius, innerRadius);
+            AssignGenericAsteroids(coords);        
+        }
+
+        protected void GenerateEventAsteroids(int numberOfAsteroids)
+        {
+            var coords = GetRandomCoordinateFields(numberOfAsteroids, radius, innerRadius);
+            AssignEventAsteroids(coords);
         }
 
         private void AssignGenericAsteroids(List<Vector2> coordList)
@@ -49,6 +64,14 @@ namespace SpaceProject
             for (int n = 0; n < coordList.Count; n++)
             {
                 overworldObjects.Add(new SimpleAsteroid(Game, spriteSheet, GetAbsCoord(coordList[n]), "asteroid" + n));
+            }
+        }
+
+        private void AssignEventAsteroids(List<Vector2> coordList)
+        {
+            for (int n = 0; n < coordList.Count; n++)
+            {
+                overworldObjects.Add(new EventAsteroid(Game, spriteSheet, GetAbsCoord(coordList[n]), "asteroid" + n));
             }
         }
 

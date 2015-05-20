@@ -15,7 +15,8 @@ namespace SpaceProject
         public RebelOutpostAsteroidField(Game1 Game, Sprite spriteSheet) :
             base(Game, spriteSheet, CENTERCOORD)
         {            
-            SetupGenericAsteroidField(COUNT, RADIUS);
+            SetupGenericAsteroidFieldParams(RADIUS);
+            GenerateGenericAsteroids(COUNT);
         }
     }
 }

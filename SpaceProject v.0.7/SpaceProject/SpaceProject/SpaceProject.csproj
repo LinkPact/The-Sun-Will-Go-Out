@@ -367,6 +367,7 @@
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\AsteroidField\AsteroidField.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\AsteroidField\Instances\RebelOutpostAsteroidField.cs" />
+    <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\AsteroidField\EventAsteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\AsteroidField\SimpleAsteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\AsteroidField\Instances\SunAsteroidBelt.cs" />
     <Compile Include="Overworld-part\GameObjects\Sub Interactive Objects\Instances\DamagedShip.cs" />

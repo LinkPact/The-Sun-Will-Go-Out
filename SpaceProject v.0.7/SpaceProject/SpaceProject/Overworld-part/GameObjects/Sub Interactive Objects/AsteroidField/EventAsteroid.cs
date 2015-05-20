@@ -7,11 +7,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class SimpleAsteroid : SubInteractiveObject
+    public class EventAsteroid : SubInteractiveObject
     {
         private Vector2 coordinates;
 
-        public SimpleAsteroid(Game1 Game, Sprite spriteSheet, Vector2 coordinates, String name) :
+        public EventAsteroid(Game1 Game, Sprite spriteSheet, Vector2 coordinates, String name) :
             base(Game, spriteSheet)
         {
             this.coordinates = coordinates;
@@ -20,12 +20,11 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-// 1130
-            sprite = spriteSheet.GetSubSprite(new Rectangle(724, 1075, 54, 55));
+            sprite = spriteSheet.GetSubSprite(new Rectangle(724, 1130, 54, 55));
             position = MathFunctions.CoordinateToPosition(coordinates);
             base.Initialize();
 
-            overworldEvent = new DisplayTextOE("A simple asteroid floating in space.");
+            overworldEvent = new DisplayTextOE("An event asteroid!!");
         }
 
         public override void Update(GameTime gameTime)
