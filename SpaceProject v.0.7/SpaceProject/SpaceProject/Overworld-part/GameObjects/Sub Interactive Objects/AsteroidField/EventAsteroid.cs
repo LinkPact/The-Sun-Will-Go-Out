@@ -24,7 +24,7 @@ namespace SpaceProject
             position = MathFunctions.CoordinateToPosition(coordinates);
             base.Initialize();
 
-            overworldEvent = new DisplayTextOE("An event asteroid!!");
+            overworldEvent = EventGenerator.GetRandomCommonEvent(Game);
         }
 
         public override void Update(GameTime gameTime)

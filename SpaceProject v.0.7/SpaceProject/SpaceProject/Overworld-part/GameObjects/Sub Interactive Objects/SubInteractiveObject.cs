@@ -52,6 +52,11 @@ namespace SpaceProject
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            if (overworldEvent != null)
+            {
+                overworldEvent.Update(Game, gameTime);
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)

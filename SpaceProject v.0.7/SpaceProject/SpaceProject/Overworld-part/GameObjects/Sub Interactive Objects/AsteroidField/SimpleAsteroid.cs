@@ -20,7 +20,7 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-// 1130
+
             sprite = spriteSheet.GetSubSprite(new Rectangle(724, 1075, 54, 55));
             position = MathFunctions.CoordinateToPosition(coordinates);
             base.Initialize();

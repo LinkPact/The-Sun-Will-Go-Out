@@ -22,6 +22,12 @@ namespace SpaceProject
             return rand.Next(lower, upper);
         }
 
+        public static T PickRandomFromList<T>(List<T> list)
+        {
+            int randPos = rand.Next(list.Count);
+            return list[randPos];
+        }
+
         // Convert overworld coordinate to Vector2-position
         public static Vector2 CoordinateToPosition(Vector2 coordinate)
         { 
