@@ -114,7 +114,6 @@ namespace SpaceProject
             {
                 overviewMenuState.ButtonMission.isDeactivated = true;
                 overviewMenuState.ButtonRumors.isDeactivated = true;
-                overviewMenuState.ButtonShop.isDeactivated = true;
 
                 activeButton = overviewMenuState.ButtonBack;
                 activeButtonIndexX = 0;
@@ -125,7 +124,6 @@ namespace SpaceProject
             {
                 overviewMenuState.ButtonMission.isDeactivated = false;
                 overviewMenuState.ButtonRumors.isDeactivated = false;
-                overviewMenuState.ButtonShop.isDeactivated = false;
 
                 activeButton = overviewMenuState.ButtonMission;
                 activeButtonIndexY = 0;
@@ -143,7 +141,6 @@ namespace SpaceProject
             {
                 overviewMenuState.ButtonMission.isDeactivated = true;
                 overviewMenuState.ButtonRumors.isDeactivated = true;
-                overviewMenuState.ButtonShop.isDeactivated = true;
 
                 activeButton = overviewMenuState.ButtonBack;
                 activeButtonIndexX = 0;
