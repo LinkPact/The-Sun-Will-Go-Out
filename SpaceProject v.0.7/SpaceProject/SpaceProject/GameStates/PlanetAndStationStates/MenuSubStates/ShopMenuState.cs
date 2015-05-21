@@ -118,7 +118,6 @@ namespace SpaceProject
 
             #endregion
 
-            BaseStateManager.OverviewMenuState.ButtonShop.isSelected = true;
             BaseStateManager.ActiveButton = null;
 
             savedYPos = -1;
@@ -131,7 +130,6 @@ namespace SpaceProject
         public override void OnLeave()
         {
             ReturnInventory();
-            BaseStateManager.OverviewMenuState.ButtonShop.isSelected = false;
 
             foreach (Item item in ShipInventoryManager.ShipItems)
             {

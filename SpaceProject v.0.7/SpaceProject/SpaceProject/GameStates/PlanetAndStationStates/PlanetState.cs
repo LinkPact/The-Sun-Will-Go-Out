@@ -23,8 +23,6 @@ namespace SpaceProject
         private Vector2 planetTexturePosition;
         private Vector2 planetTextureOrigin;
 
-        private Sprite lineTexture;
-
         #endregion
 
         #region Planet Data Fields
@@ -52,16 +50,7 @@ namespace SpaceProject
         {
             #region Initailize Strings
 
-            nameStringPosition = new Vector2(Game.Window.ClientBounds.Width * 3/4, 15);
-
-            dataHeadStringPosition = new Vector2(Game.Window.ClientBounds.Width / 4, 30);
-
-            dataBodyStringPosition = new Vector2(5, 60);
-
-            padding = "";
-
-            dataHead = "Planet Data:";
-            dataBody = "";
+            nameStringPosition = new Vector2(Game.Window.ClientBounds.Width / 2, 30);
 
             iconExpl = "";
             iconExplPos = new Vector2(Game.Window.ClientBounds.Width / 6, Game.Window.ClientBounds.Height / 2 + 10);
@@ -71,14 +60,12 @@ namespace SpaceProject
 
             #region Initailize Textures/Sprites
 
-            planetTexturePosition = new Vector2(Game.Window.ClientBounds.Width / 2 + Game.Window.ClientBounds.Width / 4,
+            planetTexturePosition = new Vector2(Game.Window.ClientBounds.Width / 2,
                                          Game.Window.ClientBounds.Height / 4);
 
             
 
             spriteSheet = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/PlanetOverviewSpritesheet"),null);
-
-            lineTexture = spriteSheet.GetSubSprite(new Rectangle(240, 0, 1, 1));
 
             #endregion          
 
@@ -100,23 +87,6 @@ namespace SpaceProject
 
             planetTextureOrigin = new Vector2(planet.sprite.SourceRectangle.Value.Width / 2,
                                               planet.sprite.SourceRectangle.Value.Height / 2);
-
-            dataBody = TextUtils.FormatDataBody(Game.fontManager.GetFont(16),
-                new List<string>(){"Surface:",
-                                   "Mass:",
-                                   "Temperature:",
-                                   "Gravity:",
-                                   "Orbit:",
-                                   "Rotation:",
-                                   "Habitable:"},
-                new List<string>(){ planet.PlanetSurface,
-                                    planet.PlanetMass.ToString() + " Earth masses",
-                                    planet.PlanetTemp.ToString() + " Celsius",
-                                    planet.PlanetGravity.ToString() + " Log G",
-                                    planet.PlanetOrbit.ToString() + " Earth years",
-                                    planet.PlanetRotation.ToString() + " Earth days" ,
-                                    planet.Habitable(planet.PlanetTemp, planet.PlanetGravity)},
-                                    383);
 
             nameStringOrigin = Game.fontManager.GetFont(14).MeasureString(planetName) / 2;
 
@@ -163,30 +133,19 @@ namespace SpaceProject
         {
             Game.GraphicsDevice.Clear(new Color(42, 95, 130, 255));
 
-            Color lineColor = new Color(40, 40, 40, 255);
-
             #region Textures
 
             //Backdrop
-            for (int i = 0; i < (int)((Game.Window.ClientBounds.Width / BG_WIDTH) + 1); i++)
-            {
-                for (int j = 0; j < (int)((Game.Window.ClientBounds.Height / BG_HEIGHT) + 1); j++)
-                    spriteBatch.Draw(spriteSheet.Texture, new Vector2(BG_WIDTH * i, BG_HEIGHT * j),
-                    new Rectangle(0, 241, 92, 92), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-            }
-
-            //Draw Black texture around planet
             spriteBatch.Draw(spriteSheet.Texture,
-                             new Vector2(Game.Window.ClientBounds.Width / 2 - 2,
-                                           0),
-                             new Rectangle(241, 3, 400, 300),
+                             new Vector2(0, 0),
+                             new Rectangle(0, 486, 1280, 720),
                              Color.White,
                              0f,
                              Vector2.Zero,
-                             new Vector2(Game.Window.ClientBounds.Width / Game.DefaultResolution.X,
-                                Game.Window.ClientBounds.Height / Game.DefaultResolution.Y),
+                             new Vector2(Game.Window.ClientBounds.Width / 1280,
+                                 Game.Window.ClientBounds.Height / 720),
                              SpriteEffects.None,
-                             0.1f);
+                             0.0f);
 
             ////Draw border around planet namw
             //spriteBatch.Draw(spriteSheet.Texture,
@@ -211,40 +170,6 @@ namespace SpaceProject
                              ScalePlanet(planetSprite.SourceRectangle.Value.Width, planetScale),
                              SpriteEffects.None,
                              .5f);
-
-            //Draw lines
-            //Vertical
-            spriteBatch.Draw(lineTexture.Texture,
-                             new Vector2(Game.Window.ClientBounds.Width / 2, 0),
-                             lineTexture.SourceRectangle,
-                             lineColor,
-                             (float)(Math.PI * 90) / 180,
-                             Vector2.Zero,
-                             new Vector2(Game.Window.ClientBounds.Height / 2, 2),
-                             SpriteEffects.None,
-                             .8f);
-
-            //Vertical
-            spriteBatch.Draw(lineTexture.Texture,
-                             new Vector2(Game.Window.ClientBounds.Width / 3, Game.Window.ClientBounds.Height / 2),
-                             lineTexture.SourceRectangle,
-                             lineColor,
-                             (float)(Math.PI * 90) / 180,
-                             Vector2.Zero,
-                             new Vector2(Game.Window.ClientBounds.Height / 2, 2),
-                             SpriteEffects.None,
-                             .8f);
-            
-            //Horizontal
-            spriteBatch.Draw(lineTexture.Texture,
-                             new Vector2(0, Game.Window.ClientBounds.Height / 2),
-                             lineTexture.SourceRectangle,
-                             lineColor,
-                             0f,
-                             Vector2.Zero,
-                             new Vector2(Game.Window.ClientBounds.Width, 2),
-                             SpriteEffects.None,
-                             .8f);
 
             #endregion
 
@@ -273,28 +198,7 @@ namespace SpaceProject
                                    .75f);
 
             dataHeadStringOrigin = new Vector2(Game.fontManager.GetFont(14).MeasureString(dataHead).X / 2, 5);
-
-            //Draw planet data head
-            spriteBatch.DrawString(Game.fontManager.GetFont(16),
-                                   dataHead,
-                                   dataHeadStringPosition + Game.fontManager.FontOffset,
-                                   Game.fontManager.FontColor,
-                                   .0f,
-                                   dataHeadStringOrigin,
-                                   1.0f,
-                                   SpriteEffects.None,
-                                   .75f);
-
-            //Draw planet data body
-            spriteBatch.DrawString(Game.fontManager.GetFont(16),
-                                   dataBody,
-                                   dataBodyStringPosition + Game.fontManager.FontOffset,
-                                   Game.fontManager.FontColor,
-                                   .0f,
-                                   Vector2.Zero,
-                                   1.0f,
-                                   SpriteEffects.None,
-                                   .75f);            
+      
             #endregion
 
             subStateManager.Draw(spriteBatch);

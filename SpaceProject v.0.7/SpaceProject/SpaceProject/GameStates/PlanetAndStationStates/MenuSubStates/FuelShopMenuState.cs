@@ -46,7 +46,6 @@ namespace SpaceProject
 
             confirmString = "";
 
-            BaseStateManager.OverviewMenuState.ButtonShop.isSelected = true;
             BaseStateManager.ActiveButton = null;
         }
 
