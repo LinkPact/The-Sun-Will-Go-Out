@@ -70,9 +70,6 @@ namespace SpaceProject
 
         public override void OnEnter()
         {
-            BaseState.DataHead = "Item Info:";
-            BaseState.DataBody = "";
-
             BaseStateManager.ButtonControl = ButtonControl.Inventory;
 
             LoadInventory();

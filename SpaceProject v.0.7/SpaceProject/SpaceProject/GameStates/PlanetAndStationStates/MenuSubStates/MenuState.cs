@@ -72,13 +72,13 @@ namespace SpaceProject
                     else if (BaseStateManager.ActiveMenuState.Equals(BaseStateManager.MissionMenuState) &&
                         BaseStateManager.ButtonControl.Equals(ButtonControl.Response))
                     {
-                        BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexX, BaseStateManager.ActiveButtonIndexY];
+                        BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
                         BaseStateManager.MissionMenuState.SelectMission();
                     }
 
                     else if (BaseStateManager.ActiveMenuState.Equals(BaseStateManager.ShopMenuState))
                     {
-                        BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexX, BaseStateManager.ActiveButtonIndexY];
+                        BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
                         BaseStateManager.ButtonControl = ButtonControl.Second;
                         BaseStateManager.ChangeMenuSubState("Overview");
                     }
@@ -92,7 +92,7 @@ namespace SpaceProject
         public virtual void CursorActions()
         {
             if (BaseStateManager.ButtonControl.Equals(ButtonControl.Menu))
-                BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexX, BaseStateManager.ActiveButtonIndexY];
+                BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
 
             BaseStateManager.TextBoxes.Clear();
         }

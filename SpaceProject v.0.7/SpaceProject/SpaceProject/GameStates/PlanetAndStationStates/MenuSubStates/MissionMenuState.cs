@@ -66,8 +66,8 @@ namespace SpaceProject
 
             confirmString = "Press 'Enter' to continue..";
 
-            confirmStringPos = new Vector2((Game.Window.ClientBounds.Width * 2 / 3),
-                                            Game.Window.ClientBounds.Height - BaseState.Game.fontManager.GetFont(14).MeasureString(confirmString).Y - 10);
+            confirmStringPos = new Vector2((Game.Window.ClientBounds.Width / 2),
+                                            Game.Window.ClientBounds.Height * 2/3 - BaseState.Game.fontManager.GetFont(14).MeasureString(confirmString).Y - 10);
 
             confirmStringOrigin = BaseState.Game.fontManager.GetFont(14).MeasureString(confirmString) / 2;
 
@@ -290,7 +290,7 @@ namespace SpaceProject
 
                     else if (responseCursorIndex == 1)
                     {
-                        BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexX, BaseStateManager.ActiveButtonIndexY];
+                        BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
                         DisplayAvailableMissions(availableMissions);
 
                         BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
@@ -328,7 +328,7 @@ namespace SpaceProject
                     }
                     else
                     {
-                        BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexX, BaseStateManager.ActiveButtonIndexY];
+                        BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
                         BaseStateManager.ChangeMenuSubState("Overview");
                     }
                 }
@@ -336,7 +336,7 @@ namespace SpaceProject
                 else
                 {
                     BaseStateManager.ChangeMenuSubState("Overview");
-                    BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexX, BaseStateManager.ActiveButtonIndexY];
+                    BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
                 }
             }
         }
@@ -360,7 +360,7 @@ namespace SpaceProject
                                        confirmStringOrigin,
                                        1.0f,
                                        SpriteEffects.None,
-                                       .75f);
+                                       1f);
             }
 
             if (portrait != null
@@ -466,7 +466,7 @@ namespace SpaceProject
 
             if (availableMissions.Count <= 0)
             {
-                BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexX, BaseStateManager.ActiveButtonIndexY];
+                BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
                 BaseStateManager.ChangeMenuSubState("Overview");
             }
 
@@ -572,7 +572,7 @@ namespace SpaceProject
             {
                 MissionManager.MarkMissionAsActive(selectedMission.MissionID);
                 BaseStateManager.ChangeMenuSubState("Overview");
-                BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexX, BaseStateManager.ActiveButtonIndexY];
+                BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
                 selectedMission.IntroductionText += "/ok";
                 
                 return;

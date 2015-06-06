@@ -14,36 +14,10 @@ namespace SpaceProject
         protected Planet planet;
         protected Station station;
 
-        #region String Fields
-
-        protected string padding;
-
-        protected string dataHead;
-        protected Vector2 dataHeadStringPosition;
-        protected Vector2 dataHeadStringOrigin;
-
-        protected string dataBody;
-        protected Vector2 dataBodyStringPosition;
-
         protected Vector2 nameStringPosition;
         protected Vector2 nameStringOrigin;
 
-        protected string iconExpl;
-        protected Vector2 iconExplPos;
-        protected Vector2 iconExplOrigin;
-
-        #endregion
-
         public Sprite SpriteSheet { get { return spriteSheet; } }
-
-        #region String Properties
-
-        public string Padding { get { return padding; } set { padding = value; } }
-
-        public string DataHead { get { return dataHead; } set { dataHead = value; } }
-        public string DataBody { get { return dataBody; } set { dataBody = value; } }
-
-        #endregion
 
         public GameObjectOverworld GetBase()
         {
@@ -67,6 +41,8 @@ namespace SpaceProject
         public override void Initialize()
         {
             base.Initialize();
+
+            nameStringPosition = new Vector2(Game.Window.ClientBounds.Width / 2, 30);         
         }
 
         public override void OnEnter()
@@ -86,6 +62,17 @@ namespace SpaceProject
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Draw(spriteSheet.Texture,
+                             new Vector2(0, 0),
+                             new Rectangle(0, 486, 1280, 720),
+                             Color.White,
+                             0f,
+                             Vector2.Zero,
+                             new Vector2(Game.Window.ClientBounds.Width / 1280,
+                                 Game.Window.ClientBounds.Height / 720),
+                             SpriteEffects.None,
+                             0.0f);
+
             base.Draw(spriteBatch);
         }
     }
