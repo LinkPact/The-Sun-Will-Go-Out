@@ -60,26 +60,12 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            #region Initailize Strings
-
-            nameStringPosition = new Vector2(Game.Window.ClientBounds.Width / 2, 30);
-
-            iconExpl = "";
-            iconExplPos = new Vector2(Game.Window.ClientBounds.Width / 6, Game.Window.ClientBounds.Height / 2 + 10);
-            iconExplOrigin = Vector2.Zero;            
-
-            #endregion
-
-            #region Initailize Textures/Sprites
+            base.Initialize();
 
             stationTexturePosition = new Vector2(Game.Window.ClientBounds.Width / 2,
                                          Game.Window.ClientBounds.Height / 4);
 
-            
-
-            spriteSheet = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/PlanetOverviewSpritesheet"),null);
-
-            #endregion          
+            spriteSheet = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/PlanetOverviewSpritesheet"),null);        
 
             subStateManager = new StationStateManager(this.Game);
             subStateManager.Initialize();
@@ -104,21 +90,6 @@ namespace SpaceProject
                                                   station.sprite.SourceRectangle.Value.Height / 2);
 
             nameStringOrigin = Game.fontManager.GetFont(16).MeasureString(stationName) / 2;
-
-            if (!station.Abandoned)
-            {
-                dataBody = TextUtils.FormatDataBody(Game.fontManager.GetFont(16),
-                   new List<string>() { "Inhabitants:" },
-                   new List<string>() { station.StationInhabitants.ToString() },
-                   383);
-            }
-            else
-            {
-                dataBody = TextUtils.FormatDataBody(Game.fontManager.GetFont(16),
-                   new List<string>() { "Inhabitants:" },
-                   new List<string>() { "0" },
-                   383);
-            }
         }
 
         private float ScaleStation(float diameter, float planetScale)
@@ -142,8 +113,6 @@ namespace SpaceProject
             //Game.musicManager.SetMusicVolume(0);
             subStateManager.OnEnter();
 
-            iconExpl = "Missions";
-
             if (!Station.Abandoned)
             {
                 Game.soundEffectsManager.LoopSoundEffect(SoundEffects.Crowd, 0f, 0f);
@@ -163,34 +132,12 @@ namespace SpaceProject
         public override void Update(GameTime gameTime)
         {
             subStateManager.Update(gameTime);        
-
-            if (subStateManager.ActiveButton != null)
-            {
-                iconExpl = subStateManager.ActiveButton.name;
-                iconExplOrigin = Game.fontManager.GetFont(16).MeasureString(iconExpl) / 2;
-            }
-
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            Game.GraphicsDevice.Clear(new Color(42, 95, 130, 255));
+            base.Draw(spriteBatch);
 
-            #region Textures
-
-            //Backdrop
-            spriteBatch.Draw(spriteSheet.Texture,
-                             new Vector2(0, 0),
-                             new Rectangle(0, 486, 1280, 720),
-                             Color.White,
-                             0f,
-                             Vector2.Zero,
-                             new Vector2(Game.Window.ClientBounds.Width / 1280,
-                                 Game.Window.ClientBounds.Height / 720),
-                             SpriteEffects.None,
-                             0.0f);
-
-            //Draw planet texture
             spriteBatch.Draw(stationSprite.Texture,
                              stationTexturePosition,
                              stationSprite.SourceRectangle,
@@ -201,11 +148,6 @@ namespace SpaceProject
                              SpriteEffects.None,
                              .5f);
 
-            #endregion
-
-            #region strings
-
-            //Draw planet name string
             spriteBatch.DrawString(Game.fontManager.GetFont(16),
                                    stationName,
                                    nameStringPosition + Game.fontManager.FontOffset,
@@ -215,18 +157,6 @@ namespace SpaceProject
                                    1.0f,
                                    SpriteEffects.None,
                                    .75f);
-
-            //Draw icon expl string
-            spriteBatch.DrawString(Game.fontManager.GetFont(14),
-                                   iconExpl,
-                                   iconExplPos + Game.fontManager.FontOffset,
-                                   Game.fontManager.FontColor,
-                                   .0f,
-                                   iconExplOrigin,
-                                   1.0f,
-                                   SpriteEffects.None,
-                                   .75f);
-            #endregion
 
             subStateManager.Draw(spriteBatch);
         }

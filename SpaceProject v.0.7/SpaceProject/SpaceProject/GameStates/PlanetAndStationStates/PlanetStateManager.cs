@@ -73,7 +73,7 @@ namespace SpaceProject
 
             #region Initailize Button Fields
 
-            allButtons = new MenuDisplayObject[4, 2];
+            allButtons = new List<MenuDisplayObject>();
             firstButtons = new List<MenuDisplayObject>();
             secondButtons = new List<MenuDisplayObject>();
             buttonsToRemove = new List<MenuDisplayObject>();
@@ -151,20 +151,6 @@ namespace SpaceProject
                     ActiveMenuState.CursorActions();
                 }
 
-                if (ControlManager.CheckPress(RebindableKeys.Right))
-                {
-                    activeButtonIndexX++;
-                    WrapActiveButton();
-                    ActiveMenuState.CursorActions();
-                }
-
-                else if (ControlManager.CheckPress(RebindableKeys.Left))
-                {
-                    activeButtonIndexX--;
-                    WrapActiveButton();
-                    ActiveMenuState.CursorActions();
-                }
-
                 //MouseControls(1);
             }
 
@@ -177,7 +163,7 @@ namespace SpaceProject
             if (buttonControl.Equals(ButtonControl.Menu))
             {
                 previousButton = activeButton;
-                activeButton = allButtons[activeButtonIndexX, activeButtonIndexY];
+                activeButton = allButtons[activeButtonIndexY];
             }
 
             else if (buttonControl.Equals(ButtonControl.Mission) ||
@@ -245,68 +231,6 @@ namespace SpaceProject
                         ActiveMenuState.CursorActions();
                     }
                 }
-            }
-        }
-
-        private void WrapActiveButton()
-        {
-            if (buttonControl.Equals(ButtonControl.Menu))
-            {
-                int tempInt;
-
-                if (overviewMenuState.ButtonMission.isDeactivated)
-                    tempInt = 1;
-                else
-                    tempInt = 0;
-
-                if (activeButtonIndexX < 0)
-                {
-                    activeButtonIndexX = firstButtons.Count - 1;
-                }
-
-                else if (activeButtonIndexX > firstButtons.Count - 1)
-                {
-                    activeButtonIndexX = 0;
-                }
-
-                if (activeButtonIndexY > 1)
-                {
-                    activeButtonIndexY = tempInt;
-                }
-
-                else if (activeButtonIndexY < tempInt)
-                {
-                    activeButtonIndexY = 1;
-                }
-            }
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            activeMenuState.Draw(spriteBatch);
-
-            //Draw buttons
-            foreach (MenuDisplayObject button in allButtons)
-            {
-                if (button != null && button.isVisible)
-                    button.Draw(spriteBatch);
-            }
-
-            foreach (TextBox txtBox in textBoxes)
-            {
-                Color color = Game.fontManager.FontColor;
-
-                if (txtBox.GetText().Contains("Main - "))
-                {
-                    color = MissionManager.MainMissionColor;
-                }
-
-                else if (txtBox.GetText().Contains("Secondary - "))
-                {
-                    color = MissionManager.SideMissionColor;
-                }
-
-                txtBox.Draw(spriteBatch, color, Game.fontManager.FontOffset);
             }
         }
     }

@@ -74,9 +74,9 @@ namespace SpaceProject
             BaseStateManager.SecondButtons.Add(buttonMission);
             BaseStateManager.SecondButtons.Add(buttonRumors);
 
-            BaseStateManager.AllButtons[0, 0] = buttonMission;
-            BaseStateManager.AllButtons[1, 0] = buttonRumors;
-            BaseStateManager.AllButtons[2, 1] = buttonBack;
+            BaseStateManager.AllButtons.Add(buttonMission);
+            BaseStateManager.AllButtons.Add(buttonRumors);
+            BaseStateManager.AllButtons.Add(buttonBack);
 
             #endregion
 
@@ -100,8 +100,6 @@ namespace SpaceProject
 
         public override void OnEnter()
         {
-            BaseState.DataHead = "Planet Data:";
-
             if (BaseState.GetBase() != null)
             {
                 if (BaseState.GetBase() is Planet)
@@ -136,17 +134,6 @@ namespace SpaceProject
                 if (MissionManager.ReturnCompletedMissions(BaseState.GetBase().name).Count <= 0 &&
                     MissionManager.ReturnFailedMissions(BaseState.GetBase().name).Count <= 0)
                 {
-
-                    BaseState.DataHead = "Colony Data:";
-
-                    if (BaseState.GetBase() != null && BaseState.GetBase() is Planet)
-                        BaseState.DataBody = "Name: " + BaseState.Padding.PadRight(20, ' ') + ((Planet)BaseState.GetBase()).ColonyName + "\n" +
-                             "Inhabitants: " + BaseState.Padding.PadRight(13, ' ') + ((Planet)BaseState.GetBase()).ColonyInhabitants;
-
-
-
-                    //SubStateManager.ButtonControl = ButtonControl.Second;
-
                     shopSelectCursorIndex = 0;
 
                     CursorActions();

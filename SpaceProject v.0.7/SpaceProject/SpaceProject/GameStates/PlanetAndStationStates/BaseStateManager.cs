@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
@@ -57,7 +58,7 @@ namespace SpaceProject
 
         #region Button Fields
 
-        protected MenuDisplayObject[,] allButtons;
+        protected List<MenuDisplayObject> allButtons;
         protected List<MenuDisplayObject> firstButtons;
         protected List<MenuDisplayObject> secondButtons;
         protected List<MenuDisplayObject> buttonsToRemove;
@@ -93,7 +94,7 @@ namespace SpaceProject
 
         #region Button Properties
 
-        public MenuDisplayObject[,] AllButtons { get { return allButtons; } set { allButtons = value; } }
+        public List<MenuDisplayObject> AllButtons { get { return allButtons; } set { allButtons = value; } }
         public List<MenuDisplayObject> FirstButtons { get { return firstButtons; } set { firstButtons = value; } }
         public List<MenuDisplayObject> SecondButtons { get { return secondButtons; } set { secondButtons = value; } }
         public List<MenuDisplayObject> ButtonsToRemove { get { return buttonsToRemove; } set { buttonsToRemove = value; } }
@@ -136,6 +137,54 @@ namespace SpaceProject
                     activeMenuState.OnEnter();
                 }
 
+            }
+        }
+
+        protected void WrapActiveButton()
+        {
+            if (buttonControl.Equals(ButtonControl.Menu))
+            {
+                if (activeButtonIndexY >= allButtons.Count)
+                {
+                    activeButtonIndexY = 0;
+                }
+
+                else if (activeButtonIndexY < 0)
+                {
+                    activeButtonIndexY = allButtons.Count - 1;
+                }
+
+                activeButton = allButtons[activeButtonIndexY];
+            }
+        }
+
+        public virtual void Draw(SpriteBatch spriteBatch)
+        {
+            foreach (MenuDisplayObject button in allButtons)
+            {
+                //if (button != null && button.isVisible)
+                button.Draw(spriteBatch);
+                spriteBatch.DrawString(FontManager.GetFontStatic(16), button.name, button.Position, Color.White, 0f,
+                    FontManager.GetFontStatic(16).MeasureString(button.name), 1f, SpriteEffects.None, 0.95f);
+            }
+
+            activeMenuState.Draw(spriteBatch);
+
+            foreach (TextBox txtBox in textBoxes)
+            {
+                Color color = Game.fontManager.FontColor;
+
+                if (txtBox.GetText().Contains("Main - "))
+                {
+                    color = MissionManager.MainMissionColor;
+                }
+
+                else if (txtBox.GetText().Contains("Secondary - "))
+                {
+                    color = MissionManager.SideMissionColor;
+                }
+
+                txtBox.Draw(spriteBatch, color, Game.fontManager.FontOffset);
             }
         }
     }

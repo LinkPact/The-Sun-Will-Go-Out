@@ -48,32 +48,17 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            #region Initailize Strings
-
-            nameStringPosition = new Vector2(Game.Window.ClientBounds.Width / 2, 30);
-
-            iconExpl = "";
-            iconExplPos = new Vector2(Game.Window.ClientBounds.Width / 6, Game.Window.ClientBounds.Height / 2 + 10);
-            iconExplOrigin = Vector2.Zero;            
-
-            #endregion
-
-            #region Initailize Textures/Sprites
+            base.Initialize();
 
             planetTexturePosition = new Vector2(Game.Window.ClientBounds.Width / 2,
                                          Game.Window.ClientBounds.Height / 4);
 
-            
-
-            spriteSheet = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/PlanetOverviewSpritesheet"),null);
-
-            #endregion          
+            spriteSheet = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/PlanetOverviewSpritesheet"),null);     
 
             subStateManager = new PlanetStateManager(this.Game);
             subStateManager.Initialize();
 
             PreviousPlanet = "";
-
         }
 
         //Method for loading data from the planet that the player has entered 
@@ -108,8 +93,6 @@ namespace SpaceProject
         {
             base.OnEnter();
             subStateManager.OnEnter();
-
-            iconExpl = "Colony";
         }
 
         public override void OnLeave()
@@ -119,46 +102,12 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            subStateManager.Update(gameTime);        
-
-            if (subStateManager.ActiveButton != null)
-            {
-                iconExpl = subStateManager.ActiveButton.name;
-                iconExplOrigin = Game.fontManager.GetFont(14).MeasureString(iconExpl) / 2;
-            }
-
+            subStateManager.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            Game.GraphicsDevice.Clear(new Color(42, 95, 130, 255));
-
-            #region Textures
-
-            //Backdrop
-            spriteBatch.Draw(spriteSheet.Texture,
-                             new Vector2(0, 0),
-                             new Rectangle(0, 486, 1280, 720),
-                             Color.White,
-                             0f,
-                             Vector2.Zero,
-                             new Vector2(Game.Window.ClientBounds.Width / 1280,
-                                 Game.Window.ClientBounds.Height / 720),
-                             SpriteEffects.None,
-                             0.0f);
-
-            ////Draw border around planet namw
-            //spriteBatch.Draw(spriteSheet.Texture,
-            //                 new Rectangle((int)nameStringPosition.X - (int)fontBig.MeasureString(planetName).X / 2,
-            //                               (int)nameStringPosition.Y - (int)fontBig.MeasureString(planetName).Y / 2 - 2,
-            //                               (int)fontBig.MeasureString(planetName).X,
-            //                               (int)fontBig.MeasureString(planetName).Y),
-            //                 new Rectangle(4, 4, 1, 1),
-            //                 Color.Gray,
-            //                 0f,
-            //                 Vector2.Zero,
-            //                 SpriteEffects.None,
-            //                 0.15f);
+            base.Draw(spriteBatch);
 
             //Draw planet texture
             spriteBatch.Draw(planetSprite.Texture,
@@ -171,10 +120,6 @@ namespace SpaceProject
                              SpriteEffects.None,
                              .5f);
 
-            #endregion
-
-            #region strings
-
             //Draw planet name string
             spriteBatch.DrawString(Game.fontManager.GetFont(14),
                                    planetName,
@@ -185,21 +130,6 @@ namespace SpaceProject
                                    1.0f,
                                    SpriteEffects.None,
                                    .75f);
-
-            //Draw icon expl string
-            spriteBatch.DrawString(Game.fontManager.GetFont(14),
-                                   iconExpl,
-                                   iconExplPos + Game.fontManager.FontOffset,
-                                   Game.fontManager.FontColor,
-                                   .0f,
-                                   iconExplOrigin,
-                                   1.0f,
-                                   SpriteEffects.None,
-                                   .75f);
-
-            dataHeadStringOrigin = new Vector2(Game.fontManager.GetFont(14).MeasureString(dataHead).X / 2, 5);
-      
-            #endregion
 
             subStateManager.Draw(spriteBatch);
         }
