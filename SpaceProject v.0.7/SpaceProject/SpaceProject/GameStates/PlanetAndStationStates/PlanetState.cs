@@ -53,8 +53,6 @@ namespace SpaceProject
             planetTexturePosition = new Vector2(Game.Window.ClientBounds.Width / 2,
                                          Game.Window.ClientBounds.Height / 4);
 
-            spriteSheet = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/PlanetOverviewSpritesheet"),null);     
-
             subStateManager = new PlanetStateManager(this.Game);
             subStateManager.Initialize();
 
@@ -92,6 +90,7 @@ namespace SpaceProject
         public override void OnEnter()
         {
             base.OnEnter();
+
             subStateManager.OnEnter();
         }
 
@@ -102,6 +101,8 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
+            base.Update(gameTime);
+
             subStateManager.Update(gameTime);
         }
 

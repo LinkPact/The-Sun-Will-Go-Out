@@ -273,21 +273,10 @@ namespace SpaceProject
         {
             GraphicsDevice.Clear(Color.Black);
 
-            switch (GameStateManager.currentState.ToLower())
-            {
-                case "overworldstate":
-                    spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, camera.GetTransformation());
-                    break;
-
-                case "shooterstate":
-                case "introsecondstate":
-                    spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
-                    break;
-
-                default:
-                    spriteBatch.Begin();
-                    break;
-            }
+            if (GameStateManager.currentState.ToLower().Equals("overworldstate"))
+                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, camera.GetTransformation());
+            else
+                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
 
             stateManager.Draw(spriteBatch);
             missionManager.Draw(spriteBatch);
