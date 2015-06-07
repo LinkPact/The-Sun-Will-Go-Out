@@ -29,7 +29,7 @@ namespace SpaceProject
         private readonly int SmallReward = 200;
         private readonly int BigReward = 600;
 
-        private readonly Vector2 DummyCoordinatePosition = MathFunctions.CoordinateToPosition(new Vector2(975, 0));
+        private readonly Vector2 DummyCoordinatePosition = MathFunctions.CoordinateToPosition(new Vector2(-700, -1200));
 
         private readonly string level1 = "theRebelOutpost_1";
         private readonly string level2 = "theRebelOutpost_2";

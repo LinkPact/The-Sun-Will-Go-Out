@@ -106,6 +106,7 @@ public enum DurationEventType
 public enum ShipPartType
 { 
     // Primary
+    LongShot                = 0,
     BasicLaser              = 1,
     DualLaser               = 2,
     SpreadBullet            = 3,

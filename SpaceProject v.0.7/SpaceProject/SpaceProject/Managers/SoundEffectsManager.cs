@@ -13,6 +13,7 @@ namespace SpaceProject
         SmallLaser,
         BigLaser,
         ClickLaser,
+        MidSizeLaser,
 
         // Explosions
         MuffledExplosion,
@@ -51,6 +52,7 @@ namespace SpaceProject
         private CustomSoundEffect smallLaser;
         private CustomSoundEffect bigLaser;
         private CustomSoundEffect clickLaser;
+        private CustomSoundEffect midSizeLaser;
 
         private CustomSoundEffect muffledExplosion;
         private CustomSoundEffect smallExplosion;
@@ -87,6 +89,7 @@ namespace SpaceProject
                 smallLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/basic_laser"), 3);
                 bigLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/distorted_laser"), 3);
                 clickLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/click_laser_noiseReduced"), 1);
+                midSizeLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/mid_size_laser"), 3);
 
                 muffledExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom6"), 1);
                 smallExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom9"), 4);
@@ -94,6 +97,7 @@ namespace SpaceProject
                 soundEffects.Add(smallLaser);
                 soundEffects.Add(bigLaser);
                 soundEffects.Add(clickLaser);
+                soundEffects.Add(midSizeLaser);
                 soundEffects.Add(muffledExplosion);
                 soundEffects.Add(smallExplosion);
 

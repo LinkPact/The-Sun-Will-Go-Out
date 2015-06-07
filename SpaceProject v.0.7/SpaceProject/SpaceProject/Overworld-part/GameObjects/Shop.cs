@@ -292,6 +292,7 @@ namespace SpaceProject
         {
             switch (shipPartEnum)
             {
+                case ShipPartType.LongShot:                 return new LongShotWeapon(Game);
                 case ShipPartType.BasicLaser:               return new BasicLaserWeapon(Game);
                 case ShipPartType.DualLaser:                return new DualLaserWeapon(Game);
                 case ShipPartType.SpreadBullet:             return new SpreadBulletWeapon(Game);

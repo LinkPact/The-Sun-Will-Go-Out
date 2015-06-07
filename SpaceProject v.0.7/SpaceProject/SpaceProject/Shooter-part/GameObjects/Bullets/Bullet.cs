@@ -24,9 +24,9 @@ namespace SpaceProject
                ExplosionGenerator.GenerateBulletExplosion(Game, spriteSheet, this));
         }
 
-        public void SetSpreadSpeed(Random random)
+        public void SetSpreadSpeed(Random random, float variationFrac=0.5f)
         {
-            Speed += ((float)random.NextDouble()) * 1.0f * Speed - 0.5f * Speed;
+            Speed += ((float)random.NextDouble()) * (2*variationFrac) * Speed - variationFrac * Speed;
         }
 
         public void SetDirectionAgainstTarget(GameObjectVertical shooter, GameObjectVertical target)

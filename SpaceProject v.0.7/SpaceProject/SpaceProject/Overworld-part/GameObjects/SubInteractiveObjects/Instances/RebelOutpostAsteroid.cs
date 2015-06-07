@@ -20,9 +20,9 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            sprite = spriteSheet.GetSubSprite(new Rectangle(724, 1075, 54, 55));
+            sprite = spriteSheet.GetSubSprite(new Rectangle(724, 1130, 54, 55));
             
-            position = MathFunctions.CoordinateToPosition(new Vector2(1028, -20));
+            position = MathFunctions.CoordinateToPosition(new Vector2(-728, -1180));
             name = "RebelOutpostAsteroid";
 
             base.Initialize();
