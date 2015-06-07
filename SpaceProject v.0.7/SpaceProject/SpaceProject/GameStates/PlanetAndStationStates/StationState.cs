@@ -12,7 +12,6 @@ namespace SpaceProject
     public class StationState : BaseState
     {
         public static string PreviousStation;
-        private StationStateManager subStateManager;
 
         #region Texture Fields
 
@@ -37,7 +36,7 @@ namespace SpaceProject
 
         public Station Station { get { return station; } }
 
-        public StationStateManager SubStateManager { get { return subStateManager; } }
+        public BaseStateManager SubStateManager { get { return substateManager; } }
 
         #region String Properties
 
@@ -63,12 +62,10 @@ namespace SpaceProject
             base.Initialize();
 
             stationTexturePosition = new Vector2(Game.Window.ClientBounds.Width / 2,
-                                         Game.Window.ClientBounds.Height / 4);
+                                         Game.Window.ClientBounds.Height / 4);    
 
-            spriteSheet = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/PlanetOverviewSpritesheet"),null);        
-
-            subStateManager = new StationStateManager(this.Game);
-            subStateManager.Initialize();
+            substateManager = new StationStateManager(this.Game);
+            substateManager.Initialize();
 
             PreviousStation = "";
 
@@ -110,8 +107,9 @@ namespace SpaceProject
         public override void OnEnter()
         {
             base.OnEnter();
+
             //Game.musicManager.SetMusicVolume(0);
-            subStateManager.OnEnter();
+            substateManager.OnEnter();
 
             if (!Station.Abandoned)
             {
@@ -131,7 +129,9 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            subStateManager.Update(gameTime);        
+            base.Update(gameTime);
+
+            substateManager.Update(gameTime);        
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -158,7 +158,7 @@ namespace SpaceProject
                                    SpriteEffects.None,
                                    .75f);
 
-            subStateManager.Draw(spriteBatch);
+            substateManager.Draw(spriteBatch);
         }
 
     }

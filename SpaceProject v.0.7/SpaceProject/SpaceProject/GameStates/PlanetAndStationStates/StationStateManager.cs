@@ -19,7 +19,7 @@ namespace SpaceProject
             this.stationState = Game.stateManager.stationState;
         }
 
-        public void Initialize()
+        public override void Initialize()
         {
 
             #region Initailize TextBox Fields
@@ -98,7 +98,7 @@ namespace SpaceProject
             menuStates.Add(rumorsMenuState);
         }
 
-        public void OnEnter()
+        public override void OnEnter()
         {
             rumorsMenuState.OnEnter();
             textBoxes.Clear();
@@ -128,9 +128,9 @@ namespace SpaceProject
             ChangeMenuSubState("Overview");
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
-            activeMenuState.Update(gameTime);
+            base.Update(gameTime);
 
             if (Game.stateManager.stationState.Station != null &&
                 Game.stateManager.stationState.Station.Abandoned)
@@ -142,60 +142,6 @@ namespace SpaceProject
                 activeButtonIndexX = 0;
                 activeButtonIndexY = 1;
             }
-
-            if (buttonControl == ButtonControl.Menu)
-            {
-                if (ControlManager.CheckPress(RebindableKeys.Down))
-                {
-                    activeButtonIndexY++;
-                    WrapActiveButton();
-                    ActiveMenuState.CursorActions();
-                }
-
-                else if (ControlManager.CheckPress(RebindableKeys.Up))
-                {
-                    activeButtonIndexY--;
-                    WrapActiveButton();
-                    ActiveMenuState.CursorActions();
-                }
-
-                //MouseControls();
-            }
-
-            if (buttonControl.Equals(ButtonControl.Menu))
-            {
-                previousButton = activeButton;
-                activeButton = allButtons[activeButtonIndexY];
-            }
-
-            if (ControlManager.CheckPress(RebindableKeys.Action1) ||
-                ControlManager.CheckKeyPress(Keys.Enter))
-            {
-                ActiveMenuState.ButtonActions();
-            }
-
-            if (buttonControl.Equals(ButtonControl.Mission) ||
-                buttonControl.Equals(ButtonControl.Response) ||
-                buttonControl.Equals(ButtonControl.Confirm))
-            {
-                activeButton = null;
-            }
-
-            foreach (MenuDisplayObject button in allButtons)
-            {
-                if (button != null)
-                {
-                    button.isActive = false;
-                }
-            }
-
-            if (activeButton != null)
-                activeButton.isActive = true;
-
-            missionMenuState.UpdateTextCursorPos();
-
-            foreach (TextBox txtBox in textBoxes)
-                txtBox.Update(gameTime);  
         }
 
         private void MouseControls()

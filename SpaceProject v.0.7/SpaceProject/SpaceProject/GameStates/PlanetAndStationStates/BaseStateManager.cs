@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
@@ -138,6 +139,75 @@ namespace SpaceProject
                 }
 
             }
+        }
+
+        public virtual void Initialize()
+        {
+
+        }
+
+        public virtual void OnEnter()
+        {
+
+        }
+
+        public virtual void Update(GameTime gameTime)
+        {
+            activeMenuState.Update(gameTime);
+
+            if (buttonControl == ButtonControl.Menu)
+            {
+                if (ControlManager.CheckPress(RebindableKeys.Down))
+                {
+                    activeButtonIndexY++;
+                    WrapActiveButton();
+                    ActiveMenuState.CursorActions();
+                }
+
+                else if (ControlManager.CheckPress(RebindableKeys.Up))
+                {
+                    activeButtonIndexY--;
+                    WrapActiveButton();
+                    ActiveMenuState.CursorActions();
+                }
+
+                //MouseControls(1);
+            }
+
+            if (buttonControl.Equals(ButtonControl.Menu))
+            {
+                previousButton = activeButton;
+                activeButton = allButtons[activeButtonIndexY];
+            }
+
+            else if (buttonControl.Equals(ButtonControl.Mission) ||
+                buttonControl.Equals(ButtonControl.Response) ||
+                buttonControl.Equals(ButtonControl.Confirm))
+            {
+                activeButton = null;
+            }
+
+            if (ControlManager.CheckPress(RebindableKeys.Action1) ||
+                ControlManager.CheckKeyPress(Keys.Enter))
+            {
+                ActiveMenuState.ButtonActions();
+            }
+
+            foreach (MenuDisplayObject button in allButtons)
+            {
+                if (button != null)
+                {
+                    button.isActive = false;
+                }
+            }
+
+            if (activeButton != null)
+                activeButton.isActive = true;
+
+            missionMenuState.UpdateTextCursorPos();
+
+            foreach (TextBox txtBox in textBoxes)
+                txtBox.Update(gameTime);  
         }
 
         protected void WrapActiveButton()
