@@ -9,13 +9,11 @@ namespace SpaceProject
 {
     public class MissionMenuState : MenuState
     {
-        private readonly float PortraitWidth = 149;
-        private readonly float PortraitHeight = 192;
+        private readonly Vector2 PortraitOffset = new Vector2(19, 19);
+        private readonly Vector2 OverlaySize = new Vector2(567, 234);
 
         private Portrait portrait;
         private Vector2 portraitPosition;
-        private Vector2 portraitBorderPosition;
-        private float portraitOffset;
 
         private Rectangle tempRect;
 
@@ -68,13 +66,10 @@ namespace SpaceProject
 
             confirmStringPos = new Vector2((Game.Window.ClientBounds.Width / 2),
                                             Game.Window.ClientBounds.Height * 2/3 - BaseState.Game.fontManager.GetFont(14).MeasureString(confirmString).Y - 10);
-
             confirmStringOrigin = BaseState.Game.fontManager.GetFont(14).MeasureString(confirmString) / 2;
 
-            portraitOffset = (Game.Window.ClientBounds.Width / 2 - Game.Window.ClientBounds.Width / 3 - PortraitWidth) / 2;
-            portraitPosition = new Vector2(Game.Window.ClientBounds.Width / 3 + portraitOffset, 
-                Game.Window.ClientBounds.Height / 2 + portraitOffset);
-            portraitBorderPosition = new Vector2(Game.Window.ClientBounds.Width / 3, Game.Window.ClientBounds.Height / 2);
+            portraitPosition = new Vector2(Game.Window.ClientBounds.Width / 2 - OverlaySize.X / 2,
+                Game.Window.ClientBounds.Height / 2 - OverlaySize.Y / 2) + PortraitOffset;
         }
 
         public override void OnEnter()
@@ -301,24 +296,15 @@ namespace SpaceProject
                               true,
                               "Back"));
 
-                        //if (selectedMission == MissionManager.GetMission("Main - Tutorial Mission")
-                        //    && MissionManager.GetMission("Main - New First Mission").MissionState == StateOfMission.Unavailable)
-                        //{
-                        //    MissionManager.UnlockMission("Main - New First Mission");
-                        //    MissionManager.MarkMissionAsActive("Main - New First Mission");
-                        //    MissionEvent();
-                        //}
-                        //
-                        //else
-                        //{
                         SelectMission();
-                        //}
                     }
                 }
             }
 
             else if (BaseStateManager.ButtonControl.Equals(ButtonControl.Confirm))
             {
+                BaseState.DisplayOverlay(false, false);
+
                 if (selectedMission != null)
                 {
                     if (selectedMission.AcceptIndex + 1 < selectedMission.AcceptText.Count<string>())
@@ -366,13 +352,9 @@ namespace SpaceProject
             if (portrait != null
                 && BaseStateManager.ButtonControl != ButtonControl.Mission)
             {
-                // Draws portrait border
-                spriteBatch.Draw(SpriteSheet.Texture, portraitBorderPosition, new Rectangle(203, 152, 1, 1), Color.White,
-                    0f, Vector2.Zero, new Vector2(portraitOffset * 2 + PortraitWidth, portraitOffset * 2 + PortraitHeight), SpriteEffects.None, 1f);
-
                 // Draws portrait
                 spriteBatch.Draw(portrait.Sprite.Texture, portraitPosition,
-                    portrait.Sprite.SourceRectangle, Color.White);
+                    portrait.Sprite.SourceRectangle, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
             }
         }
 
@@ -816,10 +798,12 @@ namespace SpaceProject
             if (portrait != null)
             {
                 tempRect = BaseStateManager.PortraitTextRectangle;
+                BaseState.DisplayOverlay(true, true);
             }
             else
             {
                 tempRect = BaseStateManager.NormalTextRectangle;
+                BaseState.DisplayOverlay(true, false);
             }
         }
     }

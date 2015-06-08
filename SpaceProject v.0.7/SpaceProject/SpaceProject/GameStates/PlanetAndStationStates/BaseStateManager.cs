@@ -143,11 +143,67 @@ namespace SpaceProject
 
         public virtual void Initialize()
         {
+            textBoxes = new List<TextBox>();
+            tempTextList = new List<string>();
+            tempVariableList = new List<string>();
 
+            portraitTextRectangle = new Rectangle(Game.Window.ClientBounds.Width / 2 - 400 + 10,
+                                                (Game.Window.ClientBounds.Height / 2) + 10,
+                                                 (Game.Window.ClientBounds.Width / 2) - 20,
+                                                (Game.Window.ClientBounds.Height / 2) - 20);
+
+            normalTextRectangle = new Rectangle(Game.Window.ClientBounds.Width / 3 + 10,
+                                    (Game.Window.ClientBounds.Height / 2) + 10,
+                                     (Game.Window.ClientBounds.Width * 2 / 3) - 20,
+                                    (Game.Window.ClientBounds.Height / 2) - 20);
+
+            responseRectangles = new List<Rectangle>();
+
+            responseRectangle1 = new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
+                                               Game.Window.ClientBounds.Height * 10 / 12,
+                                               Game.Window.ClientBounds.Width - 20,
+                                               10);
+
+            responseRectangles.Add(responseRectangle1);
+
+            responseRectangle2 = new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
+                                               Game.Window.ClientBounds.Height * 10 / 12 + 24,
+                                               Game.Window.ClientBounds.Width - 20,
+                                               10);
+
+            responseRectangles.Add(responseRectangle2);
+
+            responseRectangle3 = new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
+                                               Game.Window.ClientBounds.Height * 10 / 12 + 48,
+                                               Game.Window.ClientBounds.Width - 20,
+                                               10);
+
+            responseRectangles.Add(responseRectangle3);
+
+            responseRectangle4 = new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
+                                               Game.Window.ClientBounds.Height * 10 / 12 + 72,
+                                               Game.Window.ClientBounds.Width - 20,
+                                               10);
+
+            responseRectangles.Add(responseRectangle4);
+
+            allButtons = new List<MenuDisplayObject>();
+            firstButtons = new List<MenuDisplayObject>();
+            secondButtons = new List<MenuDisplayObject>();
+            buttonsToRemove = new List<MenuDisplayObject>();
+
+            menuStates = new List<MenuState>();
         }
 
         public virtual void OnEnter()
         {
+            rumorsMenuState.OnEnter();
+            textBoxes.Clear();
+            ChangeMenuSubState("Overview");
+            activeMenuState.CursorActions();
+
+            missionMenuState.MissionCursorIndex = 0;
+            missionMenuState.ResponseCursorIndex = 0;
 
         }
 
@@ -228,11 +284,15 @@ namespace SpaceProject
             }
         }
 
+        protected void MouseControls()
+        {
+            // TODO: Implement
+        }
+
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             foreach (MenuDisplayObject button in allButtons)
             {
-                //if (button != null && button.isVisible)
                 button.Draw(spriteBatch);
                 spriteBatch.DrawString(FontManager.GetFontStatic(16), button.name, button.Position, Color.White, 0f,
                     FontManager.GetFontStatic(16).MeasureString(button.name), 1f, SpriteEffects.None, 0.95f);

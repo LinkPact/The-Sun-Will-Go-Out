@@ -22,7 +22,8 @@ namespace SpaceProject
 
         private bool displayOverlay;
         private Sprite overlay;
-        private Vector2 overlayPosition;
+        private Sprite portraitOverlay;
+        private Sprite textOverlay;
 
         public GameObjectOverworld GetBase()
         {
@@ -46,8 +47,8 @@ namespace SpaceProject
 
             nameStringPosition = new Vector2(Game.Window.ClientBounds.Width / 2, 30);
 
-            overlay = spriteSheet.GetSubSprite(new Rectangle(449, 0, 800, 400));
-            overlayPosition = Game.ScreenCenter;
+            portraitOverlay = spriteSheet.GetSubSprite(new Rectangle(450, 0, 567, 234));
+            textOverlay = spriteSheet.GetSubSprite(new Rectangle(0, 0, 400, 183));
         }
 
         public override void OnEnter()
@@ -63,20 +64,15 @@ namespace SpaceProject
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-
-            if (substateManager.ButtonControl.Equals(ButtonControl.Menu))
-            {
-                displayOverlay = false;
-            }
-            else
-            {
-                displayOverlay = true;
-            }
         }
 
-        public void DisplayOverlay(bool displayOverlay)
+        public void DisplayOverlay(bool displayOverlay, bool portrait)
         {
             this.displayOverlay = displayOverlay;
+            if (portrait)
+                overlay = portraitOverlay;
+            else
+                overlay = textOverlay;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -87,21 +83,20 @@ namespace SpaceProject
                              Color.White,
                              0f,
                              Vector2.Zero,
-                             new Vector2(Game.Window.ClientBounds.Width / 1280,
-                                         Game.Window.ClientBounds.Height / 720),
+                             new Vector2(Game.Window.ClientBounds.Width / 1280f,
+                                         Game.Window.ClientBounds.Height / 720f),
                              SpriteEffects.None,
                              0.0f);
 
             if (displayOverlay)
             {
                 spriteBatch.Draw(overlay.Texture,
-                                 overlayPosition,
+                                 Game.ScreenCenter,
                                  overlay.SourceRectangle,
                                  new Color(255, 255, 255, 240),
                                  0f,
                                  overlay.CenterPoint,
-                                 new Vector2(Game.Window.ClientBounds.Width / 1280,
-                                             Game.Window.ClientBounds.Height / 720),
+                                 1f,
                                  SpriteEffects.None,
                                  0.96f);
             }
