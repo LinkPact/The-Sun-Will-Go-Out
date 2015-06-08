@@ -164,7 +164,7 @@ namespace SpaceProject
                                    textOrigin,
                                    1f,
                                    SpriteEffects.None,
-                                   0.5f);
+                                   1f);
         }
 
         public void Draw(SpriteBatch spriteBatch, Color textColor, Vector2 fontOffset, float layerDepth)
