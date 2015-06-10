@@ -10,7 +10,7 @@ namespace SpaceProject
     public class MissionMenuState : MenuState
     {
         private readonly Vector2 PortraitOffset = new Vector2(19, 19);
-        private readonly Vector2 OverlaySize = new Vector2(567, 234);
+        private readonly Vector2 PortraitOverlaySize = new Vector2(567, 234);
 
         private Portrait portrait;
         private Vector2 portraitPosition;
@@ -68,8 +68,8 @@ namespace SpaceProject
                                             Game.Window.ClientBounds.Height * 2/3 - BaseState.Game.fontManager.GetFont(14).MeasureString(confirmString).Y - 10);
             confirmStringOrigin = BaseState.Game.fontManager.GetFont(14).MeasureString(confirmString) / 2;
 
-            portraitPosition = new Vector2(Game.Window.ClientBounds.Width / 2 - OverlaySize.X / 2,
-                Game.Window.ClientBounds.Height / 2 - OverlaySize.Y / 2) + PortraitOffset;
+            portraitPosition = new Vector2(Game.Window.ClientBounds.Width / 2 - PortraitOverlaySize.X / 2,
+                Game.Window.ClientBounds.Height / 2 - PortraitOverlaySize.Y / 2) + PortraitOffset;
         }
 
         public override void OnEnter()
@@ -303,7 +303,7 @@ namespace SpaceProject
 
             else if (BaseStateManager.ButtonControl.Equals(ButtonControl.Confirm))
             {
-                BaseState.DisplayOverlay(false, false);
+                BaseState.DisplayOverlay(false, OverlayType.Portrait);
 
                 if (selectedMission != null)
                 {
@@ -367,24 +367,24 @@ namespace SpaceProject
                 SetPortraitFromText(MissionManager.MissionEventBuffer[0]);
 
                 SetTextRectangle();
-
+                
                 BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                                   tempRect,
                                                                   false,
-                                                                  MissionManager.MissionEventBuffer[0]));
+                                                                 MissionManager.MissionEventBuffer[0]));
 
 
 
                 TextToSpeech.Speak(MissionManager.MissionEventBuffer[0]);
 
-                MissionManager.MissionEventBuffer.Remove(MissionManager.MissionEventBuffer[0]);
+                MissionManager.MissionEventBuffer.RemoveAt(0);
 
                 if (MissionManager.MissionEventBuffer.Count > 0)
                     BaseStateManager.ButtonControl = ButtonControl.Confirm;
-
+                
                 else if (MissionManager.MissionResponseBuffer.Count <= 0)
                     BaseStateManager.ButtonControl = ButtonControl.Confirm;
-
+                
                 else
                 {
                     for (int i = 0; i < MissionManager.MissionResponseBuffer.Count; i++)
@@ -798,12 +798,12 @@ namespace SpaceProject
             if (portrait != null)
             {
                 tempRect = BaseStateManager.PortraitTextRectangle;
-                BaseState.DisplayOverlay(true, true);
+                BaseState.DisplayOverlay(true, OverlayType.Portrait);
             }
             else
             {
                 tempRect = BaseStateManager.NormalTextRectangle;
-                BaseState.DisplayOverlay(true, false);
+                BaseState.DisplayOverlay(true, OverlayType.Text);
             }
         }
     }
