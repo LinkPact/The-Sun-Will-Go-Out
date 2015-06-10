@@ -7,6 +7,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
+    public enum OverlayType
+    {
+        Text,
+        Portrait,
+        Selection
+    }
+
     public class BaseState : GameState
     {
         protected Sprite spriteSheet;
@@ -24,6 +31,7 @@ namespace SpaceProject
         private Sprite overlay;
         private Sprite portraitOverlay;
         private Sprite textOverlay;
+        private Sprite selectionOverlay;
 
         public GameObjectOverworld GetBase()
         {
@@ -49,6 +57,8 @@ namespace SpaceProject
 
             portraitOverlay = spriteSheet.GetSubSprite(new Rectangle(450, 0, 567, 234));
             textOverlay = spriteSheet.GetSubSprite(new Rectangle(0, 0, 400, 183));
+            selectionOverlay = spriteSheet.GetSubSprite(new Rectangle(0, 0, 0, 0));
+            overlay = textOverlay;
         }
 
         public override void OnEnter()
@@ -66,13 +76,23 @@ namespace SpaceProject
             base.Update(gameTime);
         }
 
-        public void DisplayOverlay(bool displayOverlay, bool portrait)
+        public void DisplayOverlay(bool displayOverlay, OverlayType overlayType)
         {
             this.displayOverlay = displayOverlay;
-            if (portrait)
-                overlay = portraitOverlay;
-            else
-                overlay = textOverlay;
+            switch (overlayType)
+            {
+                case OverlayType.Text:
+                    overlay = textOverlay;
+                    break;
+                
+                case OverlayType.Portrait:
+                    overlay = portraitOverlay;
+                    break;
+
+                case OverlayType.Selection:
+                    overlay = selectionOverlay;
+                    break;
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)

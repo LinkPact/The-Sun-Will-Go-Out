@@ -24,6 +24,10 @@ namespace SpaceProject
 
     public class BaseStateManager
     {
+        private readonly Vector2 PortraitTextOffset = new Vector2(200, 65);
+        private readonly Vector2 PortraitOverlaySize = new Vector2(567, 234);
+        private readonly Vector2 TextOverlaySize = new Vector2(400, 183);
+
         protected Game1 Game;
 
         protected List<MenuState> menuStates;
@@ -147,10 +151,10 @@ namespace SpaceProject
             tempTextList = new List<string>();
             tempVariableList = new List<string>();
 
-            portraitTextRectangle = new Rectangle(Game.Window.ClientBounds.Width / 2 - 400 + 10,
-                                                (Game.Window.ClientBounds.Height / 2) + 10,
-                                                 (Game.Window.ClientBounds.Width / 2) - 20,
-                                                (Game.Window.ClientBounds.Height / 2) - 20);
+            portraitTextRectangle = new Rectangle((int)(Game.Window.ClientBounds.Width / 2 - PortraitOverlaySize.X / 2 + PortraitTextOffset.X),
+                                                  (int)(Game.Window.ClientBounds.Height / 2 - PortraitOverlaySize.Y / 2 + PortraitTextOffset.Y),
+                                                  (int)(PortraitOverlaySize.X - PortraitTextOffset.X - 20),
+                                                  (int)(PortraitOverlaySize.Y / 2 - PortraitTextOffset.Y - 20));
 
             normalTextRectangle = new Rectangle(Game.Window.ClientBounds.Width / 3 + 10,
                                     (Game.Window.ClientBounds.Height / 2) + 10,
