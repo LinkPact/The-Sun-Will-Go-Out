@@ -57,7 +57,7 @@ namespace SpaceProject
 
             portraitOverlay = spriteSheet.GetSubSprite(new Rectangle(450, 0, 567, 234));
             textOverlay = spriteSheet.GetSubSprite(new Rectangle(0, 0, 400, 183));
-            selectionOverlay = spriteSheet.GetSubSprite(new Rectangle(0, 0, 0, 0));
+            selectionOverlay = spriteSheet.GetSubSprite(new Rectangle(450, 235, 567, 234));
             overlay = textOverlay;
         }
 
