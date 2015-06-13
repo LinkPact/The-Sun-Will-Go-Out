@@ -27,6 +27,8 @@ namespace SpaceProject
         {
             base.Initialize();
 
+            RewardItems.Add(new LongShotWeapon(Game, ItemVariety.regular));
+
             SetDestinations();
             SetupObjectives();
         }

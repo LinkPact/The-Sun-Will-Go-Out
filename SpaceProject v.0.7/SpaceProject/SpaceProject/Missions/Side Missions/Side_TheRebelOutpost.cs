@@ -51,7 +51,7 @@ namespace SpaceProject
 
             RestartAfterFail();
 
-            rebelBribe = new BasicLaserWeapon(Game, ItemVariety.low);
+            rebelBribe = new FlameShotWeapon(Game, ItemVariety.low);
 
             fortrunStation = Game.stateManager.overworldState.GetStation("Fortrun Station I");
 

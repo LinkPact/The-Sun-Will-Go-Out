@@ -18,9 +18,11 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            //Egenskaper
+            Speed = 0.8f;
             IsKilled = false;
+            Damage = 15;
             ObjectClass = "bullet";
+            Duration = 500;
 
             anim.LoopTime = 300;
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(42, 24, 5, 9)));
