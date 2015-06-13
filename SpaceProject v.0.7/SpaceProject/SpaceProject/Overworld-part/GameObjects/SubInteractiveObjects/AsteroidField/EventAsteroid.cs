@@ -7,14 +7,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class EventAsteroid : SubInteractiveObject
+    public class EventAsteroid : Asteroid
     {
-        private Vector2 coordinates;
-
         public EventAsteroid(Game1 Game, Sprite spriteSheet, Vector2 coordinates, String name) :
-            base(Game, spriteSheet)
+            base(Game, spriteSheet, coordinates)
         {
-            this.coordinates = coordinates;
             this.name = name;
         }
 
@@ -25,21 +22,6 @@ namespace SpaceProject
             base.Initialize();
 
             overworldEvent = EventGenerator.GetRandomCommonEvent(Game);
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            base.Draw(spriteBatch);
-        }
-
-        public override void Interact()
-        {
-            base.Interact();
         }
 
         protected override void SetClearedText()

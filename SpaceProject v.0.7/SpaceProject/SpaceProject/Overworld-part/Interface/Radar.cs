@@ -36,6 +36,7 @@ namespace SpaceProject
         private Vector2 playerpos;
 
         private Sprite ObjectSprite;
+        private Sprite AsteroidSprite;
         private Sprite BlinkingSprite;
 
         private Sprite ActiveSprite; 
@@ -74,6 +75,7 @@ namespace SpaceProject
             scaleY = View.Height / radarHeight;
             
             ObjectSprite = spriteSheet.GetSubSprite(new Rectangle(42, 24, 6, 6));
+            AsteroidSprite = spriteSheet.GetSubSprite(new Rectangle(44, 26, 2, 2));
             BlinkingSprite = spriteSheet.GetSubSprite(new Rectangle(49, 24, 6, 6));
             background = new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/radar"), new Rectangle(0, 0, 198, 198));
 
@@ -255,6 +257,11 @@ namespace SpaceProject
                 {
                     color = Color.White;
                     scale = 1.25f;
+                }
+                else if (obj is Asteroid)
+                {
+                    ActiveSprite = AsteroidSprite;
+                    scale = 1.5f;
                 }
 
                 spriteBatch.Draw(ActiveSprite.Texture,

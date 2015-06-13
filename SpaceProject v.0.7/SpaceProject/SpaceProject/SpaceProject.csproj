@@ -365,6 +365,7 @@
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\BorderXOutpost\BorderStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\MiningOutpost\MiningStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Asteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\AsteroidField.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\RebelOutpostAsteroidField.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\EventAsteroid.cs" />

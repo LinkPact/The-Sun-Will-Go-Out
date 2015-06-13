@@ -7,14 +7,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class SimpleAsteroid : SubInteractiveObject
+    public class SimpleAsteroid : Asteroid
     {
-        private Vector2 coordinates;
-
         public SimpleAsteroid(Game1 Game, Sprite spriteSheet, Vector2 coordinates, String name) :
-            base(Game, spriteSheet)
+            base(Game, spriteSheet, coordinates)
         {
-            this.coordinates = coordinates;
             this.name = name;
         }
 
@@ -26,21 +23,6 @@ namespace SpaceProject
             base.Initialize();
 
             overworldEvent = new DisplayTextOE("A simple asteroid floating in space.");
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            base.Draw(spriteBatch);
-        }
-
-        public override void Interact()
-        {
-            base.Interact();
         }
 
         protected override void SetClearedText()
