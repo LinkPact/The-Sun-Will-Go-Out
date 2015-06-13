@@ -65,9 +65,13 @@ namespace SpaceProject
 
             var rebelAsteroidFieldGenerator = new RebelOutpostAsteroidField(game, spriteSheet);
             var sunAsteroidBeltGenerator = new SunAsteroidBelt(game, spriteSheet);
+            var lavisAsteroidBeltGenerator = new LavisAsteroidBelt(game, spriteSheet);
+            var westernAsteroidFieldGenerator = new WesternAsteroidField(game, spriteSheet);
 
             subInteractiveObjects.AddRange(rebelAsteroidFieldGenerator.GetAsteroids());
             subInteractiveObjects.AddRange(sunAsteroidBeltGenerator.GetAsteroids());
+            subInteractiveObjects.AddRange(lavisAsteroidBeltGenerator.GetAsteroids());
+            subInteractiveObjects.AddRange(westernAsteroidFieldGenerator.GetAsteroids());
 
             subInteractiveObjects.Add(soelara);
             subInteractiveObjects.Add(fortrunStation2);

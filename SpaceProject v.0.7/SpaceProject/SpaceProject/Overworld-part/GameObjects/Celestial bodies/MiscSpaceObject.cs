@@ -7,10 +7,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    class MisicSpaceObject : GameObjectOverworld
+    class MiscSpaceObject : GameObjectOverworld
     {
 
-        protected MisicSpaceObject(Game1 game, Sprite spriteSheet) :
+        protected MiscSpaceObject(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
         {
         }

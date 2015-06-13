@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    class MediumAsteroid : MisicSpaceObject
+    class MediumAsteroid : MiscSpaceObject
     {
         public MediumAsteroid(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)

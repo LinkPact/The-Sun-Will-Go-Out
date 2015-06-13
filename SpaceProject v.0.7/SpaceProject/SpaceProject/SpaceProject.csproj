@@ -367,8 +367,10 @@
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Asteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\AsteroidField.cs" />
-    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\RebelOutpostAsteroidField.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\RebelOutpostAsteroidField - Copy.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\WesternAsteroidField.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\EventAsteroid.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\LavisAsteroidBelt.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\SimpleAsteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\SunAsteroidBelt.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\DamagedShip.cs" />
@@ -410,7 +412,7 @@
     <Compile Include="Overworld-part\Interface\Bar.cs" />
     <Compile Include="Overworld-part\CollisionHandlingOverworld.cs" />
     <Compile Include="Overworld-part\Camera.cs" />
-    <Compile Include="Overworld-part\GameObjects\Celestial bodies\MisicSpaceObject.cs" />
+    <Compile Include="Overworld-part\GameObjects\Celestial bodies\MiscSpaceObject.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\Planet.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\BackgroundStars\Star.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\SystemStar.cs" />
