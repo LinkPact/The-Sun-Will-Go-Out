@@ -12,6 +12,8 @@ namespace SpaceProject
         private readonly Vector2 PortraitOffset = new Vector2(19, 19);
         private readonly Vector2 PortraitOverlaySize = new Vector2(567, 234);
 
+        private readonly Vector2 SelectionOverlaySize = new Vector2(567, 234);
+
         private Portrait portrait;
         private Vector2 portraitPosition;
 
@@ -50,12 +52,11 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-
             #region Initialize Mission Fields
 
             availableMissions = new List<Mission>();
 
-            missionCursor = new Cursor(this.Game, SpriteSheet, new Rectangle(201, 121, 14, 14), new Rectangle(201, 135, 14, 14));
+            missionCursor = new Cursor(this.Game, SpriteSheet, new Rectangle(48, 263, 14, 14), new Rectangle(48, 277, 14, 14));
             missionCursor.Initialize();
 
             missionCursorIndex = -1;
@@ -178,8 +179,8 @@ namespace SpaceProject
                 }
                 else
                 {
-                    missionCursor.position.X = textBoxes[missionCursorIndex + 1].TextBoxRect.X - Game.fontManager.GetFont(16).MeasureString("Back").X / 2 - 10;
-                    missionCursor.position.Y = textBoxes[missionCursorIndex + 1].TextBoxRect.Y + 13;
+                    missionCursor.position.X = textBoxes[textBoxes.Count - 1].TextBoxRect.X - Game.fontManager.GetFont(16).MeasureString("Back").X / 2 - 10;
+                    missionCursor.position.Y = textBoxes[textBoxes.Count - 1].TextBoxRect.Y + 13;
                 }
             }
 
@@ -248,6 +249,8 @@ namespace SpaceProject
             //Actions for pressing Ok-key in "SELECTMISSION STATE" 
             if (BaseStateManager.ButtonControl.Equals(ButtonControl.Mission))
             {
+                BaseState.DisplayOverlay(false, OverlayType.Selection);
+
                 if (missionCursorIndex == availableMissions.Count)
                 {
                     BaseStateManager.TextBoxes.Clear();
@@ -286,15 +289,8 @@ namespace SpaceProject
                     else if (responseCursorIndex == 1)
                     {
                         BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
+                        BaseState.DisplayOverlay(false, OverlayType.Portrait);
                         DisplayAvailableMissions(availableMissions);
-
-                        BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
-                              new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
-                                           ((Game.Window.ClientBounds.Height / 2) + 40) + 20 * (availableMissions.Count + 1),
-                                             Game.Window.ClientBounds.Width - 20,
-                              10),
-                              true,
-                              "Back"));
 
                         SelectMission();
                     }
@@ -448,8 +444,7 @@ namespace SpaceProject
 
             if (availableMissions.Count <= 0)
             {
-                BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
-                BaseStateManager.ChangeMenuSubState("Overview");
+                BaseStateManager.ButtonControl = ButtonControl.Mission;
             }
 
             else
@@ -515,37 +510,49 @@ namespace SpaceProject
 
         public void DisplayAvailableMissions(List<Mission> availableMissions)
         {
-            BaseStateManager.TextBoxes.Clear();
+            int selectionCount;
 
-            BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16), new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
-                                                                       (Game.Window.ClientBounds.Height / 2) + 10,
-                                                                        Game.Window.ClientBounds.Width - 20,
-                                                                        10),
-                                                                        true,
-                                                                        "Available Missions:" + "\n\n"));
+            BaseState.DisplayOverlay(true, OverlayType.Selection);
+            BaseStateManager.TextBoxes.Clear();
+            BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16), new Rectangle((Game.Window.ClientBounds.Width / 2),
+                              (Game.Window.ClientBounds.Height / 2) - (int)SelectionOverlaySize.Y / 2 + 20,
+                               Game.Window.ClientBounds.Width - 20, 10),
+                               true, "Available Missions:" + "\n\n"));
+
             if (availableMissions.Count > 0)
             {
                 for (int i = 0; i < availableMissions.Count; i++)
                 {
                     BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
-                                                                      new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
-                                                                                   ((Game.Window.ClientBounds.Height / 2) + 40) + 20 * availableMissions.IndexOf(availableMissions[i]) + 1,
-                                                                                     Game.Window.ClientBounds.Width - 20,
-                                                                      10),
-                                                                      true,
-                                                                      availableMissions[i].MissionName));
+                              new Rectangle((Game.Window.ClientBounds.Width / 2),
+                                           Game.Window.ClientBounds.Height / 2 - 40 + 20 * availableMissions.IndexOf(availableMissions[i]) + 1,
+                                             Game.Window.ClientBounds.Width - 20,
+                              10),
+                              true,
+                              availableMissions[i].MissionName));
                 }
+
+                selectionCount = availableMissions.Count;
             }
 
             else
             {
-                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16), new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
-                                                            ((Game.Window.ClientBounds.Height / 2) + 60),
-                                                            Game.Window.ClientBounds.Width - 20,
-                                                            10),
-                                                            true,
-                                                            "<None>"));
+                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16), new Rectangle((Game.Window.ClientBounds.Width / 2),
+                        ((Game.Window.ClientBounds.Height / 2) - 40),
+                        Game.Window.ClientBounds.Width - 20,
+                        10),
+                        true,
+                        "<None>"));
+
+                selectionCount = 1;
             }
+
+            BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
+                    new Rectangle((Game.Window.ClientBounds.Width / 2),
+                                 ((Game.Window.ClientBounds.Height / 2) - 40) + 20 * (selectionCount + 1),
+                                   Game.Window.ClientBounds.Width / 2, 10),
+                    true,
+                    "Back"));
         }
 
         public void DisplayMissionAcceptText()

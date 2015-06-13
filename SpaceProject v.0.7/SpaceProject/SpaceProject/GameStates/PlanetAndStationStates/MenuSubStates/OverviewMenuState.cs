@@ -43,7 +43,7 @@ namespace SpaceProject
                                     SpriteSheet.GetSubSprite(tempRectActive),
                                     SpriteSheet.GetSubSprite(tempRectSelected),
                                     new Vector2(Game.Window.ClientBounds.Width / 2,
-                                        (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7),
+                                        (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 8),
                                     new Vector2(tempRectActive.Value.Width / 2f, tempRectActive.Value.Height / 2f));
             buttonMission.name = "Missions";
             buttonMission.isVisible = true;
@@ -54,7 +54,7 @@ namespace SpaceProject
                                             SpriteSheet.GetSubSprite(tempRectActive),
                                             SpriteSheet.GetSubSprite(tempRectSelected),
                                             new Vector2(Game.Window.ClientBounds.Width / 2,
-                                                (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7 * 2),
+                                                (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 8 * 2),
                                             new Vector2(tempRectActive.Value.Width / 2f, tempRectActive.Value.Height / 2f));
             buttonRumors.name = "Rumors";
             buttonRumors.isVisible = true;
@@ -65,7 +65,7 @@ namespace SpaceProject
                                             SpriteSheet.GetSubSprite(tempRectActive),
                                             SpriteSheet.GetSubSprite(tempRectSelected),
                                             new Vector2(Game.Window.ClientBounds.Width / 2,
-                                                (Game.Window.ClientBounds.Height / 2) + (Game.Window.ClientBounds.Height / 7) * 3),
+                                                (Game.Window.ClientBounds.Height / 2) + (Game.Window.ClientBounds.Height / 8) * 3),
                                             new Vector2(tempRectActive.Value.Width / 2f, tempRectActive.Value.Height / 2f));
             buttonBack.name = "Back";
             buttonBack.isVisible = true;
@@ -225,25 +225,18 @@ namespace SpaceProject
                 {
                     case "Missions":
                         {
-                            if (BaseStateManager.ActiveMenuState.Equals(BaseStateManager.OverviewMenuState))
-                            {
-                                if (MissionManager.ReturnAvailableMissions(BaseState.GetBase().name).Count > 0 ||
-                                    MissionManager.ReturnCompletedMissions(BaseState.GetBase().name).Count > 0)
-                                {
-                                    BaseStateManager.ChangeMenuSubState("Mission");
+                            BaseStateManager.MissionMenuState.DisplayAvailableMissions(MissionManager.ReturnAvailableMissions(BaseState.GetBase().name));
 
-                                    BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
-                                                      new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
-                                                                   ((Game.Window.ClientBounds.Height / 2) + 40) + 20 * (BaseStateManager.MissionMenuState.AvailableMissions.Count + 1),
-                                                                     Game.Window.ClientBounds.Width - 20,
-                                                      10),
-                                                      true,
-                                                      "Back"));
+                            BaseStateManager.ChangeMenuSubState("Mission");
 
-                                    BaseStateManager.MissionMenuState.SelectMission();
-                                }
-                            }
+                            BaseStateManager.MissionMenuState.SelectMission();
 
+                            break;
+                        }
+
+                    case "Rumors":
+                        {
+                            BaseStateManager.RumorsMenuState.DisplayRumors();
                             break;
                         }
 
@@ -268,60 +261,8 @@ namespace SpaceProject
                             break;
                         }
 
-                    case "Mining":
-                        {
-                            if (BaseState.GetBase() is Planet)
-                            {
-                                List<string> tempStrList = new List<string>();
-                                List<int> tempIntList = new List<int>();
-
-                                if (((Planet)BaseState.GetBase()).ResourceTypes.Count > 0)
-                                {
-                                    bool enter = false;
-
-                                    for (int i = 0; i < ((Planet)BaseState.GetBase()).ResourceTypes.Count; i++)
-                                    {
-                                        if (((Planet)BaseState.GetBase()).ResourceCount[i] > 0)
-                                            enter = true;
-                                    }
-
-                                    if (enter)
-                                    {
-                                        int val = Game.random.Next(3);
-
-                                        switch (val)
-                                        {
-                                            case 0:
-                                                throw new NotImplementedException("Outdated recource gather level removed during Level-class cleaning // Jakob 150117");
-                                                //((LevelResourceGather)Game.stateManager.shooterState.GetLevel("ResourceGatherLevel")).SetUpLevel(((Planet)BaseState.GetBase()));
-
-                                            case 1:
-                                                throw new NotImplementedException("Outdated recource gather level removed during Level-class cleaning // Jakob 150117");
-                                                //((LevelResourceGather)Game.stateManager.shooterState.GetLevel("ResourceGatherLevel")).SetUpLevel(((Planet)BaseState.GetBase()),
-                                                //    "green", 45);
-
-                                            case 2:
-                                                tempStrList.Add("green");
-                                                tempIntList.Add(36);
-                                                tempStrList.Add("red");
-                                                tempIntList.Add(18);
-                                                tempStrList.Add("blue");
-                                                tempIntList.Add(9);
-                                                throw new NotImplementedException("Outdated recource gather level removed during Level-class cleaning // Jakob 150117");
-                                                //((LevelResourceGather)Game.stateManager.shooterState.GetLevel("ResourceGatherLevel")).SetUpLevel(((Planet)BaseState.GetBase()),
-                                                //    tempStrList, tempIntList);
-                                        }
-
-                                        Game.stateManager.shooterState.BeginLevel("ResourceGatherLevel");
-                                    }
-                                }
-                            }
-                            break;
-                        }
-
                     case "Back":
                         {
-                            //Actions for pressing "BACK" button
                             if (BaseStateManager.ActiveMenuState.Equals(BaseStateManager.OverviewMenuState))
                             {
                                 if (StatsManager.gameMode != GameMode.campaign)
@@ -367,29 +308,8 @@ namespace SpaceProject
 
             switch (BaseStateManager.ActiveButton.name)
             {
-                case "Rumors":
-                    {
-                        BaseStateManager.RumorsMenuState.DisplayRumors();
-                        break;
-                    }
-
-
                 case "Missions":
-                    {
-                        BaseStateManager.MissionMenuState.DisplayAvailableMissions(MissionManager.ReturnAvailableMissions(BaseState.GetBase().name));
-
-                        if (MissionManager.ReturnAvailableMissions(BaseState.GetBase().name).Count > 0)
-                        {
-                            BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                          new Rectangle(Game.Window.ClientBounds.Width * 2 / 3,
-                                                                                        (int)(Game.Window.ClientBounds.Height - (int)BaseState.Game.fontManager.GetFont(14).MeasureString("Press 'Enter' to go to mission selection..").Y) - 20,
-                                                                                        (Game.Window.ClientBounds.Width * 2 / 3) - 20,
-                                                                                        10),
-                                                                          true,
-                                                                          "Press 'Enter' to go to mission selection.."));
-                        }
                         break;
-                    }
 
                 case "Buy/Sell":
                     {
@@ -425,39 +345,6 @@ namespace SpaceProject
                         break;
                     }
 
-                case "Mining":
-                    {
-                        if (BaseState.GetBase() is Planet)
-                        {
-                            string tempString;
-
-                            //AAAAAHHH. I will fix this float-to-int-transition-sickness-symptom later..
-                            tempString = "Resources\n\n" + TextUtils.ReturnStringFromList(((Planet)BaseState.GetBase()).ResourceTypes);
-
-
-                            if (((Planet)BaseState.GetBase()).ResourceTypes.Count > 0)
-                            {
-                                for (int i = 0; i < ((Planet)BaseState.GetBase()).ResourceCount.Count; i++)
-                                {
-                                    if (((Planet)BaseState.GetBase()).ResourceCount[i] > 0)
-                                    {
-                                        tempString += "\n\nPress 'Enter' to start mining resources.";
-                                        break;
-                                    }
-                                }
-                            }
-
-                            else
-                                tempString += "\n\nNo resources to mine.";
-
-                            BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                BaseStateManager.NormalTextRectangle,
-                                false,
-                                tempString));
-                        }
-                        break;
-                    }
-
                 case "Planet Info":
                     {
                         if (BaseState.GetBase() is Planet)
@@ -475,20 +362,17 @@ namespace SpaceProject
                         break;
                     }
 
-                case "Back":
-                    {
-                        BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                      new Rectangle(Game.Window.ClientBounds.Width * 2 / 3,
-                                                                                    (int)(Game.Window.ClientBounds.Height - (int)BaseState.Game.fontManager.GetFont(14).MeasureString("Press 'Enter' to access shop..").Y) - 20,
-                                                                                    (Game.Window.ClientBounds.Width * 2 / 3) / 2,
-                                                                                    10),
-                                                                      true,
-                                                                      "Press 'Enter' to leave.."));
-                        break;
-                    }
-
-                default:
-                    break;
+                //case "Back":
+                //    {
+                //        BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                //                                                      new Rectangle(Game.Window.ClientBounds.Width * 2 / 3,
+                //                                                                    (int)(Game.Window.ClientBounds.Height - (int)BaseState.Game.fontManager.GetFont(14).MeasureString("Press 'Enter' to access shop..").Y) - 20,
+                //                                                                    (Game.Window.ClientBounds.Width * 2 / 3) / 2,
+                //                                                                    10),
+                //                                                      true,
+                //                                                      "Press 'Enter' to leave.."));
+                //        break;
+                //    }
             }
         }
 

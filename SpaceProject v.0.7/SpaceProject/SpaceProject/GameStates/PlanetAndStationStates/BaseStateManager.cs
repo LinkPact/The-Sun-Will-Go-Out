@@ -295,11 +295,17 @@ namespace SpaceProject
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            foreach (MenuDisplayObject button in allButtons)
+            for (int i = 0; i < allButtons.Count; i++)
             {
-                button.Draw(spriteBatch);
-                spriteBatch.DrawString(FontManager.GetFontStatic(16), button.name, button.Position, Color.White, 0f,
-                    FontManager.GetFontStatic(16).MeasureString(button.name), 1f, SpriteEffects.None, 0.95f);
+                Color fontColor = FontManager.FontColorStatic;
+
+                allButtons[i].Draw(spriteBatch);
+
+                if (i == activeButtonIndexY)
+                    fontColor = Color.LightSkyBlue;
+
+                spriteBatch.DrawString(FontManager.GetFontStatic(16), allButtons[i].name, allButtons[i].Position, fontColor, 0f,
+                    FontManager.GetFontStatic(16).MeasureString(allButtons[i].name) / 2, 1f, SpriteEffects.None, 0.95f);
             }
 
             activeMenuState.Draw(spriteBatch);
