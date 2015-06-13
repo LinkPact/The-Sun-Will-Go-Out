@@ -19,7 +19,6 @@ namespace SpaceProject
         {
 
             sprite = spriteSheet.GetSubSprite(new Rectangle(724, 1075, 54, 55));
-            position = MathFunctions.CoordinateToPosition(coordinates);
             base.Initialize();
 
             overworldEvent = new DisplayTextOE("A simple asteroid floating in space.");

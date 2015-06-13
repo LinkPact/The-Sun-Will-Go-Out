@@ -18,7 +18,6 @@ namespace SpaceProject
         public override void Initialize()
         {
             sprite = spriteSheet.GetSubSprite(new Rectangle(724, 1130, 54, 55));
-            position = MathFunctions.CoordinateToPosition(coordinates);
             base.Initialize();
 
             overworldEvent = EventGenerator.GetRandomCommonEvent(Game);

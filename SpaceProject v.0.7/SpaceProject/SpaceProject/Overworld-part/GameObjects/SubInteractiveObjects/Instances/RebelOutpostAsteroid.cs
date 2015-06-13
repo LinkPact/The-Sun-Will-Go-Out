@@ -7,13 +7,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class RebelOutpostAsteroid : SubInteractiveObject
+    public class RebelOutpostAsteroid : Asteroid
     {
         private bool activated;
         public bool Activated { get { return activated; } set { activated = value; } }
 
+        private static readonly Vector2 coordinate = new Vector2(-728, -1180);
+
         public RebelOutpostAsteroid(Game1 Game, Sprite spriteSheet) :
-            base(Game, spriteSheet)
+            base(Game, spriteSheet, coordinate)
         {
 
         }
@@ -22,12 +24,14 @@ namespace SpaceProject
         {
             sprite = spriteSheet.GetSubSprite(new Rectangle(724, 1130, 54, 55));
             
-            position = MathFunctions.CoordinateToPosition(new Vector2(-728, -1180));
+            //position = MathFunctions.CoordinateToPosition(new Vector2(-728, -1180));
             name = "RebelOutpostAsteroid";
+
+            color = Color.Orange;
 
             base.Initialize();
 
-            overworldEvent = new DisplayTextOE("The Rebel Outpost Asteroid!");
+            //overworldEvent = new DisplayTextOE("The Rebel Outpost Asteroid!");
 
             //SetupText("I think Jakob is experimenting with Space Objects!");
             //String encounterText = "Rebels! Let's root em out!";
@@ -40,6 +44,7 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
+            Vector2 test = position;
             base.Update(gameTime);
         }
 
