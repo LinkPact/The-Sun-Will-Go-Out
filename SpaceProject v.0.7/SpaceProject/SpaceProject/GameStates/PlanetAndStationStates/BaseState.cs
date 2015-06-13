@@ -11,7 +11,8 @@ namespace SpaceProject
     {
         Text,
         Portrait,
-        Selection
+        MissionSelection,
+        Response
     }
 
     public class BaseState : GameState
@@ -26,12 +27,15 @@ namespace SpaceProject
         protected Vector2 nameStringOrigin;
 
         public Sprite SpriteSheet { get { return spriteSheet; } }
+        public OverlayType OverlayType { get { return overlayType; } }
 
         private bool displayOverlay;
+        private OverlayType overlayType;
         private Sprite overlay;
         private Sprite portraitOverlay;
         private Sprite textOverlay;
         private Sprite selectionOverlay;
+        private Sprite responseOverlay;
 
         public GameObjectOverworld GetBase()
         {
@@ -58,6 +62,7 @@ namespace SpaceProject
             portraitOverlay = spriteSheet.GetSubSprite(new Rectangle(450, 0, 567, 234));
             textOverlay = spriteSheet.GetSubSprite(new Rectangle(0, 0, 400, 183));
             selectionOverlay = spriteSheet.GetSubSprite(new Rectangle(450, 235, 567, 234));
+            responseOverlay = spriteSheet.GetSubSprite(new Rectangle(1018, 0, 571, 309));
             overlay = textOverlay;
         }
 
@@ -76,9 +81,11 @@ namespace SpaceProject
             base.Update(gameTime);
         }
 
-        public void DisplayOverlay(bool displayOverlay, OverlayType overlayType)
+        public void DisplayOverlay(OverlayType overlayType)
         {
-            this.displayOverlay = displayOverlay;
+            this.displayOverlay = true;
+            this.overlayType = overlayType;
+
             switch (overlayType)
             {
                 case OverlayType.Text:
@@ -89,10 +96,19 @@ namespace SpaceProject
                     overlay = portraitOverlay;
                     break;
 
-                case OverlayType.Selection:
+                case OverlayType.MissionSelection:
                     overlay = selectionOverlay;
                     break;
+
+                case OverlayType.Response:
+                    overlay = responseOverlay;
+                    break;
             }
+        }
+
+        public void HideOverlay()
+        {
+            displayOverlay = false;
         }
 
         public override void Draw(SpriteBatch spriteBatch)

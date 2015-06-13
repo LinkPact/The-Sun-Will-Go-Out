@@ -25,8 +25,12 @@ namespace SpaceProject
     public class BaseStateManager
     {
         private readonly Vector2 PortraitTextOffset = new Vector2(200, 65);
+        private readonly Vector2 NormalTextOffset = new Vector2(25, 25);
+        private readonly Vector2 ResponseTextOffset = new Vector2(200, 25);
+
         private readonly Vector2 PortraitOverlaySize = new Vector2(567, 234);
         private readonly Vector2 TextOverlaySize = new Vector2(400, 183);
+        private readonly Vector2 ResponseOverlaySize = new Vector2(571, 309);
 
         protected Game1 Game;
 
@@ -51,6 +55,7 @@ namespace SpaceProject
 
         protected Rectangle portraitTextRectangle;
         protected Rectangle normalTextRectangle;
+        protected Rectangle responseTextRectangle;
 
         protected List<Rectangle> responseRectangles;
 
@@ -85,8 +90,9 @@ namespace SpaceProject
         public List<string> TempTextList { get { return tempTextList; } set { tempTextList = value; } }
         public List<string> TempVariableList { get { return tempVariableList; } set { tempVariableList = value; } }
 
-        public Rectangle PortraitTextRectangle { get { return portraitTextRectangle; } set { portraitTextRectangle = value; } }
-        public Rectangle NormalTextRectangle { get { return normalTextRectangle; } set { normalTextRectangle = value; } }
+        public Rectangle PortraitTextRectangle { get { return portraitTextRectangle; } }
+        public Rectangle NormalTextRectangle { get { return normalTextRectangle; } }
+        public Rectangle ResponseTextRectangle { get { return responseTextRectangle; } }
 
         public List<Rectangle> ResponseRectangles { get { return responseRectangles; } set { responseRectangles = value; } }
 
@@ -156,37 +162,42 @@ namespace SpaceProject
                                                   (int)(PortraitOverlaySize.X - PortraitTextOffset.X - 20),
                                                   (int)(PortraitOverlaySize.Y / 2 - PortraitTextOffset.Y - 20));
 
-            normalTextRectangle = new Rectangle(Game.Window.ClientBounds.Width / 3 + 10,
-                                    (Game.Window.ClientBounds.Height / 2) + 10,
-                                     (Game.Window.ClientBounds.Width * 2 / 3) - 20,
-                                    (Game.Window.ClientBounds.Height / 2) - 20);
+            normalTextRectangle = new Rectangle((int)(Game.Window.ClientBounds.Width / 2 - TextOverlaySize.X / 2 + NormalTextOffset.X),
+                                                (int)(Game.Window.ClientBounds.Height / 2 - TextOverlaySize.Y / 2 + NormalTextOffset.Y),
+                                                (int)(TextOverlaySize.X - NormalTextOffset.X - 20),
+                                                (int)(TextOverlaySize.Y / 2 - NormalTextOffset.Y - 20));
+
+            responseTextRectangle = new Rectangle((int)(Game.Window.ClientBounds.Width / 2 - ResponseOverlaySize.X / 2 + ResponseTextOffset.X),
+                                      (int)(Game.Window.ClientBounds.Height / 2 - ResponseOverlaySize.Y / 2 + ResponseTextOffset.Y),
+                                      (int)(ResponseOverlaySize.X - ResponseTextOffset.X - 20),
+                                      (int)(ResponseOverlaySize.Y / 2 - ResponseTextOffset.Y - 20));
 
             responseRectangles = new List<Rectangle>();
 
-            responseRectangle1 = new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
-                                               Game.Window.ClientBounds.Height * 10 / 12,
-                                               Game.Window.ClientBounds.Width - 20,
+            responseRectangle1 = new Rectangle((Game.Window.ClientBounds.Width / 2 + (int)ResponseOverlaySize.X / 6) - 10,
+                                               Game.Window.ClientBounds.Height / 2 + 30,
+                                               (int)ResponseOverlaySize.X - 20,
                                                10);
 
             responseRectangles.Add(responseRectangle1);
 
-            responseRectangle2 = new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
-                                               Game.Window.ClientBounds.Height * 10 / 12 + 24,
-                                               Game.Window.ClientBounds.Width - 20,
+            responseRectangle2 = new Rectangle((Game.Window.ClientBounds.Width / 2 + (int)ResponseOverlaySize.X / 6) - 10,
+                                               Game.Window.ClientBounds.Height / 2 + 30 + 24,
+                                               (int)ResponseOverlaySize.X - 20,
                                                10);
 
             responseRectangles.Add(responseRectangle2);
 
-            responseRectangle3 = new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
-                                               Game.Window.ClientBounds.Height * 10 / 12 + 48,
-                                               Game.Window.ClientBounds.Width - 20,
+            responseRectangle3 = new Rectangle((Game.Window.ClientBounds.Width / 2 + (int)ResponseOverlaySize.X / 6) - 10,
+                                               Game.Window.ClientBounds.Height / 2 + 30 + 48,
+                                               (int)ResponseOverlaySize.X - 20,
                                                10);
 
             responseRectangles.Add(responseRectangle3);
 
-            responseRectangle4 = new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
-                                               Game.Window.ClientBounds.Height * 10 / 12 + 72,
-                                               Game.Window.ClientBounds.Width - 20,
+            responseRectangle4 = new Rectangle((Game.Window.ClientBounds.Width / 2 + (int)ResponseOverlaySize.X / 6) - 10,
+                                               Game.Window.ClientBounds.Height / 2 + 30 + 72,
+                                               (int)ResponseOverlaySize.X - 20,
                                                10);
 
             responseRectangles.Add(responseRectangle4);
