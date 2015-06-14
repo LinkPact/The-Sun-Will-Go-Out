@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
@@ -87,7 +88,8 @@ namespace SpaceProject
         }
 
         public virtual void ButtonActions()
-        { }
+        {
+        }
 
         public virtual void CursorActions()
         {

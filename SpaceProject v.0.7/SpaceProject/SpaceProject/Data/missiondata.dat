@@ -124,7 +124,7 @@ ObjectiveFailed = You failed to fight of the rebels. Build up your strength and 
 Reward = 700
 Progress = 2
 Reputation = 0
-State = 1
+State = 0
 
 [Main4_Infiltration]
 Location = Fortrun Station I

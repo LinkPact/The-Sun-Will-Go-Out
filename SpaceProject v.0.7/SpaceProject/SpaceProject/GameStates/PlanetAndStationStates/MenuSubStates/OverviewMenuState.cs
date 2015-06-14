@@ -250,12 +250,12 @@ namespace SpaceProject
 
                                 BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
                                                                                       shopSelectRectangle1,
-                                                                                      true,
+                                                                                      true, false,
                                                                                       "Buy/Sell Items"));
 
                                 BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
                                                                                       shopSelectRectangle3,
-                                                                                      true,
+                                                                                      true, false,
                                                                                       "Back"));
                             }
                             break;
@@ -320,7 +320,7 @@ namespace SpaceProject
                                                       (int)(Game.Window.ClientBounds.Height - (int)BaseState.Game.fontManager.GetFont(14).MeasureString("Press 'Enter' to access shop..").Y) - 20,
                                                       (Game.Window.ClientBounds.Width * 2 / 3) / 2,
                                                       10),
-                                        true,
+                                        true, false,
                                         "Press 'Enter' to access shop.."));
                         }
                         else
