@@ -312,26 +312,33 @@ namespace SpaceProject
 
             else if (BaseStateManager.ButtonControl.Equals(ButtonControl.Confirm))
             {
-                BaseState.HideOverlay();
-
-                if (selectedMission != null)
+                if (TextFinishedScrolling())
                 {
-                    if (selectedMission.AcceptIndex + 1 < selectedMission.AcceptText.Count<string>())
+                    BaseState.HideOverlay();
+
+                    if (selectedMission != null)
                     {
-                        selectedMission.AcceptIndex++;
-                        DisplayMissionAcceptText();
+                        if (selectedMission.AcceptIndex + 1 < selectedMission.AcceptText.Count<string>())
+                        {
+                            selectedMission.AcceptIndex++;
+                            DisplayMissionAcceptText();
+                        }
+                        else
+                        {
+                            BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
+                            BaseStateManager.ChangeMenuSubState("Overview");
+                        }
                     }
+
                     else
                     {
-                        BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
                         BaseStateManager.ChangeMenuSubState("Overview");
+                        BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
                     }
                 }
-
                 else
                 {
-                    BaseStateManager.ChangeMenuSubState("Overview");
-                    BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
+                    FlushText();
                 }
             }
         }
@@ -385,7 +392,7 @@ namespace SpaceProject
                 
                 BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                                   tempRect,
-                                                                  false,
+                                                                  false, true,
                                                                   MissionManager.MissionEventBuffer[0]));
 
                 TextToSpeech.Speak(MissionManager.MissionEventBuffer[0]);
@@ -404,7 +411,7 @@ namespace SpaceProject
                     {
                         BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                               BaseStateManager.ResponseRectangles[i],
-                                                              true,
+                                                              true, false,
                                                               TextUtils.WordWrap(BaseState.Game.fontManager.GetFont(14),
                                                                                  MissionManager.MissionResponseBuffer[i],
                                                                                  Game.Window.ClientBounds.Width * 2 / 3)
@@ -428,7 +435,7 @@ namespace SpaceProject
 
             BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                               tempRect,
-                                                              false,
+                                                              false, true,
                                                               MissionManager.MissionStartBuffer[0]));
 
             TextToSpeech.Speak(MissionManager.MissionStartBuffer[0]);
@@ -443,12 +450,12 @@ namespace SpaceProject
 
                 BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                       BaseStateManager.ResponseRectangle1,
-                                                      true,
+                                                      true, false,
                                                       SelectedMission.PosResponse));
 
                 BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                       BaseStateManager.ResponseRectangle2,
-                                                      true,
+                                                      true, false,
                                                       SelectedMission.NegResponse));
 
                 BaseStateManager.ButtonControl = ButtonControl.Response;
@@ -489,7 +496,7 @@ namespace SpaceProject
                 BaseState.DisplayOverlay(OverlayType.Response);
                 BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                                   tempRect,
-                                                                  false,
+                                                                  false, true,
                                                                   temp[0]));
 
                 BaseStateManager.ButtonControl = ButtonControl.Response;
@@ -508,12 +515,12 @@ namespace SpaceProject
                 {
                     BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                       BaseStateManager.ResponseRectangle1,
-                                                      true,
+                                                      true, false,
                                                       SelectedMission.PosResponse));
 
                     BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                           BaseStateManager.ResponseRectangle2,
-                                                          true,
+                                                          true, false,
                                                           SelectedMission.NegResponse));
 
                     BaseStateManager.ButtonControl = ButtonControl.Response;
@@ -534,7 +541,7 @@ namespace SpaceProject
             BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16), new Rectangle((Game.Window.ClientBounds.Width / 2),
                               (Game.Window.ClientBounds.Height / 2) - (int)SelectionOverlaySize.Y / 2 + 20,
                                Game.Window.ClientBounds.Width - 20, 10),
-                               true, "Available Missions:" + "\n\n"));
+                               true, false, "Available Missions:" + "\n\n"));
 
             if (availableMissions.Count > 0)
             {
@@ -545,7 +552,7 @@ namespace SpaceProject
                                            Game.Window.ClientBounds.Height / 2 - 40 + 20 * availableMissions.IndexOf(availableMissions[i]) + 1,
                                              Game.Window.ClientBounds.Width - 20,
                               10),
-                              true,
+                              true, false,
                               availableMissions[i].MissionName));
                 }
 
@@ -558,7 +565,7 @@ namespace SpaceProject
                         ((Game.Window.ClientBounds.Height / 2) - 40),
                         Game.Window.ClientBounds.Width - 20,
                         10),
-                        true,
+                        true, false,
                         "<None>"));
 
                 selectionCount = 1;
@@ -568,7 +575,7 @@ namespace SpaceProject
                     new Rectangle((Game.Window.ClientBounds.Width / 2),
                                  ((Game.Window.ClientBounds.Height / 2) - 40) + 20 * (selectionCount + 1),
                                    Game.Window.ClientBounds.Width / 2, 10),
-                    true,
+                    true, false,
                     "Back"));
         }
 
@@ -598,7 +605,7 @@ namespace SpaceProject
                     SetTextRectangle();
 
                     BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                        tempRect, false, temp[0]));
+                        tempRect, false, true, temp[0]));
 
                     if (temp.Length > 1)
                     {
@@ -636,7 +643,7 @@ namespace SpaceProject
                 SetTextRectangle();
 
                 BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                        tempRect, false, temp[0]));
+                        tempRect, false, true, temp[0]));
 
                 if (temp.Length > 1)
                 {
@@ -666,7 +673,7 @@ namespace SpaceProject
 
             BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                               tempRect,
-                                                              false,
+                                                              false, true,
                                                               selectedMission.AcceptFailedText));
 
             TextToSpeech.Speak(selectedMission.AcceptFailedText);
@@ -725,7 +732,7 @@ namespace SpaceProject
 
                     BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                                           tempRect,
-                                                                          false,
+                                                                          false, true,
                                                                           temp[0]));
 
                     for (int i = 1; i < temp.Count; i++)
@@ -754,7 +761,7 @@ namespace SpaceProject
 
                         BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                                           tempRect,
-                                                                          false,
+                                                                          false, false,
                                                                           temp[0] +
                                                                           "\n\n" +
                                                                           "Your reward is: \n" +
@@ -766,7 +773,7 @@ namespace SpaceProject
                     {
                         BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                                           tempRect,
-                                                                          false,
+                                                                          false, false,
                                                                           temp[0] +
                                                                           "\n\n" +
                                                                           "Your reward is: \n" +
@@ -796,7 +803,7 @@ namespace SpaceProject
 
             BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
                                                               tempRect,
-                                                              false,
+                                                              false, true,
                                                               temp[0]));
 
             if (temp.Length > 1)
@@ -836,6 +843,31 @@ namespace SpaceProject
             {
                 tempRect = BaseStateManager.NormalTextRectangle;
                 BaseState.DisplayOverlay(OverlayType.Text);
+            }
+        }
+
+        private bool TextFinishedScrolling()
+        {
+            foreach (TextBox txtbox in BaseStateManager.TextBoxes)
+            {
+                if (txtbox.Scrolling
+                    && txtbox.FinishedScrolling)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void FlushText()
+        {
+            foreach (TextBox txtbox in BaseStateManager.TextBoxes)
+            {
+                if (txtbox.Scrolling)
+                {
+                    txtbox.FlushText();
+                }
             }
         }
     }
