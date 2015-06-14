@@ -23,10 +23,6 @@ namespace SpaceProject
         protected Nullable<Rectangle> tempRectSelected;
         protected Nullable<Rectangle> tempRectDisabled;
 
-        protected string confirmString;
-        protected Vector2 confirmStringPos;
-        protected Vector2 confirmStringOrigin;
-
         protected MenuState(Game1 game, String name, BaseStateManager manager, BaseState baseState)
         {
             this.Game = game;

@@ -41,8 +41,6 @@ namespace SpaceProject
 
         public override void OnEnter()
         {
-            confirmString = "";
-
             BaseStateManager.ActiveButton = null;
         }
 

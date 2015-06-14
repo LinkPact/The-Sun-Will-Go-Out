@@ -158,6 +158,14 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
+            if (ControlManager.CheckKeyPress(Microsoft.Xna.Framework.Input.Keys.S))
+            {
+                BaseStateManager.ChangeMenuSubState("Shop");
+
+                BaseStateManager.TextBoxes.Clear();
+                shopSelectCursor.isVisible = false;
+            }
+
             if (BaseStateManager.ButtonControl == ButtonControl.SelectShop)
             {
                 shopSelectCursor.isActive = true;

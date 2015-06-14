@@ -68,22 +68,12 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            #region Initialize Mission Fields
-
             availableMissions = new List<Mission>();
 
             missionCursor = new Cursor(this.Game, SpriteSheet, new Rectangle(48, 263, 14, 14), new Rectangle(48, 277, 14, 14));
             missionCursor.Initialize();
 
             missionCursorIndex = -1;
-
-            #endregion
-
-            confirmString = "Press 'Enter' to continue..";
-
-            confirmStringPos = new Vector2((Game.Window.ClientBounds.Width / 2),
-                                            Game.Window.ClientBounds.Height * 2/3 - BaseState.Game.fontManager.GetFont(14).MeasureString(confirmString).Y - 10);
-            confirmStringOrigin = BaseState.Game.fontManager.GetFont(14).MeasureString(confirmString) / 2;
         }
 
         public override void OnEnter()
@@ -350,20 +340,6 @@ namespace SpaceProject
         public override void Draw(SpriteBatch spriteBatch)
         {
             missionCursor.Draw(spriteBatch);
-
-            if (BaseStateManager.ButtonControl.Equals(ButtonControl.Confirm))
-            {
-                //Draw confirm string
-                spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
-                                       confirmString,
-                                       confirmStringPos + Game.fontManager.FontOffset,
-                                       Game.fontManager.FontColor,
-                                       .0f,
-                                       confirmStringOrigin,
-                                       1.0f,
-                                       SpriteEffects.None,
-                                       1f);
-            }
 
             if (portrait != null
                 && BaseStateManager.ButtonControl != ButtonControl.Mission)
