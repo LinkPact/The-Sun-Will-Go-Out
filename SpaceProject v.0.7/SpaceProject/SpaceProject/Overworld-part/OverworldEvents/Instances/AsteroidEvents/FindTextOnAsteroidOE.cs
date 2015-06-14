@@ -7,9 +7,23 @@ namespace SpaceProject
 {
     class FindTextOnAsteroidOE : OverworldEvent
     {
-        private List<String> beginningText = new List<String> { "beginning1#...", "beginning2#followup", "beginning3#more#more!"};
+        private List<String> beginningText = new List<String> { 
+            "You find a deserted building.#It seems to once have been a space station. There is nothing of value here now.", 
+            "You find a message scribbled into the stone.#\"Noone is who they seem to be anymore...\"", 
+            "You find a message scribbled into the stone.#\"Once upon a time. What happened then?\"#\"It is all gone.\"", 
+            "You find a message scribbled into the stone.#\"Help me\"#Looking around, you see a man laying on the ground.#It is too late to help him now.", 
+            "You find a deserted building.#It might have belonged to the rebels once. Outside stands a broken minelayer ship.",
+            "You find a deserted building.#They seem to have stored crop in there. It smells so badly.#Why did they leave it?", 
+            "You find a deserted building.#There is a huge antenna sprouting from its top. It might have been a broadcast station once.",
+            "This asteroid smells like old socks. Best leave it...",
+            "This asteroid looks like a huge potato.",
+            "[SAIR] An ambush!#...#[SAIR] Sorry, I should probably update my sensors. False alarm."
+        };
+
         private List<String> allianceText = new List<String> { "alliance1#...", "alliance2#followup", "alliance3#more#more!" };
+        
         private List<String> rebelText = new List<String> { "rebel1#...", "rebel2#followup", "rebel3#more#more!" };
+        
         private List<String> endText = new List<String> { "end1#...", "end2#followup", "end3#more#more!" };
 
         public FindTextOnAsteroidOE() :
@@ -44,15 +58,15 @@ namespace SpaceProject
                     }
                 case GamePhase.withAlliance:
                     {
-                        return MathFunctions.PickRandomFromList<String>(rebelText);
+                        return MathFunctions.PickRandomFromList<String>(beginningText);
                     }
                 case GamePhase.withRebels:
                     {
-                        return MathFunctions.PickRandomFromList<String>(allianceText);
+                        return MathFunctions.PickRandomFromList<String>(beginningText);
                     }
                 case GamePhase.ending:
                     {
-                        return MathFunctions.PickRandomFromList<String>(endText);
+                        return MathFunctions.PickRandomFromList<String>(beginningText);
                     }
                 default:
                     {

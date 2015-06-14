@@ -11,6 +11,55 @@ namespace SpaceProject
 
         private String clearText;
 
+        private List<ShipPartType> beginningItems = new List<ShipPartType>
+        { 
+            ShipPartType.BasicLaser,
+            ShipPartType.DualLaser,
+            ShipPartType.SpreadBullet,
+            ShipPartType.LongShot,
+            ShipPartType.BasicPlating,
+            ShipPartType.BasicEnergyCell,
+            ShipPartType.BasicShield
+        };
+
+        private List<ShipPartType> alliancePhaseItems = new List<ShipPartType>
+        { 
+            ShipPartType.MultipleShot,
+            ShipPartType.WaveBeam,
+            ShipPartType.BallisticLaser,
+            ShipPartType.HomingMissile,
+            ShipPartType.FieldDamage,
+            ShipPartType.RegularPlating,
+            ShipPartType.RegularEnergyCell,
+            ShipPartType.RegularShield
+        };
+
+        private List<ShipPartType> rebelPhaseItems = new List<ShipPartType>
+        { 
+            ShipPartType.Beam,
+            ShipPartType.FragmentMissile,
+            ShipPartType.Burster,
+            ShipPartType.SideMissiles,
+            ShipPartType.AdvancedPlating,
+            ShipPartType.AdvancedEnergyCell,
+            ShipPartType.AdvancedShield,
+            ShipPartType.FlameShot
+        };
+
+        private List<ShipPartType> endingItems = new List<ShipPartType>
+        { 
+            ShipPartType.Beam,
+            ShipPartType.FragmentMissile,
+            ShipPartType.Burster,
+            ShipPartType.SideMissiles,
+            ShipPartType.AdvancedPlating,
+            ShipPartType.AdvancedEnergyCell,
+            ShipPartType.AdvancedShield,
+            ShipPartType.ProximityLaser,
+            ShipPartType.AdvancedLaser,
+            ShipPartType.DualLaser
+        };
+
         public FindItemOnAsteroidOE(Game1 Game) :
             base()
         {
@@ -25,6 +74,7 @@ namespace SpaceProject
 
             if (!IsCleared())
             {
+
                 var item = GetProgressBasedRandomItem(Game);
                 var itemOE = new GetItemOE(item, string.Format("You found the {0}!", item.Name), "Your inventory is full!", "Cleared (is this shown?)");
                 successfullyActivated = itemOE.Activate();
@@ -47,28 +97,63 @@ namespace SpaceProject
         {
             var currentPhase = MissionManager.GetCurrentGamePhase();
 
+            ShipPartType progressRandomShipPart;
+            List<ShipPartType> pickingPool = new List<ShipPartType>();
+            pickingPool.AddRange(beginningItems);
+            
             switch (currentPhase)
             {
                 case GamePhase.beginning:
                     {
-                        return new BasicLaserWeapon(Game);
+                        progressRandomShipPart = MathFunctions.PickRandomFromList(pickingPool);
+                        break;
                     }
                 case GamePhase.withAlliance:
                     {
-                        return new MultipleShotWeapon(Game);
+                        pickingPool.AddRange(alliancePhaseItems);
+                        progressRandomShipPart = MathFunctions.PickRandomFromList(pickingPool);
+                        break;
                     }
                 case GamePhase.withRebels:
                     {
-                        return new BursterWeapon(Game);
+                        pickingPool.AddRange(alliancePhaseItems);
+                        pickingPool.AddRange(rebelPhaseItems);
+                        progressRandomShipPart = MathFunctions.PickRandomFromList(pickingPool);
+                        break;
                     }
                 case GamePhase.ending:
                     {
-                        return new DualLaserWeapon(Game);
+                        pickingPool.AddRange(alliancePhaseItems);
+                        pickingPool.AddRange(rebelPhaseItems);
+                        pickingPool.AddRange(endingItems);
+                        progressRandomShipPart = MathFunctions.PickRandomFromList(pickingPool);
+                        break;
                     }
                 default:
                     {
                         throw new ArgumentException(string.Format("Unknown argument given: {0}", currentPhase.ToString()));
                     }
+            }
+
+            ItemVariety variety = GetRandomVariety();
+            return Shop.RetrievePartFromEnum(progressRandomShipPart, Game, variety);
+        }
+
+        private ItemVariety GetRandomVariety()
+        {
+            int randVal = MathFunctions.GetExternalRandomInt(0, 3);
+
+            if (randVal == 0)
+            {
+                return ItemVariety.low;
+            }
+            else if (randVal <= 2)
+            {
+                return ItemVariety.regular;
+            }
+            else
+            {
+                return ItemVariety.high;
             }
         }
     }

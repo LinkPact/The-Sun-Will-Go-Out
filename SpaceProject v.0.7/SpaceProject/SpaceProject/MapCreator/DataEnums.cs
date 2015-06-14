@@ -122,6 +122,7 @@ public enum ShipPartType
     AdvancedLaser           = 10,
     ProximityLaser          = 11,
     AdvancedBeam            = 12,
+    FlameShot               = 36,
 
     // Secondary
     Turret                  = 13,

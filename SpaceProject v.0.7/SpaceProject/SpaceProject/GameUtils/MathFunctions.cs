@@ -17,9 +17,9 @@ namespace SpaceProject
             return rand.NextDouble();
         }
 
-        public static int GetExternalRandomInt(int lower, int upper)
+        public static int GetExternalRandomInt(int lower, int inclusiveUpper)
         {
-            return rand.Next(lower, upper);
+            return rand.Next(lower, inclusiveUpper + 1);
         }
 
         public static T PickRandomFromList<T>(List<T> list)
