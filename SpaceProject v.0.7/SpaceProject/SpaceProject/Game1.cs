@@ -274,9 +274,18 @@ namespace SpaceProject
             GraphicsDevice.Clear(Color.Black);
 
             if (GameStateManager.currentState.ToLower().Equals("overworldstate"))
+            {
                 spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, camera.GetTransformation());
-            else
+            }
+            else if (GameStateManager.currentState.ToLower().Equals("planetstate")
+                    || GameStateManager.currentState.ToLower().Equals("stationstate"))
+            {
                 spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
+            }
+            else
+            {
+                spriteBatch.Begin();
+            }
 
             stateManager.Draw(spriteBatch);
             missionManager.Draw(spriteBatch);
