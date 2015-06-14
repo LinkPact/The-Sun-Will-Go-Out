@@ -31,6 +31,7 @@ namespace SpaceProject
             ConversionFactor = 5f;
 
             Value = 200;
+            displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(700, 100, 100, 100));
         }
     }
 }

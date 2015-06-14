@@ -30,6 +30,7 @@ namespace SpaceProject
             Recharge = 9f;
 
             Value = 1200;
+            displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(800, 200, 100, 100));
         }
     }
 }

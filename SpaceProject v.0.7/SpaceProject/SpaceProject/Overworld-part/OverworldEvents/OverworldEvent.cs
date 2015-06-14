@@ -26,7 +26,7 @@ namespace SpaceProject
         public virtual void Update(Game1 game, GameTime gameTime)
         { }
 
-        public abstract void Activate();
+        public abstract Boolean Activate();
 
     }
 }

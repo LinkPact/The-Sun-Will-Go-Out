@@ -36,6 +36,14 @@ namespace SpaceProject
         Side_TheRebelOutpost
     }
 
+    public enum GamePhase
+    {
+        beginning,
+        withAlliance,
+        withRebels,
+        ending
+    }
+
     public class MissionManager
     {
         public static readonly Color MainMissionColor = Color.Gold;
@@ -86,7 +94,27 @@ namespace SpaceProject
         private Sprite missionObjectSpriteSheet;
         private bool gameCompleted = false;
         private bool askRebelMission = false;
-        
+
+        public static GamePhase GetCurrentGamePhase()
+        {
+            if (mainBeginningOfTheEnd.MissionState == StateOfMission.CompletedDead)
+            {
+                return GamePhase.ending;
+            }
+            else if (mainInfiltration.MissionState == StateOfMission.CompletedDead)
+            {
+                return GamePhase.withRebels;
+            }
+            else if (mainNewFirstMission.MissionState == StateOfMission.CompletedDead)
+            {
+                return GamePhase.withAlliance;
+            }
+            else
+            {
+                return GamePhase.beginning;
+            }
+        }
+
         public MissionManager(Game1 Game)
         {
             this.game = Game;

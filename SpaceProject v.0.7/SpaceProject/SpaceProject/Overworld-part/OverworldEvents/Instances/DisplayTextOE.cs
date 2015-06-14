@@ -21,9 +21,10 @@ namespace SpaceProject
             this.text.Add(text);
         }
 
-        public override void Activate() 
+        public override Boolean Activate() 
         {
             PopupHandler.DisplayMessage(text.ToArray());
+            return true;
         }
     }
 }

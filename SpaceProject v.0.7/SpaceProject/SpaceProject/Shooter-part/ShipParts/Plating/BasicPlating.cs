@@ -33,6 +33,7 @@ namespace SpaceProject
             PrimarySlots = 2;
 
             Value = 200;
+            displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(600, 100, 100, 100));
         }
     }
 }

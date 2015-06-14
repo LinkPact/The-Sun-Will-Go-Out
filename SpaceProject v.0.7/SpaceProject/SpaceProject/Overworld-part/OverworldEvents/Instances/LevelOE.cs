@@ -57,13 +57,16 @@ namespace SpaceProject
             return rewardText;
         }
 
-        public override void Activate()
+        public override Boolean Activate()
         {
+            Boolean successfullyActivated = false;
             if (!IsCleared())
             {
                 PopupHandler.DisplayMessage(interactText);
                 startLevelWhenTextCleared = true;
+                successfullyActivated = true;
             }
+            return successfullyActivated;
         }
 
         public override void Update(Game1 game, GameTime gameTime)

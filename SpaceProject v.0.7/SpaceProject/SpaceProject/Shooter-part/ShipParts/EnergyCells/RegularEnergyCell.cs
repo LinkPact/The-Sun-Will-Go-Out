@@ -26,11 +26,10 @@ namespace SpaceProject
         {
             Name = "Regular Cell";
             Weight = 200;
-
             Capacity = 50.0f;
             Recharge = 6f;
-
             Value = 600;
+            displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(1100, 100, 100, 100));
         }
 
         public override void Initialize()

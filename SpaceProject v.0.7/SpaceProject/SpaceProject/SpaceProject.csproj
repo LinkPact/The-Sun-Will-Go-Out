@@ -368,6 +368,7 @@
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Asteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\AsteroidField.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\RebelOutpostAsteroidField - Copy.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\TestingField.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\WesternAsteroidField.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\EventAsteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\LavisAsteroidBelt.cs" />
@@ -386,7 +387,10 @@
     <Compile Include="Overworld-part\Interface\HeadsUpDisplay.cs" />
     <Compile Include="Overworld-part\Interface\Radar.cs" />
     <Compile Include="Overworld-part\OverworldEvents\EventGenerator.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\AsteroidEvents\AsteroidAmbushOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\AsteroidEvents\FindTextOnAsteroidOE.cs" />
     <Compile Include="Overworld-part\OverworldEvents\Instances\DisplayTextOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\AsteroidEvents\FindItemOnAsteroidOE.cs" />
     <Compile Include="Overworld-part\OverworldEvents\Instances\GetItemOE.cs" />
     <Compile Include="Overworld-part\OverworldEvents\Instances\ItemShopOE.cs" />
     <Compile Include="Overworld-part\OverworldEvents\Instances\LevelOE.cs" />

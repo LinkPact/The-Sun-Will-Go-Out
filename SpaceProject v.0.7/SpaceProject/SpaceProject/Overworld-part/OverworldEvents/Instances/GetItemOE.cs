@@ -21,8 +21,10 @@ namespace SpaceProject
             this.clearText = clearText;
         }
 
-        public override void Activate()
+        public override Boolean Activate()
         {
+            Boolean successfullyActivated = false;
+            
             var eventTextList = new List<String>();
 
             if (!IsCleared())
@@ -33,6 +35,7 @@ namespace SpaceProject
                 {
                     ShipInventoryManager.AddItem(item);
                     ClearEvent();
+                    successfullyActivated = true;
                 }
                 else
                 {
@@ -43,8 +46,9 @@ namespace SpaceProject
             {
                 eventTextList.Add(clearText);
             }
-
+            
             PopupHandler.DisplayMessage(eventTextList.ToArray());
+            return successfullyActivated;
         }
     }
 }

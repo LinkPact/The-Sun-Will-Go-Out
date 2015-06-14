@@ -29,7 +29,7 @@ namespace SpaceProject
             this.oneTimeOnly = oneTimeOnly;
         }
 
-        public override void Activate()
+        public override Boolean Activate()
         {
             var responseChoices = new List<String>() { "Yes", "No" };
             PopupHandler.DisplaySelectionMenu(welcomeText, responseChoices, new List<System.Action>()
@@ -64,6 +64,8 @@ namespace SpaceProject
                                 PopupHandler.DisplayMessage(declinePurchaseText);
                             }
                         });
+
+            return true;
         }
 
     }

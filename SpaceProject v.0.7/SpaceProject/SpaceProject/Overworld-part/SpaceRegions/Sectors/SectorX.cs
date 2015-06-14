@@ -68,6 +68,9 @@ namespace SpaceProject
             var lavisAsteroidBeltGenerator = new LavisAsteroidBelt(game, spriteSheet);
             var westernAsteroidFieldGenerator = new WesternAsteroidField(game, spriteSheet);
 
+            var testFieldGenerator = new TestingField(game, spriteSheet);
+            subInteractiveObjects.AddRange(testFieldGenerator.GetAsteroids());
+
             subInteractiveObjects.AddRange(rebelAsteroidFieldGenerator.GetAsteroids());
             subInteractiveObjects.AddRange(sunAsteroidBeltGenerator.GetAsteroids());
             subInteractiveObjects.AddRange(lavisAsteroidBeltGenerator.GetAsteroids());
