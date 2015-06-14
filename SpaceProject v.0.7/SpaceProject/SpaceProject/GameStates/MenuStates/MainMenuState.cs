@@ -339,7 +339,7 @@ namespace SpaceProject
                              new Vector2(Game.Window.ClientBounds.Width / Game.DefaultResolution.X,
                                          Game.Window.ClientBounds.Height / Game.DefaultResolution.Y),
                              SpriteEffects.None,
-                             0.5f);
+                             0.1f);
 
             if (Game.menuBGController.DisplayButtons)
             {
@@ -360,11 +360,11 @@ namespace SpaceProject
 
                     if (button != activeButton)
                     {
-                        spriteBatch.DrawString(fontButtons, button.name, button.Position + Game.fontManager.FontOffset, Game.fontManager.FontColor, 0f, fontButtons.MeasureString(button.name) / 2, 1f, SpriteEffects.None, 1f);
+                        spriteBatch.DrawString(fontButtons, button.name, button.Position + Game.fontManager.FontOffset, Game.fontManager.FontColor, 0f, fontButtons.MeasureString(button.name) / 2, 1f, SpriteEffects.None, 0.95f);
                     }
                     else
                     {
-                        spriteBatch.DrawString(fontButtons, button.name, button.Position + Game.fontManager.FontOffset, Color.LightSkyBlue, 0f, fontButtons.MeasureString(button.name) / 2, 1f, SpriteEffects.None, 1f);
+                        spriteBatch.DrawString(fontButtons, button.name, button.Position + Game.fontManager.FontOffset, Color.LightSkyBlue, 0f, fontButtons.MeasureString(button.name) / 2, 1f, SpriteEffects.None, 0.95f);
                     }
                 }
             }

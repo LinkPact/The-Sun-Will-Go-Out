@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
@@ -21,10 +22,6 @@ namespace SpaceProject
         protected Nullable<Rectangle> tempRectActive;
         protected Nullable<Rectangle> tempRectSelected;
         protected Nullable<Rectangle> tempRectDisabled;
-
-        protected string confirmString;
-        protected Vector2 confirmStringPos;
-        protected Vector2 confirmStringOrigin;
 
         protected MenuState(Game1 game, String name, BaseStateManager manager, BaseState baseState)
         {
@@ -72,13 +69,13 @@ namespace SpaceProject
                     else if (BaseStateManager.ActiveMenuState.Equals(BaseStateManager.MissionMenuState) &&
                         BaseStateManager.ButtonControl.Equals(ButtonControl.Response))
                     {
-                        BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexX, BaseStateManager.ActiveButtonIndexY];
+                        BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
                         BaseStateManager.MissionMenuState.SelectMission();
                     }
 
                     else if (BaseStateManager.ActiveMenuState.Equals(BaseStateManager.ShopMenuState))
                     {
-                        BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexX, BaseStateManager.ActiveButtonIndexY];
+                        BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
                         BaseStateManager.ButtonControl = ButtonControl.Second;
                         BaseStateManager.ChangeMenuSubState("Overview");
                     }
@@ -87,12 +84,13 @@ namespace SpaceProject
         }
 
         public virtual void ButtonActions()
-        { }
+        {
+        }
 
         public virtual void CursorActions()
         {
             if (BaseStateManager.ButtonControl.Equals(ButtonControl.Menu))
-                BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexX, BaseStateManager.ActiveButtonIndexY];
+                BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
 
             BaseStateManager.TextBoxes.Clear();
         }

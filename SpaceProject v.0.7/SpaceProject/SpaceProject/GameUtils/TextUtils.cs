@@ -130,6 +130,7 @@ namespace SpaceProject
         public static TextBox CreateTextBox(SpriteFont font,
                                             Rectangle textRect,
                                             bool origin,
+                                            bool scroll,
                                             string text)
         {
             TextBox tempTextBox = new TextBox(font, new Rectangle(textRect.X,
@@ -138,6 +139,8 @@ namespace SpaceProject
                                                                   textRect.Height),
                                                                   text,
                                                                   origin);
+
+            tempTextBox.SetScrolling(scroll);
             tempTextBox.Initialize();
         
             return tempTextBox;

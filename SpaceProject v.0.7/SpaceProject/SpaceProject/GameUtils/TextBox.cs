@@ -22,8 +22,12 @@ namespace SpaceProject
         private float textBoxPosY;
         private Rectangle textBoxRect;
 
+        private string text;
         private string textBuffer;
         private bool useOrigin;
+        private bool useScrolling;
+        private bool scrollingFinished;
+        private bool flushScrollText = false;
         private Vector2 textOrigin;
 
         #region Properties
@@ -44,6 +48,16 @@ namespace SpaceProject
         {
             get { return textBoxRect; }
             set { textBoxRect = value; }
+        }
+
+        public bool Scrolling
+        {
+            get { return useScrolling; }
+        }
+
+        public bool FinishedScrolling
+        {
+            get { return scrollingFinished; }
         }
 
         #endregion
@@ -126,60 +140,61 @@ namespace SpaceProject
             textBuffer = text;
         }
 
+        public void SetScrolling(bool scroll)
+        {
+            useScrolling = scroll;
+        }
+
         public void Update(GameTime gameTime)
         {
-            //if (ControlManager.PreviousKeyboardState.IsKeyUp(ControlManager.SetKeyboardControlRight) &&
-            //    ControlManager.CurrentKeyboardState.IsKeyDown(ControlManager.SetKeyboardControlRight) &&
-            //    currentSectionIndex < sections.Count - 1)
-            //{
-            //    currentSectionIndex++;
-            //}
-            //
-            //else if (ControlManager.PreviousKeyboardState.IsKeyUp(ControlManager.SetKeyboardControlLeft) &&
-            //    ControlManager.CurrentKeyboardState.IsKeyDown(ControlManager.SetKeyboardControlLeft) &&
-            //    currentSectionIndex > 0)
-            //{
-            //    currentSectionIndex--;
-            //}
-            //
-            //currentSection = sections[currentSectionIndex];
+            if (useScrolling)
+            {
+                text = TextUtils.WordWrap(spriteFont,
+                          TextUtils.ScrollText(textBuffer,
+                                               flushScrollText,
+                                               out scrollingFinished),
+                          textBoxRect.Width);
+            }
+            else
+                text = textBuffer;
         }
 
         public void Draw(SpriteBatch spriteBatch, Color textColor, Vector2 fontOffset)
         {
-            if (useOrigin == true)
-                textOrigin = new Vector2(spriteFont.MeasureString(textBuffer).X / 2, 0);
-            else
-                textOrigin = Vector2.Zero;
+            if (text != null)
+            {
+                if (useOrigin == true)
+                    textOrigin = new Vector2(spriteFont.MeasureString(text).X / 2, 0);
+                else
+                    textOrigin = Vector2.Zero;
 
-            Vector2 textBoxPosition = new Vector2(textBoxPosX, textBoxPosY);
+                Vector2 textBoxPosition = new Vector2(textBoxPosX, textBoxPosY);
 
-            spriteBatch.DrawString(spriteFont,
-                                   TextUtils.WordWrap(spriteFont,
-                                                      textBuffer,
-                                                      textBoxRect.Width),
-                                   textBoxPosition + fontOffset,
-                                   textColor,
-                                   0f,
-                                   textOrigin,
-                                   1f,
-                                   SpriteEffects.None,
-                                   0.5f);
+                spriteBatch.DrawString(spriteFont,
+                                       text,
+                                       textBoxPosition + fontOffset,
+                                       textColor,
+                                       0f,
+                                       textOrigin,
+                                       1f,
+                                       SpriteEffects.None,
+                                       1f);
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, Color textColor, Vector2 fontOffset, float layerDepth)
         {
-            if (useOrigin == true)
-                textOrigin = new Vector2(spriteFont.MeasureString(textBuffer).X / 2, 0);
-            else
-                textOrigin = Vector2.Zero;
+            if (text != null)
+            {
+                if (useOrigin == true)
+                    textOrigin = new Vector2(spriteFont.MeasureString(text).X / 2, 0);
+                else
+                    textOrigin = Vector2.Zero;
 
-            Vector2 textBoxPosition = new Vector2(textBoxPosX, textBoxPosY);
+                Vector2 textBoxPosition = new Vector2(textBoxPosX, textBoxPosY);
 
-            spriteBatch.DrawString(spriteFont,
-                                   TextUtils.WordWrap(spriteFont,
-                                                      textBuffer,
-                                                      textBoxRect.Width),
+                spriteBatch.DrawString(spriteFont,
+                                   text,
                                    textBoxPosition + fontOffset,
                                    textColor,
                                    0f,
@@ -187,6 +202,12 @@ namespace SpaceProject
                                    1f,
                                    SpriteEffects.None,
                                    layerDepth);
+            }
+        }
+
+        public void FlushText()
+        {
+            flushScrollText = true;
         }
     }
 }

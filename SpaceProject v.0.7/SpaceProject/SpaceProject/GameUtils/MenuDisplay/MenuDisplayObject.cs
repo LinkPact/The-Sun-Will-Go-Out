@@ -138,7 +138,7 @@ namespace SpaceProject
                              origin,
                              1.0f,
                              SpriteEffects.None,
-                             1.0f);
+                             0.9f);
         }
     }
 }

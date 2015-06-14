@@ -26,7 +26,7 @@ namespace SpaceProject
 
             spriteFont = Game.fontManager.GetFont(14);
             textBox = TextUtils.CreateTextBox(spriteFont, new Rectangle(xOffset, yOffset, Game.Window.ClientBounds.Width - 20,
-                                        Game.Window.ClientBounds.Height - 20), false, 
+                                        Game.Window.ClientBounds.Height - 20), false, false,
                                         "Design and development:\nDaniel Alm Grundstrom\nJakob Willforss\nJohan Philipsson\n\n"+
                                         "Visuals:\nDaniel Alm Grundstrom\n\n" +
                                         "Music:\nDaniel Alm Grundstrom\nJakob Willforss\n\n" +

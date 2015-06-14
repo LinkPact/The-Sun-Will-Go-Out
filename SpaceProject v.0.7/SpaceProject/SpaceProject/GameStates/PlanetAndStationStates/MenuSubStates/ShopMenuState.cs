@@ -70,9 +70,6 @@ namespace SpaceProject
 
         public override void OnEnter()
         {
-            BaseState.DataHead = "Item Info:";
-            BaseState.DataBody = "";
-
             BaseStateManager.ButtonControl = ButtonControl.Inventory;
 
             LoadInventory();
@@ -118,7 +115,6 @@ namespace SpaceProject
 
             #endregion
 
-            BaseStateManager.OverviewMenuState.ButtonShop.isSelected = true;
             BaseStateManager.ActiveButton = null;
 
             savedYPos = -1;
@@ -131,7 +127,6 @@ namespace SpaceProject
         public override void OnLeave()
         {
             ReturnInventory();
-            BaseStateManager.OverviewMenuState.ButtonShop.isSelected = false;
 
             foreach (Item item in ShipInventoryManager.ShipItems)
             {

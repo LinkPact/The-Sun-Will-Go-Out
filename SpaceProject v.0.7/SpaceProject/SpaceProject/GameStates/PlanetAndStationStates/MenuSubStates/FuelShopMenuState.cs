@@ -41,12 +41,6 @@ namespace SpaceProject
 
         public override void OnEnter()
         {
-            BaseState.DataHead = "";
-            BaseState.DataBody = "";
-
-            confirmString = "";
-
-            BaseStateManager.OverviewMenuState.ButtonShop.isSelected = true;
             BaseStateManager.ActiveButton = null;
         }
 

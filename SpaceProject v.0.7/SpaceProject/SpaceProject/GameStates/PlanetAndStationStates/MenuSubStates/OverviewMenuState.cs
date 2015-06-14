@@ -9,16 +9,12 @@ namespace SpaceProject
 {
     public class OverviewMenuState: MenuState
     {
-        private MenuDisplayObject buttonMining;
-        private MenuDisplayObject buttonPlanetInfo;
         private MenuDisplayObject buttonBack;
 
         private MenuDisplayObject buttonMission;
         private MenuDisplayObject buttonRumors;
-        private MenuDisplayObject buttonShop;
 
         public MenuDisplayObject ButtonMission { get { return buttonMission; } set { buttonMission = value; } }
-        public MenuDisplayObject ButtonShop { get { return buttonShop; } set { buttonShop = value; } }
         public MenuDisplayObject ButtonRumors { get { return buttonRumors; } set { buttonRumors = value; } }
         public MenuDisplayObject ButtonBack { get { return buttonBack; } set { buttonBack = value; } } 
 
@@ -38,181 +34,49 @@ namespace SpaceProject
 
             base.Initialize();
 
-            if (BaseState is PlanetState)
-            {
-                //Mission
-                tempRectPassive = new Rectangle(80, 0, 40, 40);
-                tempRectActive = new Rectangle(80, 40, 40, 40);
-                tempRectSelected = new Rectangle(80, 80, 40, 40);
-                tempRectDisabled = new Rectangle(134, 241, 40, 40);
-                buttonMission = new MenuDisplayObject(this.Game,
-                                        SpriteSheet.GetSubSprite(tempRectPassive),
-                                        SpriteSheet.GetSubSprite(tempRectActive),
-                                        SpriteSheet.GetSubSprite(tempRectSelected),
-                                        SpriteSheet.GetSubSprite(tempRectDisabled),
-                                        new Vector2(Game.Window.ClientBounds.Width / 7 - Game.Window.ClientBounds.Width / 12,
-                                            (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7),
-                                        Vector2.Zero);
-                buttonMission.name = "Missions";
-                buttonMission.isVisible = true;
+            //Mission
+            tempRectPassive = new Rectangle(202, 334, 245, 60);
+            tempRectActive = new Rectangle(202, 395, 245, 60);
+            tempRectSelected = new Rectangle(202, 395, 245, 60);
+            buttonMission = new MenuDisplayObject(this.Game,
+                                    SpriteSheet.GetSubSprite(tempRectPassive),
+                                    SpriteSheet.GetSubSprite(tempRectActive),
+                                    SpriteSheet.GetSubSprite(tempRectSelected),
+                                    new Vector2(Game.Window.ClientBounds.Width / 2,
+                                        (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 8),
+                                    new Vector2(tempRectActive.Value.Width / 2f, tempRectActive.Value.Height / 2f));
+            buttonMission.name = "Missions";
+            buttonMission.isVisible = true;
 
-                //Rumors
-                tempRectPassive = new Rectangle(120, 0, 40, 40);
-                tempRectActive = new Rectangle(120, 40, 40, 40);
-                tempRectSelected = new Rectangle(120, 80, 40, 40);
-                tempRectDisabled = new Rectangle(175, 241, 40, 40);
-                buttonRumors = new MenuDisplayObject(this.Game,
-                                                SpriteSheet.GetSubSprite(tempRectPassive),
-                                                SpriteSheet.GetSubSprite(tempRectActive),
-                                                SpriteSheet.GetSubSprite(tempRectSelected),
-                                                SpriteSheet.GetSubSprite(tempRectDisabled),
-                                                new Vector2(Game.Window.ClientBounds.Width / 7,
-                                                    (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7),
-                                                Vector2.Zero);
-                buttonRumors.name = "Rumors";
-                buttonRumors.isVisible = true;
+            //Rumors
+            buttonRumors = new MenuDisplayObject(this.Game,
+                                            SpriteSheet.GetSubSprite(tempRectPassive),
+                                            SpriteSheet.GetSubSprite(tempRectActive),
+                                            SpriteSheet.GetSubSprite(tempRectSelected),
+                                            new Vector2(Game.Window.ClientBounds.Width / 2,
+                                                (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 8 * 2),
+                                            new Vector2(tempRectActive.Value.Width / 2f, tempRectActive.Value.Height / 2f));
+            buttonRumors.name = "Rumors";
+            buttonRumors.isVisible = true;
 
-                //BuySell
-                tempRectPassive = new Rectangle(80, 120, 40, 40);
-                tempRectActive = new Rectangle(80, 160, 40, 40);
-                tempRectSelected = new Rectangle(80, 200, 40, 40);
-                tempRectDisabled = new Rectangle(93, 282, 40, 40);
-                buttonShop = new MenuDisplayObject(this.Game,
-                                                SpriteSheet.GetSubSprite(tempRectPassive),
-                                                SpriteSheet.GetSubSprite(tempRectActive),
-                                                SpriteSheet.GetSubSprite(tempRectSelected),
-                                                SpriteSheet.GetSubSprite(tempRectDisabled),
-                                                new Vector2(Game.Window.ClientBounds.Width / 7 + Game.Window.ClientBounds.Width / 12,
-                                                    (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7),
-                                                Vector2.Zero);
-                buttonShop.name = "Buy/Sell";
-                buttonShop.isVisible = true;
+            //Back
+            buttonBack = new MenuDisplayObject(this.Game,
+                                            SpriteSheet.GetSubSprite(tempRectPassive),
+                                            SpriteSheet.GetSubSprite(tempRectActive),
+                                            SpriteSheet.GetSubSprite(tempRectSelected),
+                                            new Vector2(Game.Window.ClientBounds.Width / 2,
+                                                (Game.Window.ClientBounds.Height / 2) + (Game.Window.ClientBounds.Height / 8) * 3),
+                                            new Vector2(tempRectActive.Value.Width / 2f, tempRectActive.Value.Height / 2f));
+            buttonBack.name = "Back";
+            buttonBack.isVisible = true;
 
-                //Mining
-                tempRectPassive = new Rectangle(40, 0, 40, 40);
-                tempRectActive = new Rectangle(40, 40, 40, 40);
-                tempRectSelected = new Rectangle(40, 80, 40, 40);
-                tempRectDisabled = new Rectangle(93, 241, 40, 40);
-                buttonMining = new MenuDisplayObject(this.Game,
-                                                SpriteSheet.GetSubSprite(tempRectPassive),
-                                                SpriteSheet.GetSubSprite(tempRectActive),
-                                                SpriteSheet.GetSubSprite(tempRectSelected),
-                                                SpriteSheet.GetSubSprite(tempRectDisabled),
-                                                new Vector2(Game.Window.ClientBounds.Width / 7 - Game.Window.ClientBounds.Width / 12,
-                                                    (Game.Window.ClientBounds.Height / 2) + (Game.Window.ClientBounds.Height / 7) * 2),
-                                                Vector2.Zero);
-                buttonMining.name = "Mining";
-                buttonMining.isVisible = true;
+            BaseStateManager.FirstButtons.Add(buttonBack);
+            BaseStateManager.SecondButtons.Add(buttonMission);
+            BaseStateManager.SecondButtons.Add(buttonRumors);
 
-                //Planet Info
-                tempRectPassive = new Rectangle(0, 120, 40, 40);
-                tempRectActive = new Rectangle(0, 160, 40, 40);
-                tempRectSelected = new Rectangle(0, 200, 40, 40);
-                buttonPlanetInfo = new MenuDisplayObject(this.Game,
-                                                SpriteSheet.GetSubSprite(tempRectPassive),
-                                                SpriteSheet.GetSubSprite(tempRectActive),
-                                                SpriteSheet.GetSubSprite(tempRectSelected),
-                                                new Vector2(Game.Window.ClientBounds.Width / 7,
-                                                    (Game.Window.ClientBounds.Height / 2) + (Game.Window.ClientBounds.Height / 7) * 2));
-                buttonPlanetInfo.name = "Planet Info";
-                buttonPlanetInfo.isVisible = true;
-
-                //Back
-                tempRectPassive = new Rectangle(40, 120, 40, 40);
-                tempRectActive = new Rectangle(40, 160, 40, 40);
-                tempRectSelected = new Rectangle(40, 200, 40, 40);
-                buttonBack = new MenuDisplayObject(this.Game,
-                                                SpriteSheet.GetSubSprite(tempRectPassive),
-                                                SpriteSheet.GetSubSprite(tempRectActive),
-                                                SpriteSheet.GetSubSprite(tempRectSelected),
-                                                new Vector2(Game.Window.ClientBounds.Width / 7 + Game.Window.ClientBounds.Width / 12,
-                                                    (Game.Window.ClientBounds.Height / 2) + (Game.Window.ClientBounds.Height / 7) * 2));
-                buttonBack.name = "Back";
-                buttonBack.isVisible = true;
-
-                BaseStateManager.FirstButtons.Add(buttonMining);
-                BaseStateManager.FirstButtons.Add(buttonPlanetInfo);
-                BaseStateManager.FirstButtons.Add(buttonBack);
-                BaseStateManager.SecondButtons.Add(buttonMission);
-                BaseStateManager.SecondButtons.Add(buttonRumors);
-                BaseStateManager.SecondButtons.Add(buttonShop);
-
-                BaseStateManager.AllButtons[0, 0] = buttonMission;
-                BaseStateManager.AllButtons[1, 0] = buttonRumors;
-                BaseStateManager.AllButtons[2, 0] = buttonShop;
-                BaseStateManager.AllButtons[0, 1] = buttonMining;
-                BaseStateManager.AllButtons[1, 1] = buttonPlanetInfo;
-                BaseStateManager.AllButtons[2, 1] = buttonBack;
-
-            }
-
-            else if (BaseState is StationState)
-            {
-                //Mission
-                tempRectPassive = new Rectangle(80, 0, 40, 40);
-                tempRectActive = new Rectangle(80, 40, 40, 40);
-                tempRectSelected = new Rectangle(80, 80, 40, 40);
-                buttonMission = new MenuDisplayObject(this.Game,
-                                        SpriteSheet.GetSubSprite(tempRectPassive),
-                                        SpriteSheet.GetSubSprite(tempRectActive),
-                                        SpriteSheet.GetSubSprite(tempRectSelected),
-                                        new Vector2(Game.Window.ClientBounds.Width / 7 - Game.Window.ClientBounds.Width / 12,
-                                            (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7));
-                buttonMission.name = "Missions";
-                buttonMission.isVisible = true;
-
-                //Rumors
-                tempRectPassive = new Rectangle(120, 0, 40, 40);
-                tempRectActive = new Rectangle(120, 40, 40, 40);
-                tempRectSelected = new Rectangle(120, 80, 40, 40);
-                buttonRumors = new MenuDisplayObject(this.Game,
-                                                SpriteSheet.GetSubSprite(tempRectPassive),
-                                                SpriteSheet.GetSubSprite(tempRectActive),
-                                                SpriteSheet.GetSubSprite(tempRectSelected),
-                                                new Vector2(Game.Window.ClientBounds.Width / 7,
-                                                    (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7));
-                buttonRumors.name = "Rumors";
-                buttonRumors.isVisible = true;
-
-                //BuySell
-                tempRectPassive = new Rectangle(80, 120, 40, 40);
-                tempRectActive = new Rectangle(80, 160, 40, 40);
-                tempRectSelected = new Rectangle(80, 200, 40, 40);
-                tempRectDisabled = new Rectangle(93, 282, 40, 40);
-                buttonShop = new MenuDisplayObject(this.Game,
-                                                SpriteSheet.GetSubSprite(tempRectPassive),
-                                                SpriteSheet.GetSubSprite(tempRectActive),
-                                                SpriteSheet.GetSubSprite(tempRectSelected),
-                                                SpriteSheet.GetSubSprite(tempRectDisabled),
-                                                new Vector2(Game.Window.ClientBounds.Width / 7 + Game.Window.ClientBounds.Width / 12,
-                                                    (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 7),
-                                                Vector2.Zero);
-                buttonShop.name = "Buy/Sell";
-                buttonShop.isVisible = true;
-
-                //Back
-                tempRectPassive = new Rectangle(40, 120, 40, 40);
-                tempRectActive = new Rectangle(40, 160, 40, 40);
-                tempRectSelected = new Rectangle(40, 200, 40, 40);
-                buttonBack = new MenuDisplayObject(this.Game,
-                                                SpriteSheet.GetSubSprite(tempRectPassive),
-                                                SpriteSheet.GetSubSprite(tempRectActive),
-                                                SpriteSheet.GetSubSprite(tempRectSelected),
-                                                new Vector2(Game.Window.ClientBounds.Width / 7 - Game.Window.ClientBounds.Width / 12,
-                                                    (Game.Window.ClientBounds.Height / 2) + (Game.Window.ClientBounds.Height / 7) * 2));
-                buttonBack.name = "Back";
-                buttonBack.isVisible = true;
-
-                BaseStateManager.FirstButtons.Add(buttonBack);
-                BaseStateManager.SecondButtons.Add(buttonMission);
-                BaseStateManager.SecondButtons.Add(buttonRumors);
-                BaseStateManager.SecondButtons.Add(buttonShop);
-
-                BaseStateManager.AllButtons[0, 0] = buttonMission;
-                BaseStateManager.AllButtons[1, 0] = buttonRumors;
-                BaseStateManager.AllButtons[2, 0] = buttonShop;
-                BaseStateManager.AllButtons[0, 1] = buttonBack;
-            }
+            BaseStateManager.AllButtons.Add(buttonMission);
+            BaseStateManager.AllButtons.Add(buttonRumors);
+            BaseStateManager.AllButtons.Add(buttonBack);
 
             #endregion
 
@@ -236,12 +100,8 @@ namespace SpaceProject
 
         public override void OnEnter()
         {
-            BaseState.DataHead = "Planet Data:";
-
             if (BaseState.GetBase() != null)
             {
-                buttonShop.isDeactivated = !BaseState.GetBase().HasShop;
-
                 if (BaseState.GetBase() is Planet)
                 {
                     buttonMission.isDeactivated = !((Planet)BaseState.GetBase()).HasColony;
@@ -274,19 +134,6 @@ namespace SpaceProject
                 if (MissionManager.ReturnCompletedMissions(BaseState.GetBase().name).Count <= 0 &&
                     MissionManager.ReturnFailedMissions(BaseState.GetBase().name).Count <= 0)
                 {
-
-                    BaseState.DataHead = "Colony Data:";
-
-                    if (BaseState.GetBase() != null && BaseState.GetBase() is Planet)
-                        BaseState.DataBody = "Name: " + BaseState.Padding.PadRight(20, ' ') + ((Planet)BaseState.GetBase()).ColonyName + "\n" +
-                             "Inhabitants: " + BaseState.Padding.PadRight(13, ' ') + ((Planet)BaseState.GetBase()).ColonyInhabitants;
-
-
-
-                    //SubStateManager.ButtonControl = ButtonControl.Second;
-
-                    buttonShop.isSelected = false;
-
                     shopSelectCursorIndex = 0;
 
                     CursorActions();
@@ -311,12 +158,19 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
+            if (ControlManager.CheckKeyPress(Microsoft.Xna.Framework.Input.Keys.S))
+            {
+                BaseStateManager.ChangeMenuSubState("Shop");
+
+                BaseStateManager.TextBoxes.Clear();
+                shopSelectCursor.isVisible = false;
+            }
+
             if (BaseStateManager.ButtonControl == ButtonControl.SelectShop)
             {
                 shopSelectCursor.isActive = true;
                 shopSelectCursor.isVisible = true;
 
-                buttonShop.isSelected = true;
                 BaseStateManager.ActiveButton = null;
 
                 //Moves button cursor right when pressing up. 
@@ -356,7 +210,6 @@ namespace SpaceProject
             {
                 shopSelectCursor.isActive = false;
                 shopSelectCursor.isVisible = false;
-                buttonShop.isSelected = false;
             }
 
             if (ControlManager.CheckPress(RebindableKeys.Action2) ||
@@ -380,25 +233,18 @@ namespace SpaceProject
                 {
                     case "Missions":
                         {
-                            if (BaseStateManager.ActiveMenuState.Equals(BaseStateManager.OverviewMenuState))
-                            {
-                                if (MissionManager.ReturnAvailableMissions(BaseState.GetBase().name).Count > 0 ||
-                                    MissionManager.ReturnCompletedMissions(BaseState.GetBase().name).Count > 0)
-                                {
-                                    BaseStateManager.ChangeMenuSubState("Mission");
+                            BaseStateManager.MissionMenuState.DisplayAvailableMissions(MissionManager.ReturnAvailableMissions(BaseState.GetBase().name));
 
-                                    BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
-                                                      new Rectangle((Game.Window.ClientBounds.Width * 2 / 3),
-                                                                   ((Game.Window.ClientBounds.Height / 2) + 40) + 20 * (BaseStateManager.MissionMenuState.AvailableMissions.Count + 1),
-                                                                     Game.Window.ClientBounds.Width - 20,
-                                                      10),
-                                                      true,
-                                                      "Back"));
+                            BaseStateManager.ChangeMenuSubState("Mission");
 
-                                    BaseStateManager.MissionMenuState.SelectMission();
-                                }
-                            }
+                            BaseStateManager.MissionMenuState.SelectMission();
 
+                            break;
+                        }
+
+                    case "Rumors":
+                        {
+                            BaseStateManager.RumorsMenuState.DisplayRumors();
                             break;
                         }
 
@@ -412,71 +258,19 @@ namespace SpaceProject
 
                                 BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
                                                                                       shopSelectRectangle1,
-                                                                                      true,
+                                                                                      true, false,
                                                                                       "Buy/Sell Items"));
 
                                 BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
                                                                                       shopSelectRectangle3,
-                                                                                      true,
+                                                                                      true, false,
                                                                                       "Back"));
-                            }
-                            break;
-                        }
-
-                    case "Mining":
-                        {
-                            if (BaseState.GetBase() is Planet)
-                            {
-                                List<string> tempStrList = new List<string>();
-                                List<int> tempIntList = new List<int>();
-
-                                if (((Planet)BaseState.GetBase()).ResourceTypes.Count > 0)
-                                {
-                                    bool enter = false;
-
-                                    for (int i = 0; i < ((Planet)BaseState.GetBase()).ResourceTypes.Count; i++)
-                                    {
-                                        if (((Planet)BaseState.GetBase()).ResourceCount[i] > 0)
-                                            enter = true;
-                                    }
-
-                                    if (enter)
-                                    {
-                                        int val = Game.random.Next(3);
-
-                                        switch (val)
-                                        {
-                                            case 0:
-                                                throw new NotImplementedException("Outdated recource gather level removed during Level-class cleaning // Jakob 150117");
-                                                //((LevelResourceGather)Game.stateManager.shooterState.GetLevel("ResourceGatherLevel")).SetUpLevel(((Planet)BaseState.GetBase()));
-
-                                            case 1:
-                                                throw new NotImplementedException("Outdated recource gather level removed during Level-class cleaning // Jakob 150117");
-                                                //((LevelResourceGather)Game.stateManager.shooterState.GetLevel("ResourceGatherLevel")).SetUpLevel(((Planet)BaseState.GetBase()),
-                                                //    "green", 45);
-
-                                            case 2:
-                                                tempStrList.Add("green");
-                                                tempIntList.Add(36);
-                                                tempStrList.Add("red");
-                                                tempIntList.Add(18);
-                                                tempStrList.Add("blue");
-                                                tempIntList.Add(9);
-                                                throw new NotImplementedException("Outdated recource gather level removed during Level-class cleaning // Jakob 150117");
-                                                //((LevelResourceGather)Game.stateManager.shooterState.GetLevel("ResourceGatherLevel")).SetUpLevel(((Planet)BaseState.GetBase()),
-                                                //    tempStrList, tempIntList);
-                                        }
-
-                                        Game.stateManager.shooterState.BeginLevel("ResourceGatherLevel");
-                                    }
-                                }
                             }
                             break;
                         }
 
                     case "Back":
                         {
-                            //Actions for pressing "BACK" button
                             if (BaseStateManager.ActiveMenuState.Equals(BaseStateManager.OverviewMenuState))
                             {
                                 if (StatsManager.gameMode != GameMode.campaign)
@@ -522,29 +316,8 @@ namespace SpaceProject
 
             switch (BaseStateManager.ActiveButton.name)
             {
-                case "Rumors":
-                    {
-                        BaseStateManager.RumorsMenuState.DisplayRumors();
-                        break;
-                    }
-
-
                 case "Missions":
-                    {
-                        BaseStateManager.MissionMenuState.DisplayAvailableMissions(MissionManager.ReturnAvailableMissions(BaseState.GetBase().name));
-
-                        if (MissionManager.ReturnAvailableMissions(BaseState.GetBase().name).Count > 0)
-                        {
-                            BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                          new Rectangle(Game.Window.ClientBounds.Width * 2 / 3,
-                                                                                        (int)(Game.Window.ClientBounds.Height - (int)BaseState.Game.fontManager.GetFont(14).MeasureString("Press 'Enter' to go to mission selection..").Y) - 20,
-                                                                                        (Game.Window.ClientBounds.Width * 2 / 3) - 20,
-                                                                                        10),
-                                                                          true,
-                                                                          "Press 'Enter' to go to mission selection.."));
-                        }
                         break;
-                    }
 
                 case "Buy/Sell":
                     {
@@ -555,7 +328,7 @@ namespace SpaceProject
                                                       (int)(Game.Window.ClientBounds.Height - (int)BaseState.Game.fontManager.GetFont(14).MeasureString("Press 'Enter' to access shop..").Y) - 20,
                                                       (Game.Window.ClientBounds.Width * 2 / 3) / 2,
                                                       10),
-                                        true,
+                                        true, false,
                                         "Press 'Enter' to access shop.."));
                         }
                         else
@@ -580,39 +353,6 @@ namespace SpaceProject
                         break;
                     }
 
-                case "Mining":
-                    {
-                        if (BaseState.GetBase() is Planet)
-                        {
-                            string tempString;
-
-                            //AAAAAHHH. I will fix this float-to-int-transition-sickness-symptom later..
-                            tempString = "Resources\n\n" + TextUtils.ReturnStringFromList(((Planet)BaseState.GetBase()).ResourceTypes);
-
-
-                            if (((Planet)BaseState.GetBase()).ResourceTypes.Count > 0)
-                            {
-                                for (int i = 0; i < ((Planet)BaseState.GetBase()).ResourceCount.Count; i++)
-                                {
-                                    if (((Planet)BaseState.GetBase()).ResourceCount[i] > 0)
-                                    {
-                                        tempString += "\n\nPress 'Enter' to start mining resources.";
-                                        break;
-                                    }
-                                }
-                            }
-
-                            else
-                                tempString += "\n\nNo resources to mine.";
-
-                            BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                BaseStateManager.NormalTextRectangle,
-                                false,
-                                tempString));
-                        }
-                        break;
-                    }
-
                 case "Planet Info":
                     {
                         if (BaseState.GetBase() is Planet)
@@ -630,20 +370,17 @@ namespace SpaceProject
                         break;
                     }
 
-                case "Back":
-                    {
-                        BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                      new Rectangle(Game.Window.ClientBounds.Width * 2 / 3,
-                                                                                    (int)(Game.Window.ClientBounds.Height - (int)BaseState.Game.fontManager.GetFont(14).MeasureString("Press 'Enter' to access shop..").Y) - 20,
-                                                                                    (Game.Window.ClientBounds.Width * 2 / 3) / 2,
-                                                                                    10),
-                                                                      true,
-                                                                      "Press 'Enter' to leave.."));
-                        break;
-                    }
-
-                default:
-                    break;
+                //case "Back":
+                //    {
+                //        BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                //                                                      new Rectangle(Game.Window.ClientBounds.Width * 2 / 3,
+                //                                                                    (int)(Game.Window.ClientBounds.Height - (int)BaseState.Game.fontManager.GetFont(14).MeasureString("Press 'Enter' to access shop..").Y) - 20,
+                //                                                                    (Game.Window.ClientBounds.Width * 2 / 3) / 2,
+                //                                                                    10),
+                //                                                      true,
+                //                                                      "Press 'Enter' to leave.."));
+                //        break;
+                //    }
             }
         }
 
