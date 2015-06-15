@@ -389,6 +389,7 @@
     <Compile Include="Overworld-part\OverworldEvents\EventGenerator.cs" />
     <Compile Include="Overworld-part\OverworldEvents\Instances\AsteroidEvents\AsteroidAmbushOE.cs" />
     <Compile Include="Overworld-part\OverworldEvents\Instances\AsteroidEvents\FindTextOnAsteroidOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\DisplayFreighterMessageOE.cs" />
     <Compile Include="Overworld-part\OverworldEvents\Instances\DisplayTextOE.cs" />
     <Compile Include="Overworld-part\OverworldEvents\Instances\AsteroidEvents\FindItemOnAsteroidOE.cs" />
     <Compile Include="Overworld-part\OverworldEvents\Instances\GetItemOE.cs" />
