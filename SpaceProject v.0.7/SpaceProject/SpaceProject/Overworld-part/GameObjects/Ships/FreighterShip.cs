@@ -55,7 +55,7 @@ namespace SpaceProject
             foo.Add(new TravelAction(this, TravelAction.GetRandomPlanet(sector)));
             foo.Add(new WaitTimeAction(this, 7500));
             AIManager = foo;
-            overworldEvent = new DisplayTextOE("ASasdasdada");
+            overworldEvent = new DisplayFreighterMessageOE(Game);
         }
 
         public void SetEndPlanet(GameObjectOverworld des) 
@@ -79,6 +79,8 @@ namespace SpaceProject
 
             destinationPlanet = tempList[(int)Game.random.Next(0, tempList.Count - 1)];
             destination = destinationPlanet.position;
+
+            overworldEvent = new DisplayFreighterMessageOE(Game);
 
             if (position == destination)
                 SetRandomEndPlanet();
