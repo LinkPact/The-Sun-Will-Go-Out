@@ -26,6 +26,8 @@ namespace SpaceProject
         
         private List<String> endText = new List<String> { "end1#...", "end2#followup", "end3#more#more!" };
 
+        private String displayText = "";
+
         public FindTextOnAsteroidOE() :
             base()
         { }
@@ -37,7 +39,10 @@ namespace SpaceProject
 
             if (!IsCleared())
             {
-                var displayText = GetProgressBasedText();
+                if (displayText == "")
+                {
+                    displayText = GetProgressBasedText();
+                }
                 
                 var itemOE = new DisplayTextOE(displayText);
                 successfullyActivated = itemOE.Activate();

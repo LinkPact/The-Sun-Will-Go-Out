@@ -13,14 +13,13 @@ namespace SpaceProject
             base(Game, spriteSheet, coordinates)
         {
             this.name = name;
+            overworldEvent = EventGenerator.GetRandomCommonEvent(Game);
         }
 
         public override void Initialize()
         {
             sprite = spriteSheet.GetSubSprite(new Rectangle(724, 1130, 54, 55));
             base.Initialize();
-
-            overworldEvent = EventGenerator.GetRandomCommonEvent(Game);
         }
 
         protected override void SetClearedText()
