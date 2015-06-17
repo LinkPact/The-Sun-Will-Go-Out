@@ -29,6 +29,8 @@ namespace SpaceProject
         private Beacon soelaraBeacon;
         private Beacon newNorrlandBeacon;
 
+        private TrainingArea2 trainingArea2;
+
         // Sub interactive objects
         private List<SubInteractiveObject> subInteractiveObjects = new List<SubInteractiveObject>();
 
@@ -67,6 +69,7 @@ namespace SpaceProject
             var sunAsteroidBeltGenerator = new SunAsteroidBelt(game, spriteSheet);
             var lavisAsteroidBeltGenerator = new LavisAsteroidBelt(game, spriteSheet);
             var westernAsteroidFieldGenerator = new WesternAsteroidField(game, spriteSheet);
+            var telmunAsteroidFieldGenerator = new TelmunAsteroidBelt(game, spriteSheet);
 
             var testFieldGenerator = new TestingField(game, spriteSheet);
             subInteractiveObjects.AddRange(testFieldGenerator.GetAsteroids());
@@ -75,6 +78,7 @@ namespace SpaceProject
             subInteractiveObjects.AddRange(sunAsteroidBeltGenerator.GetAsteroids());
             subInteractiveObjects.AddRange(lavisAsteroidBeltGenerator.GetAsteroids());
             subInteractiveObjects.AddRange(westernAsteroidFieldGenerator.GetAsteroids());
+            subInteractiveObjects.AddRange(telmunAsteroidFieldGenerator.GetAsteroids());
 
             subInteractiveObjects.Add(soelara);
             subInteractiveObjects.Add(fortrunStation2);
@@ -106,6 +110,10 @@ namespace SpaceProject
             lavisStation.Initialize();
             soelaraStation.Initialize();
             fortrunStation1.Initialize();
+
+            // Training area
+            trainingArea2 = new TrainingArea2(game, spriteSheet, MathFunctions.CoordinateToPosition(new Vector2(1000, 0)));
+            trainingArea2.Initialize();
 
             highfenceBeacon = new Beacon(game, spriteSheet, new Rectangle(588, 844, 100, 100), new Rectangle(487, 844, 100, 100),
                 "Highfence Beacon", highfence.position + new Vector2(300, 250));
@@ -149,6 +157,7 @@ namespace SpaceProject
             AddGameObject(lavisStation);
             AddGameObject(fortrunStation1);
             AddGameObject(soelaraStation);
+            AddGameObject(trainingArea2);
 
             AddGameObject(highfenceBeacon);
             AddGameObject(fortrunBeacon);

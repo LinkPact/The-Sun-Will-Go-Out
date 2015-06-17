@@ -40,6 +40,12 @@ PositionX = 800
 PositionY = 1500
 Inhabitants = 0
 
+[BO_Training_Area_2]
+Name = Training Area 2
+PositionX = 800
+PositionY = 1400
+Inhabitants = 0
+
 [MO_Mining_Station]
 Name = Mining Station
 PositionX = 1050

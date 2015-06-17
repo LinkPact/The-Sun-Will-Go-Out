@@ -19,9 +19,10 @@ namespace SpaceProject
             this.text.Add(messages[game.random.Next(0,messages.Length)]);
         }
 
-        public override void Activate() 
+        public override Boolean Activate() 
         {
             PopupHandler.DisplayMessage(text.ToArray());
+            return true;
         }
     }
 }

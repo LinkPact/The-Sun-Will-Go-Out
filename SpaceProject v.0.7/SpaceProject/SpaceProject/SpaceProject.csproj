@@ -213,6 +213,7 @@
     <Compile Include="GameStates\MissionScreenState\MissionScreenCursor.cs" />
     <Compile Include="GameStates\MissionScreenState\MissionScreenState.cs" />
     <Compile Include="GameStates\MissionScreenState\MissionScreenText.cs" />
+    <Compile Include="Missions\Side Missions\Side_FlightTraining2.cs" />
     <Compile Include="Missions\Side Missions\Side_TheRebelOutpost.cs" />
     <Compile Include="Missions\Side Missions\Side_AstroScan.cs" />
     <Compile Include="Missions\Main Missions\Phase 1\Main1_2_ToHighfence.cs" />
@@ -360,6 +361,7 @@
     <Compile Include="Overworld-part\GameObjects\Stations\Fleets\AllianceFleet.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Fleets\RebelFleet.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\AbandonedStation.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\TrainingArea2.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\TrainingArea.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\PeyeScienceStation.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\BorderXOutpost\BorderStation.cs" />
@@ -367,6 +369,7 @@
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Asteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\AsteroidField.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\TelmunAsteroidBelt.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\RebelOutpostAsteroidField - Copy.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\TestingField.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\WesternAsteroidField.cs" />
@@ -896,6 +899,21 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Levels\pirates\RebelPirate5.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Levels\sidelevels\FlightTraining2_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Levels\sidelevels\FlightTraining2_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Levels\sidelevels\FlightTraining2_3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Levels\sidelevels\FT2\FT2_Collision.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\FT2\FT2_UnderFire.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Levels\sidelevels\therebeloutpost_1.lvl">

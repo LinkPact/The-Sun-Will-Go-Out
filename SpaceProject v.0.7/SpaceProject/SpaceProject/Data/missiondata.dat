@@ -383,6 +383,27 @@ Progress = 1
 Reputation = 0
 State = 0
 
+[Side_FlightTraining2]
+Location = Training Area 2
+Name = Flight Training 2
+Introduction = [Trainer] "WELCOME TO FLIGHT TRAINING 2!"
+ObjectiveText1 = Return to the Training Area 2 at coordinates (XXXX, XXXX) for further information.
+PosResponse = I'M ON
+NegResponse = Later...
+Accept = "GOOD!#GOOD LUCK!"
+FailText = "FAIL"
+EventText1 = [Trainer] "That was the first level!"
+EventText2 = [Trainer] "Second level - Go!"
+EventText3 = [Trainer] "Completed second level!"
+EventText4 = [Trainer] "Third level - Go!"
+EventText5 = [Trainer] "HAHA YOU LOSE"
+Success = [Trainer] "YOU MADE IT! REWARD!"
+Fail = [Trainer] "Fail?"
+Reward = 200
+Progress = 1
+Reputation = 0
+State = 1
+
 [Side_AstroDodger]
 Location = Fortrun Station I
 Name = Astro Dodger

@@ -32,6 +32,7 @@ namespace SpaceProject
         Side_AstroScan,
         Side_DeathByMeteor,
         Side_FlightTraining,
+        Side_FlightTraining2,
         Side_ColonyAid,
         Side_TheRebelOutpost
     }
@@ -80,6 +81,7 @@ namespace SpaceProject
         private static Side_AstroScan astroScan;
         private static Side_DeathByMeteor deathByMeteor;
         private static Side_FlightTraining flightTraining;
+        private static Side_FlightTraining2 flightTraining2;
         private static Side_ColonyAid colonyAid;
         private static Side_TheRebelOutpost theRebelOutpost;
 
@@ -273,6 +275,13 @@ namespace SpaceProject
 
             flightTraining.Initialize();
             missions.Add(flightTraining);
+
+            // Flight training 2
+            flightTraining2 = new Side_FlightTraining2(game, "Side_FlightTraining2", null,
+                MissionID.Side_FlightTraining2);
+
+            flightTraining2.Initialize();
+            missions.Add(flightTraining2);
 
             // Colony Aid
             colonyAid = new Side_ColonyAid(game, "Side_ColonyAid", null,

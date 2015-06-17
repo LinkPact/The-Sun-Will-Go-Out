@@ -119,6 +119,9 @@ namespace SpaceProject
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["s_flightTraining_1"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["s_flightTraining_2"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["s_flightTraining_3"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["s_ft2_collision"]));
+            levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["s_ft2_underfire"]));
+            
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["s_deathByMeteor"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["s_astroScan"]));
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, levelDict["s_astroDodger"]));
@@ -181,6 +184,10 @@ namespace SpaceProject
             entryDict.Add("s_flightTraining_1", new LevelEntry("flightTraining_1", "sidelevels/FlightTraining_1",   MissionType.regularalliance));
             entryDict.Add("s_flightTraining_2", new LevelEntry("flightTraining_2", "sidelevels/FlightTraining_2",   MissionType.regularalliance));
             entryDict.Add("s_flightTraining_3", new LevelEntry("flightTraining_3", "sidelevels/FlightTraining_3",   MissionType.regularalliance));
+
+            entryDict.Add("s_ft2_collision", new LevelEntry("ft_collision", "sidelevels/FT2/FT2_Collision", MissionType.regularalliance));
+            entryDict.Add("s_ft2_underfire", new LevelEntry("ft_UnderFire", "sidelevels/FT2/FT2_UnderFire", MissionType.regularalliance));
+            
             entryDict.Add("s_deathByMeteor",    new LevelEntry("DeathByMeteor",    "sidelevels/DeathByMeteor",      MissionType.regularrebel));
             entryDict.Add("s_astroScan",        new LevelEntry("AstroScan",        "sidelevels/Astroscan",          MissionType.dark));
             entryDict.Add("s_astroDodger",      new LevelEntry("AstroDodger",      "sidelevels/AstroDodger",        MissionType.dark));
