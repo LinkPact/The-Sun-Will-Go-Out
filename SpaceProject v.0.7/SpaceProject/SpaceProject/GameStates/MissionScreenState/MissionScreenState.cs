@@ -109,7 +109,6 @@ namespace SpaceProject
         {
             Game.GraphicsDevice.Clear(Color.White);
 
-            //Ritar bakgrundsobjekt (linjer)
             DrawBackground(spriteBatch);
 
             cursorManager.Draw(spriteBatch);
@@ -120,27 +119,23 @@ namespace SpaceProject
 
         private void DrawBackground(SpriteBatch spriteBatch)
         {
-            //Backdrop
-            for (int i = 0; i < (int)((Game.Window.ClientBounds.Width / BG_WIDTH) + 1); i++)
-            {
-                for (int j = 0; j < (int)((Game.Window.ClientBounds.Height / BG_HEIGHT) + 1); j++)
-                    spriteBatch.Draw(spriteSheet.Texture, new Vector2(BG_WIDTH * i, BG_HEIGHT * j),
-                    new Rectangle(0, 122, BG_WIDTH, BG_HEIGHT), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-            }
-
-            //Bakgrundslinjer
-            spriteBatch.Draw(lineTexture.Texture, new Vector2(upperLeftRectangle.Width, 0), lineTexture.SourceRectangle, Color.White,
-                0f, Vector2.Zero, new Vector2(1, rightRectangle.Height), SpriteEffects.None, 1f);
-
-            spriteBatch.Draw(lineTexture.Texture, new Vector2(0, upperLeftRectangle.Height), lineTexture.SourceRectangle, Color.White,
-                0f, Vector2.Zero, new Vector2(upperLeftRectangle.Width, 1), SpriteEffects.None, 1f);
+            spriteBatch.Draw(spriteSheet.Texture,
+                 new Vector2(0, 0),
+                 new Rectangle(162, 0, 1280, 720),
+                 Color.White,
+                 0f,
+                 Vector2.Zero,
+                 new Vector2(Game.Window.ClientBounds.Width / 1280f,
+                             Game.Window.ClientBounds.Height / 720f),
+                 SpriteEffects.None,
+                 0.0f);
         }
 
         private void CheckCursorLevel1()
         {
             int temporaryCount = cursorManager.displayList.Count;
             
-            if (ControlManager.CheckPress(RebindableKeys.Left) && cursorLevel == 1
+            if (ControlManager.CheckPress(RebindableKeys.Up) && cursorLevel == 1
                 && elapsedSinceKey > 100)
             {
                 if (cursorLevel1Position == 0) { cursorLevel1Position = 3; }
@@ -151,7 +146,7 @@ namespace SpaceProject
                 elapsedSinceKey = 0;
             }
             
-            if (ControlManager.CheckPress(RebindableKeys.Right) && cursorLevel == 1
+            if (ControlManager.CheckPress(RebindableKeys.Down) && cursorLevel == 1
                 && elapsedSinceKey > 100)
             {
                 if (cursorLevel1Position == 0) { cursorLevel1Position = 1; }

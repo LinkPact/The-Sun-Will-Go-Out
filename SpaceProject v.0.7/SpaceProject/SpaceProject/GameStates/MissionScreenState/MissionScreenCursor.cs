@@ -42,35 +42,44 @@ namespace SpaceProject
         {
             edgePadding = Game.Window.ClientBounds.Width / 16;
 
-            int totalWidth = 320;
-            int spacing = 80;
-            int xOrigin = (MissionScreenState.GetUpperLeftRectangle.Width - totalWidth) / 2;
+            int spacing = 75;
+            float totalButtonHeight = spacing * 3;
+            int xOrigin = MissionScreenState.GetLowerLeftRectangle.Width / 2;
+            float yOrigin = Game.ScreenCenter.Y + Game.ScreenCenter.Y / 2 - totalButtonHeight / 2;
 
             displayList = new List<MenuDisplayObject>();
 
-            displayList.Add(activeMissionsDisplay = new MenuDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(80, 0, 40, 40)),
-                spriteSheet.GetSubSprite(new Rectangle(80, 40, 40, 40)),
-                spriteSheet.GetSubSprite(new Rectangle(80, 80, 40, 40)),
-                new Vector2(xOrigin, MissionScreenState.GetUpperLeftRectangle.Height / 2),
-                new Vector2(0, 20)));
+            displayList.Add(activeMissionsDisplay = new MenuDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(0, 216, 159, 40)),
+                spriteSheet.GetSubSprite(new Rectangle(0, 258, 159, 40)),
+                spriteSheet.GetSubSprite(new Rectangle(0, 258, 159, 40)),
+                new Vector2(xOrigin, yOrigin),
+                new Vector2(79.5f, 20)));
 
-            displayList.Add(completedMissionsDisplay = new MenuDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(0, 0, 40, 40)),
-                spriteSheet.GetSubSprite(new Rectangle(0, 40, 40, 40)), 
-                spriteSheet.GetSubSprite(new Rectangle(0, 80, 40, 40)),
-                new Vector2(xOrigin + spacing, MissionScreenState.GetUpperLeftRectangle.Height / 2),
-                new Vector2(0, 20)));
+            activeMissionsDisplay.name = "Active Missions";
 
-            displayList.Add(failedMissionsDisplay = new MenuDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(40, 0, 40, 40)),
-                spriteSheet.GetSubSprite(new Rectangle(40, 40, 40, 40)), 
-                spriteSheet.GetSubSprite(new Rectangle(40, 80, 40, 40)),
-                new Vector2(xOrigin + spacing * 2, MissionScreenState.GetUpperLeftRectangle.Height / 2),
-                new Vector2(0, 20)));
+            displayList.Add(completedMissionsDisplay = new MenuDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(0, 216, 159, 40)),
+                spriteSheet.GetSubSprite(new Rectangle(0, 258, 159, 40)),
+                spriteSheet.GetSubSprite(new Rectangle(0, 258, 159, 40)),
+                new Vector2(xOrigin, yOrigin + spacing),
+                new Vector2(79.5f, 20)));
 
-            displayList.Add(backDisplay = new MenuDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(120, 0, 40, 40)),
-                spriteSheet.GetSubSprite(new Rectangle(120, 40, 40, 40)),
-                spriteSheet.GetSubSprite(new Rectangle(120, 80, 40, 40)),
-                new Vector2(xOrigin + spacing * 3, MissionScreenState.GetUpperLeftRectangle.Height / 2),
-                new Vector2(0, 20)));
+            completedMissionsDisplay.name = "Completed Missions";
+
+            displayList.Add(failedMissionsDisplay = new MenuDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(0, 216, 159, 40)),
+                spriteSheet.GetSubSprite(new Rectangle(0, 258, 159, 40)),
+                spriteSheet.GetSubSprite(new Rectangle(0, 258, 159, 40)),
+                new Vector2(xOrigin, yOrigin + spacing * 2),
+                new Vector2(79.5f, 20)));
+
+            failedMissionsDisplay.name = "Failed Missions";
+
+            displayList.Add(backDisplay = new MenuDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(0, 216, 159, 40)),
+                spriteSheet.GetSubSprite(new Rectangle(0, 258, 159, 40)),
+                spriteSheet.GetSubSprite(new Rectangle(0, 258, 159, 40)),
+                new Vector2(xOrigin, yOrigin + spacing * 3),
+                new Vector2(79.5f, 20)));
+
+            backDisplay.name = "Back";
 
             CursorLevel2 = new Cursor(Game, spriteSheet, new Rectangle(120, 124, 14, 14), new Rectangle(120, 138, 14, 14));
             CursorLevel2.Initialize();
@@ -137,6 +146,8 @@ namespace SpaceProject
             foreach (MenuDisplayObject dispObj in displayList)
             {
                 dispObj.Draw(spriteBatch);
+                spriteBatch.DrawString(FontManager.GetFontStatic(14), dispObj.name, dispObj.Position, FontManager.FontColorStatic, 0f,
+                    FontManager.GetFontStatic(14).MeasureString(dispObj.name) / 2, 1f, SpriteEffects.None, 1f);
             }
 
             CursorLevel2.Draw(spriteBatch);

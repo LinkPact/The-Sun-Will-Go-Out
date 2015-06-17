@@ -55,7 +55,7 @@ namespace SpaceProject
 
         public void DisplayActiveMissions(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(Game.fontManager.GetFont(16), "Active missions", new Vector2(MissionScreenState.GetRightRectangle.X + MissionScreenState.GetRightRectangle.Width / 2, 30) + Game.fontManager.FontOffset, txtColor, 0, Game.fontManager.GetFont(16).MeasureString("Active missions") / 2, 1.0f, SpriteEffects.None, 0.5f);
+            spriteBatch.DrawString(Game.fontManager.GetFont(16), "Active missions", new Vector2(MissionScreenState.GetRightRectangle.X + MissionScreenState.GetRightRectangle.Width / 2, 50) + Game.fontManager.FontOffset, txtColor, 0, Game.fontManager.GetFont(16).MeasureString("Active missions") / 2, 1.0f, SpriteEffects.None, 0.5f);
 
             if (MissionManager.ReturnActiveMissions().Count > 0)
             {
