@@ -9,10 +9,10 @@ namespace SpaceProject
 {
     public class OverviewMenuState: MenuState
     {
-        private MenuDisplayObject buttonBack;
-
+        private MenuDisplayObject buttonShop;
         private MenuDisplayObject buttonMission;
         private MenuDisplayObject buttonRumors;
+        private MenuDisplayObject buttonBack;
 
         public MenuDisplayObject ButtonMission { get { return buttonMission; } set { buttonMission = value; } }
         public MenuDisplayObject ButtonRumors { get { return buttonRumors; } set { buttonRumors = value; } }
@@ -30,55 +30,9 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            #region CreateButtons
-
             base.Initialize();
 
-            //Mission
-            tempRectPassive = new Rectangle(202, 334, 245, 60);
-            tempRectActive = new Rectangle(202, 395, 245, 60);
-            tempRectSelected = new Rectangle(202, 395, 245, 60);
-            buttonMission = new MenuDisplayObject(this.Game,
-                                    SpriteSheet.GetSubSprite(tempRectPassive),
-                                    SpriteSheet.GetSubSprite(tempRectActive),
-                                    SpriteSheet.GetSubSprite(tempRectSelected),
-                                    new Vector2(Game.Window.ClientBounds.Width / 2,
-                                        (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 8),
-                                    new Vector2(tempRectActive.Value.Width / 2f, tempRectActive.Value.Height / 2f));
-            buttonMission.name = "Missions";
-            buttonMission.isVisible = true;
-
-            //Rumors
-            buttonRumors = new MenuDisplayObject(this.Game,
-                                            SpriteSheet.GetSubSprite(tempRectPassive),
-                                            SpriteSheet.GetSubSprite(tempRectActive),
-                                            SpriteSheet.GetSubSprite(tempRectSelected),
-                                            new Vector2(Game.Window.ClientBounds.Width / 2,
-                                                (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 8 * 2),
-                                            new Vector2(tempRectActive.Value.Width / 2f, tempRectActive.Value.Height / 2f));
-            buttonRumors.name = "Rumors";
-            buttonRumors.isVisible = true;
-
-            //Back
-            buttonBack = new MenuDisplayObject(this.Game,
-                                            SpriteSheet.GetSubSprite(tempRectPassive),
-                                            SpriteSheet.GetSubSprite(tempRectActive),
-                                            SpriteSheet.GetSubSprite(tempRectSelected),
-                                            new Vector2(Game.Window.ClientBounds.Width / 2,
-                                                (Game.Window.ClientBounds.Height / 2) + (Game.Window.ClientBounds.Height / 8) * 3),
-                                            new Vector2(tempRectActive.Value.Width / 2f, tempRectActive.Value.Height / 2f));
-            buttonBack.name = "Back";
-            buttonBack.isVisible = true;
-
-            BaseStateManager.FirstButtons.Add(buttonBack);
-            BaseStateManager.SecondButtons.Add(buttonMission);
-            BaseStateManager.SecondButtons.Add(buttonRumors);
-
-            BaseStateManager.AllButtons.Add(buttonMission);
-            BaseStateManager.AllButtons.Add(buttonRumors);
-            BaseStateManager.AllButtons.Add(buttonBack);
-
-            #endregion
+            SetButtons();
 
             shopSelectCursor = new Cursor(this.Game, this.SpriteSheet, new Rectangle(201, 121, 14, 14), new Rectangle(201, 134, 14, 14));
 
@@ -387,6 +341,86 @@ namespace SpaceProject
         public override void Draw(SpriteBatch spriteBatch)
         {
             shopSelectCursor.Draw(spriteBatch);
+        }
+
+        public void SetButtons()
+        {
+            BaseStateManager.AllButtons.Clear();
+
+            if (BaseState.GetBase() != null && BaseState.GetBase().HasShop)
+            {
+                //Shop
+                tempRectPassive = new Rectangle(202, 334, 245, 60);
+                tempRectActive = new Rectangle(202, 395, 245, 60);
+                tempRectSelected = new Rectangle(202, 395, 245, 60);
+                buttonShop = new MenuDisplayObject(this.Game,
+                                        SpriteSheet.GetSubSprite(tempRectPassive),
+                                        SpriteSheet.GetSubSprite(tempRectActive),
+                                        SpriteSheet.GetSubSprite(tempRectSelected),
+                                        new Vector2(Game.Window.ClientBounds.Width / 2,
+                                            (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 8),
+                                        new Vector2(tempRectActive.Value.Width / 2f, tempRectActive.Value.Height / 2f));
+                buttonShop.name = "Buy/Sell";
+                buttonShop.isVisible = true;
+
+                //Back
+                buttonBack = new MenuDisplayObject(this.Game,
+                                                SpriteSheet.GetSubSprite(tempRectPassive),
+                                                SpriteSheet.GetSubSprite(tempRectActive),
+                                                SpriteSheet.GetSubSprite(tempRectSelected),
+                                                new Vector2(Game.Window.ClientBounds.Width / 2,
+                                                    (Game.Window.ClientBounds.Height / 2) + (Game.Window.ClientBounds.Height / 8) * 2),
+                                                new Vector2(tempRectActive.Value.Width / 2f, tempRectActive.Value.Height / 2f));
+                buttonBack.name = "Back";
+                buttonBack.isVisible = true;
+
+                BaseStateManager.AllButtons.Add(buttonShop);
+                BaseStateManager.AllButtons.Add(buttonBack);
+            }
+
+            else
+            {
+
+                //Mission
+                tempRectPassive = new Rectangle(202, 334, 245, 60);
+                tempRectActive = new Rectangle(202, 395, 245, 60);
+                tempRectSelected = new Rectangle(202, 395, 245, 60);
+                buttonMission = new MenuDisplayObject(this.Game,
+                                        SpriteSheet.GetSubSprite(tempRectPassive),
+                                        SpriteSheet.GetSubSprite(tempRectActive),
+                                        SpriteSheet.GetSubSprite(tempRectSelected),
+                                        new Vector2(Game.Window.ClientBounds.Width / 2,
+                                            (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 8),
+                                        new Vector2(tempRectActive.Value.Width / 2f, tempRectActive.Value.Height / 2f));
+                buttonMission.name = "Missions";
+                buttonMission.isVisible = true;
+
+                //Rumors
+                buttonRumors = new MenuDisplayObject(this.Game,
+                                                SpriteSheet.GetSubSprite(tempRectPassive),
+                                                SpriteSheet.GetSubSprite(tempRectActive),
+                                                SpriteSheet.GetSubSprite(tempRectSelected),
+                                                new Vector2(Game.Window.ClientBounds.Width / 2,
+                                                    (Game.Window.ClientBounds.Height / 2) + Game.Window.ClientBounds.Height / 8 * 2),
+                                                new Vector2(tempRectActive.Value.Width / 2f, tempRectActive.Value.Height / 2f));
+                buttonRumors.name = "Rumors";
+                buttonRumors.isVisible = true;
+
+                //Back
+                buttonBack = new MenuDisplayObject(this.Game,
+                                                SpriteSheet.GetSubSprite(tempRectPassive),
+                                                SpriteSheet.GetSubSprite(tempRectActive),
+                                                SpriteSheet.GetSubSprite(tempRectSelected),
+                                                new Vector2(Game.Window.ClientBounds.Width / 2,
+                                                    (Game.Window.ClientBounds.Height / 2) + (Game.Window.ClientBounds.Height / 8) * 3),
+                                                new Vector2(tempRectActive.Value.Width / 2f, tempRectActive.Value.Height / 2f));
+                buttonBack.name = "Back";
+                buttonBack.isVisible = true;
+
+                BaseStateManager.AllButtons.Add(buttonMission);
+                BaseStateManager.AllButtons.Add(buttonRumors);
+                BaseStateManager.AllButtons.Add(buttonBack);
+            }
         }
     }
 }

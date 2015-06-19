@@ -13,8 +13,6 @@ namespace SpaceProject
     {
         public static string PreviousPlanet;
 
-        private PlanetStateManager subStateManager;
-
         private const int BG_WIDTH = 92;
         private const int BG_HEIGHT = 92;
 
@@ -37,7 +35,7 @@ namespace SpaceProject
         #region Properties
         public Planet Planet { get { return planet; } }
 
-        public PlanetStateManager SubStateManager { get { return subStateManager; } }
+        public BaseStateManager SubStateManager { get { return subStateManager; } }
 
         #endregion
 
@@ -74,6 +72,7 @@ namespace SpaceProject
             nameStringOrigin = Game.fontManager.GetFont(14).MeasureString(planetName) / 2;
 
             this.planet = planet;
+            subStateManager.OverviewMenuState.SetButtons();
         }
 
         private float ScalePlanet(float diameter, float planetScale)
@@ -90,6 +89,9 @@ namespace SpaceProject
         public override void OnEnter()
         {
             base.OnEnter();
+
+            subStateManager.ActiveButtonIndexX = 0;
+            subStateManager.ActiveButtonIndexY = 0;
 
             subStateManager.OnEnter();
         }

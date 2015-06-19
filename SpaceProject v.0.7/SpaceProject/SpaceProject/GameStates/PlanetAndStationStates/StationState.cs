@@ -36,7 +36,7 @@ namespace SpaceProject
 
         public Station Station { get { return station; } }
 
-        public BaseStateManager SubStateManager { get { return substateManager; } }
+        public BaseStateManager SubStateManager { get { return subStateManager; } }
 
         #region String Properties
 
@@ -64,8 +64,8 @@ namespace SpaceProject
             stationTexturePosition = new Vector2(Game.Window.ClientBounds.Width / 2,
                                          Game.Window.ClientBounds.Height / 4);    
 
-            substateManager = new StationStateManager(this.Game);
-            substateManager.Initialize();
+            subStateManager = new StationStateManager(this.Game);
+            subStateManager.Initialize();
 
             PreviousStation = "";
 
@@ -87,6 +87,8 @@ namespace SpaceProject
                                                   station.sprite.SourceRectangle.Value.Height / 2);
 
             nameStringOrigin = Game.fontManager.GetFont(16).MeasureString(stationName) / 2;
+
+            subStateManager.OverviewMenuState.SetButtons();
         }
 
         private float ScaleStation(float diameter, float planetScale)
@@ -108,8 +110,10 @@ namespace SpaceProject
         {
             base.OnEnter();
 
-            //Game.musicManager.SetMusicVolume(0);
-            substateManager.OnEnter();
+            subStateManager.ActiveButtonIndexX = 0;
+            subStateManager.ActiveButtonIndexY = 0;
+
+            subStateManager.OnEnter();
 
             if (!Station.Abandoned)
             {
@@ -131,7 +135,7 @@ namespace SpaceProject
         {
             base.Update(gameTime);
 
-            substateManager.Update(gameTime);        
+            subStateManager.Update(gameTime);        
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -158,7 +162,7 @@ namespace SpaceProject
                                    SpriteEffects.None,
                                    .75f);
 
-            substateManager.Draw(spriteBatch);
+            subStateManager.Draw(spriteBatch);
         }
 
     }

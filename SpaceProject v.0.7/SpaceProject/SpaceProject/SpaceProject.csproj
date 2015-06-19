@@ -358,6 +358,10 @@
     <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\WaitTimeAction.cs" />
     <Compile Include="Overworld-part\GameObjects\Shop.cs" />
     <Compile Include="Overworld-part\GameObjects\ShopInventoryEntry.cs" />
+    <Compile Include="Overworld-part\GameObjects\Shops\PeyeShop.cs" />
+    <Compile Include="Overworld-part\GameObjects\Shops\RebelBaseShop.cs" />
+    <Compile Include="Overworld-part\GameObjects\Shops\FortrunShop.cs" />
+    <Compile Include="Overworld-part\GameObjects\Shops\HighfenceShop.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Fleets\AllianceFleet.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Fleets\RebelFleet.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\Overworld\AbandonedStation.cs" />

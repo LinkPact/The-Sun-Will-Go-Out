@@ -22,6 +22,10 @@ namespace SpaceProject
         private LavisStation lavisStation;
         private FortrunStation1 fortrunStation1;
 
+        private HighfenceShop highfenceShop;
+        private FortrunShop fortrunShop;
+        private PeyeShop peyeShop;
+
         private Beacon highfenceBeacon;
         private Beacon peyeBeacon;
         private Beacon lavisBeacon;
@@ -111,6 +115,14 @@ namespace SpaceProject
             soelaraStation.Initialize();
             fortrunStation1.Initialize();
 
+            // Shops
+            highfenceShop = new HighfenceShop(game, spriteSheet, highfence.position);
+            fortrunShop = new FortrunShop(game, spriteSheet, fortrun.position);
+            peyeShop = new PeyeShop(game, spriteSheet, peye.position);
+            highfenceShop.Initialize();
+            fortrunShop.Initialize();
+            peyeShop.Initialize();
+
             // Training area
             trainingArea2 = new TrainingArea2(game, spriteSheet, MathFunctions.CoordinateToPosition(new Vector2(1000, 0)));
             trainingArea2.Initialize();
@@ -158,6 +170,10 @@ namespace SpaceProject
             AddGameObject(fortrunStation1);
             AddGameObject(soelaraStation);
             AddGameObject(trainingArea2);
+
+            AddGameObject(highfenceShop);
+            AddGameObject(fortrunShop);
+            AddGameObject(peyeShop);
 
             AddGameObject(highfenceBeacon);
             AddGameObject(fortrunBeacon);

@@ -21,7 +21,7 @@ namespace SpaceProject
 
         protected Planet planet;
         protected Station station;
-        protected BaseStateManager substateManager;
+        protected BaseStateManager subStateManager;
 
         protected Vector2 nameStringPosition;
         protected Vector2 nameStringOrigin;

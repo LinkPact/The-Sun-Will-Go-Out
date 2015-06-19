@@ -87,3 +87,27 @@ Name = Rebel Fleet
 PositionX = 74000
 PositionY = 114000
 Inhabitants = 25000
+
+[OW_Highfence_Shop]
+Name = Highfence Shop
+PositionX = 200
+PositionY = -100
+Inhabitants = 1
+
+[OW_Fortrun_Shop]
+Name = Fortrun Shop
+PositionX = 200
+PositionY = -100
+Inhabitants = 1
+
+[OW_Rebel_Base_Shop]
+Name = Rebel Base Shop
+PositionX = 200
+PositionY = -100
+Inhabitants = 1
+
+[OW_Peye_Shop]
+Name = Peye Shop
+PositionX = 200
+PositionY = -100
+Inhabitants = 1

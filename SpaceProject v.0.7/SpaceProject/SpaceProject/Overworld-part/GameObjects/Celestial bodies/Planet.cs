@@ -141,7 +141,6 @@ namespace SpaceProject
                 colonyName = colonyDataConfigFile.GetPropertyAsString(ColonyCodeName, "Name", "");
                 colonyInhabitants = colonyDataConfigFile.GetPropertyAsFloat(ColonyCodeName, "Inhabitants", 0);
             }
-
         }
 
         public override void Update(GameTime gameTime)

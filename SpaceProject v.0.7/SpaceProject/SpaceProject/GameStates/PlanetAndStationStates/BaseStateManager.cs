@@ -69,8 +69,6 @@ namespace SpaceProject
         #region Button Fields
 
         protected List<MenuDisplayObject> allButtons;
-        protected List<MenuDisplayObject> firstButtons;
-        protected List<MenuDisplayObject> secondButtons;
         protected List<MenuDisplayObject> buttonsToRemove;
 
         protected int activeButtonIndexX;
@@ -106,8 +104,6 @@ namespace SpaceProject
         #region Button Properties
 
         public List<MenuDisplayObject> AllButtons { get { return allButtons; } set { allButtons = value; } }
-        public List<MenuDisplayObject> FirstButtons { get { return firstButtons; } set { firstButtons = value; } }
-        public List<MenuDisplayObject> SecondButtons { get { return secondButtons; } set { secondButtons = value; } }
         public List<MenuDisplayObject> ButtonsToRemove { get { return buttonsToRemove; } set { buttonsToRemove = value; } }
 
         public int ActiveButtonIndexX { get { return activeButtonIndexX; } set { activeButtonIndexX = value; } }
@@ -203,8 +199,6 @@ namespace SpaceProject
             responseRectangles.Add(responseRectangle4);
 
             allButtons = new List<MenuDisplayObject>();
-            firstButtons = new List<MenuDisplayObject>();
-            secondButtons = new List<MenuDisplayObject>();
             buttonsToRemove = new List<MenuDisplayObject>();
 
             menuStates = new List<MenuState>();
