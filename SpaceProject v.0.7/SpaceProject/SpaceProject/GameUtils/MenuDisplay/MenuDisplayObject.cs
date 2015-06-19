@@ -24,7 +24,7 @@ namespace SpaceProject
         private Vector2 origin;
         private Sprite selected;
         public bool isSelected;
-        public bool isVisible;
+        public bool isVisible = true;
         public bool isDeactivated;
         public string name;
 
@@ -130,15 +130,18 @@ namespace SpaceProject
                 sprite = passive;
             }
 
-            spriteBatch.Draw(sprite.Texture,
-                             position,
-                             sprite.SourceRectangle,
-                             Color.White,
-                             0.0f,
-                             origin,
-                             1.0f,
-                             SpriteEffects.None,
-                             0.9f);
+            if (isVisible)
+            {
+                spriteBatch.Draw(sprite.Texture,
+                                 position,
+                                 sprite.SourceRectangle,
+                                 Color.White,
+                                 0.0f,
+                                 origin,
+                                 1.0f,
+                                 SpriteEffects.None,
+                                 0.9f);
+            }
         }
     }
 }

@@ -44,6 +44,8 @@ namespace SpaceProject
 
         private ItemComparison itemComp;
 
+        private Sprite shopBg;
+
         public ShopMenuState(Game1 game, String name, BaseStateManager manager, BaseState baseState) :
             base(game, name, manager, baseState)
         {
@@ -66,6 +68,8 @@ namespace SpaceProject
 
             confirmMenuSprite = SpriteSheet.GetSubSprite(new Nullable<Rectangle>(new Rectangle(0, 334, 200, 150))); 
             confirmOptions = new List<string>();
+
+            shopBg = SpriteSheet.GetSubSprite(new Rectangle(0, 1208, 1080, 320));
         }
 
         public override void OnEnter()
@@ -775,6 +779,10 @@ namespace SpaceProject
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Draw(shopBg.Texture, new Vector2(Game.ScreenCenter.X, Game.ScreenCenter.Y + Game.ScreenCenter.Y / 2),
+                    shopBg.SourceRectangle, Color.White, 0f, shopBg.CenterPoint, new Vector2(Game.Window.ClientBounds.Width / 1280f,
+                    Game.Window.ClientBounds.Height / 720f), SpriteEffects.None, 0.1f);
+
             DisplayInventory(spriteBatch);
             DisplayShopInventory(spriteBatch);
 

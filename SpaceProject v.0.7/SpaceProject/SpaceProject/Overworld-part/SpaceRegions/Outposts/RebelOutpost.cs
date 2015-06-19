@@ -27,12 +27,13 @@ namespace SpaceProject
             spaceRegionArea = new Rectangle(102000, 78000, 2000, 1500);
 
             rebelStation1 = new RebelBaseStation(game, spriteSheet, new Vector2(spaceRegionArea.X, spaceRegionArea.Y));
+            rebelStation1.Initialize();
+
             rebelBeacon = new Beacon(game, spriteSheet, new Rectangle(681, 234, 100, 100), new Rectangle(580, 234, 100, 100),
                     "Rebel Base Beacon", rebelStation1.position + new Vector2(300, 250));
-            rebelBaseShop = new RebelBaseShop(game, spriteSheet, rebelStation1.position);
-
-            rebelStation1.Initialize();
             rebelBeacon.Initialize();
+
+            rebelBaseShop = new RebelBaseShop(game, spriteSheet, rebelStation1.position);
             rebelBaseShop.Initialize();
 
             AddGameObject(rebelStation1);

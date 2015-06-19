@@ -309,8 +309,11 @@ namespace SpaceProject
                 if (i == activeButtonIndexY)
                     fontColor = Color.LightSkyBlue;
 
-                spriteBatch.DrawString(FontManager.GetFontStatic(16), allButtons[i].name, allButtons[i].Position, fontColor, 0f,
-                    FontManager.GetFontStatic(16).MeasureString(allButtons[i].name) / 2, 1f, SpriteEffects.None, 0.95f);
+                if (allButtons[i].isVisible)
+                {
+                    spriteBatch.DrawString(FontManager.GetFontStatic(16), allButtons[i].name, allButtons[i].Position, fontColor, 0f,
+                        FontManager.GetFontStatic(16).MeasureString(allButtons[i].name) / 2, 1f, SpriteEffects.None, 0.95f);
+                }
             }
 
             activeMenuState.Draw(spriteBatch);

@@ -54,6 +54,11 @@ namespace SpaceProject
 
         public override void OnEnter()
         {
+            foreach (MenuDisplayObject button in BaseStateManager.AllButtons)
+            {
+                button.isVisible = true;
+            }
+
             if (BaseState.GetBase() != null)
             {
                 if (BaseState.GetBase() is Planet)
@@ -204,22 +209,12 @@ namespace SpaceProject
 
                     case "Buy/Sell":
                         {
-                            if (BaseState.GetBase().HasShop)
-                            {
-                                BaseStateManager.TextBoxes.Clear();
+                            BaseStateManager.ChangeMenuSubState("Shop");
 
-                                BaseStateManager.ButtonControl = ButtonControl.SelectShop;
-
-                                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
-                                                                                      shopSelectRectangle1,
-                                                                                      true, false,
-                                                                                      "Buy/Sell Items"));
-
-                                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
-                                                                                      shopSelectRectangle3,
-                                                                                      true, false,
-                                                                                      "Back"));
-                            }
+                            BaseStateManager.TextBoxes.Clear();
+                            shopSelectCursor.isVisible = false;
+                            buttonBack.isVisible = false;
+                            buttonShop.isVisible = false;
                             break;
                         }
 
@@ -240,102 +235,11 @@ namespace SpaceProject
                         break;
                 }
             }
-
-            else if (BaseStateManager.ButtonControl == ButtonControl.SelectShop)
-            {
-                switch (shopSelectCursorIndex)
-                {
-                    case 0:
-                        BaseStateManager.ChangeMenuSubState("Shop");
-
-                        BaseStateManager.TextBoxes.Clear();
-                        shopSelectCursor.isVisible = false;
-                        break;
-
-                    case 1:
-                        BaseStateManager.ChangeMenuSubState("Overview");
-
-                        BaseStateManager.TextBoxes.Clear();
-                        shopSelectCursor.isVisible = false;
-
-                        CursorActions();
-                        break;
-                }
-            }
         }
 
         public override void CursorActions()
         {
             base.CursorActions();
-
-            switch (BaseStateManager.ActiveButton.name)
-            {
-                case "Missions":
-                        break;
-
-                case "Buy/Sell":
-                    {
-                        if (BaseState.GetBase().HasShop)
-                        {
-                            BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                        new Rectangle(Game.Window.ClientBounds.Width * 2 / 3,
-                                                      (int)(Game.Window.ClientBounds.Height - (int)BaseState.Game.fontManager.GetFont(14).MeasureString("Press 'Enter' to access shop..").Y) - 20,
-                                                      (Game.Window.ClientBounds.Width * 2 / 3) / 2,
-                                                      10),
-                                        true, false,
-                                        "Press 'Enter' to access shop.."));
-                        }
-                        else
-                        {
-                            if (BaseStateManager.PreviousButton == buttonRumors)
-                            {
-                                BaseStateManager.ActiveButtonIndexX = 0;
-                                CursorActions();
-                            }
-                            else if (BaseStateManager.PreviousButton == buttonMission)
-                            {
-                                BaseStateManager.ActiveButtonIndexX = 1;
-                                CursorActions();
-                            }
-                            else if (BaseStateManager.PreviousButton == buttonBack)
-                            {
-                                BaseStateManager.ActiveButtonIndexX = 2;
-                                BaseStateManager.ActiveButtonIndexY = 1;
-                                CursorActions();
-                            }
-                        }
-                        break;
-                    }
-
-                case "Planet Info":
-                    {
-                        if (BaseState.GetBase() is Planet)
-                        {
-                            BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBoxAndGetText(BaseState.Game.fontManager.GetFont(14),
-                                                                                        BaseStateManager.NormalTextRectangle,
-                                                                                        "Data/planetdata.dat",
-                                                                                        ((Planet)BaseState.GetBase()).PlanetCodeName,
-                                                                                        "Info",
-                                                                                        false));
-
-                            //SubStateManager.ButtonControl = ButtonControl.Menu;
-
-                        }
-                        break;
-                    }
-
-                //case "Back":
-                //    {
-                //        BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                //                                                      new Rectangle(Game.Window.ClientBounds.Width * 2 / 3,
-                //                                                                    (int)(Game.Window.ClientBounds.Height - (int)BaseState.Game.fontManager.GetFont(14).MeasureString("Press 'Enter' to access shop..").Y) - 20,
-                //                                                                    (Game.Window.ClientBounds.Width * 2 / 3) / 2,
-                //                                                                    10),
-                //                                                      true,
-                //                                                      "Press 'Enter' to leave.."));
-                //        break;
-                //    }
-            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
