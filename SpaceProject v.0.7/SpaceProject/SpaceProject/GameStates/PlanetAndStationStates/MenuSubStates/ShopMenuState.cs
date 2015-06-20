@@ -53,6 +53,14 @@ namespace SpaceProject
         private float shopColumnXPosition;
         private float columnYPosition;
 
+        private Sprite line;
+        private float lineLength;
+        private float lineYPos;
+        private float line1XPos;
+        private float line2XPos;
+        private float line3XPos;
+        private float line4XPos;
+
         public ShopMenuState(Game1 game, String name, BaseStateManager manager, BaseState baseState) :
             base(game, name, manager, baseState)
         {
@@ -77,7 +85,7 @@ namespace SpaceProject
             confirmOptions = new List<string>();
 
             shopBg = SpriteSheet.GetSubSprite(new Rectangle(0, 1208, 1080, 320));
-            itemInfoTextWidth = 300;
+            itemInfoTextWidth = (int)(Game.Window.ClientBounds.Width / 4.2667f);
             itemInfoPosition = new Vector2(Game.Window.ClientBounds.Width / 1.682f,
                 Game.Window.ClientBounds.Height / 2 + 55);
 
@@ -85,6 +93,14 @@ namespace SpaceProject
             invColumn2XPosition = Game.Window.ClientBounds.Width / 3.39f;
             shopColumnXPosition = Game.Window.ClientBounds.Width / 2.245f;
             columnYPosition = Game.Window.ClientBounds.Height / 2 + 55;
+
+            line = SpriteSheet.GetSubSprite(new Rectangle(73, 263, 2, 1));
+            lineLength = Game.Window.ClientBounds.Height / 2.25f;
+            lineYPos = Game.Window.ClientBounds.Height / 1.895f;
+            line1XPos = Game.Window.ClientBounds.Width / 7.66f;
+            line2XPos = Game.Window.ClientBounds.Width / 2.322f;
+            line3XPos = Game.Window.ClientBounds.Width / 1.725f;
+            line4XPos = 1130;
         }
 
         public override void OnEnter()
@@ -544,36 +560,36 @@ namespace SpaceProject
 
             if (inventoryCursorIndex.X.Equals(1))
             {
-                if (inventoryCursorIndex.Y > ShipInventoryManager.inventorySize)
+                if (inventoryCursorIndex.Y > ShipInventoryManager.inventorySize + 1)
                 {
                     if (ControlManager.PreviousKeyUp(RebindableKeys.Down))
                         inventoryCursorIndex.Y = 1;
 
                     else
-                        inventoryCursorIndex.Y = ShipInventoryManager.inventorySize;
+                        inventoryCursorIndex.Y = ShipInventoryManager.inventorySize + 1;
                 }
 
-                else if (inventoryCursorIndex.Y > 14)
+                else if (inventoryCursorIndex.Y > 15)
                 {
                     if (ControlManager.PreviousKeyUp(RebindableKeys.Down))
                         inventoryCursorIndex.Y = 1;
 
                     else
-                        inventoryCursorIndex.Y = 14;
+                        inventoryCursorIndex.Y = 15;
                 }
 
-                else if (inventoryCursorIndex.Y < 1 && ShipInventoryManager.inventorySize >= 14)
+                else if (inventoryCursorIndex.Y < 1 && ShipInventoryManager.inventorySize >= 15)
                 {
                     if (ControlManager.PreviousKeyUp(RebindableKeys.Up))
-                        inventoryCursorIndex.Y = 14;
+                        inventoryCursorIndex.Y = 15;
                     else
                         inventoryCursorIndex.Y = 1;
                 }
 
-                else if (inventoryCursorIndex.Y < 1 && ShipInventoryManager.inventorySize < 14)
+                else if (inventoryCursorIndex.Y < 1 && ShipInventoryManager.inventorySize < 15)
                 {
                     if (ControlManager.PreviousKeyUp(RebindableKeys.Up))
-                        inventoryCursorIndex.Y = ShipInventoryManager.inventorySize;
+                        inventoryCursorIndex.Y = ShipInventoryManager.inventorySize + 1;
                     else
                         inventoryCursorIndex.Y = 1;
                 }
@@ -642,7 +658,14 @@ namespace SpaceProject
                 activeInventoryCursor.position.X = shopColumnXPosition - 6;
             }
 
-            activeInventoryCursor.position.Y = columnYPosition - 6 + inventoryCursorIndex.Y * InventoryYSpacing;
+            if (inventoryCursorIndex.Y == 15)
+            {
+                activeInventoryCursor.position.Y = columnYPosition + 1 + inventoryCursorIndex.Y * InventoryYSpacing;
+            }
+            else
+            {
+                activeInventoryCursor.position.Y = columnYPosition - 6 + inventoryCursorIndex.Y * InventoryYSpacing;
+            }
 
             #endregion            
 
@@ -695,8 +718,14 @@ namespace SpaceProject
 
             if (BaseStateManager.ButtonControl != ButtonControl.TransactionConfirm)
             {
-                if (inventoryCursorIndex.X < 3)
+                if (inventoryCursorIndex.Y == 15)
                 {
+                    BaseStateManager.ChangeMenuSubState("Overview");
+                }
+
+                else if (inventoryCursorIndex.X < 3)
+                {
+                    
                     itemToSell = ShipInventoryManager.ShipItems[tempIndex];
 
                     if (itemToSell is EmptyItem)
@@ -804,12 +833,33 @@ namespace SpaceProject
             passiveInventoryCursor.Draw(spriteBatch);
             activeInventoryCursor.Draw(spriteBatch);
 
+            spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
+                                   "Information",
+                                   new Vector2(itemInfoPosition.X + 120,
+                                               itemInfoPosition.Y - 19) + Game.fontManager.FontOffset,
+                                   Game.fontManager.FontColor,
+                                   0,
+                                   BaseState.Game.fontManager.GetFont(14).MeasureString("Information") / 2,
+                                   1.0f,
+                                   SpriteEffects.None,
+                                   0.5f);
+
             if (inventoryCursorIndex.X == 1)
-                ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y - 1].DisplayInfo(spriteBatch,
-                                                                                           BaseState.Game.fontManager.GetFont(14),
-                                                                                           itemInfoPosition,
-                                                                                           Game.fontManager.FontColor,
-                                                                                           itemInfoTextWidth);
+            {
+                if (inventoryCursorIndex.Y == 15)
+                {
+                    spriteBatch.DrawString(FontManager.GetFontStatic(14), "Leave the shop and go back to the previous menu", itemInfoPosition, 
+                        FontManager.FontColorStatic, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0.6f);
+                }
+                else
+                {
+                    ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y - 1].DisplayInfo(spriteBatch,
+                                                                                               BaseState.Game.fontManager.GetFont(14),
+                                                                                               itemInfoPosition,
+                                                                                               Game.fontManager.FontColor,
+                                                                                               itemInfoTextWidth);
+                }
+            }
 
             else if (inventoryCursorIndex.X == 2)
                 ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y + 13].DisplayInfo(spriteBatch,
@@ -872,11 +922,7 @@ namespace SpaceProject
                 }
             }
 
-            //// Draw back-button
-            //spriteBatch.DrawString(Game.fontManager.GetFont(14), "Go Back",
-            //    new Vector2(Game.Window.ClientBounds.Width / 3 + 18,
-            //        Game.Window.ClientBounds.Height - 25) + Game.fontManager.FontOffset,
-            //    Game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
+            DrawLines(spriteBatch);
         }
 
         private void DisplayInventory(SpriteBatch spriteBatch)
@@ -972,6 +1018,11 @@ namespace SpaceProject
                                                Game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
                 }
             }
+
+            spriteBatch.DrawString(Game.fontManager.GetFont(14), "Go Back",
+                new Vector2(invColumn1XPosition,
+                columnYPosition + 8 + (14 * InventoryYSpacing)) + Game.fontManager.FontOffset,
+                Game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
 
         }
 
@@ -1383,6 +1434,21 @@ namespace SpaceProject
             {
                 ShipInventoryManager.equippedShield = new EmptyShield(Game);
             }
+        }
+
+        private void DrawLines(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(line.Texture, new Vector2(line1XPos, lineYPos), line.SourceRectangle, Color.DarkSeaGreen, 0f, 
+                Vector2.Zero, new Vector2(1, lineLength), SpriteEffects.None, 1f);
+
+            spriteBatch.Draw(line.Texture, new Vector2(line2XPos, lineYPos), line.SourceRectangle, Color.DarkSeaGreen, 0f,
+                Vector2.Zero, new Vector2(1, lineLength), SpriteEffects.None, 1f);
+
+            spriteBatch.Draw(line.Texture, new Vector2(line3XPos, lineYPos), line.SourceRectangle, Color.DarkSeaGreen, 0f,
+                Vector2.Zero, new Vector2(1, lineLength), SpriteEffects.None, 1f);
+
+            spriteBatch.Draw(line.Texture, new Vector2(line4XPos, lineYPos), line.SourceRectangle, Color.DarkSeaGreen, 0f,
+                Vector2.Zero, new Vector2(1, lineLength), SpriteEffects.None, 1f);
         }
     }
 }
