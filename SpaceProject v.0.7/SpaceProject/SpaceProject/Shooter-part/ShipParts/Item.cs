@@ -60,8 +60,8 @@ namespace SpaceProject
                 String text = infoText[n];
                 if (n == infoText.Count - 1)
                 {
-                    text = "Description: " + infoText[n]; 
-                    text = TextUtils.WordWrap(font, infoText[n], Game.Window.ClientBounds.Width / 2 - 100);   
+                    text = "Description: " + infoText[n];
+                    text = TextUtils.WordWrap(font, infoText[n], wordWrapWidth);   
                 }
 
                 spriteBatch.DrawString(font, text, new Vector2(startingPos.X,
@@ -71,8 +71,8 @@ namespace SpaceProject
 
             if (displaySprite != null) 
             {
-                float imageOffset = 250;
-                spriteBatch.Draw(displaySprite.Texture, new Vector2(startingPos.X + imageOffset, startingPos.Y), displaySprite.SourceRectangle, Color.White);
+                float imageOffset = 192;
+                spriteBatch.Draw(displaySprite.Texture, new Vector2(startingPos.X + imageOffset, startingPos.Y), displaySprite.SourceRectangle, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
             }
         }
 

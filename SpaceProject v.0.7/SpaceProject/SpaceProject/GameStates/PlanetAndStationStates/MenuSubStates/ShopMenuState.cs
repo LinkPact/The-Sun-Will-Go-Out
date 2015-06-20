@@ -10,7 +10,7 @@ namespace SpaceProject
 {
     public class ShopMenuState : MenuState
     {
-        private const int INVENTORY_Y_SPACING = 18;
+        private readonly int InventoryYSpacing = 18;
 
         #region Cursor Fields
 
@@ -45,6 +45,13 @@ namespace SpaceProject
         private ItemComparison itemComp;
 
         private Sprite shopBg;
+        private Vector2 itemInfoPosition;
+        private int itemInfoTextWidth;
+
+        private float invColumn1XPosition;
+        private float invColumn2XPosition;
+        private float shopColumnXPosition;
+        private float columnYPosition;
 
         public ShopMenuState(Game1 game, String name, BaseStateManager manager, BaseState baseState) :
             base(game, name, manager, baseState)
@@ -70,6 +77,14 @@ namespace SpaceProject
             confirmOptions = new List<string>();
 
             shopBg = SpriteSheet.GetSubSprite(new Rectangle(0, 1208, 1080, 320));
+            itemInfoTextWidth = 300;
+            itemInfoPosition = new Vector2(Game.Window.ClientBounds.Width / 1.682f,
+                Game.Window.ClientBounds.Height / 2 + 55);
+
+            invColumn1XPosition = Game.Window.ClientBounds.Width / 6.88f;
+            invColumn2XPosition = Game.Window.ClientBounds.Width / 3.39f;
+            shopColumnXPosition = Game.Window.ClientBounds.Width / 2.245f;
+            columnYPosition = Game.Window.ClientBounds.Height / 2 + 55;
         }
 
         public override void OnEnter()
@@ -563,7 +578,7 @@ namespace SpaceProject
                         inventoryCursorIndex.Y = 1;
                 }
 
-                activeInventoryCursor.position.X = Game.Window.ClientBounds.Width / 3 + 10;
+                activeInventoryCursor.position.X = invColumn1XPosition - 6;
             }
 
             else if (inventoryCursorIndex.X.Equals(2))
@@ -594,7 +609,7 @@ namespace SpaceProject
                         inventoryCursorIndex.Y = 1;
                 }
 
-                activeInventoryCursor.position.X = Game.Window.ClientBounds.Width * 1 / 3 + 180;
+                activeInventoryCursor.position.X = invColumn2XPosition - 6;
             }
 
             else if (inventoryCursorIndex.X.Equals(3))
@@ -624,10 +639,10 @@ namespace SpaceProject
                         inventoryCursorIndex.Y = 1;
                 }
 
-                activeInventoryCursor.position.X = Game.Window.ClientBounds.Width * 4 / 5 - 10;
+                activeInventoryCursor.position.X = shopColumnXPosition - 6;
             }
 
-            activeInventoryCursor.position.Y = (Game.Window.ClientBounds.Height / 2 + 20) + inventoryCursorIndex.Y * INVENTORY_Y_SPACING;
+            activeInventoryCursor.position.Y = columnYPosition - 6 + inventoryCursorIndex.Y * InventoryYSpacing;
 
             #endregion            
 
@@ -792,23 +807,23 @@ namespace SpaceProject
             if (inventoryCursorIndex.X == 1)
                 ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y - 1].DisplayInfo(spriteBatch,
                                                                                            BaseState.Game.fontManager.GetFont(14),
-                                                                                           new Vector2(10, 50),
+                                                                                           itemInfoPosition,
                                                                                            Game.fontManager.FontColor,
-                                                                                           Game.Window.ClientBounds.Width / 2 - 10);
+                                                                                           itemInfoTextWidth);
 
             else if (inventoryCursorIndex.X == 2)
                 ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y + 13].DisplayInfo(spriteBatch,
                                                                                        BaseState.Game.fontManager.GetFont(14),
-                                                                                       new Vector2(10, 50),
+                                                                                       itemInfoPosition,
                                                                                        Game.fontManager.FontColor,
-                                                                                       Game.Window.ClientBounds.Width / 2 - 10);
+                                                                                       itemInfoTextWidth);
 
             else if (inventoryCursorIndex.X == 3)
                 shopInventory[(int)inventoryCursorIndex.Y - 1].DisplayInfo(spriteBatch,
                                                                            BaseState.Game.fontManager.GetFont(14),
-                                                                           new Vector2(10, 50),
+                                                                           itemInfoPosition,
                                                                            Game.fontManager.FontColor,
-                                                                            Game.Window.ClientBounds.Width / 2 - 10);
+                                                                           itemInfoTextWidth);
 
             itemComp.Draw(spriteBatch, new Vector2(1, 91), 15);
 
@@ -870,8 +885,8 @@ namespace SpaceProject
 
             spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                    "Inventory",
-                                   new Vector2(Game.Window.ClientBounds.Width / 2 + 25,
-                                               Game.Window.ClientBounds.Height / 2 + 15) + Game.fontManager.FontOffset,
+                                   new Vector2(invColumn1XPosition + 105,
+                                               columnYPosition - 18) + Game.fontManager.FontOffset,
                                    Game.fontManager.FontColor,
                                    0,
                                    BaseState.Game.fontManager.GetFont(14).MeasureString("Inventory") / 2,
@@ -889,21 +904,21 @@ namespace SpaceProject
                     if (ShipInventoryManager.IsEquipped(ShipInventoryManager.ShipItems[n]))
                         spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                                ShipInventoryManager.ShipItems[n].Name,
-                                               new Vector2(Game.Window.ClientBounds.Width / 3 + 20,
-                                                          ((Game.Window.ClientBounds.Height / 2) + 25) + n * INVENTORY_Y_SPACING) + Game.fontManager.FontOffset,
+                                               new Vector2(invColumn1XPosition,
+                                                           columnYPosition + (n * InventoryYSpacing)) + Game.fontManager.FontOffset,
                                                Color.Blue, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
 
                     else if(ShipInventoryManager.ShipItems[n].ShopColor == 1)
                         spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                                ShipInventoryManager.ShipItems[n].Name,
-                                               new Vector2(Game.Window.ClientBounds.Width / 3 + 20,
-                                                          ((Game.Window.ClientBounds.Height / 2) + 25) + n * INVENTORY_Y_SPACING) + Game.fontManager.FontOffset,
+                                               new Vector2(invColumn1XPosition,
+                                                          columnYPosition + (n * InventoryYSpacing)) + Game.fontManager.FontOffset,
                                                Color.Green, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
                     else
                         spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                                ShipInventoryManager.ShipItems[n].Name,
-                                               new Vector2(Game.Window.ClientBounds.Width / 3 + 20,
-                                                          ((Game.Window.ClientBounds.Height / 2) + 25) + n * INVENTORY_Y_SPACING) + Game.fontManager.FontOffset,
+                                               new Vector2(invColumn1XPosition,
+                                                          columnYPosition + (n * InventoryYSpacing)) + Game.fontManager.FontOffset,
                                                Game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
                 }
 
@@ -912,22 +927,22 @@ namespace SpaceProject
                     if (ShipInventoryManager.IsEquipped(ShipInventoryManager.ShipItems[n + columnSize]))
                         spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                                ShipInventoryManager.ShipItems[n + columnSize].Name,
-                                               new Vector2(Game.Window.ClientBounds.Width / 3 + 190,
-                                                           ((Game.Window.ClientBounds.Height / 2) + 25) + n * INVENTORY_Y_SPACING) + Game.fontManager.FontOffset,
+                                               new Vector2(invColumn2XPosition,
+                                                           columnYPosition + (n * InventoryYSpacing)) + Game.fontManager.FontOffset,
                                                Color.Blue, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
 
                     else if (ShipInventoryManager.ShipItems[n + columnSize].ShopColor == 1)
                         spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                                ShipInventoryManager.ShipItems[n + columnSize].Name,
-                                               new Vector2(Game.Window.ClientBounds.Width / 3 + 190,
-                                                          ((Game.Window.ClientBounds.Height / 2) + 25) + n * INVENTORY_Y_SPACING) + Game.fontManager.FontOffset,
+                                               new Vector2(invColumn2XPosition,
+                                                          columnYPosition + (n * InventoryYSpacing)) + Game.fontManager.FontOffset,
                                                Color.Green, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
 
                     else
                         spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                                ShipInventoryManager.ShipItems[n + columnSize].Name,
-                                               new Vector2(Game.Window.ClientBounds.Width / 3 + 190,
-                                                           ((Game.Window.ClientBounds.Height / 2) + 25) + n * INVENTORY_Y_SPACING) + Game.fontManager.FontOffset,
+                                               new Vector2(invColumn2XPosition,
+                                                           columnYPosition + (n * InventoryYSpacing)) + Game.fontManager.FontOffset,
                                                Game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
                 }
             }
@@ -938,22 +953,22 @@ namespace SpaceProject
                     if (ShipInventoryManager.IsEquipped(ShipInventoryManager.ShipItems[n]))
                         spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                                ShipInventoryManager.ShipItems[n].Name,
-                                               new Vector2(Game.Window.ClientBounds.Width / 3 + 20,
-                                                           ((Game.Window.ClientBounds.Height / 2) + 25) + n * INVENTORY_Y_SPACING) + Game.fontManager.FontOffset,
+                                               new Vector2(invColumn1XPosition,
+                                                           columnYPosition + (n * InventoryYSpacing)) + Game.fontManager.FontOffset,
                                                Color.Blue, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
 
                     else if (ShipInventoryManager.ShipItems[n].ShopColor == 1)
                         spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                                ShipInventoryManager.ShipItems[n].Name,
-                                               new Vector2(Game.Window.ClientBounds.Width / 3 + 20,
-                                                          ((Game.Window.ClientBounds.Height / 2) + 25) + n * INVENTORY_Y_SPACING) + Game.fontManager.FontOffset,
+                                               new Vector2(invColumn1XPosition,
+                                                          columnYPosition + (n * InventoryYSpacing)) + Game.fontManager.FontOffset,
                                                Color.Green, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
 
                     else
                         spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                                ShipInventoryManager.ShipItems[n].Name,
-                                               new Vector2(Game.Window.ClientBounds.Width / 3 + 20,
-                                                           ((Game.Window.ClientBounds.Height / 2) + 25) + n * INVENTORY_Y_SPACING) + Game.fontManager.FontOffset,
+                                               new Vector2(invColumn1XPosition,
+                                                           columnYPosition + (n * InventoryYSpacing)) + Game.fontManager.FontOffset,
                                                Game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
                 }
             }
@@ -964,8 +979,8 @@ namespace SpaceProject
         {
             spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                         "Shop",
-                        new Vector2(Game.Window.ClientBounds.Width * 4/5 + 55,
-                                    Game.Window.ClientBounds.Height / 2 + 15) + Game.fontManager.FontOffset,
+                        new Vector2(shopColumnXPosition + 75,
+                                    columnYPosition - 18) + Game.fontManager.FontOffset,
                         Game.fontManager.FontColor,
                         0,
                         BaseState.Game.fontManager.GetFont(14).MeasureString("Shop") / 2,
@@ -983,22 +998,22 @@ namespace SpaceProject
                     if(shopInventory[n].ShopColor == 2)
                         spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                            shopInventory[n].Name,
-                                           new Vector2(Game.Window.ClientBounds.Width * 4 / 5,
-                                                      ((Game.Window.ClientBounds.Height / 2) + 25) + n * INVENTORY_Y_SPACING) + Game.fontManager.FontOffset,
+                                           new Vector2(shopColumnXPosition,
+                                                      columnYPosition + (n * InventoryYSpacing)) + Game.fontManager.FontOffset,
                                            Color.Red, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
 
                     else if (shopInventory[n].ShopColor == 3)
                         spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                            shopInventory[n].Name,
-                                           new Vector2(Game.Window.ClientBounds.Width * 4 / 5,
-                                                      ((Game.Window.ClientBounds.Height / 2) + 25) + n * INVENTORY_Y_SPACING) + Game.fontManager.FontOffset,
+                                           new Vector2(shopColumnXPosition,
+                                                      columnYPosition + (n * InventoryYSpacing)) + Game.fontManager.FontOffset,
                                            Color.Yellow, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
 
                     else
                     spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                            shopInventory[n].Name,
-                                           new Vector2(Game.Window.ClientBounds.Width * 4 / 5,
-                                                      ((Game.Window.ClientBounds.Height / 2) + 25) + n * INVENTORY_Y_SPACING) + Game.fontManager.FontOffset,
+                                           new Vector2(shopColumnXPosition,
+                                                      columnYPosition + (n * InventoryYSpacing)) + Game.fontManager.FontOffset,
                                            Game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
                 }
             }
@@ -1010,22 +1025,22 @@ namespace SpaceProject
                     if (shopInventory[n].ShopColor == 2)
                         spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                            shopInventory[n].Name,
-                                           new Vector2(Game.Window.ClientBounds.Width * 4 / 5,
-                                                      ((Game.Window.ClientBounds.Height / 2) + 25) + n * INVENTORY_Y_SPACING) + Game.fontManager.FontOffset,
+                                           new Vector2(shopColumnXPosition,
+                                                      columnYPosition + (n * InventoryYSpacing)) + Game.fontManager.FontOffset,
                                            Color.Red, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
 
                     else if (shopInventory[n].ShopColor == 3)
                         spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                            shopInventory[n].Name,
-                                           new Vector2(Game.Window.ClientBounds.Width * 4 / 5,
-                                                      ((Game.Window.ClientBounds.Height / 2) + 25) + n * INVENTORY_Y_SPACING) + Game.fontManager.FontOffset,
+                                           new Vector2(shopColumnXPosition,
+                                                      columnYPosition + (n * InventoryYSpacing)) + Game.fontManager.FontOffset,
                                            Color.Yellow, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
 
                     else
                     spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                            shopInventory[n].Name,
-                                           new Vector2(Game.Window.ClientBounds.Width * 4 / 5,
-                                                      ((Game.Window.ClientBounds.Height / 2) + 25) + n * INVENTORY_Y_SPACING) + Game.fontManager.FontOffset,
+                                           new Vector2(shopColumnXPosition,
+                                                      columnYPosition + (n * InventoryYSpacing)) + Game.fontManager.FontOffset,
                                            Game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
                 }
             }
