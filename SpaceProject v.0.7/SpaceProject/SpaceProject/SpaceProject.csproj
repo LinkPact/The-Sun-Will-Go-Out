@@ -910,6 +910,9 @@
     <Content Include="Levels\sidelevels\FlightTraining2_3.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Levels\sidelevels\FT2\FT2_Asteroids.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Levels\sidelevels\FT2\FT2_BreakTheDefence.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
