@@ -916,6 +916,9 @@
     <None Include="Levels\sidelevels\FT2\FT2_Collision.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Levels\sidelevels\FT2\FT2_Explosions.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Levels\sidelevels\FT2\FT2_UnderFire.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
