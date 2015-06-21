@@ -24,6 +24,7 @@ namespace SpaceProject
         public Sprite spriteSheetOverworld;
         private Sprite messageBoxSpriteSheet;
         public Sprite spriteSheetItemDisplay;
+        public Sprite beaconMenuSprite;
 
         public GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -136,6 +137,7 @@ namespace SpaceProject
             spriteSheetVerticalShooter = new Sprite(Content.Load<Texture2D>("Vertical-Sprites/shooterSheet"));
             messageBoxSpriteSheet = new Sprite(Content.Load<Texture2D>("Overworld-Sprites/messageBoxSpriteSheet"));
             spriteSheetItemDisplay = new Sprite(Content.Load<Texture2D>("itemVisualSheet"));
+            beaconMenuSprite = new Sprite(Content.Load<Texture2D>("Overworld-Sprites/BeaconMenu"));
             CollisionHandlingOverWorld.LoadLineTexture(this);
 
             shipInventoryManager = new ShipInventoryManager(this);
@@ -147,7 +149,7 @@ namespace SpaceProject
             player = new PlayerOverworld(this, spriteSheetOverworld);
             player.Initialize();
 
-            beaconMenu = new BeaconMenu(this, spriteSheetOverworld);
+            beaconMenu = new BeaconMenu(this, beaconMenuSprite);
             beaconMenu.Initialize();
 
             stateManager = new GameStateManager(this);
