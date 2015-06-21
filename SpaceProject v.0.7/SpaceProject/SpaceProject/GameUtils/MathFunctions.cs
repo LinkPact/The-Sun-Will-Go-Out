@@ -233,15 +233,15 @@ namespace SpaceProject
             return CollisionDetection.IsPointInsideRectangle(ControlManager.GetMousePosition(), textRect);
         }
 
-        public static bool IsMouseOverText(SpriteFont font, String text, Vector2 textPosition, Vector2 screenPos)
+        public static bool IsMouseOverText(SpriteFont font, String text, Vector2 textPosition, Vector2 screenPos, bool textCentered)
         {
             Vector2 textOrigin;
             Vector2 textDimension;
             Rectangle textRect;
 
-            textOrigin = font.MeasureString(text) / 2;
+            textOrigin = textCentered ? font.MeasureString(text) / 2 : Vector2.Zero; 
             textDimension = font.MeasureString(text);
-            textRect = new Rectangle((int)textPosition.X, (int)(textPosition.Y - textOrigin.Y),
+            textRect = new Rectangle((int)(textPosition.X - textOrigin.X), (int)(textPosition.Y - textOrigin.Y),
                     (int)textDimension.X, (int)textDimension.Y);
 
             Vector2 relativeMousePosition = ControlManager.GetMousePosition() + screenPos;

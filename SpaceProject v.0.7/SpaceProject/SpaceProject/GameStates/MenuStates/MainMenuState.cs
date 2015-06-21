@@ -140,7 +140,7 @@ namespace SpaceProject
         public override void Update(GameTime gameTime)
         {
             ButtonControls(gameTime);
-            //MouseControls();
+            MouseControls();
         }
 
         private void ButtonControls(GameTime gameTime)
