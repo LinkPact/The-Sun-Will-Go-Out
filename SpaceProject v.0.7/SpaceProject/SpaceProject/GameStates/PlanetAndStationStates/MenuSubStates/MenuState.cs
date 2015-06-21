@@ -63,6 +63,7 @@ namespace SpaceProject
                     else if (BaseStateManager.ActiveMenuState.Equals(BaseStateManager.MissionMenuState) &&
                         BaseStateManager.ButtonControl.Equals(ButtonControl.Mission))
                     {
+                        BaseState.HideOverlay();
                         BaseStateManager.ChangeMenuSubState("Overview");
                     }
 
