@@ -30,12 +30,11 @@ namespace SpaceProject
 
             tempExplosion.GenerateExplosionParticles(game, spriteSheet, source, nbrParticles, size, randomDir: true);
 
-            game.soundEffectsManager.PlaySoundEffect(source.getDeathSoundID(), source.SoundPan);
+            //game.soundEffectsManager.PlaySoundEffect(source.getDeathSoundID(), source.SoundPan);
             return tempExplosion;
         }
 
-        public static Explosion GenerateBulletExplosion(Game1 game, Sprite spriteSheet,
-                                                GameObjectVertical source)
+        public static Explosion GenerateBulletExplosion(Game1 game, Sprite spriteSheet, GameObjectVertical source)
         {
             Explosion tempExplosion = new Explosion(game, spriteSheet);
 
@@ -43,7 +42,7 @@ namespace SpaceProject
             float size = (source.BoundingWidth + source.BoundingHeight) * 3;
             tempExplosion.GenerateExplosionParticles(game, spriteSheet, source, nbrParticles, size, 
                 randomDir: true, speedFactor: 0.1f, dirFactor: -1);
-            game.soundEffectsManager.PlaySoundEffect(source.getDeathSoundID(), source.SoundPan);
+            //game.soundEffectsManager.PlaySoundEffect(source.getDeathSoundID(), source.SoundPan);
             return tempExplosion;
         }
 

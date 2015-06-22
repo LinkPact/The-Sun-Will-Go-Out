@@ -19,6 +19,9 @@ namespace SpaceProject
         MuffledExplosion,
         SmallExplosion,
 
+        // ShooterHit
+        ShieldHit,
+
         // Engine
         OverworldEngine,
 
@@ -29,8 +32,12 @@ namespace SpaceProject
         MenuHover,
         MenuSelect,
 
-        // Beacon
-        BeaconActivate
+        // Overworld interaction
+        BeaconActivate,
+        Hover1,
+        Hover2,
+
+        None
     }
 
     public class SoundEffectsManager
@@ -57,6 +64,8 @@ namespace SpaceProject
         private CustomSoundEffect muffledExplosion;
         private CustomSoundEffect smallExplosion;
 
+        private CustomSoundEffect shieldHit;
+
         private CustomSoundEffect overworldEngine;
 
         private CustomSoundEffect crowd;
@@ -65,6 +74,8 @@ namespace SpaceProject
         private CustomSoundEffect menuSelect;
 
         private CustomSoundEffect activateBeacon;
+        private CustomSoundEffect hover1;
+        private CustomSoundEffect hover2;
 
         private List<SoundEffect> laserSounds;
 
@@ -91,8 +102,10 @@ namespace SpaceProject
                 clickLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/click_laser_noiseReduced"), 1);
                 midSizeLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/mid_size_laser"), 3);
 
-                muffledExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom6"), 1);
-                smallExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom9"), 4);
+                muffledExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom6"), 3);
+                smallExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom9"), 3);
+
+                shieldHit = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/shooterHit/Shieldhit1"), 5);
 
                 soundEffects.Add(smallLaser);
                 soundEffects.Add(bigLaser);
@@ -100,6 +113,8 @@ namespace SpaceProject
                 soundEffects.Add(midSizeLaser);
                 soundEffects.Add(muffledExplosion);
                 soundEffects.Add(smallExplosion);
+
+                soundEffects.Add(shieldHit);
 
                 overworldEngine = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/engine_overworld_full"), 1);
 
@@ -116,6 +131,9 @@ namespace SpaceProject
                 soundEffects.Add(menuSelect);
 
                 activateBeacon = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/beacon/beacon1"), 1);
+                hover1 = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/overworldInteraction/hover1"), 1);
+                hover2 = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/overworldInteraction/hover2"), 1);
+                
                 soundEffects.Add(activateBeacon);
 
                 // Test list for testing purposes
@@ -149,11 +167,9 @@ namespace SpaceProject
 
         public void PlaySoundEffect(SoundEffects identifier, float pan = 0, float pitch = 0, Boolean isLooped = false)
         {
-            if (!muted 
-                && LoadSoundEffects)
+            if (!muted && LoadSoundEffects && identifier != SoundEffects.None)
             {
                 int i = (int)identifier;
-
                 SoundEffectInstance instance = soundEffects[i].CreateInstance();
 
                 if (instance != null)

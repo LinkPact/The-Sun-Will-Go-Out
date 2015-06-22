@@ -287,9 +287,7 @@ namespace SpaceProject
                 return;
 
             base.OnDamage();
-
             ApplyDamage(obj);
-
             TempInvincibility = CollisionHandlingVerticalShooter.TEMP_INVINCIBILITY;
         }
 
@@ -304,6 +302,8 @@ namespace SpaceProject
                 shieldDamage = damage;
                 Shield -= shieldDamage;
                 Game.AddGameObjToShooter(ShieldEffectGenerator.GenerateStandardShieldEffect(Game, spriteSheet, this));
+
+                Game.soundEffectsManager.PlaySoundEffect(SoundEffects.ShieldHit);
             }
             else
             {
@@ -311,6 +311,8 @@ namespace SpaceProject
                 shieldDamage = Shield;
                 HP -= HPdamage;
                 Shield = 0;
+
+                Game.soundEffectsManager.PlaySoundEffect(obj.getDeathSoundID());
             }
 
             if (Level.IsLogging)
