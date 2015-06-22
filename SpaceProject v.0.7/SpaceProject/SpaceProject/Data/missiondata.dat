@@ -409,11 +409,11 @@ Reputation = 0
 State = 1
 
 [Side_AstroDodger]
-Location = Fortrun Station I
+Location = New Norrland
 Name = Astro Dodger
 Introduction = [Alliance man] "I've got an important job for you. We recently lost a ship during a rutine scouting mission. We would need someone to investigate this incident."#"If possible rescue any survivors and if the worst has happened collect any data from the ships computers."
 ObjectiveText1 = Find the damaged shuttle in the overworld, last known coordinates were (-1750, -1800).
-ObjectiveText2 = You found the shuttle. Unfortunatly there were no survivors. Return to Soelara Station at coordinates (60, -1230) and tell the Alliance.
+ObjectiveText2 = You found the shuttle. Unfortunatly there were no survivors. Return to New Norrland at coordinates (-1300, -900) and tell the Alliance.
 PosResponse = Tell him you'll find them.
 NegResponse = Turn him down. You have a bad feeling about this...
 Accept = "Splendid! The communications were lost during a rutine scouting mission. The last recieved coordinates were (-1750, -1800) so you should find the shuttle close to that location. Good luck!"

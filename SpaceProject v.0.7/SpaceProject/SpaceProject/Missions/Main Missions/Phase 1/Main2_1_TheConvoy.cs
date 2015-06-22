@@ -43,6 +43,8 @@ namespace SpaceProject
             RestartAfterFail();
             Station soelaraStation = Game.stateManager.overworldState.GetStation("Soelara Station");
 
+            RewardItems.Add(new LongShotWeapon(Game, ItemVariety.regular));
+
             freighterHP = 2000;
 
             Setup();

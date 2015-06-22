@@ -78,11 +78,11 @@ namespace SpaceProject
         {
             destinations = new List<GameObjectOverworld>();
 
-            GameObjectOverworld fortrunStation1 =
-                Game.stateManager.overworldState.GetStation("Fortrun Station I");
+            GameObjectOverworld newNorrland =
+                Game.stateManager.overworldState.GetPlanet("New Norrland");
 
             AddDestination(destroyedShip, 2);
-            AddDestination(fortrunStation1);
+            AddDestination(newNorrland);
         }
 
         protected override void SetupObjectives()
@@ -105,7 +105,7 @@ namespace SpaceProject
                 LevelStartCondition.Immediately,
                 new EventTextCapsule(
                     GetEvent((int)EventID.Return),
-                    new EventText("You decide it's best to abandon the ship and return to Fortrun Station. No reward is worth getting crushed by asteroids."),
+                    new EventText("You decide it's best to abandon the ship and return to New Norrland. No reward is worth getting crushed by asteroids."),
                     EventTextCanvas.MessageBox)));
 
             objectives.Add(new ArriveAtLocationObjective(
