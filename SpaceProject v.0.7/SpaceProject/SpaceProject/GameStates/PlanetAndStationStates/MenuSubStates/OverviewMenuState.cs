@@ -193,9 +193,7 @@ namespace SpaceProject
                     case "Missions":
                         {
                             BaseStateManager.MissionMenuState.DisplayAvailableMissions(MissionManager.ReturnAvailableMissions(BaseState.GetBase().name));
-
                             BaseStateManager.ChangeMenuSubState("Mission");
-
                             BaseStateManager.MissionMenuState.SelectMission();
 
                             break;

@@ -70,7 +70,7 @@ namespace SpaceProject
         public virtual void Update(GameTime gameTime)
         {
             ButtonControls(gameTime);
-            //MouseControls();
+            MouseControls();
         }
 
         public virtual void ButtonActions() 

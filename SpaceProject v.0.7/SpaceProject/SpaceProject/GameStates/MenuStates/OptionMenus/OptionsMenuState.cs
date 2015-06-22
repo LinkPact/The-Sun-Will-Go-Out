@@ -142,7 +142,7 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            //MouseControls();
+            MouseControls();
 
             if (activeOptionState != null && Game.menuBGController.DisplayButtons)
             {

@@ -13,6 +13,10 @@ namespace SpaceProject
         private readonly float MenuOptionXDistance = 140f;
 
         protected List<string> menuOptions;
+        protected Vector2 menuOptionOrigin;
+        protected float menuOptionXDistance;
+        protected float menuOptionYDistance;
+        protected Vector2 screenPosition;
         protected List<System.Action> menuActions;
         protected int cursorIndex;
         protected int currentIndexMax;
@@ -66,11 +70,11 @@ namespace SpaceProject
 
             menuOptions = new List<string>();
             menuActions = new List<System.Action>();
-
             holdTimer = game.HoldKeyTreshold;
-
             usePause = true;
             useOkayButton = false;
+            menuOptionXDistance = MenuOptionXDistance;
+            menuOptionYDistance = 0;
 
             if (!(this is SelectionMenu))
             {
@@ -84,6 +88,9 @@ namespace SpaceProject
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            SetCameraOffset();
+            MouseControls();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -214,18 +221,7 @@ namespace SpaceProject
 
         protected virtual void DrawMenuOptions(SpriteBatch spriteBatch)
         {
-            Vector2 pos;
             Color color;
-
-            if (GameStateManager.currentState == "OverworldState")
-            {
-                pos = new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2,
-                                  game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 4);
-            }
-            else
-            {
-                pos = new Vector2(0, 4);
-            }
 
             for (int i = 0; i < menuOptions.Count; i++)
             {
@@ -238,8 +234,8 @@ namespace SpaceProject
 
                 spriteBatch.DrawString(FontManager.GetFontStatic(14),
                     menuOptions[i],
-                    new Vector2(pos.X + (i * MenuOptionXDistance),
-                                pos.Y) + FontManager.FontOffsetStatic,
+                    new Vector2(menuOptionOrigin.X + (i * MenuOptionXDistance),
+                                menuOptionOrigin.Y) + FontManager.FontOffsetStatic,
                     color,
                     0f,
                     Vector2.Zero,
@@ -272,6 +268,35 @@ namespace SpaceProject
         {
             PopupHandler.DisplayMenuOnReturn = true;
             Menu.lastIndex = currentIndex;
+        }
+
+        private void MouseControls()
+        {
+            for (int i = 0; i < menuOptions.Count; i++)
+            {
+                if (MathFunctions.IsMouseOverText(FontManager.GetFontStatic(14), menuOptions[i],
+                        new Vector2(menuOptionOrigin.X + i * menuOptionXDistance,
+                        menuOptionOrigin.Y + i * menuOptionYDistance) + FontManager.FontOffsetStatic,
+                        screenPosition, this is SelectionMenu))
+                {
+                    cursorIndex = i;
+                }
+            }
+        }
+
+        protected virtual void SetCameraOffset()
+        {
+            if (GameStateManager.currentState == "OverworldState")
+            {
+                menuOptionOrigin = new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2,
+                                  game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 4);
+                screenPosition = game.camera.Position - game.ScreenCenter;
+            }
+            else
+            {
+                menuOptionOrigin = new Vector2(0, 4);
+                screenPosition = Vector2.Zero;
+            }
         }
     }
 }

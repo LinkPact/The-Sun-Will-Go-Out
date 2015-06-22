@@ -82,9 +82,8 @@ namespace SpaceProject
             pressDelay--;
 
             if (pressDelay < 0 &&
-                (ControlManager.CheckPress(RebindableKeys.Action1) || 
-                ControlManager.CheckPress(RebindableKeys.Action2) ||
-                ControlManager.CheckKeyPress(Keys.Enter)))
+                (ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckPress(RebindableKeys.Action2) 
+                || ControlManager.CheckKeyPress(Keys.Enter) || ControlManager.IsLeftMouseButtonClicked()))
             {
                 backdropSpeed = 0;
                 backdropPosition = preferredBackdropPosition;

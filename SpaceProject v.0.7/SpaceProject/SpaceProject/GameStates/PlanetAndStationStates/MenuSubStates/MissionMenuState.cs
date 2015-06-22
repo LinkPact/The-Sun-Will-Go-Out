@@ -663,6 +663,7 @@ namespace SpaceProject
         {
             if (MissionManager.MissionEventBuffer.Count <= 0)
             {
+
                 List<String> temp = new List<String>();
 
                 Game.SaveOnEnterOverworld = true;
@@ -711,11 +712,6 @@ namespace SpaceProject
                                                                           false, true,
                                                                           temp[0]));
 
-                    for (int i = 1; i < temp.Count; i++)
-                    {
-                        MissionManager.MissionEventBuffer.Add(temp[i]);
-                    }
-
                     MissionManager.MarkCompletedMissionAsDead(completedMissions[0].MissionID);
 
                     BaseStateManager.ButtonControl = ButtonControl.Confirm;
@@ -724,42 +720,47 @@ namespace SpaceProject
                 else
                 {
 
+                    BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                                                  tempRect,
+                                                  false, true,
+                                                  temp[0]));
+
                     List<Item> rewardItems = completedMissions[0].RewardItems;
 
                     if (rewardItems.Count > 0)
                     {
-                        string rewardText = "";
+                        StringBuilder rewardText = new StringBuilder("");
 
+                        rewardText.Append("Your reward is: \n");
+                        if (completedMissions[0].MoneyReward > 0)
+                        {
+                            rewardText.Append("\n" + completedMissions[0].MoneyReward.ToString() + " Rupees");
+                        }
                         foreach (Item reward in rewardItems)
                         {
-                            rewardText += "\n" + reward.Name;
+                            rewardText.Append("\n" + reward.Name);
                         }
 
-                        BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                          tempRect,
-                                                                          false, false,
-                                                                          temp[0] +
-                                                                          "\n\n" +
-                                                                          "Your reward is: \n" +
-                                                                          completedMissions[0].MoneyReward + " Rupees" +
-                                                                          rewardText));
+                        temp.Add(rewardText.ToString());
+
                     }
 
                     else
                     {
-                        BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                          tempRect,
-                                                                          false, false,
-                                                                          temp[0] +
-                                                                          "\n\n" +
-                                                                          "Your reward is: \n" +
-                                                                          completedMissions[0].MoneyReward + " Rupees"));
+                        temp.Add("Your reward is: \n" + completedMissions[0].MoneyReward +
+                            " Rupees");
                     }
 
                     MissionManager.MarkCompletedMissionAsDead(completedMissions[0].MissionID);
 
                     BaseStateManager.ButtonControl = ButtonControl.Confirm;
                 }
+
+                for (int i = 1; i < temp.Count; i++)
+                {
+                    MissionManager.MissionEventBuffer.Add(temp[i]);
+                }
+
 
                 TextToSpeech.Speak(temp[0]);
             }

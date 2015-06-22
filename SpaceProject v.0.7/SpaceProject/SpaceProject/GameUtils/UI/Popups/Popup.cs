@@ -207,6 +207,10 @@ namespace SpaceProject
             {
                 OnPress(RebindableKeys.Down);
             }
+            else if (ControlManager.IsLeftMouseButtonClicked())
+            {
+                OnPress(RebindableKeys.Action1);
+            }
         }
     }
 }

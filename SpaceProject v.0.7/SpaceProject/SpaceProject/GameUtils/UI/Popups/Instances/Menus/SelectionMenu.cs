@@ -28,6 +28,9 @@ namespace SpaceProject
             textContainer.Initialize();
             textContainer.SetDefaultPosition(this.GetType());
             textContainer.UseScrolling = false;
+
+            menuOptionXDistance = 0;
+            menuOptionYDistance = MenuOptionYDistance;
         }
 
         public override void Update(GameTime gameTime)
@@ -127,6 +130,20 @@ namespace SpaceProject
         public void SetMessage(params string[] messages)
         {
             textContainer.SetMessage(messages);
+        }
+
+        protected override void SetCameraOffset()
+        {
+            menuOptionOrigin = canvasPosition;
+
+            if (GameStateManager.currentState == "OverworldState")
+            {
+                screenPosition = game.camera.Position - game.ScreenCenter;
+            }
+            else
+            {
+                screenPosition = Vector2.Zero;
+            }
         }
     }
 }
