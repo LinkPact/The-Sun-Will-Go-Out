@@ -230,325 +230,10 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            #region Input
+            base.Update(gameTime);
 
-            #region Keyboard
-            if (BaseStateManager.ButtonControl == ButtonControl.Shop)
-            {
-                if (ControlManager.CheckPress(RebindableKeys.Action2) ||
-                    ControlManager.CheckPress(RebindableKeys.Pause))
-                {
-                    base.Update(gameTime);
-                }
-            }
-
-            #region CursorControls
-            if (BaseStateManager.ButtonControl == ButtonControl.Shop)
-            {
-                //Moves button cursor down when pressing down. 
-                if (ControlManager.CheckPress(RebindableKeys.Down))
-                {
-                    inventoryCursorIndex.Y++;
-                    savedYPos = -1;
-                    itemComp.ShowSymbols = false;
-                    holdTimer = Game.HoldKeyTreshold;
-                }
-
-                else if (ControlManager.CheckHold(RebindableKeys.Down))
-                {
-                    holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
-
-                    if (holdTimer <= 0)
-                    {
-                        inventoryCursorIndex.Y++;
-                        savedYPos = -1;
-                        itemComp.ShowSymbols = false;
-                        holdTimer = Game.ScrollSpeedFast;
-                    }
-                }
-
-                //Moves button cursor up when pressing up
-                else if (ControlManager.CheckPress(RebindableKeys.Up))
-                {
-                    inventoryCursorIndex.Y--;
-                    savedYPos = -1;
-                    itemComp.ShowSymbols = false;
-                    holdTimer = Game.HoldKeyTreshold;
-                }
-
-                else if (ControlManager.CheckHold(RebindableKeys.Up))
-                {
-                    holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
-
-                    if (holdTimer <= 0)
-                    {
-                        inventoryCursorIndex.Y--;
-                        savedYPos = -1;
-                        itemComp.ShowSymbols = false;
-                        holdTimer = Game.ScrollSpeedFast;
-                    }
-                }
-
-                //Moves button cursor right when pressing right. 
-                if (ControlManager.CheckPress(RebindableKeys.Right))
-                {
-                    if (ShipInventoryManager.inventorySize > 14)
-                    {
-                        if (savedYPos != -1)
-                        {
-                            inventoryCursorIndex.Y = savedYPos;
-                            savedYPos = -1;
-                        }
-
-                        if (inventoryCursorIndex.X == 1)
-                            savedYPos = inventoryCursorIndex.Y;
-
-                        inventoryCursorIndex.X++;
-
-                        if (inventoryCursorIndex.X > 3)
-                            inventoryCursorIndex.X = 3;
-
-                        if (inventoryCursorIndex.Y > ShipInventoryManager.inventorySize - 14 &&
-                            inventoryCursorIndex.X.Equals(2))
-                            inventoryCursorIndex.Y = ShipInventoryManager.inventorySize - 14;
-                    }
-
-                    else
-                    {
-                        inventoryCursorIndex.X = 3;
-                    }
-
-                    itemComp.ShowSymbols = false;
-                    holdTimer = Game.HoldKeyTreshold;
-                }
-
-                else if (ControlManager.CheckHold(RebindableKeys.Right))
-                {
-                    holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
-
-                    if (holdTimer <= 0)
-                    {
-                        if (ShipInventoryManager.inventorySize > 14)
-                        {
-                            if (savedYPos != -1)
-                            {
-                                inventoryCursorIndex.Y = savedYPos;
-                                savedYPos = -1;
-                            }
-
-                            if (inventoryCursorIndex.X == 1)
-                                savedYPos = inventoryCursorIndex.Y;
-
-                            inventoryCursorIndex.X++;
-
-                            if (inventoryCursorIndex.X > 3)
-                                inventoryCursorIndex.X = 3;
-
-                            if (inventoryCursorIndex.Y > ShipInventoryManager.inventorySize - 14 &&
-                                inventoryCursorIndex.X.Equals(2))
-                                inventoryCursorIndex.Y = ShipInventoryManager.inventorySize - 14;
-                        }
-
-                        else
-                        {
-                            inventoryCursorIndex.X = 3;
-                        }
-
-                        itemComp.ShowSymbols = false;
-
-                        holdTimer = Game.ScrollSpeedFast;
-                    }
-                }
-
-                //Moves button cursor left when pressing left
-                else if (ControlManager.CheckPress(RebindableKeys.Left))
-                {
-                    if (ShipInventoryManager.inventorySize > 14)
-                    {
-                        if (savedYPos != -1)
-                        {
-                            inventoryCursorIndex.Y = savedYPos;
-                            savedYPos = -1;
-                        }
-
-                        if (inventoryCursorIndex.X == 3)
-                            savedYPos = inventoryCursorIndex.Y;
-
-                        inventoryCursorIndex.X--;
-
-                        if (inventoryCursorIndex.Y > ShipInventoryManager.inventorySize - 14 &&
-                            inventoryCursorIndex.X.Equals(2))
-                            inventoryCursorIndex.Y = ShipInventoryManager.inventorySize - 14;
-                    }
-
-                    else
-                    {
-                        inventoryCursorIndex.X = 1;
-
-                        if (inventoryCursorIndex.Y > ShipInventoryManager.inventorySize &&
-                            inventoryCursorIndex.X.Equals(1))
-                            inventoryCursorIndex.Y = ShipInventoryManager.inventorySize;
-                    }
-
-                    itemComp.ShowSymbols = false;
-                    holdTimer = Game.HoldKeyTreshold;
-                }
-
-                else if (ControlManager.CheckHold(RebindableKeys.Left))
-                {
-                    holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
-
-                    if (holdTimer <= 0)
-                    {
-                        if (ShipInventoryManager.inventorySize > 14)
-                        {
-                            if (savedYPos != -1)
-                            {
-                                inventoryCursorIndex.Y = savedYPos;
-                                savedYPos = -1;
-                            }
-
-                            if (inventoryCursorIndex.X == 3)
-                                savedYPos = inventoryCursorIndex.Y;
-
-                            inventoryCursorIndex.X--;
-
-                            if (inventoryCursorIndex.Y > ShipInventoryManager.inventorySize - 14 &&
-                                inventoryCursorIndex.X.Equals(2))
-                                inventoryCursorIndex.Y = ShipInventoryManager.inventorySize - 14;
-                        }
-
-                        else
-                        {
-                            inventoryCursorIndex.X = 1;
-
-                            if (inventoryCursorIndex.Y > ShipInventoryManager.inventorySize &&
-                                inventoryCursorIndex.X.Equals(1))
-                                inventoryCursorIndex.Y = ShipInventoryManager.inventorySize;
-                        }
-
-                        itemComp.ShowSymbols = false;
-                        holdTimer = Game.ScrollSpeedFast;
-                    }
-                }
-            }
-
-            else if (BaseStateManager.ButtonControl == ButtonControl.TransactionConfirm)
-            {
-                if (ControlManager.CheckPress(RebindableKeys.Up))
-                {
-                    confirmMenuIndex--;
-                }
-
-                else if (ControlManager.CheckPress(RebindableKeys.Down))
-                {
-                    confirmMenuIndex++;
-                }
-
-                if (confirmMenuIndex > confirmOptions.Count - 1)
-                {
-                    confirmMenuIndex = 0;
-                }
-
-                else if (confirmMenuIndex < 0)
-                {
-                    confirmMenuIndex = confirmOptions.Count - 1;
-                }
-
-                if (confirmOptions.Count > 0 && confirmMenuIndex == 1 &&
-                    (confirmOptions[1].ToLower().EndsWith("unit") || confirmOptions[1].ToLower().EndsWith("units")))
-                {
-                    if (ControlManager.CheckPress(RebindableKeys.Right))
-                    {
-                        quantityCounterIndex++;
-                        holdTimer = Game.HoldKeyTreshold;
-                    }
-
-                    else if (ControlManager.CheckHold(RebindableKeys.Right))
-                    {
-                        holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
-
-                        if (holdTimer <= 0)
-                        {
-                            quantityCounterIndex++;
-                            holdTimer = Game.ScrollSpeedFast;
-                        }
-                    }
-
-                    else if (ControlManager.CheckPress(RebindableKeys.Left))
-                    {
-                        quantityCounterIndex--;
-                        holdTimer = Game.HoldKeyTreshold;
-                    }
-
-                    else if (ControlManager.CheckHold(RebindableKeys.Left))
-                    {
-                        holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
-
-                        if (holdTimer <= 0)
-                        {
-                            quantityCounterIndex--;
-                            holdTimer = Game.ScrollSpeedFast;
-                        }
-                    }
-                    if (itemToSell != null)
-                    {
-                        if (quantityCounterIndex > ((QuantityItem)itemToSell).Quantity)
-                        {
-                            quantityCounterIndex = (int)((QuantityItem)itemToSell).Quantity;
-                        }
-                    }
-
-                    else if (itemToBuy != null)
-                    {
-                        if (quantityCounterIndex > ((QuantityItem)itemToBuy).Quantity)
-                        {
-                            quantityCounterIndex = (int)((QuantityItem)itemToBuy).Quantity;
-                        }
-                    }
-
-                    if (quantityCounterIndex < 0)
-                    {
-                        quantityCounterIndex = 0;
-                    }
-
-                    if (quantityCounterIndex > 1)
-                    {
-                        if (itemToSell != null)
-                        {
-                            confirmOptions[1] = "Sell " + quantityCounterIndex.ToString() + " units";
-                        }
-
-                        else if (itemToBuy != null)
-                        {
-                            confirmOptions[1] = "Buy " + quantityCounterIndex.ToString() + " units";
-                        }
-                    }
-
-                    else
-                    {
-                        if (itemToSell != null)
-                        {
-                            confirmOptions[1] = "Sell " + quantityCounterIndex.ToString() + " unit";
-                        }
-
-                        else if (itemToBuy != null)
-                        {
-                            confirmOptions[1] = "Buy " + quantityCounterIndex.ToString() + " unit";
-                        }
-                    }
-
-                }
-
-                if ((itemToBuy != null && itemToBuy is QuantityItem) ||
-                    itemToSell != null && itemToSell is QuantityItem)
-                {
-                    UpdateConfirmMenuMessage();
-                }
-            }
-            #endregion
-
-            #endregion
+            ButtonControls(gameTime);
+            MouseControls();
 
             #region Wrapping And Positioning
 
@@ -669,34 +354,7 @@ namespace SpaceProject
 
             #endregion            
 
-            #endregion
-
-            itemComp.CompareStats();
-
-            if (!itemComp.ShowSymbols)
-            {
-                if (inventoryCursorIndex.X == 1)
-                {
-                    itemComp.SetItem2(ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y - 1]);
-                    itemComp.FindEquippedItem(ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y - 1].Kind);
-                    itemComp.ShowSymbols = true;
-                }
-
-                else if (inventoryCursorIndex.X == 2)
-                {
-                    itemComp.SetItem2(ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y + 13]);
-                    itemComp.FindEquippedItem(ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y + 13].Kind);
-                    itemComp.ShowSymbols = true;
-                }
-
-                else
-                {
-                    itemComp.SetItem2(shopInventory[(int)inventoryCursorIndex.Y - 1]);
-                    itemComp.FindEquippedItem(shopInventory[(int)inventoryCursorIndex.Y - 1].Kind);
-                    itemComp.ShowSymbols = true;
-                }
-            }
-
+            CompareStats();
         }
 
         int tempIndex;
@@ -1449,6 +1107,405 @@ namespace SpaceProject
 
             spriteBatch.Draw(line.Texture, new Vector2(line4XPos, lineYPos), line.SourceRectangle, Color.DarkSeaGreen, 0f,
                 Vector2.Zero, new Vector2(1, lineLength), SpriteEffects.None, 1f);
+        }
+
+        private void ButtonControls(GameTime gameTime)
+        {
+            if (BaseStateManager.ButtonControl == ButtonControl.Shop)
+            {
+                //Moves button cursor down when pressing down. 
+                if (ControlManager.CheckPress(RebindableKeys.Down))
+                {
+                    inventoryCursorIndex.Y++;
+                    savedYPos = -1;
+                    itemComp.ShowSymbols = false;
+                    holdTimer = Game.HoldKeyTreshold;
+                }
+
+                else if (ControlManager.CheckHold(RebindableKeys.Down))
+                {
+                    holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
+
+                    if (holdTimer <= 0)
+                    {
+                        inventoryCursorIndex.Y++;
+                        savedYPos = -1;
+                        itemComp.ShowSymbols = false;
+                        holdTimer = Game.ScrollSpeedFast;
+                    }
+                }
+
+                //Moves button cursor up when pressing up
+                else if (ControlManager.CheckPress(RebindableKeys.Up))
+                {
+                    inventoryCursorIndex.Y--;
+                    savedYPos = -1;
+                    itemComp.ShowSymbols = false;
+                    holdTimer = Game.HoldKeyTreshold;
+                }
+
+                else if (ControlManager.CheckHold(RebindableKeys.Up))
+                {
+                    holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
+
+                    if (holdTimer <= 0)
+                    {
+                        inventoryCursorIndex.Y--;
+                        savedYPos = -1;
+                        itemComp.ShowSymbols = false;
+                        holdTimer = Game.ScrollSpeedFast;
+                    }
+                }
+
+                //Moves button cursor right when pressing right. 
+                if (ControlManager.CheckPress(RebindableKeys.Right))
+                {
+                    if (ShipInventoryManager.inventorySize > 14)
+                    {
+                        if (savedYPos != -1)
+                        {
+                            inventoryCursorIndex.Y = savedYPos;
+                            savedYPos = -1;
+                        }
+
+                        if (inventoryCursorIndex.X == 1)
+                            savedYPos = inventoryCursorIndex.Y;
+
+                        inventoryCursorIndex.X++;
+
+                        if (inventoryCursorIndex.X > 3)
+                            inventoryCursorIndex.X = 3;
+
+                        if (inventoryCursorIndex.Y > ShipInventoryManager.inventorySize - 14 &&
+                            inventoryCursorIndex.X.Equals(2))
+                            inventoryCursorIndex.Y = ShipInventoryManager.inventorySize - 14;
+                    }
+
+                    else
+                    {
+                        inventoryCursorIndex.X = 3;
+                    }
+
+                    itemComp.ShowSymbols = false;
+                    holdTimer = Game.HoldKeyTreshold;
+                }
+
+                else if (ControlManager.CheckHold(RebindableKeys.Right))
+                {
+                    holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
+
+                    if (holdTimer <= 0)
+                    {
+                        if (ShipInventoryManager.inventorySize > 14)
+                        {
+                            if (savedYPos != -1)
+                            {
+                                inventoryCursorIndex.Y = savedYPos;
+                                savedYPos = -1;
+                            }
+
+                            if (inventoryCursorIndex.X == 1)
+                                savedYPos = inventoryCursorIndex.Y;
+
+                            inventoryCursorIndex.X++;
+
+                            if (inventoryCursorIndex.X > 3)
+                                inventoryCursorIndex.X = 3;
+
+                            if (inventoryCursorIndex.Y > ShipInventoryManager.inventorySize - 14 &&
+                                inventoryCursorIndex.X.Equals(2))
+                                inventoryCursorIndex.Y = ShipInventoryManager.inventorySize - 14;
+                        }
+
+                        else
+                        {
+                            inventoryCursorIndex.X = 3;
+                        }
+
+                        itemComp.ShowSymbols = false;
+
+                        holdTimer = Game.ScrollSpeedFast;
+                    }
+                }
+
+                //Moves button cursor left when pressing left
+                else if (ControlManager.CheckPress(RebindableKeys.Left))
+                {
+                    if (ShipInventoryManager.inventorySize > 14)
+                    {
+                        if (savedYPos != -1)
+                        {
+                            inventoryCursorIndex.Y = savedYPos;
+                            savedYPos = -1;
+                        }
+
+                        if (inventoryCursorIndex.X == 3)
+                            savedYPos = inventoryCursorIndex.Y;
+
+                        inventoryCursorIndex.X--;
+
+                        if (inventoryCursorIndex.Y > ShipInventoryManager.inventorySize - 14 &&
+                            inventoryCursorIndex.X.Equals(2))
+                            inventoryCursorIndex.Y = ShipInventoryManager.inventorySize - 14;
+                    }
+
+                    else
+                    {
+                        inventoryCursorIndex.X = 1;
+
+                        if (inventoryCursorIndex.Y > ShipInventoryManager.inventorySize &&
+                            inventoryCursorIndex.X.Equals(1))
+                            inventoryCursorIndex.Y = ShipInventoryManager.inventorySize;
+                    }
+
+                    itemComp.ShowSymbols = false;
+                    holdTimer = Game.HoldKeyTreshold;
+                }
+
+                else if (ControlManager.CheckHold(RebindableKeys.Left))
+                {
+                    holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
+
+                    if (holdTimer <= 0)
+                    {
+                        if (ShipInventoryManager.inventorySize > 14)
+                        {
+                            if (savedYPos != -1)
+                            {
+                                inventoryCursorIndex.Y = savedYPos;
+                                savedYPos = -1;
+                            }
+
+                            if (inventoryCursorIndex.X == 3)
+                                savedYPos = inventoryCursorIndex.Y;
+
+                            inventoryCursorIndex.X--;
+
+                            if (inventoryCursorIndex.Y > ShipInventoryManager.inventorySize - 14 &&
+                                inventoryCursorIndex.X.Equals(2))
+                                inventoryCursorIndex.Y = ShipInventoryManager.inventorySize - 14;
+                        }
+
+                        else
+                        {
+                            inventoryCursorIndex.X = 1;
+
+                            if (inventoryCursorIndex.Y > ShipInventoryManager.inventorySize &&
+                                inventoryCursorIndex.X.Equals(1))
+                                inventoryCursorIndex.Y = ShipInventoryManager.inventorySize;
+                        }
+
+                        itemComp.ShowSymbols = false;
+                        holdTimer = Game.ScrollSpeedFast;
+                    }
+                }
+            }
+
+            else if (BaseStateManager.ButtonControl == ButtonControl.TransactionConfirm)
+            {
+                if (ControlManager.CheckPress(RebindableKeys.Up))
+                {
+                    confirmMenuIndex--;
+                }
+
+                else if (ControlManager.CheckPress(RebindableKeys.Down))
+                {
+                    confirmMenuIndex++;
+                }
+
+                if (confirmMenuIndex > confirmOptions.Count - 1)
+                {
+                    confirmMenuIndex = 0;
+                }
+
+                else if (confirmMenuIndex < 0)
+                {
+                    confirmMenuIndex = confirmOptions.Count - 1;
+                }
+
+                if (confirmOptions.Count > 0 && confirmMenuIndex == 1 &&
+                    (confirmOptions[1].ToLower().EndsWith("unit") || confirmOptions[1].ToLower().EndsWith("units")))
+                {
+                    if (ControlManager.CheckPress(RebindableKeys.Right))
+                    {
+                        quantityCounterIndex++;
+                        holdTimer = Game.HoldKeyTreshold;
+                    }
+
+                    else if (ControlManager.CheckHold(RebindableKeys.Right))
+                    {
+                        holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
+
+                        if (holdTimer <= 0)
+                        {
+                            quantityCounterIndex++;
+                            holdTimer = Game.ScrollSpeedFast;
+                        }
+                    }
+
+                    else if (ControlManager.CheckPress(RebindableKeys.Left))
+                    {
+                        quantityCounterIndex--;
+                        holdTimer = Game.HoldKeyTreshold;
+                    }
+
+                    else if (ControlManager.CheckHold(RebindableKeys.Left))
+                    {
+                        holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
+
+                        if (holdTimer <= 0)
+                        {
+                            quantityCounterIndex--;
+                            holdTimer = Game.ScrollSpeedFast;
+                        }
+                    }
+                    if (itemToSell != null)
+                    {
+                        if (quantityCounterIndex > ((QuantityItem)itemToSell).Quantity)
+                        {
+                            quantityCounterIndex = (int)((QuantityItem)itemToSell).Quantity;
+                        }
+                    }
+
+                    else if (itemToBuy != null)
+                    {
+                        if (quantityCounterIndex > ((QuantityItem)itemToBuy).Quantity)
+                        {
+                            quantityCounterIndex = (int)((QuantityItem)itemToBuy).Quantity;
+                        }
+                    }
+
+                    if (quantityCounterIndex < 0)
+                    {
+                        quantityCounterIndex = 0;
+                    }
+
+                    if (quantityCounterIndex > 1)
+                    {
+                        if (itemToSell != null)
+                        {
+                            confirmOptions[1] = "Sell " + quantityCounterIndex.ToString() + " units";
+                        }
+
+                        else if (itemToBuy != null)
+                        {
+                            confirmOptions[1] = "Buy " + quantityCounterIndex.ToString() + " units";
+                        }
+                    }
+
+                    else
+                    {
+                        if (itemToSell != null)
+                        {
+                            confirmOptions[1] = "Sell " + quantityCounterIndex.ToString() + " unit";
+                        }
+
+                        else if (itemToBuy != null)
+                        {
+                            confirmOptions[1] = "Buy " + quantityCounterIndex.ToString() + " unit";
+                        }
+                    }
+
+                }
+
+                if ((itemToBuy != null && itemToBuy is QuantityItem) ||
+                    itemToSell != null && itemToSell is QuantityItem)
+                {
+                    UpdateConfirmMenuMessage();
+                }
+            }
+        }
+
+        private void MouseControls()
+        {
+            if (BaseStateManager.ButtonControl == ButtonControl.Shop)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    string name;
+                    float xPos;
+
+                    if (i == 0)
+                    {
+                        name = ShipInventoryManager.ShipItems[i].Name;
+                        xPos = invColumn1XPosition;
+                    }
+                    else if (i == 1)
+                    {
+                        name = ShipInventoryManager.ShipItems[i].Name;
+                        xPos = invColumn2XPosition;
+                    }
+                    else
+                    {
+                        name = ShipInventoryManager.ShipItems[i].Name;
+                        xPos = shopColumnXPosition;
+                    }
+
+                    for (int j = 0; j < 15; j++)
+                    {
+                        if (j == 15)
+                        {
+                            name = "Back";
+                        }
+
+                        if (ControlManager.IsMouseOverText(FontManager.GetFontStatic(14), name,
+                            new Vector2(xPos, columnYPosition + (j * InventoryYSpacing)) + Game.fontManager.FontOffset,
+                            Vector2.Zero, false))
+                        {
+                            inventoryCursorIndex.X = i + 1;
+                            inventoryCursorIndex.Y = j + 1;
+                        }
+                    }
+                }
+            }
+            else if (BaseStateManager.ButtonControl == ButtonControl.TransactionConfirm)
+            {
+                int divider = 4;
+
+                if (confirmOptions.Count > 2)
+                {
+                    divider = 6;
+                }
+
+                for (int i = 0; i < confirmOptions.Count; i++)
+                {
+                    if (ControlManager.IsMouseOverText(FontManager.GetFontStatic(14), confirmOptions[i], 
+                        new Vector2(Game.Window.ClientBounds.Width / 2,
+                            Game.Window.ClientBounds.Height / 2 + ((confirmMenuSprite.Height * 1.5f) / divider) + (i * 20))))
+                    {
+                        confirmMenuIndex = i;
+                    }
+                }
+            }
+        }
+
+        private void CompareStats()
+        {
+            itemComp.CompareStats();
+
+            if (!itemComp.ShowSymbols)
+            {
+                if (inventoryCursorIndex.X == 1)
+                {
+                    itemComp.SetItem2(ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y - 1]);
+                    itemComp.FindEquippedItem(ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y - 1].Kind);
+                    itemComp.ShowSymbols = true;
+                }
+
+                else if (inventoryCursorIndex.X == 2)
+                {
+                    itemComp.SetItem2(ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y + 13]);
+                    itemComp.FindEquippedItem(ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y + 13].Kind);
+                    itemComp.ShowSymbols = true;
+                }
+
+                else
+                {
+                    itemComp.SetItem2(shopInventory[(int)inventoryCursorIndex.Y - 1]);
+                    itemComp.FindEquippedItem(shopInventory[(int)inventoryCursorIndex.Y - 1].Kind);
+                    itemComp.ShowSymbols = true;
+                }
+            }
         }
     }
 }

@@ -35,10 +35,6 @@ namespace SpaceProject
             shopMenuState.Initialize();
             menuStates.Add(shopMenuState);
 
-            fuelShopMenuState = new FuelShopMenuState(this.Game, "FuelShop", this, stationState);
-            fuelShopMenuState.Initialize();
-            menuStates.Add(fuelShopMenuState);
-
             rumorsMenuState = new RumorsMenuState(this.Game, "Rumors", this, stationState);
             rumorsMenuState.Initialize();
             menuStates.Add(rumorsMenuState);

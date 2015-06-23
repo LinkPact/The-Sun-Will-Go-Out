@@ -18,12 +18,6 @@ namespace SpaceProject
         public MenuDisplayObject ButtonRumors { get { return buttonRumors; } set { buttonRumors = value; } }
         public MenuDisplayObject ButtonBack { get { return buttonBack; } set { buttonBack = value; } } 
 
-        private Cursor shopSelectCursor;
-        private int shopSelectCursorIndex;
-        private Rectangle shopSelectRectangle1;
-        private Rectangle shopSelectRectangle2;
-        private Rectangle shopSelectRectangle3;
-
         public OverviewMenuState(Game1 game, String name, BaseStateManager manager, BaseState baseState) :
             base(game, name, manager, baseState)
         { }
@@ -33,23 +27,6 @@ namespace SpaceProject
             base.Initialize();
 
             SetButtons();
-
-            shopSelectCursor = new Cursor(this.Game, this.SpriteSheet, new Rectangle(201, 121, 14, 14), new Rectangle(201, 134, 14, 14));
-
-            shopSelectRectangle1 = new Rectangle(Game.Window.ClientBounds.Width * 2 / 3,
-                                                Game.Window.ClientBounds.Height / 2 + 100,
-                                                Game.Window.ClientBounds.Width * 2 / 3 - 20,
-                                                10);
-
-            shopSelectRectangle2 = new Rectangle(Game.Window.ClientBounds.Width * 2 / 3,
-                                                Game.Window.ClientBounds.Height / 2 + 120,
-                                                Game.Window.ClientBounds.Width * 2 / 3 - 20,
-                                                10);
-
-            shopSelectRectangle3 = new Rectangle(Game.Window.ClientBounds.Width * 2 / 3,
-                                                Game.Window.ClientBounds.Height / 2 + 140,
-                                                Game.Window.ClientBounds.Width * 2 / 3 - 20,
-                                                10);
         }
 
         public override void OnEnter()
@@ -93,8 +70,6 @@ namespace SpaceProject
                 if (MissionManager.ReturnCompletedMissions(BaseState.GetBase().name).Count <= 0 &&
                     MissionManager.ReturnFailedMissions(BaseState.GetBase().name).Count <= 0)
                 {
-                    shopSelectCursorIndex = 0;
-
                     CursorActions();
 
                     if (StatsManager.EmergencyFusionCell < 1)
@@ -117,60 +92,6 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            if (ControlManager.CheckKeyPress(Microsoft.Xna.Framework.Input.Keys.S))
-            {
-                BaseStateManager.ChangeMenuSubState("Shop");
-
-                BaseStateManager.TextBoxes.Clear();
-                shopSelectCursor.isVisible = false;
-            }
-
-            if (BaseStateManager.ButtonControl == ButtonControl.SelectShop)
-            {
-                shopSelectCursor.isActive = true;
-                shopSelectCursor.isVisible = true;
-
-                BaseStateManager.ActiveButton = null;
-
-                //Moves button cursor right when pressing up. 
-                if (ControlManager.CheckPress(RebindableKeys.Up))
-                    shopSelectCursorIndex--;
-
-                //Moves button cursor left when pressing down
-                else if (ControlManager.CheckPress(RebindableKeys.Down))
-                    shopSelectCursorIndex++;
-
-                if (shopSelectCursorIndex > 1)
-                    shopSelectCursorIndex = 0;
-
-                else if (shopSelectCursorIndex < 0)
-                    shopSelectCursorIndex = 1;
-
-                switch (shopSelectCursorIndex)
-                {
-                    case 0:
-                        {
-                            shopSelectCursor.position.X = shopSelectRectangle1.X - Game.fontManager.GetFont(16).MeasureString("Buy/Sell Items").X / 2 - 10;
-                            shopSelectCursor.position.Y = shopSelectRectangle1.Y + 13;
-                            break;
-                        }
-
-                    case 1:
-                        {
-                            shopSelectCursor.position.X = shopSelectRectangle3.X - Game.fontManager.GetFont(16).MeasureString("Back").X / 2 - 10;
-                            shopSelectCursor.position.Y = shopSelectRectangle3.Y + 13;
-                            break;
-                        }
-                }
-
-            }
-
-            else
-            {
-                shopSelectCursor.isActive = false;
-                shopSelectCursor.isVisible = false;
-            }
-
             if (ControlManager.CheckPress(RebindableKeys.Action2) ||
                 ControlManager.CheckPress(RebindableKeys.Pause))
             {
@@ -210,7 +131,6 @@ namespace SpaceProject
                             BaseStateManager.ChangeMenuSubState("Shop");
 
                             BaseStateManager.TextBoxes.Clear();
-                            shopSelectCursor.isVisible = false;
                             buttonBack.isVisible = false;
                             buttonShop.isVisible = false;
                             break;
@@ -240,10 +160,7 @@ namespace SpaceProject
             base.CursorActions();
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            shopSelectCursor.Draw(spriteBatch);
-        }
+        public override void Draw(SpriteBatch spriteBatch) { }
 
         public void SetButtons()
         {

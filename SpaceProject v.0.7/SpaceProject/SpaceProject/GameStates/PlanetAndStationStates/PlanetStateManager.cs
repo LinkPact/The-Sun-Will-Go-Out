@@ -29,14 +29,6 @@ namespace SpaceProject
             overviewMenuState.Initialize();
             menuStates.Add(overviewMenuState);
 
-            infoMenuState = new InfoMenuState(this.Game, "Info", this, planetState);
-            infoMenuState.Initialize();
-            menuStates.Add(infoMenuState);
-
-            miningMenuState = new MineMenuState(this.Game, "Mining", this, planetState);
-            miningMenuState.Initialize();
-            menuStates.Add(miningMenuState);
-
             missionMenuState = new MissionMenuState(this.Game, "Mission", this, planetState);
             missionMenuState.Initialize();
             menuStates.Add(missionMenuState);
@@ -44,10 +36,6 @@ namespace SpaceProject
             shopMenuState = new ShopMenuState(this.Game, "Shop", this, planetState);
             shopMenuState.Initialize();
             menuStates.Add(shopMenuState);
-
-            fuelShopMenuState = new FuelShopMenuState(this.Game, "FuelShop", this, planetState);
-            fuelShopMenuState.Initialize();
-            menuStates.Add(fuelShopMenuState);
 
             rumorsMenuState = new RumorsMenuState(this.Game, "Rumors", this, planetState);
             rumorsMenuState.Initialize();

@@ -38,6 +38,7 @@ namespace SpaceProject
         //Cursor-related variables
         private int layer;
         private CursorCoordinate cursorCoordLv1;
+        public CursorCoordinate CursorCoordLv1 { get { return cursorCoordLv1; } set { cursorCoordLv1 = value; } }
         private int cursorLv2Pos;
 
         #endregion

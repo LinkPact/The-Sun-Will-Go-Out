@@ -143,11 +143,13 @@ namespace SpaceProject
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (MenuDisplayObject dispObj in displayList)
+            for (int i = 0; i < displayList.Count; i++)
             {
-                dispObj.Draw(spriteBatch);
-                spriteBatch.DrawString(FontManager.GetFontStatic(14), dispObj.name, dispObj.Position, FontManager.FontColorStatic, 0f,
-                    FontManager.GetFontStatic(14).MeasureString(dispObj.name) / 2, 1f, SpriteEffects.None, 1f);
+                displayList[i].Draw(spriteBatch);
+
+                spriteBatch.DrawString(FontManager.GetFontStatic(14), displayList[i].name, displayList[i].Position,
+                    var1 == i ? Color.LightBlue : FontManager.FontColorStatic, 0f,
+                    FontManager.GetFontStatic(14).MeasureString(displayList[i].name) / 2, 1f, SpriteEffects.None, 1f);
             }
 
             CursorLevel2.Draw(spriteBatch);

@@ -82,10 +82,8 @@ namespace SpaceProject
 
         protected string tempString = "";
 
-        protected MineMenuState MiningMenuState;
         protected MissionMenuState MissionMenuState;
         protected OverviewMenuState OverviewMenuState;
-        protected InfoMenuState PlanetInfoMenuState;
         protected RumorsMenuState RumorsMenuState;
         protected ShopMenuState ShopMenuState;
 
@@ -313,9 +311,7 @@ namespace SpaceProject
             rewardItems = new List<Item>();
 
             OverviewMenuState = Game.stateManager.planetState.SubStateManager.OverviewMenuState;
-            MiningMenuState = Game.stateManager.planetState.SubStateManager.MiningMenuState;
             MissionMenuState = Game.stateManager.planetState.SubStateManager.MissionMenuState;
-            PlanetInfoMenuState = Game.stateManager.planetState.SubStateManager.InfoMenuState;
             RumorsMenuState = Game.stateManager.planetState.SubStateManager.RumorsMenuState;
             ShopMenuState = Game.stateManager.planetState.SubStateManager.ShopMenuState;
 

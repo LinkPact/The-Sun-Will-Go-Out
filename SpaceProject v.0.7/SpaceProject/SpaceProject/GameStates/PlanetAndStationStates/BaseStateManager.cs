@@ -39,11 +39,8 @@ namespace SpaceProject
         protected MenuState activeMenuState;
 
         protected OverviewMenuState overviewMenuState;
-        protected InfoMenuState infoMenuState;
-        protected MineMenuState miningMenuState;
         protected MissionMenuState missionMenuState;
         protected ShopMenuState shopMenuState;
-        protected FuelShopMenuState fuelShopMenuState;
         protected RumorsMenuState rumorsMenuState;
 
         #region TextBox Fields
@@ -121,11 +118,8 @@ namespace SpaceProject
         public MenuState ActiveMenuState { get { return activeMenuState; } set { activeMenuState = value; } }
 
         public OverviewMenuState OverviewMenuState { get { return overviewMenuState; } set { overviewMenuState = value; } }
-        public InfoMenuState InfoMenuState { get { return infoMenuState; } set { infoMenuState = value; } }
-        public MineMenuState MiningMenuState { get { return miningMenuState; } set { miningMenuState = value; } }
         public MissionMenuState MissionMenuState { get { return missionMenuState; } set { missionMenuState = value; } }
         public ShopMenuState ShopMenuState { get { return shopMenuState; } set { shopMenuState = value; } }
-        public FuelShopMenuState FuelShopMenuState { get { return fuelShopMenuState; } set { fuelShopMenuState = value; } }
         public RumorsMenuState RumorsMenuState { get { return rumorsMenuState; } set { rumorsMenuState = value; } }
 
         #endregion
@@ -236,11 +230,8 @@ namespace SpaceProject
                     ActiveMenuState.CursorActions();
                 }
 
-                //MouseControls(1);
-            }
+                MouseControls();
 
-            if (buttonControl.Equals(ButtonControl.Menu))
-            {
                 previousButton = activeButton;
                 activeButton = allButtons[activeButtonIndexY];
             }
@@ -252,8 +243,8 @@ namespace SpaceProject
                 activeButton = null;
             }
 
-            if (ControlManager.CheckPress(RebindableKeys.Action1) ||
-                ControlManager.CheckKeyPress(Keys.Enter))
+            if (ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)
+                || ControlManager.IsLeftMouseButtonClicked())
             {
                 ActiveMenuState.ButtonActions();
             }
@@ -295,7 +286,13 @@ namespace SpaceProject
 
         protected void MouseControls()
         {
-            // TODO: Implement
+            for (int i = 0; i < allButtons.Count; i++)
+            {
+                if (ControlManager.IsMouseOverArea(allButtons[i].Bounds))
+                {
+                    activeButtonIndexY = i;
+                }
+            }
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
