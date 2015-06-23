@@ -275,18 +275,22 @@ namespace SpaceProject
         {
             GraphicsDevice.Clear(Color.Black);
 
-            if (GameStateManager.currentState.ToLower().Equals("overworldstate"))
+            switch (GameStateManager.currentState.ToLower())
             {
-                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, camera.GetTransformation());
-            }
-            else if (GameStateManager.currentState.ToLower().Equals("planetstate")
-                    || GameStateManager.currentState.ToLower().Equals("stationstate"))
-            {
-                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
-            }
-            else
-            {
-                spriteBatch.Begin();
+                case "overworldstate":
+                    spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, camera.GetTransformation());
+                    break;
+
+                case "shooterstate":
+                case "introsecondstate":
+                case "planetstate":
+                case "stationstate":
+                    spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
+                    break;
+
+                default:
+                    spriteBatch.Begin();
+                    break;
             }
 
             stateManager.Draw(spriteBatch);
