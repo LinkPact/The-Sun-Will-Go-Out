@@ -18,6 +18,8 @@ namespace SpaceProject
         {
             viableTargetTypes.Add("enemy");
             this.color = color;
+
+            xoffset = -1;
         }
     }
 }

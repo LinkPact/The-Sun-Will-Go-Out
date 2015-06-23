@@ -80,7 +80,7 @@ namespace SpaceProject
 
         private void SetHP()
         {
-            if (StatsManager.gameMode == GameMode.easy)
+            if (StatsManager.gameMode == GameMode.Easy)
             {
                 HP = 3000;
             }

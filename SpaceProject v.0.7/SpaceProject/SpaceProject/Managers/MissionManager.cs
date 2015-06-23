@@ -657,7 +657,7 @@ namespace SpaceProject
             if (mainInfiltration.MissionState != StateOfMission.CompletedDead
                 && mainInfiltration.ObjectiveIndex < 9)
             {
-                if (StatsManager.gameMode != GameMode.develop
+                if (StatsManager.gameMode != GameMode.Develop
                     && !game.player.HyperspeedOn)
                 {
                     if (CollisionDetection.IsRectInRect(game.player.Bounds,

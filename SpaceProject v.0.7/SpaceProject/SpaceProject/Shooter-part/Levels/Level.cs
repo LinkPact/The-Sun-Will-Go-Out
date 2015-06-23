@@ -159,7 +159,7 @@ namespace SpaceProject
 
         public void finishLevel_DEVELOPONLY()
         {
-            if (StatsManager.gameMode != GameMode.develop && StatsManager.gameMode != GameMode.campaign)
+            if (StatsManager.gameMode != GameMode.Develop && StatsManager.gameMode != GameMode.Campaign)
                 throw new ArgumentException("This function should ONLY be called for debug purposes // Jakob");
 
             levelObjective = LevelObjective.KillNumber;
@@ -395,7 +395,7 @@ namespace SpaceProject
                 EndText = "You earned: " + (int)(LevelLoot * StatsManager.moneyFactor) + " rupees. \n";
             EndText += "Press 'Enter' to continue..";
 
-            if (StatsManager.gameMode == GameMode.hardcore)
+            if (StatsManager.gameMode == GameMode.Hardcore)
                 StatsManager.ReduceOverwordHealthToVerticalHealth(player);
 
             if (ControlManager.CheckKeyPress(Keys.Enter))

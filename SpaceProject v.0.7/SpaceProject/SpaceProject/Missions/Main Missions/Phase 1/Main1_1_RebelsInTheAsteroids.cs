@@ -86,7 +86,7 @@ namespace SpaceProject
         {
             base.MissionLogic();
 
-            if (StatsManager.gameMode != GameMode.develop
+            if (StatsManager.gameMode != GameMode.Develop
                 && !CollisionDetection.IsRectInRect(Game.player.Bounds, MissionArea)
                 && !Game.player.HyperspeedOn)
             {

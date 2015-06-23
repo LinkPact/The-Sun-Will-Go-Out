@@ -248,7 +248,7 @@ namespace SpaceProject
                 switch (buttons[buttonIndex].name.ToLower())
                 {
                     case "develop":
-                        StatsManager.gameMode = GameMode.develop;
+                        StatsManager.gameMode = GameMode.Develop;
                         MediaPlayer.Stop();
                         MainMenuState.LoadedOrNewGame = LoadedOrNewGame.New;
                         Game.shipInventoryManager.Initialize();
@@ -261,7 +261,7 @@ namespace SpaceProject
                         break;
 
                     case "easy":
-                        StatsManager.gameMode = GameMode.easy;
+                        StatsManager.gameMode = GameMode.Easy;
                         MediaPlayer.Stop();
                         MainMenuState.LoadedOrNewGame = LoadedOrNewGame.New;
                         Game.shipInventoryManager.Initialize();
@@ -273,7 +273,7 @@ namespace SpaceProject
                         break;
 
                     case "normal":
-                        StatsManager.gameMode = GameMode.normal;
+                        StatsManager.gameMode = GameMode.Normal;
                         MediaPlayer.Stop();
                         MainMenuState.LoadedOrNewGame = LoadedOrNewGame.New;
                         KeyboardState current = Keyboard.GetState();
@@ -286,7 +286,7 @@ namespace SpaceProject
                         break;
 
                     case "hard":
-                        StatsManager.gameMode = GameMode.hard;
+                        StatsManager.gameMode = GameMode.Hard;
                         MediaPlayer.Stop();
                         MainMenuState.LoadedOrNewGame = LoadedOrNewGame.New;
                         Game.shipInventoryManager.Initialize();
@@ -298,7 +298,7 @@ namespace SpaceProject
                         break;
 
                     case "hardcore":
-                        StatsManager.gameMode = GameMode.hardcore;                        
+                        StatsManager.gameMode = GameMode.Hardcore;                        
                         MediaPlayer.Stop();
                         MainMenuState.LoadedOrNewGame = LoadedOrNewGame.New;
                         Game.shipInventoryManager.Initialize();

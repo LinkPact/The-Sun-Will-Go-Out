@@ -466,7 +466,7 @@ namespace SpaceProject
                 Game.stateManager.ChangeState("HelpScreenState");
             }
 
-            if (StatsManager.gameMode == GameMode.develop && ControlManager.CheckKeyPress(Keys.U))
+            if (StatsManager.gameMode == GameMode.Develop && ControlManager.CheckKeyPress(Keys.U))
             {
                 DevelopCommands();
             }

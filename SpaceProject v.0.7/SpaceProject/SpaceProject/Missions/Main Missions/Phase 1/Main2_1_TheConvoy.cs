@@ -45,7 +45,7 @@ namespace SpaceProject
 
             RewardItems.Add(new LongShotWeapon(Game, ItemVariety.regular));
 
-            freighterHP = 2000;
+            freighterHP = 2500;
 
             Setup();
         }

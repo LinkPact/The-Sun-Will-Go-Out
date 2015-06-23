@@ -356,7 +356,7 @@ namespace SpaceProject
                 obj.Draw(spriteBatch);
             }
 
-            if (StatsManager.gameMode == GameMode.develop)
+            if (StatsManager.gameMode == GameMode.Develop)
                 DisplayLevelModeInformation(spriteBatch);
 
             currentLevel.DrawEndMessage(spriteBatch);
@@ -392,7 +392,7 @@ namespace SpaceProject
             //if (ControlManager.CheckKeypress(Keys.F1))
             //    AlliedShip.ShowSightRange = !AlliedShip.ShowSightRange;
 
-            if (StatsManager.gameMode == GameMode.develop || StatsManager.gameMode == GameMode.campaign)
+            if (StatsManager.gameMode == GameMode.Develop || StatsManager.gameMode == GameMode.Campaign)
                 DevelopCommands();
         }
 

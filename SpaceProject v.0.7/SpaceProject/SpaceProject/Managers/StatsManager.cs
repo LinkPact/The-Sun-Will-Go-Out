@@ -9,12 +9,12 @@ namespace SpaceProject
 {
     public enum GameMode
     { 
-        normal,
-        easy,
-        hard,
-        hardcore,
-        develop,
-        campaign
+        Normal,
+        Easy,
+        Hard,
+        Hardcore,
+        Develop,
+        Campaign
     }
 
     //Central class where variables for player and current game are stored global.
@@ -96,15 +96,15 @@ namespace SpaceProject
 
         public static void SetStats()
         {
-            if (gameMode.Equals(GameMode.easy))
+            if (gameMode.Equals(GameMode.Easy))
                 SetEasyStats();
-            else if (gameMode.Equals(GameMode.normal))
+            else if (gameMode.Equals(GameMode.Normal))
                 SetNormalStats();
-            else if (gameMode.Equals(GameMode.hard))
+            else if (gameMode.Equals(GameMode.Hard))
                 SetHardStats();
-            else if (gameMode.Equals(GameMode.hardcore))
+            else if (gameMode.Equals(GameMode.Hardcore))
                 SetHardcoreStats();
-            else if (gameMode.Equals(GameMode.develop))
+            else if (gameMode.Equals(GameMode.Develop))
                 SetDevelopStats();
         }
 
@@ -112,35 +112,35 @@ namespace SpaceProject
         {
             moneyFactor = 1.50f;
             damageFactor = 0.25f;
-            gameMode = GameMode.easy;
+            gameMode = GameMode.Easy;
         }
 
         public static void SetNormalStats()
         {
             moneyFactor = 1.0f;
             damageFactor = 1.0f;
-            gameMode = GameMode.normal;
+            gameMode = GameMode.Normal;
         }
 
         public static void SetHardStats()
         {
             moneyFactor = 1.0f;
             damageFactor = 2.0f;
-            gameMode = GameMode.hard;
+            gameMode = GameMode.Hard;
         }
 
         public static void SetHardcoreStats()
         {
             moneyFactor = 0.8f;
             damageFactor = 1.20f;
-            gameMode = GameMode.hardcore;
+            gameMode = GameMode.Hardcore;
         }
 
         public static void SetDevelopStats()
         {
             moneyFactor = 1.0f;
             damageFactor = 1.0f;
-            gameMode = GameMode.develop;
+            gameMode = GameMode.Develop;
 
             Rupees = 100000;
         }

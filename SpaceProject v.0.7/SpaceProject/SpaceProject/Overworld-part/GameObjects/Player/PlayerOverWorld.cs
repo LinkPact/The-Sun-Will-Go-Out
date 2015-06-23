@@ -487,7 +487,7 @@ namespace SpaceProject
             int y = Game.saveFile.GetPropertyAsInt("playeroverworld", "positiony", 0);
             position = new Vector2(x, y);
 
-            if (StatsManager.gameMode.Equals(GameMode.develop))
+            if (StatsManager.gameMode.Equals(GameMode.Develop))
                 Game.player.UnlockDevelopHyperSpeed();
         }
 

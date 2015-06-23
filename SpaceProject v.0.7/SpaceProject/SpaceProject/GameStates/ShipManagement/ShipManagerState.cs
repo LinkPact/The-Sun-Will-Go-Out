@@ -120,7 +120,7 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            if (StatsManager.gameMode == GameMode.develop)
+            if (StatsManager.gameMode == GameMode.Develop)
                 DeveloperOptions();
             
             elapsedTimeMilliseconds += gameTime.ElapsedGameTime.Milliseconds;

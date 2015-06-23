@@ -113,7 +113,7 @@ namespace SpaceProject
         {
             base.OnEnter();
 
-            StatsManager.gameMode = GameMode.campaign;
+            StatsManager.gameMode = GameMode.Campaign;
 
             Boolean previousWasShooter = (GameStateManager.previousState == "ShooterState");
 

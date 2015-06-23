@@ -54,7 +54,7 @@ namespace SpaceProject
                 {
                     if (BaseStateManager.ActiveMenuState.Equals(BaseStateManager.OverviewMenuState))
                     {
-                        if (StatsManager.gameMode != GameMode.campaign)
+                        if (StatsManager.gameMode != GameMode.Campaign)
                             Game.stateManager.ChangeState("OverworldState");
                         else
                             Game.stateManager.ChangeState("CampaignState");

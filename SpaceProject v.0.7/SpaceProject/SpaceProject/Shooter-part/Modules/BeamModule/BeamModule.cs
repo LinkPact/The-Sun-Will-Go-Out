@@ -33,6 +33,7 @@ namespace SpaceProject
         private Boolean targetingUpwards;
 
         private float damage;
+        protected float xoffset = 0;
 
         private BeamDrawing beamDrawing;
         
@@ -139,26 +140,26 @@ namespace SpaceProject
         {
             if (beamTarget != null)
             {
-                beamDrawing.UpdateLocation(gameTime, shooterPosition.X, shooterPosition.Y, beamTarget.PositionY);
+                beamDrawing.UpdateLocation(gameTime, shooterPosition.X + xoffset, shooterPosition.Y, beamTarget.PositionY);
             }
             else
             {
                 if (targetingUpwards)
                 {
-                    beamDrawing.UpdateLocation(gameTime, shooterPosition.X, shooterPosition.Y, 0);
+                    beamDrawing.UpdateLocation(gameTime, shooterPosition.X + xoffset, shooterPosition.Y, 0);
                 }
                 else
                 {
-                    beamDrawing.UpdateLocation(gameTime, shooterPosition.X, shooterPosition.Y, game.Window.ClientBounds.Height);
+                    beamDrawing.UpdateLocation(gameTime, shooterPosition.X + xoffset, shooterPosition.Y, game.Window.ClientBounds.Height);
                 }
             }
         }
 
         private void InflictDamage(GameObjectVertical obj)
         {
-            Bullet dummyBullet = new YellowBullet(game, spriteSheet);
-            dummyBullet.Damage = damage;
-            ((CombatGameObject)obj).InflictDamage(dummyBullet);
+            BeamBullet beamBullet = new BeamBullet(game, spriteSheet);
+            beamBullet.Damage = damage;
+            ((CombatGameObject)obj).InflictDamage(beamBullet);
         }
 
         /**
@@ -167,9 +168,9 @@ namespace SpaceProject
         private void InitBeam(Vector2 shooterPosition)
         {
             beamDrawing = new BeamDrawing(game, spriteSheet, targetingUpwards);
+            beamDrawing.Initialize();
             beamDrawing.PositionX = shooterPosition.X;
             beamDrawing.PositionY = shooterPosition.Y;
-            beamDrawing.Initialize();
 
             if (color != null)
                 beamDrawing.Color = color;

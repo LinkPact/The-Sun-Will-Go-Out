@@ -112,6 +112,8 @@ namespace SpaceProject
             //Direction = new Vector2((float)random.NextDouble()*2-1, (float)random.NextDouble()*2-1);
             //Direction = MathFunctions.ScaleDirection(Direction);
 
+            DrawLayer = 0.35f;
+
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
             Rotation = 0;
 
@@ -277,11 +279,21 @@ namespace SpaceProject
                 {
                     currentShield -= enemyDamage;
                     Game.AddGameObjToShooter(ShieldEffectGenerator.GenerateStandardShieldEffect(Game, spriteSheet, this));
+
+                    if (!(obj is BeamBullet))
+                    {
+                        Game.soundEffectsManager.PlaySoundEffect(SoundEffects.ShieldHit);
+                    }
                 }
                 else
                 {
                     HP -= (obj.Damage - Shield);
                     Shield = 0;
+
+                    if (!(obj is BeamBullet))
+                    {
+                        Game.soundEffectsManager.PlaySoundEffect(SoundEffects.MuffledExplosion);
+                    }
                 }
             }
             else
@@ -292,6 +304,8 @@ namespace SpaceProject
         }
 
         public override void OnKilled()
-        { }
+        {
+            Game.soundEffectsManager.PlaySoundEffect(SoundEffects.SmallExplosion);
+        }
     }
 }

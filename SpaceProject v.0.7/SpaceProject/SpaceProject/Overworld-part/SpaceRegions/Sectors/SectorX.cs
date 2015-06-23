@@ -41,7 +41,6 @@ namespace SpaceProject
         private Soelara soelara;
         private FortrunStation2 fortrunStation2;
         private LonelyAsteroid lonelyAsteroid;
-        private TestAsteroid1 testAsteroid1;
         private DamagedShip damagedShip;
 
         public SectorX(Game1 game) :
@@ -66,7 +65,6 @@ namespace SpaceProject
             soelara = new Soelara(game, spriteSheet);
             fortrunStation2 = new FortrunStation2(game, spriteSheet);
             lonelyAsteroid = new LonelyAsteroid(game, spriteSheet);
-            testAsteroid1 = new TestAsteroid1(game, spriteSheet);
             damagedShip = new DamagedShip(game, new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/MissionObjectSpriteSheet"), null));
 
             var rebelAsteroidFieldGenerator = new RebelOutpostAsteroidField(game, spriteSheet);
@@ -75,8 +73,9 @@ namespace SpaceProject
             var westernAsteroidFieldGenerator = new WesternAsteroidField(game, spriteSheet);
             var telmunAsteroidFieldGenerator = new TelmunAsteroidBelt(game, spriteSheet);
 
-            var testFieldGenerator = new TestingField(game, spriteSheet);
-            subInteractiveObjects.AddRange(testFieldGenerator.GetAsteroids());
+            // For testing purposes // Jakob 150623
+            //var testFieldGenerator = new TestingField(game, spriteSheet);
+            //subInteractiveObjects.AddRange(testFieldGenerator.GetAsteroids());
 
             subInteractiveObjects.AddRange(rebelAsteroidFieldGenerator.GetAsteroids());
             subInteractiveObjects.AddRange(sunAsteroidBeltGenerator.GetAsteroids());
@@ -87,7 +86,6 @@ namespace SpaceProject
             subInteractiveObjects.Add(soelara);
             subInteractiveObjects.Add(fortrunStation2);
             subInteractiveObjects.Add(lonelyAsteroid);
-            subInteractiveObjects.Add(testAsteroid1);
             subInteractiveObjects.Add(damagedShip);
 
             foreach (var obj in subInteractiveObjects)

@@ -481,6 +481,7 @@
     <Compile Include="Shooter-part\Levels\Levels\CustomMissionLevels\Infiltration1Level.cs" />
     <Compile Include="Shooter-part\Levels\Levels\Used\HangarLevel.cs" />
     <Compile Include="Shooter-part\Levels\Logger\LevelLogger.cs" />
+    <Compile Include="Shooter-part\Modules\BeamModule\Class1.cs" />
     <Compile Include="Shooter-part\Modules\BeamModule\FriendlyBeamModule.cs" />
     <Compile Include="Shooter-part\Modules\BeamModule\HostileBeamModule.cs" />
     <Compile Include="Shooter-part\GameObjects\Allies\AlliedShip.cs" />

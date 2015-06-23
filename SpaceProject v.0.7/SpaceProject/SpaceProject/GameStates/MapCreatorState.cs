@@ -77,7 +77,7 @@ namespace SpaceProject
             levelMechanics.LoadFile(currentName);            
             squarePalethera.Initialize();
 
-            StatsManager.gameMode = GameMode.develop;
+            StatsManager.gameMode = GameMode.Develop;
             Game.IsMouseVisible = false;
         }
 
