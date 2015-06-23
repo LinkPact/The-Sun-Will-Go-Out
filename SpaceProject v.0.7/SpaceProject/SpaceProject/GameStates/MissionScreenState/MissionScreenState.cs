@@ -131,12 +131,11 @@ namespace SpaceProject
                  0.0f);
         }
 
-        private void CheckCursorLevel1()
+        private void CheckKeysCursorLevel1()
         {
             int temporaryCount = cursorManager.displayList.Count;
             
-            if (ControlManager.CheckPress(RebindableKeys.Up) && cursorLevel == 1
-                && elapsedSinceKey > 100)
+            if (ControlManager.CheckPress(RebindableKeys.Up) && elapsedSinceKey > 100)
             {
                 if (cursorLevel1Position == 0) { cursorLevel1Position = 3; }
                 else if (cursorLevel1Position == 1) { cursorLevel1Position = 0; }
@@ -146,8 +145,7 @@ namespace SpaceProject
                 elapsedSinceKey = 0;
             }
             
-            if (ControlManager.CheckPress(RebindableKeys.Down) && cursorLevel == 1
-                && elapsedSinceKey > 100)
+            if (ControlManager.CheckPress(RebindableKeys.Down) && elapsedSinceKey > 100)
             {
                 if (cursorLevel1Position == 0) { cursorLevel1Position = 1; }
                 else if (cursorLevel1Position == 1) { cursorLevel1Position = 2; }
@@ -159,66 +157,53 @@ namespace SpaceProject
                 elapsedSinceKey = 0;
             }
             
-            if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) &&
-                cursorLevel == 1 && elapsedSinceKey > 100)
+            if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) 
+                && elapsedSinceKey > 100)
             {
-                if (cursorLevel1Position == 0 && MissionManager.ReturnActiveMissions().Count > 0)
-                {
-                    cursorLevel = 2;
-                    cursorLevel2Position = 0;
-                    elapsedSinceKey = 0;
-                }
+                OnPressCursorLevel1();
+            }
+        }
 
-                else if (cursorLevel1Position == 1 && MissionManager.ReturnCompletedDeadMissions().Count > 0)
+        private void CheckMouseCursorLevel1()
+        {
+            for (int i = 0; i < cursorManager.displayList.Count; i++)
+            {
+                if (ControlManager.IsMouseOverArea(cursorManager.displayList[i].Bounds))
                 {
-                    cursorLevel = 2;
-                    cursorLevel2Position = 0;
-                    elapsedSinceKey = 0;
-                }
+                    cursorLevel1Position = i;
 
-                else if (cursorLevel1Position == 2 && MissionManager.ReturnFailedDeadMissions().Count > 0)
-                {
-                    cursorLevel = 2;
-                    cursorLevel2Position = 0;
-                    elapsedSinceKey = 0;
-                }
-
-                else if (cursorLevel1Position == 3)
-                {
-                    Game.stateManager.ChangeState("OverworldState");
-                    cursorLevel1Position = 0;
-                    elapsedSinceKey = 0;
+                    if (ControlManager.IsLeftMouseButtonClicked())
+                    {
+                        OnPressCursorLevel1();
+                    }
                 }
             }
         }
 
-        private void CheckCursorLevel2()
+        private void CheckKeysCursorLevel2()
         {
-            if (cursorLevel == 2 && cursorLevel1Position == 0)
+            if (cursorLevel1Position == 0)
             {
-                
-                if (ControlManager.CheckPress(RebindableKeys.Down) && cursorLevel == 2
-                    && elapsedSinceKey > 100)
+                if (ControlManager.CheckPress(RebindableKeys.Down) && elapsedSinceKey > 100)
                 {
                     cursorLevel2Position += 1;
-                    
+
                     if (cursorLevel2Position > MissionManager.ReturnActiveMissions().Count)
                         cursorLevel2Position = 0;
-            
+
                     elapsedSinceKey = 0;
                 }
 
-                if (ControlManager.CheckPress(RebindableKeys.Up) && cursorLevel == 2
-                    && elapsedSinceKey > 100)
+                if (ControlManager.CheckPress(RebindableKeys.Up) && elapsedSinceKey > 100)
                 {
                     cursorLevel2Position -= 1;
                     if (cursorLevel2Position < 0)
                         cursorLevel2Position = MissionManager.ReturnActiveMissions().Count;
-            
+
                     elapsedSinceKey = 0;
                 }
 
-                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) && cursorLevel == 2
+                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) 
                     && elapsedSinceKey > 100)
                 {
                     int missionCount = MissionManager.ReturnActiveMissions().Count;
@@ -226,25 +211,23 @@ namespace SpaceProject
                     if (missionCount > 0 &&
                         cursorLevel2Position == missionCount)
                     {
-                        cursorLevel = 1;  
+                        cursorLevel = 1;
                     }
 
                     elapsedSinceKey = 0;
                 }
 
-                if (ControlManager.CheckPress(RebindableKeys.Action2) && cursorLevel == 2
-                    && elapsedSinceKey > 100)
+                if (ControlManager.CheckPress(RebindableKeys.Action2) && elapsedSinceKey > 100)
                 {
                     cursorLevel = 1;
                     elapsedSinceKey = 0;
                 }
             }
 
-            else if (cursorLevel == 2 && cursorLevel1Position == 1)
+            else if (cursorLevel1Position == 1)
             {
 
-                if (ControlManager.CheckPress(RebindableKeys.Down) && cursorLevel == 2
-                    && elapsedSinceKey > 100)
+                if (ControlManager.CheckPress(RebindableKeys.Down) && elapsedSinceKey > 100)
                 {
                     cursorLevel2Position += 1;
                     if (cursorLevel2Position > MissionManager.ReturnCompletedDeadMissions().Count)
@@ -253,8 +236,7 @@ namespace SpaceProject
                     elapsedSinceKey = 0;
                 }
 
-                if (ControlManager.CheckPress(RebindableKeys.Up) && cursorLevel == 2
-                    && elapsedSinceKey > 100)
+                if (ControlManager.CheckPress(RebindableKeys.Up) && elapsedSinceKey > 100)
                 {
                     cursorLevel2Position -= 1;
                     if (cursorLevel2Position < 0)
@@ -263,7 +245,7 @@ namespace SpaceProject
                     elapsedSinceKey = 0;
                 }
 
-                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) && cursorLevel == 2
+                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) 
                     && elapsedSinceKey > 100)
                 {
                     int missionCount = MissionManager.ReturnCompletedDeadMissions().Count;
@@ -277,19 +259,16 @@ namespace SpaceProject
                     elapsedSinceKey = 0;
                 }
 
-                if (ControlManager.CheckPress(RebindableKeys.Action2) && cursorLevel == 2
-                    && elapsedSinceKey > 100)
+                if (ControlManager.CheckPress(RebindableKeys.Action2) && elapsedSinceKey > 100)
                 {
                     cursorLevel = 1;
                     elapsedSinceKey = 0;
                 }
             }
 
-            else if (cursorLevel == 2 && cursorLevel1Position == 2)
+            else if (cursorLevel1Position == 2)
             {
-
-                if (ControlManager.CheckPress(RebindableKeys.Down) && cursorLevel == 2
-                    && elapsedSinceKey > 100)
+                if (ControlManager.CheckPress(RebindableKeys.Down) && elapsedSinceKey > 100)
                 {
                     cursorLevel2Position += 1;
                     if (cursorLevel2Position > MissionManager.ReturnFailedDeadMissions().Count)
@@ -298,8 +277,7 @@ namespace SpaceProject
                     elapsedSinceKey = 0;
                 }
 
-                if (ControlManager.CheckPress(RebindableKeys.Up) && cursorLevel == 2
-                    && elapsedSinceKey > 100)
+                if (ControlManager.CheckPress(RebindableKeys.Up) && elapsedSinceKey > 100)
                 {
                     cursorLevel2Position -= 1;
                     if (cursorLevel2Position < 0)
@@ -308,7 +286,7 @@ namespace SpaceProject
                     elapsedSinceKey = 0;
                 }
 
-                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) && cursorLevel == 2
+                if ((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) 
                     && elapsedSinceKey > 100)
                 {
                     int missionCount = MissionManager.ReturnFailedDeadMissions().Count;
@@ -322,14 +300,87 @@ namespace SpaceProject
                     elapsedSinceKey = 0;
                 }
 
-                if (ControlManager.CheckPress(RebindableKeys.Action2) && cursorLevel == 2
-                    && elapsedSinceKey > 100)
+                if (ControlManager.CheckPress(RebindableKeys.Action2) && elapsedSinceKey > 100)
                 {
                     cursorLevel = 1;
                     elapsedSinceKey = 0;
                 }
             }
-            
+
+        }
+
+        private void CheckMouseCursorLevel2()
+        {
+            List<Mission> missions;
+
+            switch (cursorLevel1Position)
+            {
+                case 0:
+                    missions = MissionManager.ReturnActiveMissions();
+                    break;
+
+                case 1:
+                    missions = MissionManager.ReturnCompletedDeadMissions();
+                    break;
+
+                case 2:
+                    missions = MissionManager.ReturnFailedDeadMissions();
+                    break;
+
+                default:
+                    missions = new List<Mission>();
+                    break;
+            }
+
+            for (int i = 0; i < missions.Count + 1; i++)
+            {
+                string text = i < missions.Count ? missions[i].MissionName : "Back";
+
+                if (ControlManager.IsMouseOverText(FontManager.GetFontStatic(14), text,
+                    new Vector2(MissionScreenState.GetRightRectangle.X + Game.Window.ClientBounds.Width / 16,
+                                93 + i * 23) + Game.fontManager.FontOffset, Vector2.Zero, false))
+                {
+                    cursorLevel2Position = i;
+
+                    if (ControlManager.IsLeftMouseButtonClicked()
+                        && i == missions.Count)
+                    {
+                        cursorLevel = 1;
+                        elapsedSinceKey = 0;
+                    }
+                }
+            }
+        }
+
+        private void OnPressCursorLevel1()
+        {
+            if (cursorLevel1Position == 0 && MissionManager.ReturnActiveMissions().Count > 0)
+            {
+                cursorLevel = 2;
+                cursorLevel2Position = 0;
+                elapsedSinceKey = 0;
+            }
+
+            else if (cursorLevel1Position == 1 && MissionManager.ReturnCompletedDeadMissions().Count > 0)
+            {
+                cursorLevel = 2;
+                cursorLevel2Position = 0;
+                elapsedSinceKey = 0;
+            }
+
+            else if (cursorLevel1Position == 2 && MissionManager.ReturnFailedDeadMissions().Count > 0)
+            {
+                cursorLevel = 2;
+                cursorLevel2Position = 0;
+                elapsedSinceKey = 0;
+            }
+
+            else if (cursorLevel1Position == 3)
+            {
+                Game.stateManager.ChangeState("OverworldState");
+                cursorLevel1Position = 0;
+                elapsedSinceKey = 0;
+            }
         }
 
         private void CheckStateChangeCommands()
@@ -366,9 +417,15 @@ namespace SpaceProject
             CheckStateChangeCommands();
 
             if (cursorLevel == 1)
-                CheckCursorLevel1();
+            {
+                CheckKeysCursorLevel1();
+                CheckMouseCursorLevel1();
+            }
             else if (cursorLevel == 2)
-                CheckCursorLevel2();
+            {
+                CheckKeysCursorLevel2();
+                CheckMouseCursorLevel2();
+            }
         }
     }
 }

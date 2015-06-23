@@ -274,7 +274,7 @@ namespace SpaceProject
         {
             for (int i = 0; i < menuOptions.Count; i++)
             {
-                if (MathFunctions.IsMouseOverText(FontManager.GetFontStatic(14), menuOptions[i],
+                if (ControlManager.IsMouseOverText(FontManager.GetFontStatic(14), menuOptions[i],
                         new Vector2(menuOptionOrigin.X + i * menuOptionXDistance,
                         menuOptionOrigin.Y + i * menuOptionYDistance) + FontManager.FontOffsetStatic,
                         screenPosition, this is SelectionMenu))

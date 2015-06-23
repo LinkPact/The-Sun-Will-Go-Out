@@ -10,6 +10,8 @@ namespace SpaceProject
     {
         private Coordinate coordinate;
 
+        public Coordinate Coordinate { get { return coordinate; } }
+
         public ShipInventoryDisplayObject(Game1 Game, Sprite passive, Sprite active, Vector2 position, Coordinate coordinate)
             : base(Game, passive, active, position)
         {

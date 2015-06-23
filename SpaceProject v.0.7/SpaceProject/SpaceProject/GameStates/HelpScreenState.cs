@@ -83,10 +83,11 @@ namespace SpaceProject
         {
             base.Update(gameTime);
 
-            Controls(gameTime);
+            ButtonControls();
+            MouseControls();
         }
 
-        private void Controls(GameTime gameTime)
+        private void ButtonControls()
         {
             if (ControlManager.CheckPress(RebindableKeys.Down))
             {
@@ -115,6 +116,22 @@ namespace SpaceProject
             }
         }
 
+        private void MouseControls()
+        {
+            for (int i = 0; i < options.Count; i++)
+            {
+                if (ControlManager.IsMouseOverText(FontManager.GetFontStatic(14), options[i], new Vector2(10, 10 + (i * 20))))
+                {
+                    cursorIndex = i;
+
+                    if (ControlManager.IsLeftMouseButtonClicked())
+                    {
+                        ButtonActions();
+                    }
+                }
+            }
+        }
+
         private void ButtonActions()
         {
             switch (options[cursorIndex].ToLower())
@@ -136,7 +153,7 @@ namespace SpaceProject
                 if (cursorIndex == i)
                 {
                     spriteBatch.DrawString(Game.fontManager.GetFont(14), options[i],
-                        new Vector2(10, 10 + (i * 20)), Color.Red);
+                        new Vector2(10, 10 + (i * 20)), Color.LightBlue);
                 }
 
                 else

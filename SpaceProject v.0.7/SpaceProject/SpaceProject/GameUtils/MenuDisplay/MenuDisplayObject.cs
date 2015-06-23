@@ -47,6 +47,21 @@ namespace SpaceProject
             set { active = value; }
         }
 
+        public Rectangle Bounds
+        {
+            get 
+            {
+                Vector2 pos = position;
+
+                if (origin != Vector2.Zero)
+                {
+                    pos = new Vector2(position.X - passive.Width / 2, position.Y - passive.Height / 2);
+                }
+
+                return new Rectangle((int)pos.X, (int)pos.Y, passive.Width, passive.Height);
+            }
+        }
+
         #endregion
 
         public MenuDisplayObject(Game1 Game, Sprite passive, Sprite active, Vector2 position)

@@ -152,10 +152,7 @@
     <Compile Include="GameStates\MenuStates\OptionMenus\OptionsMenuState.cs" />
     <Compile Include="GameStates\MenuStates\OptionMenus\SubStates\VisualOptionsSubState.cs" />
     <Compile Include="GameStates\OverworldState.cs" />
-    <Compile Include="GameStates\PlanetAndStationStates\MenuSubStates\FuelShopMenuState.cs" />
-    <Compile Include="GameStates\PlanetAndStationStates\MenuSubStates\InfoMenuState.cs" />
     <Compile Include="GameStates\PlanetAndStationStates\MenuSubStates\MenuState.cs" />
-    <Compile Include="GameStates\PlanetAndStationStates\MenuSubStates\MineMenuState.cs" />
     <Compile Include="GameStates\PlanetAndStationStates\MenuSubStates\MissionMenuState.cs" />
     <Compile Include="GameStates\PlanetAndStationStates\MenuSubStates\OverviewMenuState.cs" />
     <Compile Include="GameStates\PlanetAndStationStates\MenuSubStates\RumorsMenuState.cs" />

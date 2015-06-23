@@ -122,6 +122,19 @@ namespace SpaceProject
                 else if (MissionCursorIndex < 0)
                     missionCursorIndex = availableMissions.Count;
 
+                for (int i = 0; i < availableMissions.Count + 1; i++)
+                {
+                    String text = i != availableMissions.Count ? availableMissions[i].MissionName : "Back";
+
+                    if (ControlManager.IsMouseOverText(FontManager.GetFontStatic(14), text,
+                        new Vector2(Game.Window.ClientBounds.Width / 2,
+                            Game.Window.ClientBounds.Height / 2 - 40 + (20 * (i + (i == availableMissions.Count ? 1 : 0))) 
+                            + FindTextBoxWithText(text).TextBoxRect.Height)))
+                    {
+                        missionCursorIndex = i;
+                    }
+                }
+
                 if (availableMissions.Count > 0 && missionCursorIndex != availableMissions.Count)
                 {
                     selectedMission = availableMissions[MissionCursorIndex];
@@ -140,6 +153,24 @@ namespace SpaceProject
 
                 if (MissionManager.MissionResponseBuffer.Count <= 0)
                 {
+                    if (ControlManager.IsMouseOverArea(new Rectangle(
+                        BaseStateManager.ResponseRectangles[0].X - (int)FontManager.GetFontStatic(14).MeasureString(selectedMission.PosResponse).X / 2,
+                        BaseStateManager.ResponseRectangles[0].Y + BaseStateManager.ResponseRectangles[0].Height / 2,
+                        (int)FontManager.GetFontStatic(14).MeasureString(selectedMission.PosResponse).X,
+                        (int)FontManager.GetFontStatic(14).MeasureString(selectedMission.PosResponse).Y)))
+                    {
+                        responseCursorIndex = 0;
+                    }
+
+                    else if (ControlManager.IsMouseOverArea(new Rectangle(
+                        BaseStateManager.ResponseRectangles[1].X - (int)FontManager.GetFontStatic(14).MeasureString(selectedMission.NegResponse).X / 2,
+                        BaseStateManager.ResponseRectangles[1].Y + BaseStateManager.ResponseRectangles[1].Height / 2,
+                        (int)FontManager.GetFontStatic(14).MeasureString(selectedMission.NegResponse).X,
+                        (int)FontManager.GetFontStatic(14).MeasureString(selectedMission.NegResponse).Y)))
+                    {
+                        responseCursorIndex = 1;
+                    }
+
                     if (responseCursorIndex > 1)
                         responseCursorIndex = 0;
 
@@ -149,6 +180,18 @@ namespace SpaceProject
 
                 else
                 {
+                    for (int i = 0; i < MissionManager.MissionResponseBuffer.Count; i++)
+                    {
+                        if (ControlManager.IsMouseOverArea(new Rectangle(
+                            BaseStateManager.ResponseRectangles[i].X - (int)FontManager.GetFontStatic(14).MeasureString(MissionManager.MissionResponseBuffer[i]).X / 2,
+                            BaseStateManager.ResponseRectangles[i].Y + BaseStateManager.ResponseRectangles[i].Height / 2,
+                            (int)FontManager.GetFontStatic(14).MeasureString(MissionManager.MissionResponseBuffer[i]).X,
+                            (int)FontManager.GetFontStatic(14).MeasureString(MissionManager.MissionResponseBuffer[i]).Y)))
+                        {
+                            responseCursorIndex = i;
+                        }
+                    }
+
                     if (responseCursorIndex > MissionManager.MissionResponseBuffer.Count - 1)
                         responseCursorIndex = 0;
 
@@ -526,7 +569,7 @@ namespace SpaceProject
                     BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
                               new Rectangle((Game.Window.ClientBounds.Width / 2),
                                            Game.Window.ClientBounds.Height / 2 - 40 + 20 * availableMissions.IndexOf(availableMissions[i]) + 1,
-                                             Game.Window.ClientBounds.Width - 20,
+                                           Game.Window.ClientBounds.Width - 20,
                               10),
                               true, false,
                               availableMissions[i].MissionName));
@@ -663,7 +706,6 @@ namespace SpaceProject
         {
             if (MissionManager.MissionEventBuffer.Count <= 0)
             {
-
                 List<String> temp = new List<String>();
 
                 Game.SaveOnEnterOverworld = true;
@@ -846,6 +888,17 @@ namespace SpaceProject
                     txtbox.FlushText();
                 }
             }
+        }
+
+        private TextBox FindTextBoxWithText(string text)
+        {
+            foreach (TextBox tb in BaseStateManager.TextBoxes)
+            {
+                if (tb.GetText().ToLower().Equals(text.ToLower()))
+                    return tb;
+            }
+
+            return null;
         }
     }
 }
