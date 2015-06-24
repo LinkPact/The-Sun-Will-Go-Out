@@ -436,6 +436,11 @@ namespace SpaceProject
                     {
                         pixelCollisionNeedsEvaluation = PerformShieldAreaCollision(obj1, obj2);
                     }
+
+                    if (!obj1.Bounding.Intersects(obj2.Bounding))
+                    {
+                        pixelCollisionNeedsEvaluation = false;
+                    }
                     
                     if (pixelCollisionNeedsEvaluation)
                     {
