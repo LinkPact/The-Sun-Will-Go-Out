@@ -46,7 +46,10 @@ namespace SpaceProject
         {
             player.SightRange = 300;
             GameObjectVertical target = player.FindAimObject();
-            if (target == null) return false;
+            if (target == null) 
+            { 
+                return false; 
+            }
 
             Vector2 dir = new Vector2(target.PositionX - player.PositionX, target.PositionY - player.PositionY);
             Vector2 scaledDir = MathFunctions.ScaleDirection(dir);

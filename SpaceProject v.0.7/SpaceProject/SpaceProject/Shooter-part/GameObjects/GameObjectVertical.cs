@@ -274,28 +274,12 @@ namespace SpaceProject
         {
             if (ShootObject == null)
             {
-                List<GameObjectVertical> objectList = Game.stateManager.shooterState.gameObjects;
-                List<GameObjectVertical> tempList = new List<GameObjectVertical>();
+                var targetsWithinRange = GetTargetsWithinRange(SightRange);
 
-                foreach (String type in ShootObjectTypes)
+                if (targetsWithinRange.Count > 0)
                 {
-                    foreach (GameObjectVertical obj in objectList)
-                    {
-                        if (obj.ObjectClass.Equals(type))
-                        {
-                            if (CollisionDetection.IsPointInsideCircle(obj.Position, Position, SightRange))
-                            {
-                                if (CheckIfValidAimTarget(obj))
-                                    tempList.Add(obj);
-                            }
-                        }
-                    }
-                }
-
-                if (tempList.Count > 0)
-                {
-                    shootObject = tempList[0];
-                    foreach (GameObjectVertical obj in tempList)
+                    shootObject = targetsWithinRange[0];
+                    foreach (GameObjectVertical obj in targetsWithinRange)
                     {
                         if (MathFunctions.ObjectDistance(this, obj) < MathFunctions.ObjectDistance(this, shootObject))
                         {
@@ -312,6 +296,29 @@ namespace SpaceProject
                 }
             }
             return ShootObject;
+        }
+
+        public List<GameObjectVertical> GetTargetsWithinRange(float range)
+        {
+            var allGameObjects = Game.stateManager.shooterState.gameObjects;
+            var targetsWithinRange = new List<GameObjectVertical>();
+
+            foreach (String type in ShootObjectTypes)
+            {
+                foreach (GameObjectVertical obj in allGameObjects)
+                {
+                    if (obj.ObjectClass.Equals(type))
+                    {
+                        if (CollisionDetection.IsPointInsideCircle(obj.Position, Position, range))
+                        {
+                            if (CheckIfValidAimTarget(obj))
+                                targetsWithinRange.Add(obj);
+                        }
+                    }
+                }
+            }
+
+            return targetsWithinRange;
         }
 
         private Boolean CheckIfValidAimTarget(GameObjectVertical obj)

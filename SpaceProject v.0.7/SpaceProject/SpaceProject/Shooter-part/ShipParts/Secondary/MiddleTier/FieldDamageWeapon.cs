@@ -29,10 +29,15 @@ namespace SpaceProject
             energyCostPerSecond = 1f;
             delay = 800;
             Weight = 400;
-            ActivatedSoundID = SoundEffects.MuffledExplosion;
+            ActivatedSoundID = SoundEffects.SmallLaser;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(200, 100, 100, 100));
 
-            damage = 75;
+            bullet = new BasicLaser(Game, spriteSheet);
+            bullet.Initialize();
+
+            damage = Bullet.Damage;
+            duration = Bullet.Duration;
+            speed = Bullet.Speed;
 
             Value = 500;
             numberOfShots = 1;
@@ -40,11 +45,29 @@ namespace SpaceProject
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
-            CircularAreaDamage areaExpl = new CircularAreaDamage(Game, AreaDamageType.player, player.Position, damage, blastRadius);
-            areaExpl.Initialize();
+            var gameObjectTargets = player.GetTargetsWithinRange(blastRadius);
 
-            Game.stateManager.shooterState.gameObjects.Add(areaExpl);
-                        
+            if (gameObjectTargets.Count == 0)
+            {
+                return false;
+            }
+
+            foreach (var target in gameObjectTargets)
+            {
+                Vector2 dir = new Vector2(target.PositionX - player.PositionX, target.PositionY - player.PositionY);
+                Vector2 scaledDir = MathFunctions.ScaleDirection(dir);
+
+                BasicLaser bullet = new BasicLaser(Game, spriteSheet);
+                bullet.PositionX = player.PositionX;
+                bullet.PositionY = player.PositionY;
+                BasicBulletSetup(bullet);
+                bullet.Direction = scaledDir;
+                bullet.Speed = speed;
+                bullet.Damage = damage;
+
+                Game.stateManager.shooterState.gameObjects.Add(bullet);
+            }
+
             return true;
         }
     }
