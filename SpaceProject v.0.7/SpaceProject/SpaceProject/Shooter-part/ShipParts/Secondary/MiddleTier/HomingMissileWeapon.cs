@@ -44,6 +44,7 @@ namespace SpaceProject
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
             HomingMissile missile1 = new HomingMissile(Game, spriteSheet);
+
             //Position
             missile1.PositionX = player.PositionX;
             missile1.PositionY = player.PositionY;

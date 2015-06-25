@@ -77,7 +77,11 @@ namespace SpaceProject
         public GameObjectVertical ShootObject { get { return shootObject; } set { shootObject = value; } }
 
         private List<String> shootObjectTypes = new List<String>();
-        public List<String> ShootObjectTypes { get { return shootObjectTypes; } private set { } }
+        public List<String> ShootObjectTypes { get { return shootObjectTypes; }}
+        public void AssignShootObjectTypes(List<String> shootObjectTypes)
+        {
+            this.shootObjectTypes = shootObjectTypes;
+        }
 
         //Position related
         private Vector2 _position;
@@ -119,6 +123,9 @@ namespace SpaceProject
         // Misc
         protected Tracker lastHitBy = Tracker.None;
         public Tracker LastHitBy { get { return lastHitBy; } set { lastHitBy = value; } }
+
+        protected int disruptionTime = 0;
+        public int DisruptionTime { get { return disruptionTime; } }
 
         #endregion
         

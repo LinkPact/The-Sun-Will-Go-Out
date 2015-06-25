@@ -467,6 +467,7 @@
     <Compile Include="Shooter-part\Events\Instances\TextInstances\SimpleMessageVertical.cs" />
     <Compile Include="Shooter-part\GameObjects\Allies\Ships\AllianceFighterAlly.cs" />
     <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Primary\DistanceSpreadBullet.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Secondary\DisruptorBullet.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Meteorites\Meteorite.cs" />
     <Compile Include="Shooter-part\Events\Instances\WaveInstances\HangarBoss.cs" />
     <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\Hangar\AllianceHangarAttackShip.cs" />

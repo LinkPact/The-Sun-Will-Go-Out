@@ -267,9 +267,9 @@ namespace SpaceProject
 
         public override void InflictDamage(GameObjectVertical obj)
         {
-            if (obj is AreaDisruptorCollision)
+            if (obj.DisruptionTime > 0)
             {
-                disruptionMilliseconds = ((AreaDisruptorCollision)obj).DisruptionTimeMilliseconds;
+                disruptionMilliseconds = obj.DisruptionTime;
             }
 
             float enemyDamage = obj.Damage;

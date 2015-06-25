@@ -1,16 +1,15 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    //Object which represents one of the players primary weapons
-    public class FlameShot : PlayerBullet
+    class DisruptorBullet : PlayerBullet
     {
-        public FlameShot(Game1 Game, Sprite spriteSheet) :
+        public DisruptorBullet(Game1 Game, Sprite spriteSheet) :
             base(Game, spriteSheet)
         { }
 
@@ -18,11 +17,13 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            Speed = 0.8f;
+            Speed = 0.3f;
             IsKilled = false;
-            Damage = 25;
+            Damage = 15;
             ObjectClass = "bullet";
-            Duration = 500;
+            Duration = 1000;
+
+            disruptionTime = 2500;
 
             anim.LoopTime = 300;
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(42, 24, 5, 9)));

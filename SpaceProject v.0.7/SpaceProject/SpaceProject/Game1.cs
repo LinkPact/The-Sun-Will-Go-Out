@@ -336,8 +336,6 @@ namespace SpaceProject
 
         public void Save()
         {
-            helper.DisplayText("The game has been saved!", 2);
-
             saveFile.EmptySaveFile(Game1.SaveFilePath, "save.ini");
             statsManager.Save();
             player.Save();
@@ -346,6 +344,8 @@ namespace SpaceProject
             tutorialManager.Save();
             shipInventoryManager.Save();
             stateManager.overworldState.Save();
+
+            helper.DisplayText("The game has been saved!", 2);
         }
 
         public void Load()

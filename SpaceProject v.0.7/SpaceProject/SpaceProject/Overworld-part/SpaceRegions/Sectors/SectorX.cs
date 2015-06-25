@@ -122,7 +122,8 @@ namespace SpaceProject
             peyeShop.Initialize();
 
             // Training area
-            trainingArea2 = new TrainingArea2(game, spriteSheet, MathFunctions.CoordinateToPosition(new Vector2(1000, 0)));
+            var outpostSpriteSheet = game.stateManager.overworldState.outpostSpriteSheet;
+            trainingArea2 = new TrainingArea2(game, outpostSpriteSheet, MathFunctions.CoordinateToPosition(new Vector2(-1680, 10)));
             trainingArea2.Initialize();
 
             highfenceBeacon = new Beacon(game, spriteSheet, new Rectangle(588, 844, 100, 100), new Rectangle(487, 844, 100, 100),

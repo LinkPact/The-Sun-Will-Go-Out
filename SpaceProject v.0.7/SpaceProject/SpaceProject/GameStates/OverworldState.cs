@@ -169,7 +169,7 @@ namespace SpaceProject
         public bool IsBurnOutEndingActivated { get { return burnOutEnding.Activated; } }
 
         public Sprite shooterSheet;
-        private Sprite outpostSpriteSheet;
+        public Sprite outpostSpriteSheet;
 
         private List<Beacon> beacons;
         public void AddBeacon(Beacon beacon)

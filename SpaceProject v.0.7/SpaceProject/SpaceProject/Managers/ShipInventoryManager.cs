@@ -939,10 +939,10 @@ namespace SpaceProject
                     {
                         equippedPrimaryWeapons[0] = new BasicLaserWeapon(Game);
                         equippedPrimaryWeapons[1] = new BasicLaserWeapon(Game);
-                        equippedSecondary = new EmptyWeapon(Game);
+                        equippedSecondary = new HomingMissileWeapon(Game);
                         currentPrimaryWeapon = equippedPrimaryWeapons[0];
 
-                        equippedEnergyCell = new BasicEnergyCell(Game);
+                        equippedEnergyCell = new RegularEnergyCell(Game);
                         equippedPlating = new BasicPlating(Game);
                         equippedShield = new EmptyShield(Game);
 

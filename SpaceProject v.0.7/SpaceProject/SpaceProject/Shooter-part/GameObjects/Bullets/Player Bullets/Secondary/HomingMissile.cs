@@ -81,7 +81,7 @@ namespace SpaceProject
             {
                 foreach (GameObjectVertical obj in Game.stateManager.shooterState.gameObjects)
                 {
-                    if (obj.ObjectClass == "enemy" && MathFunctions.ObjectDistance(this, obj) < tempDistance
+                    if (obj.ObjectClass == "enemy" && !(obj is Meteorite) && MathFunctions.ObjectDistance(this, obj) < tempDistance
                          && MathFunctions.ObjectDistance(this, obj) < SightRange)
                     {
                         tempTarget = obj;
