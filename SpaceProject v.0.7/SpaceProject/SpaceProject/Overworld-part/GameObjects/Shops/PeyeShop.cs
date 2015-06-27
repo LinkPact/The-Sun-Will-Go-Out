@@ -15,7 +15,7 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            sprite = spriteSheet.GetSubSprite(new Rectangle(0, 1390, 62, 62));
+            sprite = spriteSheet.GetSubSprite(new Rectangle(0, 1390, 59, 59));
             base.Initialize();
             StationCodeName = "OW_Peye_Shop";
             LoadStationData(StationCodeName);
