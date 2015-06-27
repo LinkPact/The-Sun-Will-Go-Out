@@ -319,7 +319,6 @@ namespace SpaceProject
                                      camera.cameraPos.Y - ScreenCenter.Y) + fontManager.FontOffset,
                         fontManager.FontColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
                 }
-
                 else
                 {
                     spriteBatch.DrawString(fontManager.GetFont(14), "Fps: " + fps.ToString(),
