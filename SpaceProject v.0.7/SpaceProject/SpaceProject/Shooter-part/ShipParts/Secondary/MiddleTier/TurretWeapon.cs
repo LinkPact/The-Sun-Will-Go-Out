@@ -25,7 +25,7 @@ namespace SpaceProject
         {
             Name = "Turret";
             Kind = "Secondary";
-            energyCostPerSecond = 1f;
+            energyCostPerSecond = 0f;
             delay = 1500;
             Weight = 130;
             ActivatedSoundID = SoundEffects.BigLaser;

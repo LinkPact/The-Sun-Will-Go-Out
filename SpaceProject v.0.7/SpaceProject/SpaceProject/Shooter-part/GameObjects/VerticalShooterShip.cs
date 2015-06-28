@@ -112,7 +112,7 @@ namespace SpaceProject
             //Direction = new Vector2((float)random.NextDouble()*2-1, (float)random.NextDouble()*2-1);
             //Direction = MathFunctions.ScaleDirection(Direction);
 
-            DrawLayer = 0.35f;
+            DrawLayer = 0.42f;
 
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
             Rotation = 0;

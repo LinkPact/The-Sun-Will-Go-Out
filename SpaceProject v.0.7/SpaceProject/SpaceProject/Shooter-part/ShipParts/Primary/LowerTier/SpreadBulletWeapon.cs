@@ -53,7 +53,7 @@ namespace SpaceProject
             bullet.Direction = MathFunctions.DirFromRadians(dirRadians);
             bullet.Initialize();
 
-            bullet.Speed += ((float)random.NextDouble()) * 1.0f * bullet.Speed - 0.5f * bullet.Speed;
+            bullet.SetSpreadSpeed(random);
 
             Game.stateManager.shooterState.gameObjects.Add(bullet);
             return true;

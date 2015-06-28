@@ -25,7 +25,7 @@ namespace SpaceProject
         {
             Name = "Puny Turret";
             Kind = "Secondary";
-            energyCostPerSecond = 0.5f;
+            energyCostPerSecond = 0f;
             delay = 100;
             Weight = 130;
             ActivatedSoundID = SoundEffects.ClickLaser;

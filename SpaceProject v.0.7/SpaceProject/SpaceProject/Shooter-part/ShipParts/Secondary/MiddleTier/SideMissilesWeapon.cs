@@ -24,7 +24,7 @@ namespace SpaceProject
         {
             Name = "SideMissiles";
             Kind = "Secondary";
-            energyCostPerSecond = 2.0f;
+            energyCostPerSecond = 0f;
             delay = 2000;
             Weight = 500;
             ActivatedSoundID = SoundEffects.ClickLaser;

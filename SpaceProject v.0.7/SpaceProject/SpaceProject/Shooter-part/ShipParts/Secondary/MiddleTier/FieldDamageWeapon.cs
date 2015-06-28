@@ -26,7 +26,7 @@ namespace SpaceProject
         {
             Name = "Field Damage";
             Kind = "Secondary";
-            energyCostPerSecond = 1f;
+            energyCostPerSecond = 0f;
             delay = 800;
             Weight = 400;
             ActivatedSoundID = SoundEffects.SmallLaser;

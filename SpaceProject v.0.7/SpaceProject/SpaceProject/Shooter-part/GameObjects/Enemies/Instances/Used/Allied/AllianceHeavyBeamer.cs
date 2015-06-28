@@ -17,8 +17,8 @@ namespace SpaceProject
         private HostileBeamModule beamModuleMiddle;
         private HostileBeamModule beamModuleRight;
 
-        private float fireTime;
-        private float cooldownTime;
+        private readonly float fireTime = 4000;
+        private readonly float cooldownTime = 3000;
         private float currentTime;
         private Boolean IsFiring { get { return currentTime < fireTime; } }
 
@@ -40,16 +40,13 @@ namespace SpaceProject
         {
             fraction = Fraction.alliance;
             ShieldSetup(CreatureShieldCapacity.high, CreatureShieldRegeneration.high);
-
-            fireTime = 4000;
-            cooldownTime = 3000;
-            currentTime = 0;
         }
 
         public override void Initialize()
         {
             base.Initialize();
 
+            currentTime = fireTime;
             lootValue = LootValue.veryHigh;
 
             //Egenskaper
@@ -91,8 +88,7 @@ namespace SpaceProject
         {
             if (IsFiring)
             {
-
-                float offset = 15;
+                float offset = 16;
                 Vector2 leftBeamPos = new Vector2(PositionX - offset, PositionY);
                 Vector2 middleBeamPos = new Vector2(PositionX, PositionY);
                 Vector2 rightBeamPos = new Vector2(PositionX + offset, PositionY);

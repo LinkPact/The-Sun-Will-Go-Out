@@ -24,7 +24,7 @@ namespace SpaceProject
         {
             Name = "Disruptor";
             Kind = "Secondary";
-            energyCostPerSecond = 2f;
+            energyCostPerSecond = 0f;
             delay = 2000;
             Weight = 400;
             ActivatedSoundID = SoundEffects.MuffledExplosion;

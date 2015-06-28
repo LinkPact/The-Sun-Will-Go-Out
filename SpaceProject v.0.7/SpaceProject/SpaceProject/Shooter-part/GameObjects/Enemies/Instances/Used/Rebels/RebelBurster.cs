@@ -26,7 +26,7 @@ namespace SpaceProject
             PrimaryShootSoundID = SoundEffects.BigLaser;
 
             //Egenskaper
-            SightRange = 300;
+            SightRange = 500;
             HP = 275;
             Damage = (float)CollisionDamage.medium;
             Speed = 0.07f;

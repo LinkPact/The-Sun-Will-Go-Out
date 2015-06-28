@@ -38,7 +38,7 @@ namespace SpaceProject
             lootValue = LootValue.veryLow;
 
             //Egenskaper
-            SightRange = 400;
+            SightRange = 4000;
             HP = 200f;
             Damage = (float)CollisionDamage.low;
             Speed = 0.04f;

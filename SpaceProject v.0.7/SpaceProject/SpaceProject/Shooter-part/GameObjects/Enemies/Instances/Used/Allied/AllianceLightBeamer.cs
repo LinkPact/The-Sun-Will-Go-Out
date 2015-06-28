@@ -14,8 +14,8 @@ namespace SpaceProject
     {
         private HostileBeamModule beamModule;
 
-        private float fireTime;
-        private float cooldownTime;
+        private readonly float fireTime = 3000;
+        private readonly float cooldownTime = 2000;
         private float currentTime;
         private Boolean IsFiring { get { return currentTime < fireTime; } }
 
@@ -36,16 +36,13 @@ namespace SpaceProject
         private void Setup()
         {
             fraction = Fraction.alliance;
-
-            fireTime = 3000;
-            cooldownTime = 2000;
-            currentTime = 0;
         }
 
         public override void Initialize()
         {
             base.Initialize();
 
+            currentTime = fireTime;
             lootValue = LootValue.medium;
 
             //Egenskaper
@@ -56,7 +53,7 @@ namespace SpaceProject
 
             AddPrimaryModule(10, ShootingMode.Regular);
             movement = Movement.Following;
-            //shootSoundID = SoundEffects.ClickLaser;
+            //shootSoundID = SoundEffects.None;
 
             //Animationer
             anim.LoopTime = 500;

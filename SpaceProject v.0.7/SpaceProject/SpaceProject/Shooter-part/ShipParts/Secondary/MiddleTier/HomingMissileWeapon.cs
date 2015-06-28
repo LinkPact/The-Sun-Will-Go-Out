@@ -24,8 +24,8 @@ namespace SpaceProject
         {
             Name = "HomingMissile";
             Kind = "Secondary";
-            energyCostPerSecond = 1.5f;
-            delay = 800;
+            energyCostPerSecond = 0f;
+            delay = 1400;
             Weight = 500;
             ActivatedSoundID = SoundEffects.ClickLaser;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(300, 100, 100, 100));
