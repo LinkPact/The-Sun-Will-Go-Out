@@ -128,23 +128,12 @@ namespace SpaceProject
             DrawStandardString(spriteBatch, shipInfoFontSmall, primaryString, primaryStringPos);
 
             String secondaryString = "Secondary: " + ShipInventoryManager.equippedSecondary.Name;
-            if (!(ShipInventoryManager.equippedSecondary is EmptyWeapon)) secondaryString = AppendSecondaryActivatedInformation(secondaryString);
             Vector2 secondaryStringPos = new Vector2(8, Game.Window.ClientBounds.Height - 68) + Game.fontManager.FontOffset;
             DrawStandardString(spriteBatch, shipInfoFontSmall, secondaryString, secondaryStringPos);
 
             String shipStatsNamesString = "Health:\nEnergy:\nShield:";
             Vector2 shipStatsNamesStringPos = new Vector2(8, Game.Window.ClientBounds.Height - 49) + Game.fontManager.FontOffset;
             DrawStandardString(spriteBatch, shipInfoFontSmall, shipStatsNamesString, shipStatsNamesStringPos);
-        }
-
-        private String AppendSecondaryActivatedInformation(String rawSecondaryWeaponString)
-        {
-            if (PlayerShotHandler.SecondaryOn)
-                rawSecondaryWeaponString += " - On";
-            else
-                rawSecondaryWeaponString += " - Off";
-
-            return rawSecondaryWeaponString;
         }
 
         private void DrawShipInfo(SpriteBatch spriteBatch)

@@ -97,15 +97,15 @@ namespace SpaceProject
 
             if (LoadSoundEffects)
             {
-                smallLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/basic_laser"), 3);
-                bigLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/distorted_laser"), 3);
+                smallLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/basic_laser"), 2);
+                bigLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/distorted_laser"), 2);
                 clickLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/click_laser_noiseReduced"), 1);
-                midSizeLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/mid_size_laser"), 3);
+                midSizeLaser = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/jakob_test/lasers/mid_size_laser"), 2);
 
-                muffledExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom6"), 3);
-                smallExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom9"), 3);
+                muffledExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom6"), 2);
+                smallExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom9"), 2);
 
-                shieldHit = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/shooterHit/Shieldhit1"), 5);
+                shieldHit = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/shooterHit/Shieldhit1"), 2);
 
                 soundEffects.Add(smallLaser);
                 soundEffects.Add(bigLaser);

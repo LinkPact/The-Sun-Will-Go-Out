@@ -61,34 +61,6 @@ namespace SpaceProject
                 ShipInventoryManager.equippedSecondary.Update(player, gameTime);
             }
 
-            if (switchMode)
-            {
-                if (ControlManager.CheckPress(RebindableKeys.Action3))
-                {
-                    if (primaryOn && secondaryOn)
-                    {
-                        secondaryOn = false;
-                    }
-                    else if (primaryOn && !secondaryOn)
-                    {
-                        primaryOn = false;
-                        secondaryOn = true;
-                    }
-                    else if (!primaryOn && secondaryOn)
-                    {
-                        primaryOn = true;
-                        secondaryOn = true;
-                    }
-                }
-            }
-            else
-            {
-                if (ControlManager.CheckPress(RebindableKeys.Action3))
-                {
-                    secondaryOn = !secondaryOn;
-                }
-            }
-
             if (ControlManager.CheckHold(RebindableKeys.Action1))
             {
                 UseWeapon((PlayerWeapon)ShipInventoryManager.currentPrimaryWeapon, gameTime);
@@ -103,7 +75,6 @@ namespace SpaceProject
 
             //Lagrar de forandringar som gjorts i aktuellt magival till statsManagern.
             ShipInventoryManager.currentPrimaryWeapon = (PlayerWeapon)shotHandlerHelper.currentPrimary;
-
         }
 
         //Delegerar vidare vilket vapen som ska anropas baserat pa en int
@@ -112,7 +83,6 @@ namespace SpaceProject
             if (primaryOn && weapon.Kind.Equals("Primary") && weapon.IsReadyToUse && weapon.EnergyCost < player.MP)
             {
                 weapon.Use(player, gameTime);
-                //weapon.PlaySound();
             }
 
             if (secondaryOn && weapon.Kind.Equals("Secondary") && weapon.IsReadyToUse && weapon.EnergyCost < player.MP)

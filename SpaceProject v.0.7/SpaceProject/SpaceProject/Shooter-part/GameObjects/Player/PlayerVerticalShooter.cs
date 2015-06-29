@@ -9,7 +9,6 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace SpaceProject
 {
-    //Spelarklassen, representerar det spelarstyrda objektet
     public class PlayerVerticalShooter : CombatGameObject
     {
         #region declaration
@@ -54,9 +53,6 @@ namespace SpaceProject
         public PlayerShotHandler playerShotHandler;
         #endregion
 
-        // Sound effects
-        //SoundEffect testEffect1;
-
         public PlayerVerticalShooter(Game1 Game, Sprite spriteSheet) :
             base(Game, spriteSheet)
         {
@@ -75,7 +71,6 @@ namespace SpaceProject
             playerShotHandler = new PlayerShotHandler(this, Game, spriteSheet);
             playerShotHandler.Initialize();
 
-            //Characteristics
             Speed = 0.0f;
             Position = new Vector2(Game.Window.ClientBounds.Width / 2,
                 Game.Window.ClientBounds.Height - Game.stateManager.shooterState.WindowHeightOffset - 75);

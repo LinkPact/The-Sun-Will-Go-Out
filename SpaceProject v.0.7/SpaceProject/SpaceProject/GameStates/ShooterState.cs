@@ -55,37 +55,6 @@ namespace SpaceProject
             // Create new log file
             LevelLogger.InitializeNewLogfile();
 
-            // (Levels used for development only)
-            //levels.Add(new JakobsDevelopLevel(Game, spriteSheet, player, MissionType.rebelpirate, "JakobDevelop"));
-            //
-
-            //levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "mapCreator2", "map1", MissionType.none));
-            //levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "mapCreator", "xExperimental", MissionType.none));
-            //levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "finalBattle", "xFinalBattle", MissionType.none));
-
-
-            //levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "hardLevel", "XHardLevel", MissionType.rebelpirate));
-
-            //Levels
-            //levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "DefendColony", "XDefendColony", MissionType.power));
-            //levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "AttackOnRebelStation", "P2AttackOnRebelStation", MissionType.none));
-
-
-            //levels.Add(new FirstMissionLevel(Game, spriteSheet, player, "FirstMissionLevel", "XFirstMission", MissionType.none));
-            //levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "ScoutingLevel", "XScoutingLevel", MissionType.none));
-            //levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "PirateAmbush", "XPirateAmbush", MissionType.none));
-            //levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "PirateAnnihilation", "XPirateAnnihilation", MissionType.none));
-            //levels.Add(new SecondMissionLevel(Game, spriteSheet, player, "SecondMissionlvl1", "XSecondMissionlvl3", MissionType.rebelpirate));
-            //levels.Add(new SecondMissionLevel(Game, spriteSheet, player, "SecondMissionlvl2", "XSecondMissionlvl2", MissionType.rebelpirate));
-            //levels.Add(new SecondMissionLevel(Game, spriteSheet, player, "SecondMissionlvl3", "XSecondMissionlvl1", MissionType.rebelpirate));
-            //levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Main_TheAlliancelvl", "XMain_TheAlliance", MissionType.power));
-            //levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "Main10_AllianceDefence", "XMain10_level1", MissionType.power));
-            //levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "CoverBlown", "XCoverBlown", MissionType.power));
-
-            //TEST
-            //levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "EscortTest1", "escortTest1", MissionType.rebelpirate));
-
-
             // Unsure about if this is to be used, seems like a nice idea though! // Jakob
             levels.Add(new MapCreatorLevel(Game, spriteSheet, player, "LonelyAsteroidEncounter", "LonelyAsteroidLevel", MissionType.none));
 
@@ -239,7 +208,6 @@ namespace SpaceProject
 
             foreach (GameObjectVertical obj in gameObjects)
                 obj.Initialize();
-            //-------------
 
             timeSinceStarted = 0;
         }
