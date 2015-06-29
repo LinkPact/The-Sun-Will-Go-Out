@@ -8,7 +8,7 @@ namespace SpaceProject
 {
     public class FieldDamageWeapon : PlayerWeapon
     {
-        private float blastRadius = 200;
+        private readonly float blastRadius = 600;
 
         public FieldDamageWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
