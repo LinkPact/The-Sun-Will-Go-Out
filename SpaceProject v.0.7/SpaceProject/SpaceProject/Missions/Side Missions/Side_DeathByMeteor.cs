@@ -23,7 +23,7 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            AdvancedBeamWeapon advancedBeam = new AdvancedBeamWeapon(Game, ItemVariety.high);
+            AdvancedBeamWeapon advancedBeam = new AdvancedBeamWeapon(Game, ItemVariety.regular);
             RewardItems.Add(advancedBeam);
 
             RestartAfterFail();

@@ -31,6 +31,9 @@ namespace SpaceProject
         {
             base.Initialize();
 
+            AdvancedEnergyCell cell = new AdvancedEnergyCell(Game, ItemVariety.high);
+            RewardItems.Add(cell);
+
             RestartAfterFail();
 
             SetDestinations();
