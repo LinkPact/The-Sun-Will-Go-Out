@@ -27,8 +27,6 @@ namespace SpaceProject
         private static bool secondaryOn;
         public static bool SecondaryOn { get { return secondaryOn; } }
 
-        private bool switchMode;
-
         #endregion
 
         public PlayerShotHandler(PlayerVerticalShooter player, Game1 Game, Sprite spriteSheet)
@@ -45,8 +43,6 @@ namespace SpaceProject
             shotHandlerHelper.Initialize();
             primaryOn = true;
             secondaryOn = true;
-
-            switchMode = false;
         }
         
         public void Update(GameTime gameTime)

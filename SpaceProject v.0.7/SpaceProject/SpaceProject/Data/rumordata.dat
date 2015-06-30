@@ -1,5 +1,5 @@
 [BO_Border_Station]
-Rumor1 = Shooting with all you got all the time is not always necessarily better. Often it is better to be more conservative. Watch your energy when having a secondary weapon equipped. You can toggle it off and on using the 'Space'-key. 
+Rumor1 = Shooting with all you got all the time is not always necessarily better. Often it is better to be more conservative, fire when you need to.
 Rumor2 = It is a hard life, here in Sector X. All the piracy doesn't make it better. Watch out for hostile ships, or they will try to bring you down! You can see them as red dots on your radar.
 Rumor3 = Low on rupees? One way to get an income is helping out the people of the sector. Most of the time they will try to reward you in what ways they can when helping them out.
 Rumor4 = Low on rupees? Plunder the plunderer! Shoot down those damn rebels that are sucking the life out of this sector!
@@ -25,13 +25,14 @@ Rumor4 = Someone told me that if I save my energy my shields charge faster. Coul
 Rumor5 = You come from Border Station, you say? You are all a bunch of dirty low-lifes. We are civilized here. Please leave.
 
 [SX_New_Norrland]
-Rumor1 = Have you heard about Murt? It is a mineral with very unique properties. Both the Alliance and the rebels seem very keen to get their hands on our Murt-mines..
+Rumor1 = Have you heard about Murt? It is a mineral with very unique properties. Both the Alliance and the rebels seem very keen to get their hands on our Murt-mines...
 Rumor2 = I have heard there are planets which can't be seen on the regular radar. Maybe if you look closer..
 Rumor3 = Those rebel scums plundered my farm and stole all of my cattle. Rain fire on them all!
 Rumor4 = The people living at Soelara are quite odd. It is said they eat raw potatoes!
+Rumor5 = A ship got lost south of here recently. I hope they are okay...
 
 [SX_Station1_Lavis]
-Rumor1 = I heard a ship from Soelara Station and it's crew has gone missing. 
+Rumor1 = Did you know that the rebels has their main base west of here? The Alliance has raided it several times, but haven't managed to break it, yet.
 Rumor2 = My son joined the Alliance months ago. Now he is fighting rebels for our good. I am so proud!
 Rumor3 = Those big transport ships are the lifeblood in this solar system. They transport wares and peoples between different planets. Bring them down, and you bring the whole sector down.
 Rumor4 = They are after our titanium. That's why the alliance are here. You must to stop them! 
@@ -47,6 +48,9 @@ Rumor4 = The people living at New Norrland are quite odd. I have heard that they
 Rumor1 = Have you heard about the scientists living on Peye? An odd bunch. Mostly silent, and then BAM, they invent something. Their beacons are really useful. If they only could transport larger ships.
 Rumor2 = Life has gotten harder as our energy sources are declining. We simply must find new ways to produce energy. I believe that new technology is our only hope.
 Rumor3 = I have heard that it is possible to enhance your motors, enabling you to travel at incredible speed. I have also heard that the alliance forbade it as it consumed too much energy. It is said that they nevertheless are using it themselves. Stupid hypocrits.
+Rumor4 = I have heard there is a training area for the toughest pilots in the asteroid belt west of here. It is probably too hard for you though.
+Rumor5 = Fusion power is still the leading energy source around here. The alliance are fervently searching for more advanced power sources. Some say that is why they have spread out their prying eyes all over this solar system.
+Rumor6 = Why is this part of the solar system called Sector X? It once had a name, which is long forgotten. I think the name Sector X is a recognition to that oblivion will reach everything. Everything will be forgotten.
 
 [SX_Fortrun_2]
 Rumor1 = Fusion power is still the leading energy source around here. The alliance are fervently searching for more advanced power sources. Some say that is why they have spread out their prying eyes all over this solar system.
@@ -57,15 +61,15 @@ Rumor3 = Why is this part of the solar system called Sector X? It once had a nam
 Rumor1 = As you see, life is not that good here. People are desperate. And the Alliance is sucking out our last resources, gathering them at Fortrun. I hope all their shields fail to recharge.
 Rumor2 = It is getting harder and harder to keep up with the Alliance's technology. First their shields, and now that stealth! I have heard about a weapon though able to suck the energy out of their shields. I wonder if it exists...
 Rumor3 = You think we should stop raiding the Alliance's transports? You know, we don't do it because we want to. We desperately need that food they are stealing from our people.
+Rumor4 = Missiles and explosives are cheap and effective. The Alliance think they are too primitive to use. Good for us.
 
 [SX_Peye]
 Rumor1 = Both the Alliance and the rebels are attempting to get their hands on the science performed here. The scientists seem very hestitant about both rebels and the Alliance though...
 Rumor2 = Have you heard the story of old Earth. The place we used to live. Heard they blew it all to pieces and now we are all stuck here.
 Rumor3 = We've got to hold together in this sector. It might be hard times now, but my gut tells me this is only the beginning. After rain comes thunder.
-Rumor4 = Do you have an interesting idea of a new weapon? Please send an email to Jakob with proposed specifications. Use the highly secret header "PANCAKE". The best proposal will be put in the game, and (in some way) named after you.
-Rumor5 = Have you beaten the mad scientists level yet? I have heard it is the hardest challenge currently seen in Sector X. Good luck with that!
-Rumor6 = Did you know the scientists here invented the Beacons? Amazing! They also invented Bacon.
-Rumor7 = Lately, a lot of research seems to have been performed on the rare mineral Murt. I wonder what's up with that...
+Rumor4 = Have you beaten the mad scientists level yet? I have heard it is the hardest challenge currently seen in Sector X. Good luck with that!
+Rumor5 = Did you know the scientists here invented the Beacons? Amazing! They also invented Bacon.
+Rumor6 = Lately, a lot of research seems to have been performed on the rare mineral Murt. I wonder what's up with that...
 
 [OX_OutpostX_Station]
 Rumor1 = This is a lonely place. We are a handful of people trying to make our living here. Sometimes I wonder why we even try.
