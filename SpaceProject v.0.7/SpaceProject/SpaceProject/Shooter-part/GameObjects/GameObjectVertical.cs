@@ -141,8 +141,8 @@ namespace SpaceProject
             windowHeight = Game.Window.ClientBounds.Height;
             SetLevelWidth(800);
 
-            config = new ConfigFile();
-            config.Load("Data/verticaldata.dat");
+            //config = new ConfigFile();
+            //config.Load("Data/verticaldata.dat");
 
             //In-Game-Egenskaper
             ObjectClass = null;

@@ -12,7 +12,7 @@ namespace SpaceProject
         private static readonly double RADIUS = 750;
         private static readonly double INNERRADIUS = 500;
         private static readonly int SIMPLE_ASTEROID_COUNT = 50;
-        private static readonly int EVENT_ASTEROID_COUNT = 7;
+        private static readonly int EVENT_ASTEROID_COUNT = 12;
 
         public SunAsteroidBelt(Game1 Game, Sprite spriteSheet) :
             base(Game, spriteSheet, CENTERCOORD)

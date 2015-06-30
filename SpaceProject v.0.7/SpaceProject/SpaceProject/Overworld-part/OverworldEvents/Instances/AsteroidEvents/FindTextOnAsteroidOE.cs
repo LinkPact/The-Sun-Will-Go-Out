@@ -17,7 +17,10 @@ namespace SpaceProject
             "You find a deserted building.#There is a huge antenna sprouting from its top. It might have been a broadcast station once.",
             "This asteroid smells like old socks. Best leave it...",
             "This asteroid looks like a huge potato.",
-            "[SAIR] An ambush!#...#[SAIR] Sorry, I should probably update my sensors. False alarm."
+            "[SAIR] An ambush!#...#[SAIR] Sorry, I should probably update my sensors. False alarm.",
+            "[SAIR] Another... asteroid! It gets so repetitive.",
+            "You find a message scribbled into the stone.#\"Have you been to the corner of the universe? The upper left.\"#\"My grandmother hid some forgotten technology there.\"",
+            "You find a message scribbled into the stone.#\"Sometimes, voices whisper three names to me. Danne, Jakob, Johan... Who are they?\""
         };
 
         private List<String> allianceText = new List<String> { "alliance1#...", "alliance2#followup", "alliance3#more#more!" };

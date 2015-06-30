@@ -105,7 +105,7 @@ namespace SpaceProject
                 muffledExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom6"), 2);
                 smallExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom9"), 2);
 
-                shieldHit = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/shooterHit/Shieldhit1"), 2);
+                shieldHit = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/shooterHit/Shieldhit1"), 1);
 
                 soundEffects.Add(smallLaser);
                 soundEffects.Add(bigLaser);

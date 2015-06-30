@@ -371,7 +371,7 @@
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Asteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\AsteroidField.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\TelmunAsteroidBelt.cs" />
-    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\RebelOutpostAsteroidField - Copy.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\RebelOutpostAsteroidField.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\TestingField.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\WesternAsteroidField.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\EventAsteroid.cs" />
