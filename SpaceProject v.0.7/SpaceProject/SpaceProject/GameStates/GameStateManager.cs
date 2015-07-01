@@ -16,8 +16,8 @@ namespace SpaceProject
         public GameState currentGameState { get; private set; }
         private Game1 Game;
 
-        public static string currentState;      //String for storing the name of the state that the player is currently in
-        public static string previousState;     //String for storing the name of the state that the player just left 
+        public static string currentState;
+        public static string previousState;
 
         public MainMenuState mainMenuState;
         public StartGameState startGameState;

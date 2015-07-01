@@ -182,8 +182,7 @@ namespace SpaceProject
                     if (GameStateManager.currentState.Equals("OverworldState"))
                     {
                         PopupHandler.DisplaySelectionMenu("What do you want to do?",
-                            new List<string> { "Save and exit to menu", "Save and exit to desktop", "Exit to menu without saving",
-                        "Exit to desktop without saving", "Cancel"},
+                            new List<string> { "Save and exit to menu", "Save and exit to desktop", "Cancel"},
                         new List<System.Action>());
                     }
 

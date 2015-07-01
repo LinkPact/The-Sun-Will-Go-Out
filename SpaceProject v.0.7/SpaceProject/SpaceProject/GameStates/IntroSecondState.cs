@@ -118,6 +118,7 @@ namespace SpaceProject
 
             #endregion
 
+            textBox.Update(gameTime);
             textBox.TextBoxPosY -= txtSpeed;
 
             if (txtSpeed > txtMaxSpeed)
