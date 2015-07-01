@@ -34,6 +34,7 @@ namespace SpaceProject
         public bool TutorialsUsed { get { return tutorialsUsed; } set { tutorialsUsed = value; } }
         private int tempTimer = 50;
         private int tempTimer2 = 200;
+        private int tempTimer3 = 1000;
 
         // progress flags
         private bool hasEnteredStation;
@@ -43,6 +44,9 @@ namespace SpaceProject
         private bool hasEnteredInventory;
         private bool hasEnteredHighfenceBeaconArea;
         private bool hasActivatedHighfenceBeacon;
+        private bool hasEnteredShooterWithShield;
+        private bool longShotTutorialActivated;
+        private bool secondaryWeaponTutorialDisplayed;
         private bool coordinatesDisplayed;
 
         private bool equipShieldTutorial;
@@ -118,23 +122,13 @@ namespace SpaceProject
                     TutorialImage.Radar);
             }
 
-            //if (!hasEnteredPlanet && GameStateManager.currentState.Equals("PlanetState") &&
-            //    game.stateManager.planetState.SubStateManager.ActiveMenuState ==
-            //    game.stateManager.planetState.SubStateManager.OverviewMenuState &&
-            //    game.stateManager.planetState.SubStateManager.ButtonControl != ButtonControl.Confirm)
-            //{
-            //    hasEnteredPlanet = true;
-            //
-            //    DisplayTutorialMessage("This is the planet menu. If the planet has a colony, you can buy/sell items there, accept missions and listen to rumors from it's inhabitants. Not all planets are inhabited though.");
-            //}
-
             Vector2 highfenceBeaconPosition = game.stateManager.overworldState.GetBeacon("Highfence Beacon").position; 
 
             if (!hasEnteredHighfenceBeaconArea &&
                 CollisionDetection.IsRectInRect(game.player.Bounds, new Rectangle((int)highfenceBeaconPosition.X - 200, (int)highfenceBeaconPosition.Y - 200, 400, 400)))
             {
                 hasEnteredHighfenceBeaconArea = true;
-                DisplayTutorialMessage("This is a 'beacon'. Beacons are used for traveling quickly between stations and planets, but they need to be activated before use. Try activating it now."); 
+                DisplayTutorialMessage("This is a 'beacon'. Beacons are used for traveling quickly between planets, but they need to be activated before use. Fly near the beacon to activate it!"); 
             }
 
             if (hasEnteredHighfenceBeaconArea
@@ -146,7 +140,7 @@ namespace SpaceProject
                 if (MissionManager.GetMission(MissionID.Main2_1_TheConvoy).MissionState != StateOfMission.Active
                     || !((EscortObjective)MissionManager.GetMission(MissionID.Main2_1_TheConvoy).CurrentObjective).Started)
                 {
-                    DisplayTutorialMessage("Good! This beacon is now activated and you can press 'Enter' above it to access it. All planets in the sector have a beacon orbiting it. Don't forget to activate them when you see them!");
+                    DisplayTutorialMessage("Good! This beacon is now activated and can be accessed. All planets in the sector have a beacon orbiting it. Don't forget to activate them when you see them!");
                 }
             }
 
@@ -160,53 +154,45 @@ namespace SpaceProject
 
                     hasEnteredVerticalShooter = true;
                     DisplayTutorialMessage(new List<String>{"You can rebind the keys in the options menu.",
-                    "Down at the bottom-left is some information and three bars:\n\nObjective - Displays condition to complete the level.", "Primary - your selected primary weapon. Toggle between equipped weapons with '" + ControlManager.GetKeyName(RebindableKeys.Action2) + "'.\n\nSecondary - Your currently equipped secondary weapon. Turn it on/off with '" + ControlManager.GetKeyName(RebindableKeys.Action3) + "'", "Health - Your ship's armor, when it's reduced to zero, the current level is failed.\n\nEnergy - weapons use energy to fire.", "Shield - protects your ship from damage. Recharges over time."},
+                    "Down at the bottom-left you can find information about the current level objective, your active weapons and on your ship's health, energy and shields."},
                     new List<TutorialImage> { TutorialImage.CombatControls, TutorialImage.CombatBars},
                         new List<int> {1});
                 }
             }
 
-            //if (!hasEnteredShop && ((GameStateManager.currentState.Equals("PlanetState") &&
-            //    game.stateManager.planetState.SubStateManager.ActiveMenuState.Equals(
-            //    game.stateManager.planetState.SubStateManager.ShopMenuState)) ||
-            //    (GameStateManager.currentState.Equals("StationState") &&
-            //    game.stateManager.stationState.SubStateManager.ActiveMenuState.Equals(
-            //    game.stateManager.stationState.SubStateManager.ShopMenuState))))
-            //{
-            //    hasEnteredShop = true;
-            //
-            //    DisplayTutorialMessage(new List<String> { "This is the shop, here you can buy new equipment for your ship as well as sell your old equipment. The two left columns displays your current inventory and the right column displays the shop's inventory.", 
-            //        "Move the cursor with the arrowkeys. Press 'Enter' to get options for buying and selling items. When you are done shopping, press 'Escape' to leave the shop."});
-            //}
+            if (!hasEnteredShooterWithShield && !(ShipInventoryManager.equippedShield is EmptyShield)
+                && GameStateManager.currentState.Equals("ShooterState"))
+            {
+                tempTimer2 -= gameTime.ElapsedGameTime.Milliseconds;
 
-            //if (!hasEnteredInventory && GameStateManager.currentState.Equals("ShipManagerState"))
-            //{
-            //    hasEnteredInventory = true;
-            //
-            //    DisplayTutorialMessage(new List<String> { "This is your inventory. Here, you can check and equip your different ship parts. You can also see your complete inventory. In order to equip a part, enter that menu using 'Enter'. Then choose the position you want to equip to. Finally choose what part you want to the chosen position.",
-            //    "What parts you have equipped is crucial for your success. Come back here often and try different combinations of ship parts. Now equip what you bought and leave the inventory by pressing 'Escape'." });
-            //}
+                if (tempTimer2 < 0)
+                {
+                    tempTimer2 = 500;
+
+                    hasEnteredShooterWithShield = true;
+                    DisplayTutorialMessage("You now have a shield to protect your ship's hull! If you take a hit, the shield will absorb the damage if it has enough power. It recharges slowly over time, but faster if your energy bar is full.");
+                }
+            }
 
             if (equipShieldTutorial
                 && !equipShieldTutorialFinished)
             {
-                game.stateManager.planetState.SubStateManager.ShopMenuState.DisplayBuyAndEquip = false;
+                game.stateManager.stationState.SubStateManager.ShopMenuState.DisplayBuyAndEquip = false;
                 switch (equipShieldProgress)
                 {
                     case 0:
-                        if (GameStateManager.currentState.Equals("PlanetState") &&
-                            game.stateManager.planetState.Planet.name.Equals("Highfence"))
+                        if (GameStateManager.currentState.Equals("StationState") &&
+                            game.stateManager.stationState.Station.name.Equals("Highfence Shop"))
                         {
                             PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"Start by entering the shop and selecting 'Buy & Sell Items'.\"");
                             equipShieldProgress = 1;
-                            StatsManager.Rupees += 200;
                         }
                         break;
 
                     case 1:
-                        if (GameStateManager.currentState.Equals("PlanetState") &&
-                            game.stateManager.planetState.Planet.name.Equals("Highfence")
-                            && game.stateManager.planetState.SubStateManager.ActiveMenuState.Equals(game.stateManager.planetState.SubStateManager.ShopMenuState))
+                        if (GameStateManager.currentState.Equals("StationState") &&
+                            game.stateManager.stationState.Station.name.Equals("Highfence Shop")
+                            && game.stateManager.stationState.SubStateManager.ActiveMenuState.Equals(game.stateManager.stationState.SubStateManager.ShopMenuState))
                         {
                             PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"Select the 'Basic shield' in the column to the right and select 'Buy'.\"");
                             equipShieldProgress = 2;
@@ -214,12 +200,12 @@ namespace SpaceProject
                         break;
 
                     case 2:
-                        if (GameStateManager.currentState.Equals("PlanetState") &&
-                            game.stateManager.planetState.Planet.name.Equals("Highfence")
-                            && game.stateManager.planetState.SubStateManager.ActiveMenuState.Equals(game.stateManager.planetState.SubStateManager.ShopMenuState)
+                        if (GameStateManager.currentState.Equals("StationState") &&
+                            game.stateManager.stationState.Station.name.Equals("Highfence Shop")
+                            && game.stateManager.stationState.SubStateManager.ActiveMenuState.Equals(game.stateManager.stationState.SubStateManager.ShopMenuState)
                             && ShipInventoryManager.ownedShields.Count > 0)
                         {
-                            PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"Good! Now exit the shop with 'Escape' and return to the overworld!\"");
+                            PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"Good! Now exit the shop by selecting and pressing 'Go Back' and return to the overworld!\"");
                             equipShieldProgress = 3;
                         }
                         break;
@@ -267,9 +253,37 @@ namespace SpaceProject
             }
 
             if (equipShieldTutorialFinished
-                && game.stateManager.planetState.SubStateManager.ShopMenuState.DisplayBuyAndEquip == false)
+                && game.stateManager.stationState.SubStateManager.ShopMenuState.DisplayBuyAndEquip == false)
             {
                 game.stateManager.planetState.SubStateManager.ShopMenuState.DisplayBuyAndEquip = true;
+            }
+
+            if (MissionManager.GetMission(MissionID.Main2_1_TheConvoy).MissionState == StateOfMission.CompletedDead
+                && GameStateManager.currentState.Equals("OverworldState") && !longShotTutorialActivated)
+            {
+                tempTimer3 -= gameTime.ElapsedGameTime.Milliseconds;
+
+                if (tempTimer3 <= 0)
+                {
+                    tempTimer3 = 1000;
+                    longShotTutorialActivated = true;
+                    DisplayTutorialMessage(new List<string>(){
+                    String.Format("You have recieved your first long-range weapon: 'LongShot'. You can have two weapons equipped at a time, which allows you to toggle between them in combat using '{0}'.", ControlManager.GetKeyName(RebindableKeys.Action2)), 
+                    "Try accessing your inventory with 'I' and equipping LongShot on one slot and SpreadBullet on another, then you can vary your strategy in combat depending on which enemies you encounter."});
+                }
+            }
+
+            if (ShipInventoryManager.OwnedSecondary.Count > 0 && GameStateManager.currentState.Equals("OverworldState") 
+                && !secondaryWeaponTutorialDisplayed)
+            {
+                tempTimer3 -= gameTime.ElapsedGameTime.Milliseconds;
+
+                if (tempTimer3 <= 0)
+                {
+                    tempTimer3 = 1000;
+                    secondaryWeaponTutorialDisplayed = true;
+                    DisplayTutorialMessage("You have acquired your first secondary weapon! Don't forget to equip it if you havn't done so already. Secondary weapons are fired automatically and don't use energy, so they are very handy!");
+                }
             }
         }
 
@@ -362,6 +376,9 @@ namespace SpaceProject
             tutorialProgress.Add("hasActivatedHighfenceBeacon", hasActivatedHighfenceBeacon.ToString());
             tutorialProgress.Add("hasStartedSecondMission", coordinatesDisplayed.ToString());
             tutorialProgress.Add("equipShieldTutorial", equipShieldTutorialFinished.ToString());
+            tutorialProgress.Add("longShotTutorial", longShotTutorialActivated.ToString());
+            tutorialProgress.Add("hasEnteredShooterWithShield", hasEnteredShooterWithShield.ToString());
+            tutorialProgress.Add("hasDisplayedSecondary", secondaryWeaponTutorialDisplayed.ToString());
 
             game.saveFile.Save(Game1.SaveFilePath, "save.ini", "tutorialprogress", tutorialProgress);
         }
@@ -377,6 +394,9 @@ namespace SpaceProject
             hasActivatedHighfenceBeacon = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasactivatedhighfencebeacon", false);
             coordinatesDisplayed = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasstartedsecondmission", false);
             equipShieldTutorialFinished = game.saveFile.GetPropertyAsBool("tutorialprogress", "equipshieldtutorial", false);
+            longShotTutorialActivated = game.saveFile.GetPropertyAsBool("tutorialprogress", "longshottutorial", false);
+            hasEnteredShooterWithShield = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredshooterwithshield", false);
+            secondaryWeaponTutorialDisplayed = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasdisplayedsecondary", false);
         }
 
         public Sprite GetImageFromEnum(TutorialImage imageID)
