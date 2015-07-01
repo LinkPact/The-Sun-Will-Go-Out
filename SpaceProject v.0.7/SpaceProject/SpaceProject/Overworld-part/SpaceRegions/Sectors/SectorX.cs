@@ -63,6 +63,8 @@ namespace SpaceProject
 
             // Sub-interactive objects
             soelara = new Soelara(game, spriteSheet);
+            fortrun = new Fortrun(game, spriteSheet);
+            lavis = new Lavis(game, spriteSheet);
             fortrunStation2 = new FortrunStation2(game, spriteSheet);
             lonelyAsteroid = new LonelyAsteroid(game, spriteSheet);
             damagedShip = new DamagedShip(game, new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/MissionObjectSpriteSheet"), null));
@@ -84,6 +86,8 @@ namespace SpaceProject
             subInteractiveObjects.AddRange(telmunAsteroidFieldGenerator.GetAsteroids());
 
             subInteractiveObjects.Add(soelara);
+            subInteractiveObjects.Add(fortrun);
+            subInteractiveObjects.Add(lavis);
             subInteractiveObjects.Add(fortrunStation2);
             subInteractiveObjects.Add(lonelyAsteroid);
             subInteractiveObjects.Add(damagedShip);
@@ -94,13 +98,9 @@ namespace SpaceProject
             }
 
             // Planets
-            lavis = new Lavis(game, spriteSheet, offset);
-            fortrun = new Fortrun(game, spriteSheet, offset);
             highfence = new Highfence(game, spriteSheet, offset);
             newNorrland = new NewNorrland(game, spriteSheet, offset);
             peye = new Peye(game, spriteSheet, offset);
-            lavis.Initialize();
-            fortrun.Initialize();
             highfence.Initialize();
             newNorrland.Initialize();
             peye.Initialize();
@@ -159,8 +159,6 @@ namespace SpaceProject
 
             AddGameObject(sectorXStar);
 
-            AddGameObject(lavis);
-            AddGameObject(fortrun);
             AddGameObject(highfence);
             AddGameObject(newNorrland);
             AddGameObject(peye);

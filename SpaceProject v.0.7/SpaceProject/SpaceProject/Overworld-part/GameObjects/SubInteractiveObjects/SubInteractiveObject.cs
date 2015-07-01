@@ -29,6 +29,7 @@ namespace SpaceProject
         protected List<string> text;
         protected List<string> options;
         protected OverworldEvent overworldEvent;
+        protected OverworldEvent overrideEvent;
 
         protected SubInteractiveObject(Game1 game, Sprite spriteSheet) :
             base(game, spriteSheet)
@@ -68,7 +69,15 @@ namespace SpaceProject
         {
             if (overworldEvent != null)
             {
-                overworldEvent.Activate();
+                if (overrideEvent != null)
+                {
+                    overrideEvent.Activate();
+                    overrideEvent = null;
+                }
+                else
+                {
+                    overworldEvent.Activate();
+                }
             }
         }
 
@@ -91,6 +100,11 @@ namespace SpaceProject
             {
                 SetClearedText();
             }
+        }
+
+        public void OverrideEvent(OverworldEvent ev)
+        {
+            overrideEvent = ev;
         }
     }
 }

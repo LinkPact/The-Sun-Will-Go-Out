@@ -86,7 +86,7 @@ namespace SpaceProject
         {
             destinations = new List<GameObjectOverworld>();
 
-            GameObjectOverworld lavis = Game.stateManager.overworldState.GetPlanet("Lavis");
+            GameObjectOverworld lavis = Game.stateManager.overworldState.GetSectorX.GetGameObject("Lavis");
 
             AddDestination(lavis, 6);
         }

@@ -75,7 +75,8 @@ namespace SpaceProject
             {
                 if ((obj is Planet
                     || obj.name.ToLower().Equals("soelara")
-                    || obj.name.ToLower().Equals("fortrun station i"))
+                    || obj.name.ToLower().Equals("lavis")
+                    || obj.name.ToLower().Equals("fortrun"))
                     && camera.Zoom < PlanetZoomScale)
                 {
                     obj.scale = PlanetZoomScale / camera.Zoom;
@@ -87,7 +88,8 @@ namespace SpaceProject
                     obj.scale = StarZoomScale / camera.Zoom;
                 }
 
-                else if (obj is Station
+                else if ((obj is Station
+                    || obj.name.ToLower().Equals("fortrun station i"))
                     && camera.Zoom < StationZoomScale)
                 {
                     obj.scale = StationZoomScale / camera.Zoom;
@@ -112,7 +114,11 @@ namespace SpaceProject
             {
                 foreach (GameObjectOverworld obj in gameObjects)
                 {
-                    spriteBatch.DrawString(FontManager.GetFontStatic(14), obj.name, obj.position, Color.LightSeaGreen, 0f, Vector2.Zero, 50f, SpriteEffects.None, 1f);
+                    spriteBatch.DrawString(FontManager.GetFontStatic(14), obj.name,
+                        new Vector2(obj.position.X, obj.position.Y - ((obj.Bounds.Height * obj.scale) / 2) - 300),
+                        Color.White, 0f,
+                        FontManager.GetFontStatic(14).MeasureString(obj.name) / 2,
+                        55, SpriteEffects.None, 1f);
                 }
             }
         }

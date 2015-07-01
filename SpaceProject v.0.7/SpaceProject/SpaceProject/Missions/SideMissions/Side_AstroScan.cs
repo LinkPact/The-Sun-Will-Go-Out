@@ -59,15 +59,24 @@ namespace SpaceProject
         {
             destinations = new List<GameObjectOverworld>();
 
-            GameObjectOverworld lavis = Game.stateManager.overworldState.GetPlanet("Lavis");
+            GameObjectOverworld lavis = Game.stateManager.overworldState.GetSectorX.GetGameObject("Lavis");
 
-            destinations.Add(lavis);
-            destinations.Add(lavis);
+            AddDestination(lavis, 3);
         }
 
         protected override void SetupObjectives()
         {
             objectives.Clear();
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                delegate 
+                {
+                    ((SubInteractiveObject)Game.stateManager.overworldState.GetSectorX.GetGameObject("Lavis")).OverrideEvent(
+                        new DisplayTextOE("Fly through the asteroid field to scan it."));
+                },
+                delegate { },
+                delegate { return true; },
+                delegate { return false; }));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0]));
 

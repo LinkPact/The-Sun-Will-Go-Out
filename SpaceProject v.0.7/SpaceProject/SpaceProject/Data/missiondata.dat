@@ -489,7 +489,7 @@ Reputation = 0
 State = 1
 
 [Side_AstroScan]
-Location = Lavis
+Location = Lavis Station
 Name = Astroid Scan
 Introduction = [Mineral researcher] "We are in need of some assistance. We are investegating the possibility of conducting new mining opperations in an nearby asteroid field in Lavis orbit. But we are low on pilots and need someone to scan the asteroid field for us."
 ObjectiveText1 = Fly down to Lavis at coordinates (1300, 1400) and do the scanning.

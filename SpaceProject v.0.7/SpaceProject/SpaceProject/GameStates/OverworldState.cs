@@ -35,11 +35,12 @@ namespace SpaceProject
                 List<GameObjectOverworld> tempList = new List<GameObjectOverworld>();
                 tempList.Add(Game.player);
                 tempList.Add(GetSectorX.GetGameObject("Soelara"));
+                tempList.Add(GetSectorX.GetGameObject("Lavis"));
+                tempList.Add(GetSectorX.GetGameObject("Fortrun"));
                 tempList.Add(GetSectorX.GetGameObject("Star"));
                 foreach (GameObjectOverworld obj in GetAllOverworldGameObjects)
                 {
-                    if (obj is Planet 
-                        || obj is Station)
+                    if (obj is Planet)
                     {
                         tempList.Add(obj);
                     }
@@ -440,13 +441,7 @@ namespace SpaceProject
 
         private void Inputhandling()
         {
-            if (ControlManager.CheckPress(RebindableKeys.Action1)
-                || ControlManager.CheckKeyPress(Keys.Enter))
-            {
-                EnterCheck();
-            }
-
-            else if (ControlManager.CheckPress(RebindableKeys.Pause))
+            if (ControlManager.CheckPress(RebindableKeys.Pause))
             {
                 PopupHandler.DisplayMenu();
             }
@@ -645,35 +640,6 @@ namespace SpaceProject
                     previousSpaceRegion = currentSpaceRegion;
                     previousSpaceRegion.OnLeave();
                     currentSpaceRegion = null;
-                }
-            }
-        }
-
-        // Collision-Detection for entering stations and planets located in deepspaceobjects
-        private void EnterCheck()
-        {
-            for (int i = 0; i < deepSpaceGameObjects.Count; i++)
-            {
-                if (CollisionDetection.VisiblePixelsColliding(Game.player.Bounds, ((GameObjectOverworld)deepSpaceGameObjects[i]).Bounds,
-                    Game.player.sprite, ((GameObjectOverworld)deepSpaceGameObjects[i]).sprite,
-                    Game.player.centerPoint, ((GameObjectOverworld)deepSpaceGameObjects[i]).centerPoint) == true)
-                {
-                    if (deepSpaceGameObjects[i] is Planet)
-                    {
-                        Game.stateManager.planetState.LoadPlanetData((Planet)deepSpaceGameObjects[i]);
-                        Game.stateManager.ChangeState("PlanetState");
-                    }
-        
-                    else if (deepSpaceGameObjects[i] is Station)
-                    {
-                        Game.stateManager.stationState.LoadStationData((Station)deepSpaceGameObjects[i]);
-                        Game.stateManager.ChangeState("StationState");
-                    }
-
-                    else if (deepSpaceGameObjects[i] is OverworldShip)
-                    {
-                        ((OverworldShip)deepSpaceGameObjects[i]).Interact();
-                    }
                 }
             }
         }

@@ -137,14 +137,6 @@ namespace SpaceProject
                 {
                     cameraPos.Y += CameraPanSpeed;
                 }
-
-                else if (!ControlManager.CheckHold(RebindableKeys.Right)
-                    && !ControlManager.CheckHold(RebindableKeys.Left)
-                    && !ControlManager.CheckHold(RebindableKeys.Up)
-                    && !ControlManager.CheckHold(RebindableKeys.Down))
-                {
-                    cameraPos = originalCameraPos;
-                }
             }
 
             else

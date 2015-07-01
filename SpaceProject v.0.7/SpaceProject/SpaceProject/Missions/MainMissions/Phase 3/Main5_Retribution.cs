@@ -290,7 +290,7 @@ namespace SpaceProject
                 switch (i)
                 {
                     case 0:
-                        actions.Add(new TravelAction(rebelShips[i], Game.stateManager.overworldState.GetPlanet("Lavis")));
+                        actions.Add(new TravelAction(rebelShips[i], Game.stateManager.overworldState.GetSectorX.GetGameObject("Lavis")));
                         break;
 
                     case 1:
