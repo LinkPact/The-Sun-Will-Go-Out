@@ -61,6 +61,10 @@ namespace SpaceProject
         private float line3XPos;
         private float line4XPos;
 
+        private Vector2 inventoryStringPos;
+        private Vector2 shopStringPos;
+        private Vector2 informationStringPos;
+
         public ShopMenuState(Game1 game, String name, BaseStateManager manager, BaseState baseState) :
             base(game, name, manager, baseState)
         {
@@ -94,13 +98,22 @@ namespace SpaceProject
             shopColumnXPosition = Game.Window.ClientBounds.Width / 2.245f;
             columnYPosition = Game.Window.ClientBounds.Height / 2 + 55;
 
-            line = SpriteSheet.GetSubSprite(new Rectangle(73, 263, 2, 1));
+            line = SpriteSheet.GetSubSprite(new Rectangle(78, 268, 2, 2));
             lineLength = Game.Window.ClientBounds.Height / 2.25f;
             lineYPos = Game.Window.ClientBounds.Height / 1.895f;
             line1XPos = Game.Window.ClientBounds.Width / 7.66f;
             line2XPos = Game.Window.ClientBounds.Width / 2.322f;
             line3XPos = Game.Window.ClientBounds.Width / 1.725f;
-            line4XPos = 1130;
+            line4XPos = Game.Window.ClientBounds.Width / 1.133f;
+
+            inventoryStringPos = new Vector2(Game.Window.ClientBounds.Width / 3.55f,
+                Game.Window.ClientBounds.Height / 1.8f);
+
+            shopStringPos = new Vector2(Game.Window.ClientBounds.Width / 1.966f,
+                Game.Window.ClientBounds.Height / 1.8f);
+
+            informationStringPos = new Vector2(Game.Window.ClientBounds.Width / 1.366f,
+                Game.Window.ClientBounds.Height / 1.8f);
         }
 
         public override void OnEnter()
@@ -493,8 +506,7 @@ namespace SpaceProject
 
             spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                    "Information",
-                                   new Vector2(itemInfoPosition.X + 120,
-                                               itemInfoPosition.Y - 19) + Game.fontManager.FontOffset,
+                                   informationStringPos + Game.fontManager.FontOffset,
                                    Game.fontManager.FontColor,
                                    0,
                                    BaseState.Game.fontManager.GetFont(14).MeasureString("Information") / 2,
@@ -537,8 +549,9 @@ namespace SpaceProject
 
             spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                    "Rupees: " + StatsManager.Rupees,
-                                   new Vector2(10, Game.Window.ClientBounds.Height / 2 - 25) + Game.fontManager.FontOffset,
-                                   Game.fontManager.FontColor);
+                                   new Vector2(invColumn2XPosition - 1,
+                                   columnYPosition + (15 * InventoryYSpacing) - 10) + Game.fontManager.FontOffset,
+                                   Game.fontManager.FontColor, 0, Vector2.Zero, 1f, SpriteEffects.None, 0.9f);
 
             if (BaseStateManager.ButtonControl == ButtonControl.TransactionConfirm)
             {      
@@ -589,8 +602,7 @@ namespace SpaceProject
 
             spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                    "Inventory",
-                                   new Vector2(invColumn1XPosition + 105,
-                                               columnYPosition - 18) + Game.fontManager.FontOffset,
+                                   inventoryStringPos + Game.fontManager.FontOffset,
                                    Game.fontManager.FontColor,
                                    0,
                                    BaseState.Game.fontManager.GetFont(14).MeasureString("Inventory") / 2,
@@ -688,8 +700,7 @@ namespace SpaceProject
         {
             spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                         "Shop",
-                        new Vector2(shopColumnXPosition + 75,
-                                    columnYPosition - 18) + Game.fontManager.FontOffset,
+                        shopStringPos + Game.fontManager.FontOffset,
                         Game.fontManager.FontColor,
                         0,
                         BaseState.Game.fontManager.GetFont(14).MeasureString("Shop") / 2,
@@ -1096,17 +1107,17 @@ namespace SpaceProject
 
         private void DrawLines(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(line.Texture, new Vector2(line1XPos, lineYPos), line.SourceRectangle, Color.DarkSeaGreen, 0f, 
-                Vector2.Zero, new Vector2(1, lineLength), SpriteEffects.None, 1f);
+            spriteBatch.Draw(line.Texture, new Vector2(line1XPos, lineYPos), line.SourceRectangle, Color.DarkSeaGreen, 0f,
+                Vector2.Zero, new Vector2(1, lineLength / 2), SpriteEffects.None, 1f);
 
             spriteBatch.Draw(line.Texture, new Vector2(line2XPos, lineYPos), line.SourceRectangle, Color.DarkSeaGreen, 0f,
-                Vector2.Zero, new Vector2(1, lineLength), SpriteEffects.None, 1f);
+                Vector2.Zero, new Vector2(1, lineLength / 2), SpriteEffects.None, 1f);
 
             spriteBatch.Draw(line.Texture, new Vector2(line3XPos, lineYPos), line.SourceRectangle, Color.DarkSeaGreen, 0f,
-                Vector2.Zero, new Vector2(1, lineLength), SpriteEffects.None, 1f);
+                Vector2.Zero, new Vector2(1, lineLength / 2), SpriteEffects.None, 1f);
 
             spriteBatch.Draw(line.Texture, new Vector2(line4XPos, lineYPos), line.SourceRectangle, Color.DarkSeaGreen, 0f,
-                Vector2.Zero, new Vector2(1, lineLength), SpriteEffects.None, 1f);
+                Vector2.Zero, new Vector2(1, lineLength / 2), SpriteEffects.None, 1f);
         }
 
         private void ButtonControls(GameTime gameTime)
