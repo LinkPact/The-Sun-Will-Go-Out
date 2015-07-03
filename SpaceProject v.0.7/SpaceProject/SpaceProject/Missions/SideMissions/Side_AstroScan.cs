@@ -22,7 +22,7 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            RewardItems.Add(new BeamWeapon(Game, ItemVariety.regular));
+            RewardItems.Add(new RegularShield(Game, ItemVariety.high));
 
             SetDestinations();
             SetupObjectives();
