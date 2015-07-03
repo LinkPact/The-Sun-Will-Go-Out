@@ -118,7 +118,7 @@ namespace SpaceProject
             {
                 coordinatesDisplayed = true;
 
-                DisplayTutorialMessage("Your current objective is to go to coordinates (2635, 940). To find that location, just follow the blinking dot on your radar. Main missions are represented by gold-colored dots and secondary missions by silver-colored dots.",
+                DisplayTutorialMessage("Your current objective is to go to coordinates (2450, 700). To find that location, follow the blinking dot on your radar. Main missions are represented by gold-colored dots and secondary missions by silver-colored dots.",
                     TutorialImage.Radar);
             }
 
@@ -140,7 +140,7 @@ namespace SpaceProject
                 if (MissionManager.GetMission(MissionID.Main2_1_TheConvoy).MissionState != StateOfMission.Active
                     || !((EscortObjective)MissionManager.GetMission(MissionID.Main2_1_TheConvoy).CurrentObjective).Started)
                 {
-                    DisplayTutorialMessage("Good! This beacon is now activated and can be accessed. All planets in the sector have a beacon orbiting it. Don't forget to activate them when you see them!");
+                    DisplayTutorialMessage("Good! This beacon is now activated and can be used. Most planets in the sector have a beacon orbiting it. Don't forget to activate them when you see them!");
                 }
             }
 
@@ -170,7 +170,7 @@ namespace SpaceProject
                     tempTimer2 = 500;
 
                     hasEnteredShooterWithShield = true;
-                    DisplayTutorialMessage("You now have a shield to protect your ship's hull! If you take a hit, the shield will absorb the damage if it has enough power. It recharges slowly over time, but faster if your energy bar is full.");
+                    DisplayTutorialMessage("You now have a shield to protect your ship's hull! If you take a hit, the shield will absorb the damage if it has enough power.");
                 }
             }
 
@@ -268,8 +268,8 @@ namespace SpaceProject
                     tempTimer3 = 1000;
                     longShotTutorialActivated = true;
                     DisplayTutorialMessage(new List<string>(){
-                    String.Format("You have recieved your first long-range weapon: 'LongShot'. You can have two weapons equipped at a time, which allows you to toggle between them in combat using '{0}'.", ControlManager.GetKeyName(RebindableKeys.Action2)), 
-                    "Try accessing your inventory with 'I' and equipping LongShot on one slot and SpreadBullet on another, then you can vary your strategy in combat depending on which enemies you encounter."});
+                    String.Format("You have recieved your first long-range weapon: 'LongShot'. You can have two weapons equipped at a time, and you can toggle between them in combat using '{0}'.", ControlManager.GetKeyName(RebindableKeys.Action2)), 
+                    "Try accessing your inventory with 'I' and equip LongShot on one slot and SpreadBullet on the other. Then you can vary your strategy in combat depending on which enemies you encounter."});
                 }
             }
 
