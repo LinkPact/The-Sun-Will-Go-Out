@@ -29,7 +29,18 @@ namespace SpaceProject
         public double Radians { get { return radians; } set { radians = value; } }
 
         private float hp;
-        public float HP { get { return hp; } set { hp = value; } }
+        public float HP { 
+            get {
+                if (hp > 0)
+                {
+                    return hp;
+                }
+                else
+                {
+                    return 0;
+                }
+            } set { hp = value; } 
+        }
 
         private float hpmax;
         public float HPmax { get { return hpmax; } set { hpmax = value; } }

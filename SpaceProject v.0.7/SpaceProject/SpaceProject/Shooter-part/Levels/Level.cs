@@ -291,6 +291,8 @@ namespace SpaceProject
             if (levelSong != null) Game.musicManager.PlayMusic(Music.Stars);
 
             CalculateLevelEnemyCount();
+
+            LevelLoot = 0;
         }
 
         private void CreatePlayer()

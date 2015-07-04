@@ -173,7 +173,6 @@ namespace SpaceProject
             plating.CurrentOverworldHealth = player.HP;
         }
 
-        // Sets the ships armor to an arbitrary number
         // ONLY TO BE USED FOR STRICT DEVELOP PURPOSES
         public static void SetCustomDamageFactor_DEVELOPONLY(float lifeFactor)
         {
