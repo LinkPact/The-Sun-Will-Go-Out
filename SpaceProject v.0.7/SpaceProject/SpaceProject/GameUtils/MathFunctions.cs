@@ -263,10 +263,9 @@ namespace SpaceProject
         public static Vector2 ChangeDirection(Vector2 dir, Vector2 pos, Vector2 followedPos, double degreeChange)
         {
             double radians = RadiansFromDir(dir);
-
+            double radianChange = degreeChange * (Math.PI / 180);
             Vector2 dirToFollowed = new Vector2(followedPos.X - pos.X, followedPos.Y - pos.Y);
             dirToFollowed = MathFunctions.ScaleDirection(dirToFollowed);
-
             double dirFolRadians;
 
             if (dirToFollowed.Y > 0)
@@ -277,14 +276,25 @@ namespace SpaceProject
             if (dirFolRadians > 2 * Math.PI)
                 dirFolRadians -= 2 * Math.PI;
 
-            if (MathFunctions.DeltaRadians(radians, dirFolRadians) > 0 && MathFunctions.DeltaRadians(radians, dirFolRadians) <= 180)
-                radians += degreeChange * (Math.PI / 180);
-            else if (MathFunctions.DeltaRadians(radians, dirFolRadians) < 0 && MathFunctions.DeltaRadians(radians, dirFolRadians) <= 180)
-                radians -= degreeChange * (Math.PI / 180);
-            else if (MathFunctions.DeltaRadians(radians, dirFolRadians) > 0 && MathFunctions.DeltaRadians(radians, dirFolRadians) > 180)
-                radians -= degreeChange * (Math.PI / 180);
-            else //(dirFolRadians < Radians && (dirFolRadians - Radians) > 180)
-                radians += degreeChange * (Math.PI / 180);
+            double deltaRadians = MathFunctions.DeltaRadians(radians, dirFolRadians);
+
+            // If target angle is closer to current than the given delta angle, assign target angle
+            if (Math.Abs(deltaRadians) < Math.Abs(radianChange))
+            {
+                radians = dirFolRadians;
+            }
+            // If not, increment current angle by given delta angle
+            else
+            {
+                if (deltaRadians > 0 && deltaRadians <= 180)
+                    radians += radianChange;
+                else if (deltaRadians < 0 && deltaRadians <= 180)
+                    radians -= radianChange;
+                else if (deltaRadians > 0 && deltaRadians > 180)
+                    radians -= radianChange;
+                else //(dirFolRadians < Radians && (dirFolRadians - Radians) > 180)
+                    radians += radianChange;            
+            }
 
             Vector2 newDir = Vector2.Zero;
             newDir.X = (float)(Math.Cos(radians));
