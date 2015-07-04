@@ -119,21 +119,32 @@ namespace SpaceProject
 
         private void DrawInfo(SpriteBatch spriteBatch)
         {
+            float xOffset = 8;
+
+            var missionType = level.GetMissionType();
+
+            if (missionType == MissionType.alliancepirate || missionType == MissionType.rebelpirate)
+            {
+                String lootString = String.Format("Collected bounty: {0} rupees", level.LevelLoot);
+                Vector2 lootStringPos = new Vector2(xOffset, Game.Window.ClientBounds.Height - 123) + Game.fontManager.FontOffset;
+                DrawStandardString(spriteBatch, shipInfoFontSmall, lootString, lootStringPos, Color.Yellow);
+            }
+
             String objectiveString = level.GetObjectiveString();
-            Vector2 objectiveStringPos = new Vector2(8, Game.Window.ClientBounds.Height - 103) + Game.fontManager.FontOffset;
-            DrawStandardString(spriteBatch, shipInfoFontSmall, objectiveString, objectiveStringPos);
+            Vector2 objectiveStringPos = new Vector2(xOffset, Game.Window.ClientBounds.Height - 103) + Game.fontManager.FontOffset;
+            DrawStandardString(spriteBatch, shipInfoFontSmall, objectiveString, objectiveStringPos, Color.White);
             
             String primaryString = "Primary: " + ShipInventoryManager.currentPrimaryWeapon.Name;
-            Vector2 primaryStringPos = new Vector2(8, Game.Window.ClientBounds.Height - 83) + Game.fontManager.FontOffset;
-            DrawStandardString(spriteBatch, shipInfoFontSmall, primaryString, primaryStringPos);
+            Vector2 primaryStringPos = new Vector2(xOffset, Game.Window.ClientBounds.Height - 83) + Game.fontManager.FontOffset;
+            DrawStandardString(spriteBatch, shipInfoFontSmall, primaryString, primaryStringPos, Color.White);
 
             String secondaryString = "Secondary: " + ShipInventoryManager.equippedSecondary.Name;
-            Vector2 secondaryStringPos = new Vector2(8, Game.Window.ClientBounds.Height - 68) + Game.fontManager.FontOffset;
-            DrawStandardString(spriteBatch, shipInfoFontSmall, secondaryString, secondaryStringPos);
+            Vector2 secondaryStringPos = new Vector2(xOffset, Game.Window.ClientBounds.Height - 68) + Game.fontManager.FontOffset;
+            DrawStandardString(spriteBatch, shipInfoFontSmall, secondaryString, secondaryStringPos, Color.White);
 
             String shipStatsNamesString = "Health:\nEnergy:\nShield:";
-            Vector2 shipStatsNamesStringPos = new Vector2(8, Game.Window.ClientBounds.Height - 49) + Game.fontManager.FontOffset;
-            DrawStandardString(spriteBatch, shipInfoFontSmall, shipStatsNamesString, shipStatsNamesStringPos);
+            Vector2 shipStatsNamesStringPos = new Vector2(xOffset, Game.Window.ClientBounds.Height - 49) + Game.fontManager.FontOffset;
+            DrawStandardString(spriteBatch, shipInfoFontSmall, shipStatsNamesString, shipStatsNamesStringPos, Color.White);
         }
 
         private void DrawShipInfo(SpriteBatch spriteBatch)
@@ -142,20 +153,20 @@ namespace SpaceProject
 
             String healthString = string.Format("{0}/{1}", (int)player.HP, player.HPmax);
             Vector2 healthStringPos = new Vector2(statsInfoXOffset, healthPos.Y - 5);
-            DrawStandardString(spriteBatch, shipInfoFontSmall, healthString, healthStringPos);
+            DrawStandardString(spriteBatch, shipInfoFontSmall, healthString, healthStringPos, Color.White);
 
             String energyString = string.Format("{0}/{1}", (int)player.MP, player.MPmax);
             Vector2 energyStringPos = new Vector2(statsInfoXOffset, energyPos.Y - 5);
-            DrawStandardString(spriteBatch, shipInfoFontSmall, energyString, energyStringPos);
+            DrawStandardString(spriteBatch, shipInfoFontSmall, energyString, energyStringPos, Color.White);
 
             String shieldString = string.Format("{0}/{1}", (int)player.Shield, player.ShieldMax);
             Vector2 shieldStringPos = new Vector2(statsInfoXOffset, shieldPos.Y - 5);
-            DrawStandardString(spriteBatch, shipInfoFontSmall, shieldString, shieldStringPos);
+            DrawStandardString(spriteBatch, shipInfoFontSmall, shieldString, shieldStringPos, Color.White);
         }
 
-        private void DrawStandardString(SpriteBatch spriteBatch, SpriteFont font, String text, Vector2 position)
+        private void DrawStandardString(SpriteBatch spriteBatch, SpriteFont font, String text, Vector2 position, Color color)
         {
-            spriteBatch.DrawString(font, text, position, Color.White, 0.0f, Vector2.Zero, 
+            spriteBatch.DrawString(font, text, position, color, 0.0f, Vector2.Zero, 
                 1.0f, SpriteEffects.None, drawLayerText);
         }
 

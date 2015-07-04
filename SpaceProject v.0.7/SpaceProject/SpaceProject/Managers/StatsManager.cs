@@ -197,6 +197,11 @@ namespace SpaceProject
             Rupees += loot;
         }
 
+        public static void DeduceLossPenalty(int lossPenalty)
+        {
+            Rupees -= lossPenalty;
+        }
+
         public static float GetShieldRegeneration()
         {
             if (ShipInventoryManager.equippedEnergyCell is WeaponBoostEnergyCell)

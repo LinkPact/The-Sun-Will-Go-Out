@@ -79,6 +79,9 @@ namespace SpaceProject
         private List<LevelEvent> activeEvents = new List<LevelEvent>();
         private List<LevelEvent> deadEvents = new List<LevelEvent>();
 
+        private Boolean isPirateLevel { get { return missionType == MissionType.alliancepirate || missionType == MissionType.rebelpirate; } }
+        private int pirateLossPenaly { get { return (int)(StatsManager.Rupees * 0.1f); } }
+
         public Boolean HasBossEvents()
         {
             foreach (LevelEvent event_ in untriggeredEvents)
@@ -333,36 +336,6 @@ namespace SpaceProject
             remove.Clear();
         }
 
-        private void ManageEvents(GameTime gameTime)
-        {
-            foreach (LevelEvent event_ in untriggeredEvents)
-            {
-                event_.AttemptTrigger(playTime);
-
-                if (event_.RetrieveTriggerStatus().Equals("Running")) activeEvents.Add(event_);
-            }
-
-            foreach (LevelEvent event_ in activeEvents)
-            {
-                if (untriggeredEvents.Contains(event_)) untriggeredEvents.Remove(event_);
-
-                event_.Run(gameTime);
-                
-                if (event_.RetrieveTriggerStatus().Equals("Completed")) deadEvents.Add(event_);
-            }
-
-            foreach (LevelEvent event_ in deadEvents)
-            {
-                activeEvents.Remove(event_);
-            }
-            deadEvents.Clear();
-
-            if (untriggeredEvents.Count == 0 && activeEvents.Count == 0)
-            {
-                eventsOver = true;
-            }
-        }
-
         public virtual void Update(GameTime gameTime)
         {
             if (!IsObjectiveFailed && !isLevelGivenUp)
@@ -388,6 +361,36 @@ namespace SpaceProject
             backgroundManager.Update(gameTime);
         }
 
+        private void ManageEvents(GameTime gameTime)
+        {
+            foreach (LevelEvent event_ in untriggeredEvents)
+            {
+                event_.AttemptTrigger(playTime);
+
+                if (event_.RetrieveTriggerStatus().Equals("Running")) activeEvents.Add(event_);
+            }
+
+            foreach (LevelEvent event_ in activeEvents)
+            {
+                if (untriggeredEvents.Contains(event_)) untriggeredEvents.Remove(event_);
+
+                event_.Run(gameTime);
+
+                if (event_.RetrieveTriggerStatus().Equals("Completed")) deadEvents.Add(event_);
+            }
+
+            foreach (LevelEvent event_ in deadEvents)
+            {
+                activeEvents.Remove(event_);
+            }
+            deadEvents.Clear();
+
+            if (untriggeredEvents.Count == 0 && activeEvents.Count == 0)
+            {
+                eventsOver = true;
+            }
+        }
+
         private void MapCompletionLogic()
         {
             EndText = "";
@@ -406,7 +409,7 @@ namespace SpaceProject
 
         private void CheckGameOverUserInput()
         {
-            if (ControlManager.CheckKeyPress(Keys.R))
+            if (ControlManager.CheckKeyPress(Keys.R) && !isPirateLevel)
             {
                 this.Initialize();
             }
@@ -422,18 +425,6 @@ namespace SpaceProject
 
             if (LevelWidth < Game.Resolution.X)
             {
-                //left border
-                //spriteBatch.Draw(
-                //    border.Texture,
-                //    new Vector2(((float)Game.Window.ClientBounds.Width - (float)LevelWidth) / 2 - (float)Game.Window.ClientBounds.Width / 8, 0),
-                //    border.SourceRectangle,
-                //    Color.Black,
-                //    0.0f,
-                //    new Vector2(0, 0),
-                //    new Vector2((float)Game.Window.ClientBounds.Width / 8, (float)Game.Window.ClientBounds.Height),
-                //    SpriteEffects.None,
-                //    DrawLayer);
-
                 spriteBatch.Draw(
                     border.Texture,
                     new Vector2(800 + BorderDrawStart, (WindowHeight - Game.DefaultResolution.Y) / 2),
@@ -444,18 +435,6 @@ namespace SpaceProject
                     new Vector2(1, WindowHeight - (WindowHeight - Game.DefaultResolution.Y)),
                     SpriteEffects.None,
                     0.8f);
-
-                // right Border
-                //spriteBatch.Draw(
-                //    border.Texture,
-                //    new Vector2((float)Game.Window.ClientBounds.Width - ((float)Game.Window.ClientBounds.Width - (float)LevelWidth) / 2, 0),
-                //    border.SourceRectangle,
-                //    Color.Black,
-                //    0.0f,
-                //    new Vector2(0, 0),
-                //    new Vector2((float)Game.Window.ClientBounds.Width / 8, (float)Game.Window.ClientBounds.Height),
-                //    SpriteEffects.None,
-                //    DrawLayer);
 
                 spriteBatch.Draw(
                     border.Texture,
@@ -472,23 +451,12 @@ namespace SpaceProject
             
             if (Game.Window.ClientBounds.Height > 600)
             {
-                //upper border
-                //spriteBatch.Draw(border.Texture, new Vector2(((float)Game.Window.ClientBounds.Width - (float)LevelWidth) / 2, 0), 
-                //    border.SourceRectangle, Color.Black, 0.0f, Vector2.Zero, 
-                //    new Vector2(LevelWidth, (float)(Game.Window.ClientBounds.Height - 600) / 2),  SpriteEffects.None, DrawLayer + 0.01f);
-
+               
                 spriteBatch.Draw( border.Texture, new Vector2((Game.Window.ClientBounds.Width - LevelWidth) / 2,
                                                              (float)(WindowHeight - Game.DefaultResolution.Y) / 2),
                     new Rectangle(0, 0, 1, 2), Color.DarkOrange, 0.0f, new Vector2(0, 0), new Vector2(LevelWidth + 1, 1),
                     SpriteEffects.None, 0.8f);
                 
-                // lower border
-                //spriteBatch.Draw(border.Texture,
-                //    new Vector2(((float)Game.Window.ClientBounds.Width - (float)LevelWidth) / 2, (float)Game.Window.ClientBounds.Height - (float)(Game.Window.ClientBounds.Height - 600) / 2),
-                //    border.SourceRectangle, Color.Black, 0.0f, Vector2.Zero,
-                //    new Vector2(LevelWidth, (float)(Game.Window.ClientBounds.Height - 600) / 2),
-                //    SpriteEffects.None, DrawLayer);
-
                 spriteBatch.Draw(
                     border.Texture,
                     new Vector2((float)(Game.Window.ClientBounds.Width - LevelWidth) / 2, WindowHeight - (float)(WindowHeight - Game.DefaultResolution.Y) / 2),
@@ -505,6 +473,7 @@ namespace SpaceProject
         public void DrawEndMessage(SpriteBatch spriteBatch)
         {
             if(IsObjectiveCompleted)
+            {
                 spriteBatch.DrawString(font1, "Level Completed!\n\n" + EndText,
                                        new Vector2(Game.Window.ClientBounds.Width / 2,
                                                    Game.Window.ClientBounds.Height / 2) + Game.fontManager.FontOffset,
@@ -514,28 +483,42 @@ namespace SpaceProject
                                        1f,
                                        SpriteEffects.None,
                                        0.9f);
+            }
+            else if (IsObjectiveFailed || isLevelGivenUp)
+            {
+                String failText;
+                if (!isPirateLevel)
+                {
+                    failText = String.Format("You are dead!\n\nPress 'R' to try again '{0}' to go back.", ControlManager.GetKeyName(RebindableKeys.Action2));
+                }
+                else
+                {
+                    failText = String.Format("You are dead! You lost {0} rupees.\n\nPress '{1}' to go back.", pirateLossPenaly, ControlManager.GetKeyName(RebindableKeys.Action2));                    
+                }
 
-            else if (IsObjectiveFailed)
-                spriteBatch.DrawString(font1, "You are dead!\n\nPress 'R' to try again '" + ControlManager.GetKeyName(RebindableKeys.Action2) + "' to go back.", 
+                spriteBatch.DrawString(font1, failText,
                                        new Vector2(Game.Window.ClientBounds.Width / 2,
                                                    Game.Window.ClientBounds.Height / 2) + Game.fontManager.FontOffset,
                                        Game.fontManager.FontColor,
                                        0f,
-                                       font1.MeasureString("You are dead!\n\nPress R to try again or '" + ControlManager.GetKeyName(RebindableKeys.Action2) + "' to go back.") / 2,
+                                       font1.MeasureString(failText) / 2,
                                        1f,
                                        SpriteEffects.None,
                                        1f);
-
-            else if (isLevelGivenUp)
-                spriteBatch.DrawString(font1, "You gave up!\n\nPress 'R' to try again or '" + ControlManager.GetKeyName(RebindableKeys.Action2) + "' to go back.",
-                                       new Vector2(Game.Window.ClientBounds.Width / 2,
-                                                   Game.Window.ClientBounds.Height / 2) + Game.fontManager.FontOffset,
-                                       Game.fontManager.FontColor,
-                                       0f,
-                                       font1.MeasureString("You are dead!\n\nPress R to try again or '" + ControlManager.GetKeyName(RebindableKeys.Action2) + "' to go back.") / 2,
-                                       1f,
-                                       SpriteEffects.None,
-                                       1f);
+            
+            }
+            //else if (isLevelGivenUp)
+            //{
+            //    spriteBatch.DrawString(font1, "You gave up!\n\nPress 'R' to try again or '" + ControlManager.GetKeyName(RebindableKeys.Action2) + "' to go back.",
+            //                           new Vector2(Game.Window.ClientBounds.Width / 2,
+            //                                       Game.Window.ClientBounds.Height / 2) + Game.fontManager.FontOffset,
+            //                           Game.fontManager.FontColor,
+            //                           0f,
+            //                           font1.MeasureString("You are dead!\n\nPress R to try again or '" + ControlManager.GetKeyName(RebindableKeys.Action2) + "' to go back.") / 2,
+            //                           1f,
+            //                           SpriteEffects.None,
+            //                           1f);
+            //}
         }
 
         #region setVictoryConditions
@@ -638,7 +621,16 @@ namespace SpaceProject
             WriteLogEntry();
 
             if (missionType.Equals(MissionType.alliancepirate) || missionType.Equals(MissionType.rebelpirate))
-                StatsManager.AddLoot((int)(LevelLoot * StatsManager.moneyFactor));
+            {
+                if (IsObjectiveCompleted || IsMapCompleted)
+                {
+                    StatsManager.AddLoot((int)(LevelLoot * StatsManager.moneyFactor));
+                }
+                else
+                {
+                    StatsManager.DeduceLossPenalty(pirateLossPenaly);
+                }
+            }
 
             if (GameStateManager.previousState.Equals("StationState"))
                 Game.stateManager.stationState.LoadStationData(
