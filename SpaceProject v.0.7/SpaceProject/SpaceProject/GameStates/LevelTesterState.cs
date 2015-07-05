@@ -101,7 +101,7 @@ namespace SpaceProject
         public override void Initialize()
         {
             base.Initialize();
-            equipInfo = ShipInventoryManager.MapCreatorEquip(1);
+            equipInfo = "No equipment set yet";
         }
 
         public override void OnEnter()

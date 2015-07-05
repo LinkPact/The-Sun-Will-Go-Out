@@ -101,7 +101,7 @@ namespace SpaceProject
         public override void Initialize()
         {
             base.Initialize();
-            equipInfo = ShipInventoryManager.MapCreatorEquip(1);
+            equipInfo = "No equip info set yet";
             currentLevel = 1;
             attemptNbr = 1;
             totalAttemptCount = 0;
@@ -176,8 +176,8 @@ namespace SpaceProject
 
             if (ControlManager.CheckKeyPress(Keys.D1))
             {
-                Game.stateManager.planetState.LoadPlanetData(Game.stateManager.overworldState.GetPlanet("Highfence"));
-                Game.stateManager.ChangeState("PlanetState");
+                Game.stateManager.stationState.LoadStationData(Game.stateManager.overworldState.GetStation("Highfence Shop"));
+                Game.stateManager.ChangeState("StationState");
             }
 
             if (ControlManager.CheckKeyPress(Keys.D2) && currentLevel >= checkpoint1)
@@ -194,8 +194,8 @@ namespace SpaceProject
 
             if (ControlManager.CheckKeyPress(Keys.D4) && currentLevel >= checkpoint3)
             {
-                Game.stateManager.planetState.LoadPlanetData(Game.stateManager.overworldState.GetPlanet("Peye"));
-                Game.stateManager.ChangeState("PlanetState");
+                Game.stateManager.stationState.LoadStationData(Game.stateManager.overworldState.GetStation("Peye"));
+                Game.stateManager.ChangeState("StationState");
             }
 
             if (ControlManager.CheckKeyPress(Keys.Space))
