@@ -182,19 +182,19 @@ namespace SpaceProject
 
             if (ControlManager.CheckKeyPress(Keys.D2) && currentLevel >= checkpoint1)
             {
-                Game.stateManager.stationState.LoadStationData(Game.stateManager.overworldState.GetStation("Fortrun Station I"));
+                Game.stateManager.stationState.LoadStationData(Game.stateManager.overworldState.GetStation("Fortrun Shop"));
                 Game.stateManager.ChangeState("StationState");
             }
 
             if (ControlManager.CheckKeyPress(Keys.D3) && currentLevel >= checkpoint2)
             {
-                Game.stateManager.stationState.LoadStationData(Game.stateManager.overworldState.GetStation("Rebel Base"));
+                Game.stateManager.stationState.LoadStationData(Game.stateManager.overworldState.GetStation("Rebel Base Shop"));
                 Game.stateManager.ChangeState("StationState");
             }
 
             if (ControlManager.CheckKeyPress(Keys.D4) && currentLevel >= checkpoint3)
             {
-                Game.stateManager.stationState.LoadStationData(Game.stateManager.overworldState.GetStation("Peye"));
+                Game.stateManager.stationState.LoadStationData(Game.stateManager.overworldState.GetStation("Peye Shop"));
                 Game.stateManager.ChangeState("StationState");
             }
 
@@ -203,10 +203,14 @@ namespace SpaceProject
                 standardEquipEnabled = true;
             }
 
-            if (ControlManager.CheckKeyPress(Keys.Z))
+            if (ControlManager.CheckKeyPress(Keys.M))
             {
-                currentLevel = checkpoint3;
-                rupees = 10000;
+                rupees += 1000;
+            }
+
+            if (ControlManager.CheckKeyPress(Keys.N))
+            {
+                currentLevel += 1;
             }
         }
 

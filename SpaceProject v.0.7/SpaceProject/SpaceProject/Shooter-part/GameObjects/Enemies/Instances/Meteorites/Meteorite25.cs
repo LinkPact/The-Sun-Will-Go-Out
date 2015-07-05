@@ -23,6 +23,8 @@ namespace SpaceProject
             Damage = 100;
             Speed = 0.25f;
 
+            lootValue = LootValue.none;
+
             anim.LoopTime = 1;
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(80, 65, 25, 25)));
 
