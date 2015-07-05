@@ -26,17 +26,17 @@ namespace SpaceProject
             Name = "Turret";
             Kind = "Secondary";
             energyCostPerSecond = 0f;
-            delay = 1500;
+            delay = 400;
             Weight = 130;
             ActivatedSoundID = SoundEffects.BigLaser;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(0, 100, 100, 100));
 
-            bullet = new BallisticLaser(Game, spriteSheet);
+            bullet = new TurretBullet(Game, spriteSheet);
             bullet.Initialize();
 
-            damage = Bullet.Damage * 0.3f;
+            damage = Bullet.Damage;
             duration = Bullet.Duration;
-            speed = Bullet.Speed * 0.7f;
+            speed = Bullet.Speed;
 
             Value = 500;
             numberOfShots = 1;
@@ -54,7 +54,7 @@ namespace SpaceProject
             Vector2 dir = new Vector2(target.PositionX - player.PositionX, target.PositionY - player.PositionY);
             Vector2 scaledDir = MathFunctions.ScaleDirection(dir);
 
-            BallisticLaser bullet = new BallisticLaser(Game, spriteSheet);
+            TurretBullet bullet = new TurretBullet(Game, spriteSheet);
             bullet.PositionX = player.PositionX;
             bullet.PositionY = player.PositionY;
             BasicBulletSetup(bullet);

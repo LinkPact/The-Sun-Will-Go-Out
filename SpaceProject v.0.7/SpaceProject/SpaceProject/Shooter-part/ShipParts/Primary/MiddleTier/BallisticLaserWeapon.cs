@@ -31,7 +31,7 @@ namespace SpaceProject
             ActivatedSoundID = SoundEffects.BigLaser;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(600, 0, 100, 100));
 
-            bullet = new BasicLaser(Game, spriteSheet);
+            bullet = new BallisticLaser(Game, spriteSheet);
             bullet.Initialize();
 
             damage = 150;     // Nonsense value!

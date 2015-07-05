@@ -44,6 +44,7 @@ namespace SpaceProject
         public static int primarySlots;
 
         public static PlayerWeapon equippedSecondary;
+
         private static List<ShipPart> ownedSecondary = new List<ShipPart>();
         public static List<ShipPart> OwnedSecondary { get { return ownedSecondary; } private set { } }
 

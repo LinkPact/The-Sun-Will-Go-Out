@@ -65,7 +65,7 @@ namespace SpaceProject
 
             squarePalethera = new SquarePalethera(spriteSheet, new Vector2(380, 100));
 
-            String equipInfo = ShipInventoryManager.MapCreatorEquip(1);
+            String equipInfo = "No equipment set yet.";
             gui.SetEquipInfo(equipInfo);
 
         }
