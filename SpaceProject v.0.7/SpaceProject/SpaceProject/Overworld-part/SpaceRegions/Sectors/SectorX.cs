@@ -131,7 +131,7 @@ namespace SpaceProject
             highfenceBeacon.Initialize();
 
             fortrunBeacon = new Beacon(game, spriteSheet, new Rectangle(588, 844, 100, 100), new Rectangle(487, 844, 100, 100),
-                "Fortrun Beacon", fortrun.position + new Vector2(-400, -200));
+                "Fortrun Beacon", fortrun.position + new Vector2(350, 100));
             fortrunBeacon.Initialize();
 
             peyeBeacon = new Beacon(game, spriteSheet, new Rectangle(588, 844, 100, 100), new Rectangle(487, 844, 100, 100),

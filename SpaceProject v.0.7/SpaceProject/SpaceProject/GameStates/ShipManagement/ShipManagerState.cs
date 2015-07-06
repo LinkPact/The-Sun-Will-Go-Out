@@ -368,12 +368,15 @@ namespace SpaceProject
             {
                 if (ControlManager.IsMouseOverArea(cursorManager.displayList[i].Bounds))
                 {
-                    cursorManager.CursorCoordLv1.X = cursorManager.displayList[i].Coordinate.X;
-                    cursorManager.CursorCoordLv1.Y = cursorManager.displayList[i].Coordinate.Y;
-
-                    if (ControlManager.IsLeftMouseButtonClicked())
+                    if (cursorCoordLv1 != null)
                     {
-                        OnPressLevel1();
+                        cursorManager.CursorCoordLv1.X = cursorManager.displayList[i].Coordinate.X;
+                        cursorManager.CursorCoordLv1.Y = cursorManager.displayList[i].Coordinate.Y;
+
+                        if (ControlManager.IsLeftMouseButtonClicked())
+                        {
+                            OnPressLevel1();
+                        }
                     }
                 }
             }

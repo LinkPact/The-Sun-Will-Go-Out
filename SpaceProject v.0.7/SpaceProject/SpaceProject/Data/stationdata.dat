@@ -6,8 +6,8 @@ Inhabitants = 1200
 
 [SX_Station1_Lavis]
 Name = Lavis Station
-PositionX = -200
-PositionY = 200
+PositionX = -100
+PositionY = 300
 Inhabitants = 5000
 
 [SX_Fortrun_1]
@@ -96,8 +96,8 @@ Inhabitants = 1
 
 [OW_Fortrun_Shop]
 Name = Fortrun Shop
-PositionX = 200
-PositionY = -100
+PositionX = 800
+PositionY = 100
 Inhabitants = 1
 
 [OW_Rebel_Base_Shop]
