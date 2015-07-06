@@ -87,6 +87,8 @@ namespace SpaceProject
 
                 UpdateFading(gameTime);
             }
+
+            textBox.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

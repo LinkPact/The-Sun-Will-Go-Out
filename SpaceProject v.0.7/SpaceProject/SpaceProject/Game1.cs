@@ -269,6 +269,22 @@ namespace SpaceProject
 
                 base.Update(gameTime);
             }
+
+            if (ControlManager.CheckKeyPress(Keys.D1))
+            {
+                stateManager.outroState.SetOutroType(OutroType.AllianceEnd);
+                stateManager.ChangeState("OutroState");
+            }
+            else if (ControlManager.CheckKeyPress(Keys.D2))
+            {
+                stateManager.outroState.SetOutroType(OutroType.RebelEnd);
+                stateManager.ChangeState("OutroState");
+            }
+            else if (ControlManager.CheckKeyPress(Keys.D3))
+            {
+                stateManager.outroState.SetOutroType(OutroType.OnYourOwnEnd);
+                stateManager.ChangeState("OutroState");
+            }
         }
 
         protected override void Draw(GameTime gameTime)

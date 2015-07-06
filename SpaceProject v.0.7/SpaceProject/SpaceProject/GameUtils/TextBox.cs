@@ -150,16 +150,19 @@ namespace SpaceProject
 
         public void Update(GameTime gameTime)
         {
-            if (useScrolling)
+            if (textBuffer != null)
             {
-                text = TextUtils.WordWrap(spriteFont,
-                          TextUtils.ScrollText(textBuffer,
-                                               flushScrollText,
-                                               out scrollingFinished),
-                          textBoxRect.Width);
+                if (useScrolling)
+                {
+                    text = TextUtils.WordWrap(spriteFont,
+                              TextUtils.ScrollText(textBuffer,
+                                                   flushScrollText,
+                                                   out scrollingFinished),
+                              textBoxRect.Width);
+                }
+                else
+                    text = TextUtils.WordWrap(spriteFont, textBuffer, textBoxRect.Width);
             }
-            else
-                text = textBuffer;
         }
 
         public void Draw(SpriteBatch spriteBatch, Color textColor, Vector2 fontOffset)
