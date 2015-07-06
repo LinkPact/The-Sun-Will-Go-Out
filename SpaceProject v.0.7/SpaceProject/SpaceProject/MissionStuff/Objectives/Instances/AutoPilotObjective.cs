@@ -104,7 +104,9 @@ namespace SpaceProject
             base.Update(playTime);
 
             // Updates player direction and speed
-            game.player.Direction.RotateTowardsPoint(game.player.position, Destination.position, 0.2f);
+            game.player.Direction.SetDirection(new Vector2(
+                Destination.position.X - game.player.position.X,
+                Destination.position.Y - game.player.position.Y));
             game.player.speed = speed;
 
             // Displays timed messages

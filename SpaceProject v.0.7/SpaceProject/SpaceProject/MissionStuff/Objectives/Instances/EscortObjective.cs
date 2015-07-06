@@ -98,10 +98,15 @@ namespace SpaceProject
         {
             if (escortDataCapsule.ShipToDefend is FreighterShip)
             {
-                game.stateManager.overworldState.GetSectorX.shipSpawner.AddFreighterToSector(
-                    (FreighterShip)escortDataCapsule.ShipToDefend, escortDataCapsule.StartingPoint);
+                FreighterShip ship = (FreighterShip)escortDataCapsule.ShipToDefend;
 
-                ((FreighterShip)escortDataCapsule.ShipToDefend).Wait();
+                ship.Direction.SetDirection(new Vector2(ship.destination.X - ship.position.X,
+                    ship.destination.Y - ship.position.Y));
+
+                game.stateManager.overworldState.GetSectorX.shipSpawner.AddFreighterToSector(
+                    ship, escortDataCapsule.StartingPoint);
+
+                ship.Wait();
             }
 
             OverworldShip.FollowPlayer = false;
@@ -141,7 +146,9 @@ namespace SpaceProject
 
             if (autofollow && started)
             {
-                game.player.Direction.RotateTowardsPoint(game.player.position, Destination.position, 0.2f);
+                game.player.Direction.SetDirection(new Vector2(
+                    escortDataCapsule.ShipToDefend.destination.X - game.player.position.X,
+                    escortDataCapsule.ShipToDefend.destination.Y - game.player.position.Y));
                 game.player.speed = escortDataCapsule.ShipToDefend.speed;
             }
 
