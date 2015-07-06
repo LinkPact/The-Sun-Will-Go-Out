@@ -197,13 +197,6 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            //Initializes heat warning of player if player is too close to the sun
-            //if (!game.player.HyperspeedOn && CollisionDetection.IsPointInsideCircle(game.player.position, sectorXStar.position,
-            //    sectorXStar.ObjectHeatRadius))
-            //{   
-            //    game.player.OnDamage(sectorXStar);
-            //}
-
             base.Update(gameTime);
         }
 

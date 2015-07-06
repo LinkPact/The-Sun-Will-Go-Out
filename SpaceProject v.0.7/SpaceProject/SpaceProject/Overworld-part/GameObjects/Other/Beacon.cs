@@ -56,14 +56,10 @@ namespace SpaceProject
 
             for (int i = 0; i < overworldobjects.Count; i++)
             {
-
-                if (Vector2.Distance(position, overworldobjects[i].position) <= RADIUS) 
+                if (overworldobjects[i] != this &&
+                    overworldobjects[i] is Beacon)
                 {
-                    if (overworldobjects[i] != this &&
-                        overworldobjects[i] is Beacon)
-                    {
-                        knownBeacons.Add((Beacon)overworldobjects[i]);
-                    }
+                    knownBeacons.Add((Beacon)overworldobjects[i]);
                 }
             }
         }
@@ -94,18 +90,15 @@ namespace SpaceProject
             Game.soundEffectsManager.PlaySoundEffect(SoundEffects.BeaconActivate);
         }
 
+        public void PlayerGetsClose()
+        {
+            Activate();
+            Game.helper.DisplayText(name + " activated!", 2);
+        }
+
         public void Interact()
         {
-            if (!activated)
-            {
-                Activate();
-                Game.helper.DisplayText(name + " activated!", 2);
-            }
-
-            else
-            {
-                Game.GetBeaconMenu.Display(this);
-            }
+            Game.GetBeaconMenu.Display(this);
         }
 
         public void StartJump(Beacon finalDestination)
@@ -114,63 +107,8 @@ namespace SpaceProject
             {
                 this.finalDestination = finalDestination;
 
-                if (jumpPath.Count <= 0)
-                {
-                    jumpPath = SetJumpPath();
-                }
-
-                if (jumpPath.Count > 0)
-                {
-                    Game.player.InitializeHyperSpeedJump(jumpPath[0], false);
-                    jumpPath.RemoveAt(0);
-                }
+                Game.player.InitializeHyperSpeedJump(finalDestination.position, false);
             }
-        }
-
-        private List<Vector2> SetJumpPath()
-        {
-            List<Vector2> path = new List<Vector2>();
-
-            foreach (Beacon beacon in knownBeacons)
-            {
-                if (beacon.name.ToLower() == finalDestination.name.ToLower())
-                {
-                    path.Add(beacon.position);
-                    return path;
-                }
-            }
-
-            foreach (Beacon beacon in knownBeacons)
-            {
-                foreach (Beacon beacon2 in beacon.knownBeacons)
-                {
-                    if (beacon2.name.ToLower() == finalDestination.name.ToLower())
-                    {
-                        path.Add(beacon.position);
-                        path.Add(beacon2.position);
-                        return path;
-                    }
-                }
-            }
-
-            foreach (Beacon beacon in knownBeacons)
-            {
-                for (int i = 0; i < beacon.knownBeacons.Count; i++)
-                {
-                    foreach (Beacon beacon2 in beacon.knownBeacons[i].knownBeacons)
-                    {
-                        if (beacon2.name.ToLower() == finalDestination.name.ToLower())
-                        {
-                            path.Add(beacon.position);
-                            path.Add(beacon.knownBeacons[i].position);
-                            path.Add(beacon2.position);
-                            return path;
-                        }
-                    }
-                }
-            }
-
-            return path;
         }
 
         public void OnLoad()

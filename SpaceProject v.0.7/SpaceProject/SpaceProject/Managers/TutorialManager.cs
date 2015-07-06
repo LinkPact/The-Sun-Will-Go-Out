@@ -26,6 +26,8 @@ namespace SpaceProject
 
     public class TutorialManager
     {
+        private readonly float BeaconTutorialActivationRadius = 400;
+
         private Game1 game;
         private Sprite tutorialSpriteSheet;
         private List<Sprite> tutorialImages;
@@ -125,7 +127,7 @@ namespace SpaceProject
             Vector2 highfenceBeaconPosition = game.stateManager.overworldState.GetBeacon("Highfence Beacon").position; 
 
             if (!hasEnteredHighfenceBeaconArea &&
-                CollisionDetection.IsRectInRect(game.player.Bounds, new Rectangle((int)highfenceBeaconPosition.X - 200, (int)highfenceBeaconPosition.Y - 200, 400, 400)))
+                Vector2.Distance(game.player.position, highfenceBeaconPosition) < BeaconTutorialActivationRadius)
             {
                 hasEnteredHighfenceBeaconArea = true;
                 DisplayTutorialMessage("This is a 'beacon'. Beacons are used for traveling quickly between planets, but they need to be activated before use. Fly near the beacon to activate it!"); 

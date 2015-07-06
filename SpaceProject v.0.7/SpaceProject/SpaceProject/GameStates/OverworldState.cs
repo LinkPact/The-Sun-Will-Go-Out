@@ -13,6 +13,8 @@ namespace SpaceProject
         public static readonly int OVERWORLD_WIDTH = 200000;
         public static readonly int OVERWORLD_HEIGHT = 200000;
 
+        private readonly float BeaconActivationRadius = 300;
+
         public List<GameObjectOverworld> GetAllOverworldGameObjects
         {
             get
@@ -349,6 +351,15 @@ namespace SpaceProject
             }
 
             burnOutEnding.Update(gameTime);
+
+            foreach (Beacon beacon in beacons)
+            {
+                if (Vector2.Distance(Game.player.position, beacon.position) < BeaconActivationRadius
+                    && !beacon.IsActivated)
+                {
+                    beacon.PlayerGetsClose();
+                }
+            }
 
             base.Update(gameTime);
         }
