@@ -23,7 +23,7 @@ namespace SpaceProject
             Game.stateManager.shooterState.backgroundObjects.Add(
                ExplosionGenerator.GenerateBulletExplosion(Game, spriteSheet, this));
 
-            HP -= obj.Damage;
+            HP -= obj.HP;
         }
 
         public void SetSpreadSpeed(Random random, float variationFrac=0.5f)

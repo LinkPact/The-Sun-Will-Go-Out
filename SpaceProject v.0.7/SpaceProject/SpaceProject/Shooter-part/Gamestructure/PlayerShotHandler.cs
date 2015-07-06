@@ -65,15 +65,14 @@ namespace SpaceProject
 
             shotHandlerHelper.Update();
 
-            //Byter magi till nasta man kan, Q for vanster, E for hoger.
             if (ControlManager.CheckPress(RebindableKeys.Action2))
+            {
                 shotHandlerHelper.ChangePrimary();
+            }
 
-            //Lagrar de forandringar som gjorts i aktuellt magival till statsManagern.
             ShipInventoryManager.currentPrimaryWeapon = (PlayerWeapon)shotHandlerHelper.currentPrimary;
         }
 
-        //Delegerar vidare vilket vapen som ska anropas baserat pa en int
         private void UseWeapon(PlayerWeapon weapon, GameTime gameTime)
         {
             if (primaryOn && weapon.Kind.Equals("Primary") && weapon.IsReadyToUse && weapon.EnergyCost < player.MP)

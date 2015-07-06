@@ -24,7 +24,7 @@ namespace SpaceProject
         {
             Name = "Fragment Missile";
             Kind = "Primary";
-            energyCostPerSecond = 11f;
+            energyCostPerSecond = 12f;
             delay = 450;
             Weight = 500;
             ActivatedSoundID = SoundEffects.ClickLaser;

@@ -71,14 +71,21 @@ namespace SpaceProject
 
         public void ChangePrimary()
         {
-            int currentPos = equippedPrimaryWeapons.IndexOf(ShipInventoryManager.currentPrimaryWeapon);
+            int initialPos = equippedPrimaryWeapons.IndexOf(ShipInventoryManager.currentPrimaryWeapon);
 
-            currentPos++;
+            int currentPos = initialPos + 1;
 
             if (currentPos >= equippedPrimaryWeapons.Count)
+            {
                 currentPos = 0;
+            }
 
-            currentPrimary = equippedPrimaryWeapons[currentPos];
+            var targetWeapon = equippedPrimaryWeapons[currentPos];
+            if (!(targetWeapon is EmptyWeapon))
+            {
+                currentPrimary = equippedPrimaryWeapons[currentPos];
+            }
+
         }
     }
 }
