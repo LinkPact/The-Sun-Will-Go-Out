@@ -789,8 +789,11 @@ namespace SpaceProject
 
                     else
                     {
-                        temp.Add("Your reward is: \n" + completedMissions[0].MoneyReward +
-                            " Rupees");
+                        if (completedMissions[0].MoneyReward > 0)
+                        {
+                            temp.Add("Your reward is: \n" + completedMissions[0].MoneyReward +
+                                " Rupees");
+                        }
                     }
 
                     MissionManager.MarkCompletedMissionAsDead(completedMissions[0].MissionID);
