@@ -57,7 +57,7 @@ T: 48.2:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 49.1:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 Duration
 C:1,18 1,22:E: SnnED50
-C:0,25 0,29:E: GfoED50
-C:0,51 0,53:E: GnnED50
 C:1,35 1,46:E: SnnED5
 C:0,38 0,42:E: YstED20
+C:0,50 0,54:E: GslED70
+C:0,25 0,29:E: GnnED40

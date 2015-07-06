@@ -16,9 +16,9 @@ T: 12:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 13:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 14:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 15:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 bnn0 0nn0 0nn0:end
-T: 16:E: 0nn0 bnn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 16:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 17:E: 0nn0 0nn0 0nn0 bnn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
-T: 18:E: 0nn0 0nn0 Nnn0 0nn0 0nn0 0nn0 Nnn0 bnn0 0nn0:end
+T: 18:E: 0nn0 0nn0 Nnn0 0nn0 0nn0 0nn0 Nnn0 0nn0 0nn0:end
 T: 19:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 20:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
 T: 21:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end

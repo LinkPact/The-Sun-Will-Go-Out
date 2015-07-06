@@ -95,7 +95,6 @@ namespace SpaceProject
                 game.stateManager.stationState.SubStateManager.ButtonControl == ButtonControl.Menu)
             {
                 hasEnteredStation = true;
-
                 DisplayTutorialMessage("You can disable tutorial messages in the options menu.", TutorialImage.MenuControls);
             }
 
