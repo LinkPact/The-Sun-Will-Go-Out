@@ -22,6 +22,18 @@ namespace SpaceProject
 
     public static class ControlManager
     {
+        private static List<RebindableKeys> keys = new List<RebindableKeys>
+            {
+                RebindableKeys.Action1,
+                RebindableKeys.Action2,
+                RebindableKeys.Action3,
+                RebindableKeys.Down,
+                RebindableKeys.Left,
+                RebindableKeys.Pause,
+                RebindableKeys.Right,
+                RebindableKeys.Up
+            };
+
         #region Gamepad
         public static bool IsGamepadConnected;
         public static bool UseGamepad;
@@ -513,6 +525,11 @@ namespace SpaceProject
                 }
 
                 newkey = CurrentKeyboardState.GetPressedKeys()[0];
+
+                if (IsKeyBound(newkey, key))
+                {
+                    return false;
+                }
             }
 
             switch (key)
@@ -643,6 +660,20 @@ namespace SpaceProject
             Vector2 relativeMousePosition = ControlManager.GetMousePosition() + screenPos;
 
             return CollisionDetection.IsPointInsideRectangle(relativeMousePosition, textRect);
+        }
+
+        private static bool IsKeyBound(Keys newkey, RebindableKeys keyToRebind)
+        {
+            foreach (RebindableKeys key in ControlManager.keys)
+            {
+                if (!key.Equals(keyToRebind) 
+                    && newkey.ToString().ToLower().Equals(GetKeyName(key).ToLower()))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
