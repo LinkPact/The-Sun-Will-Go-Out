@@ -12,10 +12,14 @@ namespace SpaceProject
     {
         private enum EventID
         {
-            Introduction
+            Introduction,
+            TrainingArea
         }
 
         private readonly string ActionKeyID = "[ACTIONKEY2]";
+        private readonly int MessageDelay = 1500;
+
+        private float messageTime;
 
         public Main1_2_ToHighfence(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
             base(Game, section, spriteSheet, missionID)
@@ -81,12 +85,22 @@ namespace SpaceProject
 
             GameObjectOverworld highfence = Game.stateManager.overworldState.GetPlanet("Highfence");
 
-            AddDestination(highfence);
+            AddDestination(highfence, 2);
         }
 
         protected override void SetupObjectives()
         {
             objectives.Clear();
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                new EventTextCapsule(GetEvent((int)EventID.TrainingArea), null, EventTextCanvas.MessageBox),
+                delegate 
+                {
+                    messageTime = StatsManager.PlayTime.GetFutureOverworldTime(MessageDelay);
+                },
+                delegate {},
+                delegate { return StatsManager.PlayTime.HasOverworldTimePassed(messageTime); },
+                delegate { return false; }));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0]));
         }

@@ -34,6 +34,7 @@ NegResponse = ""
 Accept = ""
 FailText = ""
 EventText1 = {Berr}"You are able to equip up to two primary weapons at a time and toggle between them during combat using [ACTIONKEY2], as long as you equip them before combat begins."#Berr expression turns more serious.#"The sector is troubled right now. Resources are running out at an alarming rate, and rebel attacks are becoming more frequent."#"The Alliance is doing its best to keep up, but we are slowly losing control."#"A pilot like you would really be helpful."#"You should go to Highfence. A woman called Ai is currently in charge of their military operations."#"She will certainly have some work for you."#"Thats all for now. Stay safe."
+EventText2 = [SAIR] "If you want to learn some combat strategies, we should go to the Alliance outpost near here and talk to the trainer there before heading to Highfence."
 Success = {Ai}A young woman greets you. She looks at you calmly.#[Ai] "So you are the new pilot. I am Ai, and I am currently responsible for the military operations around this planet."#"Berr seemed very satisfied with your help on Border Station."#"Your timing is perfect. We have an important transport heading for Soelara that is almost ready to leave."#"This transport is of particular interest to us. We want to make sure that it is well protected."
 ObjectiveCompleted = You found Highfence and reported to Ai.
 Fail = ""
