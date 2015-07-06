@@ -88,7 +88,7 @@ namespace SpaceProject
             textBoxPosY = rect.Y;
 
             textBoxRect = rect;
-            textBuffer = text;
+            textBuffer = TextUtils.RemoveTextBetween(text, '{', '}');
             useOrigin = origin;
         }
 
@@ -107,7 +107,8 @@ namespace SpaceProject
         //Reads text from the config file
         public void LoadText(string section, string variable)
         { 
-            textBuffer += configFile.GetPropertyAsString(section, variable, "");            
+            textBuffer += configFile.GetPropertyAsString(section, variable, "");
+            textBuffer = TextUtils.RemoveTextBetween(textBuffer, '{', '}');
         }
 
         //Reads text from the config file and stores string formatted as a list
@@ -128,6 +129,8 @@ namespace SpaceProject
                     textBuffer += configFile.GetPropertyAsString(section, variableList[i], "") + "\n\n"; 
                 }
             }
+
+            textBuffer = TextUtils.RemoveTextBetween(textBuffer, '{', '}');
         }
 
         public String GetText()
@@ -137,7 +140,7 @@ namespace SpaceProject
 
         public void SetText(String text)
         {
-            textBuffer = text;
+            textBuffer = TextUtils.RemoveTextBetween(text, '{', '}');
         }
 
         public void SetScrolling(bool scroll)

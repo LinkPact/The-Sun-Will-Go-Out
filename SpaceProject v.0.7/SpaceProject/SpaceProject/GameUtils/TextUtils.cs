@@ -301,5 +301,24 @@ namespace SpaceProject
 
             return count;
         }
+
+        // Deletion includes characters 'sign1' & 'sign2'
+        public static string RemoveTextBetween(string text, char sign1, char sign2)
+        {
+            string result = text;
+            int first, last;
+
+            if (!text.Contains(sign1)
+                || !text.Contains(sign2))
+            {
+                return result;
+            }
+
+            first = text.IndexOf(sign1);
+            last = text.LastIndexOf(sign2) + 1;
+
+            result = text.Remove(first, last - first);
+            return result;
+        }
     }
 }

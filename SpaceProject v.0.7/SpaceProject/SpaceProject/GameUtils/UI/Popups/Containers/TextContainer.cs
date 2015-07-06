@@ -124,14 +124,14 @@ namespace SpaceProject
             {
                 if (!str.Contains('#'))
                 {
-                    textBuffer.Add(str);
+                    textBuffer.Add(TextUtils.RemoveTextBetween(str, '{', '}'));
                 }
                 else
                 {
                     List<String> tempList = TextUtils.SplitHashTagText(str);
                     foreach (string str2 in tempList)
                     {
-                        textBuffer.Add(str2);
+                        textBuffer.Add(TextUtils.RemoveTextBetween(str2, '{', '}'));
                     }
                 }
             }
