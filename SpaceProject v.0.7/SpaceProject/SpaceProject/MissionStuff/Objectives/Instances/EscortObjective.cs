@@ -170,10 +170,8 @@ namespace SpaceProject
                 if (showInventoryTutorial
                     && ShipInventoryManager.equippedShield is EmptyShield)
                 {
-                    PopupHandler.DisplayPortraitMessage(introductionPortrait, "[Captain] \"You need to equip a shield before we leave. Go to the shop next to Highfence and I will tell you what to do. Here is two hundred rupees, it should cover the cost.\"");
-                    PopupHandler.DisplayMessage("You recieved:\n\n200 Rupees");
+                    PopupHandler.DisplayPortraitMessage(introductionPortrait, "[Captain] \"You need to equip a shield before we leave. Go to the shop next to Highfence and I will tell you what to do.");
                     game.tutorialManager.EnableEquipTutorial();
-                    StatsManager.Rupees += 200;
                 }
 
                 else

@@ -184,7 +184,9 @@ namespace SpaceProject
                         if (GameStateManager.currentState.Equals("StationState") &&
                             game.stateManager.stationState.Station.name.Equals("Highfence Shop"))
                         {
-                            PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"Start by entering the shop and selecting 'Buy & Sell Items'.\"");
+                            PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"Start by entering the shop and selecting 'Buy & Sell Items'. Here is two hundred rupees, it should cover the cost for the shield.\"");
+                            PopupHandler.DisplayMessage("You recieved 200 Rupees.");
+                            StatsManager.Rupees += 200;
                             equipShieldProgress = 1;
                         }
                         break;
