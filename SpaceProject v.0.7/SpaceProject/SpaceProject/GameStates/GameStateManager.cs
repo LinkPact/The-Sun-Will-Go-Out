@@ -18,6 +18,7 @@ namespace SpaceProject
 
         public static string currentState;
         public static string previousState;
+        public static string previousPreviousState;
 
         public MainMenuState mainMenuState;
         public StartGameState startGameState;
@@ -57,6 +58,10 @@ namespace SpaceProject
                     if (currentGameState != null)
                         currentGameState.OnLeave();
 
+                    if (previousState != null)
+                    {
+                        previousPreviousState = previousState;
+                    }
                     previousState = currentState;
 
                     currentGameState = gameStates[i];

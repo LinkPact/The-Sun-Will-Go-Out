@@ -634,14 +634,14 @@ namespace SpaceProject
                 }
             }
 
-            if (GameStateManager.previousState.Equals("StationState"))
-                Game.stateManager.stationState.LoadStationData(
-                    Game.stateManager.overworldState.GetStation(StationState.PreviousStation));
-            else if (GameStateManager.previousState.Equals("PlanetState"))
-                Game.stateManager.planetState.LoadPlanetData(
-                    Game.stateManager.overworldState.GetPlanet(PlanetState.PreviousPlanet));
-
-            Game.stateManager.ChangeState(GameStateManager.previousState);
+            if (GameStateManager.previousState.Equals("ShooterState"))
+            {
+                Game.stateManager.ChangeState(GameStateManager.previousPreviousState);
+            }
+            else
+            {
+                Game.stateManager.ChangeState(GameStateManager.previousState);
+            }
         }
         
         protected bool CheckLivingEnemies()
