@@ -107,7 +107,11 @@ namespace SpaceProject
             RemoveShips(rebelShips1);
             RemoveShips(rebelShips2);
 
-            PopupHandler.DisplayMessage("You failed to dispatch the treacherous alliance attack fleet leader and gain the trust of the rebels. Go back to Fortrun Station 1 to try again.");
+            allianceShips.Clear();
+            rebelShips1.Clear();
+            rebelShips2.Clear();
+
+            PopupHandler.DisplayMessage("You failed to dispatch the treacherous alliance attack fleet leader and gain the trust of the rebels. Go back to Fortrun Station to try again.");
         }
 
         public override void MissionLogic()
