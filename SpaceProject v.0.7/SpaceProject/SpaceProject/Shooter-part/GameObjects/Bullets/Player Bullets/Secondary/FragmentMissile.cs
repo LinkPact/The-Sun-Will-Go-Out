@@ -61,7 +61,9 @@ namespace SpaceProject
                 fragment.Duration = 400;
                 fragment.Direction = MathFunctions.SpreadDir(new Vector2(0, -1), Math.PI / 3);
 
-                fragment.Speed = (float)(random.NextDouble() * 0.5 + 0.5);
+                float fragmentBaseSpeed = 0.6f;
+
+                fragment.Speed = (float)(random.NextDouble() * fragmentBaseSpeed + fragmentBaseSpeed);
                 fragment.Speed *= 0.5f;
 
                 Game.stateManager.shooterState.gameObjects.Add(fragment);

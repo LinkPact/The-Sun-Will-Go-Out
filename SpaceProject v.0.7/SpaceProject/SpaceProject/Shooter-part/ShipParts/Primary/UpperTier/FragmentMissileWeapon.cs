@@ -24,7 +24,7 @@ namespace SpaceProject
         {
             Name = "Fragment Missile";
             Kind = "Primary";
-            energyCostPerSecond = 9f;
+            energyCostPerSecond = 11f;
             delay = 450;
             Weight = 500;
             ActivatedSoundID = SoundEffects.ClickLaser;
@@ -40,7 +40,7 @@ namespace SpaceProject
             speed = Bullet.Speed;
 
             Value = 1000;
-            numberOfShots = 20;
+            numberOfShots = 30;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)

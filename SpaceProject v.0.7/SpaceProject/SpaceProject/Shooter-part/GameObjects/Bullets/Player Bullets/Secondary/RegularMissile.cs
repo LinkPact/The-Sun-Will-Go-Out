@@ -18,7 +18,7 @@ namespace SpaceProject
             base.Initialize();
 
             //Egenskaper
-            Speed = 0.2f;
+            Speed = 0.3f;
             IsKilled = false;
             Damage = 100;
             ObjectClass = "bullet";

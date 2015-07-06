@@ -28,10 +28,10 @@ namespace SpaceProject
         {
             Name = "Beam";
             Kind = "Primary";
-            energyCostPerSecond = 10f;
+            energyCostPerSecond = 13f;
             delay = 10;
             Weight = 200;
-            damage = 8.0f;
+            damage = 10.0f;
             Value = 1100;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(400, 0, 100, 100));
 

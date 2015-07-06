@@ -24,7 +24,7 @@ namespace SpaceProject
         {
             Name = "Burster";
             Kind = "Primary";
-            energyCostPerSecond = 11f;
+            energyCostPerSecond = 12f;
             delay = 400;
             Weight = 500;
             ActivatedSoundID = SoundEffects.BigLaser;

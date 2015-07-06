@@ -25,7 +25,7 @@ namespace SpaceProject
             Name = "SideMissiles";
             Kind = "Secondary";
             energyCostPerSecond = 0f;
-            delay = 2000;
+            delay = 1400;
             Weight = 500;
             ActivatedSoundID = SoundEffects.ClickLaser;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(400, 100, 100, 100));

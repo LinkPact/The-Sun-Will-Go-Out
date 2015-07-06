@@ -26,9 +26,9 @@ namespace SpaceProject
             Name = "Turret";
             Kind = "Secondary";
             energyCostPerSecond = 0f;
-            delay = 400;
+            delay = 600;
             Weight = 130;
-            ActivatedSoundID = SoundEffects.BigLaser;
+            ActivatedSoundID = SoundEffects.MidSizeLaser;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(0, 100, 100, 100));
 
             bullet = new TurretBullet(Game, spriteSheet);

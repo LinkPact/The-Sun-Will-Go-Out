@@ -24,7 +24,7 @@ namespace SpaceProject
         {
             Name = "Multiple Shot";
             Kind = "Primary";
-            energyCostPerSecond = 9f;
+            energyCostPerSecond = 10f;
             delay = 180;
             Weight = 800;
             ActivatedSoundID = SoundEffects.SmallLaser;

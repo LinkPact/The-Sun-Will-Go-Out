@@ -61,7 +61,7 @@ namespace SpaceProject
         protected override void ShootingPattern(GameTime gameTime)
         {
             double width = Math.PI / 4;
-            int numberOfShots = 6;
+            int numberOfShots = 5;
 
             List<double> spreadDirections = MathFunctions.GetSpreadDirList(width, numberOfShots);
             foreach (double dir in spreadDirections)
@@ -71,7 +71,7 @@ namespace SpaceProject
                 laser1.PositionY = PositionY;
                 laser1.Direction = MathFunctions.DirFromRadians(dir);
                 laser1.Initialize();
-                laser1.Speed *= 1.0f;
+                laser1.Speed *= 0.85f;
                 laser1.Duration *= 4.0f;
 
                 Game.stateManager.shooterState.gameObjects.Add(laser1);

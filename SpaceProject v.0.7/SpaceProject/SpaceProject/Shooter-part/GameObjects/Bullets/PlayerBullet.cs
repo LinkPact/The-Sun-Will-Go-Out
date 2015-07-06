@@ -58,8 +58,12 @@ namespace SpaceProject
             if (TempInvincibility > 0)
                 return;
 
-            OnKilled();
-            IsKilled = true;
+            if (HP <= 1)
+            {
+                OnKilled();
+                IsKilled = true;
+            }
+
             base.InflictDamage(obj);
         }
 
