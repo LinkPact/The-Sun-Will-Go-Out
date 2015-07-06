@@ -657,16 +657,15 @@ namespace SpaceProject
             if (mainInfiltration.MissionState != StateOfMission.CompletedDead
                 && mainInfiltration.ObjectiveIndex < 9)
             {
-                if (StatsManager.gameMode != GameMode.Develop
-                    && !game.player.HyperspeedOn)
+                if (!game.player.HyperspeedOn)
                 {
                     if (CollisionDetection.IsRectInRect(game.player.Bounds,
                         game.stateManager.overworldState.GetRebelOutpost.SpaceRegionArea) &&
                         PopupHandler.MessageQueueCount <= 0)
                     {
                         PopupHandler.DisplayMessage("A large group of rebels prevents you from entering this area.");
-                        game.player.InitializeHyperSpeedJump(new Vector2(game.player.position.X + (100 * -game.player.Direction.GetDirectionAsVector().X),
-                            game.player.position.Y + (100 * -game.player.Direction.GetDirectionAsVector().Y)), false);
+
+                        game.player.BounceBack();
                     }
                 }
             }

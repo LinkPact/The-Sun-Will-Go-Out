@@ -26,7 +26,8 @@ namespace SpaceProject
         private readonly string BonusID = "[BONUS]";
         private readonly string ActionKeyID = "[ACTIONKEY1]";
 
-        private readonly Rectangle MissionArea = new Rectangle(116500, 90000, 10000, 10000); 
+        private readonly Vector2 MissionArea = new Vector2(121500, 96000);
+        private readonly float MissionAreaRadius = 7500;
 
         private readonly int DownedShipsMultiplier = 10;
 
@@ -87,13 +88,11 @@ namespace SpaceProject
             base.MissionLogic();
 
             if (StatsManager.gameMode != GameMode.Develop
-                && !CollisionDetection.IsRectInRect(Game.player.Bounds, MissionArea)
+                && !CollisionDetection.IsPointInsideCircle(Game.player.position, MissionArea, MissionAreaRadius)
                 && !Game.player.HyperspeedOn)
             {
                 PopupHandler.DisplayPortraitMessage(PortraitID.Berr, "Where are you going? Follow the blinking gold dot on you radar to get to the mining station.");
-                Game.player.InitializeHyperSpeedJump(new Vector2(Game.player.position.X + (100 * PlayerToBorderStationDirection.X),
-                                                     Game.player.position.Y + (100 * PlayerToBorderStationDirection.Y)),
-                                                     false);
+                Game.player.BounceBack();
             }
 
             if (downedShips == -1 

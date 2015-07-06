@@ -10,6 +10,8 @@ namespace SpaceProject
 {
     public class PlayerOverworld : GameObjectOverworld
     {
+        private readonly int HyperSpeedDistanceTreshold = 7500;
+
         private int damageTimer = 0;
 
         private bool controlsEnabled;
@@ -323,34 +325,27 @@ namespace SpaceProject
 
         public void InitializeHyperSpeedJump(Vector2 coordinates, bool useDistanceCheck)
         {
-            // DON'T DELETE
-            //if (!BaseInventoryManager.equippedShip.FusionCellsDepleted() ||
-            //    BaseInventoryManager.equippedShip.EmergencyFusionCell > 0)
-            //{
-                speed = 0;
-                hyperspeedCoordinates = coordinates;
-                totalHyperspeedDistance = Math.Abs(Vector2.Distance(coordinates, position));
+            speed = 0;
+            hyperspeedCoordinates = coordinates;
+            totalHyperspeedDistance = Math.Abs(Vector2.Distance(coordinates, position));
 
-                if (useDistanceCheck && totalHyperspeedDistance < 7500)
-                {
-                    Game.helper.DisplayText("Could not initialize Hyper Speed. Distance is too short.", 2);
-                    return;
-                }
+            if (useDistanceCheck && totalHyperspeedDistance < HyperSpeedDistanceTreshold)
+            {
+                Game.helper.DisplayText("Could not initialize Hyper Speed. Distance is too short.", 2);
+                return;
+            }
 
-                hyperspeedOn = true;
-                maxSpeed = HYPERSPEED_MAX_SPEED;
+            hyperspeedOn = true;
+            maxSpeed = HYPERSPEED_MAX_SPEED;
+        }
 
-            // DON'T DELETE
-                //if (!BaseInventoryManager.equippedShip.FusionCellsDepleted())
-                //    BaseInventoryManager.equippedShip.RemoveFusionCell();
-                //else
-                //    BaseInventoryManager.equippedShip.EmergencyFusionCell--;
-            //}
-            //
-            //else
-            //{
-            //    Game.helper.DisplayText("Could not initialize Hyper Speed. Not enough fusion cells.", 2);
-            //}
+        public void BounceBack()
+        {
+            var pos = new Vector2(position.X + (100 * -Direction.GetDirectionAsVector().X),
+                position.Y + (100 * -Direction.GetDirectionAsVector().Y));
+
+            Direction.SetDirection(new Vector2(pos.X - position.X, pos.Y - position.Y));
+            InitializeHyperSpeedJump(pos, false);
         }
 
         private void HyperSpeedMovement(GameTime gameTime)
