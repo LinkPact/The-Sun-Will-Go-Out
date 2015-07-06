@@ -634,6 +634,17 @@ namespace SpaceProject
                 }
             }
 
+            if (GameStateManager.previousState.Equals("PlanetState"))
+            {
+                Game.stateManager.planetState.LoadPlanetData(
+                    Game.stateManager.overworldState.GetPlanet(PlanetState.PreviousPlanet));
+            }
+            else if (GameStateManager.previousState.Equals("StationState"))
+            {
+                Game.stateManager.stationState.LoadStationData(
+                    Game.stateManager.overworldState.GetStation(StationState.PreviousStation));
+            }
+
             if (GameStateManager.previousState.Equals("ShooterState"))
             {
                 Game.stateManager.ChangeState(GameStateManager.previousPreviousState);
