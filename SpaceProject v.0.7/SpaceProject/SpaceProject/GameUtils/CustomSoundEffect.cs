@@ -192,7 +192,8 @@ namespace SpaceProject
         {
             foreach (SoundEffectInstance instance in instances)
             {
-                if (instance.State == SoundState.Playing)
+                if (instance != null
+                    && instance.State == SoundState.Playing)
                 {
                     return true;
                 }
