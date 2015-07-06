@@ -11,7 +11,7 @@ namespace SpaceProject
     public class BeaconMenu
     {
         private Game1 game;
-        private Sprite sprite;
+        private Sprite beaconMap;
         private SpriteFont font;
 
         private Vector2 position;
@@ -28,7 +28,7 @@ namespace SpaceProject
         public BeaconMenu(Game1 game, Sprite sprite)
         {
             this.game = game;
-            this.sprite = sprite.GetSubSprite(new Rectangle(0, 0, 571, 310));
+            this.beaconMap = sprite.GetSubSprite(new Rectangle(0, 0, 564, 302));
         }
 
         public void Initialize()
@@ -110,8 +110,8 @@ namespace SpaceProject
         {
             if (displayed)
             {
-                spriteBatch.Draw(sprite.Texture, game.camera.cameraPos, sprite.SourceRectangle, Color.White, 0.0f,
-                        new Vector2(sprite.Width / 2, sprite.Height / 2), 1f, SpriteEffects.None, 0.9f);
+                spriteBatch.Draw(beaconMap.Texture, game.camera.cameraPos, beaconMap.SourceRectangle, Color.White, 0.0f,
+                        new Vector2(beaconMap.Width / 2, beaconMap.Height / 2), 1f, SpriteEffects.None, 0.9f);
 
                 for (int i = 0; i < options.Count; i++)
                 {
