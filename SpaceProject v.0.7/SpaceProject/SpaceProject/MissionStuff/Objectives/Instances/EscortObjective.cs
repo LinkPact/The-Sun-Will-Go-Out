@@ -146,9 +146,13 @@ namespace SpaceProject
 
             if (autofollow && started)
             {
-                game.player.Direction.SetDirection(new Vector2(
-                    escortDataCapsule.ShipToDefend.destination.X - game.player.position.X,
-                    escortDataCapsule.ShipToDefend.destination.Y - game.player.position.Y));
+                if (!escortDataCapsule.ShipToDefend.HasArrived)
+                {
+                    game.player.Direction.SetDirection(new Vector2(
+                        escortDataCapsule.ShipToDefend.destination.X - game.player.position.X,
+                        escortDataCapsule.ShipToDefend.destination.Y - game.player.position.Y));
+                }
+
                 game.player.speed = escortDataCapsule.ShipToDefend.speed;
             }
 
