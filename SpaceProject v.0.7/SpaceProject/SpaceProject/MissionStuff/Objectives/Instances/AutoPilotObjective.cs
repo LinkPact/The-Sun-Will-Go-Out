@@ -104,9 +104,12 @@ namespace SpaceProject
             base.Update(playTime);
 
             // Updates player direction and speed
-            game.player.Direction.SetDirection(new Vector2(
-                Destination.position.X - game.player.position.X,
-                Destination.position.Y - game.player.position.Y));
+            if (!HasAnyShipArrived())
+            {
+                game.player.Direction.SetDirection(new Vector2(
+                    Destination.position.X - game.player.position.X,
+                    Destination.position.Y - game.player.position.Y));
+            }
             game.player.speed = speed;
 
             // Displays timed messages
@@ -235,6 +238,19 @@ namespace SpaceProject
         {
             useRealTimeSwitch = true;
             activateRealTimeSwitchIndex = index;
+        }
+
+        private bool HasAnyShipArrived()
+        {
+            foreach (OverworldShip ship in ships)
+            {
+                if (ship.HasArrived)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
