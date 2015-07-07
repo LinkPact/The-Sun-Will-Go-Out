@@ -61,6 +61,12 @@ namespace SpaceProject
             SetYCoordinateToValid(x);
         }
 
+        public void SetCursor(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
         private void SetXCoordinateToValid()
         {
             if (x < 0)

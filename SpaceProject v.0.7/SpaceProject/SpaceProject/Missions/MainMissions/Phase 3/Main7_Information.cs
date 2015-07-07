@@ -86,9 +86,9 @@ namespace SpaceProject
         {
             destinations = new List<GameObjectOverworld>();
 
-            GameObjectOverworld lavis = Game.stateManager.overworldState.GetSectorX.GetGameObject("Lavis");
+            GameObjectOverworld informationStation = Game.stateManager.overworldState.GetSectorX.GetGameObject("Information Station");
 
-            AddDestination(lavis, 6);
+            AddDestination(informationStation, 6);
         }
 
         protected override void SetupObjectives()

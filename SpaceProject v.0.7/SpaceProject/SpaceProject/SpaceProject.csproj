@@ -379,6 +379,7 @@
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\SimpleAsteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\SunAsteroidBelt.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\DamagedShip.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\InformationStation.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\MiningAsteroids.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\LonelyAsteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\FotrunStation2.cs" />

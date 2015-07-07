@@ -24,21 +24,6 @@ namespace SpaceProject
             overworldEvent = new DisplayTextOE("The surface is completly covered in ice. The main source of income is water harvesting.");
         }
 
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            base.Draw(spriteBatch);
-        }
-
-        public override void Interact()
-        {
-            base.Interact();
-        }
-
         protected override void SetClearedText()
         {
             clearedText = "EMPTY";

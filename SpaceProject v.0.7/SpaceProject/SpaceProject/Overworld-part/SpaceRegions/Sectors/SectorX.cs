@@ -21,6 +21,7 @@ namespace SpaceProject
         private SoelaraStation soelaraStation;
         private LavisStation lavisStation;
         private FortrunStation1 fortrunStation1;
+        private InformationStation informationStation;
 
         private HighfenceShop highfenceShop;
         private FortrunShop fortrunShop;
@@ -65,6 +66,7 @@ namespace SpaceProject
             soelara = new Soelara(game, spriteSheet);
             fortrun = new Fortrun(game, spriteSheet);
             lavis = new Lavis(game, spriteSheet);
+            informationStation = new InformationStation(game, spriteSheet);
             fortrunStation2 = new FortrunStation2(game, spriteSheet);
             lonelyAsteroid = new LonelyAsteroid(game, spriteSheet);
             damagedShip = new DamagedShip(game, new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/MissionObjectSpriteSheet"), null));
@@ -91,6 +93,7 @@ namespace SpaceProject
             subInteractiveObjects.Add(fortrunStation2);
             subInteractiveObjects.Add(lonelyAsteroid);
             subInteractiveObjects.Add(damagedShip);
+            subInteractiveObjects.Add(informationStation);
 
             foreach (var obj in subInteractiveObjects)
             {

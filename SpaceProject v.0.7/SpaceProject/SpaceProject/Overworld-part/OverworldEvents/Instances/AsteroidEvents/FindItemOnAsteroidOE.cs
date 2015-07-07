@@ -74,9 +74,7 @@ namespace SpaceProject
 
             if (!IsCleared())
             {
-
                 var item = GetProgressBasedRandomItem(Game);
-
                 if (getItemOE == null)
                 {
                     getItemOE = new GetItemOE(item, string.Format("You found the {0}!", item.Name), "Your inventory is full!", "Cleared (is this shown?)");                

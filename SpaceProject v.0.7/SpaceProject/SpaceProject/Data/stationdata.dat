@@ -111,3 +111,9 @@ Name = Peye Shop
 PositionX = 200
 PositionY = -100
 Inhabitants = 1
+
+[OW_Information_Station]
+Name = Information Station
+PositionX = 1000
+PositionY = 0
+Inhabitants = 37
