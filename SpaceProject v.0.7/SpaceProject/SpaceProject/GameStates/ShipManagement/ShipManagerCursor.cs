@@ -50,43 +50,44 @@ namespace SpaceProject
 
         public void Initialize()
         {
-            int xSpacing = 44;
-            int ySpacing = 70;
+            int xSpacing = 70;
+            int ySpacing = 140;
             int yOffset = ySpacing / 2;
-            int xOffset = 20;
+            int xOffset = -50;
+            int originYOffset = -30;
             Vector2 center = StaticFunctions.PointToVector2(ShipManagerState.GetUpperLeftRectangle.Center);
-            Vector2 origin = new Vector2(center.X + xOffset - BACKGROUND_SHIP_LENGTH / 2f, center.Y - 20);
+            Vector2 origin = new Vector2(center.X + xOffset - BACKGROUND_SHIP_LENGTH / 2f, center.Y + originYOffset);
 
             displayList = new List<ShipInventoryDisplayObject>();
 
             Coordinate batteryCoord = new Coordinate(0, 0);
-            displayList.Add(cellDisplay = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(343, 853, 40, 40)),
-                spriteSheet.GetSubSprite(new Rectangle(423, 853, 40, 40)),
+            displayList.Add(cellDisplay = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(600, 840, 60, 60)),
+                spriteSheet.GetSubSprite(new Rectangle(600, 901, 60, 60)),
                 new Vector2(origin.X, origin.Y), batteryCoord));
 
             Coordinate platingCoord = new Coordinate(1, 0);
-            displayList.Add(platingDisplay = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(303, 853, 40, 40)),
-                spriteSheet.GetSubSprite(new Rectangle(383, 853, 40, 40)),
+            displayList.Add(platingDisplay = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(480, 840, 60, 60)),
+                spriteSheet.GetSubSprite(new Rectangle(480, 901, 60, 60)),
                 new Vector2(origin.X + xSpacing, origin.Y - yOffset), platingCoord));
 
             Coordinate shieldCoord = new Coordinate(1, 1);
-            displayList.Add(shieldDisplay = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(303, 893, 40, 40)),
-                spriteSheet.GetSubSprite(new Rectangle(383, 893, 40, 40)),
+            displayList.Add(shieldDisplay = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(540, 840, 60, 60)),
+                spriteSheet.GetSubSprite(new Rectangle(540, 901, 60, 60)),
                 new Vector2(origin.X + xSpacing, origin.Y - yOffset + ySpacing), shieldCoord));
 
             Coordinate secondaryCoord = new Coordinate(2, 0);
-            displayList.Add(secondaryDisplay = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(303, 813, 40, 40)),
-                spriteSheet.GetSubSprite(new Rectangle(383, 813, 40, 40)),
+            displayList.Add(secondaryDisplay = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(720, 840, 60, 60)),
+                spriteSheet.GetSubSprite(new Rectangle(720, 901, 60, 60)),
                 new Vector2(origin.X + xSpacing * 2, origin.Y), secondaryCoord));
 
             Coordinate primaryCoord1 = new Coordinate(3, 0);
-            displayList.Add(primaryDisplay = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(303, 773, 40, 40)),
-                spriteSheet.GetSubSprite(new Rectangle(383, 773, 40, 40)),
+            displayList.Add(primaryDisplay = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(660, 840, 60, 60)),
+                spriteSheet.GetSubSprite(new Rectangle(660, 901, 60, 60)),
                 new Vector2(origin.X + xSpacing * 3, origin.Y - yOffset), primaryCoord1));
 
             Coordinate primaryCoord2 = new Coordinate(3, 1);
-            displayList.Add(primaryDisplay2 = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(303, 773, 40, 40)),
-                spriteSheet.GetSubSprite(new Rectangle(383, 773, 40, 40)),
+            displayList.Add(primaryDisplay2 = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(660, 840, 60, 60)),
+                spriteSheet.GetSubSprite(new Rectangle(660, 901, 60, 60)),
                 new Vector2(origin.X + xSpacing * 3, origin.Y - yOffset + ySpacing), primaryCoord2));
 
             //Coordinate back2Coord = new Coordinate(4, 0);
