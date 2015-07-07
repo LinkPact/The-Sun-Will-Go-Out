@@ -827,7 +827,7 @@ namespace SpaceProject
             List<GameObjectOverworld> removeObjects = new List<GameObjectOverworld>();
             foreach (GameObjectOverworld obj in deepSpaceGameObjects)
             {
-                if ((obj is RebelShip || obj is AllianceShip)
+                if ((obj is RebelShip || obj is AllianceShip || obj is HangarShip)
                     && ((OverworldShip)obj).RemoveOnStationEnter)
                 {
                     removeObjects.Add(obj);
@@ -951,6 +951,7 @@ namespace SpaceProject
         public void Load()
         {
             int count = Game.saveFile.GetPropertyAsInt("spaceobjects", "count", 0);
+            RemoveAllPirates();
 
             for (int i = 0; i < count; i++)
             {
@@ -974,10 +975,10 @@ namespace SpaceProject
                         sectorX.shipSpawner.AddFreighterToSector(tmpShip, new Vector2(posx, posy));
                         break;
                     case "Alliance Ship":
-                        sectorX.shipSpawner.AddRebelShip(new Vector2(posx, posy));
+                        sectorX.shipSpawner.AddAllianceShip(new Vector2(posx, posy));
                         break;
                     case "Hangar Ship":
-                        sectorX.shipSpawner.AddRebelShip(new Vector2(posx, posy));
+                        sectorX.shipSpawner.AddHangarShip(new Vector2(posx, posy));
                         break;
                     //case "Ally Ship":
                     //    sectorX.shipSpawner.AddRebelShip(new Vector2(posx, posy));

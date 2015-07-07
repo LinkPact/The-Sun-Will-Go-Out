@@ -86,6 +86,22 @@ namespace SpaceProject
             overworld.AddOverworldObject(tmpShip);
         }
 
+        public void AddAllianceShip(Vector2 pos)
+        {
+            AllianceShip tmpShip = new AllianceShip(game, spriteSheet);
+            tmpShip.Initialize();
+            tmpShip.position = pos; ;
+            overworld.AddOverworldObject(tmpShip);
+        }
+
+        public void AddHangarShip(Vector2 pos)
+        {
+            HangarShip tmpShip = new HangarShip(game, spriteSheet);
+            tmpShip.Initialize();
+            tmpShip.position = pos; ;
+            overworld.AddOverworldObject(tmpShip);
+        }
+
         public void AddRebelShip(Vector2 pos, string levelToStart, GameObjectOverworld target)
         {
             RebelShip tmpShip = new RebelShip(game, spriteSheet);
