@@ -18,7 +18,6 @@ namespace SpaceProject
             position = MathFunctions.CoordinateToPosition(coordinates);
 
             this.angle = (float)(MathFunctions.GetExternalRandomDouble() * 2 * Math.PI);
-            this.layerDepth += (float)(MathFunctions.GetExternalRandomDouble() * 0.01);
         }
     }
 }

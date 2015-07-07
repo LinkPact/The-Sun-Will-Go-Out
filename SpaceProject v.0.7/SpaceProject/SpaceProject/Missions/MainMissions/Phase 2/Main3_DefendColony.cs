@@ -326,16 +326,26 @@ namespace SpaceProject
 
         private void SetupAllyShips(List<OverworldShip> ships, Vector2 startingPoint, GameObjectOverworld destination)
         {
+            var endingPoint = destination.position;
+
             // Adds companion ships
             int modifier = 1;
             for (int i = 0; i < ships.Count; i++)
             {
                 ships[i].Initialize();
                 ships[i].AIManager = new TravelAction(ships[i], destination);
+
+                float xoffset = -50 + (50 * i);
+                float yoffset = 325 - (25 * modifier);
+
                 Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
-                    ships[i], new Vector2(startingPoint.X - 50 + (50 * i),
-                                              startingPoint.Y + 325 - (25 * modifier)),
+                    ships[i], new Vector2(startingPoint.X + xoffset, startingPoint.Y + yoffset),
                     "", destination);
+
+                // Possible solution if destination is vector2
+                //Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
+                //    ships[i], new Vector2(startingPoint.X + xoffset, startingPoint.Y + yoffset),
+                //    "", new Vector2(endingPoint.X + xoffset, endingPoint.Y + yoffset));
 
                 ships[i].Wait();
 

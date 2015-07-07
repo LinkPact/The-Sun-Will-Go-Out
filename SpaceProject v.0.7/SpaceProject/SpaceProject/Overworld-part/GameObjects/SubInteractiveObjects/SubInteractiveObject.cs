@@ -46,7 +46,8 @@ namespace SpaceProject
             options = new List<string>();
 
             scale = 1f;
-            layerDepth = 0.3f;
+            layerDepth = 0.3f + (float)(MathFunctions.GetExternalRandomDouble() * 0.01);
+
             color = Color.White;
         }
 

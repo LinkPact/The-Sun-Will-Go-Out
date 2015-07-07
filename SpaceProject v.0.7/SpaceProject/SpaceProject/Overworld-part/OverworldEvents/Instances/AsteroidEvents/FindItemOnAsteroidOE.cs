@@ -8,8 +8,8 @@ namespace SpaceProject
     class FindItemOnAsteroidOE : OverworldEvent
     {
         private Game1 Game;
-
         private String clearText;
+        private GetItemOE getItemOE;
 
         private List<ShipPartType> beginningItems = new List<ShipPartType>
         { 
@@ -76,8 +76,12 @@ namespace SpaceProject
             {
 
                 var item = GetProgressBasedRandomItem(Game);
-                var itemOE = new GetItemOE(item, string.Format("You found the {0}!", item.Name), "Your inventory is full!", "Cleared (is this shown?)");
-                successfullyActivated = itemOE.Activate();
+
+                if (getItemOE == null)
+                {
+                    getItemOE = new GetItemOE(item, string.Format("You found the {0}!", item.Name), "Your inventory is full!", "Cleared (is this shown?)");                
+                }
+                successfullyActivated = getItemOE.Activate();
 
                 if (successfullyActivated)
                 {
