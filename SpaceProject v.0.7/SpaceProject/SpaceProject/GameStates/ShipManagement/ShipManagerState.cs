@@ -85,7 +85,6 @@ namespace SpaceProject
             rightRectangle = new Rectangle(lowerLeftRectangle.Width, 0,
                 lowerLeftRectangle.Width, (int)(Game.Window.ClientBounds.Height));
 
-
             //Managers for cursor and text.
             cursorManager = new ShipManagerCursor(Game, spriteSheet);
             cursorManager.Initialize();

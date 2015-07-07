@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    public class HighfenceShop : Station
+    public class HighfenceShop : ShopStation
     {
         public HighfenceShop(Game1 Game, Sprite spriteSheet, Vector2 positionOffset) :
             base(Game, spriteSheet, positionOffset)

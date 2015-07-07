@@ -166,7 +166,7 @@ namespace SpaceProject
         #endregion
 
         private Camera camera;
-        public Sprite spriteSheet;
+        public Sprite planetarySystemSpriteSheet;
 
         private BurnOutEnding burnOutEnding;
         public bool IsBurnOutEndingActivated { get { return burnOutEnding.Activated; } }
@@ -189,7 +189,7 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            spriteSheet = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/planetarySystemSpriteSheet"));
+            planetarySystemSpriteSheet = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/planetarySystemSpriteSheet"));
             shooterSheet = new Sprite(Game.Content.Load<Texture2D>("Vertical-Sprites/ShooterSheet"));
             outpostSpriteSheet = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/OutpostSpriteSheet"));
 
@@ -206,7 +206,7 @@ namespace SpaceProject
 
             // HUD
             HUD = new HeadsUpDisplay(this.Game);
-            HUD.Initialize(spriteSheet, new Vector2(OVERWORLD_WIDTH / 2, OVERWORLD_HEIGHT / 2), new Vector2(OVERWORLD_WIDTH, OVERWORLD_HEIGHT));
+            HUD.Initialize(planetarySystemSpriteSheet, new Vector2(OVERWORLD_WIDTH / 2, OVERWORLD_HEIGHT / 2), new Vector2(OVERWORLD_WIDTH, OVERWORLD_HEIGHT));
 
             bGManagerOverworld = new BackgroundManagerOverworld(Game);
             bGManagerOverworld.Initialize();
@@ -269,9 +269,9 @@ namespace SpaceProject
                 beacon.AddKnownBeacons(Game.stateManager.overworldState.GetAllOverworldGameObjects);
             }
 
-            bGManagerOverworld.AddStar(spriteSheet);
+            bGManagerOverworld.AddStar(planetarySystemSpriteSheet);
 
-            burnOutEnding = new BurnOutEnding(Game, spriteSheet);
+            burnOutEnding = new BurnOutEnding(Game, planetarySystemSpriteSheet);
             burnOutEnding.Initialize();
 
             base.Initialize();

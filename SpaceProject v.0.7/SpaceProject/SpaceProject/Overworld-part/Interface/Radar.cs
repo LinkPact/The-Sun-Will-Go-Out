@@ -10,7 +10,8 @@ namespace SpaceProject
     /// </summary>
     public class Radar
     {
-        private readonly Color ImmovableObjectColor = new Color(85, 85, 85);
+        private readonly Color AsteroidColor = new Color(85, 85, 85);
+        private readonly Color ImmovableObjectColor = new Color(70, 130, 180);
         private readonly Color HostileShipColor = Color.Red;
         private readonly Color FriendlyShipColor = Color.Green;
         private readonly Color MainMissionColor = Color.Gold;
@@ -35,11 +36,12 @@ namespace SpaceProject
 
         private Vector2 playerpos;
 
-        private Sprite ObjectSprite;
-        private Sprite AsteroidSprite;
-        private Sprite BlinkingSprite;
+        private Sprite objectSprite;
+        private Sprite asteroidSprite;
+        private Sprite blinkingSprite;
+        private Sprite shopSprite;
 
-        private Sprite ActiveSprite; 
+        private Sprite activeSprite; 
         
         protected Sprite spriteSheet;
         protected Sprite background;
@@ -68,15 +70,16 @@ namespace SpaceProject
             objectsOnMap = new List<Vector2>();
             this.Origin = Origin;
             this.viewRadius = viewRadius;
-           // View = new Rectangle((int)game.player.position.X - viewRadius, (int)game.player.position.Y - viewRadius, viewRadius * 2, viewRadius * 2);
+            // View = new Rectangle((int)game.player.position.X - viewRadius, (int)game.player.position.Y - viewRadius, viewRadius * 2, viewRadius * 2);
             radarHeight = 198;
             radarWidth = 198;
             scaleX = View.Width / radarWidth;
             scaleY = View.Height / radarHeight;
             
-            ObjectSprite = spriteSheet.GetSubSprite(new Rectangle(42, 24, 6, 6));
-            AsteroidSprite = spriteSheet.GetSubSprite(new Rectangle(44, 26, 2, 2));
-            BlinkingSprite = spriteSheet.GetSubSprite(new Rectangle(49, 24, 6, 6));
+            objectSprite = spriteSheet.GetSubSprite(new Rectangle(42, 24, 6, 6));
+            asteroidSprite = spriteSheet.GetSubSprite(new Rectangle(44, 26, 2, 2));
+            blinkingSprite = spriteSheet.GetSubSprite(new Rectangle(49, 24, 6, 6));
+            shopSprite = spriteSheet.GetSubSprite(new Rectangle(63, 26, 11, 13));
             background = new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/radar"), new Rectangle(0, 0, 198, 198));
 
             missionArrows = new List<DirectionArrow>();
@@ -152,12 +155,12 @@ namespace SpaceProject
             }
 
             // Draw background sprite
-            spriteBatch.Draw(ObjectSprite.Texture,
+            spriteBatch.Draw(objectSprite.Texture,
                 new Vector2(Origin.X + ((playerpos.X - View.X) / scaleX), Origin.Y + ((playerpos.Y - View.Y) / scaleY)),
-                ObjectSprite.SourceRectangle,
+                objectSprite.SourceRectangle,
                 Color.White,
                 0.0f,
-                new Vector2(ObjectSprite.SourceRectangle.Value.Width / 2, ObjectSprite.SourceRectangle.Value.Height / 2),
+                new Vector2(objectSprite.SourceRectangle.Value.Width / 2, objectSprite.SourceRectangle.Value.Height / 2),
                 1f,
                 SpriteEffects.None,
                 0.911f
@@ -173,7 +176,7 @@ namespace SpaceProject
             {
                 Color color = ImmovableObjectColor;
                 float scale = 1f;
-                ActiveSprite = ObjectSprite;
+                activeSprite = objectSprite;
                 drawDistance = 0.91f;
 
                 if (MissionManager.IsCurrentObjectiveDestination(obj))
@@ -189,7 +192,7 @@ namespace SpaceProject
                         {
                             color = SecondaryMissionColor;
                         }
-                        ActiveSprite = BlinkingSprite;
+                        activeSprite = blinkingSprite;
                         scale = 1.25f;
                     }
 
@@ -211,7 +214,7 @@ namespace SpaceProject
                     if (colorSwapCounter <= 25)
                     {
                         color = MainMissionColor;
-                        ActiveSprite = BlinkingSprite;
+                        activeSprite = blinkingSprite;
                         scale = 1.25f;
                     }
 
@@ -260,16 +263,23 @@ namespace SpaceProject
                 }
                 else if (obj is Asteroid)
                 {
-                    ActiveSprite = AsteroidSprite;
+                    activeSprite = asteroidSprite;
+                    color = AsteroidColor;
                     scale = 1.5f;
                 }
+                else if (obj is ShopStation)
+                {
+                    activeSprite = shopSprite;
+                    color = Color.White;
+                    drawDistance = 0.915f;
+                }
 
-                spriteBatch.Draw(ActiveSprite.Texture,
+                spriteBatch.Draw(activeSprite.Texture,
                         new Vector2(Origin.X + ((obj.position.X - View.X) / scaleX), Origin.Y + ((obj.position.Y - View.Y) / scaleY)),
-                        ActiveSprite.SourceRectangle,
+                        activeSprite.SourceRectangle,
                         color,
                         0.0f,
-                        new Vector2(ActiveSprite.SourceRectangle.Value.Width / 2, ActiveSprite.SourceRectangle.Value.Height / 2),
+                        new Vector2(activeSprite.SourceRectangle.Value.Width / 2, activeSprite.SourceRectangle.Value.Height / 2),
                         scale,
                         SpriteEffects.None,
                         drawDistance
