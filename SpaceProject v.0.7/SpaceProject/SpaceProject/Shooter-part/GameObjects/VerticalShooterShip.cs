@@ -200,8 +200,11 @@ namespace SpaceProject
 
             if (IsKilled && useDeathAnim)
             {
+                //Game.stateManager.shooterState.backgroundObjects.Add(
+                //    ExplosionGenerator.GenerateRandomExplosion(Game, spriteSheet, this));
+
                 Game.stateManager.shooterState.backgroundObjects.Add(
-                    ExplosionGenerator.GenerateRandomExplosion(Game, spriteSheet, this));
+                    ExplosionGenerator.GenerateShipExplosion(Game, spriteSheet, this));
             }
 
             if (movement != Movement.None)

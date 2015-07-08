@@ -191,8 +191,8 @@ namespace SpaceProject
 
         protected override void Update(GameTime gameTime) 
         {
-            //Window.Title = "The Sun Will Go Out";
-            Window.Title = "Pos x: " + player.position.X + " Pos y: " + player.position.Y;
+            Window.Title = "The Sun Will Go Out";
+            //Window.Title = "Pos x: " + player.position.X + " Pos y: " + player.position.Y;
 
             if (IsActive)
             {

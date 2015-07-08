@@ -88,9 +88,6 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            MouseState mouseState = Mouse.GetState();
-            Game.Window.Title = "Pos x: " + mouseState.X + " Pos y: " + mouseState.Y;
-
             base.Update(gameTime);
 
             levelMechanics.Update(gameTime);

@@ -30,7 +30,23 @@ namespace SpaceProject
 
             tempExplosion.GenerateExplosionParticles(game, spriteSheet, source, nbrParticles, size, randomDir: true);
 
-            //game.soundEffectsManager.PlaySoundEffect(source.getDeathSoundID(), source.SoundPan);
+            return tempExplosion;
+        }
+
+        public static Explosion GenerateShipExplosion(Game1 game, Sprite spriteSheet, GameObjectVertical source)
+        {
+            float size = 20;
+            float fragmentSpeed = 0.2f;
+            int lifeTime = 15;
+            int nbrParticlesBase = 25;
+
+            Explosion tempExplosion = new Explosion(game, spriteSheet);
+
+            int nbrParticles = random.Next(nbrParticlesBase, nbrParticlesBase + (int)(nbrParticlesBase * 0.5));
+
+            tempExplosion.GenerateAbsoluteExplosion(game, spriteSheet, source, nbrParticles, size,
+                randomDir: true, speed: source.Speed, fragmentDur: lifeTime, fragmentSpeed: fragmentSpeed);
+
             return tempExplosion;
         }
 
@@ -42,7 +58,6 @@ namespace SpaceProject
             float size = (source.BoundingWidth + source.BoundingHeight) * 3;
             tempExplosion.GenerateExplosionParticles(game, spriteSheet, source, nbrParticles, size, 
                 randomDir: true, speedFactor: 0.1f, dirFactor: -1);
-            //game.soundEffectsManager.PlaySoundEffect(source.getDeathSoundID(), source.SoundPan);
             return tempExplosion;
         }
 
