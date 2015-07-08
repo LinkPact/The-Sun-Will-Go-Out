@@ -310,7 +310,7 @@ namespace SpaceProject
             helper.Draw(spriteBatch);
             beaconMenu.Draw(spriteBatch);
 
-            if (showFPS && !ZoomMap.IsMapOn)
+            if (showFPS && !ZoomMap.IsMapOn && !stateManager.overworldState.IsBurnOutEndingActivated)
             {
                 if (GameStateManager.currentState == "OverworldState")
                 {

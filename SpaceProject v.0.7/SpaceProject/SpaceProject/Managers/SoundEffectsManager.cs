@@ -18,6 +18,7 @@ namespace SpaceProject
         // Explosions
         MuffledExplosion,
         SmallExplosion,
+        HugeExplosion,
 
         // ShooterHit
         ShieldHit,
@@ -63,6 +64,7 @@ namespace SpaceProject
 
         private CustomSoundEffect muffledExplosion;
         private CustomSoundEffect smallExplosion;
+        private CustomSoundEffect hugeExplosion;
 
         private CustomSoundEffect shieldHit;
 
@@ -104,6 +106,7 @@ namespace SpaceProject
 
                 muffledExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom6"), 2);
                 smallExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/boom9"), 2);
+                hugeExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/huge_explosion"), 1);
 
                 shieldHit = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/shooterHit/Shieldhit1"), 1);
 
@@ -113,6 +116,7 @@ namespace SpaceProject
                 soundEffects.Add(midSizeLaser);
                 soundEffects.Add(muffledExplosion);
                 soundEffects.Add(smallExplosion);
+                soundEffects.Add(hugeExplosion);
 
                 soundEffects.Add(shieldHit);
 

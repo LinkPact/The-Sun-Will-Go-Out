@@ -336,7 +336,7 @@ namespace SpaceProject
                 Game.stateManager.ChangeState("OutroState");
                 Game.player.EnableControls();
             }
-            //InputhandlingDebug();
+            InputhandlingDebug();
 
             EdgeCollisionCheck();
 
@@ -529,6 +529,11 @@ namespace SpaceProject
             if (ControlManager.CheckKeyPress(Keys.Y))
             {
                 PopupHandler.DisplayMessage("Player position: " + Game.player.position.ToString());
+            }
+
+            if (ControlManager.CheckKeyPress(Keys.F12))
+            {
+                ActivateBurnOutEnding();
             }
         }
 
@@ -888,7 +893,7 @@ namespace SpaceProject
         {
             Game.player.speed = 0;
             Game.player.DisableControls();
-            burnOutEnding.Activate(Game.camera.Position, 100);
+            burnOutEnding.Activate(Game.camera.Position, 25);
             Game.musicManager.PlayMusic(Music.none);
         }
 

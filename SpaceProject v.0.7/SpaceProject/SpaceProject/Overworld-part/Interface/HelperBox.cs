@@ -49,7 +49,7 @@ namespace SpaceProject
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (visible && text != "")
+            if (visible && text != "" && !Game.stateManager.overworldState.IsBurnOutEndingActivated)
             {
                 if (timedText 
                     && timeToShowText > 0)

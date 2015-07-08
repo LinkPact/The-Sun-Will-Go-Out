@@ -111,115 +111,129 @@ namespace SpaceProject
             string lowerCase = str.ToLower();
 
             if (lowerCase.Contains("[berr]")
-                | lowerCase.Contains("{berr}"))
+                || lowerCase.Contains("{berr}"))
             {
                 lastPortraitID = PortraitID.Berr;
                 return PortraitID.Berr;
             }
 
             else if (lowerCase.Contains("[ai]")
-                | lowerCase.Contains("{ai}"))
+                || lowerCase.Contains("{ai}"))
             {
                 lastPortraitID = PortraitID.Ai;
                 return PortraitID.Ai;
             }
 
             else if (lowerCase.Contains("[sair]")
-                | lowerCase.Contains("{sair}"))
+                || lowerCase.Contains("{sair}"))
             {
                 lastPortraitID = PortraitID.Sair;
                 return PortraitID.Sair;
             }
 
             else if (lowerCase.Contains("[captain]")
-                | lowerCase.Contains("{captain}"))
+                || lowerCase.Contains("{captain}"))
             {
                 lastPortraitID = PortraitID.AllianceCaptain;
                 return PortraitID.AllianceCaptain;
             }
 
             else if (lowerCase.Contains("[commander]")
-                | lowerCase.Contains("{commander}"))
+                || lowerCase.Contains("{commander}"))
             {
                 lastPortraitID = PortraitID.AllianceCommander;
                 return PortraitID.AllianceCommander;
             }
 
             else if (lowerCase.Contains("[rebel pilot]")
-                | lowerCase.Contains("{rebel pilot}"))
+                || lowerCase.Contains("{rebel pilot}"))
             {
                 lastPortraitID = PortraitID.RebelTroopLeader;
                 return PortraitID.RebelTroopLeader;
             }
 
             else if (lowerCase.Contains("[rok]")
-                | lowerCase.Contains("{rok}"))
+                || lowerCase.Contains("{rok}"))
             {
                 lastPortraitID = PortraitID.Rok;
                 return PortraitID.Rok;
             }
 
             else if (lowerCase.Contains("[trainer]")
-                | lowerCase.Contains("{trainer}"))
+                || lowerCase.Contains("{trainer}"))
             {
                 lastPortraitID = PortraitID.AllianceCommander;
                 return PortraitID.AllianceCommander;
             }
 
             else if (lowerCase.Contains("[alliance man]")
-                | lowerCase.Contains("{alliance man}"))
+                || lowerCase.Contains("{alliance man}"))
             {
                 lastPortraitID = PortraitID.AllianceCaptain;
                 return PortraitID.AllianceCaptain;
             }
 
             else if (lowerCase.Contains("[alliance]")
-                | lowerCase.Contains("{alliance}"))
+                || lowerCase.Contains("{alliance}"))
             {
                 lastPortraitID = PortraitID.AlliancePilot;
                 return PortraitID.AlliancePilot;
             }
 
             else if (lowerCase.Contains("[debt collector]")
-                | lowerCase.Contains("{debt collector}"))
+                || lowerCase.Contains("{debt collector}"))
             {
                 lastPortraitID = PortraitID.Berr;
                 return PortraitID.Berr;
             }
 
             else if (lowerCase.Contains("[desperate man]")
-                | lowerCase.Contains("{desperate man}"))
+                || lowerCase.Contains("{desperate man}"))
             {
                 lastPortraitID = PortraitID.CommonCitizen;
                 return PortraitID.CommonCitizen;
             }
 
             else if (lowerCase.Contains("[mineral researcher]")
-                | lowerCase.Contains("{mineral researcher}"))
+                || lowerCase.Contains("{mineral researcher}"))
             {
                 lastPortraitID = PortraitID.RebelTroopLeader;
                 return PortraitID.RebelTroopLeader;
             }
 
             else if (lowerCase.Contains("[concerned citizen]")
-                | lowerCase.Contains("{concerned citizen}"))
+                || lowerCase.Contains("{concerned citizen}"))
             {
                 lastPortraitID = PortraitID.CommonCitizen;
                 return PortraitID.CommonCitizen;
             }
 
             else if (lowerCase.Contains("[colony doctor]")
-                | lowerCase.Contains("{colony doctor}"))
+                || lowerCase.Contains("{colony doctor}"))
             {
                 lastPortraitID = PortraitID.Ente;
                 return PortraitID.Ente;
             }
 
             else if (lowerCase.Contains("[crazy scientist]")
-                | lowerCase.Contains("{crazy scientist}"))
+                || lowerCase.Contains("{crazy scientist}"))
             {
                 lastPortraitID = PortraitID.Ente;
                 return PortraitID.Ente;
+            }
+
+            else if (lowerCase.Contains("[squad member 1]")
+                || lowerCase.Contains("{squad member 1}"))
+            {
+                lastPortraitID = PortraitID.AlliancePilot;
+                return PortraitID.AlliancePilot;
+            }
+
+            else if (lowerCase.Contains("[squad member 2]")
+                || lowerCase.Contains("{squad member 2}"))
+            {
+                lastPortraitID = PortraitID.AllianceCaptain;
+                return PortraitID.AllianceCaptain;
             }
 
             else if (lowerCase.Contains("\""))

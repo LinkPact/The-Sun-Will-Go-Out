@@ -10,12 +10,12 @@ namespace SpaceProject
     class BurnOutEnding : Ending
     {
         // Constants
-        private readonly float FILTER_SCALE_INCREASE = 0.00065f;
+        private readonly float FILTER_SCALE_INCREASE = 0.0012f;
         private readonly float FILTER_MAX_SCALE = 10f;
         private readonly Color INIT_FILTER_COLOR = Color.White;
         private readonly float INIT_FILTER_SCALE = 1f;
 
-        protected readonly int EXPLOSION_PARTICLES = 75;
+        protected readonly int EXPLOSION_PARTICLES = 50;
         private readonly int EXPLOSION_WAVE_DELAY = 50;
         // ----
 
@@ -59,6 +59,7 @@ namespace SpaceProject
             this.screenCenter = screenCenter;
             activated = true;
             explosionWaves = waves;
+            game.soundEffectsManager.PlaySoundEffect(SoundEffects.HugeExplosion);
 
             AddParticles();
         }
