@@ -110,7 +110,8 @@ namespace SpaceProject
         {
             if (displayed)
             {
-                spriteBatch.Draw(beaconMap.Texture, game.camera.cameraPos, beaconMap.SourceRectangle, Color.White, 0.0f,
+                float transparency = 0.9f;
+                spriteBatch.Draw(beaconMap.Texture, game.camera.cameraPos, beaconMap.SourceRectangle, Color.White * transparency, 0.0f,
                         new Vector2(beaconMap.Width / 2, beaconMap.Height / 2), 1f, SpriteEffects.None, 0.9f);
 
                 for (int i = 0; i < options.Count; i++)
@@ -122,7 +123,9 @@ namespace SpaceProject
                         color = Color.Red;
                     }
 
-                    spriteBatch.DrawString(font, options[i], new Vector2(game.camera.cameraPos.X + position.X + 120,
+                    String beaconOptionDisplay = options[i].Replace(" Beacon", "");
+
+                    spriteBatch.DrawString(font, beaconOptionDisplay, new Vector2(game.camera.cameraPos.X + position.X + 120,
                                                                          game.camera.cameraPos.Y + position.Y - 100 + (i * 20)),
                             color, 0.0f,
                             Vector2.Zero, 1f, SpriteEffects.None, 0.95f);

@@ -16,10 +16,12 @@ namespace SpaceProject
         public override void Initialize()
         {
             sprite = spriteSheet.GetSubSprite(new Rectangle(342, 871, 93, 93));
-            position = MathFunctions.CoordinateToPosition(new Vector2(1000, 0));
+            position = MathFunctions.CoordinateToPosition(new Vector2(1500, 2000));
             name = "Information Station";
 
             base.Initialize();
+
+            isHidden = true;
 
             overworldEvent = new DisplayTextOE("The station seems to be abandoned. There is a strange air about it though.");
         }

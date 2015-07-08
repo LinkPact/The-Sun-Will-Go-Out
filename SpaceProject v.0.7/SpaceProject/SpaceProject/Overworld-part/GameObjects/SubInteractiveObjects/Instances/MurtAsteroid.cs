@@ -15,7 +15,7 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            sprite = spriteSheet.GetSubSprite(new Rectangle(1499, 915, 142, 159));
+            sprite = spriteSheet.GetSubSprite(new Rectangle(1499, 953, 135, 121));
 
             name = "Mining Asteroids";
 

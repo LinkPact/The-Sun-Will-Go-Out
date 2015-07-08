@@ -106,36 +106,9 @@ namespace SpaceProject
             //Update star position
             position += ((Game.player.speed * speedMod)  * Game.player.Direction.GetDirectionAsVector()) * gameTime.ElapsedGameTime.Milliseconds;
 
-            //Star moves outside left edges of screen
-            if (StaticFunctions.IsPositionOutsideScreenX(position, Game) == 1)
+            if (StaticFunctions.IsPositionOutsideScreen(position, Game))
             {
-                position = new Vector2(position.X + Game.Window.ClientBounds.Width,
-                (float)Game.random.Next((int)Game.camera.cameraPos.Y - (Game.Window.ClientBounds.Height) / 2,
-                (int)(Game.camera.cameraPos.Y + (Game.Window.ClientBounds.Height / 2))));
-            }
-            
-            //Star moves outside right edges of screen
-            else if (StaticFunctions.IsPositionOutsideScreenX(position, Game) == 2)
-            {
-                position = new Vector2(position.X - Game.Window.ClientBounds.Width,
-                (float)Game.random.Next((int)Game.camera.cameraPos.Y - (Game.Window.ClientBounds.Height / 2),
-                (int)(Game.camera.cameraPos.Y + (Game.Window.ClientBounds.Height / 2))));
-            
-            }
-            //Star moves outside top edges of screen
-            if (StaticFunctions.IsPositionOutsideScreenY(position, Game) == 1)
-            {
-                position = new Vector2((float)Game.random.Next((int)Game.camera.cameraPos.X
-                - (Game.Window.ClientBounds.Width / 2), (int)Game.camera.cameraPos.X + (Game.Window.ClientBounds.Width / 2)),
-                position.Y + Game.Window.ClientBounds.Height);
-            }
-            
-            //Star moves outside bottom edges of screen
-            else if (StaticFunctions.IsPositionOutsideScreenY(position, Game) == 2)
-            {
-                position = new Vector2((float)Game.random.Next((int)Game.camera.cameraPos.X
-            - (Game.Window.ClientBounds.Width / 2), (int)Game.camera.cameraPos.X + (Game.Window.ClientBounds.Width / 2)),
-            position.Y - Game.Window.ClientBounds.Height);
+                position = StaticFunctions.GetCoordinateInsideScreen(position, Game);
             }
         }
 

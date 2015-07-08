@@ -35,6 +35,8 @@ namespace SpaceProject
         public SpriteEffects spriteEffect;
         public float layerDepth;               //"0" for back, "1" for front
 
+        public bool isHidden = false;
+
         // Sound
         protected SoundEffects deathSoundID = SoundEffects.SmallExplosion;
         public SoundEffects getDeathSoundID() { return deathSoundID; }
