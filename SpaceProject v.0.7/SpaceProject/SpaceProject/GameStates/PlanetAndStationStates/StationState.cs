@@ -114,11 +114,6 @@ namespace SpaceProject
             subStateManager.ActiveButtonIndexY = 0;
 
             subStateManager.OnEnter();
-
-            if (!Station.Abandoned)
-            {
-                Game.soundEffectsManager.LoopSoundEffect(SoundEffects.Crowd, 0f, 0f);
-            }
         }
 
         public override void OnLeave()

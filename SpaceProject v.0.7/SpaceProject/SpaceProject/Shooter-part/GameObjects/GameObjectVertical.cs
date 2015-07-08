@@ -152,10 +152,6 @@ namespace SpaceProject
             windowHeight = Game.Window.ClientBounds.Height;
             SetLevelWidth(800);
 
-            //config = new ConfigFile();
-            //config.Load("Data/verticaldata.dat");
-
-            //In-Game-Egenskaper
             ObjectClass = null;
             damage = 0;
             hp = 1;
@@ -183,13 +179,11 @@ namespace SpaceProject
                 Position += Direction * Speed * gameTime.ElapsedGameTime.Milliseconds;
             }
 
-            //Tillfallig ododlighet t ex vid kollision med fiende
             if (tempInvincibility > 0)
             {
                 tempInvincibility -= gameTime.ElapsedGameTime.Milliseconds;
             }
 
-            //Die without HP
             if (hp <= 0)
             {
                 if (this is AllianceFighterAlly)

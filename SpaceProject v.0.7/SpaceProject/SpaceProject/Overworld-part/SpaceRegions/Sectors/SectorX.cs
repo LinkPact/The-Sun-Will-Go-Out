@@ -18,6 +18,8 @@ namespace SpaceProject
         private NewNorrland newNorrland;
         private Peye peye;
 
+        private MurtAsteroid murtAsteroid;
+
         private SoelaraStation soelaraStation;
         private LavisStation lavisStation;
         private FortrunStation1 fortrunStation1;
@@ -70,6 +72,7 @@ namespace SpaceProject
             fortrunStation2 = new FortrunStation2(game, spriteSheet);
             lonelyAsteroid = new LonelyAsteroid(game, spriteSheet);
             damagedShip = new DamagedShip(game, new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/MissionObjectSpriteSheet"), null));
+            murtAsteroid = new MurtAsteroid(game, spriteSheet);
 
             var rebelAsteroidFieldGenerator = new RebelOutpostAsteroidField(game, spriteSheet);
             var sunAsteroidBeltGenerator = new SunAsteroidBelt(game, spriteSheet);
@@ -94,6 +97,7 @@ namespace SpaceProject
             subInteractiveObjects.Add(lonelyAsteroid);
             subInteractiveObjects.Add(damagedShip);
             subInteractiveObjects.Add(informationStation);
+            subInteractiveObjects.Add(murtAsteroid);
 
             foreach (var obj in subInteractiveObjects)
             {

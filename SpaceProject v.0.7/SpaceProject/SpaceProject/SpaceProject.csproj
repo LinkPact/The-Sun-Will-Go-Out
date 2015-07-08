@@ -386,6 +386,7 @@
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\FotrunStation2.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\SectorX\FortrunStation1.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\ShopInventoryEntry.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\MurtAsteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\RebelOutpostAsteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\Lavis.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\Fortrun.cs" />
