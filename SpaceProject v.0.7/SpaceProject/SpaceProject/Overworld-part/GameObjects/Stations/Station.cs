@@ -66,10 +66,6 @@ namespace SpaceProject
             scale = 1.0f;
             color = Color.White;
 
-            //shopInventory = new List<Item>();
-            //onEnterShopInventory = new List<Item>();
-            //itemPool = new List<Item>();
-
             base.Initialize();
         }
 
@@ -83,7 +79,7 @@ namespace SpaceProject
 
             stationInhabitants = stationDataConfigFile.GetPropertyAsFloat(StationCodeName, "Inhabitants", 0);
         }
-
+        
         public override void Update(GameTime gameTime)
         {
             if (GameStateManager.currentState == "OverworldState")

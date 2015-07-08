@@ -55,6 +55,8 @@ namespace SpaceProject
             subStateManager.Initialize();
 
             PreviousPlanet = "";
+
+            ActiveSong = Music.SpaceStation;
         }
 
         //Method for loading data from the planet that the player has entered 

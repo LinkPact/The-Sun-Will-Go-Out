@@ -889,6 +889,7 @@ namespace SpaceProject
             Game.player.speed = 0;
             Game.player.DisableControls();
             burnOutEnding.Activate(Game.camera.Position, 100);
+            Game.musicManager.PlayMusic(Music.none);
         }
 
         public void Save()

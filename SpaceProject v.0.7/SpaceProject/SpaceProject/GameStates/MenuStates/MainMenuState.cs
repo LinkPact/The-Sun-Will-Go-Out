@@ -293,9 +293,9 @@ namespace SpaceProject
                         if (SaveFile.CheckIfFileExists(Game1.SaveFilePath, "save.ini"))
                         {
                             Game.stateManager.StartGame("OverworldState");
+                            //MediaPlayer.Stop();
                             Game.Load();
                             Game.GameStarted = true;
-                            MediaPlayer.Stop();
                             loadedOrNewGame = LoadedOrNewGame.Loaded;
 
                             PlaySelectSound();
