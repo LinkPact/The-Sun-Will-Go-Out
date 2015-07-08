@@ -314,8 +314,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SoundEffects\jakob_test\lasers\distorted_laser.wav">
-      <Name>distorted_laser</Name>
+    <Compile Include="SoundEffects\jakob_test\lasers\distorted_laser_orginal.wav">
+      <Name>distorted_laser_orginal</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
@@ -496,6 +496,13 @@
   <ItemGroup>
     <Compile Include="SoundEffects\huge_explosion.wav">
       <Name>huge_explosion</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SoundEffects\jakob_test\lasers\distorted_laser.wav">
+      <Name>distorted_laser</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>

@@ -178,6 +178,7 @@ namespace SpaceProject
                 float scale = 1f;
                 activeSprite = objectSprite;
                 drawDistance = 0.91f;
+                bool isHidden = false;
 
                 if (MissionManager.IsCurrentObjectiveDestination(obj))
                 {
@@ -229,6 +230,10 @@ namespace SpaceProject
                         colorSwapCounter = 0;
                     }
                 }
+                else if (obj.isHidden)
+                {
+                    isHidden = true;
+                }
                 else if (obj is FreighterShip)
                 {
                     color = FriendlyShipColor;
@@ -274,16 +279,19 @@ namespace SpaceProject
                     drawDistance = 0.915f;
                 }
 
-                spriteBatch.Draw(activeSprite.Texture,
-                        new Vector2(Origin.X + ((obj.position.X - View.X) / scaleX), Origin.Y + ((obj.position.Y - View.Y) / scaleY)),
-                        activeSprite.SourceRectangle,
-                        color,
-                        0.0f,
-                        new Vector2(activeSprite.SourceRectangle.Value.Width / 2, activeSprite.SourceRectangle.Value.Height / 2),
-                        scale,
-                        SpriteEffects.None,
-                        drawDistance
-                        );
+                if (!isHidden)
+                {
+                    spriteBatch.Draw(activeSprite.Texture,
+                            new Vector2(Origin.X + ((obj.position.X - View.X) / scaleX), Origin.Y + ((obj.position.Y - View.Y) / scaleY)),
+                            activeSprite.SourceRectangle,
+                            color,
+                            0.0f,
+                            new Vector2(activeSprite.SourceRectangle.Value.Width / 2, activeSprite.SourceRectangle.Value.Height / 2),
+                            scale,
+                            SpriteEffects.None,
+                            drawDistance
+                            );                
+                }
             }
         }
 
