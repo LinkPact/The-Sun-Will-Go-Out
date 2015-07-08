@@ -27,6 +27,8 @@ namespace SpaceProject
         protected Rectangle FormationArea;
         protected float AvoidRadius;
 
+        private SoundEffects shootSound = SoundEffects.SmallLaser;
+
         protected AlliedShip(Game1 Game, Sprite SpriteSheet, PlayerVerticalShooter player):
             base(Game, SpriteSheet, player)
         { 
@@ -74,17 +76,12 @@ namespace SpaceProject
 
         public virtual void Shoot()
         {
+            Game.soundEffectsManager.PlaySoundEffect(shootSound);
         }
 
         public override bool CheckOutside()
         {
-            /*if (PositionX + anim.Width < relativeOrigin || PositionX - anim.Width > relativeOrigin + LevelWidth
-                || PositionY + anim.Width < -500 || PositionY - anim.Height > windowHeight)
-            {
-                return true;
-            }
-            else*/
-                return false;
+            return false;
         }
 
         private void CheckCollisionsEdges()

@@ -135,6 +135,8 @@ namespace SpaceProject
                 Game.stateManager.shooterState.gameObjects.Add(laser2);
 
                 LastTimeShot = 0;
+
+                base.Shoot();
             }
         }
 

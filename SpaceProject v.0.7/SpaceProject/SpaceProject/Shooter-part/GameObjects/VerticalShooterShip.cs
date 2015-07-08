@@ -105,19 +105,10 @@ namespace SpaceProject
         {
             base.Initialize();
             MovementSetup();
-
-            //Egenskaper
             IsKilled = false;
-
-            //Startriktning
-            //Direction = new Vector2((float)random.NextDouble()*2-1, (float)random.NextDouble()*2-1);
-            //Direction = MathFunctions.ScaleDirection(Direction);
-
             DrawLayer = 0.42f;
-
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
             Rotation = 0;
-
             useDeathAnim = true;
         }
 
@@ -143,7 +134,6 @@ namespace SpaceProject
         public void SetMovement(Movement movement)
         {
             this.movement = movement;
-            //MovementSetup();
         }
         
         public void MovementSetup()
