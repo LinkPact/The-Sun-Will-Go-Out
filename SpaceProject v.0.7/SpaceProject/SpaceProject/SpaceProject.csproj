@@ -185,6 +185,7 @@
     <Compile Include="MissionStuff\MissionObjects\DummyCoordinateObject.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\CloseInOnLocationObjective.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\AutoPilotObjective.cs" />
+    <Compile Include="MissionStuff\Objectives\Instances\AskToProgressObjective.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\TimedMessageObjective.cs" />
     <Compile Include="MissionStuff\Objectives\Instances\FollowObjective.cs" />
     <Compile Include="MissionStuff\Endings\BurnOutEnding\BurnOutEndingParticle.cs" />

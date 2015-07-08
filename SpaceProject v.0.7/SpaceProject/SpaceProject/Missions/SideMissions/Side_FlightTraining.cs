@@ -15,7 +15,9 @@ namespace SpaceProject
             StartSecond = 1,
             SecondCleared = 2,
             StartThird = 3,
-            LevelFailed = 4
+            LevelFailed = 4,
+            Question = 5,
+            DeclineResponse = 6
         }
 
         public Side_FlightTraining(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
@@ -65,7 +67,7 @@ namespace SpaceProject
 
             Station trainingArea = Game.stateManager.overworldState.GetStation("Training Area");
 
-            AddDestination(trainingArea, 7);
+            AddDestination(trainingArea, 5);
         }
 
         protected override void SetupObjectives()
@@ -76,27 +78,17 @@ namespace SpaceProject
                 "flightTraining_1", LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.FirstCleared), GetEvent((int)EventID.LevelFailed), EventTextCanvas.BaseState)));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                delegate { },
-                delegate { },
-                delegate { return GameStateManager.currentState.Equals("OverworldState"); },
-                delegate { return false; }));
-
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                new EventTextCapsule(GetEvent((int)EventID.StartSecond), null, EventTextCanvas.BaseState)));
+            objectives.Add(new AskToProgressObjective(Game, this, ObjectiveDescriptions[0],
+                GetEvent((int)EventID.Question), GetEvent((int)EventID.StartSecond),
+                GetEvent((int)EventID.DeclineResponse)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 "flightTraining_2", LevelStartCondition.TextCleared,
                 new EventTextCapsule(GetEvent((int)EventID.SecondCleared), GetEvent((int)EventID.LevelFailed), EventTextCanvas.BaseState)));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                delegate { },
-                delegate { },
-                delegate { return GameStateManager.currentState.Equals("OverworldState"); },
-                delegate { return false; }));
-
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],
-                new EventTextCapsule(GetEvent((int)EventID.StartThird), GetEvent((int)EventID.LevelFailed), EventTextCanvas.BaseState)));
+            objectives.Add(new AskToProgressObjective(Game, this, ObjectiveDescriptions[0],
+                GetEvent((int)EventID.Question), GetEvent((int)EventID.StartThird),
+                GetEvent((int)EventID.DeclineResponse)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 "flightTraining_3", LevelStartCondition.TextCleared));
