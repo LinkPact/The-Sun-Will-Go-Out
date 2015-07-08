@@ -12,15 +12,14 @@ namespace SpaceProject
     {
         private readonly int HyperSpeedDistanceTreshold = 7500;
 
-        private int damageTimer = 0;
+        private readonly float InvinsibilityTransparency = 0.25f;
+        private readonly int InvincibilitySpan = 2500;
 
+        private int damageTimer = 0;
         private bool controlsEnabled;
 
-        #region Misc. Variables
         private float turningSpeed;
-
         private bool usingBoost;
-
         private float playerAcc;
         private readonly float commonAcc = 0.012f;
         private readonly float developAcc = 0.1f;
@@ -38,18 +37,11 @@ namespace SpaceProject
         private bool isHyperSpeedUnlocked = false;
         private bool isDevelopSpeedUnlocked = false;
 
-        #endregion
-
-        #region Misc. Properties
-
         public bool UsingBoost { get { return usingBoost; } }
 
         public bool IsHyperSpeedUnlocked { get { return isHyperSpeedUnlocked; } }
         public bool IsDevelopSpeedUnlocked { get { return isDevelopSpeedUnlocked; } }
-
-        #endregion
-
-        #region HyperspeedVariables
+        public bool IsInvincible { get { return isInvincible; } }
 
         private bool hyperspeedOn;
         private Vector2 hyperspeedCoordinates;
@@ -60,51 +52,34 @@ namespace SpaceProject
         private const float HYPERSPEED_MAX_SPEED = 5f;
         private const double DEACCELERATION_DISTANCE = HYPERSPEED_MAX_SPEED * HYPERSPEED_MAX_SPEED /(2 * HYPERSPEED_ACC);
 
-        #endregion
-
-        #region HyperspeedProperties
-
         public bool HyperspeedOn
         {
             get { return hyperspeedOn; }
             set { hyperspeedOn = value; }
         }
-
         public Vector2 HyperspeedCoordinates
         {
             get { return hyperspeedCoordinates; }
             set { hyperspeedCoordinates = value; }
         }
-
         public double CurrentHyperspeedDistance
         {
             get { return currentHyperspeedDistance; }
         }
-
         public double DeccelerationDistance
         {
             get { return DEACCELERATION_DISTANCE; }
         }
-
         public double TotalHyperspeedDistance
         {
             get { return totalHyperspeedDistance; }
         }
-        #endregion
 
-        #region HeatWarningVariables
-
-        public bool heatWarning;
-        private bool upOrDown;
-        public int heatCountdown;
-
-        #endregion
-
-        #region ParticleVariables
+        private bool isInvincible;
+        private float invincibilityTime;
+        
         private List<Particle> particles = new List<Particle>();
         private List<Particle> deadParticles = new List<Particle>();
-
-        #endregion
 
         public PlayerOverworld(Game1 Game, Sprite spriteSheet):
             base(Game, spriteSheet)
@@ -127,7 +102,7 @@ namespace SpaceProject
             sprite.SourceRectangle.Value.Height / 2);
 
             hyperspeedOn = false;
-            heatWarning = false;
+            isInvincible = false;
 
             base.Initialize();
         }
@@ -154,14 +129,10 @@ namespace SpaceProject
                 base.Update(gameTime);
             }
 
-            #region UpdateHeatWarning
-
-            if (heatWarning == true)
+            if (isInvincible)
             {
-                FlashRed();
+                UpdateInvincibility(gameTime);
             }
-
-            #endregion
 
             #region UpdateHyperSpeed
 
@@ -408,59 +379,25 @@ namespace SpaceProject
             deadParticles.Clear();
         }
 
-        public void InitializeHeatWarning()
+        public void InitializeInvincibility()
         {
-            if (heatCountdown < 300)
-            {
-                heatCountdown += 3;
-            }
-
-            if (heatWarning == false)
-            {
-                upOrDown = true;
-            }
-
-            heatWarning = true;
+            invincibilityTime = StatsManager.PlayTime.GetFutureOverworldTime(InvincibilitySpan);
+            color = Color.White * InvinsibilityTransparency;
+            isInvincible = true;
         }
 
-        public void FlashRed()
+        public void UpdateInvincibility(GameTime gameTime)
         {
-            if (heatCountdown > 0)
+            if (StatsManager.PlayTime.HasOverworldTimePassed(invincibilityTime))
             {
-                if (upOrDown == false)
-                {
-                    color.G += 5;
-                    color.B += 5;
-                }
-
-                if (upOrDown == true)
-                {
-                    color.G -= 5;
-                    color.B -= 5;
-                }
-
-                if (color.G >= 255)
-                    upOrDown = true;
-
-                if (color.G <= 0)
-                    upOrDown = false;
-
-                heatCountdown -= 1;
-            }
-
-            if (heatCountdown == 0)
-            {
-                upOrDown = false;
                 color = Color.White;
-                heatWarning = false;
+                isInvincible = false;
             }
-
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (IsUsed == true)
-                base.Draw(spriteBatch);
+            base.Draw(spriteBatch);
 
             foreach (Particle par in particles)
                 par.Draw(spriteBatch);

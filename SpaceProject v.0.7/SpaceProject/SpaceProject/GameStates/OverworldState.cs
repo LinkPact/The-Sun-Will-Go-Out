@@ -370,13 +370,14 @@ namespace SpaceProject
             {
                 obj.Update(gameTime);
 
-                if (!Game.player.HyperspeedOn && OverworldShip.FollowPlayer)
+                if (!Game.player.HyperspeedOn && OverworldShip.FollowPlayer && !Game.player.IsInvincible)
                 {
                     if (obj is OverworldShip && ((OverworldShip)obj).collisionEvent != null)
                     {
                         if (CollisionDetection.IsRectInRect(obj.Bounds, ((OverworldShip)obj).collisionEvent.target.Bounds))
                         {
                             ((OverworldShip)obj).collisionEvent.Invoke();
+                            Game.player.InitializeInvincibility();
                         }                        
                     }
                 }
