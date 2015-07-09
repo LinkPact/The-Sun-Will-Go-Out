@@ -11,33 +11,10 @@ namespace SpaceProject
 
     public class StationStateManager : BaseStateManager
     {
-        private StationState stationState;
-
         public StationStateManager(Game1 Game)
         {
             this.Game = Game;
-            this.stationState = Game.stateManager.stationState;
-        }
-
-        public override void Initialize()
-        {
-            base.Initialize();
-
-            overviewMenuState = new OverviewMenuState(this.Game, "Overview", this, stationState);
-            overviewMenuState.Initialize();
-            menuStates.Add(overviewMenuState);
-
-            missionMenuState = new MissionMenuState(this.Game, "Mission", this, stationState);
-            missionMenuState.Initialize();
-            menuStates.Add(missionMenuState);
-
-            shopMenuState = new ShopMenuState(this.Game, "Shop", this, stationState);
-            shopMenuState.Initialize();
-            menuStates.Add(shopMenuState);
-
-            rumorsMenuState = new RumorsMenuState(this.Game, "Rumors", this, stationState);
-            rumorsMenuState.Initialize();
-            menuStates.Add(rumorsMenuState);
+            this.baseState = Game.stateManager.stationState;
         }
 
         public override void OnEnter()
@@ -46,18 +23,12 @@ namespace SpaceProject
 
             if (Game.stateManager.stationState.Station.Abandoned)
             {
-                overviewMenuState.ButtonMission.isDeactivated = true;
-                overviewMenuState.ButtonRumors.isDeactivated = true;
-
                 activeButton = overviewMenuState.ButtonBack;
                 activeButtonIndexY = 1;
             }
 
             else
             {
-                overviewMenuState.ButtonMission.isDeactivated = false;
-                overviewMenuState.ButtonRumors.isDeactivated = false;
-
                 activeButton = overviewMenuState.ButtonMission;
                 activeButtonIndexY = 0;
             }

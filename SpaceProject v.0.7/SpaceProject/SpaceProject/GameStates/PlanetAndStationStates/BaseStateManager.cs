@@ -33,6 +33,7 @@ namespace SpaceProject
         private readonly Vector2 ResponseOverlaySize = new Vector2(571, 309);
 
         protected Game1 Game;
+        protected BaseState baseState;
 
         protected List<MenuState> menuStates;
 
@@ -196,6 +197,23 @@ namespace SpaceProject
             buttonsToRemove = new List<MenuDisplayObject>();
 
             menuStates = new List<MenuState>();
+
+            rumorsMenuState = new RumorsMenuState(this.Game, "Rumors", this, baseState);
+            rumorsMenuState.Initialize();
+
+            overviewMenuState = new OverviewMenuState(this.Game, "Overview", this, baseState);
+            overviewMenuState.Initialize();
+
+            missionMenuState = new MissionMenuState(this.Game, "Mission", this, baseState);
+            missionMenuState.Initialize();
+
+            shopMenuState = new ShopMenuState(this.Game, "Shop", this, baseState);
+            shopMenuState.Initialize();
+
+            menuStates.Add(overviewMenuState);
+            menuStates.Add(missionMenuState);
+            menuStates.Add(shopMenuState);
+            menuStates.Add(rumorsMenuState);
         }
 
         public virtual void OnEnter()

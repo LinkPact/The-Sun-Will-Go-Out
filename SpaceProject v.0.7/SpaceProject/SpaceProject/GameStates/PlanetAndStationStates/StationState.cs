@@ -88,6 +88,7 @@ namespace SpaceProject
 
             nameStringOrigin = Game.fontManager.GetFont(16).MeasureString(stationName) / 2;
 
+            subStateManager.RumorsMenuState.LoadRumors(station);
             subStateManager.OverviewMenuState.SetButtons();
         }
 

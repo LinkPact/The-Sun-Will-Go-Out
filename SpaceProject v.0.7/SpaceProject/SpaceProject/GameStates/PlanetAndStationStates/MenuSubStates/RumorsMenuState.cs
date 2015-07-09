@@ -11,7 +11,14 @@ namespace SpaceProject
     public class RumorsMenuState : MenuState
     {
         private ConfigFile configFileRumors;
-        private string rumorString;
+        List<String> rumorStrings = new List<String>();
+        private string rumorString = "";
+        private int rumorIndex;
+
+        public bool HasRumors
+        {
+            get { return rumorStrings.Count > 0; }
+        }
 
         public RumorsMenuState(Game1 game, String name, BaseStateManager manager, BaseState baseState) :
             base(game, name, manager, baseState)
@@ -20,12 +27,10 @@ namespace SpaceProject
             configFileRumors.Load("Data/rumordata.dat");
         }
 
-        public override void Initialize()
-        { }
-
         public override void OnEnter()
         {
-            LoadRumors(BaseState.GetBase());
+            base.OnEnter();
+            rumorIndex = MathFunctions.GetExternalRandomInt(0, rumorStrings.Count - 1);
         }
 
         public override void Update(GameTime gameTime)
@@ -33,17 +38,7 @@ namespace SpaceProject
             base.Update(gameTime);
         }
 
-        public override void ButtonActions()
-        { }
-
-        public override void CursorActions()
-        {
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        { }
-
-        private void LoadRumors(GameObjectOverworld baseObject)
+        public void LoadRumors(GameObjectOverworld baseObject)
         {
             string codeName = "";
 
@@ -62,7 +57,7 @@ namespace SpaceProject
                 throw new ArgumentException("Variable 'baseObject' must be of class 'Planet' or 'Station'");
             }
 
-            List<String> rumorStrings = new List<String>();
+            rumorStrings = new List<String>();
 
             Regex reg = new Regex(@"^\w+");
 
@@ -81,23 +76,23 @@ namespace SpaceProject
                     break;
                 }
             }
-
-            if (rumorStrings.Count > 0)
-                rumorString = rumorStrings[Game.random.Next(rumorStrings.Count)];
-            else
-                rumorString = "";
-
-            //rumorString = configFileRumors.GetPropertyAsString(planet.PlanetCodeName, "Rumor" + (Random.Next(3) + 1).ToString(), "");
         }
 
         public void DisplayRumors()
         {
-            //BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-            //                                                          BaseStateManager.NormalTextRectangle,
-            //                                                          false,
-            //                                                          rumorString));
+            PopupHandler.DisplayMessage(rumorStrings[CheckValidRumorIndex()]);
+        }
 
-            PopupHandler.DisplayMessage(rumorString);
+        private int CheckValidRumorIndex()
+        {
+            rumorIndex++;
+
+            if (rumorIndex >= rumorStrings.Count)
+            {
+                rumorIndex = 0;
+            }
+
+            return rumorIndex;
         }
     }
 }

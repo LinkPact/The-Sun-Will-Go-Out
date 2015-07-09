@@ -62,6 +62,8 @@ namespace SpaceProject
         //Method for loading data from the planet that the player has entered 
         public void LoadPlanetData(Planet planet)
        {
+            this.planet = planet;
+
             planetSprite = planet.sprite;
             planetSprite.GetSubSprite(planet.sprite.SourceRectangle);
 
@@ -73,7 +75,7 @@ namespace SpaceProject
 
             nameStringOrigin = Game.fontManager.GetFont(14).MeasureString(planetName) / 2;
 
-            this.planet = planet;
+            subStateManager.RumorsMenuState.LoadRumors(planet);
             subStateManager.OverviewMenuState.SetButtons();
         }
 
