@@ -9,7 +9,6 @@ namespace SpaceProject
     {
         private Game1 game;
         private static Random random = new Random();
-        //private Sprite spriteSheet;
 
         private Sprite sprite;
 

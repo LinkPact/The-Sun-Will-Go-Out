@@ -41,6 +41,8 @@ namespace SpaceProject
             }
         }
 
+        private Sprite shieldSprite;
+
         private float acceleration;
         private float deAcceleration;
         private float maxSpeed;
@@ -108,6 +110,8 @@ namespace SpaceProject
             //Animation
             anim.LoopTime = 1000;
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(216, 1, 23, 27)));
+
+            shieldSprite = spriteSheet.GetSubSprite(new Rectangle(260, 100, 37, 37));
             
             BoundingSpace = 10;
 
@@ -137,7 +141,15 @@ namespace SpaceProject
             if (IsKilled == false)
             {
                 spriteBatch.Draw(anim.CurrentFrame.Texture, Position, anim.CurrentFrame.SourceRectangle, Color.White, angle, CenterPoint, 1.0f, SpriteEffects.None, DrawLayer);
+                spriteBatch.Draw(shieldSprite.Texture, Position, shieldSprite.SourceRectangle, Color.White * ShieldTransparency(), 0.0f, new Vector2(shieldSprite.CenterPoint.X+1, shieldSprite.CenterPoint.Y), 1.0f, SpriteEffects.None, DrawLayer);
             }
+        }
+
+        private float ShieldTransparency()
+        {
+            float fullChargeTransparency = 0.3f;
+            float shieldChargeFraction = Shield / ShieldMax;
+            return fullChargeTransparency * shieldChargeFraction;
         }
         
         private void UpdateRuntimeStats(GameTime gameTime)
