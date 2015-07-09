@@ -24,12 +24,11 @@ namespace SpaceProject
             base.Initialize();
 
             menuOptions = new String[11, 2];
+            onEnterMenuOptions = new String[11];
         }
 
         public override void OnDisplay()
         {
-            base.OnDisplay();
-
             holdTimer = game.HoldKeyTreshold;
             cursorIndex = 0;
 
@@ -68,21 +67,8 @@ namespace SpaceProject
             
             menuOptions[10, 0] = "Back";
             menuOptions[10, 1] = "";
-        }
 
-        public override void OnEnter()
-        {
-            base.OnEnter();
-        }
-
-        public override void OnHide()
-        {
-            base.OnHide();
-        }
-
-        public override void OnLeave()
-        {
-
+            base.OnDisplay();
         }
 
         public override void Update(GameTime gameTime)
@@ -170,8 +156,6 @@ namespace SpaceProject
             } 
         }
 
-        public override void DirectionalButtonActions(String buttonName) { }
-
         private void ResetMenuOptions(bool Keyboard)
         {
             if (Keyboard)
@@ -199,53 +183,6 @@ namespace SpaceProject
                 menuOptions[7, 1] = ControlManager.GamepadRight.ToString();
                 menuOptions[8, 1] = ControlManager.GamepadPause.ToString();
             }
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            //if (checkInput)
-            //{
-            //    //for (int i = 0; i < menuOptions.Length / 2; i++)
-            //    //{
-            //    //    if (i == cursorIndex)
-            //    //    {
-            //    //        spriteBatch.DrawString(game.fontManager.GetFont(14), menuOptions[i, 0],
-            //    //            new Vector2(350 + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 0]).X / 2,
-            //    //                        175 + (i * 23)) + game.fontManager.FontOffset,
-            //    //            Color.LightSkyBlue, 0f,
-            //    //            game.fontManager.GetFont(14).MeasureString(menuOptions[i, 0]) / 2,
-            //    //            1f, SpriteEffects.None, 1f);
-            //    //
-            //    //        spriteBatch.DrawString(game.fontManager.GetFont(14), "Press key..",
-            //    //            new Vector2(700 + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 1]).X / 2,
-            //    //                        175 + (i * 23)) + game.fontManager.FontOffset,
-            //    //            Color.LightSkyBlue, 0f,
-            //    //            game.fontManager.GetFont(14).MeasureString(menuOptions[i, 1]) / 2,
-            //    //            1f, SpriteEffects.None, 1f);
-            //    //    }
-            //    //    else
-            //    //    {
-            //    //        spriteBatch.DrawString(game.fontManager.GetFont(14), menuOptions[i, 0],
-            //    //            new Vector2(350 + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 0]).X / 2,
-            //    //                        175 + (i * 23)) + game.fontManager.FontOffset,
-            //    //            game.fontManager.FontColor, 0f,
-            //    //            game.fontManager.GetFont(14).MeasureString(menuOptions[i, 0]) / 2,
-            //    //            1f, SpriteEffects.None, 1f);
-            //    //
-            //    //        spriteBatch.DrawString(game.fontManager.GetFont(14), menuOptions[i, 1],
-            //    //            new Vector2(700 + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 1]).X / 2,
-            //    //                        175 + (i * 23)) + game.fontManager.FontOffset,
-            //    //            game.fontManager.FontColor, 0f,
-            //    //            game.fontManager.GetFont(14).MeasureString(menuOptions[i, 1]) / 2,
-            //    //            1f, SpriteEffects.None, 1f);
-            //    //    }
-            //    //}
-            //}
-            //
-            //else 
-            //{
-                base.Draw(spriteBatch);
-            //}
         }
 
         private void CheckForInput()

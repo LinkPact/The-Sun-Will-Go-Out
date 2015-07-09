@@ -56,6 +56,7 @@ namespace SpaceProject
             directionalButtons.Add(soundRightButton);
 
             menuOptions = new String[5, 2];
+            onEnterMenuOptions = new String[5];
         }
 
         public override void OnDisplay()
@@ -78,48 +79,15 @@ namespace SpaceProject
             menuOptions[3, 0] = "Sound Volume";
             menuOptions[3, 1] = Math.Round(game.soundEffectsManager.GetSoundVolume() * 10).ToString();
 
-            //menuOptions[4, 0] = "Load Sound Effects";
-            //if (SoundEffectsManager.LoadSoundEffects)
-            //{
-            //    menuOptions[4, 1] = "On";
-            //}
-            //else
-            //{
-            //    menuOptions[4, 1] = "Off";
-            //}
-
-            //menuOptions[5, 0] = "Text-To-Speech";
-            //if (TextToSpeech.TTSMode == TextToSpeechMode.Full)
-            //{
-            //    menuOptions[5, 1] = "Full";
-            //}
-            //else if (TextToSpeech.TTSMode == TextToSpeechMode.Dialog)
-            //{
-            //    menuOptions[5, 1] = "Dialog";
-            //}
-            //else
-            //{
-            //    menuOptions[5, 1] = "Off";
-            //}
-
             menuOptions[4, 0] = "Back";
             menuOptions[4, 1] = "";
+
             base.OnDisplay();
         }
 
         public override void OnEnter()
         {
             cursorIndex = 0;
-        }
-
-        public override void OnHide()
-        {
-            base.OnHide();
-        }
-
-        public override void OnLeave()
-        {
-
         }
 
         public override void Update(GameTime gameTime)

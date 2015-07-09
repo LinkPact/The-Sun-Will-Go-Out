@@ -135,11 +135,6 @@ namespace SpaceProject
             activeOptionState = null;
         }
 
-        public override void OnLeave()
-        {
-            SaveSettings();
-        }
-
         public override void Update(GameTime gameTime)
         {
             MouseControls();
@@ -322,7 +317,6 @@ namespace SpaceProject
                 {
                     if (previousOptionState != null)
                     {
-                        previousOptionState.OnHide();
                         previousOptionState.OnLeave();
                     }
 
@@ -387,7 +381,7 @@ namespace SpaceProject
             activeOptionState = null;
         }
 
-        private void SaveSettings()
+        public void SaveSettings()
         {
             Game.settingsFile.EmptySaveFile(Game1.SaveFilePath, "settings.ini");
 

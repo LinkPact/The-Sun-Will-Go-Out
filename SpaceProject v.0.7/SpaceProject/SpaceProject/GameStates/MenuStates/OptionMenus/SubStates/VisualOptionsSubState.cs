@@ -10,10 +10,6 @@ namespace SpaceProject
 {
     class VisualOptionsSubState : OptionSubState
     {
-        private bool onEnterFullScreen;
-        private bool onEnterShowFPS;
-        private Vector2 onEnterResolution;
-
         private int holdTimer;
         private int resIndex;
 
@@ -49,6 +45,7 @@ namespace SpaceProject
             cursorIndex = 0;
 
             menuOptions = new String[5, 2];
+            onEnterMenuOptions = new String[5];
         }
 
         public override void OnDisplay()
@@ -62,55 +59,27 @@ namespace SpaceProject
             if (game.graphics.IsFullScreen)
             {
                 menuOptions[0, 1] = "On";
-                onEnterFullScreen = true;
             }
             else
             {
                 menuOptions[0, 1] = "Off";
-                onEnterFullScreen = false;
             }
 
             menuOptions[1, 0] = "Show FPS";
             if (game.ShowFPS)
             {
                 menuOptions[1, 1] = "On";
-                onEnterShowFPS = true;
             }
             else
             {
                 menuOptions[1, 1] = "Off";
-                onEnterShowFPS = false;
             }
 
             menuOptions[2, 0] = "Resolution";
             menuOptions[2, 1] = game.Resolution.X.ToString() + " x " + game.Resolution.Y.ToString();
-            onEnterResolution = game.Resolution;
 
             menuOptions[3, 0] = "Apply Changes";
             menuOptions[3, 1] = "";
-
-            // DON'T DELETE
-            //menuOptions[2, 0] = "Limit FPS";
-            //if (game.graphics.SynchronizeWithVerticalRetrace)
-            //    menuOptions[2, 1] = "On";
-            //else
-            //    menuOptions[2, 1] = "Off";
-
-            //menuOptions[3, 0] = "Font Size";
-            //switch (game.fontManager.GameFontSize)
-            //{
-            //    case FontSize.Small:
-            //        menuOptions[3, 1] = "Small";
-            //        break;
-            //
-            //    case FontSize.Medium:
-            //        menuOptions[3, 1] = "Medium";
-            //        break;
-            //
-            //    case FontSize.Big:
-            //        menuOptions[3, 1] = "Big";
-            //        break;
-            //}
 
             menuOptions[4, 0] = "Back";
             menuOptions[4, 1] = "";
@@ -121,18 +90,6 @@ namespace SpaceProject
         public override void OnEnter()
         {
             cursorIndex = 0;
-        }
-
-        public override void OnHide()
-        {
-            resLeftButton.isVisible = false;
-            resRightButton.isVisible = false;
-            base.OnHide();
-        }
-
-        public override void OnLeave()
-        {
-
         }
 
         public override void Update(GameTime gameTime)
@@ -210,18 +167,6 @@ namespace SpaceProject
 
                     PlaySelectSound();
                     break;
-
-                // DON'T DELETE
-                //case "limit fps":
-                //    game.graphics.SynchronizeWithVerticalRetrace = !game.graphics.SynchronizeWithVerticalRetrace;
-                //    game.graphics.ApplyChanges();
-                //    break;
-                //
-                //case "font size":
-                //    game.fontManager.GameFontSize += 1;
-                //    if ((int)game.fontManager.GameFontSize > 2)
-                //        game.fontManager.GameFontSize = 0;
-                //    break;
             
                 case "apply changes":
                     if (SettingsHasChanged())
@@ -291,55 +236,11 @@ namespace SpaceProject
                 menuOptions[1, 1] = "Off";
 
             menuOptions[2, 1] = game.Resolution.X.ToString() + " x " + game.Resolution.Y.ToString();
-
-            // DON'T DELETE
-            //if (game.graphics.SynchronizeWithVerticalRetrace)
-            //    menuOptions[2, 1] = "On";
-            //else
-            //    menuOptions[2, 1] = "Off";
-            //
-            //switch (game.fontManager.GameFontSize)
-            //{ 
-            //    case FontSize.Small:
-            //        menuOptions[3, 1] = "Small";
-            //        break;
-            //
-            //    case FontSize.Medium:
-            //        menuOptions[3, 1] = "Medium";
-            //        break;
-            //
-            //    case FontSize.Big:
-            //        menuOptions[3, 1] = "Big";
-            //        break;
-            //}
-
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-        }
-
-        private bool SettingsHasChanged()
-        {
-            if ((menuOptions[0, 1].Equals("On") && !onEnterFullScreen) 
-                || (menuOptions[0, 1].Equals("Off") && onEnterFullScreen))
-            {
-                return true;
-            }
-
-            if ((menuOptions[1, 1].Equals("On") && !onEnterShowFPS)
-                || (menuOptions[1, 1].Equals("Off") && onEnterShowFPS))
-            {
-                return true;
-            }
-
-            if (!Game1.ResolutionOptions[resIndex].Equals(onEnterResolution))
-            {
-                return true;
-            }
-
-            return false;
         }
     }
 }

@@ -25,6 +25,7 @@ namespace SpaceProject
         protected SpriteFont menuOptionFont;
         private Vector2 fontOffset;
         protected String[,] menuOptions;
+        protected String[] onEnterMenuOptions;
 
         protected List<MenuDisplayObject> directionalButtons;
 
@@ -50,6 +51,14 @@ namespace SpaceProject
         {
             cursorIndex = 0;
             drawContrastBackdrop = true;
+
+            for (var i = 0; i < menuOptions.Length / 2; i++)
+            {
+                if (!menuOptions[i, 1].Equals(""))
+                {
+                    onEnterMenuOptions[i] = menuOptions[i, 1];
+                }
+            }
         }
 
         public virtual void OnEnter()
@@ -57,14 +66,12 @@ namespace SpaceProject
             cursorIndex = 0;
         }
 
-        public virtual void OnHide()
-        {
-            drawContrastBackdrop = false;
-        }
-
         public virtual void OnLeave()
         {
-
+            if (SettingsHasChanged())
+            {
+                optionsMenuState.SaveSettings();
+            }
         }
 
         public virtual void Update(GameTime gameTime)
@@ -370,6 +377,20 @@ namespace SpaceProject
         protected void PlayLowPitchSelectSound()
         {
             game.soundEffectsManager.PlaySoundEffect(SoundEffects.MenuSelect, 0, -1f);
+        }
+
+        protected bool SettingsHasChanged()
+        {
+            for (int i = 0; i < onEnterMenuOptions.Length; i++)
+            {
+                if (menuOptions[i, 1] != null && onEnterMenuOptions[i] != null &&
+                    !onEnterMenuOptions[i].ToLower().Equals(menuOptions[i, 1].ToLower()))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
