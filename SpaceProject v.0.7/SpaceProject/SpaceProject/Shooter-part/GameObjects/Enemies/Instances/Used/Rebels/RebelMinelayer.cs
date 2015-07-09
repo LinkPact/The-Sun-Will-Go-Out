@@ -61,7 +61,7 @@ namespace SpaceProject
             double dirRadians = MathFunctions.RadiansFromDir(centerDir);
             dirRadians += random.NextDouble() * Math.PI / 8 - Math.PI / 16;
 
-            MineEnemy mine = new MineEnemy(Game, spriteSheet, player);
+            EnemyMine mine = new EnemyMine(Game, spriteSheet, player);
             mine.Initialize();
             mine.Position = Position;
             mine.Direction = Direction;

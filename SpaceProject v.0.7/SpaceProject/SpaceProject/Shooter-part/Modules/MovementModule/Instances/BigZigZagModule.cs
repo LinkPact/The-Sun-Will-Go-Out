@@ -28,9 +28,9 @@ namespace SpaceProject
         public override void Update(GameTime gameTime, GameObjectVertical obj)
         {
             if (zigzagDirRight)
-                zigzagXdir += (zigzagInterval / 60);
+                zigzagXdir += (zigzagInterval / 60) * MathFunctions.FPSSyncFactor(gameTime);
             else
-                zigzagXdir -= (zigzagInterval / 60);
+                zigzagXdir -= (zigzagInterval / 60) * MathFunctions.FPSSyncFactor(gameTime);
 
             if (zigzagXdir > zigzagInterval)
                 zigzagDirRight = false;

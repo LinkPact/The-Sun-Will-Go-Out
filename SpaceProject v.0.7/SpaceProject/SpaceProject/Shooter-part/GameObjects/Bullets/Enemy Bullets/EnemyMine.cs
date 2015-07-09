@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    class MineEnemy : EnemyShip
+    class EnemyMine : EnemyShip
     {
         public float blastRadius;
         private float blastDamage;
@@ -16,7 +16,7 @@ namespace SpaceProject
         private Boolean isActivated = false;
         private int remainingTimeBeforeExplosion;
 
-        public MineEnemy(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
+        public EnemyMine(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
             base(Game, spriteSheet, player)
         { }
 
@@ -24,7 +24,6 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            //Egenskaper
             Speed = 0.02f;
             IsKilled = false;
             Damage = 0;
@@ -48,7 +47,7 @@ namespace SpaceProject
             ShootObjectTypes.Add("ally");
             SightRange = 100;
 
-            //collidesOtherBullets = true;
+            lootValue = LootValue.veryLow;
         }
 
         public void SetActivationTime(int activationTimeMilliseconds)
@@ -103,7 +102,6 @@ namespace SpaceProject
 
             CircularAreaDamage areaExpl = new CircularAreaDamage(Game, AreaDamageType.enemy, this.Position, blastDamage, blastRadius);
             areaExpl.Initialize();
-            //areaExpl.Damage = blastDamage;
 
             Game.stateManager.shooterState.backgroundObjects.Add(expl);
             Game.stateManager.shooterState.gameObjects.Add(areaExpl);

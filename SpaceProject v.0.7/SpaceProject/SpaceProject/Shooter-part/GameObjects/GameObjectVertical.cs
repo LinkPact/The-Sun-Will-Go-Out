@@ -7,10 +7,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
-    //Grundklassen for units
     public abstract class GameObjectVertical
     {
         #region declaration
+
         public ConfigFile config;
 
         public int windowWidth { get; set; }
@@ -125,6 +125,9 @@ namespace SpaceProject
         public float DrawLayer { get; set; }
         protected Game1 Game { get; private set; }
 
+        public float Rotation { get; set; }
+        public float RotationAngle { get; set; }
+
         // Sound
         protected SoundEffects deathSoundID = SoundEffects.SmallExplosion;
         public SoundEffects getDeathSoundID() { return deathSoundID; }
@@ -174,16 +177,22 @@ namespace SpaceProject
             soundPan = (_position.X - Game.stateManager.shooterState.CurrentLevel.PlayerPosition.X) 
                 / Game.stateManager.shooterState.CurrentLevel.LevelWidth;
 
+            // Movement
             if (Enable)
             {
                 Position += Direction * Speed * gameTime.ElapsedGameTime.Milliseconds;
             }
 
+            // Rotation
+            RotationAngle += Rotation * MathFunctions.FPSSyncFactor(gameTime);
+
+            // Invicibility
             if (tempInvincibility > 0)
             {
                 tempInvincibility -= gameTime.ElapsedGameTime.Milliseconds;
             }
 
+            // Kill of object
             if (hp <= 0)
             {
                 if (this is AllianceFighterAlly)
@@ -194,12 +203,18 @@ namespace SpaceProject
 
             //Set degree
             if (DirectionY > 0)
+            {
                 Radians = Math.Acos(DirectionX);
+            }
             else
+            {
                 Radians = 2 * Math.PI - (Math.Acos(DirectionX));
+            }
 
             if (Radians >= 2 * Math.PI)
+            {
                 Radians -= 2 * Math.PI;
+            }
 
             //Hantering av "Disable FollowObject"
             if (disableFollowObject > 0)
@@ -210,7 +225,7 @@ namespace SpaceProject
                 FindFollowObject();
 
                 if (FollowObject != null)    
-                    UpdateFollowing();                
+                    UpdateFollowing(gameTime);
             }
 
             //Bullet-duration
@@ -231,11 +246,11 @@ namespace SpaceProject
         public virtual void Draw(SpriteBatch spriteBatch)
         { }
 
-        private void UpdateFollowing()
+        private void UpdateFollowing(GameTime gameTime)
         {
             if (TurningSpeed == 0) TurningSpeed = 1;
 
-            Direction = MathFunctions.ChangeDirection(Direction, Position, FollowObject.Position, TurningSpeed);
+            Direction = MathFunctions.ChangeDirection(gameTime, Direction, Position, FollowObject.Position, TurningSpeed);
             Direction = MathFunctions.ScaleDirection(Direction);
         }
         
@@ -337,7 +352,7 @@ namespace SpaceProject
         {
             // Evaluates if input GameObjectVertical is valid aim-target for aiming weapons
 
-            return !(obj is Meteorite || obj is MineEnemy);
+            return !(obj is Meteorite || obj is EnemyMine);
         }
 
         public abstract void OnKilled();

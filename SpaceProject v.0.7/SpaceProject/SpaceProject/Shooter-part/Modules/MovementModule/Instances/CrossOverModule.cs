@@ -9,12 +9,8 @@ namespace SpaceProject
     class CrossOverModule : MovementModule
     {
         protected float endX;
-        //protected float xSpeed;
         protected bool endReached;
         protected bool isLeft;
-
-        //protected float glidingY;
-        //protected bool glideReached;
 
         public CrossOverModule(Game1 game)
             : base(game)

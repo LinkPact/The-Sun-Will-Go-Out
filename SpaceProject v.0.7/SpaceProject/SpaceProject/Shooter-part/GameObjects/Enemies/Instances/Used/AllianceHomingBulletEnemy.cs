@@ -55,7 +55,7 @@ namespace SpaceProject
 
             if (FollowObject != null)
             {
-                UpdateFollowObject();
+                UpdateFollowObject(gameTime);
             }
 
             duration -= gameTime.ElapsedGameTime.Milliseconds;
@@ -64,9 +64,9 @@ namespace SpaceProject
                 IsKilled = true;
         }
 
-        private void UpdateFollowObject()
+        private void UpdateFollowObject(GameTime gameTime)
         {
-            Direction = MathFunctions.ChangeDirection(Direction, Position, player.Position, 1);
+            Direction = MathFunctions.ChangeDirection(gameTime, Direction, Position, player.Position, 1);
             Direction = MathFunctions.ScaleDirection(Direction);
         }
 

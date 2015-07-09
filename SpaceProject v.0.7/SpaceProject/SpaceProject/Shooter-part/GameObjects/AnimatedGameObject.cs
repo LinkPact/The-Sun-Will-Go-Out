@@ -108,7 +108,7 @@ namespace SpaceProject
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(currentAnim.CurrentFrame.Texture, Position, currentAnim.CurrentFrame.SourceRectangle, ObjectColor * transparency, angle, CenterPoint, scale, SpriteEffects.None, DrawLayer);
+            spriteBatch.Draw(currentAnim.CurrentFrame.Texture, Position, currentAnim.CurrentFrame.SourceRectangle, ObjectColor * transparency, angle + RotationAngle, CenterPoint, scale, SpriteEffects.None, DrawLayer);
         }
     }
 }

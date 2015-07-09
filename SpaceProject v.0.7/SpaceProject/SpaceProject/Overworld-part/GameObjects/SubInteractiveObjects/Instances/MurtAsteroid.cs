@@ -25,7 +25,7 @@ namespace SpaceProject
             layerDepth = 0.5f;
 
             base.Initialize();
-            overworldEvent = new DisplayTextOE("A group of asteroids used for mining.");
+            overworldEvent = new DisplayTextOE("THE MURT.");
         }
 
         protected override void SetClearedText()

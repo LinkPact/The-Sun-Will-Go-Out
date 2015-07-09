@@ -56,7 +56,7 @@ namespace SpaceProject
         {
             int activationTimeMilliseconds = 500;
 
-            MineEnemy mine = new MineEnemy(Game, spriteSheet, player);
+            EnemyMine mine = new EnemyMine(Game, spriteSheet, player);
             mine.Initialize();
             mine.Position = Position;
             mine.SetActivationTime(activationTimeMilliseconds);
