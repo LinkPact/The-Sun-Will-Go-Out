@@ -11,6 +11,10 @@ namespace SpaceProject
     public class ShopMenuState : MenuState
     {
         private readonly int InventoryYSpacing = 18;
+        private readonly Vector2 Item1ComparisionOffset = new Vector2(-26, 41);
+        private readonly Vector2 Item2ComparisionOffset = new Vector2(-11, 41);
+        private readonly Vector2 NormalItemComparisonOffset = new Vector2(-18, 41);
+        private readonly int ItemCompSpacing = 15;
 
         #region Cursor Fields
 
@@ -43,6 +47,10 @@ namespace SpaceProject
         public bool DisplayBuyAndEquip { get { return displayBuyAndEquip; } set { displayBuyAndEquip = value; } }
 
         private ItemComparison itemComp;
+        private ItemComparison itemComp2;
+
+        private Sprite weaponSlot1Identifier;
+        private Sprite weaponSlot2Identifier;
 
         private Sprite shopBg;
         private Vector2 itemInfoPosition;
@@ -59,7 +67,6 @@ namespace SpaceProject
         private float line1XPos;
         private float line2XPos;
         private float line3XPos;
-        private float line4XPos;
 
         private Vector2 inventoryStringPos;
         private Vector2 shopStringPos;
@@ -72,12 +79,8 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            #region Initialize Cursors
-
             activeInventoryCursor = new Cursor(this.Game, this.SpriteSheet, new Rectangle(201, 121, 14, 14), new Rectangle(201, 135, 14, 14));
             passiveInventoryCursor = new Cursor(this.Game, this.SpriteSheet, new Rectangle(201, 121, 14, 14), new Rectangle(201, 135, 14, 14));
-
-            #endregion
 
             onEnterInventoryItems = new List<Item>();
             onEnterShopItems = new List<Item>();
@@ -85,12 +88,18 @@ namespace SpaceProject
             itemComp = new ItemComparison(this.Game, this.SpriteSheet);
             itemComp.Initialize();
 
+            itemComp2 = new ItemComparison(this.Game, this.SpriteSheet);
+            itemComp2.Initialize();
+
+            weaponSlot1Identifier = SpriteSheet.GetSubSprite(new Rectangle(63, 287, 9, 8));
+            weaponSlot2Identifier = SpriteSheet.GetSubSprite(new Rectangle(63, 296, 9, 8));
+
             confirmMenuSprite = SpriteSheet.GetSubSprite(new Nullable<Rectangle>(new Rectangle(0, 334, 200, 150))); 
             confirmOptions = new List<string>();
 
             shopBg = SpriteSheet.GetSubSprite(new Rectangle(0, 1208, 1080, 320));
             itemInfoTextWidth = (int)(Game.Window.ClientBounds.Width / 4.2667f);
-            itemInfoPosition = new Vector2(Game.Window.ClientBounds.Width / 1.682f,
+            itemInfoPosition = new Vector2(Game.Window.ClientBounds.Width / 1.632f,
                 Game.Window.ClientBounds.Height / 2 + 55);
 
             invColumn1XPosition = Game.Window.ClientBounds.Width / 6.88f;
@@ -104,7 +113,6 @@ namespace SpaceProject
             line1XPos = Game.Window.ClientBounds.Width / 7.66f;
             line2XPos = Game.Window.ClientBounds.Width / 2.322f;
             line3XPos = Game.Window.ClientBounds.Width / 1.725f;
-            line4XPos = Game.Window.ClientBounds.Width / 1.133f;
 
             inventoryStringPos = new Vector2(Game.Window.ClientBounds.Width / 3.55f,
                 Game.Window.ClientBounds.Height / 1.8f);
@@ -437,6 +445,20 @@ namespace SpaceProject
                         }
                         break;
 
+                    case "buy & equip to slot 1":
+                        if (BuyItem(itemToBuy, tempIndex))
+                        {
+                            ShipInventoryManager.EquipPrimaryWeaponFromInventory(ShipInventoryManager.IndexOfItem(itemToBuy), 0);
+                        }
+                        break;
+
+                    case "buy & equip to slot 2":
+                        if (BuyItem(itemToBuy, tempIndex))
+                        {
+                            ShipInventoryManager.EquipPrimaryWeaponFromInventory(ShipInventoryManager.IndexOfItem(itemToBuy), 1);
+                        }
+                        break;
+
                     case "buy all":
                         BuyQuantityItem(itemToBuy, tempIndex, (int)((QuantityItem)itemToBuy).Quantity);
                         break;
@@ -545,7 +567,7 @@ namespace SpaceProject
                                                                            Game.fontManager.FontColor,
                                                                            itemInfoTextWidth);
 
-            itemComp.Draw(spriteBatch, new Vector2(1, 91), 15);
+            DrawItemComparision(spriteBatch);
 
             spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                    "Rupees: " + StatsManager.Rupees,
@@ -557,7 +579,7 @@ namespace SpaceProject
             {      
                 spriteBatch.Draw(confirmMenuSprite.Texture,
                     new Vector2(Game.Window.ClientBounds.Width / 2, Game.Window.ClientBounds.Height / 2),
-                    confirmMenuSprite.SourceRectangle, new Color(255, 255, 255, 185), .0f,
+                    confirmMenuSprite.SourceRectangle, new Color(255, 255, 255, 235), .0f,
                     new Vector2(confirmMenuSprite.SourceRectangle.Value.Width / 2, confirmMenuSprite.SourceRectangle.Value.Height / 2),
                     1.5f, SpriteEffects.None, 0.95f);
 
@@ -594,6 +616,30 @@ namespace SpaceProject
             }
 
             DrawLines(spriteBatch);
+        }
+
+        private void DrawItemComparision(SpriteBatch spriteBatch)
+        {
+            if (GetSelectedItem().Kind.Equals("Primary"))
+            {
+                spriteBatch.Draw(weaponSlot1Identifier.Texture, new Vector2(itemInfoPosition.X + Item1ComparisionOffset.X,
+                        itemInfoPosition.Y + Item1ComparisionOffset.Y - ItemCompSpacing),
+                        weaponSlot1Identifier.SourceRectangle, Color.White, 0f, Vector2.Zero, 1f,
+                        SpriteEffects.None, 0.95f);
+
+                spriteBatch.Draw(weaponSlot2Identifier.Texture, new Vector2(itemInfoPosition.X + Item2ComparisionOffset.X,
+                        itemInfoPosition.Y + Item2ComparisionOffset.Y - ItemCompSpacing),
+                        weaponSlot2Identifier.SourceRectangle, Color.White, 0f, Vector2.Zero, 1f,
+                        SpriteEffects.None, 0.95f);
+
+                itemComp.Draw(spriteBatch, itemInfoPosition + Item1ComparisionOffset, ItemCompSpacing);
+                itemComp2.Draw(spriteBatch, itemInfoPosition + Item2ComparisionOffset, ItemCompSpacing);
+            }
+
+            else
+            {
+                itemComp.Draw(spriteBatch, itemInfoPosition + NormalItemComparisonOffset, ItemCompSpacing);
+            }
         }
 
         private void DisplayInventory(SpriteBatch spriteBatch)
@@ -799,7 +845,15 @@ namespace SpaceProject
                         || itemToBuy is PlayerShield 
                         || itemToBuy is PlayerPlating))
                 {
-                    confirmOptions.Add("Buy & equip");
+                    if (itemToBuy.Kind.Equals("Primary"))
+                    {
+                        confirmOptions.Add("Buy & equip to slot 1");
+                        confirmOptions.Add("Buy & equip to slot 2");
+                    }
+                    else
+                    {
+                        confirmOptions.Add("Buy & equip");
+                    }
                 }
 
                 confirmOptions.Add("Don't buy");
@@ -1114,9 +1168,6 @@ namespace SpaceProject
                 Vector2.Zero, new Vector2(1, lineLength / 2), SpriteEffects.None, 1f);
 
             spriteBatch.Draw(line.Texture, new Vector2(line3XPos, lineYPos), line.SourceRectangle, Color.DarkSeaGreen, 0f,
-                Vector2.Zero, new Vector2(1, lineLength / 2), SpriteEffects.None, 1f);
-
-            spriteBatch.Draw(line.Texture, new Vector2(line4XPos, lineYPos), line.SourceRectangle, Color.DarkSeaGreen, 0f,
                 Vector2.Zero, new Vector2(1, lineLength / 2), SpriteEffects.None, 1f);
         }
 
@@ -1492,30 +1543,41 @@ namespace SpaceProject
 
         private void CompareStats()
         {
-            itemComp.CompareStats();
+            Item selectedItem = GetSelectedItem();
 
             if (!itemComp.ShowSymbols)
             {
-                if (inventoryCursorIndex.X == 1)
-                {
-                    itemComp.SetItem2(ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y - 1]);
-                    itemComp.FindEquippedItem(ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y - 1].Kind);
-                    itemComp.ShowSymbols = true;
-                }
+                itemComp.SetItem2(selectedItem);
+                itemComp.FindEquippedItem(selectedItem.Kind);
+                itemComp.ShowSymbols = true;
 
-                else if (inventoryCursorIndex.X == 2)
+                if (selectedItem.Kind.Equals("Primary"))
                 {
-                    itemComp.SetItem2(ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y + 13]);
-                    itemComp.FindEquippedItem(ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y + 13].Kind);
-                    itemComp.ShowSymbols = true;
+                    itemComp2.SetItem2(selectedItem);
+                    itemComp2.FindEquippedItem(selectedItem.Kind, 2);
+                    itemComp2.ShowSymbols = true;
+                    itemComp2.CompareStats();
                 }
+            }
 
-                else
-                {
-                    itemComp.SetItem2(shopInventory[(int)inventoryCursorIndex.Y - 1]);
-                    itemComp.FindEquippedItem(shopInventory[(int)inventoryCursorIndex.Y - 1].Kind);
-                    itemComp.ShowSymbols = true;
-                }
+            itemComp.CompareStats();
+        }
+
+        private Item GetSelectedItem()
+        {
+            switch ((int)inventoryCursorIndex.X)
+            {
+                case 1:
+                    return ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y - 1];
+
+                case 2:
+                    return ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y + 13];
+
+                case 3:
+                    return shopInventory[(int)inventoryCursorIndex.Y - 1];
+
+                default:
+                    return ShipInventoryManager.ShipItems[(int)inventoryCursorIndex.Y - 1];
             }
         }
     }

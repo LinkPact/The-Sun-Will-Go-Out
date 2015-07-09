@@ -78,9 +78,9 @@ namespace SpaceProject
 
         public void Initialize()
         {
-            worseSprite = spriteSheet.GetSubSprite(new Rectangle(216, 136, 9, 8));
-            betterSprite = spriteSheet.GetSubSprite(new Rectangle(216, 127, 9, 8));
-            equalSprite = spriteSheet.GetSubSprite(new Rectangle(216, 121, 9, 5));
+            equalSprite = spriteSheet.GetSubSprite(new Rectangle(63, 263, 9, 5));
+            betterSprite = spriteSheet.GetSubSprite(new Rectangle(63, 269, 9, 8));
+            worseSprite = spriteSheet.GetSubSprite(new Rectangle(63, 278, 9, 8));
         }
 
         //Checks for an okay from ReadyToCompare and then loops through 2 lists of stats
@@ -173,30 +173,6 @@ namespace SpaceProject
         {
             if (ShowSymbols)
             {
-                //for (int i = 0; i < item1Symbols.Count; i++)
-                //{
-                //    switch (item1Symbols[i])
-                //    {
-                //        case ComparisonSymbol.Worse:
-                //            spriteBatch.Draw(lowerSprite.Texture, new Vector2(pos.X, pos.Y + (i * 15)),
-                //                lowerSprite.SourceRectangle, Color.White, 0f, Vector2.Zero, 1f,
-                //                SpriteEffects.None, 0.95f);
-                //            break;
-                //
-                //        case ComparisonSymbol.Better:
-                //            spriteBatch.Draw(higherSprite.Texture, new Vector2(pos.X, pos.Y + (i * 15)),
-                //                higherSprite.SourceRectangle, Color.White, 0f, Vector2.Zero, 1f,
-                //                SpriteEffects.None, 0.95f);
-                //            break;
-                //
-                //        case ComparisonSymbol.Equal:
-                //            spriteBatch.Draw(equalSprite.Texture, new Vector2(pos.X, pos.Y + (i * 15)), 
-                //                equalSprite.SourceRectangle, Color.White, 0f, Vector2.Zero, 1f, 
-                //                SpriteEffects.None, 0.95f);
-                //            break;
-                //    }
-                //}
-
                 for (int i = 0; i < item2Symbols.Count; i++)
                 {
                     switch (item2Symbols[i])
@@ -226,21 +202,12 @@ namespace SpaceProject
 
         //Checks for the selected item's kind (selectedItemKind) and sends in it's corresponding 
         //equipped item to FindItem1Stats
-        public void FindEquippedItem(string selectedItemKind)
+        public void FindEquippedItem(string selectedItemKind, int slot = 1)
         {
             switch (selectedItemKind)
             { 
                 case "Primary":
-                    if (item2 != null)
-                    {
-                        SetItem1(ShipInventoryManager.equippedPrimaryWeapons[
-                            ShipInventoryManager.GetEquippedItemIndexOfType(item2.Name)
-                            ]);
-                    }
-                    else
-                    {
-                        SetItem1(ShipInventoryManager.equippedPrimaryWeapons[0]);
-                    }
+                    SetItem1(ShipInventoryManager.equippedPrimaryWeapons[slot - 1]);
                     break;
 
                 case "Secondary":
@@ -272,9 +239,7 @@ namespace SpaceProject
         public void SetItem1(Item item1)
         {
             compareComplete = false;
-
             okayToClearStats = true;
-
             this.item1 = item1;
 
             switch (item1.Kind)
@@ -460,6 +425,10 @@ namespace SpaceProject
                     break;
 
                 case "Resource":
+                    break;
+
+                case "Empty":
+                    item2Kind = "Empty";
                     break;
 
             }

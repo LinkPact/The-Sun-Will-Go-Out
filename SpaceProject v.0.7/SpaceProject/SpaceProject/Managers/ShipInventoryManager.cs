@@ -518,6 +518,14 @@ namespace SpaceProject
             UpdateLists(emptyItem);
         }
 
+        public static void EquipPrimaryWeaponFromInventory(int invSlot, int equipSlot)
+        {
+            ShipInventoryManager.equippedPrimaryWeapons.RemoveAt(equipSlot);
+            ShipInventoryManager.equippedPrimaryWeapons.Insert(equipSlot, (PlayerWeapon)shipItems[invSlot]);
+
+            UpdateLists(emptyItem);
+        }
+
         private static void ChangePrimarySlots(int newValue)
         {
             primarySlots = newValue;
