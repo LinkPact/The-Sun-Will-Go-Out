@@ -128,65 +128,65 @@ namespace SpaceProject
             }
         }
 
-        ////int IsPositionOutsideScreenX returns "1" if X-value of Vector2 "pos" is lower than left edge of screen,
-        ////returns "2" if X-value of "pos" is greater than right edge of screen
-        ////and returns "0" if none of the above is true
-        //public static int IsPositionOutsideScreenX(Vector2 pos, Game1 Game)
-        //{
-        //    if (GameStateManager.currentState.ToLower().Equals("overworldstate"))
-        //    {
-        //        if (pos.X < Game.camera.cameraPos.X - (Game.Window.ClientBounds.Width / 2))
-        //            return 1;
-        //
-        //        else if (pos.X > Game.camera.cameraPos.X + (Game.Window.ClientBounds.Width / 2))
-        //            return 2;
-        //
-        //        else
-        //            return 0;
-        //    }
-        //
-        //    else
-        //    {
-        //        if (pos.X < 0)
-        //            return 1;
-        //
-        //        else if (pos.X > Game.Window.ClientBounds.Width )
-        //            return 2;
-        //
-        //        else
-        //            return 0;
-        //    }
-        //}
-        //
-        ////int IsPositionOutsideScreenY returns "1" if Y-value of Vector2 "pos" is lower than top edge of screen,
-        ////returns "2" if Y-value of "pos" is greater than bottom edge of screen
-        ////and returns "0" if none of the above is true
-        //public static int IsPositionOutsideScreenY(Vector2 pos, Game1 Game)
-        //{
-        //    if (Game.camera != null)
-        //    {
-        //        if (pos.Y < Game.camera.cameraPos.Y - (Game.Window.ClientBounds.Height / 2))
-        //            return 1;
-        //
-        //        else if (pos.Y > Game.camera.cameraPos.Y + (Game.Window.ClientBounds.Height / 2))
-        //            return 2;
-        //
-        //        else
-        //            return 0;
-        //    }
-        //
-        //    else
-        //    {
-        //        if (pos.Y < 0)
-        //            return 1;
-        //
-        //        else if (pos.Y > Game.Window.ClientBounds.Height)
-        //            return 2;
-        //
-        //        else
-        //            return 0;
-        //    }
-        //}
+        //int IsPositionOutsideScreenX returns "1" if X-value of Vector2 "pos" is lower than left edge of screen,
+        //returns "2" if X-value of "pos" is greater than right edge of screen
+        //and returns "0" if none of the above is true
+        public static int IsPositionOutsideScreenX(Vector2 pos, Game1 Game)
+        {
+            if (GameStateManager.currentState.ToLower().Equals("overworldstate"))
+            {
+                if (pos.X < Game.camera.cameraPos.X - (Game.Window.ClientBounds.Width / 2))
+                    return 1;
+        
+                else if (pos.X > Game.camera.cameraPos.X + (Game.Window.ClientBounds.Width / 2))
+                    return 2;
+        
+                else
+                    return 0;
+            }
+        
+            else
+            {
+                if (pos.X < 0)
+                    return 1;
+        
+                else if (pos.X > Game.Window.ClientBounds.Width )
+                    return 2;
+        
+                else
+                    return 0;
+            }
+        }
+        
+        //int IsPositionOutsideScreenY returns "1" if Y-value of Vector2 "pos" is lower than top edge of screen,
+        //returns "2" if Y-value of "pos" is greater than bottom edge of screen
+        //and returns "0" if none of the above is true
+        public static int IsPositionOutsideScreenY(Vector2 pos, Game1 Game)
+        {
+            if (Game.camera != null)
+            {
+                if (pos.Y < Game.camera.cameraPos.Y - (Game.Window.ClientBounds.Height / 2))
+                    return 1;
+        
+                else if (pos.Y > Game.camera.cameraPos.Y + (Game.Window.ClientBounds.Height / 2))
+                    return 2;
+        
+                else
+                    return 0;
+            }
+        
+            else
+            {
+                if (pos.Y < 0)
+                    return 1;
+        
+                else if (pos.Y > Game.Window.ClientBounds.Height)
+                    return 2;
+        
+                else
+                    return 0;
+            }
+        }
 
         //Checks if the systemsprites in a list should be drawn to the screen
         public static void CheckObjectUsage(Game1 Game, List<GameObjectOverworld> list)
