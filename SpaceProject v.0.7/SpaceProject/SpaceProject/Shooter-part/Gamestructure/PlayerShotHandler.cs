@@ -11,6 +11,7 @@ namespace SpaceProject
     public class PlayerShotHandler
     {
         #region decl
+
         private PlayerVerticalShooter player;
         private Game1 Game;
         private Sprite spriteSheet;
@@ -26,6 +27,14 @@ namespace SpaceProject
         private static bool primaryOn;
         private static bool secondaryOn;
         public static bool SecondaryOn { get { return secondaryOn; } }
+
+        private SoundEffects energyLockSound = SoundEffects.EnergyLock;
+        private float remainingEnergyLockTime = 0;
+        private readonly float ENERGY_LOCK_TIME = 1000;
+        private Boolean IsEnergyLocked
+        {
+            get { return remainingEnergyLockTime > 0; }
+        }
 
         #endregion
 
@@ -47,6 +56,11 @@ namespace SpaceProject
         
         public void Update(GameTime gameTime)
         {
+            if (IsEnergyLocked)
+            {
+                remainingEnergyLockTime -= gameTime.ElapsedGameTime.Milliseconds;
+            }
+
             if (primaryOn)
             {
                 ShipInventoryManager.currentPrimaryWeapon.Update(player, gameTime);
@@ -75,21 +89,49 @@ namespace SpaceProject
 
         private void UseWeapon(PlayerWeapon weapon, GameTime gameTime)
         {
-            if (primaryOn && weapon.Kind.Equals("Primary") && weapon.IsReadyToUse && weapon.EnergyCost < player.MP)
+            if (weapon.IsReadyToUse && !IsEnergyLocked)
             {
-                weapon.Use(player, gameTime);
+                if (weapon.EnergyCost < player.MP)
+                {
+                    weapon.Use(player, gameTime);
+                }
+                else
+                {
+                    remainingEnergyLockTime = ENERGY_LOCK_TIME;
+                    Game.soundEffectsManager.PlaySoundEffect(energyLockSound);
+                }            
             }
 
-            if (secondaryOn && weapon.Kind.Equals("Secondary") && weapon.IsReadyToUse && weapon.EnergyCost < player.MP)
-            {
-                weapon.Use(player, gameTime);
-            }
-        }    
- 
-        public void Draw(SpriteBatch spriteBatch)
-        { 
-            
+            //if (primaryOn && weapon.Kind.Equals("Primary") && weapon.IsReadyToUse && !IsEnergyLocked)
+            //{
+            //    if (weapon.EnergyCost < player.MP)
+            //    {
+            //        weapon.Use(player, gameTime);
+            //    }
+            //    else
+            //    {
+            //        remainingEnergyLockTime = ENERGY_LOCK_TIME;
+            //        Game.soundEffectsManager.PlaySoundEffect(SoundEffects.EnergyLock);
+            //    }
+            //}
+            //
+            //if (secondaryOn && weapon.Kind.Equals("Secondary") && weapon.IsReadyToUse && weapon.EnergyCost < player.MP)
+            //{
+            //    weapon.Use(player, gameTime);
+            //}
         }
 
+        private void ExecuteWeapon(PlayerWeapon weapon, GameTime gameTime)
+        {
+            if (weapon.EnergyCost < player.MP)
+            {
+                weapon.Use(player, gameTime);
+            }
+            else
+            {
+                remainingEnergyLockTime = ENERGY_LOCK_TIME;
+                Game.soundEffectsManager.PlaySoundEffect(SoundEffects.EnergyLock);
+            }
+        }
     }
 }

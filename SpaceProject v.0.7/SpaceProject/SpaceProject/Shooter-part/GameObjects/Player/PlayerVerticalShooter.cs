@@ -44,7 +44,8 @@ namespace SpaceProject
         private Sprite shieldSprite;
         
         private float redLevel;
-        private readonly float redShiftSpeed = 1000;
+        private readonly float redShiftTimeDamaged = 1000;
+        private readonly float redShiftTimeBadlyDamaged = 300;
         private Boolean redToningIn;
 
         private float acceleration;
@@ -140,15 +141,19 @@ namespace SpaceProject
             CheckCollisionsEdges();
             UpdateRuntimeStats(gameTime);
 
+            if (HP < HPmax / 5)
+            {
+                UpdateRedTint(gameTime, redShiftTimeBadlyDamaged);
+            }
             if (HP < HPmax / 3)
             {
-                UpdateRedTint(gameTime);
+                UpdateRedTint(gameTime, redShiftTimeDamaged);
             }
         }
 
-        private void UpdateRedTint(GameTime gameTime)
+        private void UpdateRedTint(GameTime gameTime, float redShiftTime)
         {
-            float redShiftAmount = gameTime.ElapsedGameTime.Milliseconds / redShiftSpeed * 255;
+            float redShiftAmount = gameTime.ElapsedGameTime.Milliseconds / redShiftTime * 255;
 
             if (redToningIn)
             {
@@ -172,8 +177,6 @@ namespace SpaceProject
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            playerShotHandler.Draw(spriteBatch);
-
             if (IsKilled == false)
             {
                 spriteBatch.Draw(anim.CurrentFrame.Texture, Position, anim.CurrentFrame.SourceRectangle, GetTintColor(), angle, CenterPoint, 1.0f, SpriteEffects.None, DrawLayer);

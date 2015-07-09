@@ -20,8 +20,9 @@ namespace SpaceProject
         SmallExplosion,
         HugeExplosion,
 
-        // ShooterHit
+        // Shooter
         ShieldHit,
+        EnergyLock,
 
         // Engine
         OverworldEngine,
@@ -67,6 +68,7 @@ namespace SpaceProject
         private CustomSoundEffect hugeExplosion;
 
         private CustomSoundEffect shieldHit;
+        private CustomSoundEffect energyLock;
 
         private CustomSoundEffect overworldEngine;
 
@@ -109,6 +111,7 @@ namespace SpaceProject
                 hugeExplosion = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/huge_explosion"), 1);
 
                 shieldHit = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/shooterHit/Shieldhit1"), 1);
+                energyLock = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/energy_lock"), 1);
 
                 soundEffects.Add(smallLaser);
                 soundEffects.Add(bigLaser);
@@ -119,6 +122,7 @@ namespace SpaceProject
                 soundEffects.Add(hugeExplosion);
 
                 soundEffects.Add(shieldHit);
+                soundEffects.Add(energyLock);
 
                 overworldEngine = new CustomSoundEffect(game.Content.Load<SoundEffect>("SoundEffects/engine_overworld_full"), 1);
 
