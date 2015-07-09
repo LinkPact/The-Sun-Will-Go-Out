@@ -103,6 +103,11 @@ namespace SpaceProject
 
                     Hide();
                 }
+
+                if (ControlManager.CheckPress(RebindableKeys.Action2) || ControlManager.CheckKeyPress(Keys.Escape))
+                {
+                    Hide();
+                }
             }
         }
 

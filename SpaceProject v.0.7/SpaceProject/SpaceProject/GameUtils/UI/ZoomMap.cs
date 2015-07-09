@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
@@ -24,9 +25,11 @@ namespace SpaceProject
         private const float PlanetZoomScale = 0.15f;
         private const float StationZoomScale = 0.2f;
         private const float PlayerZoomScale = 0.5f;
+        private const float HelpTextOffset = 12500;
 
         // variables
         private static MapState mapState = MapState.Off;
+        private static Camera camera;
 
         // properties
         public static bool IsMapOn { get { return mapState != MapState.Off; } private set { ; } }
@@ -50,6 +53,8 @@ namespace SpaceProject
         /// <param name="gameObjects">Objects to be scaled up for visibility</param>
         public static void Update(GameTime gameTime, List<GameObjectOverworld> gameObjects, Camera camera)
         {
+            ZoomMap.camera = camera;
+
             if (mapState == MapState.ZoomingOut)
             {
                 camera.Zoom *= (ZoomRate * gameTime.ElapsedGameTime.Milliseconds);
@@ -68,6 +73,13 @@ namespace SpaceProject
                 {
                     HideMap(camera, gameObjects);
                 }
+            }
+
+            else if (mapState == MapState.On 
+                && (ControlManager.CheckPress(RebindableKeys.Action2) ||
+                ControlManager.CheckKeyPress(Keys.Escape)))
+            {
+                mapState = MapState.ZoomingIn;
             }
 
             // Scale up objects
@@ -120,6 +132,12 @@ namespace SpaceProject
                         FontManager.GetFontStatic(14).MeasureString(obj.name) / 2,
                         55, SpriteEffects.None, 1f);
                 }
+
+                spriteBatch.DrawString(FontManager.GetFontStatic(14), "Press 'N' to hide map..",
+                        new Vector2(camera.cameraPos.X, camera.cameraPos.Y + HelpTextOffset),
+                        Color.White, 0f,
+                        FontManager.GetFontStatic(14).MeasureString("Press 'N' to hide map..") / 2,
+                        100, SpriteEffects.None, 1f);
             }
         }
 
