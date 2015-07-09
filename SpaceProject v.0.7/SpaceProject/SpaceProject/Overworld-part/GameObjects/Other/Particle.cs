@@ -11,7 +11,7 @@ namespace SpaceProject
     {
         private Random rand = new Random();
 
-        public int lifeSpawn;
+        public float lifeSpawn;
 
         public Particle(Game1 Game, Sprite spriteSheet):
             base(Game, spriteSheet)
@@ -44,27 +44,29 @@ namespace SpaceProject
             Direction = obj.Direction;
 
             //Note to self: This code needs to be fixed to compensate for diagonal movement
+
+            float particleMoveDistance = 0.5f * MathFunctions.FPSSyncFactor(gameTime);
             if (position.X < obj.position.X)
-            {   
-                position.X += 0.5f;
+            {
+                position.X += particleMoveDistance;
             }
 
             else if (position.X > obj.position.X)
-            {   
-                position.X -= 0.5f;
+            {
+                position.X -= particleMoveDistance;
             }
 
             if (position.Y < obj.position.Y)
             {
-                position.Y += 0.5f;
+                position.Y += particleMoveDistance;
             }
 
             else if (position.Y > obj.position.Y)
             {
-                position.Y -= 0.5f;
+                position.Y -= particleMoveDistance;
             }
 
-            scale -= 0.025f;            
+            scale -= 0.025f * MathFunctions.FPSSyncFactor(gameTime);
 
             if (color.R > 0)
                 color.R -= 15;
@@ -76,9 +78,9 @@ namespace SpaceProject
                 color.B -= 15;
 
             if (lifeSpawn > 0)
-                lifeSpawn -= 1;   
+                lifeSpawn -= 1.0f * MathFunctions.FPSSyncFactor(gameTime);
 
-            Update(gameTime);
+            base.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

@@ -53,13 +53,13 @@ namespace SpaceProject
 
             if (FollowObject != null)
             {
-                UpdateFollowObject();
+                UpdateFollowObject(gameTime);
             }
         }
 
-        private void UpdateFollowObject()
+        private void UpdateFollowObject(GameTime gameTime)
         {
-            Direction = MathFunctions.ChangeDirection(Direction, Position, player.Position, turningSpeed);
+            Direction = MathFunctions.ChangeDirection(gameTime, Direction, Position, player.Position, turningSpeed);
             Direction = MathFunctions.ScaleDirection(Direction);
         }
 

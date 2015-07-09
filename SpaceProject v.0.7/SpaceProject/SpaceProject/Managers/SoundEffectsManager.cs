@@ -327,15 +327,12 @@ namespace SpaceProject
         {
             if (soundEffectBuffer.Count > SoundEffectBufferMaxCount)
             {
-                soundEffectBuffer[soundEffectBuffer.Count - 1].Volume = 0f;
-                soundEffectBuffer[soundEffectBuffer.Count - 1].Stop(true);
-                stoppedSoundEffects.Add(soundEffectBuffer[soundEffectBuffer.Count - 1]);
-            }
+                var oldestSoundEffect = soundEffectBuffer[soundEffectBuffer.Count - 1];
 
-            foreach (SoundEffectInstance ins in stoppedSoundEffects)
-            {
-                ins.Dispose();
-                soundEffectBuffer.Remove(ins);
+                oldestSoundEffect.Volume = 0f;
+                oldestSoundEffect.Stop(true);
+                oldestSoundEffect.Dispose();
+                soundEffectBuffer.Remove(oldestSoundEffect);                
             }
         }
     }

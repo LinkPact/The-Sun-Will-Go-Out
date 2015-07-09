@@ -67,20 +67,20 @@ namespace SpaceProject
             return (float)(Math.Atan2(scaledDirection.Y, scaledDirection.X) * (180 / Math.PI));
         }
 
-        public void RotateTowardsPoint(Vector2 startingPoint, Vector2 preferredPoint, float rotateSpeed)
+        public void RotateTowardsPoint(GameTime gameTime, Vector2 startingPoint, Vector2 preferredPoint, float rotateSpeed)
         {
             if (startingPoint.Equals(preferredPoint))
                 return;
 
-            SetDirection(MathFunctions.ChangeDirection(scaledDirection, startingPoint, preferredPoint, rotateSpeed));
+            SetDirection(MathFunctions.ChangeDirection(gameTime, scaledDirection, startingPoint, preferredPoint, rotateSpeed));
         }
 
-        public void RotateTowardsPointSingleTurn(Vector2 startingPoint, Vector2 preferredPoint, float rotateSpeed)
+        public void RotateTowardsPointSingleTurn(GameTime gameTime, Vector2 startingPoint, Vector2 preferredPoint, float rotateSpeed)
         {
             if (startingPoint.Equals(preferredPoint))
                 return;
-
-            SetDirection(scaledDirection + (preferredPoint - startingPoint) * rotateSpeed);
+        
+            SetDirection(scaledDirection + (preferredPoint - startingPoint) * rotateSpeed * MathFunctions.FPSSyncFactor(gameTime));
         }
     }
 }

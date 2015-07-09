@@ -28,8 +28,8 @@ namespace SpaceProject
         private Vector2 centerPoint;
         private float scale;
 
-        private int lifeTime;
-        public int LifeTime { get { return lifeTime; } private set { ;} }
+        private float lifeTime;
+        public float LifeTime { get { return lifeTime; } private set { ;} }
 
         private float leftRemovalPos;
         private float rightRemovalPos;
@@ -86,7 +86,7 @@ namespace SpaceProject
 
             position += (s1 + s2) * gameTime.ElapsedGameTime.Milliseconds;
 
-            lifeTime--;
+            lifeTime -= 1.0f * MathFunctions.FPSSyncFactor(gameTime);
 
             if (g > 69)
                 g -= 3;

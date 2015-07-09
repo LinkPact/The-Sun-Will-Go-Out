@@ -149,11 +149,13 @@ namespace SpaceProject
             else
             {
                 MP = MPmax;
-            } 
+            }
 
-            if (Shield < ShieldMax - shieldRegeneration)
+            float shieldGain = ShieldRegeneration * MathFunctions.FPSSyncFactor(gameTime);
+
+            if (Shield < ShieldMax - shieldGain)
             {
-                Shield += ShieldRegeneration;
+                Shield += shieldGain;
             }
             else
             {

@@ -115,6 +115,11 @@ namespace SpaceProject
             graphics.PreferredBackBufferHeight = (int)resolution.Y;
             graphics.IsFullScreen = settingsFile.GetPropertyAsBool("visual", "fullscreen", false);
             graphics.SynchronizeWithVerticalRetrace = true;
+
+            // Uncomment to unlock FPS
+            //IsFixedTimeStep = false;
+            //graphics.SynchronizeWithVerticalRetrace = false;
+            
             graphics.ApplyChanges();
 
             IsMouseVisible = true;

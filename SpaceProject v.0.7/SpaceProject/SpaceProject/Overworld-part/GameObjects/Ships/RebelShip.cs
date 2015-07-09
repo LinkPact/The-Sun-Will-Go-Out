@@ -82,11 +82,5 @@ namespace SpaceProject
 
             base.Update(gameTime);
         }
-
-        public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
-        {
-            base.Draw(spriteBatch);
-        }
-
     }
 }

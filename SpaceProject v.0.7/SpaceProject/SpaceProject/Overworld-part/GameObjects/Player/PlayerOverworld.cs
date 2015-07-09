@@ -211,8 +211,7 @@ namespace SpaceProject
                 }
             }
 
-            if (ControlManager.CheckHold(RebindableKeys.Up) 
-                && controlsEnabled)
+            if (ControlManager.CheckHold(RebindableKeys.Up) && controlsEnabled)
             {
                 if (StatsManager.Fuel > normalFuelCost)
                 {
@@ -241,19 +240,21 @@ namespace SpaceProject
                 }
             }
 
-            if (ControlManager.CheckHold(RebindableKeys.Right)
-                && controlsEnabled)
+            if (ControlManager.CheckHold(RebindableKeys.Right) && controlsEnabled)
             {
                 if (StatsManager.Fuel > normalFuelCost)
                 {
-                    if (ControlManager.GamepadReady && ControlManager.ThumbStickAngleX != 0)
-                    {
-                        Direction.SetDirection(Direction.GetDirectionAsDegree() + turningSpeed);
-                    }
-                    else
-                    {
-                        Direction.SetDirection(Direction.GetDirectionAsDegree() + turningSpeed);
-                    }
+                    Direction.SetDirection(Direction.GetDirectionAsDegree() + turningSpeed * MathFunctions.FPSSyncFactor(gameTime));
+
+                    // Is all of this needed? Both If-paths are identical // Jakob 150709
+                    //if (ControlManager.GamepadReady && ControlManager.ThumbStickAngleX != 0)
+                    //{
+                    //    Direction.SetDirection(Direction.GetDirectionAsDegree() + turningSpeed);
+                    //}
+                    //else
+                    //{
+                    //    Direction.SetDirection(Direction.GetDirectionAsDegree() + turningSpeed);
+                    //}
                 }
             }
 
@@ -262,24 +263,26 @@ namespace SpaceProject
             {
                 if (StatsManager.Fuel > normalFuelCost)
                 {
-                    if (ControlManager.GamepadReady && ControlManager.ThumbStickAngleX != 0)
-                    {
-                        Direction.SetDirection(Direction.GetDirectionAsDegree() - turningSpeed);
-                    }
-                    else
-                    {
-                        Direction.SetDirection(Direction.GetDirectionAsDegree() - turningSpeed);
-                    }
+                    Direction.SetDirection(Direction.GetDirectionAsDegree() - turningSpeed * MathFunctions.FPSSyncFactor(gameTime));
+
+                    // Is all of this needed? Both If-paths are identical // Jakob 150709
+                    //if (ControlManager.GamepadReady && ControlManager.ThumbStickAngleX != 0)
+                    //{
+                    //    Direction.SetDirection(Direction.GetDirectionAsDegree() - turningSpeed);
+                    //}
+                    //else
+                    //{
+                    //    Direction.SetDirection(Direction.GetDirectionAsDegree() - turningSpeed);
+                    //}
                 }
             }
 
-            if (!ControlManager.CheckHold(RebindableKeys.Up)
-                && controlsEnabled)
+            if (!ControlManager.CheckHold(RebindableKeys.Up) && controlsEnabled)
             {
 
                 if (speed > 0)
                 {
-                    speed -= playerAcc;
+                    speed -= playerAcc * MathFunctions.FPSSyncFactor(gameTime);
                 }
 
                 else if (speed <= 0) 
@@ -324,7 +327,7 @@ namespace SpaceProject
             if (speed > HYPERSPEED_MAX_SPEED)
                 speed = HYPERSPEED_MAX_SPEED;
 
-            Direction.RotateTowardsPoint(position, hyperspeedCoordinates, turningSpeed);
+            Direction.RotateTowardsPoint(gameTime, position, hyperspeedCoordinates, turningSpeed);
             currentHyperspeedDistance = Math.Abs(Vector2.Distance(hyperspeedCoordinates, position));
 
             // Total distance is enough to accelerate ship to max speed

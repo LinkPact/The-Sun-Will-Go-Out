@@ -494,7 +494,7 @@
     <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\EnemyMissileBullet.cs" />
     <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\EnemyStrongBlueLaser.cs" />
     <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\EnemyWeakBlueLaser.cs" />
-    <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\MineEnemy.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\EnemyMine.cs" />
     <Compile Include="Shooter-part\GameObjects\Bullets\EnemyBullet.cs" />
     <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\EnemyWeakRedLaser.cs" />
     <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\EnemyGreenBullet.cs" />

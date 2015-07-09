@@ -12,6 +12,14 @@ namespace SpaceProject
     {
         private static Random rand = new Random();
 
+        // Compensates the switch from 60 FPS specific to FPS independent
+        public static readonly float ELAPSEDTIMEFACTOR = (1.0f / 17.0f);
+
+        public static float FPSSyncFactor(GameTime gameTime)
+        {
+            return gameTime.ElapsedGameTime.Milliseconds * ELAPSEDTIMEFACTOR;
+        }
+
         public static double GetExternalRandomDouble()
         {
             return rand.NextDouble();
@@ -260,7 +268,7 @@ namespace SpaceProject
             return directions;
         }
 
-        public static Vector2 ChangeDirection(Vector2 dir, Vector2 pos, Vector2 followedPos, double degreeChange)
+        public static Vector2 ChangeDirection(GameTime gameTime, Vector2 dir, Vector2 pos, Vector2 followedPos, double degreeChange)
         {
             double radians = RadiansFromDir(dir);
             double radianChange = degreeChange * (Math.PI / 180);
@@ -286,14 +294,16 @@ namespace SpaceProject
             // If not, increment current angle by given delta angle
             else
             {
+                var fpsCompensatedRadianChange = radianChange * MathFunctions.FPSSyncFactor(gameTime);
+
                 if (deltaRadians > 0 && deltaRadians <= 180)
-                    radians += radianChange;
+                    radians += fpsCompensatedRadianChange;
                 else if (deltaRadians < 0 && deltaRadians <= 180)
-                    radians -= radianChange;
+                    radians -= fpsCompensatedRadianChange;
                 else if (deltaRadians > 0 && deltaRadians > 180)
-                    radians -= radianChange;
+                    radians -= fpsCompensatedRadianChange;
                 else //(dirFolRadians < Radians && (dirFolRadians - Radians) > 180)
-                    radians += radianChange;            
+                    radians += fpsCompensatedRadianChange;
             }
 
             Vector2 newDir = Vector2.Zero;

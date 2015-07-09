@@ -143,13 +143,13 @@ namespace SpaceProject
 
         private ItemVariety GetRandomVariety()
         {
-            int randVal = MathFunctions.GetExternalRandomInt(0, 3);
+            int randVal = MathFunctions.GetExternalRandomInt(0, 100);
 
-            if (randVal == 0)
+            if (randVal < 60)
             {
                 return ItemVariety.low;
             }
-            else if (randVal <= 2)
+            else if (randVal < 90)
             {
                 return ItemVariety.regular;
             }

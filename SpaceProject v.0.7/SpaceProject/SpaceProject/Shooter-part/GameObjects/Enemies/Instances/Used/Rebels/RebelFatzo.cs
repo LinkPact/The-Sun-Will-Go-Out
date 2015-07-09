@@ -70,7 +70,7 @@ namespace SpaceProject
         protected override void SecondaryShootingPattern(GameTime gameTime)
         {
             int activationTimeMilliseconds = 500;
-            MineEnemy mine = new MineEnemy(Game, spriteSheet, player);
+            EnemyMine mine = new EnemyMine(Game, spriteSheet, player);
             mine.Initialize();
             mine.SetActivationTime(activationTimeMilliseconds);
             mine.Position = Position;

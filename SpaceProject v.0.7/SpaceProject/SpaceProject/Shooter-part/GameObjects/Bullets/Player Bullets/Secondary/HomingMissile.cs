@@ -61,7 +61,7 @@ namespace SpaceProject
                 LocateHomingTarget();
 
             if (FollowObject != null)
-                Homing();
+                Homing(gameTime);
 
             base.Update(gameTime);
         }
@@ -96,16 +96,12 @@ namespace SpaceProject
             }
         }
 
-        private void Homing()
+        private void Homing(GameTime gameTime)
         {
             if (FollowObject != null)
             {
-                //Direction = GlobalFunctions.ScaleDirection(new Vector2(FollowObject.PositionX - this.PositionX, 
-                //    FollowObject.PositionY - this.PositionY));
-
-                Direction = MathFunctions.ChangeDirection(Direction, Position, FollowObject.Position, DegreeChange);
+                Direction = MathFunctions.ChangeDirection(gameTime, Direction, Position, FollowObject.Position, DegreeChange);
                 Direction = MathFunctions.ScaleDirection(Direction);
-            
             }
         }
 

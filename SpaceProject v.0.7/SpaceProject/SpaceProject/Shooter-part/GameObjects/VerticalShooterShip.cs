@@ -38,7 +38,7 @@ namespace SpaceProject
         low         = 2,
         medium      = 3,
         high        = 5,
-        veryHigh    = 10,
+        veryHigh    = 7,
         hangar      = 50,
         none        = 0
     }
@@ -54,14 +54,12 @@ namespace SpaceProject
         public Boolean PassedScreen { get { return passedScreen; } private set { } }
 
         protected Random random = new Random();
-        protected float Rotation;
 
         protected LootValue lootValue = LootValue.low;
 
         protected int disruptionMilliseconds = 0;
         protected Boolean IsDisrupted { get { return disruptionMilliseconds > 0; } }
 
-        #region shield
         private Boolean hasShield;
         public Boolean HasShield { get { return hasShield; } }
 
@@ -71,18 +69,13 @@ namespace SpaceProject
         public Boolean ShieldCanTakeHit(double hitDamage) { return hitDamage <= currentShield; }
 
         private float shieldRegeneration;
-        #endregion
 
         private MovementModule movementModule;
 
-        #region stealth
-
         protected Boolean stealthOn;
         protected Boolean stealthSwitching;
-        protected const float stealthLevel = 0.035f;
-        protected const float stealthSwitchSpeed = 0.015f;
-        
-        #endregion
+        protected readonly float stealthLevel = 0.035f;
+        protected readonly float stealthSwitchSpeed = 0.015f;
 
         #endregion
 
@@ -108,7 +101,6 @@ namespace SpaceProject
             IsKilled = false;
             DrawLayer = 0.42f;
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
-            Rotation = 0;
             useDeathAnim = true;
         }
 
@@ -190,9 +182,6 @@ namespace SpaceProject
 
             if (IsKilled && useDeathAnim)
             {
-                //Game.stateManager.shooterState.backgroundObjects.Add(
-                //    ExplosionGenerator.GenerateRandomExplosion(Game, spriteSheet, this));
-
                 Game.stateManager.shooterState.backgroundObjects.Add(
                     ExplosionGenerator.GenerateShipExplosion(Game, spriteSheet, this));
             }
