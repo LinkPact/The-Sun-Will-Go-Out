@@ -26,21 +26,17 @@ namespace SpaceProject
         {
             hasShop = true;
 
-            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.AdvancedEnergyCell, ShipPartAvailability.common, ItemVariety.regular));
-            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.AdvancedPlating, ShipPartAvailability.common, ItemVariety.regular));
-            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.AdvancedShield, ShipPartAvailability.common, ItemVariety.regular));
-
-            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.Beam, ShipPartAvailability.common, ItemVariety.regular));
             AddMandatoryItem(new ShopInventoryEntry(ShipPartType.FragmentMissile, ShipPartAvailability.common, ItemVariety.regular));
+            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.Beam, ShipPartAvailability.common, ItemVariety.regular));
             AddMandatoryItem(new ShopInventoryEntry(ShipPartType.Burster, ShipPartAvailability.common, ItemVariety.regular));
 
             AddMandatoryItem(new ShopInventoryEntry(ShipPartType.SideMissiles, ShipPartAvailability.common, ItemVariety.regular));
-            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.FieldDamage, ShipPartAvailability.common, ItemVariety.regular));
-            //AddMandatoryItem(new ShopInventoryEntry(ShipPartType.Disruptor, ShipPartAvailability.common, ItemVariety.regular));
+            //AddMandatoryItem(new ShopInventoryEntry(ShipPartType.FieldDamage, ShipPartAvailability.common, ItemVariety.regular));
+            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.Disruptor, ShipPartAvailability.common, ItemVariety.regular));
 
-            //AddShopEntry(new ShopInventoryEntry(ShipPartType.AdvancedEnergyCell, ShipPartAvailability.common, ItemVariety.random));
-            //AddShopEntry(new ShopInventoryEntry(ShipPartType.AdvancedPlating, ShipPartAvailability.common, ItemVariety.random));
-            //AddShopEntry(new ShopInventoryEntry(ShipPartType.AdvancedShield, ShipPartAvailability.common, ItemVariety.random));
+            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.AdvancedEnergyCell, ShipPartAvailability.common, ItemVariety.regular));
+            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.AdvancedPlating, ShipPartAvailability.common, ItemVariety.regular));
+            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.AdvancedShield, ShipPartAvailability.common, ItemVariety.regular));
 
             SetShopFilling(ShopFilling.veryFilled);
         }
