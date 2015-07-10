@@ -8,6 +8,9 @@ namespace SpaceProject
 {
     public class FlameShotWeapon : PlayerWeapon
     {
+        private int longShotCount = 7;
+        private int shortShotCount = 12;
+
         public FlameShotWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
             base(Game, variety)
         {
@@ -31,11 +34,13 @@ namespace SpaceProject
             bullet = new FlameShot(Game, spriteSheet);
             bullet.Initialize();
 
-            damage = 60;
-            duration = 800;
-            speed = 0.4f;
+            damage = bullet.Damage;
+            duration = bullet.Duration;
+            speed = bullet.Speed;
 
             Value = 800;
+
+            numberOfShots = longShotCount + shortShotCount;
         }
 
         public override void Initialize()
@@ -45,10 +50,8 @@ namespace SpaceProject
         {
             Vector2 centerDir = new Vector2(0, -1.0f);
 
-            int longShotCount = 7;
             double longSpread = Math.PI / 16;
 
-            int shortShotCount = 15;
             double shortSpread = Math.PI / 3;
 
             for (int n = 0; n < longShotCount; n++)

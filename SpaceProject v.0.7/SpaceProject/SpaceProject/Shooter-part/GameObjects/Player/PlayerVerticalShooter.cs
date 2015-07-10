@@ -145,7 +145,7 @@ namespace SpaceProject
             {
                 UpdateRedTint(gameTime, redShiftTimeBadlyDamaged);
             }
-            if (HP < HPmax / 3)
+            else if (HP < 2 * HPmax / 5)
             {
                 UpdateRedTint(gameTime, redShiftTimeDamaged);
             }

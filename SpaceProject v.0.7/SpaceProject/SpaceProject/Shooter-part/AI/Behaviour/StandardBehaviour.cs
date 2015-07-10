@@ -13,14 +13,14 @@ namespace SpaceProject
 
         public override void Action()
         {
-            if (AI.Target != null && AI.TargetYDistance > 25)
+            if (ai.Target != null && ai.TargetYDistance > 25)
                 aIAction = AIAction.Attack;
 
-            else if (AI.ClosestObject != null &&
-                CollisionDetection.IsPointInsideCircle(AI.ClosestObject.Position, Ship.Position, AI.AvoidRadius))
+            else if (ai.ClosestObject != null &&
+                CollisionDetection.IsPointInsideCircle(ai.ClosestObject.Position, Ship.Position, ai.AvoidRadius))
                 aIAction = AIAction.Avoid;
 
-            else if (AI.FormationArea.X != -1 && !Ship.Bounding.Intersects(AI.FormationArea))
+            else if (ai.FormationArea.X != -1 && !Ship.Bounding.Intersects(ai.FormationArea))
                 aIAction = AIAction.Formation;
 
             else

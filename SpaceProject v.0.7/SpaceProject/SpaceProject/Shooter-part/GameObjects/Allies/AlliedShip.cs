@@ -197,21 +197,21 @@ namespace SpaceProject
         {
             if (aI.Accelerate)
             {
-                Speed += Acceleration;
+                Speed += Acceleration * MathFunctions.FPSSyncFactor(gameTime);
                 aI.Accelerate = false;
             }
 
             else if (aI.Deccelerate)
             {
-                Speed -= Acceleration;
+                Speed -= Acceleration * MathFunctions.FPSSyncFactor(gameTime);
                 aI.Deccelerate = false;
             }
 
             if (Speed > 0)
-                Speed -= Decceleration;
+                Speed -= Decceleration * MathFunctions.FPSSyncFactor(gameTime);
 
             else if (Speed < 0)
-                Speed += Decceleration;
+                Speed += Decceleration * MathFunctions.FPSSyncFactor(gameTime);
 
             if (Speed > MaxSpeed)
                 Speed = MaxSpeed;

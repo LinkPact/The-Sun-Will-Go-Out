@@ -30,7 +30,7 @@ namespace SpaceProject
             ActivatedSoundID = SoundEffects.MidSizeLaser;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(500, 100, 100, 100));
 
-            bullet = new BasicLaser(Game, spriteSheet);
+            bullet = new DistanceSpreadBullet(Game, spriteSheet);
             bullet.Initialize();
 
             damage = Bullet.Damage;
@@ -48,18 +48,16 @@ namespace SpaceProject
 
             for (int n = 0; n < numberOfShots; n++)
             {
-                DistanceSpreadBullet bullet = new DistanceSpreadBullet(Game, spriteSheet);
-                bullet.PositionX = player.PositionX;
-                bullet.PositionY = player.PositionY;
+                DistanceSpreadBullet shot = new DistanceSpreadBullet(Game, spriteSheet);
+                shot.PositionX = player.PositionX;
+                shot.PositionY = player.PositionY;
 
-                bullet.Direction = MathFunctions.SpreadDir(centerDir, spread);
-                bullet.Initialize();
-                bullet.Speed *= 1f;
-                bullet.Damage *= 0.7f;
+                shot.Direction = MathFunctions.SpreadDir(centerDir, spread);
+                shot.Initialize();
 
-                bullet.SetSpreadSpeed(random, 0.2f);
+                shot.SetSpreadSpeed(random, 0.2f);
 
-                Game.stateManager.shooterState.gameObjects.Add(bullet);
+                Game.stateManager.shooterState.gameObjects.Add(shot);
             }
 
             return true;

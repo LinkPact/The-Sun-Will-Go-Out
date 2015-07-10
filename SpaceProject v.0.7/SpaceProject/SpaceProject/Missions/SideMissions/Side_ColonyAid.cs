@@ -17,7 +17,7 @@ namespace SpaceProject
 
         private MedicalSupplies medicalSupplies;
 
-        RegularEnergyCell regularCell;
+        private RegularEnergyCell regularCell;
 
         public Side_ColonyAid(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
             base(Game, section, spriteSheet, missionID)
@@ -69,7 +69,7 @@ namespace SpaceProject
             destinations = new List<GameObjectOverworld>();
 
             destinations.Add(Game.stateManager.overworldState.GetStation("Lavis Station"));
-            destinations.Add(Game.stateManager.overworldState.GetPlanet("Highfence"));
+            destinations.Add(Game.stateManager.overworldState.GetStation("Soelara Station"));
         }
 
         protected override void SetupObjectives()

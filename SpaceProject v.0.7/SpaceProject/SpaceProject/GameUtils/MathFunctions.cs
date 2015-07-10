@@ -13,7 +13,7 @@ namespace SpaceProject
         private static Random rand = new Random();
 
         // Compensates the switch from 60 FPS specific to FPS independent
-        public static readonly float ELAPSEDTIMEFACTOR = (1.0f / 17.0f);
+        private static readonly float ELAPSEDTIMEFACTOR = (1.0f / 17.0f);
 
         public static float FPSSyncFactor(GameTime gameTime)
         {

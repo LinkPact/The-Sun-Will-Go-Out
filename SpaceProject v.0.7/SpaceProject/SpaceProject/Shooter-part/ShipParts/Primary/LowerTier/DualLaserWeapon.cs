@@ -26,7 +26,7 @@ namespace SpaceProject
             Name = "Dual Laser";
             Kind = "Primary";
             energyCostPerSecond = 5.5f;
-            delay = 320;
+            delay = 300;
             Weight = 200;
             ActivatedSoundID = SoundEffects.SmallLaser;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(100, 0, 100, 100));
