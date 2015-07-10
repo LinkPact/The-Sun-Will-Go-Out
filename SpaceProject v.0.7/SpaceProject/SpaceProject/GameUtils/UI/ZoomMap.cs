@@ -57,7 +57,7 @@ namespace SpaceProject
 
             if (mapState == MapState.ZoomingOut)
             {
-                camera.Zoom *= (ZoomRate * MathFunctions.FPSSyncFactor(gameTime));
+                camera.Zoom *= ZoomRate * gameTime.ElapsedGameTime.Milliseconds;
 
                 if (camera.Zoom <= ZoomedOutValue)
                 {

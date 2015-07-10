@@ -48,12 +48,12 @@ namespace SpaceProject
             //Egenskaper
             SightRange = 600;
             HP = 500f;
+            HPmax = HP;
             Damage = (float)CollisionDamage.medium;
             Speed = 0.05f;
 
             AddPrimaryModule(10, ShootingMode.Regular);
             movement = Movement.Following;
-            //shootSoundID = SoundEffects.None;
 
             //Animationer
             anim.LoopTime = 500;

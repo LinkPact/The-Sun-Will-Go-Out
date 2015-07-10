@@ -42,7 +42,8 @@ namespace SpaceProject
 
             //Egenskaper
             SightRange = 400;
-            HP = 400.0f;
+            HPmax = 400.0f;
+            HP = HPmax;
             Damage = (float)CollisionDamage.low;
             Speed = 0.06f;
             TurningSpeed = 8f;

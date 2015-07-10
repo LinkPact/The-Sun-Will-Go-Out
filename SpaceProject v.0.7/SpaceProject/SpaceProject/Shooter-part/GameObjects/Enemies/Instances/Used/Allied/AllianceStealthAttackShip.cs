@@ -16,8 +16,6 @@ namespace SpaceProject
     class AllianceStealthAttackShip : ShootingEnemyShip
     {
         private int tempCounter;
-        //private int stealthDelay;
-
         private Boolean stealthToggled;
 
         public AllianceStealthAttackShip(Game1 Game, Sprite spriteSheet, PlayerVerticalShooter player) :
@@ -52,6 +50,7 @@ namespace SpaceProject
             //Egenskaper
             SightRange = 300;
             HP = 200.0f;
+            HPmax = HP;
             Damage = (float)CollisionDamage.low;
             Speed = 0.14f;
             TurningSpeed *= 3;

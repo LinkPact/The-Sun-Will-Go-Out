@@ -34,6 +34,7 @@ namespace SpaceProject
             Damage = (float)CollisionDamage.medium;
             Speed = 0.08f;
             HP = 200;
+            HPmax = HP;
             TurningSpeed = 2;
 
             movement = Movement.Following;

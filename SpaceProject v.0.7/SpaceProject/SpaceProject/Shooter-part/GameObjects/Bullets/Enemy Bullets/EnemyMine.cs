@@ -67,6 +67,7 @@ namespace SpaceProject
                 DelayLogic(gameTime);
 
             base.Update(gameTime);
+
         }
 
         private void CheckIfTargetIsClose()
