@@ -728,93 +728,41 @@ namespace SpaceProject
                 }
 
                 SetPortraitFromText(temp[0]);
-
                 SetTextRectangle();
 
-                if (temp.Count > 1)
+                if (HasReward(completedMissions[0]))
                 {
-                    List<Item> rewardItems = completedMissions[0].RewardItems;
-
-                    if (rewardItems.Count > 0)
+                    if (HasRewardItem(completedMissions[0]))
                     {
-                        StringBuilder rewardText = new StringBuilder("");
-
-                        rewardText.Append("Your reward is: \n");
-                        if (completedMissions[0].MoneyReward > 0)
+                        if (ShipInventoryManager.HasAvailableSlot())
                         {
-                            rewardText.Append("\n" + completedMissions[0].MoneyReward.ToString() + " Rupees");
-                        }
-                        foreach (Item reward in rewardItems)
-                        {
-                            rewardText.Append("\n" + reward.Name);
+                            temp.Add(GetRewardText(completedMissions[0]));
                         }
 
-                        temp.Add(rewardText.ToString());
+                        else
+                        {
+                            temp.Add(GetNoEmptySlotText(completedMissions[0]));
+                        }
                     }
-
-                    else if (completedMissions[0].MoneyReward > 0)
-                    {
-                        temp.Add("Your reward is: \n" + completedMissions[0].MoneyReward +
-                            " Rupees");
-                    }
-
-                    BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                                          tempRect,
-                                                                          false, true,
-                                                                          temp[0]));
-
-                    MissionManager.MarkCompletedMissionAsDead(completedMissions[0].MissionID);
-
-                    BaseStateManager.ButtonControl = ButtonControl.Confirm;
-                }
-
-                else
-                {
-
-                    BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
-                                                  tempRect,
-                                                  false, true,
-                                                  temp[0]));
-
-                    List<Item> rewardItems = completedMissions[0].RewardItems;
-
-                    if (rewardItems.Count > 0)
-                    {
-                        StringBuilder rewardText = new StringBuilder("");
-
-                        rewardText.Append("Your reward is: \n");
-                        if (completedMissions[0].MoneyReward > 0)
-                        {
-                            rewardText.Append("\n" + completedMissions[0].MoneyReward.ToString() + " Rupees");
-                        }
-                        foreach (Item reward in rewardItems)
-                        {
-                            rewardText.Append("\n" + reward.Name);
-                        }
-
-                        temp.Add(rewardText.ToString());
-
-                    }
-
                     else
                     {
-                        if (completedMissions[0].MoneyReward > 0)
-                        {
-                            temp.Add("Your reward is: \n" + completedMissions[0].MoneyReward +
-                                " Rupees");
-                        }
+                        temp.Add(GetRewardText(completedMissions[0]));
                     }
-
-                    MissionManager.MarkCompletedMissionAsDead(completedMissions[0].MissionID);
-
-                    BaseStateManager.ButtonControl = ButtonControl.Confirm;
                 }
+
+                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(BaseState.Game.fontManager.GetFont(14),
+                              tempRect,
+                              false, true,
+                              temp[0]));
+
+                MissionManager.MarkCompletedMissionAsDead(completedMissions[0].MissionID);
+
+                BaseStateManager.ButtonControl = ButtonControl.Confirm;
 
                 for (int i = 1; i < temp.Count; i++)
                 {
                     MissionManager.MissionEventBuffer.Add(temp[i]);
                 }
-
 
                 TextToSpeech.Speak(temp[0]);
             }
@@ -919,6 +867,59 @@ namespace SpaceProject
             BaseState.HideOverlay();
             BaseStateManager.ChangeMenuSubState("Overview");
             BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
+        }
+
+        private String GetRewardText(Mission completedMission)
+        {
+            List<Item> rewardItems = completedMission.RewardItems;
+
+            if (rewardItems.Count > 0)
+            {
+                StringBuilder rewardText = new StringBuilder("");
+
+                rewardText.Append("Your reward is: \n");
+                if (completedMission.MoneyReward > 0)
+                {
+                    rewardText.Append("\n" + completedMission.MoneyReward.ToString() + " Rupees");
+                }
+                foreach (Item reward in rewardItems)
+                {
+                    rewardText.Append("\n" + reward.Name);
+                }
+
+                return rewardText.ToString();
+            }
+
+            else if (completedMission.MoneyReward > 0)
+            {
+                return "Your reward is: \n" + completedMission.MoneyReward +
+                    " Rupees";
+            }
+
+            return "NO REWARD";
+        }
+        
+        private String GetNoEmptySlotText(Mission completedMission)
+        {
+            int rewardItemValue = 0;
+
+            foreach (Item reward in completedMission.RewardItems)
+            {
+                rewardItemValue += (int)Math.Round(reward.Value * 0.8f, 0);
+            }
+
+            return String.Format("You do not have room for your reward! You will recieve its value in rupees instead.\n\nYour reward is: \n{0} Rupees",
+                completedMission.MoneyReward + rewardItemValue);
+        }
+
+        private bool HasRewardItem(Mission completedMission)
+        {
+            return completedMission.RewardItems.Count > 0;
+        }
+
+        private bool HasReward(Mission completedMission)
+        {
+            return completedMission.RewardItems.Count > 0 || completedMission.MoneyReward > 0;
         }
     }
 }
