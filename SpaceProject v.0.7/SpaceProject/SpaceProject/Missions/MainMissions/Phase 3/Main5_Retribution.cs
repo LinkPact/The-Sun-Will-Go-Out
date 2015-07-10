@@ -25,6 +25,8 @@ namespace SpaceProject
             BackToRebelBase
         }
 
+        private readonly Vector2 SkipWaitFreighterOffset = new Vector2(600, 600);
+
         private List<RebelShip> rebelShips;
         private readonly int numberOfRebelShips = 3;
         
@@ -107,12 +109,28 @@ namespace SpaceProject
             base.MissionLogic();
 
             if (ObjectiveIndex > 2
-                && ObjectiveIndex < 7
-                && !Game.player.HyperspeedOn
-                && Vector2.Distance(Game.player.position, rebelShips[1].position) > 500)
+                && ObjectiveIndex < 6
+                && !Game.player.HyperspeedOn)
             {
-                PopupHandler.DisplayPortraitMessage(PortraitID.RebelPilot, "Hey! Where are you going? The freighter will be here any minute now.");
-                Game.player.BounceBack();
+                if (Vector2.Distance(Game.player.position, rebelShips[1].position) > 500)
+                {
+                    PopupHandler.DisplayPortraitMessage(PortraitID.RebelPilot, "Hey! Where are you going? The freighter will be here any minute now.");
+                    Game.player.BounceBack();
+                }
+
+                if (ControlManager.CheckPress(RebindableKeys.Pause)
+                    && GameStateManager.currentState.Equals("OverworldState"))
+                {
+                    PopupHandler.DisplaySelectionMenu("Do you want to skip waiting?",
+                        new List<string>() { "Yes", "No" },
+                        new List<System.Action>(){
+                            delegate 
+                            {
+                                SkipForward();
+                            },
+                            delegate {}
+                        });
+                }
             }
         }
 
@@ -174,7 +192,8 @@ namespace SpaceProject
                     OverworldShip.FollowPlayer = false;
                     StartFreighter();
                 },
-                delegate { },
+                delegate 
+                { },
                 delegate { return true; },
                 delegate { return false; }));
 
@@ -314,6 +333,13 @@ namespace SpaceProject
             {
                 rebel.Remove();
             }
+        }
+
+        private void SkipForward()
+        {
+            PopupHandler.SkipRealTimeMessages();
+            ObjectiveIndex = 6;
+            freighter.position = Game.player.position + SkipWaitFreighterOffset;
         }
     }
 }

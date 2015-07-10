@@ -93,6 +93,7 @@ namespace SpaceProject
             }
             UpdateQueue(gameTime, menuQueue);
             UpdateQueue(gameTime, realTimeMessageQueue);
+            ButtonControls();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -270,6 +271,11 @@ namespace SpaceProject
             game.soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
         }
 
+        public static void SkipRealTimeMessages()
+        {
+            realTimeMessageQueue.Clear();
+        }
+
         private static void UpdateQueue(GameTime gameTime, List<Popup> queue)
         {
             if (queue.Count > 0)
@@ -308,6 +314,16 @@ namespace SpaceProject
                 && queue[0].PopupState == PopupState.Showing)
             {
                 queue[0].Draw(spriteBatch);
+            }
+        }
+
+        private static void ButtonControls()
+        {
+            if (ControlManager.CheckPress(RebindableKeys.Pause)
+                && messageQueue.Count > 0)
+            {
+                messageQueue.Clear();
+                Game1.Paused = false;
             }
         }
     }

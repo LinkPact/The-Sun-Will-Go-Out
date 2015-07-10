@@ -74,6 +74,10 @@ namespace SpaceProject
         {
             get { return totalHyperspeedDistance; }
         }
+        public bool IsControlsEnabled
+        {
+            get { return controlsEnabled; }
+        }
 
         private bool isInvincible;
         private float invincibilityTime;
@@ -217,7 +221,6 @@ namespace SpaceProject
                 {
                     if (ControlManager.GamepadReady && ControlManager.ThumbStickAngleY != 0)
                     {
-
                         if (StatsManager.Fuel > normalFuelCost)
                         {
                             speed += playerAcc;
@@ -227,7 +230,6 @@ namespace SpaceProject
                     }
                     else
                     {
-
                         if (StatsManager.Fuel > normalFuelCost)
                         {
                             speed += playerAcc;
@@ -245,16 +247,6 @@ namespace SpaceProject
                 if (StatsManager.Fuel > normalFuelCost)
                 {
                     Direction.SetDirection(Direction.GetDirectionAsDegree() + turningSpeed * MathFunctions.FPSSyncFactor(gameTime));
-
-                    // Is all of this needed? Both If-paths are identical // Jakob 150709
-                    //if (ControlManager.GamepadReady && ControlManager.ThumbStickAngleX != 0)
-                    //{
-                    //    Direction.SetDirection(Direction.GetDirectionAsDegree() + turningSpeed);
-                    //}
-                    //else
-                    //{
-                    //    Direction.SetDirection(Direction.GetDirectionAsDegree() + turningSpeed);
-                    //}
                 }
             }
 
@@ -264,16 +256,6 @@ namespace SpaceProject
                 if (StatsManager.Fuel > normalFuelCost)
                 {
                     Direction.SetDirection(Direction.GetDirectionAsDegree() - turningSpeed * MathFunctions.FPSSyncFactor(gameTime));
-
-                    // Is all of this needed? Both If-paths are identical // Jakob 150709
-                    //if (ControlManager.GamepadReady && ControlManager.ThumbStickAngleX != 0)
-                    //{
-                    //    Direction.SetDirection(Direction.GetDirectionAsDegree() - turningSpeed);
-                    //}
-                    //else
-                    //{
-                    //    Direction.SetDirection(Direction.GetDirectionAsDegree() - turningSpeed);
-                    //}
                 }
             }
 
@@ -460,27 +442,6 @@ namespace SpaceProject
                 }
             }
         }
-
-        //public void OnDamage(GameObjectOverworld obj)
-        //{
-        //    if (obj is SystemStar)
-        //    {
-        //        InitializeHeatWarning();
-        //
-        //        if (CollisionDetection.IsPointInsideCircle(Game.player.position, obj.position, obj.sprite.SourceRectangle.Value.Width / 2)
-        //            && damageTimer < 0)
-        //        {
-        //            damageTimer = 20;
-        //            StatsManager.ReduceShipLife(3);
-        //        }
-        //
-        //        else if (damageTimer < 0)
-        //        {
-        //            damageTimer = 20;
-        //            StatsManager.ReduceShipLife(1);
-        //        }
-        //    }
-        //}
 
         public void DisableControls()
         {

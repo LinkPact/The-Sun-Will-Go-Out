@@ -27,6 +27,7 @@ namespace SpaceProject
         private int activateRealTimeSwitchIndex;
         private List<List<PortraitID>> portraits;
         private List<List<int>> portraitTriggers;
+        private bool skip;
 
         public AutoPilotObjective(Game1 game, Mission mission, String description, float speed) :
             base(game, mission, description)
@@ -109,6 +110,20 @@ namespace SpaceProject
                 game.player.Direction.SetDirection(new Vector2(
                     Destination.position.X - game.player.position.X,
                     Destination.position.Y - game.player.position.Y));
+
+                if (ControlManager.CheckPress(RebindableKeys.Pause)
+                    && GameStateManager.currentState.Equals("OverworldState"))
+                {
+                    PopupHandler.DisplaySelectionMenu("Do you want to skip travel?",
+                        new List<string>() { "Yes", "No" },
+                        new List<System.Action>(){
+                            delegate 
+                            {
+                                SkipForward();
+                            },
+                            delegate {}
+                        });
+                }
             }
             game.player.speed = speed;
 
@@ -171,7 +186,7 @@ namespace SpaceProject
 
         public override bool Completed()
         {
-            return (Vector2.Distance(game.player.position, Destination.position) < 500);
+            return HasAnyShipArrived() || skip;
         }
 
         public override void OnCompleted()
@@ -251,6 +266,22 @@ namespace SpaceProject
             }
 
             return false;
+        }
+
+        private void SkipForward()
+        {
+            game.player.position = Destination.position;
+            game.camera.cameraPos = game.player.position;
+            PopupHandler.SkipRealTimeMessages();
+            ships[0].HasArrived = true;
+            for (int i = 0; i < portraits.Count; i++)
+            {
+                PopupHandler.DisplayPortraitMessage(portraits[0], portraitTriggers[0], timedMessages.Keys.First());
+                portraits.RemoveAt(0);
+                portraitTriggers.RemoveAt(0);
+                timedMessages.Remove(timedMessages.Keys.First());
+            }
+            skip = true;
         }
     }
 }

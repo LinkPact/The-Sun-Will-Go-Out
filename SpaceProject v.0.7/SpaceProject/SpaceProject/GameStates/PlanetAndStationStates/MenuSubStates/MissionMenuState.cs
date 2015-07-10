@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace SpaceProject
 {
@@ -201,7 +202,15 @@ namespace SpaceProject
 
             }
 
-            base.Update(gameTime);
+            if (BaseStateManager.ButtonControl != ButtonControl.Response
+                && ControlManager.CheckPress(RebindableKeys.Pause))
+            {
+                SkipMissionText();
+            }
+            else
+            {
+                base.Update(gameTime);
+            }
         }
 
         public void UpdateTextCursorPos()
@@ -902,6 +911,14 @@ namespace SpaceProject
             }
 
             return null;
+        }
+
+        private void SkipMissionText()
+        {
+            MissionManager.MissionEventBuffer.Clear();
+            BaseState.HideOverlay();
+            BaseStateManager.ChangeMenuSubState("Overview");
+            BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
         }
     }
 }

@@ -40,6 +40,7 @@ namespace SpaceProject
                 tempList.Add(GetSectorX.GetGameObject("Lavis"));
                 tempList.Add(GetSectorX.GetGameObject("Fortrun"));
                 tempList.Add(GetSectorX.GetGameObject("Star"));
+                tempList.Add(GetRebelOutpost.GetGameObject("Rebel Base"));
                 foreach (GameObjectOverworld obj in GetAllOverworldGameObjects)
                 {
                     if (obj is Planet)
@@ -459,7 +460,11 @@ namespace SpaceProject
                 EnterCheck();
             }
 
-            else if (ControlManager.CheckPress(RebindableKeys.Pause)) 
+            else if (ControlManager.CheckPress(RebindableKeys.Pause)
+                && Game.player.IsControlsEnabled
+                && (MissionManager.GetMission(MissionID.Main5_Retribution).MissionState != StateOfMission.Active
+                || (MissionManager.GetMission(MissionID.Main5_Retribution).ObjectiveIndex <= 2 
+                || MissionManager.GetMission(MissionID.Main5_Retribution).ObjectiveIndex >= 6))) 
             {
                 PopupHandler.DisplayMenu();
             }

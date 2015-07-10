@@ -654,7 +654,8 @@ namespace SpaceProject
             }
 
             // Screening off player from certain locations
-            if (mainInfiltration.MissionState != StateOfMission.CompletedDead
+            if (StatsManager.gameMode != GameMode.Develop
+                && mainInfiltration.MissionState != StateOfMission.CompletedDead
                 && mainInfiltration.ObjectiveIndex < 9)
             {
                 if (!game.player.HyperspeedOn)

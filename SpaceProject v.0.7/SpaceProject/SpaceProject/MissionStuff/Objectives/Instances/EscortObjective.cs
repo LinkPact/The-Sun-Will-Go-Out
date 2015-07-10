@@ -53,6 +53,8 @@ namespace SpaceProject
         private int lastLevelCompletedIndex = -1;
         private int levelCompletedIndex;
 
+        private bool skip;
+
         public EscortObjective(Game1 game, Mission mission, List<String> descriptions,
             EscortDataCapsule escortDataCapsule, bool autofollow = false) :
             base(game, mission, descriptions[0])
@@ -154,6 +156,20 @@ namespace SpaceProject
                 }
 
                 game.player.speed = escortDataCapsule.ShipToDefend.speed;
+
+                if (ControlManager.CheckPress(RebindableKeys.Pause)
+                    && GameStateManager.currentState.Equals("OverworldState"))
+                {
+                    PopupHandler.DisplaySelectionMenu("Do you want to skip travel?",
+                        new List<string>() { "Yes", "No" },
+                        new List<System.Action>(){
+                            delegate 
+                            {
+                                SkipForward();
+                            },
+                            delegate {}
+                        });
+                }
             }
 
             if (timedMessageCount >= 0
@@ -252,7 +268,7 @@ namespace SpaceProject
                         enemies[0],
                         escortDataCapsule.ShipToDefend.position +
                         (650 * escortDataCapsule.ShipToDefend.Direction.GetDirectionAsVector()),
-                        levels[startingNumberOfEnemyShips - numberOfEnemyShips], escortDataCapsule.ShipToDefend);
+                        levels[levelCompletedIndex], escortDataCapsule.ShipToDefend);
 
                     numberOfEnemyShips--;
 
@@ -320,7 +336,7 @@ namespace SpaceProject
         public override bool Completed()
         {
             return (escortDataCapsule.ShipToDefend.AIManager.Finished 
-                || escortDataCapsule.ShipToDefend.IsDead);
+                || escortDataCapsule.ShipToDefend.IsDead || skip);
         }
 
         public override void OnCompleted()
@@ -378,24 +394,7 @@ namespace SpaceProject
                     if (CollisionDetection.IsRectInRect(escortDataCapsule.ShipToDefend.Bounds, enemies[i].Bounds))
                     {
                         game.stateManager.overworldState.RemoveOverworldObject(enemies[i]);
-                        game.stateManager.shooterState.BeginLevel(enemies[i].Level);
-                        game.stateManager.shooterState.CurrentLevel.SetFreighterMaxHP(shipToDefendMaxHP);
-                        game.stateManager.shooterState.CurrentLevel.SetFreighterHP(shipToDefendHP);
-                        enemies.RemoveAt(i);
-
-                        if (enemyMessages.Count > 0)
-                        {
-                            if (enemyPortraits[0] != PortraitID.None)
-                            {
-                                PopupHandler.DisplayPortraitMessage(enemyPortraits[0], enemyMessages[0]);
-                            }
-                            else
-                            {
-                                PopupHandler.DisplayMessage(enemyMessages[0]);
-                            }
-                            enemyMessages.RemoveAt(0);
-                            enemyPortraits.RemoveAt(0);
-                        }
+                        StartEnemyLevel(i, enemies[i].Level);
                     }
                 }
             }
@@ -483,6 +482,53 @@ namespace SpaceProject
                 }
 
                 timedMessages.Add(messages[i]);
+            }
+        }
+
+        private void SkipForward()
+        {
+            PopupHandler.SkipRealTimeMessages();
+            timedMessageCount = timedMessages.Count;
+
+            foreach (OverworldShip ship in enemies)
+            {
+                if (game.stateManager.overworldState.GetAllOverworldGameObjects.Contains(ship))
+                {
+                    game.stateManager.overworldState.RemoveOverworldObject(ship);
+                }
+            }
+
+            if (enemies.Count > 0)
+            {
+                numberOfEnemyShips--;
+                StartEnemyLevel(0, levels[levelCompletedIndex]);
+            }
+            else
+            {
+                escortDataCapsule.ShipToDefend.HasArrived = true;
+                skip = true;
+            }
+        }
+
+        private void StartEnemyLevel(int enemyIndex, string level)
+        {
+            game.stateManager.shooterState.BeginLevel(level);
+            game.stateManager.shooterState.CurrentLevel.SetFreighterMaxHP(shipToDefendMaxHP);
+            game.stateManager.shooterState.CurrentLevel.SetFreighterHP(shipToDefendMaxHP);
+            enemies.RemoveAt(enemyIndex);
+
+            if (enemyMessages.Count > 0)
+            {
+                if (enemyPortraits[0] != PortraitID.None)
+                {
+                    PopupHandler.DisplayPortraitMessage(enemyPortraits[0], enemyMessages[0]);
+                }
+                else
+                {
+                    PopupHandler.DisplayMessage(enemyMessages[0]);
+                }
+                enemyMessages.RemoveAt(0);
+                enemyPortraits.RemoveAt(0);
             }
         }
     }
