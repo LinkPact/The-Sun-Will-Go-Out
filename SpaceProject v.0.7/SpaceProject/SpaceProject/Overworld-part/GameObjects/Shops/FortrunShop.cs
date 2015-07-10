@@ -27,21 +27,16 @@ namespace SpaceProject
         {
             hasShop = true;
 
-            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.RegularEnergyCell, ShipPartAvailability.common, ItemVariety.regular));
-            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.RegularShield, ShipPartAvailability.common, ItemVariety.regular));
-            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.RegularPlating, ShipPartAvailability.common, ItemVariety.regular));
-
             AddMandatoryItem(new ShopInventoryEntry(ShipPartType.MultipleShot, ShipPartAvailability.common, ItemVariety.regular));
-            //AddMandatoryItem(new ShopInventoryEntry(ShipPartType.Beam, ShipPartAvailability.common, ItemVariety.regular));
             AddMandatoryItem(new ShopInventoryEntry(ShipPartType.BallisticLaser, ShipPartAvailability.common, ItemVariety.regular));
             AddMandatoryItem(new ShopInventoryEntry(ShipPartType.WaveBeam, ShipPartAvailability.common, ItemVariety.regular));
 
             AddMandatoryItem(new ShopInventoryEntry(ShipPartType.Turret, ShipPartAvailability.common, ItemVariety.regular));
             AddMandatoryItem(new ShopInventoryEntry(ShipPartType.HomingMissile, ShipPartAvailability.common, ItemVariety.regular));
 
-            //AddShopEntry(new ShopInventoryEntry(ShipPartType.RegularEnergyCell, ShipPartAvailability.common, ItemVariety.random));
-            //AddShopEntry(new ShopInventoryEntry(ShipPartType.RegularShield, ShipPartAvailability.common, ItemVariety.random));
-            //AddShopEntry(new ShopInventoryEntry(ShipPartType.RegularPlating, ShipPartAvailability.common, ItemVariety.random));
+            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.RegularEnergyCell, ShipPartAvailability.common, ItemVariety.regular));
+            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.RegularShield, ShipPartAvailability.common, ItemVariety.regular));
+            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.RegularPlating, ShipPartAvailability.common, ItemVariety.regular));
 
             SetShopFilling(ShopFilling.veryFilled);
         }

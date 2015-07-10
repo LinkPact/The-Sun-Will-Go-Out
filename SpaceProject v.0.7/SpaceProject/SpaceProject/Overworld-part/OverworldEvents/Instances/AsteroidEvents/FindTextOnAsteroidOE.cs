@@ -19,7 +19,7 @@ namespace SpaceProject
             "This asteroid looks like a huge potato.",
             "[SAIR] An ambush!#...#[SAIR] Sorry, I should probably update my sensors. False alarm.",
             "[SAIR] Another... asteroid! It gets so repetitive.",
-            "You find a message scribbled into the stone.#\"Have you been to the corner of the universe? The upper left.\"#\"My grandmother hid some forgotten technology there.\"",
+            "You find a message scribbled into the stone.#\"Have you been to the corner of the universe? The upper left.\"#\"My grandmother hid some forgotten technology there. Far, far away...\"",
             "You find a message scribbled into the stone.#\"Sometimes, voices whisper three names to me. Danne, Jakob, Johan... Who are they?\""
         };
 
