@@ -87,12 +87,22 @@ namespace SpaceProject
 
             GameObjectOverworld informationStation = Game.stateManager.overworldState.GetSectorX.GetGameObject("Information Station");
 
-            AddDestination(informationStation, 6);
+            AddDestination(informationStation, 7);
         }
 
         protected override void SetupObjectives()
         {
             objectives.Clear();
+
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                delegate
+                {
+                    ((SubInteractiveObject)Game.stateManager.overworldState.GetSectorX.GetGameObject("Information Station")).OverrideEvent(
+                        new EmptyOE());
+                },
+                delegate { },
+                delegate { return true; },
+                delegate { return false; }));
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.Introduction), null, EventTextCanvas.MessageBox, PortraitID.Sair),
