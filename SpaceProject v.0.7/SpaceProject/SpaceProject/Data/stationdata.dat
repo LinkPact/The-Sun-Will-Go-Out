@@ -90,7 +90,7 @@ Inhabitants = 25000
 
 [OW_Highfence_Shop]
 Name = Highfence Shop
-PositionX = 200
+PositionX = 400
 PositionY = -100
 Inhabitants = 1
 

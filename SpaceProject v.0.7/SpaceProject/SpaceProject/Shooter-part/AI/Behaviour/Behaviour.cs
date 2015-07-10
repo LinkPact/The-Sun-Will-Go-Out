@@ -18,7 +18,7 @@ namespace SpaceProject
     {
         #region Variables
         protected Game1 Game;
-        protected AI AI;
+        protected AI ai;
         protected AlliedShip Ship;
 
         protected AIAction aIAction;
@@ -29,10 +29,10 @@ namespace SpaceProject
 
         #endregion
 
-        protected Behaviour(Game1 Game, AI AI, AlliedShip Ship)
+        protected Behaviour(Game1 Game, AI ai, AlliedShip Ship)
         {
             this.Game = Game;
-            this.AI = AI;
+            this.ai = ai;
             this.Ship = Ship;
         }
         
@@ -46,15 +46,15 @@ namespace SpaceProject
                     break;
 
                 case AIAction.Attack:
-                    AI.Attack();
+                    ai.Attack();
                     break;
 
                 case AIAction.Avoid:
-                    AI.Avoid();
+                    ai.Avoid();
                     break;
 
                 case AIAction.Formation:
-                    Ship.MoveToArea(AI.FormationArea);
+                    Ship.MoveToArea(ai.FormationArea);
                     break;
             }
         }
@@ -67,7 +67,7 @@ namespace SpaceProject
                 if (!IgnoreList.Contains(closestEnemy))
                 {
                     if(Ship.BoundingY - closestEnemy.BoundingY + closestEnemy.BoundingWidth > -100)
-                    AI.Target = (VerticalShooterShip)closestEnemy;
+                    ai.Target = (VerticalShooterShip)closestEnemy;
                     IgnoreList.Add(closestEnemy);
                 }
             }

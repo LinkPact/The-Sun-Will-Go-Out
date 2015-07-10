@@ -20,7 +20,7 @@ namespace SpaceProject
 
             Speed = 0.8f;
             IsKilled = false;
-            Damage = 25;
+            Damage = 20;
             ObjectClass = "bullet";
             Duration = 500;
 

@@ -24,7 +24,8 @@ namespace SpaceProject
         RebelTroopLeader,
         AlliancePilot,
         RebelPilot,
-        CommonCitizen
+        CommonCitizen,
+        Pai
     }
 
     public class Portrait
@@ -97,6 +98,10 @@ namespace SpaceProject
 
                 case PortraitID.CommonCitizen:
                     sourceRect = new Rectangle(462, 394, 149, 192);
+                    break;
+
+                case PortraitID.Pai:
+                    sourceRect = new Rectangle(618, 0, 149, 192);
                     break;
 
                 default:
@@ -234,6 +239,13 @@ namespace SpaceProject
             {
                 lastPortraitID = PortraitID.AllianceCaptain;
                 return PortraitID.AllianceCaptain;
+            }
+
+            else if (lowerCase.Contains("[pai]")
+                || lowerCase.Contains("{pai}"))
+            {
+                lastPortraitID = PortraitID.Pai;
+                return PortraitID.Pai;
             }
 
             else if (lowerCase.Contains("\""))

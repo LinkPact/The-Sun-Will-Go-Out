@@ -50,7 +50,7 @@ namespace SpaceProject
         private List<DirectionArrow> availableMainMissionArrows;
         private List<String> availableMainMissionLocationNames;
 
-        private static int colorSwapCounter = 0;
+        private static float colorSwapCounter = 0;
         
         private int viewRadius;
         public Rectangle View
@@ -95,6 +95,8 @@ namespace SpaceProject
             availableMainMissionLocationNames.Clear();
 
             availableMainMissionLocationNames = MissionManager.GetAvailableMainMissionLocationNames();
+
+            colorSwapCounter += 1 * MathFunctions.FPSSyncFactor(gameTime);
 
             foreach (GameObjectOverworld obj in objectsInOverworld)
             {
@@ -170,7 +172,6 @@ namespace SpaceProject
         private void DrawVisibleGameObjects(SpriteBatch spriteBatch)
         {
             float drawDistance = 0.91f;
-            colorSwapCounter++;
 
             foreach (GameObjectOverworld obj in objectsVisibleOnRadar)
             {

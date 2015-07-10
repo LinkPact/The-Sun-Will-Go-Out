@@ -120,22 +120,22 @@ namespace SpaceProject
             {
                 if (ControlManager.CheckHold(RebindableKeys.Right))
                 {
-                    cameraPos.X += CameraPanSpeed;
+                    cameraPos.X += CameraPanSpeed * MathFunctions.FPSSyncFactor(gameTime);
                 }
 
                 else if (ControlManager.CheckHold(RebindableKeys.Left))
                 {
-                    cameraPos.X -= CameraPanSpeed;
+                    cameraPos.X -= CameraPanSpeed * MathFunctions.FPSSyncFactor(gameTime);
                 }
 
                 if (ControlManager.CheckHold(RebindableKeys.Up))
                 {
-                    cameraPos.Y -= CameraPanSpeed;
+                    cameraPos.Y -= CameraPanSpeed * MathFunctions.FPSSyncFactor(gameTime);
                 }
 
                 else if (ControlManager.CheckHold(RebindableKeys.Down))
                 {
-                    cameraPos.Y += CameraPanSpeed;
+                    cameraPos.Y += CameraPanSpeed * MathFunctions.FPSSyncFactor(gameTime);
                 }
             }
 

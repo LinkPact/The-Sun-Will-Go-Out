@@ -223,7 +223,7 @@ namespace SpaceProject
                     {
                         if (StatsManager.Fuel > normalFuelCost)
                         {
-                            speed += playerAcc;
+                            speed += playerAcc * MathFunctions.FPSSyncFactor(gameTime);
                         }
 
                         AddParticle();
@@ -232,7 +232,7 @@ namespace SpaceProject
                     {
                         if (StatsManager.Fuel > normalFuelCost)
                         {
-                            speed += playerAcc;
+                            speed += playerAcc * MathFunctions.FPSSyncFactor(gameTime);
                         }
 
                         AddParticle();
