@@ -67,7 +67,8 @@ namespace SpaceProject
             else if (Destination is SubInteractiveObject)
             {
                 return (CollisionDetection.IsRectInRect(game.player.Bounds, Destination.Bounds) &&
-                    (ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)));
+                    (ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter))
+                    && !PopupHandler.IsMenuOpen);
             }
             else
             {

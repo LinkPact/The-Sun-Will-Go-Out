@@ -25,7 +25,7 @@ namespace SpaceProject
             BackToRebelBase
         }
 
-        private readonly Vector2 SkipWaitFreighterOffset = new Vector2(600, 600);
+        private readonly Vector2 SkipWaitFreighterOffset = new Vector2(500, 500);
 
         private List<RebelShip> rebelShips;
         private readonly int numberOfRebelShips = 3;
@@ -66,8 +66,6 @@ namespace SpaceProject
         {
             switch (ObjectiveIndex)
             {
-                case 0:
-                case 1:
                 case 2:
                 case 3:
                 case 4:
@@ -109,7 +107,7 @@ namespace SpaceProject
             base.MissionLogic();
 
             if (ObjectiveIndex > 2
-                && ObjectiveIndex < 6
+                && ObjectiveIndex <= 6
                 && !Game.player.HyperspeedOn)
             {
                 if (Vector2.Distance(Game.player.position, rebelShips[1].position) > 500)
@@ -339,7 +337,7 @@ namespace SpaceProject
         {
             PopupHandler.SkipRealTimeMessages();
             ObjectiveIndex = 6;
-            freighter.position = Game.player.position + SkipWaitFreighterOffset;
+            freighter.position = rebelShips[0].position + SkipWaitFreighterOffset;
         }
     }
 }

@@ -344,7 +344,6 @@ namespace SpaceProject
             saveFile.EmptySaveFile(Game1.SaveFilePath, "save.ini");
             statsManager.Save();
             player.Save();
-            //baseInventoryManager.Save();
             missionManager.Save();
             tutorialManager.Save();
             shipInventoryManager.Save();
@@ -358,7 +357,7 @@ namespace SpaceProject
             saveFile.Load(SaveFilePath, "save.ini");
             statsManager.Load();
             player.Load();
-            //baseInventoryManager.Load();
+            camera.cameraPos = player.position;
             missionManager.Load();
             tutorialManager.Load();
             shipInventoryManager.Load();

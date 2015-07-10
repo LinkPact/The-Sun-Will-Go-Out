@@ -948,16 +948,6 @@ namespace SpaceProject
                     ((SubInteractiveObject)sectorXObjects[i]).Save();
                 }
             }
-
-            //// Save Shops
-            //foreach (GameObjectOverworld obj in GetImmobileObjects)
-            //{
-            //    if (obj is ImmobileSpaceObject)
-            //    {
-            //        ImmobileSpaceObject tmpObj = (ImmobileSpaceObject)obj;
-            //        tmpObj.SaveShop();
-            //    }
-            //}
         }
 
         public void Load()
@@ -992,21 +982,12 @@ namespace SpaceProject
                     case "Hangar Ship":
                         sectorX.shipSpawner.AddHangarShip(new Vector2(posx, posy));
                         break;
-                    //case "Ally Ship":
-                    //    sectorX.shipSpawner.AddRebelShip(new Vector2(posx, posy));
-                    //    break;
                 }
             }
 
             // Load Shop Inventory
             foreach (GameObjectOverworld obj in GetImmobileObjects)
             {
-                //if (obj is ImmobileSpaceObject)
-                //{
-                //    ImmobileSpaceObject tmObj = (ImmobileSpaceObject)obj;
-                //    tmObj.LoadShop();
-                //}
-
                 if (obj is SubInteractiveObject)
                 {
                     ((SubInteractiveObject)obj).Load();

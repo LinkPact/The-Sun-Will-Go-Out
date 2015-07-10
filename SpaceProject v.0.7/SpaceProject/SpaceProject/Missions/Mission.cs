@@ -328,7 +328,10 @@ namespace SpaceProject
         { }
 
         public virtual void OnLoad()
-        { }
+        {
+            PopupHandler.RemoveMessages();
+            Game1.Paused = false;
+        }
 
         public virtual void OnReset()
         {

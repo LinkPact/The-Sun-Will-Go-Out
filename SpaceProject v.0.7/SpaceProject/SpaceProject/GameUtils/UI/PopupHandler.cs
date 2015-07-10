@@ -276,6 +276,11 @@ namespace SpaceProject
             realTimeMessageQueue.Clear();
         }
 
+        public static void RemoveMessages()
+        {
+            messageQueue.Clear();
+        }
+
         private static void UpdateQueue(GameTime gameTime, List<Popup> queue)
         {
             if (queue.Count > 0)

@@ -44,7 +44,6 @@ namespace SpaceProject
 
         public override void OnLoad()
         {
-         
         }
 
         public override void OnReset()
