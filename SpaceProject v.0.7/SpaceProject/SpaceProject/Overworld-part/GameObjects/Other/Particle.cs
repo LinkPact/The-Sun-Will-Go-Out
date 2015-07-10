@@ -68,19 +68,43 @@ namespace SpaceProject
 
             scale -= 0.025f * MathFunctions.FPSSyncFactor(gameTime);
 
-            if (color.R > 0)
-                color.R -= 15;
-
-            if (color.G > 0)
-                color.G -= 9;
-
-            if (color.B > 0)
-                color.B -= 15;
+            color = GetFadingFireColor(gameTime, color);
 
             if (lifeSpawn > 0)
+            {
                 lifeSpawn -= 1.0f * MathFunctions.FPSSyncFactor(gameTime);
+            }
 
             base.Update(gameTime);
+        }
+
+        private static Color GetFadingFireColor(GameTime gameTime, Color initialColor)
+        {
+            Color resultingColor = initialColor;
+
+            int redFadeRate = 15;
+            int greenFadeRate = 9;
+            int blueFadeRate = 15;
+
+            resultingColor.R = UpdateSingleColor(gameTime, initialColor.R, redFadeRate);
+            resultingColor.G = UpdateSingleColor(gameTime, initialColor.G, greenFadeRate);
+            resultingColor.B = UpdateSingleColor(gameTime, initialColor.B, blueFadeRate);
+        
+            return resultingColor;
+        }
+
+        private static byte UpdateSingleColor(GameTime gameTime, byte initialColor, int fadeOutRate)
+        {
+            byte colorFadeDelta = (byte)(fadeOutRate * MathFunctions.FPSSyncFactor(gameTime));
+
+            if ((int)(initialColor - colorFadeDelta) > 0)
+            {
+                return (byte)(initialColor - colorFadeDelta);
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
