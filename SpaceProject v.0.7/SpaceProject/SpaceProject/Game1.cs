@@ -349,7 +349,7 @@ namespace SpaceProject
             shipInventoryManager.Save();
             stateManager.overworldState.Save();
 
-            helper.DisplayText("The game has been saved!", 2);
+            AutoSaveHandler.DisplayAutoSaveMessage(2000);
         }
 
         public void Load()

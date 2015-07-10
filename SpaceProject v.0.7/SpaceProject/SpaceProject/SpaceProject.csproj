@@ -395,6 +395,7 @@
     <Compile Include="Overworld-part\Interface\BeaconMenu.cs" />
     <Compile Include="Overworld-part\Interface\DirectionArrow.cs" />
     <Compile Include="Overworld-part\Interface\HeadsUpDisplay.cs" />
+    <Compile Include="Overworld-part\Interface\AutoSaveHandler.cs" />
     <Compile Include="Overworld-part\Interface\Radar.cs" />
     <Compile Include="Overworld-part\OverworldEvents\EventGenerator.cs" />
     <Compile Include="Overworld-part\OverworldEvents\Instances\AsteroidEvents\AsteroidAmbushOE.cs" />

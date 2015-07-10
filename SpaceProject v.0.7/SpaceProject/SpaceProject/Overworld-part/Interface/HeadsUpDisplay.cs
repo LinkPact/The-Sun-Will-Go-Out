@@ -16,6 +16,7 @@ namespace SpaceProject
         private List<Bar> fusionCellBars;
         private Bar emergencyFusionCellBar;
         private Bar lifeBar;
+        private AutoSaveHandler autoSaveHandler;
 
         public HeadsUpDisplay(Game1 game)
         {
@@ -35,12 +36,13 @@ namespace SpaceProject
 
             lifeBar = new Bar(game, spriteSheet, Color.Green, true);
             lifeBar.Initialize();
+
+            autoSaveHandler = new AutoSaveHandler(game);
+            autoSaveHandler.Initialize();
         }
 
         public void Update(GameTime gameTime, List<GameObjectOverworld> visibleGameObjects)
         {
-            UpdateZoomMap(gameTime);
-
             radar.Update(gameTime, visibleGameObjects, game.camera.Position);
 
             lifeBar.Update(gameTime, StatsManager.GetShipLife(), StatsManager.Armor(),
@@ -59,22 +61,16 @@ namespace SpaceProject
             emergencyFusionCellBar.Update(gameTime, StatsManager.EmergencyFusionCell, 1,
                 new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
                             game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 2 - 45));
-        }
 
-        private void UpdateZoomMap(GameTime gameTime)
-        {
-            
+            autoSaveHandler.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             radar.Draw(spriteBatch);
-            //DrawLife(spriteBatch);
             DrawPosition(spriteBatch);
-            // DON'T DELETE
-            //DrawFusionCells(spriteBatch);
-            //DrawRepAndProgress(spriteBatch);
             DrawMenuInfo(spriteBatch);
+            autoSaveHandler.Draw(spriteBatch);
         }
 
         private void DrawLife(SpriteBatch spriteBatch)
