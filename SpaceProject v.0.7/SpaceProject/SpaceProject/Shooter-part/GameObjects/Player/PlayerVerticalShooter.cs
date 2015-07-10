@@ -43,10 +43,10 @@ namespace SpaceProject
 
         private Sprite shieldSprite;
         
-        private float redLevel;
-        private readonly float redShiftTimeDamaged = 1000;
-        private readonly float redShiftTimeBadlyDamaged = 300;
-        private Boolean redToningIn;
+        //private float redLevel;
+        //private readonly float redShiftTimeDamaged = 1000;
+        //private readonly float redShiftTimeBadlyDamaged = 300;
+        //private Boolean redToningIn;
 
         private float acceleration;
         private float deAcceleration;
@@ -122,9 +122,6 @@ namespace SpaceProject
 
             CenterPoint = new Vector2(anim.Width / 2, anim.Height / 2);
             angle = (float)(Math.PI / 180) * 180;
-
-            redLevel = 0;
-            redToningIn = true;
         }
 
         public override void Update(GameTime gameTime)
@@ -140,46 +137,13 @@ namespace SpaceProject
             PlayerMovementControl();
             CheckCollisionsEdges();
             UpdateRuntimeStats(gameTime);
-
-            if (HP < HPmax / 5)
-            {
-                UpdateRedTint(gameTime, redShiftTimeBadlyDamaged);
-            }
-            else if (HP < 2 * HPmax / 5)
-            {
-                UpdateRedTint(gameTime, redShiftTimeDamaged);
-            }
-        }
-
-        private void UpdateRedTint(GameTime gameTime, float redShiftTime)
-        {
-            float redShiftAmount = gameTime.ElapsedGameTime.Milliseconds / redShiftTime * 255;
-
-            if (redToningIn)
-            {
-                redLevel += redShiftAmount;
-                if (redLevel >= 255)
-                {
-                    redLevel = 255;
-                    redToningIn = false;
-                }
-            }
-            else
-            {
-                redLevel -= redShiftAmount;
-                if (redLevel <= 0)
-                {
-                    redLevel = 0;
-                    redToningIn = true;
-                }
-            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             if (IsKilled == false)
             {
-                spriteBatch.Draw(anim.CurrentFrame.Texture, Position, anim.CurrentFrame.SourceRectangle, GetTintColor(), angle, CenterPoint, 1.0f, SpriteEffects.None, DrawLayer);
+                spriteBatch.Draw(anim.CurrentFrame.Texture, Position, anim.CurrentFrame.SourceRectangle, GetDamageTintColor(), angle, CenterPoint, 1.0f, SpriteEffects.None, DrawLayer);
                 spriteBatch.Draw(shieldSprite.Texture, Position, shieldSprite.SourceRectangle, Color.White * ShieldTransparency(), 0.0f, new Vector2(shieldSprite.CenterPoint.X+1, shieldSprite.CenterPoint.Y), 1.0f, SpriteEffects.None, DrawLayer);
             }
         }
@@ -191,12 +155,6 @@ namespace SpaceProject
             return fullChargeTransparency * shieldChargeFraction;
         }
 
-        private Color GetTintColor()
-        {
-            int shiftLevel = (int)(255 - redLevel);
-            return new Color(255, shiftLevel, shiftLevel);
-        }
-        
         private void UpdateRuntimeStats(GameTime gameTime)
         {
             float MPgain = MPgainedSec * gameTime.ElapsedGameTime.Milliseconds / 1000;

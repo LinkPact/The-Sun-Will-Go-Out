@@ -35,6 +35,7 @@ namespace SpaceProject
             //Egenskaper
             SightRange = 500;
             HP = 200;
+            HPmax = HP;
             Damage = (float)CollisionDamage.low;
             Speed = 0.1f;
 

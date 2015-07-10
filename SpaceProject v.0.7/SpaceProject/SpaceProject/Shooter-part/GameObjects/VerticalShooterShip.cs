@@ -193,12 +193,17 @@ namespace SpaceProject
 
             if (hasShield)
             {
-                currentShield += shieldRegeneration;
+                currentShield += shieldRegeneration * MathFunctions.FPSSyncFactor(gameTime);
                 if (currentShield > shieldCapacity)
                     currentShield = shieldCapacity;
             }
 
             DisruptionLogic(gameTime);
+
+            if (!IsDisrupted)
+            {
+                ObjectColor = GetDamageTintColor();
+            }
         }
 
         private void DisruptionLogic(GameTime gameTime)
@@ -240,14 +245,6 @@ namespace SpaceProject
             }
         }
         
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            if (!IsKilled)
-            {
-                base.Draw(spriteBatch);
-            }
-        }
-
         public override void InflictDamage(GameObjectVertical obj)
         {
             if (obj.DisruptionTime > 0)
@@ -284,6 +281,13 @@ namespace SpaceProject
                 base.OnDamage();
                 HP -= obj.Damage;
             }
+        }
+
+        protected float ShieldTransparency()
+        {
+            float fullChargeTransparency = 0.3f;
+            float shieldChargeFraction = currentShield / shieldCapacity;
+            return fullChargeTransparency * shieldChargeFraction;
         }
 
         public override void OnKilled()

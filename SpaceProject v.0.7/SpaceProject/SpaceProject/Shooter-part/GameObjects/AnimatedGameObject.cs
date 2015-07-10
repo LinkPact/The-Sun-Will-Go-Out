@@ -97,8 +97,14 @@ namespace SpaceProject
 
         public virtual bool CheckOutside()
         {
-            if (PositionX + anim.Width < 0 || PositionX - anim.Width > windowWidth
-                || PositionY + anim.Width < -500 || PositionY - anim.Height > windowHeight)
+            float centerX = windowWidth / 2;
+            float leftEdgeX = centerX - LevelWidth / 2;
+            float rightEdgeX = centerX + LevelWidth / 2;
+            float xPadding = 50;
+            float paddingAboveWindow = 500;
+
+            if (PositionX + anim.Width < leftEdgeX - xPadding || PositionX - anim.Width > rightEdgeX + xPadding
+                || PositionY + anim.Width < -paddingAboveWindow || PositionY - anim.Height > windowHeight)
             {
                 return true;
             }

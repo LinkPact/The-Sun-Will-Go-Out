@@ -16,6 +16,8 @@ namespace SpaceProject
         private const float StandardMaxSpeed = 0.72f;
         private const string StandardWeapon = "basiclaser";
         private const float StandardAvoidRadius = 150;
+
+        private Sprite shieldSprite;
         #endregion
 
         public AllianceFighterAlly(Game1 Game, Sprite SpriteSheet, PlayerVerticalShooter player) :
@@ -85,6 +87,9 @@ namespace SpaceProject
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(49, 201, 23, 27)));
             CenterPoint = new Vector2(anim.CurrentFrame.SourceRectangle.Value.Width / 2,
                                       anim.CurrentFrame.SourceRectangle.Value.Height / 2);
+
+            ShieldSetup(CreatureShieldCapacity.low, CreatureShieldRegeneration.high);
+            shieldSprite = spriteSheet.GetSubSprite(new Rectangle(260, 100, 37, 37));
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -95,6 +100,7 @@ namespace SpaceProject
                     SpriteEffects.None, 1f);
 
             base.Draw(spriteBatch);
+            spriteBatch.Draw(shieldSprite.Texture, Position, shieldSprite.SourceRectangle, Color.White * ShieldTransparency(), 0.0f, new Vector2(shieldSprite.CenterPoint.X + 1, shieldSprite.CenterPoint.Y), 1.0f, SpriteEffects.None, DrawLayer);
         }
 
         public override void OnKilled()

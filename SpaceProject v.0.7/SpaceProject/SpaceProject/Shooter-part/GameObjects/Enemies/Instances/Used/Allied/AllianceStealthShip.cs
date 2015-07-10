@@ -46,15 +46,12 @@ namespace SpaceProject
 
             lootValue = LootValue.veryHigh;
 
-            //Shooting
-            //SetShootingDelay(3000);
-            //ChargeWeapon(ChargeMode.noCharge);
-
             AddPrimaryModule(300, ShootingMode.Regular);
             
             //Egenskaper
             SightRange = 4000;
             HP = 400.0f;
+            HPmax = HP;
             Damage = (float)CollisionDamage.high;
             Speed = 0.03f;
             movement = Movement.Line;
