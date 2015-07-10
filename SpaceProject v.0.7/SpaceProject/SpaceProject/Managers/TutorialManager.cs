@@ -45,7 +45,6 @@ namespace SpaceProject
         private bool hasEnteredShop;
         private bool hasEnteredInventory;
         private bool hasEnteredHighfenceBeaconArea;
-        private bool hasActivatedHighfenceBeacon;
         private bool hasEnteredShooterWithShield;
         private bool longShotTutorialActivated;
         private bool secondaryWeaponTutorialDisplayed;
@@ -81,7 +80,6 @@ namespace SpaceProject
             hasEnteredShop = false;
             hasEnteredInventory = false;
             hasEnteredHighfenceBeaconArea = false;
-            hasActivatedHighfenceBeacon = false;
         }
 
         public void Update(GameTime gameTime)
@@ -129,20 +127,7 @@ namespace SpaceProject
                 Vector2.Distance(game.player.position, highfenceBeaconPosition) < BeaconTutorialActivationRadius)
             {
                 hasEnteredHighfenceBeaconArea = true;
-                DisplayTutorialMessage("This is a 'beacon'. Beacons are used for traveling quickly between planets, but they need to be activated before use. Fly near the beacon to activate it!"); 
-            }
-
-            if (hasEnteredHighfenceBeaconArea
-                && !hasActivatedHighfenceBeacon
-                && game.stateManager.overworldState.GetBeacon("Highfence Beacon").IsActivated)
-            {
-                hasActivatedHighfenceBeacon = true;
-
-                if (MissionManager.GetMission(MissionID.Main2_1_TheConvoy).MissionState != StateOfMission.Active
-                    || !((EscortObjective)MissionManager.GetMission(MissionID.Main2_1_TheConvoy).CurrentObjective).Started)
-                {
-                    DisplayTutorialMessage("Good! This beacon is now activated and can be used. Most planets in the sector have a beacon orbiting it. Don't forget to activate them when you see them!");
-                }
+                DisplayTutorialMessage("This is a 'beacon'. Beacons are used for traveling quickly between planets, but they need to be activated before use. Activate a beacon by flying close to it!"); 
             }
 
             if (!hasEnteredVerticalShooter && GameStateManager.currentState.Equals("ShooterState"))
@@ -376,7 +361,6 @@ namespace SpaceProject
             tutorialProgress.Add("hasEnteredShop", hasEnteredShop.ToString());
             tutorialProgress.Add("hasEnteredInventory", hasEnteredInventory.ToString());
             tutorialProgress.Add("hasEnteredHighfenceBeaconArea", hasEnteredHighfenceBeaconArea.ToString());
-            tutorialProgress.Add("hasActivatedHighfenceBeacon", hasActivatedHighfenceBeacon.ToString());
             tutorialProgress.Add("hasStartedSecondMission", coordinatesDisplayed.ToString());
             tutorialProgress.Add("equipShieldTutorial", equipShieldTutorialFinished.ToString());
             tutorialProgress.Add("longShotTutorial", longShotTutorialActivated.ToString());
@@ -394,7 +378,6 @@ namespace SpaceProject
             hasEnteredShop = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredshop", false);
             hasEnteredInventory = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredinventory", false);
             hasEnteredHighfenceBeaconArea = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredhighfencebeaconarea", false);
-            hasActivatedHighfenceBeacon = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasactivatedhighfencebeacon", false);
             coordinatesDisplayed = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasstartedsecondmission", false);
             equipShieldTutorialFinished = game.saveFile.GetPropertyAsBool("tutorialprogress", "equipshieldtutorial", false);
             longShotTutorialActivated = game.saveFile.GetPropertyAsBool("tutorialprogress", "longshottutorial", false);
