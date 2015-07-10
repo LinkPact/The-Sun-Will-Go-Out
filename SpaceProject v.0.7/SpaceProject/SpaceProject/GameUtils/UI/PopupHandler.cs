@@ -41,6 +41,22 @@ namespace SpaceProject
 
         public static int MessageQueueCount { get { return messageQueue.Count; } }
 
+        public static bool IsMenuOpen 
+        { 
+            get 
+            { 
+                foreach (Popup popup in menuQueue)
+                {
+                    if (!(popup is SelectionMenu))
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+            } 
+        }
+
         #endregion
 
         public PopupHandler(Game1 game, Sprite spriteSheet)

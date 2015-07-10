@@ -251,7 +251,17 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
+            if (BaseStateManager.ButtonControl != ButtonControl.TransactionConfirm)
+            {
+                base.Update(gameTime);
+            }
+            else if (ControlManager.CheckPress(RebindableKeys.Action2) || 
+                ControlManager.CheckKeyPress(Keys.Escape))
+            {
+                itemToSell = null;
+                itemToBuy = null;
+                BaseStateManager.ButtonControl = ButtonControl.Shop;
+            }
 
             ButtonControls(gameTime);
             MouseControls();

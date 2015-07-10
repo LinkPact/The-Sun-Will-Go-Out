@@ -236,7 +236,8 @@ namespace SpaceProject
                 soundEffectsManager.Update(gameTime);
 
                 if (ControlManager.CheckKeyPress(Keys.N)
-                    && GameStateManager.currentState == "OverworldState")
+                    && GameStateManager.currentState == "OverworldState"
+                    && !PopupHandler.IsMenuOpen)
                 {
                     ZoomMap.ToggleMap();
                     soundEffectsManager.StopSoundEffect(SoundEffects.OverworldEngine);
