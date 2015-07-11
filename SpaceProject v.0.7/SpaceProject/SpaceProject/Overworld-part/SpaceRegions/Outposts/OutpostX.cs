@@ -9,7 +9,7 @@ namespace SpaceProject
 {
     public class OutpostX : Outpost
     {
-        private Telmun planet;
+        private MurtAsteroid planet;
         private OutpostXStation station;
 
         public OutpostX(Game1 game, Sprite spriteSheet) :
@@ -25,7 +25,7 @@ namespace SpaceProject
 
             spaceRegionArea = new Rectangle(71000, 113000, 5000, 5000);
 
-            planet = new Telmun(game, spriteSheet, new Vector2(spaceRegionArea.X, spaceRegionArea.Y));
+            planet = new MurtAsteroid(game, spriteSheet, new Vector2(spaceRegionArea.X, spaceRegionArea.Y));
             planet.Initialize();
             AddGameObject(planet);
 

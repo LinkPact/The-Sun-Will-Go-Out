@@ -387,7 +387,6 @@
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\FotrunStation2.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\SectorX\FortrunStation1.cs" />
     <Compile Include="Overworld-part\GameObjects\Stations\ShopInventoryEntry.cs" />
-    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\MurtAsteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\RebelOutpostAsteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\Lavis.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\Fortrun.cs" />
@@ -435,7 +434,7 @@
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\SystemStar.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\SectorX\NewNorrland.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\SectorX\Highfence.cs" />
-    <Compile Include="Overworld-part\GameObjects\Celestial bodies\Overworld\OutpostX\Telmun.cs" />
+    <Compile Include="Overworld-part\GameObjects\Celestial bodies\Overworld\OutpostX\MurtAsteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\SectorX\GreyMoon.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\Overworld\MediumAstroid.cs" />
     <Compile Include="Overworld-part\GameObjects\Celestial bodies\SectorX\Peye.cs" />

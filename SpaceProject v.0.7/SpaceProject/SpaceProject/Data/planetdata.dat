@@ -76,13 +76,13 @@ HasColony = true
 
 
 
-[OX_Telmun]
+[OX_MurtAsteroid]
 
-Name = Telmun
+Name = Murt Asteroid
 
-PositionX = 1200
+PositionX = 850
 
-PositionY = 2300
+PositionY = 2000
 
 Surface = Rock
 
@@ -98,4 +98,4 @@ Rotation = 425
 
 Info = A big planet rich with valuable resources. Heavy exploitation over many years has made the planet's atmosphere extremely hazardous.
 
-HasColony = true
+HasColony = false
