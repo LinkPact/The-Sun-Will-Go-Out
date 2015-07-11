@@ -11,7 +11,7 @@ PositionY = 300
 Inhabitants = 5000
 
 [SX_Fortrun_1]
-Name = Fortrun Station I
+Name = Fortrun Station
 PositionX = 600
 PositionY = -100
 Inhabitants = 20000

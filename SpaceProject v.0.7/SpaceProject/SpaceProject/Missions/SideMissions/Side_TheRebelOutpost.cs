@@ -53,7 +53,7 @@ namespace SpaceProject
 
             rebelBribe = new FlameShotWeapon(Game, ItemVariety.low);
 
-            fortrunStation = Game.stateManager.overworldState.GetStation("Fortrun Station I");
+            fortrunStation = Game.stateManager.overworldState.GetStation("Fortrun Station");
 
             dummyCoordinateObject = new DummyCoordinateObject(Game, Game.spriteSheetOverworld);
             dummyCoordinateObject.Initialize();

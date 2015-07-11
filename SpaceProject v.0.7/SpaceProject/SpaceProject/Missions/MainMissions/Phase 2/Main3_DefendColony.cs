@@ -51,7 +51,7 @@ namespace SpaceProject
             base.Initialize();
 
             newNorrland = Game.stateManager.overworldState.GetPlanet("New Norrland");
-            fortrunStation = Game.stateManager.overworldState.GetStation("Fortrun Station I");
+            fortrunStation = Game.stateManager.overworldState.GetStation("Fortrun Station");
 
             allyShips1 = CreateAllyShips(numberOfAllies);
             allyShips2 = CreateAllyShips(numberOfAllies);
@@ -288,7 +288,7 @@ namespace SpaceProject
                 delegate
                 {
                     RemoveShips(allyShips2);
-                    Game.stateManager.GotoStationSubScreen("Fortrun Station I", "Mission");
+                    Game.stateManager.GotoStationSubScreen("Fortrun Station", "Mission");
                 },
                 delegate { },
                 delegate { return true; },

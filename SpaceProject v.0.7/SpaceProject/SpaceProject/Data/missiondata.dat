@@ -76,7 +76,7 @@ State = 0
 
 [Main2_2_ToFortrun]
 Location = Highfence
-EndLocation = Fortrun Station I
+EndLocation = Fortrun Station
 Name = To Fortrun
 Introduction = "Go to Fortrun station!"
 ObjectiveText1 = Activate the beacon outside Soelara and travel back to Highfence.
@@ -98,7 +98,7 @@ Reputation = 0
 State = 0
 
 [Main3_DefendColony]
-Location = Fortrun Station I
+Location = Fortrun Station
 Name = Defend Colony
 Introduction = [Ai] "Are you ready to try to take back the mine again?"
 ObjectiveText1 = Meet with the rebel attack fleet outside Fortrun station, coordinates (-740, 510).
@@ -129,7 +129,7 @@ Reputation = 0
 State = 0
 
 [Main4_Infiltration]
-Location = Fortrun Station I
+Location = Fortrun Station
 EndLocation = Rebel Base
 Name = Infiltration
 Introduction = Ai turns to you with a serious look on her face.#[Ai] "We have a big favour to ask of you."#"But first, I need to know if you are ready for this?"
@@ -438,7 +438,7 @@ Reputation = 0
 State = 1
 
 [Side_TheRebelOutpost]
-Location = Fortrun Station I
+Location = Fortrun Station
 Name = The Rebel Outpost
 Introduction = [Alliance man] "We have got rumours about the rebels storing explosives in a hidden base in an asteroid field outside Soelara."#"It would be a strong blow against their activity between Lavis and the Border Station if we could eliminate it."#"We don't have the exact coordinate, you will need to explore the asteroid field. Are you willing to do this?"
 ObjectiveText1 = Go to the asteroid field at coordinates (-700, -1200) and search for the hidden rebel outpost.

@@ -51,7 +51,7 @@ namespace SpaceProject
             destinations = new List<GameObjectOverworld>();
 
             GameObjectOverworld fortrunStaion1 =
-                Game.stateManager.overworldState.GetStation("Fortrun Station I");
+                Game.stateManager.overworldState.GetStation("Fortrun Station");
 
             destinations.Add(fortrunStaion1);
             destinations.Add(fortrunStaion1);

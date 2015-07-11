@@ -277,7 +277,7 @@ namespace SpaceProject
             freighter = new FreighterShip(Game, Game.stateManager.shooterState.spriteSheet);
             freighter.Initialize(Game.stateManager.overworldState.GetSectorX,
                 Game.stateManager.overworldState.GetStation("Soelara Station"),
-                Game.stateManager.overworldState.GetStation("Fortrun Station I"));
+                Game.stateManager.overworldState.GetStation("Fortrun Station"));
 
             alliance1 = new AllianceShip(Game, Game.stateManager.shooterState.spriteSheet);
             alliance1.SaveShip = false;

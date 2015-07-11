@@ -76,7 +76,7 @@ namespace SpaceProject
 
             GameObjectOverworld soelaraBeacon = Game.stateManager.overworldState.GetBeacon("Soelara Beacon");
             GameObjectOverworld highfence = Game.stateManager.overworldState.GetPlanet("Highfence");
-            GameObjectOverworld fortrunStation1 = Game.stateManager.overworldState.GetStation("Fortrun Station I");
+            GameObjectOverworld fortrunStation1 = Game.stateManager.overworldState.GetStation("Fortrun Station");
 
             AddDestination(soelaraBeacon, 2);
             AddDestination(highfence, 2);

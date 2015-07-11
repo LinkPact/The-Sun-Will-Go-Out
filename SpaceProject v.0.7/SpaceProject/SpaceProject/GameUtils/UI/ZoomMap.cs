@@ -101,7 +101,7 @@ namespace SpaceProject
                 }
 
                 else if ((obj is Station
-                    || obj.name.ToLower().Equals("fortrun station i"))
+                    || obj.name.ToLower().Equals("fortrun station"))
                     && camera.Zoom < StationZoomScale)
                 {
                     obj.scale = StationZoomScale / camera.Zoom;
