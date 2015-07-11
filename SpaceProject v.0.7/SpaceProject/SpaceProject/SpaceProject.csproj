@@ -390,6 +390,7 @@
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\RebelOutpostAsteroid.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\Lavis.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\Fortrun.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\SpaceDuck.cs" />
     <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\TestAsteroid1.cs" />
     <Compile Include="Overworld-part\Interface\BeaconMenu.cs" />
     <Compile Include="Overworld-part\Interface\DirectionArrow.cs" />
@@ -403,6 +404,7 @@
     <Compile Include="Overworld-part\OverworldEvents\Instances\EmptyOE.cs" />
     <Compile Include="Overworld-part\OverworldEvents\Instances\DisplayTextOE.cs" />
     <Compile Include="Overworld-part\OverworldEvents\Instances\AsteroidEvents\FindItemOnAsteroidOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\EnableHyperSpeedAtSpaceDuckOE.cs" />
     <Compile Include="Overworld-part\OverworldEvents\Instances\GetItemOE.cs" />
     <Compile Include="Overworld-part\OverworldEvents\Instances\ItemShopOE.cs" />
     <Compile Include="Overworld-part\OverworldEvents\Instances\LevelOE.cs" />
