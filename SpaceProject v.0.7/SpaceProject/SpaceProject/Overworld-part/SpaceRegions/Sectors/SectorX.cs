@@ -43,6 +43,7 @@ namespace SpaceProject
         private FortrunStation2 fortrunStation2;
         private LonelyAsteroid lonelyAsteroid;
         private DamagedShip damagedShip;
+        private SpaceDuck spaceDuck;
 
         public SectorX(Game1 game) :
             base(game)
@@ -70,6 +71,7 @@ namespace SpaceProject
             fortrunStation2 = new FortrunStation2(game, spriteSheet);
             lonelyAsteroid = new LonelyAsteroid(game, spriteSheet);
             damagedShip = new DamagedShip(game, new Sprite(game.Content.Load<Texture2D>("Overworld-Sprites/MissionObjectSpriteSheet"), null));
+            spaceDuck = new SpaceDuck(game, spriteSheet);
 
             var rebelAsteroidFieldGenerator = new RebelOutpostAsteroidField(game, spriteSheet);
             var sunAsteroidBeltGenerator = new SunAsteroidBelt(game, spriteSheet);
@@ -93,6 +95,7 @@ namespace SpaceProject
             subInteractiveObjects.Add(fortrunStation2);
             subInteractiveObjects.Add(lonelyAsteroid);
             subInteractiveObjects.Add(damagedShip);
+            subInteractiveObjects.Add(spaceDuck);
             subInteractiveObjects.Add(informationStation);
 
             foreach (var obj in subInteractiveObjects)
