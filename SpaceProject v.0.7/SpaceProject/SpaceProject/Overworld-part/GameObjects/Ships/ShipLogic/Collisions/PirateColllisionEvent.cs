@@ -10,6 +10,8 @@ namespace SpaceProject
 
         public override void Invoke()
         {
+            base.Invoke();
+
             ship.Explode();
             game.stateManager.overworldState.RemoveOverworldObject(ship);
             game.stateManager.shooterState.BeginPirateLevel();

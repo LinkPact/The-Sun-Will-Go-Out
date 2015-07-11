@@ -18,7 +18,10 @@ namespace SpaceProject
 
         public virtual void Invoke()
         {
-
+            if (target is PlayerOverworld)
+            {
+                game.player.InitializeInvincibility();
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ namespace SpaceProject
     {
         private readonly int HyperSpeedDistanceTreshold = 7500;
 
-        private readonly float InvinsibilityTransparency = 0.25f;
+        private readonly float InvinsibilityOpacity = 0.5f;
         private readonly int InvincibilitySpan = 2500;
 
         private int damageTimer = 0;
@@ -351,6 +351,10 @@ namespace SpaceProject
         {
             Particle par = new Particle(Game, spriteSheet);
             par.Initialize(this);
+            if (isInvincible)
+            {
+                par.SetOpacity(InvinsibilityOpacity * 1.5f);
+            }
             particles.Add(par);
         }
 
@@ -367,7 +371,7 @@ namespace SpaceProject
         public void InitializeInvincibility()
         {
             invincibilityTime = StatsManager.PlayTime.GetFutureOverworldTime(InvincibilitySpan);
-            color = Color.White * InvinsibilityTransparency;
+            color = Color.White * InvinsibilityOpacity;
             isInvincible = true;
         }
 

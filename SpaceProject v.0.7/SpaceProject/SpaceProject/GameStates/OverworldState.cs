@@ -378,7 +378,6 @@ namespace SpaceProject
                         if (CollisionDetection.IsRectInRect(obj.Bounds, ((OverworldShip)obj).collisionEvent.target.Bounds))
                         {
                             ((OverworldShip)obj).collisionEvent.Invoke();
-                            Game.player.InitializeInvincibility();
                         }                        
                     }
                 }
@@ -548,9 +547,7 @@ namespace SpaceProject
         {
             for (int i = 0; i < deepSpaceGameObjects.Count; i++)
             {
-                if (CollisionDetection.VisiblePixelsColliding(Game.player.Bounds, ((GameObjectOverworld)deepSpaceGameObjects[i]).Bounds,
-                    Game.player.sprite, ((GameObjectOverworld)deepSpaceGameObjects[i]).sprite,
-                    Game.player.centerPoint, ((GameObjectOverworld)deepSpaceGameObjects[i]).centerPoint) == true)
+                if (CollisionDetection.IsRectInRect(Game.player.Bounds, deepSpaceGameObjects[i].Bounds))
                 {
                     if (deepSpaceGameObjects[i] is Planet)
                     {

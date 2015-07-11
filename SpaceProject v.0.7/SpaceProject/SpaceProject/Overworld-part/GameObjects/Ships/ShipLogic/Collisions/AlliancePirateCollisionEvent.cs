@@ -20,6 +20,8 @@ namespace SpaceProject
         {
             if (StatsManager.reputation < 0)
             {
+                base.Invoke();
+
                 game.stateManager.overworldState.RemoveOverworldObject(ship);
                 ship.Explode();
 

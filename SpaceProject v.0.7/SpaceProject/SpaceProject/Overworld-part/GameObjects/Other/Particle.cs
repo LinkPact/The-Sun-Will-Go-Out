@@ -12,6 +12,7 @@ namespace SpaceProject
         private Random rand = new Random();
 
         public float lifeSpawn;
+        private float opacity;
 
         public Particle(Game1 Game, Sprite spriteSheet):
             base(Game, spriteSheet)
@@ -27,7 +28,8 @@ namespace SpaceProject
             position.X = obj.position.X - 6 + (float)(rand.Next(12));
             position.Y = obj.position.Y - 6 + (float)(rand.Next(12));
             scale = 1;
-            lifeSpawn = 6 + (int)rand.Next(6);           
+            lifeSpawn = 6 + (int)rand.Next(6);
+            opacity = 1;
 
             speed = (obj.speed * -1) * 0.05f;
             maxSpeed = 4;
@@ -39,7 +41,7 @@ namespace SpaceProject
         }
 
 
-        public  void Update(GameTime gameTime, GameObjectOverworld obj)
+        public void Update(GameTime gameTime, GameObjectOverworld obj)
         {
             Direction = obj.Direction;
 
@@ -68,7 +70,7 @@ namespace SpaceProject
 
             scale -= 0.025f * MathFunctions.FPSSyncFactor(gameTime);
 
-            color = GetFadingFireColor(gameTime, color);
+            color = GetFadingFireColor(gameTime, color) * opacity;
 
             if (lifeSpawn > 0)
             {
@@ -109,8 +111,12 @@ namespace SpaceProject
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if(GameStateManager.currentState != "PauseMenuState")
-                base.Draw(spriteBatch);
+            base.Draw(spriteBatch);
+        }
+
+        public void SetOpacity(float opacity)
+        {
+            this.opacity = opacity;
         }
     }
 }
