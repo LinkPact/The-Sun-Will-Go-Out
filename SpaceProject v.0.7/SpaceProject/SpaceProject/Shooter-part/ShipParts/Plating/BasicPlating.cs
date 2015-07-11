@@ -18,7 +18,7 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "A low quality plating, covering basic needs";
+            return "A low quality plating providing basic defense and speed";
         }
 
         private void Setup()

@@ -20,7 +20,7 @@ namespace SpaceProject
             //Egenskaper
             Speed = 0.3f;
             IsKilled = false;
-            Damage = 100;
+            Damage = 160;
             ObjectClass = "bullet";
             ObjectName = "RegularMissile";
             

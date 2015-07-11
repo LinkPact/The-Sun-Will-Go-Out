@@ -18,7 +18,7 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "Mid-range plating offering decent defense";
+            return "Mid-range plating offering decent defense and speed";
         }
 
         private void Setup()

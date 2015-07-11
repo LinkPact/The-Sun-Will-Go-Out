@@ -32,7 +32,7 @@ namespace SpaceProject
             energyCostPerSecond = 14f;
             delay = 10;
             Weight = 200;
-            damage = 9.0f;
+            damage = 8.0f;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(1100, 0, 100, 100));
 
             Value = 3200;

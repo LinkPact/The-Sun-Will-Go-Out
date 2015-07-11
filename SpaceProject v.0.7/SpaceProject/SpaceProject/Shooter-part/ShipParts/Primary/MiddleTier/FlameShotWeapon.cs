@@ -49,9 +49,7 @@ namespace SpaceProject
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)
         {
             Vector2 centerDir = new Vector2(0, -1.0f);
-
             double longSpread = Math.PI / 16;
-
             double shortSpread = Math.PI / 3;
 
             for (int n = 0; n < longShotCount; n++)

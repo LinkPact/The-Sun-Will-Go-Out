@@ -18,7 +18,7 @@ namespace SpaceProject
 
         protected override String GetDescription()
         {
-            return "High quality plating for top-level defence";
+            return "High quality plating for top-level defence and speed";
         }
 
         private void Setup()
