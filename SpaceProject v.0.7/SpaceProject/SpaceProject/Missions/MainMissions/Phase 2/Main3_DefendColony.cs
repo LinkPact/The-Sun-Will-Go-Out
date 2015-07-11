@@ -110,7 +110,7 @@ namespace SpaceProject
         {
             base.OnFailed();
 
-            PopupHandler.DisplayMessage("The operation was a failure. Return to Fortrun Station 1 to try again.");
+            PopupHandler.DisplayMessage("The operation was a failure. Return to Fortrun Station to try again.");
         }
 
         public override void MissionLogic()

@@ -30,11 +30,18 @@ namespace SpaceProject
             OutsideRebelStation2
         }
 
-        private readonly float autoPilotSpeed = 0.5f;
+        private readonly float AutoPilotSpeed = 0.5f;
+
+        private readonly int AllyShipRectOffset = 20;
+        private readonly int AllyShipRectWidth = 190;
+        private readonly int AllyShipRectHeight = 90;
+
         private float hangarAttackTime;
 
         private readonly int numberOfAllies = 4;
         private List<OverworldShip> allyShips1;
+        private bool readyToLeave;
+        private Rectangle allyShipRectangle;
 
         public Main6_InTheNameOfScience(Game1 Game, string section, Sprite spriteSheet, MissionID missionID) :
             base(Game, section, spriteSheet, missionID)
@@ -100,6 +107,13 @@ namespace SpaceProject
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
+
+            if ((ObjectiveIndex == 2)
+                && CollisionDetection.IsRectInRect(Game.player.Bounds, allyShipRectangle))
+            {
+                CollisionHandlingOverWorld.DrawRectAroundObject(Game, spriteBatch, allyShipRectangle);
+                Game.helper.DisplayText("Press 'Enter' to speak with the Rebel fleet");
+            }
         }
 
         public override int GetProgress()
@@ -143,10 +157,40 @@ namespace SpaceProject
                 delegate { return (GameStateManager.currentState.ToLower().Equals("overworldstate")); },
                 delegate { return false; }));
 
-            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
-                200, new EventTextCapsule(GetEvent((int)EventID.AtRebelRendezvous), null, EventTextCanvas.MessageBox, PortraitID.RebelTroopLeader)));
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
+                new EventTextCapsule(GetEvent((int)EventID.AtRebelRendezvous), null, EventTextCanvas.MessageBox, PortraitID.RebelTroopLeader),
+                delegate
+                {
+                    readyToLeave = false;
+                    allyShipRectangle = new Rectangle(
+                        (int)allyShips1[0].position.X - AllyShipRectOffset,
+                        (int)allyShips1[0].position.Y - AllyShipRectOffset,
+                        AllyShipRectWidth, AllyShipRectHeight);
 
-            AutoPilotObjective autoPilotObjective = new AutoPilotObjective(Game, this, ObjectiveDescriptions[0], autoPilotSpeed,
+                    PopupHandler.DisplayPortraitMessage(PortraitID.Rok, "[Rok] \"Talk to the ships waiting nearby our base when you're ready to leave.\"");
+                },
+                delegate
+                {
+                    if (CollisionDetection.IsRectInRect(Game.player.Bounds, allyShipRectangle)
+                        && (ControlManager.CheckPress(RebindableKeys.Action1)
+                            || ControlManager.CheckKeyPress(Keys.Enter)))
+                    {
+                        PopupHandler.DisplaySelectionMenu("[Rok] Ready to go?",
+                            new List<string>() { "Yes", "No" },
+                            new List<System.Action>()
+                            {
+                                delegate { readyToLeave = true; },
+                                delegate { readyToLeave = false; }
+                            });
+                    }
+                },
+                delegate { return readyToLeave; },
+                delegate { return false; }));
+
+            //objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
+            //    200, new EventTextCapsule(GetEvent((int)EventID.AtRebelRendezvous), null, EventTextCanvas.MessageBox, PortraitID.RebelTroopLeader)));
+
+            AutoPilotObjective autoPilotObjective = new AutoPilotObjective(Game, this, ObjectiveDescriptions[0], AutoPilotSpeed,
                 allyShips1, destinations[3].position,
                 new EventTextCapsule(GetEvent((int)EventID.ArriveAtScienceStation),
                     null,
