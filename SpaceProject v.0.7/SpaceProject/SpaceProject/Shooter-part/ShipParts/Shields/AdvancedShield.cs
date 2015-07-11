@@ -26,7 +26,7 @@ namespace SpaceProject
             Name = "Advanced Shield";
             Weight = 700;
 
-            Capacity = 70.0f;
+            Capacity = 75.0f;
             Regeneration = 0.3f;
             ConversionFactor = 5;
 

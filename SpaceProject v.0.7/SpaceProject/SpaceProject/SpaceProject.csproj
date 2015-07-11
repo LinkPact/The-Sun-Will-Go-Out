@@ -677,7 +677,7 @@
     <Compile Include="Shooter-part\ShipParts\Primary\LowerTier\DualLaserWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\UpperTier\BeamWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\DrillBeamWeapon.cs" />
-    <Compile Include="Shooter-part\ShipParts\Primary\FlameShotWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\MiddleTier\FlameShotWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\MiddleTier\MultipleShotWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\LowerTier\SpreadBulletWeapon.cs" />
     <Compile Include="Shooter-part\ShipParts\Primary\UpperTier\FragmentMissileWeapon.cs" />

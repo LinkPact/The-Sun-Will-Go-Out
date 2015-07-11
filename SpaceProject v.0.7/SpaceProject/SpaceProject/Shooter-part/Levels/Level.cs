@@ -507,23 +507,8 @@ namespace SpaceProject
                                        1f,
                                        SpriteEffects.None,
                                        1f);
-            
             }
-            //else if (isLevelGivenUp)
-            //{
-            //    spriteBatch.DrawString(font1, "You gave up!\n\nPress 'R' to try again or '" + ControlManager.GetKeyName(RebindableKeys.Action2) + "' to go back.",
-            //                           new Vector2(Game.Window.ClientBounds.Width / 2,
-            //                                       Game.Window.ClientBounds.Height / 2) + Game.fontManager.FontOffset,
-            //                           Game.fontManager.FontColor,
-            //                           0f,
-            //                           font1.MeasureString("You are dead!\n\nPress R to try again or '" + ControlManager.GetKeyName(RebindableKeys.Action2) + "' to go back.") / 2,
-            //                           1f,
-            //                           SpriteEffects.None,
-            //                           1f);
-            //}
         }
-
-        #region setVictoryConditions
 
         public void SetCustomVictoryCondition(LevelObjective objective, int objectiveValue)
         {
@@ -613,7 +598,6 @@ namespace SpaceProject
             levelObjective = LevelObjective.Boss;
             winOnFinish = true;
         }
-        #endregion
 
         public virtual void ResetLevel()
         { }

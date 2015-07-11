@@ -33,7 +33,7 @@ namespace SpaceProject
             bullet = new RegularMissile(Game, spriteSheet);
             bullet.Initialize();
 
-            damage = Bullet.Damage * 1.6f;
+            damage = Bullet.Damage;
             duration = Bullet.Duration;
             speed = Bullet.Speed;
 
@@ -70,7 +70,6 @@ namespace SpaceProject
             missile.Radians = MathFunctions.RadiansFromDir(missile.Direction);
             missile.Initialize();
             missile.Speed *= speedFactor;
-            missile.Damage = damage;
 
             Game.stateManager.shooterState.gameObjects.Add(missile);
         }
