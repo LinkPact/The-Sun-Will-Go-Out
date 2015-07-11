@@ -61,7 +61,10 @@ namespace SpaceProject
                 obj.Update(gameTime);
             }
 
-            if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) && !game.player.HyperspeedOn))
+            if ((ControlManager.CheckPress(RebindableKeys.Action1) 
+                || ControlManager.CheckKeyPress(Keys.Enter)) 
+                && !game.player.HyperspeedOn
+                && !game.stateManager.overworldState.IsBurnOutEndingActivated)
             {
                 EnterCheck();
             }

@@ -9,8 +9,8 @@ namespace SpaceProject
     class BurnOutExplosionParticle
     {
         // Constants
-        private static readonly float INIT_EXPLOSION_SPEED = 0.15f;
-        private static readonly float SPEED_DECREASE = 0.00012f;
+        private static readonly float INIT_EXPLOSION_SPEED = 0.22f;
+        private static readonly float SPEED_DECREASE = 0.00009f;
         private static readonly float MIN_SPEED = 0.1f;
 
         private static readonly float INIT_SCALE = 1f;
@@ -20,7 +20,7 @@ namespace SpaceProject
         private static readonly Color INIT_COLOR = new Color(100, 168, 255);
         private static readonly byte COLOR_DECREASE = 2;
 
-        private static readonly int BASE_LIFE_TIME = 6000;
+        private static readonly int BASE_LIFE_TIME = 8000;
         private static readonly int RANDOM_LIFE_TIME = 3000;
         // ----
 

@@ -337,7 +337,11 @@ namespace SpaceProject
                 Game.stateManager.ChangeState("OutroState");
                 Game.player.EnableControls();
             }
-            InputhandlingDebug();
+
+            if (StatsManager.gameMode == GameMode.Develop)
+            {
+                InputhandlingDebug();
+            }
 
             EdgeCollisionCheck();
 
@@ -453,8 +457,8 @@ namespace SpaceProject
 
         private void Inputhandling()
         {
-            if (ControlManager.CheckPress(RebindableKeys.Action1)
-                || ControlManager.CheckKeyPress(Keys.Enter))
+            if ((ControlManager.CheckPress(RebindableKeys.Action1)
+                || ControlManager.CheckKeyPress(Keys.Enter)))
             {
                 EnterCheck();
             }

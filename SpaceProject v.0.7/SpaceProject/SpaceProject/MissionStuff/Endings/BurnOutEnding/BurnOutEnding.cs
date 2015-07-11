@@ -13,7 +13,7 @@ namespace SpaceProject
         private readonly float FILTER_SCALE_INCREASE = 0.0012f;
         private readonly float FILTER_MAX_SCALE = 10f;
         private readonly Color INIT_FILTER_COLOR = Color.White;
-        private readonly float INIT_FILTER_SCALE = 1f;
+        private readonly float INIT_FILTER_SCALE = 0.9f;
 
         protected readonly int EXPLOSION_PARTICLES = 50;
         private readonly int EXPLOSION_WAVE_DELAY = 50;
