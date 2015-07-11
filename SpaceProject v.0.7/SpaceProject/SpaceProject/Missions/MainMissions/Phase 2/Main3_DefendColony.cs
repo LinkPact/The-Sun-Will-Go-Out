@@ -190,9 +190,6 @@ namespace SpaceProject
                 delegate { return readyToLeave;},
                 delegate { return false; }));
 
-            //objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0],
-            //    100, new EventTextCapsule(GetEvent((int)EventID.OutsideFortrun2), null, EventTextCanvas.MessageBox, PortraitID.Ai)));
-
             AutoPilotObjective autoPilotObjective1 = new AutoPilotObjective(Game, this, ObjectiveDescriptions[1], AutoPilotSpeed,
                 allyShips1, fortrunStation.position,
                 new EventTextCapsule(GetEvent((int)EventID.OutsideNewNorrland), null, EventTextCanvas.MessageBox, PortraitID.Ai));
@@ -236,7 +233,7 @@ namespace SpaceProject
                 delegate { return true; },
                 delegate { return false; }));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1],
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[2],
                 new EventTextCapsule(new EventText("[Ai] \"Let's go\""), null, EventTextCanvas.MessageBox, PortraitID.Ai),
                 delegate 
                 {
@@ -266,7 +263,7 @@ namespace SpaceProject
                 delegate { return readyToLeave; },
                 delegate { return false; }));
 
-            AutoPilotObjective autoPilotObjective = new AutoPilotObjective(Game, this, ObjectiveDescriptions[2], AutoPilotSpeed2,
+            AutoPilotObjective autoPilotObjective = new AutoPilotObjective(Game, this, ObjectiveDescriptions[3], AutoPilotSpeed2,
                 allyShips2, newNorrland.position, false);
 
             autoPilotObjective.Initialize();
@@ -287,7 +284,7 @@ namespace SpaceProject
 
             objectives.Add(autoPilotObjective);
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[2],
+            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[3],
                 delegate
                 {
                     RemoveShips(allyShips2);
@@ -297,7 +294,7 @@ namespace SpaceProject
                 delegate { return true; },
                 delegate { return false; }));
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[2]));
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[3]));
         }
 
         private void RemoveShips(List<OverworldShip> ships)
