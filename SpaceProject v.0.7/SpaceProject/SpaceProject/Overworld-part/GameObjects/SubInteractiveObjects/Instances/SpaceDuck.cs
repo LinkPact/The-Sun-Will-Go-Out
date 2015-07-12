@@ -25,8 +25,6 @@ namespace SpaceProject
 
         public void PlayerActivated()
         {
-            //Game.stateManager.overworldState.AddEffectsObject(ExplosionGenerator.GenerateOverworldExplosion(Game, Game.spriteSheetVerticalShooter, this));
-            //Game.stateManager.overworldState.AddEffectsObject(ExplosionGenerator.GenerateOverworldExplosion(Game, Game.spriteSheetVerticalShooter, this));
         }
 
         protected override void SetClearedText()

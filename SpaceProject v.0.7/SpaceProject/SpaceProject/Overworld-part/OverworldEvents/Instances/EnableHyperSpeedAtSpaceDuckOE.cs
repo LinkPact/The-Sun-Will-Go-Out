@@ -23,7 +23,6 @@ namespace SpaceProject
         {
             game.player.UnlockDevelopHyperSpeed();
             PopupHandler.DisplayMessage(activationMessage);
-
             game.stateManager.overworldState.AddEffectsObject(ExplosionGenerator.GenerateSpaceDuckExplosion(game, game.spriteSheetVerticalShooter, spaceDuck));
             game.stateManager.overworldState.GetSectorX.RemoveGameObject(spaceDuck);
             return true;

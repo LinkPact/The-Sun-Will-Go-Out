@@ -842,7 +842,7 @@
     <Content Include="Levels\mainlevels\m4_Infiltration_lv1.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\mainlevels\m4_Infiltration_lv2.lvl">
+    <Content Include="Levels\mainlevels\m4_Infiltration_lv2_old.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Levels\mainlevels\m5_Retribution_lv1.lvl">
@@ -871,6 +871,9 @@
     </Content>
     <None Include="app.config" />
     <None Include="Data\missiondata.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m4_Infiltration_lv2.lvl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Levels\pirates\hangar1.lvl">
