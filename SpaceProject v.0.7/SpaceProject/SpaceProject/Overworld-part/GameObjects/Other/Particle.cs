@@ -80,7 +80,7 @@ namespace SpaceProject
             base.Update(gameTime);
         }
 
-        private static Color GetFadingFireColor(GameTime gameTime, Color initialColor)
+        public static Color GetFadingFireColor(GameTime gameTime, Color initialColor)
         {
             Color resultingColor = initialColor;
 

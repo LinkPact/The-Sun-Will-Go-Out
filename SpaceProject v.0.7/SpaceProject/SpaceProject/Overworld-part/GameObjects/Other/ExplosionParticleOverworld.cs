@@ -28,8 +28,8 @@ namespace SpaceProject
         private Vector2 centerPoint;
         private float scale;
 
-        private int lifeTime;
-        public int LifeTime { get { return lifeTime; } private set { ;} }
+        private float lifeTime;
+        public float LifeTime { get { return lifeTime; } private set { ;} }
 
         public ExplosionParticleOverworld(Game1 game, Sprite spriteSheet, Vector2 startingPos, Vector2 startingDir,
                                  float startingSpeed, float size, bool randomDir, int index)
@@ -38,6 +38,8 @@ namespace SpaceProject
             lifeTime = (50 + random.Next(75));
 
             CommonSetup(game, spriteSheet, startingPos, startingDir, startingSpeed, size, randomDir, index);
+
+            color = Color.White;
         }
 
         public ExplosionParticleOverworld(Game1 game, Sprite spriteSheet, Vector2 startingPos, Vector2 startingDir,
@@ -48,6 +50,8 @@ namespace SpaceProject
             lifeTime = fragmentLifeTime;
         
             CommonSetup(game, spriteSheet, startingPos, startingDir, startingSpeed, size, randomDir, index);
+
+            color = Color.White;
         }
 
         private void CommonSetup(Game1 game, Sprite spriteSheet, Vector2 startingPos, Vector2 startingDir,
@@ -78,19 +82,12 @@ namespace SpaceProject
             Vector2 s2 = direction * speed;
 
             position += (s1 + s2) * gameTime.ElapsedGameTime.Milliseconds;
-
-            lifeTime--;
+            lifeTime -= 1 * MathFunctions.FPSSyncFactor(gameTime);
 
             if (g > 69)
                 g -= 3;
             if (b > 5)
                 b -= 5;
-
-            else if (position.Y < (game.Window.ClientBounds.Height - 600) / 2 ||
-                position.Y > (game.Window.ClientBounds.Height - 600) / 2 + 600)
-            {
-                lifeTime = 0;
-            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

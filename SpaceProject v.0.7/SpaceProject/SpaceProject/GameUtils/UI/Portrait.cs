@@ -21,6 +21,7 @@ namespace SpaceProject
 
         // Generic characters
         AllianceCaptain,
+        AllianceCaptain2,
         RebelTroopLeader,
         AlliancePilot,
         RebelPilot,
@@ -84,6 +85,10 @@ namespace SpaceProject
                     sourceRect = new Rectangle(462, 197, 149, 192);
                     break;
 
+                case PortraitID.AllianceCaptain2:
+                    sourceRect = new Rectangle(618, 197, 149, 192);
+                    break;
+
                 case PortraitID.RebelTroopLeader:
                     sourceRect = new Rectangle(0, 394, 149, 192);
                     break;
@@ -143,6 +148,13 @@ namespace SpaceProject
                 return PortraitID.AllianceCaptain;
             }
 
+            else if (lowerCase.Contains("[alliance coordinator]")
+                || lowerCase.Contains("{alliance coordinator}"))
+            {
+                lastPortraitID = PortraitID.AllianceCaptain2;
+                return PortraitID.AllianceCaptain2;
+            }
+
             else if (lowerCase.Contains("[commander]")
                 || lowerCase.Contains("{commander}"))
             {
@@ -174,12 +186,19 @@ namespace SpaceProject
             else if (lowerCase.Contains("[alliance man]")
                 || lowerCase.Contains("{alliance man}"))
             {
-                lastPortraitID = PortraitID.AllianceCaptain;
-                return PortraitID.AllianceCaptain;
+                lastPortraitID = PortraitID.AllianceCaptain2;
+                return PortraitID.AllianceCaptain2;
             }
 
             else if (lowerCase.Contains("[alliance]")
                 || lowerCase.Contains("{alliance}"))
+            {
+                lastPortraitID = PortraitID.AlliancePilot;
+                return PortraitID.AlliancePilot;
+            }
+
+            else if (lowerCase.Contains("[alliance pilot]")
+                || lowerCase.Contains("{alliance pilot}"))
             {
                 lastPortraitID = PortraitID.AlliancePilot;
                 return PortraitID.AlliancePilot;
@@ -237,8 +256,8 @@ namespace SpaceProject
             else if (lowerCase.Contains("[squad member 2]")
                 || lowerCase.Contains("{squad member 2}"))
             {
-                lastPortraitID = PortraitID.AllianceCaptain;
-                return PortraitID.AllianceCaptain;
+                lastPortraitID = PortraitID.AllianceCaptain2;
+                return PortraitID.AllianceCaptain2;
             }
 
             else if (lowerCase.Contains("[pai]")

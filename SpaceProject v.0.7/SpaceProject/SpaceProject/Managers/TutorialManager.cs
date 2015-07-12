@@ -170,7 +170,7 @@ namespace SpaceProject
                         if (GameStateManager.currentState.Equals("StationState") &&
                             game.stateManager.stationState.Station.name.Equals("Highfence Shop"))
                         {
-                            PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"Start by entering the shop and selecting 'Buy & Sell Items'. Here is two hundred rupees, it should cover the cost for the shield.\"");
+                            PopupHandler.DisplayPortraitMessage(PortraitID.AlliancePilot, "[Alliance Pilot] \"Start by entering the shop and selecting 'Buy & Sell Items'. Here is two hundred rupees, it should cover the cost for the shield.\"");
                             PopupHandler.DisplayMessage("You recieved 200 Rupees.");
                             StatsManager.Rupees += 200;
                             equipShieldProgress = 1;
@@ -182,7 +182,7 @@ namespace SpaceProject
                             game.stateManager.stationState.Station.name.Equals("Highfence Shop")
                             && game.stateManager.stationState.SubStateManager.ActiveMenuState.Equals(game.stateManager.stationState.SubStateManager.ShopMenuState))
                         {
-                            PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"Select the 'Basic shield' in the column to the right and select 'Buy'.\"");
+                            PopupHandler.DisplayPortraitMessage(PortraitID.AlliancePilot, "[Alliance Pilot] \"Select the 'Basic shield' in the column to the right and select 'Buy'.\"");
                             equipShieldProgress = 2;
                         }
                         break;
@@ -193,7 +193,7 @@ namespace SpaceProject
                             && game.stateManager.stationState.SubStateManager.ActiveMenuState.Equals(game.stateManager.stationState.SubStateManager.ShopMenuState)
                             && ShipInventoryManager.ownedShields.Count > 0)
                         {
-                            PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"Good! Now exit the shop by selecting and pressing 'Go Back' and return to the overworld!\"");
+                            PopupHandler.DisplayPortraitMessage(PortraitID.AlliancePilot, "[Alliance Pilot] \"Good! Now exit the shop by selecting and pressing 'Go Back' and return to the overworld!\"");
                             equipShieldProgress = 3;
                         }
                         break;
@@ -201,7 +201,7 @@ namespace SpaceProject
                     case 3:
                         if (GameStateManager.currentState.Equals("OverworldState"))
                         {
-                            PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"Now, press 'I' to access your inventory.\"");
+                            PopupHandler.DisplayPortraitMessage(PortraitID.AlliancePilot, "[Alliance Pilot] \"Now, press 'I' to access your inventory.\"");
                             equipShieldProgress = 4;
                         }
                         break;
@@ -209,7 +209,7 @@ namespace SpaceProject
                     case 4:
                         if (GameStateManager.currentState.Equals("ShipManagerState"))
                         {
-                            PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"To equip your shield, select the shield slot and press 'Enter' to select from your list of available shields.\"");
+                            PopupHandler.DisplayPortraitMessage(PortraitID.AlliancePilot, "[Alliance Pilot] \"To equip your shield, select the shield slot and press 'Enter' to select from your list of available shields.\"");
                             equipShieldProgress = 5;
                         }
                         break;
@@ -218,7 +218,7 @@ namespace SpaceProject
                         if (GameStateManager.currentState.Equals("ShipManagerState")
                             && game.stateManager.shipManagerState.IsShieldSlotSelected)
                         {
-                            PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"Now, press 'Enter' again to equip the selected shield.\"");
+                            PopupHandler.DisplayPortraitMessage(PortraitID.AlliancePilot, "[Alliance Pilot] \"Now, press 'Enter' again to equip the selected shield.\"");
                             equipShieldProgress = 6;
                         }
                         break;
@@ -226,7 +226,7 @@ namespace SpaceProject
                     case 6:
                         if (!(ShipInventoryManager.equippedShield is EmptyShield))
                         {
-                            PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "[Captain] \"Good! Now your shield is equipped! What parts you have equipped is crucial for your success. Come back here often and try different combinations of ship parts.\"#\"Now, exit the inventory by pressing 'Escape' and return to me!\"");
+                            PopupHandler.DisplayPortraitMessage(PortraitID.AlliancePilot, "[Alliance Pilot] \"Good! Now your shield is equipped! What parts you have equipped is crucial for your success. Come back here often and try different combinations of ship parts.\"#\"Now, exit the inventory by pressing 'Escape' and return to me!\"");
                             equipShieldTutorialFinished = true;
                         }
                         break;
@@ -235,7 +235,7 @@ namespace SpaceProject
                 if (equipShieldProgress < 2
                     && ShipInventoryManager.OwnedShields.Count > 0)
                 {
-                    PopupHandler.DisplayPortraitMessage(PortraitID.AllianceCaptain, "You already bought a shield? Okay, let me tell you how to equip it! Start by pressing 'I' to access your inventory.");
+                    PopupHandler.DisplayPortraitMessage(PortraitID.AlliancePilot, "You already bought a shield? Okay, let me tell you how to equip it! Start by pressing 'I' to access your inventory.");
                     equipShieldProgress = 4;
                 }
             }

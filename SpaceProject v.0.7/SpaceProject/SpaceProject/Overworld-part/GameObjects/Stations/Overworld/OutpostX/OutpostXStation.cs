@@ -24,26 +24,6 @@ namespace SpaceProject
             StationCodeName = "OX_OutpostX_Station";
 
             LoadStationData(StationCodeName);
-            ShopSetup();
-        }
-
-        private void ShopSetup()
-        {
-            hasShop = true;
-
-            AddMandatoryItem(new ShopInventoryEntry(ShipPartType.Disruptor, ShipPartAvailability.common, ItemVariety.regular));
-            
-            SetShopFilling(ShopFilling.regular);
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            base.Draw(spriteBatch);
         }
     }
 }

@@ -141,7 +141,7 @@ namespace SpaceProject
                    new List<int> { 4000, 18000, 34500 }, 0.4f),
                true);
 
-            escortObjective.SetIntroductionMessage(GetEvent((int)EventID.CaptainIntro).Text, PortraitID.AllianceCaptain);
+            escortObjective.SetIntroductionMessage(GetEvent((int)EventID.CaptainIntro).Text, PortraitID.AlliancePilot);
 
             escortObjective.SetEnemyMessage(null,
                 GetEvent((int)EventID.RebelMessage1).Text, GetEvent((int)EventID.RebelMessage2).Text);
@@ -150,11 +150,11 @@ namespace SpaceProject
                 GetEvent((int)EventID.RebelsAttack1).Text, GetEvent((int)EventID.RebelsAttack2).Text);
 
             escortObjective.SetAfterAttackMessages(new List<PortraitID>() 
-                { PortraitID.AllianceCaptain, PortraitID.AllianceCaptain},
+                { PortraitID.AlliancePilot, PortraitID.AlliancePilot},
                 GetEvent((int)EventID.AfterRebelAttack1).Text, GetEvent((int)EventID.AfterRebelAttack2).Text);
 
             escortObjective.SetTimedMessages(new List<PortraitID>() 
-                { PortraitID.AllianceCaptain, PortraitID.AllianceCaptain, PortraitID.AllianceCaptain },
+                { PortraitID.AlliancePilot, PortraitID.AlliancePilot, PortraitID.AlliancePilot },
                 GetEvent((int)EventID.CaptainChitChat1).Text, GetEvent((int)EventID.CaptainChitChat2).Text,
                 GetEvent((int)EventID.AlmostThere).Text);
 
