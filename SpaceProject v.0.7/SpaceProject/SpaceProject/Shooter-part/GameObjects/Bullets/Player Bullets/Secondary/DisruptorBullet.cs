@@ -22,13 +22,12 @@ namespace SpaceProject
             Damage = 15;
             ObjectClass = "bullet";
             Duration = 1000;
-
             disruptionTime = 2500;
 
             anim.LoopTime = 300;
-            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(42, 24, 5, 9)));
+            anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(62, 25, 6, 10)));
 
-            Bounding = new Rectangle(42, 24, 5, 9);
+            Bounding = new Rectangle(62, 25, 6, 10);
 
             BoundingSpace = 0;
 

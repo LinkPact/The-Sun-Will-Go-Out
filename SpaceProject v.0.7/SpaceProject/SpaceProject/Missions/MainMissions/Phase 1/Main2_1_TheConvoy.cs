@@ -42,10 +42,8 @@ namespace SpaceProject
 
             RestartAfterFail();
             Station soelaraStation = Game.stateManager.overworldState.GetStation("Soelara Station");
-
             RewardItems.Add(new LongShotWeapon(Game, ItemVariety.regular));
-
-            freighterHP = 2000;
+            freighterHP = 1500;
 
             Setup();
         }
@@ -72,7 +70,6 @@ namespace SpaceProject
         public override void OnFailed()
         {
             base.OnFailed();
-
             PopupHandler.DisplayMessage("The freighter was destroyed and the mission failed. Return to Highfence to try again.");
         }
 

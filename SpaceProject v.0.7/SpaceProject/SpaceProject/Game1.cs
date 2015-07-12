@@ -373,6 +373,8 @@ namespace SpaceProject
             graphics.PreferredBackBufferHeight = (int)resolution.Y;
             graphics.ApplyChanges();
 
+            StaticFunctions.InitiateWindowValues(this);
+
             menuBGController.Initialize();
             musicManager.Initialize();
             soundEffectsManager.Initialize();

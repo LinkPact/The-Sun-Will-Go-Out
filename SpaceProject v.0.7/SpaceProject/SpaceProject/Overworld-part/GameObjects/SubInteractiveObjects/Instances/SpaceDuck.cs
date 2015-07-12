@@ -15,7 +15,7 @@ namespace SpaceProject
         public override void Initialize()
         {
             sprite = spriteSheet.GetSubSprite(new Rectangle(80, 1400, 92, 81));
-            position = MathFunctions.CoordinateToPosition(new Vector2(100, 100));
+            position = MathFunctions.CoordinateToPosition(new Vector2(3737, 4242));
             name = "Space Duck";
             base.Initialize();
 

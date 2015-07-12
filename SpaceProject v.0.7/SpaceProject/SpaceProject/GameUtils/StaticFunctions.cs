@@ -24,7 +24,7 @@ namespace SpaceProject
         private static Vector2 windowDimensions;
         private static Boolean isWindowSizeInitiated = false;
 
-        private static void InitiateWindowValues(Game1 game)
+        public static void InitiateWindowValues(Game1 game)
         {
             float windowHeight = game.Window.ClientBounds.Height;
             float windowWidth = game.Window.ClientBounds.Width;

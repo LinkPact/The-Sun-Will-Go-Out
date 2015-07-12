@@ -7,7 +7,7 @@ namespace SpaceProject
 {
     class FindTextOnAsteroidOE : OverworldEvent
     {
-        private List<String> beginningText = new List<String> { 
+        private List<String> beginningText = new List<String> {
             "You find a deserted building.#It seems to once have been a space station. There is nothing of value here now.", 
             "You find a message scribbled into the stone.#\"Noone is who they seem to be anymore...\"", 
             "You find a message scribbled into the stone.#\"Once upon a time. What happened then?\"#\"It is all gone.\"", 
@@ -19,7 +19,7 @@ namespace SpaceProject
             "This asteroid looks like a huge potato.",
             "[SAIR] An ambush!#...#[SAIR] Sorry, I should probably update my sensors. False alarm.",
             "[SAIR] Another... asteroid! It gets so repetitive.",
-            "You find a message scribbled into the stone.#\"Have you been to the corner of the universe? The upper left.\"#\"My grandmother hid some forgotten technology there. Far, far away...\"",
+            "You find a message scribbled into the stone.#\"(3737, 4242)\"",
             "You find a message scribbled into the stone.#\"Sometimes, voices whisper three names to me. Who are they?\""
         };
 

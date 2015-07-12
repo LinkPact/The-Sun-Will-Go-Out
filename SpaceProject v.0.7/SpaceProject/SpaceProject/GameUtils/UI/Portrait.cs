@@ -228,8 +228,8 @@ namespace SpaceProject
             else if (lowerCase.Contains("[concerned citizen]")
                 || lowerCase.Contains("{concerned citizen}"))
             {
-                lastPortraitID = PortraitID.CommonCitizen;
-                return PortraitID.CommonCitizen;
+                lastPortraitID = PortraitID.RebelLeader;
+                return PortraitID.RebelLeader;
             }
 
             else if (lowerCase.Contains("[colony doctor]")
@@ -267,6 +267,13 @@ namespace SpaceProject
                 return PortraitID.Pai;
             }
 
+            else if (lowerCase.Contains("[afl]")
+                || lowerCase.Contains("{afl}"))
+            {
+                lastPortraitID = PortraitID.AllianceCaptain2;
+                return PortraitID.AllianceCaptain2;
+            }
+            
             else if (lowerCase.Contains("\""))
             {
                 return lastPortraitID;
