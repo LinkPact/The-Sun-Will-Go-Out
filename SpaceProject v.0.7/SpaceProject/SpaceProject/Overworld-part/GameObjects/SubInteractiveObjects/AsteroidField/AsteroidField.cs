@@ -53,10 +53,16 @@ namespace SpaceProject
             AssignGenericAsteroids(coords);        
         }
 
-        protected void GenerateEventAsteroids(int numberOfAsteroids)
+        protected void GenerateEventAsteroids(int numItem, int numText, int numAmbush)
         {
-            var coords = GetRandomCoordinateFields(numberOfAsteroids, radius, innerRadius);
-            AssignEventAsteroids(coords);
+            var coords = GetRandomCoordinateFields(numItem, radius, innerRadius);
+            AssignEventAsteroids(coords, OverworldEventType.GetItem);
+
+            coords = GetRandomCoordinateFields(numText, radius, innerRadius);
+            AssignEventAsteroids(coords, OverworldEventType.DisplayText);
+
+            coords = GetRandomCoordinateFields(numAmbush, radius, innerRadius);
+            AssignEventAsteroids(coords, OverworldEventType.PirateEncounter);
         }
 
         private void AssignGenericAsteroids(List<Vector2> coordList)
@@ -67,7 +73,7 @@ namespace SpaceProject
             }
         }
 
-        private void AssignEventAsteroids(List<Vector2> coordList)
+        private void AssignEventAsteroids(List<Vector2> coordList, OverworldEventType type)
         {
             for (int n = 0; n < coordList.Count; n++)
             {

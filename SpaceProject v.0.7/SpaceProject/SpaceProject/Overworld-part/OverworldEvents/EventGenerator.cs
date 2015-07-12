@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SpaceProject
 {
-    enum OverworldEventType
+    public enum OverworldEventType
     { 
         DisplayText,
         GetItem,
@@ -27,6 +27,21 @@ namespace SpaceProject
 
             switch (eventType)
             { 
+                case OverworldEventType.DisplayText:
+                    return new FindTextOnAsteroidOE();
+                case OverworldEventType.GetItem:
+                    return new FindItemOnAsteroidOE(Game);
+                case OverworldEventType.PirateEncounter:
+                    return new AsteroidAmbushOE();
+                default:
+                    throw new ArgumentException("Code does currently not cover given type!");
+            }
+        }
+
+        public static OverworldEvent GetAsteroidEventOfType(Game1 Game, OverworldEventType type)
+        {
+            switch (type)
+            {
                 case OverworldEventType.DisplayText:
                     return new FindTextOnAsteroidOE();
                 case OverworldEventType.GetItem:
