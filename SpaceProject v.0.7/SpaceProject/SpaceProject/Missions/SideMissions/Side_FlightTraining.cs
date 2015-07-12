@@ -46,6 +46,11 @@ namespace SpaceProject
         public override void OnLoad()
         { }
 
+        public override void OnReset()
+        {
+            base.OnReset();
+        }
+
         public override void MissionLogic()
         {
             base.MissionLogic();

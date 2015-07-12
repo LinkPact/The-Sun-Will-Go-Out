@@ -152,7 +152,7 @@ namespace SpaceProject
         {
             if (textBuffer != null)
             {
-                if (useScrolling)
+                if (useScrolling && !scrollingFinished)
                 {
                     text = TextUtils.WordWrap(spriteFont,
                               TextUtils.ScrollText(textBuffer,
@@ -160,8 +160,14 @@ namespace SpaceProject
                                                    out scrollingFinished),
                               textBoxRect.Width);
                 }
+                else if (scrollingFinished)
+                {
+                    TextUtils.RefreshTextScrollBuffer();
+                }
                 else
+                {
                     text = TextUtils.WordWrap(spriteFont, textBuffer, textBoxRect.Width);
+                }
             }
         }
 

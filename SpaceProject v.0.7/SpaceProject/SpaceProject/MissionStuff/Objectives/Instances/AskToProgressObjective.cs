@@ -69,5 +69,13 @@ namespace SpaceProject
         {
             return false;
         }
+
+        public override void Reset()
+        {
+            base.Reset();
+
+            progressObjective = false;
+            askQuestion = true;
+        }
     }
 }

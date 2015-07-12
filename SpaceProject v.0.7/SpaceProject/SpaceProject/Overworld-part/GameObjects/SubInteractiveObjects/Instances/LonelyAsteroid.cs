@@ -17,29 +17,17 @@ namespace SpaceProject
 
         public override void Initialize()
         {
+            Item item = new BasicLaserWeapon(Game, ItemVariety.high);
             sprite = spriteSheet.GetSubSprite(new Rectangle(724, 1130, 54, 55));
             position = new Vector2(110000, 102000);
             name = "Lonely Asteroid";
 
             base.Initialize();
 
-            //SetupLevel("A group of pirates attack!", "LonelyAsteroidEncounter", 50,
-            //    new List<Item>(){ new DualLaserWeapon(Game, ItemVariety.low), 
-            //        new RegularShield(Game, ItemVariety.low)},
-            //    "Good job!", "Too bad!");
-
-            //SetupItemShop(new MultipleShotWeapon(Game, ItemVariety.high), "Want to buy my Multiple Shot?", "Suit yourself!", "Good choice!",
-            //    "Sorry, you don't have enough money..", "Sorry, your inventory is full, sell something and come back!", 300);
-
-            overworldEvent = new GetItemOE(new BasicLaserWeapon(Game, ItemVariety.low), 
-                "Holy crap! A weapon is just floating in space!", 
+            overworldEvent = new GetItemOE(item,
+                String.Format("Holy crap! A weapon is just floating in space!\n\nYou found {0}!", item.Name), 
                 "..But unfortunately, your inventory is full.",
                 "..no more weapons here.");
-
-            //SetupGetItem("Holy crap! A weapon is just floating in space!", "..But unfortunately, your inventory is full.",
-            //    new BasicLaserWeapon(Game, ItemVariety.low));
-
-            //SetClearedText();
         }
 
         public override void Update(GameTime gameTime)

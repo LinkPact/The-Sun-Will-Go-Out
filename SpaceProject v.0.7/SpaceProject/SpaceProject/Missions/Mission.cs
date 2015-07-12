@@ -569,6 +569,7 @@ namespace SpaceProject
         {
             foreach (KeyValuePair<EventText, List<EventText>> index in EventList)
             {
+                index.Key.Displayed = false;
                 if (index.Key.Text.Contains("/ok"))
                 {
                     index.Key.Text = index.Key.Text.Replace("/ok", "");

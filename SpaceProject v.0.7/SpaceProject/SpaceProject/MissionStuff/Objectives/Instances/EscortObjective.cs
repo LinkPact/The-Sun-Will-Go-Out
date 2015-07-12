@@ -52,6 +52,7 @@ namespace SpaceProject
         private bool levelCompleted;
         private int lastLevelCompletedIndex = -1;
         private int levelCompletedIndex;
+        private int levelIndex = 0;
 
         private bool skip;
 
@@ -268,7 +269,7 @@ namespace SpaceProject
                         enemies[0],
                         escortDataCapsule.ShipToDefend.position +
                         (650 * escortDataCapsule.ShipToDefend.Direction.GetDirectionAsVector()),
-                        levels[levelCompletedIndex], escortDataCapsule.ShipToDefend);
+                        levels[levelIndex], escortDataCapsule.ShipToDefend);
 
                     numberOfEnemyShips--;
 
@@ -290,6 +291,7 @@ namespace SpaceProject
 
                     levelCompleted = true;
                     levelCompletedIndex = i;
+                    levelIndex = i + 1;
                 }
             }
 
@@ -501,7 +503,7 @@ namespace SpaceProject
             if (enemies.Count > 0)
             {
                 numberOfEnemyShips--;
-                StartEnemyLevel(0, levels[levelCompletedIndex]);
+                StartEnemyLevel(0, levels[levelIndex]);
             }
             else
             {

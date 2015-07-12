@@ -50,13 +50,6 @@ namespace SpaceProject
         public override void OnReset()
         {
             base.OnReset();
-
-            ObjectiveIndex = 0;
-
-            for (int i = 0; i < objectives.Count; i++)
-            {
-                objectives[i].Reset();
-            }
         }
 
         public override void MissionLogic()
