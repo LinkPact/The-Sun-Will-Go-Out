@@ -18,7 +18,7 @@ namespace SpaceProject
             viewRadius = 3000;
             position = new Vector2(0,0);
             speed = 0.15f;
-            
+            rotationSpeed = 0.4f;
 
             centerPoint = new Vector2(sprite.SourceRectangle.Value.Width / 2, sprite.SourceRectangle.Value.Height / 2);
             color = Color.White;

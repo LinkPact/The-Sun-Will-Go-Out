@@ -30,6 +30,7 @@ namespace SpaceProject
         protected bool hasArrived;
         public bool HasArrived { get { return hasArrived; } set { hasArrived = value; } }
         public void ResetArrived() { hasArrived = false; }
+        public float rotationSpeed = 4f;
 
         // Should be removed
         protected GameObjectOverworld target;
@@ -74,7 +75,6 @@ namespace SpaceProject
             // Adjust course towards target
             if (destination != Vector2.Zero)
             {
-                float rotationSpeed = 4f;
                 Direction.RotateTowardsPoint(gameTime, this.position, destination, rotationSpeed);
                 particleManager.AddParticle();
             }
