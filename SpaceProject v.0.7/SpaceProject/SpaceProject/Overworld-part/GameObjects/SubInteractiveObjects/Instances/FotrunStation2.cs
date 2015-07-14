@@ -11,12 +11,10 @@ namespace SpaceProject
     {
         private List<Item> randomItems;
         private Item item;
-        private Boolean itemBought;
 
         public FortrunStation2(Game1 Game, Sprite spriteSheet) :
             base(Game, spriteSheet)
         {
-            itemBought = false;
         }
 
         public override void Initialize()
@@ -34,10 +32,9 @@ namespace SpaceProject
         {
             base.Update(gameTime);
 
-            if (itemBought)
+            if (((ItemShopOE)overworldEvent).IsItemBought)
             {
-                Setup();
-                itemBought = false;
+                ((ItemShopOE)overworldEvent).SetNewItem(SelectRandomItem());
             }
         }
 
@@ -84,7 +81,7 @@ namespace SpaceProject
 
         private ItemVariety GetRandomItemVariety()
         {
-            var val = Game.random.Next(3);
+            var val = MathFunctions.GetExternalRandomInt(0, 2);
 
             switch (val)
             {

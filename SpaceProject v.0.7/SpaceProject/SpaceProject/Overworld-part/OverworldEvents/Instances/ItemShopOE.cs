@@ -15,6 +15,9 @@ namespace SpaceProject
         private String inventoryFullText;
         private int price;
         private bool oneTimeOnly;
+        private bool itemBought;
+
+        public bool IsItemBought { get { return itemBought; } }
 
         public ItemShopOE(Item item, String welcome, String decline, String itemBought, String notEnoughMoney, String fullInventory, 
             int price, bool oneTimeOnly = true)
@@ -31,6 +34,8 @@ namespace SpaceProject
 
         public override Boolean Activate()
         {
+            itemBought = false;
+
             var responseChoices = new List<String>() { "Yes", "No" };
             PopupHandler.DisplaySelectionMenu(welcomeText, responseChoices, new List<System.Action>()
                         {
@@ -51,6 +56,7 @@ namespace SpaceProject
                                     {
                                         IsCleared();
                                     }
+                                    itemBought = true;
                                 }
 
                                 else
@@ -68,5 +74,14 @@ namespace SpaceProject
             return true;
         }
 
+        public void SetNewItem(Item item)
+        {
+            if (welcomeText.Contains(this.item.Name))
+            {
+                welcomeText = welcomeText.Replace(this.item.Name, item.Name);
+            }
+
+            this.item = item;
+        }
     }
 }

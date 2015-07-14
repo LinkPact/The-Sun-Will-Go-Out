@@ -117,8 +117,8 @@ namespace SpaceProject
             graphics.SynchronizeWithVerticalRetrace = true;
 
             // Uncomment to unlock FPS
-            IsFixedTimeStep = false;
-            graphics.SynchronizeWithVerticalRetrace = false;
+            //IsFixedTimeStep = false;
+            //graphics.SynchronizeWithVerticalRetrace = false;
             
             graphics.ApplyChanges();
 
