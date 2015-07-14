@@ -73,11 +73,11 @@ namespace SpaceProject
             }
         }
 
-        private void AssignEventAsteroids(List<Vector2> coordList, OverworldEventType type)
+        private void AssignEventAsteroids(List<Vector2> coordList, OverworldEventType eventType)
         {
             for (int n = 0; n < coordList.Count; n++)
             {
-                overworldObjects.Add(new EventAsteroid(Game, spriteSheet, GetAbsCoord(coordList[n]), "asteroid" + n));
+                overworldObjects.Add(new EventAsteroid(Game, spriteSheet, GetAbsCoord(coordList[n]), "asteroid" + n, eventType));
             }
         }
 

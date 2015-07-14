@@ -12,7 +12,7 @@ namespace SpaceProject
         private static readonly double RADIUS = 200;
         private static readonly int COUNT = 20;
         private static readonly int EVENT_ASTEROID_ITEM_COUNT = 1;
-        private static readonly int EVENT_ASTEROID_TEXT_COUNT = 1;
+        private static readonly int EVENT_ASTEROID_TEXT_COUNT = 2;
         private static readonly int EVENT_ASTEROID_AMBUSH_COUNT = 2;
 
         public RebelOutpostAsteroidField(Game1 Game, Sprite spriteSheet) :
