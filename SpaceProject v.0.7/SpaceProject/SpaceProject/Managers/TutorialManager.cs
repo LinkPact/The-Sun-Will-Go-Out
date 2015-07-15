@@ -106,8 +106,6 @@ namespace SpaceProject
                     hasEnteredOverworld = true;
 
                     DisplayTutorialImage(TutorialImage.OverworldControls);
-
-                    //"At the bottom-left of the screen is your overall health. This determines how much health you have when entering combat. When your overall health is reduced to 0, the game is over." - After first level
                 }
             }
 
@@ -243,7 +241,7 @@ namespace SpaceProject
             if (equipShieldTutorialFinished
                 && game.stateManager.stationState.SubStateManager.ShopMenuState.DisplayBuyAndEquip == false)
             {
-                game.stateManager.planetState.SubStateManager.ShopMenuState.DisplayBuyAndEquip = true;
+                game.stateManager.stationState.SubStateManager.ShopMenuState.DisplayBuyAndEquip = true;
             }
 
             if (MissionManager.GetMission(MissionID.Main2_1_TheConvoy).MissionState == StateOfMission.CompletedDead

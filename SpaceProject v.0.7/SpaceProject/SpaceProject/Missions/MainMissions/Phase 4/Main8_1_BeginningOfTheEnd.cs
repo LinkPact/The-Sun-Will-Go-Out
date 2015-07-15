@@ -96,8 +96,12 @@ namespace SpaceProject
 
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
                 new EventTextCapsule(GetEvent((int)EventID.TravellingToCoordinate), null, EventTextCanvas.MessageBox, PortraitID.Sair),
-                delegate { }, delegate { }, 
-                delegate { return GameStateManager.currentState.Equals("OverworldState"); }, 
+                delegate
+                {
+                    time = StatsManager.PlayTime.GetFutureOverworldTime(5000);
+                },
+                delegate { },
+                delegate { return StatsManager.PlayTime.HasOverworldTimePassed(time); },
                 delegate { return false; }));
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0],

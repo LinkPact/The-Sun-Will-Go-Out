@@ -43,7 +43,8 @@ namespace SpaceProject
                 tempList.Add(GetRebelOutpost.GetGameObject("Rebel Base"));
                 foreach (GameObjectOverworld obj in GetAllOverworldGameObjects)
                 {
-                    if (obj is Planet)
+                    if (obj is Planet
+                        && !obj.name.Equals("Murt Asteroid"))
                     {
                         tempList.Add(obj);
                     }
