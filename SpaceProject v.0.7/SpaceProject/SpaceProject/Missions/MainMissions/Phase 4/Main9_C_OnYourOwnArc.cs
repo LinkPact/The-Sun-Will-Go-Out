@@ -58,7 +58,7 @@ namespace SpaceProject
         {
             base.OnFailed();
 
-            PopupHandler.DisplayMessage("You could not reach the Murt before the Alliance and the rebels. Go to Telmun to try again.");
+            PopupHandler.DisplayMessage("You could not reach the Murt before the Alliance and the rebels. Go to Murt Asteroid to try again.");
         }
 
         public override void MissionLogic()
@@ -87,7 +87,7 @@ namespace SpaceProject
 
             GameObjectOverworld telmun = Game.stateManager.overworldState.GetPlanet("Murt Asteroid");
 
-            AddDestination(telmun, 4);
+            AddDestination(telmun, 5);
         }
 
         protected override void SetupObjectives()

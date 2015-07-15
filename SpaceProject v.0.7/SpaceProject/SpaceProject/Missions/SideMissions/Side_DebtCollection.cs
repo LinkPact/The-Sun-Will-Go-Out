@@ -75,7 +75,6 @@ namespace SpaceProject
                             {
                                 missionHelper.ShowEvent(GetEvent(2));
                                 StatsManager.Rupees -= 1000;
-                                //success = true;
                             }
             
                             else
@@ -87,19 +86,17 @@ namespace SpaceProject
                         delegate
                         {
                             missionHelper.ShowEvent(GetEvent(3));
-                            //failed = true;
+                            MissionManager.MarkMissionAsFailed(this.MissionID);
                         },
             
                         delegate
                         {
                             missionHelper.ShowEvent(new List<EventText> { GetEvent(4), GetEvent(5) } );
-                            //success = true;
                         },
             
                         delegate
                         {
                             missionHelper.ShowEvent(new List<EventText> { GetEvent(4), GetEvent(5) } );
-                            //success = true;
                         }
                     }, EventTextCanvas.BaseState)));
         }

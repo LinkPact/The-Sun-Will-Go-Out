@@ -427,13 +427,9 @@ namespace SpaceProject
 
                 MissionManager.MissionEventBuffer.RemoveAt(0);
 
-                if (MissionManager.MissionEventBuffer.Count > 0)
-                    BaseStateManager.ButtonControl = ButtonControl.Confirm;
-                
-                else if (MissionManager.MissionResponseBuffer.Count <= 0)
-                    BaseStateManager.ButtonControl = ButtonControl.Confirm;
-                
-                else
+                BaseStateManager.ButtonControl = ButtonControl.Confirm;
+
+                if (MissionManager.MissionResponseBuffer.Count > 0)
                 {
                     for (int i = 0; i < MissionManager.MissionResponseBuffer.Count; i++)
                     {

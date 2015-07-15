@@ -106,10 +106,17 @@ namespace SpaceProject
                 return (PopupHandler.TextBufferEmpty);
             }
 
-            else
+            else if (GameStateManager.currentState.Equals("StationState"))
             {
                 return (mission.EventBuffer.Count <= 0 
                     && game.stateManager.stationState.SubStateManager.ButtonControl != ButtonControl.Confirm
+                    && PopupHandler.TextBufferEmpty);
+            }
+
+            else
+            {
+                return (mission.EventBuffer.Count <= 0
+                    && game.stateManager.planetState.SubStateManager.ButtonControl != ButtonControl.Confirm
                     && PopupHandler.TextBufferEmpty);
             }
         }
