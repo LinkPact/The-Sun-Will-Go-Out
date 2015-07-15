@@ -12,15 +12,11 @@ namespace SpaceProject
     {
         private enum EventID
         {
-            ToAsteroidBelt1,
-            ToAsteroidBelt2,
-            ToAsteroidBelt3,
-            ToAsteroidBelt4,
+            ToAsteroidBelt,
             AtAsteroidBelt
         }
 
-        private readonly int Delay1 = 2000;
-        private readonly int Delay2 = 1500;
+        private readonly int Delay = 5000;
 
         private float completeObjectiveTime;
 
@@ -85,21 +81,18 @@ namespace SpaceProject
 
             Planet telmun = Game.stateManager.overworldState.GetPlanet("Murt Asteroid");
 
-            AddDestination(telmun, 5);
+            AddDestination(telmun, 2);
         }
 
         protected override void SetupObjectives()
         {
             objectives.Clear();
 
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                3000, 1000, PortraitID.Sair, GetEvent((int)EventID.ToAsteroidBelt1).Text));
-
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                new EventTextCapsule(GetEvent((int)EventID.ToAsteroidBelt2), null, EventTextCanvas.MessageBox, PortraitID.Sair),
+                new EventTextCapsule(GetEvent((int)EventID.ToAsteroidBelt), null, EventTextCanvas.MessageBox, PortraitID.Sair),
                 delegate
                 {
-                    completeObjectiveTime = StatsManager.PlayTime.GetFutureOverworldTime(Delay1);
+                    completeObjectiveTime = StatsManager.PlayTime.GetFutureOverworldTime(Delay);
                 },
                 delegate { },
                 delegate
@@ -108,23 +101,7 @@ namespace SpaceProject
                 },
                 delegate { return false; }));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[0],
-                new EventTextCapsule(GetEvent((int)EventID.ToAsteroidBelt3), null, EventTextCanvas.MessageBox, PortraitID.Sair),
-                delegate
-                {
-                    completeObjectiveTime = StatsManager.PlayTime.GetFutureOverworldTime(Delay2);
-                },
-                delegate { },
-                delegate
-                {
-                    return StatsManager.PlayTime.HasOverworldTimePassed(completeObjectiveTime);
-                },
-                delegate { return false; }));
-
-            objectives.Add(new TimedMessageObjective(Game, this, ObjectiveDescriptions[0],
-                2000, 3000, PortraitID.Sair, GetEvent((int)EventID.ToAsteroidBelt4).Text));
-
-            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], 1200,
+            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], 3000,
                 new EventTextCapsule(GetEvent((int)EventID.AtAsteroidBelt), null, EventTextCanvas.MessageBox, PortraitID.Sair)));
         }
     }

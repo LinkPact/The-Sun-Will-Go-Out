@@ -16,8 +16,9 @@ namespace SpaceProject
 
         private enum EventID
         {
-            ArriveAtTelmun,
-            BetweenAllianceAttacks,
+            CloseToMurt,
+            AfterFirstLevel,
+            ArriveAtMurt,
             KilledOnAllianceLevel,
             AfterAllianceAttacks
         }
@@ -88,20 +89,23 @@ namespace SpaceProject
 
             GameObjectOverworld telmun = Game.stateManager.overworldState.GetPlanet("Murt Asteroid");
 
-            AddDestination(telmun, 4);
+            AddDestination(telmun, 5);
         }
 
         protected override void SetupObjectives()
         {
             objectives.Clear();
 
-            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], new EventTextCapsule(
-                    GetEvent((int)EventID.ArriveAtTelmun), null, EventTextCanvas.MessageBox, PortraitID.Rok)));
+            objectives.Add(new CloseInOnLocationObjective(Game, this, ObjectiveDescriptions[0], 300, new EventTextCapsule(
+                GetEvent((int)EventID.CloseToMurt), null, EventTextCanvas.MessageBox, PortraitID.Rok)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[1],
                 FirstAllianceLevel, LevelStartCondition.TextCleared,
-                new EventTextCapsule(GetEvent((int)EventID.BetweenAllianceAttacks),
+                new EventTextCapsule(GetEvent((int)EventID.AfterFirstLevel),
                     null, EventTextCanvas.MessageBox, PortraitID.Rok)));
+
+            objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[0], new EventTextCapsule(
+                GetEvent((int)EventID.ArriveAtMurt), null, EventTextCanvas.MessageBox, PortraitID.Rok)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[2],
                 SecondAllianceLevel, LevelStartCondition.TextCleared,
