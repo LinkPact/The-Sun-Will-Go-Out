@@ -293,6 +293,12 @@ namespace SpaceProject
             {
                 Game.musicManager.PlayMusic(ActiveSong);
             }
+
+            if (Game.SaveOnEnterOverworld)
+            {
+                Game.SaveOnEnterOverworld = false;
+                Game.AutoSave();
+            }
         }
 
         public override void OnLeave()

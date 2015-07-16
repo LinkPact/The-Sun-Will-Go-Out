@@ -267,12 +267,6 @@ namespace SpaceProject
 
                 menuBGController.Update(gameTime);
 
-                if (saveOnEnterOverworld)
-                {
-                    saveOnEnterOverworld = false;
-                    Save();
-                }
-
                 base.Update(gameTime);
             }
         }
@@ -348,6 +342,11 @@ namespace SpaceProject
             tutorialManager.Save();
             shipInventoryManager.Save();
             stateManager.overworldState.Save();
+        }
+
+        public void AutoSave()
+        {
+            Save();
 
             AutoSaveHandler.DisplayAutoSaveMessage(2000);
         }

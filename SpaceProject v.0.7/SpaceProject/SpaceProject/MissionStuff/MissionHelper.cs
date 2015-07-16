@@ -142,17 +142,15 @@ namespace SpaceProject
             }
 
             eventText.Displayed = true;
-
-            ClearResponseText();
         }
 
         public void ShowEvent(EventText eventText, bool clearResponse)
         {
             String[] substrings = eventText.Text.Split('#');
 
-            for (int i = 0; i < substrings.Length; i++)
+            for (int i = substrings.Length - 1; i >= 0; i--)
             {
-                MissionManager.MissionEventBuffer.Add(substrings[i]);
+                MissionManager.MissionEventBuffer.Insert(0, substrings[i]);
             }
 
             eventText.Displayed = true;

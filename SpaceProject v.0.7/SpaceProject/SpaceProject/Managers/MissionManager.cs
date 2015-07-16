@@ -742,7 +742,7 @@ namespace SpaceProject
                 mainInformation.MissionState = StateOfMission.CompletedDead;
                 UnlockMission(MissionID.Main8_1_BeginningOfTheEnd);
                 MarkMissionAsActive(MissionID.Main8_1_BeginningOfTheEnd);
-                game.Save();
+                game.AutoSave();
             }
 
             // Start second mission after first is completed
@@ -760,7 +760,7 @@ namespace SpaceProject
                 mainBeginningOfTheEnd.MissionState = StateOfMission.CompletedDead;
                 UnlockMission(MissionID.Main8_2_TheEnd);
                 MarkMissionAsActive(MissionID.Main8_2_TheEnd);
-                game.Save();
+                game.AutoSave();
             }
 
             // Final mission stuff
@@ -769,8 +769,6 @@ namespace SpaceProject
                         && !RebelFleet.IsShown))
                 && GameStateManager.currentState.Equals("OverworldState"))
             {
-                game.Save();
-
                 UnlockMission(MissionID.Main9_C_OnYourOwnArc);
                 mainTheEnd.MissionState = StateOfMission.CompletedDead;
 
@@ -785,6 +783,8 @@ namespace SpaceProject
 
                 game.stateManager.overworldState.AddOverworldObject(rebelFleet);
                 game.stateManager.overworldState.AddOverworldObject(allianceFleet);
+
+                game.AutoSave();
             }
 
             if (mainRebelArc.MissionState == StateOfMission.Completed)

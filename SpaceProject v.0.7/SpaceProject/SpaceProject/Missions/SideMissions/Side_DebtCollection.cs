@@ -73,7 +73,7 @@ namespace SpaceProject
                         {
                             if (StatsManager.Rupees >= 1000)
                             {
-                                missionHelper.ShowEvent(GetEvent(2));
+                                missionHelper.ShowEvent(GetEvent(2), true);
                                 StatsManager.Rupees -= 1000;
                             }
             
@@ -85,18 +85,20 @@ namespace SpaceProject
             
                         delegate
                         {
-                            missionHelper.ShowEvent(GetEvent(3));
+                            missionHelper.ShowEvent(GetEvent(3), true);
                             MissionManager.MarkMissionAsFailed(this.MissionID);
                         },
             
                         delegate
                         {
                             missionHelper.ShowEvent(new List<EventText> { GetEvent(4), GetEvent(5) } );
+                            missionHelper.ClearResponseText();
                         },
             
                         delegate
                         {
                             missionHelper.ShowEvent(new List<EventText> { GetEvent(4), GetEvent(5) } );
+                            missionHelper.ClearResponseText();
                         }
                     }, EventTextCanvas.BaseState)));
         }
