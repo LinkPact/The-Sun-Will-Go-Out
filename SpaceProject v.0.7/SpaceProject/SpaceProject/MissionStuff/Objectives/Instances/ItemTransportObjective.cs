@@ -61,18 +61,15 @@ namespace SpaceProject
 
             if (Destination is Planet)
             {
-                return (ShipInventoryManager.ShipItems.Contains(item) 
-                    && mission.MissionHelper.IsPlayerOnPlanet(Destination.name));
+                return (PlayerHasItem() && mission.MissionHelper.IsPlayerOnPlanet(Destination.name));
             }
             else if (Destination is Station)
             {
-                return (ShipInventoryManager.ShipItems.Contains(item) 
-                    && mission.MissionHelper.IsPlayerOnStation(Destination.name));
+                return (PlayerHasItem() && mission.MissionHelper.IsPlayerOnStation(Destination.name));
             }
             else
             {
-                return (ShipInventoryManager.ShipItems.Contains(item) 
-                    && CollisionDetection.IsRectInRect(game.player.Bounds, Destination.Bounds));
+                return (PlayerHasItem() && CollisionDetection.IsRectInRect(game.player.Bounds, Destination.Bounds));
             }
         }
 
@@ -80,7 +77,7 @@ namespace SpaceProject
         {
             base.OnCompleted();
 
-            ShipInventoryManager.RemoveItem(item);
+            RemoveItemFromInventory();
         }
 
         public override bool Failed()
@@ -88,16 +85,16 @@ namespace SpaceProject
             if (Destination is Planet 
                 && mission.MissionHelper.IsPlayerOnPlanet(Destination.name))
             {
-                return !ShipInventoryManager.ShipItems.Contains(item);
+                return !PlayerHasItem();
             }
             else if (Destination is Station
                 && mission.MissionHelper.IsPlayerOnStation(Destination.name))
             {
-                return !ShipInventoryManager.ShipItems.Contains(item);
+                return !PlayerHasItem();
             }
             else if (CollisionDetection.IsRectInRect(game.player.Bounds, Destination.Bounds))
             {
-                return !ShipInventoryManager.ShipItems.Contains(item);
+                return !PlayerHasItem();
             }
 
             return false;
@@ -106,6 +103,31 @@ namespace SpaceProject
         public override void OnFailed()
         {
             base.OnFailed();
+        }
+
+        private bool PlayerHasItem()
+        {
+            foreach (Item i in ShipInventoryManager.ShipItems)
+            {
+                if (i.GetType().Equals(item.GetType()))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void RemoveItemFromInventory()
+        {
+            foreach (Item i in ShipInventoryManager.ShipItems)
+            {
+                if (i.GetType().Equals(item.GetType()))
+                {
+                    ShipInventoryManager.RemoveItem(i);
+                    break;
+                }
+            }
         }
     }
 }

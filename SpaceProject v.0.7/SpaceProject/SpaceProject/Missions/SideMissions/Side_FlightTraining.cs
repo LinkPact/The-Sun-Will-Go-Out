@@ -96,7 +96,8 @@ namespace SpaceProject
                 GetEvent((int)EventID.DeclineResponse)));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
-                "flightTraining_3", LevelStartCondition.TextCleared));
+                "flightTraining_3", LevelStartCondition.TextCleared,
+                new EventTextCapsule(null, GetEvent((int)EventID.LevelFailed), EventTextCanvas.BaseState)));
         }
     }
 }

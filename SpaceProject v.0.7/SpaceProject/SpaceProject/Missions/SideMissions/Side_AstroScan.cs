@@ -40,6 +40,13 @@ namespace SpaceProject
         public override void OnLoad()
         { }
 
+        public override void OnFailed()
+        {
+            base.OnFailed();
+
+            PopupHandler.DisplayPortraitMessage(PortraitID.RebelTroopLeader, "[Mineral researcher] Too bad. Fly back to Lavis Station and talk to me to try again.");
+        }
+
         public override void MissionLogic()
         {
             base.MissionLogic();

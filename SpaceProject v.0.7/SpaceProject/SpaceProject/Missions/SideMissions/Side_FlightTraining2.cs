@@ -120,7 +120,8 @@ namespace SpaceProject
 
             // Fifth level
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
-                "ft2_5", LevelStartCondition.TextCleared));
+                "ft2_5", LevelStartCondition.TextCleared,
+                new EventTextCapsule(null, GetEvent((int)EventID.LevelFailed), EventTextCanvas.BaseState)));
         }
     }
 }

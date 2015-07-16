@@ -468,6 +468,20 @@ namespace SpaceProject
             return GetActiveMissionsAtDestination(obj).Count != 0;
         }
 
+        public static bool IsFailedMissionDestination(GameObjectOverworld obj)
+        {
+            foreach (Mission mission in missions)
+            {
+                if (mission.MissionState == StateOfMission.Failed
+                    && mission.LocationName.ToLower().Equals(obj.name.ToLower()))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         // Checks if gameobject is target for main mission objective
         public static Boolean IsMainMissionDestination(GameObjectOverworld obj)
         {

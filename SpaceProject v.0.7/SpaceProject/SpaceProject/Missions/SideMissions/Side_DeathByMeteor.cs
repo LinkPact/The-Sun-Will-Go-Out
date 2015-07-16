@@ -41,6 +41,13 @@ namespace SpaceProject
         public override void OnLoad()
         { }
 
+        public override void OnFailed()
+        {
+            base.OnFailed();
+
+            PopupHandler.DisplayPortraitMessage(PortraitID.Ente, "[Crazy scientist] \"Haha! Oh, I mean, sorry. Look what a mess you are. Of course you weren't able to make it through the level. But you are welcome to try again. If you do, maybe you too will be a legend one day.\"");
+        }
+
         public override void MissionLogic()
         {
             base.MissionLogic();

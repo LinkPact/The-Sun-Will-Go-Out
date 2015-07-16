@@ -107,7 +107,8 @@ namespace SpaceProject
                 }
 
                 // Adds mission arrows for non-visible mission coordinates
-                else if (MissionManager.IsCurrentObjectiveDestination(obj))
+                else if (MissionManager.IsCurrentObjectiveDestination(obj)
+                    || MissionManager.IsFailedMissionDestination(obj))
                 {
                     Boolean isMain = MissionManager.IsMainMissionDestination(obj);
                     missionArrows.Add(new DirectionArrow(spriteSheet, obj.position, playerpos, isMain));
@@ -181,7 +182,8 @@ namespace SpaceProject
                 drawDistance = 0.91f;
                 bool isHidden = false;
 
-                if (MissionManager.IsCurrentObjectiveDestination(obj))
+                if (MissionManager.IsCurrentObjectiveDestination(obj)
+                    || MissionManager.IsFailedMissionDestination(obj))
                 {
                     drawDistance = 0.92f;
                     if (colorSwapCounter <= 25)
