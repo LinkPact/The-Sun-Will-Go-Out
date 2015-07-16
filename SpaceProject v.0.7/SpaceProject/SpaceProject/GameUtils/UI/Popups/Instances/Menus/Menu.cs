@@ -278,7 +278,10 @@ namespace SpaceProject
                         menuOptionOrigin.Y + i * menuOptionYDistance) + FontManager.FontOffsetStatic,
                         screenPosition, this is SelectionMenu))
                 {
-                    cursorIndex = i;
+                    if (ControlManager.GetMousePosition() != ControlManager.GetPreviousMousePosition())
+                    {
+                        cursorIndex = i;
+                    }
                 }
             }
         }

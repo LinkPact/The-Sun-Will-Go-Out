@@ -28,6 +28,7 @@ namespace SpaceProject
 
         public Sprite SpriteSheet { get { return spriteSheet; } }
         public OverlayType OverlayType { get { return overlayType; } }
+        public bool IsOverlayDisplayed { get { return displayOverlay; } }
 
         private bool displayOverlay;
         private OverlayType overlayType;

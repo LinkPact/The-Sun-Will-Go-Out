@@ -239,7 +239,8 @@ namespace SpaceProject
             for (int i = 0; i < menuOptions.Length / 2; i++)
             {
                 if (ControlManager.IsMouseOverText(menuOptionFont, menuOptions[i, 0],
-                    new Vector2((game.Window.ClientBounds.Width / 9) * 4, game.Window.ClientBounds.Height / 3 + (i * 23)) + fontOffset))
+                    new Vector2((game.Window.ClientBounds.Width / 9) * 4 + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 0]).X / 2,
+                        game.Window.ClientBounds.Height / 3 + (i * 23)) + fontOffset))
                 {
                     if (cursorIndex != i)
                     {
@@ -262,7 +263,8 @@ namespace SpaceProject
                 if (!menuOptions[i, 1].Equals(""))
                 {
                     if (ControlManager.IsMouseOverText(menuOptionFont, menuOptions[i, 1],
-                        new Vector2(game.Window.ClientBounds.Width - 150, game.Window.ClientBounds.Height / 3 + (i * 23)) + fontOffset))
+                        new Vector2(game.Window.ClientBounds.Width - 150 + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 1]).X / 2,
+                            game.Window.ClientBounds.Height / 3 + (i * 23)) + fontOffset))
                     {
                         if (cursorIndex != i)
                         {
@@ -271,10 +273,7 @@ namespace SpaceProject
 
                         if (ControlManager.IsLeftMouseButtonClicked())
                         {
-                            //if (!(this is VisualOptionsSubState) || cursorIndex != 2)
-                            //{
-                                ButtonActions();
-                            //}
+                            ButtonActions();
                         }
                         if (ControlManager.GetMousePosition() != ControlManager.GetPreviousMousePosition())
                         {

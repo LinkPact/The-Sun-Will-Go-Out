@@ -74,40 +74,8 @@ namespace SpaceProject
 
             if (displayed && tempTimer <= 0)
             {
-                if (ControlManager.CheckPress(RebindableKeys.Down))
-                {
-                    cursorIndex++;
-                }
-
-                else if (ControlManager.CheckPress(RebindableKeys.Up))
-                {
-                    cursorIndex--;
-                }
-
-                if (cursorIndex > options.Count - 1)
-                {
-                    cursorIndex = 0;
-                }
-
-                else if (cursorIndex < 0)
-                {
-                    cursorIndex = options.Count - 1;
-                }
-
-                if (ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter))
-                {
-                    if (cursorIndex < beacons.Count)
-                    {
-                        currentBeacon.StartJump(beacons[cursorIndex]);
-                    }
-
-                    Hide();
-                }
-
-                if (ControlManager.CheckPress(RebindableKeys.Action2) || ControlManager.CheckKeyPress(Keys.Escape))
-                {
-                    Hide();
-                }
+                ButtonControls();
+                MouseControls();
             }
         }
 
@@ -134,6 +102,69 @@ namespace SpaceProject
                                                                          game.camera.cameraPos.Y + position.Y - 100 + (i * 20)),
                             color, 0.0f,
                             Vector2.Zero, 1f, SpriteEffects.None, 0.95f);
+                }
+            }
+        }
+
+        private void ButtonControls()
+        {
+            if (ControlManager.CheckPress(RebindableKeys.Down))
+            {
+                cursorIndex++;
+            }
+
+            else if (ControlManager.CheckPress(RebindableKeys.Up))
+            {
+                cursorIndex--;
+            }
+
+            if (cursorIndex > options.Count - 1)
+            {
+                cursorIndex = 0;
+            }
+
+            else if (cursorIndex < 0)
+            {
+                cursorIndex = options.Count - 1;
+            }
+
+            if (ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter))
+            {
+                if (cursorIndex < beacons.Count)
+                {
+                    currentBeacon.StartJump(beacons[cursorIndex]);
+                }
+
+                Hide();
+            }
+
+            if (ControlManager.CheckPress(RebindableKeys.Action2) || ControlManager.CheckKeyPress(Keys.Escape))
+            {
+                Hide();
+            }
+        }
+
+        private void MouseControls()
+        {
+            for (int i = 0; i < options.Count; i++)
+            {
+                if (ControlManager.IsMouseOverText(font, options[i], new Vector2(game.camera.cameraPos.X + position.X + 120,
+                        game.camera.cameraPos.Y + position.Y - 100 + (i * 20)), game.camera.Position - game.ScreenCenter, false))
+                {
+                    if (ControlManager.GetMousePosition() != ControlManager.GetPreviousMousePosition())
+                    {
+                        cursorIndex = i;
+                    }
+
+                    if (ControlManager.IsLeftMouseButtonClicked())
+                    {
+                        if (cursorIndex < beacons.Count)
+                        {
+                            currentBeacon.StartJump(beacons[cursorIndex]);
+                        }
+
+                        Hide();
+                    }
                 }
             }
         }

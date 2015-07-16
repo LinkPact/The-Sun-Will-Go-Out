@@ -120,9 +120,13 @@ namespace SpaceProject
         {
             for (int i = 0; i < options.Count; i++)
             {
-                if (ControlManager.IsMouseOverText(FontManager.GetFontStatic(14), options[i], new Vector2(10, 10 + (i * 20))))
+                if (ControlManager.IsMouseOverText(FontManager.GetFontStatic(14),
+                    options[i], new Vector2(10, 10 + (i * 20)), false))
                 {
-                    cursorIndex = i;
+                    if (ControlManager.GetMousePosition() != ControlManager.GetPreviousMousePosition())
+                    {
+                        cursorIndex = i;
+                    }
 
                     if (ControlManager.IsLeftMouseButtonClicked())
                     {

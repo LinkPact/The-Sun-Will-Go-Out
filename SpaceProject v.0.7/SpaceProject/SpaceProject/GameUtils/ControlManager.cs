@@ -632,21 +632,7 @@ namespace SpaceProject
             return CollisionDetection.IsPointInsideRectangle(new Vector2(currentMouseState.X, currentMouseState.Y), area);
         }
 
-        public static bool IsMouseOverText(SpriteFont font, String text, Vector2 textPosition)
-        {
-            Vector2 textOrigin;
-            Vector2 textDimension;
-            Rectangle textRect;
-
-            textOrigin = font.MeasureString(text) / 2;
-            textDimension = font.MeasureString(text);
-            textRect = new Rectangle((int)(textPosition.X - textOrigin.X), (int)(textPosition.Y - textOrigin.Y),
-                    (int)textDimension.X, (int)textDimension.Y);
-
-            return CollisionDetection.IsPointInsideRectangle(ControlManager.GetMousePosition(), textRect);
-        }
-
-        public static bool IsMouseOverText(SpriteFont font, String text, Vector2 textPosition, Vector2 screenPos, bool textCentered)
+        public static bool IsMouseOverText(SpriteFont font, String text, Vector2 textPosition, bool textCentered = true)
         {
             Vector2 textOrigin;
             Vector2 textDimension;
@@ -657,9 +643,12 @@ namespace SpaceProject
             textRect = new Rectangle((int)(textPosition.X - textOrigin.X), (int)(textPosition.Y - textOrigin.Y),
                     (int)textDimension.X, (int)textDimension.Y);
 
-            Vector2 relativeMousePosition = ControlManager.GetMousePosition() + screenPos;
+            return CollisionDetection.IsPointInsideRectangle(ControlManager.GetMousePosition(), textRect);
+        }
 
-            return CollisionDetection.IsPointInsideRectangle(relativeMousePosition, textRect);
+        public static bool IsMouseOverText(SpriteFont font, String text, Vector2 textPosition, Vector2 screenPos, bool textCentered)
+        {
+            return IsMouseOverText(font, text, textPosition - screenPos, textCentered);
         }
 
         private static bool IsKeyBound(Keys newkey, RebindableKeys keyToRebind)

@@ -232,6 +232,8 @@ namespace SpaceProject
         {
             activeMenuState.Update(gameTime);
 
+            MouseControls();
+
             if (buttonControl == ButtonControl.Menu)
             {
                 if (ControlManager.CheckPress(RebindableKeys.Down))
@@ -248,8 +250,6 @@ namespace SpaceProject
                     ActiveMenuState.CursorActions();
                 }
 
-                MouseControls();
-
                 previousButton = activeButton;
                 activeButton = allButtons[activeButtonIndexY];
             }
@@ -261,8 +261,7 @@ namespace SpaceProject
                 activeButton = null;
             }
 
-            if (ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)
-                || ControlManager.IsLeftMouseButtonClicked())
+            if (ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter))
             {
                 ActiveMenuState.ButtonActions();
             }
@@ -304,11 +303,30 @@ namespace SpaceProject
 
         protected void MouseControls()
         {
-            for (int i = 0; i < allButtons.Count; i++)
+            if (baseState.IsOverlayDisplayed)
             {
-                if (ControlManager.IsMouseOverArea(allButtons[i].Bounds))
+                if (ControlManager.IsLeftMouseButtonClicked()
+                    && Game.IsActive)
                 {
-                    activeButtonIndexY = i;
+                    ActiveMenuState.ButtonActions();
+                }
+            }
+            else
+            {
+                for (int i = 0; i < allButtons.Count; i++)
+                {
+                    if (ControlManager.IsMouseOverArea(allButtons[i].Bounds))
+                    {
+                        if (ControlManager.GetMousePosition() != ControlManager.GetPreviousMousePosition())
+                        {
+                            activeButtonIndexY = i;
+                        }
+
+                        if (ControlManager.IsLeftMouseButtonClicked())
+                        {
+                            ActiveMenuState.ButtonActions();
+                        }
+                    }
                 }
             }
         }
