@@ -111,7 +111,7 @@ namespace SpaceProject
 
                 if (cursorIndex == i)
                 {
-                    color = Color.LightBlue;
+                    color = FontManager.FontSelectColor1;
                 }
 
                 spriteBatch.DrawString(FontManager.GetFontStatic(14),

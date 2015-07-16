@@ -157,7 +157,7 @@ namespace SpaceProject
                 if (cursorIndex == i)
                 {
                     spriteBatch.DrawString(Game.fontManager.GetFont(14), options[i],
-                        new Vector2(10, 10 + (i * 20)), Color.LightBlue);
+                        new Vector2(10, 10 + (i * 20)), FontManager.FontSelectColor1);
                 }
 
                 else

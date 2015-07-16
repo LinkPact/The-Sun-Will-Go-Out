@@ -131,7 +131,7 @@ namespace SpaceProject
                 if (layer == 2
                     && layer2pos == partList.IndexOf(part))
                 {
-                    color = Color.Red;
+                    color = FontManager.FontSelectColor1;
                 }
 
                 spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), name, new Vector2(startPosition.X + 20, startPosition.Y + pos * deltaY), color);

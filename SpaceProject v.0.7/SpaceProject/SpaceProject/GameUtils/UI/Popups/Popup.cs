@@ -167,7 +167,7 @@ namespace SpaceProject
             spriteBatch.DrawString(FontManager.GetFontStatic(14),
                  "Okay",
                  okayButtonPosition + FontManager.FontOffsetStatic,
-                 Color.LightBlue,
+                 FontManager.FontSelectColor2,
                  0f,
                  FontManager.GetFontStatic(14).MeasureString("Okay") / 2,
                  1f,

@@ -87,16 +87,16 @@ namespace SpaceProject
                 if (!isSmall)
                 {
                     if (isActive)
-                        spriteBatch.Draw(active.Texture, position, active.SourceRectangle, Color.White, 0, origin, 1.0f, SpriteEffects.None, 1f);
+                        spriteBatch.Draw(active.Texture, position, active.SourceRectangle, FontManager.FontSelectColor1, 0, origin, 1.0f, SpriteEffects.None, 1f);
                     if (!isActive)
-                        spriteBatch.Draw(passive.Texture, position, passive.SourceRectangle, Color.White, 0, origin, 1.0f, SpriteEffects.None, 1f);
+                        spriteBatch.Draw(passive.Texture, position, passive.SourceRectangle, FontManager.FontSelectColor1, 0, origin, 1.0f, SpriteEffects.None, 1f);
                 }
                 else
                 {
                     if (isActive)
-                        spriteBatch.Draw(activeSmall.Texture, position, activeSmall.SourceRectangle, Color.White, 0, origin, 1.0f, SpriteEffects.None, 1f);
+                        spriteBatch.Draw(activeSmall.Texture, position, activeSmall.SourceRectangle, FontManager.FontSelectColor1, 0, origin, 1.0f, SpriteEffects.None, 1f);
                     if (!isActive)
-                        spriteBatch.Draw(passiveSmall.Texture, position, passiveSmall.SourceRectangle, Color.White, 0, origin, 1.0f, SpriteEffects.None, 1f);
+                        spriteBatch.Draw(passiveSmall.Texture, position, passiveSmall.SourceRectangle, FontManager.FontSelectColor1, 0, origin, 1.0f, SpriteEffects.None, 1f);
                 }
             }   
         }

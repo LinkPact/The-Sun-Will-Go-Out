@@ -148,7 +148,7 @@ namespace SpaceProject
                 displayList[i].Draw(spriteBatch);
 
                 spriteBatch.DrawString(FontManager.GetFontStatic(14), displayList[i].name, displayList[i].Position,
-                    var1 == i ? Color.LightBlue : FontManager.FontColorStatic, 0f,
+                    var1 == i ? FontManager.FontSelectColor1 : FontManager.FontColorStatic, 0f,
                     FontManager.GetFontStatic(14).MeasureString(displayList[i].name) / 2, 1f, SpriteEffects.None, 1f);
             }
 

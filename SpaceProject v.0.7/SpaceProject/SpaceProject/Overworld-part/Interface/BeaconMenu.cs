@@ -93,7 +93,7 @@ namespace SpaceProject
 
                     if (i == cursorIndex)
                     {
-                        color = Color.Red;
+                        color = FontManager.FontSelectColor1;
                     }
 
                     String beaconOptionDisplay = options[i].Replace(" Beacon", "");
@@ -148,7 +148,7 @@ namespace SpaceProject
         {
             for (int i = 0; i < options.Count; i++)
             {
-                if (ControlManager.IsMouseOverText(font, options[i], new Vector2(game.camera.cameraPos.X + position.X + 120,
+                if (ControlManager.IsMouseOverText(font, options[i].Replace("Beacon", ""), new Vector2(game.camera.cameraPos.X + position.X + 120,
                         game.camera.cameraPos.Y + position.Y - 100 + (i * 20)), game.camera.Position - game.ScreenCenter, false))
                 {
                     if (ControlManager.GetMousePosition() != ControlManager.GetPreviousMousePosition())

@@ -49,7 +49,7 @@ namespace SpaceProject
         public override void Initialize()
         {
             fontButtons = Game.fontManager.GetFont(16);
-            fontHeading = Game.fontManager.GetFont(28);
+            fontHeading = Game.fontManager.GetFont(36);
 
             buttonSprite = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/buttons"), null);
 
@@ -348,7 +348,7 @@ namespace SpaceProject
                     Game.fontManager.FontColor, 0f, fontHeading.MeasureString("The sun will go out") / 2,
                     1f, SpriteEffects.None, 1f);
 
-                spriteBatch.DrawString(fontButtons, "Beta Release 1", new Vector2(10,
+                spriteBatch.DrawString(fontButtons, "Version: 1.0", new Vector2(10,
                     5) + Game.fontManager.FontOffset,
                     Game.fontManager.FontColor, 0f, Vector2.Zero,
                     1f, SpriteEffects.None, 1f);
@@ -364,7 +364,7 @@ namespace SpaceProject
                     }
                     else
                     {
-                        spriteBatch.DrawString(fontButtons, button.name, button.Position + Game.fontManager.FontOffset, Color.LightSkyBlue, 0f, fontButtons.MeasureString(button.name) / 2, 1f, SpriteEffects.None, 0.95f);
+                        spriteBatch.DrawString(fontButtons, button.name, button.Position + Game.fontManager.FontOffset, FontManager.FontSelectColor1, 0f, fontButtons.MeasureString(button.name) / 2, 1f, SpriteEffects.None, 0.95f);
                     }
                 }
             }

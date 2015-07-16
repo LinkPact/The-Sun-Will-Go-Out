@@ -533,9 +533,6 @@ namespace SpaceProject
             DisplayInventory(spriteBatch);
             DisplayShopInventory(spriteBatch);
 
-            passiveInventoryCursor.Draw(spriteBatch);
-            activeInventoryCursor.Draw(spriteBatch);
-
             spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
                                    "Information",
                                    informationStringPos + Game.fontManager.FontOffset,
@@ -613,7 +610,7 @@ namespace SpaceProject
 
                     if (confirmMenuIndex == i)
                     {
-                        tempColor = Color.Red;
+                        tempColor = FontManager.FontSelectColor1;
                     }
 
                     spriteBatch.DrawString(Game.fontManager.GetFont(14),
@@ -623,6 +620,12 @@ namespace SpaceProject
                         Game.fontManager.GetFont(14).MeasureString(confirmOptions[i]) / 2,
                         1f, SpriteEffects.None, 1f);
                 }
+            }
+
+            else
+            {
+                passiveInventoryCursor.Draw(spriteBatch);
+                activeInventoryCursor.Draw(spriteBatch);
             }
 
             DrawLines(spriteBatch);
@@ -678,7 +681,7 @@ namespace SpaceProject
                                                ShipInventoryManager.ShipItems[n].Name,
                                                new Vector2(invColumn1XPosition,
                                                            columnYPosition + (n * InventoryYSpacing)) + Game.fontManager.FontOffset,
-                                               Color.Blue, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
+                                               FontManager.FontSelectColor1, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
 
                     else if(ShipInventoryManager.ShipItems[n].ShopColor == 1)
                         spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
@@ -701,7 +704,7 @@ namespace SpaceProject
                                                ShipInventoryManager.ShipItems[n + columnSize].Name,
                                                new Vector2(invColumn2XPosition,
                                                            columnYPosition + (n * InventoryYSpacing)) + Game.fontManager.FontOffset,
-                                               Color.Blue, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
+                                               FontManager.FontSelectColor1, .0f, Vector2.Zero, 1f, SpriteEffects.None, .5f);
 
                     else if (ShipInventoryManager.ShipItems[n + columnSize].ShopColor == 1)
                         spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
@@ -1172,13 +1175,13 @@ namespace SpaceProject
         private void DrawLines(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(line.Texture, new Vector2(line1XPos, lineYPos), line.SourceRectangle, Color.DarkSeaGreen, 0f,
-                Vector2.Zero, new Vector2(1, lineLength / 2), SpriteEffects.None, 1f);
+                Vector2.Zero, new Vector2(1, lineLength / 2), SpriteEffects.None, 0.94f);
 
             spriteBatch.Draw(line.Texture, new Vector2(line2XPos, lineYPos), line.SourceRectangle, Color.DarkSeaGreen, 0f,
-                Vector2.Zero, new Vector2(1, lineLength / 2), SpriteEffects.None, 1f);
+                Vector2.Zero, new Vector2(1, lineLength / 2), SpriteEffects.None, 0.94f);
 
             spriteBatch.Draw(line.Texture, new Vector2(line3XPos, lineYPos), line.SourceRectangle, Color.DarkSeaGreen, 0f,
-                Vector2.Zero, new Vector2(1, lineLength / 2), SpriteEffects.None, 1f);
+                Vector2.Zero, new Vector2(1, lineLength / 2), SpriteEffects.None, 0.94f);
         }
 
         private void ButtonControls(GameTime gameTime)

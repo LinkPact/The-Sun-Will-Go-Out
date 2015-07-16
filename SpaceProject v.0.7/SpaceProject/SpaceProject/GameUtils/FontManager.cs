@@ -18,6 +18,9 @@ namespace SpaceProject
     {
         private Game1 Game;
 
+        public static readonly Color FontSelectColor1 = Color.OrangeRed;
+        public static readonly Color FontSelectColor2 = Color.LightYellow;
+
         private static Color fontColor;
         public Color FontColor { get { return fontColor; } set { fontColor = value; } }
         public static Color FontColorStatic { get { return fontColor; } set { fontColor = value; } }
@@ -39,6 +42,7 @@ namespace SpaceProject
         private static SpriteFont iceland_18;   
         private static SpriteFont iSL_Jupiter_24;
         private static SpriteFont iSL_Jupiter_28;
+        private static SpriteFont iSL_Jupiter_36;
         
         #endregion
 
@@ -60,6 +64,7 @@ namespace SpaceProject
             iceland_18 = Game.Content.Load<SpriteFont>("Fonts/Iceland_18");
             iSL_Jupiter_24 = Game.Content.Load<SpriteFont>("Fonts/ISL_Jupiter_24");
             iSL_Jupiter_28 = Game.Content.Load<SpriteFont>("Fonts/ISL_Jupiter_28");
+            iSL_Jupiter_36 = Game.Content.Load<SpriteFont>("Fonts/ISL_Jupiter_36");
         }
 
         public SpriteFont GetFont(int size)
@@ -111,6 +116,10 @@ namespace SpaceProject
                 case 28:
                     fontOffset = Vector2.Zero;
                     return iSL_Jupiter_28;
+
+                case 36:
+                    fontOffset = Vector2.Zero;
+                    return iSL_Jupiter_36;
 
                 default:
                     throw new ArgumentException("Invalid font size.");

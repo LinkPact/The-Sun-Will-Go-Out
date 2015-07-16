@@ -344,7 +344,7 @@ namespace SpaceProject
                     }
                     else
                     {
-                        spriteBatch.DrawString(buttonsFont, button.name, button.Position + Game.fontManager.FontOffset, Color.LightSkyBlue, 0f, buttonsFont.MeasureString(button.name) / 2, 1f, SpriteEffects.None, 1f);
+                        spriteBatch.DrawString(buttonsFont, button.name, button.Position + Game.fontManager.FontOffset, FontManager.FontSelectColor1, 0f, buttonsFont.MeasureString(button.name) / 2, 1f, SpriteEffects.None, 1f);
                     }
                 }
             }

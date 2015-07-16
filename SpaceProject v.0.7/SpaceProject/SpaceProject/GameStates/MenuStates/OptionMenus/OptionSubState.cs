@@ -322,7 +322,7 @@ namespace SpaceProject
                     spriteBatch.DrawString(game.fontManager.GetFont(14), menuOptions[i, 0],
                         new Vector2((game.Window.ClientBounds.Width / 9) * 4  + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 0]).X / 2,
                                     game.Window.ClientBounds.Height / 3 + (i * 23)) + game.fontManager.FontOffset,
-                        Color.LightSkyBlue, 0f,
+                        FontManager.FontSelectColor1, 0f,
                         game.fontManager.GetFont(14).MeasureString(menuOptions[i, 0]) / 2,
                         1f, SpriteEffects.None, 1f);
 
@@ -330,7 +330,7 @@ namespace SpaceProject
                     spriteBatch.DrawString(game.fontManager.GetFont(14), menuOptions[i, 1],
                         new Vector2(game.Window.ClientBounds.Width - 150 + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 1]).X / 2,
                                     game.Window.ClientBounds.Height / 3 + (i * 23)) + game.fontManager.FontOffset,
-                        Color.LightSkyBlue, 0f,
+                        FontManager.FontSelectColor1, 0f,
                         game.fontManager.GetFont(14).MeasureString(menuOptions[i, 1]) / 2,
                         1f, SpriteEffects.None, 1f);
 

@@ -340,7 +340,9 @@ namespace SpaceProject
                 allButtons[i].Draw(spriteBatch);
 
                 if (i == activeButtonIndexY)
-                    fontColor = Color.LightSkyBlue;
+                {
+                    fontColor = FontManager.FontSelectColor1;
+                }
 
                 if (allButtons[i].isVisible)
                 {

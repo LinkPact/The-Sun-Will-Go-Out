@@ -120,7 +120,6 @@ namespace SpaceProject
                 dispObj.Draw(spriteBatch);
             }
 
-            #region InventorySubMenues
             if (primaryDisplay.isActive)
             {
                 ShipManagerText.DisplayPrimaryWeaponInfo1(spriteBatch);
@@ -182,8 +181,6 @@ namespace SpaceProject
             //{
             //    ShipManagerText.DisplayBackInfo(spriteBatch);
             //}
-
-            #endregion
         }
     }
 }
