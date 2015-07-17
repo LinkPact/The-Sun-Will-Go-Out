@@ -73,7 +73,7 @@ namespace SpaceProject
             planetTextureOrigin = new Vector2(planet.sprite.SourceRectangle.Value.Width / 2,
                                               planet.sprite.SourceRectangle.Value.Height / 2);
 
-            nameStringOrigin = Game.fontManager.GetFont(14).MeasureString(planetName) / 2;
+            nameStringOrigin = Game.fontManager.GetFont(18).MeasureString(planetName) / 2;
 
             subStateManager.RumorsMenuState.LoadRumors(planet);
             subStateManager.OverviewMenuState.SetButtons();
@@ -81,7 +81,7 @@ namespace SpaceProject
 
         private float ScalePlanet(float diameter, float planetScale)
         {
-            float preferredSize = Game.Window.ClientBounds.Width / 4f; // 3.25f
+            float preferredSize = Game.Window.ClientBounds.Width / 5f;
             float scale = planetScale;
 
             while ((diameter * scale) > preferredSize)
@@ -128,7 +128,7 @@ namespace SpaceProject
                              .5f);
 
             //Draw planet name string
-            spriteBatch.DrawString(Game.fontManager.GetFont(14),
+            spriteBatch.DrawString(Game.fontManager.GetFont(18),
                                    planetName,
                                    nameStringPosition + Game.fontManager.FontOffset,
                                    Game.fontManager.FontColor,

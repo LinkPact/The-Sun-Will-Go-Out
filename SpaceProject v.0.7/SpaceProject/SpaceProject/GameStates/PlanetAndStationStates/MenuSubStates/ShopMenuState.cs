@@ -547,8 +547,10 @@ namespace SpaceProject
             {
                 if (inventoryCursorIndex.Y == 15)
                 {
-                    spriteBatch.DrawString(FontManager.GetFontStatic(14), "Leave the shop and go back to the previous menu", itemInfoPosition, 
-                        FontManager.FontColorStatic, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0.6f);
+                    spriteBatch.DrawString(FontManager.GetFontStatic(14),
+                        TextUtils.WordWrap(FontManager.GetFontStatic(14),
+                        "Leave the shop and go back to the previous menu", itemInfoTextWidth),
+                        itemInfoPosition, FontManager.FontColorStatic, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0.6f);
                 }
                 else
                 {

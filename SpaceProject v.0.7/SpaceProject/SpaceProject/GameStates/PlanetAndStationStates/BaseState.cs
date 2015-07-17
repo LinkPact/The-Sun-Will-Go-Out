@@ -58,7 +58,7 @@ namespace SpaceProject
 
             spriteSheet = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/PlanetOverviewSpritesheet"), null);    
 
-            nameStringPosition = new Vector2(Game.Window.ClientBounds.Width / 2, 30);
+            nameStringPosition = new Vector2(Game.Window.ClientBounds.Width / 2, 50);
 
             portraitOverlay = spriteSheet.GetSubSprite(new Rectangle(450, 0, 567, 234));
             textOverlay = spriteSheet.GetSubSprite(new Rectangle(0, 0, 400, 183));

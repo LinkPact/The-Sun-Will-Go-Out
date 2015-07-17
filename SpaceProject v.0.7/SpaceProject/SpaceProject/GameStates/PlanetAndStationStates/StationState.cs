@@ -86,7 +86,7 @@ namespace SpaceProject
             stationTextureOrigin = new Vector2(station.sprite.SourceRectangle.Value.Width / 2,
                                                   station.sprite.SourceRectangle.Value.Height / 2);
 
-            nameStringOrigin = Game.fontManager.GetFont(16).MeasureString(stationName) / 2;
+            nameStringOrigin = Game.fontManager.GetFont(18).MeasureString(stationName) / 2;
 
             subStateManager.RumorsMenuState.LoadRumors(station);
             subStateManager.OverviewMenuState.SetButtons();
@@ -94,7 +94,7 @@ namespace SpaceProject
 
         private float ScaleStation(float diameter, float planetScale)
         {
-            int preferredSize = (int)Game.Window.ClientBounds.Width / 4;
+            float preferredSize = Game.Window.ClientBounds.Width / 5f;
             float maxScale = 2f;
             float scale = planetScale;
 
@@ -148,7 +148,7 @@ namespace SpaceProject
                              SpriteEffects.None,
                              .5f);
 
-            spriteBatch.DrawString(Game.fontManager.GetFont(16),
+            spriteBatch.DrawString(Game.fontManager.GetFont(18),
                                    stationName,
                                    nameStringPosition + Game.fontManager.FontOffset,
                                    Game.fontManager.FontColor,
