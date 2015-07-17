@@ -59,7 +59,7 @@ namespace SpaceProject
         {
             get
             {
-                return (cursorCoordLv1.Position == 2
+                return (cursorCoordLv1.Position == 3
                     && cursorLevel == 2);
             }
         }
