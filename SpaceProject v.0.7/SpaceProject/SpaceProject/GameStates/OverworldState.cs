@@ -502,26 +502,6 @@ namespace SpaceProject
 
         private void InputhandlingDebug()
         {
-            ////Testing throw-item-menu
-            //if (ControlManager.GamepadReady == false)
-            //{
-            //    if (ControlManager.PreviousKeyboardState.IsKeyUp(Keys.L)
-            //       && ControlManager.CurrentKeyboardState.IsKeyDown(Keys.L))
-            //    {
-            //        List<Item> testList = new List<Item>();
-            //
-            //        Item item;
-            //        Item item2;
-            //        Item item3;
-            //
-            //        testList.Add(item = new BasicLaserWeapon(Game, ItemVariety.regular));
-            //        testList.Add(item2 = new SpreadBulletWeapon(Game, ItemVariety.regular));
-            //        testList.Add(item3 = new HomingMissileWeapon(Game, ItemVariety.regular));
-            //
-            //        Game.messageBox.DisplayTrashMenu(testList);
-            //    }
-            //}
-
             //Changes states to play-state and playerstats-state
             if (ControlManager.CheckKeyPress(Keys.P))
             {
@@ -530,11 +510,6 @@ namespace SpaceProject
             if (ControlManager.CheckKeyPress(Keys.E))
             {
                 Game.stateManager.shooterState.BeginLevel("ExperimentLevel");
-            }
-
-            if (ControlManager.CheckKeyPress(Keys.O))
-            {
-                Game.stateManager.shooterState.BeginLevel("DanneLevel");
             }
 
             if (ControlManager.CheckKeyPress(Keys.U))

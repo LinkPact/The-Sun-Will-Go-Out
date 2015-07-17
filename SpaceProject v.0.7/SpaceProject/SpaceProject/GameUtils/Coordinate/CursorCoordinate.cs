@@ -32,20 +32,23 @@ namespace SpaceProject
                     return 0;
 
                 case 1:
+                    return 1;
+
+                case 2:
                     if (y == 0)
-                    {
-                        return 1;
-                    }
-                    else
                     {
                         return 2;
                     }
-
-                case 2:
-                    return 3;
+                    else
+                    {
+                        return 3;
+                    }
 
                 case 3:
                     return 4;
+
+                case 4:
+                    return 5;
 
                 default:
                     throw new ArgumentException("Invalid coordinate position.");
@@ -94,7 +97,7 @@ namespace SpaceProject
 
         private void SetYCoordinateToValid(int x)
         {
-            if (this.x == 0 || this.x == 2)
+            if (this.x == 0 || this.x == 1 || this.x == 3)
             {
                 lastY = y;
                 y = 0;

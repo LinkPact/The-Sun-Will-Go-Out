@@ -18,6 +18,7 @@ namespace SpaceProject
         private Sprite spriteSheet;
 
         //Display-objects
+        private ShipInventoryDisplayObject back;
         private ShipInventoryDisplayObject platingDisplay;
         private ShipInventoryDisplayObject cellDisplay;
         private ShipInventoryDisplayObject shieldDisplay;
@@ -25,8 +26,6 @@ namespace SpaceProject
         private ShipInventoryDisplayObject primaryDisplay2;
         private ShipInventoryDisplayObject secondaryDisplay;
         //private ShipInventoryDisplayObject inventoryDisplay;
-        //
-        //private ShipInventoryDisplayObject back;
 
         public List<ShipInventoryDisplayObject> displayList;
 
@@ -60,41 +59,41 @@ namespace SpaceProject
 
             displayList = new List<ShipInventoryDisplayObject>();
 
-            Coordinate batteryCoord = new Coordinate(0, 0);
+            Coordinate backCoord = new Coordinate(0, 0);
+            displayList.Add(back = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(780, 840, 60, 60)),
+                spriteSheet.GetSubSprite(new Rectangle(780, 901, 60, 60)),
+                new Vector2(30, origin.Y), backCoord));
+
+            Coordinate batteryCoord = new Coordinate(1, 0);
             displayList.Add(cellDisplay = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(600, 840, 60, 60)),
                 spriteSheet.GetSubSprite(new Rectangle(600, 901, 60, 60)),
                 new Vector2(origin.X, origin.Y), batteryCoord));
 
-            Coordinate platingCoord = new Coordinate(1, 0);
+            Coordinate platingCoord = new Coordinate(2, 0);
             displayList.Add(platingDisplay = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(480, 840, 60, 60)),
                 spriteSheet.GetSubSprite(new Rectangle(480, 901, 60, 60)),
                 new Vector2(origin.X + xSpacing, origin.Y - yOffset), platingCoord));
 
-            Coordinate shieldCoord = new Coordinate(1, 1);
+            Coordinate shieldCoord = new Coordinate(2, 1);
             displayList.Add(shieldDisplay = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(540, 840, 60, 60)),
                 spriteSheet.GetSubSprite(new Rectangle(540, 901, 60, 60)),
                 new Vector2(origin.X + xSpacing, origin.Y - yOffset + ySpacing), shieldCoord));
 
-            Coordinate secondaryCoord = new Coordinate(2, 0);
+            Coordinate secondaryCoord = new Coordinate(3, 0);
             displayList.Add(secondaryDisplay = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(720, 840, 60, 60)),
                 spriteSheet.GetSubSprite(new Rectangle(720, 901, 60, 60)),
                 new Vector2(origin.X + xSpacing * 2, origin.Y), secondaryCoord));
 
-            Coordinate primaryCoord1 = new Coordinate(3, 0);
+            Coordinate primaryCoord1 = new Coordinate(4, 0);
             displayList.Add(primaryDisplay = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(660, 840, 60, 60)),
                 spriteSheet.GetSubSprite(new Rectangle(660, 901, 60, 60)),
                 new Vector2(origin.X + xSpacing * 3, origin.Y - yOffset), primaryCoord1));
 
-            Coordinate primaryCoord2 = new Coordinate(3, 1);
+            Coordinate primaryCoord2 = new Coordinate(4, 1);
             displayList.Add(primaryDisplay2 = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(660, 840, 60, 60)),
                 spriteSheet.GetSubSprite(new Rectangle(660, 901, 60, 60)),
                 new Vector2(origin.X + xSpacing * 3, origin.Y - yOffset + ySpacing), primaryCoord2));
-
-            //Coordinate back2Coord = new Coordinate(4, 0);
-            //displayList.Add(back = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(145, 95, 40, 40)),
-            //    spriteSheet.GetSubSprite(new Rectangle(145, 135, 40, 40)),
-            //    new Vector2(origin.X + xSpacing * 4, origin.Y), back2Coord));
-            //
+            
             //Coordinate inventoryCoord = new Coordinate(5, 0);
             //displayList.Add(inventoryDisplay = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(225, 15, 40, 40)),
             //    spriteSheet.GetSubSprite(new Rectangle(305, 15, 40, 40)),
@@ -120,52 +119,69 @@ namespace SpaceProject
                 dispObj.Draw(spriteBatch);
             }
 
-            if (primaryDisplay.isActive)
+            if (back.isActive)
+            {
+                ShipManagerText.DisplayBackInfo(spriteBatch);
+            }
+
+            else if (primaryDisplay.isActive)
             {
                 ShipManagerText.DisplayPrimaryWeaponInfo1(spriteBatch);
 
-                if (layer >= 2)
+                if (layer >= 2 && cursorLv2Pos < ShipInventoryManager.GetAvailablePrimaryWeapons(1).Count)
+                {
                     InventoryInformation.DisplayPrimaryWeaponInfo(spriteBatch);
+                }
             }
 
-            if (primaryDisplay2.isActive)
+            else if (primaryDisplay2.isActive)
             {
                 ShipManagerText.DisplayPrimaryWeaponInfo2(spriteBatch);
 
-                if (layer >= 2)
+                if (layer >= 2 && cursorLv2Pos < ShipInventoryManager.GetAvailablePrimaryWeapons(2).Count)
+                {
                     InventoryInformation.DisplayPrimaryWeaponInfo(spriteBatch);
+                }
             }
 
-            if (secondaryDisplay.isActive)
+            else if (secondaryDisplay.isActive)
             {
                 ShipManagerText.DisplaySecondaryInfo(spriteBatch);
 
-                if (layer >= 2)
+                if (layer >= 2 && cursorLv2Pos < ShipInventoryManager.OwnedSecondary.Count)
+                {
                     InventoryInformation.DisplaySecondaryWeaponInfo(spriteBatch);
+                }
             }
 
-            if (platingDisplay.isActive)
+            else if (platingDisplay.isActive)
             {
                 ShipManagerText.DisplayPlatingInfo(spriteBatch);
 
-                if (layer >= 2)
+                if (layer >= 2 && cursorLv2Pos < ShipInventoryManager.ownedPlatings.Count)
+                {
                     InventoryInformation.DisplayPlatingInfo(spriteBatch);
+                }
             }
 
-            if (cellDisplay.isActive)
+            else if (cellDisplay.isActive)
             {
                 ShipManagerText.DisplayEnergyCellInfo(spriteBatch);
 
-                if (layer >= 2)
+                if (layer >= 2 && cursorLv2Pos < ShipInventoryManager.ownedEnergyCells.Count)
+                {
                     InventoryInformation.DisplayEnergyCellInfo(spriteBatch);
+                }
             }
 
-            if (shieldDisplay.isActive)
+            else if (shieldDisplay.isActive)
             {
                 ShipManagerText.DisplayShieldInfo(spriteBatch);
 
-                if (layer >= 2)
+                if (layer >= 2 && cursorLv2Pos < ShipInventoryManager.ownedShields.Count)
+                {
                     InventoryInformation.DisplayShieldInfo(spriteBatch);
+                }
             }
 
             //if (inventoryDisplay.isActive && cursorLv3Pos != -1) // Why was this here to begin with? /Jakob 140615
@@ -175,11 +191,6 @@ namespace SpaceProject
             //
             //    if (layer >= 2)
             //        InventoryInformation.DisplayInventoryInfo(spriteBatch);
-            //}
-
-            //if (back.isActive)
-            //{
-            //    ShipManagerText.DisplayBackInfo(spriteBatch);
             //}
         }
     }

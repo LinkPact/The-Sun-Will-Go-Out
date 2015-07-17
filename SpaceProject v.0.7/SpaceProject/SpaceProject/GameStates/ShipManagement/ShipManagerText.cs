@@ -53,7 +53,6 @@ namespace SpaceProject
         public void Draw(SpriteBatch spriteBatch)
         {
             DisplayGeneralInfo(spriteBatch);
-            DisplayHelpText(spriteBatch);
         }
 
         public void DisplayGeneralInfo(SpriteBatch spriteBatch)
@@ -70,6 +69,12 @@ namespace SpaceProject
                 1f);
         }
         
+        public static void DisplayBackInfo(SpriteBatch spriteBatch)
+        {
+            spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), "Back", topDisplayPos + FontManager.FontOffsetStatic, FontManager.FontColorStatic, 0, FontManager.GetFontStatic(16).MeasureString("Back") / 2, 1.0f, SpriteEffects.None, 0.5f);
+            spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), "Leave inventory", equippedDisplayPos + FontManager.FontOffsetStatic, FontManager.FontColorStatic);
+        }
+
         public static void DisplayPrimaryWeaponInfo1(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), "Primary weapon slot 1", topDisplayPos + FontManager.FontOffsetStatic, FontManager.FontColorStatic, 0, FontManager.GetFontStatic(16).MeasureString("Primary weapon slot 1") / 2, 1.0f, SpriteEffects.None, 0.5f);
@@ -137,63 +142,17 @@ namespace SpaceProject
                 spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), name, new Vector2(startPosition.X + 20, startPosition.Y + pos * deltaY), color);
                 pos++;
             }
-        }
 
-        //public static void DisplayInventory(SpriteBatch spriteBatch, Vector2 windowSize)
-        //{
-        //    int itemCount = ShipInventoryManager.ShipItems.Count;
-        //
-        //    spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), "Inventory", topDisplayPos + FontManager.FontOffsetStatic, FontManager.FontColorStatic, 0, FontManager.GetFontStatic(16).MeasureString("Inventory") / 2, 1.0f, SpriteEffects.None, 0.5f);
-        //
-        //    if (layer == 3 && ShipInventoryManager.ShipItems[layer2pos] != ShipInventoryManager.equippedEnergyCell && ShipInventoryManager.ShipItems[layer2pos] != ShipInventoryManager.equippedPlating
-        //        && ShipInventoryManager.ShipItems[layer2pos].Kind != "Empty")
-        //        spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), "Trash", new Vector2(windowSize.X / 2 + 20, windowSize.Y * 2 / 3) + FontManager.FontOffsetStatic, FontManager.FontColorStatic, 0, new Vector2(0, 0), 1.0f, SpriteEffects.None, 0.5f);
-        //    else
-        //        spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), "Trash", new Vector2(windowSize.X / 2 + 20, windowSize.Y * 2 / 3) + FontManager.FontOffsetStatic, Color.Gray, 0, new Vector2(0, 0), 1.0f, SpriteEffects.None, 0.5f);
-        //
-        //    int columnSize = 14;
-        //    int inventory = ShipInventoryManager.inventorySize;
-        //
-        //    if (inventory > columnSize)
-        //    {
-        //        for (int n = 0; n < columnSize; n++)
-        //        {
-        //            if (IsEquipped(ShipInventoryManager.ShipItems[n]))
-        //                spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), ShipInventoryManager.ShipItems[n].Name, new Vector2(windowSize.X / 2 + 20, 40 + n * 23) + FontManager.FontOffsetStatic, Color.Blue);
-        //            else
-        //                spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), ShipInventoryManager.ShipItems[n].Name, new Vector2(windowSize.X / 2 + 20, 40 + n * 23) + FontManager.FontOffsetStatic, FontManager.FontColorStatic);
-        //        }
-        //
-        //        for (int n = 0; n < inventory - columnSize; n++)
-        //        {
-        //            if (IsEquipped(ShipInventoryManager.ShipItems[n + columnSize]))
-        //                spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), ShipInventoryManager.ShipItems[n + columnSize].Name, new Vector2(windowSize.X * 3 / 4, 40 + n * 23) + FontManager.FontOffsetStatic, Color.Blue);
-        //            else
-        //                spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), ShipInventoryManager.ShipItems[n + columnSize].Name, new Vector2(windowSize.X * 3 / 4, 40 + n * 23) + FontManager.FontOffsetStatic, FontManager.FontColorStatic);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        for (int n = 0; n < inventory; n++)
-        //        {
-        //            if (IsEquipped(ShipInventoryManager.ShipItems[n]))
-        //                spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), ShipInventoryManager.ShipItems[n].Name, new Vector2(windowSize.X / 2 + 20, 40 + n * 23) + FontManager.FontOffsetStatic, Color.Blue);
-        //            else
-        //                spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), ShipInventoryManager.ShipItems[n].Name, new Vector2(windowSize.X / 2 + 20, 40 + n * 23) + FontManager.FontOffsetStatic, FontManager.FontColorStatic);
-        //        }
-        //    }
-        //
-        //}
+            if (layer == 2)
+            {
+                Color color = Color.White;
+                if (layer2pos == partList.Count)
+                {
+                    color = FontManager.FontSelectColor1;
+                }
 
-        public static void DisplayBackInfo(SpriteBatch spriteBatch)
-        {
-            String titleString = "Leave inventory";
-            spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), titleString, topDisplayPos + FontManager.FontOffsetStatic, FontManager.FontColorStatic, 0, FontManager.GetFontStatic(16).MeasureString(titleString) / 2, 1.0f, SpriteEffects.None, 0.5f);
-        }
-
-        private void DisplayHelpText(SpriteBatch spriteBatch)
-        {
-            spriteBatch.DrawString(FontManager.GetFontStatic(14), ControlManager.GetKeyName(RebindableKeys.Action2) + " - Go back", new Vector2(10, Game.Window.ClientBounds.Height - FontManager.GetFontStatic(14).MeasureString(ControlManager.GetKeyName(RebindableKeys.Action2) + " - Go back").Y - 10), FontManager.FontColorStatic);
+                spriteBatch.DrawString(FontManager.GetFontStatic(fontSize), "Back", new Vector2(startPosition.X + 20, startPosition.Y + pos * deltaY), color);
+            }
         }
         
         private static bool IsEquipped(Item item)

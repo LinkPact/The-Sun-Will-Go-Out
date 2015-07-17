@@ -30,7 +30,7 @@ namespace SpaceProject
         private const int BG_HEIGHT = 92;
 
         private int inventoryPos = -1;
-        private int backPos = -2;
+        private int backPos = 0;
 
         private static Rectangle upperLeftRectangle;
         private static Rectangle lowerLeftRectangle;
@@ -96,7 +96,7 @@ namespace SpaceProject
             //Data about current active user position.
             cursorLevel = 1;
             //cursorLevel1Position = 0;
-            cursorCoordLv1 = new CursorCoordinate(0, 0, 4, 2, true);
+            cursorCoordLv1 = new CursorCoordinate(0, 0, 5, 2, true);
             cursorLevel2Position = 0;
             //column = 1;
 
@@ -153,43 +153,91 @@ namespace SpaceProject
                     {
                         switch (cursorCoordLv1.ToInt())
                         {
-                            case 0:
-                                itemComp.SetItem2(ShipInventoryManager.ownedEnergyCells[cursorLevel2Position]);
-                                itemComp.SetItem1(ShipInventoryManager.equippedEnergyCell);
-                                itemComp.ShowSymbols = true;
-                                break;
-            
                             case 1:
-                                itemComp.SetItem2(ShipInventoryManager.OwnedPlatings[cursorLevel2Position]);
-                                itemComp.SetItem1(ShipInventoryManager.equippedPlating);
-                                itemComp.ShowSymbols = true;
+                                if (cursorLevel2Position < ShipInventoryManager.ownedEnergyCells.Count)
+                                {
+                                    itemComp.SetItem2(ShipInventoryManager.ownedEnergyCells[cursorLevel2Position]);
+                                    itemComp.SetItem1(ShipInventoryManager.equippedEnergyCell);
+                                    itemComp.ShowSymbols = true;
+                                }
+                                else
+                                {
+                                    itemComp.OkayToClearStats = true;
+                                    itemComp.OkayToClearSymbols = true;
+                                }
                                 break;
             
                             case 2:
-                                itemComp.SetItem2(ShipInventoryManager.ownedShields[cursorLevel2Position]);
-                                itemComp.SetItem1(ShipInventoryManager.equippedShield);
-                                itemComp.ShowSymbols = true;
+                                if (cursorLevel2Position < ShipInventoryManager.ownedPlatings.Count)
+                                {
+                                    itemComp.SetItem2(ShipInventoryManager.OwnedPlatings[cursorLevel2Position]);
+                                    itemComp.SetItem1(ShipInventoryManager.equippedPlating);
+                                    itemComp.ShowSymbols = true;
+                                }
+                                else
+                                {
+                                    itemComp.OkayToClearStats = true;
+                                    itemComp.OkayToClearSymbols = true;
+                                }
                                 break;
             
                             case 3:
-                                itemComp.SetItem2(ShipInventoryManager.OwnedSecondary[cursorLevel2Position]);
-                                itemComp.SetItem1(ShipInventoryManager.equippedSecondary);
-                                itemComp.ShowSymbols = true;
+                                if (cursorLevel2Position < ShipInventoryManager.ownedShields.Count)
+                                {
+                                    itemComp.SetItem2(ShipInventoryManager.ownedShields[cursorLevel2Position]);
+                                    itemComp.SetItem1(ShipInventoryManager.equippedShield);
+                                    itemComp.ShowSymbols = true;
+                                }
+                                else
+                                {
+                                    itemComp.OkayToClearStats = true;
+                                    itemComp.OkayToClearSymbols = true;
+                                }
                                 break;
             
                             case 4:
+                                if (cursorLevel2Position < ShipInventoryManager.OwnedSecondary.Count)
+                                {
+                                    itemComp.SetItem2(ShipInventoryManager.OwnedSecondary[cursorLevel2Position]);
+                                    itemComp.SetItem1(ShipInventoryManager.equippedSecondary);
+                                    itemComp.ShowSymbols = true;
+                                }
+                                else
+                                {
+                                    itemComp.OkayToClearStats = true;
+                                    itemComp.OkayToClearSymbols = true;
+                                }
+                                break;
+            
+                            case 5:
                                 if (cursorCoordLv1.Y == 0)
                                 {
-                                    itemComp.SetItem2(ShipInventoryManager.GetAvailablePrimaryWeapons(1)[cursorLevel2Position]);
-                                    itemComp.SetItem1(ShipInventoryManager.equippedPrimaryWeapons[0]);
-                                    itemComp.ShowSymbols = true;
+                                    if (cursorLevel2Position < ShipInventoryManager.GetAvailablePrimaryWeapons(1).Count)
+                                    {
+                                        itemComp.SetItem2(ShipInventoryManager.GetAvailablePrimaryWeapons(1)[cursorLevel2Position]);
+                                        itemComp.SetItem1(ShipInventoryManager.equippedPrimaryWeapons[0]);
+                                        itemComp.ShowSymbols = true;
+                                    }
+                                    else
+                                    {
+                                        itemComp.OkayToClearStats = true;
+                                        itemComp.OkayToClearSymbols = true;
+                                    }
                                 }
 
                                 else if (cursorCoordLv1.Y == 1)
                                 {
-                                    itemComp.SetItem2(ShipInventoryManager.GetAvailablePrimaryWeapons(2)[cursorLevel2Position]);
-                                    itemComp.SetItem1(ShipInventoryManager.equippedPrimaryWeapons[1]);
-                                    itemComp.ShowSymbols = true;
+                                    if (cursorLevel2Position < ShipInventoryManager.GetAvailablePrimaryWeapons(2).Count)
+                                    {
+                                        itemComp.SetItem2(ShipInventoryManager.GetAvailablePrimaryWeapons(2)[cursorLevel2Position]);
+                                        itemComp.SetItem1(ShipInventoryManager.equippedPrimaryWeapons[1]);
+                                        itemComp.ShowSymbols = true;
+                                    }
+                                    else
+                                    {
+                                        itemComp.OkayToClearStats = true;
+                                        itemComp.OkayToClearSymbols = true;
+                                    }
                                 }
                                 break;
                         }
@@ -295,7 +343,6 @@ namespace SpaceProject
 
             cursorManager.Draw(spriteBatch);
             fontManager.Draw(spriteBatch);
-            informationManager.Draw(spriteBatch);
 
             if (Game.Window.ClientBounds.Height.Equals(768))
             {
@@ -319,8 +366,6 @@ namespace SpaceProject
             spriteBatch.Draw(ship.Texture, StaticFunctions.PointToVector2(upperLeftRectangle.Center),
                 ship.SourceRectangle, Color.White, 0f, ship.CenterPoint,
                 1f, SpriteEffects.None, 0.0f);
-
-            cursorCoordLv1.Draw(spriteBatch);
         }
         
         private void CheckKeysLevel1()
@@ -392,9 +437,9 @@ namespace SpaceProject
             {
                 int listLength;
 
-                if (cursorCoordLv1.Position != 4)
+                if (cursorCoordLv1.Position != 5)
                 {
-                    listLength = ShipInventoryManager.ownCounts[cursorCoordLv1.Position];
+                    listLength = ShipInventoryManager.ownCounts[cursorCoordLv1.Position - 1];
                 }
 
                 else
@@ -413,8 +458,8 @@ namespace SpaceProject
                     && elapsedSinceKey > elapseDelay)
                 {
                     cursorLevel2Position += 1;
-                    if (cursorLevel2Position > listLength - 1)
-                        cursorLevel2Position -= listLength;
+                    if (cursorLevel2Position > listLength)
+                        cursorLevel2Position = 0;
 
                     elapsedSinceKey = 0;
 
@@ -428,8 +473,8 @@ namespace SpaceProject
                     if (holdTimer <= 0)
                     {
                         cursorLevel2Position += 1;
-                        if (cursorLevel2Position > listLength - 1)
-                            cursorLevel2Position = listLength - 1;
+                        if (cursorLevel2Position > listLength)
+                            cursorLevel2Position = listLength;
 
                         elapsedSinceKey = 0;
 
@@ -442,7 +487,7 @@ namespace SpaceProject
                 {
                     cursorLevel2Position -= 1;
                     if (cursorLevel2Position < 0)
-                        cursorLevel2Position += listLength;
+                        cursorLevel2Position = listLength;
 
                     elapsedSinceKey = 0;
 
@@ -469,7 +514,15 @@ namespace SpaceProject
                 if (((ControlManager.CheckPress(RebindableKeys.Action1) || ControlManager.CheckKeyPress(Keys.Enter)) && cursorLevel == 2
                     && elapsedSinceKey > elapseDelay))
                 {
-                    OnPressLevel2();
+                    if (cursorLevel2Position < listLength)
+                    {
+                        OnPressLevel2();
+                    }
+                    else
+                    {
+                        cursorLevel = 1;
+                        elapsedSinceKey = 0;
+                    }
                 }
 
                 if (ControlManager.CheckPress(RebindableKeys.Action2) && cursorLevel == 2
@@ -486,9 +539,9 @@ namespace SpaceProject
             int listLength;
             string text = "";
 
-            if (cursorCoordLv1.Position != 4)
+            if (cursorCoordLv1.Position != 5)
             {
-                listLength = ShipInventoryManager.ownCounts[cursorCoordLv1.Position];
+                listLength = ShipInventoryManager.ownCounts[cursorCoordLv1.Position - 1];
             }
 
             else
@@ -503,48 +556,63 @@ namespace SpaceProject
                 }
             }
 
-            for (int i = 0; i < listLength; i++)
+            for (int i = 0; i < listLength + 1; i++)
             {
-                if (cursorCoordLv1.Position != 4)
+                if (i < listLength)
                 {
-                    if (cursorCoordLv1.Position == 0)
+                    if (cursorCoordLv1.Position != 5)
                     {
-                        text = ShipInventoryManager.ownedEnergyCells[i].Name;
-                    } 
-                    else if (cursorCoordLv1.Position == 1)
-                    {
-                        text = ShipInventoryManager.ownedPlatings[i].Name;
+                        if (cursorCoordLv1.Position == 1)
+                        {
+                            text = ShipInventoryManager.ownedEnergyCells[i].Name;
+                        }
+                        else if (cursorCoordLv1.Position == 2)
+                        {
+                            text = ShipInventoryManager.ownedPlatings[i].Name;
+                        }
+                        else if (cursorCoordLv1.Position == 3)
+                        {
+                            text = ShipInventoryManager.ownedShields[i].Name;
+                        }
+                        else if (cursorCoordLv1.Position == 4)
+                        {
+                            text = ShipInventoryManager.OwnedSecondary[i].Name;
+                        }
                     }
-                    else if (cursorCoordLv1.Position == 2)
-                    {
-                        text = ShipInventoryManager.ownedShields[i].Name;
-                    }
-                    else if (cursorCoordLv1.Position == 3)
-                    {
-                        text = ShipInventoryManager.OwnedSecondary[i].Name;
-                    }
-                }
 
-                else
-                {
-                    if (cursorCoordLv1.Y == 0)
-                    {
-                        text = ShipInventoryManager.GetAvailablePrimaryWeapons(1)[i].Name;
-                    }
                     else
                     {
-                        text = ShipInventoryManager.GetAvailablePrimaryWeapons(2)[i].Name;
+                        if (cursorCoordLv1.Y == 0)
+                        {
+                            text = ShipInventoryManager.GetAvailablePrimaryWeapons(1)[i].Name;
+                        }
+                        else
+                        {
+                            text = ShipInventoryManager.GetAvailablePrimaryWeapons(2)[i].Name;
+                        }
                     }
                 }
+                else
+                {
+                    text = "Back";
+                }
 
-                if (ControlManager.IsMouseOverText(FontManager.GetFontStatic(16), text, 
+                if (ControlManager.IsMouseOverText(FontManager.GetFontStatic(16), text,
                     new Vector2(Game.Window.ClientBounds.Width / 2 + 50, 93 + i * 23), Vector2.Zero, false))
                 {
                     cursorLevel2Position = i;
 
                     if (ControlManager.IsLeftMouseButtonClicked())
                     {
-                        OnPressLevel2();
+                        if (cursorLevel2Position < listLength)
+                        {
+                            OnPressLevel2();
+                        }
+                        else
+                        {
+                            cursorLevel = 1;
+                            elapsedSinceKey = 0;
+                        }
                     }
                 }
             }
@@ -553,15 +621,15 @@ namespace SpaceProject
         private void OnPressLevel1()
         {
             if (cursorCoordLv1.Position != backPos
-                    && cursorCoordLv1.Position < 4
-                    && ShipInventoryManager.ownCounts[cursorCoordLv1.Position] > 0)
+                    && cursorCoordLv1.Position < 5
+                    && ShipInventoryManager.ownCounts[cursorCoordLv1.Position - 1] > 0)
             {
                 cursorLevel = 2;
                 cursorLevel2Position = 0;
                 elapsedSinceKey = 0;
             }
 
-            else if (cursorCoordLv1.Position == 4)
+            else if (cursorCoordLv1.Position == 5)
             {
                 switch (cursorCoordLv1.Y)
                 {
@@ -629,27 +697,27 @@ namespace SpaceProject
         {
             switch (cursorCoordLv1.ToInt())
             {
-                case 0:
+                case 1:
                     {
                         ShipInventoryManager.EquipItemFromSublist(ShipParts.EnergyCell, 0, cursorLevel2Position);
                         break; 
                     }
-                case 1:
+                case 2:
                     {
                         ShipInventoryManager.EquipItemFromSublist(ShipParts.Plating, 0, cursorLevel2Position);
                         break;
                     }
-                case 2:
+                case 3:
                     {
                         ShipInventoryManager.EquipItemFromSublist(ShipParts.Shield, 0, cursorLevel2Position);
                         break;
                     }
-                case 3:
+                case 4:
                     {
                         ShipInventoryManager.EquipItemFromSublist(ShipParts.Secondary, 0, cursorLevel2Position);
                         break;
                     }
-                case 4:
+                case 5:
                     {
                         switch (cursorCoordLv1.Y)
                         {
