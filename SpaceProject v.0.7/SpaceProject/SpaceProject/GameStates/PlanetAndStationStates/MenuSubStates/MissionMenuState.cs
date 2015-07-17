@@ -321,34 +321,41 @@ namespace SpaceProject
             //Actions for pressing Ok-key in "MISSION STATE" 
             else if (BaseStateManager.ButtonControl.Equals(ButtonControl.Response))
             {
-                activeMission = MissionManager.GetActiveMission(BaseState.GetBase().name);
-
-                if (MissionManager.MissionResponseBuffer.Count > 0)
+                if (BaseStateManager.HasTextBoxesFinishedScrolling())
                 {
-                    if (activeMission != null)
+                    activeMission = MissionManager.GetActiveMission(BaseState.GetBase().name);
+
+                    if (MissionManager.MissionResponseBuffer.Count > 0)
                     {
-                        activeMission.MissionResponse = responseCursorIndex + 1;
-                        activeMission.CurrentObjective.Update(StatsManager.PlayTime);
-                        activeMission.MissionResponse = 0;
-                        MissionEvent();
+                        if (activeMission != null)
+                        {
+                            activeMission.MissionResponse = responseCursorIndex + 1;
+                            activeMission.CurrentObjective.Update(StatsManager.PlayTime);
+                            activeMission.MissionResponse = 0;
+                            MissionEvent();
+                        }
+                    }
+
+                    else
+                    {
+                        if (responseCursorIndex == 0)
+                        {
+                            DisplayMissionAcceptText();
+                        }
+
+                        else if (responseCursorIndex == 1)
+                        {
+                            BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
+                            BaseState.HideOverlay();
+                            DisplayAvailableMissions(availableMissions);
+
+                            SelectMission();
+                        }
                     }
                 }
-
                 else
                 {
-                    if (responseCursorIndex == 0)
-                    {
-                        DisplayMissionAcceptText();
-                    }
-
-                    else if (responseCursorIndex == 1)
-                    {
-                        BaseStateManager.ActiveButton = BaseStateManager.AllButtons[BaseStateManager.ActiveButtonIndexY];
-                        BaseState.HideOverlay();
-                        DisplayAvailableMissions(availableMissions);
-
-                        SelectMission();
-                    }
+                    FlushText();
                 }
             }
 

@@ -370,5 +370,18 @@ namespace SpaceProject
                 txtBox.Draw(spriteBatch, color, Game.fontManager.FontOffset);
             }
         }
+
+        public bool HasTextBoxesFinishedScrolling()
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                if (textBox.Scrolling && !textBox.FinishedScrolling)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }
