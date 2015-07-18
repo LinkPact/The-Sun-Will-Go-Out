@@ -33,6 +33,7 @@ namespace SpaceProject
             damage = 0;
 
             Value = 600;
+            Tier = TierType.Great;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)

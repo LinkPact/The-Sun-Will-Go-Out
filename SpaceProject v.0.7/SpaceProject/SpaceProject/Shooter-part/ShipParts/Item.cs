@@ -7,6 +7,16 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceProject
 {
+    public enum TierType
+    {
+        None = 0,
+        Low = 1,
+        Average = 2,
+        Good = 3,
+        Great = 4,
+        Excellent = 5
+    }
+
     public abstract class Item
     {
         protected Game1 Game;
@@ -16,6 +26,7 @@ namespace SpaceProject
         public String Kind;
         public float Weight;
         public float Value;
+        public TierType Tier;
 
         public int ShopColor;
 
@@ -28,6 +39,7 @@ namespace SpaceProject
             this.Game = Game;
             Weight = 1.0f;
             Value = 0;
+            Tier = TierType.None;
             Name = "";
             Kind = "";
 

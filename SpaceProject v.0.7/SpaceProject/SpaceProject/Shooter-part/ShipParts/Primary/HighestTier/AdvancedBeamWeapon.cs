@@ -36,6 +36,7 @@ namespace SpaceProject
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(1100, 0, 100, 100));
 
             Value = 3200;
+            Tier = TierType.Excellent;
             Color color = new Color(79, 255, 73);
             beamModule1 = new FriendlyBeamModule(Game, spriteSheet, damage, color);
             beamModule2 = new FriendlyBeamModule(Game, spriteSheet, damage, color);

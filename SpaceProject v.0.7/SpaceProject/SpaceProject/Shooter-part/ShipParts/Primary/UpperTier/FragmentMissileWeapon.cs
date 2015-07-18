@@ -34,12 +34,14 @@ namespace SpaceProject
             bullet.Initialize();
 
             MissileFragment fragment = new MissileFragment(Game, spriteSheet);
+            fragment.Initialize();
 
             damage = fragment.Damage;
             duration = Bullet.Duration;
             speed = Bullet.Speed;
 
             Value = 1000;
+            Tier = TierType.Great;
             numberOfShots = 23;
         }
 

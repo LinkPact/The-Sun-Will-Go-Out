@@ -38,6 +38,7 @@ namespace SpaceProject
             speed = Bullet.Speed;
 
             Value = 800;
+            Tier = TierType.Great;
             numberOfShots = 1;
         }
 

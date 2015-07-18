@@ -43,6 +43,7 @@ namespace SpaceProject
             ShootsInBatchesSetup(2, 400);
 
             Value = 2000;
+            Tier = TierType.Excellent;
             
             numberOfShots = sideShots * 2 + 1;
         }

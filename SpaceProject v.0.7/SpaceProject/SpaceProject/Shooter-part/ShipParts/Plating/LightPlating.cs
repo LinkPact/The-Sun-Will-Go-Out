@@ -34,6 +34,7 @@ namespace SpaceProject
             PrimarySlots = 1;
 
             Value = 500;
+            Tier = TierType.Good;
         }
 
         public override void Initialize()

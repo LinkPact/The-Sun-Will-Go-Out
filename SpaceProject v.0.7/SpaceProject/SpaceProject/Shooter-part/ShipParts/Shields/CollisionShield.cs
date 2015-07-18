@@ -31,6 +31,7 @@ namespace SpaceProject
             ConversionFactor = 1;
 
             Value = 500;
+            Tier = TierType.Good;
 
             collisionDamageFactor = 0.7f;
             bulletDamageFactor = 1.5f;

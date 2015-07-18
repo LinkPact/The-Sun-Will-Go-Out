@@ -33,6 +33,7 @@ namespace SpaceProject
             Weight = 200;
             damage = 8.0f;
             Value = 1100;
+            Tier = TierType.Great;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(400, 0, 100, 100));
 
             Color color = new Color(0, 0, 128);

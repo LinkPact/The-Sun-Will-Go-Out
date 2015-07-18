@@ -29,6 +29,7 @@ namespace SpaceProject
             Capacity = 30.0f;
             Recharge = 4f;
             Value = 100;
+            Tier = TierType.Average;
             displaySprite = Game.spriteSheetItemDisplay.GetSubSprite(new Rectangle(800, 100, 100, 100));
         }
 

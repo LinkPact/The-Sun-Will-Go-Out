@@ -31,6 +31,7 @@ namespace SpaceProject
             Recharge = 9f;
 
             Value = 500;
+            Tier = TierType.Good;
         }
 
         public override void Initialize()

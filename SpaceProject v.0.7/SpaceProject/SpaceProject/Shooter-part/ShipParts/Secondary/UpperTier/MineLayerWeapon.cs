@@ -37,6 +37,7 @@ namespace SpaceProject
             speed = Bullet.Speed;
 
             Value = 500;
+            Tier = TierType.Excellent;
         }
 
         public override Boolean Activate(PlayerVerticalShooter player, GameTime gameTime)

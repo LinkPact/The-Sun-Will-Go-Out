@@ -39,6 +39,7 @@ namespace SpaceProject
             speed = 1.5f;     // Nonsense value!
 
             Value = 650;
+            Tier = TierType.Good;
             numberOfShots = 1;
         }
 

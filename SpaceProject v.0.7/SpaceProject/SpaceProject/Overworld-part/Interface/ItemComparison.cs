@@ -246,51 +246,12 @@ namespace SpaceProject
             switch (item1.Kind)
             {
                 case "Primary":
-                    SetPrimaryWeaponStats(item1Stats, item1HighIsBest, item1);
-                    break;
-
                 case "Secondary":
-                    SetSecondaryWeaponStats(item1Stats, item1HighIsBest, item1);
-                    break;
-
                 case "EnergyCell":
-                    SetEnergyCellStats(item1Stats, item1HighIsBest, item1);
-                    break;
-
                 case "Shield":
-                    SetShieldStats(item1Stats, item1HighIsBest, item1);
-                    break;
-
                 case "Plating":
-                    SetPlatingStats(item1Stats, item1HighIsBest, item1);
-                    break;
-
                 case "Empty":
-                    item1Kind = "Empty";
-
-                    if (item1 is EmptyShield)
-                    {
-                        presetCount = 2;
-
-                        item1Stats.Add(0);
-                        item1HighIsBest.Add(true);
-                        item1Stats.Add(0);
-                        item1HighIsBest.Add(true);
-                    }
-
-                    else if (item1 is EmptyWeapon)
-                    {
-                        presetCount = 4;
-
-                        item1Stats.Add(0);
-                        item1HighIsBest.Add(true);
-                        item1Stats.Add(0);
-                        item1HighIsBest.Add(true);
-                        item1Stats.Add(0);
-                        item1HighIsBest.Add(true);
-                        item1Stats.Add(0);
-                        item1HighIsBest.Add(true);
-                    }
+                    SetStats(item1, item1Stats, item1HighIsBest);
                     break;
             }
         }
@@ -309,103 +270,20 @@ namespace SpaceProject
             switch (item2.Kind)
             {
                 case "Primary":
-                    SetPrimaryWeaponStats(item2Stats, item2HighIsBest, item2);               
-                    break;
-
                 case "Secondary":
-                    SetSecondaryWeaponStats(item2Stats, item2HighIsBest, item2);
-                    break;
-
                 case "EnergyCell":
-                    SetEnergyCellStats(item2Stats, item2HighIsBest, item2);
-                    break;
-
                 case "Shield":
-                    SetShieldStats(item2Stats, item2HighIsBest, item2);
-                    break;
-
                 case "Plating":
-                    SetPlatingStats(item2Stats, item2HighIsBest, item2);
+                    SetStats(item2, item2Stats, item2HighIsBest); 
                     break;
-
-                case "Resource":
-                    break;
-
-                case "Empty":
-                    item2Kind = "Empty";
-                    break;
-
             }
         }
 
-        private void SetPrimaryWeaponStats(List <double> stats, List<bool> highIsBestList, Item item)
+        private void SetStats(Item item, List<double> stats, List<bool> highIsBestList)
         {
-            presetCount = 4;
-
-            stats.Add(Math.Round((double)((PlayerWeapon)item).DamagePerSecond, 1));
+            presetCount = 1;
+            stats.Add((double)item.Tier);
             highIsBestList.Add(true);
-
-            stats.Add(Math.Round((double)1000 / ((PlayerWeapon)item).Delay, 1));
-            highIsBestList.Add(true);
-
-            stats.Add(Math.Round((double)(((PlayerWeapon)item).Speed * ((PlayerWeapon)item).Duration), 1));
-            highIsBestList.Add(true);
-
-            stats.Add(Math.Round((double)(1000 * ((PlayerWeapon)item).EnergyCost / ((PlayerWeapon)item).Delay), 1));
-            highIsBestList.Add(false);
-        }
-
-        private void SetSecondaryWeaponStats(List<double> stats, List<bool> highIsBestList, Item item)
-        {
-            presetCount = 4;
-
-            stats.Add(Math.Round((double)((PlayerWeapon)item).DamagePerSecond, 1));
-            highIsBestList.Add(true);
-
-            stats.Add(Math.Round((double)1000 / ((PlayerWeapon)item).Delay, 1));
-            highIsBestList.Add(true);
-
-            stats.Add(Math.Round((double)(((PlayerWeapon)item).Speed * ((PlayerWeapon)item).Duration), 1));
-            highIsBestList.Add(true);
-
-            stats.Add(Math.Round((double)(1000 * ((PlayerWeapon)item).EnergyCost / ((PlayerWeapon)item).Delay), 1));
-            highIsBestList.Add(false);
-        }
-
-        private void SetEnergyCellStats(List<double> stats, List<bool> highIsBestList, Item item)
-        {
-            presetCount = 2;
-
-            stats.Add(Math.Round((double)((PlayerEnergyCell)item).Capacity, 1));
-            highIsBestList.Add(true);
-
-            stats.Add(Math.Round((double)((PlayerEnergyCell)item).Recharge, 1));
-            highIsBestList.Add(true);
-        }
-
-        private void SetShieldStats(List<double> stats, List<bool> highIsBestList, Item item)
-        {
-            presetCount = 2;
-
-            stats.Add(Math.Round((double)((PlayerShield)item).Capacity, 1));
-            highIsBestList.Add(true);
-
-            stats.Add(Math.Round((double)((PlayerShield)item).Regeneration, 1));
-            highIsBestList.Add(true);
-        }
-
-        private void SetPlatingStats(List<double> stats, List<bool> highIsBestList, Item item)
-        {
-            presetCount = 3;
-
-            stats.Add(Math.Round((double)((PlayerPlating)item).Armor, 0));
-            highIsBestList.Add(true);
-
-            stats.Add(Math.Round((double)((PlayerPlating)item).Speed * 1000, 0));
-            highIsBestList.Add(true);
-
-            stats.Add(Math.Round((double)((PlayerPlating)item).PrimarySlots * 10, 0));
-            highIsBestList.Add(false);
         }
     }
 }
