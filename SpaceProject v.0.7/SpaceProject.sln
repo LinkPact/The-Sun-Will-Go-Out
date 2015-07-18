@@ -20,9 +20,11 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{826B4F7C-79FE-4918-AF54-05E00B9F0119}.Debug|x86.ActiveCfg = Debug|x86
 		{826B4F7C-79FE-4918-AF54-05E00B9F0119}.Debug|x86.Build.0 = Debug|x86
+		{826B4F7C-79FE-4918-AF54-05E00B9F0119}.Debug|x86.Deploy.0 = Debug|x86
 		{826B4F7C-79FE-4918-AF54-05E00B9F0119}.Release|x86.ActiveCfg = Release|x86
 		{826B4F7C-79FE-4918-AF54-05E00B9F0119}.Release|x86.Build.0 = Release|x86
 		{3D75175F-3322-4AE9-BE0B-6F29556845F3}.Debug|x86.ActiveCfg = Debug|x86
+		{3D75175F-3322-4AE9-BE0B-6F29556845F3}.Debug|x86.Build.0 = Debug|x86
 		{3D75175F-3322-4AE9-BE0B-6F29556845F3}.Release|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
