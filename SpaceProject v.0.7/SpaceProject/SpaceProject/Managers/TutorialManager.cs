@@ -50,6 +50,10 @@ namespace SpaceProject
         private bool secondaryWeaponTutorialDisplayed;
         private bool coordinatesDisplayed;
 
+        private bool hasDisplayedSkipMessage;
+        private bool isAMissionFailed;
+        public bool IsAMissionFailed { get { return isAMissionFailed; } set { isAMissionFailed = value; } }
+
         private bool equipShieldTutorial;
         private int equipShieldProgress;
         private bool equipShieldTutorialFinished;
@@ -244,7 +248,8 @@ namespace SpaceProject
                 game.stateManager.stationState.SubStateManager.ShopMenuState.DisplayBuyAndEquip = true;
             }
 
-            if (MissionManager.GetMission(MissionID.Main2_1_TheConvoy).MissionState == StateOfMission.CompletedDead
+            if (ShipInventoryManager.HasItemOfKind("LongShot")
+                && MissionManager.GetMission(MissionID.Main3_DefendColony).MissionState.Equals(StateOfMission.Unavailable)
                 && GameStateManager.currentState.Equals("OverworldState") && !longShotTutorialActivated)
             {
                 tempTimer3 -= gameTime.ElapsedGameTime.Milliseconds;
@@ -269,6 +274,20 @@ namespace SpaceProject
                     tempTimer3 = 1000;
                     secondaryWeaponTutorialDisplayed = true;
                     DisplayTutorialMessage("You have acquired your first secondary weapon! Don't forget to equip it if you havn't done so already. Secondary weapons are fired automatically and don't use energy, so they are very handy!");
+                }
+            }
+
+            if (isAMissionFailed && GameStateManager.currentState.Equals("OverworldState")
+                && !hasDisplayedSkipMessage)
+            {
+                tempTimer2 -= gameTime.ElapsedGameTime.Milliseconds;
+
+                if (tempTimer2 < 0)
+                {
+                    tempTimer2 = 500;
+
+                    hasDisplayedSkipMessage = true;
+                    DisplayTutorialMessage("When you fail a mission, you can replay most of them by going back to where they started. Press 'Escape' to skip dialogs and mission events you have already seen.");
                 }
             }
         }
@@ -364,6 +383,7 @@ namespace SpaceProject
             tutorialProgress.Add("longShotTutorial", longShotTutorialActivated.ToString());
             tutorialProgress.Add("hasEnteredShooterWithShield", hasEnteredShooterWithShield.ToString());
             tutorialProgress.Add("hasDisplayedSecondary", secondaryWeaponTutorialDisplayed.ToString());
+            tutorialProgress.Add("hasDisplayedSkipMessage", hasDisplayedSkipMessage.ToString());
 
             game.saveFile.Save(Game1.SaveFilePath, "save.ini", "tutorialprogress", tutorialProgress);
         }
@@ -381,6 +401,7 @@ namespace SpaceProject
             longShotTutorialActivated = game.saveFile.GetPropertyAsBool("tutorialprogress", "longshottutorial", false);
             hasEnteredShooterWithShield = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredshooterwithshield", false);
             secondaryWeaponTutorialDisplayed = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasdisplayedsecondary", false);
+            hasDisplayedSkipMessage = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasdisplayedskipmessage", false);
         }
 
         public Sprite GetImageFromEnum(TutorialImage imageID)

@@ -1226,5 +1226,18 @@ namespace SpaceProject
 
             return primaryWeapons;
         }
+
+        public static bool HasItemOfKind(string name)
+        {
+            foreach (Item item in ShipItems)
+            {
+                if (name.ToLower().Equals(item.Name.ToLower()))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

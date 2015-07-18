@@ -335,6 +335,7 @@ namespace SpaceProject
 
         public virtual void OnReset()
         {
+            Game.tutorialManager.IsAMissionFailed = true;
             ResetEventText();
             ObjectiveIndex = 0;
 
