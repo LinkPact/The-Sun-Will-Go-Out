@@ -26,7 +26,7 @@ namespace SpaceProject
 
     public class TutorialManager
     {
-        private readonly float BeaconTutorialActivationRadius = 400;
+        private readonly float BeaconTutorialActivationRadius = 200;
 
         private Game1 game;
         private Sprite tutorialSpriteSheet;
