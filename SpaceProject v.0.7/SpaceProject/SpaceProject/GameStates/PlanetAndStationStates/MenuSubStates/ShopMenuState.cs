@@ -1011,13 +1011,20 @@ namespace SpaceProject
         private void SellItem(Item item, int indexOfItem)
         {
             int shopIndex = 0;
+            bool hasEmptyItem = false;
 
             for (int i = shopInventory.Count - 1; i >= 0; i--)
             {
                 if (shopInventory[i] is EmptyItem)
                 {
                     shopIndex = i;
+                    hasEmptyItem = true;
                 }
+            }
+
+            if (!hasEmptyItem)
+            {
+                shopIndex = shopInventorySize - 1;
             }
 
             shopInventory.RemoveAt(shopIndex);
