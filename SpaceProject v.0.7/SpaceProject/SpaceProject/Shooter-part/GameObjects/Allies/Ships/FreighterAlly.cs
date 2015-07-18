@@ -101,6 +101,7 @@ namespace SpaceProject
 
         public override void OnKilled()
         {
+            base.OnKilled();
         }
 
         public override void CreateAI(AIBehaviour behaviour)

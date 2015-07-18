@@ -105,6 +105,8 @@ namespace SpaceProject
 
         public override void OnKilled()
         {
+            base.OnKilled();
+
             if (aI.Target != null)
             {
                 if (Behaviour.IgnoreList.Contains(aI.Target))

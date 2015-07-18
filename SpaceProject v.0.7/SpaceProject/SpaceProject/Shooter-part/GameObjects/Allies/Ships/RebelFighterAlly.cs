@@ -99,6 +99,8 @@ namespace SpaceProject
 
         public override void OnKilled()
         {
+            base.OnKilled();
+
             if (aI.Target != null)
             {
                 if (Behaviour.IgnoreList.Contains(aI.Target))
@@ -135,6 +137,8 @@ namespace SpaceProject
                 Game.stateManager.shooterState.gameObjects.Add(laser2);
 
                 LastTimeShot = 0;
+
+                base.Shoot();
             }
         }
 
