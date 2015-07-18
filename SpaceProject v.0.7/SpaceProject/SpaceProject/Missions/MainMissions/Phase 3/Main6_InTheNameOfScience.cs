@@ -175,7 +175,7 @@ namespace SpaceProject
                         && (ControlManager.CheckPress(RebindableKeys.Action1)
                             || ControlManager.CheckKeyPress(Keys.Enter)))
                     {
-                        PopupHandler.DisplaySelectionMenu("[Rok] Ready to go?",
+                        PopupHandler.DisplaySelectionMenu("[Rebel Pilot] Ready to go?",
                             new List<string>() { "Yes", "No" },
                             new List<System.Action>()
                             {

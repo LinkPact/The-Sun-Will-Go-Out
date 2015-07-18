@@ -89,7 +89,7 @@ namespace SpaceProject
 
             objectives.Add(new AskToProgressObjective(Game, this, ObjectiveDescriptions[0],
                 GetEvent((int)EventID.Question), GetEvent((int)EventID.StartSecond),
-                GetEvent((int)EventID.DeclineResponse)));
+                GetEvent((int)EventID.DeclineResponse), LocationName));
 
             // Second level
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
@@ -98,7 +98,7 @@ namespace SpaceProject
 
             objectives.Add(new AskToProgressObjective(Game, this, ObjectiveDescriptions[0],
                 GetEvent((int)EventID.Question), GetEvent((int)EventID.StartThird),
-                GetEvent((int)EventID.DeclineResponse)));
+                GetEvent((int)EventID.DeclineResponse), LocationName));
 
             // Third level
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
@@ -107,7 +107,7 @@ namespace SpaceProject
 
             objectives.Add(new AskToProgressObjective(Game, this, ObjectiveDescriptions[0],
                 GetEvent((int)EventID.Question), GetEvent((int)EventID.StartFourth),
-                GetEvent((int)EventID.DeclineResponse)));
+                GetEvent((int)EventID.DeclineResponse), LocationName));
 
             // Fourth level
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
@@ -116,7 +116,7 @@ namespace SpaceProject
 
             objectives.Add(new AskToProgressObjective(Game, this, ObjectiveDescriptions[0],
                 GetEvent((int)EventID.Question), GetEvent((int)EventID.StartFifth),
-                GetEvent((int)EventID.DeclineResponse)));
+                GetEvent((int)EventID.DeclineResponse), LocationName));
 
             // Fifth level
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],

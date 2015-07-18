@@ -659,14 +659,6 @@ namespace SpaceProject
 
         public void UpdateProgressionConditions()
         {
-            // Unlock hyperspeed
-            if (ControlManager.CurrentKeyboardState.IsKeyDown(Keys.LeftAlt) &&
-                ControlManager.CheckKeyPress(Keys.Y) && !game.player.IsHyperSpeedUnlocked)
-            {
-                game.player.UnlockHyperSpeed();
-                PopupHandler.DisplayMessage("Hyper speed unlocked! Hold down '" + ControlManager.GetKeyName(RebindableKeys.Action3) + "' to use.");
-            }
-
             // Screening off player from certain locations
             if (StatsManager.gameMode != GameMode.Develop
                 && mainInfiltration.MissionState != StateOfMission.CompletedDead

@@ -14,14 +14,16 @@ namespace SpaceProject
         private EventText question;
         private EventText yesEvent;
         private EventText noEvent;
+        private string locationName;
 
         public AskToProgressObjective(Game1 game, Mission mission, String description, EventText question,
-            EventText yesEvent, EventText noEvent):
+            EventText yesEvent, EventText noEvent, string locationName):
             base(game, mission, description)
         {
             this.question = question;
             this.yesEvent = yesEvent;
             this.noEvent = noEvent;
+            this.locationName = locationName;
         }
 
         public override void OnActivate()
@@ -33,7 +35,8 @@ namespace SpaceProject
         {
             base.Update(playTime);
 
-            if (askQuestion && GameStateManager.currentState.Equals("StationState"))
+            if (askQuestion && GameStateManager.currentState.Equals("StationState")
+                && game.stateManager.stationState.Station.name.ToLower().Equals(locationName.ToLower()))
             {
                 askQuestion = false;
 

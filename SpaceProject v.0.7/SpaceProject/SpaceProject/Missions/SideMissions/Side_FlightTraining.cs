@@ -85,7 +85,7 @@ namespace SpaceProject
 
             objectives.Add(new AskToProgressObjective(Game, this, ObjectiveDescriptions[0],
                 GetEvent((int)EventID.Question), GetEvent((int)EventID.StartSecond),
-                GetEvent((int)EventID.DeclineResponse)));
+                GetEvent((int)EventID.DeclineResponse), LocationName));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 "flightTraining_2", LevelStartCondition.TextCleared,
@@ -93,7 +93,7 @@ namespace SpaceProject
 
             objectives.Add(new AskToProgressObjective(Game, this, ObjectiveDescriptions[0],
                 GetEvent((int)EventID.Question), GetEvent((int)EventID.StartThird),
-                GetEvent((int)EventID.DeclineResponse)));
+                GetEvent((int)EventID.DeclineResponse), LocationName));
 
             objectives.Add(new ShootingLevelObjective(Game, this, ObjectiveDescriptions[0],
                 "flightTraining_3", LevelStartCondition.TextCleared,
