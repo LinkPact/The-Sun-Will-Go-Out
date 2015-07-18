@@ -317,7 +317,7 @@ namespace SpaceProject
                 {
                     if (ControlManager.IsMouseOverArea(allButtons[i].Bounds))
                     {
-                        if (ControlManager.GetMousePosition() != ControlManager.GetPreviousMousePosition())
+                        if (ControlManager.IsMouseMoving())
                         {
                             activeButtonIndexY = i;
                         }

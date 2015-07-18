@@ -122,15 +122,6 @@ namespace SpaceProject
                 case "load sound effects":
                     SoundEffectsManager.LoadSoundEffects = !SoundEffectsManager.LoadSoundEffects;
                     break;
-
-                case "text-to-speech":
-                    int index = (int)TextToSpeech.TTSMode;
-                    if (++index > (int)TextToSpeechMode.Off)
-                    {
-                        index = 0;
-                    }
-                    TextToSpeech.TTSMode = (TextToSpeechMode)index;
-                    break;
             
                 case "back":
                     optionsMenuState.LeaveSubState();

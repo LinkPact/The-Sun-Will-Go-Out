@@ -176,7 +176,6 @@
     <Compile Include="GameUtils\UI\Popups\Instances\Messages\PortraitMessage.cs" />
     <Compile Include="GameUtils\UI\Popups\Instances\Messages\TextMessage.cs" />
     <Compile Include="GameUtils\PlayTime.cs" />
-    <Compile Include="GameUtils\TextToSpeech.cs" />
     <Compile Include="GameUtils\UI\Portrait.cs" />
     <Compile Include="LevelHelpClasses\LevelEntry.cs" />
     <Compile Include="LevelHelpClasses\LevelTesterEntry.cs" />

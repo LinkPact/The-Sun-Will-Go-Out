@@ -123,7 +123,7 @@ namespace SpaceProject
                 if (ControlManager.IsMouseOverText(FontManager.GetFontStatic(14),
                     options[i], new Vector2(10, 10 + (i * 20)), false))
                 {
-                    if (ControlManager.GetMousePosition() != ControlManager.GetPreviousMousePosition())
+                    if (ControlManager.IsMouseMoving())
                     {
                         cursorIndex = i;
                     }

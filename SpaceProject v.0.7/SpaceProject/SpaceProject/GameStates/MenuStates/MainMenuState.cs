@@ -239,9 +239,9 @@ namespace SpaceProject
                     buttons[i].Passive.SourceRectangle.Value.Width,
                     buttons[i].Passive.SourceRectangle.Value.Height);
 
-                if (CollisionDetection.IsPointInsideRectangle(ControlManager.GetMousePosition(), buttonRect))
+                if (ControlManager.IsMouseOverArea(buttonRect))
                 {
-                    if (ControlManager.GetMousePosition() != ControlManager.GetPreviousMousePosition())
+                    if (ControlManager.IsMouseMoving())
                     {
                         if (buttonIndex != i)
                         {

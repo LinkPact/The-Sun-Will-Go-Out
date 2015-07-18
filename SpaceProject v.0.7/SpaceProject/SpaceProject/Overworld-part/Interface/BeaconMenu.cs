@@ -151,7 +151,7 @@ namespace SpaceProject
                 if (ControlManager.IsMouseOverText(font, options[i].Replace("Beacon", ""), new Vector2(game.camera.cameraPos.X + position.X + 120,
                         game.camera.cameraPos.Y + position.Y - 100 + (i * 20)), game.camera.Position - game.ScreenCenter, false))
                 {
-                    if (ControlManager.GetMousePosition() != ControlManager.GetPreviousMousePosition())
+                    if (ControlManager.IsMouseMoving())
                     {
                         cursorIndex = i;
                     }

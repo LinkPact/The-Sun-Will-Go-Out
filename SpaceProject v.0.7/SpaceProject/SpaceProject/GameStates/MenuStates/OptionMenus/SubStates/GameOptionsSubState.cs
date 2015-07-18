@@ -16,8 +16,8 @@ namespace SpaceProject
         public override void Initialize()
         {
             base.Initialize();
-            menuOptions = new String[2, 2];
-            onEnterMenuOptions = new String[1];
+            menuOptions = new String[3, 2];
+            onEnterMenuOptions = new String[2];
         }
 
         public override void OnDisplay()
@@ -32,8 +32,18 @@ namespace SpaceProject
                 menuOptions[0, 1] = "Off";
             }
 
-            menuOptions[1, 0] = "Back";
-            menuOptions[1, 1] = "";        
+            menuOptions[1, 0] = "Display Cursor";
+            if (ControlManager.IsMouseShown())
+            {
+                menuOptions[1, 1] = "On";
+            }
+            else
+            {
+                menuOptions[1, 1] = "Off";
+            }
+
+            menuOptions[2, 0] = "Back";
+            menuOptions[2, 1] = "";        
 
             base.OnDisplay();
         }
@@ -48,6 +58,15 @@ namespace SpaceProject
             {
                 menuOptions[0, 1] = "Off";
             }
+
+            if (ControlManager.IsMouseShown())
+            {
+                menuOptions[1, 1] = "On";
+            }
+            else
+            {
+                menuOptions[1, 1] = "Off";
+            }
         }
 
         public override void ButtonActions()
@@ -56,6 +75,14 @@ namespace SpaceProject
             {
                 case "tutorials":
                     game.tutorialManager.TutorialsUsed = !game.tutorialManager.TutorialsUsed;
+                    UpdateText();
+
+                    PlaySelectSound();
+                    break;
+
+                case "display cursor":
+                    ControlManager.ToggleMouseHidden();
+                    game.IsMouseVisible = ControlManager.IsMouseShown();
                     UpdateText();
 
                     PlaySelectSound();

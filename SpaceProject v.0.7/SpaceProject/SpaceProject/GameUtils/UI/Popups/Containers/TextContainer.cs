@@ -98,16 +98,10 @@ namespace SpaceProject
             if (textScrollingFinished)
             {
                 TextUtils.RefreshTextScrollBuffer();
-                TextToSpeech.Stop();
 
                 if (textBuffer.Count > 0)
                 {
                     textBuffer.Remove(textBuffer[0]);
-                }
-
-                if (textBuffer.Count > 0)
-                {
-                    TextToSpeech.Speak(textBuffer[0]);
                 }
 
                 flushScrollingText = false;

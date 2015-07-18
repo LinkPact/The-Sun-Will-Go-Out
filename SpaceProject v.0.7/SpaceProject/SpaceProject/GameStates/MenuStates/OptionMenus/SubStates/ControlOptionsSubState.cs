@@ -34,9 +34,13 @@ namespace SpaceProject
 
             menuOptions[0, 0] = "Control Type:";
             if (ControlManager.GamepadReady)
+            {
                 menuOptions[0, 1] = "Gamepad";
+            }
             else
+            {
                 menuOptions[0, 1] = "Keyboard";
+            }
             
             menuOptions[1, 0] = "Action 1 / Fire / Confirm";
             menuOptions[1, 1] = ControlManager.GetKeyName(RebindableKeys.Action1);

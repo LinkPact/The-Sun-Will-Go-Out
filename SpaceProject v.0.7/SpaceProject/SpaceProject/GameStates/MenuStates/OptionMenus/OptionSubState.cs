@@ -252,7 +252,7 @@ namespace SpaceProject
                         ButtonActions();
                     }
 
-                    if (ControlManager.GetMousePosition() != ControlManager.GetPreviousMousePosition())
+                    if (ControlManager.IsMouseMoving())
                     {
                         cursorIndex = i;
                     }
@@ -275,7 +275,7 @@ namespace SpaceProject
                         {
                             ButtonActions();
                         }
-                        if (ControlManager.GetMousePosition() != ControlManager.GetPreviousMousePosition())
+                        if (ControlManager.IsMouseMoving())
                         {
                             cursorIndex = i;
                         }
@@ -291,7 +291,7 @@ namespace SpaceProject
                     directionalButtons[i].Passive.SourceRectangle.Value.Width + 10,
                     directionalButtons[i].Passive.SourceRectangle.Value.Height);
 
-                if (CollisionDetection.IsPointInsideRectangle(ControlManager.GetMousePosition(), dirButtonRect) &&
+                if (ControlManager.IsMouseOverArea(dirButtonRect) &&
                     ControlManager.IsLeftMouseButtonClicked())
                 {
                     DirectionalButtonActions(directionalButtons[i].name);

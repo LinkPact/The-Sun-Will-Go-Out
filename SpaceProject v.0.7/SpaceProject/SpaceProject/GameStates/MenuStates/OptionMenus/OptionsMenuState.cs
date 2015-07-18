@@ -246,9 +246,9 @@ namespace SpaceProject
                     buttons[i].Passive.SourceRectangle.Value.Width,
                     buttons[i].Passive.SourceRectangle.Value.Height);
 
-                if (CollisionDetection.IsPointInsideRectangle(ControlManager.GetMousePosition(), buttonRect))
+                if (ControlManager.IsMouseOverArea(buttonRect))
                 {
-                    if (ControlManager.GetMousePosition() != ControlManager.GetPreviousMousePosition())
+                    if (ControlManager.IsMouseMoving())
                     {
                         if (buttonIndex != i)
                         {
@@ -400,6 +400,7 @@ namespace SpaceProject
             SortedDictionary<String, String> visualSaveData = new SortedDictionary<string, string>();
             visualSaveData.Add("fullscreen", Game.graphics.IsFullScreen.ToString());
             visualSaveData.Add("showfps", Game.ShowFPS.ToString());
+            visualSaveData.Add("displayallresolutions", Game.DisplayAllResolutions.ToString());
             visualSaveData.Add("resolutionx", ((int)Game.Resolution.X).ToString());
             visualSaveData.Add("resolutiony", ((int)Game.Resolution.Y).ToString());
 
@@ -411,12 +412,12 @@ namespace SpaceProject
             soundSaveData.Add("muteSound", Game.soundEffectsManager.isSoundMuted().ToString());
             soundSaveData.Add("soundvolume", Convert.ToString(Game.soundEffectsManager.GetSoundVolume(), CultureInfo.InvariantCulture));
             soundSaveData.Add("loadsound", SoundEffectsManager.LoadSoundEffects.ToString());
-            soundSaveData.Add("text-to-speech", ((int)TextToSpeech.TTSMode).ToString());
 
             Game.settingsFile.Save(Game1.SaveFilePath, "settings.ini", "sound", soundSaveData);
 
             SortedDictionary<String, String> gameOptionsSaveData = new SortedDictionary<string, string>();
             gameOptionsSaveData.Add("tutorials", Game.tutorialManager.TutorialsUsed.ToString());
+            gameOptionsSaveData.Add("showmouse", ControlManager.IsMouseShown().ToString());
 
             Game.settingsFile.Save(Game1.SaveFilePath, "settings.ini", "game options", gameOptionsSaveData);
         }

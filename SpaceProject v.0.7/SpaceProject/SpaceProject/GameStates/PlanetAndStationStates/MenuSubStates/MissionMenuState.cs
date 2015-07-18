@@ -299,8 +299,6 @@ namespace SpaceProject
 
         public override void ButtonActions()
         {
-            TextToSpeech.Stop();
-
             //Actions for pressing Ok-key in "SELECTMISSION STATE" 
             if (BaseStateManager.ButtonControl.Equals(ButtonControl.Mission))
             {
@@ -430,8 +428,6 @@ namespace SpaceProject
                                                                   false, true,
                                                                   MissionManager.MissionEventBuffer[0]));
 
-                TextToSpeech.Speak(MissionManager.MissionEventBuffer[0]);
-
                 MissionManager.MissionEventBuffer.RemoveAt(0);
 
                 BaseStateManager.ButtonControl = ButtonControl.Confirm;
@@ -468,8 +464,6 @@ namespace SpaceProject
                                                               tempRect,
                                                               false, true,
                                                               MissionManager.MissionStartBuffer[0]));
-
-            TextToSpeech.Speak(MissionManager.MissionStartBuffer[0]);
 
             MissionManager.MissionStartBuffer.Remove(MissionManager.MissionStartBuffer[0]);
 
@@ -557,8 +551,6 @@ namespace SpaceProject
                     BaseStateManager.ButtonControl = ButtonControl.Response;
                     ResponseCursorIndex = 0;
                 }
-
-                TextToSpeech.Speak(temp[0]);
             }
 
         }
@@ -651,8 +643,6 @@ namespace SpaceProject
                     BaseStateManager.ButtonControl = ButtonControl.Confirm;
 
                     selectedMission.IntroductionText += "/ok";
-
-                    TextToSpeech.Speak(temp[0]);
                 }
 
                 else
@@ -689,8 +679,6 @@ namespace SpaceProject
                 BaseStateManager.ButtonControl = ButtonControl.Confirm;
 
                 selectedMission.IntroductionText += "/ok";
-
-                TextToSpeech.Speak(temp[0]);
             }
         }
 
@@ -706,8 +694,6 @@ namespace SpaceProject
                                                               tempRect,
                                                               false, true,
                                                               selectedMission.AcceptFailedText));
-
-            TextToSpeech.Speak(selectedMission.AcceptFailedText);
 
             missionCursorIndex = 0;
 
@@ -766,8 +752,6 @@ namespace SpaceProject
                 {
                     MissionManager.MissionEventBuffer.Add(temp[i]);
                 }
-
-                TextToSpeech.Speak(temp[0]);
             }
         }
 

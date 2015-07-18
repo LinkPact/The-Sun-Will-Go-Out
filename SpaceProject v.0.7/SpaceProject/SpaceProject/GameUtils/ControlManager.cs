@@ -34,7 +34,7 @@ namespace SpaceProject
                 RebindableKeys.Up
             };
 
-        #region Gamepad
+        // Gamepad
         public static bool IsGamepadConnected;
         public static bool UseGamepad;
 
@@ -52,9 +52,8 @@ namespace SpaceProject
         public static Buttons GamepadAction2;
         public static Buttons GamepadAction3;
         public static Buttons GamepadPause;
-        #endregion
 
-        #region Keyboard
+        // Keyboard
         public static KeyboardState CurrentKeyboardState;
         public static KeyboardState PreviousKeyboardState;
 
@@ -63,17 +62,14 @@ namespace SpaceProject
         public static Keys KeyboardRight;
         public static Keys KeyboardLeft;
         public static Keys KeyboardPause;
-
-        //Used in shipmenu and shooter. Temporary solution.
         public static Keys KeyboardAction;
         public static Keys KeyboardAction2;
         public static Keys KeyboardAction3;
-        #endregion
 
-        #region
+        // Mouse
         private static MouseState currentMouseState;
         private static MouseState previouseMouseState;
-        #endregion
+        private static bool showMouse;
 
         public static bool GamepadReady
         {
@@ -122,6 +118,8 @@ namespace SpaceProject
             KeyboardAction = Keys.LeftControl;
             KeyboardAction2 = Keys.LeftShift;
             KeyboardAction3 = Keys.Space;
+
+            showMouse = true;
         }
 
         public static void LoadControls(SaveFile settingsFile)
@@ -190,6 +188,8 @@ namespace SpaceProject
             GamepadAction2 = Buttons.B;
             GamepadAction3 = Buttons.X;
             GamepadPause = Buttons.Start;
+
+            showMouse = settingsFile.GetPropertyAsBool("game options", "showmouse", true);
         }
 
         public static bool CheckKeyPress(Keys key)
@@ -595,41 +595,41 @@ namespace SpaceProject
             return true;
         }
 
-        public static Vector2 GetMousePosition()
+        private static Vector2 GetMousePosition()
         {
             return new Vector2(currentMouseState.X, currentMouseState.Y);
         }
 
-        public static Vector2 GetPreviousMousePosition()
+        private static Vector2 GetPreviousMousePosition()
         {
             return new Vector2(previouseMouseState.X, previouseMouseState.Y);
         }
 
         public static bool IsLeftMouseButtonPressed()
         {
-            return currentMouseState.LeftButton == ButtonState.Pressed;
+            return showMouse && currentMouseState.LeftButton == ButtonState.Pressed;
         }
 
         public static bool IsLeftMouseButtonClicked()
         {
-            return (previouseMouseState.LeftButton == ButtonState.Pressed &&
+            return (showMouse && previouseMouseState.LeftButton == ButtonState.Pressed &&
                 !IsLeftMouseButtonPressed());
         }
 
         public static bool IsRightMouseButtonPressed()
         {
-            return currentMouseState.RightButton == ButtonState.Pressed;
+            return showMouse && currentMouseState.RightButton == ButtonState.Pressed;
         }
 
         public static bool IsRightMouseButtonClicked()
         {
-            return (previouseMouseState.RightButton == ButtonState.Pressed &&
+            return (showMouse && previouseMouseState.RightButton == ButtonState.Pressed &&
                 !IsRightMouseButtonPressed());
         }
 
         public static bool IsMouseOverArea(Rectangle area)
         {
-            return CollisionDetection.IsPointInsideRectangle(new Vector2(currentMouseState.X, currentMouseState.Y), area);
+            return showMouse && CollisionDetection.IsPointInsideRectangle(new Vector2(currentMouseState.X, currentMouseState.Y), area);
         }
 
         public static bool IsMouseOverText(SpriteFont font, String text, Vector2 textPosition, bool textCentered = true)
@@ -643,12 +643,27 @@ namespace SpaceProject
             textRect = new Rectangle((int)(textPosition.X - textOrigin.X), (int)(textPosition.Y - textOrigin.Y),
                     (int)textDimension.X, (int)textDimension.Y);
 
-            return CollisionDetection.IsPointInsideRectangle(ControlManager.GetMousePosition(), textRect);
+            return showMouse && CollisionDetection.IsPointInsideRectangle(ControlManager.GetMousePosition(), textRect);
         }
 
         public static bool IsMouseOverText(SpriteFont font, String text, Vector2 textPosition, Vector2 screenPos, bool textCentered)
         {
             return IsMouseOverText(font, text, textPosition - screenPos, textCentered);
+        }
+
+        public static bool IsMouseMoving()
+        {
+            return ControlManager.GetMousePosition() != ControlManager.GetPreviousMousePosition();
+        }
+
+        public static bool IsMouseShown()
+        {
+            return showMouse;
+        }
+
+        public static void ToggleMouseHidden()
+        {
+            ControlManager.showMouse = !ControlManager.showMouse;
         }
 
         private static bool IsKeyBound(Keys newkey, RebindableKeys keyToRebind)

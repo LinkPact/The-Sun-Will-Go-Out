@@ -222,19 +222,6 @@ namespace SpaceProject
             || (Object.position.Y - Object.sprite.SourceRectangle.Value.Height / 2) > systemSize.Y);
         }
 
-        //public static SpriteFont GetFont(Game1 Game, bool isBig)
-        //{ 
-        //    SpriteFont font;
-        //
-        //    if (isBig)
-        //        font = Game.Content.Load<SpriteFont>("Overworld-Sprites/bigFont");
-        //
-        //    else
-        //        font = Game.Content.Load<SpriteFont>("Overworld-Sprites/smallFont");
-        //
-        //    return font;
-        //}
-
         public static Vector2 NormalizePosition(Vector2 pos, Vector2 origin)
         {
             return new Vector2(pos.X - origin.X, pos.Y - origin.Y);
@@ -243,54 +230,6 @@ namespace SpaceProject
         public static Vector2 PointToVector2(Point p)
         {
             return new Vector2(p.X, p.Y);
-        }
-
-        public static string GetOSName()
-        {
-            System.OperatingSystem oSInfo =
-                System.Environment.OSVersion;
-
-            switch (oSInfo.Version.Major)
-            {
-                case 5:
-                    switch (oSInfo.Version.Minor)
-                    {
-                        case 0:
-                            return "Windows 2000";
-
-                        case 1:
-                        case 2:
-                            return "Windows XP";
-
-                        default:
-                            return "Unknown";
-                    }
-
-                case 6:
-                    switch (oSInfo.Version.Minor)
-                    {
-                        case 0:
-                            return "Windows Vista";
-
-                        case 1:
-                            return "Windows 7";
-
-                        case 2:
-                            return "Windows 8";
-
-                        case 3:
-                            return "Windows 8.1";
-
-                        default:
-                            return "Unknown";
-                    }
-
-                case 10:
-                    return "Windows 10";
-
-                default:
-                    return "Unknown";
-            }
         }
     }
 

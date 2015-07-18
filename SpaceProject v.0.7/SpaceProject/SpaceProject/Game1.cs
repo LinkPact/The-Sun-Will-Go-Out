@@ -74,6 +74,8 @@ namespace SpaceProject
         public bool ShowFPS { get { return showFPS; } set { showFPS = value; } }
 
         public static List<Vector2> ResolutionOptions;
+        private bool displayAllResolutions;
+        public bool DisplayAllResolutions { get { return displayAllResolutions; } set { displayAllResolutions = value; } }
 
         private Vector2 resolution;
 
@@ -93,17 +95,14 @@ namespace SpaceProject
 
         protected override void Initialize()
         {
-            CreateDirectories();   
-
-            SetAvailableResolutions();
-
+            CreateDirectories();
             GameStarted = false;
 
             settingsFile = new SaveFile(this);
             settingsFile.Load(SaveFilePath, "settings.ini");
 
-            TextToSpeech.TTSMode = (TextToSpeechMode)settingsFile.GetPropertyAsInt("sound", "text-to-speech", 2);
-
+            displayAllResolutions = settingsFile.GetPropertyAsBool("visual", "displayallresolutions", false);
+            SetAvailableResolutions();
             resolution = new Vector2(settingsFile.GetPropertyAsFloat("visual", "resolutionx", 1024),
                                      settingsFile.GetPropertyAsFloat("visual", "resolutiony", 768));
 
@@ -122,7 +121,7 @@ namespace SpaceProject
             
             graphics.ApplyChanges();
 
-            IsMouseVisible = true;
+            IsMouseVisible = settingsFile.GetPropertyAsBool("game options", "showmouse", true);
 
             menuBGController = new MenuBackdropController(this);
             menuBGController.Initialize();
@@ -178,8 +177,6 @@ namespace SpaceProject
             helper = new HelperBox(this);
 
             ShopManager.SetShopUpdateTime(ShopManager.PRESET_SHOPTIME);
-
-            TextToSpeech.Initialize();
 
             base.Initialize();
         }
@@ -412,12 +409,28 @@ namespace SpaceProject
             soundEffectsManager.DisposeSoundEffect();
         }
 
-        private void SetAvailableResolutions()
+        public void SetAvailableResolutions()
         {
             ResolutionOptions = new List<Vector2>();
 
-            ResolutionOptions.Add(new Vector2(1024, 768));
-            ResolutionOptions.Add(new Vector2(1280, 720));
+            if (displayAllResolutions)
+            {
+                foreach (DisplayMode res in graphics.GraphicsDevice.Adapter.SupportedDisplayModes)
+                {
+                    Vector2 resolution = new Vector2(res.Width, res.Height);
+
+                    if (!ResolutionOptions.Contains(resolution)
+                        && resolution.X > 800 && resolution.Y > 600)
+                    {
+                        ResolutionOptions.Add(new Vector2(res.Width, res.Height));
+                    }
+                }
+            }
+            else
+            {
+                ResolutionOptions.Add(new Vector2(1024, 768));
+                ResolutionOptions.Add(new Vector2(1280, 720));
+            }
         }
 
         private void CreateDirectories()
