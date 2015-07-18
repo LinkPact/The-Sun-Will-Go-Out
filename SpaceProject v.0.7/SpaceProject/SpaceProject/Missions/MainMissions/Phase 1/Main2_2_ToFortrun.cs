@@ -109,6 +109,7 @@ namespace SpaceProject
                 delegate
                 {
                     return (Game.player.HyperspeedOn
+                            && Game.stateManager.overworldState.GetBeacon("Soelara Beacon").GetFinalDestination != null
                             && Game.stateManager.overworldState.GetBeacon("Soelara Beacon").GetFinalDestination.name.ToLower() ==
                                 Game.stateManager.overworldState.GetBeacon("Highfence Beacon").name.ToLower());
                 },
