@@ -26,12 +26,12 @@ namespace SpaceProject
             base.Initialize();
 
             resLeftButton = new MenuDisplayObject(game, buttonsSprite.GetSubSprite(new Rectangle(20, 135, 12, 11)), buttonsSprite.GetSubSprite(new Rectangle(4, 135, 12, 11)),
-                new Vector2(game.Window.ClientBounds.Width - 168, game.Window.ClientBounds.Height / 3 - 1 + (3 * 22)),
+                new Vector2(game.Window.ClientBounds.Width - 168, game.Window.ClientBounds.Height / 3 - 1 + (2 * 22)),
                 new Vector2(6, 5));
             resLeftButton.Initialize();
 
             resRightButton = new MenuDisplayObject(game, buttonsSprite.GetSubSprite(new Rectangle(4, 135, 12, 11)), buttonsSprite.GetSubSprite(new Rectangle(4, 135, 12, 11)),
-                new Vector2(game.Window.ClientBounds.Width - 45, game.Window.ClientBounds.Height / 3 - 2 + (3 * 22)),
+                new Vector2(game.Window.ClientBounds.Width - 45, game.Window.ClientBounds.Height / 3 - 2 + (2 * 22)),
                 new Vector2(6, 5));
             resRightButton.Initialize();
 
@@ -44,8 +44,8 @@ namespace SpaceProject
             holdTimer = game.HoldKeyTreshold;
             cursorIndex = 0;
 
-            menuOptions = new String[6, 2];
-            onEnterMenuOptions = new String[6];
+            menuOptions = new String[5, 2];
+            onEnterMenuOptions = new String[5];
         }
 
         public override void OnDisplay()
@@ -75,24 +75,14 @@ namespace SpaceProject
                 menuOptions[1, 1] = "Off";
             }
 
-            menuOptions[2, 0] = "Show untested resolutions";
-            if (game.DisplayAllResolutions)
-            {
-                menuOptions[2, 1] = "On";
-            }
-            else
-            {
-                menuOptions[2, 1] = "Off";
-            }
+            menuOptions[2, 0] = "Resolution";
+            menuOptions[2, 1] = game.Resolution.X.ToString() + " x " + game.Resolution.Y.ToString();
 
-            menuOptions[3, 0] = "Resolution";
-            menuOptions[3, 1] = game.Resolution.X.ToString() + " x " + game.Resolution.Y.ToString();
+            menuOptions[3, 0] = "Apply Changes";
+            menuOptions[3, 1] = "";
 
-            menuOptions[4, 0] = "Apply Changes";
+            menuOptions[4, 0] = "Back";
             menuOptions[4, 1] = "";
-
-            menuOptions[5, 0] = "Back";
-            menuOptions[5, 1] = "";
 
             base.OnDisplay();
         }
@@ -104,7 +94,7 @@ namespace SpaceProject
 
         public override void Update(GameTime gameTime)
         {
-            if (cursorIndex == 3)
+            if (cursorIndex == 2)
             {
                 if (ControlManager.CheckPress(RebindableKeys.Left))
                 {
@@ -128,7 +118,7 @@ namespace SpaceProject
                 resIndex = Game1.ResolutionOptions.Count - 1;
             }
 
-            menuOptions[3, 1] = Game1.ResolutionOptions[resIndex].X + " x " + Game1.ResolutionOptions[resIndex].Y;
+            menuOptions[2, 1] = Game1.ResolutionOptions[resIndex].X + " x " + Game1.ResolutionOptions[resIndex].Y;
 
             base.Update(gameTime);
         }
@@ -147,18 +137,6 @@ namespace SpaceProject
             
                 case "show fps":
                     game.ShowFPS = !game.ShowFPS;
-                    UpdateText();
-
-                    PlaySelectSound();
-                    break;
-
-                case "show untested resolutions":
-                    game.DisplayAllResolutions = !game.DisplayAllResolutions;
-                    if (game.DisplayAllResolutions)
-                    {
-                        PopupHandler.DisplayMessage("WARNING: These resolutions are untested and may break the game. Use with caution!");
-                    }
-                    game.SetAvailableResolutions();
                     UpdateText();
 
                     PlaySelectSound();
@@ -231,12 +209,12 @@ namespace SpaceProject
             switch (buttonName.ToLower())
             {
                 case "left res":
-                    cursorIndex = 3;
+                    cursorIndex = 2;
                     resIndex--;
                     break;
 
                 case "right res":
-                    cursorIndex = 3;
+                    cursorIndex = 2;
                     resIndex++;
                     break;
 
@@ -267,16 +245,7 @@ namespace SpaceProject
                 menuOptions[1, 1] = "Off";
             }
 
-            if (game.DisplayAllResolutions)
-            {
-                menuOptions[2, 1] = "On";
-            }
-            else
-            {
-                menuOptions[2, 1] = "Off";
-            }
-
-            menuOptions[3, 1] = game.Resolution.X.ToString() + " x " + game.Resolution.Y.ToString();
+            menuOptions[2, 1] = game.Resolution.X.ToString() + " x " + game.Resolution.Y.ToString();
         }
 
         public override void Draw(SpriteBatch spriteBatch)

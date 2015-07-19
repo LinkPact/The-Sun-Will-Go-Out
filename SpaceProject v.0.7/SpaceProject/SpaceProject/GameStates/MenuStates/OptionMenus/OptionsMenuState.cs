@@ -400,7 +400,6 @@ namespace SpaceProject
             SortedDictionary<String, String> visualSaveData = new SortedDictionary<string, string>();
             visualSaveData.Add("fullscreen", Game.graphics.IsFullScreen.ToString());
             visualSaveData.Add("showfps", Game.ShowFPS.ToString());
-            visualSaveData.Add("displayallresolutions", Game.DisplayAllResolutions.ToString());
             visualSaveData.Add("resolutionx", ((int)Game.Resolution.X).ToString());
             visualSaveData.Add("resolutiony", ((int)Game.Resolution.Y).ToString());
 
