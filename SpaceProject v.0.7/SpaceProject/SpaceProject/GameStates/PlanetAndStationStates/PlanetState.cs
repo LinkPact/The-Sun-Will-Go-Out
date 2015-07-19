@@ -147,6 +147,7 @@ namespace SpaceProject
             if (planet.name.Equals("Murt Asteroid"))
             {
                 ActiveSong = Music.none;
+                Game.musicManager.StopMusic();
             }
             else
             {

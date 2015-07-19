@@ -168,6 +168,7 @@ namespace SpaceProject
                 || station.name.Equals("Rebel Fleet"))
             {
                 ActiveSong = Music.none;
+                Game.musicManager.StopMusic();
             }
             else
             {

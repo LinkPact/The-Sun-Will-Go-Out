@@ -100,6 +100,11 @@ namespace SpaceProject
                 MediaPlayer.Stop();
         }
 
+        public void StopMusic()
+        {
+            MediaPlayer.Stop();
+        }
+
         public void SetMusicVolume(float volume)
         {
             MediaPlayer.Volume = volume;
