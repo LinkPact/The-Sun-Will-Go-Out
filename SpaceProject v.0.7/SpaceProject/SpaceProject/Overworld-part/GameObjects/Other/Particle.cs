@@ -30,7 +30,7 @@ namespace SpaceProject
             sprite = spriteSheet.GetSubSprite(new Rectangle(0, 38, 18,18));
             layerDepth = obj.layerDepth - 0.01f;
 
-            position.X = startingPoint.X - 6 + rand.Next(12) + ((obj.Bounds.Width / 2f - obj.sprite.Width / 7.5f) * -obj.Direction.GetDirectionAsVector().X);
+            position.X = startingPoint.X - 6 + rand.Next(12) + ((obj.Bounds.Height / 2f - obj.sprite.Height / 7.5f) * -obj.Direction.GetDirectionAsVector().X);
             position.Y = startingPoint.Y - 6 + rand.Next(12) + ((obj.Bounds.Height / 2f - obj.sprite.Height / 7.5f) * -obj.Direction.GetDirectionAsVector().Y);
             lifeSpawn = 8 + (int)rand.Next(6);
             opacity = 1;
@@ -40,7 +40,7 @@ namespace SpaceProject
             maxSpeed = 4;
             color = new Color(255, 80, 80, 255);
             centerPoint = new Vector2(sprite.SourceRectangle.Value.Width / 2,
-            sprite.SourceRectangle.Value.Height / 2);           
+                                      sprite.SourceRectangle.Value.Height / 2);           
 
             Initialize();
         }

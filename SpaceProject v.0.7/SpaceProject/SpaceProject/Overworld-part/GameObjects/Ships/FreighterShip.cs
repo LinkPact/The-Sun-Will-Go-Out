@@ -17,7 +17,7 @@ namespace SpaceProject
             Class = "FreighterShip";
             name = "Freighter Ship";
               
-            sprite = spriteSheet.GetSubSprite(new Rectangle(2, 201, 43, 68));
+            sprite = spriteSheet.GetSubSprite(new Rectangle(4, 201, 43, 68));
             viewRadius = 300;
             position = new Vector2(0,0);
             speed = 0.25f;

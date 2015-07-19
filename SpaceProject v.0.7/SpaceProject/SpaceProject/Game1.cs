@@ -383,6 +383,7 @@ namespace SpaceProject
             beaconMenu.Initialize();
             stateManager.Initialize();
             popupHandler.Initialize();
+            OverworldShip.FollowPlayer = true;
         }
 
         public void ChangeResolution(Vector2 newResolution)
