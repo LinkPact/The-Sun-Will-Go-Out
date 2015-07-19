@@ -109,7 +109,7 @@ namespace SpaceProject
             descriptions = new List<string>();
             descriptions.Add("Mode for development and testing.");
             descriptions.Add("Easy mode for inexperienced players.\nYou take less damage from enemy fire and you receive more money.");
-            descriptions.Add("Regular difficulty.\n The way the game was intended to be played.");
+            descriptions.Add("Regular difficulty.\n The way the game is intended to be played.");
             descriptions.Add("An extra difficulty for players looking for a real challenge.\nYou take more damage from enemy fire and you recive less money.");
             //descriptions.Add("An extra difficulty for players looking for a real \nchallenge.\nAs hard as Hard-difficulty but your life remain constant in both Shooter and Space.\nIf you run out of life you die... ");
             descriptions.Add("Return to main menu");
