@@ -176,7 +176,8 @@ namespace SpaceProject
                 {
                     if (CollisionDetection.IsRectInRect(Game.player.Bounds, allyShipRectangle)
                         && (ControlManager.CheckPress(RebindableKeys.Action1)
-                            || ControlManager.CheckKeyPress(Keys.Enter)))
+                            || ControlManager.CheckKeyPress(Keys.Enter))
+                        && GameStateManager.currentState.Equals("OverworldState"))
                     {
                         PopupHandler.DisplaySelectionMenu("[Ai] Ready to go?",
                             new List<string>() { "Yes", "No" },
@@ -249,7 +250,8 @@ namespace SpaceProject
                 {
                     if (CollisionDetection.IsRectInRect(Game.player.Bounds, allyShipRectangle)
                         && (ControlManager.CheckPress(RebindableKeys.Action1)
-                            || ControlManager.CheckKeyPress(Keys.Enter)))
+                            || ControlManager.CheckKeyPress(Keys.Enter))
+                        && GameStateManager.currentState.Equals("OverworldState"))
                     {
                         PopupHandler.DisplaySelectionMenu("[Ai] Ready to head back?",
                                 new List<string>() { "Yes", "No" },

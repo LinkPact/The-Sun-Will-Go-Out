@@ -434,7 +434,7 @@ ObjectiveFailed = You failed to recover any data from the damaged ship.
 Reward = 400
 Progress = 2
 Reputation = 0
-State = 1
+State = 0
 
 [Side_TheRebelOutpost]
 Location = Fortrun Station

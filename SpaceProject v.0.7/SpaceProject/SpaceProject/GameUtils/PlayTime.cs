@@ -19,16 +19,19 @@ namespace SpaceProject
 
         public void Update(GameTime gameTime)
         {
-            overallPlayTime += gameTime.ElapsedGameTime.Milliseconds;
-
-            if (GameStateManager.currentState.Equals("OverworldState"))
+            if (ZoomMap.MapState != MapState.ZoomingOut)
             {
-                overworldTime += gameTime.ElapsedGameTime.Milliseconds;
-            }
+                overallPlayTime += gameTime.ElapsedGameTime.Milliseconds;
 
-            else if (GameStateManager.currentState.Equals("ShooterState"))
-            {
-                shooterPartTime += gameTime.ElapsedGameTime.Milliseconds;
+                if (GameStateManager.currentState.Equals("OverworldState"))
+                {
+                    overworldTime += gameTime.ElapsedGameTime.Milliseconds;
+                }
+
+                else if (GameStateManager.currentState.Equals("ShooterState"))
+                {
+                    shooterPartTime += gameTime.ElapsedGameTime.Milliseconds;
+                }
             }
         }
 

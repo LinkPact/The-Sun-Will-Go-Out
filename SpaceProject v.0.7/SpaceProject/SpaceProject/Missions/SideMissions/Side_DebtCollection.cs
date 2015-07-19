@@ -55,7 +55,6 @@ namespace SpaceProject
 
             destinations.Add(fortrunStaion1);
             destinations.Add(fortrunStaion1);
-
         }
 
         protected override void SetupObjectives()
@@ -91,14 +90,14 @@ namespace SpaceProject
             
                         delegate
                         {
-                            missionHelper.ShowEvent(new List<EventText> { GetEvent(4), GetEvent(5) } );
-                            missionHelper.ClearResponseText();
+                            missionHelper.ShowEvent(GetEvent(5), true);
+                            missionHelper.ShowEvent(GetEvent(4), true);
                         },
             
                         delegate
                         {
-                            missionHelper.ShowEvent(new List<EventText> { GetEvent(4), GetEvent(5) } );
-                            missionHelper.ClearResponseText();
+                            missionHelper.ShowEvent(GetEvent(5), true);
+                            missionHelper.ShowEvent(GetEvent(4), true);
                         }
                     }, EventTextCanvas.BaseState)));
         }

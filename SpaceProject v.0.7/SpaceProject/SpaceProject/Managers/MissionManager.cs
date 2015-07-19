@@ -716,6 +716,12 @@ namespace SpaceProject
                 MarkMissionAsActive(MissionID.Main3_DefendColony);
             }
 
+            if (mainDefendColony.ObjectiveIndex > 6
+                && astroDodger.MissionState == StateOfMission.Unavailable)
+            {
+                UnlockMission(MissionID.Side_AstroDodger);
+            }
+
             if (mainDefendColony.MissionState == StateOfMission.CompletedDead
                 && mainInfiltration.MissionState == StateOfMission.Unavailable)
             {

@@ -173,7 +173,8 @@ namespace SpaceProject
                 {
                     if (CollisionDetection.IsRectInRect(Game.player.Bounds, allyShipRectangle)
                         && (ControlManager.CheckPress(RebindableKeys.Action1)
-                            || ControlManager.CheckKeyPress(Keys.Enter)))
+                            || ControlManager.CheckKeyPress(Keys.Enter))
+                        && GameStateManager.currentState.Equals("OverworldState"))
                     {
                         PopupHandler.DisplaySelectionMenu("[Rebel Pilot] Ready to go?",
                             new List<string>() { "Yes", "No" },

@@ -151,7 +151,10 @@ namespace SpaceProject
                 obj.scale = 1;
             }
 
-            Game1.Paused = false;
+            if (PopupHandler.IsMessageQueueEmpty)
+            {
+                Game1.Paused = false;
+            }
             camera.Zoom = 1f;
             mapState = MapState.Off;
         }

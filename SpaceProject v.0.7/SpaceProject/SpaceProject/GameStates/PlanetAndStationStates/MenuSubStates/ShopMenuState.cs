@@ -887,14 +887,12 @@ namespace SpaceProject
                 }
 
                 else if (ShipInventoryManager.IsEquipped(itemToSell) 
-                    && itemToSell is PlayerPlating
-                    && ShipInventoryManager.IsLastEquipped(itemToSell))
+                    && itemToSell is PlayerPlating)
                 {
-                    PopupHandler.DisplayMessage("You can't sell your last plating!");
+                    PopupHandler.DisplayMessage("You can't sell equipped platings!");
                 }
                 else
                 {
-
                     message.Append("sell ");
 
                     if (ShipInventoryManager.IsEquipped(itemToSell))
