@@ -74,7 +74,6 @@ namespace SpaceProject
         public bool ShowFPS { get { return showFPS; } set { showFPS = value; } }
 
         public static List<Vector2> ResolutionOptions;
-
         private Vector2 resolution;
 
         public Random random;
@@ -100,8 +99,10 @@ namespace SpaceProject
             settingsFile = new SaveFile(this);
             settingsFile.Load(SaveFilePath, "settings.ini");
 
-            resolution = new Vector2(settingsFile.GetPropertyAsFloat("visual", "resolutionx", 1024),
-                                     settingsFile.GetPropertyAsFloat("visual", "resolutiony", 768));
+            Vector2 defaultResolution = GetDefaultResolution();
+
+            resolution = new Vector2(settingsFile.GetPropertyAsFloat("visual", "resolutionx", defaultResolution.X),
+                                     settingsFile.GetPropertyAsFloat("visual", "resolutiony", defaultResolution.Y));
 
             random = new Random();
 
@@ -109,7 +110,7 @@ namespace SpaceProject
 
             graphics.PreferredBackBufferWidth = (int)resolution.X;
             graphics.PreferredBackBufferHeight = (int)resolution.Y;
-            graphics.IsFullScreen = settingsFile.GetPropertyAsBool("visual", "fullscreen", false);
+            graphics.IsFullScreen = settingsFile.GetPropertyAsBool("visual", "fullscreen", true);
             graphics.SynchronizeWithVerticalRetrace = true;
 
             // Uncomment to unlock FPS
@@ -420,6 +421,27 @@ namespace SpaceProject
         {
             Directory.CreateDirectory(SaveFilePath);
             Directory.CreateDirectory(LevelLogger.writeDir);
+        }
+
+        private Vector2 GetDefaultResolution()
+        {
+            DisplayMode currentScreenDisplayMode = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
+            Vector2 currentScreenResolution = new Vector2(currentScreenDisplayMode.Width, currentScreenDisplayMode.Height);
+
+            foreach (Vector2 res in ResolutionOptions)
+            {
+                if (res.Equals(currentScreenResolution))
+                {
+                    return res;
+                }
+
+                if (currentScreenResolution.Equals(new Vector2(1360, 768)))
+                {
+                    return new Vector2(1366, 768);
+                }
+            }
+
+            return new Vector2(1280, 720);
         }
     }
 }
