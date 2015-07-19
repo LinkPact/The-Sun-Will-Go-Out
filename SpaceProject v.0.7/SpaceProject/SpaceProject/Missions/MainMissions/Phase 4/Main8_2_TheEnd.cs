@@ -79,7 +79,7 @@ namespace SpaceProject
         {
             destinations = new List<GameObjectOverworld>();
 
-            Planet telmun = Game.stateManager.overworldState.GetPlanet("Murt Asteroid");
+            Planet telmun = Game.stateManager.overworldState.GetPlanet("Mysterious Asteroid");
 
             AddDestination(telmun, 2);
         }

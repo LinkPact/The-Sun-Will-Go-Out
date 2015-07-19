@@ -44,7 +44,7 @@ namespace SpaceProject
                 foreach (GameObjectOverworld obj in GetAllOverworldGameObjects)
                 {
                     if (obj is Planet
-                        && !obj.name.Equals("Murt Asteroid"))
+                        && !obj.name.Equals("Mysterious Asteroid"))
                     {
                         tempList.Add(obj);
                     }

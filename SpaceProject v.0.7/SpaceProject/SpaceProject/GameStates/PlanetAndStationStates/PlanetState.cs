@@ -144,7 +144,7 @@ namespace SpaceProject
 
         private void SetActiveSong()
         {
-            if (planet.name.Equals("Murt Asteroid"))
+            if (planet.name.Equals("Mysterious Asteroid"))
             {
                 ActiveSong = Music.none;
                 Game.musicManager.StopMusic();

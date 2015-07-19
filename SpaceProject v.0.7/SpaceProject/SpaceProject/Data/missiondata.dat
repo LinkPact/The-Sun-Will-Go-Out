@@ -343,7 +343,7 @@ Reputation = 0
 State = 1
 
 [Main9_C_OnYourOwnArc]
-Location = Murt Asteroid
+Location = Mysterious Asteroid
 Name = On Your Own
 Introduction = [SAIR] "It is possible that we could manage to destroy the entire Murt asteroid before anyone else reaches the location."#"It would mean that we keep Murt out of the hands of both the Alliance and the rebels."#"It would also mean that we destroy what rightfully belongs to the people of this sector."#"Something that could transform their life to the better."#"It would kill the entire Alliance- and rebels fleets that are here, and likely burn away this side of New Norrland."#"It would be the end for us."#"We wouldn't be thanked for that. It wouldn't end the conflict."#"But it would prevent the Murt from being misused to kill and control."#"Should we go ahead and do it?"
 ObjectiveText1 = 1
