@@ -80,7 +80,7 @@ namespace SpaceProject
         private List<LevelEvent> deadEvents = new List<LevelEvent>();
 
         private Boolean isPirateLevel { get { return missionType == MissionType.alliancepirate || missionType == MissionType.rebelpirate; } }
-        private int pirateLossPenaly { get { return (int)(StatsManager.Rupees * 0.1f); } }
+        private int pirateLossPenaly { get { return (int)(StatsManager.Crebits * 0.1f); } }
 
         public Boolean HasBossEvents()
         {
@@ -397,7 +397,7 @@ namespace SpaceProject
         {
             EndText = "";
             if (missionType.Equals(MissionType.alliancepirate) || missionType.Equals(MissionType.rebelpirate))
-                EndText = "You earned: " + (int)(LevelLoot * StatsManager.moneyFactor) + " rupees. \n";
+                EndText = "You earned: " + (int)(LevelLoot * StatsManager.moneyFactor) + " crebits. \n";
             EndText += "Press 'Enter' to continue..";
 
             if (StatsManager.gameMode == GameMode.Hardcore)
@@ -495,7 +495,7 @@ namespace SpaceProject
                 }
                 else
                 {
-                    failText = String.Format("You are dead! You lost {0} rupees.\n\nPress '{1}' to go back.", pirateLossPenaly, ControlManager.GetKeyName(RebindableKeys.Action2));                    
+                    failText = String.Format("You are dead! You lost {0} crebits.\n\nPress '{1}' to go back.", pirateLossPenaly, ControlManager.GetKeyName(RebindableKeys.Action2));                    
                 }
 
                 spriteBatch.DrawString(font1, failText,

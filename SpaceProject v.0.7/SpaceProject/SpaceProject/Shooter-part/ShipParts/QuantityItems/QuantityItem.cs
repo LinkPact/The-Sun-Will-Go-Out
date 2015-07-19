@@ -29,7 +29,7 @@ namespace SpaceProject
             infoText.Add(Name);
             infoText.Add(text);
             infoText.Add("Quantity: " + Quantity + " units");
-            infoText.Add("Value: " + Value + " Rupees per unit");
+            infoText.Add("Value: " + Value + " Crebits per unit");
             return infoText;
         }
 

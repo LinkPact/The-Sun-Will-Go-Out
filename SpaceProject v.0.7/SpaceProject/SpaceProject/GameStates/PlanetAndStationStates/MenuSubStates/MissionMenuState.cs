@@ -867,7 +867,7 @@ namespace SpaceProject
                 rewardText.Append("Your reward is: \n");
                 if (completedMission.MoneyReward > 0)
                 {
-                    rewardText.Append("\n" + completedMission.MoneyReward.ToString() + " Rupees");
+                    rewardText.Append("\n" + completedMission.MoneyReward.ToString() + " Crebits");
                 }
                 foreach (Item reward in rewardItems)
                 {
@@ -880,7 +880,7 @@ namespace SpaceProject
             else if (completedMission.MoneyReward > 0)
             {
                 return "Your reward is: \n" + completedMission.MoneyReward +
-                    " Rupees";
+                    " Crebits";
             }
 
             return "NO REWARD";
@@ -895,7 +895,7 @@ namespace SpaceProject
                 rewardItemValue += (int)Math.Round(reward.Value * 0.8f, 0);
             }
 
-            return String.Format("You do not have room for your reward! You will recieve its value in rupees instead.\n\nYour reward is: \n{0} Rupees",
+            return String.Format("You do not have room for your reward! You will recieve its value in Crebits instead.\n\nYour reward is: \n{0} Crebits",
                 completedMission.MoneyReward + rewardItemValue);
         }
 

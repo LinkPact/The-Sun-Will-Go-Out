@@ -51,7 +51,7 @@ namespace SpaceProject
 
             if (moneyReward > 0)
             {
-                rewardText += moneyReward + " Rupees";
+                rewardText += moneyReward + " Crebits";
             }
 
             return rewardText;
@@ -99,7 +99,7 @@ namespace SpaceProject
                     {
                         ShipInventoryManager.AddItem(item);
                     }
-                    StatsManager.Rupees += moneyReward;
+                    StatsManager.Crebits += moneyReward;
                     ClearEvent();
                 }
             }

@@ -59,11 +59,11 @@ namespace SpaceProject
         {
             //Money
             spriteBatch.DrawString(FontManager.GetFontStatic(16),
-                "Money: " + (int)StatsManager.Rupees + " Rupees",
+                "Money: " + (int)StatsManager.Crebits + " Crebits",
                 new Vector2(Game.Window.ClientBounds.Width / 2 + Game.Window.ClientBounds.Width / 4, Game.Window.ClientBounds.Height * 3 / 4 + 30) + FontManager.FontOffsetStatic,
                 FontManager.FontColorStatic,
                 0f,
-                FontManager.GetFontStatic(16).MeasureString("Money: " + (int)StatsManager.Rupees + " Rupees") / 2,
+                FontManager.GetFontStatic(16).MeasureString("Money: " + (int)StatsManager.Crebits + " Crebits") / 2,
                 1f,
                 SpriteEffects.None,
                 1f);

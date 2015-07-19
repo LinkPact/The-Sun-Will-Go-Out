@@ -125,7 +125,7 @@ namespace SpaceProject
 
             if (missionType == MissionType.alliancepirate || missionType == MissionType.rebelpirate)
             {
-                String lootString = String.Format("Collected bounty: {0} rupees", level.LevelLoot);
+                String lootString = String.Format("Collected bounty: {0} Crebits", level.LevelLoot);
                 Vector2 lootStringPos = new Vector2(xOffset, Game.Window.ClientBounds.Height - 123) + Game.fontManager.FontOffset;
                 DrawStandardString(spriteBatch, shipInfoFontSmall, lootString, lootStringPos, Color.Yellow);
             }

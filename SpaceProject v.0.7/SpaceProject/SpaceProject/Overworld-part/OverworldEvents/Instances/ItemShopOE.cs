@@ -46,11 +46,11 @@ namespace SpaceProject
                                     PopupHandler.DisplayMessage(inventoryFullText);
                                 }
 
-                                else if (StatsManager.Rupees >= price)
+                                else if (StatsManager.Crebits >= price)
                                 {
                                     PopupHandler.DisplayMessage(itemBoughtText);
 
-                                    StatsManager.Rupees -= price;
+                                    StatsManager.Crebits -= price;
                                     ShipInventoryManager.AddItem(item);
                                     if (oneTimeOnly)
                                     {

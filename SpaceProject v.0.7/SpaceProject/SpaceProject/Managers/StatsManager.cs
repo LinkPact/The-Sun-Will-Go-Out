@@ -44,7 +44,7 @@ namespace SpaceProject
         public static int InventorySlots = 24;
 
         // Money
-        public static int Rupees;
+        public static int Crebits;
 
         // Reputation (-100 rebel, 100 alliance) 
         public static int reputation;
@@ -75,7 +75,7 @@ namespace SpaceProject
             //plating = ShipInventoryManager.equippedPlating;
 
             // Money
-            Rupees = 100;
+            Crebits = 100;
 
             // Fuel
             MaxFuel = 750;
@@ -142,7 +142,7 @@ namespace SpaceProject
             damageFactor = 1.0f;
             gameMode = GameMode.Develop;
 
-            Rupees = 100000;
+            Crebits = 100000;
         }
 
         public void Update()
@@ -193,12 +193,12 @@ namespace SpaceProject
 
         public static void AddLoot(int loot)
         {
-            Rupees += loot;
+            Crebits += loot;
         }
 
         public static void DeduceLossPenalty(int lossPenalty)
         {
-            Rupees -= lossPenalty;
+            Crebits -= lossPenalty;
         }
 
         public static float GetShieldRegeneration()
@@ -250,7 +250,7 @@ namespace SpaceProject
             saveData.Add("playtime", Convert.ToString(PlayTime.OverallPlayTime, CultureInfo.InvariantCulture));
             saveData.Add("overworldtime", Convert.ToString(PlayTime.OverworldTime, CultureInfo.InvariantCulture));
             saveData.Add("shooterparttime", Convert.ToString(PlayTime.ShooterPartTime, CultureInfo.InvariantCulture));
-            saveData.Add("rupees", Convert.ToString(Rupees, CultureInfo.InvariantCulture));
+            saveData.Add("crebits", Convert.ToString(Crebits, CultureInfo.InvariantCulture));
             saveData.Add("progress", Convert.ToString(progress, CultureInfo.InvariantCulture));
             saveData.Add("reputation", Convert.ToString(reputation, CultureInfo.InvariantCulture));
             saveData.Add("shipfuel", Convert.ToString(Fuel, CultureInfo.InvariantCulture));
@@ -294,7 +294,7 @@ namespace SpaceProject
             PlayTime.OverallPlayTime = Game.saveFile.GetPropertyAsFloat("statsmanager", "playtime", 0);
             PlayTime.OverworldTime = Game.saveFile.GetPropertyAsFloat("statsmanager", "overworldtime", 0);
             PlayTime.ShooterPartTime = Game.saveFile.GetPropertyAsFloat("statsmanager", "shooterparttime", 0);
-            Rupees = Game.saveFile.GetPropertyAsInt("statsmanager", "rupees", 0);
+            Crebits = Game.saveFile.GetPropertyAsInt("statsmanager", "crebits", 0);
             progress = Game.saveFile.GetPropertyAsInt("statsmanager", "progress", 0);
             reputation = Game.saveFile.GetPropertyAsInt("statsmanager", "reputation", 0);
             Fuel = Game.saveFile.GetPropertyAsFloat("statsmanager", "shipfuel", 0);

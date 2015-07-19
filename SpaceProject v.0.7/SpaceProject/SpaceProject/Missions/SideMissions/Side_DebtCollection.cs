@@ -70,10 +70,10 @@ namespace SpaceProject
                     {
                         delegate 
                         {
-                            if (StatsManager.Rupees >= 1000)
+                            if (StatsManager.Crebits >= 1000)
                             {
                                 missionHelper.ShowEvent(GetEvent(2), true);
-                                StatsManager.Rupees -= 1000;
+                                StatsManager.Crebits -= 1000;
                             }
             
                             else

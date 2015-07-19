@@ -44,7 +44,7 @@ namespace SpaceProject
             infoText.Add("Quality: " + Variety.ToString());
             infoText.Add("Capacity: " + Math.Round((double)Capacity, 0).ToString() + " energy");
             infoText.Add("Recharge: " + Math.Round((double)Recharge, 1).ToString() + " energy/sec");
-            infoText.Add("Value: " + Math.Round((double)Value, 0).ToString() + " Rupees");
+            infoText.Add("Value: " + Math.Round((double)Value, 0).ToString() + " Crebits");
 
             infoText.Add("");
             infoText.Add(GetDescription());

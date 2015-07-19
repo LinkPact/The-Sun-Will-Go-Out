@@ -45,7 +45,7 @@ namespace SpaceProject
         private int attemptNbr;
         private int totalAttemptCount;
 
-        private int rupees { get { return StatsManager.Rupees; } set { StatsManager.Rupees = value; }}
+        private int crebits { get { return StatsManager.Crebits; } set { StatsManager.Crebits = value; }}
 
         private int prizeMoney { get { return (150 + (currentLevel - 1) * 50) * (int)lifeFactor; } }
 
@@ -105,7 +105,7 @@ namespace SpaceProject
             currentLevel = 1;
             attemptNbr = 1;
             totalAttemptCount = 0;
-            rupees = 300;
+            crebits = 300;
             isGameCompleted = false;
         }
 
@@ -125,7 +125,7 @@ namespace SpaceProject
 
                 if (levelCompleted)
                 {
-                    rupees += prizeMoney;
+                    crebits += prizeMoney;
                     attemptNbr = 1;
                     currentLevel++;
                     lifeFactor = 1;
@@ -135,7 +135,7 @@ namespace SpaceProject
                 }
                 else
                 {
-                    rupees += prizeMoney;
+                    crebits += prizeMoney;
                     //lifeFactor++;
                     attemptNbr++;
                 }
@@ -205,7 +205,7 @@ namespace SpaceProject
 
             if (ControlManager.CheckKeyPress(Keys.M))
             {
-                rupees += 1000;
+                crebits += 1000;
             }
 
             if (ControlManager.CheckKeyPress(Keys.N))
@@ -316,7 +316,7 @@ namespace SpaceProject
             strings.Add("Lifefactor: " + lifeFactor + "x");
             strings.Add("Attempt: " + attemptNbr);
             strings.Add("Total number of attempts: " + totalAttemptCount);
-            strings.Add("Money: " + rupees + " Rupees");
+            strings.Add("Money: " + crebits + " Crebits");
             strings.Add("Total vertical time: " + (int)(StatsManager.PlayTime.ShooterPartTime / 1000) + " seconds");
             return strings;
         }

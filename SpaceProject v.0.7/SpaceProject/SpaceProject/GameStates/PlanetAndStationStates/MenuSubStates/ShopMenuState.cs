@@ -579,7 +579,7 @@ namespace SpaceProject
             DrawItemComparision(spriteBatch);
 
             spriteBatch.DrawString(BaseState.Game.fontManager.GetFont(14),
-                                   "Rupees: " + StatsManager.Rupees,
+                                   "Crebits: " + StatsManager.Crebits,
                                    new Vector2(invColumn2XPosition - 1,
                                    columnYPosition + (15 * InventoryYSpacing) - 10) + Game.fontManager.FontOffset,
                                    Game.fontManager.FontColor, 0, Vector2.Zero, 1f, SpriteEffects.None, 0.9f);
@@ -840,7 +840,7 @@ namespace SpaceProject
                 .Append("?")
                 .Append("\n\nIt will cost: ")
                 .Append(itemToBuy.Value)
-                .Append(" rupees");
+                .Append(" Crebits");
 
                 if (itemToBuy is QuantityItem)
                 {
@@ -920,7 +920,7 @@ namespace SpaceProject
                     .Append("?")
                     .Append("\n\nYou will recieve: ")
                     .Append((int)Math.Round(itemToSell.Value / 2, 0))
-                    .Append(" rupees");
+                    .Append(" Crebits");
 
                     if (ShipInventoryManager.IsLastEquipped(itemToSell))
                     {
@@ -962,13 +962,13 @@ namespace SpaceProject
                     case 0:
                         message.Append("\n\nYou will recieve: ")
                         .Append(((Int32)Math.Round(itemToSell.Value / 2 * ((ResourceItem)itemToSell).Quantity, 0)).ToString())
-                        .Append(" rupees");
+                        .Append(" Crebits");
                         break;
 
                     case 1:
                         message.Append("\n\nYou will recieve: ")
                         .Append(((Int32)Math.Round(itemToSell.Value / 2 * quantityCounterIndex, 0)).ToString())
-                        .Append(" rupees");
+                        .Append(" Crebits");
                         break;
 
                     default:
@@ -989,13 +989,13 @@ namespace SpaceProject
                     case 0:
                         message.Append("\n\nIt will cost: ")
                         .Append(((Int32)Math.Round(itemToBuy.Value * ((ResourceItem)itemToBuy).Quantity, 0)).ToString())
-                        .Append(" rupees");
+                        .Append(" Crebits");
                         break;
 
                     case 1:
                         message.Append("\n\nIt will cost: ")
                         .Append(((Int32)Math.Round(itemToBuy.Value * quantityCounterIndex, 0)).ToString())
-                        .Append(" rupees");
+                        .Append(" Crebits");
                         break;
 
                     default:
@@ -1030,7 +1030,7 @@ namespace SpaceProject
             shopInventory.Insert(shopIndex, item);
             ShipInventoryManager.RemoveItemAt(indexOfItem);
             ShipInventoryManager.InsertItem(indexOfItem, new EmptyItem(Game));
-            StatsManager.Rupees += (int)Math.Round(item.Value / 2, 0);
+            StatsManager.Crebits += (int)Math.Round(item.Value / 2, 0);
 
             if (shopInventory.Count > shopInventorySize)
             {
@@ -1090,7 +1090,7 @@ namespace SpaceProject
                 shopInventory.Insert(shopIndex, tempItem);
             }
 
-            StatsManager.Rupees += (int)Math.Round(item.Value / 2 * quantity, 0);
+            StatsManager.Crebits += (int)Math.Round(item.Value / 2 * quantity, 0);
 
             if (shopInventory.Count > shopInventorySize)
             {
@@ -1106,9 +1106,9 @@ namespace SpaceProject
                 return false;
             }
 
-            else if (StatsManager.Rupees < Math.Round(item.Value * quantity, 0))
+            else if (StatsManager.Crebits < Math.Round(item.Value * quantity, 0))
             {
-                PopupHandler.DisplayMessage("You do not have enough rupees!");
+                PopupHandler.DisplayMessage("You do not have enough Crebits!");
                 return false;
             }
 
@@ -1128,7 +1128,7 @@ namespace SpaceProject
                 ShipInventoryManager.AddQuantityItem(Game, quantity, item.Kind, item.Name);
             }
 
-            StatsManager.Rupees -= (int)Math.Round(item.Value * quantity, 0);
+            StatsManager.Crebits -= (int)Math.Round(item.Value * quantity, 0);
 
             return true;
         }
@@ -1143,16 +1143,16 @@ namespace SpaceProject
                 return false;
             }
 
-            else if (StatsManager.Rupees < item.Value)
+            else if (StatsManager.Crebits < item.Value)
             {
-                PopupHandler.DisplayMessage("You do not have enough rupees!");
+                PopupHandler.DisplayMessage("You do not have enough Crebits!");
                 return false;
             }
 
             ShipInventoryManager.AddItem(item);
             shopInventory.RemoveAt(indexOfItem);
             shopInventory.Insert(indexOfItem, new EmptyItem(Game));
-            StatsManager.Rupees -= (int)item.Value;
+            StatsManager.Crebits -= (int)item.Value;
             return true;
         }
 

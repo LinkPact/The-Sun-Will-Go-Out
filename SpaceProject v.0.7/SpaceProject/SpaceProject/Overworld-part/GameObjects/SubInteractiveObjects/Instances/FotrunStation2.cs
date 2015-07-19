@@ -67,7 +67,7 @@ namespace SpaceProject
         {
             item = SelectRandomItem();
 
-            overworldEvent = new ItemShopOE(item, "Do you want to buy this one-of-a-kind " + item.Name + "? Only 300 rupees!",
+            overworldEvent = new ItemShopOE(item, "Do you want to buy this one-of-a-kind " + item.Name + "? Only 300 Crebits!",
                 "Thanks anyway, sir!",
                 "Thank you! Have a lovely day, sir!",
                 "I'm afraid you do not have enough money, sir.",
