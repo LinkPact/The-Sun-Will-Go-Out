@@ -92,9 +92,9 @@ namespace SpaceProject
             emptyShield = new EmptyShield(Game);
 
             //Initial inventory items
-            BasicLaserWeapon basicLaser = new BasicLaserWeapon(Game, ItemVariety.regular);
-            BasicEnergyCell regularCell = new BasicEnergyCell(Game, ItemVariety.regular);
-            BasicPlating regularPlating = new BasicPlating(Game, ItemVariety.regular);
+            BasicLaserWeapon basicLaser = new BasicLaserWeapon(Game, ItemVariety.Regular);
+            BasicEnergyCell regularCell = new BasicEnergyCell(Game, ItemVariety.Regular);
+            BasicPlating regularPlating = new BasicPlating(Game, ItemVariety.Regular);
 
             shipItems.Clear();
 

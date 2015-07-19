@@ -28,7 +28,7 @@ namespace SpaceProject
             //String winText = "We scared them of, for now..";
             //String loseText = "They are too strong. Let's come back later.";
             //List<Item> rewards = new List<Item>();
-            //rewards.Add(new BasicLaserWeapon(Game, ItemVariety.regular));
+            //rewards.Add(new BasicLaserWeapon(Game, ItemVariety.Regular));
             //overworldEvent = new LevelOE(encounterText, "sub1", 100, rewards, winText, loseText);
 
             overworldEvent = new PirateEncounterOE();

@@ -12,7 +12,7 @@ namespace SpaceProject
     {
         private BeamModule beamModule;
 
-        public BeamWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public BeamWeapon(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

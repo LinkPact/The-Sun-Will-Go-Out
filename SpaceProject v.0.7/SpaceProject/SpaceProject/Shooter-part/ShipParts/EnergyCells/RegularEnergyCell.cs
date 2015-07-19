@@ -10,7 +10,7 @@ namespace SpaceProject
     public class RegularEnergyCell : PlayerEnergyCell
     {
 
-        public RegularEnergyCell(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public RegularEnergyCell(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

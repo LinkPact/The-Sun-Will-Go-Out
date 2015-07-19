@@ -11,7 +11,7 @@ namespace SpaceProject
         private int longShotCount = 7;
         private int shortShotCount = 12;
 
-        public FlameShotWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public FlameShotWeapon(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

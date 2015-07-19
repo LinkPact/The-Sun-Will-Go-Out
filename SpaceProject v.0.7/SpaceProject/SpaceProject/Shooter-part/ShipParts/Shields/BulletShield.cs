@@ -9,7 +9,7 @@ namespace SpaceProject
 {
     public class BulletShield : PlayerShield
     {
-        public BulletShield(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public BulletShield(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

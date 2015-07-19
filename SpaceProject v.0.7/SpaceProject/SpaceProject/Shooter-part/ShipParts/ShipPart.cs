@@ -5,11 +5,11 @@ using System.Text;
 
 public enum  ItemVariety
 {
-    regular,
-    low,
-    high,
-    random,
-    none
+    None,
+    Low,
+    Regular,
+    High,
+    Random,
 }
 
 namespace SpaceProject
@@ -53,13 +53,13 @@ namespace SpaceProject
 
         protected abstract void SetShipPartVariety(double variation, double quality);
 
-        public void SetShipPartVariety(ItemVariety new_variety = ItemVariety.none)
+        public void SetShipPartVariety(ItemVariety new_variety = ItemVariety.None)
         {
             // Hack-around here to not break the parts of the code that directly
             // applies item variety to the ship part. I hope to rebuild the system
             // further later on so that variety only is set in the constructor. // Jakob 150319
 
-            if (new_variety != ItemVariety.none)
+            if (new_variety != ItemVariety.None)
             {
                 this.variety = new_variety;
             }
@@ -75,29 +75,29 @@ namespace SpaceProject
 
             switch (variety)
             { 
-                case ItemVariety.regular:
+                case ItemVariety.Regular:
                     {
                         SetShipPartVariety(ShipPart.regularItemSpreadFactor, ShipPart.regularQuality);
                         break;
                     }
-                case ItemVariety.low:
+                case ItemVariety.Low:
                     {
                         SetShipPartVariety(ShipPart.regularItemSpreadFactor, ShipPart.lowQuality);
                         break;
                     }
-                case ItemVariety.high:
+                case ItemVariety.High:
                     {
                         SetShipPartVariety(ShipPart.regularItemSpreadFactor, ShipPart.greatQuality);
                         break;
                     }
-                case ItemVariety.random:
+                case ItemVariety.Random:
                     {
                         // Recursive call with the obtained proper quality
                         ItemVariety var = GetRandomVariety();
                         SetShipPartVariety(var);
                         break;
                     }
-                case ItemVariety.none:
+                case ItemVariety.None:
                     {
                         break;
                     }
@@ -118,11 +118,11 @@ namespace SpaceProject
             double randNbr = MathFunctions.GetExternalRandomDouble();
 
             if (randNbr < goodQualThres)
-                return ItemVariety.high;
+                return ItemVariety.High;
             else if (randNbr < regQualThres)
-                return ItemVariety.regular;
+                return ItemVariety.Regular;
             else //if (randNbr < regQualThres)
-                return ItemVariety.low;
+                return ItemVariety.Low;
         }
 
         private double GetQualityNumber()

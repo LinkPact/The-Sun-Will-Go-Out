@@ -9,7 +9,7 @@ namespace SpaceProject
 {
     public class RegularShield : PlayerShield
     {
-        public RegularShield(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public RegularShield(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

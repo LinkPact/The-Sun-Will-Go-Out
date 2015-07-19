@@ -10,7 +10,7 @@ namespace SpaceProject
     {
         private int sideShots = 3;
 
-        public ProximityLaserWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular)
+        public ProximityLaserWeapon(Game1 Game, ItemVariety variety = ItemVariety.Regular)
             : base(Game, variety)
         {
             Setup();

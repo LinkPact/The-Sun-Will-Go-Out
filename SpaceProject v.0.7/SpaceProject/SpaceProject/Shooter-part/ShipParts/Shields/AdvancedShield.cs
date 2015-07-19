@@ -9,7 +9,7 @@ namespace SpaceProject
 {
     public class AdvancedShield : PlayerShield
     {
-        public AdvancedShield(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public AdvancedShield(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

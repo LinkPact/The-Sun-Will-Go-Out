@@ -16,7 +16,7 @@ namespace SpaceProject
 
         private float miningSpeedCopper, miningSpeedGold, miningSpeedTitanium;
 
-        public DrillBeamWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public DrillBeamWeapon(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

@@ -8,7 +8,7 @@ namespace SpaceProject
 {
     public class DisruptorWeapon : PlayerWeapon
     {
-        public DisruptorWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public DisruptorWeapon(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

@@ -50,11 +50,11 @@ namespace SpaceProject
             infoText.Add(Name);
             infoText.Add("Type: " + Kind);
             infoText.Add("Tier: " + Tier.ToString());
+            infoText.Add("Quality: " + Variety.ToString());
             infoText.Add("Capacity: " + Math.Round((double)Capacity, 0).ToString() + " units");
             infoText.Add("Regen: " + Math.Round((double)Regeneration, 1).ToString() + " units/sec");
             //infoText.Add("Conversion factor: " + Math.Round((double)ConversionFactor, 1).ToString() + " energy/unit");
             infoText.Add("Value: " + Math.Round((double)Value, 0).ToString() + " Rupees");
-            infoText.Add("Quality: " + Variety.ToString());
 
             infoText.Add("");
             infoText.Add(GetDescription());

@@ -71,12 +71,12 @@ namespace SpaceProject
             infoText.Add(Name);
             infoText.Add("Type: " + Kind + " Weapon");
             infoText.Add("Tier: " + Tier.ToString());
+            infoText.Add("Quality: " + Variety.ToString());
             infoText.Add("Damage: " + Math.Round((double)DamagePerSecond, 1).ToString() + "/sec");
             infoText.Add("Rate: " + Math.Round((double)1000 / Delay, 1).ToString() + " shots/sec");
             infoText.Add("Range: " + Math.Round((double)Speed * Duration, 1).ToString() + " units");
             infoText.Add("Energy: " + Math.Round((double)energyCostPerSecond, 1).ToString() + " energy/sec");
             infoText.Add("Value: " + Math.Round((double)Value, 0).ToString() + " Rupees");
-            infoText.Add("Quality: " + Variety.ToString());
 
             infoText.Add("");
             infoText.Add(GetDescription());

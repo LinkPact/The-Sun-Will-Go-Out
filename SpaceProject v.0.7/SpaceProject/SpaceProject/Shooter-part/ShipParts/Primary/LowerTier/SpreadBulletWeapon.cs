@@ -8,7 +8,7 @@ namespace SpaceProject
 {
     public class SpreadBulletWeapon : PlayerWeapon
     {
-        public SpreadBulletWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public SpreadBulletWeapon(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

@@ -118,59 +118,59 @@ namespace SpaceProject
                 switch (random.Next(14))
                 {
                     case 0:
-                        tempItem = new BasicLaserWeapon(this.Game, ItemVariety.regular);
+                        tempItem = new BasicLaserWeapon(this.Game, ItemVariety.Regular);
                         break;
 
                     case 1:
-                        tempItem = new MultipleShotWeapon(this.Game, ItemVariety.regular);
+                        tempItem = new MultipleShotWeapon(this.Game, ItemVariety.Regular);
                         break;
 
                     case 2:
-                        tempItem = new SpreadBulletWeapon(this.Game, ItemVariety.regular);
+                        tempItem = new SpreadBulletWeapon(this.Game, ItemVariety.Regular);
                         break;
 
                     case 3:
-                        tempItem = new BeamWeapon(this.Game, ItemVariety.regular);
+                        tempItem = new BeamWeapon(this.Game, ItemVariety.Regular);
                         break;
 
                     case 4:
-                        tempItem = new RegularBombWeapon(this.Game, ItemVariety.regular);
+                        tempItem = new RegularBombWeapon(this.Game, ItemVariety.Regular);
                         break;
 
                     case 5:
-                        tempItem = new HomingMissileWeapon(this.Game, ItemVariety.regular);
+                        tempItem = new HomingMissileWeapon(this.Game, ItemVariety.Regular);
                         break;
 
                     case 6:
-                        tempItem = new SideMissilesWeapon(this.Game, ItemVariety.regular);
+                        tempItem = new SideMissilesWeapon(this.Game, ItemVariety.Regular);
                         break;
 
                     case 7:
-                        tempItem = new DrillBeamWeapon(this.Game, ItemVariety.regular);
+                        tempItem = new DrillBeamWeapon(this.Game, ItemVariety.Regular);
                         break;
 
                     case 8:
-                        tempItem = new BasicShield(this.Game, ItemVariety.regular);
+                        tempItem = new BasicShield(this.Game, ItemVariety.Regular);
                         break;
 
                     case 9:
-                        tempItem = new AdvancedShield(this.Game, ItemVariety.regular);
+                        tempItem = new AdvancedShield(this.Game, ItemVariety.Regular);
                         break;
 
                     case 10:
-                        tempItem = new RegularShield(this.Game, ItemVariety.regular);
+                        tempItem = new RegularShield(this.Game, ItemVariety.Regular);
                         break;
 
                     case 11:
-                        tempItem = new BasicEnergyCell(this.Game, ItemVariety.regular);
+                        tempItem = new BasicEnergyCell(this.Game, ItemVariety.Regular);
                         break;
 
                     case 12:
-                        tempItem = new AdvancedEnergyCell(this.Game, ItemVariety.regular);
+                        tempItem = new AdvancedEnergyCell(this.Game, ItemVariety.Regular);
                         break;
 
                     case 13:
-                        tempItem = new RegularEnergyCell(this.Game, ItemVariety.regular);
+                        tempItem = new RegularEnergyCell(this.Game, ItemVariety.Regular);
                         break;
 
                 }

@@ -17,7 +17,7 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            Item item = new BasicLaserWeapon(Game, ItemVariety.high);
+            Item item = new BasicLaserWeapon(Game, ItemVariety.High);
             sprite = spriteSheet.GetSubSprite(new Rectangle(724, 1130, 54, 55));
             position = new Vector2(110000, 102000);
             name = "Lonely Asteroid";

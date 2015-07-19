@@ -29,7 +29,7 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            DualLaserWeapon weapon = new DualLaserWeapon(Game, ItemVariety.high);
+            DualLaserWeapon weapon = new DualLaserWeapon(Game, ItemVariety.High);
             RewardItems.Add(weapon);
 
             RestartAfterFail();

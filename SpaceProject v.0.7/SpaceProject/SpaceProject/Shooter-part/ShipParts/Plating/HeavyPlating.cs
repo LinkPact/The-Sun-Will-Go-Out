@@ -9,7 +9,7 @@ namespace SpaceProject
 {
     public class HeavyPlating : PlayerPlating
     {
-        public HeavyPlating(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public HeavyPlating(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

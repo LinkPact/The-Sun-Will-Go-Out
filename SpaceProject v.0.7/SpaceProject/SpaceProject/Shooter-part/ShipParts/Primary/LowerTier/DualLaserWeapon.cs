@@ -9,7 +9,7 @@ namespace SpaceProject
 {
     public class DualLaserWeapon : PlayerWeapon
     {
-        public DualLaserWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public DualLaserWeapon(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

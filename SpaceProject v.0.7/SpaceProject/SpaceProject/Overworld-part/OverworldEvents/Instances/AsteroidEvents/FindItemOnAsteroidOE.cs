@@ -147,15 +147,15 @@ namespace SpaceProject
 
             if (randVal < 60)
             {
-                return ItemVariety.low;
+                return ItemVariety.Low;
             }
             else if (randVal < 90)
             {
-                return ItemVariety.regular;
+                return ItemVariety.Regular;
             }
             else
             {
-                return ItemVariety.high;
+                return ItemVariety.High;
             }
         }
     }

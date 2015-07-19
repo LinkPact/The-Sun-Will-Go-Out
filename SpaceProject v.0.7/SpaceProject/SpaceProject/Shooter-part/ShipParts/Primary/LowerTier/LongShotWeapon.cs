@@ -8,7 +8,7 @@ namespace SpaceProject
 {
     class LongShotWeapon : PlayerWeapon
     {
-        public LongShotWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public LongShotWeapon(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

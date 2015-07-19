@@ -9,7 +9,7 @@ namespace SpaceProject
 {
     public class PunyTurretWeapon : PlayerWeapon
     {
-        public PunyTurretWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public PunyTurretWeapon(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

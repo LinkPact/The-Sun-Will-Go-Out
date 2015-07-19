@@ -33,7 +33,7 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            AdvancedEnergyCell cell = new AdvancedEnergyCell(Game, ItemVariety.high);
+            AdvancedEnergyCell cell = new AdvancedEnergyCell(Game, ItemVariety.High);
             RewardItems.Add(cell);
 
             RestartAfterFail();

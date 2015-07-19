@@ -8,7 +8,7 @@ namespace SpaceProject
 {
     public class MineLayerWeapon : PlayerWeapon
     {
-        public MineLayerWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public MineLayerWeapon(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

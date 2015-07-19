@@ -9,7 +9,7 @@ namespace SpaceProject
     public class EmptyShield : PlayerShield
     {
 
-        public EmptyShield(Game1 Game, ItemVariety variety=ItemVariety.regular) :
+        public EmptyShield(Game1 Game, ItemVariety variety = ItemVariety.None) :
             base(Game, variety)
         {
             Name = "---";

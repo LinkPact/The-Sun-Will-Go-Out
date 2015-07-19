@@ -281,8 +281,20 @@ namespace SpaceProject
 
         private void SetStats(Item item, List<double> stats, List<bool> highIsBestList)
         {
-            presetCount = 1;
+            presetCount = 2;
+
             stats.Add((double)item.Tier);
+            highIsBestList.Add(true);
+
+            if (item is ShipPart)
+            {
+                stats.Add((double)((ShipPart)item).Variety);
+            }
+            else
+            {
+                stats.Add(0);
+            }
+
             highIsBestList.Add(true);
         }
     }

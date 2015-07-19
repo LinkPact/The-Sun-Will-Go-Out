@@ -8,7 +8,7 @@ namespace SpaceProject
 {
     public class EmptyWeapon : PlayerWeapon
     {
-        public EmptyWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public EmptyWeapon(Game1 Game, ItemVariety variety = ItemVariety.None) :
             base(Game, variety)
         {
             Name = "---";

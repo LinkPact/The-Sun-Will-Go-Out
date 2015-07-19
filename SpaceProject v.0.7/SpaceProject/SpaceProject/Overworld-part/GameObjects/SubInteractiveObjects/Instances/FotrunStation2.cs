@@ -86,13 +86,13 @@ namespace SpaceProject
             switch (val)
             {
                 case 0:
-                    return ItemVariety.low;
+                    return ItemVariety.Low;
 
                 case 1:
-                    return ItemVariety.regular;
+                    return ItemVariety.Regular;
 
                 case 2:
-                    return ItemVariety.high;
+                    return ItemVariety.High;
 
                 default:
                     throw new ArgumentException("Invalid number of cases.");

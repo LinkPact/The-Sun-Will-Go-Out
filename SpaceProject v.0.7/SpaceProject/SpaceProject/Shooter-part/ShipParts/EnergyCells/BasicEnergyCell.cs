@@ -9,7 +9,7 @@ namespace SpaceProject
 {
     public class BasicEnergyCell : PlayerEnergyCell
     {
-        public BasicEnergyCell(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public BasicEnergyCell(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

@@ -10,7 +10,7 @@ namespace SpaceProject
     public class LightPlating : PlayerPlating
     {
 
-        public LightPlating(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public LightPlating(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

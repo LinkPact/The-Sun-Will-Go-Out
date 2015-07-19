@@ -30,7 +30,7 @@ namespace SpaceProject
 
             medicalSupplies = new MedicalSupplies(this.Game);
 
-            regularCell = new RegularEnergyCell(Game, ItemVariety.regular);
+            regularCell = new RegularEnergyCell(Game, ItemVariety.Regular);
             RewardItems.Add(regularCell);
 
             requiresAvailableSlot = true;

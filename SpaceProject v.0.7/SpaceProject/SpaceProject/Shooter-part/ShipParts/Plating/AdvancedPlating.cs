@@ -9,7 +9,7 @@ namespace SpaceProject
 {
     public class AdvancedPlating : PlayerPlating
     {
-        public AdvancedPlating(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public AdvancedPlating(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

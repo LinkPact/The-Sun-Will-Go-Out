@@ -10,7 +10,7 @@ namespace SpaceProject
     public class WeaponBoostEnergyCell : PlayerEnergyCell
     {
 
-        public WeaponBoostEnergyCell(Game1 Game, ItemVariety variety=ItemVariety.regular) :
+        public WeaponBoostEnergyCell(Game1 Game, ItemVariety variety=ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

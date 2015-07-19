@@ -288,7 +288,7 @@ namespace SpaceProject
             return part;
         }
 
-        public static ShipPart RetrievePartFromEnum(ShipPartType shipPartEnum, Game1 Game, ItemVariety variety=ItemVariety.regular)
+        public static ShipPart RetrievePartFromEnum(ShipPartType shipPartEnum, Game1 Game, ItemVariety variety=ItemVariety.Regular)
         {
             switch (shipPartEnum)
             {

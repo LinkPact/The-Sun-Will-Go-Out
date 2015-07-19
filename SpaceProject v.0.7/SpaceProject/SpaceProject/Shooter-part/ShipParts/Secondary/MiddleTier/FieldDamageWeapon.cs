@@ -10,7 +10,7 @@ namespace SpaceProject
     {
         private readonly float blastRadius = 600;
 
-        public FieldDamageWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public FieldDamageWeapon(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

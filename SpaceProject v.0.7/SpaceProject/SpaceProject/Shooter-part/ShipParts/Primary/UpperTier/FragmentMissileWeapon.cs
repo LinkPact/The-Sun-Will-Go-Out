@@ -8,7 +8,7 @@ namespace SpaceProject
 {
     class FragmentMissileWeapon : PlayerWeapon
     {
-        public FragmentMissileWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public FragmentMissileWeapon(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

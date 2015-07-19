@@ -55,11 +55,11 @@ namespace SpaceProject
             infoText.Add(Name);
             infoText.Add("Type: " + Kind);
             infoText.Add("Tier: " + Tier.ToString());
+            infoText.Add("Quality: " + Variety.ToString());
             infoText.Add("Armor: " + Math.Round((double)Armor, 0).ToString() + " units");
             infoText.Add("Speed: " + Math.Round((double)1000 * Speed, 0).ToString() + " units");
             //infoText.Add("Size: " + (10 * PrimarySlots).ToString() + " feet");
             infoText.Add("Value: " + Math.Round((double)Value, 0).ToString() + " Rupees");
-            infoText.Add("Quality: " + Variety.ToString());
 
             infoText.Add("");
             infoText.Add(GetDescription());

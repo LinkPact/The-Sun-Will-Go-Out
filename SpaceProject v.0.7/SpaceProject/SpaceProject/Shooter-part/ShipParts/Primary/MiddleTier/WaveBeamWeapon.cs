@@ -9,7 +9,7 @@ namespace SpaceProject
 {
     public class WaveBeamWeapon : PlayerWeapon
     {
-        public WaveBeamWeapon(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public WaveBeamWeapon(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

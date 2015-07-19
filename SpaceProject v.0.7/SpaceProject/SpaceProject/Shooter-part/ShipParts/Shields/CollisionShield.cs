@@ -9,7 +9,7 @@ namespace SpaceProject
 {
     public class CollisionShield : PlayerShield
     {
-        public CollisionShield(Game1 Game, ItemVariety variety = ItemVariety.regular) :
+        public CollisionShield(Game1 Game, ItemVariety variety = ItemVariety.Regular) :
             base(Game, variety)
         {
             Setup();

@@ -55,7 +55,7 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            RewardItems.Add(new SpreadBulletWeapon(Game, ItemVariety.regular));
+            RewardItems.Add(new SpreadBulletWeapon(Game, ItemVariety.Regular));
 
             borderStationPos = Game.stateManager.overworldState.GetStation("Border Station").position;
 
