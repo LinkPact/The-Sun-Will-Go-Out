@@ -19,6 +19,7 @@ namespace SpaceProject
         private int holdTimer;
         private Sprite buttonsSprite;
         private List<MenuDisplayObject> buttons;
+        private Sprite contrastBackDropSprite;
 
         private MenuDisplayObject selectedButton;
         private MenuDisplayObject devButton;
@@ -41,6 +42,8 @@ namespace SpaceProject
 
             buttonsSprite = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/buttons"), null);
             buttonsFont = Game.fontManager.GetFont(16);
+
+            contrastBackDropSprite = buttonsSprite.GetSubSprite(new Rectangle(0, 0, 1, 1));
 
             devButton = new MenuDisplayObject(Game,
                     buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
@@ -319,8 +322,11 @@ namespace SpaceProject
             }
         }
 
-        public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
+            float xOffset = -50;
+            float yOffset = -50;
+
             spriteBatch.Draw(Game.menuBGController.menuSpriteSheet.Texture,
                  Game.menuBGController.backdropPosition,
                  Game.menuBGController.menuSpriteSheet.SourceRectangle,
@@ -334,6 +340,12 @@ namespace SpaceProject
 
             if (Game.menuBGController.DisplayButtons)
             {
+                spriteBatch.Draw(contrastBackDropSprite.Texture,
+                    new Vector2(Game.Window.ClientBounds.Width / 2 - 60, Game.Window.ClientBounds.Height / 2 - 85),
+                    contrastBackDropSprite.SourceRectangle, Color.Black, 0.0f, Vector2.Zero,
+                    new Vector2(Game.Window.ClientBounds.Width / 2 + xOffset - 10, 75),
+                    SpriteEffects.None, 0.8f);
+
                 foreach (MenuDisplayObject button in buttons)
                 {
                     button.Draw(spriteBatch);
@@ -351,8 +363,6 @@ namespace SpaceProject
 
             if (Game.menuBGController.DisplayButtons && buttonIndex < descriptions.Count)
             {
-                float xOffset = -50;
-                float yOffset = -50;
                 spriteBatch.DrawString(Game.fontManager.GetFont(14), descriptions[buttonIndex],
                     new Vector2(Game.Window.ClientBounds.Width / 2 + xOffset, Game.Window.ClientBounds.Height / 2 + yOffset),
                     Color.White, 0f,

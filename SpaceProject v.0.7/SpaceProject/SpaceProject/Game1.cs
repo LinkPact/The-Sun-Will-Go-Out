@@ -441,7 +441,7 @@ namespace SpaceProject
                 }
             }
 
-            return new Vector2(1280, 720);
+            return new Vector2(1024, 768);
         }
     }
 }
