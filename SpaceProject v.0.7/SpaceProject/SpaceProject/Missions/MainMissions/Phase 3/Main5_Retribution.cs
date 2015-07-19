@@ -102,6 +102,11 @@ namespace SpaceProject
             PopupHandler.DisplayMessage("The attack on the alliance freighter failed. Return to the rebel base to try again.");
         }
 
+        public override void OnCompleted()
+        {
+            RemoveShips();
+        }
+
         public override void MissionLogic()
         {
             base.MissionLogic();
@@ -230,6 +235,7 @@ namespace SpaceProject
             objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1],
                 delegate
                 {
+                    freighter.Explode();
                     freighter.Destroy();
                     Game.stateManager.overworldState.GetSectorX.shipSpawner.AddOverworldShip(
                         alliance1, Game.player.position + new Vector2(-900, 0), "Retribution2", Game.player);
@@ -237,7 +243,7 @@ namespace SpaceProject
                 },
                 delegate { }, delegate { return true; }, delegate { return false; }));
 
-            objectives.Add(new CustomObjective(Game, this, ObjectiveDescriptions[1],
+            CustomObjective chaseObjective = new CustomObjective(Game, this, ObjectiveDescriptions[1],
                 delegate { },
                 delegate { },
                 delegate
@@ -249,7 +255,7 @@ namespace SpaceProject
                             && GameStateManager.currentState.Equals("OverworldState"));
                     }
 
-                    return (missionHelper.IsPlayerOnStation("Rebel Base"));
+                    return Game.stateManager.overworldState.GetCurrentSpaceRegion is RebelOutpost;
                 },
                 delegate
                 {
@@ -261,7 +267,15 @@ namespace SpaceProject
                     }
 
                     return false;
-                }));
+                });
+
+            chaseObjective.SetCompletedLogic(
+                delegate
+                {
+                    alliance1.AIManager = new PatrolAction(alliance1, Game.stateManager.overworldState.GetSectorX);
+                });
+
+            objectives.Add(chaseObjective);
 
             objectives.Add(new ArriveAtLocationObjective(Game, this, ObjectiveDescriptions[1]));
         }
@@ -282,7 +296,8 @@ namespace SpaceProject
             alliance1 = new AllianceShip(Game, Game.stateManager.shooterState.spriteSheet);
             alliance1.SaveShip = false;
             alliance1.Initialize(Game.stateManager.overworldState.GetSectorX);
-            alliance1.speed = 0.65f;
+            alliance1.rotationSpeed = 2.5f;
+            alliance1.speed = 0.7f;
 
             rebelShips = new List<RebelShip>();
 

@@ -19,6 +19,7 @@ namespace SpaceProject
         protected Mission mission;
 
         private System.Action failLogic;
+        private System.Action completedLogic;
 
         private String description;
         public String Description { get { return description; } set { description = value; } }
@@ -94,7 +95,7 @@ namespace SpaceProject
         {  
             isOnCompletedCalled = true;
 
-            if (objectiveCompletedEventText != null && objectiveCompletedEventText.Text != "") 
+            if (objectiveCompletedEventText != null && objectiveCompletedEventText.Text != "")
             {
                 if (eventTextCanvas.Equals(EventTextCanvas.BaseState))
                 {
@@ -120,11 +121,21 @@ namespace SpaceProject
                     }
                 }
             }
+
+            if (completedLogic != null)
+            {
+                completedLogic.Invoke();
+            }
         }
 
         public void SetFailLogic(System.Action failLogic)
         {
             this.failLogic = failLogic;
+        }
+
+        public void SetCompletedLogic(System.Action completedLogic)
+        {
+            this.completedLogic = completedLogic;
         }
 
         public abstract bool Failed();

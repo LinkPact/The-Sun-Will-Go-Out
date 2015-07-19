@@ -401,6 +401,7 @@ namespace SpaceProject
                 StatsManager.progress += tempMission.ProgressReward;
                 StatsManager.reputation += tempMission.ReputationReward;
                 StatsManager.Rupees += tempMission.MoneyReward;
+                tempMission.OnCompleted();
 
                 tempMission.MissionState = StateOfMission.CompletedDead;
             }

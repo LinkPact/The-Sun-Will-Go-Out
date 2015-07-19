@@ -351,6 +351,11 @@ namespace SpaceProject
 
         }
 
+        public virtual void OnCompleted()
+        {
+
+        }
+
         public virtual void MissionLogic()
         {
             RefreshCurrentObjective();
