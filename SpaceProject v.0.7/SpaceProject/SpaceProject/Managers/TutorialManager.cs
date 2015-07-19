@@ -18,10 +18,10 @@ namespace SpaceProject
         MenuControls,
         CombatBars,
         Coordinates,
-        Stations,
-        Planets,
+        StationsPlanets,
         Beacons,
-        Radar
+        Radar,
+        ShopStations
     }
 
     public class TutorialManager
@@ -74,9 +74,10 @@ namespace SpaceProject
             tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(1, 199, 366, 197)));
             tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(368, 199, 366, 197)));
             tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(735, 199, 366, 197)));
-            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(1, 397, 366, 197)));
+            //tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(1, 397, 366, 197)));
             tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(368, 397, 366, 197)));
-            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(735, 397, 366, 226)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(735, 397, 366, 197)));
+            tutorialImages.Add(tutorialSpriteSheet.GetSubSprite(new Rectangle(1, 595, 366, 197)));
 
             hasEnteredStation = false;
             hasEnteredOverworld = false;
@@ -406,38 +407,7 @@ namespace SpaceProject
 
         public Sprite GetImageFromEnum(TutorialImage imageID)
         {
-            switch (imageID)
-            {
-                case TutorialImage.OverworldControls:
-                    return tutorialImages[0];
-
-                case TutorialImage.CombatControls:
-                    return tutorialImages[1];
-
-                case TutorialImage.MenuControls:
-                    return tutorialImages[2];
-
-                case TutorialImage.CombatBars:
-                    return tutorialImages[3];
-
-                case TutorialImage.Coordinates:
-                    return tutorialImages[4];
-
-                case TutorialImage.Stations:
-                    return tutorialImages[5];
-
-                case TutorialImage.Planets:
-                    return tutorialImages[6];
-
-                case TutorialImage.Beacons:
-                    return tutorialImages[7];
-
-                case TutorialImage.Radar:
-                    return tutorialImages[8];
-
-                default:
-                    throw new ArgumentException("Image ID not recognized.");
-            }
+            return tutorialImages[(int)imageID];
         }
 
         public void EnableEquipTutorial()
