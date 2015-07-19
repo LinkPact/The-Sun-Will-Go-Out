@@ -69,7 +69,7 @@ namespace SpaceProject
 
             PreviousStation = "";
 
-            ActiveSong = Music.SpaceStation;
+            ActiveSong = Music.none;
         }
 
         //Method for loading data from the planet that the player has entered 
@@ -109,6 +109,7 @@ namespace SpaceProject
 
         public override void OnEnter()
         {
+            SetActiveSong();
             base.OnEnter();
 
             subStateManager.ActiveButtonIndexX = 0;
@@ -161,5 +162,17 @@ namespace SpaceProject
             subStateManager.Draw(spriteBatch);
         }
 
+        private void SetActiveSong()
+        {
+            if (station.name.Equals("Alliance Fleet")
+                || station.name.Equals("Rebel Fleet"))
+            {
+                ActiveSong = Music.none;
+            }
+            else
+            {
+                ActiveSong = Music.SpaceStation;
+            }
+        }
     }
 }

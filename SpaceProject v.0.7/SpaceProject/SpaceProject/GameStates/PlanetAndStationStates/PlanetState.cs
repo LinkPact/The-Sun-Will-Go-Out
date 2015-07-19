@@ -56,7 +56,7 @@ namespace SpaceProject
 
             PreviousPlanet = "";
 
-            ActiveSong = Music.SpaceStation;
+            ActiveSong = Music.none;
         }
 
         //Method for loading data from the planet that the player has entered 
@@ -92,6 +92,7 @@ namespace SpaceProject
 
         public override void OnEnter()
         {
+            SetActiveSong();
             base.OnEnter();
 
             subStateManager.ActiveButtonIndexX = 0;
@@ -141,5 +142,16 @@ namespace SpaceProject
             subStateManager.Draw(spriteBatch);
         }
 
+        private void SetActiveSong()
+        {
+            if (planet.name.Equals("Murt Asteroid"))
+            {
+                ActiveSong = Music.none;
+            }
+            else
+            {
+                ActiveSong = Music.SpaceStation;
+            }
+        }
     }
 }

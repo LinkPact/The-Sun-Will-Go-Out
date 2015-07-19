@@ -30,10 +30,7 @@ namespace SpaceProject
 
         public virtual void OnEnter() 
         {
-            if (ActiveSong != Music.none)
-            {
-                Game.musicManager.PlayMusic(ActiveSong);
-            }
+            Game.musicManager.PlayMusic(ActiveSong);
         }
 
         public virtual void OnLeave() 
