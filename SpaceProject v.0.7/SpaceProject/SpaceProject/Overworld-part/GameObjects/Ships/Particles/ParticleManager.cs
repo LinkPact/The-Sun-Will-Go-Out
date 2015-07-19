@@ -43,7 +43,7 @@ namespace SpaceProject
         public void AddParticle()
         {
             Particle par = new Particle(game, game.spriteSheetOverworld);
-            par.Initialize(ship);
+            par.Initialize(ship, ship.position);
             particles.Add(par);
         }
 

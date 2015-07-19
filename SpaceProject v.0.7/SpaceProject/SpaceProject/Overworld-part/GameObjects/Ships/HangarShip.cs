@@ -14,7 +14,7 @@ namespace SpaceProject
         {
             name = "Hangar Ship";
 
-            sprite = spriteSheet.GetSubSprite(new Rectangle(0, 380, 159, 258));
+            sprite = spriteSheet.GetSubSprite(new Rectangle(2, 382, 155, 254));
             viewRadius = 3000;
             position = new Vector2(0,0);
             speed = 0.15f;
@@ -26,6 +26,7 @@ namespace SpaceProject
             layerDepth = 0.61f;
             restrictedSpace = Game.stateManager.overworldState.RestrictedSpaceAlliance;
             SetDefaultBehavior();
+            useParticles = false;
 
             base.Initialize();
         }
@@ -77,7 +78,7 @@ namespace SpaceProject
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
         {
-               base.Draw(spriteBatch);
+            base.Draw(spriteBatch);
         }
     }
 }

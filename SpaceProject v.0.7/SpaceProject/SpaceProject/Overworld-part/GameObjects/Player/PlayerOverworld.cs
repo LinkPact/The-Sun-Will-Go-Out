@@ -133,6 +133,12 @@ namespace SpaceProject
                 base.Update(gameTime);
             }
 
+            if (!IsControlsEnabled
+                && !Game.stateManager.overworldState.IsBurnOutEndingActivated)
+            {
+                AddParticle();
+            }
+
             if (isInvincible)
             {
                 UpdateInvincibility(gameTime);
@@ -143,6 +149,7 @@ namespace SpaceProject
             if (hyperspeedOn == true)
             {
                 HyperSpeedMovement(gameTime);
+                AddHyperSpeedParticle();
                 base.Update(gameTime);
                 angle = (float)(MathFunctions.RadiansFromDir(
                     new Vector2(Direction.GetDirectionAsVector().X, Direction.GetDirectionAsVector().Y)) + (Math.PI * 90) / 180);
@@ -350,11 +357,18 @@ namespace SpaceProject
         private void AddParticle()
         {
             Particle par = new Particle(Game, spriteSheet);
-            par.Initialize(this);
+            par.Initialize(this, position);
             if (isInvincible)
             {
                 par.SetOpacity(InvinsibilityOpacity * 1.5f);
             }
+            particles.Add(par);
+        }
+
+        private void AddHyperSpeedParticle()
+        {
+            HyperSpeedParticle par = new HyperSpeedParticle(Game, spriteSheet);
+            par.Initialize(this, position);
             particles.Add(par);
         }
 

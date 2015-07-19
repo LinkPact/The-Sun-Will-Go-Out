@@ -9,10 +9,15 @@ namespace SpaceProject
 {
     public class Particle : GameObjectOverworld
     {
-        private Random rand = new Random();
+        private readonly float ScaleStretch = 3f;
+
+        protected Random rand = new Random();
 
         public float lifeSpawn;
-        private float opacity;
+        protected float opacity;
+
+        protected float yScale;
+        protected float parAngle;
 
         public Particle(Game1 Game, Sprite spriteSheet):
             base(Game, spriteSheet)
@@ -20,20 +25,20 @@ namespace SpaceProject
 
         }
 
-        public void Initialize(GameObjectOverworld obj)
+        public virtual void Initialize(GameObjectOverworld obj, Vector2 startingPoint)
         {
             sprite = spriteSheet.GetSubSprite(new Rectangle(0, 38, 18,18));
             layerDepth = obj.layerDepth - 0.01f;
-            
-            position.X = obj.position.X - 6 + (float)(rand.Next(12));
-            position.Y = obj.position.Y - 6 + (float)(rand.Next(12));
-            scale = 1;
-            lifeSpawn = 6 + (int)rand.Next(6);
+
+            position.X = startingPoint.X - 6 + rand.Next(12) + ((obj.Bounds.Width / 2f - obj.sprite.Width / 7.5f) * -obj.Direction.GetDirectionAsVector().X);
+            position.Y = startingPoint.Y - 6 + rand.Next(12) + ((obj.Bounds.Height / 2f - obj.sprite.Height / 7.5f) * -obj.Direction.GetDirectionAsVector().Y);
+            lifeSpawn = 8 + (int)rand.Next(6);
             opacity = 1;
 
-            speed = (obj.speed * -1) * 0.05f;
+            scale = 1;
+            speed = obj.speed * 0.6f;
             maxSpeed = 4;
-            color = new Color(255, 81, 0, 255);
+            color = new Color(255, 80, 80, 255);
             centerPoint = new Vector2(sprite.SourceRectangle.Value.Width / 2,
             sprite.SourceRectangle.Value.Height / 2);           
 
@@ -41,7 +46,7 @@ namespace SpaceProject
         }
 
 
-        public void Update(GameTime gameTime, GameObjectOverworld obj)
+        public virtual void Update(GameTime gameTime, GameObjectOverworld obj)
         {
             Direction = obj.Direction;
 
@@ -68,7 +73,14 @@ namespace SpaceProject
                 position.Y -= particleMoveDistance;
             }
 
-            scale -= 0.025f * MathFunctions.FPSSyncFactor(gameTime);
+            if (scale > 0)
+            {
+                scale -= 0.03f * MathFunctions.FPSSyncFactor(gameTime);
+            }
+            else
+            {
+                scale = 0;
+            }
 
             color = GetFadingFireColor(gameTime, color) * opacity;
 
@@ -77,7 +89,16 @@ namespace SpaceProject
                 lifeSpawn -= 1.0f * MathFunctions.FPSSyncFactor(gameTime);
             }
 
+            yScale = scale + speed * ScaleStretch;
+            parAngle = (float)((Math.PI * 90) / 180) + (float)(MathFunctions.RadiansFromDir(Direction.GetDirectionAsVector()));
+
             base.Update(gameTime);
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(sprite.Texture, position, sprite.SourceRectangle, color,
+                parAngle, centerPoint, new Vector2(scale, yScale), SpriteEffects.None, layerDepth);
         }
 
         public static Color GetFadingFireColor(GameTime gameTime, Color initialColor)
@@ -95,7 +116,7 @@ namespace SpaceProject
             return resultingColor;
         }
 
-        private static byte UpdateSingleColor(GameTime gameTime, byte initialColor, int fadeOutRate)
+        protected static byte UpdateSingleColor(GameTime gameTime, byte initialColor, int fadeOutRate)
         {
             byte colorFadeDelta = (byte)(fadeOutRate * MathFunctions.FPSSyncFactor(gameTime));
 
@@ -107,11 +128,6 @@ namespace SpaceProject
             {
                 return 0;
             }
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            base.Draw(spriteBatch);
         }
 
         public void SetOpacity(float opacity)

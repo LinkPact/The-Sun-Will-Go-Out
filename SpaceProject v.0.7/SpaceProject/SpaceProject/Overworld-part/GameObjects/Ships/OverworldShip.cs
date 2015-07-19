@@ -32,6 +32,8 @@ namespace SpaceProject
         public void ResetArrived() { hasArrived = false; }
         public float rotationSpeed = 4f;
 
+        protected bool useParticles = true;
+
         // Should be removed
         protected GameObjectOverworld target;
         public void SetTarget(GameObjectOverworld target) { this.target = target; }
@@ -76,7 +78,10 @@ namespace SpaceProject
             if (destination != Vector2.Zero)
             {
                 Direction.RotateTowardsPoint(gameTime, this.position, destination, rotationSpeed);
-                particleManager.AddParticle();
+                if (useParticles)
+                {
+                    particleManager.AddParticle();
+                }
             }
             else
                 Direction = Direction.Zero;
