@@ -71,12 +71,6 @@ namespace SpaceProject
 
         public override void Update(Game1 game, GameTime gameTime)
         {
-            if (startLevelWhenTextCleared && PopupHandler.TextBufferEmpty)
-            {
-                game.stateManager.shooterState.BeginLevel(level);
-                startLevelWhenTextCleared = false;
-            }
-
             if (!levelCleared && level != null && level != "")
             {
                 if (game.stateManager.shooterState.CurrentLevel != null
@@ -102,6 +96,12 @@ namespace SpaceProject
                     StatsManager.Crebits += moneyReward;
                     ClearEvent();
                 }
+            }
+
+            if (startLevelWhenTextCleared && PopupHandler.TextBufferEmpty)
+            {
+                game.stateManager.shooterState.BeginLevel(level);
+                startLevelWhenTextCleared = false;
             }
         }
     }
