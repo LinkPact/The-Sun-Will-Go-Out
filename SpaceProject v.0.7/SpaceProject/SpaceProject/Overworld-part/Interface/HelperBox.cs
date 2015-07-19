@@ -54,11 +54,11 @@ namespace SpaceProject
                 if (timedText 
                     && timeToShowText > 0)
                 {
-                    spriteBatch.DrawString(Game.fontManager.GetFont(14), text, position + Game.fontManager.FontOffset, Game.fontManager.FontColor, 0f, origin, 1f, SpriteEffects.None, 1f);
+                    spriteBatch.DrawString(Game.fontManager.GetFont(14), text, position + Game.fontManager.FontOffset, Game.fontManager.FontColor, 0f, origin, 1f, SpriteEffects.None, 0.9f);
                 }
                 else
                 {
-                    spriteBatch.DrawString(Game.fontManager.GetFont(14), text, position + Game.fontManager.FontOffset, Game.fontManager.FontColor, 0f, origin, 1f, SpriteEffects.None, 1f);
+                    spriteBatch.DrawString(Game.fontManager.GetFont(14), text, position + Game.fontManager.FontOffset, Game.fontManager.FontColor, 0f, origin, 1f, SpriteEffects.None, 0.9f);
                 }
             }
 
