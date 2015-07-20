@@ -23,8 +23,8 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            menuOptions = new String[11, 2];
-            onEnterMenuOptions = new String[11];
+            menuOptions = new String[15, 2];
+            onEnterMenuOptions = new String[15];
         }
 
         public override void OnDisplay()
@@ -63,14 +63,26 @@ namespace SpaceProject
             menuOptions[7, 0] = "Right";
             menuOptions[7, 1] = ControlManager.GetKeyName(RebindableKeys.Right);
             
-            menuOptions[8, 0] = "Pause";
+            menuOptions[8, 0] = "Pause / Access Menu";
             menuOptions[8, 1] = ControlManager.GetKeyName(RebindableKeys.Pause);
+
+            menuOptions[9, 0] = "Access Inventory";
+            menuOptions[9, 1] = ControlManager.GetKeyName(RebindableKeys.Inventory);
+
+            menuOptions[10, 0] = "Access Map";
+            menuOptions[10, 1] = ControlManager.GetKeyName(RebindableKeys.Map);
+
+            menuOptions[11, 0] = "Access Mission Log";
+            menuOptions[11, 1] = ControlManager.GetKeyName(RebindableKeys.Missions);
+
+            menuOptions[12, 0] = "Access Help Screen";
+            menuOptions[12, 1] = ControlManager.GetKeyName(RebindableKeys.Help);
             
-            menuOptions[9, 0] = "Reset Default Keys";
-            menuOptions[9, 1] = "";
+            menuOptions[13, 0] = "Reset Default Keys";
+            menuOptions[13, 1] = "";
             
-            menuOptions[10, 0] = "Back";
-            menuOptions[10, 1] = "";
+            menuOptions[14, 0] = "Back";
+            menuOptions[14, 1] = "";
 
             base.OnDisplay();
         }
@@ -139,9 +151,25 @@ namespace SpaceProject
                 case "right":
                     InitInputCheck(RebindableKeys.Right);
                     break;
-            
-                case "pause":
+
+                case "pause / access menu":
                     InitInputCheck(RebindableKeys.Pause);
+                    break;
+
+                case "access inventory":
+                    InitInputCheck(RebindableKeys.Inventory);
+                    break;
+
+                case "access map":
+                    InitInputCheck(RebindableKeys.Map);
+                    break;
+
+                case "access mission log":
+                    InitInputCheck(RebindableKeys.Missions);
+                    break;
+
+                case "access help screen":
+                    InitInputCheck(RebindableKeys.Help);
                     break;
             
                 case "reset default keys":
@@ -173,6 +201,10 @@ namespace SpaceProject
                 menuOptions[6, 1] = ControlManager.KeyboardLeft.ToString();
                 menuOptions[7, 1] = ControlManager.KeyboardRight.ToString();
                 menuOptions[8, 1] = ControlManager.KeyboardPause.ToString();
+                menuOptions[9, 1] = ControlManager.KeyboardInventory.ToString();
+                menuOptions[10, 1] = ControlManager.KeyboardMap.ToString();
+                menuOptions[11, 1] = ControlManager.KeyboardMissions.ToString();
+                menuOptions[12, 1] = ControlManager.KeyboardHelp.ToString();
             }
             
             else

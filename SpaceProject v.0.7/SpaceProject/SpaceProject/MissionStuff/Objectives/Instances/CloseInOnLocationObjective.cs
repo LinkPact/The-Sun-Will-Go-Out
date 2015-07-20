@@ -65,6 +65,7 @@ namespace SpaceProject
             }
 
             return (GameStateManager.currentState.Equals("OverworldState")
+                && !game.player.HyperspeedOn 
                 && CollisionDetection.IsPointInsideCircle(game.player.position, Destination.position, radius));
         }
 

@@ -56,13 +56,14 @@ namespace SpaceProject
             int originYOffset = -30;
             Vector2 center = StaticFunctions.PointToVector2(ShipManagerState.GetUpperLeftRectangle.Center);
             Vector2 origin = new Vector2(center.X + xOffset - BACKGROUND_SHIP_LENGTH / 2f, center.Y + originYOffset);
+            Vector2 backOrigin = new Vector2(origin.X / 2 - 20, origin.Y);
 
             displayList = new List<ShipInventoryDisplayObject>();
 
             Coordinate backCoord = new Coordinate(0, 0);
             displayList.Add(back = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(780, 840, 60, 60)),
                 spriteSheet.GetSubSprite(new Rectangle(780, 901, 60, 60)),
-                new Vector2(30, origin.Y), backCoord));
+                backOrigin, backCoord));
 
             Coordinate batteryCoord = new Coordinate(1, 0);
             displayList.Add(cellDisplay = new ShipInventoryDisplayObject(Game, spriteSheet.GetSubSprite(new Rectangle(600, 840, 60, 60)),

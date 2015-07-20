@@ -230,7 +230,7 @@ namespace SpaceProject
 
                 soundEffectsManager.Update(gameTime);
 
-                if (ControlManager.CheckKeyPress(Keys.N)
+                if (ControlManager.CheckPress(RebindableKeys.Map)
                     && GameStateManager.currentState == "OverworldState"
                     && !PopupHandler.IsMenuOpen)
                 {
@@ -441,7 +441,7 @@ namespace SpaceProject
                 }
             }
 
-            return new Vector2(1024, 768);
+            return new Vector2(1280, 720);
         }
     }
 }

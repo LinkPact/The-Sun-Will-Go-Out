@@ -479,17 +479,17 @@ namespace SpaceProject
                 PopupHandler.DisplayMenu();
             }
 
-            else if (ControlManager.CheckKeyPress(Keys.M))
+            else if (ControlManager.CheckPress(RebindableKeys.Missions))
             {
                 Game.stateManager.ChangeState("MissionScreenState");
             }
 
-            else if (ControlManager.CheckKeyPress(Keys.I))
+            else if (ControlManager.CheckPress(RebindableKeys.Inventory))
             {
                 Game.stateManager.ChangeState("ShipManagerState");
                 Game.stateManager.shooterState.Initialize();
             }
-            else if (ControlManager.CheckKeyPress(Keys.H))
+            else if (ControlManager.CheckPress(RebindableKeys.Help))
             {
                 Game.stateManager.ChangeState("HelpScreenState");
             }

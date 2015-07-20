@@ -91,15 +91,20 @@ namespace SpaceProject
         {
             if (!ControlManager.GamepadReady)
             {
-                if (ControlManager.CheckKeyPress(Keys.Down))
+                if (ControlManager.CheckPress(RebindableKeys.Down))
                 {
                     cursorIndex++;
                     holdTimer = game.HoldKeyTreshold;
 
                     PlayHoverSound();
+
+                    if (cursorIndex > menuOptions.Length / 2 - 1)
+                    {
+                        cursorIndex = 0;
+                    }
                 }
 
-                else if (ControlManager.CurrentKeyboardState.IsKeyDown(Keys.Down))
+                else if (ControlManager.CheckHold(RebindableKeys.Down))
                 {
                     holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
 
@@ -110,17 +115,27 @@ namespace SpaceProject
 
                         PlayHoverSound();
                     }
+
+                    if (cursorIndex > menuOptions.Length / 2 - 1)
+                    {
+                        cursorIndex = menuOptions.Length / 2 - 1;
+                    }
                 }
 
-                else if (ControlManager.CheckKeyPress(Keys.Up))
+                else if (ControlManager.CheckPress(RebindableKeys.Up))
                 {
                     cursorIndex--;
                     holdTimer = game.HoldKeyTreshold;
 
                     PlayHoverSound();
+
+                    if (cursorIndex < 0)
+                    {
+                        cursorIndex = menuOptions.Length / 2 - 1;
+                    }
                 }
 
-                else if (ControlManager.CurrentKeyboardState.IsKeyDown(Keys.Up))
+                else if (ControlManager.CheckHold(RebindableKeys.Up))
                 {
                     holdTimer -= gameTime.ElapsedGameTime.Milliseconds;
 
@@ -131,22 +146,11 @@ namespace SpaceProject
 
                         PlayHoverSound();
                     }
-                }
 
-                if (cursorIndex < 0)
-                {
-                    if (ControlManager.PreviousKeyboardState.IsKeyUp(Keys.Up))
-                        cursorIndex = menuOptions.Length / 2 - 1;
-                    else
+                    if (cursorIndex < 0)
+                    {
                         cursorIndex = 0;
-                }
-
-                else if (cursorIndex > menuOptions.Length / 2 - 1)
-                {
-                    if (ControlManager.PreviousKeyboardState.IsKeyUp(Keys.Down))
-                        cursorIndex = 0;
-                    else
-                        cursorIndex = menuOptions.Length / 2 - 1;
+                    }
                 }
             }
 

@@ -405,7 +405,7 @@ namespace SpaceProject
                 elapsedSinceKey = 0;
             }
 
-            if (ControlManager.CheckKeyPress(Keys.M) && elapsedTimeMilliseconds > 200
+            if (ControlManager.CheckPress(RebindableKeys.Missions) && elapsedTimeMilliseconds > 200
                 && elapsedSinceKey > 100)
             {
                 Game.stateManager.ChangeState(GameStateManager.previousState);

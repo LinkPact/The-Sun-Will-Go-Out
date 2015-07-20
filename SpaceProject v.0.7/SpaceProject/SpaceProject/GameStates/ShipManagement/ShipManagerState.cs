@@ -687,7 +687,7 @@ namespace SpaceProject
                 elapsedSinceKey = 0;
             }
 
-            if (ControlManager.CheckKeyPress(Keys.I) && elapsedTimeMilliseconds > 200
+            if (ControlManager.CheckPress(RebindableKeys.Inventory) && elapsedTimeMilliseconds > 200
                 && elapsedSinceKey > elapseDelay)
                 BackToOverworldLogic();
 

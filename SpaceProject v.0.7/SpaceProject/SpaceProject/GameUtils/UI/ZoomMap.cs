@@ -133,11 +133,11 @@ namespace SpaceProject
                         55, SpriteEffects.None, 1f);
                 }
 
-                spriteBatch.DrawString(FontManager.GetFontStatic(14), "Press 'N' to hide map..",
+                spriteBatch.DrawString(FontManager.GetFontStatic(14), "Press '" + ControlManager.GetKeyName(RebindableKeys.Map) + "' to hide map..",
                         new Vector2(camera.cameraPos.X, camera.cameraPos.Y + HelpTextOffset),
                         Color.White, 0f,
-                        FontManager.GetFontStatic(14).MeasureString("Press 'N' to hide map..") / 2,
-                        100, SpriteEffects.None, 1f);
+                        FontManager.GetFontStatic(14).MeasureString("Press '" + ControlManager.GetKeyName(RebindableKeys.Map) + "' to hide map..") / 2,
+                        80, SpriteEffects.None, 1f);
             }
         }
 

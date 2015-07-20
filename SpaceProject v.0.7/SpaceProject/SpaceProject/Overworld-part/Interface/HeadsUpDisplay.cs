@@ -141,25 +141,25 @@ namespace SpaceProject
                     game.fontManager.FontOffset,
                 game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, 0.92f);
 
-            spriteBatch.DrawString(game.fontManager.GetFont(12), "Press 'ESC' to open menu",
+            spriteBatch.DrawString(game.fontManager.GetFont(12), "Press '" + ControlManager.GetKeyName(RebindableKeys.Pause) +"' to open menu",
                 new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
                     game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 40) +
                     game.fontManager.FontOffset,
                 game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, 0.92f);
 
-            spriteBatch.DrawString(game.fontManager.GetFont(12), "Press 'I' to open inventory",
+            spriteBatch.DrawString(game.fontManager.GetFont(12), "Press '" + ControlManager.GetKeyName(RebindableKeys.Inventory) + "' to open inventory",
                 new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
                     game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 60) +
                     game.fontManager.FontOffset,
                 game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, 0.92f);
 
-            spriteBatch.DrawString(game.fontManager.GetFont(12), "Press 'M' to open mission screen",
+            spriteBatch.DrawString(game.fontManager.GetFont(12), "Press '" + ControlManager.GetKeyName(RebindableKeys.Map) + "' to show map",
                 new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
                     game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 80) +
                     game.fontManager.FontOffset,
                 game.fontManager.FontColor, .0f, Vector2.Zero, 1f, SpriteEffects.None, 0.92f);
 
-            spriteBatch.DrawString(game.fontManager.GetFont(12), "Press 'N' to show map",
+            spriteBatch.DrawString(game.fontManager.GetFont(12), "Press '" + ControlManager.GetKeyName(RebindableKeys.Missions) + "' to open mission log",
                 new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
                     game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 100) +
                     game.fontManager.FontOffset,

@@ -394,6 +394,10 @@ namespace SpaceProject
             keySaveData.Add("left", ControlManager.GetKeyName(RebindableKeys.Left));
             keySaveData.Add("right", ControlManager.GetKeyName(RebindableKeys.Right));
             keySaveData.Add("pause", ControlManager.GetKeyName(RebindableKeys.Pause));
+            keySaveData.Add("inv", ControlManager.GetKeyName(RebindableKeys.Inventory));
+            keySaveData.Add("map", ControlManager.GetKeyName(RebindableKeys.Map));
+            keySaveData.Add("log", ControlManager.GetKeyName(RebindableKeys.Missions));
+            keySaveData.Add("help", ControlManager.GetKeyName(RebindableKeys.Help));
 
             Game.settingsFile.Save(Game1.SaveFilePath, "settings.ini", "keys", keySaveData);
 

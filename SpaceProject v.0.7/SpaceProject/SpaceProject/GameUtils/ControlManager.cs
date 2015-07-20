@@ -17,7 +17,11 @@ namespace SpaceProject
         Pause,
         Action1,
         Action2,
-        Action3
+        Action3,
+        Inventory,
+        Map,
+        Missions,
+        Help
     }
 
     public static class ControlManager
@@ -31,7 +35,11 @@ namespace SpaceProject
                 RebindableKeys.Left,
                 RebindableKeys.Pause,
                 RebindableKeys.Right,
-                RebindableKeys.Up
+                RebindableKeys.Up,
+                RebindableKeys.Inventory,
+                RebindableKeys.Map,
+                RebindableKeys.Missions,
+                RebindableKeys.Help
             };
 
         // Gamepad
@@ -65,6 +73,10 @@ namespace SpaceProject
         public static Keys KeyboardAction;
         public static Keys KeyboardAction2;
         public static Keys KeyboardAction3;
+        public static Keys KeyboardInventory;
+        public static Keys KeyboardMap;
+        public static Keys KeyboardMissions;
+        public static Keys KeyboardHelp;
 
         // Mouse
         private static MouseState currentMouseState;
@@ -119,6 +131,11 @@ namespace SpaceProject
             KeyboardAction2 = Keys.LeftShift;
             KeyboardAction3 = Keys.Space;
 
+            KeyboardInventory = Keys.I;
+            KeyboardMap = Keys.M;
+            KeyboardMissions = Keys.L;
+            KeyboardHelp = Keys.H;
+
             showMouse = true;
         }
 
@@ -156,6 +173,22 @@ namespace SpaceProject
             key[0] = Char.ToUpper(key[0]);
             Enum.TryParse<Keys>(key.ToString(), out KeyboardPause);
 
+            key = new StringBuilder(settingsFile.GetPropertyAsString("keys", "inv", "I"));
+            key[0] = Char.ToUpper(key[0]);
+            Enum.TryParse<Keys>(key.ToString(), out KeyboardInventory);
+
+            key = new StringBuilder(settingsFile.GetPropertyAsString("keys", "map", "M"));
+            key[0] = Char.ToUpper(key[0]);
+            Enum.TryParse<Keys>(key.ToString(), out KeyboardMap);
+
+            key = new StringBuilder(settingsFile.GetPropertyAsString("keys", "log", "L"));
+            key[0] = Char.ToUpper(key[0]);
+            Enum.TryParse<Keys>(key.ToString(), out KeyboardMissions);
+
+            key = new StringBuilder(settingsFile.GetPropertyAsString("keys", "help", "H"));
+            key[0] = Char.ToUpper(key[0]);
+            Enum.TryParse<Keys>(key.ToString(), out KeyboardHelp);
+
             if (KeyboardAction == Keys.None)
                 KeyboardAction = Keys.LeftControl;
 
@@ -179,6 +212,18 @@ namespace SpaceProject
 
             if (KeyboardPause == Keys.None)
                 KeyboardPause = Keys.Escape;
+
+            if (KeyboardInventory == Keys.None)
+                KeyboardInventory = Keys.I;
+
+            if (KeyboardMap == Keys.None)
+                KeyboardMap = Keys.M;
+
+            if (KeyboardMissions == Keys.None)
+                KeyboardMissions = Keys.L;
+
+            if (KeyboardHelp == Keys.None)
+                KeyboardHelp = Keys.H;
 
             GamepadUp = Buttons.LeftThumbstickUp;
             GamepadDown = Buttons.LeftThumbstickDown;
@@ -288,6 +333,30 @@ namespace SpaceProject
                     else
                         return CheckKeyPress(KeyboardPause);
 
+                case RebindableKeys.Inventory:
+                    if (GamepadReady)
+                        return false;
+                    else
+                        return CheckKeyPress(KeyboardInventory);
+
+                case RebindableKeys.Map:
+                    if (GamepadReady)
+                        return false;
+                    else
+                        return CheckKeyPress(KeyboardMap);
+
+                case RebindableKeys.Missions:
+                    if (GamepadReady)
+                        return false;
+                    else
+                        return CheckKeyPress(KeyboardMissions);
+
+                case RebindableKeys.Help:
+                    if (GamepadReady)
+                        return false;
+                    else
+                        return CheckKeyPress(KeyboardHelp);
+
                 default:
                     return false;
             }
@@ -364,6 +433,30 @@ namespace SpaceProject
                         return CurrentGamepadState.IsButtonDown(GamepadPause);
                     else
                         return CurrentKeyboardState.IsKeyDown(KeyboardPause);
+
+                case RebindableKeys.Inventory:
+                    if (GamepadReady)
+                        return false;
+                    else
+                        return CurrentKeyboardState.IsKeyDown(KeyboardInventory);
+
+                case RebindableKeys.Map:
+                    if (GamepadReady)
+                        return false;
+                    else
+                        return CurrentKeyboardState.IsKeyDown(KeyboardMap);
+
+                case RebindableKeys.Missions:
+                    if (GamepadReady)
+                        return false;
+                    else
+                        return CurrentKeyboardState.IsKeyDown(KeyboardMissions);
+
+                case RebindableKeys.Help:
+                    if (GamepadReady)
+                        return false;
+                    else
+                        return CurrentKeyboardState.IsKeyDown(KeyboardHelp);
 
                 default:
                     return false;
@@ -442,6 +535,30 @@ namespace SpaceProject
                     else
                         return PreviousKeyboardState.IsKeyUp(KeyboardPause);
 
+                case RebindableKeys.Inventory:
+                    if (GamepadReady)
+                        return false;
+                    else
+                        return PreviousKeyboardState.IsKeyUp(KeyboardInventory);
+
+                case RebindableKeys.Map:
+                    if (GamepadReady)
+                        return false;
+                    else
+                        return PreviousKeyboardState.IsKeyUp(KeyboardMap);
+
+                case RebindableKeys.Missions:
+                    if (GamepadReady)
+                        return false;
+                    else
+                        return PreviousKeyboardState.IsKeyUp(KeyboardMissions);
+
+                case RebindableKeys.Help:
+                    if (GamepadReady)
+                        return false;
+                    else
+                        return PreviousKeyboardState.IsKeyUp(KeyboardHelp);
+
                 default:
                     return false;
             } 
@@ -500,8 +617,32 @@ namespace SpaceProject
                     else
                         return KeyboardPause.ToString();
 
+                case RebindableKeys.Inventory:
+                    if (GamepadReady)
+                        return "I AM ERROR. GAMEPAD CONTROLS NOT IMPLEMENTED";
+                    else
+                        return KeyboardInventory.ToString();
+
+                case RebindableKeys.Map:
+                    if (GamepadReady)
+                        return "I AM ERROR. GAMEPAD CONTROLS NOT IMPLEMENTED";
+                    else
+                        return KeyboardMap.ToString();
+
+                case RebindableKeys.Missions:
+                    if (GamepadReady)
+                        return "I AM ERROR. GAMEPAD CONTROLS NOT IMPLEMENTED";
+                    else
+                        return KeyboardMissions.ToString();
+
+                case RebindableKeys.Help:
+                    if (GamepadReady)
+                        return "I AM ERROR. GAMEPAD CONTROLS NOT IMPLEMENTED";
+                    else
+                        return KeyboardHelp.ToString();
+
                 default:
-                    return "error";
+                    return "I AM ERROR";
             }
         }
 
@@ -588,6 +729,34 @@ namespace SpaceProject
                         GamepadPause = (Buttons)newbutton;
                     else
                         KeyboardPause = (Keys)newkey;
+                    break;
+
+                case RebindableKeys.Inventory:
+                    if (gamepad)
+                        throw new NotImplementedException();
+                    else
+                        KeyboardInventory = (Keys)newkey;
+                    break;
+
+                case RebindableKeys.Map:
+                    if (gamepad)
+                        throw new NotImplementedException();
+                    else
+                        KeyboardMap = (Keys)newkey;
+                    break;
+
+                case RebindableKeys.Missions:
+                    if (gamepad)
+                        throw new NotImplementedException();
+                    else
+                        KeyboardMissions = (Keys)newkey;
+                    break;
+
+                case RebindableKeys.Help:
+                    if (gamepad)
+                        throw new NotImplementedException();
+                    else
+                        KeyboardHelp = (Keys)newkey;
                     break;
 
             }

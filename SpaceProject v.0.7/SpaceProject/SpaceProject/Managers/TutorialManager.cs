@@ -57,6 +57,7 @@ namespace SpaceProject
         private bool equipShieldTutorial;
         private int equipShieldProgress;
         private bool equipShieldTutorialFinished;
+        private bool hasRecievedTutorialMoney;
 
         public TutorialManager(Game1 game)
         {
@@ -173,9 +174,22 @@ namespace SpaceProject
                         if (GameStateManager.currentState.Equals("StationState") &&
                             game.stateManager.stationState.Station.name.Equals("Highfence Shop"))
                         {
-                            PopupHandler.DisplayPortraitMessage(PortraitID.AlliancePilot, "[Alliance Pilot] \"Start by entering the shop and selecting 'Buy & Sell Items'. Here is two hundred Crebits, it should cover the cost for the shield.\"");
-                            PopupHandler.DisplayMessage("You recieved 200 Crebits.");
-                            StatsManager.Crebits += 200;
+                            string message = "[Alliance Pilot] \"Start by selecting 'Buy/Sell' and pressing 'Enter'.";
+
+                            if (!hasRecievedTutorialMoney)
+                            {
+                                message += " Here is two hundred Crebits, it should cover the cost for the shield.\"";
+                            }
+
+                            PopupHandler.DisplayPortraitMessage(PortraitID.AlliancePilot, message);
+                           
+                            if (!hasRecievedTutorialMoney)
+                            {
+                                StatsManager.Crebits += 200;
+                                PopupHandler.DisplayMessage("You recieved 200 Crebits.");
+                                hasRecievedTutorialMoney = true;
+                            }
+
                             equipShieldProgress = 1;
                         }
                         break;
@@ -381,6 +395,7 @@ namespace SpaceProject
             tutorialProgress.Add("hasEnteredHighfenceBeaconArea", hasEnteredHighfenceBeaconArea.ToString());
             tutorialProgress.Add("hasStartedSecondMission", coordinatesDisplayed.ToString());
             tutorialProgress.Add("equipShieldTutorial", equipShieldTutorialFinished.ToString());
+            tutorialProgress.Add("hasRecievedTutorialMoney", hasRecievedTutorialMoney.ToString());
             tutorialProgress.Add("longShotTutorial", longShotTutorialActivated.ToString());
             tutorialProgress.Add("hasEnteredShooterWithShield", hasEnteredShooterWithShield.ToString());
             tutorialProgress.Add("hasDisplayedSecondary", secondaryWeaponTutorialDisplayed.ToString());
@@ -399,6 +414,7 @@ namespace SpaceProject
             hasEnteredHighfenceBeaconArea = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredhighfencebeaconarea", false);
             coordinatesDisplayed = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasstartedsecondmission", false);
             equipShieldTutorialFinished = game.saveFile.GetPropertyAsBool("tutorialprogress", "equipshieldtutorial", false);
+            hasRecievedTutorialMoney = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasrecievedtutorialmoney", false);
             longShotTutorialActivated = game.saveFile.GetPropertyAsBool("tutorialprogress", "longshottutorial", false);
             hasEnteredShooterWithShield = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasenteredshooterwithshield", false);
             secondaryWeaponTutorialDisplayed = game.saveFile.GetPropertyAsBool("tutorialprogress", "hasdisplayedsecondary", false);
