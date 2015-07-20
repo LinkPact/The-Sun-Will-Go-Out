@@ -27,7 +27,8 @@ namespace SpaceProject
                                         Game.Window.ClientBounds.Height - 20), false, false,
                                         "Design and development:\nDaniel Alm Grundstrom\nJakob Willforss\nJohan Philipsson\n\n"+
                                         "Visuals:\nDaniel Alm Grundstrom\n\n" +
-                                        "Music:\nDaniel Alm Grundstrom\nJakob Willforss\n\n" +
+                                        "Music:\nJakob Willforss\nDaniel Alm Grundstrom\n\n" +
+                                        "Story:\nJakob Willforss\n\n" +
                                         "Portraits:\nJosefin Voigt (many thanks!)\n\n" +
                                         "Testers:\nRasmus Grundstrom\nDaniel Willforss\nJohannes\nErik\nEmilia\nEllen\nSandra");
             
