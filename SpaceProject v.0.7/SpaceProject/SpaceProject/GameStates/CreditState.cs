@@ -10,88 +10,58 @@ namespace SpaceProject
 {
     public class CreditState : GameState
     {
-        private TextBox textBox;
+        private TextBox textBoxLeft;
+        private TextBox textBoxRight;
         private SpriteFont spriteFont;
 
-        private float txtSpeed;
-        private const float txtMaxSpeed = 0.0f;
-        private const float txtMinSpeed = 0.0f;
         private Texture2D backdrop;  
 
         public CreditState(Game1 Game, string name) :
             base(Game, name)
         {
             int xOffset = 10;
-            int yOffset = 50;
+            int yOffset = 10;
 
             spriteFont = Game.fontManager.GetFont(14);
-            textBox = TextUtils.CreateTextBox(spriteFont, new Rectangle(xOffset, yOffset, Game.Window.ClientBounds.Width - 20,
+            textBoxLeft = TextUtils.CreateTextBox(spriteFont, new Rectangle(xOffset, yOffset, Game.Window.ClientBounds.Width / 2,
                                         Game.Window.ClientBounds.Height - 20), false, false,
                                         "Design and development:\nDaniel Alm Grundstrom\nJakob Willforss\nJohan Philipsson\n\n"+
                                         "Visuals:\nDaniel Alm Grundstrom\n\n" +
                                         "Music:\nDaniel Alm Grundstrom\nJakob Willforss\n\n" +
                                         "Portraits:\nJosefin Voigt (many thanks!)\n\n" +
-                                        "Fonts:\nIceland by Cyreal\nISL Jupiter by Isurus Labs\n\n" +
-                                        "Space sounds:\nSpace Music Ambient by evanjones4\n\n" +
-                                        "Sound effects:\n'menu click' by fins (Creative Commons 0 Licence)\n'Hover 2' by plasterbrain (Creative Commons 0 Licence)\n'" + 
-                                        "ship fire' by Nbs Dark (Creative Commons 0 Licence)\n'Thruster_Level_II' by nathanshadow (Sampling+ Licence)\n\n" +
-                                        "..and many thanks to all our testers, we really appreciate it.\nTell us, and your name will be here in the final version!");
+                                        "Testers:\nRasmus Grundstrom\nDaniel Willforss\nJohannes\nErik\nEmilia\nEllen\nSandra");
+            
+            textBoxRight = TextUtils.CreateTextBox(spriteFont, new Rectangle(Game.Window.ClientBounds.Width / 2 + xOffset, yOffset, Game.Window.ClientBounds.Width / 2,
+                                        Game.Window.ClientBounds.Height - 20), false, false,
+                                        "Fonts:\n- 'Iceland' by Cyreal (SIL Open Font License) Downloaded from Google Fonts\n- 'ISL Jupiter' by Isurus Labs (Public domain) Downloaded from dafont.com\n\n" +
+                                        "Space sounds:\n- 'Space Music Ambient' by evanjones4 (Creative Commons 0 Licence) Downloaded from FreeSound.org\n\n" +
+                                        "Sound effects:\n- 'menu click' by fins (Creative Commons 0 Licence) Downloaded from FreeSound.org\n- 'Hover 2' by plasterbrain " +
+                                        "(Creative Commons 0 Licence) Downloaded from FreeSound.org \n- '" +
+                                        "ship fire' by Nbs Dark (Creative Commons 0 Licence) Downloaded from FreeSound.org\n- 'Thruster_Level_II' by nathanshadow (Sampling+ Licence) Downloaded from FreeSound.org\n" +
+                                        "- 'Huge Explosion' by Tobiasz 'unfa' Karon (CC Attribution 3.0 Unported Licence) Downloaded from https://www.freesound.org/people/unfa/sounds/259300/\n\n");
         }
 
         public override void Initialize()
         {
-            txtSpeed = 0.15f;
             base.Initialize();
             backdrop = Game.Content.Load<Texture2D>("Overworld-Sprites/introBackdrop");
         }
 
-        public override void OnEnter()
-        {
-        }
-
-        public override void OnLeave()
-        {          
-        }
-
         public override void Update(GameTime gameTime)
         {
-            if (ControlManager.GamepadReady == false)
+            textBoxLeft.Update(gameTime);
+            textBoxRight.Update(gameTime);
+
+            if (ControlManager.CheckPress(RebindableKeys.Action1) 
+                || ControlManager.CheckKeyPress(Keys.Enter)
+                || ControlManager.CheckPress(RebindableKeys.Action2)
+                || ControlManager.CheckKeyPress(Keys.Escape)
+                || ControlManager.IsLeftMouseButtonClicked())
             {
-                if (ControlManager.CheckPress(RebindableKeys.Action1) 
-                    || ControlManager.CheckKeyPress(Keys.Enter)
-                    || ControlManager.CheckPress(RebindableKeys.Action2)
-                    || ControlManager.CheckKeyPress(Keys.Escape))
-                {
-                    Game.stateManager.ChangeState("MainMenuState");
-                }
+                Game.stateManager.ChangeState("MainMenuState");
             }
 
-            if (ControlManager.GamepadReady == true)
-            {            
-                if (ControlManager.CurrentGamepadState.IsButtonDown(ControlManager.GamepadAction))
-                {
-                    Game.stateManager.ChangeState("MainMenuState");
-                }
-            }
-
-            //if (ControlManager.IsLeftMouseButtonClicked())
-            //{
-            //    Game.stateManager.ChangeState("MainMenuState");
-            //}
             
-            textBox.TextBoxPosY -= txtSpeed;
-
-            if (txtSpeed > txtMaxSpeed)
-                txtSpeed = txtMaxSpeed;
-
-            else if (txtSpeed < txtMinSpeed)
-                txtSpeed = txtMinSpeed;
-
-            if (textBox.TextBoxPosY < -20 || ControlManager.CheckKeyPress(Keys.Enter))
-            {
-                Game.Restart();
-            }
-
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -107,7 +77,8 @@ namespace SpaceProject
                              SpriteEffects.None,
                              0.5f);
 
-            textBox.Draw(spriteBatch, Game.fontManager.FontColor, Game.fontManager.FontOffset);
+            textBoxLeft.Draw(spriteBatch, Game.fontManager.FontColor, Game.fontManager.FontOffset);
+            textBoxRight.Draw(spriteBatch, Game.fontManager.FontColor, Game.fontManager.FontOffset);
         }
 
     }

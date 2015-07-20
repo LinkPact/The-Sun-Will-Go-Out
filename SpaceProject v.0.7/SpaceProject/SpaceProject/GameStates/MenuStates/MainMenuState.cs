@@ -110,8 +110,8 @@ namespace SpaceProject
                                       new Vector2(buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                                       buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
 
-           mapCreatorButton.name = "Create Level";
-           //mapCreatorButton.name = "Credits";
+           //mapCreatorButton.name = "Create Level";
+           mapCreatorButton.name = "Credits";
 
             buttons.Add(mapCreatorButton);
 
@@ -293,7 +293,6 @@ namespace SpaceProject
                         if (SaveFile.CheckIfFileExists(Game1.SaveFilePath, "save.ini"))
                         {
                             Game.stateManager.StartGame("OverworldState");
-                            //MediaPlayer.Stop();
                             Game.Load();
                             Game.GameStarted = true;
                             loadedOrNewGame = LoadedOrNewGame.Loaded;
@@ -311,10 +310,10 @@ namespace SpaceProject
                         break;
 
                     case 3:
-                        Game.stateManager.ChangeState("MapCreatorState");
+                        //Game.stateManager.ChangeState("MapCreatorState");
 
                         PlaySelectSound();
-                        //Game.stateManager.ChangeState("CreditState");
+                        Game.stateManager.ChangeState("CreditState");
                         break;
 
                     case 4:
