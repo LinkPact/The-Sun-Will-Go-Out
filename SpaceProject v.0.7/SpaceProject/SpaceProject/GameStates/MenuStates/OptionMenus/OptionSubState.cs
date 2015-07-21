@@ -14,6 +14,7 @@ namespace SpaceProject
         
         private Sprite contrastBackDropSprite;
         protected bool drawContrastBackdrop;
+        protected float yOffset;
 
         protected Game1 game;
         protected OptionsMenuState optionsMenuState;
@@ -41,6 +42,7 @@ namespace SpaceProject
         {
             contrastBackDropSprite = buttonsSprite.GetSubSprite(new Rectangle(0, 0, 1, 1));
             drawContrastBackdrop = false;
+            yOffset = 0;
             holdTimer = game.HoldKeyTreshold;
             menuOptionFont = game.fontManager.GetFont(14);
             fontOffset = game.fontManager.FontOffset;
@@ -313,7 +315,7 @@ namespace SpaceProject
                     length++;
                 }
 
-                spriteBatch.Draw(contrastBackDropSprite.Texture, new Vector2((game.Window.ClientBounds.Width / 9) * 4 - 10, game.Window.ClientBounds.Height / 3 - 15),
+                spriteBatch.Draw(contrastBackDropSprite.Texture, new Vector2((game.Window.ClientBounds.Width / 9) * 4 - 10, game.Window.ClientBounds.Height / 3 - 15 + yOffset),
                     contrastBackDropSprite.SourceRectangle, Color.Black, 0.0f, Vector2.Zero,
                     new Vector2(game.Window.ClientBounds.Width - (game.Window.ClientBounds.Width / 9) * 4 - 20, 15 + (20 *length)),
                     SpriteEffects.None, 0.8f);
@@ -325,7 +327,7 @@ namespace SpaceProject
                 {
                     spriteBatch.DrawString(game.fontManager.GetFont(14), menuOptions[i, 0],
                         new Vector2((game.Window.ClientBounds.Width / 9) * 4  + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 0]).X / 2,
-                                    game.Window.ClientBounds.Height / 3 + (i * 23)) + game.fontManager.FontOffset,
+                                    game.Window.ClientBounds.Height / 3 + (i * 23) + yOffset) + game.fontManager.FontOffset,
                         FontManager.FontSelectColor1, 0f,
                         game.fontManager.GetFont(14).MeasureString(menuOptions[i, 0]) / 2,
                         1f, SpriteEffects.None, 1f);
@@ -333,7 +335,7 @@ namespace SpaceProject
 
                     spriteBatch.DrawString(game.fontManager.GetFont(14), menuOptions[i, 1],
                         new Vector2(game.Window.ClientBounds.Width - 150 + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 1]).X / 2,
-                                    game.Window.ClientBounds.Height / 3 + (i * 23)) + game.fontManager.FontOffset,
+                                    game.Window.ClientBounds.Height / 3 + (i * 23) + yOffset) + game.fontManager.FontOffset,
                         FontManager.FontSelectColor1, 0f,
                         game.fontManager.GetFont(14).MeasureString(menuOptions[i, 1]) / 2,
                         1f, SpriteEffects.None, 1f);
@@ -343,14 +345,14 @@ namespace SpaceProject
                 {
                     spriteBatch.DrawString(game.fontManager.GetFont(14), menuOptions[i, 0],
                         new Vector2((game.Window.ClientBounds.Width / 9) * 4 + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 0]).X / 2,
-                                    game.Window.ClientBounds.Height / 3 + (i * 23)) + game.fontManager.FontOffset,
+                                    game.Window.ClientBounds.Height / 3 + (i * 23) + yOffset) + game.fontManager.FontOffset,
                         game.fontManager.FontColor, 0f,
                         game.fontManager.GetFont(14).MeasureString(menuOptions[i, 0]) / 2,
                         1f, SpriteEffects.None, 1f);
 
                     spriteBatch.DrawString(game.fontManager.GetFont(14), menuOptions[i, 1],
                         new Vector2(game.Window.ClientBounds.Width - 150 + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 1]).X / 2,
-                                    game.Window.ClientBounds.Height / 3 + (i * 23)) + game.fontManager.FontOffset,
+                                    game.Window.ClientBounds.Height / 3 + (i * 23) + yOffset) + game.fontManager.FontOffset,
                         game.fontManager.FontColor, 0f,
                         game.fontManager.GetFont(14).MeasureString(menuOptions[i, 1]) / 2,
                         1f, SpriteEffects.None, 1f);

@@ -25,6 +25,8 @@ namespace SpaceProject
 
             menuOptions = new String[15, 2];
             onEnterMenuOptions = new String[15];
+
+            yOffset = -75;
         }
 
         public override void OnDisplay()
