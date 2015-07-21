@@ -135,7 +135,7 @@ namespace SpaceProject
 
         private void DrawMenuInfo(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(game.fontManager.GetFont(12), "Game mode: " + StatsManager.gameMode.ToString(),
+            spriteBatch.DrawString(game.fontManager.GetFont(12), "Difficulty: " + StatsManager.gameMode.ToString(),
                 new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2 + 8,
                     game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 15) +
                     game.fontManager.FontOffset,
