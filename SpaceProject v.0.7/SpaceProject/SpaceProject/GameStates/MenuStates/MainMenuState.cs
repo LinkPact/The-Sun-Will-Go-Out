@@ -217,12 +217,13 @@ namespace SpaceProject
             }
 
             // TODO: REMOVE FOR RELEASE VERSION
-            if (ControlManager.CheckKeyPress(Keys.M))
-            {
-                Game.stateManager.ChangeState("LevelTesterState");
-            }
+            //if (ControlManager.CheckKeyPress(Keys.M))
+            //{
+            //    Game.stateManager.ChangeState("LevelTesterState");
+            //}
             
-            if (ControlManager.CheckKeyPress(Keys.C))
+            if (ControlManager.CheckKeyHold(Keys.LeftAlt)
+                && ControlManager.CheckKeyPress(Keys.C))
             {
                 Game.stateManager.ChangeState("CampaignState");
             }
@@ -350,6 +351,11 @@ namespace SpaceProject
                 spriteBatch.DrawString(fontButtons, "Version: 1.0", new Vector2(10,
                     5) + Game.fontManager.FontOffset,
                     Game.fontManager.FontColor, 0f, Vector2.Zero,
+                    1f, SpriteEffects.None, 1f);
+
+                spriteBatch.DrawString(fontButtons, "www.LinkPact.com", new Vector2(Game.Window.ClientBounds.Width / 2,
+                    Game.Window.ClientBounds.Height - 25) + Game.fontManager.FontOffset,
+                    Game.fontManager.FontColor, 0f, fontButtons.MeasureString("www.LinkPact.com") / 2,
                     1f, SpriteEffects.None, 1f);
 
                 

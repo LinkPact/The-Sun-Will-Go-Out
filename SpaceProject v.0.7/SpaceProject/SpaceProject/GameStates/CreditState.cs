@@ -30,7 +30,7 @@ namespace SpaceProject
                                         "Music:\nJakob Willforss\nDaniel Alm Grundstrom\n\n" +
                                         "Story:\nJakob Willforss\n\n" +
                                         "Portraits:\nJosefin Voigt (many thanks!)\n\n" +
-                                        "Testers:\nRasmus Grundstrom\nDaniel Willforss\nJohannes\nErik\nEmilia\nEllen\nSandra");
+                                        "Testers:\nDaniel Willforss\nRasmus Grundstrom\nJohannes E.\nErik\nEmilia\nEllen\nSandra\nVidmantas\n");
             
             textBoxRight = TextUtils.CreateTextBox(spriteFont, new Rectangle(Game.Window.ClientBounds.Width / 2 + xOffset, yOffset, Game.Window.ClientBounds.Width / 2,
                                         Game.Window.ClientBounds.Height - 20), false, false,
@@ -60,9 +60,7 @@ namespace SpaceProject
                 || ControlManager.IsLeftMouseButtonClicked())
             {
                 Game.stateManager.ChangeState("MainMenuState");
-            }
-
-            
+            } 
         }
 
         public override void Draw(SpriteBatch spriteBatch)

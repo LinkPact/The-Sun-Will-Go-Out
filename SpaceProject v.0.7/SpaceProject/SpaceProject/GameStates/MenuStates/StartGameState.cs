@@ -22,7 +22,7 @@ namespace SpaceProject
         private Sprite contrastBackDropSprite;
 
         private MenuDisplayObject selectedButton;
-        private MenuDisplayObject devButton;
+        //private MenuDisplayObject devButton;
         private MenuDisplayObject easyButton;
         private MenuDisplayObject normalButton;
         private MenuDisplayObject hardButton;
@@ -45,13 +45,13 @@ namespace SpaceProject
 
             contrastBackDropSprite = buttonsSprite.GetSubSprite(new Rectangle(0, 0, 1, 1));
 
-            devButton = new MenuDisplayObject(Game,
-                    buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
-                    buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                    new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition),
-                    new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
-                            buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
-            devButton.name = "Develop";
+            //devButton = new MenuDisplayObject(Game,
+            //        buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
+            //        buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
+            //        new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition),
+            //        new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
+            //                buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
+            //devButton.name = "Develop";
 
             easyButton = new MenuDisplayObject(Game,
                     buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
@@ -95,7 +95,7 @@ namespace SpaceProject
 
             buttons = new List<MenuDisplayObject>();
 
-            buttons.Add(devButton);
+            //buttons.Add(devButton);
             buttons.Add(easyButton);
             buttons.Add(normalButton);
             buttons.Add(hardButton);
@@ -107,7 +107,7 @@ namespace SpaceProject
             buttonIndex = 0;
 
             descriptions = new List<string>();
-            descriptions.Add("Mode for development and testing.");
+            //descriptions.Add("Mode for development and testing.");
             descriptions.Add("Easy mode for inexperienced players.\nYou take less damage from enemy fire and you receive more money.");
             descriptions.Add("Regular difficulty.\n The way the game is intended to be played.");
             descriptions.Add("An extra difficulty for players looking for a real challenge.\nYou take more damage from enemy fire and you recive less money.");
