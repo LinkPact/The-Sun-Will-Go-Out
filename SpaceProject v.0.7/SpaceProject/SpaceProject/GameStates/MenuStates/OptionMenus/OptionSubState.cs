@@ -246,7 +246,7 @@ namespace SpaceProject
             {
                 if (ControlManager.IsMouseOverText(menuOptionFont, menuOptions[i, 0],
                     new Vector2((game.Window.ClientBounds.Width / 9) * 4 + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 0]).X / 2,
-                        game.Window.ClientBounds.Height / 3 + (i * 23)) + fontOffset))
+                        game.Window.ClientBounds.Height / 3 + (i * 23) + yOffset) + fontOffset))
                 {
                     if (cursorIndex != i)
                     {
@@ -270,7 +270,7 @@ namespace SpaceProject
                 {
                     if (ControlManager.IsMouseOverText(menuOptionFont, menuOptions[i, 1],
                         new Vector2(game.Window.ClientBounds.Width - 150 + game.fontManager.GetFont(14).MeasureString(menuOptions[i, 1]).X / 2,
-                            game.Window.ClientBounds.Height / 3 + (i * 23)) + fontOffset))
+                            game.Window.ClientBounds.Height / 3 + (i * 23) + yOffset) + fontOffset))
                     {
                         if (cursorIndex != i)
                         {
