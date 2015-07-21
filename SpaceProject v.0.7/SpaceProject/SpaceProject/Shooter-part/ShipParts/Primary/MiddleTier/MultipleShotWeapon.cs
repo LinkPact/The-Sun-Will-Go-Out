@@ -33,7 +33,7 @@ namespace SpaceProject
             bullet = new GreenBullet(Game, spriteSheet);
             bullet.Initialize();
 
-            damage = Bullet.Damage;
+            damage = Bullet.Damage * 0.7f;
             duration = Bullet.Duration;
             speed = Bullet.Speed;
 
@@ -52,6 +52,7 @@ namespace SpaceProject
                 bullet.Position = player.Position;
                 bullet.Direction = MathFunctions.DirFromRadians(dir);
                 bullet.Initialize();
+                bullet.Damage = damage;
 
                 Game.stateManager.shooterState.gameObjects.Add(bullet);
             }

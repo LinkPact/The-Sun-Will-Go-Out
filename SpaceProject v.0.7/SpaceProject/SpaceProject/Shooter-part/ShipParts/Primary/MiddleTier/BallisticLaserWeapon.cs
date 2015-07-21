@@ -25,7 +25,7 @@ namespace SpaceProject
         {
             Name = "Ballistic Laser";
             Kind = "Primary";
-            energyCostPerSecond = 10f;
+            energyCostPerSecond = 9f;
             delay = 1100;
             Weight = 200;
             ActivatedSoundID = SoundEffects.BigLaser;
