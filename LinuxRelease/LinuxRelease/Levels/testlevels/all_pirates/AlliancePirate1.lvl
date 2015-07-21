@@ -1,0 +1,39 @@
+Header :duration 30:width 600:durGridWidth 3:levelObjective Finish|X0:
+Point
+T: 0:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 0,9:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 1,8:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 2,6:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 3,5:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 4,4:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 5,3:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 6,2:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 7,1:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 7,9:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 8,8:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 9,7:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 10,6:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 11,5:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 12,4:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 13,2:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 14,1:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 15:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 15,9:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 16,8:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 17,6:E: 0nn0 0nn0 dnn0 0nn0 0nn0 0nn0 dnn0 0nn0 0nn0 0nn0 dnn0:end
+T: 18,5:E: 0nn0 dnn0 0nn0 dnn0 0nn0 0nn0 0nn0 0nn0 dnn0 0nn0 0nn0:end
+T: 19,4:E: 0nn0 0nn0 0nn0 0nn0 0nn0 nnn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 20,3:E: 0nn0 0nn0 0nn0 nnn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 21,2:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 nnn0 0nn0 0nn0:end
+T: 22,1:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 22,9:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 23,8:E: 0nn0 nnn0 0nn0 0nn0 0nn0 0nn0 0nn0 nnn0 0nn0 0nn0 0nn0:end
+T: 24,7:E: 0nn0 0nn0 0nn0 nnn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 25,6:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 26,5:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 nnn0 0nn0:end
+T: 27,4:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 28,2:E: 0nn0 0nn0 0nn0 knn0 0nn0 jnn0 0nn0 knn0 0nn0 0nn0 0nn0:end
+T: 29,1:E: 0nn0 0nn0 inn0 0nn0 0nn0 0nn0 0nn0 0nn0 inn0 0nn0 0nn0:end
+Duration
+C:0,1 0,17:E: CnnED20
+C:1,11 1,33:E: SnnED10

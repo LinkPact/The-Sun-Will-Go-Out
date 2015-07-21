@@ -19,3 +19,20 @@ NOTIS: Musiken fungerar inte när man bygger till Linux. Kan krascha om OpenAL in
 7. Importera OpenTK.dll.config och tao.sdl.dll.config och sätt Build Action toll "Content" och Copy if newer
 
 8. Bygg genom att ändra till Release i Configuration Manager och tryck build.
+
+9. Ta bort referenser till Visual Basic. Se till att Data-filerna och Levels-filerna har "Copy Always".
+
+10. Lägg in följande funktion i Game1.cs, och gör ett anrop efter "apply changes":
+
+private void CenterScreenWindow()
+        {
+            if (!graphics.IsFullScreen)
+            {
+                Window.Position = new Point((GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width - (int)Resolution.X) / 2,
+                        (GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height - (int)Resolution.Y) / 2);
+            }
+        }
+
+Detta ser till att spelet startar centrerat.
+
+11. Uppdatera så projektet inte använder Game.Window.ClientBounds för höjd och bredd.
