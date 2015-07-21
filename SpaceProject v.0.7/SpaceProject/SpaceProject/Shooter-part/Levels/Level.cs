@@ -252,8 +252,8 @@ namespace SpaceProject
             Game.stateManager.shooterState.gameObjects.Clear();
             CreatePlayer();
 
-            WindowWidth = Game.Window.ClientBounds.Width;
-            WindowHeight = Game.Window.ClientBounds.Height;
+            WindowWidth = Game1.ScreenSize.X;
+            WindowHeight = Game1.ScreenSize.Y;
 
             isLevelGivenUp = false;
 
@@ -451,17 +451,17 @@ namespace SpaceProject
 
             }
             
-            if (Game.Window.ClientBounds.Height > 600)
+            if (Game1.ScreenSize.Y > 600)
             {
                
-                spriteBatch.Draw( border.Texture, new Vector2((Game.Window.ClientBounds.Width - LevelWidth) / 2,
+                spriteBatch.Draw( border.Texture, new Vector2((Game1.ScreenSize.X - LevelWidth) / 2,
                                                              (float)(WindowHeight - Game.DefaultResolution.Y) / 2),
                     new Rectangle(0, 0, 1, 2), Color.DarkOrange, 0.0f, new Vector2(0, 0), new Vector2(LevelWidth + 1, 1),
                     SpriteEffects.None, 0.8f);
                 
                 spriteBatch.Draw(
                     border.Texture,
-                    new Vector2((float)(Game.Window.ClientBounds.Width - LevelWidth) / 2, WindowHeight - (float)(WindowHeight - Game.DefaultResolution.Y) / 2),
+                    new Vector2((float)(Game1.ScreenSize.X - LevelWidth) / 2, WindowHeight - (float)(WindowHeight - Game.DefaultResolution.Y) / 2),
                     new Rectangle(0, 0, 1, 2),
                     Color.DarkOrange,
                     0.0f,
@@ -477,8 +477,8 @@ namespace SpaceProject
             if(IsObjectiveCompleted)
             {
                 spriteBatch.DrawString(font1, "Level Completed!\n\n" + EndText,
-                                       new Vector2(Game.Window.ClientBounds.Width / 2,
-                                                   Game.Window.ClientBounds.Height / 2) + Game.fontManager.FontOffset,
+                                       new Vector2(Game1.ScreenSize.X / 2,
+                                                   Game1.ScreenSize.Y / 2) + Game.fontManager.FontOffset,
                                        Game.fontManager.FontColor,
                                        0f,
                                        font1.MeasureString("Level Completed!\n\n" + EndText) / 2,
@@ -499,8 +499,8 @@ namespace SpaceProject
                 }
 
                 spriteBatch.DrawString(font1, failText,
-                                       new Vector2(Game.Window.ClientBounds.Width / 2,
-                                                   Game.Window.ClientBounds.Height / 2) + Game.fontManager.FontOffset,
+                                       new Vector2(Game1.ScreenSize.X / 2,
+                                                   Game1.ScreenSize.Y / 2) + Game.fontManager.FontOffset,
                                        Game.fontManager.FontColor,
                                        0f,
                                        font1.MeasureString(failText) / 2,

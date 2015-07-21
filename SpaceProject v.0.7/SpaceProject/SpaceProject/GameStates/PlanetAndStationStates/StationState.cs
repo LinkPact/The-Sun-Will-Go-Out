@@ -61,8 +61,8 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            stationTexturePosition = new Vector2(Game.Window.ClientBounds.Width / 2,
-                                         Game.Window.ClientBounds.Height / 4);    
+            stationTexturePosition = new Vector2(Game1.ScreenSize.X / 2,
+                                         Game1.ScreenSize.Y / 4);    
 
             subStateManager = new StationStateManager(this.Game);
             subStateManager.Initialize();
@@ -94,7 +94,7 @@ namespace SpaceProject
 
         private float ScaleStation(float diameter, float planetScale)
         {
-            float preferredSize = Game.Window.ClientBounds.Width / 5f;
+            float preferredSize = Game1.ScreenSize.X / 5f;
             float maxScale = 2f;
             float scale = planetScale;
 

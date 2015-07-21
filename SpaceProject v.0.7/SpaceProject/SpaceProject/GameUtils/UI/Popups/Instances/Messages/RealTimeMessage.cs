@@ -30,7 +30,7 @@ namespace SpaceProject
         public override void Update(GameTime gameTime)
         {
             canvasPosition = new Vector2(game.camera.cameraPos.X,
-                             game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 4);
+                             game.camera.cameraPos.Y + Game1.ScreenSize.Y / 4);
 
             if (Game1.Paused
                 || ZoomMap.MapState != MapState.Off)
@@ -78,7 +78,7 @@ namespace SpaceProject
         protected override void InitializePositions()
         {
             canvasPosition = new Vector2(game.camera.cameraPos.X,
-                             game.camera.cameraPos.Y + game.Window.ClientBounds.Height / 4);
+                             game.camera.cameraPos.Y + Game1.ScreenSize.Y / 4);
         }
 
         protected override void Hide()

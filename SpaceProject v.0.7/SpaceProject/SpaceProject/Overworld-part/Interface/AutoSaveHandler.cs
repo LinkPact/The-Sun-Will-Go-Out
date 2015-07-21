@@ -38,7 +38,7 @@ namespace SpaceProject
         {
             font = FontManager.GetFontStatic(14);
             textSize = font.MeasureString(AutoSaveMessage);
-            windowSize = new Vector2(game.Window.ClientBounds.Width, game.Window.ClientBounds.Height);
+            windowSize = new Vector2(Game1.ScreenSize.X, Game1.ScreenSize.Y);
         }
 
         public void Update(GameTime gameTime)

@@ -71,7 +71,7 @@ namespace SpaceProject
             newGameButton = new MenuDisplayObject(this.Game,
                                                   buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                                                   buttonSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                                                  new Vector2(Game.Window.ClientBounds.Width / 2, Game.Window.ClientBounds.Height / 3),
+                                                  new Vector2(Game1.ScreenSize.X / 2, Game1.ScreenSize.Y / 3),
                                                   new Vector2(buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                                                   buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             newGameButton.name = "New Game";
@@ -81,8 +81,8 @@ namespace SpaceProject
             casualNewGameButton = new MenuDisplayObject(this.Game,
                                                   buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                                                   buttonSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                                                  new Vector2(Game.Window.ClientBounds.Width / 2,
-                                                      Game.Window.ClientBounds.Height / 3 + 80),
+                                                  new Vector2(Game1.ScreenSize.X / 2,
+                                                      Game1.ScreenSize.Y / 3 + 80),
                                                   new Vector2(buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                                                   buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
 
@@ -93,8 +93,8 @@ namespace SpaceProject
             optionsButton = new MenuDisplayObject(this.Game,
                                                   buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                                                   buttonSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                                                  new Vector2(Game.Window.ClientBounds.Width / 2,
-                                                      Game.Window.ClientBounds.Height / 3 + 160),
+                                                  new Vector2(Game1.ScreenSize.X / 2,
+                                                      Game1.ScreenSize.Y / 3 + 160),
                                                   new Vector2(buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                                                   buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
 
@@ -105,8 +105,8 @@ namespace SpaceProject
             mapCreatorButton = new MenuDisplayObject(this.Game,
                                       buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                                       buttonSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                                      new Vector2(Game.Window.ClientBounds.Width / 2,
-                                          Game.Window.ClientBounds.Height / 3 + 240),
+                                      new Vector2(Game1.ScreenSize.X / 2,
+                                          Game1.ScreenSize.Y / 3 + 240),
                                       new Vector2(buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                                       buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
 
@@ -118,8 +118,8 @@ namespace SpaceProject
             exitGameButton = new MenuDisplayObject(this.Game,
                                                   buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                                                   buttonSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                                                  new Vector2(Game.Window.ClientBounds.Width / 2,
-                                                      Game.Window.ClientBounds.Height / 3 + 320),
+                                                  new Vector2(Game1.ScreenSize.X / 2,
+                                                      Game1.ScreenSize.Y / 3 + 320),
                                                   new Vector2(buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                                                   buttonSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
 
@@ -336,15 +336,15 @@ namespace SpaceProject
                              Color.White,
                              0.0f,
                              Vector2.Zero,
-                             new Vector2(Game.Window.ClientBounds.Width / Game.DefaultResolution.X,
-                                         Game.Window.ClientBounds.Height / Game.DefaultResolution.Y),
+                             new Vector2(Game1.ScreenSize.X / Game.DefaultResolution.X,
+                                         Game1.ScreenSize.Y / Game.DefaultResolution.Y),
                              SpriteEffects.None,
                              0.1f);
 
             if (Game.menuBGController.DisplayButtons)
             {
-                spriteBatch.DrawString(fontHeading, "The sun will go out", new Vector2(Game.Window.ClientBounds.Width / 2,
-                    Game.Window.ClientBounds.Height / 5) + Game.fontManager.FontOffset,
+                spriteBatch.DrawString(fontHeading, "The sun will go out", new Vector2(Game1.ScreenSize.X / 2,
+                    Game1.ScreenSize.Y / 5) + Game.fontManager.FontOffset,
                     Game.fontManager.FontColor, 0f, fontHeading.MeasureString("The sun will go out") / 2,
                     1f, SpriteEffects.None, 1f);
 
@@ -353,8 +353,8 @@ namespace SpaceProject
                     Game.fontManager.FontColor, 0f, Vector2.Zero,
                     1f, SpriteEffects.None, 1f);
 
-                spriteBatch.DrawString(fontButtons, "www.LinkPact.com", new Vector2(Game.Window.ClientBounds.Width / 2,
-                    Game.Window.ClientBounds.Height - 25) + Game.fontManager.FontOffset,
+                spriteBatch.DrawString(fontButtons, "www.LinkPact.com", new Vector2(Game1.ScreenSize.X / 2,
+                    Game1.ScreenSize.Y - 25) + Game.fontManager.FontOffset,
                     Game.fontManager.FontColor, 0f, fontButtons.MeasureString("www.LinkPact.com") / 2,
                     1f, SpriteEffects.None, 1f);
 

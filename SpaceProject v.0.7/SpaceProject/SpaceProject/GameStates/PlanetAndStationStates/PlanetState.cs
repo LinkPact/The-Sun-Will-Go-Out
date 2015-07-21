@@ -48,8 +48,8 @@ namespace SpaceProject
         {
             base.Initialize();
 
-            planetTexturePosition = new Vector2(Game.Window.ClientBounds.Width / 2,
-                                         Game.Window.ClientBounds.Height / 4);
+            planetTexturePosition = new Vector2(Game1.ScreenSize.X / 2,
+                                         Game1.ScreenSize.Y / 4);
 
             subStateManager = new PlanetStateManager(this.Game);
             subStateManager.Initialize();
@@ -81,7 +81,7 @@ namespace SpaceProject
 
         private float ScalePlanet(float diameter, float planetScale)
         {
-            float preferredSize = Game.Window.ClientBounds.Width / 5f;
+            float preferredSize = Game1.ScreenSize.X / 5f;
             float scale = planetScale;
 
             while ((diameter * scale) > preferredSize)

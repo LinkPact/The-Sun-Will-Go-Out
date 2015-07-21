@@ -23,13 +23,13 @@ namespace SpaceProject
             {
                 if (BaseState.OverlayType == OverlayType.Response) 
                 {
-                    return new Vector2(Game.Window.ClientBounds.Width / 2 - ResponseOverlaySize.X / 2,
-                        Game.Window.ClientBounds.Height / 2 - ResponseOverlaySize.Y / 2) + PortraitOffset;
+                    return new Vector2(Game1.ScreenSize.X / 2 - ResponseOverlaySize.X / 2,
+                        Game1.ScreenSize.Y / 2 - ResponseOverlaySize.Y / 2) + PortraitOffset;
                 }
                 else
                 {
-                    return new Vector2(Game.Window.ClientBounds.Width / 2 - PortraitOverlaySize.X / 2,
-                        Game.Window.ClientBounds.Height / 2 - PortraitOverlaySize.Y / 2) + PortraitOffset;
+                    return new Vector2(Game1.ScreenSize.X / 2 - PortraitOverlaySize.X / 2,
+                        Game1.ScreenSize.Y / 2 - PortraitOverlaySize.Y / 2) + PortraitOffset;
                 }
             }
         }
@@ -128,8 +128,8 @@ namespace SpaceProject
                     String text = i != availableMissions.Count ? availableMissions[i].MissionName : "Back";
 
                     if (ControlManager.IsMouseOverText(FontManager.GetFontStatic(14), text,
-                        new Vector2(Game.Window.ClientBounds.Width / 2,
-                            Game.Window.ClientBounds.Height / 2 - 40 + (20 * (i + (i == availableMissions.Count ? 1 : 0))) 
+                        new Vector2(Game1.ScreenSize.X / 2,
+                            Game1.ScreenSize.Y / 2 - 40 + (20 * (i + (i == availableMissions.Count ? 1 : 0))) 
                             + FindTextBoxWithText(text).TextBoxRect.Height)))
                     {
                         missionCursorIndex = i;
@@ -441,7 +441,7 @@ namespace SpaceProject
                                                               true, false,
                                                               TextUtils.WordWrap(BaseState.Game.fontManager.GetFont(14),
                                                                                  MissionManager.MissionResponseBuffer[i],
-                                                                                 Game.Window.ClientBounds.Width * 2 / 3)
+                                                                                 Game1.ScreenSize.X * 2 / 3)
                                                               ));
 
                     }
@@ -561,9 +561,9 @@ namespace SpaceProject
 
             BaseState.DisplayOverlay(OverlayType.MissionSelection);
             BaseStateManager.TextBoxes.Clear();
-            BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16), new Rectangle((Game.Window.ClientBounds.Width / 2),
-                              (Game.Window.ClientBounds.Height / 2) - (int)SelectionOverlaySize.Y / 2 + 20,
-                               Game.Window.ClientBounds.Width - 20, 10),
+            BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16), new Rectangle((Game1.ScreenSize.X / 2),
+                              (Game1.ScreenSize.Y / 2) - (int)SelectionOverlaySize.Y / 2 + 20,
+                               Game1.ScreenSize.X - 20, 10),
                                true, false, "Available Missions:" + "\n\n"));
 
             if (availableMissions.Count > 0)
@@ -571,9 +571,9 @@ namespace SpaceProject
                 for (int i = 0; i < availableMissions.Count; i++)
                 {
                     BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
-                              new Rectangle((Game.Window.ClientBounds.Width / 2),
-                                           Game.Window.ClientBounds.Height / 2 - 40 + 20 * availableMissions.IndexOf(availableMissions[i]) + 1,
-                                           Game.Window.ClientBounds.Width - 20,
+                              new Rectangle((Game1.ScreenSize.X / 2),
+                                           Game1.ScreenSize.Y / 2 - 40 + 20 * availableMissions.IndexOf(availableMissions[i]) + 1,
+                                           Game1.ScreenSize.X - 20,
                               10),
                               true, false,
                               availableMissions[i].MissionName));
@@ -584,9 +584,9 @@ namespace SpaceProject
 
             else
             {
-                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16), new Rectangle((Game.Window.ClientBounds.Width / 2),
-                        ((Game.Window.ClientBounds.Height / 2) - 40),
-                        Game.Window.ClientBounds.Width - 20,
+                BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16), new Rectangle((Game1.ScreenSize.X / 2),
+                        ((Game1.ScreenSize.Y / 2) - 40),
+                        Game1.ScreenSize.X - 20,
                         10),
                         true, false,
                         "<None>"));
@@ -595,9 +595,9 @@ namespace SpaceProject
             }
 
             BaseStateManager.TextBoxes.Add(TextUtils.CreateTextBox(Game.fontManager.GetFont(16),
-                    new Rectangle((Game.Window.ClientBounds.Width / 2),
-                                 ((Game.Window.ClientBounds.Height / 2) - 40) + 20 * (selectionCount + 1),
-                                   Game.Window.ClientBounds.Width / 2, 10),
+                    new Rectangle((Game1.ScreenSize.X / 2),
+                                 ((Game1.ScreenSize.Y / 2) - 40) + 20 * (selectionCount + 1),
+                                   Game1.ScreenSize.X / 2, 10),
                     true, false,
                     "Back"));
         }

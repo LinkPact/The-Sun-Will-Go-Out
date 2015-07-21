@@ -151,8 +151,8 @@ namespace SpaceProject
             DrawLayer = 0.5f;
             
             BoundingSpace = 0;
-            windowWidth = Game.Window.ClientBounds.Width;
-            windowHeight = Game.Window.ClientBounds.Height;
+            windowWidth = Game1.ScreenSize.X;
+            windowHeight = Game1.ScreenSize.Y;
             SetLevelWidth(800);
 
             ObjectClass = null;

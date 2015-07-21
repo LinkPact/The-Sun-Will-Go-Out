@@ -39,8 +39,8 @@ namespace SpaceProject
             cameraZoom = initialCameraZoom;
             cameraRotation = 0.0f;
             cameraPos = Game.player.position;
-            viewportWidth = Game.Window.ClientBounds.Width;
-            viewportHeight = Game.Window.ClientBounds.Height;
+            viewportWidth = Game1.ScreenSize.X;
+            viewportHeight = Game1.ScreenSize.Y;
             WorldWidth = worldWidth2;
             WorldHeight = worldHeight2;
 
@@ -145,8 +145,8 @@ namespace SpaceProject
             }
 
             if (ZoomMap.MapState != MapState.On
-                && ((cameraPos.X - (Game.Window.ClientBounds.Width / 2) >= 0 && (cameraPos.X + Game.Window.ClientBounds.Width / 2) <= WorldWidth)
-                   || (cameraPos.Y - (Game.Window.ClientBounds.Height / 2) >= 0 && cameraPos.Y + (Game.Window.ClientBounds.Height / 2) <= WorldHeight)))
+                && ((cameraPos.X - (Game1.ScreenSize.X / 2) >= 0 && (cameraPos.X + Game1.ScreenSize.X / 2) <= WorldWidth)
+                   || (cameraPos.Y - (Game1.ScreenSize.Y / 2) >= 0 && cameraPos.Y + (Game1.ScreenSize.Y / 2) <= WorldHeight)))
             {
                 Position = player.position;
             }

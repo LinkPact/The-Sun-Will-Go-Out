@@ -40,7 +40,7 @@ namespace SpaceProject
 
         public void Initialize()
         {
-            edgePadding = Game.Window.ClientBounds.Width / 16;
+            edgePadding = Game1.ScreenSize.X / 16;
 
             int spacing = 75;
             float totalButtonHeight = spacing * 3;

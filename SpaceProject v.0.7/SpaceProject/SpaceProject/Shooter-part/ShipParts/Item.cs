@@ -50,8 +50,8 @@ namespace SpaceProject
 
         public void DisplayInventoryInfo(SpriteBatch spriteBatch, SpriteFont font, Color textColor)
         {
-            Vector2 position = new Vector2(54, Game.Window.ClientBounds.Height / 2 + 52);
-            DisplayInfo(spriteBatch, font, position, textColor, Game.Window.ClientBounds.Width / 2 - 100);
+            Vector2 position = new Vector2(54, Game1.ScreenSize.Y / 2 + 52);
+            DisplayInfo(spriteBatch, font, position, textColor, Game1.ScreenSize.X / 2 - 100);
         }
 
         public void DisplayInfo(SpriteBatch spriteBatch, SpriteFont font,

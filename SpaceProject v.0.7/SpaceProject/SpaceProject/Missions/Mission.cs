@@ -368,7 +368,7 @@ namespace SpaceProject
 
             spriteBatch.DrawString(font,
                                    MissionName,
-                                   new Vector2(Game.Window.ClientBounds.Width / 4, 50) + Game.fontManager.FontOffset,
+                                   new Vector2(Game1.ScreenSize.X / 4, 50) + Game.fontManager.FontOffset,
                                    Game.fontManager.FontColor,
                                    0,
                                    font.MeasureString(MissionName) / 2,
@@ -386,7 +386,7 @@ namespace SpaceProject
                 tempString = "[Failed] ";
 
             spriteBatch.DrawString(font,
-                                   TextUtils.WordWrap(font, (tempString + CurrentObjectiveDescription), (Game.Window.ClientBounds.Width / 2) - 60),
+                                   TextUtils.WordWrap(font, (tempString + CurrentObjectiveDescription), (Game1.ScreenSize.X / 2) - 60),
                                    new Vector2(30, 80) + Game.fontManager.FontOffset,
                                    Game.fontManager.FontColor,
                                    0,

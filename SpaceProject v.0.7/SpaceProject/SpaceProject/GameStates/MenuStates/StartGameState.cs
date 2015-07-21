@@ -38,7 +38,7 @@ namespace SpaceProject
 
         public override void Initialize()
         {
-            buttonYPosition = Game.Window.ClientBounds.Height / 5;
+            buttonYPosition = Game1.ScreenSize.Y / 5;
 
             buttonsSprite = new Sprite(Game.Content.Load<Texture2D>("Overworld-Sprites/buttons"), null);
             buttonsFont = Game.fontManager.GetFont(16);
@@ -48,7 +48,7 @@ namespace SpaceProject
             //devButton = new MenuDisplayObject(Game,
             //        buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
             //        buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-            //        new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition),
+            //        new Vector2(Game1.ScreenSize.X / 4, buttonYPosition),
             //        new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
             //                buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             //devButton.name = "Develop";
@@ -56,7 +56,7 @@ namespace SpaceProject
             easyButton = new MenuDisplayObject(Game,
                     buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                     buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                    new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition + BUTTON_Y_DISTANCE),
+                    new Vector2(Game1.ScreenSize.X / 4, buttonYPosition + BUTTON_Y_DISTANCE),
                     new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                             buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             easyButton.name = "Easy";
@@ -64,7 +64,7 @@ namespace SpaceProject
             normalButton = new MenuDisplayObject(Game,
                     buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                     buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                    new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition + BUTTON_Y_DISTANCE * 2),
+                    new Vector2(Game1.ScreenSize.X / 4, buttonYPosition + BUTTON_Y_DISTANCE * 2),
                     new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                             buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             normalButton.name = "Normal";
@@ -72,7 +72,7 @@ namespace SpaceProject
             hardButton = new MenuDisplayObject(Game,
                     buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                     buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                    new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition + BUTTON_Y_DISTANCE * 3),
+                    new Vector2(Game1.ScreenSize.X / 4, buttonYPosition + BUTTON_Y_DISTANCE * 3),
                     new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                         buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             hardButton.name = "Hard";
@@ -80,7 +80,7 @@ namespace SpaceProject
             //hardCoreButton = new MenuDisplayObject(Game,
             //        buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
             //        buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-            //        new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition + BUTTON_Y_DISTANCE * 4),
+            //        new Vector2(Game1.ScreenSize.X / 4, buttonYPosition + BUTTON_Y_DISTANCE * 4),
             //        new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
             //                buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             //hardCoreButton.name = "Hardcore";
@@ -88,7 +88,7 @@ namespace SpaceProject
             backButton = new MenuDisplayObject(Game,
                     buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)),
                     buttonsSprite.GetSubSprite(new Rectangle(0, 65, 256, 65)),
-                    new Vector2(Game.Window.ClientBounds.Width / 4, buttonYPosition + BUTTON_Y_DISTANCE * 4),
+                    new Vector2(Game1.ScreenSize.X / 4, buttonYPosition + BUTTON_Y_DISTANCE * 4),
                     new Vector2(buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Width / 2,
                             buttonsSprite.GetSubSprite(new Rectangle(0, 0, 256, 65)).Height / 2));
             backButton.name = "Back";
@@ -333,17 +333,17 @@ namespace SpaceProject
                  Color.White,
                  0.0f,
                  Vector2.Zero,
-                 new Vector2(Game.Window.ClientBounds.Width / Game.DefaultResolution.X,
-                             Game.Window.ClientBounds.Height / Game.DefaultResolution.Y),
+                 new Vector2(Game1.ScreenSize.X / Game.DefaultResolution.X,
+                             Game1.ScreenSize.Y / Game.DefaultResolution.Y),
                  SpriteEffects.None,
                  0.5f);
 
             if (Game.menuBGController.DisplayButtons)
             {
                 spriteBatch.Draw(contrastBackDropSprite.Texture,
-                    new Vector2(Game.Window.ClientBounds.Width / 2 - 60, Game.Window.ClientBounds.Height / 2 - 85),
+                    new Vector2(Game1.ScreenSize.X / 2 - 60, Game1.ScreenSize.Y / 2 - 85),
                     contrastBackDropSprite.SourceRectangle, Color.Black, 0.0f, Vector2.Zero,
-                    new Vector2(Game.Window.ClientBounds.Width / 2 + xOffset - 10, 75),
+                    new Vector2(Game1.ScreenSize.X / 2 + xOffset - 10, 75),
                     SpriteEffects.None, 0.8f);
 
                 foreach (MenuDisplayObject button in buttons)
@@ -364,7 +364,7 @@ namespace SpaceProject
             if (Game.menuBGController.DisplayButtons && buttonIndex < descriptions.Count)
             {
                 spriteBatch.DrawString(Game.fontManager.GetFont(14), descriptions[buttonIndex],
-                    new Vector2(Game.Window.ClientBounds.Width / 2 + xOffset, Game.Window.ClientBounds.Height / 2 + yOffset),
+                    new Vector2(Game1.ScreenSize.X / 2 + xOffset, Game1.ScreenSize.Y / 2 + yOffset),
                     Color.White, 0f,
                     new Vector2(0, ((buttonsFont.MeasureString(descriptions[buttonIndex])).Y) / 2),
                     1f, SpriteEffects.None, 1f);

@@ -23,8 +23,8 @@ namespace SpaceProject
             int yOffset = 10;
 
             spriteFont = Game.fontManager.GetFont(14);
-            textBoxLeft = TextUtils.CreateTextBox(spriteFont, new Rectangle(xOffset, yOffset, Game.Window.ClientBounds.Width / 2,
-                                        Game.Window.ClientBounds.Height - 20), false, false,
+            textBoxLeft = TextUtils.CreateTextBox(spriteFont, new Rectangle(xOffset, yOffset, Game1.ScreenSize.X / 2,
+                                        Game1.ScreenSize.Y - 20), false, false,
                                         "Design and development:\nDaniel Alm Grundstrom\nJakob Willforss\nJohan Philipsson\n\n"+
                                         "Visuals:\nDaniel Alm Grundstrom\n\n" +
                                         "Music:\nJakob Willforss\nDaniel Alm Grundstrom\n\n" +
@@ -32,8 +32,8 @@ namespace SpaceProject
                                         "Portraits:\nJosefin Voigt (many thanks!)\n\n" +
                                         "Testers:\nDaniel Willforss\nRasmus Grundstrom\nJohannes E.\nErik\nEmilia\nEllen\nSandra\nVidmantas\n");
             
-            textBoxRight = TextUtils.CreateTextBox(spriteFont, new Rectangle(Game.Window.ClientBounds.Width / 2 + xOffset, yOffset, Game.Window.ClientBounds.Width / 2,
-                                        Game.Window.ClientBounds.Height - 20), false, false,
+            textBoxRight = TextUtils.CreateTextBox(spriteFont, new Rectangle(Game1.ScreenSize.X / 2 + xOffset, yOffset, Game1.ScreenSize.X / 2,
+                                        Game1.ScreenSize.Y - 20), false, false,
                                         "Fonts:\n- 'Iceland' by Cyreal (SIL Open Font License) Downloaded from Google Fonts\n- 'ISL Jupiter' by Isurus Labs (Public domain) Downloaded from dafont.com\n\n" +
                                         "Space sounds:\n- 'Space Music Ambient' by evanjones4 (Creative Commons 0 Licence) Downloaded from FreeSound.org\n\n" +
                                         "Sound effects:\n- 'menu click' by fins (Creative Commons 0 Licence) Downloaded from FreeSound.org\n- 'Hover 2' by plasterbrain " +
@@ -71,8 +71,8 @@ namespace SpaceProject
                              Color.White,
                              0.0f,
                              Vector2.Zero,
-                             new Vector2(Game.Window.ClientBounds.Width / Game.DefaultResolution.X,
-                                         Game.Window.ClientBounds.Height / Game.DefaultResolution.Y),
+                             new Vector2(Game1.ScreenSize.X / Game.DefaultResolution.X,
+                                         Game1.ScreenSize.Y / Game.DefaultResolution.Y),
                              SpriteEffects.None,
                              0.5f);
 

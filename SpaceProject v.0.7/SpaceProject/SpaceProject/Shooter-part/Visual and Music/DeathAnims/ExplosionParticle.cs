@@ -73,8 +73,8 @@ namespace SpaceProject
             startingDirection = startingDir;
             this.startingSpeed = startingSpeed;
 
-            leftRemovalPos = (game.Window.ClientBounds.Width - game.stateManager.shooterState.CurrentLevel.LevelWidth) / 2 - 50;
-            rightRemovalPos = (game.Window.ClientBounds.Width - game.stateManager.shooterState.CurrentLevel.LevelWidth) / 2 + game.stateManager.shooterState.CurrentLevel.LevelWidth + 50;
+            leftRemovalPos = (Game1.ScreenSize.X - game.stateManager.shooterState.CurrentLevel.LevelWidth) / 2 - 50;
+            rightRemovalPos = (Game1.ScreenSize.X - game.stateManager.shooterState.CurrentLevel.LevelWidth) / 2 + game.stateManager.shooterState.CurrentLevel.LevelWidth + 50;
 
         }
 
@@ -97,8 +97,8 @@ namespace SpaceProject
                 lifeTime = 0;
             }
 
-            else if (position.Y < (game.Window.ClientBounds.Height - 600) / 2 ||
-                position.Y > (game.Window.ClientBounds.Height - 600) / 2 + 600)
+            else if (position.Y < (Game1.ScreenSize.Y - 600) / 2 ||
+                position.Y > (Game1.ScreenSize.Y - 600) / 2 + 600)
             {
                 lifeTime = 0;
             }

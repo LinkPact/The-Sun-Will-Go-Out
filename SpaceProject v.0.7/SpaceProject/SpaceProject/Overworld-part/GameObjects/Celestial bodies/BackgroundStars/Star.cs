@@ -35,16 +35,16 @@ namespace SpaceProject
             if (Game.camera != null)
             {
                 //Initialize star at a random position relative to camera position.
-                position = new Vector2((float)Game.random.Next(((int)Game.camera.cameraPos.X - Game.Window.ClientBounds.Width / 2),
-                (int)(Game.camera.cameraPos.X) + (Game.Window.ClientBounds.Width) / 2), (float)Game.random.Next((int)Game.camera.cameraPos.Y
-                - (Game.Window.ClientBounds.Height) / 2, (int)(Game.camera.cameraPos.Y + (Game.Window.ClientBounds.Height / 2))));
+                position = new Vector2((float)Game.random.Next(((int)Game.camera.cameraPos.X - Game1.ScreenSize.X / 2),
+                (int)(Game.camera.cameraPos.X) + (Game1.ScreenSize.X) / 2), (float)Game.random.Next((int)Game.camera.cameraPos.Y
+                - (Game1.ScreenSize.Y) / 2, (int)(Game.camera.cameraPos.Y + (Game1.ScreenSize.Y / 2))));
             }
 
             else
             {
                 //Initialize star at a random position relative to window position.
                 position = new Vector2((float)Game.random.Next(0,
-                Game.Window.ClientBounds.Width), (float)Game.random.Next(0, Game.Window.ClientBounds.Height));
+                Game1.ScreenSize.X), (float)Game.random.Next(0, Game1.ScreenSize.Y));
             }
 
             sprite = spriteSheet.GetSubSprite(new Rectangle(4, 4, 2, 2));

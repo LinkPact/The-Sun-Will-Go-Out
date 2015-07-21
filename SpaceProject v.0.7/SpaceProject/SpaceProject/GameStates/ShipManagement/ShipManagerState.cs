@@ -77,13 +77,13 @@ namespace SpaceProject
             ship = spriteSheet.GetSubSprite(new Rectangle(0, 771, 212, 185));
 
             upperLeftRectangle = new Rectangle(0, 0,
-                (int)Game.Window.ClientBounds.Width / 2, (int)Game.Window.ClientBounds.Height / 2);
+                (int)Game1.ScreenSize.X / 2, (int)Game1.ScreenSize.Y / 2);
 
             lowerLeftRectangle = new Rectangle(0, upperLeftRectangle.Height,
                 upperLeftRectangle.Width, upperLeftRectangle.Height);
 
             rightRectangle = new Rectangle(lowerLeftRectangle.Width, 0,
-                lowerLeftRectangle.Width, (int)(Game.Window.ClientBounds.Height));
+                lowerLeftRectangle.Width, (int)(Game1.ScreenSize.Y));
 
             //Managers for cursor and text.
             cursorManager = new ShipManagerCursor(Game, spriteSheet);
@@ -344,12 +344,12 @@ namespace SpaceProject
             cursorManager.Draw(spriteBatch);
             fontManager.Draw(spriteBatch);
 
-            if (Game.Window.ClientBounds.Height.Equals(768))
+            if (Game1.ScreenSize.Y.Equals(768))
             {
                 itemComp.Draw(spriteBatch, new Vector2(34, 481), 15); 
             }
 
-            else if (Game.Window.ClientBounds.Height.Equals(720))
+            else if (Game1.ScreenSize.Y.Equals(720))
             {
                 itemComp.Draw(spriteBatch, new Vector2(34, 456), 15); 
             }
@@ -598,7 +598,7 @@ namespace SpaceProject
                 }
 
                 if (ControlManager.IsMouseOverText(FontManager.GetFontStatic(16), text,
-                    new Vector2(Game.Window.ClientBounds.Width / 2 + 50, 93 + i * 23), Vector2.Zero, false))
+                    new Vector2(Game1.ScreenSize.X / 2 + 50, 93 + i * 23), Vector2.Zero, false))
                 {
                     cursorLevel2Position = i;
 

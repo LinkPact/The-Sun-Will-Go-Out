@@ -150,7 +150,7 @@ namespace SpaceProject
                 }
                 else
                 {
-                    beamDrawing.UpdateLocation(gameTime, shooterPosition.X + xoffset, shooterPosition.Y, game.Window.ClientBounds.Height);
+                    beamDrawing.UpdateLocation(gameTime, shooterPosition.X + xoffset, shooterPosition.Y, Game1.ScreenSize.Y);
                 }
             }
         }

@@ -55,7 +55,7 @@ namespace SpaceProject
 
         public static bool Paused = false;
 
-        public Vector2 ScreenCenter { get { return new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2); } }
+        public Vector2 ScreenCenter { get { return new Vector2(Game1.ScreenSize.X / 2f, Game1.ScreenSize.Y / 2f); } }
 
         //Cursor
         private const int HOLD_KEY_TRESHOLD = 200;
@@ -82,6 +82,8 @@ namespace SpaceProject
         public Vector2 DefaultResolution { get { return new Vector2(800, 600); } }
 
         public bool GameStarted;
+
+        public static Point ScreenSize;
         #endregion
 
         public Game1()
@@ -103,6 +105,7 @@ namespace SpaceProject
 
             resolution = new Vector2(settingsFile.GetPropertyAsFloat("visual", "resolutionx", defaultResolution.X),
                                      settingsFile.GetPropertyAsFloat("visual", "resolutiony", defaultResolution.Y));
+            ScreenSize = new Point((int)resolution.X, (int)resolution.Y);
 
             random = new Random();
 
@@ -118,6 +121,8 @@ namespace SpaceProject
             //graphics.SynchronizeWithVerticalRetrace = false;
             
             graphics.ApplyChanges();
+
+            CenterScreenWindow();
 
             IsMouseVisible = settingsFile.GetPropertyAsBool("game options", "showmouse", true);
 
@@ -177,6 +182,17 @@ namespace SpaceProject
             ShopManager.SetShopUpdateTime(ShopManager.PRESET_SHOPTIME);
 
             base.Initialize();
+        }
+
+        private void CenterScreenWindow()
+        {
+#if LINUX
+            if (!graphics.IsFullScreen)
+            {
+                Window.Position = new Point((GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width - (int)Resolution.X) / 2,
+                        (GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height - (int)Resolution.Y) / 2);
+            }
+#endif
         }
 
         protected override void LoadContent()
@@ -317,7 +333,7 @@ namespace SpaceProject
                 else
                 {
                     spriteBatch.DrawString(fontManager.GetFont(14), "Fps: " + fps.ToString(),
-                        new Vector2(Window.ClientBounds.Width - fontManager.GetFont(14).MeasureString("Fps: " + fps.ToString()).X,
+                        new Vector2(Game1.ScreenSize.X - fontManager.GetFont(14).MeasureString("Fps: " + fps.ToString()).X,
                                     0) + fontManager.FontOffset,
                         fontManager.FontColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
                 }
@@ -366,6 +382,9 @@ namespace SpaceProject
             graphics.PreferredBackBufferWidth = (int)resolution.X;
             graphics.PreferredBackBufferHeight = (int)resolution.Y;
             graphics.ApplyChanges();
+
+            ScreenSize = new Point((int)resolution.X, (int)resolution.Y);
+            CenterScreenWindow();
 
             StaticFunctions.InitiateWindowValues(this);
 

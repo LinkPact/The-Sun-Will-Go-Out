@@ -87,11 +87,11 @@ namespace SpaceProject
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(backdrop, Vector2.Zero, null, Color.White, 0.0f, Vector2.Zero,
-                new Vector2(Game.Window.ClientBounds.Width / Game.DefaultResolution.X,
-                    Game.Window.ClientBounds.Height / Game.DefaultResolution.Y), SpriteEffects.None, 0.5f);
+                new Vector2(Game1.ScreenSize.X / Game.DefaultResolution.X,
+                    Game1.ScreenSize.Y / Game.DefaultResolution.Y), SpriteEffects.None, 0.5f);
 
-            spriteBatch.DrawString(spriteFont, introText, new Vector2(Game.Window.ClientBounds.Width / 2,
-                Game.Window.ClientBounds.Height / 2), Color.White, 0f, spriteFont.MeasureString(introText) / 2, 1f,
+            spriteBatch.DrawString(spriteFont, introText, new Vector2(Game1.ScreenSize.X / 2,
+                Game1.ScreenSize.Y / 2), Color.White, 0f, spriteFont.MeasureString(introText) / 2, 1f,
                 SpriteEffects.None, .5f);
 
             Game.helper.DisplayText("Press 'Enter' to skip");

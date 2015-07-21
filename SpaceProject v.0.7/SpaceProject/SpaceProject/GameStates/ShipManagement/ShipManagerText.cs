@@ -36,11 +36,11 @@ namespace SpaceProject
         {
             FontManager.FontColorStatic = Game.fontManager.FontColor;
 
-            topDisplayPos = new Vector2(Game.Window.ClientBounds.Width * 3/4, 30);
-            equippedDisplayPos = new Vector2(Game.Window.ClientBounds.Width / 2 + 30, 70);
+            topDisplayPos = new Vector2(Game1.ScreenSize.X * 3/4, 30);
+            equippedDisplayPos = new Vector2(Game1.ScreenSize.X / 2 + 30, 70);
 
-            equippedStartPos = new Vector2(Game.Window.ClientBounds.Width / 2 + 50, 93);
-            ownedStartPos = new Vector2(Game.Window.ClientBounds.Width / 2 + 30, 150);
+            equippedStartPos = new Vector2(Game1.ScreenSize.X / 2 + 50, 93);
+            ownedStartPos = new Vector2(Game1.ScreenSize.X / 2 + 30, 150);
         }
 
         public void Update(GameTime gameTime, int layer_, int layer1pos_, int layer3pos_)
@@ -60,7 +60,7 @@ namespace SpaceProject
             //Money
             spriteBatch.DrawString(FontManager.GetFontStatic(16),
                 "Money: " + (int)StatsManager.Crebits + " Crebits",
-                new Vector2(Game.Window.ClientBounds.Width / 2 + Game.Window.ClientBounds.Width / 4, Game.Window.ClientBounds.Height * 3 / 4 + 30) + FontManager.FontOffsetStatic,
+                new Vector2(Game1.ScreenSize.X / 2 + Game1.ScreenSize.X / 4, Game1.ScreenSize.Y * 3 / 4 + 30) + FontManager.FontOffsetStatic,
                 FontManager.FontColorStatic,
                 0f,
                 FontManager.GetFontStatic(16).MeasureString("Money: " + (int)StatsManager.Crebits + " Crebits") / 2,

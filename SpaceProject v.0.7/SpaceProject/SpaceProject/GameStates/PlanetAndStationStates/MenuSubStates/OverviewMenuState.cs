@@ -184,8 +184,8 @@ namespace SpaceProject
                                     SpriteSheet.GetSubSprite(tempRectPassive),
                                     SpriteSheet.GetSubSprite(tempRectActive),
                                     SpriteSheet.GetSubSprite(tempRectSelected),
-                                    new Vector2(Game.Window.ClientBounds.Width / 2,
-                                    (Game.Window.ClientBounds.Height / 2) + (Game.Window.ClientBounds.Height / 8) * multiplier),
+                                    new Vector2(Game1.ScreenSize.X / 2,
+                                    (Game1.ScreenSize.Y / 2) + (Game1.ScreenSize.Y / 8) * multiplier),
                                     new Vector2(tempRectActive.Value.Width / 2f, tempRectActive.Value.Height / 2f));
             button.name = name;
             button.isVisible = true;

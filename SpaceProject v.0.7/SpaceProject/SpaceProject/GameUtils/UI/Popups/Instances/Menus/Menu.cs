@@ -78,7 +78,7 @@ namespace SpaceProject
 
             if (!(this is SelectionMenu))
             {
-                canvasScale = new Vector2((float)game.Window.ClientBounds.Width / canvas.SourceRectangle.Value.Width, 1);
+                canvasScale = new Vector2((float)Game1.ScreenSize.X / canvas.SourceRectangle.Value.Width, 1);
                 canvasPosition = new Vector2(game.camera.cameraPos.X - game.ScreenCenter.X,
                     game.camera.cameraPos.Y - game.ScreenCenter.Y);
                 canvasOrigin = Vector2.Zero;
@@ -290,8 +290,8 @@ namespace SpaceProject
         {
             if (GameStateManager.currentState == "OverworldState")
             {
-                menuOptionOrigin = new Vector2(game.camera.cameraPos.X - game.Window.ClientBounds.Width / 2,
-                                  game.camera.cameraPos.Y - game.Window.ClientBounds.Height / 2 + 4);
+                menuOptionOrigin = new Vector2(game.camera.cameraPos.X - Game1.ScreenSize.X / 2,
+                                  game.camera.cameraPos.Y - Game1.ScreenSize.Y / 2 + 4);
                 screenPosition = game.camera.Position - game.ScreenCenter;
             }
             else

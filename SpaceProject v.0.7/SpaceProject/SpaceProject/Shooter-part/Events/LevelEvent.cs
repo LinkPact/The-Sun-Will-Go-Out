@@ -448,9 +448,9 @@ namespace SpaceProject
                     position.Y -= 150;
             }
 
-            if (Game.Window.ClientBounds.Height > 600)
+            if (Game1.ScreenSize.Y > 600)
             {
-                position.Y += (Game.Window.ClientBounds.Height - 600) / 2;
+                position.Y += (Game1.ScreenSize.Y - 600) / 2;
             }
 
             switch (flag)

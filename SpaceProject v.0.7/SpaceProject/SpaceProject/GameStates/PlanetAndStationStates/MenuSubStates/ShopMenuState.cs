@@ -98,30 +98,30 @@ namespace SpaceProject
             confirmOptions = new List<string>();
 
             shopBg = SpriteSheet.GetSubSprite(new Rectangle(0, 1208, 1080, 320));
-            itemInfoTextWidth = (int)(Game.Window.ClientBounds.Width / 4.2667f);
-            itemInfoPosition = new Vector2(Game.Window.ClientBounds.Width / 1.632f,
-                Game.Window.ClientBounds.Height / 2 + 55);
+            itemInfoTextWidth = (int)(Game1.ScreenSize.X / 4.2667f);
+            itemInfoPosition = new Vector2(Game1.ScreenSize.X / 1.632f,
+                Game1.ScreenSize.Y / 2 + 55);
 
-            invColumn1XPosition = Game.Window.ClientBounds.Width / 6.88f;
-            invColumn2XPosition = Game.Window.ClientBounds.Width / 3.39f;
-            shopColumnXPosition = Game.Window.ClientBounds.Width / 2.245f;
-            columnYPosition = Game.Window.ClientBounds.Height / 2 + 55;
+            invColumn1XPosition = Game1.ScreenSize.X / 6.88f;
+            invColumn2XPosition = Game1.ScreenSize.X / 3.39f;
+            shopColumnXPosition = Game1.ScreenSize.X / 2.245f;
+            columnYPosition = Game1.ScreenSize.Y / 2 + 55;
 
             line = SpriteSheet.GetSubSprite(new Rectangle(78, 268, 2, 2));
-            lineLength = Game.Window.ClientBounds.Height / 2.25f;
-            lineYPos = Game.Window.ClientBounds.Height / 1.895f;
-            line1XPos = Game.Window.ClientBounds.Width / 7.66f;
-            line2XPos = Game.Window.ClientBounds.Width / 2.322f;
-            line3XPos = Game.Window.ClientBounds.Width / 1.725f;
+            lineLength = Game1.ScreenSize.Y / 2.25f;
+            lineYPos = Game1.ScreenSize.Y / 1.895f;
+            line1XPos = Game1.ScreenSize.X / 7.66f;
+            line2XPos = Game1.ScreenSize.X / 2.322f;
+            line3XPos = Game1.ScreenSize.X / 1.725f;
 
-            inventoryStringPos = new Vector2(Game.Window.ClientBounds.Width / 3.55f,
-                Game.Window.ClientBounds.Height / 1.8f);
+            inventoryStringPos = new Vector2(Game1.ScreenSize.X / 3.55f,
+                Game1.ScreenSize.Y / 1.8f);
 
-            shopStringPos = new Vector2(Game.Window.ClientBounds.Width / 1.966f,
-                Game.Window.ClientBounds.Height / 1.8f);
+            shopStringPos = new Vector2(Game1.ScreenSize.X / 1.966f,
+                Game1.ScreenSize.Y / 1.8f);
 
-            informationStringPos = new Vector2(Game.Window.ClientBounds.Width / 1.366f,
-                Game.Window.ClientBounds.Height / 1.8f);
+            informationStringPos = new Vector2(Game1.ScreenSize.X / 1.366f,
+                Game1.ScreenSize.Y / 1.8f);
         }
 
         public override void OnEnter()
@@ -527,8 +527,8 @@ namespace SpaceProject
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(shopBg.Texture, new Vector2(Game.ScreenCenter.X, Game.ScreenCenter.Y + Game.ScreenCenter.Y / 2),
-                    shopBg.SourceRectangle, Color.White, 0f, shopBg.CenterPoint, new Vector2(Game.Window.ClientBounds.Width / 1280f,
-                    Game.Window.ClientBounds.Height / 720f), SpriteEffects.None, 0.1f);
+                    shopBg.SourceRectangle, Color.White, 0f, shopBg.CenterPoint, new Vector2(Game1.ScreenSize.X / 1280f,
+                    Game1.ScreenSize.Y / 720f), SpriteEffects.None, 0.1f);
 
             DisplayInventory(spriteBatch);
             DisplayShopInventory(spriteBatch);
@@ -587,15 +587,15 @@ namespace SpaceProject
             if (BaseStateManager.ButtonControl == ButtonControl.TransactionConfirm)
             {      
                 spriteBatch.Draw(confirmMenuSprite.Texture,
-                    new Vector2(Game.Window.ClientBounds.Width / 2, Game.Window.ClientBounds.Height / 2),
+                    new Vector2(Game1.ScreenSize.X / 2, Game1.ScreenSize.Y / 2),
                     confirmMenuSprite.SourceRectangle, new Color(255, 255, 255, 235), .0f,
                     new Vector2(confirmMenuSprite.SourceRectangle.Value.Width / 2, confirmMenuSprite.SourceRectangle.Value.Height / 2),
                     1.5f, SpriteEffects.None, 0.95f);
 
                 spriteBatch.DrawString(Game.fontManager.GetFont(14),
                     TextUtils.WordWrap(Game.fontManager.GetFont(14), confirmMenuMessage, (int)Math.Round(confirmMenuSprite.Width * 1.5f, 0) - 20),
-                    new Vector2((Game.Window.ClientBounds.Width / 2 - (confirmMenuSprite.Width * 1.5f) / 2) + 10,
-                        (Game.Window.ClientBounds.Height / 2 - (confirmMenuSprite.Height * 1.5f) / 2) + 20),
+                    new Vector2((Game1.ScreenSize.X / 2 - (confirmMenuSprite.Width * 1.5f) / 2) + 10,
+                        (Game1.ScreenSize.Y / 2 - (confirmMenuSprite.Height * 1.5f) / 2) + 20),
                     Color.White, .0f, Vector2.Zero,
                     1f, SpriteEffects.None, 1f);
 
@@ -617,7 +617,7 @@ namespace SpaceProject
 
                     spriteBatch.DrawString(Game.fontManager.GetFont(14),
                         confirmOptions[i],
-                        new Vector2(Game.Window.ClientBounds.Width / 2, Game.Window.ClientBounds.Height / 2 + ((confirmMenuSprite.Height * 1.5f) / divider) + (i * 20)),
+                        new Vector2(Game1.ScreenSize.X / 2, Game1.ScreenSize.Y / 2 + ((confirmMenuSprite.Height * 1.5f) / divider) + (i * 20)),
                         tempColor, .0f,
                         Game.fontManager.GetFont(14).MeasureString(confirmOptions[i]) / 2,
                         1f, SpriteEffects.None, 1f);
@@ -1552,8 +1552,8 @@ namespace SpaceProject
                 for (int i = 0; i < confirmOptions.Count; i++)
                 {
                     if (ControlManager.IsMouseOverText(FontManager.GetFontStatic(14), confirmOptions[i], 
-                        new Vector2(Game.Window.ClientBounds.Width / 2,
-                            Game.Window.ClientBounds.Height / 2 + ((confirmMenuSprite.Height * 1.5f) / divider) + (i * 20))))
+                        new Vector2(Game1.ScreenSize.X / 2,
+                            Game1.ScreenSize.Y / 2 + ((confirmMenuSprite.Height * 1.5f) / divider) + (i * 20))))
                     {
                         confirmMenuIndex = i;
                     }

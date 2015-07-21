@@ -79,8 +79,8 @@ namespace SpaceProject
             playerShotHandler.Initialize();
 
             Speed = 0.0f;
-            Position = new Vector2(Game.Window.ClientBounds.Width / 2,
-                Game.Window.ClientBounds.Height - Game.stateManager.shooterState.WindowHeightOffset - 75);
+            Position = new Vector2(Game1.ScreenSize.X / 2,
+                Game1.ScreenSize.Y - Game.stateManager.shooterState.WindowHeightOffset - 75);
             IsKilled = false;
             Direction = Vector2.Zero;
 

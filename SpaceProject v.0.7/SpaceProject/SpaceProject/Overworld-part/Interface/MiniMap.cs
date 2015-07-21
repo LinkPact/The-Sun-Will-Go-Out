@@ -70,8 +70,8 @@ namespace SpaceProject
 
             }
             playerpos = StaticFunctions.NormalizePosition(Game.player.position, systemPos);
-            Origin = new Vector2(cameraPos.X + Game.Window.ClientBounds.Width / 2 - radar.SourceRectangle.Value.Width,
-                cameraPos.Y + Game.Window.ClientBounds.Height / 2 - radar.SourceRectangle.Value.Height);
+            Origin = new Vector2(cameraPos.X + Game1.ScreenSize.X / 2 - radar.SourceRectangle.Value.Width,
+                cameraPos.Y + Game1.ScreenSize.Y / 2 - radar.SourceRectangle.Value.Height);
 
         }
 

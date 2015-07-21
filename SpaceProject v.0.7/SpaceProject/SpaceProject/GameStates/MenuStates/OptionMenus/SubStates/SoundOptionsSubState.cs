@@ -26,22 +26,22 @@ namespace SpaceProject
             base.Initialize();
 
             musicLeftButton = new MenuDisplayObject(game, buttonsSprite.GetSubSprite(new Rectangle(20, 135, 12, 11)), buttonsSprite.GetSubSprite(new Rectangle(4, 135, 12, 11)),
-                new Vector2(game.Window.ClientBounds.Width - 168, game.Window.ClientBounds.Height / 3 - 1 + (1 * 22)),
+                new Vector2(Game1.ScreenSize.X - 168, Game1.ScreenSize.Y / 3 - 1 + (1 * 22)),
                 new Vector2(6, 5));
             musicLeftButton.Initialize();
 
             musicRightButton = new MenuDisplayObject(game, buttonsSprite.GetSubSprite(new Rectangle(4, 135, 12, 11)), buttonsSprite.GetSubSprite(new Rectangle(4, 135, 12, 11)),
-                new Vector2(game.Window.ClientBounds.Width - 112, game.Window.ClientBounds.Height / 3 - 1 + (1 * 22)),
+                new Vector2(Game1.ScreenSize.X - 112, Game1.ScreenSize.Y / 3 - 1 + (1 * 22)),
                 new Vector2(6, 5));
             musicRightButton.Initialize();
 
             soundLeftButton = new MenuDisplayObject(game, buttonsSprite.GetSubSprite(new Rectangle(20, 135, 12, 11)), buttonsSprite.GetSubSprite(new Rectangle(4, 135, 12, 11)),
-                new Vector2(game.Window.ClientBounds.Width - 168, game.Window.ClientBounds.Height / 3 - 1 + (3 * 22)),
+                new Vector2(Game1.ScreenSize.X - 168, Game1.ScreenSize.Y / 3 - 1 + (3 * 22)),
                 new Vector2(6, 5));
             soundLeftButton.Initialize();
             
             soundRightButton = new MenuDisplayObject(game, buttonsSprite.GetSubSprite(new Rectangle(4, 135, 12, 11)), buttonsSprite.GetSubSprite(new Rectangle(4, 135, 12, 11)),
-                new Vector2(game.Window.ClientBounds.Width - 112, game.Window.ClientBounds.Height / 3 - 1 + (3 * 22)),
+                new Vector2(Game1.ScreenSize.X - 112, Game1.ScreenSize.Y / 3 - 1 + (3 * 22)),
                 new Vector2(6, 5));
             soundRightButton.Initialize();
             

@@ -52,13 +52,13 @@ namespace SpaceProject
         public override void Initialize() 
         {
             upperLeftRectangle = new Rectangle(0, 0,
-                (int)Game.Window.ClientBounds.Width / 2, (int)Game.Window.ClientBounds.Height / 3);
+                (int)Game1.ScreenSize.X / 2, (int)Game1.ScreenSize.Y / 3);
 
             lowerLeftRectangle = new Rectangle(0, upperLeftRectangle.Height,
-                upperLeftRectangle.Width, (int)Game.Window.ClientBounds.Width * 2 / 3);
+                upperLeftRectangle.Width, (int)Game1.ScreenSize.X * 2 / 3);
 
             rightRectangle = new Rectangle(lowerLeftRectangle.Width, 0,
-                lowerLeftRectangle.Width, (int)Game.Window.ClientBounds.Height);
+                lowerLeftRectangle.Width, (int)Game1.ScreenSize.Y);
 
             //Managers for cursor and text.
             cursorManager = new MissionScreenCursor(Game, spriteSheet);
@@ -125,8 +125,8 @@ namespace SpaceProject
                  Color.White,
                  0f,
                  Vector2.Zero,
-                 new Vector2(Game.Window.ClientBounds.Width / 1280f,
-                             Game.Window.ClientBounds.Height / 720f),
+                 new Vector2(Game1.ScreenSize.X / 1280f,
+                             Game1.ScreenSize.Y / 720f),
                  SpriteEffects.None,
                  0.0f);
         }
@@ -337,7 +337,7 @@ namespace SpaceProject
                 string text = i < missions.Count ? missions[i].MissionName : "Back";
 
                 if (ControlManager.IsMouseOverText(FontManager.GetFontStatic(14), text,
-                    new Vector2(MissionScreenState.GetRightRectangle.X + Game.Window.ClientBounds.Width / 16,
+                    new Vector2(MissionScreenState.GetRightRectangle.X + Game1.ScreenSize.X / 16,
                                 93 + i * 23) + Game.fontManager.FontOffset, Vector2.Zero, false))
                 {
                     cursorLevel2Position = i;

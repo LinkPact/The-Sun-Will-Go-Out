@@ -36,7 +36,7 @@ namespace SpaceProject
             if (timeToShowText > 0)
             {
                 timeToShowText -= gameTime.ElapsedGameTime.Milliseconds;
-                position = new Vector2(Game.camera.cameraPos.X, Game.camera.cameraPos.Y + Game.Window.ClientBounds.Height / 4);
+                position = new Vector2(Game.camera.cameraPos.X, Game.camera.cameraPos.Y + Game1.ScreenSize.Y / 4);
             }
 
             else if (timeToShowText <= 0 && timedText)
@@ -72,12 +72,12 @@ namespace SpaceProject
             {
                 if (GameStateManager.currentState.Equals("OverworldState"))
                 {
-                    position = new Vector2(Game.camera.cameraPos.X, Game.camera.cameraPos.Y + Game.Window.ClientBounds.Height / 4);
+                    position = new Vector2(Game.camera.cameraPos.X, Game.camera.cameraPos.Y + Game1.ScreenSize.Y / 4);
                 }
 
                 else
                 {
-                    position = new Vector2(Game.Window.ClientBounds.Width / 2, Game.Window.ClientBounds.Height / 4 * 3);
+                    position = new Vector2(Game1.ScreenSize.X / 2, Game1.ScreenSize.Y / 4 * 3);
                 }
 
                 origin = Game.fontManager.GetFont(14).MeasureString(text) / 2;
