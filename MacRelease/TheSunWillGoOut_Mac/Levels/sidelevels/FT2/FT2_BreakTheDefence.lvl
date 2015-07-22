@@ -1,0 +1,66 @@
+Header :duration 60:width 400:durGridWidth 3:levelObjective Finish|X0:
+Point
+T: 0:E: 0nn0 0nn0 hst0 0nn0 0nn0 hst0 0nn0 0nn0:end
+T: 1:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 2:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 3:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 4:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 5:E: 0nn0 kfs0 kfs0 0nn0 0nn0 kfs0 kfs0 0nn0:end
+T: 6:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 7:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 8:E: ifs0 0fs0 0fs0 0nn0 0nn0 0fs0 0fs0 ifs0:end
+T: 9:E: ifs0 0fs0 0fs0 0nn0 0nn0 0fs0 0fs0 ifs0:end
+T: 10:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 11:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 12:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 13:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 14:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 15:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 16:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 17:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 18:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0fs0 0nn0:end
+T: 19:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0fs0 0fs0 0nn0:end
+T: 20:E: 0nn0 0nn0 0fs0 0nn0 0fs0 0fs0 0fs0 0nn0:end
+T: 21:E: hfs0 0fs0 hfs0 0fs0 0fs0 hfs0 0fs0 hfs0:end
+T: 22:E: 0nn0 0nn0 0nn0 0fs0 0nn0 0fs0 0nn0 0nn0:end
+T: 23:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 24:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 25:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 26:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 27:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 28:E: 0nn0 ofs0 0nn0 0nn0 0nn0 0nn0 ofs0 0nn0:end
+T: 29:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 30:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 31:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 32:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 33:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 34:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 35:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 36:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 37:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 38:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 39:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 40:E: 0c10 0c10 0nn0 0c10 0c10 0nn0 0c10 0c10:end
+T: 41:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 42:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 43:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 44:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 45:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 46:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 47:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 48:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 49:E: 0nn0 ofs0 0nn0 0nn0 0nn0 0nn0 ofs0 0nn0:end
+T: 50:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 51:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 52:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 53:E: 0nn0 0nn0 0nn0 ofs0 ofs0 0nn0 0nn0 0nn0:end
+T: 54:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 55:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 56:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 57:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+T: 58:E: ofs0 0nn0 0fs0 0nn0 0nn0 0fs0 0nn0 ofs0:end
+T: 59:E: 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0 0nn0:end
+Duration
+C:0,5 0,11:E: CnnED20
+C:0,41 0,59:E: dstED15
+C:0,22 0,34:E: jstED7

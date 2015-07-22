@@ -1,0 +1,119 @@
+[SX_Station1_Soelara]
+Name = Soelara Station
+PositionX = 600
+PositionY = 300
+Inhabitants = 1200
+
+[SX_Station1_Lavis]
+Name = Lavis Station
+PositionX = -100
+PositionY = 300
+Inhabitants = 5000
+
+[SX_Fortrun_1]
+Name = Fortrun Station
+PositionX = 600
+PositionY = -100
+Inhabitants = 20000
+
+[SX_Fortrun_2]
+Name = Fortrun Station II
+PositionX = 3300
+PositionY = 2000
+Inhabitants = 1000
+
+[OX_OutpostX_Station]
+Name = Outpost X
+PositionX = 600
+PositionY = 600
+Inhabitants = 120
+
+[BO_Border_Station]
+Name = Border Station
+PositionX = 1400
+PositionY = 1700
+Inhabitants = 800
+
+[BO_Training_Area]
+Name = Training Area
+PositionX = 800
+PositionY = 1500
+Inhabitants = 0
+
+[BO_Training_Area_2]
+Name = Training Area 2
+PositionX = 800
+PositionY = 1400
+Inhabitants = 0
+
+[MO_Mining_Station]
+Name = Mining Station
+PositionX = 1050
+PositionY = 1200
+Inhabitants = 120
+
+[OW_Abandoned_Station]
+Name = Abandoned Station
+PositionX = 3800
+PositionY = 47900
+Inhabitants = 150
+
+[SY_BigStation]
+Name = Federation Station
+PositionX = 1000
+PositionY = 750
+Inhabitants = 80000
+
+[RO_Rebel_Station_1]
+Name = Rebel Base
+PositionX = 700
+PositionY = 700
+Inhabitants = 120
+
+[OW_Peye_Science_Station]
+Name = Peye Science Station
+PositionX = -3500
+PositionY = -2000
+Inhabitants = 780
+
+[OW_Alliance_Fleet]
+Name = Alliance Fleet
+PositionX = 73000
+PositionY = 113000
+Inhabitants = 15000
+
+[OW_Rebel_Fleet]
+Name = Rebel Fleet
+PositionX = 74000
+PositionY = 114000
+Inhabitants = 25000
+
+[OW_Highfence_Shop]
+Name = Highfence Shop
+PositionX = 400
+PositionY = -100
+Inhabitants = 1
+
+[OW_Fortrun_Shop]
+Name = Fortrun Shop
+PositionX = 800
+PositionY = 100
+Inhabitants = 1
+
+[OW_Rebel_Base_Shop]
+Name = Rebel Base Shop
+PositionX = 200
+PositionY = -100
+Inhabitants = 1
+
+[OW_Peye_Shop]
+Name = Peye Shop
+PositionX = 200
+PositionY = -100
+Inhabitants = 1
+
+[OW_Information_Station]
+Name = Information Station
+PositionX = 1000
+PositionY = 0
+Inhabitants = 37
