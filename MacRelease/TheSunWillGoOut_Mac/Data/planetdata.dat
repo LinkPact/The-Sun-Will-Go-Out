@@ -1,0 +1,101 @@
+[SX_New_Norrland]
+
+Name = New Norrland
+
+PositionX = 2000
+
+PositionY = 24000
+
+Surface = Dust
+
+Mass = 0.8
+
+Temp = 84
+
+Gravity = 0.8
+
+Orbit = 0.84
+
+Rotation = 1.2
+
+Info = Small planet covered mostly by deserts. Origin of the name is still a mystery. 
+
+HasColony = true
+
+
+
+[SX_Highfence]
+
+Name = Highfence
+
+PositionX = 28000
+
+PositionY = 17000
+
+Surface = Dust
+
+Mass = 0.75
+
+Temp = 345
+
+Gravity = 0.7
+
+Orbit = 3.5
+
+Rotation = 2.4
+
+Info = A barren and deserted planet. The landscape is composed of mostly mountains and deserts. A few mining colonies exist on the surface. 
+
+HasColony = true
+
+
+
+[SX_Peye]
+
+Name = Peye
+
+PositionX = 3000
+
+PositionY = 2000
+
+Surface = Gas
+
+Mass = 0.5
+
+Temp = 100
+
+Gravity = 0.2
+
+Orbit = 65
+
+Rotation = 130
+
+Info = A planet with a green, poisonous atmosphere.
+
+HasColony = true
+
+
+
+[OX_MurtAsteroid]
+
+Name = Mysterious Asteroid
+
+PositionX = 850
+
+PositionY = 2000
+
+Surface = Rock
+
+Mass = 10
+
+Temp = 83
+
+Gravity = 3.6
+
+Orbit = 34
+
+Rotation = 425
+
+Info = A big planet rich with valuable resources. Heavy exploitation over many years has made the planet's atmosphere extremely hazardous.
+
+HasColony = false
