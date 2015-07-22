@@ -58,20 +58,20 @@ namespace SpaceProject_Mac
             MediaPlayer.IsMuted = game.settingsFile.GetPropertyAsBool("sound", "mutemusic", false);
             MediaPlayer.Volume = game.settingsFile.GetPropertyAsFloat("sound", "musicvolume", 0.6f);
 
-            AddSongToTracks(tracks, "Music/other/GoingOut");
-            AddSongToTracks(tracks, "Music/other/MainMenu");
-            AddSongToTracks(tracks, "Music/other/Outro");
-            AddSongToTracks(tracks, "Music/other/SpaceStation");
-            AddSongToTracks(tracks, "Music/other/TheOboeSong");
+            AddSongToTracks(tracks, "Music/other/GoingOut.wav");
+            AddSongToTracks(tracks, "Music/other/MainMenu.wav");
+			AddSongToTracks(tracks, "Music/other/Outro.wav");
+			AddSongToTracks(tracks, "Music/other/SpaceStation.wav");
+			AddSongToTracks(tracks, "Music/other/TheOboeSong.wav");
 
-            AddSongToTracks(tracks, "Music/overworld/DarkPiano");
+			AddSongToTracks(tracks, "Music/overworld/DarkPiano.wav");
 //            AddSongToTracks(tracks, "Music/overworld/DarkSpace");
-            AddSongToTracks(tracks, "Music/overworld/SpaceAmbience");
+			AddSongToTracks(tracks, "Music/overworld/SpaceAmbience.wav");
 
-            AddSongToTracks(tracks, "Music/vertical/AllianceBattle");
-            AddSongToTracks(tracks, "Music/vertical/Falling");
-            AddSongToTracks(tracks, "Music/vertical/PowerSong");
-            AddSongToTracks(tracks, "Music/vertical/Stars");
+			AddSongToTracks(tracks, "Music/vertical/AllianceBattle.wav");
+			AddSongToTracks(tracks, "Music/vertical/Falling.wav");
+			AddSongToTracks(tracks, "Music/vertical/PowerSong.wav");
+			AddSongToTracks(tracks, "Music/vertical/Stars.wav");
 
         }
 

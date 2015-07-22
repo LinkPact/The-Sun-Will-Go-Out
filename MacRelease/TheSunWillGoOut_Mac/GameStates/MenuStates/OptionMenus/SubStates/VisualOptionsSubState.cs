@@ -127,12 +127,26 @@ namespace SpaceProject_Mac
         {
             switch (menuOptions[cursorIndex, 0].ToLower())
             {
-                case "fullscreen":
-                    game.graphics.ToggleFullScreen();
-                    game.graphics.ApplyChanges();
+				case "fullscreen":
+					game.graphics.ToggleFullScreen ();
+					optionsMenuState.SaveSettings ();
                     UpdateText();
 
                     PlaySelectSound();
+
+					if (game.GameStarted)
+					{
+						PopupHandler.DisplaySelectionMenu("The game needs to be restarted for this to take effect. Do you want to save your game and restart now?", 
+							new List<string> { "Save and restart", "Cancel"},
+							new List<System.Action>());
+					}
+
+					else
+					{
+						PopupHandler.DisplaySelectionMenu("The game needs to be restarted for this to take effect. Do you want to restart now?",
+							new List<string> { "Restart", "Cancel" },
+							new List<System.Action>());
+					}
                     break;
             
                 case "show fps":

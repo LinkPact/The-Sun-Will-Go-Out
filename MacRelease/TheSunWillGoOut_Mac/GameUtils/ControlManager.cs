@@ -127,9 +127,9 @@ namespace SpaceProject_Mac
             KeyboardLeft = Keys.Left;
             KeyboardPause = Keys.Escape;
 
-            KeyboardAction = Keys.LeftControl;
-            KeyboardAction2 = Keys.LeftShift;
-            KeyboardAction3 = Keys.Space;
+            KeyboardAction = Keys.X;
+            KeyboardAction2 = Keys.C;
+            KeyboardAction3 = Keys.V;
 
             KeyboardInventory = Keys.I;
             KeyboardMap = Keys.M;
@@ -190,13 +190,13 @@ namespace SpaceProject_Mac
             Enum.TryParse<Keys>(key.ToString(), out KeyboardHelp);
 
             if (KeyboardAction == Keys.None)
-                KeyboardAction = Keys.LeftControl;
+                KeyboardAction = Keys.X;
 
             if (KeyboardAction2 == Keys.None)
-                KeyboardAction2 = Keys.LeftShift;
+                KeyboardAction2 = Keys.C;
 
             if (KeyboardAction3 == Keys.None)
-                KeyboardAction3 = Keys.Space;
+                KeyboardAction3 = Keys.V;
 
             if (KeyboardUp == Keys.None)
                 KeyboardUp = Keys.Up;

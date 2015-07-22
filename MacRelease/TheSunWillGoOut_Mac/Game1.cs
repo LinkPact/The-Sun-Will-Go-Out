@@ -114,9 +114,9 @@ namespace SpaceProject_Mac
 
             showFPS = settingsFile.GetPropertyAsBool("visual", "showfps", false);
 
+			graphics.IsFullScreen = settingsFile.GetPropertyAsBool("visual", "fullscreen", true);
             graphics.PreferredBackBufferWidth = (int)resolution.X;
             graphics.PreferredBackBufferHeight = (int)resolution.Y;
-            graphics.IsFullScreen = settingsFile.GetPropertyAsBool("visual", "fullscreen", true);
             graphics.SynchronizeWithVerticalRetrace = true;
 
             // Uncomment to unlock FPS
