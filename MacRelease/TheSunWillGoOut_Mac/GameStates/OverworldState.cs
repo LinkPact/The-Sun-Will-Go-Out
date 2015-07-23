@@ -292,7 +292,6 @@ namespace SpaceProject_Mac
             else
             {
                 Game.musicManager.PlayMusic(ActiveSong);
-				PopupHandler.DisplayMenu ();
             }
 
             if (Game.SaveOnEnterOverworld)
