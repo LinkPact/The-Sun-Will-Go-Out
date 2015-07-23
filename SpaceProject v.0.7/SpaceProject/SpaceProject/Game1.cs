@@ -113,7 +113,7 @@ namespace SpaceProject
 
             graphics.PreferredBackBufferWidth = (int)resolution.X;
             graphics.PreferredBackBufferHeight = (int)resolution.Y;
-            graphics.IsFullScreen = settingsFile.GetPropertyAsBool("visual", "fullscreen", true);
+            graphics.IsFullScreen = settingsFile.GetPropertyAsBool("visual", "fullscreen", !IsDualMonitor());
             graphics.SynchronizeWithVerticalRetrace = true;
 
             // Uncomment to unlock FPS
@@ -440,6 +440,11 @@ namespace SpaceProject
         {
             Directory.CreateDirectory(SaveFilePath);
             Directory.CreateDirectory(LevelLogger.writeDir);
+        }
+
+        private bool IsDualMonitor()
+        {
+            return GraphicsAdapter.Adapters.Count > 1;
         }
 
         private Vector2 GetDefaultResolution()

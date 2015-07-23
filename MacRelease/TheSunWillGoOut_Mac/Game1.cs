@@ -116,7 +116,7 @@ namespace SpaceProject_Mac
             showFPS = settingsFile.GetPropertyAsBool("visual", "showfps", false);
 
 			// MAC CHANGE - Fullscreen before resolution
-			graphics.IsFullScreen = settingsFile.GetPropertyAsBool("visual", "fullscreen", true);
+			graphics.IsFullScreen = settingsFile.GetPropertyAsBool("visual", "fullscreen", !IsDualMonitor());
 			//
             graphics.PreferredBackBufferWidth = (int)resolution.X;
             graphics.PreferredBackBufferHeight = (int)resolution.Y;
@@ -455,6 +455,11 @@ namespace SpaceProject_Mac
         {
             Directory.CreateDirectory(SaveFilePath);
             Directory.CreateDirectory(LevelLogger.writeDir);
+        }
+
+        private bool IsDualMonitor()
+        {
+            return GraphicsAdapter.Adapters.Count > 1;
         }
 
         private Vector2 GetDefaultResolution()
