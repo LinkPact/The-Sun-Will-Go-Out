@@ -110,6 +110,7 @@ namespace SpaceProject_Mac
             UseGamepad = false;
         }
 
+		// MAC CHANGE - Change default controls to z, x, y
         public static void SetDefaultControls()
         {
             GamepadUp = Buttons.LeftThumbstickUp;
@@ -125,11 +126,11 @@ namespace SpaceProject_Mac
             KeyboardDown = Keys.Down;
             KeyboardRight = Keys.Right;
             KeyboardLeft = Keys.Left;
-            KeyboardPause = Keys.Escape;
+			KeyboardPause = Keys.Escape;
 
-            KeyboardAction = Keys.X;
-            KeyboardAction2 = Keys.C;
-            KeyboardAction3 = Keys.V;
+			KeyboardAction = Keys.Z;
+            KeyboardAction2 = Keys.X;
+            KeyboardAction3 = Keys.C;
 
             KeyboardInventory = Keys.I;
             KeyboardMap = Keys.M;
@@ -189,14 +190,15 @@ namespace SpaceProject_Mac
             key[0] = Char.ToUpper(key[0]);
             Enum.TryParse<Keys>(key.ToString(), out KeyboardHelp);
 
+			// MAC CHANGE - Change default controls to z, x, y
             if (KeyboardAction == Keys.None)
-                KeyboardAction = Keys.X;
+                KeyboardAction = Keys.Z;
 
             if (KeyboardAction2 == Keys.None)
-                KeyboardAction2 = Keys.C;
+                KeyboardAction2 = Keys.X;
 
             if (KeyboardAction3 == Keys.None)
-                KeyboardAction3 = Keys.V;
+                KeyboardAction3 = Keys.C;
 
             if (KeyboardUp == Keys.None)
                 KeyboardUp = Keys.Up;
