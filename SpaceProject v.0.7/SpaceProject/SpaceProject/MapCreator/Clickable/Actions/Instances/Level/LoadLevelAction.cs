@@ -13,9 +13,9 @@ namespace SpaceProject
 
         protected override void ActionLogic(LevelMechanics level)
         {
-            string filepath = Microsoft.VisualBasic.Interaction.InputBox("Enter name of the saved level:", "Load level", "map1", -1, -1);
-            level.LoadFile(filepath);
-            level.ChangeName(filepath);
+            //string filepath = Microsoft.VisualBasic.Interaction.InputBox("Enter name of the saved level:", "Load level", "map1", -1, -1);
+            //level.LoadFile(filepath);
+            //level.ChangeName(filepath);
         }
     }
 }

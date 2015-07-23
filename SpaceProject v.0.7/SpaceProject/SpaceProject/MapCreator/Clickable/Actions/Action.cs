@@ -22,17 +22,17 @@ namespace SpaceProject
 
         protected int GetNewInt(String displayText, String headerText, String inputText)
         {
-            String newTimeString = Microsoft.VisualBasic.Interaction.InputBox(displayText, headerText, inputText, -1, -1);
-
-            Match matchInteger = Regex.Match(newTimeString, @"^\d+$");
-
-            int inputInt;
-            if (matchInteger.Success)
-            {
-                inputInt = Convert.ToInt32(newTimeString);
-                if (inputInt >= 0)
-                    return inputInt;
-            }
+            //String newTimeString = Microsoft.VisualBasic.Interaction.InputBox(displayText, headerText, inputText, -1, -1);
+            //
+            //Match matchInteger = Regex.Match(newTimeString, @"^\d+$");
+            //
+            //int inputInt;
+            //if (matchInteger.Success)
+            //{
+            //    inputInt = Convert.ToInt32(newTimeString);
+            //    if (inputInt >= 0)
+            //        return inputInt;
+            //}
             return -1;
         }
     }

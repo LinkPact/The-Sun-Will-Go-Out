@@ -14,10 +14,10 @@ namespace SpaceProject
 
         protected override void ActionLogic(LevelMechanics level)
         {
-            String currentName = level.GetName();
-            string input = Microsoft.VisualBasic.Interaction.InputBox("Enter new levelname:", "Edit name", 
-                currentName, -1, -1);
-            level.ChangeName(input);
+            //String currentName = level.GetName();
+            //string input = Microsoft.VisualBasic.Interaction.InputBox("Enter new levelname:", "Edit name", 
+            //    currentName, -1, -1);
+            //level.ChangeName(input);
         }
 
 
