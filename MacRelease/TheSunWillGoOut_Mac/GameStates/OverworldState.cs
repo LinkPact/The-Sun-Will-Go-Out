@@ -464,20 +464,16 @@ namespace SpaceProject_Mac
 
         private void Inputhandling()
         {
-            if ((ControlManager.CheckPress(RebindableKeys.Action1)
-                || ControlManager.CheckKeyPress(Keys.Enter)))
-            {
-                EnterCheck();
-            }
-
-            else if (ControlManager.CheckPress(RebindableKeys.Pause)
-                && Game.player.IsControlsEnabled
-                && (MissionManager.GetMission(MissionID.Main5_Retribution).MissionState != StateOfMission.Active
-                || (MissionManager.GetMission(MissionID.Main5_Retribution).ObjectiveIndex <= 2 
-                || MissionManager.GetMission(MissionID.Main5_Retribution).ObjectiveIndex >= 6))) 
-            {
-                PopupHandler.DisplayMenu();
-            }
+			if ((ControlManager.CheckPress (RebindableKeys.Action1)
+			    || ControlManager.CheckKeyPress (Keys.Enter))) {
+				EnterCheck ();
+			} else if (ControlManager.CheckPress (RebindableKeys.Pause)
+			           && Game.player.IsControlsEnabled
+			           && (MissionManager.GetMission (MissionID.Main5_Retribution).MissionState != StateOfMission.Active
+			           || (MissionManager.GetMission (MissionID.Main5_Retribution).ObjectiveIndex <= 2
+			           || MissionManager.GetMission (MissionID.Main5_Retribution).ObjectiveIndex >= 6))) {
+				PopupHandler.DisplayMenu ();
+			}
 
             else if (ControlManager.CheckPress(RebindableKeys.Missions))
             {

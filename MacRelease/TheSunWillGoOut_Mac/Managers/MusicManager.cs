@@ -58,6 +58,7 @@ namespace SpaceProject_Mac
             MediaPlayer.IsMuted = game.settingsFile.GetPropertyAsBool("sound", "mutemusic", false);
             MediaPlayer.Volume = game.settingsFile.GetPropertyAsFloat("sound", "musicvolume", 0.6f);
 
+			// MAC CHANGE - Add .wav extension
             AddSongToTracks(tracks, "Music/other/GoingOut.wav");
             AddSongToTracks(tracks, "Music/other/MainMenu.wav");
 			AddSongToTracks(tracks, "Music/other/Outro.wav");

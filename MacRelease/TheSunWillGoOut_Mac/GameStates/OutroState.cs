@@ -69,7 +69,9 @@ namespace SpaceProject_Mac
         {
             if (ControlManager.CheckKeyPress(Keys.Escape))
             {
-                Game.Restart();
+				// MAC CHANGE
+				Game.GameStarted = false;
+				Game.Restart (false);
             }
 
             if (scrolling)

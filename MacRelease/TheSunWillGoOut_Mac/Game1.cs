@@ -13,6 +13,7 @@ namespace SpaceProject_Mac
 {
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+		// MAC CHANGE - Need to be '/' instead of '\\'
         public static readonly String SaveFilePath = 
             Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
 			"/LinkPact Games/The Sun Will Go Out/";
@@ -82,6 +83,7 @@ namespace SpaceProject_Mac
         public Vector2 DefaultResolution { get { return new Vector2(800, 600); } }
 
         public bool GameStarted;
+		// MAC CHANGE - Variable to keep track of if new process should be started
 		public static bool GameRestarted;
 
         public static Point ScreenSize;
@@ -108,13 +110,14 @@ namespace SpaceProject_Mac
 
             resolution = new Vector2(settingsFile.GetPropertyAsFloat("visual", "resolutionx", defaultResolution.X),
                                      settingsFile.GetPropertyAsFloat("visual", "resolutiony", defaultResolution.Y));
-            ScreenSize = new Point((int)resolution.X, (int)resolution.Y);
 
             random = new Random();
 
             showFPS = settingsFile.GetPropertyAsBool("visual", "showfps", false);
 
+			// MAC CHANGE - Fullscreen before resolution
 			graphics.IsFullScreen = settingsFile.GetPropertyAsBool("visual", "fullscreen", true);
+			//
             graphics.PreferredBackBufferWidth = (int)resolution.X;
             graphics.PreferredBackBufferHeight = (int)resolution.Y;
             graphics.SynchronizeWithVerticalRetrace = true;
@@ -124,6 +127,9 @@ namespace SpaceProject_Mac
             //graphics.SynchronizeWithVerticalRetrace = false;
             
             graphics.ApplyChanges();
+
+			// MAC CHANGE - Set ScreenSize to clientbounds after applyChanges
+			ScreenSize = new Point((int)Window.ClientBounds.Width, (int)Window.ClientBounds.Height);
 
             CenterScreenWindow();
 
@@ -378,21 +384,24 @@ namespace SpaceProject_Mac
             stateManager.overworldState.Load();
         }
 
-        public void Restart()
+		// MAC CHANGE
+		public void Restart(bool applyChanges = true)
         {
-			Game1.GameRestarted = true;
+			if (applyChanges) {
+				Game1.GameRestarted = true;
 
-            settingsFile = new SaveFile(this);
-            settingsFile.Load(SaveFilePath, "settings.ini");
+				settingsFile = new SaveFile (this);
+				settingsFile.Load (SaveFilePath, "settings.ini");
 
-			graphics.PreferredBackBufferWidth = (int)resolution.X;
-            graphics.PreferredBackBufferHeight = (int)resolution.Y;
-            graphics.ApplyChanges();
+				graphics.PreferredBackBufferWidth = (int)resolution.X;
+				graphics.PreferredBackBufferHeight = (int)resolution.Y;
+				graphics.ApplyChanges ();
 
-            ScreenSize = new Point((int)resolution.X, (int)resolution.Y);
-            CenterScreenWindow();
+				ScreenSize = new Point ((int)resolution.X, (int)resolution.Y);
+				CenterScreenWindow ();
 
-            StaticFunctions.InitiateWindowValues(this);
+				StaticFunctions.InitiateWindowValues (this);
+			}
 
             menuBGController.Initialize();
             musicManager.Initialize();

@@ -127,6 +127,7 @@ namespace SpaceProject_Mac
         {
             switch (menuOptions[cursorIndex, 0].ToLower())
             {
+			// MAC CHANGE - Restart on fullscreen
 				case "fullscreen":
 					game.graphics.ToggleFullScreen ();
 					optionsMenuState.SaveSettings ();
@@ -148,6 +149,7 @@ namespace SpaceProject_Mac
 							new List<System.Action>());
 					}
                     break;
+			//
             
                 case "show fps":
                     game.ShowFPS = !game.ShowFPS;

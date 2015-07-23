@@ -72,7 +72,15 @@ namespace SpaceProject_Mac
         {
             switch (menuOptions[cursorIndex].ToLower())
             {
-                case "save and exit to menu":
+			//MAC CHANGE
+				case "save and exit to menu":
+					game.GameStarted = false;
+					Hide ();
+					game.Save ();
+					game.Restart (false);
+					break;
+			//
+
                 case "save and restart":
                     game.GameStarted = false;
                     Hide();
