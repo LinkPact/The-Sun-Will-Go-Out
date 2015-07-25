@@ -23,7 +23,13 @@ namespace SpaceProject
 
             foreach (string word in wordArray)
             {
-                if (font.MeasureString(line + word).Length() > width)
+                if (word.Contains('\n'))
+                {
+                    returnString = returnString + line;
+                    line = string.Empty;
+                }
+
+                else if (font.MeasureString(line + word).Length() > width)
                 {
                     returnString = returnString + line + "\n";
                     line = string.Empty;

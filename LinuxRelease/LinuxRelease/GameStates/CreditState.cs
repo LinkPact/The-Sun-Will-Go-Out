@@ -25,12 +25,12 @@ namespace SpaceProject
             spriteFont = Game.fontManager.GetFont(14);
             textBoxLeft = TextUtils.CreateTextBox(spriteFont, new Rectangle(xOffset, yOffset, Game1.ScreenSize.X / 2,
                                         Game1.ScreenSize.Y - 20), false, false,
-                                        "Design and development:\nDaniel Alm Grundstrom\nJakob Willforss\nJohan Philipsson\n\n"+
+                                        "Design and development:\nDaniel Alm Grundstrom\nJakob Willforss\nJohan Philipsson\n\n" +
                                         "Visuals:\nDaniel Alm Grundstrom\n\n" +
                                         "Music:\nJakob Willforss\nDaniel Alm Grundstrom\n\n" +
                                         "Story:\nJakob Willforss\n\n" +
                                         "Portraits:\nJosefin Voigt (many thanks!)\n\n" +
-                                        "Testers:\nDaniel Willforss\nRasmus Grundstrom\nJohannes E.\nErik\nEmilia\nEllen\nSandra\nVidmantas\n");
+                                        "Beta testers:\nDaniel Willforss\nRasmus Grundstrom\nErik M\nJohannes E\nVidmantas\n\nAnd a big thanks to all of our alpha testers!");
             
             textBoxRight = TextUtils.CreateTextBox(spriteFont, new Rectangle(Game1.ScreenSize.X / 2 + xOffset, yOffset, Game1.ScreenSize.X / 2,
                                         Game1.ScreenSize.Y - 20), false, false,
