@@ -132,7 +132,9 @@ namespace SpaceProject_Mac
                             Game1.ScreenSize.Y / 2 - 40 + (20 * (i + (i == availableMissions.Count ? 1 : 0))) 
                             + FindTextBoxWithText(text).TextBoxRect.Height)))
                     {
-                        missionCursorIndex = i;
+						if (ControlManager.IsMouseMoving ()) {
+							missionCursorIndex = i;
+						}
                     }
                 }
 

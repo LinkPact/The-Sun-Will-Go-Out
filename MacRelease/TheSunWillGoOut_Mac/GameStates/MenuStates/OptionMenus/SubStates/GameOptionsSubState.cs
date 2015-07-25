@@ -17,7 +17,7 @@ namespace SpaceProject_Mac
         {
             base.Initialize();
             menuOptions = new String[3, 2];
-            onEnterMenuOptions = new String[2];
+            onEnterMenuOptions = new String[3];
         }
 
         public override void OnDisplay()
