@@ -21,10 +21,9 @@ namespace SpaceProject_Mac
             anim.LoopTime = 1;
             anim.AddFrame(spriteSheet.GetSubSprite(new Rectangle(6, 24, 2, 2)));
 
-            Random r = new Random(DateTime.Now.Millisecond);
-            Speed = r.Next(4, 10) / 100f;
-            scale = (float)(r.NextDouble() * 1.5);
-            baseColor = new Color(r.Next(200, 255), r.Next(155, 255), r.Next(200, 255), 255);
+			Speed = Game.random.Next(4, 10) / 100f;
+			scale = (float)(Game.random.NextDouble() * 1.5);
+			baseColor = new Color(Game.random.Next(200, 255), Game.random.Next(155, 255), Game.random.Next(200, 255), 255);
             Direction = new Vector2(0, 1);
             
             DrawLayer = 0.2f;

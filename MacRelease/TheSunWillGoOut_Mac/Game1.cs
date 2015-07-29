@@ -111,7 +111,7 @@ namespace SpaceProject_Mac
             resolution = new Vector2(settingsFile.GetPropertyAsFloat("visual", "resolutionx", defaultResolution.X),
                                      settingsFile.GetPropertyAsFloat("visual", "resolutiony", defaultResolution.Y));
 
-            random = new Random();
+			random = new Random(DateTime.Now.Millisecond);
 
             showFPS = settingsFile.GetPropertyAsBool("visual", "showfps", false);
 

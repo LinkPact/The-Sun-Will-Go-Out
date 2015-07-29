@@ -734,7 +734,6 @@
     <Content Include="Content\Overworld-Sprites\radar.xnb" />
     <Content Include="Content\Overworld-Sprites\smallFont.xnb" />
     <Content Include="Content\Overworld-Sprites\smallObjectSpriteSheet.xnb" />
-    <Content Include="Content\Overworld-Sprites\tutorial_spritesheet.xnb" />
     <Content Include="Content\SoundEffects\basic_laser.xnb" />
     <Content Include="Content\SoundEffects\boom6.xnb" />
     <Content Include="Content\SoundEffects\boom9.xnb" />
@@ -905,5 +904,6 @@
     <Content Include="Levels\unsorted\XSecondMissionlvl2.lvl" />
     <Content Include="Levels\unsorted\XSecondMissionlvl3.lvl" />
     <Content Include="Levels\LonelyAsteroidLevel.lvl" />
+    <Content Include="Content\Overworld-Sprites\tutorial_spritesheet.xnb" />
   </ItemGroup>
 </Project>

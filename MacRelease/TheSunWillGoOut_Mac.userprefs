@@ -1,12 +1,16 @@
 ﻿<Properties MonoDevelop.MonoMac.LastXamMacNagTime="4/7/2015 3:36:39 AM" StartupItem="TheSunWillGoOut_Mac/TheSunWillGoOut_Mac.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TheSunWillGoOut_Mac/Info.plist">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TheSunWillGoOut_Mac/GameUtils/ControlManager.cs">
     <Files>
-      <File FileName="TheSunWillGoOut_Mac/Shooter-part/ShipParts/Primary/MiddleTier/BallisticLaserWeapon.cs" Line="28" Column="35" />
+      <File FileName="TheSunWillGoOut_Mac/Shooter-part/ShipParts/Primary/MiddleTier/BallisticLaserWeapon.cs" Line="1" Column="1" />
       <File FileName="TheSunWillGoOut_Mac/GameStates/MenuStates/OptionMenus/SubStates/ControlOptionsSubState.cs" Line="1" Column="1" />
-      <File FileName="TheSunWillGoOut_Mac/GameStates/MenuStates/OptionMenus/SubStates/GameOptionsSubState.cs" Line="24" Column="10" />
-      <File FileName="TheSunWillGoOut_Mac/GameStates/PlanetAndStationStates/MenuSubStates/MissionMenuState.cs" Line="127" Column="18" />
+      <File FileName="TheSunWillGoOut_Mac/GameStates/MenuStates/OptionMenus/SubStates/GameOptionsSubState.cs" Line="1" Column="1" />
+      <File FileName="TheSunWillGoOut_Mac/GameStates/PlanetAndStationStates/MenuSubStates/MissionMenuState.cs" Line="1" Column="1" />
       <File FileName="TheSunWillGoOut_Mac/Info.plist" />
+      <File FileName="TheSunWillGoOut_Mac/Shooter-part/Gamestructure/BackgroundManager.cs" Line="1" Column="1" />
+      <File FileName="TheSunWillGoOut_Mac/Shooter-part/Visual and Music/BackgroundObjects/Stars/BackgroundStar.cs" Line="18" Column="10" />
+      <File FileName="TheSunWillGoOut_Mac/Game1.cs" Line="103" Column="21" />
+      <File FileName="TheSunWillGoOut_Mac/GameUtils/ControlManager.cs" Line="153" Column="65" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

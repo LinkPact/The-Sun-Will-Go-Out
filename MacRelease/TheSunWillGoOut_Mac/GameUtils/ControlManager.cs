@@ -142,15 +142,15 @@ namespace SpaceProject_Mac
 
         public static void LoadControls(SaveFile settingsFile)
         {
-            StringBuilder key = new StringBuilder(settingsFile.GetPropertyAsString("keys", "action1", "LeftControl"));
+            StringBuilder key = new StringBuilder(settingsFile.GetPropertyAsString("keys", "action1", "Z"));
             key[0] = Char.ToUpper(key[0]);
             Enum.TryParse<Keys>(key.ToString(), out KeyboardAction);
 
-            key = new StringBuilder(settingsFile.GetPropertyAsString("keys", "action2", "LeftShift"));
+            key = new StringBuilder(settingsFile.GetPropertyAsString("keys", "action2", "X"));
             key[0] = Char.ToUpper(key[0]);
             Enum.TryParse<Keys>(key.ToString(), out KeyboardAction2);
 
-            key = new StringBuilder(settingsFile.GetPropertyAsString("keys", "action3", "Space"));
+            key = new StringBuilder(settingsFile.GetPropertyAsString("keys", "action3", "C"));
             key[0] = Char.ToUpper(key[0]);
             Enum.TryParse<Keys>(key.ToString(), out KeyboardAction3);
 
