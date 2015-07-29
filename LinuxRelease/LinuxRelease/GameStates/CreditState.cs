@@ -23,7 +23,7 @@ namespace SpaceProject
             int yOffset = 10;
 
             spriteFont = Game.fontManager.GetFont(14);
-            textBoxLeft = TextUtils.CreateTextBox(spriteFont, new Rectangle(xOffset, yOffset, Game1.ScreenSize.X / 2,
+            textBoxLeft = TextUtils.CreateTextBox(spriteFont, new Rectangle(xOffset, yOffset, Game1.ScreenSize.X / 2 - xOffset,
                                         Game1.ScreenSize.Y - 20), false, false,
                                         "Design and development:\nDaniel Alm Grundstrom\nJakob Willforss\nJohan Philipsson\n\n" +
                                         "Visuals:\nDaniel Alm Grundstrom\n\n" +
@@ -31,15 +31,15 @@ namespace SpaceProject
                                         "Story:\nJakob Willforss\n\n" +
                                         "Portraits:\nJosefin Voigt (many thanks!)\n\n" +
                                         "Beta testers:\nDaniel Willforss\nRasmus Grundstrom\nErik M\nJohannes E\nVidmantas\n\nAnd a big thanks to all of our alpha testers!");
-            
-            textBoxRight = TextUtils.CreateTextBox(spriteFont, new Rectangle(Game1.ScreenSize.X / 2 + xOffset, yOffset, Game1.ScreenSize.X / 2,
+
+            textBoxRight = TextUtils.CreateTextBox(spriteFont, new Rectangle(Game1.ScreenSize.X / 2 + xOffset, yOffset, Game1.ScreenSize.X / 2 - xOffset,
                                         Game1.ScreenSize.Y - 20), false, false,
-                                        "Fonts:\n- 'Iceland' by Cyreal (SIL Open Font License) Downloaded from Google Fonts\n- 'ISL Jupiter' by Isurus Labs (Public domain) Downloaded from dafont.com\n\n" +
-                                        "Space sounds:\n- 'Space Music Ambient' by evanjones4 (Creative Commons 0 Licence) Downloaded from FreeSound.org\n\n" +
-                                        "Sound effects:\n- 'menu click' by fins (Creative Commons 0 Licence) Downloaded from FreeSound.org\n- 'Hover 2' by plasterbrain " +
+                                        "Fonts:\n- 'Iceland' by Cyreal (SIL Open Font License) Downloaded from Google Fonts\n- 'ISL Jupiter' by Isurus Labs (Public domain) Downloaded from dafont.com \n\n" +
+                                        "Space sounds:\n- 'Space Music Ambient' by evanjones4 (Creative Commons 0 Licence) Downloaded from FreeSound.org \n\n" +
+                                        "Sound effects:\n- 'menu click' by fins (Creative Commons 0 Licence) Downloaded from FreeSound.org \n- 'Hover 2' by plasterbrain " +
                                         "(Creative Commons 0 Licence) Downloaded from FreeSound.org \n- '" +
-                                        "ship fire' by Nbs Dark (Creative Commons 0 Licence) Downloaded from FreeSound.org\n- 'Thruster_Level_II' by nathanshadow (Sampling+ Licence) Downloaded from FreeSound.org\n" +
-                                        "- 'Huge Explosion' by Tobiasz 'unfa' Karon (CC Attribution 3.0 Unported Licence) Downloaded from https://www.freesound.org/people/unfa/sounds/259300/\n\n");
+                                        "ship fire' by Nbs Dark (Creative Commons 0 Licence) Downloaded from FreeSound.org \n- 'Thruster_Level_II' by nathanshadow (Sampling+ Licence) Downloaded from FreeSound.org \n" +
+                                        "- 'Huge Explosion' by Tobiasz 'unfa' Karon (CC Attribution 3.0 Unported Licence) Downloaded from https://www.freesound.org/people/unfa/sounds/259300/");
         }
 
         public override void Initialize()
