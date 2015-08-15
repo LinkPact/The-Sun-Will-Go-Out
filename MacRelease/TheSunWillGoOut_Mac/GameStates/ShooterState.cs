@@ -383,46 +383,32 @@ namespace SpaceProject_Mac
             ClearDeadObjects(count);
         }
 
-        private void CheckCollision(int objectCount)
-        {
-            for (int n = 0; n < objectCount; n++)
-            {
-                for (int m = n + 1; m < objectCount; m++)
-                {
-                    GameObjectVertical obj1 = gameObjects[n];
-                    GameObjectVertical obj2 = gameObjects[m];
+		private void CheckCollision(int objectCount)
+		{
+			for (int n = 0; n < objectCount; n++)
+			{
+				for (int m = n + 1; m < objectCount; m++)
+				{
+					GameObjectVertical obj1 = gameObjects[n];
+					GameObjectVertical obj2 = gameObjects[m];
 
-                    Boolean pixelCollisionNeedsEvaluation = true;
+					if (MathFunctions.IsOneOfType<AreaDamage>(obj1, obj2))
+					{
+						PerformAreaDamage(obj1, obj2);
+					}
+					else if (MathFunctions.IsOneOfType<AreaShieldCollision>(obj1.AreaCollision, obj2.AreaCollision)
+						&& MathFunctions.IsOneOfType<PlayerBullet>(obj1, obj2))
+					{
+						PerformShieldAreaCollision(obj1, obj2);
+					}
 
-                    if (MathFunctions.IsOneOfType<AreaDamage>(obj1, obj2))
-                    {
-                        PerformAreaDamage(obj1, obj2);
-                        pixelCollisionNeedsEvaluation = false;
-                    }
-                    else if(MathFunctions.IsOneOfType<AreaShieldCollision>(obj1.AreaCollision, obj2.AreaCollision)
-                            && MathFunctions.IsOneOfType<PlayerBullet>(obj1, obj2))
-                    {
-                        pixelCollisionNeedsEvaluation = PerformShieldAreaCollision(obj1, obj2);
-                    }
-
-                    if (!obj1.Bounding.Intersects(obj2.Bounding))
-                    {
-                        pixelCollisionNeedsEvaluation = false;
-                    }
-                    
-                    if (pixelCollisionNeedsEvaluation)
-                    {
-                        if (CollisionDetection.VisiblePixelsColliding(obj1.Bounding, obj2.Bounding,
-                            ((AnimatedGameObject)(obj1)).CurrentAnim.CurrentFrame,
-                            ((AnimatedGameObject)obj2).CurrentAnim.CurrentFrame, 
-                            obj1.CenterPoint, obj2.CenterPoint))
-                        {
-                            CollisionHandlingVerticalShooter.GameObjectsCollision(obj1, obj2);
-                        }
-                    }
-                }
-            }
-        }
+					if (obj1.CollisionBounding.Intersects(obj2.CollisionBounding))
+					{
+						CollisionHandlingVerticalShooter.GameObjectsCollision(obj1, obj2);
+					}
+				}
+			}
+		}
 
         private void PerformAreaDamage(GameObjectVertical obj1, GameObjectVertical obj2)
         {

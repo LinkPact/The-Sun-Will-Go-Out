@@ -118,6 +118,27 @@ namespace SpaceProject_Mac
         public int BoundingHeight { get { return bounding.Height; } set { bounding.Height = value; } }
         public int BoundingSpace { get; set; }
 
+		public Rectangle CollisionBounding 
+		{ 
+			get 
+			{
+				if (!(this is AllianceHangar))
+				{
+					return bounding;
+				}
+				else
+				{
+					Rectangle rect = new Rectangle();
+					rect.X = bounding.X + bounding.Width / 5;
+					rect.Y = bounding.Y + bounding.Height / 5;
+					rect.Width = bounding.Width - (bounding.Width / 5) * 2;
+					rect.Height = bounding.Height - (bounding.Height / 5 * 2);
+
+					return rect;
+				}
+			} 
+		}
+
         public bool Enable { get; set; }
         public float Speed { get; set; }
         public bool IsKilled { get; set; }
