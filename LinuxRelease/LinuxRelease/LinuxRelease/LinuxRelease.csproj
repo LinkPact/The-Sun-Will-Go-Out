@@ -1,0 +1,1179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C1DF5A81-2FB2-44BD-8E5A-E87FCB13A26D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LinuxRelease</RootNamespace>
+    <AssemblyName>tswgo</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MonoGamePlatform>Linux</MonoGamePlatform>
+    <MonoGameContentBuilderExe>
+    </MonoGameContentBuilderExe>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;LINUX</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;LINUX</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>B3193C892E21A024E2890ED5075D21427A316F12</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>LinuxRelease_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Game1.cs" />
+    <Compile Include="GameStates\CampaignState.cs" />
+    <Compile Include="GameStates\CreditState.cs" />
+    <Compile Include="GameStates\GameState.cs" />
+    <Compile Include="GameStates\GameStateManager.cs" />
+    <Compile Include="GameStates\HelpScreenState.cs" />
+    <Compile Include="GameStates\IntroFirstState.cs" />
+    <Compile Include="GameStates\IntroSecondState.cs" />
+    <Compile Include="GameStates\LevelTesterState.cs" />
+    <Compile Include="GameStates\MapCreatorState.cs" />
+    <Compile Include="GameStates\MenuStates\MainMenuState.cs" />
+    <Compile Include="GameStates\MenuStates\MenuBackdropController.cs" />
+    <Compile Include="GameStates\MenuStates\OptionMenus\OptionsMenuState.cs" />
+    <Compile Include="GameStates\MenuStates\OptionMenus\OptionSubState.cs" />
+    <Compile Include="GameStates\MenuStates\OptionMenus\SubStates\ControlOptionsSubState.cs" />
+    <Compile Include="GameStates\MenuStates\OptionMenus\SubStates\GameOptionsSubState.cs" />
+    <Compile Include="GameStates\MenuStates\OptionMenus\SubStates\SoundOptionsSubState.cs" />
+    <Compile Include="GameStates\MenuStates\OptionMenus\SubStates\VisualOptionsSubState.cs" />
+    <Compile Include="GameStates\MenuStates\StartGameState.cs" />
+    <Compile Include="GameStates\MissionScreenState\MissionInformation.cs" />
+    <Compile Include="GameStates\MissionScreenState\MissionScreenCursor.cs" />
+    <Compile Include="GameStates\MissionScreenState\MissionScreenState.cs" />
+    <Compile Include="GameStates\MissionScreenState\MissionScreenText.cs" />
+    <Compile Include="GameStates\OutroState.cs" />
+    <Compile Include="GameStates\OverworldState.cs" />
+    <Compile Include="GameStates\PlanetAndStationStates\BaseState.cs" />
+    <Compile Include="GameStates\PlanetAndStationStates\BaseStateManager.cs" />
+    <Compile Include="GameStates\PlanetAndStationStates\MenuSubStates\MenuState.cs" />
+    <Compile Include="GameStates\PlanetAndStationStates\MenuSubStates\MissionMenuState.cs" />
+    <Compile Include="GameStates\PlanetAndStationStates\MenuSubStates\OverviewMenuState.cs" />
+    <Compile Include="GameStates\PlanetAndStationStates\MenuSubStates\RumorsMenuState.cs" />
+    <Compile Include="GameStates\PlanetAndStationStates\MenuSubStates\ShopMenuState.cs" />
+    <Compile Include="GameStates\PlanetAndStationStates\PlanetState.cs" />
+    <Compile Include="GameStates\PlanetAndStationStates\PlanetStateManager.cs" />
+    <Compile Include="GameStates\PlanetAndStationStates\StationState.cs" />
+    <Compile Include="GameStates\PlanetAndStationStates\StationStateManager.cs" />
+    <Compile Include="GameStates\ShipManagement\InventoryInformation.cs" />
+    <Compile Include="GameStates\ShipManagement\ShipManagerCursor.cs" />
+    <Compile Include="GameStates\ShipManagement\ShipManagerState.cs" />
+    <Compile Include="GameStates\ShipManagement\ShipManagerText.cs" />
+    <Compile Include="GameStates\ShooterState.cs" />
+    <Compile Include="GameUtils\Button.cs" />
+    <Compile Include="GameUtils\ConfigFile.cs" />
+    <Compile Include="GameUtils\ControlManager.cs" />
+    <Compile Include="GameUtils\Coordinate\Coordinate.cs" />
+    <Compile Include="GameUtils\Coordinate\CursorCoordinate.cs" />
+    <Compile Include="GameUtils\CustomSoundEffect.cs" />
+    <Compile Include="GameUtils\FontManager.cs" />
+    <Compile Include="GameUtils\MathFunctions.cs" />
+    <Compile Include="GameUtils\MenuDisplay\MenuDisplayObject.cs" />
+    <Compile Include="GameUtils\MenuDisplay\ShipInventoryDisplayObject.cs" />
+    <Compile Include="GameUtils\PlayTime.cs" />
+    <Compile Include="GameUtils\SaveFile.cs" />
+    <Compile Include="GameUtils\StaticFunctions.cs" />
+    <Compile Include="GameUtils\TextBox.cs" />
+    <Compile Include="GameUtils\TextUtils.cs" />
+    <Compile Include="GameUtils\UI\PopupHandler.cs" />
+    <Compile Include="GameUtils\UI\Popups\Containers\Container.cs" />
+    <Compile Include="GameUtils\UI\Popups\Containers\ImageContainer.cs" />
+    <Compile Include="GameUtils\UI\Popups\Containers\TextContainer.cs" />
+    <Compile Include="GameUtils\UI\Popups\ImagePopup.cs" />
+    <Compile Include="GameUtils\UI\Popups\Instances\Menus\Menu.cs" />
+    <Compile Include="GameUtils\UI\Popups\Instances\Menus\SelectionMenu.cs" />
+    <Compile Include="GameUtils\UI\Popups\Instances\Messages\ImageMessage.cs" />
+    <Compile Include="GameUtils\UI\Popups\Instances\Messages\PortraitMessage.cs" />
+    <Compile Include="GameUtils\UI\Popups\Instances\Messages\RealTimeMessage.cs" />
+    <Compile Include="GameUtils\UI\Popups\Instances\Messages\RealTimePortraitMessage.cs" />
+    <Compile Include="GameUtils\UI\Popups\Instances\Messages\TextMessage.cs" />
+    <Compile Include="GameUtils\UI\Popups\Popup.cs" />
+    <Compile Include="GameUtils\UI\Portrait.cs" />
+    <Compile Include="GameUtils\UI\ZoomMap.cs" />
+    <Compile Include="LevelHelpClasses\LevelEntry.cs" />
+    <Compile Include="LevelHelpClasses\LevelTesterEntry.cs" />
+    <Compile Include="Managers\MissionManager.cs" />
+    <Compile Include="Managers\MusicManager.cs" />
+    <Compile Include="Managers\ShipInventoryManager.cs" />
+    <Compile Include="Managers\ShipSpawner.cs" />
+    <Compile Include="Managers\ShopManager.cs" />
+    <Compile Include="Managers\SoundEffectsManager.cs" />
+    <Compile Include="Managers\StatsManager.cs" />
+    <Compile Include="Managers\TutorialManager.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\Action.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\Instances\EditAmountAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\Instances\EditNumber\ChangeGridViewAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\Instances\EditNumber\DurationGridWidthIncrAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\Instances\EditNumber\GridHeightIncrAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\Instances\EditNumber\GridWidthIncrAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\Instances\Level\ClearGridAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\Instances\Level\EditNameAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\Instances\Level\LoadLevelAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\Instances\Level\SetLevelDurationAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\Instances\Level\SetLevelObjectiveAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\Instances\Level\SetLevelWidthInPixelsAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\Instances\Level\SetStartTimeAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\Instances\System\QuitApplicationAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\Instances\System\RunLevelAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\Instances\System\SaveLevelAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\LevelAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\LevelIncrAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\LevelNonIncrAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\SettingAmountAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\SystemAction.cs" />
+    <Compile Include="MapCreator\Clickable\Actions\SystemAndLevelAction.cs" />
+    <Compile Include="MapCreator\Clickable\ButtonPinger.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\IncrementalButton.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\Instances\EditNumber\ChangeGridViewButton.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\Instances\EditNumber\DurationWidthIncrButton.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\Instances\EditNumber\EditAmountButton.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\Instances\EditNumber\GridHeightIncrButton.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\Instances\EditNumber\GridWidthIncrButton.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\Instances\LevelMechanics\ClearGridButton.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\Instances\LevelMechanics\DurationButton.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\Instances\LevelMechanics\EditNameButton.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\Instances\LevelMechanics\LoadLevelButton.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\Instances\LevelMechanics\RunLevelButton.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\Instances\LevelMechanics\SaveLevelButton.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\Instances\LevelMechanics\SetLevelObjectiveButton.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\Instances\LevelMechanics\StartTimeButton.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\Instances\LevelMechanics\WidthInPixelsButton.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\Instances\System\QuitApplicationButton.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\IntervalButton.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\LevelButton.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\MapCreatorButton.cs" />
+    <Compile Include="MapCreator\Clickable\Buttons\SystemButton.cs" />
+    <Compile Include="MapCreator\Clickable\Clickable.cs" />
+    <Compile Include="MapCreator\Clickable\SquareClick.cs" />
+    <Compile Include="MapCreator\Clickable\Squares\DurationSquare.cs" />
+    <Compile Include="MapCreator\Clickable\Squares\PointSquare.cs" />
+    <Compile Include="MapCreator\Clickable\Squares\Square.cs" />
+    <Compile Include="MapCreator\DataEnums.cs" />
+    <Compile Include="MapCreator\EventEditor.cs" />
+    <Compile Include="MapCreator\LevelMechanics.cs" />
+    <Compile Include="MapCreator\MapCreatorGUI.cs" />
+    <Compile Include="MapCreator\Mechanics\DataClasses\DurationGrid\DurationEventData.cs" />
+    <Compile Include="MapCreator\Mechanics\DataClasses\DurationGrid\DurationSquareData.cs" />
+    <Compile Include="MapCreator\Mechanics\DataClasses\DurationGrid\DurationSquareDataChain.cs" />
+    <Compile Include="MapCreator\Mechanics\DataClasses\Event\EventData.cs" />
+    <Compile Include="MapCreator\Mechanics\DataClasses\LevelData.cs" />
+    <Compile Include="MapCreator\Mechanics\DataClasses\PointGrid\PointEventData.cs" />
+    <Compile Include="MapCreator\Mechanics\DataClasses\PointGrid\PointSquareData.cs" />
+    <Compile Include="MapCreator\Mechanics\DataClasses\SquareData.cs" />
+    <Compile Include="MapCreator\Mechanics\DataConversionLibrary.cs" />
+    <Compile Include="MapCreator\Mechanics\LevelMechanicsHelpClasses\DurationSquareGrid.cs" />
+    <Compile Include="MapCreator\Mechanics\LevelMechanicsHelpClasses\PointSquareGrid.cs" />
+    <Compile Include="MapCreator\Mechanics\LevelMechanicsHelpClasses\SquareGrid.cs" />
+    <Compile Include="MapCreator\Mechanics\LevelMechanicsHelpClasses\TimeVector.cs" />
+    <Compile Include="MapCreator\Palethera\Duration\ActiveDurationEventSquare.cs" />
+    <Compile Include="MapCreator\Palethera\Duration\OptionDurationEntry.cs" />
+    <Compile Include="MapCreator\Palethera\Duration\OptionDurationEventSquare.cs" />
+    <Compile Include="MapCreator\Palethera\Enemy\ActiveEnemySquare.cs" />
+    <Compile Include="MapCreator\Palethera\Enemy\OptionEnemyEntry.cs" />
+    <Compile Include="MapCreator\Palethera\Enemy\OptionEnemySquare.cs" />
+    <Compile Include="MapCreator\Palethera\EventEditor\EventSetting.cs" />
+    <Compile Include="MapCreator\Palethera\LevelMode\ActiveObjectiveSquare.cs" />
+    <Compile Include="MapCreator\Palethera\LevelMode\OptionObjectiveEntry.cs" />
+    <Compile Include="MapCreator\Palethera\LevelMode\OptionObjectiveSquare.cs" />
+    <Compile Include="MapCreator\Palethera\Movement\ActiveMovementSquare.cs" />
+    <Compile Include="MapCreator\Palethera\Movement\OptionMovementEntry.cs" />
+    <Compile Include="MapCreator\Palethera\Movement\OptionMovementSquare.cs" />
+    <Compile Include="MapCreator\Palethera\Point\ActivePointEventSquare.cs" />
+    <Compile Include="MapCreator\Palethera\Point\OptionPointEntry.cs" />
+    <Compile Include="MapCreator\Palethera\Point\OptionPointEventSquare.cs" />
+    <Compile Include="MapCreator\Palethera\StructuralSuperClasses\ActiveData.cs" />
+    <Compile Include="MapCreator\Palethera\StructuralSuperClasses\ActiveSquare.cs" />
+    <Compile Include="MapCreator\Palethera\StructuralSuperClasses\OptionEntry.cs" />
+    <Compile Include="MapCreator\Palethera\StructuralSuperClasses\OptionSquare.cs" />
+    <Compile Include="MapCreator\SquarePalethera.cs" />
+    <Compile Include="MapCreator\System\LevelLoader.cs" />
+    <Compile Include="MapCreator\System\WriteSave.cs" />
+    <Compile Include="MissionStuff\Endings\BurnOutEnding\BurnOutEnding.cs" />
+    <Compile Include="MissionStuff\Endings\BurnOutEnding\BurnOutEndingParticle.cs" />
+    <Compile Include="MissionStuff\Endings\Ending.cs" />
+    <Compile Include="MissionStuff\EventText.cs" />
+    <Compile Include="MissionStuff\MissionHelper.cs" />
+    <Compile Include="MissionStuff\MissionObjects\AstroDodger\DestroyedShip.cs" />
+    <Compile Include="MissionStuff\MissionObjects\DummyCoordinateObject.cs" />
+    <Compile Include="MissionStuff\MissionObjects\FirstMission\Battlefield.cs" />
+    <Compile Include="MissionStuff\MissionObjects\MidMissionAlliance\AllianceFleet_Old.cs" />
+    <Compile Include="MissionStuff\MissionObjects\MissionObject.cs" />
+    <Compile Include="MissionStuff\Objectives\DataCapsules\EscortDataCapsule.cs" />
+    <Compile Include="MissionStuff\Objectives\DataCapsules\EventTextCapsule.cs" />
+    <Compile Include="MissionStuff\Objectives\DataCapsules\ResponseTextCapsule.cs" />
+    <Compile Include="MissionStuff\Objectives\Instances\ArriveAtLocationObjective.cs" />
+    <Compile Include="MissionStuff\Objectives\Instances\AskToProgressObjective.cs" />
+    <Compile Include="MissionStuff\Objectives\Instances\AutoPilotObjective.cs" />
+    <Compile Include="MissionStuff\Objectives\Instances\CloseInOnLocationObjective.cs" />
+    <Compile Include="MissionStuff\Objectives\Instances\CustomObjective.cs" />
+    <Compile Include="MissionStuff\Objectives\Instances\EscortObjective.cs" />
+    <Compile Include="MissionStuff\Objectives\Instances\FollowObjective.cs" />
+    <Compile Include="MissionStuff\Objectives\Instances\ItemTransportObjective.cs" />
+    <Compile Include="MissionStuff\Objectives\Instances\ResponseObjective.cs" />
+    <Compile Include="MissionStuff\Objectives\Instances\ShootingLevelObjective.cs" />
+    <Compile Include="MissionStuff\Objectives\Instances\TimedMessageObjective.cs" />
+    <Compile Include="MissionStuff\Objectives\Objective.cs" />
+    <Compile Include="Missions\MainMissions\Phase 1\Main1_1_RebelsInTheAsteroids.cs" />
+    <Compile Include="Missions\MainMissions\Phase 1\Main1_2_ToHighfence.cs" />
+    <Compile Include="Missions\MainMissions\Phase 1\Main2_1_TheConvoy.cs" />
+    <Compile Include="Missions\MainMissions\Phase 1\Main2_2_ToFortrun.cs" />
+    <Compile Include="Missions\MainMissions\Phase 2\Main3_DefendColony.cs" />
+    <Compile Include="Missions\MainMissions\Phase 2\Main4_Infiltration.cs" />
+    <Compile Include="Missions\MainMissions\Phase 3\Main5_Retribution.cs" />
+    <Compile Include="Missions\MainMissions\Phase 3\Main6_InTheNameOfScience.cs" />
+    <Compile Include="Missions\MainMissions\Phase 3\Main7_Information.cs" />
+    <Compile Include="Missions\MainMissions\Phase 4\Main8_1_BeginningOfTheEnd.cs" />
+    <Compile Include="Missions\MainMissions\Phase 4\Main8_2_TheEnd.cs" />
+    <Compile Include="Missions\MainMissions\Phase 4\Main9_A_RebelArc.cs" />
+    <Compile Include="Missions\MainMissions\Phase 4\Main9_B_AllianceArc.cs" />
+    <Compile Include="Missions\MainMissions\Phase 4\Main9_C_OnYourOwnArc.cs" />
+    <Compile Include="Missions\Mission.cs" />
+    <Compile Include="Missions\SideMissions\Side_AstroDodger.cs" />
+    <Compile Include="Missions\SideMissions\Side_AstroScan.cs" />
+    <Compile Include="Missions\SideMissions\Side_ColonyAid.cs" />
+    <Compile Include="Missions\SideMissions\Side_DeathByMeteor.cs" />
+    <Compile Include="Missions\SideMissions\Side_DebtCollection.cs" />
+    <Compile Include="Missions\SideMissions\Side_FlightTraining.cs" />
+    <Compile Include="Missions\SideMissions\Side_FlightTraining2.cs" />
+    <Compile Include="Missions\SideMissions\Side_TheRebelOutpost.cs" />
+    <Compile Include="Overworld-part\BackgroundManagerOverworld.cs" />
+    <Compile Include="Overworld-part\Camera.cs" />
+    <Compile Include="Overworld-part\CollisionHandlingOverworld.cs" />
+    <Compile Include="Overworld-part\GameObjects\Celestial bodies\BackgroundStars\Star.cs" />
+    <Compile Include="Overworld-part\GameObjects\Celestial bodies\MiscSpaceObject.cs" />
+    <Compile Include="Overworld-part\GameObjects\Celestial bodies\Overworld\MediumAstroid.cs" />
+    <Compile Include="Overworld-part\GameObjects\Celestial bodies\Overworld\OutpostX\MurtAsteroid.cs" />
+    <Compile Include="Overworld-part\GameObjects\Celestial bodies\Planet.cs" />
+    <Compile Include="Overworld-part\GameObjects\Celestial bodies\SectorX\GreyMoon.cs" />
+    <Compile Include="Overworld-part\GameObjects\Celestial bodies\SectorX\Highfence.cs" />
+    <Compile Include="Overworld-part\GameObjects\Celestial bodies\SectorX\NewNorrland.cs" />
+    <Compile Include="Overworld-part\GameObjects\Celestial bodies\SectorX\Peye.cs" />
+    <Compile Include="Overworld-part\GameObjects\Celestial bodies\SectorX\SectorXStar.cs" />
+    <Compile Include="Overworld-part\GameObjects\Celestial bodies\SystemStar.cs" />
+    <Compile Include="Overworld-part\GameObjects\Direction.cs" />
+    <Compile Include="Overworld-part\GameObjects\GameObjectOverworld.cs" />
+    <Compile Include="Overworld-part\GameObjects\ImmobileSpaceObject.cs" />
+    <Compile Include="Overworld-part\GameObjects\Other\Beacon.cs" />
+    <Compile Include="Overworld-part\GameObjects\Other\ExplosionParticleOverworld.cs" />
+    <Compile Include="Overworld-part\GameObjects\Other\HyperSpeedParticle.cs" />
+    <Compile Include="Overworld-part\GameObjects\Other\OverworldExplosion.cs" />
+    <Compile Include="Overworld-part\GameObjects\Other\Particle.cs" />
+    <Compile Include="Overworld-part\GameObjects\Player\PlayerOverworld.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\AllianceShip.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\AllyShip.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\FreighterShip.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\HangarShip.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\MotherShip.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\OverworldShip.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\Particles\ParticleManager.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\RebelShip.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Action.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Collisions\AlliancePirateCollisionEvent.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Collisions\BeginLevelCollisionEvent.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Collisions\CollisionEvent.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Collisions\HangarCollisionEvent.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Collisions\PirateColllisionEvent.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Collisions\RebelPirateCollisionEvent.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\Collisions\RemoveOnCollisionEvent.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\FollowInViewAction.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\OrbitAction.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\PatrolAction.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\TravelAction.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\WaitAction.cs" />
+    <Compile Include="Overworld-part\GameObjects\Ships\ShipLogic\WaitTimeAction.cs" />
+    <Compile Include="Overworld-part\GameObjects\Shop.cs" />
+    <Compile Include="Overworld-part\GameObjects\ShopInventoryEntry.cs" />
+    <Compile Include="Overworld-part\GameObjects\Shops\FortrunShop.cs" />
+    <Compile Include="Overworld-part\GameObjects\Shops\HighfenceShop.cs" />
+    <Compile Include="Overworld-part\GameObjects\Shops\PeyeShop.cs" />
+    <Compile Include="Overworld-part\GameObjects\Shops\RebelBaseShop.cs" />
+    <Compile Include="Overworld-part\GameObjects\Shops\ShopStation.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Fleets\AllianceFleet.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Fleets\RebelFleet.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\AbandonedStation.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\BorderXOutpost\BorderStation.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\MiningOutpost\MiningStation.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\OutpostX\OutpostXStation.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\PeyeScienceStation.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\RebelOutpost\RebelStation.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\TrainingArea.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Overworld\TrainingArea2.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\SectorX\FortrunStation1.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\SectorX\LavisStation.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\SectorX\SoelaraStation.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\ShopInventoryEntry.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Station.cs" />
+    <Compile Include="Overworld-part\GameObjects\Stations\Unused\BigStation.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Asteroid.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\AsteroidField.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\EventAsteroid.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\LavisAsteroidBelt.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\RebelOutpostAsteroidField.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\SunAsteroidBelt.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\TelmunAsteroidBelt.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\TestingField.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\Instances\WesternAsteroidField.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\AsteroidField\SimpleAsteroid.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\DamagedShip.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\Fortrun.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\FotrunStation2.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\InformationStation.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\Lavis.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\LonelyAsteroid.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\MiningAsteroids.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\RebelOutpostAsteroid.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\Soelara.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\SpaceDuck.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\Instances\TestAsteroid1.cs" />
+    <Compile Include="Overworld-part\GameObjects\SubInteractiveObjects\SubInteractiveObject.cs" />
+    <Compile Include="Overworld-part\Interface\AutoSaveHandler.cs" />
+    <Compile Include="Overworld-part\Interface\Bar.cs" />
+    <Compile Include="Overworld-part\Interface\BeaconMenu.cs" />
+    <Compile Include="Overworld-part\Interface\DirectionArrow.cs" />
+    <Compile Include="Overworld-part\Interface\HeadsUpDisplay.cs" />
+    <Compile Include="Overworld-part\Interface\HelperBox.cs" />
+    <Compile Include="Overworld-part\Interface\ItemComparison.cs" />
+    <Compile Include="Overworld-part\Interface\MiniMap.cs" />
+    <Compile Include="Overworld-part\Interface\Radar.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\EventGenerator.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\AsteroidEvents\AsteroidAmbushOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\AsteroidEvents\FindItemOnAsteroidOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\AsteroidEvents\FindTextOnAsteroidOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\DisplayFreighterMessageOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\DisplayTextOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\EmptyOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\EnableHyperSpeedAtSpaceDuckOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\GetItemOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\ItemShopOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\LevelOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\PirateEncounterOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\Instances\RandomCommonOE.cs" />
+    <Compile Include="Overworld-part\OverworldEvents\OverworldEvent.cs" />
+    <Compile Include="Overworld-part\SpaceRegions\Outposts\BorderXOutpost.cs" />
+    <Compile Include="Overworld-part\SpaceRegions\Outposts\MiningOutpost.cs" />
+    <Compile Include="Overworld-part\SpaceRegions\Outposts\Outpost.cs" />
+    <Compile Include="Overworld-part\SpaceRegions\Outposts\OutpostX.cs" />
+    <Compile Include="Overworld-part\SpaceRegions\Outposts\RebelOutpost.cs" />
+    <Compile Include="Overworld-part\SpaceRegions\Planets\FortrunOrbit.cs" />
+    <Compile Include="Overworld-part\SpaceRegions\Planets\HighFenceOrbit.cs" />
+    <Compile Include="Overworld-part\SpaceRegions\Planets\LavisOrbit.cs" />
+    <Compile Include="Overworld-part\SpaceRegions\Planets\NewNorrlandOrbit.cs" />
+    <Compile Include="Overworld-part\SpaceRegions\Planets\PeyeOrbit.cs" />
+    <Compile Include="Overworld-part\SpaceRegions\Planets\SoelaraOrbit.cs" />
+    <Compile Include="Overworld-part\SpaceRegions\Sectors\Sector.cs" />
+    <Compile Include="Overworld-part\SpaceRegions\Sectors\SectorX.cs" />
+    <Compile Include="Overworld-part\SpaceRegions\SpaceRegion.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shooter-part\AI\AI.cs" />
+    <Compile Include="Shooter-part\AI\Behaviour\AggressiveBehaviour.cs" />
+    <Compile Include="Shooter-part\AI\Behaviour\Behaviour.cs" />
+    <Compile Include="Shooter-part\AI\Behaviour\NoWeapon.cs" />
+    <Compile Include="Shooter-part\AI\Behaviour\StandardBehaviour.cs" />
+    <Compile Include="Shooter-part\Area\Instances\AreaDisruptorCollision.cs" />
+    <Compile Include="Shooter-part\Area\Instances\AreaShieldCollision.cs" />
+    <Compile Include="Shooter-part\Area\Instances\CircularAreaDamage.cs" />
+    <Compile Include="Shooter-part\Area\SuperClasses\AreaDamage.cs" />
+    <Compile Include="Shooter-part\Area\SuperClasses\AreaObject.cs" />
+    <Compile Include="Shooter-part\Events\BossLevelEvent.cs" />
+    <Compile Include="Shooter-part\Events\CreaturePackage.cs" />
+    <Compile Include="Shooter-part\Events\Instances\DurationInstances\EvenSwarm.cs" />
+    <Compile Include="Shooter-part\Events\Instances\DurationInstances\GradientSwarm.cs" />
+    <Compile Include="Shooter-part\Events\Instances\DurationInstances\Swarm.cs" />
+    <Compile Include="Shooter-part\Events\Instances\PointInstances\LineFormation.cs" />
+    <Compile Include="Shooter-part\Events\Instances\PointInstances\SingleEnemy.cs" />
+    <Compile Include="Shooter-part\Events\Instances\PointInstances\SingleHorizontalEnemy.cs" />
+    <Compile Include="Shooter-part\Events\Instances\PointInstances\SquareFormation.cs" />
+    <Compile Include="Shooter-part\Events\Instances\PointInstances\VFormation.cs" />
+    <Compile Include="Shooter-part\Events\Instances\TextInstances\SimpleMessageVertical.cs" />
+    <Compile Include="Shooter-part\Events\Instances\WaveInstances\EliminationBoss.cs" />
+    <Compile Include="Shooter-part\Events\Instances\WaveInstances\EliminationBossDanne.cs" />
+    <Compile Include="Shooter-part\Events\Instances\WaveInstances\HangarBoss.cs" />
+    <Compile Include="Shooter-part\Events\LastingLevelEvent.cs" />
+    <Compile Include="Shooter-part\Events\LevelEvent.cs" />
+    <Compile Include="Shooter-part\Events\PointLevelEvent.cs" />
+    <Compile Include="Shooter-part\Events\WavesLevelEvent.cs" />
+    <Compile Include="Shooter-part\GameObjects\Allies\AlliedShip.cs" />
+    <Compile Include="Shooter-part\GameObjects\Allies\Ships\AllianceFighterAlly.cs" />
+    <Compile Include="Shooter-part\GameObjects\Allies\Ships\FreighterAlly.cs" />
+    <Compile Include="Shooter-part\GameObjects\Allies\Ships\RebelFighterAlly.cs" />
+    <Compile Include="Shooter-part\GameObjects\AnimatedGameObject.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Bullet.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\EnemyGreenBullet.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\EnemyHomingBullet.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\EnemyHomingMissileBullet.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\EnemyMine.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\EnemyMissileBullet.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\EnemyStrongBlueLaser.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\EnemyWeakBlueLaser.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\EnemyWeakRedLaser.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\EnemyYellowBullet.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\GreenBulletEnemy.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Enemy Bullets\YellowBulletEnemy.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\EnemyBullet.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Other\MissileFragment.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Primary\AdvancedLaser.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Primary\BallisticLaser.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Primary\BasicLaser.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Primary\DistanceSpreadBullet.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Primary\DrillBeam.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Primary\FlameShot.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Primary\GreenBullet.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Primary\Mine.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Primary\WaveBeam.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Primary\YellowBullet.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Secondary\DisruptorBullet.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Secondary\FragmentMissile.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Secondary\HomingMissile.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Secondary\RegularBomb.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Secondary\RegularMissile.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\Player Bullets\Secondary\TurretBullet.cs" />
+    <Compile Include="Shooter-part\GameObjects\Bullets\PlayerBullet.cs" />
+    <Compile Include="Shooter-part\GameObjects\CombatGameObject.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Meteorites\Meteorite.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Meteorites\Meteorite15.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Meteorites\Meteorite20.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Meteorites\Meteorite25.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Meteorites\Meteorite30.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\NonUsed\BigGreenEnemy.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\NonUsed\BigRedEnemy.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\NonUsed\BigYellowEnemy.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\NonUsed\HomingMissileCamperEnemy.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceBigFighterMkI.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceBigFighterMkII.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceBigMissileEnemy.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceHomingBulletEnemy.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceHomingMissileEnemy.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceHomingShotEnemy.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\AllianceSmallShooter.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceBallistic.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceDrone.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceHeavyBeamer.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceLightBeamer.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceMultipleShot.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceShielder.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceSingleHoming.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceSmallLaserShip.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceStealthAttackShip.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\AllianceStealthShip.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\Hangar\AllianceHangar.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Allied\Hangar\AllianceHangarAttackShip.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\DanneEnemy.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\RebelMediumSizedEnemy.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\RebelSmallEnemy.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelBomber.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelBurster.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelFatzo.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelHomingMissile.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelLightMinelayer.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelMinelayer.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelMissileAttack.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelMosquito.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelSmallAttackShip.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelSmallSniper.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Rebels\RebelThickShooter.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Instances\Used\Turret.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\ResourceMeteorites\ResourceMeteorite.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\ResourceMeteorites\ResourceMeteoriteCopperBig.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\ResourceMeteorites\ResourceMeteoriteCopperMedium.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\ResourceMeteorites\ResourceMeteoriteCopperSmall.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\ResourceMeteorites\ResourceMeteoriteGoldBig.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\ResourceMeteorites\ResourceMeteoriteGoldMedium.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\ResourceMeteorites\ResourceMeteoriteGoldSmall.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\ResourceMeteorites\ResourceMeteoriteTitaniumBig.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\ResourceMeteorites\ResourceMeteoriteTitaniumMedium.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\ResourceMeteorites\ResourceMeteoriteTitaniumSmall.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\ResourceMeteorites\ResourceMeteroiteCopper.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\ResourceMeteorites\ResourceMeteroiteGold.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\ResourceMeteorites\ResourceMeteroiteTitanium.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\SetupCreature.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Super classes\EnemyShip.cs" />
+    <Compile Include="Shooter-part\GameObjects\Enemies\Super classes\ShootingEnemyShip.cs" />
+    <Compile Include="Shooter-part\GameObjects\GameObjectVertical.cs" />
+    <Compile Include="Shooter-part\GameObjects\Misc GameObjects\Supplies.cs" />
+    <Compile Include="Shooter-part\GameObjects\Player\PlayerVerticalShooter.cs" />
+    <Compile Include="Shooter-part\GameObjects\VerticalShooterShip.cs" />
+    <Compile Include="Shooter-part\Gamestructure\BackgroundManager.cs" />
+    <Compile Include="Shooter-part\Gamestructure\CollisionDetection.cs" />
+    <Compile Include="Shooter-part\Gamestructure\CollisionHandling.cs" />
+    <Compile Include="Shooter-part\Gamestructure\PlayerShotHandler.cs" />
+    <Compile Include="Shooter-part\Gamestructure\ShotHandlerHelper.cs" />
+    <Compile Include="Shooter-part\Gamestructure\Sprite.cs" />
+    <Compile Include="Shooter-part\Levels\CheckPoint.cs" />
+    <Compile Include="Shooter-part\Levels\Level.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\CustomMissionLevels\Infiltration1Level.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\CustomMissionLevels\Infiltration2Level.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\CustomMissionLevels\Information1Level.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\CustomMissionLevels\InTheNameOfScienceLevel2.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\CustomMissionLevels\RebelsInTheMeteorsLevel.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\CustomMissionLevels\Retaliation1Level.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\CustomMissionLevels\SecondMissionLevel.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\JakobsDevelopLevel.cs" />
+    <Compile Include="Shooter-part\Levels\Levels\Used\HangarLevel.cs" />
+    <Compile Include="Shooter-part\Levels\Logger\LevelLogger.cs" />
+    <Compile Include="Shooter-part\Levels\MapCreatorLevel.cs" />
+    <Compile Include="Shooter-part\Modules\BeamModule\BeamBullet.cs" />
+    <Compile Include="Shooter-part\Modules\BeamModule\BeamDrawing.cs" />
+    <Compile Include="Shooter-part\Modules\BeamModule\BeamModule.cs" />
+    <Compile Include="Shooter-part\Modules\BeamModule\FriendlyBeamModule.cs" />
+    <Compile Include="Shooter-part\Modules\BeamModule\HostileBeamModule.cs" />
+    <Compile Include="Shooter-part\Modules\MovementModule\Instances\BigZigZagModule.cs" />
+    <Compile Include="Shooter-part\Modules\MovementModule\Instances\CrossOverModule.cs" />
+    <Compile Include="Shooter-part\Modules\MovementModule\Instances\FollowingModule.cs" />
+    <Compile Include="Shooter-part\Modules\MovementModule\Instances\HorizontalModule.cs" />
+    <Compile Include="Shooter-part\Modules\MovementModule\Instances\LinearModule.cs" />
+    <Compile Include="Shooter-part\Modules\MovementModule\Instances\MediumZigZagModule.cs" />
+    <Compile Include="Shooter-part\Modules\MovementModule\Instances\SearchAndLockOnModule.cs" />
+    <Compile Include="Shooter-part\Modules\MovementModule\Instances\SlantingLineModule.cs" />
+    <Compile Include="Shooter-part\Modules\MovementModule\Instances\SmallZigZagModule.cs" />
+    <Compile Include="Shooter-part\Modules\MovementModule\Instances\StoppingModule.cs" />
+    <Compile Include="Shooter-part\Modules\MovementModule\MovementModule.cs" />
+    <Compile Include="Shooter-part\Modules\ShipShootingModule\ShootingModule.cs" />
+    <Compile Include="Shooter-part\ShipInfo\HealthBar.cs" />
+    <Compile Include="Shooter-part\ShipInfo\ManaBar.cs" />
+    <Compile Include="Shooter-part\ShipInfo\ShieldBar.cs" />
+    <Compile Include="Shooter-part\ShipParts\EmptyItem.cs" />
+    <Compile Include="Shooter-part\ShipParts\EmptyWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\EnergyCells\AdvancedEnergyCell.cs" />
+    <Compile Include="Shooter-part\ShipParts\EnergyCells\BasicEnergyCell.cs" />
+    <Compile Include="Shooter-part\ShipParts\EnergyCells\RegularEnergyCell.cs" />
+    <Compile Include="Shooter-part\ShipParts\EnergyCells\ShieldBoostEnergyCell.cs" />
+    <Compile Include="Shooter-part\ShipParts\EnergyCells\WeaponBoostEnergyCell.cs" />
+    <Compile Include="Shooter-part\ShipParts\Item.cs" />
+    <Compile Include="Shooter-part\ShipParts\MedicalSupplies.cs" />
+    <Compile Include="Shooter-part\ShipParts\Plating\AdvancedPlating.cs" />
+    <Compile Include="Shooter-part\ShipParts\Plating\BasicPlating.cs" />
+    <Compile Include="Shooter-part\ShipParts\Plating\HeavyPlating.cs" />
+    <Compile Include="Shooter-part\ShipParts\Plating\LightPlating.cs" />
+    <Compile Include="Shooter-part\ShipParts\Plating\RegularPlating.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\DrillBeamWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\HighestTier\AdvancedBeamWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\HighestTier\AdvancedLaserWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\HighestTier\ProximityLaserWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\LowerTier\BasicLaserWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\LowerTier\DualLaserWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\LowerTier\LongShotWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\LowerTier\SpreadBulletWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\MiddleTier\BallisticLaserWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\MiddleTier\FlameShotWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\MiddleTier\MultipleShotWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\MiddleTier\WaveBeamWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\UpperTier\BeamWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\UpperTier\BursterWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Primary\UpperTier\FragmentMissileWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\QuantityItems\FineWhiskey.cs" />
+    <Compile Include="Shooter-part\ShipParts\QuantityItems\QuantityItem.cs" />
+    <Compile Include="Shooter-part\ShipParts\QuantityItems\Resources\CopperResource.cs" />
+    <Compile Include="Shooter-part\ShipParts\QuantityItems\Resources\GoldResource.cs" />
+    <Compile Include="Shooter-part\ShipParts\QuantityItems\Resources\ResourceItem.cs" />
+    <Compile Include="Shooter-part\ShipParts\QuantityItems\Resources\TitaniumResource.cs" />
+    <Compile Include="Shooter-part\ShipParts\Secondary\MiddleTier\DisruptorWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Secondary\MiddleTier\FieldDamageWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Secondary\MiddleTier\HomingMissileWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Secondary\MiddleTier\RegularBombWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Secondary\MiddleTier\SideMissilesWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Secondary\MiddleTier\TurretWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Secondary\Other\PunyTurretWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Secondary\UpperTier\MineLayerWeapon.cs" />
+    <Compile Include="Shooter-part\ShipParts\Shields\AdvancedShield.cs" />
+    <Compile Include="Shooter-part\ShipParts\Shields\BasicShield.cs" />
+    <Compile Include="Shooter-part\ShipParts\Shields\BulletShield.cs" />
+    <Compile Include="Shooter-part\ShipParts\Shields\CollisionShield.cs" />
+    <Compile Include="Shooter-part\ShipParts\Shields\EmptyShield.cs" />
+    <Compile Include="Shooter-part\ShipParts\Shields\RegularShield.cs" />
+    <Compile Include="Shooter-part\ShipParts\ShipPart.cs" />
+    <Compile Include="Shooter-part\ShipParts\StoryItem.cs" />
+    <Compile Include="Shooter-part\ShipParts\SuperClasses\PlayerActivated.cs" />
+    <Compile Include="Shooter-part\ShipParts\SuperClasses\PlayerEnergyCell.cs" />
+    <Compile Include="Shooter-part\ShipParts\SuperClasses\PlayerPlating.cs" />
+    <Compile Include="Shooter-part\ShipParts\SuperClasses\PlayerShield.cs" />
+    <Compile Include="Shooter-part\ShipParts\SuperClasses\PlayerWeapon.cs" />
+    <Compile Include="Shooter-part\Visual and Music\Animation.cs" />
+    <Compile Include="Shooter-part\Visual and Music\BackgroundObjects\BackgroundObject.cs" />
+    <Compile Include="Shooter-part\Visual and Music\BackgroundObjects\Stars\BackgroundStar.cs" />
+    <Compile Include="Shooter-part\Visual and Music\Cursor.cs" />
+    <Compile Include="Shooter-part\Visual and Music\DeathAnims\Explosion.cs" />
+    <Compile Include="Shooter-part\Visual and Music\DeathAnims\ExplosionGenerator.cs" />
+    <Compile Include="Shooter-part\Visual and Music\DeathAnims\ExplosionParticle.cs" />
+    <Compile Include="Shooter-part\Visual and Music\DeathAnims\SmallExplosion.cs" />
+    <Compile Include="Shooter-part\Visual and Music\Shield\ShieldEffect.cs" />
+    <Compile Include="Shooter-part\Visual and Music\Shield\ShieldEffectGenerator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="OpenTK">
+      <HintPath>$(MSBuildProgramFiles32)\MonoGame\v3.0\Assemblies\Linux\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>$(MSBuildProgramFiles32)\MonoGame\v3.0\Assemblies\Linux\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="Tao.Sdl">
+      <HintPath>$(MSBuildProgramFiles32)\MonoGame\v3.0\Assemblies\Linux\Tao.Sdl.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\itemVisualSheet.png" />
+    <Content Include="Content\MapCreator\MapCreatorSpriteSheet.png" />
+    <Content Include="Content\Music\old\Asteroids.mp3" />
+    <Content Include="Content\Music\old\Rebels.mp3" />
+    <Content Include="Content\Music\other\GoingOut.mp3" />
+    <Content Include="Content\Music\other\MainMenu.MP3" />
+    <Content Include="Content\Music\other\Outro.mp3" />
+    <Content Include="Content\Music\other\SpaceStation.mp3" />
+    <Content Include="Content\Music\other\TheOboeSong.mp3" />
+    <Content Include="Content\Music\overworld\DarkPiano.mp3" />
+    <Content Include="Content\Music\overworld\DarkSpace.mp3" />
+    <Content Include="Content\Music\overworld\SpaceAmbience.mp3" />
+    <Content Include="Content\Music\vertical\AllianceBattle.mp3" />
+    <Content Include="Content\Music\vertical\Falling.mp3" />
+    <Content Include="Content\Music\vertical\PowerSong.mp3" />
+    <Content Include="Content\Music\vertical\Stars.mp3" />
+    <Content Include="Content\Overworld-Sprites\BeaconMenu.png" />
+    <Content Include="Content\Overworld-Sprites\buttons.png" />
+    <Content Include="Content\Overworld-Sprites\introBackdrop.png" />
+    <Content Include="Content\Overworld-Sprites\lineTexture.png" />
+    <Content Include="Content\Overworld-Sprites\MainMenuBackdrop.png" />
+    <Content Include="Content\Overworld-Sprites\MenuBackdrop.png" />
+    <Content Include="Content\Overworld-Sprites\messageBoxSpriteSheet.png" />
+    <Content Include="Content\Overworld-Sprites\MissionObjectSpriteSheet.png" />
+    <Content Include="Content\Overworld-Sprites\missionScreenSpriteSheet.png" />
+    <Content Include="Content\Overworld-Sprites\OutpostSpriteSheet.png" />
+    <Content Include="Content\Overworld-Sprites\planetarySystemSpritesheet.png" />
+    <Content Include="Content\Overworld-Sprites\PlanetOverviewSpritesheet.png" />
+    <Content Include="Content\Overworld-Sprites\PortraitSpriteSheet.png" />
+    <Content Include="Content\Overworld-Sprites\radar.png" />
+    <Content Include="Content\Overworld-Sprites\SectorXSpriteSheet.png" />
+    <Content Include="Content\Overworld-Sprites\smallObjectSpriteSheet.png" />
+    <Content Include="Content\Overworld-Sprites\StarsSpriteSheet.png" />
+    <Content Include="Content\Overworld-Sprites\tutorial_spritesheet.png" />
+    <Content Include="Content\SoundEffects\basic_laser.wav" />
+    <Content Include="Content\SoundEffects\boom6.wav" />
+    <Content Include="Content\SoundEffects\boom9.wav" />
+    <Content Include="Content\SoundEffects\crowd.wav" />
+    <Content Include="Content\SoundEffects\crowd1.wav" />
+    <Content Include="Content\SoundEffects\energy_lock.wav" />
+    <Content Include="Content\SoundEffects\engine_overworld_full.wav" />
+    <Content Include="Content\SoundEffects\huge_explosion.wav" />
+    <Content Include="Content\SoundEffects\jakob_test\beacon\beacon1.wav" />
+    <Content Include="Content\SoundEffects\jakob_test\lasers\click_laser.wav" />
+    <Content Include="Content\SoundEffects\jakob_test\lasers\click_laser_noiseReduced.wav" />
+    <Content Include="Content\SoundEffects\jakob_test\lasers\distorted_laser.wav" />
+    <Content Include="Content\SoundEffects\jakob_test\lasers\distorted_laser_orginal.wav" />
+    <Content Include="Content\SoundEffects\jakob_test\lasers\distorted_laser_with_noise.wav" />
+    <Content Include="Content\SoundEffects\jakob_test\lasers\mid_size_laser.wav" />
+    <Content Include="Content\SoundEffects\menu_hover.wav" />
+    <Content Include="Content\SoundEffects\menu_select.wav" />
+    <Content Include="Content\SoundEffects\overworldInteraction\hover1.wav" />
+    <Content Include="Content\SoundEffects\overworldInteraction\hover2.wav" />
+    <Content Include="Content\SoundEffects\shooterHit\Shieldhit1.wav" />
+    <Content Include="Content\Vertical-Sprites\BorderSprite.png" />
+    <Content Include="Content\Vertical-Sprites\bushImg.png" />
+    <Content Include="Content\Vertical-Sprites\introBackdrop.png" />
+    <Content Include="Content\Vertical-Sprites\MenuSheet.png" />
+    <Content Include="Content\Vertical-Sprites\shooterSheet.png" />
+    <Content Include="GameThumbnail.png" />
+    <Content Include="SDL.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SDL_Mixer.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shooter-part\DrawLayer-Outline.txt" />
+    <Content Include="SpaceProject.csproj" />
+    <Content Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="Content\SpaceProjectContent.mgcb" />
+    <Content Include="Content\Fonts\Iceland_10.spritefont" />
+    <Content Include="Content\Fonts\Iceland_12.spritefont" />
+    <Content Include="Content\Fonts\Iceland_14.spritefont" />
+    <Content Include="Content\Fonts\Iceland_16.spritefont" />
+    <Content Include="Content\Fonts\Iceland_18.spritefont" />
+    <Content Include="Content\Fonts\ISL_Jupiter_24.spritefont" />
+    <Content Include="Content\Fonts\ISL_Jupiter_28.spritefont" />
+    <Content Include="Content\Fonts\ISL_Jupiter_36.spritefont" />
+    <Content Include="Content\Fonts\MCfont8.spritefont" />
+    <Content Include="Content\Fonts\MCSmallFont.spritefont" />
+    <Content Include="Content\Overworld-Sprites\bigFont.spritefont" />
+    <Content Include="Content\Overworld-Sprites\smallFont.spritefont" />
+    <None Include="Content\Vertical-Sprites\font1.spritefont" />
+    <None Include="Content\Vertical-Sprites\font10.spritefont" />
+    <None Include="Content\Vertical-Sprites\font12.spritefont" />
+    <None Include="Content\Vertical-Sprites\font14.spritefont" />
+    <None Include="Data\colonydata.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\missiondata.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\planetdata.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\rumordata.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\stationdata.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\storydata.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\verticaldata.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\lonely_asteroid_level.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m1_rebels_asteroids.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m2_freighter_escort_lv_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m2_freighter_escort_lv_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m3_defend_colony_lv_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m3_defend_colony_lv_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m4_infiltration_lv_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m4_infiltration_lv_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m4_infiltration_lv_2_old.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m5_retribution_lv_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m5_retribution_lv_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m6_itnos_lv_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m6_itnos_lv_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m7_information.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m8a_oyo_lv_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m8a_oyo_lv_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m8b_rebels_lv_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m8b_rebels_lv_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m8c_alliance_lv_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\mainlevels\m8c_alliance_lv_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\pirates\alliance_pirate_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\pirates\alliance_pirate_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\pirates\alliance_pirate_3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\pirates\alliance_pirate_4.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\pirates\alliance_pirate_5.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\pirates\hangar_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\pirates\hangar_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\pirates\hangar_3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\pirates\rebel_pirate_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\pirates\rebel_pirate_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\pirates\rebel_pirate_3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\pirates\rebel_pirate_4.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\pirates\rebel_pirate_5.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\astro_dodger.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\astro_scan.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\death_by_meteor.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\flight_training_2_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\flight_training_2_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\flight_training_2_3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\flight_training_1_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\flight_training_1_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\flight_training_1_3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\ft2\ft2_asteroids.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\ft2\ft2_break_the_defence.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\ft2\ft2_collision.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\ft2\ft2_explosions.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\ft2\ft2_under_fire.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\the_rebel_outpost_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sidelevels\the_rebel_outpost_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\sublevels\rebel_ambush_sub_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\all_pirates\alliance_pirate_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\all_pirates\alliance_pirate_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\all_pirates\alliance_pirate_3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\all_pirates\alliance_pirate_4.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\all_pirates\alliance_pirate_5.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\all_pirates\rebel_pirate_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\all_pirates\rebel_pirate_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\all_pirates\rebel_pirate_3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\all_pirates\rebel_pirate_4.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\all_pirates\rebel_pirate_5.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\4_infiltration\m4_infiltration_lv_1_v_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\4_infiltration\m4_infiltration_lv_2_v_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\4_infiltration\m4_infiltration_lv_2_v_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv_1_v_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv_1_v_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv_2_v_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\5_retribution\m5_retribution_lv_2_v_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\6_itnos\m6_itnos_lv_1_v_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\6_itnos\m6_itnos_lv_1_v_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\6_itnos\m6_itnos_lv_2_v_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\7_infiltration\m7_infiltration_lv_1_v_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\7_infiltration\m7_infiltration_lv_1_v_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\8a_oyo\m10a_oyo_lv_1_v_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\8a_oyo\m10a_oyo_lv_1_v_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\8a_oyo\m10a_oyo_lv_2_v_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\8a_oyo\m10a_oyo_lv_2_v_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv_1_v_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv_1_v_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv_2_v_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\8b_rebels\m10b_rebels_lv_2_v_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv_1_v_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv_1_v_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv_2_v_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_main\8c_alliance\m10c_alliance_lv_2_v_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_pirate\alliance\j_ap_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_pirate\alliance\j_ap_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_pirate\alliance\j_ap_3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_pirate\rebel\j_rp_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_pirate\rebel\j_rp_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\jakob_pirate\rebel\j_rp_3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\johan_main\defend_colony_break.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\johan_main\defend_colony_hold.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\johan_main\freighter_escort_lvl_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\johan_main\freighter_escort_lvl_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\johan_main\rebels_asteroids.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\p2_attack_on_rebel_station.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\p2_rebel_ambush.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\p3_science_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\p4_hunted_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\p4_hunted_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\p4_hunted_3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\p4_rebel_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\p4_rebel_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\p4_recognized_by_alliance.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\test_lv_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\test_lv_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\test_lv_3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\testlevels\x_defend_colony.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\unsorted\hard_level.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\unsorted\p2_attack_on_rebel_station.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\unsorted\p2_rebel_ambush.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\unsorted\x_cover_blown.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\unsorted\x_defend_colony.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\unsorted\x_first_mission.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\unsorted\x_hard_level.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\unsorted\x_main_10_level_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\unsorted\x_main_the_alliance.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\unsorted\x_pirate_ambush.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\unsorted\x_pirate_annihilation.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\unsorted\x_scouting_level.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\unsorted\x_second_mission_lvl_1.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\unsorted\x_second_mission_lvl_2.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\unsorted\x_second_mission_lvl_3.lvl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="OpenTK.dll.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tao.Sdl.dll.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="LinuxRelease_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LevelTester\" />
+    <Folder Include="Overworld-part\GameObjects\Stations\SectorZ\" />
+    <Folder Include="Shooter-part\Levels\Oldlevels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
